@@ -1,0 +1,14 @@
+{
+  "status": "configuration_written",
+  "config_path": "C:\\Users\\cenyongdong\\.codex\\config.toml",
+  "backup_path": "C:\\Users\\cenyongdong\\.codex\\config.toml.vivado-before-20261001_180113-e34772.bak",
+  "before_sha256": "8f418b52cc462cdf0d13bf53e30073f742527f4cbc00f16f463d25105d3fc15d",
+  "after_sha256": "0513e2f74050a933bfa13c197a93b33b60975f84f4f5a58dc7ebbaf58c90c02b",
+  "changed_key": "mcp_servers.vivado.env.PROCESSOR_ARCHITECTURE",
+  "new_value": "AMD64",
+  "only_this_key_changed": true,
+  "all_other_bytes_preserved": true,
+  "system_environment_changed": false,
+  "procise_configuration_changed": false,
+  "existing_chat_server_reloaded": false
+}

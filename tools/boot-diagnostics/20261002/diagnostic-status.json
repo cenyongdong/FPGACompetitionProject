@@ -1,0 +1,78 @@
+{
+  "timestamp": "2026-10-02T12:35:26.4955635+08:00",
+  "scope": "Read-only boot diagnosis; no SD rewrite, FPGA programming, Flash/BOOT changes or permanent configuration changes",
+  "user_report": {
+    "latest_sd_write": "imageUSB success with verification disabled",
+    "power_cycle": true,
+    "boot_mode": "SD, user confirmed; jumper pins not independently checked",
+    "lit_leds": [
+      "D18",
+      "D19",
+      "D20",
+      "D21",
+      "D8"
+    ],
+    "reader_origin": "User reports bundled free with memory card; brand/model unknown",
+    "opened_card_uenv": "User observed unreadable/garbled contents"
+  },
+  "serial": {
+    "device": "Silicon Labs CP210x USB to UART Bridge",
+    "port": "COM7",
+    "baudrate": 115200,
+    "data_bits": 8,
+    "parity": "None",
+    "stop_bits": 1,
+    "flow_control": "None",
+    "dtr": false,
+    "rts": false,
+    "initial_open": "Access denied while MobaXterm running",
+    "after_user_closed_session": "Opened successfully",
+    "capture_seconds": 150,
+    "user_power_cycle_during_capture": true,
+    "bytes_received": 0,
+    "raw_log": "com7_20261002_123044.bin",
+    "text_log": "com7_20261002_123044.log"
+  },
+  "jtag": {
+    "tool": "Procise 2025.1.1 temp SVN32494",
+    "cable": "DIGILENT/JTAG-HS1",
+    "serial": "210512180081",
+    "fpga_idcode": "0x9372c093",
+    "fpga_part": 0,
+    "ps_dap_part": 1,
+    "stat": "0x40001f0c",
+    "stat_read_completed": true,
+    "stat_bits": "Not interpreted without verified Fudan register definition",
+    "evidence": [
+      "scan.stdout.log",
+      "read-stat.stdout.log"
+    ]
+  },
+  "source_boot": {
+    "manifest": "source-boot-manifest.json",
+    "boot_bin_bytes": 7023552,
+    "boot_bin_sha256": "c87b7959cd9980520324b2c17688d9b7c1e85358bfcef085b1b00bd5a4d2f121",
+    "uenv_baudrate": 115200
+  },
+  "pending": [
+    "Different reader read-only comparison to distinguish reader involvement",
+    "Underlying card/reader/write/filesystem cause unresolved",
+    "Successful boot after approved media remediation remains unverified"
+  ],
+  "card_file_comparison": {
+    "files": 9,
+    "matching": 1,
+    "non_matching": 8,
+    "boot_header_invalid": true,
+    "boot_different_bytes": 3445904,
+    "replug_check": "completed: still 8/9 mismatch; 7 hashes changed across replug",
+    "underlying_card_reader_write_cause": "not established"
+  },
+  "reference_boot": {
+    "user_confirmed_replacement_before_boot": true,
+    "comparison": "reference-boot-comparison.json",
+    "card_matches_reference": false,
+    "card_header_current": "first 64 bytes zero",
+    "reference_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef"
+  }
+}

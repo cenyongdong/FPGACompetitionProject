@@ -1,0 +1,65 @@
+{
+  "procise": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"native_probe\": \"passed\",\n  \"banner\": \"Procise 2025.1.1 temp\\r\\nSVN Version : 32494\\r\\nBuild  time : 2026/03/20 13:26:17\\r\\nStart  time : 2026-10-01 18:22:13\",\n  \"procise_root\": \"C:\\\\FudanMicro\\\\Procise\",\n  \"python\": \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp-venv\\\\Scripts\\\\python.exe\",\n  \"python_version\": \"3.12.14\",\n  \"mcp_sdk\": \"2.2.0\",\n  \"logs\": \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp\\\\probes\\\\18f080bb70684541a6428f0936385149\",\n  \"project\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\",\n  \"scope\": \"LED prototype only; no JTAG or arbitrary Tcl\",\n  \"codex_connection\": \"not assessed by this environment probe\"\n}"
+        }
+      ],
+      "structuredContent": {
+        "native_probe": "passed",
+        "banner": "Procise 2025.1.1 temp\r\nSVN Version : 32494\r\nBuild  time : 2026/03/20 13:26:17\r\nStart  time : 2026-10-01 18:22:13",
+        "procise_root": "C:\\FudanMicro\\Procise",
+        "python": "D:\\FPGACompetitionProject\\.local\\procise-mcp-venv\\Scripts\\python.exe",
+        "python_version": "3.12.14",
+        "mcp_sdk": "2.2.0",
+        "logs": "D:\\FPGACompetitionProject\\.local\\procise-mcp\\probes\\18f080bb70684541a6428f0936385149",
+        "project": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser",
+        "scope": "LED prototype only; no JTAG or arbitrary Tcl",
+        "codex_connection": "not assessed by this environment probe"
+      },
+      "isError": false
+    }
+  },
+  "vivado_sessions": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "[\n  {\n    \"session_id\": \"<external@9999>\",\n    \"mode\": \"external\",\n    \"state\": \"ready\",\n    \"vivado_path\": \"<unknown, not managed by MCP>\",\n    \"is_alive\": true,\n    \"uptime_seconds\": null,\n    \"port\": 9999,\n    \"owner\": \"external\",\n    \"note\": \"未由 MCP 启动的 Vivado(可能是手动启动并装过 init.tcl)。调 start_session(mode='gui') 会自动 attach 上去;stop_session 无权关闭 —— 请在 GUI 内手动 exit。\"\n  }\n]"
+        }
+      ],
+      "structuredContent": {
+        "result": "[\n  {\n    \"session_id\": \"<external@9999>\",\n    \"mode\": \"external\",\n    \"state\": \"ready\",\n    \"vivado_path\": \"<unknown, not managed by MCP>\",\n    \"is_alive\": true,\n    \"uptime_seconds\": null,\n    \"port\": 9999,\n    \"owner\": \"external\",\n    \"note\": \"未由 MCP 启动的 Vivado(可能是手动启动并装过 init.tcl)。调 start_session(mode='gui') 会自动 attach 上去;stop_session 无权关闭 —— 请在 GUI 内手动 exit。\"\n  }\n]"
+      },
+      "isError": false
+    }
+  },
+  "vivado_start": {
+    "content": [
+      {
+        "type": "text",
+        "text": "会话 'lite_led1324_pipeline' 已就绪（mode=tcl）。\nVivado: D:/Xilinx/Vivado/2019.1/bin/vivado.bat\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY"
+      }
+    ],
+    "structuredContent": {
+      "result": "会话 'lite_led1324_pipeline' 已就绪（mode=tcl）。\nVivado: D:/Xilinx/Vivado/2019.1/bin/vivado.bat\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY"
+    },
+    "isError": false
+  },
+  "vivado_version": {
+    "content": [
+      {
+        "type": "text",
+        "text": "PIPELINE_VIVADO_VERSION 2019.1\nPIPELINE_ARCH AMD64"
+      }
+    ],
+    "structuredContent": {
+      "result": "PIPELINE_VIVADO_VERSION 2019.1\nPIPELINE_ARCH AMD64"
+    },
+    "isError": false
+  }
+}

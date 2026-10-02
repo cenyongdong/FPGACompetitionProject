@@ -1,0 +1,100 @@
+{
+  "scope": "read-only file data with FILE_FLAG_NO_BUFFERING, page-aligned 64KiB buffer",
+  "does_not_bypass": "file system metadata, device hardware caches, or reader controller",
+  "control": {
+    "size": 1499,
+    "sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560",
+    "first_64_hex": "62617564726174653d3131353230300a626f6f74636d643d72756e206c6f61646269743b2072756e2075656e76636d640a626f6f74617267733d636f6e736f6c",
+    "zero_bytes": 0,
+    "entire_file_zero": false,
+    "buffered_sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560",
+    "matches_buffered": true
+  },
+  "elapsed_seconds": 2.313,
+  "files": [
+    {
+      "name": "ai7030_top.bit",
+      "size": 5980020,
+      "sha256": "bfc7bc328bf6179ff86bb27e56283fe722c9eae82178ff2432b754afe76e2e3f",
+      "first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "zero_bytes": 3211928,
+      "entire_file_zero": false,
+      "source_matches": []
+    },
+    {
+      "name": "ai7030_top_disable_icap.bit",
+      "size": 5980604,
+      "sha256": "8690e07f0598b7ee284fe343031cf20808e0698cb96cac04302f4d34e8a4b2e1",
+      "first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "zero_bytes": 3212208,
+      "entire_file_zero": false,
+      "source_matches": []
+    },
+    {
+      "name": "bl31.elf",
+      "size": 610824,
+      "sha256": "a6d4606f1b6c492eb0c739075088bd087fda8e1021ab87e3d9c8c32110e16ea9",
+      "first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "zero_bytes": 328054,
+      "entire_file_zero": false,
+      "source_matches": []
+    },
+    {
+      "name": "BOOT.bin",
+      "size": 7023552,
+      "sha256": "c1969b87c628b890b871f7dcf77dcc746df5e48526d68f79e37398732b314c33",
+      "first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "zero_bytes": 3772397,
+      "entire_file_zero": false,
+      "source_matches": []
+    },
+    {
+      "name": "fmqlmp-verify.dtb",
+      "size": 15996,
+      "sha256": "8550767312e65033869ef468aaa7a0c90c315f9a2d12703b95965767af568392",
+      "first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "zero_bytes": 8573,
+      "entire_file_zero": false,
+      "source_matches": []
+    },
+    {
+      "name": "FSBL251210_ddr400_demo.out",
+      "size": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+      "first_64_hex": "7f454c460201010000000000000000000200b70001000000382ffeff000000008c0e150000000000c41515000000000000000000400038002100400034000100",
+      "zero_bytes": 366049,
+      "entire_file_zero": false,
+      "source_matches": [
+        "FSBL25~1.OUT"
+      ]
+    },
+    {
+      "name": "Image",
+      "size": 13158408,
+      "sha256": "5cb7c6977494ec3b5a9e6f177bd0cb30f1f8039186faab2f175c2de8aba90b83",
+      "first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "zero_bytes": 7067494,
+      "entire_file_zero": false,
+      "source_matches": []
+    },
+    {
+      "name": "u-boot",
+      "size": 6579840,
+      "sha256": "d9dfa8e33e65392515a6714750ddaf2e1bb206ce4700a069aebc99b7e8903988",
+      "first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "zero_bytes": 3534084,
+      "entire_file_zero": false,
+      "source_matches": []
+    },
+    {
+      "name": "uEnv.txt",
+      "size": 1499,
+      "sha256": "33ba000a888ab487105fbc68ad2d931406ea0fb3700dfdc03e0395ce48e40606",
+      "first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "zero_bytes": 789,
+      "entire_file_zero": false,
+      "source_matches": []
+    }
+  ],
+  "usb_reconnect": "user confirmed USB safe eject/reconnect; new reader identity re-enumerated"
+}

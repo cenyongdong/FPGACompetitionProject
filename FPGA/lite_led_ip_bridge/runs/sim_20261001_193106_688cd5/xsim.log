@@ -1,0 +1,47 @@
+#-----------------------------------------------------------
+# xsim v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Thu Oct  1 19:31:14 2026
+# Process ID: 27344
+# Current directory: D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/sim_20261001_193106_688cd5
+# Command line: xsim.exe -mode tcl -source {xsim.dir/led_ip_bridge_tb/xsim_script.tcl}
+# Log file: D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/sim_20261001_193106_688cd5/xsim.log
+# Journal file: D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/sim_20261001_193106_688cd5\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/led_ip_bridge_tb/xsim_script.tcl
+# xsim {led_ip_bridge_tb} -autoloadwcfg -tclbatch {sim.tcl}
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source sim.tcl
+## run all
+IP_TRACE input=0 next=0
+LED_TRACE cycle=0 ticks1=0001 ticks7=0001 ticks19=0001
+IP_TRACE input=1 next=4
+IP_TRACE input=2 next=8
+IP_TRACE input=3 next=c
+IP_TRACE input=4 next=2
+IP_TRACE input=5 next=6
+LED_TRACE cycle=1 ticks1=0100 ticks7=0001 ticks19=0001
+IP_TRACE input=6 next=a
+IP_TRACE input=7 next=e
+IP_TRACE input=8 next=1
+IP_TRACE input=9 next=5
+IP_TRACE input=a next=9
+IP_TRACE input=b next=d
+IP_TRACE input=c next=3
+IP_TRACE input=d next=7
+IP_TRACE input=e next=b
+IP_TRACE input=f next=f
+PASS: xlconcat all 16 input combinations
+LED_TRACE cycle=2 ticks1=0010 ticks7=0001 ticks19=0001
+LED_TRACE cycle=3 ticks1=1000 ticks7=0001 ticks19=0001
+LED_TRACE cycle=4 ticks1=0001 ticks7=0001 ticks19=0001
+LED_TRACE cycle=5 ticks1=0100 ticks7=0001 ticks19=0001
+LED_TRACE cycle=6 ticks1=0010 ticks7=0001 ticks19=0001
+LED_TRACE cycle=7 ticks1=1000 ticks7=0100 ticks19=0001
+LED_TRACE cycle=8 ticks1=0001 ticks7=0100 ticks19=0001
+PASS: initialization and LED1-3-2-4 sequence, ticks=1/7/19, 200 cycles each
+$finish called at time : 1996 ns : File "D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/sim_20261001_193106_688cd5/tb_lite_led_chaser.sv" Line 75
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct  1 19:31:19 2026...

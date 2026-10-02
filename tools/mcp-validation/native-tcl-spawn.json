@@ -1,0 +1,19 @@
+{
+  "command": "vivado.bat -mode tcl -nojournal -nolog",
+  "timeout": true,
+  "exit_code": 1,
+  "stdout": [
+    "",
+    "****** Vivado v2019.1 (64-bit)",
+    "  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019",
+    "  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019",
+    "    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.",
+    "",
+    "Sourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'",
+    "vivado-mcp server ready on port 9999",
+    "VMCP_READY",
+    "",
+    "<<<VMCP_DIAG_READY_RC=0>>>"
+  ],
+  "stderr": []
+}

@@ -1,0 +1,103 @@
+{
+  "timestamp": "2026-10-02T19:17:53.5161440+08:00",
+  "scope": "read-only new-reader SD check",
+  "reader_listing": "User image: UGREEN USB3.0 TF/SD dual-slot; exact model unspecified",
+  "disk": {
+    "Index": 3,
+    "Model": "Generic STORAGE DEVICE USB Device",
+    "SerialNumber": "000000000819",
+    "Size": 67101834240,
+    "PNPDeviceID": "USBSTOR\\DISK&VEN_GENERIC&PROD_STORAGE_DEVICE&REV_0819\\000000000819&0"
+  },
+  "card_root": "E:\\",
+  "partitions": [
+    {
+      "PartitionNumber": 1,
+      "DriveLetter": "E",
+      "Offset": 1048576,
+      "Size": 1073741824,
+      "Type": "XINT13"
+    },
+    {
+      "PartitionNumber": 2,
+      "DriveLetter": "F",
+      "Offset": 1075838976,
+      "Size": 28000000000,
+      "Type": "Unknown"
+    }
+  ],
+  "volume": {
+    "FileSystem": "FAT",
+    "FileSystemLabel": "FAT",
+    "Size": 1073446912,
+    "HealthStatus": "Warning"
+  },
+  "lite_reference_boot_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "files": [
+    {
+      "name": "ai7030_top_disable_icap.bit",
+      "size": 5980604,
+      "sha256": "31cc162c17c4c95bbef456ca9f638db9bb95bda25821870f2ab6816598628a4a",
+      "source_matches": [],
+      "matches_lite_reference_boot": false
+    },
+    {
+      "name": "ai7030_top.bit",
+      "size": 5980020,
+      "sha256": "f4f64ae9aa8e92eed1f742e223bb9a25815883f08de27711f2507704538bc5e3",
+      "source_matches": [],
+      "matches_lite_reference_boot": false
+    },
+    {
+      "name": "bl31.elf",
+      "size": 610824,
+      "sha256": "3c8915dc2a8b66f774a9ad2b249086cf52a8db9d1aceeeb3465bd475ac55d005",
+      "source_matches": [],
+      "matches_lite_reference_boot": false
+    },
+    {
+      "name": "BOOT.bin",
+      "size": 7023552,
+      "sha256": "fab01bed7fcdf7263454cdd402b4e477eb6c2c1753afa780af463b8d1aaedd83",
+      "source_matches": [],
+      "matches_lite_reference_boot": false
+    },
+    {
+      "name": "fmqlmp-verify.dtb",
+      "size": 15996,
+      "sha256": "eb8b0e63f7b39f1907ce373ee9f7d015f1e48574ba56cb1ace22ee437471fd15",
+      "source_matches": [],
+      "matches_lite_reference_boot": false
+    },
+    {
+      "name": "FSBL251210_ddr400_demo.out",
+      "size": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+      "source_matches": [
+        "FSBL25~1.OUT"
+      ],
+      "matches_lite_reference_boot": false
+    },
+    {
+      "name": "Image",
+      "size": 13158408,
+      "sha256": "fd9ebf77897f22a339c16d215faeb0175be0508453e121fb09697a5d48a92ac4",
+      "source_matches": [],
+      "matches_lite_reference_boot": false
+    },
+    {
+      "name": "u-boot",
+      "size": 6579840,
+      "sha256": "0a0862a7eee18e5a06acb5ba4672ea0d38f54a443191f6ab76a02d7bc99966ed",
+      "source_matches": [],
+      "matches_lite_reference_boot": false
+    },
+    {
+      "name": "uEnv.txt",
+      "size": 1499,
+      "sha256": "6bdbbcfe41c4f77797b0c3f89ffcc5399b35052272dfaa4b9dd0bb3b5dd643bf",
+      "source_matches": [],
+      "matches_lite_reference_boot": false
+    }
+  ]
+}

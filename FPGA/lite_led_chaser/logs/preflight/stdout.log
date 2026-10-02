@@ -1,0 +1,15 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-01 11:50:02
+PREFLIGHT Tcl 8.4.19
+CHAIN_COMMANDS init_chain transform_carry_chain
+CABLE_COMMANDS set_cable_speed_khz get_cable_info
+JTAG_COMMANDS scan_ir_jtag run_test_jtag run_state_jtag scan_dr_jtag scanjtag_time create_jtag_axi_txn exit_procise_jtag run_jtag_axi jtag_reset
+PROGRAM_COMMANDS program_image set_program_property program_nky program_bit program_mcs program_cfgmem program_image_iar
+HELP init_chain
+
+HELP program_bit
+
+
+Thank you for using procise!

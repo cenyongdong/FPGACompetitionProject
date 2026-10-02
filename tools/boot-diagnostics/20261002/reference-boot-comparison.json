@@ -1,0 +1,13 @@
+{
+  "reference": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\参考实现\\位流\\悟净LITE版_BOOT_25122301_单路PLIN+pHDMI(外置detpost)\\悟净LITE版_BOOT_25122301_单路PLIN+pHDMI(外置detpost)\\BOOT.bin",
+  "reference_size": 7023552,
+  "reference_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "reference_first_64_hex": "feffffeafeffffeafeffffeafeffffeafeffffeafeffffeafeffffeafeffffea665599aa48534d46000000000000fcff400b0000000000000000000054ce0200",
+  "card_size": 7023552,
+  "card_sha256": "6ec99ec782642a5053178fdd2e6f696f69a030724ae866dcd91516ced84d238b",
+  "card_first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "matches_reference": false,
+  "different_bytes": 2254275,
+  "first_different_offset": 0,
+  "note": "BOOT comparison must use user-selected Lite reference, not original SD image; intentional replacement can explain difference from original image but does not explain difference from this reference or invalid card header."
+}

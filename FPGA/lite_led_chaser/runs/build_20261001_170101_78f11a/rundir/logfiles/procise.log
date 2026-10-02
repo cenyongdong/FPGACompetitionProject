@@ -1,0 +1,239 @@
+>>create_project -name lite_led_chaser -device JFMQL30TAI676H
+  >>set_device JFMQL30TAI676H
+  set_device elapsed_time 3.01 seconds, cpu_time 3.00 seconds
+  set_device used memory 664MB, procise used peak memory 699MB, current used memory 509MB
+>>add_design_file -file lite_led_chaser.v lite_led_chaser.fdc
+  add_design_file used memory 190MB, procise used peak memory 699MB, current used memory 509MB
+>>set_top -top lite_led_chaser
+  set_top elapsed_time 0.70 seconds, cpu_time 0.70 seconds
+  set_top used memory 190MB, procise used peak memory 699MB, current used memory 578MB
+save project, time: 2026-10-01 17:01:06 
+>>load_design -stage_elaborate -no_hier
+  load_design elapsed_time 1.27 seconds, cpu_time 1.27 seconds
+  load_design used memory 8MB, procise used peak memory 699MB, current used memory 597MB
+>>launch_run -stage bitstream
+  >>rtl_analyze
+  rtl_analyze -> elaborate
+  Info: SDB transformed into DM successfully.  
+  write out edif file lite_led_chaser_elaborate.edif
+  rtl_analyze -> read edif source files
+  rtl_analyze -> read ip edif files
+  rtl_analyze -> bind_design -verbose 0
+  rtl_analyze -> uniquify
+  rtl_analyze -> read_fdc D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/build_20261001_170101_78f11a/lite_led_chaser.fdc
+  rtl_analyze elapsed_time 0.09 seconds, cpu_time 0.08 seconds
+  rtl_analyze used memory 0MB, procise used peak memory 699MB, current used memory 553MB
+>>synthesize
+  synthesize -> flatten
+  synthesize -> sweep -sequential -verbose 0
+  synthesize -> logic opt and lut mapping
+  synthesize -> insert_io -bufg_limit_cnt 16
+  write out edif file lite_led_chaser.edif
+  Generate timing summary report with max_paths=10 nworst=3
+  ==========================================================================
+  INFO static timing analysis results.
+  ==========================================================================
+  PathType  Requirement(setup)  Slack(setup)  Requirement(hold)  Slack(hold)
+  ==========================================================================
+  Trr                   10.000         9.206              1.000        0.033  
+  Tir                      N/A           N/A                N/A          N/A  
+  Tro                      N/A           N/A                N/A          N/A  
+  Tio                      N/A           N/A                N/A          N/A  
+  ==========================================================================
+  FDC_INFO! export constraints to file lite_led_chaser_synthesized.fdc!
+  synthesize elapsed_time 0.11 seconds, cpu_time 0.09 seconds
+  synthesize used memory 44MB, procise used peak memory 699MB, current used memory 566MB
+>>opt_design
+    DffDupPass : total create 0 insts for model 'lite_led_chaser'
+    HfsPass : total split 0 nets for model 'lite_led_chaser'
+    DffDupPass : total create 0 insts for model 'lite_led_chaser'
+    PostSweepPass : finish post sweep for model 'lite_led_chaser'
+  opt_design used memory 31MB, procise used peak memory 699MB, current used memory 566MB
+>>place -thread 4
+  Phase 1 Placer Initialization
+  Phase 1.1 Placer Initialization Core
+  Phase 1.1.6 Build Placer Netlist Model
+  Building SiteChkr ...
+    Done.
+  Phase 1.1.6 Build Placer Netlist Model | Time: 0.431s
+  Phase 1.1.5.2 Implementation Feasibility check
+  IO Utilization:
+    Number of bonded IOBs:                          5 out of     250    2%
+  
+  IOPAD Utilization:
+    Number of bonded IOPADs:                        0 out of     152    0%
+  
+  Specific Feature Utilization:
+    Number of RAMH18E1/FIFO18E1s:                   0 out of     530    0%
+    Number of RAMHFIFO36E1/FIFO36E1/RAMH36E1s:        0 out of     265    0%
+    Number of GCDU/GCDU_CTRLs:                      1 out of      32    3%
+      Number used as GCDUs:                         1
+      Number used as GCDU_CTRLs:                    0
+    Number of ISTCE2/ISTCE2_FINESTCs:               0 out of     250    0%
+    Number of ILGKE2/ILGKE3/ISSE2s:                 0 out of     250    0%
+    Number of OSTC_E2/OSTC_E2_FINESTCs:             0 out of     150    0%
+    Number of OLGKE2/OLGKE3/OSSE2s:                 0 out of     250    0%
+    Number of PSU_IN/PSU_IN_PHY/PSU_IN_ADVs:        0 out of      20    0%
+    Number of PSU_OUT/PSU_OUT_PHY/PSU_OUT_ADVs:        0 out of      20    0%
+    Number of JTBSs:                                0 out of       4    0%
+    Number of HCDU_CEs:                             0 out of      96    0%
+    Number of RCDUs:                                0 out of      20    0%
+    Number of CAPs:                                 0 out of       1    0%
+    Number of DNA_PORTs:                            0 out of       1    0%
+    Number of CU48E1s:                              0 out of     400    0%
+    Number of UNRECOVER_USRs:                       0 out of       1    0%
+    Number of SECTOR_ECCs:                          0 out of       1    0%
+    Number of UHST2E2_CHs:                          0 out of       4    0%
+    Number of UHST2E2_COMs:                         0 out of       1    0%
+    Number of IDU_DS_UHSTE2s:                       0 out of       2    0%
+    Number of UACs:                                 0 out of       2    0%
+    Number of ISTC_CTRLs:                           0 out of       5    0%
+    Number of IFIFOs:                               0 out of      20    0%
+    Number of DCCUE2_ADVs:                          0 out of       5    0%
+    Number of OFIFOs:                               0 out of      20    0%
+    Number of PCIE_2_1s:                            0 out of       1    0%
+    Number of PSU_REFs:                             0 out of       5    0%
+    Number of PHY_CTRLs:                            0 out of       5    0%
+    Number of PLLE2_ADVs:                           0 out of       5    0%
+    Number of BOOTUPs:                              0 out of       1    0%
+    Number of FADCs:                                0 out of       1    0%
+  
+  Phase 1.1.5.2 Implementation Feasibility check | Time: 0.455s
+  Phase 1.1.7 Constrain Clocks/Macros
+  Phase 1.1.7 Constrain Clocks/Macros | Time: 21.772s
+  Phase 1.1.5 IO Placement/ Clock Placement/ Build Placer Device
+  Phase 1.1.5 IO Placement/ Clock Placement/ Build Placer Device | Time: 21.783s
+  Phase 1.1.8 Build Shapes/ HD Config
+  Phase 1.1.8.1 Build Macros
+  Phase 1.1.8.1 Build Macros | Time: 21.784s
+  Phase 1.1.8 Build Shapes/ HD Config | Time: 21.785s
+  Phase 1.1.5 IO Placement/ Clock Placement/ Build Placer Device | Time: 21.785s
+  Phase 1.1 Placer Initialization Core | Time: 21.798s
+  Phase 1 Placer Initialization | Time: 21.801s
+  Phase 2 Global Placement
+  Phase 2.1 Distribute Placement
+  cluster_view_->num_total_clusters() = 18
+  .  
+  .  .  .  .  .  .  
+  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  Phase 2.1 Distribute Placement | Time: 23.504s
+  hpwl = 432.6
+  Phase 2.2 Legalize Placement
+  Phase 2.2 Legalize Placement | Time: 23.542s
+  hpwl = 452.8
+  Phase 2 Global Placement | Time: 23.545s
+  The worst negtive slack is: 0.000000.
+  The total negtive slack is: 0.000000.
+  Generating physical netlist ... 
+  
+                           DEVICE UTILIZATION                   
+  ------------------------------------------------------------------
+  resource                      used/available     utilization      
+  ------------------------------------------------------------------
+  GCDU                              1/32             3.13%
+  IOU18M                            4/72             5.56%
+  IOU33M                            1/48             2.08%
+  LC                               13/19650          0.07%
+  ------------------------------------------------------------------
+  FDC_INFO! export constraints to file lite_led_chaser_placed.fdc!
+  Building SiteChkr ...
+    Done.
+  DetailPlaceXDL Wire Demand Max Box (0, 0, -1, 0).
+  Phase 3 Detail Placement
+  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  Phase 3 Detail Placement | Time: 28.374s
+  Phase 4 Post Placement Optimization and Clean-Up
+  Phase 4.2 Post Placement Cleanup
+  Phase 4.2 Post Placement Cleanup | Time: 28.375s
+  Phase 4.4 Final Placement Cleanup
+  Phase 4.4 Final Placement Cleanup | Time: 28.376s
+  Phase 4 Post Placement Optimization and Clean-Up | Time: 28.376s
+  The worst negtive slack is: 0.000000.
+  The total negtive slack is: 0.000000.
+  Generate timing summary report with max_paths=10 nworst=3
+  ==========================================================================
+  INFO static timing analysis results.
+  ==========================================================================
+  PathType  Requirement(setup)  Slack(setup)  Requirement(hold)  Slack(hold)
+  ==========================================================================
+  Trr                   10.000         5.128              1.000        0.231  
+  Tir                      N/A           N/A                N/A          N/A  
+  Tro                      N/A           N/A                N/A          N/A  
+  Tio                      N/A           N/A                N/A          N/A  
+  ==========================================================================
+  place elapsed_time 30.22 seconds, cpu_time 34.69 seconds
+  place used memory 1130MB, procise used peak memory 1696MB, current used memory 612MB
+>>write_phy_design D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/build_20261001_170101_78f11a/rundir//.f1a6faf4e30bb0adf31b2a03de098033_place.phy
+  write_phy_design used memory 1084MB, procise used peak memory 1696MB, current used memory 612MB
+>>route
+  DataModel: remove 0 TIE HIGH nets.
+  DataModel: create 0 dummy TIE HIGH nets.
+  DataModel: remove 1 TIE LOW nets.
+  DataModel: created 1 dummy TIE LOW nets.
+  DataModel: remove 1 PULL insts.
+  DataModel: remove 0 CU PULL insts.
+  DataModel: created 0 dummy LC insts.
+  Router: build routing data...
+  Router: 51 nets, 20 insts.
+  Router: sort net pins...
+  Router: initial routability-driven routing...
+  Router: No unrouted net
+  Router: 8 routing nodes have overflow, Time : 0.91 s
+  Router: 4 routing nodes have overflow, Time : 0.00 s
+  Router: 2 routing nodes have overflow, Time : 0.00 s
+  Router: 0 routing nodes have overflow, Time : 0.00 s
+  Router: routability driven finished elapsed_time 1.07 seconds, cpu_time 1.06 seconds
+  Router: pre-processing for timing-driven reroute...
+  Router: worst slack : 4.740, total negative slack : 0.000.
+  Router: start timing-driven reroute...
+  Router: worst slack : 4.740, total negative slack : 0.000.
+  Router: 0 routing nodes have overflow, Time : 0.00 s
+  Router: The init hold worst slack:
+  Router: worst slack : 0.062, total negative slack : 0.000.
+  Router: The init setup worst slack:
+  Router: worst slack : 4.740, total negative slack : 0.000.
+  Router: Start to optimize the hold slack
+  Router: Optimize the hold slack finish
+  Router: 0 routing nodes have overflow, Time : 0.05 s
+  Router: The final hold worst slack:
+  Router: worst slack : 0.170, total negative slack : 0.000.
+  Router: The final setup worst slack:
+  Router: worst slack : 4.740, total negative slack : 0.000.
+  Router: successfully routed after 1 iterations.
+  Router: SIGNAL wirelength : 526.
+  Router: CLOCK wirelength  : 354.
+  Router: P/G wirelength    : 1.
+  Router: timing driven successful elapsed_time 1.05 seconds, cpu_time 1.05 seconds
+  Router: created 5 dummy I/O insts.
+  Router: created 3 dummy HCDU_CE insts.
+  Generate timing summary report with max_paths=10 nworst=3
+  ==========================================================================
+  INFO static timing analysis results.
+  ==========================================================================
+  PathType  Requirement(setup)  Slack(setup)  Requirement(hold)  Slack(hold)
+  ==========================================================================
+  Trr                   10.000         4.740              1.000        0.170  
+  Tir                      N/A           N/A                N/A          N/A  
+  Tro                      N/A           N/A                N/A          N/A  
+  Tio                      N/A           N/A                N/A          N/A  
+  ==========================================================================
+  route elapsed_time 3.20 seconds, cpu_time 3.19 seconds
+  route used memory 1084MB, procise used peak memory 1696MB, current used memory 974MB
+>>write_phy_design D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/build_20261001_170101_78f11a/rundir//.f1a6faf4e30bb0adf31b2a03de098033_route.phy
+  write_phy_design used memory 722MB, procise used peak memory 1696MB, current used memory 974MB
+>>bitgen lite_led_chaser.bit -g bpi_sync_mode:Disable spi_32bit_addr:No spi_buswidth:1 Encrypt:No
+  assemble bitstream elapsed_time 0.08 seconds, cpu_time -16.00 seconds
+  Writing out bitstream file lite_led_chaser.bit
+  Writing out bgn file lite_led_chaser.bgn
+  bitgen elapsed_time 0.76 seconds, cpu_time 0.98 seconds
+  bitgen used memory 722MB, procise used peak memory 1696MB, current used memory 947MB
+>>write_phy_design D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/build_20261001_170101_78f11a/rundir//.f1a6faf4e30bb0adf31b2a03de098033.phy
+  write_phy_design used memory 872MB, procise used peak memory 1696MB, current used memory 824MB
+>>add_design_file -file D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/build_20261001_170101_78f11a/rundir//.f1a6faf4e30bb0adf31b2a03de098033.phy
+  add_design_file used memory 872MB, procise used peak memory 1696MB, current used memory 824MB
+>>bitgen lite_led_chaser.bit -g StartupClk:JtagClk
+  assemble bitstream elapsed_time 0.08 seconds, cpu_time -16.00 seconds
+  Writing out bitstream file lite_led_chaser.bit
+  Writing out bgn file lite_led_chaser.bgn
+  bitgen elapsed_time 0.72 seconds, cpu_time 0.92 seconds
+  bitgen used memory 280MB, procise used peak memory 1696MB, current used memory 833MB

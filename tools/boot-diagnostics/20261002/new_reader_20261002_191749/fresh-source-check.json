@@ -1,0 +1,34 @@
+{
+  "source_path": "D:\\Dowload from Chrome\\嵌赛资料\\板载Linux镜像\\icraft_v3_ubuntu20.04_aarch64_sd_image.bin",
+  "source_file_bytes": 31914983936,
+  "fresh_source_critical_files": [
+    {
+      "name_8_3": "BOOT.BIN",
+      "size": 7023552,
+      "sha256": "c87b7959cd9980520324b2c17688d9b7c1e85358bfcef085b1b00bd5a4d2f121",
+      "first_64_hex": "feffffeafeffffeafeffffeafeffffeafeffffeafeffffeafeffffeafeffffea665599aa48534d46000000000000fcff400b0000000000000000000054ce0200",
+      "matches_previous_source_manifest": true
+    },
+    {
+      "name_8_3": "UENV.TXT",
+      "size": 1499,
+      "sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560",
+      "first_64_hex": "62617564726174653d3131353230300a626f6f74636d643d72756e206c6f61646269743b2072756e2075656e76636d640a626f6f74617267733d636f6e736f6c",
+      "matches_previous_source_manifest": true
+    },
+    {
+      "name_8_3": "IMAGE",
+      "size": 13158408,
+      "sha256": "ee88eae627df17fdf615b44cb9fc5a7a7a37d2baaa3f21e90d613f48bedf0929",
+      "first_64_hex": "00c02d140000000000000800000000000060cd00000000000a0000000000000000000000000000000000000000000000000000000000000041524d6400000000",
+      "matches_previous_source_manifest": true
+    },
+    {
+      "name_8_3": "FMQLMP~1.DTB",
+      "size": 15996,
+      "sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038",
+      "first_64_hex": "d00dfeed00003e7c00000038000037a800000028000000110000001000000000000006d400003770000000000000000000000000000000000000000100000000",
+      "matches_previous_source_manifest": true
+    }
+  ]
+}

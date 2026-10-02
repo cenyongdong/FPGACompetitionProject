@@ -1,0 +1,24 @@
+{
+  "status": "native_download_and_user_visual_confirmation_passed",
+  "timestamp": "2026-10-01T19:34:13.1183007+08:00",
+  "cable_type": "usb-jtag-hs1",
+  "cable_display_name": "DIGILENT/JTAG-HS1",
+  "cable_serial": "210512180081",
+  "target_part": 0,
+  "target_idcode": "0x9372c093",
+  "bitstream": "D:\\FPGACompetitionProject\\FPGA\\lite_led_ip_bridge\\runs\\build_20261001_193157_bef06d\\rundir\\lite_led_chaser.bit",
+  "bitstream_sha256": "00c833bb65fec1573ecf0a8cf59c45c50cff76ab7f0a3398696c43be4f608c56",
+  "configuration": "volatile FPGA JTAG configuration",
+  "board_visual_result": "passed_user_confirmed",
+  "stat_register": "0x40007ffc",
+  "logs_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_ip_bridge\\runs\\build_20261001_193157_bef06d\\jtag_20261001_193337",
+  "user_visual_confirmation": {
+    "source": "user_current_chat_reply",
+    "statement": "灯序、速度和单灯状态均符合预期",
+    "recorded_at_utc": "2026-10-01T11:38:24.541210+00:00",
+    "expected_sequence": "PL_LED1 -> PL_LED3 -> PL_LED2 -> PL_LED4 -> PL_LED1",
+    "nominal_step_seconds": 0.25,
+    "single_led": true,
+    "measurement": "User visual observation; no instrument period measurement or full configuration readback."
+  }
+}

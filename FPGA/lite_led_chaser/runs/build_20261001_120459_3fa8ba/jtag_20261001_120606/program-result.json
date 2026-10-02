@@ -1,0 +1,16 @@
+{
+  "status": "passed_native_download_and_user_visual_confirmation",
+  "timestamp": "2026-10-01T12:06:42.0467092+08:00",
+  "cable_type": "usb-jtag-hs1",
+  "cable_display_name": "DIGILENT/JTAG-HS1",
+  "cable_serial": "210512180081",
+  "target_part": 0,
+  "target_idcode": "0x9372c093",
+  "bitstream": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_120459_3fa8ba\\rundir\\lite_led_chaser.bit",
+  "bitstream_sha256": "a443d8f4bfde85eedc9de0e0328680cbb5d06c364f1113c55b14c4c6f4475eec",
+  "configuration": "volatile FPGA JTAG configuration",
+  "board_visual_result": "passed_user_confirmed_four_leds_cycle_as_expected",
+  "logs_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_120459_3fa8ba\\jtag_20261001_120606",
+  "stat_register": "0x40007ffc",
+  "board_visual_evidence": "User reply: 四颗 LED 按预期循环"
+}

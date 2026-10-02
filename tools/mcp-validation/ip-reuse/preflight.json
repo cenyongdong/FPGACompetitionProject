@@ -1,0 +1,94 @@
+{
+  "scope": "Read-only IP feasibility; no IP generated, project created, synthesis or new board action in this stage",
+  "vivado_sessions_before": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "[\n  {\n    \"session_id\": \"<external@9999>\",\n    \"mode\": \"external\",\n    \"state\": \"ready\",\n    \"vivado_path\": \"<unknown, not managed by MCP>\",\n    \"is_alive\": true,\n    \"uptime_seconds\": null,\n    \"port\": 9999,\n    \"owner\": \"external\",\n    \"note\": \"未由 MCP 启动的 Vivado(可能是手动启动并装过 init.tcl)。调 start_session(mode='gui') 会自动 attach 上去;stop_session 无权关闭 —— 请在 GUI 内手动 exit。\"\n  }\n]"
+        }
+      ],
+      "structuredContent": {
+        "result": "[\n  {\n    \"session_id\": \"<external@9999>\",\n    \"mode\": \"external\",\n    \"state\": \"ready\",\n    \"vivado_path\": \"<unknown, not managed by MCP>\",\n    \"is_alive\": true,\n    \"uptime_seconds\": null,\n    \"port\": 9999,\n    \"owner\": \"external\",\n    \"note\": \"未由 MCP 启动的 Vivado(可能是手动启动并装过 init.tcl)。调 start_session(mode='gui') 会自动 attach 上去;stop_session 无权关闭 —— 请在 GUI 内手动 exit。\"\n  }\n]"
+      },
+      "isError": false
+    }
+  },
+  "vivado_start": {
+    "content": [
+      {
+        "type": "text",
+        "text": "会话 'lite_ip_feasibility' 已就绪（mode=tcl）。\nVivado: D:/Xilinx/Vivado/2019.1/bin/vivado.bat\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY"
+      }
+    ],
+    "structuredContent": {
+      "result": "会话 'lite_ip_feasibility' 已就绪（mode=tcl）。\nVivado: D:/Xilinx/Vivado/2019.1/bin/vivado.bat\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY"
+    },
+    "isError": false
+  },
+  "catalog_query": {
+    "content": [
+      {
+        "type": "text",
+        "text": "IP_FEASIBILITY_VIVADO 2019.1\nIP_CATALOG_QUERY xilinx.com:ip:xlconcat:* => \nIP_CATALOG_QUERY xilinx.com:ip:xlconstant:* => \nIP_CATALOG_QUERY xilinx.com:ip:c_counter_binary:* => \nIP_CATALOG_READONLY_COMPLETED"
+      }
+    ],
+    "structuredContent": {
+      "result": "IP_FEASIBILITY_VIVADO 2019.1\nIP_CATALOG_QUERY xilinx.com:ip:xlconcat:* => \nIP_CATALOG_QUERY xilinx.com:ip:xlconstant:* => \nIP_CATALOG_QUERY xilinx.com:ip:c_counter_binary:* => \nIP_CATALOG_READONLY_COMPLETED"
+    },
+    "isError": false
+  },
+  "proxy_part_query": {
+    "content": [
+      {
+        "type": "text",
+        "text": "CATALOG_PROXY_PART xc7z030ffg676-2\nREADONLY_PART_QUERY_COMPLETED"
+      }
+    ],
+    "structuredContent": {
+      "result": "CATALOG_PROXY_PART xc7z030ffg676-2\nREADONLY_PART_QUERY_COMPLETED"
+    },
+    "isError": false
+  },
+  "vivado_stop": {
+    "content": [
+      {
+        "type": "text",
+        "text": "会话 'lite_ip_feasibility' 已关闭。"
+      }
+    ],
+    "structuredContent": {
+      "result": "会话 'lite_ip_feasibility' 已关闭。"
+    },
+    "isError": false
+  },
+  "catalog_query_limit": "An empty result in this no-project Tcl session is not proof that the installed IP is missing; component.xml and source files were inspected independently.",
+  "xlconcat": {
+    "vlnv": "xilinx.com:ip:xlconcat:2.1",
+    "revision": 3,
+    "module": "xlconcat_v2_1_3_xlconcat",
+    "source": "D:\\Xilinx\\Vivado\\2019.1\\data\\ip\\xilinx\\xlconcat_v2_1\\hdl\\xlconcat_v2_1_vl_rfs.v",
+    "sha256": "bf101401b966e7c7121bd17b0099f468f8e5fb15a376ac2e747885cdafd86689",
+    "simulation_and_synthesis_share_this_source": true,
+    "source_unencrypted": true,
+    "source_static_review": "One module; parameterized generate/assign concatenation; no lower-level module or device primitive instantiation identified."
+  },
+  "counter_observation": {
+    "source": "D:\\Xilinx\\Vivado\\2019.1\\data\\ip\\xilinx\\c_counter_binary_v12_0\\hdl\\c_counter_binary_v12_0_vh_rfs.vhd",
+    "protected_source": true,
+    "procise_support": "not assessed; do not assume direct native synthesis"
+  },
+  "jfm_limits": {
+    "tutorial_version": "2018.03 (reference only)",
+    "tutorial_requires": [
+      "OOC per IP",
+      "JFM hook",
+      "replace_7z030ai_file"
+    ],
+    "local_2019_version_subdirectories": [
+      "2019.2"
+    ],
+    "vivado_2019_1_full_migration": "not verified"
+  }
+}

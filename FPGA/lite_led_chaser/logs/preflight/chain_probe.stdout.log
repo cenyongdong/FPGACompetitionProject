@@ -1,0 +1,27 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-01 11:52:16
+AUTO_CHAIN_SCAN_BEGIN
+>>init_chain
+  "Init_chain" must use "-cable_type" option to specify cable type!AUTO_CHAIN_SCAN_ERROR 
+DIGILENT_CHAIN_SCAN_BEGIN
+  >>init_chain -cable_type DIGILENT -serial_number 210512180081
+  "Cable_type" option error, please choose suitable cable!DIGILENT_CHAIN_SCAN_ERROR 
+QUERY_HELP read_reg
+    HelpInfo::
+    Command name : read_reg
+    Option:  -part <string> -reg <string> -read -all -help -h
+QUERY_RESULT 
+QUERY_HELP read_bootsts_stat
+    HelpInfo::
+    Command name : read_bootsts_stat
+    Option:  -reg <string> -part <string> -help -h
+QUERY_RESULT 
+QUERY_HELP set_program_property
+    HelpInfo::
+    Command name : set_program_property
+    Option: <string> -help -h
+QUERY_RESULT 
+
+Thank you for using procise!

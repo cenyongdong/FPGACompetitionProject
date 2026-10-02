@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-10-02T12:41:04.7175174+08:00",
+  "after_user_safe_eject_and_usb_replug": true,
+  "reader_serial": "121220160204",
+  "disk_number": 3,
+  "card_root": "E:\\",
+  "files": [
+    {
+      "name": "ai7030_top_disable_icap.bit",
+      "size": 5980604,
+      "sha256": "31cc162c17c4c95bbef456ca9f638db9bb95bda25821870f2ab6816598628a4a",
+      "matches_source": false
+    },
+    {
+      "name": "ai7030_top.bit",
+      "size": 5980020,
+      "sha256": "5d5fd4b0f1be3f75314515f98d995a680acc2b71416a4e2c29770104860bd14e",
+      "matches_source": false
+    },
+    {
+      "name": "bl31.elf",
+      "size": 610824,
+      "sha256": "97c41ab7968ad56503ac1caf1b0f37c4155a130dc98629c56f1819c98d6cc8eb",
+      "matches_source": false
+    },
+    {
+      "name": "BOOT.bin",
+      "size": 7023552,
+      "sha256": "6ec99ec782642a5053178fdd2e6f696f69a030724ae866dcd91516ced84d238b",
+      "matches_source": false
+    },
+    {
+      "name": "fmqlmp-verify.dtb",
+      "size": 15996,
+      "sha256": "b84a6df662039e1429eec9ea2b25cf3b458b45e396e8cbe26f0bf03bdf3c7054",
+      "matches_source": false
+    },
+    {
+      "name": "FSBL251210_ddr400_demo.out",
+      "size": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+      "matches_source": true
+    },
+    {
+      "name": "Image",
+      "size": 13158408,
+      "sha256": "fd54c50881c16f5c24c13f5357ae94efcb62001899ad295c7379fcc51cb92228",
+      "matches_source": false
+    },
+    {
+      "name": "u-boot",
+      "size": 6579840,
+      "sha256": "1273ad6b135b3228853fc024b40d22da46ea9d8d967565e625e6387aa96e56b9",
+      "matches_source": false
+    },
+    {
+      "name": "uEnv.txt",
+      "size": 1499,
+      "sha256": "7c8677fcb3e8101be70592e4c39aff276af24cbebae79a3a0b0df8ed1f59146c",
+      "matches_source": false
+    }
+  ]
+}

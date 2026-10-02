@@ -1,0 +1,15 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-01 11:57:12
+CABLE_ENUMERATION_BEGIN
+>>get_cable_info
+  1 cable is connected.
+  1.Cable : DIGILENT/JTAG-HS1, dev vid : 0x403, dev pid : 0x6014, serial number : 210512180081
+  get_cable_info elapsed_time 0.01 seconds, cpu_time 0.00 seconds
+  get_cable_info used memory 0MB, procise used peak memory 34MB, current used memory 34MB
+CHAIN_SCAN_BEGIN
+>>init_chain -cable_type DIGILENT/JTAG-HS1 -serial_number 210512180081
+  "Cable_type" option error, please choose suitable cable!CHAIN_SCAN_ERROR 
+
+Thank you for using procise!

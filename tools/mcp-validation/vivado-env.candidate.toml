@@ -1,0 +1,5 @@
+# Reference snippet: explicitly approved and applied on 2026-10-01.
+# Merge ONLY this key into the existing [mcp_servers.vivado.env] table.
+# Preserve VIVADO_PATH, command, args and all other existing fields.
+[mcp_servers.vivado.env]
+PROCESSOR_ARCHITECTURE = 'AMD64'

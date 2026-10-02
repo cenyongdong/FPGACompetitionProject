@@ -1,0 +1,58 @@
+[
+  {
+    "name": "ai7030_top_disable_icap.bit",
+    "size": 5980604,
+    "sha256": "31cc162c17c4c95bbef456ca9f638db9bb95bda25821870f2ab6816598628a4a",
+    "source_matches": []
+  },
+  {
+    "name": "ai7030_top.bit",
+    "size": 5980020,
+    "sha256": "d25bd7f28ddbc07f8445832860b9f3d4c3dfb7ed11d9412c7339e49c35d5272b",
+    "source_matches": []
+  },
+  {
+    "name": "bl31.elf",
+    "size": 610824,
+    "sha256": "a99c03d29753c17c669ec0b45ab09ad892a35297a3aa56a1e0c5cde2ebca9cd6",
+    "source_matches": []
+  },
+  {
+    "name": "BOOT.bin",
+    "size": 7023552,
+    "sha256": "3761c210ec71bcd27d03762e8b37d30b8f855299c74af45c451c9be3d770a1b5",
+    "source_matches": []
+  },
+  {
+    "name": "fmqlmp-verify.dtb",
+    "size": 15996,
+    "sha256": "eb8b0e63f7b39f1907ce373ee9f7d015f1e48574ba56cb1ace22ee437471fd15",
+    "source_matches": []
+  },
+  {
+    "name": "FSBL251210_ddr400_demo.out",
+    "size": 1385156,
+    "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+    "source_matches": [
+      "FSBL25~1.OUT"
+    ]
+  },
+  {
+    "name": "Image",
+    "size": 13158408,
+    "sha256": "1913ae3be7bd1df73e63a966ecd593ff9eeb1acdc7f88f5af319af552a03d3c1",
+    "source_matches": []
+  },
+  {
+    "name": "u-boot",
+    "size": 6579840,
+    "sha256": "0a0862a7eee18e5a06acb5ba4672ea0d38f54a443191f6ab76a02d7bc99966ed",
+    "source_matches": []
+  },
+  {
+    "name": "uEnv.txt",
+    "size": 1499,
+    "sha256": "83cb666ec98a76500cd96f53b730a32379feb8d08de2cc291c2ad808bb27c4eb",
+    "source_matches": []
+  }
+]

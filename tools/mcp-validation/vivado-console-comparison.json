@@ -1,0 +1,52 @@
+{
+  "inherited_console": {
+    "parent_exit_code": 0,
+    "probe": {
+      "ready": true,
+      "exit_code": 0,
+      "timeout": false,
+      "stdout": [
+        "",
+        "****** Vivado v2019.1 (64-bit)",
+        "  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019",
+        "  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019",
+        "    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.",
+        "",
+        "Sourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'",
+        "vivado-mcp server ready on port 9999",
+        "VMCP_READY",
+        "",
+        "<<<VMCP_CONSOLE_PROBE_RC=0>>>",
+        "exit",
+        "INFO: [Common 17-206] Exiting Vivado at Thu Oct  1 16:49:15 2026..."
+      ],
+      "stderr": []
+    },
+    "parent_stderr": ""
+  },
+  "no_console": {
+    "parent_exit_code": 0,
+    "probe": {
+      "ready": true,
+      "exit_code": 0,
+      "timeout": false,
+      "stdout": [
+        "",
+        "****** Vivado v2019.1 (64-bit)",
+        "  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019",
+        "  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019",
+        "    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.",
+        "",
+        "Sourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'",
+        "vivado-mcp server ready on port 9999",
+        "VMCP_READY",
+        "",
+        "<<<VMCP_CONSOLE_PROBE_RC=0>>>",
+        "exit",
+        "INFO: [Common 17-206] Exiting Vivado at Thu Oct  1 16:49:18 2026..."
+      ],
+      "stderr": []
+    },
+    "parent_stderr": ""
+  }
+}

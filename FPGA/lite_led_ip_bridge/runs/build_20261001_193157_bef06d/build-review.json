@@ -1,0 +1,253 @@
+{
+  "status": "reviewed_for_jtag_download",
+  "timestamp_utc": "2026-10-01T11:33:00.134411+00:00",
+  "device": "JFMQL30TAI676H",
+  "bitstream": "D:\\FPGACompetitionProject\\FPGA\\lite_led_ip_bridge\\runs\\build_20261001_193157_bef06d\\rundir\\lite_led_chaser.bit",
+  "bitstream_sha256": "00c833bb65fec1573ecf0a8cf59c45c50cff76ab7f0a3398696c43be4f608c56",
+  "bitstream_size": 5980582,
+  "rtl_sha256": "bab90edfe091ad2278414f7d76b9df1530d50d7d8e8ff3ba3007975d781848ac",
+  "sim_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_ip_bridge\\runs\\sim_20261001_193106_688cd5",
+  "ip": {
+    "vlnv": "xilinx.com:ip:xlconcat:2.1",
+    "revision": 3,
+    "vivado": "2019.1",
+    "num_ports": 4,
+    "input_widths": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "output_width": 4,
+    "frontend_metadata_part": "xc7z030ffg676-2",
+    "physical_device": "JFMQL30TAI676H",
+    "generate_synth_checkpoint": false,
+    "vendor_source_unmodified": true
+  },
+  "design_source_sha256": {
+    "xlconcat_v2_1_vl_rfs.v": "bf101401b966e7c7121bd17b0099f468f8e5fb15a376ac2e747885cdafd86689",
+    "led_state_concat.v": "f24914b76fa7fb6efaec1d20fa2273f10199a4aa3253f44232f3bc764462b33b",
+    "lite_led_chaser.v": "bab90edfe091ad2278414f7d76b9df1530d50d7d8e8ff3ba3007975d781848ac"
+  },
+  "source_manifest_sha256": "81932a0fd5d7185f30e109a8ad68e55a2bcada6fbcf9abbda71ab4c0127185d7",
+  "ip_truth_table_trace": [
+    [
+      "0",
+      "0"
+    ],
+    [
+      "1",
+      "4"
+    ],
+    [
+      "2",
+      "8"
+    ],
+    [
+      "3",
+      "c"
+    ],
+    [
+      "4",
+      "2"
+    ],
+    [
+      "5",
+      "6"
+    ],
+    [
+      "6",
+      "a"
+    ],
+    [
+      "7",
+      "e"
+    ],
+    [
+      "8",
+      "1"
+    ],
+    [
+      "9",
+      "5"
+    ],
+    [
+      "a",
+      "9"
+    ],
+    [
+      "b",
+      "d"
+    ],
+    [
+      "c",
+      "3"
+    ],
+    [
+      "d",
+      "7"
+    ],
+    [
+      "e",
+      "b"
+    ],
+    [
+      "f",
+      "f"
+    ]
+  ],
+  "edif_defined_cells": [
+    "DRUE",
+    "DRUR",
+    "GCDU",
+    "GND",
+    "IDU",
+    "LCARRY4",
+    "LUT1",
+    "LUT4",
+    "LUT5",
+    "LUT6",
+    "ODU",
+    "lite_led_chaser"
+  ],
+  "edif_referenced_cells": [
+    "DRUE",
+    "DRUR",
+    "GCDU",
+    "GND",
+    "IDU",
+    "LCARRY4",
+    "LUT1",
+    "LUT4",
+    "LUT5",
+    "LUT6",
+    "ODU",
+    "lite_led_chaser"
+  ],
+  "clock": [
+    {
+      "key_order": [
+        "Name",
+        "Waveform",
+        "Period(ns)",
+        "Frequency(MHZ)"
+      ],
+      "Name": "pl_100mhz",
+      "Waveform": [
+        0.0,
+        5.0
+      ],
+      "Period(ns)": 10.0,
+      "Frequency(MHZ)": 100.0
+    }
+  ],
+  "native_timing": {
+    "key_order": [
+      "item_view_name",
+      "Setup",
+      "Hold",
+      "Timing constraints met"
+    ],
+    "item_view_name": "summary",
+    "Setup": {
+      "key_order": [
+        "Worst Negative Slack (WNS)",
+        "Total Negative Slack (TNS)",
+        "Number of Failing Endpoints",
+        "Total Number of Endpoints"
+      ],
+      "Worst Negative Slack (WNS)": "5.962 ns",
+      "Total Negative Slack (TNS)": "0.000 ns",
+      "Number of Failing Endpoints": 0,
+      "Total Number of Endpoints": 58
+    },
+    "Hold": {
+      "key_order": [
+        "Worst Hold Slack (WHS)",
+        "Total Hold Slack (THS)",
+        "Number of Failing Endpoints",
+        "Total Number of Endpoints"
+      ],
+      "Worst Hold Slack (WHS)": "0.192 ns",
+      "Total Hold Slack (THS)": "0.000 ns",
+      "Number of Failing Endpoints": 0,
+      "Total Number of Endpoints": 58
+    },
+    "Timing constraints met": true
+  },
+  "timing_checks": {
+    "no_clock": 0,
+    "unconstrained_internal_endpoints": 0,
+    "no_input_delay": 0,
+    "no_output_delay": 4,
+    "partial_input_delay": 0,
+    "partial_output_delay": 0,
+    "loops": 0
+  },
+  "pin_constraints": {
+    "clk_100m": [
+      "AC14",
+      "LVCMOS33"
+    ],
+    "led[0]": [
+      "J1",
+      "LVCMOS15"
+    ],
+    "led[1]": [
+      "M6",
+      "LVCMOS15"
+    ],
+    "led[2]": [
+      "H7",
+      "LVCMOS15"
+    ],
+    "led[3]": [
+      "J8",
+      "LVCMOS15"
+    ]
+  },
+  "register_initial_values": {
+    "tick_count[0]": "0",
+    "tick_count[1]": "0",
+    "tick_count[2]": "0",
+    "tick_count[3]": "0",
+    "tick_count[4]": "0",
+    "tick_count[5]": "0",
+    "tick_count[6]": "0",
+    "tick_count[7]": "0",
+    "tick_count[8]": "0",
+    "tick_count[9]": "0",
+    "tick_count[10]": "0",
+    "tick_count[11]": "0",
+    "tick_count[12]": "0",
+    "tick_count[13]": "0",
+    "tick_count[14]": "0",
+    "tick_count[15]": "0",
+    "tick_count[16]": "0",
+    "tick_count[17]": "0",
+    "tick_count[18]": "0",
+    "tick_count[19]": "0",
+    "tick_count[20]": "0",
+    "tick_count[21]": "0",
+    "tick_count[22]": "0",
+    "tick_count[23]": "0",
+    "tick_count[24]": "0",
+    "led_state[0]": "1",
+    "led_state[1]": "0",
+    "led_state[2]": "0",
+    "led_state[3]": "0"
+  },
+  "startup_clock": "JtagClk",
+  "limitation": "Simple unencrypted xlconcat source IP only; 4 LED outputs have no external synchronous timing contract; behavioral simulation only.",
+  "board_visual_result": "passed_user_confirmed",
+  "user_visual_confirmation": {
+    "source": "user_current_chat_reply",
+    "statement": "灯序、速度和单灯状态均符合预期",
+    "recorded_at_utc": "2026-10-01T11:38:24.541210+00:00",
+    "expected_sequence": "PL_LED1 -> PL_LED3 -> PL_LED2 -> PL_LED4 -> PL_LED1",
+    "nominal_step_seconds": 0.25,
+    "single_led": true,
+    "measurement": "User visual observation; no instrument period measurement or full configuration readback."
+  },
+  "program_result": "D:\\FPGACompetitionProject\\FPGA\\lite_led_ip_bridge\\runs\\build_20261001_193157_bef06d\\jtag_20261001_193337\\program-result.json"
+}

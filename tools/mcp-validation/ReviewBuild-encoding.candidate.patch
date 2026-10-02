@@ -1,0 +1,19 @@
+Candidate only. Do not apply without user approval.
+Target: FPGA/lite_led_chaser/scripts/ReviewBuild.py
+
+Add after sha():
+
+def read_log(path):
+    data = path.read_bytes()
+    if data.startswith((b"\xff\xfe", b"\xfe\xff")):
+        return data.decode("utf-16", errors="replace")
+    return data.decode("utf-8-sig", errors="replace")
+
+Replace only these two log reads:
+
+log = read_log(a.build_dir / "procise.stdout.log")
+simlog = read_log(a.sim_dir / "simulate.stdout.log")
+
+All timing, pins, INIT, source hashes and bitgen gates remain unchanged.
+After approval, update procise_mcp/approved-scripts.json only for this reviewed change.
+Verify UTF-8/UTF-16 error and PASS recognition; use the fresh MCP XSim run in a new stdio integration test.

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Version="1.04" Minor="0" Name="lite_led_chaser" Create="Procise 2025.1.1 temp 32494 at 2026-10-01 12:05:40" SupportSvn="30016">
+    <Configuration>
+        <Option Name="Stage" Value="Post-Bitgen"/>
+        <Option Name="Description" Value=""/>
+        <Option Name="Family" Value="jfmql"/>
+        <Option Name="Device" Value="JFMQL30TAI676H"/>
+        <Option Name="Package" Value="fcbga676"/>
+        <Option Name="Speed" Value="-2"/>
+    </Configuration>
+    <FileSets Version="1" Minor="0">
+        <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="sources">
+            <File Path="rundir/.f1a6faf4e30bb0adf31b2a03de098033.phy">
+                <FileInfo Type="PHY" Library="work"/>
+            </File>
+            <File Path="rundir/lite_led_chaser_elaborate.edif">
+                <FileInfo Type="EDIF_ELABORATE"/>
+            </File>
+            <File Path="rundir/lite_led_chaser.edif">
+                <FileInfo Type="EDIF_SYN"/>
+            </File>
+            <File Path="lite_led_chaser.v">
+                <FileInfo Type="Verilog" Library="work"/>
+            </File>
+            <Config>
+                <Option Name="TopModule" Value="lite_led_chaser"/>
+                <Option Name="TopInstPath" Value="lite_led_chaser"/>
+                <Option Name="TopRTLFile" Value=""/>
+            </Config>
+        </FileSet>
+        <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="constraints/constrs_1">
+            <File Path="lite_led_chaser.fdc">
+                <FileInfo Type="Constraint"/>
+            </File>
+            <File Path="rundir/lite_led_chaser_synthesized.fdc">
+                <FileInfo Type="kFDC_PLACED"/>
+            </File>
+            <File Path="rundir/lite_led_chaser_placed.fdc">
+                <FileInfo Type="kFDC_PLACED"/>
+            </File>
+            <Config>
+                <Option Name="ActiveConstraint" Value=""/>
+            </Config>
+        </FileSet>
+    </FileSets>
+    <DesignHierarchy>
+        <Module Name="lite_led_chaser" File="lite_led_chaser.v" LineNum="6"/>
+        <Automatic_includes/>
+    </DesignHierarchy>
+    <BspRepositories BspCover="false">
+        <Local folder="C:/FudanMicro/Procise/data/devicetree_rep"/>
+    </BspRepositories>
+</Project>

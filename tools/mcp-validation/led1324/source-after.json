@@ -1,0 +1,12 @@
+{
+  "status": "sources_written_through_vivado_mcp",
+  "backup_sha256": {
+    "lite_led_chaser.v": "955cdc2093522a67644a9ffacea3ebfa611f7e5a85f0f284f30b34836f81863b",
+    "tb_lite_led_chaser.sv": "457f2d372d1f46db114e3698301e62b671d9f62364ba1c0b6895f0c63e9ad746"
+  },
+  "source_sha256": {
+    "rtl/lite_led_chaser.v": "30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4",
+    "sim/tb_lite_led_chaser.sv": "f775fbb3cc59615f8475ce3c590ed4137b54d3a22325238da76bfebf704fbe6c"
+  },
+  "constraints_and_execution_scripts_unchanged": true
+}

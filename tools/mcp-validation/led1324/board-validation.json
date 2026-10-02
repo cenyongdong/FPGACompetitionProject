@@ -1,0 +1,72 @@
+{
+  "status": "native_download_and_user_visual_confirmation_passed",
+  "user_authorization": "Please download the new bitstream to the board for actual verification (2026-10-01).",
+  "download_method": "Existing Procise native Program.ps1; MCP server was not modified and does not expose programming",
+  "program_result": {
+    "status": "native_program_command_completed_visual_passed_by_user",
+    "timestamp": "2026-10-01T18:50:17.0716131+08:00",
+    "cable_type": "usb-jtag-hs1",
+    "cable_display_name": "DIGILENT/JTAG-HS1",
+    "cable_serial": "210512180081",
+    "target_part": 0,
+    "target_idcode": "0x9372c093",
+    "bitstream": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser.bit",
+    "bitstream_sha256": "285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18",
+    "configuration": "volatile FPGA JTAG configuration",
+    "board_visual_result": "passed_user_confirmed",
+    "stat_register": "0x40007ffc",
+    "logs_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\jtag_20261001_184939",
+    "user_confirmation": {
+      "source": "user_observation",
+      "user_answer": "灯序和速度均符合预期",
+      "expected_sequence": [
+        1,
+        3,
+        2,
+        4,
+        1
+      ],
+      "expected_step_seconds": 0.25,
+      "result": "passed",
+      "instrument_timing_measurement": false,
+      "recorded_at": "2026-10-01T18:52:18.592675+08:00"
+    }
+  },
+  "file_sha256": {
+    "scan.tcl": "cbd80adc389ceb37d60a90ba12f5c7c07a53d2f2c1ddad979bbd828857a81b38",
+    "scan.stdout.log": "bf4f33f42fc303778c34d2c3a10f79bd08c0a71ea8fa91df140b8989b52032c3",
+    "scan.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "download.tcl": "50e4cee5b62e8a830687b777abdd2299f97c53516a8148bd9eb567587baff2f0",
+    "download.stdout.log": "1a5f54b7d97ca926e97d19a5aca0ebeec0adc660cf5e36762ca6c5c90066e5e9",
+    "download.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "program-result.json": "ccf859baa01a518f26a1cf7a9af9bc1710a5f0c7c3baeb0a14a6d7454f574567"
+  },
+  "bitstream_after_download_sha256": "285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18",
+  "expected_led_sequence": [
+    1,
+    3,
+    2,
+    4,
+    1
+  ],
+  "expected_step_seconds": 0.25,
+  "full_bitstream_readback_verified": false,
+  "visual_result": "passed_user_confirmed",
+  "flash_or_boot_written": false,
+  "user_confirmation": {
+    "source": "user_observation",
+    "user_answer": "灯序和速度均符合预期",
+    "expected_sequence": [
+      1,
+      3,
+      2,
+      4,
+      1
+    ],
+    "expected_step_seconds": 0.25,
+    "result": "passed",
+    "instrument_timing_measurement": false,
+    "recorded_at": "2026-10-01T18:52:18.592675+08:00"
+  },
+  "build_review_after_visual_confirmation_sha256": "07be1c103f56b2fd55dde7caf9e849a68384d514c15c234d6251663bcc917103"
+}

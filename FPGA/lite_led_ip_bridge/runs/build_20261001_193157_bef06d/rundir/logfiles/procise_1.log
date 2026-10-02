@@ -1,0 +1,244 @@
+>>create_project -name lite_led_chaser -device JFMQL30TAI676H
+  >>set_device JFMQL30TAI676H
+  set_device elapsed_time 3.18 seconds, cpu_time 3.06 seconds
+  set_device used memory 661MB, procise used peak memory 696MB, current used memory 507MB
+>>add_design_file -file xlconcat_v2_1_vl_rfs.v led_state_concat.v lite_led_chaser.v lite_led_chaser.fdc
+  add_design_file used memory 189MB, procise used peak memory 696MB, current used memory 507MB
+>>set_top -top lite_led_chaser
+  set_top elapsed_time 1.02 seconds, cpu_time 0.80 seconds
+  set_top used memory 189MB, procise used peak memory 696MB, current used memory 581MB
+save project, time: 2026-10-01 19:32:03 
+>>load_design -stage_elaborate -no_hier
+  load_design elapsed_time 1.32 seconds, cpu_time 1.31 seconds
+  load_design used memory 2MB, procise used peak memory 696MB, current used memory 580MB
+>>launch_run -stage bitstream
+  >>rtl_analyze
+  rtl_analyze -> elaborate
+  WARN(ELAB-W-109): D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/xlconcat_v2_1_vl_rfs.v(24), empty port "In4" on module "xlconcat_v2_1_3_xlconcat_dout_width_4_NUM_PORTS_4_" declaration.  
+  WARN(ELAB-W-109): D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/xlconcat_v2_1_vl_rfs.v(26), empty port "In5" on module "xlconcat_v2_1_3_xlconcat_dout_width_4_NUM_PORTS_4_" declaration.  
+  WARN(ELAB-W-109): D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/xlconcat_v2_1_vl_rfs.v(28), empty port "In6" on module "xlconcat_v2_1_3_xlconcat_dout_width_4_NUM_PORTS_4_" declaration.  
+  WARN(ELAB-W-109): D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/xlconcat_v2_1_vl_rfs.v(30), empty port "In7" on module "xlconcat_v2_1_3_xlconcat_dout_width_4_NUM_PORTS_4_" declaration.  
+  WARN(ELAB-W-109): D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/xlconcat_v2_1_vl_rfs.v(32), empty port "In8" on module "xlconcat_v2_1_3_xlconcat_dout_width_4_NUM_PORTS_4_" declaration.  
+  Info: D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/xlconcat_v2_1_vl_rfs.v: message ELAB-W-109 has occurred for too many times, the later same message would be ignored.  
+  Info: SDB transformed into DM successfully.  
+  write out edif file lite_led_chaser_elaborate.edif
+  rtl_analyze -> read edif source files
+  rtl_analyze -> read ip edif files
+  rtl_analyze -> bind_design -verbose 0
+  rtl_analyze -> uniquify
+  rtl_analyze -> read_fdc D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/lite_led_chaser.fdc
+  rtl_analyze elapsed_time 0.16 seconds, cpu_time 0.08 seconds
+  rtl_analyze used memory 14MB, procise used peak memory 696MB, current used memory 581MB
+>>synthesize
+  synthesize -> flatten
+  synthesize -> sweep -sequential -verbose 0
+  synthesize -> logic opt and lut mapping
+  synthesize -> insert_io -bufg_limit_cnt 16
+  write out edif file lite_led_chaser.edif
+  Generate timing summary report with max_paths=10 nworst=3
+  ==========================================================================
+  INFO static timing analysis results.
+  ==========================================================================
+  PathType  Requirement(setup)  Slack(setup)  Requirement(hold)  Slack(hold)
+  ==========================================================================
+  Trr                   10.000         9.206              1.000        0.033  
+  Tir                      N/A           N/A                N/A          N/A  
+  Tro                      N/A           N/A                N/A          N/A  
+  Tio                      N/A           N/A                N/A          N/A  
+  ==========================================================================
+  FDC_INFO! export constraints to file lite_led_chaser_synthesized.fdc!
+  synthesize elapsed_time 0.18 seconds, cpu_time 0.09 seconds
+  synthesize used memory 13MB, procise used peak memory 696MB, current used memory 537MB
+>>opt_design
+    DffDupPass : total create 0 insts for model 'lite_led_chaser'
+    HfsPass : total split 0 nets for model 'lite_led_chaser'
+    DffDupPass : total create 0 insts for model 'lite_led_chaser'
+    PostSweepPass : finish post sweep for model 'lite_led_chaser'
+  opt_design used memory 57MB, procise used peak memory 696MB, current used memory 537MB
+>>place -thread 4
+  Phase 1 Placer Initialization
+  Phase 1.1 Placer Initialization Core
+  Phase 1.1.6 Build Placer Netlist Model
+  Building SiteChkr ...
+    Done.
+  Phase 1.1.6 Build Placer Netlist Model | Time: 0.453s
+  Phase 1.1.5.2 Implementation Feasibility check
+  IO Utilization:
+    Number of bonded IOBs:                          5 out of     250    2%
+  
+  IOPAD Utilization:
+    Number of bonded IOPADs:                        0 out of     152    0%
+  
+  Specific Feature Utilization:
+    Number of RAMH18E1/FIFO18E1s:                   0 out of     530    0%
+    Number of RAMHFIFO36E1/FIFO36E1/RAMH36E1s:        0 out of     265    0%
+    Number of GCDU/GCDU_CTRLs:                      1 out of      32    3%
+      Number used as GCDUs:                         1
+      Number used as GCDU_CTRLs:                    0
+    Number of ISTCE2/ISTCE2_FINESTCs:               0 out of     250    0%
+    Number of ILGKE2/ILGKE3/ISSE2s:                 0 out of     250    0%
+    Number of OSTC_E2/OSTC_E2_FINESTCs:             0 out of     150    0%
+    Number of OLGKE2/OLGKE3/OSSE2s:                 0 out of     250    0%
+    Number of PSU_IN/PSU_IN_PHY/PSU_IN_ADVs:        0 out of      20    0%
+    Number of PSU_OUT/PSU_OUT_PHY/PSU_OUT_ADVs:        0 out of      20    0%
+    Number of JTBSs:                                0 out of       4    0%
+    Number of HCDU_CEs:                             0 out of      96    0%
+    Number of RCDUs:                                0 out of      20    0%
+    Number of CAPs:                                 0 out of       1    0%
+    Number of DNA_PORTs:                            0 out of       1    0%
+    Number of CU48E1s:                              0 out of     400    0%
+    Number of UNRECOVER_USRs:                       0 out of       1    0%
+    Number of SECTOR_ECCs:                          0 out of       1    0%
+    Number of UHST2E2_CHs:                          0 out of       4    0%
+    Number of UHST2E2_COMs:                         0 out of       1    0%
+    Number of IDU_DS_UHSTE2s:                       0 out of       2    0%
+    Number of UACs:                                 0 out of       2    0%
+    Number of ISTC_CTRLs:                           0 out of       5    0%
+    Number of IFIFOs:                               0 out of      20    0%
+    Number of DCCUE2_ADVs:                          0 out of       5    0%
+    Number of OFIFOs:                               0 out of      20    0%
+    Number of PCIE_2_1s:                            0 out of       1    0%
+    Number of PSU_REFs:                             0 out of       5    0%
+    Number of PHY_CTRLs:                            0 out of       5    0%
+    Number of PLLE2_ADVs:                           0 out of       5    0%
+    Number of BOOTUPs:                              0 out of       1    0%
+    Number of FADCs:                                0 out of       1    0%
+  
+  Phase 1.1.5.2 Implementation Feasibility check | Time: 0.476s
+  Phase 1.1.7 Constrain Clocks/Macros
+  Phase 1.1.7 Constrain Clocks/Macros | Time: 22.036s
+  Phase 1.1.5 IO Placement/ Clock Placement/ Build Placer Device
+  Phase 1.1.5 IO Placement/ Clock Placement/ Build Placer Device | Time: 22.069s
+  Phase 1.1.8 Build Shapes/ HD Config
+  Phase 1.1.8.1 Build Macros
+  Phase 1.1.8.1 Build Macros | Time: 22.072s
+  Phase 1.1.8 Build Shapes/ HD Config | Time: 22.073s
+  Phase 1.1.5 IO Placement/ Clock Placement/ Build Placer Device | Time: 22.074s
+  Phase 1.1 Placer Initialization Core | Time: 22.098s
+  Phase 1 Placer Initialization | Time: 22.099s
+  Phase 2 Global Placement
+  Phase 2.1 Distribute Placement
+  cluster_view_->num_total_clusters() = 18
+  .  
+  .  .  .  .  .  .  
+  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  Phase 2.1 Distribute Placement | Time: 22.939s
+  hpwl = 445.7
+  Phase 2.2 Legalize Placement
+  Phase 2.2 Legalize Placement | Time: 22.988s
+  hpwl = 455.8
+  Phase 2 Global Placement | Time: 22.992s
+  The worst negtive slack is: 0.000000.
+  The total negtive slack is: 0.000000.
+  Generating physical netlist ... 
+  
+                           DEVICE UTILIZATION                   
+  ------------------------------------------------------------------
+  resource                      used/available     utilization      
+  ------------------------------------------------------------------
+  GCDU                              1/32             3.13%
+  IOU18M                            4/72             5.56%
+  IOU33M                            1/48             2.08%
+  LC                               11/19650          0.06%
+  ------------------------------------------------------------------
+  FDC_INFO! export constraints to file lite_led_chaser_placed.fdc!
+  Building SiteChkr ...
+    Done.
+  DetailPlaceXDL Wire Demand Max Box (0, 0, -1, 0).
+  Phase 3 Detail Placement
+  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  Phase 3 Detail Placement | Time: 27.818s
+  Phase 4 Post Placement Optimization and Clean-Up
+  Phase 4.2 Post Placement Cleanup
+  Phase 4.2 Post Placement Cleanup | Time: 27.819s
+  Phase 4.4 Final Placement Cleanup
+  Phase 4.4 Final Placement Cleanup | Time: 27.82s
+  Phase 4 Post Placement Optimization and Clean-Up | Time: 27.82s
+  The worst negtive slack is: 0.000000.
+  The total negtive slack is: 0.000000.
+  Generate timing summary report with max_paths=10 nworst=3
+  ==========================================================================
+  INFO static timing analysis results.
+  ==========================================================================
+  PathType  Requirement(setup)  Slack(setup)  Requirement(hold)  Slack(hold)
+  ==========================================================================
+  Trr                   10.000         5.599              1.000        0.232  
+  Tir                      N/A           N/A                N/A          N/A  
+  Tro                      N/A           N/A                N/A          N/A  
+  Tio                      N/A           N/A                N/A          N/A  
+  ==========================================================================
+  place elapsed_time 29.66 seconds, cpu_time 31.47 seconds
+  place used memory 1156MB, procise used peak memory 1693MB, current used memory 766MB
+>>write_phy_design D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/rundir//.f1a6faf4e30bb0adf31b2a03de098033_place.phy
+  write_phy_design used memory 1102MB, procise used peak memory 1693MB, current used memory 591MB
+>>route
+  DataModel: remove 0 TIE HIGH nets.
+  DataModel: create 0 dummy TIE HIGH nets.
+  DataModel: remove 1 TIE LOW nets.
+  DataModel: created 1 dummy TIE LOW nets.
+  DataModel: remove 1 PULL insts.
+  DataModel: remove 0 CU PULL insts.
+  DataModel: created 0 dummy LC insts.
+  Router: build routing data...
+  Router: 51 nets, 18 insts.
+  Router: sort net pins...
+  Router: initial routability-driven routing...
+  Router: No unrouted net
+  Router: 8 routing nodes have overflow, Time : 0.44 s
+  Router: 2 routing nodes have overflow, Time : 0.02 s
+  Router: 0 routing nodes have overflow, Time : 0.00 s
+  Router: routability driven finished elapsed_time 0.56 seconds, cpu_time 0.53 seconds
+  Router: pre-processing for timing-driven reroute...
+  Router: worst slack : 5.962, total negative slack : 0.000.
+  Router: start timing-driven reroute...
+  Router: worst slack : 5.962, total negative slack : 0.000.
+  Router: 0 routing nodes have overflow, Time : 0.02 s
+  Router: The init hold worst slack:
+  Router: worst slack : 0.192, total negative slack : 0.000.
+  Router: The init setup worst slack:
+  Router: worst slack : 5.962, total negative slack : 0.000.
+  Router: Start to optimize the hold slack
+  Router: Optimize the hold slack finish
+  Router: 0 routing nodes have overflow, Time : 0.00 s
+  Router: The final hold worst slack:
+  Router: worst slack : 0.192, total negative slack : 0.000.
+  Router: The final setup worst slack:
+  Router: worst slack : 5.962, total negative slack : 0.000.
+  Router: successfully routed after 1 iterations.
+  Router: SIGNAL wirelength : 432.
+  Router: CLOCK wirelength  : 229.
+  Router: P/G wirelength    : 1.
+  Router: timing driven successful elapsed_time 1.09 seconds, cpu_time 1.05 seconds
+  Router: created 5 dummy I/O insts.
+  Router: created 2 dummy HCDU_CE insts.
+  Generate timing summary report with max_paths=10 nworst=3
+  ==========================================================================
+  INFO static timing analysis results.
+  ==========================================================================
+  PathType  Requirement(setup)  Slack(setup)  Requirement(hold)  Slack(hold)
+  ==========================================================================
+  Trr                   10.000         5.962              1.000        0.192  
+  Tir                      N/A           N/A                N/A          N/A  
+  Tro                      N/A           N/A                N/A          N/A  
+  Tio                      N/A           N/A                N/A          N/A  
+  ==========================================================================
+  route elapsed_time 2.84 seconds, cpu_time 2.69 seconds
+  route used memory 1102MB, procise used peak memory 1693MB, current used memory 847MB
+>>write_phy_design D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/rundir//.f1a6faf4e30bb0adf31b2a03de098033_route.phy
+  write_phy_design used memory 846MB, procise used peak memory 1693MB, current used memory 847MB
+>>bitgen lite_led_chaser.bit -g bpi_sync_mode:Disable spi_32bit_addr:No spi_buswidth:1 Encrypt:No
+  assemble bitstream elapsed_time 0.07 seconds, cpu_time -16.00 seconds
+  Writing out bitstream file lite_led_chaser.bit
+  Writing out bgn file lite_led_chaser.bgn
+  bitgen elapsed_time 0.83 seconds, cpu_time 0.97 seconds
+  bitgen used memory 846MB, procise used peak memory 1693MB, current used memory 861MB
+>>write_phy_design D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/rundir//.f1a6faf4e30bb0adf31b2a03de098033.phy
+  write_phy_design used memory 832MB, procise used peak memory 1693MB, current used memory 861MB
+>>add_design_file -file D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/rundir//.f1a6faf4e30bb0adf31b2a03de098033.phy
+  add_design_file used memory 832MB, procise used peak memory 1693MB, current used memory 861MB
+>>bitgen lite_led_chaser.bit -g StartupClk:JtagClk
+  assemble bitstream elapsed_time 0.07 seconds, cpu_time -16.00 seconds
+  Writing out bitstream file lite_led_chaser.bit
+  Writing out bgn file lite_led_chaser.bgn
+  bitgen elapsed_time 0.76 seconds, cpu_time 0.95 seconds
+  bitgen used memory 273MB, procise used peak memory 1693MB, current used memory 994MB
