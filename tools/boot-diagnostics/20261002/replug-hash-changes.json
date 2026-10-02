@@ -1,0 +1,65 @@
+[
+  {
+    "name": "ai7030_top_disable_icap.bit",
+    "matches_source": false,
+    "before_sha256": "31cc162c17c4c95bbef456ca9f638db9bb95bda25821870f2ab6816598628a4a",
+    "after_sha256": "31cc162c17c4c95bbef456ca9f638db9bb95bda25821870f2ab6816598628a4a",
+    "changed_after_replug": false
+  },
+  {
+    "name": "ai7030_top.bit",
+    "matches_source": false,
+    "before_sha256": "d25bd7f28ddbc07f8445832860b9f3d4c3dfb7ed11d9412c7339e49c35d5272b",
+    "after_sha256": "5d5fd4b0f1be3f75314515f98d995a680acc2b71416a4e2c29770104860bd14e",
+    "changed_after_replug": true
+  },
+  {
+    "name": "bl31.elf",
+    "matches_source": false,
+    "before_sha256": "a99c03d29753c17c669ec0b45ab09ad892a35297a3aa56a1e0c5cde2ebca9cd6",
+    "after_sha256": "97c41ab7968ad56503ac1caf1b0f37c4155a130dc98629c56f1819c98d6cc8eb",
+    "changed_after_replug": true
+  },
+  {
+    "name": "BOOT.bin",
+    "matches_source": false,
+    "before_sha256": "3761c210ec71bcd27d03762e8b37d30b8f855299c74af45c451c9be3d770a1b5",
+    "after_sha256": "6ec99ec782642a5053178fdd2e6f696f69a030724ae866dcd91516ced84d238b",
+    "changed_after_replug": true
+  },
+  {
+    "name": "fmqlmp-verify.dtb",
+    "matches_source": false,
+    "before_sha256": "eb8b0e63f7b39f1907ce373ee9f7d015f1e48574ba56cb1ace22ee437471fd15",
+    "after_sha256": "b84a6df662039e1429eec9ea2b25cf3b458b45e396e8cbe26f0bf03bdf3c7054",
+    "changed_after_replug": true
+  },
+  {
+    "name": "FSBL251210_ddr400_demo.out",
+    "matches_source": true,
+    "before_sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+    "after_sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+    "changed_after_replug": false
+  },
+  {
+    "name": "Image",
+    "matches_source": false,
+    "before_sha256": "1913ae3be7bd1df73e63a966ecd593ff9eeb1acdc7f88f5af319af552a03d3c1",
+    "after_sha256": "fd54c50881c16f5c24c13f5357ae94efcb62001899ad295c7379fcc51cb92228",
+    "changed_after_replug": true
+  },
+  {
+    "name": "u-boot",
+    "matches_source": false,
+    "before_sha256": "0a0862a7eee18e5a06acb5ba4672ea0d38f54a443191f6ab76a02d7bc99966ed",
+    "after_sha256": "1273ad6b135b3228853fc024b40d22da46ea9d8d967565e625e6387aa96e56b9",
+    "changed_after_replug": true
+  },
+  {
+    "name": "uEnv.txt",
+    "matches_source": false,
+    "before_sha256": "83cb666ec98a76500cd96f53b730a32379feb8d08de2cc291c2ad808bb27c4eb",
+    "after_sha256": "7c8677fcb3e8101be70592e4c39aff276af24cbebae79a3a0b0df8ed1f59146c",
+    "changed_after_replug": true
+  }
+]

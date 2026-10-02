@@ -1,0 +1,437 @@
+{
+  "scope": "Current chat MCP calls; LED1->3->2->4; acceptance ends at reviewed bitstream; no programming",
+  "environment": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"native_probe\": \"passed\",\n  \"banner\": \"Procise 2025.1.1 temp\\r\\nSVN Version : 32494\\r\\nBuild  time : 2026/03/20 13:26:17\\r\\nStart  time : 2026-10-01 18:22:13\",\n  \"procise_root\": \"C:\\\\FudanMicro\\\\Procise\",\n  \"python\": \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp-venv\\\\Scripts\\\\python.exe\",\n  \"python_version\": \"3.12.14\",\n  \"mcp_sdk\": \"2.2.0\",\n  \"logs\": \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp\\\\probes\\\\18f080bb70684541a6428f0936385149\",\n  \"project\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\",\n  \"scope\": \"LED prototype only; no JTAG or arbitrary Tcl\",\n  \"codex_connection\": \"not assessed by this environment probe\"\n}"
+        }
+      ],
+      "structuredContent": {
+        "native_probe": "passed",
+        "banner": "Procise 2025.1.1 temp\r\nSVN Version : 32494\r\nBuild  time : 2026/03/20 13:26:17\r\nStart  time : 2026-10-01 18:22:13",
+        "procise_root": "C:\\FudanMicro\\Procise",
+        "python": "D:\\FPGACompetitionProject\\.local\\procise-mcp-venv\\Scripts\\python.exe",
+        "python_version": "3.12.14",
+        "mcp_sdk": "2.2.0",
+        "logs": "D:\\FPGACompetitionProject\\.local\\procise-mcp\\probes\\18f080bb70684541a6428f0936385149",
+        "project": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser",
+        "scope": "LED prototype only; no JTAG or arbitrary Tcl",
+        "codex_connection": "not assessed by this environment probe"
+      },
+      "isError": false
+    }
+  },
+  "sessions_before": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "[\n  {\n    \"session_id\": \"<external@9999>\",\n    \"mode\": \"external\",\n    \"state\": \"ready\",\n    \"vivado_path\": \"<unknown, not managed by MCP>\",\n    \"is_alive\": true,\n    \"uptime_seconds\": null,\n    \"port\": 9999,\n    \"owner\": \"external\",\n    \"note\": \"未由 MCP 启动的 Vivado(可能是手动启动并装过 init.tcl)。调 start_session(mode='gui') 会自动 attach 上去;stop_session 无权关闭 —— 请在 GUI 内手动 exit。\"\n  }\n]"
+        }
+      ],
+      "structuredContent": {
+        "result": "[\n  {\n    \"session_id\": \"<external@9999>\",\n    \"mode\": \"external\",\n    \"state\": \"ready\",\n    \"vivado_path\": \"<unknown, not managed by MCP>\",\n    \"is_alive\": true,\n    \"uptime_seconds\": null,\n    \"port\": 9999,\n    \"owner\": \"external\",\n    \"note\": \"未由 MCP 启动的 Vivado(可能是手动启动并装过 init.tcl)。调 start_session(mode='gui') 会自动 attach 上去;stop_session 无权关闭 —— 请在 GUI 内手动 exit。\"\n  }\n]"
+      },
+      "isError": false
+    }
+  },
+  "vivado_start": {
+    "content": [
+      {
+        "type": "text",
+        "text": "会话 'lite_led1324_pipeline' 已就绪（mode=tcl）。\nVivado: D:/Xilinx/Vivado/2019.1/bin/vivado.bat\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY"
+      }
+    ],
+    "structuredContent": {
+      "result": "会话 'lite_led1324_pipeline' 已就绪（mode=tcl）。\nVivado: D:/Xilinx/Vivado/2019.1/bin/vivado.bat\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY"
+    },
+    "isError": false
+  },
+  "vivado_version": {
+    "content": [
+      {
+        "type": "text",
+        "text": "PIPELINE_VIVADO_VERSION 2019.1\nPIPELINE_ARCH AMD64"
+      }
+    ],
+    "structuredContent": {
+      "result": "PIPELINE_VIVADO_VERSION 2019.1\nPIPELINE_ARCH AMD64"
+    },
+    "isError": false
+  },
+  "source_generation": {
+    "content": [
+      {
+        "type": "text",
+        "text": "SOURCE_GENERATION_PASS LED1->3->2->4\nSOURCE_BACKUP D:/FPGACompetitionProject/FPGA/lite_led_chaser/revisions/led_1234_before_1324"
+      }
+    ],
+    "structuredContent": {
+      "result": "SOURCE_GENERATION_PASS LED1->3->2->4\nSOURCE_BACKUP D:/FPGACompetitionProject/FPGA/lite_led_chaser/revisions/led_1234_before_1324"
+    },
+    "isError": false
+  },
+  "simulation": {
+    "content": [
+      {
+        "type": "text",
+        "text": "SIMULATION_PASS\nSimulation directory: D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_182621_aa641e\n\n****** xsim v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nsource xsim.dir/led_chaser_tb/xsim_script.tcl\n# xsim {led_chaser_tb} -autoloadwcfg -tclbatch {sim.tcl}\nSimulator 2019.1\nTime resolution is 1 ps\nsource sim.tcl\n## run all\nTRACE ticks=1 cycle=0 observed=0001\nTRACE ticks=1 cycle=1 observed=0100\nTRACE ticks=1 cycle=2 observed=0010\nTRACE ticks=1 cycle=3 observed=1000\nTRACE ticks=1 cycle=4 observed=0001\nTRACE ticks=1 cycle=5 observed=0100\nTRACE ticks=1 cycle=6 observed=0010\nTRACE ticks=1 cycle=7 observed=1000\nTRACE ticks=1 cycle=8 observed=0001\nPASS: initialization, exact step boundaries, one-hot LED1->3->2->4 order and wrap; 3 divisors x 200 cycles\n$finish called at time : 1996 ns : File \"D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e/tb_lite_led_chaser.sv\" Line 47\n## quit\nINFO: [Common 17-206] Exiting xsim at Thu Oct  1 18:26:39 2026..."
+      }
+    ],
+    "structuredContent": {
+      "result": "SIMULATION_PASS\nSimulation directory: D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_182621_aa641e\n\n****** xsim v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nsource xsim.dir/led_chaser_tb/xsim_script.tcl\n# xsim {led_chaser_tb} -autoloadwcfg -tclbatch {sim.tcl}\nSimulator 2019.1\nTime resolution is 1 ps\nsource sim.tcl\n## run all\nTRACE ticks=1 cycle=0 observed=0001\nTRACE ticks=1 cycle=1 observed=0100\nTRACE ticks=1 cycle=2 observed=0010\nTRACE ticks=1 cycle=3 observed=1000\nTRACE ticks=1 cycle=4 observed=0001\nTRACE ticks=1 cycle=5 observed=0100\nTRACE ticks=1 cycle=6 observed=0010\nTRACE ticks=1 cycle=7 observed=1000\nTRACE ticks=1 cycle=8 observed=0001\nPASS: initialization, exact step boundaries, one-hot LED1->3->2->4 order and wrap; 3 divisors x 200 cycles\n$finish called at time : 1996 ns : File \"D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e/tb_lite_led_chaser.sv\" Line 47\n## quit\nINFO: [Common 17-206] Exiting xsim at Thu Oct  1 18:26:39 2026..."
+    },
+    "isError": false
+  },
+  "procise_start": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"job_id\": \"5c5f8f383cd74afa87915adc67921a80\",\n  \"state\": \"running\",\n  \"logs_directory\": \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp\\\\jobs\\\\5c5f8f383cd74afa87915adc67921a80\",\n  \"note\": \"Poll get_job_status. Native completion alone is not artifact review or board acceptance.\"\n}"
+      }
+    ],
+    "structuredContent": {
+      "job_id": "5c5f8f383cd74afa87915adc67921a80",
+      "state": "running",
+      "logs_directory": "D:\\FPGACompetitionProject\\.local\\procise-mcp\\jobs\\5c5f8f383cd74afa87915adc67921a80",
+      "note": "Poll get_job_status. Native completion alone is not artifact review or board acceptance."
+    },
+    "isError": false
+  },
+  "statuses": [
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"job_id\": \"5c5f8f383cd74afa87915adc67921a80\",\n  \"state\": \"running\",\n  \"exit_code\": null,\n  \"launcher_pid\": 21896,\n  \"build_directory\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\",\n  \"logs_directory\": \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp\\\\jobs\\\\5c5f8f383cd74afa87915adc67921a80\",\n  \"failure\": null,\n  \"input_sha256\": {\n    \"rtl/lite_led_chaser.v\": \"30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4\",\n    \"constraints/lite_led_chaser.fdc\": \"8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120\",\n    \"scripts/Build.ps1\": \"c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2\",\n    \"scripts/build.tcl\": \"6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a\",\n    \"scripts/ReviewBuild.py\": \"1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806\"\n  },\n  \"review\": null,\n  \"board_action\": \"none\",\n  \"timeout_means_cancelled\": false\n}"
+        }
+      ],
+      "structuredContent": {
+        "job_id": "5c5f8f383cd74afa87915adc67921a80",
+        "state": "running",
+        "exit_code": null,
+        "launcher_pid": 21896,
+        "build_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1",
+        "logs_directory": "D:\\FPGACompetitionProject\\.local\\procise-mcp\\jobs\\5c5f8f383cd74afa87915adc67921a80",
+        "failure": null,
+        "input_sha256": {
+          "rtl/lite_led_chaser.v": "30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4",
+          "constraints/lite_led_chaser.fdc": "8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120",
+          "scripts/Build.ps1": "c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2",
+          "scripts/build.tcl": "6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a",
+          "scripts/ReviewBuild.py": "1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806"
+        },
+        "review": null,
+        "board_action": "none",
+        "timeout_means_cancelled": false
+      },
+      "isError": false
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"job_id\": \"5c5f8f383cd74afa87915adc67921a80\",\n  \"state\": \"native_completed\",\n  \"exit_code\": 0,\n  \"launcher_pid\": 21896,\n  \"build_directory\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\",\n  \"logs_directory\": \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp\\\\jobs\\\\5c5f8f383cd74afa87915adc67921a80\",\n  \"failure\": null,\n  \"input_sha256\": {\n    \"rtl/lite_led_chaser.v\": \"30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4\",\n    \"constraints/lite_led_chaser.fdc\": \"8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120\",\n    \"scripts/Build.ps1\": \"c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2\",\n    \"scripts/build.tcl\": \"6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a\",\n    \"scripts/ReviewBuild.py\": \"1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806\"\n  },\n  \"review\": null,\n  \"board_action\": \"none\",\n  \"timeout_means_cancelled\": false\n}"
+        }
+      ],
+      "structuredContent": {
+        "job_id": "5c5f8f383cd74afa87915adc67921a80",
+        "state": "native_completed",
+        "exit_code": 0,
+        "launcher_pid": 21896,
+        "build_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1",
+        "logs_directory": "D:\\FPGACompetitionProject\\.local\\procise-mcp\\jobs\\5c5f8f383cd74afa87915adc67921a80",
+        "failure": null,
+        "input_sha256": {
+          "rtl/lite_led_chaser.v": "30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4",
+          "constraints/lite_led_chaser.fdc": "8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120",
+          "scripts/Build.ps1": "c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2",
+          "scripts/build.tcl": "6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a",
+          "scripts/ReviewBuild.py": "1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806"
+        },
+        "review": null,
+        "board_action": "none",
+        "timeout_means_cancelled": false
+      },
+      "isError": false
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"job_id\": \"5c5f8f383cd74afa87915adc67921a80\",\n  \"state\": \"reviewed\",\n  \"exit_code\": 0,\n  \"launcher_pid\": 21896,\n  \"build_directory\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\",\n  \"logs_directory\": \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp\\\\jobs\\\\5c5f8f383cd74afa87915adc67921a80\",\n  \"failure\": null,\n  \"input_sha256\": {\n    \"rtl/lite_led_chaser.v\": \"30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4\",\n    \"constraints/lite_led_chaser.fdc\": \"8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120\",\n    \"scripts/Build.ps1\": \"c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2\",\n    \"scripts/build.tcl\": \"6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a\",\n    \"scripts/ReviewBuild.py\": \"1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806\"\n  },\n  \"review\": {\n    \"artifact_review\": \"passed\",\n    \"review_file\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\build-review.json\",\n    \"sim_directory\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\sim_20261001_182621_aa641e\",\n    \"bitstream_sha256\": \"285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18\",\n    \"register_init_checked\": 29,\n    \"board_result\": \"not tested for this MCP build\",\n    \"programming_authorized_by_tool\": false\n  },\n  \"board_action\": \"none\",\n  \"timeout_means_cancelled\": false\n}"
+        }
+      ],
+      "structuredContent": {
+        "job_id": "5c5f8f383cd74afa87915adc67921a80",
+        "state": "reviewed",
+        "exit_code": 0,
+        "launcher_pid": 21896,
+        "build_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1",
+        "logs_directory": "D:\\FPGACompetitionProject\\.local\\procise-mcp\\jobs\\5c5f8f383cd74afa87915adc67921a80",
+        "failure": null,
+        "input_sha256": {
+          "rtl/lite_led_chaser.v": "30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4",
+          "constraints/lite_led_chaser.fdc": "8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120",
+          "scripts/Build.ps1": "c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2",
+          "scripts/build.tcl": "6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a",
+          "scripts/ReviewBuild.py": "1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806"
+        },
+        "review": {
+          "artifact_review": "passed",
+          "review_file": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\build-review.json",
+          "sim_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_182621_aa641e",
+          "bitstream_sha256": "285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18",
+          "register_init_checked": 29,
+          "board_result": "not tested for this MCP build",
+          "programming_authorized_by_tool": false
+        },
+        "board_action": "none",
+        "timeout_means_cancelled": false
+      },
+      "isError": false
+    }
+  ],
+  "log_tail": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"job_id\": \"5c5f8f383cd74afa87915adc67921a80\",\n  \"state\": \"running\",\n  \"logs\": {\n    \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp\\\\jobs\\\\5c5f8f383cd74afa87915adc67921a80\\\\launcher.stdout.log\": \"Build directory: D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\",\n    \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp\\\\jobs\\\\5c5f8f383cd74afa87915adc67921a80\\\\launcher.stderr.log\": \"\",\n    \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\procise.stdout.log\": \"  Phase 2 Global Placement | Time: 22.999s\\n  No clock overflow.\\n  The worst negtive slack is: 0.000000.\\n  The total negtive slack is: 0.000000.\\n  Generating physical netlist ... \\n  \\n                           DEVICE UTILIZATION                   \\n  ------------------------------------------------------------------\\n  resource                      used/available     utilization      \\n  ------------------------------------------------------------------\\n  GCDU                              1/32             3.13%\\n  IOU18M                            4/72             5.56%\\n  IOU33M                            1/48             2.08%\\n  LC                               11/19650          0.06%\\n  ------------------------------------------------------------------\\n  FDC_INFO! export constraints to file lite_led_chaser_placed.fdc!\\n  Building SiteChkr ...\\n    Done.\",\n    \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\procise.stderr.log\": \"\"\n  }\n}"
+      }
+    ],
+    "structuredContent": {
+      "job_id": "5c5f8f383cd74afa87915adc67921a80",
+      "state": "running",
+      "logs": {
+        "D:\\FPGACompetitionProject\\.local\\procise-mcp\\jobs\\5c5f8f383cd74afa87915adc67921a80\\launcher.stdout.log": "Build directory: D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1",
+        "D:\\FPGACompetitionProject\\.local\\procise-mcp\\jobs\\5c5f8f383cd74afa87915adc67921a80\\launcher.stderr.log": "",
+        "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\procise.stdout.log": "  Phase 2 Global Placement | Time: 22.999s\n  No clock overflow.\n  The worst negtive slack is: 0.000000.\n  The total negtive slack is: 0.000000.\n  Generating physical netlist ... \n  \n                           DEVICE UTILIZATION                   \n  ------------------------------------------------------------------\n  resource                      used/available     utilization      \n  ------------------------------------------------------------------\n  GCDU                              1/32             3.13%\n  IOU18M                            4/72             5.56%\n  IOU33M                            1/48             2.08%\n  LC                               11/19650          0.06%\n  ------------------------------------------------------------------\n  FDC_INFO! export constraints to file lite_led_chaser_placed.fdc!\n  Building SiteChkr ...\n    Done.",
+        "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\procise.stderr.log": ""
+      }
+    },
+    "isError": false
+  },
+  "native_report": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"build_directory\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\",\n  \"native_timing\": {\n    \"key_order\": [\n      \"item_view_name\",\n      \"Setup\",\n      \"Hold\",\n      \"Timing constraints met\"\n    ],\n    \"item_view_name\": \"summary\",\n    \"Setup\": {\n      \"key_order\": [\n        \"Worst Negative Slack (WNS)\",\n        \"Total Negative Slack (TNS)\",\n        \"Number of Failing Endpoints\",\n        \"Total Number of Endpoints\"\n      ],\n      \"Worst Negative Slack (WNS)\": \"5.962 ns\",\n      \"Total Negative Slack (TNS)\": \"0.000 ns\",\n      \"Number of Failing Endpoints\": 0,\n      \"Total Number of Endpoints\": 58\n    },\n    \"Hold\": {\n      \"key_order\": [\n        \"Worst Hold Slack (WHS)\",\n        \"Total Hold Slack (THS)\",\n        \"Number of Failing Endpoints\",\n        \"Total Number of Endpoints\"\n      ],\n      \"Worst Hold Slack (WHS)\": \"0.192 ns\",\n      \"Total Hold Slack (THS)\": \"0.000 ns\",\n      \"Number of Failing Endpoints\": 0,\n      \"Total Number of Endpoints\": 58\n    },\n    \"Timing constraints met\": true\n  },\n  \"clock\": [\n    {\n      \"key_order\": [\n        \"Name\",\n        \"Waveform\",\n        \"Period(ns)\",\n        \"Frequency(MHZ)\"\n      ],\n      \"Name\": \"pl_100mhz\",\n      \"Waveform\": [\n        0.0,\n        5.0\n      ],\n      \"Period(ns)\": 10.0,\n      \"Frequency(MHZ)\": 100.0\n    }\n  ],\n  \"timing_checks\": {\n    \"no_clock\": 0,\n    \"unconstrained_internal_endpoints\": 0,\n    \"no_input_delay\": 0,\n    \"no_output_delay\": 4,\n    \"partial_input_delay\": 0,\n    \"partial_output_delay\": 0,\n    \"loops\": 0\n  },\n  \"internal_timing_pass\": true,\n  \"expected_led_output_exception\": true,\n  \"limitation\": \"Four LED outputs lack external output delays; no full interface timing or board acceptance.\",\n  \"expected_device\": \"JFMQL30TAI676H\",\n  \"device_matches\": true,\n  \"pin_constraints_match\": true,\n  \"expected_pins\": {\n    \"clk_100m\": [\n      \"AC14\",\n      \"LVCMOS33\"\n    ],\n    \"led[0]\": [\n      \"J1\",\n      \"LVCMOS15\"\n    ],\n    \"led[1]\": [\n      \"M6\",\n      \"LVCMOS15\"\n    ],\n    \"led[2]\": [\n      \"H7\",\n      \"LVCMOS15\"\n    ],\n    \"led[3]\": [\n      \"J8\",\n      \"LVCMOS15\"\n    ]\n  },\n  \"startup_clock\": \"JtagClk\",\n  \"unconstrained_pins\": \"Disallow\",\n  \"bitgen_raw_values\": {\n    \"StartupClk\": \"JtagClk\",\n    \"UnconstrainedPins\": \"Disallow*\"\n  },\n  \"bitstream\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\rundir\\\\lite_led_chaser.bit\",\n  \"bitstream_sha256\": \"285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18\",\n  \"bitstream_size\": 5980582,\n  \"raw_report\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\rundir\\\\lite_led_chaser_route.json\",\n  \"raw_report_sha256\": \"cb4c5812b6a0bc749313dcd9a286666309ea58f66cced0a0e33cac7b088d82f7\",\n  \"review_scope\": \"Native report query only; register INIT and simulation consistency require review_led_build.\"\n}"
+      }
+    ],
+    "structuredContent": {
+      "build_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1",
+      "native_timing": {
+        "key_order": [
+          "item_view_name",
+          "Setup",
+          "Hold",
+          "Timing constraints met"
+        ],
+        "item_view_name": "summary",
+        "Setup": {
+          "key_order": [
+            "Worst Negative Slack (WNS)",
+            "Total Negative Slack (TNS)",
+            "Number of Failing Endpoints",
+            "Total Number of Endpoints"
+          ],
+          "Worst Negative Slack (WNS)": "5.962 ns",
+          "Total Negative Slack (TNS)": "0.000 ns",
+          "Number of Failing Endpoints": 0,
+          "Total Number of Endpoints": 58
+        },
+        "Hold": {
+          "key_order": [
+            "Worst Hold Slack (WHS)",
+            "Total Hold Slack (THS)",
+            "Number of Failing Endpoints",
+            "Total Number of Endpoints"
+          ],
+          "Worst Hold Slack (WHS)": "0.192 ns",
+          "Total Hold Slack (THS)": "0.000 ns",
+          "Number of Failing Endpoints": 0,
+          "Total Number of Endpoints": 58
+        },
+        "Timing constraints met": true
+      },
+      "clock": [
+        {
+          "key_order": [
+            "Name",
+            "Waveform",
+            "Period(ns)",
+            "Frequency(MHZ)"
+          ],
+          "Name": "pl_100mhz",
+          "Waveform": [
+            0,
+            5
+          ],
+          "Period(ns)": 10,
+          "Frequency(MHZ)": 100
+        }
+      ],
+      "timing_checks": {
+        "no_clock": 0,
+        "unconstrained_internal_endpoints": 0,
+        "no_input_delay": 0,
+        "no_output_delay": 4,
+        "partial_input_delay": 0,
+        "partial_output_delay": 0,
+        "loops": 0
+      },
+      "internal_timing_pass": true,
+      "expected_led_output_exception": true,
+      "limitation": "Four LED outputs lack external output delays; no full interface timing or board acceptance.",
+      "expected_device": "JFMQL30TAI676H",
+      "device_matches": true,
+      "pin_constraints_match": true,
+      "expected_pins": {
+        "clk_100m": [
+          "AC14",
+          "LVCMOS33"
+        ],
+        "led[0]": [
+          "J1",
+          "LVCMOS15"
+        ],
+        "led[1]": [
+          "M6",
+          "LVCMOS15"
+        ],
+        "led[2]": [
+          "H7",
+          "LVCMOS15"
+        ],
+        "led[3]": [
+          "J8",
+          "LVCMOS15"
+        ]
+      },
+      "startup_clock": "JtagClk",
+      "unconstrained_pins": "Disallow",
+      "bitgen_raw_values": {
+        "StartupClk": "JtagClk",
+        "UnconstrainedPins": "Disallow*"
+      },
+      "bitstream": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser.bit",
+      "bitstream_sha256": "285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18",
+      "bitstream_size": 5980582,
+      "raw_report": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser_route.json",
+      "raw_report_sha256": "cb4c5812b6a0bc749313dcd9a286666309ea58f66cced0a0e33cac7b088d82f7",
+      "review_scope": "Native report query only; register INIT and simulation consistency require review_led_build."
+    },
+    "isError": false
+  },
+  "artifacts_before_review": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"job_id\": \"5c5f8f383cd74afa87915adc67921a80\",\n  \"state\": \"native_completed\",\n  \"artifacts\": [\n    {\n      \"path\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\rundir\\\\lite_led_chaser.bit\",\n      \"bytes\": 5980582,\n      \"sha256\": \"285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18\"\n    },\n    {\n      \"path\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\rundir\\\\lite_led_chaser.bgn\",\n      \"bytes\": 22041,\n      \"sha256\": \"d10f32c969a97c84295b8e3790b4a8769deca183f9bf63880449ac2b5bdb2c32\"\n    },\n    {\n      \"path\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\rundir\\\\lite_led_chaser_route.json\",\n      \"bytes\": 315355,\n      \"sha256\": \"cb4c5812b6a0bc749313dcd9a286666309ea58f66cced0a0e33cac7b088d82f7\"\n    },\n    {\n      \"path\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\rundir\\\\lite_led_chaser_placed.fdc\",\n      \"bytes\": 1117,\n      \"sha256\": \"d11a003e3c81f80d4000d29efeeb012ca20a3c084f5d15b43600dc135740d07f\"\n    },\n    {\n      \"path\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\rundir\\\\lite_led_chaser.edif\",\n      \"bytes\": 38394,\n      \"sha256\": \"0a2468c114a0de2994a1528206df3a99f356d9d39cbf6445d3f162594d493a16\"\n    }\n  ],\n  \"provisional\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "job_id": "5c5f8f383cd74afa87915adc67921a80",
+      "state": "native_completed",
+      "artifacts": [
+        {
+          "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser.bit",
+          "bytes": 5980582,
+          "sha256": "285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18"
+        },
+        {
+          "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser.bgn",
+          "bytes": 22041,
+          "sha256": "d10f32c969a97c84295b8e3790b4a8769deca183f9bf63880449ac2b5bdb2c32"
+        },
+        {
+          "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser_route.json",
+          "bytes": 315355,
+          "sha256": "cb4c5812b6a0bc749313dcd9a286666309ea58f66cced0a0e33cac7b088d82f7"
+        },
+        {
+          "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser_placed.fdc",
+          "bytes": 1117,
+          "sha256": "d11a003e3c81f80d4000d29efeeb012ca20a3c084f5d15b43600dc135740d07f"
+        },
+        {
+          "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser.edif",
+          "bytes": 38394,
+          "sha256": "0a2468c114a0de2994a1528206df3a99f356d9d39cbf6445d3f162594d493a16"
+        }
+      ],
+      "provisional": false
+    },
+    "isError": false
+  },
+  "review": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"artifact_review\": \"passed\",\n  \"review_file\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\build-review.json\",\n  \"sim_directory\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\sim_20261001_182621_aa641e\",\n  \"bitstream_sha256\": \"285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18\",\n  \"register_init_checked\": 29,\n  \"board_result\": \"not tested for this MCP build\",\n  \"programming_authorized_by_tool\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "artifact_review": "passed",
+      "review_file": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\build-review.json",
+      "sim_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_182621_aa641e",
+      "bitstream_sha256": "285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18",
+      "register_init_checked": 29,
+      "board_result": "not tested for this MCP build",
+      "programming_authorized_by_tool": false
+    },
+    "isError": false
+  },
+  "final_status": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"job_id\": \"5c5f8f383cd74afa87915adc67921a80\",\n  \"state\": \"reviewed\",\n  \"exit_code\": 0,\n  \"launcher_pid\": 21896,\n  \"build_directory\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\",\n  \"logs_directory\": \"D:\\\\FPGACompetitionProject\\\\.local\\\\procise-mcp\\\\jobs\\\\5c5f8f383cd74afa87915adc67921a80\",\n  \"failure\": null,\n  \"input_sha256\": {\n    \"rtl/lite_led_chaser.v\": \"30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4\",\n    \"constraints/lite_led_chaser.fdc\": \"8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120\",\n    \"scripts/Build.ps1\": \"c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2\",\n    \"scripts/build.tcl\": \"6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a\",\n    \"scripts/ReviewBuild.py\": \"1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806\"\n  },\n  \"review\": {\n    \"artifact_review\": \"passed\",\n    \"review_file\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\build_20261001_183334_5f3fc1\\\\build-review.json\",\n    \"sim_directory\": \"D:\\\\FPGACompetitionProject\\\\FPGA\\\\lite_led_chaser\\\\runs\\\\sim_20261001_182621_aa641e\",\n    \"bitstream_sha256\": \"285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18\",\n    \"register_init_checked\": 29,\n    \"board_result\": \"not tested for this MCP build\",\n    \"programming_authorized_by_tool\": false\n  },\n  \"board_action\": \"none\",\n  \"timeout_means_cancelled\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "job_id": "5c5f8f383cd74afa87915adc67921a80",
+      "state": "reviewed",
+      "exit_code": 0,
+      "launcher_pid": 21896,
+      "build_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1",
+      "logs_directory": "D:\\FPGACompetitionProject\\.local\\procise-mcp\\jobs\\5c5f8f383cd74afa87915adc67921a80",
+      "failure": null,
+      "input_sha256": {
+        "rtl/lite_led_chaser.v": "30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4",
+        "constraints/lite_led_chaser.fdc": "8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120",
+        "scripts/Build.ps1": "c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2",
+        "scripts/build.tcl": "6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a",
+        "scripts/ReviewBuild.py": "1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806"
+      },
+      "review": {
+        "artifact_review": "passed",
+        "review_file": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\build-review.json",
+        "sim_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_182621_aa641e",
+        "bitstream_sha256": "285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18",
+        "register_init_checked": 29,
+        "board_result": "not tested for this MCP build",
+        "programming_authorized_by_tool": false
+      },
+      "board_action": "none",
+      "timeout_means_cancelled": false
+    },
+    "isError": false
+  },
+  "vivado_stop": {
+    "content": [
+      {
+        "type": "text",
+        "text": "会话 'lite_led1324_pipeline' 已关闭。"
+      }
+    ],
+    "structuredContent": {
+      "result": "会话 'lite_led1324_pipeline' 已关闭。"
+    },
+    "isError": false
+  }
+}

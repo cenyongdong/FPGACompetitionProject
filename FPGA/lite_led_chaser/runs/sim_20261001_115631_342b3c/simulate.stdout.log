@@ -1,0 +1,16 @@
+
+****** xsim v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/led_chaser_tb/xsim_script.tcl
+# xsim {led_chaser_tb} -autoloadwcfg -tclbatch {sim.tcl}
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source sim.tcl
+## run all
+PASS: initialization, exact step boundaries, one-hot order and wrap; 3 divisors x 200 cycles
+$finish called at time : 1996 ns : File "D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_115631_342b3c/tb_lite_led_chaser.sv" Line 37
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct  1 11:57:01 2026...

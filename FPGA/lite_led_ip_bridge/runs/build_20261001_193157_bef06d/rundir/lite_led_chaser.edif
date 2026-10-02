@@ -1,0 +1,967 @@
+(edif lite_led_chaser
+  (edifVersion 2 0 0)
+  (edifLevel 0)
+  (keywordMap (keywordLevel 0))
+  (external UNISIMS
+    (edifLevel 0)
+    (technology (numberDefinition))
+    (cell LCARRY4
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port (array (rename CO "CO[3:0]") 4)
+            (direction OUTPUT))
+          (port (array (rename O "O[3:0]") 4)
+            (direction OUTPUT))
+          (port CI
+            (direction INPUT))
+          (port CYINIT
+            (direction INPUT))
+          (port (array (rename DI "DI[3:0]") 4)
+            (direction INPUT))
+          (port (array (rename S "S[3:0]") 4)
+            (direction INPUT))
+        )
+      )
+    )
+    (cell LUT6
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port O
+            (direction OUTPUT))
+          (port I0
+            (direction INPUT))
+          (port I1
+            (direction INPUT))
+          (port I2
+            (direction INPUT))
+          (port I3
+            (direction INPUT))
+          (port I4
+            (direction INPUT))
+          (port I5
+            (direction INPUT))
+        )
+      )
+    )
+    (cell LUT1
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port O
+            (direction OUTPUT))
+          (port I0
+            (direction INPUT))
+        )
+      )
+    )
+    (cell LUT4
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port O
+            (direction OUTPUT))
+          (port I0
+            (direction INPUT))
+          (port I1
+            (direction INPUT))
+          (port I2
+            (direction INPUT))
+          (port I3
+            (direction INPUT))
+        )
+      )
+    )
+    (cell LUT5
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port O
+            (direction OUTPUT))
+          (port I0
+            (direction INPUT))
+          (port I1
+            (direction INPUT))
+          (port I2
+            (direction INPUT))
+          (port I3
+            (direction INPUT))
+          (port I4
+            (direction INPUT))
+        )
+      )
+    )
+    (cell GCDU
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port O
+            (direction OUTPUT))
+          (port I
+            (direction INPUT))
+        )
+      )
+    )
+    (cell IDU
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port O
+            (direction OUTPUT))
+          (port I
+            (direction INPUT))
+        )
+      )
+    )
+    (cell ODU
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port O
+            (direction OUTPUT))
+          (port I
+            (direction INPUT))
+        )
+      )
+    )
+    (cell DRUE
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port Q
+            (direction OUTPUT))
+          (port C
+            (direction INPUT))
+          (port CE
+            (direction INPUT))
+          (port D
+            (direction INPUT))
+        )
+      )
+    )
+    (cell DRUR
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port Q
+            (direction OUTPUT))
+          (port C
+            (direction INPUT))
+          (port D
+            (direction INPUT))
+          (port R
+            (direction INPUT))
+        )
+      )
+    )
+    (cell GND
+      (cellType GENERIC)
+      (view model0
+        (viewType NETLIST)
+        (interface
+          (port G
+            (direction OUTPUT))
+        )
+      )
+    )
+  )
+  (library work_lib
+    (edifLevel 0)
+    (technology (numberDefinition))
+    (cell lite_led_chaser
+      (cellType GENERIC)
+      (view lite_led_chaser
+        (viewType NETLIST)
+        (interface
+          (port clk_100m
+            (direction INPUT))
+          (port (array (rename led "led[3:0]") 4)
+            (direction OUTPUT))
+        )
+        (contents
+          (instance (rename x_add_muxcy_0_cry "_add_muxcy_0_cry")
+            (viewRef model0 (cellRef LCARRY4 (libraryRef UNISIMS)))
+          )
+          (instance (rename x_add_muxcy_4_cry "_add_muxcy_4_cry")
+            (viewRef model0 (cellRef LCARRY4 (libraryRef UNISIMS)))
+          )
+          (instance (rename x_add_muxcy_8_cry "_add_muxcy_8_cry")
+            (viewRef model0 (cellRef LCARRY4 (libraryRef UNISIMS)))
+          )
+          (instance (rename x_add_muxcy_12_cry "_add_muxcy_12_cry")
+            (viewRef model0 (cellRef LCARRY4 (libraryRef UNISIMS)))
+          )
+          (instance (rename x_add_muxcy_16_cry "_add_muxcy_16_cry")
+            (viewRef model0 (cellRef LCARRY4 (libraryRef UNISIMS)))
+          )
+          (instance (rename x_add_muxcy_20_cry "_add_muxcy_20_cry")
+            (viewRef model0 (cellRef LCARRY4 (libraryRef UNISIMS)))
+          )
+          (instance (rename x_add_xorcy_24_tail_cary "_add_xorcy_24_tail_cary")
+            (viewRef model0 (cellRef LCARRY4 (libraryRef UNISIMS)))
+          )
+          (instance n84
+            (viewRef model0 (cellRef LUT6 (libraryRef UNISIMS)))
+            (property INIT (string "8000000000000000") (owner "FMSH"))
+          )
+          (instance (rename x_add_muxcy_0_inst_S "_add_muxcy_0_inst_S")
+            (viewRef model0 (cellRef LUT1 (libraryRef UNISIMS)))
+            (property INIT (string "1") (owner "FMSH"))
+          )
+          (instance n82
+            (viewRef model0 (cellRef LUT4 (libraryRef UNISIMS)))
+            (property INIT (string "0001") (owner "FMSH"))
+          )
+          (instance n86
+            (viewRef model0 (cellRef LUT5 (libraryRef UNISIMS)))
+            (property INIT (string "80000000") (owner "FMSH"))
+          )
+          (instance n88
+            (viewRef model0 (cellRef LUT6 (libraryRef UNISIMS)))
+            (property INIT (string "0800000000000000") (owner "FMSH"))
+          )
+          (instance (rename led_state_reg_0__inst_CE "led_state_reg[0]_inst_CE")
+            (viewRef model0 (cellRef LUT5 (libraryRef UNISIMS)))
+            (property INIT (string "00008000") (owner "FMSH"))
+          )
+          (instance n80
+            (viewRef model0 (cellRef LUT4 (libraryRef UNISIMS)))
+            (property INIT (string "0020") (owner "FMSH"))
+          )
+          (instance (rename clk_100m_GCDU "clk_100m_GCDU")
+            (viewRef model0 (cellRef GCDU (libraryRef UNISIMS)))
+          )
+          (instance (rename x_input_buffer_of_clk_100m "_input_buffer_of_clk_100m")
+            (viewRef model0 (cellRef IDU (libraryRef UNISIMS)))
+          )
+          (instance (rename x_output_buffer_of_led_3_ "_output_buffer_of_led[3]")
+            (viewRef model0 (cellRef ODU (libraryRef UNISIMS)))
+          )
+          (instance (rename x_output_buffer_of_led_2_ "_output_buffer_of_led[2]")
+            (viewRef model0 (cellRef ODU (libraryRef UNISIMS)))
+          )
+          (instance (rename x_output_buffer_of_led_1_ "_output_buffer_of_led[1]")
+            (viewRef model0 (cellRef ODU (libraryRef UNISIMS)))
+          )
+          (instance (rename led_state_reg_0_ "led_state_reg[0]")
+            (viewRef model0 (cellRef DRUE (libraryRef UNISIMS)))
+            (property INIT (string "1") (owner "FMSH"))
+            (property PROCISE_LINE_NUM (integer 9) (owner "FMSH"))
+            (property PROCISE_FILE_NAME (string "D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/lite_led_chaser.v") (owner "FMSH"))
+          )
+          (instance (rename led_state_reg_1_ "led_state_reg[1]")
+            (viewRef model0 (cellRef DRUE (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+            (property PROCISE_LINE_NUM (integer 9) (owner "FMSH"))
+            (property PROCISE_FILE_NAME (string "D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/lite_led_chaser.v") (owner "FMSH"))
+          )
+          (instance (rename led_state_reg_2_ "led_state_reg[2]")
+            (viewRef model0 (cellRef DRUE (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+            (property PROCISE_LINE_NUM (integer 9) (owner "FMSH"))
+            (property PROCISE_FILE_NAME (string "D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/lite_led_chaser.v") (owner "FMSH"))
+          )
+          (instance (rename led_state_reg_3_ "led_state_reg[3]")
+            (viewRef model0 (cellRef DRUE (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+            (property PROCISE_LINE_NUM (integer 9) (owner "FMSH"))
+            (property PROCISE_FILE_NAME (string "D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/lite_led_chaser.v") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_0_ "tick_count_reg[0]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_1_ "tick_count_reg[1]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_2_ "tick_count_reg[2]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_3_ "tick_count_reg[3]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_4_ "tick_count_reg[4]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_5_ "tick_count_reg[5]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_6_ "tick_count_reg[6]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_7_ "tick_count_reg[7]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_8_ "tick_count_reg[8]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_9_ "tick_count_reg[9]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_10_ "tick_count_reg[10]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_11_ "tick_count_reg[11]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_12_ "tick_count_reg[12]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_13_ "tick_count_reg[13]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_14_ "tick_count_reg[14]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_15_ "tick_count_reg[15]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_16_ "tick_count_reg[16]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_17_ "tick_count_reg[17]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_18_ "tick_count_reg[18]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_19_ "tick_count_reg[19]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_20_ "tick_count_reg[20]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_21_ "tick_count_reg[21]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_22_ "tick_count_reg[22]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_23_ "tick_count_reg[23]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename tick_count_reg_24_ "tick_count_reg[24]")
+            (viewRef model0 (cellRef DRUR (libraryRef UNISIMS)))
+            (property INIT (string "0") (owner "FMSH"))
+          )
+          (instance (rename x_output_buffer_of_led_0_ "_output_buffer_of_led[0]")
+            (viewRef model0 (cellRef ODU (libraryRef UNISIMS)))
+          )
+          (instance (rename state_permutation_GND "state_permutation/GND")
+            (viewRef model0 (cellRef GND (libraryRef UNISIMS)))
+          )
+          (net (rename led_3_ "led[3]")
+            (joined
+              (portRef O (instanceRef x_output_buffer_of_led_3_))
+              (portRef (member led 0))
+            )
+          )
+          (net (rename led_2_ "led[2]")
+            (joined
+              (portRef O (instanceRef x_output_buffer_of_led_2_))
+              (portRef (member led 1))
+            )
+          )
+          (net (rename led_0_ "led[0]")
+            (joined
+              (portRef O (instanceRef x_output_buffer_of_led_0_))
+              (portRef (member led 3))
+            )
+          )
+          (net (rename led_1_ "led[1]")
+            (joined
+              (portRef O (instanceRef x_output_buffer_of_led_1_))
+              (portRef (member led 2))
+            )
+          )
+          (net (rename led_OBUF_1_ "led_OBUF[1]")
+            (joined
+              (portRef Q (instanceRef led_state_reg_1_))
+              (portRef I (instanceRef x_output_buffer_of_led_1_))
+              (portRef D (instanceRef led_state_reg_3_))
+            )
+          )
+          (net (rename led_OBUF_0_ "led_OBUF[0]")
+            (joined
+              (portRef Q (instanceRef led_state_reg_0_))
+              (portRef I (instanceRef x_output_buffer_of_led_0_))
+              (portRef D (instanceRef led_state_reg_2_))
+            )
+          )
+          (net (rename tick_count_24_ "tick_count[24]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_24_))
+              (portRef I2 (instanceRef led_state_reg_0__inst_CE))
+              (portRef (member S 3) (instanceRef x_add_xorcy_24_tail_cary))
+            )
+          )
+          (net (rename tick_count_23_ "tick_count[23]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_23_))
+              (portRef (member DI 0) (instanceRef x_add_muxcy_20_cry))
+              (portRef I4 (instanceRef led_state_reg_0__inst_CE))
+              (portRef (member S 0) (instanceRef x_add_muxcy_20_cry))
+            )
+          )
+          (net (rename tick_count_22_ "tick_count[22]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_22_))
+              (portRef (member S 1) (instanceRef x_add_muxcy_20_cry))
+              (portRef (member DI 1) (instanceRef x_add_muxcy_20_cry))
+              (portRef I3 (instanceRef led_state_reg_0__inst_CE))
+            )
+          )
+          (net (rename tick_count_21_ "tick_count[21]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_21_))
+              (portRef (member S 2) (instanceRef x_add_muxcy_20_cry))
+              (portRef I4 (instanceRef n86))
+              (portRef (member DI 2) (instanceRef x_add_muxcy_20_cry))
+            )
+          )
+          (net (rename tick_count_20_ "tick_count[20]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_20_))
+              (portRef (member S 3) (instanceRef x_add_muxcy_20_cry))
+              (portRef I3 (instanceRef n86))
+              (portRef (member DI 3) (instanceRef x_add_muxcy_20_cry))
+            )
+          )
+          (net (rename tick_count_19_ "tick_count[19]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_19_))
+              (portRef (member S 0) (instanceRef x_add_muxcy_16_cry))
+              (portRef I2 (instanceRef n86))
+              (portRef (member DI 0) (instanceRef x_add_muxcy_16_cry))
+            )
+          )
+          (net (rename tick_count_18_ "tick_count[18]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_18_))
+              (portRef (member S 1) (instanceRef x_add_muxcy_16_cry))
+              (portRef I1 (instanceRef n86))
+              (portRef (member DI 1) (instanceRef x_add_muxcy_16_cry))
+            )
+          )
+          (net (rename tick_count_17_ "tick_count[17]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_17_))
+              (portRef (member DI 2) (instanceRef x_add_muxcy_16_cry))
+              (portRef I3 (instanceRef n80))
+              (portRef (member S 2) (instanceRef x_add_muxcy_16_cry))
+            )
+          )
+          (net (rename tick_count_16_ "tick_count[16]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_16_))
+              (portRef (member S 3) (instanceRef x_add_muxcy_16_cry))
+              (portRef I2 (instanceRef n80))
+              (portRef (member DI 3) (instanceRef x_add_muxcy_16_cry))
+            )
+          )
+          (net (rename tick_count_15_ "tick_count[15]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_15_))
+              (portRef (member DI 0) (instanceRef x_add_muxcy_12_cry))
+              (portRef I1 (instanceRef n80))
+              (portRef (member S 0) (instanceRef x_add_muxcy_12_cry))
+            )
+          )
+          (net (rename tick_count_14_ "tick_count[14]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_14_))
+              (portRef (member S 1) (instanceRef x_add_muxcy_12_cry))
+              (portRef I0 (instanceRef n80))
+              (portRef (member DI 1) (instanceRef x_add_muxcy_12_cry))
+            )
+          )
+          (net (rename tick_count_13_ "tick_count[13]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_13_))
+              (portRef (member S 2) (instanceRef x_add_muxcy_12_cry))
+              (portRef (member DI 2) (instanceRef x_add_muxcy_12_cry))
+              (portRef I5 (instanceRef n88))
+            )
+          )
+          (net (rename tick_count_12_ "tick_count[12]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_12_))
+              (portRef (member S 3) (instanceRef x_add_muxcy_12_cry))
+              (portRef (member DI 3) (instanceRef x_add_muxcy_12_cry))
+              (portRef I4 (instanceRef n88))
+            )
+          )
+          (net (rename tick_count_11_ "tick_count[11]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_11_))
+              (portRef (member S 0) (instanceRef x_add_muxcy_8_cry))
+              (portRef (member DI 0) (instanceRef x_add_muxcy_8_cry))
+              (portRef I3 (instanceRef n88))
+            )
+          )
+          (net (rename tick_count_10_ "tick_count[10]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_10_))
+              (portRef (member DI 1) (instanceRef x_add_muxcy_8_cry))
+              (portRef I2 (instanceRef n88))
+              (portRef (member S 1) (instanceRef x_add_muxcy_8_cry))
+            )
+          )
+          (net (rename tick_count_9_ "tick_count[9]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_9_))
+              (portRef (member DI 2) (instanceRef x_add_muxcy_8_cry))
+              (portRef I3 (instanceRef n82))
+              (portRef (member S 2) (instanceRef x_add_muxcy_8_cry))
+            )
+          )
+          (net (rename tick_count_8_ "tick_count[8]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_8_))
+              (portRef (member DI 3) (instanceRef x_add_muxcy_8_cry))
+              (portRef I2 (instanceRef n82))
+              (portRef (member S 3) (instanceRef x_add_muxcy_8_cry))
+            )
+          )
+          (net (rename tick_count_7_ "tick_count[7]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_7_))
+              (portRef (member DI 0) (instanceRef x_add_muxcy_4_cry))
+              (portRef I1 (instanceRef n82))
+              (portRef (member S 0) (instanceRef x_add_muxcy_4_cry))
+            )
+          )
+          (net (rename tick_count_6_ "tick_count[6]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_6_))
+              (portRef (member DI 1) (instanceRef x_add_muxcy_4_cry))
+              (portRef I0 (instanceRef n82))
+              (portRef (member S 1) (instanceRef x_add_muxcy_4_cry))
+            )
+          )
+          (net (rename tick_count_5_ "tick_count[5]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_5_))
+              (portRef (member S 2) (instanceRef x_add_muxcy_4_cry))
+              (portRef I5 (instanceRef n84))
+              (portRef (member DI 2) (instanceRef x_add_muxcy_4_cry))
+            )
+          )
+          (net (rename tick_count_4_ "tick_count[4]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_4_))
+              (portRef (member S 3) (instanceRef x_add_muxcy_4_cry))
+              (portRef I4 (instanceRef n84))
+              (portRef (member DI 3) (instanceRef x_add_muxcy_4_cry))
+            )
+          )
+          (net (rename tick_count_3_ "tick_count[3]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_3_))
+              (portRef (member S 0) (instanceRef x_add_muxcy_0_cry))
+              (portRef I3 (instanceRef n84))
+              (portRef (member DI 0) (instanceRef x_add_muxcy_0_cry))
+            )
+          )
+          (net (rename tick_count_2_ "tick_count[2]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_2_))
+              (portRef (member S 1) (instanceRef x_add_muxcy_0_cry))
+              (portRef I2 (instanceRef n84))
+              (portRef (member DI 1) (instanceRef x_add_muxcy_0_cry))
+            )
+          )
+          (net (rename tick_count_1_ "tick_count[1]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_1_))
+              (portRef (member S 2) (instanceRef x_add_muxcy_0_cry))
+              (portRef I1 (instanceRef n84))
+              (portRef (member DI 2) (instanceRef x_add_muxcy_0_cry))
+            )
+          )
+          (net (rename tick_count_0_ "tick_count[0]")
+            (joined
+              (portRef Q (instanceRef tick_count_reg_0_))
+              (portRef I0 (instanceRef n84))
+              (portRef I0 (instanceRef x_add_muxcy_0_inst_S))
+              (portRef (member DI 3) (instanceRef x_add_muxcy_0_cry))
+            )
+          )
+          (net elem_0
+            (joined
+              (portRef (member O 3) (instanceRef x_add_xorcy_24_tail_cary))
+              (portRef D (instanceRef tick_count_reg_24_))
+            )
+          )
+          (net elem_1
+            (joined
+              (portRef (member O 0) (instanceRef x_add_muxcy_20_cry))
+              (portRef D (instanceRef tick_count_reg_23_))
+            )
+          )
+          (net elem_2
+            (joined
+              (portRef (member O 1) (instanceRef x_add_muxcy_20_cry))
+              (portRef D (instanceRef tick_count_reg_22_))
+            )
+          )
+          (net elem_3
+            (joined
+              (portRef (member O 2) (instanceRef x_add_muxcy_20_cry))
+              (portRef D (instanceRef tick_count_reg_21_))
+            )
+          )
+          (net elem_4
+            (joined
+              (portRef (member O 3) (instanceRef x_add_muxcy_20_cry))
+              (portRef D (instanceRef tick_count_reg_20_))
+            )
+          )
+          (net elem_5
+            (joined
+              (portRef (member O 0) (instanceRef x_add_muxcy_16_cry))
+              (portRef D (instanceRef tick_count_reg_19_))
+            )
+          )
+          (net elem_6
+            (joined
+              (portRef (member O 1) (instanceRef x_add_muxcy_16_cry))
+              (portRef D (instanceRef tick_count_reg_18_))
+            )
+          )
+          (net elem_7
+            (joined
+              (portRef (member O 2) (instanceRef x_add_muxcy_16_cry))
+              (portRef D (instanceRef tick_count_reg_17_))
+            )
+          )
+          (net elem_8
+            (joined
+              (portRef (member O 3) (instanceRef x_add_muxcy_16_cry))
+              (portRef D (instanceRef tick_count_reg_16_))
+            )
+          )
+          (net elem_9
+            (joined
+              (portRef (member O 0) (instanceRef x_add_muxcy_12_cry))
+              (portRef D (instanceRef tick_count_reg_15_))
+            )
+          )
+          (net elem_10
+            (joined
+              (portRef (member O 1) (instanceRef x_add_muxcy_12_cry))
+              (portRef D (instanceRef tick_count_reg_14_))
+            )
+          )
+          (net elem_11
+            (joined
+              (portRef (member O 2) (instanceRef x_add_muxcy_12_cry))
+              (portRef D (instanceRef tick_count_reg_13_))
+            )
+          )
+          (net elem_12
+            (joined
+              (portRef (member O 3) (instanceRef x_add_muxcy_12_cry))
+              (portRef D (instanceRef tick_count_reg_12_))
+            )
+          )
+          (net elem_13
+            (joined
+              (portRef (member O 0) (instanceRef x_add_muxcy_8_cry))
+              (portRef D (instanceRef tick_count_reg_11_))
+            )
+          )
+          (net elem_14
+            (joined
+              (portRef (member O 1) (instanceRef x_add_muxcy_8_cry))
+              (portRef D (instanceRef tick_count_reg_10_))
+            )
+          )
+          (net elem_15
+            (joined
+              (portRef (member O 2) (instanceRef x_add_muxcy_8_cry))
+              (portRef D (instanceRef tick_count_reg_9_))
+            )
+          )
+          (net elem_16
+            (joined
+              (portRef (member O 3) (instanceRef x_add_muxcy_8_cry))
+              (portRef D (instanceRef tick_count_reg_8_))
+            )
+          )
+          (net elem_17
+            (joined
+              (portRef (member O 0) (instanceRef x_add_muxcy_4_cry))
+              (portRef D (instanceRef tick_count_reg_7_))
+            )
+          )
+          (net elem_18
+            (joined
+              (portRef (member O 1) (instanceRef x_add_muxcy_4_cry))
+              (portRef D (instanceRef tick_count_reg_6_))
+            )
+          )
+          (net elem_19
+            (joined
+              (portRef (member O 2) (instanceRef x_add_muxcy_4_cry))
+              (portRef D (instanceRef tick_count_reg_5_))
+            )
+          )
+          (net elem_20
+            (joined
+              (portRef (member O 3) (instanceRef x_add_muxcy_4_cry))
+              (portRef D (instanceRef tick_count_reg_4_))
+            )
+          )
+          (net elem_21
+            (joined
+              (portRef (member O 0) (instanceRef x_add_muxcy_0_cry))
+              (portRef D (instanceRef tick_count_reg_3_))
+            )
+          )
+          (net elem_22
+            (joined
+              (portRef (member O 1) (instanceRef x_add_muxcy_0_cry))
+              (portRef D (instanceRef tick_count_reg_2_))
+            )
+          )
+          (net elem_23
+            (joined
+              (portRef (member O 2) (instanceRef x_add_muxcy_0_cry))
+              (portRef D (instanceRef tick_count_reg_1_))
+            )
+          )
+          (net (rename x_add_muxcy_24_CI "_add_muxcy_24_CI")
+            (joined
+              (portRef (member CO 0) (instanceRef x_add_muxcy_20_cry))
+              (portRef CI (instanceRef x_add_xorcy_24_tail_cary))
+            )
+          )
+          (net (rename x_add_muxcy_20_CI "_add_muxcy_20_CI")
+            (joined
+              (portRef (member CO 0) (instanceRef x_add_muxcy_16_cry))
+              (portRef CI (instanceRef x_add_muxcy_20_cry))
+            )
+          )
+          (net (rename x_add_muxcy_16_CI "_add_muxcy_16_CI")
+            (joined
+              (portRef (member CO 0) (instanceRef x_add_muxcy_12_cry))
+              (portRef CI (instanceRef x_add_muxcy_16_cry))
+            )
+          )
+          (net (rename x_add_muxcy_12_CI "_add_muxcy_12_CI")
+            (joined
+              (portRef (member CO 0) (instanceRef x_add_muxcy_8_cry))
+              (portRef CI (instanceRef x_add_muxcy_12_cry))
+            )
+          )
+          (net (rename x_add_muxcy_8_CI "_add_muxcy_8_CI")
+            (joined
+              (portRef (member CO 0) (instanceRef x_add_muxcy_4_cry))
+              (portRef CI (instanceRef x_add_muxcy_8_cry))
+            )
+          )
+          (net (rename x_add_muxcy_4_CI "_add_muxcy_4_CI")
+            (joined
+              (portRef (member CO 0) (instanceRef x_add_muxcy_0_cry))
+              (portRef CI (instanceRef x_add_muxcy_4_cry))
+            )
+          )
+          (net net_75
+            (joined
+              (portRef O (instanceRef led_state_reg_0__inst_CE))
+              (portRef CE (instanceRef led_state_reg_0_))
+              (portRef CE (instanceRef led_state_reg_1_))
+              (portRef CE (instanceRef led_state_reg_2_))
+              (portRef CE (instanceRef led_state_reg_3_))
+              (portRef R (instanceRef tick_count_reg_0_))
+              (portRef R (instanceRef tick_count_reg_1_))
+              (portRef R (instanceRef tick_count_reg_2_))
+              (portRef R (instanceRef tick_count_reg_3_))
+              (portRef R (instanceRef tick_count_reg_4_))
+              (portRef R (instanceRef tick_count_reg_5_))
+              (portRef R (instanceRef tick_count_reg_6_))
+              (portRef R (instanceRef tick_count_reg_7_))
+              (portRef R (instanceRef tick_count_reg_8_))
+              (portRef R (instanceRef tick_count_reg_9_))
+              (portRef R (instanceRef tick_count_reg_10_))
+              (portRef R (instanceRef tick_count_reg_11_))
+              (portRef R (instanceRef tick_count_reg_12_))
+              (portRef R (instanceRef tick_count_reg_13_))
+              (portRef R (instanceRef tick_count_reg_14_))
+              (portRef R (instanceRef tick_count_reg_15_))
+              (portRef R (instanceRef tick_count_reg_16_))
+              (portRef R (instanceRef tick_count_reg_17_))
+              (portRef R (instanceRef tick_count_reg_18_))
+              (portRef R (instanceRef tick_count_reg_19_))
+              (portRef R (instanceRef tick_count_reg_20_))
+              (portRef R (instanceRef tick_count_reg_21_))
+              (portRef R (instanceRef tick_count_reg_22_))
+              (portRef R (instanceRef tick_count_reg_23_))
+              (portRef R (instanceRef tick_count_reg_24_))
+            )
+          )
+          (net (rename clk_100m_IBUF "clk_100m_IBUF")
+            (joined
+              (portRef O (instanceRef x_input_buffer_of_clk_100m))
+              (portRef I (instanceRef clk_100m_GCDU))
+            )
+          )
+          (net net_38
+            (joined
+              (portRef O (instanceRef n82))
+              (portRef I1 (instanceRef n88))
+            )
+          )
+          (net net_40
+            (joined
+              (portRef O (instanceRef n80))
+              (portRef I0 (instanceRef n86))
+            )
+          )
+          (net net_42
+            (joined
+              (portRef O (instanceRef n86))
+              (portRef I1 (instanceRef led_state_reg_0__inst_CE))
+            )
+          )
+          (net net_43
+            (joined
+              (portRef O (instanceRef n84))
+              (portRef I0 (instanceRef n88))
+            )
+          )
+          (net net_46
+            (joined
+              (portRef O (instanceRef n88))
+              (portRef I0 (instanceRef led_state_reg_0__inst_CE))
+            )
+          )
+          (net net_50
+            (joined
+              (portRef O (instanceRef x_add_muxcy_0_inst_S))
+              (portRef (member S 3) (instanceRef x_add_muxcy_0_cry))
+              (portRef D (instanceRef tick_count_reg_0_))
+            )
+          )
+          (net (rename state_permutation__const0_ "state_permutation/<const0>")
+            (joined
+              (portRef G (instanceRef state_permutation_GND))
+              (portRef CYINIT (instanceRef x_add_xorcy_24_tail_cary))
+              (portRef (member S 1) (instanceRef x_add_xorcy_24_tail_cary))
+              (portRef CI (instanceRef x_add_muxcy_0_cry))
+              (portRef (member DI 3) (instanceRef x_add_xorcy_24_tail_cary))
+              (portRef CYINIT (instanceRef x_add_muxcy_4_cry))
+              (portRef (member DI 1) (instanceRef x_add_xorcy_24_tail_cary))
+              (portRef CYINIT (instanceRef x_add_muxcy_0_cry))
+              (portRef (member DI 0) (instanceRef x_add_xorcy_24_tail_cary))
+              (portRef CYINIT (instanceRef x_add_muxcy_20_cry))
+              (portRef (member S 0) (instanceRef x_add_xorcy_24_tail_cary))
+              (portRef CYINIT (instanceRef x_add_muxcy_8_cry))
+              (portRef (member DI 2) (instanceRef x_add_xorcy_24_tail_cary))
+              (portRef CYINIT (instanceRef x_add_muxcy_12_cry))
+              (portRef CYINIT (instanceRef x_add_muxcy_16_cry))
+              (portRef (member S 2) (instanceRef x_add_xorcy_24_tail_cary))
+            )
+          )
+          (net (rename clk_100m__BUFG_net "clk_100m__BUFG_net")
+            (joined
+              (portRef O (instanceRef clk_100m_GCDU))
+              (portRef C (instanceRef led_state_reg_0_))
+              (portRef C (instanceRef led_state_reg_1_))
+              (portRef C (instanceRef led_state_reg_2_))
+              (portRef C (instanceRef led_state_reg_3_))
+              (portRef C (instanceRef tick_count_reg_0_))
+              (portRef C (instanceRef tick_count_reg_1_))
+              (portRef C (instanceRef tick_count_reg_2_))
+              (portRef C (instanceRef tick_count_reg_3_))
+              (portRef C (instanceRef tick_count_reg_4_))
+              (portRef C (instanceRef tick_count_reg_5_))
+              (portRef C (instanceRef tick_count_reg_6_))
+              (portRef C (instanceRef tick_count_reg_7_))
+              (portRef C (instanceRef tick_count_reg_8_))
+              (portRef C (instanceRef tick_count_reg_9_))
+              (portRef C (instanceRef tick_count_reg_10_))
+              (portRef C (instanceRef tick_count_reg_11_))
+              (portRef C (instanceRef tick_count_reg_12_))
+              (portRef C (instanceRef tick_count_reg_13_))
+              (portRef C (instanceRef tick_count_reg_14_))
+              (portRef C (instanceRef tick_count_reg_15_))
+              (portRef C (instanceRef tick_count_reg_16_))
+              (portRef C (instanceRef tick_count_reg_17_))
+              (portRef C (instanceRef tick_count_reg_18_))
+              (portRef C (instanceRef tick_count_reg_19_))
+              (portRef C (instanceRef tick_count_reg_20_))
+              (portRef C (instanceRef tick_count_reg_21_))
+              (portRef C (instanceRef tick_count_reg_22_))
+              (portRef C (instanceRef tick_count_reg_23_))
+              (portRef C (instanceRef tick_count_reg_24_))
+            )
+          )
+          (net clk_100m
+            (joined
+              (portRef clk_100m)
+              (portRef I (instanceRef x_input_buffer_of_clk_100m))
+            )
+          )
+          (net (rename led_OBUF_3_ "led_OBUF[3]")
+            (joined
+              (portRef Q (instanceRef led_state_reg_3_))
+              (portRef I (instanceRef x_output_buffer_of_led_3_))
+              (portRef D (instanceRef led_state_reg_0_))
+            )
+          )
+          (net (rename led_OBUF_2_ "led_OBUF[2]")
+            (joined
+              (portRef Q (instanceRef led_state_reg_2_))
+              (portRef I (instanceRef x_output_buffer_of_led_2_))
+              (portRef D (instanceRef led_state_reg_1_))
+            )
+          )
+          (net vcc
+            (joined
+            )
+          )
+        )
+      )
+    )
+  )
+  (design lite_led_chaser
+    (cellRef lite_led_chaser
+      (libraryRef work_lib))
+    (property PART (string "JFMQL30TAI676H") (owner "FMSH")))
+)

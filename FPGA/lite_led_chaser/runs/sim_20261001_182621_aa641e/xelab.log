@@ -1,0 +1,14 @@
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe tb_lite_led_chaser -s led_chaser_tb 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.lite_led_chaser(TICKS_PER_STEP=1...
+Compiling module work.lite_led_chaser(TICKS_PER_STEP=7...
+Compiling module work.lite_led_chaser(TICKS_PER_STEP=1...
+Compiling module work.tb_lite_led_chaser
+Built simulation snapshot led_chaser_tb

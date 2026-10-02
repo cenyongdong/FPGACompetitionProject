@@ -1,0 +1,23 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-01 11:50:51
+QUERY_HELP get_cable_info
+  HelpInfo::
+  Command name : get_cable_info
+  Option:  -help -h
+QUERY_RESULT 
+QUERY_HELP init_chain
+  HelpInfo::
+  Command name : init_chain
+  Option:  -cable_type <string> -cable_speed <string> -slave_serial -serial_number <string> -help -h
+QUERY_RESULT 
+QUERY_HELP program_bit
+  HelpInfo::
+  Command name : program_bit
+  Option: <string> -part <string> -svf_file_mode -no_jprogram -help -h
+QUERY_RESULT 
+DEVICE_COMMANDS boot_device set_device report_device_resources device_bit_size
+READ_COMMANDS read_userid read_flashid read_edif xadc_readval read_pr read_verilog read_prj read_efuse read_ucf read_bootsts_stat readback_cfgmem readback_bit read read_reg test_read_blif read_fdc read_vhdl read_cdc read_bd read_sdc read_unimacro_lib read_phy_design read_rtl
+
+Thank you for using procise!

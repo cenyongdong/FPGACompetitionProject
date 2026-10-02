@@ -1,0 +1,20 @@
+{
+    "all": {
+        "error": [
+        ]
+    },
+    "last_cmd": "load_design",
+    "last_cmd_stage": 2,
+    "load_design": {
+        "error": [
+        ],
+        "log": ">>load_design -stage_post_map -no_hier\n  -- Analyzing Verilog file 'D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/xlconcat_v2_1_vl_rfs.v' (VERI-1482)\n  -- Analyzing Verilog file 'D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/led_state_concat.v' (VERI-1482)\n  -- Analyzing Verilog file 'D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/lite_led_chaser.v' (VERI-1482)\n  read_phy_design D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/rundir/.f1a6faf4e30bb0adf31b2a03de098033.phy\n  Read FDC D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/build_20261001_193157_bef06d/rundir/lite_led_chaser_placed.fdc\n  load_design elapsed_time 1.39 seconds, cpu_time 1.36 seconds\n  load_design used memory 17MB, procise used peak memory 736MB, current used memory 640MB\n"
+    },
+    "set_device": {
+        "error": [
+        ],
+        "log": ">>set_device JFMQL30TAI676H\n  set_device elapsed_time 3.01 seconds, cpu_time 2.86 seconds\n  set_device used memory 659MB, procise used peak memory 736MB, current used memory 575MB\n\n"
+    },
+    "timer": {
+    }
+}

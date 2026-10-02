@@ -1,0 +1,14 @@
+{
+  "status": "pre-change snapshot; implementation awaiting approval",
+  "files": {
+    "rtl/lite_led_chaser.v": "955cdc2093522a67644a9ffacea3ebfa611f7e5a85f0f284f30b34836f81863b",
+    "sim/tb_lite_led_chaser.sv": "457f2d372d1f46db114e3698301e62b671d9f62364ba1c0b6895f0c63e9ad746",
+    "constraints/lite_led_chaser.fdc": "8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120",
+    "scripts/Build.ps1": "c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2",
+    "scripts/build.tcl": "6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a",
+    "scripts/Simulate.ps1": "99d3699aaa9f8ab9da8e587845aed0e511801efeae37c8e7ed8ea7d8a8af913d",
+    "scripts/ReviewBuild.py": "1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806"
+  },
+  "original_board_bitstream_sha256": "a443d8f4bfde85eedc9de0e0328680cbb5d06c364f1113c55b14c4c6f4475eec",
+  "backup_directory_exists": false
+}

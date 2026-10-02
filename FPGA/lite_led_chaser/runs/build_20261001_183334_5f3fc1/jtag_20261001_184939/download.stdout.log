@@ -1,0 +1,57 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-01 18:49:56
+>>get_cable_info
+  1 cable is connected.
+  1.Cable : DIGILENT/JTAG-HS1, dev vid : 0x403, dev pid : 0x6014, serial number : 210512180081
+  get_cable_info elapsed_time 0.12 seconds, cpu_time 0.00 seconds
+  get_cable_info used memory 0MB, procise used peak memory 34MB, current used memory 34MB
+>>init_chain -cable_type usb-jtag-hs1 -serial_number 210512180081
+  procise_jtag version: 30794
+  hw_server:  Set FTDI speed to 15000khz successfully
+  ----------------------------------------------------------------------
+  hw_server:  FTDI speed is already 15000khz
+  device_id:    10010011011100101100000010010011
+  manufacturer: FMSH
+  part_name:    jfmql30
+  part_id:      0
+  ir_length:    6
+  version:      0
+  step_id:      0
+  hw_server:  JTAG tap: Procise found HwServer chain_info: 0x9372c093 (mfg:0x049(FMSH), part:0x372c(jfmql30), ver:0x9)
+  ----------------------------------------------------------------------
+  hw_server:  JTAG tap: Procise found HwServer chain_info: 0x6ba00477 (mfg:0x23b(ARM), part:0xba00(arm_dap), ver:0x6)
+  device_id:    01101011101000000000010001110111
+  manufacturer: FMSH
+  part_name:    ps_dap
+  part_id:      1
+  ir_length:    4
+  version:      0
+  step_id:      0
+  hw_server:  Set FTDI speed to 15000khz successfully
+  hw_server:  SVF instructions execute success
+  hw_server:  Set FTDI speed to 15000khz successfully
+  hw_server:  SVF instructions execute success
+  init_chain elapsed_time 3.97 seconds, cpu_time 0.03 seconds
+  init_chain used memory 1MB, procise used peak memory 35MB, current used memory 35MB
+PROGRAM_EXPECTED_TARGET jfmql30 part 0 IDCODE 0x9372c093
+>>program_bit D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/build_20261001_183334_5f3fc1/rundir/lite_led_chaser.bit -part 0
+  hw_server:  Set FTDI speed to 15000khz successfully
+  hw_server:  Accepting 'procise' connection 1364 on tcp 8888
+  BOOTSTS: 0x00000001
+  STAT: 0x40007ffc
+  Startup state machine: Phase 5
+  hw_server:  SVF instructions execute success
+  program_bit elapsed_time 5.09 seconds, cpu_time 0.03 seconds
+  program_bit used memory 17MB, procise used peak memory 52MB, current used memory 52MB
+PROGRAM_TCL_COMPLETED
+>>read_reg -part 0 -reg STAT -read
+  hw_server:  Set FTDI speed to 15000khz successfully
+  cfg-reg stat: 0x40007ffc
+  hw_server:  SVF instructions execute success
+  read_reg elapsed_time 0.09 seconds, cpu_time 0.00 seconds
+  read_reg used memory 0MB, procise used peak memory 52MB, current used memory 35MB
+STATUS_READ_RESULT 
+
+Thank you for using procise!

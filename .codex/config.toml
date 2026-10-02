@@ -1,0 +1,8 @@
+# Added with explicit user approval on 2026-10-01; project-local LED prototype.
+[mcp_servers.procise_lite]
+command = 'D:\FPGACompetitionProject\.local\procise-mcp-venv\Scripts\python.exe'
+args = ['D:\FPGACompetitionProject\tools\procise_mcp\server.py']
+cwd = 'D:\FPGACompetitionProject'
+startup_timeout_sec = 20
+tool_timeout_sec = 60
+enabled_tools = ['get_environment', 'read_build_report', 'start_led_build', 'get_job_status', 'tail_job_log', 'list_artifacts', 'review_led_build']

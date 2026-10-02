@@ -1,0 +1,31 @@
+# exported FDC from constraint manager
+
+# config constraints
+
+# inst constraints
+
+# net constraints
+
+# pin constraints
+set_property PACKAGE_PIN AC14 [get_ports {clk_100m}]
+set_property IOSTANDARD LVCMOS33 [get_ports {clk_100m}]
+set_property PACKAGE_PIN J1 [get_ports {led[0]}]
+set_property IOSTANDARD LVCMOS15 [get_ports {led[0]}]
+set_property DRIVE 4 [get_ports {led[0]}]
+set_property SLEW SLOW [get_ports {led[0]}]
+set_property PACKAGE_PIN M6 [get_ports {led[1]}]
+set_property IOSTANDARD LVCMOS15 [get_ports {led[1]}]
+set_property DRIVE 4 [get_ports {led[1]}]
+set_property SLEW SLOW [get_ports {led[1]}]
+set_property PACKAGE_PIN H7 [get_ports {led[2]}]
+set_property IOSTANDARD LVCMOS15 [get_ports {led[2]}]
+set_property DRIVE 4 [get_ports {led[2]}]
+set_property SLEW SLOW [get_ports {led[2]}]
+set_property PACKAGE_PIN J8 [get_ports {led[3]}]
+set_property IOSTANDARD LVCMOS15 [get_ports {led[3]}]
+set_property DRIVE 4 [get_ports {led[3]}]
+set_property SLEW SLOW [get_ports {led[3]}]
+
+# timing constraints
+create_clock -name pl_100mhz -period 10 -waveform {0 5} [get_ports {clk_100m}]
+

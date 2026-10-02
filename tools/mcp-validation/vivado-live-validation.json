@@ -1,0 +1,87 @@
+{
+  "start": {
+    "content": [
+      {
+        "type": "text",
+        "text": "会话 'lite_aux_amd64_validation' 已就绪（mode=tcl）。\nVivado: D:\\FPGACompetitionProject\\tools\\mcp-validation\\Vivado-AMD64-Test.cmd\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY"
+      }
+    ],
+    "structuredContent": {
+      "result": "会话 'lite_aux_amd64_validation' 已就绪（mode=tcl）。\nVivado: D:\\FPGACompetitionProject\\tools\\mcp-validation\\Vivado-AMD64-Test.cmd\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY"
+    },
+    "isError": false
+  },
+  "version": {
+    "content": [
+      {
+        "type": "text",
+        "text": "LIVE_VIVADO_VERSION 2019.1"
+      }
+    ],
+    "structuredContent": {
+      "result": "LIVE_VIVADO_VERSION 2019.1"
+    },
+    "isError": false
+  },
+  "expected_error": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[ERROR] (rc=1)\nEXPECTED_LIVE_MCP_ERROR"
+      }
+    ],
+    "structuredContent": {
+      "result": "[ERROR] (rc=1)\nEXPECTED_LIVE_MCP_ERROR"
+    },
+    "isError": false
+  },
+  "recovery": {
+    "content": [
+      {
+        "type": "text",
+        "text": "LIVE_AFTER_ERROR_OK"
+      }
+    ],
+    "structuredContent": {
+      "result": "LIVE_AFTER_ERROR_OK"
+    },
+    "isError": false
+  },
+  "simulation": {
+    "content": [
+      {
+        "type": "text",
+        "text": "SIMULATION_PASS\nSimulation directory: D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_170754_15228a\n\n****** xsim v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nsource xsim.dir/led_chaser_tb/xsim_script.tcl\n# xsim {led_chaser_tb} -autoloadwcfg -tclbatch {sim.tcl}\nSimulator 2019.1\nTime resolution is 1 ps\nsource sim.tcl\n## run all\nPASS: initialization, exact step boundaries, one-hot order and wrap; 3 divisors x 200 cycles\n$finish called at time : 1996 ns : File \"D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_170754_15228a/tb_lite_led_chaser.sv\" Line 37\n## quit\nINFO: [Common 17-206] Exiting xsim at Thu Oct  1 17:08:03 2026..."
+      }
+    ],
+    "structuredContent": {
+      "result": "SIMULATION_PASS\nSimulation directory: D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_170754_15228a\n\n****** xsim v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nsource xsim.dir/led_chaser_tb/xsim_script.tcl\n# xsim {led_chaser_tb} -autoloadwcfg -tclbatch {sim.tcl}\nSimulator 2019.1\nTime resolution is 1 ps\nsource sim.tcl\n## run all\nPASS: initialization, exact step boundaries, one-hot order and wrap; 3 divisors x 200 cycles\n$finish called at time : 1996 ns : File \"D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_170754_15228a/tb_lite_led_chaser.sv\" Line 37\n## quit\nINFO: [Common 17-206] Exiting xsim at Thu Oct  1 17:08:03 2026..."
+    },
+    "isError": false
+  },
+  "stop": {
+    "content": [
+      {
+        "type": "text",
+        "text": "会话 'lite_aux_amd64_validation' 已关闭。"
+      }
+    ],
+    "structuredContent": {
+      "result": "会话 'lite_aux_amd64_validation' 已关闭。"
+    },
+    "isError": false
+  },
+  "status": "passed_with_temporary_child_architecture_override",
+  "permanent_configuration_changed": false,
+  "failure_before_override": "Both PROCESSOR_ARCHITECTURE and PROCESSOR_ARCHITEW6432 empty; loader selected missing win32.o executable",
+  "independent_checks": {
+    "status": "passed",
+    "live_sim_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_170754_15228a",
+    "rtl_sha256": "955cdc2093522a67644a9ffacea3ebfa611f7e5a85f0f284f30b34836f81863b",
+    "simulation_log_sha256": "306fa672f23296acf7ec75341028bffec248c208ba684723cae125174b88fd82",
+    "testbench_sha256": "457f2d372d1f46db114e3698301e62b671d9f62364ba1c0b6895f0c63e9ad746",
+    "same_rtl_as_reviewed_procise_build": true,
+    "finish_ns": 1996,
+    "simulation_log_encoding": "UTF-16 BOM"
+  }
+}

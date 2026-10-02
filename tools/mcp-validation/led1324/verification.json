@@ -1,0 +1,160 @@
+{
+  "status": "passed",
+  "scope": "Independent disk/call evidence comparison; no new build or board action",
+  "job_id": "5c5f8f383cd74afa87915adc67921a80",
+  "build_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1",
+  "sim_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_182621_aa641e",
+  "raw_timing_equals_mcp_and_review": true,
+  "raw_clock_and_checks_equal": true,
+  "artifact_hashes_and_sizes_equal": true,
+  "artifacts": [
+    {
+      "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser.bit",
+      "bytes": 5980582,
+      "sha256": "285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser.bgn",
+      "bytes": 22041,
+      "sha256": "d10f32c969a97c84295b8e3790b4a8769deca183f9bf63880449ac2b5bdb2c32"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser_route.json",
+      "bytes": 315355,
+      "sha256": "cb4c5812b6a0bc749313dcd9a286666309ea58f66cced0a0e33cac7b088d82f7"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser_placed.fdc",
+      "bytes": 1117,
+      "sha256": "d11a003e3c81f80d4000d29efeeb012ca20a3c084f5d15b43600dc135740d07f"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_183334_5f3fc1\\rundir\\lite_led_chaser.edif",
+      "bytes": 38394,
+      "sha256": "0a2468c114a0de2994a1528206df3a99f356d9d39cbf6445d3f162594d493a16"
+    }
+  ],
+  "rtl_sha256": "30f1fbb17c74c93fc11c796facb342c6e9d93253d2644b3223b7ccfa731e2bb4",
+  "testbench_sha256": "f775fbb3cc59615f8475ce3c590ed4137b54d3a22325238da76bfebf704fbe6c",
+  "simulation_trace": [
+    [
+      "0",
+      "0001"
+    ],
+    [
+      "1",
+      "0100"
+    ],
+    [
+      "2",
+      "0010"
+    ],
+    [
+      "3",
+      "1000"
+    ],
+    [
+      "4",
+      "0001"
+    ],
+    [
+      "5",
+      "0100"
+    ],
+    [
+      "6",
+      "0010"
+    ],
+    [
+      "7",
+      "1000"
+    ],
+    [
+      "8",
+      "0001"
+    ]
+  ],
+  "simulation_pass": true,
+  "simulation_log_encoding": "UTF-16 BOM",
+  "constraints_and_scripts_unchanged": {
+    "constraints/lite_led_chaser.fdc": "8cb2e24afa0165a7234195394645693842a47ad4515010e5ec0c19d1e3018120",
+    "scripts/Build.ps1": "c9f22a21227d1be35ba467952dd5f91dbbb0111a6e5e05e69f03702673709cf2",
+    "scripts/build.tcl": "6796b377be6deac05044e0d591e03a796e8a7d3ae94094775b8ab4b92039aa5a",
+    "scripts/Simulate.ps1": "99d3699aaa9f8ab9da8e587845aed0e511801efeae37c8e7ed8ea7d8a8af913d",
+    "scripts/ReviewBuild.py": "1ab7b1c9e7d943bb364451a5763132d5abf205e2265076379cb6e08b2c3a7806"
+  },
+  "old_source_backups_match": true,
+  "original_programmed_bitstream_sha256": "a443d8f4bfde85eedc9de0e0328680cbb5d06c364f1113c55b14c4c6f4475eec",
+  "native_resource_rows": [
+    [
+      "GCDU",
+      "1",
+      "32"
+    ],
+    [
+      "IOU18M",
+      "4",
+      "72"
+    ],
+    [
+      "IOU33M",
+      "1",
+      "48"
+    ],
+    [
+      "LC",
+      "11",
+      "19650"
+    ]
+  ],
+  "bitstream_sha256": "285356540f63f5b1a150827777f8e5e411843718976590db0cb39739b5ef7c18",
+  "bitstream_size": 5980582,
+  "raw_timing": {
+    "key_order": [
+      "item_view_name",
+      "Setup",
+      "Hold",
+      "Timing constraints met"
+    ],
+    "item_view_name": "summary",
+    "Setup": {
+      "key_order": [
+        "Worst Negative Slack (WNS)",
+        "Total Negative Slack (TNS)",
+        "Number of Failing Endpoints",
+        "Total Number of Endpoints"
+      ],
+      "Worst Negative Slack (WNS)": "5.962 ns",
+      "Total Negative Slack (TNS)": "0.000 ns",
+      "Number of Failing Endpoints": 0,
+      "Total Number of Endpoints": 58
+    },
+    "Hold": {
+      "key_order": [
+        "Worst Hold Slack (WHS)",
+        "Total Hold Slack (THS)",
+        "Number of Failing Endpoints",
+        "Total Number of Endpoints"
+      ],
+      "Worst Hold Slack (WHS)": "0.192 ns",
+      "Total Hold Slack (THS)": "0.000 ns",
+      "Number of Failing Endpoints": 0,
+      "Total Number of Endpoints": 58
+    },
+    "Timing constraints met": true
+  },
+  "native_report_sha256": "cb4c5812b6a0bc749313dcd9a286666309ea58f66cced0a0e33cac7b088d82f7",
+  "register_init_checked": 29,
+  "current_chat_services_passed": true,
+  "vivado_entry_matches_approved_permanent_config": true,
+  "observed_user_config_sha256": "4e2b1627519117f60d897ace0398d95749bb88d5901e8e75e91f6ad296719749",
+  "historical_user_config_sha256": "0513e2f74050a933bfa13c197a93b33b60975f84f4f5a58dc7ebbaf58c90c02b",
+  "config_note": "Whole user-config hash differs from historical record; semantic difference is mcp_servers.node_repl.env.SKY_CUA_NATIVE_PIPE_DIRECTORY only. Vivado entry is equal. No config edits in this task.",
+  "board_action": "none",
+  "limitations": [
+    "Behavioral RTL simulation only",
+    "Four LED no_output_delay retained",
+    "No new JTAG/Flash or board function test",
+    "LED-only Procise MCP scope"
+  ]
+}

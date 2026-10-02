@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Webtalk v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Thu Oct  1 18:26:27 2026
+# Process ID: 23316
+# Current directory: D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e
+# Command line: wbtcv.exe -mode batch -source D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e/xsim.dir/led_chaser_tb/webtalk/xsim_webtalk.tcl -notrace
+# Log file: D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e/webtalk.log
+# Journal file: D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e\webtalk.jou
+#-----------------------------------------------------------
+source D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e/xsim.dir/led_chaser_tb/webtalk/xsim_webtalk.tcl -notrace
+webtalk_transmit: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 109.594 ; gain = 17.863
+INFO: [Common 17-206] Exiting Webtalk at Thu Oct  1 18:26:33 2026...

@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "xpr_raw_xml_comparison": {
+    "xml_schema": "7.39",
+    "part": "xc7z030ffg676-2",
+    "top": "ai7030_edif_top",
+    "sim_top": "ai7030_edif_top",
+    "design_files": 91,
+    "xdc": 2,
+    "simulation_files": 0,
+    "ip_files": 14,
+    "runs": 2
+  },
+  "xpr_current_sha256": "6abb0e7e179656b801e745bf63958223ae3ca3b8060fdd0416e53d4da374529c",
+  "xpr_opened_or_upgraded": false,
+  "xml_schema_is_not_vivado_executable_version": true,
+  "mcp_sim_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_165013_4e2b85",
+  "simulation_log_encoding": "UTF-16 with BOM",
+  "simulation_log_sha256": "b8f075f22e460338e9555c2fb548b71d05cdd3161651854dc47def80c374cc6a",
+  "rtl_sha256": "955cdc2093522a67644a9ffacea3ebfa611f7e5a85f0f284f30b34836f81863b",
+  "self_check_finish_ns": 1996,
+  "baseline_board_bitstream_hash_unchanged": true,
+  "candidate_toml_parsed": true,
+  "existing_reviewer_utf16_support": "approved and verified by new stdio build review",
+  "latest_review_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_170101_78f11a"
+}

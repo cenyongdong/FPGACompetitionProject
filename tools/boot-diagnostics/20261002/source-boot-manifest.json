@@ -1,0 +1,53 @@
+{
+  "source": "D:\\Dowload from Chrome\\嵌赛资料\\板载Linux镜像\\icraft_v3_ubuntu20.04_aarch64_sd_image.bin",
+  "imageusb_header_bytes": 512,
+  "fat_partition_lba": 2048,
+  "files": [
+    {
+      "name_8_3": "AI7030~1.BIT",
+      "size": 5980604,
+      "sha256": "85fb81d09a0dcb51cb9d5d347c01de43eccec14c6eb9a87e1876105b3efc4b81"
+    },
+    {
+      "name_8_3": "BL31.ELF",
+      "size": 610824,
+      "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303"
+    },
+    {
+      "name_8_3": "BOOT.BIN",
+      "size": 7023552,
+      "sha256": "c87b7959cd9980520324b2c17688d9b7c1e85358bfcef085b1b00bd5a4d2f121"
+    },
+    {
+      "name_8_3": "FMQLMP~1.DTB",
+      "size": 15996,
+      "sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038"
+    },
+    {
+      "name_8_3": "IMAGE",
+      "size": 13158408,
+      "sha256": "ee88eae627df17fdf615b44cb9fc5a7a7a37d2baaa3f21e90d613f48bedf0929"
+    },
+    {
+      "name_8_3": "U-BOOT",
+      "size": 6579840,
+      "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97"
+    },
+    {
+      "name_8_3": "UENV.TXT",
+      "size": 1499,
+      "sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560",
+      "text": "baudrate=115200\nbootcmd=run loadbit; run uenvcmd\nbootargs=console=ttyPS0,115200n8 earlycon=uart8250,mmio32,0xe0004000 loglevel=8 root=/dev/mmcblk0p2 rootwait rw clk_ignore_unused mem=1024M\nuenvcmd=mmc rescan && fatload mmc 0:1 0x10080000 Image && fatload mmc 0:1 0x11000000 fmqlmp-verify.dtb && booti 0x10080000 - 0x11000000\nbootdelay=3\nloadbit=mmc rescan && fatload mmc 0:2 0x10000000 download.bit && fpga loadb 0 0x10000000 $filesize\nbootfile=pxelinux.0\ndfu_ram=run dfu_ram_info && dfu 0 ram 0\ndfu_ram_info=set dfu_alt_info ${kernel_image} ram 0x3000000 0x500000\\\\;${devicetree_image} ram 0x2A00000 0x20000\\\\;${ramdisk_image} ram 0x2000000 0x600000\ndnsip=192.168.34.4\nethact=ethernet@e0047000\nfdt_high=0x10000000\nfdtcontroladdr=3fea6a20\nfileaddr=1000000\nfilesize=419a\nfit_image=fit.itb\nfit_size=0x800000\nflash_off=0x100000\ngatewayip=192.168.40.254\ninitrd_high=0x10000000\nipaddr=192.168.40.86\njtagboot=echo TFTPing FIT to RAM... && tftpboot ${load_addr} ${fit_image} && bootm ${load_addr}\nload_addr=0x10000000\nnetmask=255.255.255.0\nnor_flash_off=0xE2100000\nnorboot=echo Copying FIT from NOR flash to RAM... && cp.b ${nor_flash_off} ${load_addr} ${fit_size} && bootm ${load_addr}\npsboot=echo Copying FIT to RAM by lauterbach... && bootm ${load_addr}\nsdboot=mmc rescan && fatload mmc 0 0x10000000 /vxWorks\nserverip=192.168.40.41\nthor_ram=run dfu_ram_info && thordown 0 ram 0\nusbboot=if usb start; then echo Copying FIT from USB to RAM... && load usb 0 ${load_addr} ${fit_image} && bootm ${load_addr}\n"
+    },
+    {
+      "name_8_3": "AI7030~2.BIT",
+      "size": 5980020,
+      "sha256": "1405d7f1cb992d8f9c78e7b4bbe756faa96eeecb2ff4bdd0d253e92b191e2575"
+    },
+    {
+      "name_8_3": "FSBL25~1.OUT",
+      "size": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "timestamp_recorded": "2026-10-02T19:39:01.3681937+08:00",
+  "provenance": "User supplied H2testw text and screenshot; test performed by user, not this agent",
+  "tool_ui_version": "1.4",
+  "embedded_result_version": "1.3",
+  "target": "E:\\",
+  "target_volume_mib": 1023,
+  "tested_mib": 950,
+  "ok_mib": 115,
+  "lost_mib": 835,
+  "lost_fraction": 0.8789473684210526,
+  "overwritten_sectors": 25536,
+  "corrupted_sectors": 1684544,
+  "aliased_sectors": 6128,
+  "first_error_test_offset_hex": "0x07300000",
+  "first_error_test_offset_bytes": 120586240,
+  "first_error_test_offset_mib": 115,
+  "expected": "0x0000000007300000",
+  "found": "0x000000000715a800",
+  "write_mib_per_s": 6.36,
+  "read_mib_per_s": 15.7,
+  "currently_connected_reader_serial": "000000000819",
+  "test_reader_identity": "Screenshot does not show device identity; user context indicates new reader, current enumeration consistent",
+  "conclusion": "Tested file data write/read verification failed severely; current storage path is unsuitable for boot media",
+  "limits": [
+    "E FAT partition available space test, not full 64GB card test",
+    "115MiB OK is not a verified true physical capacity",
+    "Cannot uniquely prove counterfeit card or isolate reader/card/host from this log alone",
+    "Failure already sufficient to reject current storage path reliability; full-capacity testing not required merely to reconfirm failure",
+    "No agent-run formatting, partition changes, H2testw writes or new test in this turn"
+  ]
+}

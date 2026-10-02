@@ -1,0 +1,138 @@
+{
+  "status": "passed",
+  "calls": [
+    {
+      "tool": "start_session",
+      "arguments": {
+        "session_id": "permanent_config_validation",
+        "mode": "tcl",
+        "timeout": 30
+      },
+      "elapsed_seconds": 2.7053280000109226,
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "会话 'permanent_config_validation' 已就绪（mode=tcl）。\nVivado: D:/Xilinx/Vivado/2019.1/bin/vivado.bat\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "result": "会话 'permanent_config_validation' 已就绪（mode=tcl）。\nVivado: D:/Xilinx/Vivado/2019.1/bin/vivado.bat\n状态: ready\n\n--- 启动信息 ---\n****** Vivado v2019.1 (64-bit)\n  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019\n  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019\n    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.\n\nSourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'\nvivado-mcp: port 9999 busy, exiting (not sliding to another port)\nVMCP_READY"
+        },
+        "isError": false,
+        "resultType": "complete"
+      }
+    },
+    {
+      "tool": "run_tcl",
+      "arguments": {
+        "session_id": "permanent_config_validation",
+        "timeout": 10,
+        "command": "puts \"CONFIG_VERSION [version -short]\"\nputs \"CONFIG_ARCH $::env(PROCESSOR_ARCHITECTURE)\""
+      },
+      "elapsed_seconds": 0.0039228999958140776,
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "CONFIG_VERSION 2019.1\nCONFIG_ARCH AMD64",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "result": "CONFIG_VERSION 2019.1\nCONFIG_ARCH AMD64"
+        },
+        "isError": false,
+        "resultType": "complete"
+      }
+    },
+    {
+      "tool": "stop_session",
+      "arguments": {
+        "session_id": "permanent_config_validation"
+      },
+      "elapsed_seconds": 0.11650109999754932,
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "会话 'permanent_config_validation' 已关闭。",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "result": "会话 'permanent_config_validation' 已关闭。"
+        },
+        "isError": false,
+        "resultType": "complete"
+      }
+    }
+  ],
+  "existing_chat_server_reloaded": false,
+  "temporary_vivado_wrapper_used": false,
+  "system_environment_changed": false,
+  "resolved_vivado_configuration": {
+    "name": "vivado",
+    "enabled": true,
+    "disabled_reason": null,
+    "transport": {
+      "type": "stdio",
+      "command": "C:\\Users\\cenyongdong\\miniconda3\\envs\\VivadoMcp\\python.exe",
+      "args": [
+        "-m",
+        "vivado_mcp"
+      ],
+      "env": {
+        "VIVADO_PATH": "D:/Xilinx/Vivado/2019.1/bin/vivado.bat",
+        "PROCESSOR_ARCHITECTURE": "AMD64"
+      },
+      "env_vars": [],
+      "cwd": null
+    },
+    "enabled_tools": null,
+    "disabled_tools": null,
+    "startup_timeout_sec": null,
+    "tool_timeout_sec": null
+  },
+  "test_parent_architecture_variables_removed": [
+    "PROCESSOR_ARCHITECTURE",
+    "PROCESSOR_ARCHITEW6432"
+  ],
+  "initialize": {
+    "_meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": {},
+      "logging": null,
+      "prompts": {
+        "listChanged": false
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "tools": {
+        "listChanged": false
+      },
+      "completions": null,
+      "extensions": null,
+      "tasks": null
+    },
+    "serverInfo": {
+      "name": "vivado-mcp",
+      "title": null,
+      "version": "",
+      "description": null,
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": null
+  }
+}

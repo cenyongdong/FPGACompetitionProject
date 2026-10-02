@@ -1,0 +1,40 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-01 18:49:40
+>>get_cable_info
+  1 cable is connected.
+  1.Cable : DIGILENT/JTAG-HS1, dev vid : 0x403, dev pid : 0x6014, serial number : 210512180081
+  get_cable_info elapsed_time 0.15 seconds, cpu_time 0.02 seconds
+  get_cable_info used memory 0MB, procise used peak memory 34MB, current used memory 34MB
+>>init_chain -cable_type usb-jtag-hs1 -serial_number 210512180081
+  procise_jtag version: 30794
+  hw_server:  Set FTDI speed to 15000khz successfully
+  ----------------------------------------------------------------------
+  hw_server:  FTDI speed is already 15000khz
+  device_id:    10010011011100101100000010010011
+  manufacturer: FMSH
+  part_name:    jfmql30
+  part_id:      0
+  ir_length:    6
+  version:      0
+  step_id:      0
+  hw_server:  JTAG tap: Procise found HwServer chain_info: 0x9372c093 (mfg:0x049(FMSH), part:0x372c(jfmql30), ver:0x9)
+  ----------------------------------------------------------------------
+  hw_server:  JTAG tap: Procise found HwServer chain_info: 0x6ba00477 (mfg:0x23b(ARM), part:0xba00(arm_dap), ver:0x6)
+  device_id:    01101011101000000000010001110111
+  manufacturer: FMSH
+  part_name:    ps_dap
+  part_id:      1
+  ir_length:    4
+  version:      0
+  step_id:      0
+  hw_server:  Set FTDI speed to 15000khz successfully
+  hw_server:  SVF instructions execute success
+  hw_server:  Set FTDI speed to 15000khz successfully
+  hw_server:  SVF instructions execute success
+  init_chain elapsed_time 4.05 seconds, cpu_time 0.02 seconds
+  init_chain used memory 1MB, procise used peak memory 35MB, current used memory 35MB
+CHAIN_SCAN_COMPLETED
+
+Thank you for using procise!

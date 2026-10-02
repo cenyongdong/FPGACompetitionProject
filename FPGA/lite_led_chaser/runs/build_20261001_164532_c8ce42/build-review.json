@@ -1,0 +1,126 @@
+{
+  "status": "reviewed_for_jtag_download",
+  "timestamp_utc": "2026-10-01T08:46:17.890566+00:00",
+  "device": "JFMQL30TAI676H",
+  "bitstream": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_164532_c8ce42\\rundir\\lite_led_chaser.bit",
+  "bitstream_sha256": "c352c0a2e6369646ae12f340db908f594bcaac1d66460efdc3ca38f1f116827c",
+  "bitstream_size": 5980582,
+  "rtl_sha256": "955cdc2093522a67644a9ffacea3ebfa611f7e5a85f0f284f30b34836f81863b",
+  "sim_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_115631_342b3c",
+  "clock": [
+    {
+      "key_order": [
+        "Name",
+        "Waveform",
+        "Period(ns)",
+        "Frequency(MHZ)"
+      ],
+      "Name": "pl_100mhz",
+      "Waveform": [
+        0.0,
+        5.0
+      ],
+      "Period(ns)": 10.0,
+      "Frequency(MHZ)": 100.0
+    }
+  ],
+  "native_timing": {
+    "key_order": [
+      "item_view_name",
+      "Setup",
+      "Hold",
+      "Timing constraints met"
+    ],
+    "item_view_name": "summary",
+    "Setup": {
+      "key_order": [
+        "Worst Negative Slack (WNS)",
+        "Total Negative Slack (TNS)",
+        "Number of Failing Endpoints",
+        "Total Number of Endpoints"
+      ],
+      "Worst Negative Slack (WNS)": "4.740 ns",
+      "Total Negative Slack (TNS)": "0.000 ns",
+      "Number of Failing Endpoints": 0,
+      "Total Number of Endpoints": 58
+    },
+    "Hold": {
+      "key_order": [
+        "Worst Hold Slack (WHS)",
+        "Total Hold Slack (THS)",
+        "Number of Failing Endpoints",
+        "Total Number of Endpoints"
+      ],
+      "Worst Hold Slack (WHS)": "0.170 ns",
+      "Total Hold Slack (THS)": "0.000 ns",
+      "Number of Failing Endpoints": 0,
+      "Total Number of Endpoints": 58
+    },
+    "Timing constraints met": true
+  },
+  "timing_checks": {
+    "no_clock": 0,
+    "unconstrained_internal_endpoints": 0,
+    "no_input_delay": 0,
+    "no_output_delay": 4,
+    "partial_input_delay": 0,
+    "partial_output_delay": 0,
+    "loops": 0
+  },
+  "pin_constraints": {
+    "clk_100m": [
+      "AC14",
+      "LVCMOS33"
+    ],
+    "led[0]": [
+      "J1",
+      "LVCMOS15"
+    ],
+    "led[1]": [
+      "M6",
+      "LVCMOS15"
+    ],
+    "led[2]": [
+      "H7",
+      "LVCMOS15"
+    ],
+    "led[3]": [
+      "J8",
+      "LVCMOS15"
+    ]
+  },
+  "register_initial_values": {
+    "tick_count[0]": "0",
+    "tick_count[1]": "0",
+    "tick_count[2]": "0",
+    "tick_count[3]": "0",
+    "tick_count[4]": "0",
+    "tick_count[5]": "0",
+    "tick_count[6]": "0",
+    "tick_count[7]": "0",
+    "tick_count[8]": "0",
+    "tick_count[9]": "0",
+    "tick_count[10]": "0",
+    "tick_count[11]": "0",
+    "tick_count[12]": "0",
+    "tick_count[13]": "0",
+    "tick_count[14]": "0",
+    "tick_count[15]": "0",
+    "tick_count[16]": "0",
+    "tick_count[17]": "0",
+    "tick_count[18]": "0",
+    "tick_count[19]": "0",
+    "tick_count[20]": "0",
+    "tick_count[21]": "0",
+    "tick_count[22]": "0",
+    "tick_count[23]": "0",
+    "tick_count[24]": "0",
+    "led_state[0]": "1",
+    "led_state[1]": "0",
+    "led_state[2]": "0",
+    "led_state[3]": "0"
+  },
+  "startup_clock": "JtagClk",
+  "limitation": "4 LED outputs have no external synchronous timing contract; behavioral RTL simulation only.",
+  "board_visual_result": "pending_user_observation"
+}

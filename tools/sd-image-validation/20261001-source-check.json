@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-01",
+  "platform": "Windows 10",
+  "scope": "read-only source image integrity and disk metadata inspection",
+  "image_path": "D:\\Dowload from Chrome\\嵌赛资料\\板载Linux镜像\\icraft_v3_ubuntu20.04_aarch64_sd_image.bin",
+  "file_bytes": 31914983936,
+  "format": "imageUSB image with 512-byte header",
+  "payload_offset": 512,
+  "payload_bytes": 31914983424,
+  "header_md5": "9AFB0B00F198933AFAE1D90657E924A3",
+  "payload_md5": "9AFB0B00F198933AFAE1D90657E924A3",
+  "header_sha1": "0A4A3A1A5736EF8783FE6C2AC5D73213EA1A730B",
+  "payload_sha1": "0A4A3A1A5736EF8783FE6C2AC5D73213EA1A730B",
+  "source_integrity_matches_header": true,
+  "elapsed_seconds": 312.28,
+  "bundled_imageusb_version": "1.3.1002.0",
+  "disk_metadata": {
+    "index": 3,
+    "model": "Mass Storage Device USB Device",
+    "serial": "121220160204",
+    "reported_size": 67101834240,
+    "partitions": [
+      {
+        "number": 1,
+        "drive": "E",
+        "offset": 1048576,
+        "size": 1073741824
+      },
+      {
+        "number": 2,
+        "drive": "F",
+        "offset": 1075838976,
+        "size": 28000000000
+      }
+    ]
+  },
+  "source_mbr_partitions_match_disk_metadata": true,
+  "card_sector_comparison": "not performed successfully: PermissionError errno 13 opening PhysicalDrive3 read-only",
+  "user_report": {
+    "nominal_capacity": "64GB",
+    "brand_from_product_listing": "VDISCO",
+    "verification_failed_twice": true,
+    "did_not_open_E_or_F_during_verification": true,
+    "first_attempt_format_action": "user reported attempted formatting then cancelled; exact stage not established",
+    "reader_model": "not established from supplied listing"
+  },
+  "limits": [
+    "Source consistency against embedded checksums, not independently authenticated vendor reference",
+    "Reported capacity does not verify real writable capacity",
+    "No card readback comparison completed",
+    "No card rewrite, formatting, capacity test, software download, or board operation performed"
+  ],
+  "sources": [
+    "https://www.osforensics.com/tools/write-usb-images.html",
+    "https://forums.passmark.com/other-software/49183-image-writing-issue-and-opening-the-old-created-image-file",
+    "https://forums.passmark.com/other-software/4349-imageusb-ntfs-verification-problem"
+  ]
+}

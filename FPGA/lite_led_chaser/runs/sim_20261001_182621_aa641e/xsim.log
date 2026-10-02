@@ -1,0 +1,30 @@
+#-----------------------------------------------------------
+# xsim v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Thu Oct  1 18:26:34 2026
+# Process ID: 18472
+# Current directory: D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e
+# Command line: xsim.exe -mode tcl -source {xsim.dir/led_chaser_tb/xsim_script.tcl}
+# Log file: D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e/xsim.log
+# Journal file: D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/led_chaser_tb/xsim_script.tcl
+# xsim {led_chaser_tb} -autoloadwcfg -tclbatch {sim.tcl}
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source sim.tcl
+## run all
+TRACE ticks=1 cycle=0 observed=0001
+TRACE ticks=1 cycle=1 observed=0100
+TRACE ticks=1 cycle=2 observed=0010
+TRACE ticks=1 cycle=3 observed=1000
+TRACE ticks=1 cycle=4 observed=0001
+TRACE ticks=1 cycle=5 observed=0100
+TRACE ticks=1 cycle=6 observed=0010
+TRACE ticks=1 cycle=7 observed=1000
+TRACE ticks=1 cycle=8 observed=0001
+PASS: initialization, exact step boundaries, one-hot LED1->3->2->4 order and wrap; 3 divisors x 200 cycles
+$finish called at time : 1996 ns : File "D:/FPGACompetitionProject/FPGA/lite_led_chaser/runs/sim_20261001_182621_aa641e/tb_lite_led_chaser.sv" Line 47
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct  1 18:26:39 2026...

@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "approved_patch_scope": "BOM log decoding only",
+  "encodings": [
+    "utf-8",
+    "utf-8-sig",
+    "utf-16-le-BOM",
+    "utf-16-be-BOM"
+  ],
+  "error_text_preserved": true,
+  "new_mcp_simulation_review": {
+    "artifact_review": "passed",
+    "review_file": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_20261001_170101_78f11a\\build-review.json",
+    "sim_directory": "D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\sim_20261001_165013_4e2b85",
+    "bitstream_sha256": "7e611a61f00c1c6b1cd847818be06f3c95c02a34f0dea747a0be404cb0ce1686",
+    "register_init_checked": 29,
+    "board_result": "not tested for this MCP build",
+    "programming_authorized_by_tool": false
+  },
+  "codex_user_config_sha256": "b4d61b272737243419bc9bc2ef11752ea0c0eacbb9ef18336c0d16f5f5205d1c",
+  "baseline_board_review_sha256": "bd5540aadc5b63e12d1029acb5ddfcfe47ff0eadb315e6273fdd72c0767bc238"
+}

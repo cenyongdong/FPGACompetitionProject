@@ -1,0 +1,39 @@
+{
+  "phase": "before USB reconnect",
+  "expected_boot": "original image BOOT; user reports no replacement yet",
+  "write_verification": "user reports disabled again",
+  "files": [
+    {
+      "name": "BOOT.bin",
+      "size": 7023552,
+      "sha256": "fab01bed7fcdf7263454cdd402b4e477eb6c2c1753afa780af463b8d1aaedd83",
+      "first_64_hex": "494d414745202020202020200051ba6d6d5c6e5c0000966d6d5ca72a08c8c800552d424f4f542020202020200810bb6d6d5c6e5c000050775f5bc22d80666400",
+      "zero_bytes": 5761404,
+      "entire_file_zero": false
+    },
+    {
+      "name": "uEnv.txt",
+      "size": 1499,
+      "sha256": "6bdbbcfe41c4f77797b0c3f89ffcc5399b35052272dfaa4b9dd0bb3b5dd643bf",
+      "first_64_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "zero_bytes": 1499,
+      "entire_file_zero": true
+    },
+    {
+      "name": "Image",
+      "size": 13158408,
+      "sha256": "7f4fbe097b0184a936cfc88dcffb25bcd506ea4201c64f53e537725feabb72f6",
+      "first_64_hex": "494d414745202020202020200051ba6d6d5c6e5c0000966d6d5ca72a08c8c800552d424f4f542020202020200810bb6d6d5c6e5c000050775f5bc22d80666400",
+      "zero_bytes": 10793640,
+      "entire_file_zero": false
+    },
+    {
+      "name": "fmqlmp-verify.dtb",
+      "size": 15996,
+      "sha256": "eb8b0e63f7b39f1907ce373ee9f7d015f1e48574ba56cb1ace22ee437471fd15",
+      "first_64_hex": "494d414745202020202020200051ba6d6d5c6e5c0000966d6d5ca72a08c8c800552d424f4f542020202020200810bb6d6d5c6e5c000050775f5bc22d80666400",
+      "zero_bytes": 12960,
+      "entire_file_zero": false
+    }
+  ]
+}

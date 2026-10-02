@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# xsim v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Thu Oct  1 19:31:14 2026
+# Process ID: 27344
+# Current directory: D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/sim_20261001_193106_688cd5
+# Command line: xsim.exe -mode tcl -source {xsim.dir/led_ip_bridge_tb/xsim_script.tcl}
+# Log file: D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/sim_20261001_193106_688cd5/xsim.log
+# Journal file: D:/FPGACompetitionProject/FPGA/lite_led_ip_bridge/runs/sim_20261001_193106_688cd5\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/led_ip_bridge_tb/xsim_script.tcl
+source sim.tcl

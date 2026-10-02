@@ -1,0 +1,305 @@
+Tool 'read_build_report' raised an unexpected exception
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 176, in run
+    result = await self.fn_metadata.call_fn(self.fn, self.is_async, validated, pass_directly)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\utilities\func_metadata.py", line 164, in call_fn
+    return await anyio.to_thread.run_sync(functools.partial(fn, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\server.py", line 23, in read_build_report
+    return backend.read_build_report(build_dir)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 149, in read_build_report
+    directory = scoped_directory(build_dir, "build_")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 52, in scoped_directory
+    require(path.is_dir() and path.parent == root and path.name.startswith(prefix),
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 41, in require
+    raise ValueError(message)
+ValueError: Only direct, existing approved LED run directories are allowed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 433, in _handle_call_tool
+    return await self.call_tool(params.name, params.arguments or {}, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 539, in call_tool
+    return await self._tool_manager.call_tool(name, arguments, context, convert_result=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\tool_manager.py", line 87, in call_tool
+    return await tool.run(arguments, context, convert_result=convert_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 210, in run
+    raise UnexpectedToolError(f"Error executing tool {self.name}") from exc
+mcp.server.mcpserver.exceptions.UnexpectedToolError: Error executing tool read_build_report
+Tool 'read_build_report' raised an unexpected exception
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 176, in run
+    result = await self.fn_metadata.call_fn(self.fn, self.is_async, validated, pass_directly)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\utilities\func_metadata.py", line 164, in call_fn
+    return await anyio.to_thread.run_sync(functools.partial(fn, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\server.py", line 23, in read_build_report
+    return backend.read_build_report(build_dir)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 149, in read_build_report
+    directory = scoped_directory(build_dir, "build_")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 50, in scoped_directory
+    path = Path(value).resolve(strict=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\cenyongdong\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1240, in resolve
+    s = self._flavour.realpath(self, strict=strict)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen ntpath>", line 695, in realpath
+FileNotFoundError: [WinError 2] 系统找不到指定的文件。: 'D:\\FPGACompetitionProject\\FPGA\\lite_led_chaser\\runs\\build_missing'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 433, in _handle_call_tool
+    return await self.call_tool(params.name, params.arguments or {}, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 539, in call_tool
+    return await self._tool_manager.call_tool(name, arguments, context, convert_result=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\tool_manager.py", line 87, in call_tool
+    return await tool.run(arguments, context, convert_result=convert_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 210, in run
+    raise UnexpectedToolError(f"Error executing tool {self.name}") from exc
+mcp.server.mcpserver.exceptions.UnexpectedToolError: Error executing tool read_build_report
+Tool 'get_job_status' raised an unexpected exception
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 176, in run
+    result = await self.fn_metadata.call_fn(self.fn, self.is_async, validated, pass_directly)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\utilities\func_metadata.py", line 164, in call_fn
+    return await anyio.to_thread.run_sync(functools.partial(fn, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\server.py", line 35, in get_job_status
+    return backend.get_job_status(job_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 265, in get_job_status
+    return get_job(job_id).snapshot()
+           ^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 239, in get_job
+    require(job_id in JOBS, "Unknown job in this server instance; restart recovery is not supported")
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 41, in require
+    raise ValueError(message)
+ValueError: Unknown job in this server instance; restart recovery is not supported
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 433, in _handle_call_tool
+    return await self.call_tool(params.name, params.arguments or {}, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 539, in call_tool
+    return await self._tool_manager.call_tool(name, arguments, context, convert_result=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\tool_manager.py", line 87, in call_tool
+    return await tool.run(arguments, context, convert_result=convert_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 210, in run
+    raise UnexpectedToolError(f"Error executing tool {self.name}") from exc
+mcp.server.mcpserver.exceptions.UnexpectedToolError: Error executing tool get_job_status
+Tool 'get_job_status' raised an unexpected exception
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 176, in run
+    result = await self.fn_metadata.call_fn(self.fn, self.is_async, validated, pass_directly)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\utilities\func_metadata.py", line 164, in call_fn
+    return await anyio.to_thread.run_sync(functools.partial(fn, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\server.py", line 35, in get_job_status
+    return backend.get_job_status(job_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 265, in get_job_status
+    return get_job(job_id).snapshot()
+           ^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 238, in get_job
+    require(re.fullmatch(r"[0-9a-f]{32}", job_id) is not None, "Invalid job ID")
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 41, in require
+    raise ValueError(message)
+ValueError: Invalid job ID
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 433, in _handle_call_tool
+    return await self.call_tool(params.name, params.arguments or {}, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 539, in call_tool
+    return await self._tool_manager.call_tool(name, arguments, context, convert_result=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\tool_manager.py", line 87, in call_tool
+    return await tool.run(arguments, context, convert_result=convert_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 210, in run
+    raise UnexpectedToolError(f"Error executing tool {self.name}") from exc
+mcp.server.mcpserver.exceptions.UnexpectedToolError: Error executing tool get_job_status
+Tool 'start_led_build' raised an unexpected exception
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 176, in run
+    result = await self.fn_metadata.call_fn(self.fn, self.is_async, validated, pass_directly)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\utilities\func_metadata.py", line 164, in call_fn
+    return await anyio.to_thread.run_sync(functools.partial(fn, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\server.py", line 29, in start_led_build
+    return backend.start_led_build()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 245, in start_led_build
+    require(not any(job.process.poll() is None for job in JOBS.values()), "A LED build is already active")
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 41, in require
+    raise ValueError(message)
+ValueError: A LED build is already active
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 433, in _handle_call_tool
+    return await self.call_tool(params.name, params.arguments or {}, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 539, in call_tool
+    return await self._tool_manager.call_tool(name, arguments, context, convert_result=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\tool_manager.py", line 87, in call_tool
+    return await tool.run(arguments, context, convert_result=convert_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 210, in run
+    raise UnexpectedToolError(f"Error executing tool {self.name}") from exc
+mcp.server.mcpserver.exceptions.UnexpectedToolError: Error executing tool start_led_build
+Tool 'tail_job_log' raised an unexpected exception
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 176, in run
+    result = await self.fn_metadata.call_fn(self.fn, self.is_async, validated, pass_directly)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\utilities\func_metadata.py", line 164, in call_fn
+    return await anyio.to_thread.run_sync(functools.partial(fn, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\server.py", line 41, in tail_job_log
+    return backend.tail_job_log(job_id, lines)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 269, in tail_job_log
+    require(1 <= lines <= 200, "lines must be between 1 and 200")
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 41, in require
+    raise ValueError(message)
+ValueError: lines must be between 1 and 200
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 433, in _handle_call_tool
+    return await self.call_tool(params.name, params.arguments or {}, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 539, in call_tool
+    return await self._tool_manager.call_tool(name, arguments, context, convert_result=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\tool_manager.py", line 87, in call_tool
+    return await tool.run(arguments, context, convert_result=convert_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 210, in run
+    raise UnexpectedToolError(f"Error executing tool {self.name}") from exc
+mcp.server.mcpserver.exceptions.UnexpectedToolError: Error executing tool tail_job_log
+Tool 'review_led_build' raised an unexpected exception
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 176, in run
+    result = await self.fn_metadata.call_fn(self.fn, self.is_async, validated, pass_directly)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\utilities\func_metadata.py", line 164, in call_fn
+    return await anyio.to_thread.run_sync(functools.partial(fn, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\server.py", line 53, in review_led_build
+    return backend.review_led_build(job_id, sim_dir)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 309, in review_led_build
+    simulation = scoped_directory(sim_dir, "sim_")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 52, in scoped_directory
+    require(path.is_dir() and path.parent == root and path.name.startswith(prefix),
+  File "D:\FPGACompetitionProject\tools\procise_mcp\backend.py", line 41, in require
+    raise ValueError(message)
+ValueError: Only direct, existing approved LED run directories are allowed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 433, in _handle_call_tool
+    return await self.call_tool(params.name, params.arguments or {}, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\server.py", line 539, in call_tool
+    return await self._tool_manager.call_tool(name, arguments, context, convert_result=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\tool_manager.py", line 87, in call_tool
+    return await tool.run(arguments, context, convert_result=convert_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\FPGACompetitionProject\.local\procise-mcp-venv\Lib\site-packages\mcp\server\mcpserver\tools\base.py", line 210, in run
+    raise UnexpectedToolError(f"Error executing tool {self.name}") from exc
+mcp.server.mcpserver.exceptions.UnexpectedToolError: Error executing tool review_led_build

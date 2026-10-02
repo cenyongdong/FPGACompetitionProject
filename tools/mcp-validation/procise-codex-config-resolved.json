@@ -1,0 +1,27 @@
+{
+  "name": "procise_lite",
+  "enabled": true,
+  "disabled_reason": null,
+  "transport": {
+    "type": "stdio",
+    "command": "D:\\FPGACompetitionProject\\.local\\procise-mcp-venv\\Scripts\\python.exe",
+    "args": [
+      "D:\\FPGACompetitionProject\\tools\\procise_mcp\\server.py"
+    ],
+    "env": null,
+    "env_vars": [],
+    "cwd": "D:\\FPGACompetitionProject"
+  },
+  "enabled_tools": [
+    "get_environment",
+    "read_build_report",
+    "start_led_build",
+    "get_job_status",
+    "tail_job_log",
+    "list_artifacts",
+    "review_led_build"
+  ],
+  "disabled_tools": null,
+  "startup_timeout_sec": 20.0,
+  "tool_timeout_sec": 60.0
+}
