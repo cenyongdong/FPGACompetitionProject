@@ -1,0 +1,17 @@
+{
+  "observed_at_utc": "2026-10-03T16:51:42.8391190+00:00",
+  "completed_training_epochs": 1,
+  "completed_training_steps": 2811,
+  "first_epoch_ddp_equal": true,
+  "parameter_l2": {
+    "differentiate": 0.0038130102885110665,
+    "refine_attention": 51.17339204486719,
+    "refine_regression": 5.37320901082047,
+    "pose_decoder": 54.36138527897241,
+    "ste": 1.6489464730754566
+  },
+  "evaluation_status": "首轮训练完成，精度评估尚待核验",
+  "rapid_parameter_shrink_observed": true,
+  "automatic_parameter_changes": false,
+  "periodic_monitoring_enabled": false
+}

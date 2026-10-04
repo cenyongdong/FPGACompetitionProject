@@ -1,0 +1,30 @@
+{
+  "files": {
+    "configs/wifi/petr_wifi_tpami2026_diff_nodecay.py": "7fb897c5e9a58649c11e46b10b2d920e3d554023d76a051178c51c690609f414",
+    "configs/wifi/smoke_diff_nodecay.py": "408f10e72d75da40452ff1ad563f3d77d074a603c6a00db879dcda88b9e43436",
+    "opera/models/tpami2026_diff_nodecay.py": "f9ce3012dde3dd27eb121095bacf9649c6c65bf7a3337cd3c615c4c4c71b8aa7",
+    "tools/pose26_diff_nodecay/verify_diff_nodecay.py": "fe4a9c6d5c2517d9f48fcadde4f8693830c009cd1aa63398b5fded505e249169",
+    "tools/pose26_diff_nodecay/verify_ddp.py": "31ac2abd612e5ca6fda40043344209006acc33a4af03d84b5455418230f4f47c",
+    "tools/pose26_diff_nodecay/run_experiment.py": "920a4e721773201f836821e422361a08accc308e390534e5035bf767ccfb0a13",
+    "tools/pose26_diff_nodecay/finalize.py": "3736e2b3c9472fcd787bf29ca546c3a9606f8c548bbc2e870efcaa4d9b05eed8",
+    "tools/pose26_diff_nodecay/launch.py": "dfe1533b1e718838da91d9adebb16891b2cc06e83f9aa4aec4d93e045e798284",
+    "tools/pose26_diff_nodecay/PLAN.md": "efc6b2e35afe13f58c4e34c8bfe178d942adf1e013dc733ef55f914ab0809ea2",
+    "opera/models/tpami2026_scratch.py": "c410def7232372fc344ba174ac88a1d72f335e5e99f0da1c3d3aa401669fd6fc",
+    "configs/wifi/petr_wifi_tpami2026_scratch.py": "a25ea44df9ab8642a671a6aa85212f1f53a89a896bc7787618a9ecea3d42266c",
+    "opera/models/tpami2026_transfer.py": "d51c36e8c6de9a24d6171c8ac78b5f8d4000c8a1e340f429bd1f9f1fe3395760",
+    "opera/models/transfer_support.py": "ace58fdaa0cdbeccbd3807aa992a370c834c1643799f9651716d3bfc2b61d1b4",
+    "configs/wifi/petr_wifi_tpami2026_transfer.py": "4a183cf749321ce665c283836845f19f2e880f61d4e2250e4fc30282572398d7"
+  },
+  "authorized": {
+    "epochs": 10,
+    "optimizer": "Adam",
+    "fresh_initialization": true,
+    "gpu_ids": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "zero_decay_prefix": "bbox_head.transformer.joint_differentiators."
+  }
+}

@@ -212,3 +212,198 @@ Vivado MCP 实际创建 `xilinx.com:ip:xlconcat:2.1` / Rev.3，配置四个 1-bi
 用户自行运行H2testw并提交文本/截图：E:当前约1GiB FAT分区，测试可用950MiB，115MiB正确、835MiB丢失/错误（约87.9%），报告12.4MiB覆盖、822.5MiB损坏及2.9MiB地址别名，首错测试数据偏移0x07300000=115MiB。本次是局部分区可用空间测试，不是清卡后全64GB测试，115MiB正确也不证明真实物理容量。结合更换读卡器后系统文件异常，确认当前存储链路写读严重不一致，优先怀疑卡本身质量/控制器/容量异常，未单独确诊假容量或精确故障部件。
 
 证据：[用户测试及分析](D:/FPGACompetitionProject/tools/boot-diagnostics/20261002/user_h2testw_20261002_193901/RESULTS.md)、[原文与结构化记录](D:/FPGACompetitionProject/tools/boot-diagnostics/20261002/user_h2testw_20261002_193901/interpretation.json)。测试由用户执行，代理只读枚举当前新读卡器、保存证据与分析，没有格式化/写测试/重烧/板端操作。局部严重失败已足以拒绝当前介质可靠性；退换卡和其他设备交叉测试是建议，未写为已完成成果。
+
+## 2026-10-02：更换 SD 卡后基本启动通过及项目状态同步
+
+### 工程内容总结
+
+目标：同步用户最新现场进度，更新当前 SD 启动状态并区分旧卡历史故障。平台/工具基线为悟净开发板 Lite、既定 icraft_v3_ubuntu20.04_aarch64_sd_image.bin 镜像；开发工具继续沿用 Procise 2025.1.1 temp 和 Icraft 3.39.0，本次没有调用 EDA/Icraft 或核验板端软件版本。
+
+用户明确报告：已更换 SD 卡、完成 SD 启动卡制作和上板验证，串口正常输出信息，能够登录进系统。上述基本启动/串口登录由用户现场确认通过；代理本轮已同步 Agents.md、REFERENCES.md 第 15 节、旧卡诊断报告顶部说明及本条记录。证据来源为当前聊天用户陈述，已保存为 [新卡现场确认记录](D:/FPGACompetitionProject/tools/sd-image-validation/20261002-new-card-board-confirmation.json)，未伪造串口日志或磁盘测量。
+
+旧卡异常与 H2testw 失败证据保留，不能套用于新卡；旧卡精确故障仍未确诊。新卡实际分区/文件系统、全容量、启动组件哈希和板端 runtime 未独立核验；AI/模型功能未由本次基本启动覆盖。
+
+扩容状态：用户选择扩大系统分区，要求代理仅提供具体命令与逐条说明，由用户实际执行；随后确认在悟净 Lite 已启动的板载 Ubuntu 中通过串口执行。当前尚未扩容/验收，实际设备名、文件系统和工具可用性待核对，不把命令方案写成完成成果。代理本轮只编辑项目说明，没有修改 SD 分区、安装板端软件或执行设备命令。
+
+### 对后续开发的参考
+
+1. 后续基本 Linux 使用可从用户已确认可登录的板载系统开展，不再因旧卡记录将新卡基本启动视为未通过；调用设备、安装/部署或更改配置仍按当前任务授权范围处理。
+2. 用户现场确认与代理直接测试分别记录；成功登录证明基本启动和串口登录路径可用，不替代 runtime、AI、模型、全容量及扩容验收。
+3. 扩容应先核对实际根设备、文件系统、分区起始/末尾和连续未分配空间，再区分扩大分区与扩大文件系统。板端在线流程与本机离线流程不能混用；用户执行后的输出和重启结果另行补全。
+
+### 板端查询结果补充（2026-10-03）
+
+用户通过串口执行既定四条只读查询并提交截图，已确认根设备 /dev/mmcblk0p2，ext4，挂载选项 rw,relatime；mmcblk0=58.3G，p1=1G，p2=26.1G。df 根文件系统26G、已用6.3G、可用18G、使用率26%。现有 /usr/sbin/resize2fs、/usr/sbin/sfdisk，未找到 growpart。上述为用户提供的命令输出证据，更新 REFERENCES.md 15.1 和 [结构化记录](D:/FPGACompetitionProject/tools/sd-image-validation/20261002-new-card-board-confirmation.json)，截图保存为 [板端查询截图](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-board-preflight.png)。
+
+分区表具体扇区布局和 sfdisk 版本仍待核对；扩容尚未执行/验收。代理本轮只核对用户输出、查询官方手册并补全文档，没有连接串口、安装软件或改写分区。后续可复用 findmnt 的实际根设备定位与 df 的文件系统容量对照；不能仅凭卡的 lsblk 总容量推定根文件系统已扩容，也不对正在挂载的根分区执行离线 fsck。
+
+用户随后补充 [实际分区表截图](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-partition-table.png)，更新上述待核对状态：sfdisk 2.34、DOS/MBR、ID 0x370deffb、总122167296个512字节扇区；p1 start/size/type=2048/2097152/e，p2=2101248/54687500/83（末扇区56788747）。已完成布局与长度计算核对，形成 [用户执行命令及逐条说明](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-expand-root-COMMANDS.md)，目标p2 size=120066048、end=122167295、约57.25GiB，REFERENCES.md 15.2及结构化记录已同步。分区表备份、预演、正式写入、重启读取边界及resize2fs均为待用户执行步骤，不写为板端完成。后续复用须重新取得实际磁盘扇区和分区边界；只扩大末尾、保留起始及类型，并区分卡上的分区表与内核已加载边界。
+
+### 系统分区扩容验收补充（2026-10-03，更新上述待执行状态）
+
+#### 工程内容总结
+
+目标：利用新SD卡尾部连续未分配空间，扩大悟净Lite板载Ubuntu的第二分区及ext4根文件系统。平台为既定icraft_v3_ubuntu20.04_aarch64_sd_image.bin启动系统，实际根设备/dev/mmcblk0p2；分区工具sfdisk（util-linux 2.34），文件系统工具resize2fs 1.45.5（07-Jan-2020）。操作由用户通过串口以root执行，代理提供逐条命令、核对截图并记录结果；未使用Procise/Icraft执行本次扩容。
+
+用户明确确认“已经成功完成扩容”，并提交 [扩容成功串口截图](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-expansion-success.png)。截图直接支持的结果如下：
+
+- 登录后的`cat /sys/class/block/mmcblk0p2/size`返回120066048，与本卡目标分区长度一致。
+- `findmnt -no SOURCE,FSTYPE,OPTIONS /`返回`/dev/mmcblk0p2 ext4 rw,relatime`，根分区仍正确挂载且可写。
+- `resize2fs /dev/mmcblk0p2`实际执行已挂载根文件系统的在线扩容，报告`old_desc_blocks = 2, new_desc_blocks = 4`，随后确认文件系统现为15008256个4KiB块。
+- 文件系统总字节数15008256×4096=61473816576，与分区长度120066048×512一致，即约57.25GiB，文件系统已覆盖扩大后的分区。
+- 用户执行`sync`后，`lsblk`显示mmcblk0约58.3G、p1约1G、p2约57.3G且挂载到/；`df -hT /`显示ext4总容量57G、已用6.3G、可用48G、使用率12%。扩容前对应为26G、已用6.3G、可用18G、使用率26%。
+
+验收结论：用户执行并以现场截图确认本次SD第二分区和ext4根文件系统扩容通过；本次实际板端内核支持该根文件系统的在线扩容。截图记录了登录后的长度核对、在线resize和最终容量，预演、分区表备份及正式写表退出码未包含在本张截图中，不将其写成代理独立采集验证。没有全容量写读测试、扩容后额外重启或长期稳定性证据；不将此次通过扩大为AI/模型、runtime兼容性或其他板卡/镜像的验收。
+
+证据入口：[扩容前查询截图](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-board-preflight.png)、[原始分区表截图](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-partition-table.png)、[本次具体命令](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-expand-root-COMMANDS.md)、[新卡及扩容结构化记录](D:/FPGACompetitionProject/tools/sd-image-validation/20261002-new-card-board-confirmation.json)。本补充更新同一工作此前的“扩容待执行/验收”状态，保留准备阶段和旧卡历史记录。
+
+#### 对后续开发的参考
+
+1. 可复用流程为：确认实际根设备/ext4和连续尾部空闲空间→备份/预演→只扩大第二分区长度、保留起始→正常重启加载分区边界→核对内核长度→resize2fs在线扩大文件系统→lsblk/df验收。分区扩大与文件系统扩大必须分别验证。
+2. 120066048等扇区数仅适用于本次已核对的SD卡及分区布局；换卡或镜像重新制作后重新查询和计算，不直接复制本次固定长度。
+3. 当前根目录可用空间约48G，可供后续板端文件和软件使用；容量扩展不提升PS DDR内存容量、NPU算力或SD写读速度。重刷原始镜像可能恢复原小分区布局，之后需重新核对是否扩容。
+4. 成果来源应继续区分用户执行/现场截图与代理直接操作；在线扩容的实测适用条件是本次内核和ext4配置，不对正在挂载的根分区执行离线e2fsck。
+
+## 2026-10-03：Lite SSH通信、板端Icraft/CustomOp安装及FPAI容器进度同步
+
+### 工程内容总结
+
+**目标与完成内容**：同步用户最新开发环境，核对资料并更新后续执行上下文。平台为悟净Lite、既定SD启动Ubuntu系统、Windows10主机；主机Procise/Icraft继续采用既有版本。用户已完成以下操作：
+
+1. 使用SD卡启动悟净开发板，网线连接主机，在MobaXterm中通过SSH进行开发和通信。
+2. 将 [指定30TAI&100TAI目录](<D:/Dowload from Chrome/嵌赛资料/Icraft/Icraft_V3.39.0安装包/30TAI&100TAI/30TAI&100TAI>) 中的板端Icraft开发工具传输到板上并完成安装；随后明确确认CustomOp板端包也已安装。
+3. 在本机搭建Docker交叉编译环境、配置相关工具链；随后明确确认 **FPAI是容器名**。
+
+上述环境准备和SSH使用状态由用户确认，代理没有执行或独立重测。代理本轮先查REFERENCES.md E1及原始自述文件，只读解析本地四份deb的control：Icraft/CustomOp的onchip包均为3.39.0、arm64，amd64包均为3.39.0、amd64。已更新Agents.md、REFERENCES.md基线及第16节，保存 [进度与用户澄清](D:/FPGACompetitionProject/tools/development-environment/20261003-progress.json) 和 [本地安装包元数据](D:/FPGACompetitionProject/tools/development-environment/20261003-package-control.json)。
+
+**验收范围**：环境搭建/安装完成按用户报告记录；本地包架构/版本来自代理只读核对。尚无板端实际包版本/安装路径、容器镜像与编译器/sysroot版本、“交叉编译→板端运行”或AI模型推理的独立测试输出，不将其写为已通过。代理本轮没有连接SSH、操作Docker、安装软件、编译、部署、下载FPGA或修改板端配置；此前SD扩容结果保持。
+
+### 对后续开发的参考
+
+1. 当前可从用户已确认可用的板载Ubuntu/SSH通道和已安装工具继续讨论板端开发，MobaXterm提供实际终端/通信入口；SSH地址、账号与板端路径需使用用户提供或后续核验的值。
+2. 本地onchip包是arm64板端角色，amd64包按资料用于主机侧交叉编译；后续容器和板端分别核对实际版本/库，不能以安装包目录存在替代安装状态，也不能把FPAI容器名当成镜像来源。
+3. 环境配置完成与编译产物可运行是不同证据。后续具体验证宜关联工具链/依赖、目标架构、传输产物和板端运行输出；具体操作方案仍依项目规范先讨论批准。
+4. 保持环境对象清晰：Windows执行既有Procise/Icraft任务；本机FPAI容器承担用户配置的交叉编译；Lite运行板端程序；远程Ubuntu服务器仍承担此前说明的算法训练。板端SSH不能推定训练服务器SSH已验证，koala仍与比赛无关。
+
+资料索引见 [REFERENCES.md第16节](D:/FPGACompetitionProject/REFERENCES.md)，本次没有选择新的参考位流、模型、接口或技术路线。
+
+## 2026-10-03：2026姿态模型迁移实现、门检与10轮训练启动
+
+### 工程内容总结
+
+目标：落实用户批准的26版pose-only迁移方案，解决旧26版分化/细化参数趋近零及精度不佳的问题，并开展首轮10轮对照实验。平台为远程Ubuntu `gpu-server`、`PersonInWIFI` Python环境、PyTorch1.13.1+cu117/MMCV1.5.3/MMDetection2.25.0，四张RTX A5500（GPU1–4）；本次不涉及FPGA/Icraft部署。
+
+已完成独立注册类、配置、迁移/优化器/诊断、门检、启动和最终汇总脚本，项目副本见[实现说明](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/README.md)，服务器新增文件位于`opera/models`、`configs/wifi`和`tools/pose26_transfer`；旧代码、权重、结果均保留。已从24版epoch442迁移169个张量，重新初始化STE、14个独立残差分化分支、三层vanilla refine及优化器；分化Linear权重和偏置N(0,0.001²)，整个refine正常初始化，坐标回归末层为零。只保留14关节姿态，不引入mesh/SMPL。
+
+已验收：迁移逐元素一致；关闭STE后粗输出误差0；人物/关节和置信度排序索引；细化损失可反传至分化及姿态分支；4卡每卡8的短程3步、恢复到6步及参数范数一致。24版全7824帧同口径复评**123.085352129mm**。首次索引门检测试值导致sigmoid饱和并列，已修正测试数据并保留失败证据，未修改网络排序。证据见[单项门检](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/evidence/gates/unit_gate.json)、[四卡门检](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/evidence/gates/ddp_gate.json)、[基准复评](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/evidence/baseline/evaluations.jsonl)、[启动审计](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/evidence/prelaunch-audit.json)。论文对应及未公开细节见[PAPER_AUDIT.md](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/PAPER_AUDIT.md)。
+
+正式10轮于21:59启动，尚未完成/验收精度。配置为AdamW迁移lr2e-6/新增lr2e-5、矩阵wd1e-4并排除指定参数、clip0.1、分类/坐标2/70、FP32、seed0、四卡每卡batch8/worker4、固定学习率10轮。结果目录`Z:\Person-in-WiFi-3D-repo\result\tpami2026_transfer_20261003`，实时查`pipeline-status.json`、`train.stdout.log`、`branch_diagnostics.jsonl`；每轮评估见`evaluations.jsonl`。流水线设置为第10轮后汇总并停止，失败则停止，不自动重试/延长。当前“完成”范围限于实现、门检、基准复评和启动，不能提前宣称优于123.09mm。
+
+### 对后续开发的参考
+
+- 迁移需同时核对张量哈希/映射、实际导入入口、解析配置和前向等价性；服务器`source_snapshot`保存源码/配置/数据列表。四卡短程和正式训练输出隔离，不把门检优化器状态带入实验。
+- 零初始化坐标末层使初次反传的新分支梯度为零属于预期；一次更新打开回归头后，使用仅细化损失检查连通性。保持注意力正常初始化，仅分化MLP近零，避免误将整个refine缩小。
+- 参数范数、裁剪前后梯度、查询差异、同配对细化前后误差能帮助区分优化器衰减、梯度过小和分支无效；数值健康不能代替泛化精度评估。
+- 原指标依赖GT匹配全部100候选，不能作为最终部署人数选择的验收。当前10轮是迁移修正有效性实验，不等同论文完整从零复现；结束后先讨论再决定后续训练。
+
+### 首轮实际评估（2026-10-03 22:10快照）
+
+第1/10轮完成，四卡一致性、全7824帧评估及`best_mpjpe_epoch_1.pth`保存通过，训练已进入第2轮。MPJPE **126.41057mm**，高于24版基准123.08535mm约3.32522mm；固定最终匹配的粗/细化1/2/3分别126.06887/126.24047/126.33473/126.41057mm，首轮细化尚无收益。单/双/三人104.90486/126.34861/153.58244mm。分化/细化注意力L2分别1.357471858/92.75375147，未观察到旧实验的参数趋零。当前记录不是最终10轮结论，不自行调整参数或延长实验；首次best仅表示本实验已完成轮次中的最佳，不代表超过24版。
+
+项目证据副本：`tools/pose26-transfer/20261003/evidence/evaluations.jsonl`、`epoch_parameter_checks.jsonl`、`branch_diagnostics.jsonl`。这些为采集时快照，实时结果以服务器目录为准。
+
+### 10轮结束及结果验收补充（2026-10-03 23:52，更新前述进行中状态）
+
+#### 工程内容总结
+
+正式10轮、28,110步已于23:42完成并停止，训练/监督进程均退出。最佳第9轮122.873803893mm，24版基准123.085352129mm，降低0.211548236mm（约0.172%）；最终第10轮124.680599441mm。10轮7824帧评估、10次四卡一致性、563条有限诊断、126份当前源码/快照哈希、配置哈希、指标CSV、最佳/最终权重哈希与元数据均独立核验通过，曲线可视检查通过。
+
+单/双/三人最佳为100.32099/123.27283/150.64941mm，对照99.66472/123.11501/152.52611mm；单/双略退步、三人降低1.87670mm。第9轮同配对粗预测122.79552→最终细化122.87380mm，细化增加约0.0783mm。逐关节完整表、配置与命令、曲线和产物入口见[最终结果](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/RESULTS.md)。最佳权重已复制至[本地保留目录](D:/FPGACompetitionProject/.local/pose26-training/20261003/best_mpjpe_epoch_9.pth)，SHA256 b567aa16e3e46be88cd9187cdc3af7d46085800d0c3df94a8404ae377d8bcca7，与服务器一致；最终epoch10仍保留服务器。
+
+#### 对后续开发的参考
+
+本轮未再现旧参数趋零，分化/细化注意力L2保持约1.358/92.757，梯度通路健康。但细化只有4/10轮改善误差，整体最佳改善仅0.212mm、单seed且波动明显，不能将此认定为稳定提升或分化分支贡献。当前只完成训练/结果核验，未进行消融、延长、ONNX/Icraft部署；下一步先讨论现有诊断、粗预测与STE影响及细化收益，获得明确同意后才执行新方案。旧基准和所有结果保留。
+
+### 26版实验定时结果检查（2026-10-03）
+
+#### 工程内容总结
+
+用户确认每10分钟检查一次当前10轮训练，在正常运行时保持安静，完成/失败/异常或需处理时通知，结果核验及记录完成后停止。已用Codex应用工具创建当前聊天heartbeat“检查26版姿态迁移训练结果”（ID26、ACTIVE），并读回配置确认间隔、目标聊天和检查范围；不改变训练设置。任务包括检查结果/哈希/曲线、补全项目记录及完成后停用本项。证据说明见[MONITOR.md](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/MONITOR.md)。首次定时检查已于22:27成功读取状态、评估及全部已记录诊断：第3轮进行中，已完成两轮评估，记录均有限、四卡检查通过，未发现需通知的异常；证据见同目录monitor-state.json。该检查不等于最终训练结果验收。
+
+#### 对后续开发的参考
+
+定时检查附着当前聊天并复用已授权训练上下文；它不重新启动训练。结果优先通过Z盘读取，网络/挂载不可用与任务失败分开判断。主机和应用需运行，后续停用仅针对ID26，不归档聊天，不更改其他自动化。固定10轮和重大变更先讨论的约束仍保持。
+
+最终状态补充（2026-10-03）：10轮训练与结果核验、记录及通知完成后，已通过应用工具将ID26停用，并读回确认PAUSED。停止证据为`tools/pose26-transfer/20261003/evidence/automation-stop.json`；未延长或重启训练，未归档聊天或更改其他自动化。上文ACTIVE及首次检查均为历史状态。
+
+## 2026-10-04：26版全新初始化、论文Adam配方500轮训练启动
+
+### 工程内容总结
+
+用户明确将后续训练改为从头500epoch，并确认选择论文Adam配方A。已在同一远程Ubuntu/PersonInWIFI环境（PyTorch1.13.1+cu117、MMCV1.5.3、MMDetection2.25.0）部署新隔离模块、配置、门检和启动/汇总脚本；00:41:21（北京时间）启动四张RTX A5500 GPU1–4正式训练。旧代码/配置、24版及10轮权重和结果未改；此前恢复第10轮到100轮的建议未执行。
+
+新模型明确绕过迁移加载，模型与优化器全新初始化；保留STE、14独立残差分化分支、三层vanilla refine，分化Linear权重/偏置N(0,0.001²)，整个细化器正常初始化、坐标末层为零。仅14关节pose，不包含mesh/SMPL。Adam统一lr2e-5、betas(0.9,0.999)、eps1e-8、wd1e-4，无迁移分组/衰减排除；总batch32（每卡8/worker4）、FP32 seed0、clip0.1；500轮，MMCV step450/gamma0.1。论文第7页训练细节已可视核对，未公开细节与当前损失整体缩放/辅助监督明确列为实现选择。
+
+已验收：禁止checkpoint读取的全新初始化；三层8头256维普通注意力；人物/关节及置信度索引；细化梯度通路；450轮学习率边界；4卡96样本3步参数一致和checkpoint有限；129份源码/配置/列表当前与source_snapshot及解析配置哈希；监督/torchrun和四个rank身份、GPU1–4实际负载与正式日志超过500步。短程更新未用于正式模型。入口和证据见[README](D:/FPGACompetitionProject/tools/pose26-scratch/20261004/README.md)、同目录evidence/gates及[startup-verification.json](D:/FPGACompetitionProject/tools/pose26-scratch/20261004/evidence/startup-verification.json)。
+
+当前结果目录`result/tpami2026_scratch_20261004`，实时查pipeline-status.json、train.stdout.log和诊断/评估JSONL。当前完成的是实现、门检和启动，**500轮训练及精度尚未完成/验收**。用户明确选择暂不启用定时监测，旧ID26保持PAUSED，未更改自动化。训练内置异常停止门禁保留，不自动重试、改AdamW/参数或延长500轮。
+
+启动后快照补充：第1轮2811训练步已完成，四卡一致性通过，首轮评估尚待核验。首轮末分化L2=0.003813、细化注意力L2=51.173392，数值有限、没有触发既有严重趋零门禁，但与初始化相比下降较快。证据`tools/pose26-scratch/20261004/evidence/first-epoch-training.json`；下文第501步数据为此前快照。
+
+### 对后续开发的参考
+
+- 从头训练不能只把resume_from设为None：旧模型init_weights内部仍会迁移24版。本次用独立注册类绕过migrate，并在单项门检禁止torch.load，正式hook再次确认优化器为空、epoch/iter=0；以后需检查实际加载路径。
+- Adam耦合L2衰减与上一轮AdamW不同。第501步分化L2已从1.357186降到0.016044，仍有限且梯度非零，但快速缩小值得关注。旧退化尚未唯一确诊，不能静默改变用户明确选择的Adam配方或宣称长程风险已排除。
+- 保留每轮全7824帧MPJPE、人数/逐关节及同匹配粗/细化误差，以及分支参数/梯度和四卡检查；原GT辅助100候选指标不是实部署人数检测验收。损失下降不等于精度或分化收益。
+- 已记录无自动回查的状态；后续由用户请求查询或重新授权监测。正式训练结束后还需核对500轮评估/产物/哈希与最终进程状态，再按同一模板补全结果。当前未开展ONNX/Icraft/NPU/FPGA部署。
+
+### 异常停止及当前结果核验补充（2026-10-04 09:08）
+
+#### 工程内容总结
+
+用户要求检查服务器训练日志，本次通过SSH只读取证（Z盘不可用）。训练实际上已于01:40:51在第6轮末触发`RuntimeError: Persistent branch collapse`自动停止；stage=failed_stopped，监督、torchrun及四个rank均退出，GPU1–4空闲。仅5轮完整7824帧评估，第6轮停止前完成训练步但未进行评估；500轮未完成，无final-report，不能记为训练完成。
+
+5轮MPJPE依次479.294219、453.726498、439.551332、420.189946、438.772184mm；最佳第4轮420.189946mm，较已训练24版基准123.085352mm高297.104594mm。最佳单/双/三人406.525056/385.294528/491.487131mm；同匹配粗预测420.366988→最终细化420.189946mm，改善约0.177042mm。最佳checkpoint epoch4/iter11244、311125343字节、全部权重有限，SHA256 eaec533377d8098dab8fa35e6104c5330840fc7d0be0658ffdc669a794213361；129份源码/配置/列表及快照、解析配置哈希核对通过，最佳文件保留服务器。
+
+退化证据：分化L2从初始化1.357186降至第4轮6.32e-8、第5轮7.30e-21，第6轮16851步抽检7.44e-38。最新分化/细化注意力裁剪前后梯度及分化残差RMS为0；细化注意力参数仍约32.17。338条诊断均有限，连续两轮严重分化趋零触发停止；第6轮末异常发生在参数检查JSONL/评估记录前，因此这些文件仅1–5轮。详细人数、14关节、阶段对照见[结果报告](D:/FPGACompetitionProject/tools/pose26-scratch/20261004/STATUS-20261004-0908.md)，原始状态/日志/评估/诊断与核验见同目录evidence/check-20261004-0906。
+
+#### 对后续开发的参考
+
+短程初始化/梯度/DDP门检通过仍不足以保证长程分支有效；损失下降和诊断有限也不能排除退化。本轮日志确认分化及细化学习通路逐步衰退，但尚未唯一证明Adam全局耦合L2/梯度裁剪等的因果，需先讨论隔离对照再执行。第5轮前的从零结果不能代表完整500轮性能或模型架构上限。当前已保存证据、更新记录，未改参数、恢复/重启训练或启用定时监测；后续修复/实验仍须先取得明确批准。
+
+## 2026-10-04：仅分化分支零衰减对照实现、门检与训练启动
+
+### 工程内容总结
+
+用户明确批准先做仅关闭Differentiation Branch衰减的10轮从零对照。完成独立源码/配置、服务器部署、单项及四卡门检和正式启动；**10轮训练、精度及最终产物待验证**。服务器Ubuntu、Python PersonInWIFI环境、PyTorch1.13.1+cu117/MMCV1.5.3/MMDetection2.25.0、GPU1–4四张RTX A5500。
+
+新增优化器构造器把`bbox_head.transformer.joint_differentiators.`的56份权重/偏置（1,842,176元素）设为wd=0，其余421份参数仍wd1e-4，包括三层Refine Decoder和坐标回归。仍使用Adam统一lr2e-5/betas(.9,.999)/eps1e-8；保持模型/初始化/数据/损失、每卡batch8/worker4、FP32 seed0 clip0.1。正式模型/优化器全新初始化，不复用任何旧或短程权重；10轮后停止，无自动重试/延长。
+
+通过单项检查：准确且完整的两组衰减、初始化模块范数与旧实验一致、无checkpoint加载、人物/关节索引、三层普通注意力和仅细化损失梯度连通；首次真实零监督梯度更新后分化参数逐元素不变。通过4卡96样本3步检查，DDP一致、checkpoint有限且分组/计数正确。旧实验129份源码/列表哈希未变、实际解析配置差异只限批准范围；正式134份当前源码与source_snapshot及解析配置哈希、监督/torchrun/四rank身份和GPU负载核验通过。
+
+2026-10-04 10:20:27（北京时间）正式启动，监督PID70223、torchrun70234、rank70239–70242；10:21:30快照第251步分化L2=1.564860762、裁剪后分化/注意力梯度约9.40e-5/0.008027，记录有限、首轮评估未完成。启动和初期分支未退化不等于精度改善。结果服务器`result/tpami2026_diff_nodecay_20261004`；源码副本、配置、命令和证据见[README](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/README.md)、[单项门检](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/evidence/gates/unit_gate.json)、[四卡门检](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/evidence/gates/ddp_gate.json)、[启动核验](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/evidence/startup-verification.json)。项目日志副本为采集快照，实时状态查服务器。
+
+### 对后续开发的参考
+
+- 分化MLP、Refine Decoder和坐标回归是不同参数范围，关闭衰减必须按完整名称核对。本次只变分化MLP，不将其推广为整条细化路径关闭衰减的验证。
+- 保持Adam及其他科学变量，只改变衰减范围；分组审计、初始范数对照和零梯度一步不变验证可复用。全局clip在optimizer.step之前，原Adam内部耦合L2不包含在现有损失梯度诊断中；关闭衰减也不保证监督损失不会导致收缩。
+- 后续主要比较旧从零全衰减实验前5轮的同轮评估和第6轮退化点，检查参数/梯度/残差及粗细化表现。24版123.085352mm是已收敛参考，不能仅由10轮从零精度判定最终架构能力；单seed与短程稳定不证明长期收益。
+- 原非有限值/索引/DDP/连续两轮严重退化停止门禁保留。用户暂不监测的选择及ID26暂停保持，未启用新监测。10轮后汇总仍须独立核验；后续扩大零衰减范围、调整技术方案或长训练仍需先讨论批准。
+
+交付前最新查询（10:25:28）：训练运行至第1轮1701步，分化L2=1.719859849、分化/注意力梯度及查询残差非零，日志无已记录错误。仍无完整评估，尚未验证能否越过原第6轮退化点或改善精度。证据`tools/pose26-diff-nodecay/20261004/evidence/progress-latest.json`，此前251步为启动验收快照。
+
+### 10轮完成核验补充（2026-10-04 13:06，更新上述运行状态）
+
+#### 工程内容总结
+
+服务器训练已于12:00:59正常完成10轮/28,110步并停止；监督、torchrun及四个rank退出，GPU空闲。10次全7824帧评估与四卡参数一致性、563条有限诊断、134份当前源码与source_snapshot及解析配置哈希、最佳/最终checkpoint参数及优化器有限性、元数据、两组衰减和SHA256通过，CSV/曲线产物核对。仅只读检查并复制结果证据，没有延长、重启、改参数、启用监测或进行部署。
+
+最佳第6轮MPJPE=344.787402826mm，末轮377.942666765mm。最佳单/双/三人307.252180/345.529650/390.893913mm，同匹配粗→细化344.997972→344.787403mm，约0.210569mm改善。与旧全衰减前5轮的同轮差异分别改善104.987111、54.630958、退步1.574726、退步2.574657、改善4.712446mm，未显示稳定单向收益；旧实验没有第6轮评估，不能将跨轮最佳作严格同轮改善。完整10轮、14关节、人数、阶段和参数记录见[RESULTS.md](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/RESULTS.md)。
+
+最佳epoch6/iter16866权重服务器`best_mpjpe_epoch_6.pth`，311152031字节，SHA256 `4fb71e4a604cb064ec11a6d7de52a3190cd44ad1dc1d58c3a135bce947276def`；最终epoch10/iter28110的`epoch_10.pth`，311152095字节，SHA256 `50a5ffa2b7e9e45dd6ac5d1797fe5af91f35203360b3fed772b812a9f9ac975d`。大权重未复制本机，服务器路径在结果报告。独立验收见[completion-verification.json](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/evidence/completion-verification.json)，原始状态、报告、CSV/曲线、评估及日志保存在同目录evidence/completion-20261004-1306。
+
+#### 对后续开发的参考
+
+本次分化L2保持约1.908233679，未发生原实验的参数归零；但第6轮15351步首次抽检到分化/细化注意力梯度同时为零，第7–10轮所有抽检均为零。末轮坐标回归L2约0.01530、回归梯度仍非零。这说明保留分化参数和非零查询残差，仍不足以保证整条细化通路有效学习；不能仅凭这些范数把剩余问题唯一归因于某个模块。
+
+既有停止门禁检查参数范数，没有覆盖长期零梯度，因此本次没有触发停止；门禁未被修改或绕过。后续宜讨论对细化回归/反向通路的定位及诊断门禁，但未执行新修复或新实验。24版已收敛123.085352mm仅为参考，不应把10轮从零结果当作完整500轮架构能力；现有单seed结果也不支持直接继续长训练。用户暂不监测及ID26暂停保持，未来方案仍须讨论批准。

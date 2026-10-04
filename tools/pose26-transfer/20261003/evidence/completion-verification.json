@@ -1,0 +1,112 @@
+{
+  "verified_at": "2026-10-03T23:51:10.351835+08:00",
+  "passed": true,
+  "completed_epochs": 10,
+  "checked_source_files": 126,
+  "source_and_snapshot_hashes_match": true,
+  "checkpoint_hashes_match": true,
+  "resolved_config_hash_match": true,
+  "csv_metrics_match": true,
+  "finite_diagnostics": true,
+  "diagnostic_rows": 563,
+  "four_card_epoch_checks_pass": true,
+  "best_epoch": 9,
+  "best_mpjpe_mm": 122.87380389299373,
+  "improvement_mm": 0.2115482360063652,
+  "best_checkpoint_sha256": "b567aa16e3e46be88cd9187cdc3af7d46085800d0c3df94a8404ae377d8bcca7",
+  "best_by_person_count": {
+    "1": {
+      "frames": 2586,
+      "mpjpe": 100.32098611712179
+    },
+    "2": {
+      "frames": 3184,
+      "mpjpe": 123.27282809851756
+    },
+    "3": {
+      "frames": 2054,
+      "mpjpe": 150.64940939348884
+    }
+  },
+  "baseline_by_person_count": {
+    "1": {
+      "frames": 2586,
+      "mpjpe": 99.66472365887518
+    },
+    "2": {
+      "frames": 3184,
+      "mpjpe": 123.11500986377199
+    },
+    "3": {
+      "frames": 2054,
+      "mpjpe": 152.52610918656063
+    }
+  },
+  "best_per_joint_mm": [
+    101.50516314969107,
+    110.0690655461484,
+    111.9514511205058,
+    111.73325727785536,
+    146.70093830792206,
+    87.0514034591996,
+    152.52007726944055,
+    86.9322449052992,
+    204.22075572884157,
+    92.23133260730829,
+    223.27317912641965,
+    93.11219532065596,
+    99.82952931681781,
+    99.1026643376287
+  ],
+  "baseline_per_joint_mm": [
+    102.20206121137416,
+    110.94769787867621,
+    112.45987664141782,
+    112.38569293547505,
+    147.06794148025338,
+    87.43636019744268,
+    153.17527353891566,
+    87.38064100823398,
+    204.50590159544427,
+    92.02693995815113,
+    224.63293776522508,
+    92.60047853614655,
+    98.59529323104944,
+    97.77783476379996
+  ],
+  "best_refine_stages_mm": [
+    122.79551520864412,
+    122.81570964015579,
+    122.85284761734047,
+    122.87380397856114
+  ],
+  "last_parameter_l2": {
+    "differentiate": 1.3579154817833803,
+    "refine_attention": 92.75675541576692,
+    "refine_regression": 22.640756417311255,
+    "pose_decoder": 96.0539238007358,
+    "ste": 4.339891550871556
+  },
+  "first_parameter_l2": {
+    "differentiate": 1.3574718580008123,
+    "refine_attention": 92.75375147071723,
+    "refine_regression": 22.638075566292752,
+    "pose_decoder": 96.04464237547812,
+    "ste": 4.2853233715534715
+  },
+  "curve_visual_inspection_pass": true,
+  "server_process_exit_verified": true,
+  "checkpoint_metadata_verified": true,
+  "best_epoch_iteration": 25299,
+  "final_epoch_iteration": 28110,
+  "checkpoint_learning_rates": [
+    2E-06,
+    2E-05
+  ],
+  "all_checkpoint_weights_finite": true,
+  "local_best_checkpoint": "D:\\FPGACompetitionProject\\.local\\pose26-training\\20261003\\best_mpjpe_epoch_9.pth",
+  "local_best_checkpoint_sha256": "b567aa16e3e46be88cd9187cdc3af7d46085800d0c3df94a8404ae377d8bcca7",
+  "automation_stop_pending": false,
+  "automation_status": "PAUSED",
+  "automation_stopped_at": "2026-10-03T15:59:32.1426616+00:00"
+}
