@@ -1,0 +1,34 @@
+{
+  "automation_id": "26",
+  "checked_at": "2026-10-03T23:54:54.514024+08:00",
+  "check_number": 9,
+  "status": "completed_verified",
+  "pipeline_status": {
+    "stage": "completed_10_epochs",
+    "time": "2026-10-03T23:42:01.711702",
+    "supervisor_pid": 30236,
+    "report": "/public/cyd/Person-in-WiFi-3D-repo/result/tpami2026_transfer_20261003/final-report.json",
+    "automatic_extension": false,
+    "next_action": "Discuss results with user before further training"
+  },
+  "completed_evaluations": 10,
+  "current_training_epoch": 10,
+  "latest_training_iteration": 28110,
+  "latest_mpjpe_mm": 124.68059944082623,
+  "branch_parameter_l2": {
+    "differentiate": 1.3579102681650268,
+    "refine_attention": 92.7567426746646,
+    "refine_regression": 22.6407110462037,
+    "pose_decoder": 96.05378828716096,
+    "ste": 4.338644424843509
+  },
+  "ddp_checks_pass": true,
+  "all_recorded_diagnostics_finite": true,
+  "log_errors": [],
+  "notification_sent": true,
+  "final_report_exists": true,
+  "best_mpjpe_mm": 122.87380389299373,
+  "automation_stop_pending": false,
+  "automation_status": "PAUSED",
+  "automation_stopped_at": "2026-10-03T15:59:32.1426616+00:00"
+}

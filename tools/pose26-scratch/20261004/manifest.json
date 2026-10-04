@@ -1,0 +1,25 @@
+{
+  "files": {
+    "tools/pose26_scratch/finalize.py": "160c5fa5c3c6962f66dbc6c6495985c649e136839b035f538948ae41570ae6bb",
+    "configs/wifi/petr_wifi_tpami2026_scratch.py": "a25ea44df9ab8642a671a6aa85212f1f53a89a896bc7787618a9ecea3d42266c",
+    "tools/pose26_scratch/run_experiment.py": "654030dbe336e74e968938a90bd04a5e3685ee4b04b779ae42f6ad402ff44f9a",
+    "configs/wifi/smoke_scratch.py": "6057e42891066b5f57b53bb2c758e36c5e56719cde0502555527b22d9b840a92",
+    "opera/models/tpami2026_scratch.py": "c410def7232372fc344ba174ac88a1d72f335e5e99f0da1c3d3aa401669fd6fc",
+    "tools/pose26_scratch/verify_scratch.py": "8e0e103d43e9a37b9284bcaa3ab1319f8eb1157b71cd751e85ae03130ce55297",
+    "tools/pose26_scratch/PLAN.md": "e95583033d98106b4aeeb608c38a23759aafa3e57d58b186ea27266277039a0c",
+    "opera/models/tpami2026_transfer.py": "d51c36e8c6de9a24d6171c8ac78b5f8d4000c8a1e340f429bd1f9f1fe3395760",
+    "opera/models/transfer_support.py": "ace58fdaa0cdbeccbd3807aa992a370c834c1643799f9651716d3bfc2b61d1b4",
+    "configs/wifi/petr_wifi_tpami2026_transfer.py": "4a183cf749321ce665c283836845f19f2e880f61d4e2250e4fc30282572398d7"
+  },
+  "authorized": {
+    "fresh_initialization": true,
+    "optimizer": "Adam",
+    "epochs": 500,
+    "gpu_ids": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

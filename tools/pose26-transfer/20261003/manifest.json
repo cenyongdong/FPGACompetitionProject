@@ -1,0 +1,21 @@
+{
+  "source_checkpoint_sha256": "6493e2250b83aef59ce4825e15d2d0043a59490275f75933f9a59867867d3221",
+  "files": {
+    "baseline_eval.py": "c04be3751325c72f1eddfbb2e94493e9c54d320e0cc3faf4cce327312ff16cbd",
+    "petr_wifi_tpami2026_transfer.py": "4a183cf749321ce665c283836845f19f2e880f61d4e2250e4fc30282572398d7",
+    "smoke.py": "15041d9b2cee1dc8f5abef0fcde5d21c18b7a7010d3ad99807a4e5bb55f31ec2",
+    "tpami2026_transfer.py": "d51c36e8c6de9a24d6171c8ac78b5f8d4000c8a1e340f429bd1f9f1fe3395760",
+    "transfer_support.py": "ace58fdaa0cdbeccbd3807aa992a370c834c1643799f9651716d3bfc2b61d1b4",
+    "verify_transfer.py": "91fc4eaae11ca8741e12e704a2c5cd7162ca8d9307958d15c44bf30d44046481",
+    "run_experiment.py": "bf0d5290687650172e6ad9774036293bbb94faed7caddcbfd26baaae7953132d",
+    "finalize.py": "5d14ee7666c137bb9d834fb7614d9307551310e096ddfb68b48a2a204cd7c0cd",
+    "PAPER_AUDIT.md": "91f8e3157ff4631599ecc3677dd9847cc90b68d04f7f22db858519589ae8330e"
+  },
+  "authorized_epochs": 10,
+  "physical_gpus": [
+    1,
+    2,
+    3,
+    4
+  ]
+}

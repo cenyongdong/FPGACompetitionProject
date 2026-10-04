@@ -1,0 +1,5 @@
+{"epoch": 1, "parameter_l2": {"differentiate": 0.0038130102885110665, "refine_attention": 51.17339204486719, "refine_regression": 5.37320901082047, "pose_decoder": 54.36138527897241, "ste": 1.6489464730754566}, "ddp_equal": true}
+{"epoch": 2, "parameter_l2": {"differentiate": 0.00019028191556408184, "refine_attention": 42.864180155361524, "refine_regression": 0.40998935644922396, "pose_decoder": 43.98970097207347, "ste": 0.8696000814419196}, "ddp_equal": true}
+{"epoch": 3, "parameter_l2": {"differentiate": 4.0182054609010404e-05, "refine_attention": 40.043340733299225, "refine_regression": 0.1359183395479861, "pose_decoder": 40.52230392503301, "ste": 0.5154005237549545}, "ddp_equal": true}
+{"epoch": 4, "parameter_l2": {"differentiate": 6.32103781683893e-08, "refine_attention": 37.40853616022716, "refine_regression": 0.08623398042777791, "pose_decoder": 37.828377728491645, "ste": 0.33436969291906293}, "ddp_equal": true}
+{"epoch": 5, "parameter_l2": {"differentiate": 7.297502207630036e-21, "refine_attention": 34.77869247817629, "refine_regression": 0.05979998742389006, "pose_decoder": 35.28466589932409, "ste": 0.23993580883277074}, "ddp_equal": true}

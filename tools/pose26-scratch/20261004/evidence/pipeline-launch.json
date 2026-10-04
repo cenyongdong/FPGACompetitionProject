@@ -1,0 +1,21 @@
+{
+  "pid": 54209,
+  "command": [
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "tools/pose26_scratch/run_experiment.py"
+  ],
+  "cwd": "/public/cyd/Person-in-WiFi-3D-repo",
+  "time": "2026-10-04T00:41:17.696372",
+  "fresh_initialization": true,
+  "optimizer": "Adam",
+  "max_epochs": 500,
+  "automatic_retry": false,
+  "automatic_extension": false,
+  "gpu_ids": [
+    1,
+    2,
+    3,
+    4
+  ]
+}

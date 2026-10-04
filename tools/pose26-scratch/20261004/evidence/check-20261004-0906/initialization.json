@@ -1,0 +1,25 @@
+{
+  "mode": "fresh_initialization",
+  "checkpoint_loaded": false,
+  "optimizer_restored": false,
+  "initialization_std": 0.001,
+  "trainable_elements": 45067715,
+  "module_parameter_l2": {
+    "differentiate": 1.3571860462377212,
+    "refine_attention": 92.75871628619495,
+    "refine_regression": 22.665393947372003,
+    "pose_decoder": 92.77777992882443,
+    "ste": 4.280590913569834
+  },
+  "optimizer": {
+    "type": "Adam",
+    "lr": 2e-05,
+    "weight_decay": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "no_weight_decay_exclusions": true
+  }
+}

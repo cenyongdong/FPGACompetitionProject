@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "time": "2026-10-04T10:20:12.003907",
+  "control_source_hash_count": 129,
+  "new_manifest_hash_count": 14,
+  "control_source_hashes_unchanged": true,
+  "parsed_config_difference_scope_checked": true,
+  "scientific_change": "Only joint_differentiators weight_decay 1e-4 -> 0",
+  "operational_change": "New paths and 10-epoch stop instead of 500",
+  "torch_version": "1.13.1+cu117",
+  "gpu_prelaunch": "0, GPU-e882fdbe-1f68-fce3-ad38-6ad3bc6b845e, 18, 0\n1, GPU-cb01d43e-29fc-888d-b6ed-399005396572, 18, 0\n2, GPU-b38deef0-3a36-fe52-0b9b-16de6ed043f0, 18, 0\n3, GPU-fee0d1d1-bbe1-a567-27d5-6f3645734acb, 18, 0\n4, GPU-a88ed63b-3592-0f8c-ffa1-991efa109d2f, 18, 0\n5, GPU-ded0ed80-16bd-eb8c-c54f-3d8b3363f706, 18, 0\n6, GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c, 18, 0\n7, GPU-def1d982-7b9f-cb9a-24e1-e2aa36229093, 18, 0\n"
+}

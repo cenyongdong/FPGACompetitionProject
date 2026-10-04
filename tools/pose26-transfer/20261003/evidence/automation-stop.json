@@ -1,0 +1,15 @@
+{
+  "automation_id": "26",
+  "name": "检查26版姿态迁移训练结果",
+  "status": "PAUSED",
+  "verified_at": "2026-10-03T15:59:32.1426616+00:00",
+  "method": "Codex application automation_update",
+  "tool_is_error": false,
+  "config_readback_verified": true,
+  "training_completed": true,
+  "result_verification_completed": true,
+  "project_records_updated": true,
+  "notification_sent": true,
+  "other_automations_modified": false,
+  "chat_archived": false
+}

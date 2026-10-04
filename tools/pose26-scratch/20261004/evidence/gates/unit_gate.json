@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "initialization": {
+    "mode": "fresh_initialization",
+    "checkpoint_loaded": false,
+    "optimizer_restored": false,
+    "initialization_std": 0.001,
+    "trainable_elements": 45067715,
+    "module_parameter_l2": {
+      "differentiate": 1.3571860462377212,
+      "refine_attention": 92.75871628619495,
+      "refine_regression": 22.665393947372003,
+      "pose_decoder": 92.77777992882443,
+      "ste": 4.280590913569834
+    }
+  },
+  "refine_layers": 3,
+  "vanilla_attention": [
+    "torch.nn.modules.activation.MultiheadAttention",
+    "torch.nn.modules.activation.MultiheadAttention",
+    "torch.nn.modules.activation.MultiheadAttention",
+    "torch.nn.modules.activation.MultiheadAttention",
+    "torch.nn.modules.activation.MultiheadAttention",
+    "torch.nn.modules.activation.MultiheadAttention"
+  ],
+  "differentiation_weight_std": 0.000999972689896822,
+  "differentiation_bias_std": 0.0009915970731526613,
+  "zero_regression_output_heads": true,
+  "checkpoint_calls": [],
+  "step450_boundary_checked": true,
+  "batch_person_indexing": true,
+  "score_sort_identity_alignment": true,
+  "query_residual_rms": 0.0010244979057461023,
+  "query_joint_difference_l2": 0.0408015251159668,
+  "refine_only_gradient_l2_after_one_discarded_step": {
+    "differentiate": 0.006117984658321643,
+    "refine_attention": 0.9624409062597261,
+    "refine_regression": 807.1934873211186,
+    "pose_decoder": 0.6760533121680946,
+    "ste": 0.0013716200873099182
+  },
+  "paper_choices": {
+    "mlp_depth": 2,
+    "initialization_std": 0.001,
+    "not_author_published_hyperparameters": true
+  }
+}
