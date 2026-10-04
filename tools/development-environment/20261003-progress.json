@@ -1,0 +1,41 @@
+{
+  "recorded_date": "2026-10-03",
+  "timezone": "Asia/Shanghai",
+  "source": "user_current_chat_progress_update",
+  "user_reported_completed": {
+    "sd_boot_on_wujing_lite": true,
+    "ethernet_host_board_connection": true,
+    "ssh_in_mobaxterm_used_for_development_and_communication": true,
+    "board_icraft_transferred_and_installed": true,
+    "board_customop_transferred_and_installed": true,
+    "board_package_source_directory": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\Icraft_V3.39.0安装包\\30TAI&100TAI\\30TAI&100TAI",
+    "host_docker_cross_compilation_environment_created": true,
+    "docker_container_name": "FPAI",
+    "related_toolchain_configured": true
+  },
+  "locally_verified": {
+    "source_directory_exists": true,
+    "installer_control_metadata": "20261003-package-control.json",
+    "onchip_package_architecture": "arm64",
+    "onchip_package_version": "3.39.0",
+    "host_package_architecture": "amd64",
+    "host_package_version": "3.39.0"
+  },
+  "user_clarifications": {
+    "fpai_label_role": "container_name",
+    "board_customop_installed": true,
+    "statement": "FPAI是容器名，板端Icraft也安装了CustomOp板端包"
+  },
+  "not_independently_verified": {
+    "board_installed_package_versions": null,
+    "board_installation_paths": null,
+    "ssh_endpoint": null,
+    "docker_image_identity": null,
+    "docker_container_identity": null,
+    "container_compiler_version": null,
+    "container_sysroot": null,
+    "cross_compiled_binary_execution": null,
+    "ai_runtime_model_or_mate_compatibility": null
+  },
+  "scope": "This turn reads local documentation and installer control metadata and records the user's report; it does not connect to SSH, operate Docker, install, compile, deploy or change the board."
+}

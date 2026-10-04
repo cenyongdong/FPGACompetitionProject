@@ -1,0 +1,20 @@
+{
+  "scope": "offline diagnostic substitution; production/training algorithm unchanged",
+  "cases": [
+    {
+      "case": "case_04",
+      "raw_angle_numpy_vs_math_max_abs": 0.0,
+      "original_reference_vs_cpp_max_abs": 6.240629434585571,
+      "diagnostic_scalar_angle_reference_vs_cpp_max_abs": 6.240629434585571,
+      "diagnostic_scalar_angle_reference_vs_cpp_bitwise_equal": false
+    },
+    {
+      "case": "case_05",
+      "raw_angle_numpy_vs_math_max_abs": 0.0,
+      "original_reference_vs_cpp_max_abs": 5.765216588973999,
+      "diagnostic_scalar_angle_reference_vs_cpp_max_abs": 5.765216588973999,
+      "diagnostic_scalar_angle_reference_vs_cpp_bitwise_equal": false
+    }
+  ],
+  "acceptance": "not approved; no tolerance or boundary-policy change"
+}

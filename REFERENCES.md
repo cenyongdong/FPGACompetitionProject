@@ -1,6 +1,6 @@
 # 比赛开发资料索引与理解记录
 
-整理日期：2026-09-30（Asia/Shanghai）；同日补充 Lite 完整原理图；2026-10-01 补充开发/训练环境、Icraft 依赖诊断、流水灯实测及 Vivado MCP 状态。项目根目录：`D:\FPGACompetitionProject`。
+整理日期：2026-09-30（Asia/Shanghai）；同日补充 Lite 完整原理图；2026-10-01 补充开发/训练环境、Icraft 依赖诊断、流水灯实测及 Vivado MCP 状态；2026-10-02 补充换卡后的 SD 启动和串口登录现场确认；2026-10-03 补充根分区扩容验收、板端SSH/Icraft安装及Docker交叉编译环境进度。项目根目录：`D:\FPGACompetitionProject`。
 
 本文件用于选题、架构设计、FPGA 开发、AI 部署、系统联调和比赛材料准备时查找依据。内容区分资料明确记载、结合源码得到的分析，以及尚未确认的事项；它不是已经通过上板验证的操作手册。遇到冲突时回到原始资料核对，并与用户讨论，不自行选定解释或技术路线。
 
@@ -12,9 +12,13 @@
 | --- | --- | --- |
 | 硬件 | 悟净开发板 Lite（轻量版），FMQL30TAI / ZG330 平台 | 用户明确指定；不是完整版悟净，也不是 100TAI/BUYI 平台 |
 | 下载链/上电 | Alinx 黑金下载器；无 SD 卡开机和连线上板测试已完成 | 用户报告 Procise/Vivado 均可识别芯片；具体算法、Linux、DDR/AI 的成功不能由器件识别推导 |
+| SD 启动/串口登录（最新） | 用户已更换 SD 卡并完成启动卡制作、上板验证；串口正常输出，可登录板载系统 | 用户现场确认，2026-10-02，见第15节；根分区/ext4扩容已于2026-10-03由用户执行并以截图验收，见15.3；旧卡故障记录保留为历史；runtime/AI另行核验 |
 | FPGA 工具 | `FMSH_Procise_2025.1.1_temp_202603201420_32494.exe` 安装的 Procise | 用户确认；安装目录 `C:\FudanMicro\Procise`；主程序 ProductVersion 为 `2025.1.1 temp` |
 | Vivado 辅助工具/MCP | 现有 Vivado 2019.1；用户已自行接入 `vivado-mcp` | 用户明确 2018 版工程仅作思路参考；本会话工具已可调用，`list_sessions` 返回无活跃会话；MCP 启动/仿真与 Procise 适配尚未实测，见 13.5 |
 | AI 工具 | Icraft 3.39.0 | 用户确认；`C:\Icraft\CLI` 是指向 `C:\Icraft\CLI v3.39.0` 的符号链接；另有 `CustomOp_v3.39.0` |
+| 主机↔Lite板端通信 | 网线直连，MobaXterm SSH开发/通信 | 用户确认已使用，2026-10-03；地址/账号未提供，未由代理连接测试，见第16节 |
+| 板端 Icraft/CustomOp | 用户已从指定3.39.0安装包目录传输板端包并完成两者安装 | 本地onchip包control为arm64/3.39.0；实际板端已安装版本/路径尚无查询输出，见第16节 |
+| 主机交叉编译环境 | Docker容器名 `FPAI`；用户已搭建并配置相关工具链 | 用户明确是容器名；镜像、编译器、sysroot及编译产物实板运行未核验，见第16节 |
 | 本机开发环境 | Windows 10；另有双系统 Ubuntu | 用户说明；倾向方案 A，Procise/Icraft 保留在 Windows；Windows Icraft 独立依赖第一阶段已获批准并通过加载验证，见 I5 |
 | 当前算法训练位置 | 远程 Ubuntu 服务器，文件目录挂载到本机 `Z:` | 用户说明；仅记录文件访问入口，尚未核验远程执行方式、服务器软件版本及本项目具体目录 |
 | 板载镜像 | `icraft_v3_ubuntu20.04_aarch64_sd_image.bin` | 用户确认；位于下载区“板载Linux镜像”；不能据文件名推断镜像内已经安装的 runtime 版本 |
@@ -277,7 +281,7 @@ YAML 里的 `__3.31__` 是配置字段，不能据此认定本机 Icraft 版本�
 - `7030ai_psin.bif` 打包 FSBL251210_ddr400_demo.out、ai7030_edif_top.bit、bl31.elf、u-boot，包含 `apu_x32` 配置；BIF 内仍是 `C:/Users/admin/Downloads/BOOT_Gen/...`，须改成真实可读取位置后才可复现。
 - BIT 同时提供 `30tai_detpost` 与 `30tai_lite_detpost`，各有 BOOT.bin 与 `ai7030_top_disable_icap.bit`；按命名属于不同板版候选，不能凭命名认定已与 3.39.0 匹配。
 - 项目内 `icraft_deb` 附带 Icraft/CustomOp **3.33.1** 板端安装包；它们是旧示例依赖，不是用户确定的 3.39.0 基线。
-- `FSBL`、设备树、u-boot、位流、Linux 镜像和 runtime 需视为一组系统组件；当前没有上板核验实际组合。
+- `FSBL`、设备树、u-boot、位流、Linux 镜像和 runtime 需视为一组系统组件；用户已报告新卡基本启动和串口登录通过（第 15 节），实际组件版本/哈希、runtime 与 AI 配套组合仍未核验。
 
 ### D5. JFM_Kits / IP Patch / 通用迁移资料
 
@@ -428,6 +432,8 @@ XRT 用设备、后端和 Session 组织运行。ZG330Backend 文档明确：部
 来源：[板载Linux镜像](<D:/Dowload from Chrome/嵌赛资料/板载Linux镜像>)、[交叉编译docker](<D:/Dowload from Chrome/嵌赛资料/交叉编译docker>)。
 
 镜像 BIN 大小为 31,914,983,936 字节，约 29.72GiB；另有 `.7z` 与 imageUSB.exe。`ubuntu20.04_container.tar` 是交叉编译环境候选。它们对快速建立匹配运行环境价值很高，但本轮未挂载镜像、导入容器或确认镜像内已安装的软件版本；实际卡容量、分区和现有文件须在刷写任务时确认。
+
+**后续进度（2026-10-03）**：用户已完成Lite SD启动/根分区扩容、MobaXterm SSH通信、板端Icraft与CustomOp安装，并在本机搭建Docker容器 `FPAI`、配置交叉编译工具链。容器所用镜像尚未提供，不能据此认定来自上述tar。安装包control核对及最新状态见第16节，前述“本轮未导入/安装”保留为初始资料整理阶段的历史说明。
 
 ### E2. 26040701：单路 PLIN + pHDMI
 
@@ -609,6 +615,8 @@ DocsResources 还提供复旦微官方赛事 QQ 群 **790072144**，说明可向
 需要先打通的数据契约是：采集端输出→预处理→模型输入→模型输出→骨架显示。每一段记录形状、布局、数值范围、单位/坐标系、更新频率和缓存所有权；这些是功能规格，不能由板卡手册或示例文件名替用户决定。
 
 当前架构字段：采集设备 `待顶层架构讨论`；接入接口/格式 `待顶层架构讨论`；模型 `待顶层架构讨论`；滤波算法/加速算子/DMA 指标/显示规格 `待顶层架构讨论`。以上字段保留空缺，不从厂商 SDI/Yolo 示例推定本作品使用摄像头、Yolo、图像预处理或相同缓冲区布局。
+
+**SD 进度更新（用户现场确认，2026-10-02）**：用户已更换卡、完成 SD 启动卡制作，并通过上板验证：串口正常输出，可登录板载 Linux。前述 SD 卡未到/启动待验证属于早期状态，当前以第 15 节为准；runtime、模型、AI 和 DMA 联调未由基本启动验证覆盖。
 
 决定 FPGA 做哪部分，应先建立可复现的软件参考和阶段耗时：滤波是否适合流式实现、哪些模型算子是瓶颈、搬运是否占主要耗时、显示是否需要 PL 独立生成，再讨论实现成本与收益。所增加的搬运、CPU/PL 同步和精度损失都应计入比较，不只看单个 RTL 模块频率。当前不需要四个候选项同时开发。
 
@@ -811,3 +819,155 @@ read_reg -part 0 -reg STAT -read
 计数器 IP 本地包含受保护 VHDL；FIFO/BRAM/Clocking/DSP 等也需核对具体原语、参数、初始化与时序语义。XCI/BD 不是直接供 Procise 原生综合的完整 HDL，DCP/stub/funcsim 也不能仅因可用于 Vivado 仿真就认定可迁移。D1 的复杂迁移还包含 Vivado IP OOC 综合、JFM hook 和 30TAI 时序库，不能称作全部综合都在 Procise；本机 2019.1 与整套 JFM 迁移的兼容性未验证。
 
 本次结果证明这个简单明文组合 IP/配置的源码交接路线可行；Concat 在综合后已无独立 IP 单元引用，资源/时序与此前同灯序 RTL 相同，不能据此宣称加速或将成功推广到 FIFO、DMA、HDMI 等复杂核。MCP 不转换原语、库或约束。后续其他 IP 必须逐核核对完整可综合源码、语法、依赖、初始化/复位、时序与具体配置，并依 Agents.md 讨论批准；本次未安装补丁、加载 JFM hook 或验证 2019.1 全系统迁移。
+
+## 15. 更换 SD 卡后的基本启动与串口登录（2026-10-02）
+
+**最新状态（用户现场确认）**：用户已更换 SD 卡，完成 SD 启动卡制作及悟净 Lite 上板验证；串口正常输出信息，能够登录板载 Linux 系统。基本 SD 启动/串口登录已通过，不再列为当前阻断项。
+
+证据来源是用户在本聊天中的明确进度同步，保存在 [新卡现场确认记录](D:/FPGACompetitionProject/tools/sd-image-validation/20261002-new-card-board-confirmation.json)；本轮代理只同步文档，没有重新读取新卡、捕获串口或操作板端。平台仍采用已确认的 Lite 和镜像基线；本次没有独立核验新卡型号/全容量、实际文件系统、BOOT/位流/内核/设备树哈希或板端 runtime 版本，不能由成功登录推导 AI、模型或完整系统联调已通过。
+
+此前旧卡的 imageUSB 校验失败、启动文件异常、更换读卡器后的失败复核及 H2testw 严重错误，保留在 [旧卡诊断报告](D:/FPGACompetitionProject/tools/boot-diagnostics/20261002/RESULTS.md) 和 Done.md 中，作为旧介质历史证据。它们不适用于当前新卡，换卡后启动成功也不追溯确诊旧卡精确故障。
+
+用户倾向扩大系统分区，并明确本次代理只需提供具体命令及逐条详细解释，实际操作由用户执行。用户随后明确确认：在悟净 Lite 已启动的板载 Ubuntu 中通过串口执行。扩容尚未执行/验收；需先取得实际设备名、根分区类型/挂载、剩余空间布局和工具可用性，再形成板端在线扩容命令。截图的 1.00 GB FAT、26.08 GB 第二分区、31.17 GB 未分配仅为截图布局信息，不替代 Linux 设备名和文件系统确认。
+
+扩容命令的参考依据：[Ubuntu 20.04 growpart 手册](https://manpages.ubuntu.com/manpages/focal/man1/growpart.1.html)、[Ubuntu 20.04 resize2fs 手册](https://manpages.ubuntu.com/manpages/focal/man8/resize2fs.8.html)。growpart 扩大分区表中的分区，resize2fs 扩大 ext2/3/4 文件系统；两者作用不同。已挂载 ext4 在线扩容依赖实际内核/文件系统支持，不对已挂载根分区执行离线 e2fsck，也不自行假定根设备总是 mmcblk0p2。
+
+### 15.1 板端只读查询结果（2026-10-03，用户截图）
+
+用户提交 [串口截图](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-board-preflight.png)：lsblk 显示 mmcblk0=58.3G、p1=1G、p2=26.1G 且 p2 挂载到 /；findmnt 明确根设备为 /dev/mmcblk0p2、ext4、rw,relatime。df 显示 /dev/root 的根文件系统约26G，已用6.3G、可用18G、26%。/dev/root 是 df 所显示的根设备名，实际扩容目标按 findmnt 的 /dev/mmcblk0p2 核对。mtdblock0/1 不是本次 SD 扩容目标。
+
+command -v 返回 /usr/sbin/resize2fs 和 /usr/sbin/sfdisk，没有 growpart 路径；当前分区/根文件系统未扩至卡尾。以上是用户执行查询后的截图证据，代理未操作板端。实际分区表类型、扇区起始/末尾及 sfdisk 版本仍待查询；先核对再确定现有 sfdisk 是否可用于只扩大第二分区末尾的方案，不自行安装软件或执行写分区命令。参考 [Ubuntu 20.04 sfdisk 手册](https://manpages.ubuntu.com/manpages/focal/man8/sfdisk.8.html)。扩容仍未执行/验收，结构化结果已补入新卡确认记录。
+
+### 15.2 实际分区表确认与扩容命令说明（2026-10-03）
+
+用户随后提交 [分区表截图](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-partition-table.png)，更新15.1的待查询状态：sfdisk为util-linux 2.34；磁盘为DOS/MBR，ID=0x370deffb，共62549655552字节、122167296个512字节扇区。p1 start=2048、size=2097152、type=e；p2 start=2101248、size=54687500、end=56788747、type=83。仅有这两个分区，p2之后至磁盘尾为连续未分配区域。
+
+已依据截图形成 [逐条命令说明](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-expand-root-COMMANDS.md)：使用现有sfdisk 2.34，先备份和no-act预演，以-N 2仅设置第二分区长度为120066048扇区，保留起始2101248、type=83、p1和磁盘ID；禁用签名擦除、不立即更新内核边界，正常重启后核对内核分区长度，再以resize2fs扩大ext4。目标最后扇区122167295，第二分区容量约57.25GiB。上述数值仅适用于本次卡及布局，不能用于其他卡。
+
+**状态仍为命令说明准备完成、实际扩容待用户执行/验收。** 代理未连接板端、安装软件、写分区表或扩大文件系统。保持供电稳定，任何预演/写表字段不符或报错即停止；实际内核的ext4在线扩容支持未验证，不执行挂载根分区的离线e2fsck。用户实际输出及重启登录、df容量结果待后续补全。
+
+### 15.3 SD根分区及ext4扩容通过（2026-10-03，用户执行/现场截图）
+
+用户明确报告扩容成功，并提交 [最终串口截图](D:/FPGACompetitionProject/tools/sd-image-validation/20261003-expansion-success.png)，更新15.2的“待执行/验收”状态。内核识别p2为120066048个512字节扇区；根设备仍为/dev/mmcblk0p2、ext4、rw,relatime。resize2fs 1.45.5实际完成已挂载根文件系统在线扩容，报告15008256个4KiB块；两者均为61473816576字节，约57.25GiB，文件系统已覆盖扩大后的分区。
+
+最终lsblk显示p2约57.3G且挂载/、p1约1G；df显示根ext4总57G、已用6.3G、可用48G、使用率12%，扩容前为26G总量和18G可用。本次扩容由用户操作并以截图验收通过，代理只核对证据、计算和更新说明。备份/预演/正式写表完整输出未包含在最终截图中，无全容量写读、resize后额外重启或长期稳定性证据；不扩大为AI或runtime验收。详细“工程内容总结＋后续开发参考”已补入Done.md同一工作的扩容验收小节，结构化记录和命令文档均已更新。
+
+## 16. 板端SSH、Icraft/CustomOp安装与Docker交叉编译环境（2026-10-03）
+
+### 16.1 用户已完成的环境准备
+
+用户同步并明确补充：悟净Lite已使用SD启动，网线连接主机，在MobaXterm通过SSH开发/通信；已将指定目录中的板端Icraft与CustomOp传输到板上并完成安装；本机Docker交叉编译环境已搭建，相关工具链已配置，**FPAI是容器名**。这些完成状态来源于用户陈述，不能继续把板端SSH或板端工具安装列为尚未开展。
+
+| 环境 | 当前已知用途/状态 | 尚未独立核验的具体信息 |
+| --- | --- | --- |
+| Windows主机 | 既有Procise FPGA实现和Icraft 3.39.0 CLI；MobaXterm连接Lite | 本轮没有修改Windows工具基线 |
+| 悟净Lite板载Ubuntu | 已SD启动、完成此前根分区扩容；SSH开发/通信；Icraft与CustomOp已安装 | 实际已安装包版本/路径、CLI或运行库加载结果、参考位流/AI_MATE及模型兼容性 |
+| 本机Docker容器 `FPAI` | 用户已配置交叉编译环境和工具链 | 镜像名/ID、容器身份、编译器前缀/版本、sysroot、容器内Icraft/CustomOp版本、编译产物架构和板端执行结果 |
+| 远程Ubuntu训练服务器 | 算法训练位置仍按此前用户说明，文件挂载 `Z:` | 不能将板端SSH地址/账号当成训练服务器的连接信息；本次未更新模型或训练规格 |
+
+未提供的地址、账号和路径保留为空；本次未连接SSH、查询Docker或运行编译/部署。进度同步不是对新的环境修复、配置或设备操作的批准。
+
+### 16.2 本地安装包来源与control核对
+
+用户指定目录：[30TAI&100TAI](<D:/Dowload from Chrome/嵌赛资料/Icraft/Icraft_V3.39.0安装包/30TAI&100TAI/30TAI&100TAI>)。按E1索引读取 [Icraft自述文件.txt](<D:/Dowload from Chrome/嵌赛资料/Icraft/Icraft自述文件.txt>)，并只读解析四份deb的ar/control.tar.xz元数据：
+
+| 文件 | control中的Package / Version / Architecture | 资料定位 |
+| --- | --- | --- |
+| `Icraft_3.39.0_onchip.deb` | Icraft / 3.39.0 / arm64 | Ubuntu20.04-aarch64板端包 |
+| `CustomOp_3.39.0_onchip.deb` | CustomOp / 3.39.0 / arm64 | 对应板端扩展包，用户已确认安装 |
+| `Icraft_3.39.0_amd64.deb` | Icraft / 3.39.0 / amd64 | 自述用于amd64上交叉编译arm64 |
+| `CustomOp_3.39.0_amd64.deb` | CustomOp / 3.39.0 / amd64 | 对应主机侧扩展包；容器实际安装状态未查询 |
+
+该核对确认**本地安装包**标识，不能替代板端/容器已安装软件的查询。`onchip`与`amd64`角色按资料和实际包架构区分；3.33.1旧工程包及3.36.0参考实现不因此改为当前3.39.0基线。E1的`ubuntu20.04_container.tar`仍只作为已有参考资料，未得到FPAI容器源镜像确认。
+
+### 16.3 后续使用的参考与证据边界
+
+当前已具备用户确认的Linux登录、以太网SSH通信、板端工具安装和主机交叉编译环境准备，可作为后续讨论应用开发/部署的起点。具体实施前仍需在对应任务范围内核对实际工具路径、版本、目标架构、sysroot和依赖，并以“交叉编译产物→传输→板端运行”的实际结果验收；安装完成本身不证明AI推理、模型精度、FPGA系统配套或算子扩展已经通过。
+
+记录来源：[用户进度与澄清](D:/FPGACompetitionProject/tools/development-environment/20261003-progress.json)、[本地安装包control元数据](D:/FPGACompetitionProject/tools/development-environment/20261003-package-control.json)。本轮代理完成的是资料核对和项目状态记录，未替用户执行上述安装/配置，也未开始新的交叉编译或板端测试。总结见Done.md对应两模板小节，执行上下文见Agents.md最新进度条目。
+
+## 17. Person-in-WiFi 3D：2026姿态迁移实验（2026-10-03）
+
+此节更新早期“核心模型/训练服务器尚未核验”的状态。用户指定本机算法目录`D:\Person-in-WIFI-3D\Person-in-WiFi-3D-repo`，训练服务器目录`/public/cyd/Person-in-WiFi-3D-repo`（`Z:\Person-in-WiFi-3D-repo`），并授权通过`ssh gpu-server`分析、推送和四卡训练。已独立验证该SSH及`PersonInWIFI`环境；不是koala、双系统Ubuntu或Lite板端。
+
+本轮用户批准从24版epoch442迁移，修正分化分支初始化与优化方式，只做14关节骨架。新代码、说明和哈希清单位于[pose26-transfer/20261003](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/README.md)，论文与实现的逐项对应见[PAPER_AUDIT.md](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/PAPER_AUDIT.md)。论文原文件在上述本机算法目录`paper/Person-in-WiFi_3D_Unified_Model_for_3D_WiFi_Perception.pdf`，关键内容PDF第5–6页。MLP深度、std0.001、STE初始化和本轮AdamW迁移训练参数属于复现/实验选择，不声称为论文公开配方。
+
+已通过：169张量迁移逐元素一致；STE关闭时粗姿态与旧模型误差0；三层8头256维普通自/交叉注意力；14个残差分化分支，权重/偏置均随机近零；15-token输入、人物/关节索引、仅细化损失梯度连通；4卡短程训练和优化器断点恢复。24版在7824帧重新评估为123.085352129mm，与既有基准一致。证据见上述目录`evidence/gates`、`evidence/baseline`和`evidence/prelaunch-audit.json`。
+
+正式训练已于2026-10-03 21:59启动：GPU1–4、每卡batch8/worker4，FP32，AdamW lr迁移2e-6/新增2e-5，矩阵wd1e-4（分化、偏置、归一化、查询/STE排除），clip0.1，分类/坐标权重2/70，seed0、固定10轮。旧代码、旧权重和旧结果保留，新结果位于服务器`result/tpami2026_transfer_20261003`。以该目录`pipeline-status.json`核对实时状态；只有训练实际结束且`final-report.json`、最佳checkpoint与曲线核对通过后才可记为完成。10轮后必须停止讨论，不自动延长。
+
+**评估/开发边界**：维持原CSI预处理与数据划分；现有MPJPE用GT辅助greedy匹配100候选并逐帧平均，不等同真实部署人数检测准确率；逐关节、人数分组和固定匹配下细化前后误差均追加记录。坐标物理轴未确认。该训练不代表ONNX、Icraft编译、NPU推理或顶层项目架构已确定；mesh/SMPL明确排除。早期没有确认模型的文字为历史阶段，不能阻止当前明确授权的姿态训练，也不能扩展为板端部署授权。
+
+首轮实际结果（22:10快照）：第1/10轮MPJPE126.41057mm，基准123.08535mm；同配对粗预测126.06887mm，细化尚无收益。已进入第2轮，未修改批准参数，未出现参数趋零。详见Done.md首轮补充和项目evidence；最终结果仍待10轮结束核验。
+
+26版实验定时检查：用户确认后创建当前聊天heartbeat（ID26），每10分钟仅检查并在完成/失败/异常时通知。10轮结果现已核验、记录并通知，随后通过应用工具停用，配置读回PAUSED；首次22:27检查为运行阶段历史状态。停止证据见[automation-stop.json](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/evidence/automation-stop.json)，说明见[MONITOR.md](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/MONITOR.md)，最终结果见17.1。
+
+### 17.1 10轮实验结束与验收（2026-10-03）
+
+23:42完成10轮/28,110步并停止，最佳第9轮122.873803893mm，相比基准123.085352129mm降低0.211548236mm（0.172%）；第10轮124.680599441mm。10次全7824帧评估、四卡一致性、563条有限诊断、126份代码/配置/列表及快照哈希、完整配置、CSV与权重哈希/元数据核对通过，进程退出。单/双/三人100.32099/123.27283/150.64941mm；最佳轮粗→细化122.79552→122.87380mm，细化未体现稳定收益。不能由小幅单seed改善认定稳定提升或分化分支作用。
+
+完整逐关节/人数/阶段表、产物和边界见[RESULTS.md](D:/FPGACompetitionProject/tools/pose26-transfer/20261003/RESULTS.md)，核验见同目录evidence/completion-verification.json；最佳权重已复制至.local/pose26-training/20261003，哈希与服务器一致。前述“训练进行中”保留为历史阶段，当前已结束，后续消融/延长/部署仍需先讨论批准。
+
+### 17.2 全新初始化500轮：论文Adam配方（2026-10-04，已启动/未完成）
+
+用户本轮明确要求从头训练500epoch，并选择A论文Adam方案；原“从epoch10恢复到100轮”的建议未批准、未执行。论文PDF第7页（印刷12719）的Training Details已提取并可视核对：Adam/momentum0.9、wd1e-4、batch32、500epoch、初始lr2e-5、450轮乘0.1、focal alpha0.25/gamma2、lambda35。当前beta2/eps、clip/seed、MLP深度/std、2/70整体缩放及辅助decoder监督仍是实现选择，不宣称全部细节等同作者代码。
+
+独立新模块`opera/models/tpami2026_scratch.py`、新配置`configs/wifi/petr_wifi_tpami2026_scratch.py`、管理脚本`tools/pose26_scratch`已部署；明确绕过migrate，不加载旧模型/优化器或外部预训练权重。模型结构复用此前经核对的STE、14分化分支和3层vanilla细化，只做14关节。旧代码/权重/10轮结果保留。
+
+单项初始化/无checkpoint调用/索引/梯度/学习率边界门检与4卡96样本3步检查通过；129份当前源码/配置/列表及snapshot、解析配置哈希独立核验通过。2026-10-04 00:41（北京时间）已正式启动GPU1–4、每卡batch8/worker4、FP32 seed0 clip0.1、Adam统一lr2e-5/wd1e-4，无迁移分组/衰减排除，MMCV step450/gamma0.1（完成450轮后第451轮lr2e-6），500轮后汇总停止，不自动重试/延长。结果`Z:\Person-in-WiFi-3D-repo\result\tpami2026_scratch_20261004`；进程身份和实际命令见README及pipeline-launch.json。
+
+启动验收快照已超过500步，记录有限，四个训练rank与GPU1–4负载已确认，但未完成首轮评估或500轮验收。分化L2从1.357186迅速缩小至第501步0.016044，尚未触发连续两轮严重趋零门禁；此趋势需要关注，不能根据损失下降认定精度提高。用户明确暂不启用定时监测，旧ID26保持PAUSED，不自行更新；会话结束后没有本项自动回查任务。错误/非有限值/索引异常、四卡不一致和连续两轮分支严重趋零由训练内置门禁中止，不自动改参数。
+
+入口、边界与证据：[README.md](D:/FPGACompetitionProject/tools/pose26-scratch/20261004/README.md)、[批准方案](D:/FPGACompetitionProject/tools/pose26-scratch/20261004/PLAN.md)、[启动核验](D:/FPGACompetitionProject/tools/pose26-scratch/20261004/evidence/startup-verification.json)。独立证据为启动时快照，实时读新结果目录pipeline-status.json/train.stdout.log/branch_diagnostics.jsonl/evaluations.jsonl；后续参数/数据/部署变更仍需先讨论批准。
+
+后续快照：第1轮2811训练步已完成，四卡一致性通过；末轮分化/细化注意力L2=0.003813/51.173392，有限但较初始化明显下降。首轮评估尚待核验，不能记为精度通过。见同目录evidence/first-epoch-training.json。
+
+**最新检查（2026-10-04 09:08，更新前述运行状态）**：实际已于01:40:51在第6轮末触发`RuntimeError: Persistent branch collapse`，流水线为failed_stopped，无自动重试；监督/torchrun/四个rank退出，GPU空闲。5轮完整7824帧评估MPJPE依次479.294219、453.726498、439.551332、420.189946、438.772184mm，最佳第4轮；没有第6轮评估或500轮final-report。分化L2第5轮约7.30e-21、第6轮16851步约7.44e-38，分化/细化注意力梯度及分化残差为0，连续两轮严重趋零触发门禁。338条已记录诊断有限，不能把数值有限视为分支学习有效。
+
+最佳checkpoint epoch4/iter11244全部权重有限、SHA256 eaec533377d8098dab8fa35e6104c5330840fc7d0be0658ffdc669a794213361；129份源码/快照和配置哈希通过，最佳仍保留服务器。Z盘本次不可读，已通过SSH读取和复制原始证据至项目；挂载问题与训练的01:40退化停止分开判断。当前未重启/调参/启用监测，后续修复或实验仍需批准。完整人数/关节/阶段对照见[当前结果报告](D:/FPGACompetitionProject/tools/pose26-scratch/20261004/STATUS-20261004-0908.md)，原始证据为同目录evidence/check-20261004-0906。
+
+## 18. PS主导首版架构与独立预处理阶段（2026-10-04）
+
+首版架构决策已由用户审查批准并归档：[ADR_00](ADR/ADR_00.md)。ADR记录架构、范围、工具分工、停止条件和验收目标；以下记录实施事实与证据，不能将方案批准视为功能验收通过。
+
+用户批准首版原始CSI回放→板端PS预处理→PS/NPU混合推理→单人14关节固定三维视角→720p HDMI＋H.264 RTSP。
+采用2024 epoch442；正式验收须NPU和双路均通过，≥5Hz、10Hz优化目标、板端完整窗口到画面P95≤500ms，播放器另测。
+实时三接收器采集与PL扩展后续讨论，先按实测收益选择；不自动将此前候选功能变为必做。
+
+### 18.1 实测环境、启动与输入契约
+
+板端此前只读查询确认Ubuntu20.04.4/aarch64、Icraft/CustomOp3.39.0、mvx M2M视频驱动声明H.264/HEVC与原始格式、
+udmabuf128MiB；本次再次读取启动FAT16及设备树。FPAI为容器名，实际镜像`ubuntu20.04:custom`，挂载原D盘项目；
+arm64 SDK/CustomOp3.39.0、交叉GCC9.4存在。SDK安装和视频格式声明都不代表推理或编码已通过。
+
+本次FAT16直接只读解析，9启动文件与镜像大小/哈希全部一致，见[启动审计](tools/pose-v1/evidence/board-audit.json)
+和[源镜像对照](tools/pose-v1/evidence/boot-source-comparison.json)。uEnv仍从p2加载download.bit，前次根目录未找到；
+BOOT内及实际运行AI_MATE身份、HDMI映射未确认，设备访问暂停，等待用户保留串口日志。根目录新增`Logs`；未挂载或修改启动文件。
+
+原始窗口契约见[PROTOCOL.md](software/pose_v1/PROTOCOL.md)：32字节头部，帧号/时间戳，86400字节float64 I/Q，
+`[3 receiver,3 antenna,30 carrier,20 sample,2]`；输出float32 `[1,180,60]`，30幅度＋30相位。
+回放发送端已实现但板端TCP接收服务尚未实现，不将文件数值测试当作网络联调。
+
+用户明确授权Conda独立验证环境，当前worktree`.local/pose-v1-conda`，Python3.10.21/NumPy2.2.5/h5py3.16.0/PyWavelets1.8.0，
+见[精确依赖锁定](tools/pose-v1/evidence/conda-explicit.txt)。在线安装因TLS中断失败后缓存离线成功，未改渠道、证书、既有Conda或板端依赖。
+
+### 18.2 预处理实板结果与限制
+
+从原`wifi_pose.py`提取实际三种预处理方法，不导入mmdet/GPU。db11在20个时间样本下最大分解层数为0，幅度不变；
+保留相位展开、三天线相对相位、共用线性校正、复数重构再angle与token排列。
+初次移植错误来自零幅值复数乘法带符号零，已按原式修正并保留[初次失败](tools/pose-v1/evidence/host-preprocess-initial-failure.json)。
+
+修正后[主机](tools/pose-v1/evidence/host-preprocess.json)和[实板](tools/pose-v1/evidence/board-preprocess.json)9类用例结果：
+真实S11_01_308/309/310及常量/零/随机的float32张量逐位一致；板端真实样本预处理5.70319/5.78065/5.72649ms；
+四类非法记录拒绝。0.75rad斜坡差7.5051e-14；±π边界最大差6.24063/5.76522，未定义容限/修改展开规则，不能宣布总体等价或门检通过。
+相位边界浮点敏感性仅是排查方向，需进一步取证，不以推断消除失败。
+
+已交叉构建并在Lite上执行独立程序，SHA256 `65d44aa2aff5ffe2975300b27b1325dc7b25d5cb71cd6f85ee5076b4aa4a59b2`；
+[构建脚本](tools/pose-v1/Build-Preprocess.ps1)复现同一哈希。代码、模型、源文件哈希见[资产清单](tools/pose-v1/evidence/asset-manifest.json)。
+只在/tmp写测试产物，没有NPU/HDMI/VPU设备访问。上述时延不是端到端推理/显示指标。
+
+### 18.3 尚未实现与下一步
+
+运行位流配套、π边界和误差容限仍需讨论。未执行ONNX/Icraft参考/板端混合推理，未实现板端接收服务、队列、骨架渲染、
+HDMI/编码RTSP与30分钟闭环；不能用全CPU或电脑推理替代NPU正式验收。最新状态见[STATUS.md](tools/pose-v1/STATUS.md)
+及[软件README](software/pose_v1/README.md)。任何新增依赖、启动配置、模型修正或FPGA工程继续先讨论批准。

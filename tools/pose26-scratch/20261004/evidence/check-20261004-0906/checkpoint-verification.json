@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-10-04T09:07:57.228851+08:00",
+  "best_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/tpami2026_scratch_20261004/best_mpjpe_epoch_4.pth",
+  "best_checkpoint_bytes": 311125343,
+  "best_checkpoint_sha256": "eaec533377d8098dab8fa35e6104c5330840fc7d0be0658ffdc669a794213361",
+  "best_checkpoint_epoch": 4,
+  "best_checkpoint_iter": 11244,
+  "best_checkpoint_tensors_finite": true,
+  "optimizer_lr": [0.00002],
+  "optimizer_weight_decay": [0.0001],
+  "source_snapshot_hashes_verified": 129,
+  "config_sha256_verified": true,
+  "expected_processes_alive": {"54209": false, "54220": false, "54225": false, "54226": false, "54227": false, "54228": false},
+  "final_report_exists": false
+}

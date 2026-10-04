@@ -1,0 +1,607 @@
+{
+  "completed_epochs": 10,
+  "baseline_mpjpe_mm": 123.0853521290001,
+  "best_epoch": 9,
+  "best_mpjpe_mm": 122.87380389299373,
+  "improvement_mm": 0.2115482360063652,
+  "best_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/tpami2026_transfer_20261003/best_mpjpe_epoch_9.pth",
+  "best_checkpoint_sha256": "b567aa16e3e46be88cd9187cdc3af7d46085800d0c3df94a8404ae377d8bcca7",
+  "final_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/tpami2026_transfer_20261003/epoch_10.pth",
+  "final_checkpoint_sha256": "0a99a8bb4b84db3809437cc0cbc96a14e44bfa2f487af8ffc611503647a52658",
+  "evaluations": [
+    {
+      "evaluation_round": 1,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 126.41056737504854,
+        "mpjpeh": 56.21202818509991,
+        "mpjpev": 67.17481090040052,
+        "mpjped": 62.23225671168729
+      },
+      "per_joint_mm": [
+        104.24605076770719,
+        112.58513145304165,
+        115.02010515752745,
+        113.6117666130295,
+        149.88993070114608,
+        91.8485771628489,
+        154.04384225177253,
+        90.87357367273489,
+        207.08552625659541,
+        97.72351304821076,
+        225.53419445384986,
+        97.94688103544566,
+        105.17917191537367,
+        104.15967970257644
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 104.90486290098988
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 126.34860675059372
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 153.58244390775536
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        126.0688682565416,
+        126.24046591917674,
+        126.33472607618461,
+        126.41056742063573
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    },
+    {
+      "evaluation_round": 2,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 124.64574038372938,
+        "mpjpeh": 56.61246695608693,
+        "mpjpev": 67.62434616825088,
+        "mpjped": 58.25937898856243
+      },
+      "per_joint_mm": [
+        103.00265514972507,
+        111.61868397534991,
+        113.25097171203491,
+        113.09785138932962,
+        148.3486362270295,
+        88.90209505767972,
+        153.5374496889992,
+        88.91963659412778,
+        205.70197781079386,
+        94.63302880251335,
+        224.85130531263133,
+        95.7345889029693,
+        102.15521834549972,
+        101.28626929174781
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 102.30207667162689
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 124.94186645296949
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 152.31752663252996
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        124.70897896913907,
+        124.68531726059982,
+        124.66824539843756,
+        124.64574046661518
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    },
+    {
+      "evaluation_round": 3,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 123.82737893365888,
+        "mpjpeh": 55.36064559568657,
+        "mpjpev": 68.13835398685225,
+        "mpjped": 57.59694361644045
+      },
+      "per_joint_mm": [
+        102.60346744159249,
+        111.32479379976698,
+        112.80750986080471,
+        112.90609590401435,
+        148.02463226108708,
+        87.85104696428239,
+        153.9611448294546,
+        87.9781785980324,
+        205.47396468451905,
+        92.9254760223237,
+        225.47185552424935,
+        93.10541309937378,
+        100.45364180944692,
+        98.69608528232526
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 101.05481103217058
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 123.98819861939205
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 152.248903137103
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        123.92305077268058,
+        123.87731138206942,
+        123.85229209010586,
+        123.82737899923617
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    },
+    {
+      "evaluation_round": 4,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 126.40573199004972,
+        "mpjpeh": 57.54987388940677,
+        "mpjpev": 68.34831051245058,
+        "mpjped": 59.52439022289707
+      },
+      "per_joint_mm": [
+        104.97881591112824,
+        113.55292958277134,
+        114.70169209806222,
+        115.23978736992842,
+        149.20876993564985,
+        90.96989627179437,
+        156.19642649240532,
+        91.0703931691883,
+        205.83160632678093,
+        96.44025094450618,
+        227.08925258979232,
+        97.18813178817797,
+        104.29595299781222,
+        102.91634436271673
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 104.47151122716446
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 125.97302629600219
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 154.69182245872966
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        126.17359228660725,
+        126.27829795771093,
+        126.34747168915403,
+        126.40573203783094
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    },
+    {
+      "evaluation_round": 5,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 123.62340783902229,
+        "mpjpeh": 55.123875168447356,
+        "mpjpev": 67.93538376219678,
+        "mpjped": 57.72268311578803
+      },
+      "per_joint_mm": [
+        102.62194062979675,
+        111.46475831070317,
+        113.48125213364821,
+        111.7314708519628,
+        148.48616908792337,
+        88.4328576774624,
+        151.2581183948156,
+        87.67757958545519,
+        204.95420595400174,
+        93.90670296065281,
+        222.76739709094502,
+        93.27591090065813,
+        101.5658503800082,
+        99.1034968207097
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 100.86976530675453
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 123.2007738166119
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 152.92554333843762
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        123.58266998921923,
+        123.59156811188579,
+        123.60591927798491,
+        123.62340794409224
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    },
+    {
+      "evaluation_round": 6,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 124.35557917461317,
+        "mpjpeh": 56.02041330159564,
+        "mpjpev": 68.00413279092142,
+        "mpjped": 58.00278730772756
+      },
+      "per_joint_mm": [
+        102.89484405121432,
+        111.42836942409446,
+        113.46210141458639,
+        112.73856983155561,
+        148.6802720739554,
+        88.87400920088794,
+        153.2719136164476,
+        88.46744103068467,
+        205.6811336510508,
+        94.318475977531,
+        223.83675185235975,
+        94.6419834059745,
+        101.90664820875858,
+        100.77559547001356
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 101.5448559608371
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 124.5359706806777
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 152.79480199618837
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        124.56489720958874,
+        124.49254105183732,
+        124.42659792968344,
+        124.35557919070277
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    },
+    {
+      "evaluation_round": 7,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 126.72665038235593,
+        "mpjpeh": 56.61894490772474,
+        "mpjpev": 67.9433233490507,
+        "mpjped": 61.52914083174645
+      },
+      "per_joint_mm": [
+        105.52921767063546,
+        113.95810378655213,
+        115.71013624566952,
+        115.34198329129956,
+        149.98148905152192,
+        92.07460941377349,
+        154.63381258603985,
+        92.05581102023523,
+        206.95362250138157,
+        96.59924587247805,
+        226.04391072254728,
+        97.71204463135001,
+        104.07507811501958,
+        103.50404115950647
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 104.25404218214939
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 127.25400599882231
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 154.2023390497878
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        126.66686369378142,
+        126.66281447210683,
+        126.68446172892682,
+        126.72665045451532
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    },
+    {
+      "evaluation_round": 8,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 123.24670007306861,
+        "mpjpeh": 54.97227082771758,
+        "mpjpev": 67.34639424688977,
+        "mpjped": 57.83485589424769
+      },
+      "per_joint_mm": [
+        101.67808569452758,
+        110.52946557327039,
+        112.25749602078903,
+        111.80879144440644,
+        147.88192288879236,
+        87.0809152975587,
+        151.77319385809156,
+        86.93620403010421,
+        206.40183424395042,
+        92.2070488719182,
+        223.18164365325725,
+        94.10682544813078,
+        99.87397289721025,
+        99.73640140135352
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 100.7378611258546
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 123.37092611837626
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 151.39291321291083
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        123.29423158983023,
+        123.28905424481765,
+        123.26949789431441,
+        123.24670024688503
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    },
+    {
+      "evaluation_round": 9,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 122.87380389299373,
+        "mpjpeh": 55.433901636451786,
+        "mpjpev": 68.07461904309278,
+        "mpjped": 56.00931995235582
+      },
+      "per_joint_mm": [
+        101.50516314969107,
+        110.0690655461484,
+        111.9514511205058,
+        111.73325727785536,
+        146.70093830792206,
+        87.0514034591996,
+        152.52007726944055,
+        86.9322449052992,
+        204.22075572884157,
+        92.23133260730829,
+        223.27317912641965,
+        93.11219532065596,
+        99.82952931681781,
+        99.1026643376287
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 100.32098611712179
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 123.27282809851756
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 150.64940939348884
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        122.79551520864412,
+        122.81570964015579,
+        122.85284761734047,
+        122.87380397856114
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    },
+    {
+      "evaluation_round": 10,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 124.68059944082623,
+        "mpjpeh": 56.45184296058731,
+        "mpjpev": 67.41488964919664,
+        "mpjped": 58.93862090508143
+      },
+      "per_joint_mm": [
+        103.1764670849334,
+        111.67712969712319,
+        113.44064777790891,
+        112.91862245614055,
+        147.68580397986378,
+        89.4861508067583,
+        152.7514443005643,
+        89.37140850427204,
+        204.43730960557798,
+        95.1610320623667,
+        223.59996101918395,
+        96.17377826455669,
+        103.05829099472803,
+        102.59034913473577
+      ],
+      "by_person_count": {
+        "1": {
+          "frames": 2586,
+          "mpjpe": 103.05664924273451
+        },
+        "2": {
+          "frames": 3184,
+          "mpjpe": 124.35068642553972
+        },
+        "3": {
+          "frames": 2054,
+          "mpjpe": 152.41671348802072
+        }
+      },
+      "fixed_final_pairing_stage_mpjpe": [
+        124.640991803571,
+        124.62366231721359,
+        124.6463803255241,
+        124.68059961659289
+      ],
+      "axis_convention": "original_columns_physical_axes_unconfirmed",
+      "metric_protocol": "legacy_greedy_all_100_candidates_frame_mean"
+    }
+  ],
+  "epoch_parameter_checks": [
+    {
+      "epoch": 1,
+      "parameter_l2": {
+        "differentiate": 1.3574718580008123,
+        "refine_attention": 92.75375147071723,
+        "refine_regression": 22.638075566292752,
+        "pose_decoder": 96.04464237547812,
+        "ste": 4.2853233715534715
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 2,
+      "parameter_l2": {
+        "differentiate": 1.3576033333540762,
+        "refine_attention": 92.75389046634199,
+        "refine_regression": 22.63724698660688,
+        "pose_decoder": 96.04525998810638,
+        "ste": 4.290765323928025
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 3,
+      "parameter_l2": {
+        "differentiate": 1.3576517586401298,
+        "refine_attention": 92.75405691172834,
+        "refine_regression": 22.637648925895103,
+        "pose_decoder": 96.04618507484126,
+        "ste": 4.2975659807220685
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 4,
+      "parameter_l2": {
+        "differentiate": 1.3577177368969113,
+        "refine_attention": 92.7546495661287,
+        "refine_regression": 22.638165067117495,
+        "pose_decoder": 96.04728309659782,
+        "ste": 4.304126368406913
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 5,
+      "parameter_l2": {
+        "differentiate": 1.3577819383229253,
+        "refine_attention": 92.75508892387013,
+        "refine_regression": 22.638562744739183,
+        "pose_decoder": 96.04853241626948,
+        "ste": 4.309711542039543
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 6,
+      "parameter_l2": {
+        "differentiate": 1.3578161479874211,
+        "refine_attention": 92.75558841869989,
+        "refine_regression": 22.638958571700194,
+        "pose_decoder": 96.04956976028633,
+        "ste": 4.315373570875643
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 7,
+      "parameter_l2": {
+        "differentiate": 1.3578390333857246,
+        "refine_attention": 92.75631473548782,
+        "refine_regression": 22.63913421618201,
+        "pose_decoder": 96.05093837793382,
+        "ste": 4.322214040255558
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 8,
+      "parameter_l2": {
+        "differentiate": 1.3578631287704268,
+        "refine_attention": 92.75644572883485,
+        "refine_regression": 22.63954175821424,
+        "pose_decoder": 96.0521467889267,
+        "ste": 4.32538483528099
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 9,
+      "parameter_l2": {
+        "differentiate": 1.3578846046765434,
+        "refine_attention": 92.75668427232657,
+        "refine_regression": 22.640496167043512,
+        "pose_decoder": 96.05304338081473,
+        "ste": 4.332356238430212
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 10,
+      "parameter_l2": {
+        "differentiate": 1.3579154817833803,
+        "refine_attention": 92.75675541576692,
+        "refine_regression": 22.640756417311255,
+        "pose_decoder": 96.0539238007358,
+        "ste": 4.339891550871556
+      },
+      "ddp_equal": true
+    }
+  ],
+  "interpretation": "Same legacy GT-informed all-100-candidate metric; not a deployment/person-count metric.",
+  "next_action": "Stop and discuss. No automatic extension."
+}

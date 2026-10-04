@@ -1,0 +1,5925 @@
+{
+  "source": "result/code_faithful/best_mpjpe_epoch_442.pth",
+  "sha256": "6493e2250b83aef59ce4825e15d2d0043a59490275f75933f9a59867867d3221",
+  "epoch": 442,
+  "loaded": [
+    "bbox_head.cls_branches.0.bias",
+    "bbox_head.cls_branches.0.weight",
+    "bbox_head.cls_branches.1.bias",
+    "bbox_head.cls_branches.1.weight",
+    "bbox_head.cls_branches.2.bias",
+    "bbox_head.cls_branches.2.weight",
+    "bbox_head.cls_branches.3.bias",
+    "bbox_head.cls_branches.3.weight",
+    "bbox_head.kpt_branches.0.0.bias",
+    "bbox_head.kpt_branches.0.0.weight",
+    "bbox_head.kpt_branches.0.2.bias",
+    "bbox_head.kpt_branches.0.2.weight",
+    "bbox_head.kpt_branches.0.4.bias",
+    "bbox_head.kpt_branches.0.4.weight",
+    "bbox_head.kpt_branches.0.6.bias",
+    "bbox_head.kpt_branches.0.6.weight",
+    "bbox_head.kpt_branches.1.0.bias",
+    "bbox_head.kpt_branches.1.0.weight",
+    "bbox_head.kpt_branches.1.2.bias",
+    "bbox_head.kpt_branches.1.2.weight",
+    "bbox_head.kpt_branches.1.4.bias",
+    "bbox_head.kpt_branches.1.4.weight",
+    "bbox_head.kpt_branches.1.6.bias",
+    "bbox_head.kpt_branches.1.6.weight",
+    "bbox_head.kpt_branches.2.0.bias",
+    "bbox_head.kpt_branches.2.0.weight",
+    "bbox_head.kpt_branches.2.2.bias",
+    "bbox_head.kpt_branches.2.2.weight",
+    "bbox_head.kpt_branches.2.4.bias",
+    "bbox_head.kpt_branches.2.4.weight",
+    "bbox_head.kpt_branches.2.6.bias",
+    "bbox_head.kpt_branches.2.6.weight",
+    "bbox_head.kpt_branches.3.0.bias",
+    "bbox_head.kpt_branches.3.0.weight",
+    "bbox_head.kpt_branches.3.2.bias",
+    "bbox_head.kpt_branches.3.2.weight",
+    "bbox_head.kpt_branches.3.4.bias",
+    "bbox_head.kpt_branches.3.4.weight",
+    "bbox_head.kpt_branches.3.6.bias",
+    "bbox_head.kpt_branches.3.6.weight",
+    "bbox_head.query_embedding.weight",
+    "bbox_head.transformer.decoder.layers.0.attentions.0.attn.in_proj_bias",
+    "bbox_head.transformer.decoder.layers.0.attentions.0.attn.in_proj_weight",
+    "bbox_head.transformer.decoder.layers.0.attentions.0.attn.out_proj.bias",
+    "bbox_head.transformer.decoder.layers.0.attentions.0.attn.out_proj.weight",
+    "bbox_head.transformer.decoder.layers.0.attentions.1.attn.in_proj_bias",
+    "bbox_head.transformer.decoder.layers.0.attentions.1.attn.in_proj_weight",
+    "bbox_head.transformer.decoder.layers.0.attentions.1.attn.out_proj.bias",
+    "bbox_head.transformer.decoder.layers.0.attentions.1.attn.out_proj.weight",
+    "bbox_head.transformer.decoder.layers.0.ffns.0.layers.0.0.bias",
+    "bbox_head.transformer.decoder.layers.0.ffns.0.layers.0.0.weight",
+    "bbox_head.transformer.decoder.layers.0.ffns.0.layers.1.bias",
+    "bbox_head.transformer.decoder.layers.0.ffns.0.layers.1.weight",
+    "bbox_head.transformer.decoder.layers.0.norms.0.bias",
+    "bbox_head.transformer.decoder.layers.0.norms.0.weight",
+    "bbox_head.transformer.decoder.layers.0.norms.1.bias",
+    "bbox_head.transformer.decoder.layers.0.norms.1.weight",
+    "bbox_head.transformer.decoder.layers.0.norms.2.bias",
+    "bbox_head.transformer.decoder.layers.0.norms.2.weight",
+    "bbox_head.transformer.decoder.layers.1.attentions.0.attn.in_proj_bias",
+    "bbox_head.transformer.decoder.layers.1.attentions.0.attn.in_proj_weight",
+    "bbox_head.transformer.decoder.layers.1.attentions.0.attn.out_proj.bias",
+    "bbox_head.transformer.decoder.layers.1.attentions.0.attn.out_proj.weight",
+    "bbox_head.transformer.decoder.layers.1.attentions.1.attn.in_proj_bias",
+    "bbox_head.transformer.decoder.layers.1.attentions.1.attn.in_proj_weight",
+    "bbox_head.transformer.decoder.layers.1.attentions.1.attn.out_proj.bias",
+    "bbox_head.transformer.decoder.layers.1.attentions.1.attn.out_proj.weight",
+    "bbox_head.transformer.decoder.layers.1.ffns.0.layers.0.0.bias",
+    "bbox_head.transformer.decoder.layers.1.ffns.0.layers.0.0.weight",
+    "bbox_head.transformer.decoder.layers.1.ffns.0.layers.1.bias",
+    "bbox_head.transformer.decoder.layers.1.ffns.0.layers.1.weight",
+    "bbox_head.transformer.decoder.layers.1.norms.0.bias",
+    "bbox_head.transformer.decoder.layers.1.norms.0.weight",
+    "bbox_head.transformer.decoder.layers.1.norms.1.bias",
+    "bbox_head.transformer.decoder.layers.1.norms.1.weight",
+    "bbox_head.transformer.decoder.layers.1.norms.2.bias",
+    "bbox_head.transformer.decoder.layers.1.norms.2.weight",
+    "bbox_head.transformer.decoder.layers.2.attentions.0.attn.in_proj_bias",
+    "bbox_head.transformer.decoder.layers.2.attentions.0.attn.in_proj_weight",
+    "bbox_head.transformer.decoder.layers.2.attentions.0.attn.out_proj.bias",
+    "bbox_head.transformer.decoder.layers.2.attentions.0.attn.out_proj.weight",
+    "bbox_head.transformer.decoder.layers.2.attentions.1.attn.in_proj_bias",
+    "bbox_head.transformer.decoder.layers.2.attentions.1.attn.in_proj_weight",
+    "bbox_head.transformer.decoder.layers.2.attentions.1.attn.out_proj.bias",
+    "bbox_head.transformer.decoder.layers.2.attentions.1.attn.out_proj.weight",
+    "bbox_head.transformer.decoder.layers.2.ffns.0.layers.0.0.bias",
+    "bbox_head.transformer.decoder.layers.2.ffns.0.layers.0.0.weight",
+    "bbox_head.transformer.decoder.layers.2.ffns.0.layers.1.bias",
+    "bbox_head.transformer.decoder.layers.2.ffns.0.layers.1.weight",
+    "bbox_head.transformer.decoder.layers.2.norms.0.bias",
+    "bbox_head.transformer.decoder.layers.2.norms.0.weight",
+    "bbox_head.transformer.decoder.layers.2.norms.1.bias",
+    "bbox_head.transformer.decoder.layers.2.norms.1.weight",
+    "bbox_head.transformer.decoder.layers.2.norms.2.bias",
+    "bbox_head.transformer.decoder.layers.2.norms.2.weight",
+    "bbox_head.transformer.encoder.layers.0.attentions.0.attn.in_proj_bias",
+    "bbox_head.transformer.encoder.layers.0.attentions.0.attn.in_proj_weight",
+    "bbox_head.transformer.encoder.layers.0.attentions.0.attn.out_proj.bias",
+    "bbox_head.transformer.encoder.layers.0.attentions.0.attn.out_proj.weight",
+    "bbox_head.transformer.encoder.layers.0.ffns.0.layers.0.0.bias",
+    "bbox_head.transformer.encoder.layers.0.ffns.0.layers.0.0.weight",
+    "bbox_head.transformer.encoder.layers.0.ffns.0.layers.1.bias",
+    "bbox_head.transformer.encoder.layers.0.ffns.0.layers.1.weight",
+    "bbox_head.transformer.encoder.layers.0.norms.0.bias",
+    "bbox_head.transformer.encoder.layers.0.norms.0.weight",
+    "bbox_head.transformer.encoder.layers.0.norms.1.bias",
+    "bbox_head.transformer.encoder.layers.0.norms.1.weight",
+    "bbox_head.transformer.encoder.layers.1.attentions.0.attn.in_proj_bias",
+    "bbox_head.transformer.encoder.layers.1.attentions.0.attn.in_proj_weight",
+    "bbox_head.transformer.encoder.layers.1.attentions.0.attn.out_proj.bias",
+    "bbox_head.transformer.encoder.layers.1.attentions.0.attn.out_proj.weight",
+    "bbox_head.transformer.encoder.layers.1.ffns.0.layers.0.0.bias",
+    "bbox_head.transformer.encoder.layers.1.ffns.0.layers.0.0.weight",
+    "bbox_head.transformer.encoder.layers.1.ffns.0.layers.1.bias",
+    "bbox_head.transformer.encoder.layers.1.ffns.0.layers.1.weight",
+    "bbox_head.transformer.encoder.layers.1.norms.0.bias",
+    "bbox_head.transformer.encoder.layers.1.norms.0.weight",
+    "bbox_head.transformer.encoder.layers.1.norms.1.bias",
+    "bbox_head.transformer.encoder.layers.1.norms.1.weight",
+    "bbox_head.transformer.encoder.layers.2.attentions.0.attn.in_proj_bias",
+    "bbox_head.transformer.encoder.layers.2.attentions.0.attn.in_proj_weight",
+    "bbox_head.transformer.encoder.layers.2.attentions.0.attn.out_proj.bias",
+    "bbox_head.transformer.encoder.layers.2.attentions.0.attn.out_proj.weight",
+    "bbox_head.transformer.encoder.layers.2.ffns.0.layers.0.0.bias",
+    "bbox_head.transformer.encoder.layers.2.ffns.0.layers.0.0.weight",
+    "bbox_head.transformer.encoder.layers.2.ffns.0.layers.1.bias",
+    "bbox_head.transformer.encoder.layers.2.ffns.0.layers.1.weight",
+    "bbox_head.transformer.encoder.layers.2.norms.0.bias",
+    "bbox_head.transformer.encoder.layers.2.norms.0.weight",
+    "bbox_head.transformer.encoder.layers.2.norms.1.bias",
+    "bbox_head.transformer.encoder.layers.2.norms.1.weight",
+    "bbox_head.transformer.encoder.layers.3.attentions.0.attn.in_proj_bias",
+    "bbox_head.transformer.encoder.layers.3.attentions.0.attn.in_proj_weight",
+    "bbox_head.transformer.encoder.layers.3.attentions.0.attn.out_proj.bias",
+    "bbox_head.transformer.encoder.layers.3.attentions.0.attn.out_proj.weight",
+    "bbox_head.transformer.encoder.layers.3.ffns.0.layers.0.0.bias",
+    "bbox_head.transformer.encoder.layers.3.ffns.0.layers.0.0.weight",
+    "bbox_head.transformer.encoder.layers.3.ffns.0.layers.1.bias",
+    "bbox_head.transformer.encoder.layers.3.ffns.0.layers.1.weight",
+    "bbox_head.transformer.encoder.layers.3.norms.0.bias",
+    "bbox_head.transformer.encoder.layers.3.norms.0.weight",
+    "bbox_head.transformer.encoder.layers.3.norms.1.bias",
+    "bbox_head.transformer.encoder.layers.3.norms.1.weight",
+    "bbox_head.transformer.encoder.layers.4.attentions.0.attn.in_proj_bias",
+    "bbox_head.transformer.encoder.layers.4.attentions.0.attn.in_proj_weight",
+    "bbox_head.transformer.encoder.layers.4.attentions.0.attn.out_proj.bias",
+    "bbox_head.transformer.encoder.layers.4.attentions.0.attn.out_proj.weight",
+    "bbox_head.transformer.encoder.layers.4.ffns.0.layers.0.0.bias",
+    "bbox_head.transformer.encoder.layers.4.ffns.0.layers.0.0.weight",
+    "bbox_head.transformer.encoder.layers.4.ffns.0.layers.1.bias",
+    "bbox_head.transformer.encoder.layers.4.ffns.0.layers.1.weight",
+    "bbox_head.transformer.encoder.layers.4.norms.0.bias",
+    "bbox_head.transformer.encoder.layers.4.norms.0.weight",
+    "bbox_head.transformer.encoder.layers.4.norms.1.bias",
+    "bbox_head.transformer.encoder.layers.4.norms.1.weight",
+    "bbox_head.transformer.encoder.layers.5.attentions.0.attn.in_proj_bias",
+    "bbox_head.transformer.encoder.layers.5.attentions.0.attn.in_proj_weight",
+    "bbox_head.transformer.encoder.layers.5.attentions.0.attn.out_proj.bias",
+    "bbox_head.transformer.encoder.layers.5.attentions.0.attn.out_proj.weight",
+    "bbox_head.transformer.encoder.layers.5.ffns.0.layers.0.0.bias",
+    "bbox_head.transformer.encoder.layers.5.ffns.0.layers.0.0.weight",
+    "bbox_head.transformer.encoder.layers.5.ffns.0.layers.1.bias",
+    "bbox_head.transformer.encoder.layers.5.ffns.0.layers.1.weight",
+    "bbox_head.transformer.encoder.layers.5.norms.0.bias",
+    "bbox_head.transformer.encoder.layers.5.norms.0.weight",
+    "bbox_head.transformer.encoder.layers.5.norms.1.bias",
+    "bbox_head.transformer.encoder.layers.5.norms.1.weight",
+    "head.projection.bias",
+    "head.projection.weight"
+  ],
+  "tensor_count": 169,
+  "elements": 10680492,
+  "optimizer_restored": false,
+  "optimizer_groups": [
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.0.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.0.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.0.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.0.downsample.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.1.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.1.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.1.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.2.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.2.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.2.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.3.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.3.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer2.3.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.0.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.0.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.0.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.0.downsample.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.1.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.1.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.1.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.2.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.2.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.2.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.3.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.3.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.3.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.4.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.4.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.4.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.5.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.5.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer3.5.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.0.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.0.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.0.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.0.downsample.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.1.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.1.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.1.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.2.conv1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.2.conv2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "backbone.layer4.2.conv3.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "neck.convs.0.conv.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "neck.convs.0.gn.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "neck.convs.0.gn.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "neck.convs.1.conv.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "neck.convs.1.gn.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "neck.convs.1.gn.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "neck.convs.2.conv.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "neck.convs.2.gn.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "neck.convs.2.gn.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "neck.extra_convs.0.conv.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "neck.extra_convs.0.gn.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "neck.extra_convs.0.gn.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.level_embeds",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.attentions.0.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.attentions.0.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.attentions.0.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.attentions.0.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.ffns.0.layers.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.ffns.0.layers.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.ffns.0.layers.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.ffns.0.layers.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.norms.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.norms.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.norms.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.0.norms.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.attentions.0.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.attentions.0.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.attentions.0.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.attentions.0.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.ffns.0.layers.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.ffns.0.layers.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.ffns.0.layers.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.ffns.0.layers.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.norms.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.norms.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.norms.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.1.norms.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.attentions.0.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.attentions.0.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.attentions.0.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.attentions.0.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.ffns.0.layers.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.ffns.0.layers.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.ffns.0.layers.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.ffns.0.layers.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.norms.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.norms.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.norms.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.2.norms.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.attentions.0.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.attentions.0.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.attentions.0.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.attentions.0.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.ffns.0.layers.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.ffns.0.layers.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.ffns.0.layers.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.ffns.0.layers.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.norms.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.norms.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.norms.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.3.norms.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.attentions.0.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.attentions.0.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.attentions.0.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.attentions.0.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.ffns.0.layers.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.ffns.0.layers.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.ffns.0.layers.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.ffns.0.layers.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.norms.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.norms.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.norms.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.4.norms.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.attentions.0.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.attentions.0.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.attentions.0.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.attentions.0.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.ffns.0.layers.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.ffns.0.layers.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.ffns.0.layers.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.ffns.0.layers.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.norms.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.norms.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.norms.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.encoder.layers.5.norms.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.attentions.0.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.attentions.0.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.attentions.0.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.attentions.0.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.attentions.1.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.attentions.1.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.attentions.1.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.attentions.1.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.ffns.0.layers.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.ffns.0.layers.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.ffns.0.layers.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.ffns.0.layers.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.norms.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.norms.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.norms.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.norms.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.norms.2.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.0.norms.2.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.attentions.0.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.attentions.0.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.attentions.0.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.attentions.0.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.attentions.1.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.attentions.1.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.attentions.1.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.attentions.1.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.ffns.0.layers.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.ffns.0.layers.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.ffns.0.layers.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.ffns.0.layers.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.norms.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.norms.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.norms.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.norms.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.norms.2.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.1.norms.2.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.attentions.0.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.attentions.0.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.attentions.0.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.attentions.0.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.attentions.1.attn.in_proj_weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.attentions.1.attn.in_proj_bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.attentions.1.attn.out_proj.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.attentions.1.attn.out_proj.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.ffns.0.layers.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.ffns.0.layers.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.ffns.0.layers.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.ffns.0.layers.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.norms.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.norms.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.norms.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.norms.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.norms.2.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.decoder.layers.2.norms.2.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.enc_output.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.enc_output.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.enc_output_norm.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.enc_output_norm.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.0.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.0.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.0.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.0.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.1.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.1.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.1.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.1.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.2.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.2.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.2.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.2.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.3.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.3.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.3.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.3.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.4.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.4.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.4.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.4.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.5.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.5.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.5.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.5.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.6.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.6.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.6.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.6.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.7.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.7.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.7.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.7.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.8.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.8.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.8.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.8.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.9.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.9.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.9.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.9.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.10.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.10.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.10.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.10.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.11.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.11.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.11.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.11.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.12.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.12.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.12.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.12.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.13.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.13.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.13.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.joint_differentiators.13.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.attentions.0.attn.in_proj_weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.attentions.0.attn.in_proj_bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.attentions.0.attn.out_proj.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.attentions.0.attn.out_proj.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.attentions.1.attn.in_proj_weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.attentions.1.attn.in_proj_bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.attentions.1.attn.out_proj.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.attentions.1.attn.out_proj.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.ffns.0.layers.0.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.ffns.0.layers.0.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.ffns.0.layers.1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.ffns.0.layers.1.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.norms.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.norms.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.norms.1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.norms.1.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.norms.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.0.norms.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.attentions.0.attn.in_proj_weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.attentions.0.attn.in_proj_bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.attentions.0.attn.out_proj.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.attentions.0.attn.out_proj.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.attentions.1.attn.in_proj_weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.attentions.1.attn.in_proj_bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.attentions.1.attn.out_proj.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.attentions.1.attn.out_proj.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.ffns.0.layers.0.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.ffns.0.layers.0.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.ffns.0.layers.1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.ffns.0.layers.1.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.norms.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.norms.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.norms.1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.norms.1.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.norms.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.1.norms.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.attentions.0.attn.in_proj_weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.attentions.0.attn.in_proj_bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.attentions.0.attn.out_proj.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.attentions.0.attn.out_proj.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.attentions.1.attn.in_proj_weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.attentions.1.attn.in_proj_bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.attentions.1.attn.out_proj.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.attentions.1.attn.out_proj.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.ffns.0.layers.0.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.ffns.0.layers.0.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.ffns.0.layers.1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.ffns.0.layers.1.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.norms.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.norms.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.norms.1.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.norms.1.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.norms.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.transformer.refine_decoder.layers.2.norms.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.cls_branches.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.cls_branches.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.cls_branches.1.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.cls_branches.1.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.cls_branches.2.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.cls_branches.2.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.cls_branches.3.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.cls_branches.3.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.0.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.0.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.0.2.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.0.2.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.0.4.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.0.4.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.0.6.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.0.6.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.1.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.1.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.1.2.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.1.2.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.1.4.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.1.4.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.1.6.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.1.6.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.2.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.2.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.2.2.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.2.2.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.2.4.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.2.4.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.2.6.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.2.6.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.3.0.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.3.0.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.3.2.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.3.2.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.3.4.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.3.4.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.kpt_branches.3.6.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.kpt_branches.3.6.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.query_embedding.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.refine_kpt_branches.0.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.refine_kpt_branches.0.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.refine_kpt_branches.0.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.refine_kpt_branches.0.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.refine_kpt_branches.0.4.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.refine_kpt_branches.0.4.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.refine_kpt_branches.1.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.refine_kpt_branches.1.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.refine_kpt_branches.1.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.refine_kpt_branches.1.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.refine_kpt_branches.1.4.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.refine_kpt_branches.1.4.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.refine_kpt_branches.2.0.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.refine_kpt_branches.2.0.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.refine_kpt_branches.2.2.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.refine_kpt_branches.2.2.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.refine_kpt_branches.2.4.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.refine_kpt_branches.2.4.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0001,
+      "parameter_name": "bbox_head.fc_hm.weight",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "bbox_head.fc_hm.bias",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-05,
+      "weight_decay": 0.0,
+      "parameter_name": "head.ste",
+      "transferred": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-05
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0001,
+      "parameter_name": "head.projection.weight",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    },
+    {
+      "lr": 2e-06,
+      "weight_decay": 0.0,
+      "parameter_name": "head.projection.bias",
+      "transferred": true,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false,
+      "initial_lr": 2e-06
+    }
+  ]
+}

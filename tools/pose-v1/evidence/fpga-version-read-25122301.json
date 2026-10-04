@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-10-04T14:25:21.2471746+08:00",
+  "user_approved": true,
+  "script_sha256": "cca05d0caaeb0d2a1c2533d9e3077c73448f3435a711b3b2673e7d81c76a8f93",
+  "result": {
+    "scope": "single read, no register writes",
+    "address_hex": "0x4000001c",
+    "mapping_basis": "reference ZG URL base plus Icraft 3.39.0 zg330_device.h FPGA_VERSION_REG",
+    "executed": true,
+    "runtime_compatibility_proven": false,
+    "bytes_hex": "01231225",
+    "value_le_hex": "0x25122301",
+    "read_duration_ns": 165490
+  }
+}

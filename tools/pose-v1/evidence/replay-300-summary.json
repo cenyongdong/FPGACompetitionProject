@@ -1,0 +1,98 @@
+{
+  "stage": "passed_real_replay_preprocessing_only",
+  "fixed_real_windows": 300,
+  "group_counts": {
+    "S11": {
+      "available": 1120,
+      "selected": 34
+    },
+    "S12": {
+      "available": 742,
+      "selected": 34
+    },
+    "S13": {
+      "available": 356,
+      "selected": 34
+    },
+    "S21": {
+      "available": 822,
+      "selected": 33
+    },
+    "S22": {
+      "available": 1191,
+      "selected": 33
+    },
+    "S23": {
+      "available": 1335,
+      "selected": 33
+    },
+    "S51": {
+      "available": 644,
+      "selected": 33
+    },
+    "S52": {
+      "available": 1251,
+      "selected": 33
+    },
+    "S53": {
+      "available": 363,
+      "selected": 33
+    }
+  },
+  "policy": {
+    "amplitude_atol": 1e-06,
+    "amplitude_rtol": 1e-06,
+    "phase_circular_max_rad": 1e-05,
+    "phase_scalar_review_rad": 1e-05,
+    "artificial_pi_boundary_blocking": false
+  },
+  "host_bitwise_equal_real": 300,
+  "board_bitwise_equal_real": 300,
+  "board_matches_host_real": 300,
+  "real_amplitude_max_abs": 0.0,
+  "real_phase_scalar_max_abs_rad": 0.0,
+  "real_phase_circular_max_rad": 0.0,
+  "nonblocking_diagnostics": [
+    {
+      "case": "ramp_3.141592653589793",
+      "gate": {
+        "blocking": false,
+        "status": "known_diagnostic_failure"
+      },
+      "max_abs": 6.240629434585571,
+      "phase_circular_max_rad": 2.333111196756363,
+      "phase_circular_rms_rad": 0.44553709523492213
+    },
+    {
+      "case": "ramp_-3.141592653589793",
+      "gate": {
+        "blocking": false,
+        "status": "known_diagnostic_failure"
+      },
+      "max_abs": 5.765216588973999,
+      "phase_circular_max_rad": 2.6934372037649155,
+      "phase_circular_rms_rad": 0.49760646608024756
+    }
+  ],
+  "preprocess_only_ms": {
+    "min": 5.64996,
+    "median": 5.781264999999999,
+    "p95_nearest_rank": 5.8595,
+    "max": 5.89993
+  },
+  "timing_limit": "sequential fixed-window tests only; excludes transport, inference, rendering and video",
+  "reference_environment": {
+    "python": "3.10.21",
+    "numpy": "2.2.5",
+    "h5py": "3.16.0",
+    "pywavelets": "1.8.0"
+  },
+  "arm64_executable_sha256": "65d44aa2aff5ffe2975300b27b1325dc7b25d5cb71cd6f85ee5076b4aa4a59b2",
+  "linux_host_executable_sha256": "1d75b6e49488b738a34ab3830b302b117d2defa1b3f30d05ad92f54438d2d9e2",
+  "compiler": "g++ 9.4.0, -O2 -ffp-contract=off; existing unchanged production binary",
+  "production_source_model_binary_hashes_unchanged": true,
+  "npu_executed": false,
+  "hdmi_executed": false,
+  "vpu_executed": false,
+  "first_version_complete": false
+}

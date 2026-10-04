@@ -1,0 +1,74 @@
+[
+  {
+    "name": "AI7030~1.BIT",
+    "source_size": 5980604,
+    "board_size": 5980604,
+    "source_sha256": "85fb81d09a0dcb51cb9d5d347c01de43eccec14c6eb9a87e1876105b3efc4b81",
+    "board_sha256": "85fb81d09a0dcb51cb9d5d347c01de43eccec14c6eb9a87e1876105b3efc4b81",
+    "match": true
+  },
+  {
+    "name": "BL31.ELF",
+    "source_size": 610824,
+    "board_size": 610824,
+    "source_sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303",
+    "board_sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303",
+    "match": true
+  },
+  {
+    "name": "BOOT.BIN",
+    "source_size": 7023552,
+    "board_size": 7023552,
+    "source_sha256": "c87b7959cd9980520324b2c17688d9b7c1e85358bfcef085b1b00bd5a4d2f121",
+    "board_sha256": "c87b7959cd9980520324b2c17688d9b7c1e85358bfcef085b1b00bd5a4d2f121",
+    "match": true
+  },
+  {
+    "name": "FMQLMP~1.DTB",
+    "source_size": 15996,
+    "board_size": 15996,
+    "source_sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038",
+    "board_sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038",
+    "match": true
+  },
+  {
+    "name": "IMAGE",
+    "source_size": 13158408,
+    "board_size": 13158408,
+    "source_sha256": "ee88eae627df17fdf615b44cb9fc5a7a7a37d2baaa3f21e90d613f48bedf0929",
+    "board_sha256": "ee88eae627df17fdf615b44cb9fc5a7a7a37d2baaa3f21e90d613f48bedf0929",
+    "match": true
+  },
+  {
+    "name": "U-BOOT",
+    "source_size": 6579840,
+    "board_size": 6579840,
+    "source_sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97",
+    "board_sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97",
+    "match": true
+  },
+  {
+    "name": "UENV.TXT",
+    "source_size": 1499,
+    "board_size": 1499,
+    "source_sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560",
+    "board_sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560",
+    "match": true
+  },
+  {
+    "name": "AI7030~2.BIT",
+    "source_size": 5980020,
+    "board_size": 5980020,
+    "source_sha256": "1405d7f1cb992d8f9c78e7b4bbe756faa96eeecb2ff4bdd0d253e92b191e2575",
+    "board_sha256": "1405d7f1cb992d8f9c78e7b4bbe756faa96eeecb2ff4bdd0d253e92b191e2575",
+    "match": true
+  },
+  {
+    "name": "FSBL25~1.OUT",
+    "source_size": 1385156,
+    "board_size": 1385156,
+    "source_sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+    "board_sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+    "match": true
+  }
+]

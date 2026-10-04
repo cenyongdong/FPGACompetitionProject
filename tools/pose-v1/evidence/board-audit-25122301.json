@@ -1,0 +1,88 @@
+{
+  "checked_at": "2026-10-04T14:10:25.0317593+08:00",
+  "board_host": "192.168.126.49",
+  "probe_sha256": "8c6f24007a6c9458ce7aeebf0410c7c495845d036f6ca1980e932206cb6e0f64",
+  "audit": {
+    "scope": "read-only; no mount, register access, model, encode, or configuration write",
+    "uname": [
+      "Linux",
+      "U.FMSH",
+      "5.4.52",
+      "#3 SMP Fri Mar 13 13:44:29 CST 2026",
+      "aarch64"
+    ],
+    "cmdline": "console=ttyPS0,115200n8 earlycon=uart8250,mmio32,0xe0004000 loglevel=8 root=/dev/mmcblk0p2 rootwait rw clk_ignore_unused mem=1024M",
+    "fpga_state": "operating",
+    "video_name": "mvx",
+    "udmabuf_bytes": "134217728",
+    "boot_partition": {
+      "files": [
+        {
+          "name": "AI7030~1.BIT",
+          "size": 5980604,
+          "sha256": "85fb81d09a0dcb51cb9d5d347c01de43eccec14c6eb9a87e1876105b3efc4b81",
+          "head_hex": "00090ff00ff00ff00ff00000016100526169373033305f746f703b5573657249"
+        },
+        {
+          "name": "BL31.ELF",
+          "size": 610824,
+          "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303",
+          "head_hex": "7f454c460201010000000000000000000200b700010000000000fee100000000"
+        },
+        {
+          "name": "BOOT.BIN",
+          "size": 7023552,
+          "sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+          "head_hex": "feffffeafeffffeafeffffeafeffffeafeffffeafeffffeafeffffeafeffffea"
+        },
+        {
+          "name": "FMQLMP~1.DTB",
+          "size": 15996,
+          "sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038",
+          "head_hex": "d00dfeed00003e7c00000038000037a800000028000000110000001000000000"
+        },
+        {
+          "name": "IMAGE",
+          "size": 13158408,
+          "sha256": "ee88eae627df17fdf615b44cb9fc5a7a7a37d2baaa3f21e90d613f48bedf0929",
+          "head_hex": "00c02d140000000000000800000000000060cd00000000000a00000000000000"
+        },
+        {
+          "name": "U-BOOT",
+          "size": 6579840,
+          "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97",
+          "head_hex": "7f454c460201010000000000000000000200b700010000000000000400000000"
+        },
+        {
+          "name": "UENV.TXT",
+          "size": 1499,
+          "sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560",
+          "head_hex": "62617564726174653d3131353230300a626f6f74636d643d72756e206c6f6164",
+          "text": "baudrate=115200\nbootcmd=run loadbit; run uenvcmd\nbootargs=console=ttyPS0,115200n8 earlycon=uart8250,mmio32,0xe0004000 loglevel=8 root=/dev/mmcblk0p2 rootwait rw clk_ignore_unused mem=1024M\nuenvcmd=mmc rescan && fatload mmc 0:1 0x10080000 Image && fatload mmc 0:1 0x11000000 fmqlmp-verify.dtb && booti 0x10080000 - 0x11000000\nbootdelay=3\nloadbit=mmc rescan && fatload mmc 0:2 0x10000000 download.bit && fpga loadb 0 0x10000000 $filesize\nbootfile=pxelinux.0\ndfu_ram=run dfu_ram_info && dfu 0 ram 0\ndfu_ram_info=set dfu_alt_info ${kernel_image} ram 0x3000000 0x500000\\\\;${devicetree_image} ram 0x2A00000 0x20000\\\\;${ramdisk_image} ram 0x2000000 0x600000\ndnsip=192.168.34.4\nethact=ethernet@e0047000\nfdt_high=0x10000000\nfdtcontroladdr=3fea6a20\nfileaddr=1000000\nfilesize=419a\nfit_image=fit.itb\nfit_size=0x800000\nflash_off=0x100000\ngatewayip=192.168.40.254\ninitrd_high=0x10000000\nipaddr=192.168.40.86\njtagboot=echo TFTPing FIT to RAM... && tftpboot ${load_addr} ${fit_image} && bootm ${load_addr}\nload_addr=0x10000000\nnetmask=255.255.255.0\nnor_flash_off=0xE2100000\nnorboot=echo Copying FIT from NOR flash to RAM... && cp.b ${nor_flash_off} ${load_addr} ${fit_size} && bootm ${load_addr}\npsboot=echo Copying FIT to RAM by lauterbach... && bootm ${load_addr}\nsdboot=mmc rescan && fatload mmc 0 0x10000000 /vxWorks\nserverip=192.168.40.41\nthor_ram=run dfu_ram_info && thordown 0 ram 0\nusbboot=if usb start; then echo Copying FIT from USB to RAM... && load usb 0 ${load_addr} ${fit_image} && bootm ${load_addr}\n"
+        },
+        {
+          "name": "AI7030~2.BIT",
+          "size": 5980020,
+          "sha256": "1405d7f1cb992d8f9c78e7b4bbe756faa96eeecb2ff4bdd0d253e92b191e2575",
+          "head_hex": "00090ff00ff00ff00ff000000161002a6169373033305f746f703b5573657249"
+        },
+        {
+          "name": "FSBL25~1.OUT",
+          "size": 1385156,
+          "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+          "head_hex": "7f454c460201010000000000000000000200b70001000000382ffeff00000000"
+        }
+      ],
+      "fat_type": "FAT16",
+      "bytes_per_sector": 512,
+      "sectors_per_cluster": 32
+    },
+    "device_tree": [
+      {
+        "path": "/sys/firmware/devicetree/base/udmabuf@0",
+        "compatible": "ikwzm,u-dma-buf",
+        "status": null
+      }
+    ]
+  }
+}

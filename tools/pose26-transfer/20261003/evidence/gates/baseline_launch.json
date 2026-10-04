@@ -1,0 +1,21 @@
+{
+  "pid": 28999,
+  "command": [
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nnodes=1",
+    "--nproc_per_node=4",
+    "tools/test.py",
+    "configs/wifi/baseline_eval.py",
+    "result/code_faithful/best_mpjpe_epoch_442.pth",
+    "--launcher",
+    "pytorch",
+    "--eval",
+    "mpjpe",
+    "--work-dir",
+    "/public/cyd/Person-in-WiFi-3D-repo/result/tpami2026_transfer_20261003/baseline"
+  ]
+}

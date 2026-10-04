@@ -1,0 +1,245 @@
+{
+  "stage": "host_preprocess_comparison",
+  "board_tested": false,
+  "training_source_sha256": "d0fe0cc24c63f8d3f50bb4ac21f8f9cdeb2a9f7af39f51f172f89344c1571a84",
+  "raw_sources": [
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\test_data\\csi\\S11_01_308.mat",
+      "sha256": "6a326467b2fabc2263dd18ea2761e4904ef7c3ce39423bbde71d1976008d58e5"
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\test_data\\csi\\S11_01_309.mat",
+      "sha256": "4f43a6b1762913338b793004708f18407db5eadd67174ba4ed6ad0089edee46b"
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\test_data\\csi\\S11_01_310.mat",
+      "sha256": "dcd6c8f16dad5d2204bc9e714df5b4439c6d0a835f088541136d9baa69c17dcf"
+    }
+  ],
+  "environment": {
+    "python": "3.10.21",
+    "numpy": "2.2.5",
+    "h5py": "3.16.0",
+    "pywavelets": "1.8.0"
+  },
+  "wavelet_max_level": 0,
+  "results": [
+    {
+      "case": "constant",
+      "stem": "case_00",
+      "finite": true,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "bitwise_equal": true,
+      "different_elements": 0,
+      "input_sha256": "b5a5ca1a90592f574bb3401c6c4a662007da8a2dcb0591a7e52ea5fad16f243c",
+      "reference_sha256": "e6cfb03c46cb189027f1bad54027841bfd34151a4a5f2e849ac955568a9eb971",
+      "actual_sha256": "e6cfb03c46cb189027f1bad54027841bfd34151a4a5f2e849ac955568a9eb971",
+      "execution": {
+        "frame_id": 0,
+        "shape": [
+          1,
+          180,
+          60
+        ],
+        "preprocess_ms": 0.123143
+      }
+    },
+    {
+      "case": "zero",
+      "stem": "case_01",
+      "finite": true,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "bitwise_equal": true,
+      "different_elements": 0,
+      "input_sha256": "d0c1bfe029ab1be45fe6d4c72760b5e6790a8199e9c8e13c354daa37a89edfad",
+      "reference_sha256": "e19d750c09c65857034cb57d3021349141c001da44d8e310a5281090f9b1f78a",
+      "actual_sha256": "e19d750c09c65857034cb57d3021349141c001da44d8e310a5281090f9b1f78a",
+      "execution": {
+        "frame_id": 1,
+        "shape": [
+          1,
+          180,
+          60
+        ],
+        "preprocess_ms": 0.127945
+      }
+    },
+    {
+      "case": "random",
+      "stem": "case_02",
+      "finite": true,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "bitwise_equal": true,
+      "different_elements": 0,
+      "input_sha256": "604c7aa69c3e2567ddbf9f9cf7273f83aac87a8f02d069938e02a2d8a92f7415",
+      "reference_sha256": "6cb3cf0f8e06b48540e92b0c45cc3e0d9296b4bb134412a18b9ea1ffeb9342ff",
+      "actual_sha256": "6cb3cf0f8e06b48540e92b0c45cc3e0d9296b4bb134412a18b9ea1ffeb9342ff",
+      "execution": {
+        "frame_id": 2,
+        "shape": [
+          1,
+          180,
+          60
+        ],
+        "preprocess_ms": 0.623219
+      }
+    },
+    {
+      "case": "ramp_0.75",
+      "stem": "case_03",
+      "finite": true,
+      "max_abs": 7.505107646466058e-14,
+      "mean_abs": 3.2202635619821903e-15,
+      "bitwise_equal": false,
+      "different_elements": 1794,
+      "input_sha256": "c07de30a6bcfbdb03eec401d79d89ee693a7eea7abf935d4204a4421594e10a9",
+      "reference_sha256": "4b79bea59f1c2b9ec308a63911796a40eb74e4507a0fdc7adf4e985065df1fe6",
+      "actual_sha256": "2ff366692607abf85bd882ab41a338f849734d39e2be9ac6a74f936f727b2e26",
+      "execution": {
+        "frame_id": 3,
+        "shape": [
+          1,
+          180,
+          60
+        ],
+        "preprocess_ms": 0.514881
+      }
+    },
+    {
+      "case": "ramp_3.141592653589793",
+      "stem": "case_04",
+      "finite": true,
+      "max_abs": 6.240629434585571,
+      "mean_abs": 0.07055874403710563,
+      "bitwise_equal": false,
+      "different_elements": 450,
+      "input_sha256": "e1c4695f15a31be2f416eab8b21b924d2f5e0983709ec5c0dd877d863f1b25dd",
+      "reference_sha256": "034af285a66752e92dd8e4d9e43cd6604c50e22bbcd49677b53de187c0d80942",
+      "actual_sha256": "b9fa7d5e0c20eda3d1c1cf1e05c76a40ce57a2faa97ed42dd0f80aa54bc96e35",
+      "execution": {
+        "frame_id": 4,
+        "shape": [
+          1,
+          180,
+          60
+        ],
+        "preprocess_ms": 0.495175
+      }
+    },
+    {
+      "case": "ramp_-3.141592653589793",
+      "stem": "case_05",
+      "finite": true,
+      "max_abs": 5.765216588973999,
+      "mean_abs": 0.08430248798957715,
+      "bitwise_equal": false,
+      "different_elements": 360,
+      "input_sha256": "8a9bcc728496ec10f4763c1cbcda9cf0228719a605d01875f93e175664fb12ee",
+      "reference_sha256": "7013f3194b2f0e15c8b25b10829911e3c633158b2c9fb4296f6d43756f4bb6fb",
+      "actual_sha256": "59dbf88c08ac8455186f5a8b4c8634fe211614c6f3432f8a74ce4945093e54fb",
+      "execution": {
+        "frame_id": 5,
+        "shape": [
+          1,
+          180,
+          60
+        ],
+        "preprocess_ms": 0.465864
+      }
+    },
+    {
+      "case": "S11_01_308",
+      "stem": "case_06",
+      "finite": true,
+      "max_abs": 3.1415927410125732,
+      "mean_abs": 0.005526876118448046,
+      "bitwise_equal": false,
+      "different_elements": 19,
+      "input_sha256": "63d34a02983549940326933415a7613747c2e86c72ed53120e5e518be46cb7b7",
+      "reference_sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+      "actual_sha256": "70f0da45d53682521ef4e85285ab2ec05218df27ae715d7d5abf85e7b8f128b2",
+      "execution": {
+        "frame_id": 6,
+        "shape": [
+          1,
+          180,
+          60
+        ],
+        "preprocess_ms": 0.478668
+      }
+    },
+    {
+      "case": "S11_01_309",
+      "stem": "case_07",
+      "finite": true,
+      "max_abs": 3.1415927410125732,
+      "mean_abs": 0.004072435034645929,
+      "bitwise_equal": false,
+      "different_elements": 14,
+      "input_sha256": "c2bca2e20d80442b67a85c9678e6e4f84f5d4d48ad5bc50b71fd2723eb545586",
+      "reference_sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300",
+      "actual_sha256": "dd2ff838acbc0b97f42b3e5e32fd0129cee86ae2ce6fb6d289b028a992d54f13",
+      "execution": {
+        "frame_id": 7,
+        "shape": [
+          1,
+          180,
+          60
+        ],
+        "preprocess_ms": 0.431652
+      }
+    },
+    {
+      "case": "S11_01_310",
+      "stem": "case_08",
+      "finite": true,
+      "max_abs": 3.1415927410125732,
+      "mean_abs": 0.004363323251406352,
+      "bitwise_equal": false,
+      "different_elements": 15,
+      "input_sha256": "4033a5c5d8f9dfb1de3b8a0a801323f61c8a6783da7a8104438ba55a1e9d5e07",
+      "reference_sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187",
+      "actual_sha256": "c130c773f0a74271c64a69078f2892b869e5eae6dedfed1ea2816528eeced48c",
+      "execution": {
+        "frame_id": 8,
+        "shape": [
+          1,
+          180,
+          60
+        ],
+        "preprocess_ms": 0.433652
+      }
+    }
+  ],
+  "invalid_inputs": [
+    {
+      "case": "invalid_magic.csi",
+      "rejected": true,
+      "returncode": 1,
+      "message": "Invalid CSI window magic"
+    },
+    {
+      "case": "invalid_nan.csi",
+      "rejected": true,
+      "returncode": 1,
+      "message": "Non-finite raw CSI"
+    },
+    {
+      "case": "invalid_trailing.csi",
+      "rejected": true,
+      "returncode": 1,
+      "message": "Trailing data after single window"
+    },
+    {
+      "case": "invalid_truncated.csi",
+      "rejected": true,
+      "returncode": 1,
+      "message": "Truncated window header"
+    }
+  ],
+  "acceptance": "awaiting_error_tolerance_discussion",
+  "remote_fixtures": "/tmp/pose-v1-fixtures-20261004121400"
+}

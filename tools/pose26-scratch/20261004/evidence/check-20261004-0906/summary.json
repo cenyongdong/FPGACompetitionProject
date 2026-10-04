@@ -1,0 +1,95 @@
+{
+  "state": "failed_stopped",
+  "checked_at": "2026-10-04T09:07:57.228851+08:00",
+  "stopped_at": "2026-10-04T01:40:51.592331",
+  "failure": "Persistent branch collapse",
+  "training_epoch_at_stop": 6,
+  "completed_evaluations": 5,
+  "all_evaluations_frames": 7824,
+  "best_epoch": 4,
+  "best_mpjpe_mm": 420.18994617364643,
+  "baseline_mpjpe_mm": 123.0853521290001,
+  "gap_above_baseline_mm": 297.1045940446463,
+  "latest_evaluation_mpjpe_mm": 438.7721839935989,
+  "best_person_groups": {
+    "1": {
+      "frames": 2586,
+      "mpjpe": 406.52505554824677
+    },
+    "2": {
+      "frames": 3184,
+      "mpjpe": 385.2945284819483
+    },
+    "3": {
+      "frames": 2054,
+      "mpjpe": 491.48713073433316
+    }
+  },
+  "best_fixed_pair_stages_mm": [
+    420.36698788952975,
+    420.29877207079306,
+    420.25113864032767,
+    420.1899464866623
+  ],
+  "all_338_diagnostics_finite": true,
+  "last_diagnostic": {
+    "epoch": 6,
+    "iter": 16851,
+    "gradient_before_clip": {
+      "differentiate": 0.0,
+      "refine_attention": 0.0,
+      "refine_regression": 3.000996158664201,
+      "pose_decoder": 1.5487526642582203,
+      "ste": 0.34945093314973136
+    },
+    "gradient_after_clip": {
+      "differentiate": 0.0,
+      "refine_attention": 0.0,
+      "refine_regression": 0.012524875557694038,
+      "pose_decoder": 0.006463831745908265,
+      "ste": 0.0014584588557569667
+    },
+    "parameter_l2": {
+      "differentiate": 7.441851221308028e-38,
+      "refine_attention": 32.16868612522591,
+      "refine_regression": 0.0409814393784949,
+      "pose_decoder": 32.82456826777392,
+      "ste": 0.19582389630586364
+    },
+    "queries": {
+      "residual_rms": 0.0,
+      "joint_spread_rms": 4.151264931806509e-08,
+      "person_spread_rms": 0.5763252973556519
+    }
+  },
+  "checkpoint_verification": {
+    "checked_at": "2026-10-04T09:07:57.228851+08:00",
+    "best_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/tpami2026_scratch_20261004/best_mpjpe_epoch_4.pth",
+    "best_checkpoint_bytes": 311125343,
+    "best_checkpoint_sha256": "eaec533377d8098dab8fa35e6104c5330840fc7d0be0658ffdc669a794213361",
+    "best_checkpoint_epoch": 4,
+    "best_checkpoint_iter": 11244,
+    "best_checkpoint_tensors_finite": true,
+    "optimizer_lr": [
+      2e-05
+    ],
+    "optimizer_weight_decay": [
+      0.0001
+    ],
+    "source_snapshot_hashes_verified": 129,
+    "config_sha256_verified": true,
+    "expected_processes_alive": {
+      "54209": false,
+      "54220": false,
+      "54225": false,
+      "54226": false,
+      "54227": false,
+      "54228": false
+    },
+    "final_report_exists": false
+  },
+  "automatic_retry": false,
+  "parameters_modified": false,
+  "scheduled_monitor_enabled": false,
+  "interpretation": "Incomplete 500-epoch experiment: branch collapse is verified, optimizer/clipping causality is not established by this log-only check."
+}

@@ -1,0 +1,108 @@
+{
+  "scope": "offline identity and read-only board audit; not hardware runtime acceptance",
+  "source_dir": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\参考实现\\位流\\悟净LITE版_BOOT_25122301_单路PLIN+pHDMI(外置detpost)\\悟净LITE版_BOOT_25122301_单路PLIN+pHDMI(外置detpost)",
+  "source_boot_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "board_boot_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "board_boot_matches_selected_source": true,
+  "source_files": [
+    {
+      "name": "ai7030_top_disable_icap.bit",
+      "bytes": 5980609,
+      "sha256": "6818b7f8dea8e0f9dbda1b0d11127255ee1ba8876326bc7708a633641784f72e"
+    },
+    {
+      "name": "bl31.elf",
+      "bytes": 610824,
+      "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303"
+    },
+    {
+      "name": "BOOT.bin",
+      "bytes": 7023552,
+      "sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef"
+    },
+    {
+      "name": "fmqlmp-verify.dtb",
+      "bytes": 15996,
+      "sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038"
+    },
+    {
+      "name": "FSBL251210_ddr400_demo.out",
+      "bytes": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f"
+    },
+    {
+      "name": "Image",
+      "bytes": 12533768,
+      "sha256": "1e40bfe97ae8eb638c15078eda28c57b4f6474872ce2753cf09be7d9238bfbed"
+    },
+    {
+      "name": "u-boot",
+      "bytes": 6579840,
+      "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97"
+    },
+    {
+      "name": "uEnv.txt",
+      "bytes": 1499,
+      "sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560"
+    }
+  ],
+  "changes_from_previous_audit": [
+    {
+      "name": "AI7030~1.BIT",
+      "unchanged": true
+    },
+    {
+      "name": "BL31.ELF",
+      "unchanged": true
+    },
+    {
+      "name": "BOOT.BIN",
+      "unchanged": false
+    },
+    {
+      "name": "FMQLMP~1.DTB",
+      "unchanged": true
+    },
+    {
+      "name": "IMAGE",
+      "unchanged": true
+    },
+    {
+      "name": "U-BOOT",
+      "unchanged": true
+    },
+    {
+      "name": "UENV.TXT",
+      "unchanged": true
+    },
+    {
+      "name": "AI7030~2.BIT",
+      "unchanged": true
+    },
+    {
+      "name": "FSBL25~1.OUT",
+      "unchanged": true
+    }
+  ],
+  "pl_partition_from_supplied_log": {
+    "byte_offset": 186816,
+    "bytes": 5980464,
+    "sha256": "7da05fa6996d85d73a9f8a5245d4bead8d0601a3184da3cbff4610933790d2ec",
+    "bit_header": {
+      "a": "ai7030_edif_top;UserID=53180205;Version=2018.3;Patched=DISABLE_ICAP,VCCM;PatchID=32494",
+      "b": "7z030ffg676",
+      "c": "2026/09/14",
+      "d": "20:22:25"
+    },
+    "source_payload_sha256": "657da80bb5eff97c917cf3a6c8c5b40a331b814dd840b5ac6a0bda44fb8a935d",
+    "payload_equal": false,
+    "word_swapped_payload_equal": false
+  },
+  "log_sha256": "459c9f119b81b2f3babac9844f5afe5211ada18b0eb14472168d6f08a041ee03",
+  "log_fsbl_pl_download_success": true,
+  "log_linux_started": true,
+  "secondary_bitstream_load": "not confirmed; filesystem error after uEnv import",
+  "loadbit_command": "loadbit=mmc rescan && fatload mmc 0:2 0x10000000 download.bit && fpga loadb 0 0x10000000 $filesize",
+  "runtime_compatibility_verified": false,
+  "hdmi_screen_verified": false
+}

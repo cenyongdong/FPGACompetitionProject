@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "world_size": 4,
+  "per_rank_batch": 8,
+  "global_batch": 32,
+  "samples": 96,
+  "steps": 3,
+  "all_checkpoint_tensors_finite": true,
+  "optimizer": "Adam",
+  "optimizer_lr": 2e-05,
+  "weight_decay": 0.0001,
+  "no_weight_decay_exclusions": true,
+  "ddp_checks": [
+    {
+      "epoch": 1,
+      "parameter_l2": {
+        "differentiate": 1.299266410471077,
+        "refine_attention": 92.67960628259418,
+        "refine_regression": 22.63290686189827,
+        "pose_decoder": 92.70116043326082,
+        "ste": 4.270359990263191
+      },
+      "ddp_equal": true
+    }
+  ],
+  "initial_parameter_l2": {
+    "differentiate": 1.3571860462377212,
+    "refine_attention": 92.75871628619495,
+    "refine_regression": 22.665393947372003,
+    "pose_decoder": 92.77777992882443,
+    "ste": 4.280590913569834
+  },
+  "checkpoint_epoch": 1,
+  "checkpoint_iter": 3,
+  "short_updates_used_for_formal": false,
+  "diagnostics": [
+    {
+      "epoch": 1,
+      "iter": 1,
+      "gradient_before_clip": {
+        "differentiate": 0.0,
+        "refine_attention": 0.0,
+        "refine_regression": 715.6980707455339,
+        "pose_decoder": 19.46971595702953,
+        "ste": 0.0150183692876307
+      },
+      "gradient_after_clip": {
+        "differentiate": 0.0,
+        "refine_attention": 0.0,
+        "refine_regression": 0.0975035340372409,
+        "pose_decoder": 0.0026524678276716833,
+        "ste": 2.0460360825541427e-06
+      },
+      "parameter_l2": {
+        "differentiate": 1.3377497362022877,
+        "refine_attention": 92.73233707325912,
+        "refine_regression": 22.654552553859737,
+        "pose_decoder": 92.75223524929027,
+        "ste": 4.277178988567378
+      },
+      "queries": {
+        "residual_rms": 0.0010223228018730879,
+        "joint_spread_rms": 0.0009887790074571967,
+        "person_spread_rms": 0.5158712863922119
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "Windows loopback sender only; no board service or model",
+  "records": [
+    {
+      "frame_id": 0,
+      "source": "S11_01_308.mat",
+      "bytes": 86432,
+      "unchanged": true
+    },
+    {
+      "frame_id": 1,
+      "source": "S11_01_309.mat",
+      "bytes": 86432,
+      "unchanged": true
+    },
+    {
+      "frame_id": 2,
+      "source": "S11_01_310.mat",
+      "bytes": 86432,
+      "unchanged": true
+    }
+  ],
+  "client_stdout": "sent frame=0 file=S11_01_308.mat\nsent frame=1 file=S11_01_309.mat\nsent frame=2 file=S11_01_310.mat\n",
+  "status": "passed"
+}
