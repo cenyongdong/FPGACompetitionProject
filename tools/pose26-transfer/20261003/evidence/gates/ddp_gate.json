@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "world_size": 4,
+  "physical_gpus": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "batch_per_gpu": 8,
+  "smoke_samples": 96,
+  "steps_before_resume": 3,
+  "steps_after_resume": 6,
+  "optimizer_steps": [
+    6.0
+  ],
+  "ddp_epoch_checks": [
+    {
+      "epoch": 1,
+      "parameter_l2": {
+        "differentiate": 1.3571862411620528,
+        "refine_attention": 92.75874056952037,
+        "refine_regression": 22.665526975795597,
+        "pose_decoder": 96.04394507705872,
+        "ste": 4.28056627278395
+      },
+      "ddp_equal": true
+    },
+    {
+      "epoch": 2,
+      "parameter_l2": {
+        "differentiate": 1.357186660732477,
+        "refine_attention": 92.75871601506584,
+        "refine_regression": 22.665428221822427,
+        "pose_decoder": 96.04393501898747,
+        "ste": 4.280575898781185
+      },
+      "ddp_equal": true
+    }
+  ],
+  "source_optimizer_used": false,
+  "smoke_excluded_from_formal_training": true
+}

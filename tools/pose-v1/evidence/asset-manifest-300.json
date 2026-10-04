@@ -1,0 +1,179 @@
+{
+  "scope": "offline identities only; no inference",
+  "model_version": "2024 epoch442 (user-selected)",
+  "icraft_version": "v3.39.0",
+  "ai_target": "@zhuget(330)",
+  "params_bytes": 53307546,
+  "compile_targets": {
+    "@hostt": 8,
+    "@zhuget(330)": 1173
+  },
+  "host_ops": [
+    {
+      "type": "icraft::xir::Input",
+      "op_id": 0
+    },
+    {
+      "type": "icraft::xir::TopK",
+      "op_id": 188
+    },
+    {
+      "type": "icraft::xir::GatherElements",
+      "op_id": 192
+    },
+    {
+      "type": "icraft::xir::TopK",
+      "op_id": 437
+    },
+    {
+      "type": "icraft::xir::Gather",
+      "op_id": 442
+    },
+    {
+      "type": "icraft::xir::ScatterND",
+      "op_id": 582
+    },
+    {
+      "type": "icraft::xir::ScatterND",
+      "op_id": 649
+    },
+    {
+      "type": "icraft::xir::Output",
+      "op_id": 672
+    }
+  ],
+  "files": [
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\result\\icraft_2024\\piw24_ZG.json",
+      "bytes": 1773976,
+      "sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0"
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\result\\icraft_2024\\piw24_ZG.raw",
+      "bytes": 53307546,
+      "sha256": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3"
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\result\\code_faithful\\person_in_wifi_2024_best_epoch442_full.onnx",
+      "bytes": 52542082,
+      "sha256": "7b04090e374e31e016d5703bbcf1d0a561d0b98f268fde984b0bf0461598bd21"
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\opera\\datasets\\wifi_pose.py",
+      "bytes": 13171,
+      "sha256": "d0fe0cc24c63f8d3f50bb4ac21f8f9cdeb2a9f7af39f51f172f89344c1571a84"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-build\\pose_preprocess_check.arm64",
+      "bytes": 26720,
+      "sha256": "65d44aa2aff5ffe2975300b27b1325dc7b25d5cb71cd6f85ee5076b4aa4a59b2"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\src\\preprocess.cpp",
+      "bytes": 5749,
+      "sha256": "e13a6bde842ae4d2531d2d0a455313f912d33942e6ee2681eacbd5c44df0b8b0"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\src\\preprocess_check.cpp",
+      "bytes": 1684,
+      "sha256": "bd27896354c0af2506e09c173926121d71fa34c6d78bcaec6ce938f626956d3d"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\include\\preprocess.hpp",
+      "bytes": 957,
+      "sha256": "ae70ba3f79722431d282bf5f610d6356b29072b4492f23dcc2adde29958f8118"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\CMakeLists.txt",
+      "bytes": 663,
+      "sha256": "1c1e9686667acb8a1b3ac3a0689c5252ef6a4289ef6bbd00b229fbc911261e58"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\audit_assets.py",
+      "bytes": 2262,
+      "sha256": "aa81e4973b9cb596904d8b03237656c4c396154baadabae0038cee03747a01d0"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\board_preprocess_test.py",
+      "bytes": 4642,
+      "sha256": "142adf70d79b2d9116ea857ffe7dc3052a5a8642edc754d9f69e5f711c6c1d06"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\board_probe.py",
+      "bytes": 5520,
+      "sha256": "e5fcc3abd3434ff07f8067426c45b4efe0d68de9ac01ec52d1951b632d64373e"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\csi_io.py",
+      "bytes": 1000,
+      "sha256": "3624d9e9c58399301aa5dcf27e23b44c31cb2488a1cb406f7a79f433694f7855"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\diagnose_phase_boundary.py",
+      "bytes": 2678,
+      "sha256": "7d0c227e23c6a15d89ff91b983e039847d3b68ac6e2c2c1944f6103e5d296c09"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\inspect_selected_boot.py",
+      "bytes": 5325,
+      "sha256": "1f91a799f387c1c3de29d9fa890d0dd1d39c1678566b8e6f9919907ba9a4ed16"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\numeric_metrics.py",
+      "bytes": 2612,
+      "sha256": "5221e6e3a8bf18e2a55ff8d6a3e56d8d9778911efa5949bc82361d981d2bf1e0"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\prepare_board_bundle.py",
+      "bytes": 1942,
+      "sha256": "1560c722d26a537f4aedf746530f756d4706048d43647ac52ad291720de868ec"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\read_fpga_version.candidate.py",
+      "bytes": 1497,
+      "sha256": "cca05d0caaeb0d2a1c2533d9e3077c73448f3435a711b3b2673e7d81c76a8f93"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\replay_raw_csi.py",
+      "bytes": 1548,
+      "sha256": "c38e8a6698964bf0d60ed9c614a2d351caadf1e2cea4cf1ad1bac27ba97c9c38"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\summarize_gate.py",
+      "bytes": 4557,
+      "sha256": "4498ef232813846dc0ed00cac29789927b468730ba28693c5519e9bab0e54c67"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\test_numeric_metrics.py",
+      "bytes": 1552,
+      "sha256": "480281444bbdd572905d5eb42e9480c8ee2b8f1d6fb989c5d4e028b42295bdfc"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\test_replay.py",
+      "bytes": 3015,
+      "sha256": "9ebb3a04bb030e67e6f4a8bb1da2e527cba0ae782a0e270ce742bcc305a2e264"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\validate_preprocess.py",
+      "bytes": 10055,
+      "sha256": "f80416ccbd2b8f68b87c34d6611a4fc4ba13a4dccd91552fe191231e7658f103"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\Build-Preprocess.ps1",
+      "bytes": 1382,
+      "sha256": "4878ad81eb798a54bc8857084af1d6770bab6e8ee01c4c82196168ee03437ef8"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\Invoke-BoardAudit.ps1",
+      "bytes": 1845,
+      "sha256": "11a4492c95b211bd023655e75df90d708c68bc6449293811781c7836039dd21a"
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\Invoke-BoardPreprocessTest.ps1",
+      "bytes": 2110,
+      "sha256": "f61ffa1d65f76194c3aa46d3f0e5b9a6951003e2e423e93b49cc76e8bb9499dc"
+    }
+  ],
+  "hardware_baseline_verified": false,
+  "npu_executed": false
+}

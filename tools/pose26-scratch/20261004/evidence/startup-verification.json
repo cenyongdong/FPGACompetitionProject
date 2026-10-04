@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "verified_at": "2026-10-04T00:45:10.690324+08:00",
+  "supervisor_pid": 54209,
+  "torchrun_pid": 54220,
+  "train_rank_pids": [
+    54225,
+    54226,
+    54227,
+    54228
+  ],
+  "source_and_snapshot_hashes_verified": 129,
+  "config_sha256_verified": true,
+  "fresh_initialization": true,
+  "checkpoint_loaded": false,
+  "optimizer_restored": false,
+  "optimizer": "Adam",
+  "max_epochs": 500,
+  "completed_epochs": 0,
+  "latest_epoch": 1,
+  "latest_iteration_in_epoch": 500,
+  "all_recorded_diagnostics_finite": true,
+  "initial_differentiation_l2": 1.3571860462377212,
+  "latest_differentiation_l2": 0.016044076649107775,
+  "rapid_parameter_shrink_observed": true,
+  "formal_accuracy_verified": false,
+  "short_updates_used_for_formal": false,
+  "automatic_retry": false,
+  "automatic_extension": false,
+  "monitoring_update_pending_user_approval": false,
+  "monitoring_enabled": false,
+  "monitoring_user_choice": "暂不启用定时监测；旧ID26保持PAUSED，未更新自动化"
+}

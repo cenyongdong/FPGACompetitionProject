@@ -1,0 +1,69 @@
+{
+  "scope": "Local installer control metadata only; does not confirm installed board/container packages.",
+  "packages": [
+    {
+      "file": "Icraft_3.39.0_onchip.deb",
+      "source_path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\Icraft_V3.39.0安装包\\30TAI&100TAI\\30TAI&100TAI\\Icraft_3.39.0_onchip.deb",
+      "size": 9192096,
+      "control_archive": "control.tar.xz",
+      "fields": {
+        "Package": "Icraft",
+        "Version": "3.39.0",
+        "Architecture": "arm64",
+        "Maintainer": "FMSH-TX",
+        "Secion": "utils",
+        "Priority": "optional",
+        "Installed_Size": "20",
+        "Description": "This is Icraft for arm64"
+      }
+    },
+    {
+      "file": "CustomOp_3.39.0_onchip.deb",
+      "source_path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\Icraft_V3.39.0安装包\\30TAI&100TAI\\30TAI&100TAI\\CustomOp_3.39.0_onchip.deb",
+      "size": 314660,
+      "control_archive": "control.tar.xz",
+      "fields": {
+        "Package": "CustomOp",
+        "Version": "3.39.0",
+        "Architecture": "arm64",
+        "Maintainer": "FMSH-TX",
+        "Secion": "utils",
+        "Priority": "optional",
+        "Installed_Size": "20",
+        "Description": "This is Icraft CustomOp for arm64"
+      }
+    },
+    {
+      "file": "Icraft_3.39.0_amd64.deb",
+      "source_path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\Icraft_V3.39.0安装包\\30TAI&100TAI\\30TAI&100TAI\\Icraft_3.39.0_amd64.deb",
+      "size": 964022704,
+      "control_archive": "control.tar.xz",
+      "fields": {
+        "Package": "Icraft",
+        "Version": "3.39.0",
+        "Architecture": "amd64",
+        "Maintainer": "FMSH-TX",
+        "Secion": "utils",
+        "Priority": "optional",
+        "Installed_Size": "20",
+        "Description": "This is Icraft for amd64"
+      }
+    },
+    {
+      "file": "CustomOp_3.39.0_amd64.deb",
+      "source_path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\Icraft_V3.39.0安装包\\30TAI&100TAI\\30TAI&100TAI\\CustomOp_3.39.0_amd64.deb",
+      "size": 3640556,
+      "control_archive": "control.tar.xz",
+      "fields": {
+        "Package": "CustomOp",
+        "Version": "3.39.0",
+        "Architecture": "amd64",
+        "Maintainer": "FMSH-TX",
+        "Secion": "utils",
+        "Priority": "optional",
+        "Installed_Size": "20",
+        "Description": "This is Icraft CustomOp for amd64"
+      }
+    }
+  ]
+}
