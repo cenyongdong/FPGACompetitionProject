@@ -1,0 +1,12 @@
+{
+  "configs/wifi/petr_wifi_tpami2026_diff_nodecay.py": "petr_wifi_tpami2026_diff_nodecay.py",
+  "configs/wifi/smoke_diff_nodecay.py": "smoke_diff_nodecay.py",
+  "opera/models/tpami2026_diff_nodecay.py": "tpami2026_diff_nodecay.py",
+  "tools/pose26_diff_nodecay/verify_diff_nodecay.py": "verify_diff_nodecay.py",
+  "tools/pose26_diff_nodecay/verify_ddp.py": "verify_ddp.py",
+  "tools/pose26_diff_nodecay/run_experiment.py": "run_experiment.py",
+  "tools/pose26_diff_nodecay/finalize.py": "finalize.py",
+  "tools/pose26_diff_nodecay/launch.py": "launch.py",
+  "tools/pose26_diff_nodecay/PLAN.md": "PLAN.md",
+  "tools/pose26_diff_nodecay/manifest.json": "manifest.json"
+}

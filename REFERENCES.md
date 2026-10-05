@@ -926,6 +926,26 @@ command -v 返回 /usr/sbin/resize2fs 和 /usr/sbin/sfdisk，没有 growpart 路
 
 最佳checkpoint epoch4/iter11244全部权重有限、SHA256 eaec533377d8098dab8fa35e6104c5330840fc7d0be0658ffdc669a794213361；129份源码/快照和配置哈希通过，最佳仍保留服务器。Z盘本次不可读，已通过SSH读取和复制原始证据至项目；挂载问题与训练的01:40退化停止分开判断。当前未重启/调参/启用监测，后续修复或实验仍需批准。完整人数/关节/阶段对照见[当前结果报告](D:/FPGACompetitionProject/tools/pose26-scratch/20261004/STATUS-20261004-0908.md)，原始证据为同目录evidence/check-20261004-0906。
 
+### 17.3 分化分支关闭衰减：10轮从零对照（2026-10-04，完成核验/仍有梯度退化）
+
+**最新结果（13:06完成核验，更新下述启动记录）**：12:00:59正常完成10轮/28,110步并停止，训练进程退出、GPU空闲。最佳第6轮344.787402826mm，末轮377.942666765mm；10次7824帧评估与四卡检查、563条有限诊断、134份源码/快照及解析配置哈希、最佳/最终权重有限性及SHA256通过。最佳固定匹配粗→细化344.997972→344.787403mm，仅约0.210569mm改善。前5轮同轮对照有改善也有退步，不能将跨轮最佳差异当作稳定收益。
+
+分化L2保留约1.908233679、查询残差非零，但第6轮15351步首次抽检到分化/细化注意力梯度同时0，第7–10轮全部抽检均0；坐标回归L2末轮约0.01530。当前权重范数门禁并未覆盖持续零梯度，本次没有修改门禁。结论限于这次单seed对照：只关分化衰减避免了分化参数归零，仍未解决整条细化通路的梯度退化，不能据此继续长训练或扩展衰减范围。
+
+最佳权重服务器`result/tpami2026_diff_nodecay_20261004/best_mpjpe_epoch_6.pth`、SHA256 `4fb71e4a604cb064ec11a6d7de52a3190cd44ad1dc1d58c3a135bce947276def`；最终`epoch_10.pth`、SHA256 `50a5ffa2b7e9e45dd6ac5d1797fe5af91f35203360b3fed772b812a9f9ac975d`。权重保留服务器，完整同轮、人数、14关节及固定匹配表见[RESULTS](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/RESULTS.md)，独立证据为同目录evidence/completion-verification.json和completion-20261004-1306。训练已结束，没有自动延长/重启/部署或启用监测，后续技术方案仍须批准。以下为原实现与启动阶段。
+
+用户批准“先仅关闭分化分支衰减”的对照实验。新独立Adam构造器只将`bbox_head.transformer.joint_differentiators.`下56份权重/偏置设为wd=0，剩余参数仍wd1e-4；Refine Decoder和坐标回归仍衰减。保留原Adam lr2e-5、betas(.9,.999)、eps1e-8、初始化、结构、数据/划分、2/70损失、FP32 seed0 clip0.1、GPU1–4、每卡batch8/worker4；模型/优化器从零，不加载旧checkpoint。固定10轮后停止讨论，保留step450但本轮不会到达。旧500轮配置/源码/结果和旧10轮迁移结果保留。
+
+单项门检通过：实际完整分组、相同初始化模块范数、无checkpoint读取、人物/关节索引及梯度；第一次零分化梯度更新前后该分支参数逐元素相等。4卡96样本3步通过，分化L2约1.357186178；短程权重丢弃。旧实验129份源码/列表哈希未变，与实际旧解析配置的差异逐项审查通过。正式134份源码/快照/配置哈希及实际监督/torchrun/4个rank通过独立启动核验。
+
+2026-10-04 10:20:27启动，结果服务器`/public/cyd/Person-in-WiFi-3D-repo/result/tpami2026_diff_nodecay_20261004`，映射`Z:\Person-in-WiFi-3D-repo\result\tpami2026_diff_nodecay_20261004`；监督70223、torchrun70234、rank70239–70242，后续操作前重新核对身份。10:21:30启动快照第251步分化L2=1.564860762、梯度/残差非零、已记录诊断有限，首轮评估未完成。此为运行/分支初期证据，不是精度改善、10轮完成或长期稳定验收。
+
+每轮仍评估7824帧、人数/关节/固定匹配粗细化误差，并记录参数/梯度及四卡一致性；非有限值、索引错误、DDP不一致和连续两轮严重分支趋零门禁保留。10轮后生成最佳/最终权重、final-report、CSV/曲线及与全衰减从零实验前5轮的同轮对照；目前待完成/独立核验。24版已收敛基准只是参考，不能作为10轮从零结果的公平终局比较；单seed且关闭衰减不保证细化有效。论文衰减规则的偏离明确记录。用户暂不启用定时监测、ID26暂停保持；没有自动通知承诺，不自动延长/重启或扩大零衰减范围。
+
+源码副本、远程映射、批准范围及证据入口：[README](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/README.md)、[PLAN](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/PLAN.md)、[启动验收](D:/FPGACompetitionProject/tools/pose26-diff-nodecay/20261004/evidence/startup-verification.json)。实时查服务器pipeline-status.json和各日志，项目evidence是采集时快照。
+
+交付前10:25:28只读查询：stage=training、第1轮1701步，分化L2=1.719859849、分化/注意力梯度及查询残差非零，未记录异常但无完整评估，仍未到原第6轮退化点。见同目录`evidence/progress-latest.json`；不能由此认定长期稳定或精度提高。
+
 ## 18. PS主导首版架构与独立预处理阶段（2026-10-04）
 
 首版架构决策已由用户审查批准并归档：[ADR_00](ADR/ADR_00.md)。ADR记录架构、范围、工具分工、停止条件和验收目标；以下记录实施事实与证据，不能将方案批准视为功能验收通过。
