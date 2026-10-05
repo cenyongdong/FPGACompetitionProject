@@ -22,7 +22,7 @@
 | 本机开发环境 | Windows 10；另有双系统 Ubuntu | 用户说明；倾向方案 A，Procise/Icraft 保留在 Windows；Windows Icraft 独立依赖第一阶段已获批准并通过加载验证，见 I5 |
 | 当前算法训练位置 | 远程 Ubuntu 服务器，文件目录挂载到本机 `Z:` | 用户说明；仅记录文件访问入口，尚未核验远程执行方式、服务器软件版本及本项目具体目录 |
 | 板载镜像 | `icraft_v3_ubuntu20.04_aarch64_sd_image.bin` | 用户确认；位于下载区“板载Linux镜像”；不能据文件名推断镜像内已经安装的 runtime 版本 |
-| 参考位流/AI_MATE | 暂未确定 | 不自行选择项目内 BIT 包或下载区 25122301 包作为最终基线 |
+| 首版候选位流/AI_MATE | 用户已选Lite 25122301单路PLIN+pHDMI BOOT，板上哈希及运行版本0x25122301核验通过 | 见18.4；SDK混合推理、HDMI时序及双路功能仍未验收，不扩大为完整系统已通过 |
 | 完整原理图 | `JFMQL30TAI_LITE.pdf`，28 页，见 B4 | 用户已确认它是 30TAI 配套原理图；标题栏名称、原始图纸页码差异仍保留说明 |
 
 安装包称为“驱动程序”时，需要区分：上述 Procise `.exe` 是开发软件安装包，JTAG 下载器驱动另有专门资料，二者不能混为一谈。
@@ -968,6 +968,34 @@ BOOT内及实际运行AI_MATE身份、HDMI映射未确认，设备访问暂停�
 
 ### 18.3 尚未实现与下一步
 
-运行位流配套、π边界和误差容限仍需讨论。未执行ONNX/Icraft参考/板端混合推理，未实现板端接收服务、队列、骨架渲染、
+归档时运行位流配套、π边界和误差容限仍需讨论（最新运行身份及门检已更新，见18.4）。未执行ONNX/Icraft参考/板端混合推理，未实现板端接收服务、队列、骨架渲染、
 HDMI/编码RTSP与30分钟闭环；不能用全CPU或电脑推理替代NPU正式验收。最新状态见[STATUS.md](tools/pose-v1/STATUS.md)
 及[软件README](software/pose_v1/README.md)。任何新增依赖、启动配置、模型修正或FPGA工程继续先讨论批准。
+
+### 18.4 300份真实回放门检及运行FPGA版本核验（2026-10-04，最新）
+
+用户批准[ADR_00第12节](ADR/ADR_00.md)记录的验收调整：9组固定300份，含旧3份；幅度atol/rtol=1e-6，
+相位周期最大≤1e-5 rad，保留标量绝对差，真实相位绝对差>1e-5 rad仍须讨论。
+人工±π保留非阻断诊断，周期最大2.333111/2.693437 rad仍失败，不把周期比较当作失败消除方法。
+此次Linux主机及Lite分别300/300与Windows参考逐位一致，实板/主机输出哈希全相同；幅度、相位标量及周期最大差均为0，
+四类非法输入都拒绝。原算法/模型/ARM二进制保持不变；预处理单项median=5.781265ms，P95=5.8595ms，不是端到端验收。
+见[固定清单](tools/pose-v1/evidence/replay-300-manifest.json)、[汇总](tools/pose-v1/evidence/replay-300-summary.json)、
+[实板报告](tools/pose-v1/evidence/board-preprocess-300.json)。
+
+用户替换BOOT后，[最新只读审计](tools/pose-v1/evidence/board-runtime-audit-25122301.json)确认BOOT SHA256为
+`ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef`，与指定Lite 25122301包相同；
+其余8个启动文件保持旧审计身份。`Logs/Log1.txt`明确记录FSBL下载PL完成、Linux启动；
+uEnv导入后文件系统错误不记为download.bit加载成功，也不否定FSBL先前的PL加载。
+按日志分区位置解析BOOT，32位字节序转换后的完整.bit载荷与BOOT对应内容相同，BOOT另有4字节尾随`20000000`，
+见[载荷对应证据](tools/pose-v1/evidence/boot-25122301-comparison-resolved.json)。
+用户另外明确批准最小只读映射，取得0x4000001C原始字节01231225、值0x25122301，
+见[运行版本证据](tools/pose-v1/evidence/fpga-version-read-25122301.json)。未调用SDK Open/reset/check、DMA、模型或视频访问。
+
+板端Icraft/CustomOp:arm64实际3.39.0；参考软件标3.36.0，兼容性尚待混合推理实测，保持当前SDK不自动降级。
+参考ZG URL声明NPU=0x40000000、DMA=0x80000000；3.39.0 `zg330_device.h`定义版本偏移0x1C及initAfterRegions，
+SDK初始化实现未由头文件证明为只读，不能把Open当作普通只读审计操作。
+HDMI包装器RGB565/地址0x40080054/地址单位8字节，只配置缓存而不配置视频时序；
+参考配置1920×1080@60，不能只改宽高就宣称720p60成立。首版720p60保持，屏幕未接，尚未实屏验证。
+
+详细工程内容与后续限制见[RESULTS-300.md](tools/pose-v1/RESULTS-300.md)，具体探测审批与后续门检见
+[NEXT-GATE.md](tools/pose-v1/NEXT-GATE.md)。前述3份、待日志、位流未知及未定义容限的条目为历史阶段。

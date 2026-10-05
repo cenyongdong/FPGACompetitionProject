@@ -5,6 +5,7 @@ param(
     [string]$EvidencePath = (Join-Path $PSScriptRoot 'evidence\board-preprocess.json')
 )
 $ErrorActionPreference = 'Stop'
+if (Test-Path -LiteralPath $EvidencePath) { throw 'Preserve prior test evidence; provide a new EvidencePath.' }
 if ($RemoteArchive -notmatch '^/tmp/pose-v1-[a-z0-9-]+\.tar\.gz$' -or $ArchiveSha256 -notmatch '^[a-f0-9]{64}$') {
     throw 'Only a verified pose-v1 temporary archive is allowed.'
 }
@@ -24,3 +25,4 @@ $report | Add-Member -NotePropertyName 'tester_sha256' -NotePropertyValue (Get-F
 [IO.File]::WriteAllText($EvidencePath, ($report | ConvertTo-Json -Depth 10), [Text.UTF8Encoding]::new($false))
 Write-Output "Board-only math results saved: $EvidencePath"
 Write-Output "Cases: $($report.results.Count); self-test: $($report.self_test)"
+if ($report.acceptance -ne 'passed_real_replay_gate') { throw 'Preprocessing gate blocked; evidence saved; discuss before inference.' }

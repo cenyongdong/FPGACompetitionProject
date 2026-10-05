@@ -4,6 +4,7 @@ param(
     [string]$EvidencePath = (Join-Path $PSScriptRoot 'evidence\board-audit.json')
 )
 $ErrorActionPreference = 'Stop'
+if (Test-Path -LiteralPath $EvidencePath) { throw 'Preserve prior audit; provide a new EvidencePath.' }
 $payload = [Convert]::ToBase64String([IO.File]::ReadAllBytes((Join-Path $PSScriptRoot 'board_probe.py')))
 $remote = "python3 -c 'import base64;exec(base64.b64decode(" + [char]34 + $payload + [char]34 + "))'"
 $transport = & 'C:\Windows\System32\OpenSSH\ssh.exe' -T `
