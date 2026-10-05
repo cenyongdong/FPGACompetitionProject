@@ -184,6 +184,8 @@ def main():
         raise RuntimeError('Finite output or malformed-input rejection failed')
     print(json.dumps({'cases': len(results), 'max_abs': max(r['max_abs'] for r in results),
                       'invalid_rejected': len(invalids), 'report': str(args.output / 'report.json')}))
+    if report['acceptance'] != 'passed_real_replay_gate':
+        raise RuntimeError('Real/synthetic regression gate blocked; preserve report and discuss before inference')
 
 
 if __name__ == '__main__':

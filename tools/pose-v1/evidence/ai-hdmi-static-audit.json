@@ -1,0 +1,40 @@
+{
+  "scope": "static source audit plus separately approved version evidence",
+  "sources": [
+    {
+      "path": "C:\\Icraft\\CLI v3.39.0\\docs\\axizg330aiu\\index.html",
+      "sha256": "b827e650710d185276df0b3fec6079c3d31e00ac9e4e3ba2a587756e8a052067"
+    },
+    {
+      "path": "C:\\Icraft\\CLI v3.39.0\\include\\icraft-xrt\\dev\\zg330_device.h",
+      "sha256": "14f760fb7c0c7dc58f79cba77299fbeb7ace98d23e39ccc0c05f6fd696d505bd"
+    },
+    {
+      "path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\参考实现\\单路PLIN+pHDMI\\fpai_demo_package_26040701\\fpai_demo_package_26040701\\README.md",
+      "sha256": "8a039c5348d881a89341258b895d183360f5cd66a65fc7fcd3d0b77576eed400"
+    },
+    {
+      "path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\参考实现\\单路PLIN+pHDMI\\fpai_demo_package_26040701\\fpai_demo_package_26040701\\examples\\0_datapath\\PLin+HDMI\\configs\\ZG\\sdicamera+hdmi.yaml",
+      "sha256": "120b2b8eb85212f1787b451f3d31a9e51c695b918a32d02f0b1216530fc750c8"
+    },
+    {
+      "path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\参考实现\\单路PLIN+pHDMI\\fpai_demo_package_26040701\\fpai_demo_package_26040701\\deps\\modelzoo_utils\\include\\pipeline\\io\\output\\hdmi_display.hpp",
+      "sha256": "813b5545544278b634369e683c847ac16ceeced3f7aa7b31cfaa2d9556a3d174"
+    }
+  ],
+  "reference_software_icraft": "3.36.0",
+  "installed_board_icraft": "3.39.0",
+  "npu_base_hex": "0x40000000",
+  "dma_base_hex": "0x80000000",
+  "sdk_fpga_version_offset_hex": "0x1c",
+  "observed_fpga_version_hex": "0x25122301",
+  "hdmi_read_address_hex": "0x40080054",
+  "hdmi_format": "RGB565",
+  "hdmi_reference_mode": "1920x1080@60",
+  "hdmi_address_unit_bytes": 8,
+  "wrapper_sets_video_timing": false,
+  "sdk_open_read_only_proven": false,
+  "mixed_inference_compatibility_verified": false,
+  "screen_connected_user_report": false,
+  "hdmi_hardware_accessed": false
+}
