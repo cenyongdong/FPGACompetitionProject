@@ -1,0 +1,24 @@
+{
+  "stage": "training",
+  "time": "2026-10-04T10:20:31.178146",
+  "supervisor_pid": 70223,
+  "child_pid": 70234,
+  "command": [
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nnodes=1",
+    "--nproc_per_node=4",
+    "tools/train.py",
+    "configs/wifi/petr_wifi_tpami2026_diff_nodecay.py",
+    "--launcher",
+    "pytorch",
+    "--seed",
+    "0"
+  ],
+  "max_epochs": 10,
+  "automatic_extension": false,
+  "automatic_retry": false
+}
