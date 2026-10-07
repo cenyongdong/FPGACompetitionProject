@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-07",
+  "status": "approved_execution_complete_next_scope_pending_discussion",
+  "active_board_processes": false,
+  "SSH_SFTP_closed": true,
+  "completed": [
+    "source review",
+    "r2 build",
+    "read-only BOOT9/XRT/SDK preflight",
+    "Host107",
+    "E0 four call r6 regression",
+    "ORT27 independent review",
+    "N1 board28 and error report",
+    "P1 board33 with warmup r6 gate",
+    "H0 local source audit"
+  ],
+  "unresolved": [
+    "ORT vs board original query/candidate identity for S52_18_317",
+    "measured numerical tolerances",
+    "forward stage breakdown and >5Hz target",
+    "720p current bitstream/clock mapping",
+    "14 joint semantic order",
+    "formal network/render/video application",
+    "full system latency and30min"
+  ],
+  "next_plan": "tools/pose-v1/NEXT-GATE-20261007.md",
+  "authoritative_results": "tools/pose-v1/RUNTIME-RESULTS-20261007.md",
+  "completion_review_sha256": "ecec2e33cc91b13ae81d5f9023551126f30c872edfa0e0c124ebbb9637e41a0f",
+  "numerical_accepted": false,
+  "performance_5Hz_accepted": false,
+  "new_execution_approval_required": true,
+  "preserve_paths": [
+    ".local/pose-v1-runtime/package-20261007-e0-n1-p1-r2",
+    ".local/pose-v1-build/mixed-20261007-runtime-r2",
+    ".local/pose-v1-runtime/onnx-27-20261006-r1",
+    "tools/pose-v1/evidence/runtime-20261007-r2"
+  ],
+  "board_location": "/tmp/pose-v1-runtime/20261007-r2",
+  "old_r6_and_r1_unchanged": true
+}

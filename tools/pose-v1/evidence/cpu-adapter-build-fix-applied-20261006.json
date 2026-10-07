@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-06",
+  "status": "approved_build_audit_correction_applied_not_executed",
+  "authorization": "User explicitly agreed to CPU-ADAPTER-BUILD-FIX-20261006.md",
+  "active_script": {
+    "path": "tools\\pose-v1\\Build-CpuAdapter.ps1",
+    "sha256": "5858e415135bd1dc2f6ffa5ea6e578b819863b938f7cb5a50b476be01413d3f1",
+    "matches_reviewed_candidate": true
+  },
+  "backup": {
+    "path": "tools\\pose-v1\\evidence\\Build-CpuAdapter.before-no-container-python-20261006.ps1",
+    "sha256": "b06e3886a4a723eecc804b7e90a16ba0ced608f893232e94d08d7692efd587ae"
+  },
+  "patch_sha256": "a685fa5de895414b28957ad778430225fdce55e1c1f7a7e405594f1d1c2a34dd",
+  "fixture_package": {
+    "path": ".local\\pose-v1-cpu-adapter\\package\\20261005",
+    "manifest_sha256": "50833ee2d198747966c33550310b19c6e27e0867fffe850fbd67026c488cffc7",
+    "checksum_manifest_sha256": "bf4e5ace00f38a0a281e822f99e077492107b23b67e84391eee7c5acbd12fc51",
+    "unchanged": true
+  },
+  "original_failed_build_log_unchanged": true,
+  "build_files_unchanged": {
+    "software/pose_v1/include/host_cpu_adapter.hpp": {
+      "destination": "host_cpu_adapter.hpp",
+      "sha256": "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4"
+    },
+    "software/pose_v1/src/host_cpu_adapter.cpp": {
+      "destination": "host_cpu_adapter.cpp",
+      "sha256": "fc3ff85cbcf46af9a2615ab8756b266762d895ba56b5084e5e245682489241c7"
+    },
+    "software/pose_v1/src/host_cpu_adapter_check.cpp": {
+      "destination": "host_cpu_adapter_check.cpp",
+      "sha256": "7eeb0c205d88a7575f022b9fa9b262db4f55b56af2aafdb0fc4b6f28fdb82096"
+    },
+    "tools/pose-v1/cpu-adapter-CMakeLists.txt": {
+      "destination": "CMakeLists.txt",
+      "sha256": "3eb56cc84d578774765e31cd7a0cd82513cff90fa17f30eafb32baee1ff4cb10"
+    },
+    "tools/pose-v1/aarch64-icraft.cmake": {
+      "destination": "toolchain.cmake",
+      "sha256": "93d3d7983e824d52a83f853b757891bc9bcf828e6190c6fed838d7be3215c6da"
+    }
+  },
+  "original_inference_sources_unchanged": {
+    "software/pose_v1/src/inference_check.cpp": "75e51aff69c61ed431e0201aa21b10463b43add17c0ad125739f8dd252accf6d",
+    "software/pose_v1/CMakeLists.txt": "0b2732d3fe62caa797628feb95f713a57d2f26812b379fb42f42d9ac114c76a3"
+  },
+  "audit_change": "container dpkg-query, docker cp -L actual ARM SDK files, Windows CRLF-to-LF header normalization and SHA256; original guards retained",
+  "static_checks": {
+    "powershell_parser_errors": 0,
+    "active_equals_reviewed_candidate": true,
+    "backup_matches_pre_change": true
+  },
+  "dependencies_installed": false,
+  "container_commands_executed": false,
+  "compiled": false,
+  "cpu_tests_executed": false,
+  "device_accessed": false,
+  "mixed_verified": false,
+  "next_build_tag": "cpu-adapter-20261006-r1",
+  "next_execution_owner": "user",
+  "documentation_sha256": {
+    "tools/pose-v1/CPU-ADAPTER-COMMANDS.md": "dd3a325a72ea7eb675dcff97c9af3bca45422cf7b189ce3f3a6e1fd7785bb724",
+    "tools/pose-v1/CPU-ADAPTER-BUILD-FIX-20261006.md": "2f512c80e3c60fc104b7893f93b445a43131327b8703270617f42bd567206317"
+  }
+}

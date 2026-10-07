@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-07",
+  "status": "accepted_by_explicit_user_decision",
+  "scope": "existing nine_group_27_case deployment numerical stage",
+  "basis": "User considers small arithmetic precision differences can reorder candidates and explicitly accepts this numerical stage.",
+  "data_comparison_sha256": "0beecc448163633163852a1486183e77418bf7d42c2ae036d71efa7143936ce4",
+  "rank_diagnostic_sha256": "1972ea42fcdb75f57191ba08cffeda0e88c81f63918d47697a842662113c2c5f",
+  "acceptance_is_user_decision_not_query_identity_proof": true,
+  "inputs_PC_board_bitwise_equal": true,
+  "post_input_arithmetic_differences_remain": true,
+  "same_query_correspondence_proven": false,
+  "numeric_threshold_not_invented": true,
+  "MPJPE_or_physical_calibration_accepted": false,
+  "new_datasets_not_covered": true
+}

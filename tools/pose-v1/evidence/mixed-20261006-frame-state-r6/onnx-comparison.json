@@ -1,0 +1,127 @@
+{
+  "numerical_acceptance": "pending_measured_tolerance_discussion",
+  "coordinate_units": "model_raw_not_physical_calibration",
+  "comparison": "same output slot, not assumed candidate/person identity",
+  "cases": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "reference_top_index": 0,
+      "board_top_index": 0,
+      "top_slot_changed": false,
+      "scores": {
+        "max_abs": 0.003045201301574707,
+        "mean_abs": 0.001227954626083374,
+        "rms": 0.0013894573409458273,
+        "p95_abs": 0.002123892307281494,
+        "bitwise_equal": false
+      },
+      "poses": {
+        "max_abs": 1.323295772075653,
+        "mean_abs": 0.22922762951680592,
+        "rms": 0.35551594880431014,
+        "p95_abs": 0.8269554555416098,
+        "bitwise_equal": false
+      },
+      "same_slot_joint_l2": {
+        "max_abs": 1.3456001739134604,
+        "mean_abs": 0.5209656889827797,
+        "rms": 0.615771686230121,
+        "p95_abs": 1.150849537503096
+      },
+      "selected_best_coordinates": {
+        "max_abs": 0.01611638069152832,
+        "mean_abs": 0.00550001859664917,
+        "rms": 0.007097285260808138,
+        "p95_abs": 0.013288867473602292
+      },
+      "selected_best_joint_l2": {
+        "max_abs": 0.017002321528027404,
+        "mean_abs": 0.012059722505612519,
+        "rms": 0.012292858667529426,
+        "p95_abs": 0.016241452826510724
+      }
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "reference_top_index": 0,
+      "board_top_index": 0,
+      "top_slot_changed": false,
+      "scores": {
+        "max_abs": 0.003554105758666992,
+        "mean_abs": 0.0012157148122787476,
+        "rms": 0.0015156617228426607,
+        "p95_abs": 0.0029478833079338075,
+        "bitwise_equal": false
+      },
+      "poses": {
+        "max_abs": 2.0337284803390503,
+        "mean_abs": 0.30086736342736653,
+        "rms": 0.4321905835814531,
+        "p95_abs": 0.7520171403884881,
+        "bitwise_equal": false
+      },
+      "same_slot_joint_l2": {
+        "max_abs": 2.0644777047105687,
+        "mean_abs": 0.6511726330540771,
+        "rms": 0.7485760493159203,
+        "p95_abs": 1.2397198829000466
+      },
+      "selected_best_coordinates": {
+        "max_abs": 0.019873619079589844,
+        "mean_abs": 0.00587047849382673,
+        "rms": 0.00802536331516493,
+        "p95_abs": 0.017417836189270012
+      },
+      "selected_best_joint_l2": {
+        "max_abs": 0.02029232112143441,
+        "mean_abs": 0.013318241650200022,
+        "rms": 0.013900337011065057,
+        "p95_abs": 0.02007879140448726
+      }
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "reference_top_index": 0,
+      "board_top_index": 0,
+      "top_slot_changed": false,
+      "scores": {
+        "max_abs": 0.010111987590789795,
+        "mean_abs": 0.0009395700693130494,
+        "rms": 0.0014402135789792266,
+        "p95_abs": 0.0020493492484092712,
+        "bitwise_equal": false
+      },
+      "poses": {
+        "max_abs": 1.3454699516296387,
+        "mean_abs": 0.26934019667761666,
+        "rms": 0.3880105492736475,
+        "p95_abs": 0.7452777445316305,
+        "bitwise_equal": false
+      },
+      "same_slot_joint_l2": {
+        "max_abs": 1.3607481592799213,
+        "mean_abs": 0.5735548011088294,
+        "rms": 0.6720539852146648,
+        "p95_abs": 1.0709131809695707
+      },
+      "selected_best_coordinates": {
+        "max_abs": 0.027607440948486328,
+        "mean_abs": 0.007059679854483832,
+        "rms": 0.008809513999082193,
+        "p95_abs": 0.014514923095703123
+      },
+      "selected_best_joint_l2": {
+        "max_abs": 0.03230003661908271,
+        "mean_abs": 0.013909153843553452,
+        "rms": 0.015258525836399642,
+        "p95_abs": 0.02636838123652313
+      }
+    }
+  ],
+  "model_sha256": "7b04090e374e31e016d5703bbcf1d0a561d0b98f268fde984b0bf0461598bd21",
+  "board_binary_sha256": "f826fc31441caf09ef22d94561672023737ab4c330ba22ec0159ecf7f77e144a",
+  "engineering_acceptance_sha256": "734689ed046294cc06341bb93c118b7e3b26b18316b9b21f52e65b52442daf29"
+}

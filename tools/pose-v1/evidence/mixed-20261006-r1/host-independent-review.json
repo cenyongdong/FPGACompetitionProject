@@ -1,0 +1,48 @@
+{
+  "status": "mixed_host_bridge_independently_verified",
+  "stage": "host-check",
+  "case_count": 107,
+  "normal_cases": 18,
+  "rejection_cases": 89,
+  "registry_records": 12,
+  "output_files": 22,
+  "fp32_values": 59600,
+  "all_finite": true,
+  "bitwise_equal": true,
+  "max_abs_error": 0.0,
+  "returned_hash_count": 45,
+  "package_hash_count": 290,
+  "sdk_header_count": 15,
+  "sdk_versions": {
+    "icraft:arm64": "3.39.0",
+    "customop:arm64": "3.39.0"
+  },
+  "binary_sha256": "7cf761f1dd7d1ca1bf8a1db1826e4d9b34574b1a8dc0ac662c987eed52722a17",
+  "bridge_event_count": 94,
+  "bridge_actions": {
+    "input_to_host": 84,
+    "host_to_output": 10
+  },
+  "bridge_pointer_types": [
+    "CPTR"
+  ],
+  "observed_adapter_op_ids": [
+    188,
+    192,
+    437,
+    582,
+    649
+  ],
+  "dmesg_before_after_bitwise_equal": true,
+  "dmesg_sha256": "70053e9e2c23294a99cddb4cd1a75fc61cb1e774c806ba397dc52ad0c60d79a8",
+  "exit": 0,
+  "stderr_bytes": 0,
+  "mode": "host-check",
+  "device_opened": false,
+  "full_session_executed": false,
+  "mixed_verified": false,
+  "numerical_deployment_accepted": false,
+  "acceptance_sha256": "688869faf7167f52554076229f64eb8603941df21e514f2f4d629b182e7c99fd",
+  "kernel_note": "Existing boot recovery/journal/driver messages retained; identical before/after, not attributed to Host test.",
+  "agent_activity": "Read-only file analysis; no board access or program rerun."
+}

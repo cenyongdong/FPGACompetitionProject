@@ -1,0 +1,106 @@
+{
+  "status": "offline_fusion_replay_passed_not_ARM_runtime",
+  "original_hardops": 1173,
+  "logical_trace_rows": 1181,
+  "effective_groups": 7,
+  "malformed_cases_rejected": 18,
+  "tests": [
+    {
+      "case": "missing_original_member",
+      "rejected": true,
+      "reason": "Uncovered original HardOp"
+    },
+    {
+      "case": "duplicate_original_member",
+      "rejected": true,
+      "reason": "Empty/duplicate group members"
+    },
+    {
+      "case": "host_as_hardop_member",
+      "rejected": true,
+      "reason": "Extra or multiply covered original HardOp"
+    },
+    {
+      "case": "missing_effective_binding",
+      "rejected": true,
+      "reason": "Effective binding baseline differs"
+    },
+    {
+      "case": "wrong_effective_backend",
+      "rejected": true,
+      "reason": "Effective binding baseline differs"
+    },
+    {
+      "case": "wrong_group_map_identity",
+      "rejected": true,
+      "reason": "ZG map identity differs"
+    },
+    {
+      "case": "sync_metadata_mismatch",
+      "rejected": true,
+      "reason": "ZG sync map mismatch"
+    },
+    {
+      "case": "host_binding_changed",
+      "rejected": true,
+      "reason": "Host binding changed"
+    },
+    {
+      "case": "create_hardop_on_host",
+      "rejected": true,
+      "reason": "Create backend assignment differs"
+    },
+    {
+      "case": "missing_trace_row",
+      "rejected": true,
+      "reason": "Final original trace incomplete"
+    },
+    {
+      "case": "duplicate_original_trace",
+      "rejected": true,
+      "reason": "Original-to-effective trace differs"
+    },
+    {
+      "case": "forged_effective_op_id",
+      "rejected": true,
+      "reason": "Original-to-effective trace differs"
+    },
+    {
+      "case": "HardOp_false_flag",
+      "rejected": true,
+      "reason": "Original-to-effective trace differs"
+    },
+    {
+      "case": "wrong_HardOp_runtime_type",
+      "rejected": true,
+      "reason": "Original-to-effective trace differs"
+    },
+    {
+      "case": "wrong_trace_backend",
+      "rejected": true,
+      "reason": "Original-to-effective trace differs"
+    },
+    {
+      "case": "wrong_binding_kind",
+      "rejected": true,
+      "reason": "Original-to-effective trace differs"
+    },
+    {
+      "case": "pinned_group_members_changed",
+      "rejected": true,
+      "reason": "Fusion membership differs from reviewed baseline"
+    },
+    {
+      "case": "group_count_as_original_count",
+      "rejected": true,
+      "reason": "Binding summary differs"
+    }
+  ],
+  "cpp_baseline_matches_json": true,
+  "original_r2_results_modified": false,
+  "trace_origin": "Synthetic expected r3 trace constructed from real reviewed r2 snapshots; not emitted by ARM program.",
+  "compiler_executed": false,
+  "board_accessed": false,
+  "model_forward_executed": false,
+  "script_sha256": "c185bfc5c4eb70a9a4273ed7659f1af6a98b0ed6d3992d59b6197dc859048e8d"
+}

@@ -1,0 +1,164 @@
+{
+  "status": "cpu_candidate_gate_passed",
+  "cases": 107,
+  "numeric": [
+    {
+      "case_id": "op188_allocated",
+      "output": 0,
+      "count": 100,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op188_allocated",
+      "output": 1,
+      "count": 100,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op188_buffers",
+      "output": 0,
+      "count": 100,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op188_buffers",
+      "output": 1,
+      "count": 100,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op192_allocated",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op192_buffers",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op437_allocated",
+      "output": 0,
+      "count": 100,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op437_allocated",
+      "output": 1,
+      "count": 100,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op437_buffers",
+      "output": 0,
+      "count": 100,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op437_buffers",
+      "output": 1,
+      "count": 100,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op442_allocated",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op442_buffers",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op582_allocated",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op582_buffers",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op649_allocated",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op649_buffers",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op192_negative_indices",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op192_negative_indices_buffers",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op582_negative_indices",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op582_negative_indices_buffers",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op649_negative_indices",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op649_negative_indices_buffers",
+      "output": 0,
+      "count": 4200,
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    }
+  ],
+  "package_files_checked": 282,
+  "returned_files_checked": 40,
+  "mixed_verified": false,
+  "device_accessed": false
+}

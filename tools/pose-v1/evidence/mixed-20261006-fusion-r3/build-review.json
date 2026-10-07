@@ -1,0 +1,37 @@
+{
+  "status": "fusion_binding_r3_build_verified_not_run",
+  "build_acceptance": {
+    "status": "mixed_build_reviewed",
+    "binary_sha256": "e8d66113ad3d9a34f9f210e5f7038560bc3dbfa681b9a057d748ff39e6c696a8",
+    "package_manifest_sha256": "f8f75181206593419f3fb97e1e91a77a3cc525597e7baf540d0f96f39a39fe68",
+    "sources_verified": 11,
+    "device_accessed": false,
+    "runtime_verified": false
+  },
+  "package_hash_count": 291,
+  "source_identity_count": 17,
+  "build_files_verified": 11,
+  "ARM_headers_verified": 15,
+  "compiler": "GCC9.4.0",
+  "cmake": "3.24.2",
+  "SDK": "Icraft/CustomOp arm64 3.39.0",
+  "binary_bytes": 555800,
+  "warnings": [
+    "/tmp/pose-v1-mixed-20261006-fusion-r3/source/mixed_check.cpp:143:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]"
+  ],
+  "errors": [],
+  "warning_review": "Unchanged JSON comma/reset/output control flow; shifted from line142 to143 by new include, previously reviewed behavior retained.",
+  "ELF": "AArch64 ELF64 little-endian PIE, direct Host/ZG dependencies, no RPATH/RUNPATH",
+  "identities": {
+    "build.log": "168a216b8b07283f889f1c179dcc000bb8086eec208d476330f7d9da48d8ba88",
+    "build-result.json": "028f7a76efbf7318ed6f754ba88c6d6d559602ff4077a7e9c6487a4ccefc13a2",
+    "sdk-audit.json": "a3f4b43403791bbcbfb62de78240222f69dfcf777f38ce0a671649a219ae5b46",
+    "pose_mixed_check.arm64": "e8d66113ad3d9a34f9f210e5f7038560bc3dbfa681b9a057d748ff39e6c696a8"
+  },
+  "fusion_header_compiled": true,
+  "compiled_source_and_current_package_match": true,
+  "agent_compiled_or_accessed_board": false,
+  "r3_runtime_executed": false,
+  "apply_accepted": false,
+  "next_stage": "User creates new r3 directory and transfers package/binary/build/gate, then Host regression only; full return reviewed before offline/memory/apply."
+}

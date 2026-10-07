@@ -1,0 +1,13 @@
+/tmp/pose-v1-mixed-validation/20261006-fusion-r3/pose_mixed_check
+apply-check
+--output
+/tmp/pose-v1-mixed-validation/20261006-fusion-r3/run-apply-check/results
+--graph
+/tmp/pose-v1-mixed-validation/20261006-fusion-r3/package/graph/piw24_ZG.json
+--raw
+/tmp/pose-v1-mixed-validation/20261006-fusion-r3/package/graph/piw24_ZG.raw
+--inputs
+/tmp/pose-v1-mixed-validation/20261006-fusion-r3/package/inputs
+--reference-tokens
+/tmp/pose-v1-mixed-validation/20261006-fusion-r3/package/reference
+--allow-device-init

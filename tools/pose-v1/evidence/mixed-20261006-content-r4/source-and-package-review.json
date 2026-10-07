@@ -1,0 +1,47 @@
+{
+  "status": "approved_r4_content_diagnostic_prepared_not_compiled",
+  "authorization": "User explicitly replied 同意 to MIXED-INPUT-FRESHNESS-DIAGNOSTIC-PLAN.md",
+  "package": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-mixed-validation\\package-20261006-content-r4",
+  "package_manifest_sha256": "921461abeb9f42641da14174af6c816e70bbc520e95d4eb6f072a11482da3e9a",
+  "package_files_verified": 291,
+  "build_file_count": 12,
+  "source_identity_count": 20,
+  "unchanged_shared_payloads": 289,
+  "changed_payloads": [
+    "run-mixed-validation.sh"
+  ],
+  "changed_existing_sources": [
+    "software/pose_v1/include/mixed_bridge.hpp",
+    "software/pose_v1/src/mixed_bridge.cpp",
+    "software/pose_v1/src/mixed_check.cpp",
+    "tools/pose-v1/mixed_validation_gate.py",
+    "tools/pose-v1/run-mixed-validation.sh"
+  ],
+  "new_capture_header": "software/pose_v1/include/content_diagnostic.hpp",
+  "backup_identities_verified": {
+    "software/pose_v1/src/mixed_check.cpp": "mixed_check.before-content.cpp",
+    "software/pose_v1/src/mixed_bridge.cpp": "mixed_bridge.before-content.cpp",
+    "software/pose_v1/include/mixed_bridge.hpp": "mixed_bridge.before-content.hpp",
+    "tools/pose-v1/mixed_validation_gate.py": "mixed_validation_gate.before-content.py",
+    "tools/pose-v1/run-mixed-validation.sh": "run-mixed-validation.before-content.sh"
+  },
+  "CPU_original_inference_Gather_and_fusion_preserved": true,
+  "SDK_wait_copy_ready_operations_preserved": true,
+  "no_added_device_read": true,
+  "caller_handle_not_retained_across_forward_calls": true,
+  "offline_parser_positive_paths": [
+    "Host-only smoke",
+    "single call",
+    "four calls"
+  ],
+  "offline_malformed_or_partial_cases": 10,
+  "offline_test_report": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\mixed-20261006-content-r4\\offline-content-tests\\review.json",
+  "actual_CXX_Host_content_tests_executed": false,
+  "python_AST_passed": true,
+  "embedded_board_python38_passed": true,
+  "LF_checks_passed": true,
+  "compiled": false,
+  "board_accessed": false,
+  "model_or_SDK_changed": false,
+  "next_step": "User new build tag mixed-20261006-content-r4 only; review before new identity Host/content/offline/memory/apply/one/three."
+}

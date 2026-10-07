@@ -1,0 +1,48 @@
+{
+  "status": "approved_E0_N1_P1_execution_and_H0_audit_completed",
+  "date": "2026-10-07",
+  "binary_sha256": "8970f692b8636e420ae972277fb2a45b79b844895e0664fd99d8352e4cf00192",
+  "package_manifest_sha256": "c99e3b6c07dd1111bcbdcf199e8350417d5252f232d60decb1de7df896e57fab",
+  "model_RAW_SDK_BOOT_unchanged": true,
+  "r6_r1_preserved": true,
+  "agent_executed": true,
+  "stages": {
+    "host-check": {
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "returned_files": 52,
+      "acceptance_sha256": "4313aceec3fbb023421a46fb985359aa61f028a064e5452e70ffd6e31abb5425",
+      "dmesg_unchanged": true
+    },
+    "e0": {
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "returned_files": 124,
+      "acceptance_sha256": "37872ea7dae510ae91d1f76f8c4ddda3a11445e8b890d5949f4503cdecb903e6",
+      "dmesg_unchanged": true
+    },
+    "n1": {
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "returned_files": 604,
+      "acceptance_sha256": "e606f06c8ce4a0012f703f938a47b8a6ce486c6ff329bc8c12c9e76f60b112d7",
+      "dmesg_unchanged": true
+    },
+    "p1": {
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "returned_files": 113,
+      "acceptance_sha256": "ce6c4cbcfa84a16e6732cc94d6b0e1c00d5e926efedf028f6d02ee54fe48e038",
+      "dmesg_unchanged": true
+    }
+  },
+  "ORT27_review_sha256": "20a2ad79d6407729e46a5d1c4f13bb15a3f3515b1c7c2cdc8c3041c9be89ab5c",
+  "ONNX27_comparison_sha256": "0beecc448163633163852a1486183e77418bf7d42c2ae036d71efa7143936ce4",
+  "numeric_rank_diagnostic_sha256": "1972ea42fcdb75f57191ba08cffeda0e88c81f63918d47697a842662113c2c5f",
+  "H0_source_index_sha256": "ae7d963558cba778696033100eabb41f0d8a479e94fb60db5b93238604bd775b",
+  "performance_analysis_sha256": "a7f4949cc09ac915b38e630ea5e0c61d2f37e5f9495bab61c5feec0b9fb8e791",
+  "numerical_accepted": false,
+  "five_Hz_accepted": false,
+  "video_accepted": false,
+  "next_scope_requires_discussion": true
+}

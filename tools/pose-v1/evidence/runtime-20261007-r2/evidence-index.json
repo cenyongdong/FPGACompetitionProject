@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-07",
+  "reports": {
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\build.acceptance.json": "17d9fcc6aa54a8e6eba12f2223f7c04844f3c0b2d69b7ab7b742eff7c1588e14",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\completion-review.json": "ecec2e33cc91b13ae81d5f9023551126f30c872edfa0e0c124ebbb9637e41a0f",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\E0-output-regression.json": "76c0638726ff72338d6c5e47b2b40e8ed583f94c20b6952c6df8b670ed5e6e3f",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\e0.acceptance.json": "37872ea7dae510ae91d1f76f8c4ddda3a11445e8b890d5949f4503cdecb903e6",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\execution-start.json": "20acaf9bb779511a0936508b6ae3b301377d1ace25908bf13a14a01e934044ed",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\H0-source-index.json": "ae7d963558cba778696033100eabb41f0d8a479e94fb60db5b93238604bd775b",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\host-check.acceptance.json": "4313aceec3fbb023421a46fb985359aa61f028a064e5452e70ffd6e31abb5425",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\N1-rank-outlier-diagnostic.json": "1972ea42fcdb75f57191ba08cffeda0e88c81f63918d47697a842662113c2c5f",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\n1.acceptance.json": "e606f06c8ce4a0012f703f938a47b8a6ce486c6ff329bc8c12c9e76f60b112d7",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\next-checkpoint.json": "5acbe54f73120cf0af2684e64caeaed34caf7d402399674070c7bfc096bd666f",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\ONNX27-comparison.json": "0beecc448163633163852a1486183e77418bf7d42c2ae036d71efa7143936ce4",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\ORT27-review.json": "20a2ad79d6407729e46a5d1c4f13bb15a3f3515b1c7c2cdc8c3041c9be89ab5c",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\P1-performance-analysis.json": "a7f4949cc09ac915b38e630ea5e0c61d2f37e5f9495bab61c5feec0b9fb8e791",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\p1.acceptance.json": "ce6c4cbcfa84a16e6732cc94d6b0e1c00d5e926efedf028f6d02ee54fe48e038",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\resume-board-audit.decoded.json": "d432f2406f55199e52f765b7622b184b56cb2970d3781143c0f5a476e1a5897e",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\resume-board-audit.json": "106a942323b1563a7e0f05f6af1230a2b7f86d6b9ab3a829388b39e127c4bba7",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\resume-dmesg.log": "04e5d12d748dd3a3dc133d0439fd568e8a3cdf2a3ad89f7cc06bb1e341d264fa",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\resume-memory.txt": "3d514096f00bc5f49d7c9f0ef008a02f24c3a6a366077b79c5a50a1342e7eed3",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\resume-preflight-review.json": "e2881357ade241dad32b67b6c346c0d06cba14f808bcaff534d0a97e2b8be3a1",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\resume-processes.txt": "f9e0a1ffbec636d0aa4f8ce50cc3d666be8d6d4c0b20b7c563e820c97991ae5d",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\resume-xrt.sha256": "92d9816e2f1edbba875e2a5fb5ed74c41d1271eafb3d5dcc328f16d3e97d3f89",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\reviewer-negative-review.json": "2e9163bb194d2b1281e7268cf972b82cabf33f8441afe6e1ac5783f3c52c271d",
+    "tools\\pose-v1\\evidence\\runtime-20261007-r2\\source-review.json": "478cdcdc481a666b98ff473ee9f05c7536c04df7cd550868f5a3d2bdc28c6e32"
+  },
+  "human_results_sha256": "6046727bfc0e2130d8530d90d111e7d8366117aa66b8af14e6cf12f4944c2782",
+  "next_plan_sha256": "7d2d69c7e5ed62c9443c3f6e8c85a9852bdb27e1de9189719e812c9fdbf85f15",
+  "project_progress_estimate_points": 64,
+  "project_progress_estimate_is_subjective": true,
+  "final_product_accepted": false
+}

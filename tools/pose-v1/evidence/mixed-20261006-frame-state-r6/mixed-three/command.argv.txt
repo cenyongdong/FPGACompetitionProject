@@ -1,0 +1,16 @@
+/tmp/pose-v1-mixed-validation/20261006-frame-state-r6/pose_mixed_check
+mixed
+--output
+/tmp/pose-v1-mixed-validation/20261006-frame-state-r6/run-mixed-three/results
+--graph
+/tmp/pose-v1-mixed-validation/20261006-frame-state-r6/package/graph/piw24_ZG.json
+--raw
+/tmp/pose-v1-mixed-validation/20261006-frame-state-r6/package/graph/piw24_ZG.raw
+--inputs
+/tmp/pose-v1-mixed-validation/20261006-frame-state-r6/package/inputs
+--reference-tokens
+/tmp/pose-v1-mixed-validation/20261006-frame-state-r6/package/reference
+--allow-device-init
+--cases
+three
+--capture-host-content

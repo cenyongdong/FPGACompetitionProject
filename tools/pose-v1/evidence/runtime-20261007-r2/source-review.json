@@ -1,0 +1,19 @@
+{
+  "status": "isolated_source_reviewed",
+  "r6_sources_preserved": true,
+  "helper_bodies_identical": true,
+  "CPU_bridge_preprocess_unchanged": true,
+  "single_engine_and_serial_forward": true,
+  "exceptions_stop_without_reset": true,
+  "profile_enabled": true,
+  "performance_warmup_gate_precedes_measurement": true,
+  "captured_real_r6_reviewer_regression": {
+    "records": 68,
+    "real_CPU_values_bitwise_equal": 52000,
+    "Gather_content_verified": false,
+    "provided_output_writeback_verified": false
+  },
+  "python_board38_syntax": true,
+  "shell_LF": true,
+  "board_tests_not_yet_executed": true
+}

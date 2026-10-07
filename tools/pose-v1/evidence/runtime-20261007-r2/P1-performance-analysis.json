@@ -1,0 +1,39 @@
+{
+  "status": "bounded_profile_on_baseline_analyzed_5Hz_not_met",
+  "warmup": 3,
+  "measured": 30,
+  "processing_throughput_hz": 4.654204685074164,
+  "median_ms": 214.725055,
+  "P95_ms": 215.49763950000002,
+  "max_ms": 216.6138,
+  "mean_ms": 214.85948033333332,
+  "processing_mean_over_5Hz_budget_ms": 14.859480333333323,
+  "required_processing_reduction_fraction": 0.06915906298516734,
+  "forward_mean_ms": 201.36566333333334,
+  "forward_share_of_processing": 0.9371970136990667,
+  "unsegmented_processing_ms": {
+    "mean": 5.416027000000001,
+    "max": 5.785779999999988
+  },
+  "process_CPU_one_core_equivalent_fraction": 0.9995250523745021,
+  "CPU_near_one_core_does_not_prove_NPU_idle": true,
+  "CPU_busy_poll_vs_math_vs_copy_not_resolved": true,
+  "rss_kib_min": 87316,
+  "rss_kib_max": 88808,
+  "memory_before": {
+    "total_MiB": 993,
+    "available_MiB": 741,
+    "swap_total_MiB": 0,
+    "swap_used_MiB": 0
+  },
+  "memory_after": {
+    "total_MiB": 993,
+    "available_MiB": 741,
+    "swap_total_MiB": 0,
+    "swap_used_MiB": 0
+  },
+  "sdk_profile_unit": "raw_unconfirmed_not_used_as_calibrated_latency",
+  "no_network_rendering_encoding_included": true,
+  "full_system_5Hz_accepted": false,
+  "long_term_stability_verified": false
+}

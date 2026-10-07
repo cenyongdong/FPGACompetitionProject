@@ -1,0 +1,71 @@
+{
+  "status": "r4_Host_regression_and_content_paths_independently_verified",
+  "case_count": 107,
+  "normal_cases": 18,
+  "rejection_cases": 89,
+  "registry_records": 12,
+  "output_files": 22,
+  "FP32_values": 59600,
+  "all_CPU_outputs_finite": true,
+  "bitwise_equal_to_fixed_and_r3": true,
+  "CPU_max_abs_error": 0.0,
+  "bridge_events": 94,
+  "bridge_actions": {
+    "input_to_host": 84,
+    "host_to_output": 10
+  },
+  "Host_capture_record_count": 5,
+  "Host_capture_bytes": 216000,
+  "Host_positive_modes": 2,
+  "Host_positive_alias_pairs_match": true,
+  "Host_expected_mismatch_rejected": true,
+  "Host_unallocated_rejected": true,
+  "Host_FP16_rejected": true,
+  "expected_negative_matches_expected": false,
+  "content_sha256": {
+    "call0.caller_input.op0.slot0.f32": "3ab6eb2f107a74a3d130a1f3868b538b005854dc81954724c2d712638d34327c",
+    "call0.input0_output.op0.slot0.f32": "3ab6eb2f107a74a3d130a1f3868b538b005854dc81954724c2d712638d34327c",
+    "call1.caller_input.op0.slot0.f32": "3fe6feef714ad3ba9fb211356a271de7cd69afca5ac2375b61e6fa6ca89e812e",
+    "call1.input0_output.op0.slot0.f32": "3fe6feef714ad3ba9fb211356a271de7cd69afca5ac2375b61e6fa6ca89e812e",
+    "call2.expected_mismatch.op0.slot0.f32": "3fe6feef714ad3ba9fb211356a271de7cd69afca5ac2375b61e6fa6ca89e812e"
+  },
+  "returned_files_verified": 52,
+  "package_files_verified": 291,
+  "binary_sha256": "ba8d53985fabdfdc12939d794825d31a0ee29bf9516567be5ba9356c515dcea7",
+  "sdk": {
+    "versions": {
+      "icraft:arm64": "3.39.0",
+      "customop:arm64": "3.39.0"
+    },
+    "headers_normalized_sha256": {
+      "icraft-backends/hostbackend/backend.h": "8cf82840f340ff4173d6d855f8a39b72225dc5d7681fc3d7b7ed9b3cac2da378",
+      "icraft-backends/hostbackend/common/tensor_kernel.h": "509d54a778dcbc25094be73dfc5250b0b84ba3681a3d0b9f49905779338e015d",
+      "icraft-backends/hostbackend/port/common/tensor_ops.h": "f339262a95a63ebe9e1834e56278e737312319a52413a1d749e1a63bf4e48e92",
+      "icraft-xrt/core/backend.h": "f6a8ee61524cff91b2a4bfa5409cf46633d101ffe0528ac0c7599c21dd8b2607",
+      "icraft-xrt/core/tensor.h": "4b2c4d0ad24db042f151a56afce2fba881ad8f2fe1c87c9d32d620caf89b365a",
+      "icraft-xir/core/data_type_attr.h": "a0461bf7f078443fb609d472e802aed9f86407a536c8aa2058bc60a7dab50cec",
+      "icraft-xrt/core/device.h": "7bd98080ea4b228242caa184682703cc2d8610db6a28015810b5d7d8af16ecff",
+      "icraft-xrt/core/session.h": "f26063b529cef9ba2cc48ae07aafe4a4498169240d243cd71a5972bc34e0ebc7",
+      "icraft-xrt/dev/host_device.h": "642a8aec2e3832e0ecd823efa665d32ed42fb08a177878a33945714e633c887f",
+      "icraft-xir/core/data.h": "92c9e344979748e4ff03f8d59de2f4de398b052e70a90411d41be976e6830ed6",
+      "icraft-xir/base/array.h": "4f01421c9fe63a29ed2c0f90482209257bb8d8cfe5508af09edb924eed88058d",
+      "icraft-xir/base/object.h": "37a6f69afd6eabb7aaec95e785903e816e772fc248d920031f54a50109ba2df3",
+      "icraft-backends/zg330backend/zg330backend.h": "9017d5808e00b30746d79f1380879a3056db64d27845fd033dc13513eef7bd8f",
+      "icraft-xrt/dev/zg330_device.h": "43f634de3dd253c1c1fa84c8b6298ca562747744c04721a1debb809ee3b22286",
+      "icraft-utils/osal/cache.hpp": "991eff53ec361874e07d93893580e2e0c68e6587e7e859648737c55b0ce88756"
+    },
+    "host_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "zg_sha256": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57"
+  },
+  "exit": 0,
+  "stderr_bytes": 0,
+  "dmesg_before_after_equal": true,
+  "dmesg_sha256": "70053e9e2c23294a99cddb4cd1a75fc61cb1e774c806ba397dc52ad0c60d79a8",
+  "device_initialized": false,
+  "Session_created": false,
+  "Input0_actual_Session_callback_verified": false,
+  "r3_failure_fixed": false,
+  "acceptance_sha256": "6b39b5b1a5507af439bb7fe69b4c476eb293af0cac5336d87ec223a36e046e63",
+  "agent_activity": "Local file analysis only; no board access or rerun.",
+  "next_stage": "User transfers new r4 Host acceptance then offline-check only under 30-second limit and returns complete evidence."
+}

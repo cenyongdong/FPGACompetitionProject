@@ -1,4 +1,55 @@
+# CSI首版：当前实施状态（2026-10-07）
+
+> 最新：现有数值阶段已由用户验收；profiling关闭＋单时钟计量及消息构造优化已完成，处理基线5.24655Hz/P95 190.75409ms，整机/视频/长期未验收。[P2结果](../../tools/pose-v1/P2-RESULTS-20261007.md)。较早“数值未验收/4.65Hz/P2候选”保留为历史。
+
+新runtime_core已通过Host107/E0/N1/P1限定验证，原r6和CPU/桥/预处理保持。当前API带固定参考Tokens门禁，正式未知窗口应用尚未接入。[20261007结果](../../tools/pose-v1/RUNTIME-RESULTS-20261007.md)记录27样本排名离群、4.65420Hz基线及未验收项；[下一步候选](../../tools/pose-v1/NEXT-GATE-20261007.md)待讨论。
+
+<details>
+<summary>历史r1/r2与早期交付说明（不作当前执行入口）</summary>
+
 # CSI首版：当前实施状态
+
+当前以2026-10-06 [r6三样本混合工程验收](../../tools/pose-v1/MIXED-FRAME-STATE-R6-RESULTS.md)为准：跨帧同输出已解决，SDK状态清理/计数与输出就绪协议通过，模型/CPU数学/NPU分工保持。
+[下一阶段计划](../../tools/pose-v1/NEXT-PHASE-PLAN-20261006.md)已准备，运行核心、扩展数值及低日志基线的新实施范围待确认。
+原pose_inference_check仍保留；下方r1/r2“当前”“未编译/板测”“下一步”是历史阶段，勿照旧命令重跑或宣称视频已通过。
+
+当前快照r2构建及源码/SDK身份已核验，[构建结果](../../tools/pose-v1/MIXED-BINDING-R2-BUILD-RESULTS.md)。
+新程序尚未板测/快照运行，用户新r2目录传输后先Host回归；原r1失败及门检保留。
+
+用户已批准并应用绑定快照r2：仅mixed_check.cpp增加创建后/apply后SDK公共元数据快照，原严格门检/其他源码保持。
+新包已准备，尚未编译/新板端运行；[当前命令](../../tools/pose-v1/MIXED-BINDING-R2-COMMANDS.md)。
+旧r1 apply未通过，r2是取证，仍不能直接模型forward或宣布部署通过。
+
+当前SDK设备内存往返已验收，[结果](../../tools/pose-v1/MIXED-MEMORY-RESULTS-20261006.md)。
+两16KiB ADDR PLDDR/六输出24,576FP32逐位一致；尚未模型Session或NPU计算，用户下一步仅apply-check。
+
+当前offline真实RAW/PS门检已通过，[结果](../../tools/pose-v1/MIXED-OFFLINE-RESULTS-20261006.md)；
+仅真实参数/输入/图/注册验收，设备内存与Session仍待实测。用户下一步传验收文件后仅30秒memory-check。
+
+最新mixed-r1 Host暂存桥已独立通过107例/12注册/22输出59,600FP32回归，见[结果](../../tools/pose-v1/MIXED-HOST-RESULTS-20261006.md)。
+仅Host CPTR，真实RAW/NPU内存/完整Session仍待逐阶段验收；Host不重跑，现在用户传入验收文件并处理离线预检失败目录。
+
+最新2026-10-06 mixed-r1已交叉编译并经代理文件核验，一条缩进warning审查不影响预期JSON行为，源码保持。
+见[构建结果](../../tools/pose-v1/MIXED-BUILD-REVIEW-20261006.md)；当前用户继续传输及Host桥回归，尚无新板端运行结果。
+下面新C++未编译为初次交付状态。
+
+2026-10-06已批准并交付独立 `pose_mixed_check`：新mixed_bridge/mixed_check/mixed_host_check复用已验收CPU计算接口，
+SDK复制至Host暂存、六阶段独立验证；原CMake/推理器/CPU实现保持。独立构建配置在tools/pose-v1/mixed-validation-CMakeLists.txt。
+新C++尚未编译/板测；[当前用户命令](../../tools/pose-v1/MIXED-VALIDATION-COMMANDS.md)。
+本机三样本[ONNX参考](../../tools/pose-v1/ONNX-REFERENCE-RESULTS-20261006.md)已完成，不等待Icraft全CPU Matmul；
+实际NPU交接、完整模型数值及HDMI/RTSP仍未验收。
+
+2026-10-06独立CPU候选已在Lite通过107例/22份输出的数值及注册门检，
+见[结果与限制](../../tools/pose-v1/CPU-ADAPTER-RESULTS-20261006.md)。
+原Gather保持，CPU Matmul未补齐；候选仍未接入本目录原推理器/CMake，实际NPU内存交接和完整模型未验收。
+下面候选未编译/运行文字保留为较早状态，首版NPU及双路要求保持。
+
+2026-10-05新增隔离CPU候选：`include/host_cpu_adapter.hpp`、`src/host_cpu_adapter.cpp`、
+`src/host_cpu_adapter_check.cpp`。使用`tools/pose-v1/cpu-adapter-CMakeLists.txt`独立构建，
+**未接入本目录原CMake或pose_inference_check**，不补CPU Matmul或覆盖Gather。
+范围、SDK证据和设计限制见[CPU-ADAPTER.md](../../tools/pose-v1/CPU-ADAPTER.md)，
+用户执行入口见[CPU-ADAPTER-COMMANDS.md](../../tools/pose-v1/CPU-ADAPTER-COMMANDS.md)。
+目前仅源码交付和静态审查，尚未编译/实板CPU测试，不能推定完整混合推理通过。
 
 用户批准目标：PS原始CSI预处理→PS/NPU混合推理→单人14关节固定三维视角→720p HDMI＋H.264 RTSP。
 骨架≥5Hz、争取10Hz；板端画面完成P95≤500ms，播放器延迟另测，30分钟稳定性待验收。
@@ -48,3 +99,16 @@ h5py3.16.0、PyWavelets1.8.0。不是训练环境，也不是板端Python依赖�
 - 不使用全CPU或电脑推理代替正式NPU验收，也不把预制预测动画作为实时结果。
 
 本阶段结果见[RESULTS-300.md](../../tools/pose-v1/RESULTS-300.md)，旧证据保留为历史状态。
+
+## 2026-10-05：独立推理门检源码交付
+
+新增`src/inference_check.cpp`，Icraft SDK目标默认关闭，原预处理源码及已验收二进制未改。
+开启`POSE_BUILD_ICRAFT_CHECK`后构建独立检查器；`POSE_ENABLE_ZG330=OFF`可构建Windows Host参考。
+四种模式：inspect只检查图、probe初始化并记录版本、host执行optimized参考图、mixed执行ZG＋Host完整图。
+硬件模式必须显式给`--allow-device-init`，无reset/check/视频输出或自动回退；初始推理仅允许原三份固定真实窗口。
+Host可读取固定参考张量，mixed必须在PS从原CSI执行预处理。完整候选、后端记录及耗时输出用于后续核验。
+
+**本次只是源码及命令交付，尚未编译、运行或数值验收。** 编译、模型及软件操作由用户执行。
+详见[逐条执行说明](../../tools/pose-v1/INFERENCE-COMMANDS.md)及[HDMI静态审查](../../tools/pose-v1/HDMI-STATIC-AUDIT.md)。
+
+</details>

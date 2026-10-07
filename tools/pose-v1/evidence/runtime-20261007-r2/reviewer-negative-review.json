@@ -1,0 +1,27 @@
+{
+  "status": "offline_real_evidence_mutations_rejected",
+  "checks": [
+    {
+      "case": "unknown_case",
+      "rejected": true,
+      "reason": "Capture case identity"
+    },
+    {
+      "case": "unallocated_storage",
+      "rejected": true,
+      "reason": "Capture storage"
+    },
+    {
+      "case": "bounds",
+      "rejected": true,
+      "reason": "Capture bounds"
+    },
+    {
+      "case": "wrong_invocation",
+      "rejected": true,
+      "reason": "Capture coverage"
+    }
+  ],
+  "source_r6_unchanged": true,
+  "board_executed": false
+}

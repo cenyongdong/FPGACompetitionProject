@@ -1,0 +1,138 @@
+{
+  "status": "SDK_device_memory_roundtrip_independently_verified",
+  "stage": "memory-check",
+  "buffers": 2,
+  "bytes_per_buffer": 16384,
+  "pattern_passes": 3,
+  "returned_output_files": 6,
+  "fp32_values": 24576,
+  "all_finite": true,
+  "max_abs_error": 0.0,
+  "bitwise_equal_including_signed_zero": true,
+  "also_matches_accepted_r1_outputs": true,
+  "memory_metadata": {
+    "left": {
+      "allocated": true,
+      "bytes": 16384,
+      "pointer": "ADDR",
+      "region": "AXIZG330AIPLDDRMemRegionNode",
+      "offset": 0,
+      "chunk_bytes": 16384
+    },
+    "right": {
+      "allocated": true,
+      "bytes": 16384,
+      "pointer": "ADDR",
+      "region": "AXIZG330AIPLDDRMemRegionNode",
+      "offset": 0,
+      "chunk_bytes": 16384
+    }
+  },
+  "allocation_owner_nonoverlap_validation": "Pinned checker validates SDK default region owner against opened Device and numeric addresses for non-overlap; absolute addresses not logged, no independent address-map claim.",
+  "outputs": [
+    {
+      "pass_index": 0,
+      "side": "left",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "08edf10dbbda72914db8d2dfa36fb9bf49e324b7759477a363cea9d8fdd022ac",
+      "first_value_bits": "00000080",
+      "bitwise_equal": true
+    },
+    {
+      "pass_index": 0,
+      "side": "right",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "e1e793aa3b5d0e4e6506f512ab86ff157f99014137323d5621ad9097baf74067",
+      "first_value_bits": "00000000",
+      "bitwise_equal": true
+    },
+    {
+      "pass_index": 1,
+      "side": "left",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "9b769eda5b00186703bb38af2e5c68c80ba6181adb50d91b1b6da2beb0cdc254",
+      "first_value_bits": "00000080",
+      "bitwise_equal": true
+    },
+    {
+      "pass_index": 1,
+      "side": "right",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "73cfbc04ce3fb33e0561d738c18b15d129852a7e8214265993709b1f35a05930",
+      "first_value_bits": "00000000",
+      "bitwise_equal": true
+    },
+    {
+      "pass_index": 2,
+      "side": "left",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "baa7cb8d601a8a20fb0d8984ab63628e0f6f4ef23c750fe3d2dd9e7ba7599703",
+      "first_value_bits": "00000080",
+      "bitwise_equal": true
+    },
+    {
+      "pass_index": 2,
+      "side": "right",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "63822ca95c56d3a1418d6f59bb7eb87e623aa34606ae8ec472f46c131367b438",
+      "first_value_bits": "00000000",
+      "bitwise_equal": true
+    }
+  ],
+  "device_version": {
+    "url": "axi://zg330aiu?npu=0x40000000&dma=0x80000000",
+    "versions": {
+      "device": "25122301",
+      "icore": "FMSHZGV3TECH-AID - 24160628"
+    },
+    "numerical_accepted": false
+  },
+  "package_files_verified": 290,
+  "returned_files_verified": 28,
+  "sdk": {
+    "versions": {
+      "icraft:arm64": "3.39.0",
+      "customop:arm64": "3.39.0"
+    },
+    "headers_normalized_sha256": {
+      "icraft-backends/hostbackend/backend.h": "8cf82840f340ff4173d6d855f8a39b72225dc5d7681fc3d7b7ed9b3cac2da378",
+      "icraft-backends/hostbackend/common/tensor_kernel.h": "509d54a778dcbc25094be73dfc5250b0b84ba3681a3d0b9f49905779338e015d",
+      "icraft-backends/hostbackend/port/common/tensor_ops.h": "f339262a95a63ebe9e1834e56278e737312319a52413a1d749e1a63bf4e48e92",
+      "icraft-xrt/core/backend.h": "f6a8ee61524cff91b2a4bfa5409cf46633d101ffe0528ac0c7599c21dd8b2607",
+      "icraft-xrt/core/tensor.h": "4b2c4d0ad24db042f151a56afce2fba881ad8f2fe1c87c9d32d620caf89b365a",
+      "icraft-xir/core/data_type_attr.h": "a0461bf7f078443fb609d472e802aed9f86407a536c8aa2058bc60a7dab50cec",
+      "icraft-xrt/core/device.h": "7bd98080ea4b228242caa184682703cc2d8610db6a28015810b5d7d8af16ecff",
+      "icraft-xrt/core/session.h": "f26063b529cef9ba2cc48ae07aafe4a4498169240d243cd71a5972bc34e0ebc7",
+      "icraft-xrt/dev/host_device.h": "642a8aec2e3832e0ecd823efa665d32ed42fb08a177878a33945714e633c887f",
+      "icraft-xir/core/data.h": "92c9e344979748e4ff03f8d59de2f4de398b052e70a90411d41be976e6830ed6",
+      "icraft-xir/base/array.h": "4f01421c9fe63a29ed2c0f90482209257bb8d8cfe5508af09edb924eed88058d",
+      "icraft-xir/base/object.h": "37a6f69afd6eabb7aaec95e785903e816e772fc248d920031f54a50109ba2df3",
+      "icraft-backends/zg330backend/zg330backend.h": "9017d5808e00b30746d79f1380879a3056db64d27845fd033dc13513eef7bd8f",
+      "icraft-xrt/dev/zg330_device.h": "43f634de3dd253c1c1fa84c8b6298ca562747744c04721a1debb809ee3b22286",
+      "icraft-utils/osal/cache.hpp": "991eff53ec361874e07d93893580e2e0c68e6587e7e859648737c55b0ce88756"
+    },
+    "host_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "zg_sha256": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57"
+  },
+  "program_sha256": "94a03a903a4a97f229b1549dcbd1bade193d60dbb23753c1f030431fbd061248",
+  "exit": 0,
+  "stderr_bytes": 0,
+  "dmesg_before_after_bitwise_equal": true,
+  "dmesg_sha256": "70053e9e2c23294a99cddb4cd1a75fc61cb1e774c806ba397dc52ad0c60d79a8",
+  "device_initialized": true,
+  "device_copy_verified": true,
+  "full_session_created": false,
+  "model_forward_executed": false,
+  "NPU_producer_CPU_consumer_coherence_verified": false,
+  "numerical_deployment_accepted": false,
+  "performance_accepted": false,
+  "acceptance_sha256": "ac9c5496b37fd1d734ddc1f5d0960d5b7b2741152d94c342420868afb2abc721",
+  "agent_activity": "Local file analysis only; no board access or rerun.",
+  "next_stage": "User transfers new r2 memory acceptance and performs one 300-second apply-check for snapshots only; unchanged strict binding gate may fail, return all evidence before considering any forward."
+}

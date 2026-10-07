@@ -1,0 +1,112 @@
+{
+  "status": "current_identical_output_issue_resolved_three_fixed_cases",
+  "stages": {
+    "host-check": {
+      "exit": 0,
+      "returned_files": 52,
+      "stderr_bytes": 0,
+      "dmesg_unchanged": true,
+      "acceptance_sha256": "8fc4505345ba1551045034cdefb89a600ceebfc546d5920cd622fbcfd46172ee"
+    },
+    "offline-check": {
+      "exit": 0,
+      "returned_files": 32,
+      "stderr_bytes": 0,
+      "dmesg_unchanged": true,
+      "acceptance_sha256": "5e097efc260cd65c69073afd60d301742026602560e2711faec1eab934608d6d"
+    },
+    "memory-check": {
+      "exit": 0,
+      "returned_files": 28,
+      "stderr_bytes": 0,
+      "dmesg_unchanged": true,
+      "acceptance_sha256": "6622a11ab4b3273be255a829a40289c13fa4071f0bcc44f92c38b403e6de8152"
+    },
+    "apply-check": {
+      "exit": 0,
+      "returned_files": 45,
+      "stderr_bytes": 0,
+      "dmesg_unchanged": true,
+      "acceptance_sha256": "2a43bff2478af7ff88a97cba01ccb03bc8c619b754594c0e2c3e58afb3fd5e6a"
+    },
+    "mixed-one": {
+      "exit": 0,
+      "returned_files": 70,
+      "stderr_bytes": 0,
+      "dmesg_unchanged": true,
+      "acceptance_sha256": "6f1e3fd61ec14bd37eaea3ee75d1234bb32352efad3eb8aba8504c4b50feb74a"
+    },
+    "mixed-three": {
+      "exit": 0,
+      "returned_files": 131,
+      "stderr_bytes": 0,
+      "dmesg_unchanged": true,
+      "acceptance_sha256": "734689ed046294cc06341bb93c118b7e3b26b18316b9b21f52e65b52442daf29"
+    }
+  },
+  "root_cause": "Per-frame absolute ZG completion thresholds were matched by previous-frame accumulated layer count; missing FPGA execution-state clear in caller lifecycle.",
+  "fix": "SDK Device.reset(1) at safe frame boundary; require layerCount=0; waitForReady outputs and require pinned final745 before next frame.",
+  "SDK_or_model_modified": false,
+  "same_Session_across_four_calls": true,
+  "numerical_accepted": false,
+  "performance_accepted": false,
+  "agent_executed": true,
+  "binary_sha256": "f826fc31441caf09ef22d94561672023737ab4c330ba22ec0159ecf7f77e144a",
+  "frame_protocol": {
+    "status": "frame_state_protocol_verified",
+    "returned_files_verified": 131,
+    "calls": [
+      {
+        "invocation": 0,
+        "case": "S11_01_308",
+        "start_count": 0,
+        "before_clear_count": 0,
+        "end_count": 745
+      },
+      {
+        "invocation": 1,
+        "case": "S11_01_309",
+        "start_count": 0,
+        "before_clear_count": 745,
+        "end_count": 745
+      },
+      {
+        "invocation": 2,
+        "case": "S11_01_310",
+        "start_count": 0,
+        "before_clear_count": 745,
+        "end_count": 745
+      },
+      {
+        "invocation": 3,
+        "case": "S11_01_308",
+        "start_count": 0,
+        "before_clear_count": 745,
+        "end_count": 745
+      }
+    ],
+    "outputs": [
+      {
+        "case": "S11_01_308",
+        "scores": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+        "poses": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+      },
+      {
+        "case": "S11_01_309",
+        "scores": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f",
+        "poses": "1b8a781e160809711486dc18d82aa324ef099d3ba1cad95bc287d81bd4b16cf7"
+      },
+      {
+        "case": "S11_01_310",
+        "scores": "6e4a7504161509f7ece781ab0471731b1d0fc75d40135eb0fd6c28f4bf321d35",
+        "poses": "a7acb0e1d6224e6897b475c1a851420c8dc3fdfecb39c2dfad756cea09f75bb2"
+      }
+    ],
+    "content_records": 68,
+    "same_session_repeat_all_captured_content_equal": true,
+    "numerical_accepted": false,
+    "performance_accepted": false
+  },
+  "actual_CPU_values_bitwise_verified": 52000,
+  "comparison_sha256": "e5ad810a62c5739a9e7ef0d02fd64658175aae42e18ab594fead19fe46692378"
+}

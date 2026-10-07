@@ -1,0 +1,12 @@
+{
+  "status": "only_literal_message_overloads_added",
+  "CPU_added_lines": 3,
+  "runtime_helper_added_lines": 1,
+  "original_functions_checks_numerical_operations_byte_identical": true,
+  "original_CPU_sha256": "fc3ff85cbcf46af9a2615ab8756b266762d895ba56b5084e5e245682489241c7",
+  "original_helper_sha256": "d2997a7d1c3cc21ea83c95251fc6fdeb2d0b70d4756284af2027818c5239c2e1",
+  "finite_guard_calls_count_including_output": 74542,
+  "guard_count_basis": "5400 raw + 10800 tokens + 54042 CPU input descriptor values + 4300 output dump values",
+  "unused_old_CPU_string_overload_warning_reviewed": true,
+  "existing_dynamic_overload_retained": true
+}

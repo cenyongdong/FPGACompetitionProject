@@ -1,5 +1,712 @@
 # 已完成工作记录
 
+## 2026-10-07：用户确认现有部署数值阶段验收，批准profiling-off单时钟性能定位
+
+### 工程内容总结
+
+用户明确接受现有27样本数据精度阶段，认为微小运算精度变化可导致候选颠倒；本次按用户验收决定记录通过，原误差与离群均保留。
+PC/板端模型输入已逐位一致，不能把差异改写为已证实的传输损坏；跨端原query身份未证明，排序交换仍为证据支持的推断。
+未新增数值阈值、GT/MPJPE或物理标定，也不将27样本结论推广至未知数据/模型。
+证据：[user-numerical-acceptance.json](tools/pose-v1/evidence/perf-20261007-r3/user-numerical-acceptance.json)。
+
+用户同时批准关闭SDK profiling，优先以单一时钟拆分forward并寻找优化方案。已新增隔离timed_runtime_core/timed_mixed_bridge/timed_runtime_check及forward_clock，r2/r6原源码和CPU内核保持；r3及独立错误消息优化lazy-r4已完成构建/Host107/输出回归/计量。
+计量采用同一个steady_clock和帧内ns基准，批量保存后端调用与桥等待/复制/CPU计算、边界观察等区间；ZG后端跨度含SDK工作，不能视为纯NPU核时间。
+profiling-off可能异步返回，因此只把最终输出就绪/745作为完成证明，中间返回状态如实保存，不靠计量接口制造额外同步。
+
+
+本轮实测：profiling-off单时钟r3仍平均212.93086ms/4.69636Hz。内部CPU桥等待164.4799ms、CPU forward29.5905ms、复制0.4731ms；ZG调用跨度0.8466ms不代表纯硬件耗时。
+源码发现成功的字面量错误消息也被构造为std::string；在新副本新增两个const char*重载共4行，不删除检查、不改算法/同步/缓存。原源码及动态消息重载保持。
+lazy-r4再次通过107例（含拒绝）、四原帧回归及3预热＋30计量，全部37次输出与r6逐位一致；三个阶段exit0/stderr空/dmesg保持。
+平均190.60146ms、中位190.60452ms、P95 190.75409ms、最大190.80669ms，处理吞吐5.24655Hz；对r3减少22.32941ms，CPU forward降至13.6379ms、原始/输入检查降至0.1020/0.1415ms，等待基本不变164.4569ms。
+限定30次处理核心基线达到5Hz，距200ms预算平均约9.4ms；不含网络/绘图/编码，整机5Hz、10Hz与30分钟闭环仍未通过。
+程序4f7fe3597bb2aaaa69884a429062ce0c3977b63a30c328b8ce6c9f9e41ab84ad，352包/16构建来源，模型/RAW/SDK/BOOT、r2/r3/r6保持。
+审查工具遗漏hashlib的NameError通过独立review_perf_stage.py仅补标准库绑定修正，包/数据/规则不改写、不重跑板测；原失败与修正记录保留。
+结果：[P2-RESULTS-20261007.md](tools/pose-v1/P2-RESULTS-20261007.md)、[完整核验](tools/pose-v1/evidence/perf-20261007-lazy-r4/completion-review.json)、[命令](tools/pose-v1/P2-SINGLE-CLOCK-COMMANDS-20261007.md)。SSH/SFTP已关闭，无后台任务。
+
+### 对后续开发的参考
+
+区分用户基于现有工程证据的数值验收决定与尚未证实的误差根因；历史自动检查器numerical_accepted=false不改写，项目层验收通过单独关联用户决定。
+profiling关闭与计量插桩同时变化，和旧基线的耗时差不是严格单因素因果试验。先证明全部输出回归、再分析内部开销，据实测提出最小优化，不自动改模型、同步、缓存、并行或视频。
+
+
+## 2026-10-07：恢复任务并完成E0/N1/P1工程验证及H0资料整理
+
+### 工程内容总结
+
+用户确认Lite开机并明确要求继续，代理从20261006检查点恢复，完成源码/参考复核、P1前置r6门禁、新r2构建与传输，以及Lite逐阶段执行。
+FPAI GCC9.4.0/CMake3.24.2、ARM Icraft/CustomOp3.39.0、Lite25122301/icore24160628；9个启动文件、SDK头文件/Host/ZG/XRT身份与基线一致。
+原模型/RAW/SDK/BOOT、CPU内核/桥、预处理、r6源码程序及r1旧包构建参考保留，SDK profiling未关闭。
+新程序SHA256 `8970f692b8636e420ae972277fb2a45b79b844895e0664fd99d8352e4cf00192`；包manifest `c99e3b6c07dd1111bcbdcf199e8350417d5252f232d60decb1de7df896e57fab`，351项LF清单。
+
+Host107、E0、N1、P1四阶段程序退出0、stderr空、完整dmesg前后相同；分别52/124/604/113回传核验。
+Host107/12注册/22输出59,600 FP32通过，Gather保持。新可复用核心E0四次308/309/310/308完整输出与r6逐位一致，68捕获/实际CPU52,000值独立一致。
+N1九组27＋首帧重复共28次，27份完整输出各不相同、首帧所有捕获和最终输出一致，476捕获/实际CPU364,000值NumPy逐位一致。
+E0/N1/P1共65次forward均每帧0→745、1173原HardOp七ZG组完整追溯，六计算Host执行。Gather内容和提供输出writeback没有扩大验收。
+
+既有ORT27参考完成独立86项/环境模块/输入/输出有限/重复与旧308复核，证明r1/r2模型输入不变后复用，不重跑或修改旧参考身份。
+27份同槽分数最大差0.06548452、同槽坐标2.77696973、各端最高分坐标2.67561984模型单位，数值容限未验收。
+离群S52_18_317的固定前两名交叉比较差约0.017/0.024，相同排名差约2.65–2.68，板端TopK437索引[1,0]；支持排名交换推断，缺ORT query身份证明，不匹配重排或剔除原误差。
+其余26帧最高分坐标最大差不超过本次观测0.03171778，不把该数作为阈值，不作物理标定/GT/MPJPE。
+
+P1三预热与r6完整输出核对后才30次计量，全部33次输出与r6一致。process_window中位214.72506ms/P95 215.49764ms/最大216.61380ms，平均214.85948ms、吞吐4.65420Hz；未达到5Hz且不含网络/绘图/编码。
+forward平均201.36566ms占93.72%，另约5.41603ms未分段；CPU近单核等效满负荷不证明NPU闲置。RSS87,316–88,808KiB，available前后均741MiB/Swap0；不是长期稳定性或30分钟闭环验收。
+H0原始源码/配套资料归档完成，720p时钟/当前位流映射、关节连接冲突及VPU/RTSP输入/缓冲区仍待确认；未操作视频硬件。
+
+结果：[RUNTIME-RESULTS-20261007.md](tools/pose-v1/RUNTIME-RESULTS-20261007.md)、[完整核验](tools/pose-v1/evidence/runtime-20261007-r2/completion-review.json)、[复现命令](tools/pose-v1/RUNTIME-COMMANDS-20261007.md)。
+下一轮[N2候选身份＋P2前向分段](tools/pose-v1/NEXT-GATE-20261007.md)为未批准/未执行候选；E1应用/视频、profiling变化、新依赖和容限另议。SSH/SFTP已关闭，没有后台测试或自动重跑。
+
+### 对后续开发的参考
+
+可复用已验证单Engine/单Session、异常永久停止及安全帧清理协议，固定745仅适用于已核对融合/模型/SDK。
+当前核心API带固定reference Tokens门禁，是固定回放验证基础，未知实时窗口的生产接口仍需单独接入。
+工程门检完成、误差统计完成、数值容限通过、5Hz通过、视频/长期闭环通过需分开记录；本轮完成执行计划不代表作品完成。
+下一步先解释候选排名与forward瓶颈，再据实测讨论数值容限和正式应用/视频顺序；不能通过丢同步检查、读旧输出或关闭profiling而未经批准宣布达标。
+
+
+## 2026-10-06：首版混合推理工程验收、难点复盘与下一阶段准备
+
+### 工程内容总结
+
+本次已完成**全项目进度整理与恢复标记**：[PROJECT-PROGRESS.md](PROJECT-PROGRESS.md)集中展示已验收、已实现待验证及未实施内容，按首版工作包作约50%–60%的工程估算（规划权重58/100，不是统计通过率或工期）。当前阶段为“小样本板端混合推理已跑通→数值/性能验证与正式应用集成”。[恢复入口](tools/pose-v1/RESUME-20261006.md)、[待办](ToDoLists.md)及机器可读状态已补齐；旧失败、构建、模型和参考未移动或覆盖。
+
+P1初版缺少“预热三帧对照r6后才能进入计量”的前置门禁，恢复时先在新修订中补齐，再按E0→N1→P1执行；27份ORT独立核验也仍待完成。HDMI配套、骨架定义冲突、数值容限和整机闭环单独保持未验收。暂停没有解除，本轮未连接Lite、构建或执行模型。
+
+
+**本轮E0/N1/P1实施暂停（2026-10-06，用户明确要求）：** 用户批准代理执行NEXT-PHASE-PLAN，随后确认Lite已关机、本人不在现场，要求先中断，唤醒后再继续。已新增隔离runtime_core运行核心、runtime_check、CMake、分阶段runner和离线审查工具，原r6检查器、CPU计算桥/内核及预处理源码保留。FPAI GCC9.4.0/CMake3.24.2交叉编译成功，15份构建来源及ARM SDK头文件/Host和ZG库身份通过；新程序SHA256 `2738b5150db4d63a949470984ec72cec56abea7b044e6f2236ded2ad94362242`，仅沿用r6版本JSON排版警告。构建证据：[build.acceptance.json](tools/pose-v1/evidence/runtime-20261006-r1/build.acceptance.json)。源码和审查工具仍需交付前完整复核；**尚未运行Host107或新核心板端回归，不能称为E0通过。**
+
+既有Conda Python3.10.21/NumPy2.2.5/CPU ORT1.23.2已生成九组27固定输入及首帧重复参考；固定ONNX哈希、CPUExecutionProvider、顺序执行、线程1/1及ORT_ENABLE_ALL保持。27份完整输出116,100个有限FP32，首帧重复逐位一致，86项清单自核验完成；独立复核仍待完成。[参考summary](.local/pose-v1-runtime/onnx-27-20261006-r1/summary.json)。本轮没有安装新依赖、板端传输、Device::Open或推理；SSH超时及本机以太网Disconnected与用户关机确认一致，不归因于推理代码。N1板端28次、P1低日志3预热＋30计量及H0资料归档未完成。恢复入口：[暂停检查点](tools/pose-v1/evidence/runtime-20261006-r1/pause-checkpoint.json)。
+
+
+本次整理以此前已验收记录为依据，不重复执行或另记同一成果。历史失败、批准修正及阶段快照保留；
+下文“ORT未批准/缺失、CPU未编译/待回传、mixed待讨论”等均按对应日期理解，当前以本节为准。
+最新工程结论：r6跨帧状态修正已在Lite完成三样本及同Session首帧重复验收；旧r3/r4/r5停止状态保留为历史，数值容限和持续性能仍待验收。
+
+| 已完成工作 | 验证范围与证据 | 适用限制 |
+| --- | --- | --- |
+| SD启动、根文件系统扩容、SSH通信 | 用户现场确认启动/登录及扩容；[扩容截图](tools/sd-image-validation/20261003-expansion-success.png)、[环境记录](tools/development-environment/20261003-progress.json)，后续SSH只读审计已执行 | 不包含长期稳定、全容量读写或AI验证 |
+| FPAI交叉编译与Lite加载 | GCC9.4.0/CMake3.24.2、ARM Icraft/CustomOp3.39.0；[原检查器构建核验](tools/pose-v1/evidence/cross-build-review-20261005.json)，后续CPU r2已实板运行 | 编译/加载不证明NPU计算 |
+| 原生/MCP流水灯与简单IP交接 | Procise2025.1.1 temp/SVN32494，Vivado2019.1；本文原验收条目、[MCP流水灯结果](tools/mcp-validation/led1324/RESULTS.md)、[xlconcat IP交接](tools/mcp-validation/ip-reuse/RESULTS.md) | 独立PL与IP方法验证，不表示PS/DDR/AI系统工程已完成 |
+| 启动基线与运行身份 | Lite25122301 BOOT哈希、FSBL加载及0x25122301回读；后续SDK Open/version通过，见[300份结果](tools/pose-v1/RESULTS-300.md)和历史probe记录 | 不将uEnv后续文件错误改记为download.bit成功，也不将Open/version当NPU通过 |
+| 300份真实CSI预处理 | Windows/Linux/Lite逐位一致，幅度/相位差0、四类非法记录拒绝；[300份汇总](tools/pose-v1/evidence/replay-300-summary.json) | 人工±π周期误差2.333111/2.693437rad仍失败，仅经用户批准改为非阻断诊断 |
+| CPU注册与最小适配 | 107例、12注册、22输出/59,600 FP32逐位一致，Gather保持；[最终结果](tools/pose-v1/CPU-ADAPTER-RESULTS-20261006.md) | 独立CPU范围为固定FP32/全有效分布/Host CPTR；NPU交接验收见后续混合行 |
+| PS/NPU混合工程与跨帧状态修正 | 1173原HardOp七组追溯/六计算Host，三帧输出不同、重复首帧全部内容逐位一致；[r6实板结果](tools/pose-v1/MIXED-FRAME-STATE-R6-RESULTS.md) | 当前三份固定CSI工程验收；数值容限/连续性能/HDMI/RTSP仍待，提供输出buffer的writeback未触发 |
+
+用户已批准本轮调整：**工程与数值验收分阶段，使用ONNX直接对照板端，不等待Icraft全CPU Matmul参考**。
+CPU Matmul缺口保持诊断状态，正式Matmul的NPU分配不改。ADR、资料索引及阶段状态已同步。
+
+已实际建立新Conda `.local/pose-v1-onnx-conda`，固定Python3.10.21/NumPy2.2.5/CPU ORT1.23.2。
+使用缓存创建Conda、官方wheel安装ORT，八个wheel及实际依赖哈希锁定，Conda explicit/list/history、安装报告、
+pip freeze/check和模块来源检查已保存。初次沙箱Conda因CUDA虚拟包IPC的WinError5失败；同一命令自动审批后成功，
+不覆盖失败证据、不改变依赖配方或既有环境。源码构建和板端依赖安装未发生。
+
+固定epoch442 ONNX哈希、CPUExecutionProvider、顺序执行、intra/inter线程数均为1及ORT_ENABLE_ALL，
+308/309/310同一输入生成全部100候选的分数与14关节坐标，共12,900个有限FP32输出。
+首样本重复逐位一致，不同输入响应存在；参考12项哈希独立复核。前向约221.808/221.606/212.305ms，
+仅为Windows CPU参考耗时，不计板端性能。详见[ONNX参考结果](tools/pose-v1/ONNX-REFERENCE-RESULTS-20261006.md)
+及[环境/产物身份](tools/pose-v1/evidence/onnx-reference-environment-20261006.json)。
+
+<details>
+<summary>混合验证交付及r1至r5历史阶段记录（保留失败与审批过程，不作为当前执行入口）</summary>
+
+新增独立 `pose_mixed_check`源码、CMake、构建/分阶段runner/回传及数值核验工具和新测试包
+`.local/pose-v1-mixed-validation/package-20261006-final`。三类Host注册调用已验收计算接口，SDK搬运至Host暂存，
+真实RAW参数检查、107例回归、两16KiB缓冲区往返、Session绑定、单/三样本回调与全部输出记录已编写。
+三样本阶段同一Session第四次重复308，另存重复输出和回调编号；纯PS预处理耗时与证据读写耗时分开。
+新目录/LF清单、明确硬件flag、外部timeout和逐阶段验收文件门禁已交付。
+15份SDK头文件与原ARM包比对通过；原推理源码/CMake、三CPU文件、原模型及固定输入身份保持。
+Python AST、嵌入板端Python3.8语法、PowerShell语法、shell换行与包清单静态核验通过。
+交付记录：[mixed-source-delivery-20261006.json](tools/pose-v1/evidence/mixed-source-delivery-20261006.json)。
+
+**源码交付时新C++未交叉编译；随后用户r1构建及代理核验已完成，见以下补充。新107例桥回归/SDK内存/Session/mixed仍未在Lite执行，尚无板端输出误差报告。**
+候选交付是开发成果，不能当正式推理通过。FPAI编译、传输、Lite运行仍由用户逐阶段执行；代理主动读日志和产物。
+入口[用户命令](tools/pose-v1/MIXED-VALIDATION-COMMANDS.md)，范围[混合验证说明](tools/pose-v1/MIXED-VALIDATION.md)。
+
+用户mixed-20261006-r1构建反馈及复核：GCC9.4.0/CMake3.24.2、两包ARM3.39.0，配置/编译/链接完成。
+290项包、10份源码/副本、15头文件及Host/ZG库匹配；AArch64 PIE SHA256
+`7cf761f1dd7d1ca1bf8a1db1826e4d9b34574b1a8dc0ac662c987eed52722a17`。
+唯一-Wmisleading-indentation位于版本JSON输出三语句同一行，条件只控制逗号，后两条无条件执行符合预期；
+未发现该警告导致逻辑错误，源码/包保持，不需重编译。代理只读/文件分析核验，未执行程序或访问板端。
+完整[构建警告审查](tools/pose-v1/MIXED-BUILD-REVIEW-20261006.md)及
+[验收文件](tools/pose-v1/evidence/mixed-20261006-r1/build.acceptance.json)。
+现在可由用户继续命令B传输，再C仅host-check；不能把构建通过记为新桥/完整mixed通过。
+
+随后用户截图反馈：B传输已达到板端文件列出阶段，host-check runner报告exit=0；尚无新阶段完整回传，
+12注册/107桥用例/实际输出及SDK/程序身份仍待独立核验，不能提前宣布新Host桥通过。
+用户提前执行offline-check，在读取gates/host-check.acceptance.json时FileNotFoundError；
+已核对runner顺序，该预检在程序调用前，离线程序未启动。原因是前阶段尚未回传核验/生成并传入验收文件。
+证据[evidence/mixed-20261006-r1/host-offline-gate-feedback.json](tools/pose-v1/evidence/mixed-20261006-r1/host-offline-gate-feedback.json)。
+已补齐失败预检目录回传及在验收后保留改名的具体命令；本轮仅截图/源码审查及命令准备，未操作板端或改变runner。
+
+Host完整回传后的最新验收：代理文件核验及独立数值复查通过，107例=18正常/89拒绝，12注册记录匹配，
+22输出/59,600 FP32全有限、逐位一致、最大差0；新SDK Host暂存桥的五节点搬运有记录，指针均CPTR。
+包290/回传45哈希、15ARM头文件/Host＋ZG库/两包3.39.0/程序身份匹配，ldd完整，退出0/stderr空。
+完整dmesg前后相同，available686→687MiB/Swap0；mode=host-check、未Device::Open/完整Session/RAW或NPU执行。
+[Host桥结果](tools/pose-v1/MIXED-HOST-RESULTS-20261006.md)、
+[独立核验](tools/pose-v1/evidence/mixed-20261006-r1/host-independent-review.json)、
+[host-check验收文件](tools/pose-v1/evidence/mixed-20261006-r1/host-check.acceptance.json)已生成。
+此前待回传为历史状态；现在用户传入验收文件，失败offline预检目录先保留回传审阅，再按补充命令进入离线阶段。
+
+离线失败预检回传核验补充：用户报告Host验收文件已传板，并回传原失败目录；目录仅package-check.log、
+timeout-path/version三文件，290项校验全部OK、GNU timeout8.30，无results/exit.txt/SDK审计/程序日志。
+与已核对runner及此前缺gate异常位置一致，确认离线程序未启动，失败证据已完整保留。
+[预检审查](tools/pose-v1/evidence/mixed-20261006-r1/offline-preflight-review.json)完成；
+现在用户按固定工作目录保留改名后执行一次30秒offline-check并完整回传，代理未操作板端或代执行。
+本次不生成offline验收文件，真实RAW/PS输入检查仍待程序实际运行结果。
+
+正式offline-check完整回传后的验收更新：用户执行成功、退出0/stdout及stderr空/阶段完整，代理独立核验32回传/290包及SDK/程序身份通过。
+原RAW的TopK188/437两个K=100，ScatterND582/649两份50,400字节有限整数索引转储与完整100×14×3坐标网格一致，
+四参数已加载、无fixture替换。308/309/310共32,400有限FP32输入与固定及ONNX参考逐位一致，12注册记录符合预期、Gather保持。
+完整dmesg前后相同，available686→687MiB、Swap0；纯PS观测15.35236/5.60302/5.58911ms不作连续性能结论。
+mode=offline-check/device_init_allowed=false，未初始化设备/创建完整Session/执行前向。
+[离线结果](tools/pose-v1/MIXED-OFFLINE-RESULTS-20261006.md)、[独立复核](tools/pose-v1/evidence/mixed-20261006-r1/offline-independent-review.json)、
+[offline验收文件](tools/pose-v1/evidence/mixed-20261006-r1/offline-check.acceptance.json)已生成。
+下一步用户传入验收文件，并在BOOT/JTAG保持、设备无竞争访问的前提下，仅执行30秒SDK两16KiB内存往返并回传。
+本阶段不代表1173HardOp/六Host实际绑定、NPU内存同步、完整mixed或精度通过；先前offline未执行为历史状态。
+
+SDK内存阶段最新验收：用户一次受限memory-check退出0、完整回传，代理核对28回传/290包及15头文件/两库/版本/程序身份通过。
+SDK Open成功，device25122301/icore24160628保持；两个16KiB缓冲区为ADDR、AXIZG330AIPLDDRMemRegionNode、chunk/offset正确。
+固定程序核对区域归属及不重叠，三模式/六份输出共24,576有限FP32逐位一致、最大差0，-0/+0符号位保持。
+stderr空、阶段完整、完整dmesg前后相同、available前后687MiB/Swap0；未创建完整Session或执行模型前向。
+[内存结果](tools/pose-v1/MIXED-MEMORY-RESULTS-20261006.md)、[独立复核](tools/pose-v1/evidence/mixed-20261006-r1/memory-independent-review.json)、
+[memory验收文件](tools/pose-v1/evidence/mixed-20261006-r1/memory-check.acceptance.json)已生成。
+本次CPU↔设备SDK搬运不证明NPU生产者/CPU消费者同步或推理数值；下一步用户仅300秒apply-check（创建/apply/绑定，无forward），回传再核验。
+代理未接入板端/重跑/复位/改配置；此前memory待执行是历史状态。
+
+apply失败/SSH退出审查补充：用户截图在登录shell单独set -eu，test ! -e遇到已存在run-apply-check触发errexit导致SSH关闭。
+代理按特殊问题权限SSH只读列目录、SCP取回既有完整结果，35项回传/290包、程序/SDK/上一memory身份匹配。
+实际apply退出1，阶段已到session_applied，随后因首个原HardOp8622未在预期绑定表中找到而检查器主动停止；
+绑定文件仅Input0一条，无forward_started/模型输出/桥搬运，dmesg前后相同。Session创建/apply返回不等于完整部署验收。
+[失败审查](tools/pose-v1/MIXED-APPLY-FAILURE-20261006.md)、[证据](tools/pose-v1/evidence/mixed-20261006-r1/apply-failure-review.json)已保存。
+SDK明确提供autoMerge、HardOpInfo.merge_from和运行视图，但当前没有完整实际映射，融合仅为候选原因。
+已准备[仅加绑定快照的候选](tools/pose-v1/MIXED-BINDING-SNAPSHOT-PLAN.md)，未应用/编译/运行；
+后续方案须讨论批准，不改计数/SDK选项、不重跑或删除旧目录，不进入mixed。代理没有运行检查器/初始化设备，口令未落项目文件。
+
+### 绑定快照r2批准后应用（2026-10-06）
+
+工程内容总结：用户明确“同意方案”，已将[审阅候选](tools/pose-v1/mixed_check.binding-snapshot.candidate.cpp)
+逐字节应用到mixed_check.cpp，原r1源码备份在evidence/mixed-20261006-binding-r2/mixed_check.before-binding-snapshot.cpp。
+仅新增Session创建后、apply返回后的完整绑定/运行与后端视图/ZG hardop_map及merge_from/同步索引快照，
+原严格1173HardOp＋六Host门检、前向代码、数据桥、CPU内核、默认SDK优化保持；不再次调用autoMerge。
+新包.local/pose-v1-mixed-validation/package-20261006-binding-r2已准备，290项哈希通过，
+与r1的289项非manifest载荷逐位相同；13份源身份记录只有mixed_check.cpp改变，
+原推理器/CMake、已验收CPU实现、模型/RAW/输入与r1二进制/失败证据保持。
+Python AST、板端嵌入Python3.8、PowerShell语法、LF清单及SDK公共字段静态审查通过。
+[应用记录](tools/pose-v1/evidence/mixed-20261006-binding-r2/source-applied.json)、
+[新包静态核验](tools/pose-v1/evidence/mixed-20261006-binding-r2/package-preparation.json)，
+[用户执行入口](tools/pose-v1/MIXED-BINDING-R2-COMMANDS.md)。
+**新r2未交叉编译/运行Host、离线、内存或apply；不称新增快照运行通过或绑定问题已修复。**
+
+对后续开发的参考：旧失败程序缺完整绑定表，补足前后公共元数据有助于区分SDK合并表示和真实遗漏；
+merge_from是官方字段，但实际内容需新程序运行核验，不能只凭接口存在认定1173原节点全部覆盖。
+保留原失败条件，取证可能仍退出1；完成日志采集不作部署验收，不直接执行mixed。
+新程序身份对应新的构建/Host/离线/内存门禁，不复用旧验收文件；按已批准顺序先构建核验再逐阶段。
+SSH登录shell不单独执行set -eu，新运行命令用独立sh入口，runner自身仍非0即停，旧r1不重跑/删改。
+
+r2构建最新验收：用户完成mixed-20261006-binding-r2配置/五CPP编译/链接，代理核对290项包/10源码及副本/
+15ARM头文件/Host＋ZG库/两包3.39.0/脚本/manifest身份匹配。快照源码与批准候选一致，公共字段已通过ARM编译。
+程序AArch64 ELF64 PIE、518,712字节，SHA25694a03a903a4a97f229b1549dcbd1bade193d60dbb23753c1f030431fbd061248；
+直接Host/ZG依赖、无RPATH/RUNPATH。完整日志只有已审阅的原142行缩进warning，无error；无需重编译。
+[构建结果](tools/pose-v1/MIXED-BINDING-R2-BUILD-RESULTS.md)、
+[验收文件](tools/pose-v1/evidence/mixed-20261006-binding-r2/build.acceptance.json)及build-review.json已保存。
+本次只构建身份验收，未新板测/快照运行；用户下一步新目录传输后先Host107回传，不跳过门禁到apply/mixed。
+前述r2未编译为应用时历史，旧r1始终保留失败状态，代理未代编译/板端接入。
+
+r2用户运行截图补充：host-check runner报告exit=0，完整结果尚未回传，107例/注册/输出身份待独立复核。
+用户随后提前执行offline-check，因gates/host-check.acceptance.json缺失退出1；核对runner，此处在SDK审计及程序调用前，离线检查器未运行。
+截图及[反馈记录](tools/pose-v1/evidence/mixed-20261006-binding-r2/host-offline-gate-feedback.json)已保存。
+下一步先回传run-host-check及原run-offline-check预检目录；通过Host核验后才生成新r2验收文件。
+保留现有失败目录，不重跑Host/offline或硬件、不复用r1门禁；代理本轮仅本机文件分析，未接入板端。
+
+r2完整回传验收更新：107例（18正常/89拒绝）、12注册、22份输出/59,600有限FP32逐位一致，与已验收r1输出也一致；
+290包/45回传校验、15ARM头文件/两库/3.39.0及新程序94a03a90…bd061248身份匹配，退出0/stderr空。
+94次Host CPTR桥事件（84输入/10输出），dmesg完整前后相同；无Device::Open、完整Session或NPU。
+提前offline仅三份预检/290项全部OK，确认检查器未启动；本机失败目录原样整理到offline-preflight-missing-gate。
+[Host结果](tools/pose-v1/MIXED-BINDING-R2-HOST-RESULTS.md)、host-independent-review.json、host-check.acceptance.json及offline-preflight-review.json已保存。
+下一步按r2命令E传入新验收、受保护地改名保留板端预检目录后仅运行30秒离线阶段并回传；不重跑Host/跳到硬件。
+后续参考：验收文件必须对应新程序/包身份，失败预检与正式程序结果分开保留；本阶段不能证明快照、融合映射或混合精度。
+
+r2正式离线验收更新：用户执行并完整回传，32回传/290包项、15ARM头文件/两库/3.39.0及新程序身份匹配，退出0/stdout及stderr空。
+真实RAW两个TopK K=100、两份50,400字节ScatterND索引与完整[100,14,3]网格逐位一致；12注册及原Gather保持。
+三PS输入共32,400有限FP32与固定及ONNX参考逐位一致，观测预处理5.67611/5.51163/5.55515ms；不作性能验收。
+dmesg完整前后相同，available均723MiB、Swap0；无设备初始化、完整Session或NPU计算。
+[离线结果](tools/pose-v1/MIXED-BINDING-R2-OFFLINE-RESULTS.md)、offline-independent-review.json及offline-check.acceptance.json已保存。
+下一步用户按r2命令F传新离线门禁，在BOOT/JTAG及设备无竞争访问前提下仅一次30秒SDK内存往返并回传。
+后续参考：实际参数加载与PS输入是独立离线证据，不代替设备搬运、快照融合映射或前向精度；原失败预检仍独立保留。
+
+r2 SDK内存往返验收更新：用户完成并回传，28回传/290包/15ARM头文件/两库/3.39.0及新程序身份匹配，退出0/stderr空。
+Device25122301/icore24160628、SDK数据区域AXIZG330AIPLDDRMemRegionNode匹配；两16KiB ADDR缓冲区三组模式，
+六回读共24,576有限FP32值逐位一致，包含正负零，与r1模式相同。固定程序检查区域所属设备与分配不重叠，未输出绝对地址。
+完整dmesg前后相同，available723→724MiB/Swap0；未创建完整Session或前向，不证明NPU生产者同步/混合精度。
+[内存结果](tools/pose-v1/MIXED-BINDING-R2-MEMORY-RESULTS.md)、memory-independent-review.json和memory-check.acceptance.json已保存。
+下一步按已批准r2命令G仅一次300秒apply取证并完整回传；原门检可能仍失败，不自动重试/复位/改SDK，不进入mixed。
+后续参考：设备复制模式通过与真实NPU生产者同步分开验收，公共快照实际运行及1173融合映射仍待取证。
+
+r2 apply快照取证完成：用户一次执行完整回传45项，程序/包/SDK/设备身份通过，退出1仍为原8622直接ID门检。
+Session创建/apply均返回，两阶段十份快照齐全；创建时1173原HardOp均ZG，部署后七组9185–9191实际ZG绑定，
+七组merge_from恰好覆盖全部1173原节点且无遗漏/重复/额外节点；8622属于9185，六计算Host及Input/Output保持。
+完整dmesg前后相同、真实RAW/PS与离线基线一致；无forward/模型输出，不生成apply验收。
+新增仅本机mixed_binding_snapshot_audit.py，实际快照审计和九项异常拒绝通过，1173项原到有效组映射已保存。
+428个原条目layer_count=0，仅依组成员集合证明原覆盖；不把层数当逻辑节点数或解释为NPU丢算子。
+另核验器HardOp字符串与实际HardOpNode不符，生产代码尚未修正。
+[取证结果](tools/pose-v1/MIXED-BINDING-R2-APPLY-RESULTS.md)、apply-independent-review.json及binding-snapshot-audit已保存。
+[正式融合追溯修正方案](tools/pose-v1/MIXED-FUSION-BINDING-FIX-PLAN.md)已准备待批准；当前暂停新apply/forward，不改SDK优化或降低覆盖数。
+后续参考：实际后端绑定的合并组必须通过merge_from追溯到完整原集合；映射元数据审计与正式部署/计算/精度分阶段验收。
+
+### 正式融合追溯修正r3批准后交付（2026-10-06）
+
+工程内容总结：用户回复“同意”批准正式融合门检方案，已保存r2源码/核验器备份并修改混合候选及核验器。
+创建时验证1181原绑定、1173HardOp均ZG；apply后只处理实际绑定的七ZG组，验证同一后端实例、组ID/同步表/
+固定成员及全部1173原HardOp完整唯一覆盖，八Host保持。保留十份公共快照，新增全1181原节点有效ID追溯和绑定汇总。
+核验器使用真实HardOpNode类型，独立复核全部映射，并拒绝apply模式中的前向产物。
+新增从r2证据生成的静态C++/JSON基线；模型/RAW/原infer及CMake、三CPU实现、预处理、桥和forward代码尾部保持。
+本机真实快照＋模拟新格式记录回放通过，18类异常及额外非布尔标记拒绝；不是ARM程序输出。
+新包package-20261006-fusion-r3的291项哈希、11构建文件/17源身份核验通过；r2原289项非manifest载荷保持，LF/AST/板端Python3.8语法通过。
+[交付](tools/pose-v1/MIXED-FUSION-R3-DELIVERY.md)、[源码/包审查](tools/pose-v1/evidence/mixed-20261006-fusion-r3/source-and-package-review.json)、
+[最终回放](tools/pose-v1/evidence/mixed-20261006-fusion-r3/offline-replay-final/review.json)已保存；代理未编译/SSH/运行设备。
+用户当前仅[MIXED-FUSION-R3-COMMANDS.md A](tools/pose-v1/MIXED-FUSION-R3-COMMANDS.md)新标签交叉编译，日志核验后再逐阶段板测，不复用旧门禁。
+
+对后续开发的参考：分开记录原节点与合并执行组，不能用七组代替1173覆盖数；同步层数与原逻辑节点数不同。
+基线变化、缺失/重复成员、Host混入或错误后端应停止，默认SDK融合保持。本机回放仅验核验逻辑，不证明ARM API、NPU同步或精度。
+新正式apply未执行且混合前向仍未验证，不能把本轮修正交付记为部署通过。
+
+r3构建验收更新：用户完成GCC9.4/CMake3.24.2、ARM两包3.39.0配置/五CPP编译/链接；291包项/17来源/
+11构建副本（含融合基线头）/15ARM头文件/Host＋ZG库身份匹配。程序555,800字节、AArch64 PIE，SHA256
+e8d66113ad3d9a34f9f210e5f7038560bc3dbfa681b9a057d748ff39e6c696a8；直接Host/ZG依赖，无RPATH/RUNPATH。
+仅原JSON输出缩进warning移至143行且已审查，无error；新SDK追溯调用可编译，实际运行仍待验收。
+[构建结果](tools/pose-v1/MIXED-FUSION-R3-BUILD-RESULTS.md)、build-review.json及build.acceptance.json已保存。
+用户当前按r3命令B/C创建新目录传输后仅Host107回归并完整回传，不重编译/复用旧门禁/直接离线或硬件。
+代理仅本机文件核验，未编译、SSH或运行设备；此前r3未编译是交付时状态。
+
+r3 Host回归验收更新：用户完整执行回传，107例（18正常/89拒绝）、12注册、22输出/59,600有限FP32与固定及r2已验收输出逐位一致，最大差0。
+94次Host CPTR桥搬运（84输入/10输出），Gather保持；45回传/291包/15ARM头文件/两库/3.39.0及程序e8d66113…e6c696a8身份匹配。
+退出0/stderr空，完整dmesg前后相同，available均723MiB/Swap0；无设备初始化、完整Session或NPU，正式融合函数未执行。
+[Host结果](tools/pose-v1/MIXED-FUSION-R3-HOST-RESULTS.md)、host-independent-review.json和host-check.acceptance.json已保存。
+用户下一步仅r3命令D传新验收后一次30秒真实RAW/PS离线门检并回传；不重跑旧阶段/复用旧门禁/直接硬件。
+后续参考：核心候选身份变更后Host回归已通过，但Session融合追溯仍须其独立apply路径实际运行。
+
+r3离线验收更新：用户一次执行完整回传，真实四RAW参数与r2已验收转储一致（两K=100、两份50,400字节完整ScatterND坐标网格），
+三PS输入32,400有限FP32与固定/ONNX/r2参考逐位一致，12注册及原Gather保持。32回传/291包/15ARM头文件/两库/3.39.0及新程序身份匹配。
+退出0/stdout及stderr空，dmesg完整前后相同，available722→723MiB/Swap0；预处理观测5.65894/5.54286/5.55557ms，不作持续性能结论。
+[离线结果](tools/pose-v1/MIXED-FUSION-R3-OFFLINE-RESULTS.md)、offline-independent-review.json及offline-check.acceptance.json已保存。
+无设备初始化/完整Session/NPU；用户下一步仅r3命令E传新验收，在BOOT/JTAG保持及无竞争访问前提下30秒SDK内存往返并回传，不apply/forward。
+后续参考：真实输入/参数门检已在新程序身份下通过，但并不证明新融合函数的实际SDK运行或两端数值精度。
+
+r3 SDK内存往返验收更新：用户一次执行完整回传，device25122301/icore24160628及区域身份匹配；两16KiB ADDR SDK设备缓冲区六回读/24,576有限FP32逐位一致含正负零，与r2模式一致。
+28回传/291包/15ARM头文件/两库/3.39.0及程序身份匹配，退出0/stderr空，dmesg完整前后相同，available均723MiB/Swap0。
+[内存结果](tools/pose-v1/MIXED-FUSION-R3-MEMORY-RESULTS.md)、memory-independent-review.json及memory-check.acceptance.json已保存。
+未完整Session或模型前向，不证明NPU生产者同步；下一步仅r3命令F一次300秒正式apply门检并完整回传，核验前不mixed。
+后续参考：新程序前置Host/离线/SDK复制均通过，原到融合组的实际ARM校验仍须Session路径证明；代理仅读本机证据。
+
+r3正式apply验收更新：用户一次执行完整回传45项，退出0/stderr空、无failure；创建1181原绑定及部署后1181逻辑追溯记录齐全。
+1173原HardOp通过七个实际ZG组9185–9191完整唯一覆盖、固定成员/同步基线匹配，六计算Host和Input/Output保持；8622→9185。
+两组十份快照和binding-summary齐全，C++正式融合门检与本机独立核验均通过；291包/SDK/程序/设备身份及RAW/PS与基线一致。
+完整dmesg前后相同，available均723MiB/Swap0；无forward阶段/桥执行/模型结果，仅Session创建、apply部署和绑定追溯通过。
+[apply结果](tools/pose-v1/MIXED-FUSION-R3-APPLY-RESULTS.md)、apply-independent-review.json及apply-check.acceptance.json已保存，旧r1/r2失败保持。
+下一步仅r3命令G一次180秒308单样本实际混合计算并完整回传；尚未验证NPU计算/生产者同步/完整数值或性能，不直接三样本。
+后续参考：原节点与融合执行组追溯已在ARM实际通过；部署通过仍需独立实际前向、执行回调和完整候选数值证据。
+
+r3 308单样本混合工程验收更新：用户一次执行完整回传51项，退出0/stderr空；七ZG组及六Host计算节点均实际执行，frame6/invocation0一次前向。
+五适配节点八次SDK ADDR→Host CPTR搬运115,360字节，结果返回Host CPTR，SDK提供输出缓冲区writeback分支本次未触发。
+全部100分数和100×14×3姿态共4300有限FP32保存，输入/真实参数/1173原融合绑定及291包/SDK/程序/设备身份通过，内核前后相同。
+前向204.64506ms、输出转储2.7998ms、含证据帧耗时208.09317ms、Session初始化26795.38561ms；单次观测不作5Hz/连续性能结论。
+[单样本结果](tools/pose-v1/MIXED-FUSION-R3-ONE-RESULTS.md)、mixed-one-independent-review.json及mixed-one.acceptance.json已保存。
+初步ONNX差异：全分数同槽最大0.00304520、全坐标同槽最大1.32329583，各端最高分槽均0但最佳候选坐标最大差0.01611638；非逐位一致。
+仅模型原始单位/部署对照，不推断候选身份、差异原因、物理误差或MPJPE，无容限验收。
+下一步仅r3命令H一次300秒308/309/310和同Session重复308完整回传，检查首帧跨Session及同Session一致、不同输入响应，再汇总全误差。
+后续参考：这次实际单帧PS/NPU链路已通过工程门检，仍不代表整个测试集精度、所有缓冲区分支或持续同步/性能通过。
+
+r3三样本异常停止复核：用户一次执行回传61项，四次308/309/310/308均完成后退出1，All outputs identical for distinct CSI，未成功summary/三样本验收。
+三PS输入哈希不同且与固定/ONNX一致，309/310相对308分别10431/10445元素变化，ONNX分数和姿态响应均变化；板端三帧4300输出却全部逐位相同，与308首帧及之前mixed-one相同。
+每次七ZG/六计算Host回调，32桥事件；有限输出/首帧重复通过不能抵消不同输入响应失败。291包/SDK/设备/注册/融合绑定及真实参数身份通过，dmesg完整前后相同，available均689MiB/Swap0。
+前向207.1123/39.10712/38.51481/38.37844ms是失败运行观测，后续39ms不作性能或5Hz结论。
+[失败审查](tools/pose-v1/MIXED-FUSION-R3-THREE-FAILURE.md)、mixed-three-failure-review.json及SDK-source-review.json已保存；正式数值报告不绕过失败门禁生成。
+SDK公开forward/私有tmap/ready及本机Input明文注册已只读审查，但当前无逐次实际Host输入/Input0/中间内容，不能确定缓存、同步或生命周期根因。
+[输入内容诊断方案](tools/pose-v1/MIXED-INPUT-FRESHNESS-DIAGNOSTIC-PLAN.md)已准备待批准；代理未改运行源码/SDK、未构建/SSH/重跑，暂停新硬件和数值验收推进。
+后续参考：回调次数和首样本重复不等于每次消费新帧，连续推理必须同时验证不同输入响应；原单样本工程记录保留其有限范围。
+
+### 连续输入内容取证r4批准后交付（2026-10-06）
+
+工程内容总结：用户回复“同意”，已保存r3核心/桥/脚本五份备份，新增显式Host内容捕获。
+每次实际caller Tensor.write后SDK read回读、Input0 API返回内容逐位对照、桥原有SDK复制之后Host暂存及CPU结果转储，记录invocation防混淆。
+Capture只允许已分配有界Host CPTR FP32，不新增设备读/寄存器访问；辅助Tensor句柄不跨forward保留，原等待/复制/就绪调用、CPU数学/Gather/融合基线/模型/RAW保持。
+Host在107例后增加两模式纯Host捕获与别名模拟、错期望/未分配/FP16拒绝；真实Session Input0尚未执行。
+新本机核验器的Host/单次/四次模拟正例及11类异常/提前停止检查通过；Python AST/板端Python3.8/LF/捕获名称字面量及来源检查通过。
+最终package-20261006-content-r4-final已准备，291项哈希/12构建文件/20来源，原r3非manifest载荷289份保持、runner捕获参数更新。
+[交付](tools/pose-v1/MIXED-CONTENT-R4-DELIVERY.md)、[最终身份](tools/pose-v1/evidence/mixed-20261006-content-r4/delivery-review.json)、
+[本机模拟检查](tools/pose-v1/evidence/mixed-20261006-content-r4/offline-content-tests-final/review.json)已保存，未编译/SSH/板端运行。
+用户当前仅[MIXED-CONTENT-R4-COMMANDS.md A](tools/pose-v1/MIXED-CONTENT-R4-COMMANDS.md)最终标签交叉编译，核验后按新身份逐阶段，旧r3失败不重跑。
+
+对后续开发的参考：Caller读回、Input0返回及第一Host消费的ZG结果形成内容边界证据；如提前失败也保留实际字节和上下文。
+模拟格式测试不证明SDK实际读回；诊断IO/主机分配可能改变时序，问题消失不能宣布修复，仍不得修改ready/cache/SDK或自动放宽原门禁。
+正常三样本工程/数值验收仍未完成，当前源码交付不作根因或模型精度结论。
+
+r4-final构建验收更新：用户完成GCC9.4/CMake3.24.2、ARM Icraft/CustomOp3.39.0配置/五CPP编译/链接，291包/20来源/
+12构建文件副本/15ARM头文件/Host＋ZG库匹配，新Host SDK read/句柄/Chunk调用已可编译。
+程序578,960字节、AArch64 PIE，SHA256ba8d53985fabdfdc12939d794825d31a0ee29bf9516567be5ba9356c515dcea7，直接Host/ZG依赖、无RPATH/RUNPATH。
+仅原JSON缩进warning移至147行且已审查，无error；[构建结果](tools/pose-v1/MIXED-CONTENT-R4-BUILD-RESULTS.md)、build-review.json和build.acceptance.json已保存。
+用户当前仅r4命令B/C新final目录传输后Host107＋纯Host内容路径并完整回传，核验前不离线/硬件或复用旧门禁。
+代理仅读本机文件，未编译/SSH/运行程序；API编译通过不等于SDK实际内容读回、Session输入定位或r3故障修复。
+
+r4 Host/内容路径验收更新：用户执行完整回传52项，107例（18正常/89拒绝）、12注册、22CPU输出/59,600有限FP32与固定/r3逐位一致，94桥事件均Host CPTR、原Gather保持。
+附加两模式caller SDK读回及模拟Input0别名共四正例与NumPy模式逐位一致；错期望负例记录false且实际Tensor不变，未分配/FP16读取前拒绝。
+五捕获共216,000字节、内容汇总/阶段齐全；SDK Host读取和日志路径已在ARM验证，但不是实际Session Input0测试。
+291包/SDK/程序身份通过，退出0/stderr空，完整dmesg前后相同，available686→687MiB/Swap0，无设备初始化/Session/NPU。
+[Host结果](tools/pose-v1/MIXED-CONTENT-R4-HOST-RESULTS.md)、host-independent-review.json及host-check.acceptance.json已保存。
+用户当前仅r4命令D传新Host门禁后一次30秒真实RAW/PS离线检查并完整回传，核验前不硬件；r3不同输入相同输出仍未定位。
+后续参考：期望不符的Host负例记录false是设计预期，不与真实混合帧失配混淆；模拟别名只能证明记录能力，不证明Session传入新帧。
+
+r4离线验收更新：用户一次执行完整回传32项，真实四RAW参数与r3一致（两K=100、两份50,400字节完整ScatterND索引网格），三PS输入32,400有限FP32与固定/ONNX/r3逐位一致，12注册及Gather保持。
+291包/15ARM头文件/两库/3.39.0及程序身份通过，退出0/stdout及stderr空、dmesg完整前后相同，available均686MiB/Swap0。
+预处理观测5.66225/5.52195/5.54218ms不作持续性能结论，无设备初始化/Session/NPU，内容捕获关闭。
+[离线结果](tools/pose-v1/MIXED-CONTENT-R4-OFFLINE-RESULTS.md)、offline-independent-review.json及offline-check.acceptance.json已保存。
+用户当前仅r4命令E传新门禁，在BOOT/JTAG保持及无竞争访问时一次30秒SDK内存往返并完整回传，不直接apply/forward。
+后续参考：PS/参数输入在新诊断身份下保持，仍不能确定实际Session传入内容或连续forward故障原因。
+
+r4 SDK内存往返验收更新：用户一次执行完整回传28项，两16KiB ADDR SDK设备缓冲区六回读/24,576有限FP32逐位一致含正负零，与r3模式一致。
+device25122301/icore24160628及SDK区域/291包/两库/15头文件/新程序身份通过，退出0/stderr空，dmesg完整前后相同、available均685MiB/Swap0。
+[内存结果](tools/pose-v1/MIXED-CONTENT-R4-MEMORY-RESULTS.md)、memory-independent-review.json及memory-check.acceptance.json已保存。
+未完整Session或前向、content_capture=false，不证明实际输入更新或NPU同步；用户下一步仅r4命令F一次300秒apply-only并完整回传，核验前不内容前向。
+后续参考：前置SDK复制路径保持，但不同CSI同输出根因仍须逐次实际Tensor内容定位；代理仅本机分析未操作板端。
+
+r4 apply-only验收更新：用户一次执行完整回传45项，退出0/stderr空；1181原节点及1173HardOp经七实际ZG组完整唯一追溯、固定成员/同步基线及八Host保持，十快照和汇总齐全。
+291包/SDK/程序/设备及RAW/PS身份一致，dmesg完整前后相同，available685→686MiB/Swap0；无桥执行/模型结果/content目录，content_capture=false。
+[apply结果](tools/pose-v1/MIXED-CONTENT-R4-APPLY-RESULTS.md)、apply-independent-review.json及apply-check.acceptance.json已保存。
+用户下一步仅r4命令G一次180秒308内容前向并完整回传，读取真实caller/Input0/桥暂存和结果；当前未验证真实Session数据更新，r3故障仍未修复结论。
+后续参考：新诊断身份下部署保持，后续即使提前停止也应保存实际Tensor内容，不能以缺少完整17记录强行重试补全。
+
+r4单样本内容验收更新（2026-10-06）：用户一次完整回传69项，ARM Icraft/CustomOp3.39.0、新程序/291包/设备基线匹配，退出0/stderr空/内核前后相同。
+308/frame6首次forward的实际caller及真实Input0返回各10800个FP32与固定输入逐位一致，17份Host内容253760字节全有限。
+七ZG组和六计算Host执行、八ADDR→CPTR搬运115360字节，4300完整输出与r3单样本逐位一致；提供输出writeback未触发。
+forward207.07742ms、含取证IO210.97278ms、初始化26507.59282ms，仅单次诊断观测，不作持续性能。
+[单样本结果](tools/pose-v1/MIXED-CONTENT-R4-ONE-RESULTS.md)、内容/独立复核及mixed-one.acceptance.json已保存。
+下一步用户仅r4命令H一次300秒同Session三帧及重复308内容取证，提前停止也完整回传，不重试或改变ready/cache。
+后续参考：首次Input0内容已确认，尚不能判定连续输入更新；r3故障未知，诊断IO可能影响时序，不能作自动修复或数值/性能结论。
+
+r4三样本内容异常分析完成（2026-10-06）：用户一次回传130项、四次forward结束后退出1“不同CSI全部输出相同”；68内容1015040字节全有限、291包/ARM3.39.0/程序/设备/RAW/绑定及内核保持。
+每次真实caller/Input0与当前输入一致；调用1最早未响应在ZG9185→TopK188暂存边界，调用2/重复308前段变化而后段582/649及最终输出仍首帧。
+重复308的前段与第一次不同；五适配节点对实际捕获输入由NumPy重算28输出/52000FP32逐位一致，原Gather未完整内容捕获。
+[失败分析](tools/pose-v1/MIXED-CONTENT-R4-THREE-FAILURE.md)、内容复核及mixed-three-failure-review.json已保存，不生成三样本验收，约40ms后续耗时不作性能通过。
+后续参考：不能再归因于caller未更新或这五个CPU内核数学错误，优先核对跨帧PS/NPU交接、完成状态、搬运及内存复用；根因尚未证明。
+MIXED-CONTENT-R5-READINESS-PLAN.md是待批准状态/时序取证候选，未修改运行源码、SDK或ready/cache策略，停止重跑及正常数值/显示/性能。
+
+</details>
+
+r6跨帧同输出故障修复完成（2026-10-06）：代理按用户全权执行授权完成运行库审查、FPAI GCC9.4/CMake3.24.2构建、SFTP、Lite各阶段和独立核验。
+r5计数首次0→745，次帧仍745并累加1222，ARM ZG等待使用固定本帧阈值，旧计数导致提前完成判定；caller/Input0与五CPU数学保持正确。
+仅mixed_check.cpp每帧使用官方Device::reset(1)清FPGA状态、确认0，输出就绪/固定745后再下一帧；同一Session、SDK/模型/RAW/BOOT及原CPU/桥/预处理/融合保持。
+r6构建、Host107/59,600值、离线、内存、apply、单和三全部通过；三帧131回传/68内容1,015,040字节/76状态及1173覆盖匹配，四次0→745。
+三帧分数和姿态分别不同，重复308全部捕获及4300输出逐位一致，跨Session单帧也一致；真实CPU28输出/52,000FP32由NumPy逐位一致。
+程序SHA256f826fc31441caf09ef22d94561672023737ab4c330ba22ec0159ecf7f77e144a，ARM Icraft/CustomOp3.39.0及设备25122301/icore24160628保持，所有阶段内核前后相同，available717→718MiB/Swap0。
+[完整结果](tools/pose-v1/MIXED-FRAME-STATE-R6-RESULTS.md)、[完成核验](tools/pose-v1/evidence/mixed-20261006-frame-state-r6/completion-review.json)、新mixed-three.acceptance.json及完整ONNX12900值误差已保存，SSH/SFTP会话已关闭。
+分数最大差0.00304520/0.00355411/0.01011199，同槽坐标1.32329577/2.03372848/1.34546995，各端最佳坐标0.01611638/0.01987362/0.02760744模型单位。
+未宣称同槽候选身份/MPJPE/物理标定或数值容限通过；前向206.6–208.2ms及含取证IO约210–212ms不作持续5Hz/延迟通过。
+后续参考：帧级执行计数和握手生命周期必须明确，固定745仅用于当前模型与融合基线；旧失败、私有字段编译错误和早期部分回传保持，正常数值比较只在新三样本门禁通过后执行。
+
+#### 难点、处理依据与当前状态
+
+| 难点与表现 | 已确定的原因或处理路径 | 当前状态与后续参考 |
+| --- | --- | --- |
+| Windows开发环境与参考路线 | VS路径含前导空格，另开的CMD不继承开发环境；回原窗口后C++可用但Windows SDK未识别。Lite全CPU又在Matmul绑定失败 | Windows SDK/CPU Matmul缺口保留；独立Conda ORT直接参考已通过，不阻断正式Matmul走NPU。见[参考结果](tools/pose-v1/ONNX-REFERENCE-RESULTS-20261006.md) |
+| Windows/Linux换行及命令环境 | SHA清单CRLF将尾随\r当作文件名；拆行或变量未设置造成参数错误；登录shell的set -e遇到失败test会退出SSH | 使用LF字节清单、完整命令、显式路径和独立子shell，失败保留目录；不要用删除旧目录/跳过门禁来处理。见[CRLF诊断](tools/pose-v1/CRLF-CHECKSUM-FIX.md) |
+| 构建假设与SDK接口差异 | FPAI无python3；Array::get_mutable返回Object*，应使用Array::set；PowerShell遇stderr曾截断真实编译错误；r5误读私有字段 | 审计放在主机、完整捕获日志再看退出码、使用实际头文件及公共API，新身份重构建；未安装容器Python或改SDK。见[编译修正](tools/pose-v1/CPU-ADAPTER-COMPILE-FIX-20261006.md) |
+| Host算子注册和布局缺口 | 五节点缺TopK/GatherElements/ScatterND注册；便携内核拒绝merged_distr，安装CustomOp或仅设目录不能证明支持 | 应用侧最小注册/全有效临时描述适配，原Gather保持；107例/59,600值通过。只支持已验证FP32规格，不泛化到任意布局。见[CPU验收](tools/pose-v1/CPU-ADAPTER-RESULTS-20261006.md) |
+| SDK部署后绑定ID变化 | 原1173HardOp仍在原图中，实际部署合并为七ZG组；按原8622直接找绑定产生误报 | 使用真实绑定＋merge_from＋固定同步表追溯完整唯一覆盖，不降低覆盖要求，不把组数或同步层数当原算子数。见[r6来源](tools/pose-v1/MIXED-FRAME-STATE-R6-SOURCE.md) |
+| 三样本输入不同却输出完全相同 | caller/Input0正确，CPU数学正确；r5层计数跨帧累加，旧计数提前满足SDK本帧完成阈值 | r6帧边界SDK reset(1)、计数0→745、输出就绪确认；三帧不同/重复首帧所有内容逐位一致。当前范围已解决；失败时约40ms不作性能结果。见[r6结果](tools/pose-v1/MIXED-FRAME-STATE-R6-RESULTS.md) |
+| ONNX与板端候选数值对照 | 同槽坐标最大差约1.32–2.03，各端最佳坐标最大差约0.016–0.028（原始单位）；本轮追加分析板端同分相邻项29/30/31，ONNX为1/2/0 | 排名/候选身份尚未证明，不能把大差异都归于排序，也不能仅用最佳小误差宣称通过；扩大固定样本后再讨论容限。见[离线分析](tools/pose-v1/evidence/next-phase-20261006/existing-evidence-analysis.json) |
+| 有效吞吐与取证开销 | 四次带取证forward中位207.230065ms，另测预处理中位5.781265ms；相加约213.01133ms，超出5Hz的200ms预算约13ms | 这是提示性预算，不是持续基准；先测最小日志而保留SDK profiling/同步，再按拆分决定优化。不得将显示刷新或重复旧输出计入推理更新率 |
+| HDMI720p60与双路配套 | 参考默认1080p，当前25122301工程/寄存器/像素时钟配套不明确；软件改宽高不能证明720p60，VPU驱动存在不代表RTSP可用 | 仍待配套及实屏/编码验证，目标不擅自降低，不写候选显示寄存器或替换BOOT。见[HDMI审查](tools/pose-v1/HDMI-STATIC-AUDIT.md) |
+| 预处理人工相位边界 | 300真实样本逐位一致，但人工±π周期误差2.333111/2.693437rad仍失败，用户明确降为非阻断诊断 | 保留失败，不能把真实样本通过扩大为普遍数学等价；后续真实CSI相位异常仍需停止分析。见[300样本结果](tools/pose-v1/RESULTS-300.md) |
+
+#### 下一阶段准备实际完成（2026-10-06）
+
+代理仅读本机既有回传和固定样本，新增[prepare_next_phase.py](tools/pose-v1/prepare_next_phase.py)并实际生成已有数值/排序/时间预算分析。
+从预处理已通过的300份记录，按九组各第一/中间/最后确定27候选；[JSON](tools/pose-v1/evidence/next-phase-20261006/proposed-27-cases.json)/[TSV](tools/pose-v1/evidence/next-phase-20261006/proposed-27-cases.tsv)记录case、真实frame_id、路径及SHA256。
+27份CSI、固定输入与Host输出身份一致、参考有限；仅候选选择，不是27样本ONNX或Lite模型验收。
+[下一阶段具体方案](tools/pose-v1/NEXT-PHASE-PLAN-20261006.md)已编写：E0运行核心→N1九组数值扩展→P1低取证基线，H0本机配套资料并行；E1网络/渲染及视频在结果审查后实施。
+本轮未修改r6运行源码、创建新Conda/依赖、交叉编译或接入板端；新28次推理/33次性能运行、容限及视频配置尚未批准执行。
+
+### 对后续开发的参考
+
+下次唤醒先读[恢复入口](tools/pose-v1/RESUME-20261006.md)，以最新快照和产物身份续接；历史“当前/下一步”不作执行入口。整体百分比只针对回放首版工程估算，训练旁支、实时采集终版与数值/视频验收分开记录。
+
+先固定输入和身份，再将CPU注册/Host桥、SDK数据内存、Session部署、真实前向分开核验，可定位跨PS/NPU边界失败。
+SDK拷贝到Host不等于NPU同步已证明；ADDR/BOTH不解引用，区域/缓冲区或融合编号不明确就保存失败讨论。
+仅为临时内核描述去除已验证冗余分布，模型声明、原Gather和NPU分配保持。
+
+ONNX基线可直接支持部署数值比较，报告全部槽位的最大/平均绝对误差、RMS、P95、逐位一致性及最佳候选变化。
+相同槽位不能推定同一候选身份，模型原始单位不代表物理标定/MPJPE，三样本不代表全测试集精度。
+下一轮先固化正确帧生命周期、扩大固定样本和测量低日志开销；性能与数值各自有证据门检，不用一种通过替代另一种。
+旧阶段快照已折叠保留，当前操作入口以r6结果及新计划为准，不执行历史“下一步”命令。
+误差容限必须依据实测再讨论；超时、OOM、总线/SDK异常、非有限或身份变化均停止，不自动重试/复位/改模型。
+三样本完整PS/NPU模型工程已通过；部署数值容限、HDMI/RTSP、≥5Hz/延迟和30分钟闭环仍待验证，首版尚未完成。
+
+## 2026-10-05至2026-10-06：CPU算子最小注册适配与Lite独立数值验收
+
+### 工程内容总结
+
+最新验收（2026-10-06）：用户已完成r2交叉编译、Lite测试及完整回传，代理直接文件核验通过。
+107用例（18正常、89异常拒绝）、12条注册前后记录匹配；22份输出共59,600个float32值
+与NumPy参考逐位一致、全有限、最大差0。五个缺失节点已补齐init/forward并在原规格前向通过，
+原Gather实现保持并通过；包282项/回传40项哈希、程序/模型/SDK身份一致，ldd解析完整，退出0/stderr空。
+已完成的是固定Host内存/全有效分布的独立候选门检，仍未接入正式模型或验证NPU数据交接。
+完整总结及适用限制：[CPU-ADAPTER-RESULTS-20261006.md](tools/pose-v1/CPU-ADAPTER-RESULTS-20261006.md)，
+独立证据：[cpu-adapter-independent-review-20261006.json](tools/pose-v1/evidence/cpu-adapter-independent-review-20261006.json)。
+下文保留交付、失败、批准修正及逐阶段记录；其中未编译/待回传均为当时状态。
+
+针对ARM Icraft/CustomOp 3.39.0已查明的TopK、GatherElements、ScatterND注册缺口，
+按用户批准范围交付[隔离模块](software/pose_v1/src/host_cpu_adapter.cpp)、
+[独立检查器](software/pose_v1/src/host_cpu_adapter_check.cpp)及独立CMake目标。
+显式注册五个缺失节点的三类函数，禁止覆盖原注册；Gather原后端参与单独测试，CPU Matmul不补齐。
+复用SDK明文内核，检查FP32规格、轴、参数、Host存储和全有效分布，只清除临时TensorDesc的分布信息。
+原推理源码/CMake和固定ZG模型哈希保持，没有接入正式混合推理器或更改SDK、权重、BOOT。
+
+交付NumPy固定合成参考生成、FPAI独立交叉编译、Lite受限CPU运行及回传复核脚本，
+设计覆盖107个用例（18个正常、89个拒绝）和22份正常输出；这些数量为设计，尚未生成或运行。
+已完成SDK签名与真实六节点规格的静态审查、Python AST和PowerShell语法检查；shell为LF。
+**没有交叉编译或算子前向验收，也没有访问板端设备。** 构建和测试由用户执行，失败即停止讨论。
+交付身份及静态检查见[evidence/cpu-adapter-source-delivery-20261005.json](tools/pose-v1/evidence/cpu-adapter-source-delivery-20261005.json)，
+逐条命令见[CPU-ADAPTER-COMMANDS.md](tools/pose-v1/CPU-ADAPTER-COMMANDS.md)。
+
+### 对后续开发的参考
+
+可复用的路径是“核对实际ARM注册→固定原包/头文件身份→应用侧隔离注册→真实规格的独立数值参考”。
+完整明文后端注册文件包含大量既有注册，不能整体引入；ICRAFT_CUSTOM_DIR也不能替代实际函数注册验收。
+本阶段仅接受Host内存和全有效分布，不证明NPU内存同步、去填充、完整模型Session或性能可用。
+用户先完成测试包及构建，代理核对后再实板CPU测试；通过后仍须讨论正式PS/NPU交接和推理器接入。
+CPU Matmul浮点参考缺口、完整推理数值门检与HDMI/RTSP仍单独保留，不能借本次源码交付宣布闭环通过。
+
+2026-10-06执行反馈与复核补充：用户已生成107用例，实际测试包路径为
+`.local/pose-v1-cpu-adapter/package/20261005`。代理只读核对282项清单哈希、18正常/89拒绝用例、
+22份正常参考产物及5份构建文件/副本匹配；这仅验收打包身份，不是SDK前向数值通过。
+用户构建显示GCC9.4.0/CMake3.24.2后，在容器python3执行处退出127，未进入CMake配置/编译。
+具体日志与产物身份见[evidence/cpu-adapter-build-failure-20261006.json](tools/pose-v1/evidence/cpu-adapter-build-failure-20261006.json)。
+构建脚本不应把未经核验的容器Python作为既有前提；已准备[修正候选](tools/pose-v1/CPU-ADAPTER-BUILD-FIX-20261006.md)，
+应用/新构建尚待用户批准，未安装依赖、改生效脚本或执行Docker/板端测试。原失败目录和测试包保留。
+
+2026-10-06随后批准及应用：用户明确同意该修正，Build-CpuAdapter.ps1已与审阅候选逐字节一致。
+SDK版本查询仍在FPAI，六头文件/Host库由Docker cp -L导出、Windows PowerShell/.NET哈希核对；
+原身份门禁保持，无新增依赖或候选C++/CMake变化。原脚本已备份，测试包/manifest及旧失败目录保持，
+新构建记录会包含实际构建脚本哈希。生效脚本语法解析0错误；**尚未执行修正版构建、容器导出或算子测试**。
+应用证据见[evidence/cpu-adapter-build-fix-applied-20261006.json](tools/pose-v1/evidence/cpu-adapter-build-fix-applied-20261006.json)，
+用户从[命令B](tools/pose-v1/CPU-ADAPTER-COMMANDS.md)使用新标签`cpu-adapter-20261006-r1`开始。
+该方法可将审计工具依赖放在已确认的Windows环境，同时核对真实ARM文件；仍需用户实跑确认Docker导出/编译，
+不能仅凭修正或静态检查宣称算子和mixed通过。上述待批准文字为此前状态。
+
+随后r1执行反馈复核：用户构建已通过SDK身份核验及CMake配置/生成，代理读取导出六头文件、
+Host so与版本/源码副本并核对身份匹配。编译检查器时PowerShell Stop在原生stderr处中断，
+本地日志未保存实际error正文，编译/链接未完成；未运行算子。
+静态确认三处测试代码的Array::get_mutable()->at错误，Object*没有at，应使用Array::set；
+这是源码API审查发现，不能声称已取得完整编译诊断或排除其他问题。
+已交付[两文件修正候选](tools/pose-v1/CPU-ADAPTER-COMPILE-FIX-20261006.md)，
+尚待批准，生效源码/脚本未改、未重编译。证据
+[evidence/cpu-adapter-compile-failure-r1-20261006.json](tools/pose-v1/evidence/cpu-adapter-compile-failure-r1-20261006.json)。
+后续参考：原生工具stderr不能自动等同于命令失败，日志应完整捕获并最终核对真实退出码；
+容器审计通过也不能替代C++编译和实际Host数值验收。
+
+随后用户批准两项修正，已按[审阅补丁](tools/pose-v1/CPU-ADAPTER-COMPILE-FIX-20261006.candidate.patch)
+修正检查器三处Array修改及构建日志捕获。两生效文件与候选逐字节一致，原文件已备份；
+SDK身份门禁、原生退出码门禁、注册模块及数学参考逻辑保持，旧测试包/manifest和失败目录未改。
+生效PowerShell语法0错误；尚未生成r2包、交叉编译或测试，不能宣称已排除其他编译问题。
+应用证据：[evidence/cpu-adapter-compile-fix-applied-r2-20261006.json](tools/pose-v1/evidence/cpu-adapter-compile-fix-applied-r2-20261006.json)。
+用户按[更新命令A/B](tools/pose-v1/CPU-ADAPTER-COMMANDS.md)生成新身份包并以新r2目录构建，
+代理核对新旧数据/参考产物及构建证据后再进行既定Lite测试；源码修正不能通过回写旧哈希掩盖来源变化。
+
+2026-10-06 r2构建验收补充：用户生成新包并在FPAI以GCC9.4.0/CMake3.24.2、ARM Icraft/CustomOp3.39.0
+完成配置、两文件编译及链接，日志无error/warning正文。代理只读复核282项包文件、5份源码/副本、
+构建脚本/manifest与ARM程序SHA256，六份导出SDK头文件及Host库/版本全部匹配。
+新旧281项非manifest文件完全相同；数学输入、参考、模型及板端脚本未变，身份更新没有改变测试内容。
+程序为AArch64 PIE，SHA256 `8cf2017cedf6a97f98ce485d979239b659291f3c91d3a3d550382c1c94588622`；
+ELF直接依赖含Host/XRT/XIR/Utils及标准库、没有ZG/AIU，无RPATH/RUNPATH。
+证据：[evidence/cpu-adapter-r2-build-review-20261006.json](tools/pose-v1/evidence/cpu-adapter-r2-build-review-20261006.json)
+及同目录cpu-adapter-r2-build-20261006-build.log/build-result.json/sdk-audit.json。
+已完成的是用户交叉编译及产物复核，未运行ARM程序、未验收板端库加载/注册前向/107例数值或NPU。
+下一步用户按[命令C](tools/pose-v1/CPU-ADAPTER-COMMANDS.md)一次受限Lite Host测试并回传完整证据。
+后续参考：可复用“保留旧包/旧错误→新源码身份包→逐文件对照数据参考→ELF直接依赖检查”的追溯路径，
+但编译/链接成功与直接依赖范围不能替代板端实际加载、间接依赖和算子数值验收。
+
+目录前置说明补充：用户报告Lite测试子目录mkdir因No such file or directory失败。
+原命令遗漏了历史父目录存在性的前置检查；已补充[命令C](tools/pose-v1/CPU-ADAPTER-COMMANDS.md)
+中的只读ls检查及仅对父目录mkdir -p、对子目录普通mkdir的步骤，保持同一批准路径和禁止复用旧测试目录。
+实际父路径未独立确认，不认定重启/清理为原因；代理未创建/传输/执行，目录成功和CPU测试仍待用户结果。
+
+后续用户Lite运行反馈：截图显示已进入批准目录，输入/清单/程序存在、执行权限设置后
+sh测试脚本及exit.txt均0，stdout报告107用例完成、stderr为空；summary标记cpu_candidate_tests_passed，
+device_opened/full_model_executed/mixed_verified均false。记录为**用户执行及程序内部通过报告**，
+尚未完成独立证据验收，本地没有完整回传；注册前后12条记录、22份实际输出和SDK/程序哈希仍待联查。
+证据：[运行截图](tools/pose-v1/evidence/cpu-adapter-board-run-feedback-20261006.png)及同名JSON。
+用户接下来执行[命令D](tools/pose-v1/CPU-ADAPTER-COMMANDS.md)，完整回传后再作CPU门检结论。
+不重跑C、不依据摘要直接接入正式推理器；本次仍不是完整模型/NPU/双路闭环验收。
+
+完整回传后最终复核：用户复核JSON与代理独立逐文件、逐用例及数值比较一致，上方最新验收成立。
+两次主机报错来自命令被拆行，完整命令随后成功，不需要重跑算子。
+对后续开发的参考补充：当前已证明标准类型的应用注册和临时描述适配能够解决本版本五节点CPU缺口，
+但只覆盖HostDevice CPTR及全有效分布；真实NPU缓冲区/同步/搬运、完整Session、浮点参考和性能均须另验。
+CPU Matmul参考缺口保持，不改变正式Matmul NPU分配；后续正式推理器接入先讨论批准。
+
+## 2026-10-05：独立混合推理门检源码与命令交付、HDMI静态审查
+
+### 工程内容总结
+
+目标是在已通过的真实CSI预处理门检基础上，为2024 epoch442的PS/NPU混合推理建立独立核验程序。
+平台为悟净Lite、运行FPGA版本25122301、板端Icraft/CustomOp 3.39.0；源码接口按本机3.39.0 SDK头文件及厂商导出目标审查。
+新增`software/pose_v1/src/inference_check.cpp`和默认关闭的SDK CMake目标：离线检查、独立设备probe、
+optimized Host参考和ZG330/Host混合推理，保留100候选的分数/姿态、实际后端回调、帧号、阶段耗时及失败记录。
+无显式reset/check、自动回退、模型修改或视频设备动作。
+
+编写用户执行的FPAI交叉编译脚本、Host独立DLL启动器、原三份已验收CSI/模型哈希打包工具、
+ONNX参考及数值统计/回传校验工具，逐条说明执行位置、前置条件、产物和停止条件。
+资料及入口：[INFERENCE-COMMANDS.md](tools/pose-v1/INFERENCE-COMMANDS.md)、
+[inference_gate.py](tools/pose-v1/inference_gate.py)、[构建脚本](tools/pose-v1/Build-Inference.ps1)。
+
+HDMI源码静态核对确认包装器默认RGB565/1080p，仅写帧缓存地址；本地参考RTL存在可写时序项和720p参数分支，
+但与当前BOOT的工程身份、像素时钟及寄存器配套尚无充分证据。
+已记录源码位置及垂直前后肩命名差异，见[HDMI-STATIC-AUDIT.md](tools/pose-v1/HDMI-STATIC-AUDIT.md)。
+
+**完成范围是源码、命令交付和静态资料审查。** 按新分工，没有执行编译、软件测试、ONNX/Host/NPU推理、
+Docker/SSH命令或设备初始化。SDK实际构建目录、Host编译工具和ORT依赖待用户查询。
+没有新的数值/性能实测结果，不将本条记录解释为NPU或首版闭环通过；旧300份结果、模型及预处理源码保留。
+
+用户随后执行A环境查询并提供截图，已核验FPAI GCC9.4.0、CMake3.24.2、Icraft arm64 3.39.0。
+SDK只找到HostBackend配置，ORT未找到，Windows cmake/cl当前PATH不可见；
+SDK后端包内容/命名和CustomOp状态需补查，不能判定运行库必然缺失或全机没有编译工具。
+已提供只读补充查询命令，见[ENVIRONMENT-QUERY-20261005.md](tools/pose-v1/ENVIRONMENT-QUERY-20261005.md)。
+此补充是用户操作后的部分环境核验，不是构建、推理或依赖安装通过。
+
+用户再补查目录及已安装包文件后，已核验SDK配置目录`/usr/cmake`含Host/ZG330配置、aarch64导出及对应头文件/库；
+FPAI Icraft/CustomOp均arm64 3.39.0、icraftmdzthirdparty arm64 0.1.1，状态均已安装。
+已更新执行说明的SDK目录，可继续用户固定打包/交叉编译；尚无编译、链接或推理结果。
+此前“仅Host配置/CustomOp待查”为早期查询状态；ORT缺失及Windows工具PATH不可见仍保留。
+
+**用户交叉编译完成补充**：已完成原三份真实样本包以及FPAI配置/编译/链接，实际构建目录
+`.local/pose-v1-build/inference-20261005-165059-043b0c40`。工具为GCC9.4.0/CMake3.24.2，SDK目录`/usr/cmake`。
+二进制是AArch64动态链接PIE，SHA256
+`d1006f9bd78050ffa484c64bf74fb62542d270c7acca5068e9da611a5bdc05e5`；声明Host/ZG330后端等运行库依赖。
+代理读取实际日志和产物，7份源码记录、11份包文件大小/哈希、二进制哈希全部匹配；未代执行构建或软件测试。
+复核证据：[cross-build-review-20261005.json](tools/pose-v1/evidence/cross-build-review-20261005.json)。
+上文“未编译”为初次交付时的历史状态；现在仅传板/加载/离线接口及推理仍待执行，不把本次结果扩大为板端ABI或NPU通过。
+
+**D阶段诊断补充**：用户已传板并核对程序哈希，匹配本次构建；ldd已列出的依赖均解析成功。
+包校验失败为清单CRLF问题：文件名末尾均出现CR；代理只读检查本地清单为1043字节/11行CRLF，
+定位到inference_gate.py默认文本换行写入。这是脚本遗漏，不是已证明的模型损坏或哈希不符。
+仅交付[候选修正方案](tools/pose-v1/CRLF-CHECKSUM-FIX.md)，未改生产脚本/包、未重新校验或运行inspect。
+包完整性及设备/推理验收仍未通过，修正执行待用户同意；二进制和模型不需因该换行问题重编译/更换。
+
+**D阶段后续实板结果**：用户用新清单`files.lf.sha256`校验，11项全部OK且退出码0，
+板端样本/模型包完整性通过；随后ZG图inspect退出码0。
+证据：[板端校验及inspect退出截图](tools/pose-v1/evidence/board-checksum-inspect-exit0-20261005.png)。
+graph-io.json、stages.jsonl、run-config.json及stderr尚未提交，离线接口验收仍待产物复核。
+没有SDK设备初始化或推理结果；生产打包脚本候选补丁尚未应用，不能把板端清单处理当作脚本修复已完成。
+前述校验未通过和inspect未运行为历史状态，已有inspect-zg应保留，不重复运行或覆盖。
+
+**D阶段离线接口验收补充**：用户进一步提交产物内容，输入[1,180,60]，输出按分数[1,100]、
+姿态[1,100,14,3]顺序，符合本次二进制的float32门禁；阶段started→offline_inspection_complete。
+mode=inspect、device_init_allowed=false，stderr为空，目录仅graph-io/run-config/stages，无failure.json。
+结合包校验和退出码0，D离线接口检查通过，证据：
+[离线产物截图](tools/pose-v1/evidence/board-inspect-artifacts-20261005.png)。
+此检查未加载RAW参数、执行模型或打开设备；下一阶段先核对timeout/并发占用及BOOT是否保持，不能扩大为NPU功能验收。
+截图中的板端文件时间为Mar 13，不能作为本次操作的准确墙钟时间；按用户提交日期2026-10-05归档，未调整板端时钟。
+
+**E前置查询复核补充**：用户查询/usr/bin/timeout，版本GNU coreutils 8.30；probe目录及三份日志均不存在，
+首次未运行的结果符合预期。可见进程列表未见明显AI/HDMI/编码用户应用，kbase/mvx等为内核线程条目，
+其名称不作为运行推理、编码或已发生故障的依据。证据：
+[timeout和进程列表上半部分](tools/pose-v1/evidence/board-probe-preflight-20261005-1.png)、
+[进程列表及目录查询](tools/pose-v1/evidence/board-probe-preflight-20261005-2.png)。
+尚待用户确认BOOT/运行位流保持及无其他演示访问设备；未执行SDK初始化、模型推理或自动停止进程。
+
+**E探测实际执行补充**：用户随后执行固定30秒、TERM后5秒kill-after的probe，退出码0；
+device-version.json回报device=25122301，与既有运行版本一致，icore文本待进一步回传复核。
+用户已保存probe.dmesg.log；证据：[probe返回及版本截图](tools/pose-v1/evidence/board-probe-exit0-20261005.png)。
+检查器源码固定写出compatibility_passed=false，含义为兼容性尚待验收，不是SDK报错。
+stdout/stderr、stages/run-config及内核日志内容尚未提交，E完整门检待复核；没有执行混合模型或DMA/NPU计算验收。
+本次设备初始化由用户执行，代理仅审阅截图和源码，不重跑probe、修改标记或停止进程。
+前述“probe未执行”为此前准备阶段状态。
+
+**E初始化探测限定范围验收**：用户提交probe目录、运行配置、阶段、stdout/stderr及内核尾部，
+阶段started→opening_device_not_readonly→probe_complete_requires_review，mode=probe/device_init_allowed=true，
+目录无failure.json，stderr为空。stdout明确Device initialization successful；协议AXI、设备zg330aiu，
+NPU=0x40000000、DMA=0x80000000、device=25122301、icore=FMSHZGV3TECH-AID - 24160628。
+结合退出码0，Device::Open/version探测通过，证据：
+[产物与初始化日志](tools/pose-v1/evidence/board-probe-review-20261005-1.png)、
+[内核上下文上段](tools/pose-v1/evidence/board-probe-review-20261005-2.png)、
+[内核上下文末段](tools/pose-v1/evidence/board-probe-review-20261005-3.png)。
+提供的dmesg尾部未见探测相关总线/DMA错误；EXT4恢复与journal异常关闭/更换信息处于启动阶段，
+不归因于probe，不自动执行文件系统修复。板端日志墙钟为2026-03-13，与当前归档日期不同，未调整板端时钟。
+compatibility_passed=false是检查器固定待验收标记，保持原值；本次不能作为模型、Host/NPU计算或性能验收。
+下一步数值参考仍受ORT缺失及Windows Host编译工具待确认约束，不自动安装或跳过参考直接进入mixed。
+
+**Windows Host工具只读定位补充**：用户不确定安装情况后，代理只读检查文件/安装记录，找到
+`D:\Visual Studio\ Visual Studio 2022\Community`中的MSVC14.44.35207 cl/link/nmake、C++头文件/库、
+VsDevCmd.bat与CMake文件元数据3.31.6-msvc6。路径中第二层目录名开头有一个空格，不应手工删去。
+这证明工具文件存在，未证明Windows SDK、开发终端初始化、CMake VS实例识别或Host编译通过；
+默认vswhere和常见Windows Kits注册表入口未找到/未返回记录，不自动修复或安装。
+已交付用户临时环境查询命令：[WINDOWS-HOST-ENV-CHECK.md](tools/pose-v1/WINDOWS-HOST-ENV-CHECK.md)，
+静态证据：[定位记录](tools/pose-v1/evidence/windows-host-tool-discovery-20261005.json)。
+代理未运行编译器、CMake或项目软件；ORT缺失及参考数值验收保持待处理。
+
+**Windows终端首次启动排查补充**：用户命令截图中目录名漏掉开头空格，返回“系统找不到指定的路径”。
+代理只读复核实际名称首字符为32，带空格VsDevCmd路径存在、不带空格路径不存在；
+此失败不作为SDK缺失/编译器损坏的证据。已将同一查询步骤改为从真实目录项自动构造路径，
+避免手写空格；用户终端初始化仍待执行/复核，代理未启动开发终端或修复安装。
+证据：[路径错误截图](tools/pose-v1/evidence/windows-host-path-error-20261005.png)，
+命令入口仍为[WINDOWS-HOST-ENV-CHECK.md](tools/pose-v1/WINDOWS-HOST-ENV-CHECK.md)。
+
+**Windows查询窗口待确认补充**：用户自动定位启动后已见VS开发终端横幅；另一截图where cl未找到、
+架构/SDK变量原样显示。这证明查询窗口没有相应环境，不足以确定初始化后的同一进程是否失败。
+需先确认是否另开CMD：初始化只在当前子进程生效，另外打开的终端不会继承。
+代理只读确认start/parse/winsdk/vcvars脚本存在，横幅v17.0为vswhere缺失时的默认值，
+不作为安装版本或SDK缺失结论；未修改/修复安装，Host参考仍未编译或执行。
+证据：[启动横幅](tools/pose-v1/evidence/windows-host-banner-20261005.png)、
+[查询结果](tools/pose-v1/evidence/windows-host-unset-query-20261005.png)。
+
+用户随后明确第二张查询是在另外打开的CMD中执行，未继承原初始化环境；此前窗口歧义已澄清。
+不能据第二张图判断原窗口初始化失败或SDK缺失，用户下一步回原窗口查询；未修复安装或开始Host构建。
+
+**原开发终端实际查询补充**：用户回原CMD后where cl显示MSVC14.44.35207 Hostx64/x64，
+目标x64、VSINSTALLDIR正确，CMake实际查询3.31.6-msvc6；环境继承问题已解除。
+WindowsSdkDir未设置、WindowsSDKVersion仅`\`，有效Windows SDK尚未识别，Windows Host构建仍未执行。
+代理只读核对4个厂商v10.0登记入口及5个常见Windows Kits目录未找到，不排除未登记自定义SDK目录。
+证据：[原窗口工具及SDK查询](tools/pose-v1/evidence/windows-host-sdk-query-20261005.png)。
+另静态核对已编译检查器包含无Device::Open的host参考模式，形成
+[参考路线及ORT解析候选](tools/pose-v1/REFERENCE-NEXT-PLAN.md)供讨论，未执行或安装，候选不是完成成果。
+
+**Lite Host已批准后的命令交付补充**：用户明确同意先用Lite Host作参考，代理已完成
+[LITE-HOST-COMMANDS.md](tools/pose-v1/LITE-HOST-COMMANDS.md)的资源查询、固定三样本Host运行、诊断/回传命令及停止条件，
+并更新执行路线记录。复用现有二进制、optimized模型和固定参考张量，未修改C++源码或重新编译。
+当时仅完成命令/文档交付；后续用户资源查询已完成，Host执行仍待完成，不记为模型通过；
+ORT预览/安装未批准，正式NPU/双路及误差门检保持，不能凭B批准跳过参考进入mixed。
+
+**Lite Host资源前检复核补充**：用户截图显示总内存993 MiB、available 744 MiB、Swap 0，/tmp所在根文件系统剩余47G；可见进程未见明显其他推理/视频用户应用，目标输出前缀未发现旧文件。资源前检已完成，可继续已批准的一次300秒Host参考；峰值内存、算子支持、耗时及输出仍未验证。证据：[内存与磁盘](tools/pose-v1/evidence/lite-host-resource-query-20261005-1.png)、[进程与结果路径](tools/pose-v1/evidence/lite-host-resource-query-20261005-2.png)。代理仅审查及记录，未执行软件或设备操作。
+
+**Lite Host首次执行反馈（未通过）**：用户随后执行一次已批准的受限Host参考，截图退出码1；[执行证据](tools/pose-v1/evidence/lite-host-exit1-20261005.png)。具体失败阶段与原因待日志，未取得可验收的参考数值，不将失败试跑写为模型通过。暂停重跑、覆盖目录及mixed，下一步由用户读取现有stdout/stderr、阶段/失败记录及内核上下文；代理未执行修复或改变源码/模型/环境。
+
+**Host失败日志审查完成补充**：用户提交产物/日志截图，定位到Session创建时op_id=1 MatmulNode没有后端绑定，阶段输入验证→参数懒加载登记→failed_stop_no_retry；mode=host/device_init_allowed=false，未开始样本前向。内核尾部未见本次OOM、available 687 MiB；根因仍须区分板端库构建范围、依赖/注册及文件身份。已完成[失败审查](tools/pose-v1/HOST-BINDING-REVIEW-20261005.md)，证据为同目录evidence/lite-host-binding-failure-20261005-1.png至-3.png；未执行修复或新的软件/设备操作。正式混合图六个Host计算算子没有Matmul，本次失败不能扩大为NPU路线失败或数值通过。
+
+**特殊问题协助与Host库只读审计完成补充**：用户授权一般软件操作仍自行执行，遇特殊问题代理可直接接入工具；已更新Agents.md并保留决策/变更审批。用户同时批准审计，代理SSH读取确认Icraft/CustomOp arm64 3.39.0、icraft包校验未报告差异，实际Host库与原始安装包SHA256一致，导出配置含CudaDefault、readelf存在。完整日志[board-host-library-audit-20261005.stdout.log](tools/pose-v1/evidence/board-host-library-audit-20261005.stdout.log)、同前缀stderr/退出码及[原包静态审查](tools/pose-v1/evidence/original-arm-host-package-review-20261005.json)。最终审计退出码0、stderr空；未执行模型、NPU初始化或修复。深层算子注册原因仍待验证，[注册探针](tools/pose-v1/HOST-REGISTRY-PROBE-PLAN.md)仅为待批准方案，不记为完成成果。
+
+**独立CPU注册诊断完成补充（更新上述候选状态）**：用户批准后，代理在FPAI GCC9.4/CMake3.24.2/ARM Icraft3.39.0交叉编译独立探针、传Lite新目录并运行一次30秒受限查询。退出码0、stderr空，5项回传哈希匹配；探针32,744字节、SHA256 4106daf64086e478b7540788eab52d4551680cb11f8b8b104a4f582d86d6d05c。Matmul无init/forward注册，正式ZG图的188/437 TopK、192 GatherElements、582/649 ScatterND同样无注册，442 Gather有注册。定位出全CPU参考及混合图PS部分的注册阻断，mixed保持停止；没有执行模型/算子前向或访问NPU。原源码、推理二进制、模型/SDK身份保持，结果[HOST-REGISTRY-RESULTS-20261005.md](tools/pose-v1/HOST-REGISTRY-RESULTS-20261005.md)，证据[review.json](tools/pose-v1/evidence/host-registry-20261005/review.json)。成功范围为诊断本身，不是模型部署/首版验收。
+
+**Matmul执行目标静态核对补充**：原仓库quantized图130个Matmul含op1均为@zhuget(330)，adapted图132个也为ZG目标；最终ZG图的CPU计算节点无Matmul。此前CPU Matmul失败属于optimized图全CPU数值参考路径，未把正式部署矩阵计算迁到CPU，也未证明NPU不支持。此补充仅核对编译目标，未修改模型或执行NPU；具体见上述注册结果文档的路径澄清。
+
+### 对后续开发的参考
+
+先固定输入和模型身份，再分离设备初始化、Host参考和实板完整混合执行，方便定位接口、后端或数值差异。
+注册探针可在不访问设备、不做前向的情况下核对实际XIR后端能力；库内通用计算代码或包完整性不能替代注册查询。此次五个ZG Host节点缺注册，不能仅换CPU参考平台就认为混合推理畅通；先核对官方注册/加载机制并讨论配套方案，Gather有注册也仍须前向数值验收。
+Host与ONNX使用同一参考张量；Lite必须从原CSI做PS预处理，保留真实相位标量/周期门检。
+六个Host算子和ZG后端的运行路径须有证据，分数/坐标容限待实测讨论，不能只凭可画出骨架验收。
+诊断回调/写盘会影响耗时，三样本结果不能代替连续性能和30分钟稳定性测试。
+
+此次交叉编译证明所用arm64 SDK声明和导出目标能编译/链接本检查器；动态库还须在Lite解析并验证实际加载。
+构建日志中的`shared object`与`NOW PIE`组合是Linux PIE可执行程序的表示，不能仅据该词判为错误库文件。
+
+Windows生成供Linux使用的校验清单须明确换行格式，并校验实际生成的新清单；
+包哈希通过与离线程序退出码0分别证明文件身份和本次命令返回，图接口/阶段产物仍须独立核对。
+
+普通PATH和安装记录查询无结果时，可核对自定义安装目录及真实工具文件；临时开发终端再确认SDK/架构。
+运行库安装、文件存在、工具可调用、能编译和模型数值通过是不同层次，不能相互替代。
+
+HDMI画面尺寸与视频扫描时序/像素时钟应分别核验；可编程RTL线索不能当成当前位流的寄存器写授权。
+后续软件操作由用户执行，代理依据日志迭代核心程序；新依赖、启动配置、模型或FPGA工程变更另行讨论批准。
+
 ## 2026-10-01：悟净 Lite 流水灯 FPGA 开发全流程验证
 
 ### 工程内容总结

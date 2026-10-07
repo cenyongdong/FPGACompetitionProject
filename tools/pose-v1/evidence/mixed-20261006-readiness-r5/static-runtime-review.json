@@ -1,0 +1,19 @@
+{
+  "isReady_ARM": "0x68480 loads Tensor ready byte at offset56 without hardware call",
+  "ZG_check_ARM": "0x21b38 layerCount(), 0x21b44 compare against captured threshold, 0x21b48 unsigned greater/equal proceeds",
+  "icoreCalc_ARM": "0x9e604-0x9e618 caches address/size; configVPE called only when changed; start write always occurs",
+  "Session_forward_ARM": "No Device::reset call found in inspected 0x80558-0x81d20",
+  "reset_1_ARM": "0x9ad10-0x9ad50 toggles FPGA state-clear and resets execution state using SDK; no full reset0 path",
+  "reset_docs_note": "axizg330aiu page labels reset1 FPGA-only; paragraph contains copied AXIQL100AIU name; ARM matching implementation independently reviewed",
+  "root_cause_proven": false,
+  "hashes": {
+    "device-reset-disassembly.txt": "8f4e4e2daabc1603145714a0ebb5c65486ece863c25126389efb9e11cd6df352",
+    "icore-start-disassembly.txt": "1d01a4849d58b6d3ec38475908e77abe876c1e9c7d791fdb31d0dd28b36ed909",
+    "sdk-reset-levels.txt": "e92c177220e5867178cb842f4223dcd3e32ac01ed20cebb56af8da2f8a6cb979",
+    "session-forward-disassembly.txt": "4f67c7cb7880d2f207b668c45f4a79223cb38a99d2481598dc651840e355714d",
+    "tensor-disassembly.txt": "ea4188b2c3709abecf8f5ce324c21c3f363fcdac884c809ef6a1380ce3b8d271",
+    "xrt-symbols.txt": "f9685547d8d861c2e9009c8e7a30fea775b8194f529ff619067ed4e9ba158b6d",
+    "zg-disassembly.txt": "bb0ba3a00b64b0a4c8c1c4aaf01daf1588b7f8f57ce34409484385ca7589d90a",
+    "zg-symbols.txt": "41e94ae5b5d29b9b208caee01a9c111e45112babef01b3561922b681fc5ec5e6"
+  }
+}

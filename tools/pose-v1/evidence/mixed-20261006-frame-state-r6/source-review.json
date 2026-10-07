@@ -1,0 +1,58 @@
+{
+  "changed_build_source_relative_r4": [
+    "software/pose_v1/src/mixed_check.cpp"
+  ],
+  "build_files": {
+    "software/pose_v1/include/mixed_bridge.hpp": {
+      "destination": "mixed_bridge.hpp",
+      "sha256": "9b8ce6004f98183ba59ef06db338415e31fc1adb55a8decb000747f26ab06c35"
+    },
+    "software/pose_v1/include/mixed_fusion_baseline.hpp": {
+      "destination": "mixed_fusion_baseline.hpp",
+      "sha256": "52dc965d2cc1b75ddee14ad53d270d76b41f4a473add103bf30c7bdfb487f33f"
+    },
+    "software/pose_v1/include/content_diagnostic.hpp": {
+      "destination": "content_diagnostic.hpp",
+      "sha256": "6863bf5501cdfbbd39b3fb908ed31945a6d56b870fb7e4d4f0f5befa6760e187"
+    },
+    "software/pose_v1/src/mixed_bridge.cpp": {
+      "destination": "mixed_bridge.cpp",
+      "sha256": "accd77bb2a35857795261f9a9674b21378d7b7eb2256f78c5087cf256a2ff131"
+    },
+    "software/pose_v1/src/mixed_check.cpp": {
+      "destination": "mixed_check.cpp",
+      "sha256": "253317bcb8202a181eef9eb47ffe74768be5ee4fb4052d73414583a2a744ccd5"
+    },
+    "software/pose_v1/src/mixed_host_check.cpp": {
+      "destination": "mixed_host_check.cpp",
+      "sha256": "f836a0a2dd8c85bd696e3bc128eecbfbce88fbebbb0b443564a3ebe3cf4b0d57"
+    },
+    "software/pose_v1/include/host_cpu_adapter.hpp": {
+      "destination": "host_cpu_adapter.hpp",
+      "sha256": "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4"
+    },
+    "software/pose_v1/src/host_cpu_adapter.cpp": {
+      "destination": "host_cpu_adapter.cpp",
+      "sha256": "fc3ff85cbcf46af9a2615ab8756b266762d895ba56b5084e5e245682489241c7"
+    },
+    "software/pose_v1/include/preprocess.hpp": {
+      "destination": "preprocess.hpp",
+      "sha256": "ae70ba3f79722431d282bf5f610d6356b29072b4492f23dcc2adde29958f8118"
+    },
+    "software/pose_v1/src/preprocess.cpp": {
+      "destination": "preprocess.cpp",
+      "sha256": "e13a6bde842ae4d2531d2d0a455313f912d33942e6ee2681eacbd5c44df0b8b0"
+    },
+    "tools/pose-v1/mixed-validation-CMakeLists.txt": {
+      "destination": "CMakeLists.txt",
+      "sha256": "5b9089138c0bb32523ae16c35c6ccaa8a25b596cccbffad9e614d42fbb8cdcfc"
+    },
+    "tools/pose-v1/aarch64-icraft.cmake": {
+      "destination": "toolchain.cmake",
+      "sha256": "93d3d7983e824d52a83f853b757891bc9bcf828e6190c6fed838d7be3215c6da"
+    }
+  },
+  "graph_sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
+  "raw_sha256": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3",
+  "source_and_package_only": true
+}

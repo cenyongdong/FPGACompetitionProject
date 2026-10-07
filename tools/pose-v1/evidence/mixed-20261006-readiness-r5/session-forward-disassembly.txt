@@ -1,0 +1,1529 @@
+
+/usr/lib/aarch64-linux-gnu/libicraft_xrt.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000080558 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)>:
+   80558:	d11743ff 	sub	sp, sp, #0x5d0
+   8055c:	a9007bfd 	stp	x29, x30, [sp]
+   80560:	910003fd 	mov	x29, sp
+   80564:	a90153f3 	stp	x19, x20, [sp, #16]
+   80568:	aa0003f3 	mov	x19, x0
+   8056c:	f9005fe0 	str	x0, [sp, #184]
+   80570:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80574:	a9025bf5 	stp	x21, x22, [sp, #32]
+   80578:	aa0103f6 	mov	x22, x1
+   8057c:	f9451400 	ldr	x0, [x0, #2600]
+   80580:	a90363f7 	stp	x23, x24, [sp, #48]
+   80584:	f9400001 	ldr	x1, [x0]
+   80588:	f902e7e1 	str	x1, [sp, #1480]
+   8058c:	d2800001 	mov	x1, #0x0                   	// #0
+   80590:	a9046bf9 	stp	x25, x26, [sp, #64]
+   80594:	a90573fb 	stp	x27, x28, [sp, #80]
+   80598:	6d0627e8 	stp	d8, d9, [sp, #96]
+   8059c:	f9004fe8 	str	x8, [sp, #152]
+   805a0:	97fec750 	bl	322e0 <std::chrono::_V2::system_clock::now()@plt>
+   805a4:	f9400261 	ldr	x1, [x19]
+   805a8:	b00002a2 	adrp	x2, d5000 <std::__throw_out_of_range_fmt(char const*, ...)@GLIBCXX_3.4.20>
+   805ac:	912b8042 	add	x2, x2, #0xae0
+   805b0:	f90047e1 	str	x1, [sp, #136]
+   805b4:	3944c421 	ldrb	w1, [x1, #305]
+   805b8:	f9000440 	str	x0, [x2, #8]
+   805bc:	340099e1 	cbz	w1, 818f8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x13a0>
+   805c0:	f94047e0 	ldr	x0, [sp, #136]
+   805c4:	a9415013 	ldp	x19, x20, [x0, #16]
+   805c8:	eb13029f 	cmp	x20, x19
+   805cc:	54000460 	b.eq	80658 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x100>  // b.none
+   805d0:	b0000155 	adrp	x21, a9000 <CSWTCH.1334+0x820>
+   805d4:	b0000157 	adrp	x23, a9000 <CSWTCH.1334+0x820>
+   805d8:	910462b5 	add	x21, x21, #0x118
+   805dc:	910482f7 	add	x23, x23, #0x120
+   805e0:	14000004 	b	805f0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x98>
+   805e4:	91004273 	add	x19, x19, #0x10
+   805e8:	eb13029f 	cmp	x20, x19
+   805ec:	54000360 	b.eq	80658 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x100>  // b.none
+   805f0:	aa1303e0 	mov	x0, x19
+   805f4:	97fed0d7 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   805f8:	91008000 	add	x0, x0, #0x20
+   805fc:	97fecbf1 	bl	335c0 <icraft::xir::ObjectRef::defined() const@plt>
+   80600:	72001c1f 	tst	w0, #0xff
+   80604:	54ffff00 	b.eq	805e4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x8c>  // b.none
+   80608:	aa1303e0 	mov	x0, x19
+   8060c:	97fed0d1 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   80610:	91008000 	add	x0, x0, #0x20
+   80614:	97fed0cf 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   80618:	aa1503e1 	mov	x1, x21
+   8061c:	9103c000 	add	x0, x0, #0xf0
+   80620:	97fec80c 	bl	32650 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare(char const*) const@plt>
+   80624:	35fffe00 	cbnz	w0, 805e4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x8c>
+   80628:	52856081 	mov	w1, #0x2b04                	// #11012
+   8062c:	52803c80 	mov	w0, #0x1e4                 	// #484
+   80630:	97ffccc6 	bl	73948 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.1]>
+   80634:	97fec76f 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   80638:	aa1703e1 	mov	x1, x23
+   8063c:	d2800642 	mov	x2, #0x32                  	// #50
+   80640:	97feccb8 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   80644:	91004273 	add	x19, x19, #0x10
+   80648:	97ffcc98 	bl	738a8 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   8064c:	eb13029f 	cmp	x20, x19
+   80650:	54fffd01 	b.ne	805f0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x98>  // b.any
+   80654:	d503201f 	nop
+   80658:	f94047f4 	ldr	x20, [sp, #136]
+   8065c:	9106e3f3 	add	x19, sp, #0x1b8
+   80660:	910603e0 	add	x0, sp, #0x180
+   80664:	aa1303e2 	mov	x2, x19
+   80668:	91014281 	add	x1, x20, #0x50
+   8066c:	910583f5 	add	x21, sp, #0x160
+   80670:	f9400424 	ldr	x4, [x1, #8]
+   80674:	a91813ff 	stp	xzr, x4, [sp, #384]
+   80678:	a9421424 	ldp	x4, x5, [x1, #32]
+   8067c:	a90783f5 	stp	x21, x0, [sp, #120]
+   80680:	f9400c23 	ldr	x3, [x1, #24]
+   80684:	f90077f3 	str	x19, [sp, #232]
+   80688:	a9190fff 	stp	xzr, x3, [sp, #400]
+   8068c:	a91a17e4 	stp	x4, x5, [sp, #416]
+   80690:	f900dbff 	str	xzr, [sp, #432]
+   80694:	f900dfe0 	str	x0, [sp, #440]
+   80698:	97fec7d6 	bl	325f0 <void std::_Hashtable<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_assign<std::_Hashtable<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_assign(std::_Hashtable<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> > const&)::{lambda(std::__detail::_Hash_node<std::pair<long const, icraft::xrt::Tensor>, false> const*)#1}>(std::_Hashtable<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> > const&, std::_Hashtable<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_assign(std::_Hashtable<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> > const&)::{lambda(std::__detail::_Hash_node<std::pair<long const, icraft::xrt::Tensor>, false> const*)#1} const&)@plt>
+   8069c:	f9404a83 	ldr	x3, [x20, #144]
+   806a0:	91022281 	add	x1, x20, #0x88
+   806a4:	a9421424 	ldp	x4, x5, [x1, #32]
+   806a8:	a91b8fff 	stp	xzr, x3, [sp, #440]
+   806ac:	aa1303e0 	mov	x0, x19
+   806b0:	f9400c23 	ldr	x3, [x1, #24]
+   806b4:	a91c8fff 	stp	xzr, x3, [sp, #456]
+   806b8:	910a03e3 	add	x3, sp, #0x280
+   806bc:	aa1503e2 	mov	x2, x21
+   806c0:	f900b3f3 	str	x19, [sp, #352]
+   806c4:	a9359464 	stp	x4, x5, [x3, #-168]
+   806c8:	f900f7ff 	str	xzr, [sp, #488]
+   806cc:	97fec811 	bl	32710 <void std::_Hashtable<long, std::pair<long const, unsigned long>, std::allocator<std::pair<long const, unsigned long> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_assign<std::_Hashtable<long, std::pair<long const, unsigned long>, std::allocator<std::pair<long const, unsigned long> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_assign(std::_Hashtable<long, std::pair<long const, unsigned long>, std::allocator<std::pair<long const, unsigned long> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> > const&)::{lambda(std::__detail::_Hash_node<std::pair<long const, unsigned long>, false> const*)#1}>(std::_Hashtable<long, std::pair<long const, unsigned long>, std::allocator<std::pair<long const, unsigned long> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> > const&, std::_Hashtable<long, std::pair<long const, unsigned long>, std::allocator<std::pair<long const, unsigned long> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_assign(std::_Hashtable<long, std::pair<long const, unsigned long>, std::allocator<std::pair<long const, unsigned long> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> > const&)::{lambda(std::__detail::_Hash_node<std::pair<long const, unsigned long>, false> const*)#1} const&)@plt>
+   806d0:	f94047e2 	ldr	x2, [sp, #136]
+   806d4:	a9404ec1 	ldp	x1, x19, [x22]
+   806d8:	a94fd440 	ldp	x0, x21, [x2, #248]
+   806dc:	cb010273 	sub	x19, x19, x1
+   806e0:	cb0002b5 	sub	x21, x21, x0
+   806e4:	9344fe73 	asr	x19, x19, #4
+   806e8:	eb950e7f 	cmp	x19, x21, asr #3
+   806ec:	9343feb5 	asr	x21, x21, #3
+   806f0:	54008b81 	b.ne	81860 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1308>  // b.any
+   806f4:	d2800013 	mov	x19, #0x0                   	// #0
+   806f8:	b50000f5 	cbnz	x21, 80714 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1bc>
+   806fc:	1400001d 	b	80770 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x218>
+   80700:	340072c2 	cbz	w2, 81558 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1000>
+   80704:	f9000001 	str	x1, [x0]
+   80708:	91000673 	add	x19, x19, #0x1
+   8070c:	eb1302bf 	cmp	x21, x19
+   80710:	54000300 	b.eq	80770 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x218>  // b.none
+   80714:	f94047e0 	ldr	x0, [sp, #136]
+   80718:	d37cee74 	lsl	x20, x19, #4
+   8071c:	f9403fe1 	ldr	x1, [sp, #120]
+   80720:	f9407c00 	ldr	x0, [x0, #248]
+   80724:	f94002d7 	ldr	x23, [x22]
+   80728:	f8737802 	ldr	x2, [x0, x19, lsl #3]
+   8072c:	8b1402f8 	add	x24, x23, x20
+   80730:	f94043e0 	ldr	x0, [sp, #128]
+   80734:	f900b3e2 	str	x2, [sp, #352]
+   80738:	97fec8aa 	bl	329e0 <std::__detail::_Map_base<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](long const&)@plt>
+   8073c:	f8746ae1 	ldr	x1, [x23, x20]
+   80740:	39402302 	ldrb	w2, [x24, #8]
+   80744:	b5fffde1 	cbnz	x1, 80700 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1a8>
+   80748:	f9400003 	ldr	x3, [x0]
+   8074c:	f900001f 	str	xzr, [x0]
+   80750:	f100007f 	cmp	x3, #0x0
+   80754:	7a401840 	ccmp	w2, #0x0, #0x0, ne  // ne = any
+   80758:	54fffd81 	b.ne	80708 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1b0>  // b.any
+   8075c:	aa0303e0 	mov	x0, x3
+   80760:	97fec970 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   80764:	91000673 	add	x19, x19, #0x1
+   80768:	eb1302bf 	cmp	x21, x19
+   8076c:	54fffd41 	b.ne	80714 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1bc>  // b.any
+   80770:	f94047e0 	ldr	x0, [sp, #136]
+   80774:	92ff0001 	mov	x1, #0x7ffffffffffffff     	// #576460752303423487
+   80778:	a9510002 	ldp	x2, x0, [x0, #272]
+   8077c:	cb020000 	sub	x0, x0, x2
+   80780:	eb800c3f 	cmp	x1, x0, asr #3
+   80784:	9343fc00 	asr	x0, x0, #3
+   80788:	f90073e0 	str	x0, [sp, #224]
+   8078c:	54008f03 	b.cc	8196c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1414>  // b.lo, b.ul, b.last
+   80790:	f9404ff4 	ldr	x20, [sp, #152]
+   80794:	d37cec13 	lsl	x19, x0, #4
+   80798:	4f000400 	movi	v0.4s, #0x0
+   8079c:	f9000a9f 	str	xzr, [x20, #16]
+   807a0:	3d800280 	str	q0, [x20]
+   807a4:	b4008be0 	cbz	x0, 81920 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x13c8>
+   807a8:	aa1303e0 	mov	x0, x19
+   807ac:	97fecba5 	bl	33640 <operator new(unsigned long)@plt>
+   807b0:	8b130013 	add	x19, x0, x19
+   807b4:	f9000280 	str	x0, [x20]
+   807b8:	f9000a93 	str	x19, [x20, #16]
+   807bc:	d503201f 	nop
+   807c0:	f900001f 	str	xzr, [x0]
+   807c4:	91004000 	add	x0, x0, #0x10
+   807c8:	381f801f 	sturb	wzr, [x0, #-8]
+   807cc:	eb00027f 	cmp	x19, x0
+   807d0:	54ffff81 	b.ne	807c0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x268>  // b.any
+   807d4:	f94047e0 	ldr	x0, [sp, #136]
+   807d8:	a9107fff 	stp	xzr, xzr, [sp, #256]
+   807dc:	f9404fe1 	ldr	x1, [sp, #152]
+   807e0:	f9008bff 	str	xzr, [sp, #272]
+   807e4:	a9438016 	ldp	x22, x0, [x0, #56]
+   807e8:	f90063e0 	str	x0, [sp, #192]
+   807ec:	f9000433 	str	x19, [x1, #8]
+   807f0:	eb16001f 	cmp	x0, x22
+   807f4:	54008aa0 	b.eq	81948 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x13f0>  // b.none
+   807f8:	910403e1 	add	x1, sp, #0x100
+   807fc:	f9006be1 	str	x1, [sp, #208]
+   80800:	f0000281 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80804:	d2d09000 	mov	x0, #0x848000000000        	// #145685290680320
+   80808:	f2e825c0 	movk	x0, #0x412e, lsl #48
+   8080c:	910182d6 	add	x22, x22, #0x60
+   80810:	f9453021 	ldr	x1, [x1, #2656]
+   80814:	9e670009 	fmov	d9, x0
+   80818:	91004020 	add	x0, x1, #0x10
+   8081c:	f90053e0 	str	x0, [sp, #160]
+   80820:	14000006 	b	80838 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x2e0>
+   80824:	f94063e1 	ldr	x1, [sp, #192]
+   80828:	910042c0 	add	x0, x22, #0x10
+   8082c:	9101c2d6 	add	x22, x22, #0x70
+   80830:	eb00003f 	cmp	x1, x0
+   80834:	540060c0 	b.eq	8144c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xef4>  // b.none
+   80838:	f94047e0 	ldr	x0, [sp, #136]
+   8083c:	3944c000 	ldrb	w0, [x0, #304]
+   80840:	350075e0 	cbnz	w0, 816fc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x11a4>
+   80844:	aa1603e0 	mov	x0, x22
+   80848:	97fed042 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   8084c:	f0000299 	adrp	x25, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80850:	f000029a 	adrp	x26, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80854:	d2800003 	mov	x3, #0x0                   	// #0
+   80858:	f947e722 	ldr	x2, [x25, #4040]
+   8085c:	f9454f54 	ldr	x20, [x26, #2712]
+   80860:	aa1403e1 	mov	x1, x20
+   80864:	97fecc1b 	bl	338d0 <__dynamic_cast@plt>
+   80868:	f90057e0 	str	x0, [sp, #168]
+   8086c:	b5fffdc0 	cbnz	x0, 80824 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x2cc>
+   80870:	a97bded3 	ldp	x19, x23, [x22, #-72]
+   80874:	910483e0 	add	x0, sp, #0x120
+   80878:	f0000295 	adrp	x21, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   8087c:	f9005be0 	str	x0, [sp, #176]
+   80880:	a9127fff 	stp	xzr, xzr, [sp, #288]
+   80884:	f9009bff 	str	xzr, [sp, #304]
+   80888:	f944e6b5 	ldr	x21, [x21, #2504]
+   8088c:	eb1302ff 	cmp	x23, x19
+   80890:	54000800 	b.eq	80990 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x438>  // b.none
+   80894:	d503201f 	nop
+   80898:	a95807e0 	ldp	x0, x1, [sp, #384]
+   8089c:	f9400265 	ldr	x5, [x19]
+   808a0:	9ac108a3 	udiv	x3, x5, x1
+   808a4:	9b019463 	msub	x3, x3, x1, x5
+   808a8:	f8637800 	ldr	x0, [x0, x3, lsl #3]
+   808ac:	b4008540 	cbz	x0, 81954 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x13fc>
+   808b0:	f9400002 	ldr	x2, [x0]
+   808b4:	f9400440 	ldr	x0, [x2, #8]
+   808b8:	14000008 	b	808d8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x380>
+   808bc:	f9400042 	ldr	x2, [x2]
+   808c0:	b40084a2 	cbz	x2, 81954 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x13fc>
+   808c4:	f9400440 	ldr	x0, [x2, #8]
+   808c8:	9ac10804 	udiv	x4, x0, x1
+   808cc:	9b018084 	msub	x4, x4, x1, x0
+   808d0:	eb04007f 	cmp	x3, x4
+   808d4:	54008401 	b.ne	81954 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x13fc>  // b.any
+   808d8:	eb0000bf 	cmp	x5, x0
+   808dc:	54ffff01 	b.ne	808bc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x364>  // b.any
+   808e0:	a95283e1 	ldp	x1, x0, [sp, #296]
+   808e4:	eb00003f 	cmp	x1, x0
+   808e8:	540065c0 	b.eq	815a0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1048>  // b.none
+   808ec:	f9400840 	ldr	x0, [x2, #16]
+   808f0:	39406042 	ldrb	w2, [x2, #24]
+   808f4:	f9000020 	str	x0, [x1]
+   808f8:	f100001f 	cmp	x0, #0x0
+   808fc:	39002022 	strb	w2, [x1, #8]
+   80900:	7a401840 	ccmp	w2, #0x0, #0x0, ne  // ne = any
+   80904:	54006400 	b.eq	81584 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x102c>  // b.none
+   80908:	91004021 	add	x1, x1, #0x10
+   8090c:	f90097e1 	str	x1, [sp, #296]
+   80910:	aa1603e0 	mov	x0, x22
+   80914:	97fed00f 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   80918:	aa1503e2 	mov	x2, x21
+   8091c:	aa1403e1 	mov	x1, x20
+   80920:	d2800003 	mov	x3, #0x0                   	// #0
+   80924:	97fecbeb 	bl	338d0 <__dynamic_cast@plt>
+   80928:	b50002e0 	cbnz	x0, 80984 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x42c>
+   8092c:	a95b8fe0 	ldp	x0, x3, [sp, #440]
+   80930:	f9400265 	ldr	x5, [x19]
+   80934:	9ac308a4 	udiv	x4, x5, x3
+   80938:	9b039484 	msub	x4, x4, x3, x5
+   8093c:	f8647800 	ldr	x0, [x0, x4, lsl #3]
+   80940:	b4008100 	cbz	x0, 81960 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1408>
+   80944:	f9400000 	ldr	x0, [x0]
+   80948:	f9400401 	ldr	x1, [x0, #8]
+   8094c:	14000008 	b	8096c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x414>
+   80950:	f9400000 	ldr	x0, [x0]
+   80954:	b4008060 	cbz	x0, 81960 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1408>
+   80958:	f9400401 	ldr	x1, [x0, #8]
+   8095c:	9ac30822 	udiv	x2, x1, x3
+   80960:	9b038442 	msub	x2, x2, x3, x1
+   80964:	eb02009f 	cmp	x4, x2
+   80968:	54007fc1 	b.ne	81960 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1408>  // b.any
+   8096c:	eb0100bf 	cmp	x5, x1
+   80970:	54ffff01 	b.ne	80950 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x3f8>  // b.any
+   80974:	f9400801 	ldr	x1, [x0, #16]
+   80978:	d1000421 	sub	x1, x1, #0x1
+   8097c:	f9000801 	str	x1, [x0, #16]
+   80980:	b4006181 	cbz	x1, 815b0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1058>
+   80984:	91002273 	add	x19, x19, #0x8
+   80988:	eb1302ff 	cmp	x23, x19
+   8098c:	54fff861 	b.ne	80898 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x340>  // b.any
+   80990:	9108c3f8 	add	x24, sp, #0x230
+   80994:	f000029c 	adrp	x28, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80998:	9101c300 	add	x0, x24, #0x70
+   8099c:	97fec741 	bl	326a0 <std::ios_base::ios_base()@plt>
+   809a0:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   809a4:	911203e3 	add	x3, sp, #0x480
+   809a8:	4f000400 	movi	v0.4s, #0x0
+   809ac:	f901bfff 	str	xzr, [sp, #888]
+   809b0:	f9467000 	ldr	x0, [x0, #3296]
+   809b4:	790703ff 	strh	wzr, [sp, #896]
+   809b8:	f944a782 	ldr	x2, [x28, #2376]
+   809bc:	3c908060 	stur	q0, [x3, #-248]
+   809c0:	d2800001 	mov	x1, #0x0                   	// #0
+   809c4:	a9408015 	ldp	x21, x0, [x0, #8]
+   809c8:	3c918060 	stur	q0, [x3, #-232]
+   809cc:	91004042 	add	x2, x2, #0x10
+   809d0:	f85e82a3 	ldur	x3, [x21, #-24]
+   809d4:	f9011bf5 	str	x21, [sp, #560]
+   809d8:	f90153e2 	str	x2, [sp, #672]
+   809dc:	aa0003e2 	mov	x2, x0
+   809e0:	8b030300 	add	x0, x24, x3
+   809e4:	f9006fe2 	str	x2, [sp, #216]
+   809e8:	f8236b02 	str	x2, [x24, x3]
+   809ec:	97fecce9 	bl	33d90 <std::basic_ios<char, std::char_traits<char> >::init(std::basic_streambuf<char, std::char_traits<char> >*)@plt>
+   809f0:	f0000281 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   809f4:	f0000282 	adrp	x2, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   809f8:	9108c3ea 	add	x10, sp, #0x230
+   809fc:	910943eb 	add	x11, sp, #0x250
+   80a00:	f9465421 	ldr	x1, [x1, #3240]
+   80a04:	91010300 	add	x0, x24, #0x40
+   80a08:	f945a842 	ldr	x2, [x2, #2896]
+   80a0c:	91006023 	add	x3, x1, #0x18
+   80a10:	91010021 	add	x1, x1, #0x40
+   80a14:	a9017d5f 	stp	xzr, xzr, [x10, #16]
+   80a18:	91004042 	add	x2, x2, #0x10
+   80a1c:	a9000943 	stp	x3, x2, [x10]
+   80a20:	a9007d7f 	stp	xzr, xzr, [x11]
+   80a24:	a9017d7f 	stp	xzr, xzr, [x11, #16]
+   80a28:	f90153e1 	str	x1, [sp, #672]
+   80a2c:	97fed085 	bl	34c40 <std::locale::locale()@plt>
+   80a30:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80a34:	91018302 	add	x2, x24, #0x60
+   80a38:	52800203 	mov	w3, #0x10                  	// #16
+   80a3c:	91002301 	add	x1, x24, #0x8
+   80a40:	f947e800 	ldr	x0, [x0, #4048]
+   80a44:	b9027be3 	str	w3, [sp, #632]
+   80a48:	f90143e2 	str	x2, [sp, #640]
+   80a4c:	91004000 	add	x0, x0, #0x10
+   80a50:	f9011fe0 	str	x0, [sp, #568]
+   80a54:	9101c300 	add	x0, x24, #0x70
+   80a58:	f90147ff 	str	xzr, [sp, #648]
+   80a5c:	390a43ff 	strb	wzr, [sp, #656]
+   80a60:	97fecccc 	bl	33d90 <std::basic_ios<char, std::char_traits<char> >::init(std::basic_streambuf<char, std::char_traits<char> >*)@plt>
+   80a64:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80a68:	910ec3f7 	add	x23, sp, #0x3b0
+   80a6c:	910ec3e9 	add	x9, sp, #0x3b0
+   80a70:	910082e8 	add	x8, x23, #0x20
+   80a74:	f9467806 	ldr	x6, [x0, #3312]
+   80a78:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80a7c:	d2803e87 	mov	x7, #0x1f4                 	// #500
+   80a80:	9107c3e4 	add	x4, sp, #0x1f0
+   80a84:	f944ec02 	ldr	x2, [x0, #2520]
+   80a88:	90000121 	adrp	x1, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   80a8c:	aa1703e0 	mov	x0, x23
+   80a90:	91310021 	add	x1, x1, #0xc40
+   80a94:	91004042 	add	x2, x2, #0x10
+   80a98:	d2800005 	mov	x5, #0x0                   	// #0
+   80a9c:	d2800003 	mov	x3, #0x0                   	// #0
+   80aa0:	a9002122 	stp	x2, x8, [x9]
+   80aa4:	d28000a2 	mov	x2, #0x5                   	// #5
+   80aa8:	a9011d3f 	stp	xzr, x7, [x9, #16]
+   80aac:	f9004be4 	str	x4, [sp, #144]
+   80ab0:	a91f7fff 	stp	xzr, xzr, [sp, #496]
+   80ab4:	f94000d3 	ldr	x19, [x6]
+   80ab8:	97fecf5a 	bl	34820 <void fmt::v8::detail::vformat_to<char>(fmt::v8::detail::buffer<char>&, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<std::conditional<std::is_same<fmt::v8::type_identity<char>::type, char>::value, fmt::v8::appender, std::back_insert_iterator<fmt::v8::detail::buffer<fmt::v8::type_identity<char>::type> > >::type, fmt::v8::type_identity<char>::type> >, fmt::v8::detail::locale_ref)@plt>
+   80abc:	f941dfe0 	ldr	x0, [sp, #952]
+   80ac0:	aa1303e3 	mov	x3, x19
+   80ac4:	f941e3f3 	ldr	x19, [sp, #960]
+   80ac8:	d2800021 	mov	x1, #0x1                   	// #1
+   80acc:	aa1303e2 	mov	x2, x19
+   80ad0:	97fecf14 	bl	34720 <fwrite@plt>
+   80ad4:	eb00027f 	cmp	x19, x0
+   80ad8:	54007c48 	b.hi	81a60 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1508>  // b.pmore
+   80adc:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80ae0:	910082e2 	add	x2, x23, #0x20
+   80ae4:	f944ec01 	ldr	x1, [x0, #2520]
+   80ae8:	f941dfe0 	ldr	x0, [sp, #952]
+   80aec:	91004021 	add	x1, x1, #0x10
+   80af0:	f901dbe1 	str	x1, [sp, #944]
+   80af4:	eb02001f 	cmp	x0, x2
+   80af8:	54000040 	b.eq	80b00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x5a8>  // b.none
+   80afc:	97feca95 	bl	33550 <operator delete(void*)@plt>
+   80b00:	910843fb 	add	x27, sp, #0x210
+   80b04:	b0000141 	adrp	x1, a9000 <CSWTCH.1334+0x820>
+   80b08:	91004362 	add	x2, x27, #0x10
+   80b0c:	aa1b03e0 	mov	x0, x27
+   80b10:	910d2021 	add	x1, x1, #0x348
+   80b14:	f9010be2 	str	x2, [sp, #528]
+   80b18:	b0000142 	adrp	x2, a9000 <CSWTCH.1334+0x820>
+   80b1c:	910dc842 	add	x2, x2, #0x372
+   80b20:	97ffcbb0 	bl	739e0 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [clone .constprop.0]>
+   80b24:	aa1603e0 	mov	x0, x22
+   80b28:	97fecf8a 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   80b2c:	aa0003f3 	mov	x19, x0
+   80b30:	aa1603e0 	mov	x0, x22
+   80b34:	97fecf87 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   80b38:	f9400001 	ldr	x1, [x0]
+   80b3c:	f9400021 	ldr	x1, [x1]
+   80b40:	d63f0020 	blr	x1
+   80b44:	aa0003e3 	mov	x3, x0
+   80b48:	aa0103e2 	mov	x2, x1
+   80b4c:	f9400a64 	ldr	x4, [x19, #16]
+   80b50:	f90107e3 	str	x3, [sp, #520]
+   80b54:	f9404be3 	ldr	x3, [sp, #144]
+   80b58:	aa1703e8 	mov	x8, x23
+   80b5c:	f9410be0 	ldr	x0, [sp, #528]
+   80b60:	f900fbe4 	str	x4, [sp, #496]
+   80b64:	f9410fe1 	ldr	x1, [sp, #536]
+   80b68:	f90103e2 	str	x2, [sp, #512]
+   80b6c:	d2801a62 	mov	x2, #0xd3                  	// #211
+   80b70:	97fecfbc 	bl	34a60 <fmt::v8::vformat[abi:cxx11](fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   80b74:	f941dbe1 	ldr	x1, [sp, #944]
+   80b78:	aa1803e0 	mov	x0, x24
+   80b7c:	f941dfe2 	ldr	x2, [sp, #952]
+   80b80:	97fecb68 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   80b84:	f941dbe0 	ldr	x0, [sp, #944]
+   80b88:	910042e1 	add	x1, x23, #0x10
+   80b8c:	eb01001f 	cmp	x0, x1
+   80b90:	54000040 	b.eq	80b98 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x640>  // b.none
+   80b94:	97feca6f 	bl	33550 <operator delete(void*)@plt>
+   80b98:	f9410be0 	ldr	x0, [sp, #528]
+   80b9c:	91004361 	add	x1, x27, #0x10
+   80ba0:	eb01001f 	cmp	x0, x1
+   80ba4:	54000040 	b.eq	80bac <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x654>  // b.none
+   80ba8:	97feca6a 	bl	33550 <operator delete(void*)@plt>
+   80bac:	aa1803e0 	mov	x0, x24
+   80bb0:	97fecb68 	bl	33950 <icraft::detail::LogMsg<(icraft::LogLevel)1>::~LogMsg()@plt>
+   80bb4:	f9405fe1 	ldr	x1, [sp, #184]
+   80bb8:	d10042c3 	sub	x3, x22, #0x10
+   80bbc:	f90067e3 	str	x3, [sp, #200]
+   80bc0:	f9401020 	ldr	x0, [x1, #32]
+   80bc4:	b40000c0 	cbz	x0, 80bdc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x684>
+   80bc8:	f9401425 	ldr	x5, [x1, #40]
+   80bcc:	91004020 	add	x0, x1, #0x10
+   80bd0:	f9405be4 	ldr	x4, [sp, #176]
+   80bd4:	aa1603e2 	mov	x2, x22
+   80bd8:	d63f00a0 	blr	x5
+   80bdc:	f85f02c0 	ldur	x0, [x22, #-16]
+   80be0:	a9147fff 	stp	xzr, xzr, [sp, #320]
+   80be4:	385f82c1 	ldurb	w1, [x22, #-8]
+   80be8:	f9007be0 	str	x0, [sp, #240]
+   80bec:	f100001f 	cmp	x0, #0x0
+   80bf0:	3903e3e1 	strb	w1, [sp, #248]
+   80bf4:	7a401820 	ccmp	w1, #0x0, #0x0, ne  // ne = any
+   80bf8:	f900abff 	str	xzr, [sp, #336]
+   80bfc:	54006000 	b.eq	817fc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x12a4>  // b.none
+   80c00:	f85e02c0 	ldur	x0, [x22, #-32]
+   80c04:	b4006c20 	cbz	x0, 81988 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1430>
+   80c08:	f85e82c5 	ldur	x5, [x22, #-24]
+   80c0c:	910503f3 	add	x19, sp, #0x140
+   80c10:	f9403fe8 	ldr	x8, [sp, #120]
+   80c14:	aa1303e3 	mov	x3, x19
+   80c18:	f9405be2 	ldr	x2, [sp, #176]
+   80c1c:	9103c3e4 	add	x4, sp, #0xf0
+   80c20:	aa1603e1 	mov	x1, x22
+   80c24:	d100c2c0 	sub	x0, x22, #0x30
+   80c28:	d63f00a0 	blr	x5
+   80c2c:	a95053e2 	ldp	x2, x20, [sp, #256]
+   80c30:	3dc05be0 	ldr	q0, [sp, #352]
+   80c34:	a9167fff 	stp	xzr, xzr, [sp, #352]
+   80c38:	f940bbe0 	ldr	x0, [sp, #368]
+   80c3c:	f9008be0 	str	x0, [sp, #272]
+   80c40:	f900bbff 	str	xzr, [sp, #368]
+   80c44:	aa0203f3 	mov	x19, x2
+   80c48:	3d8043e0 	str	q0, [sp, #256]
+   80c4c:	eb14005f 	cmp	x2, x20
+   80c50:	540002e0 	b.eq	80cac <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x754>  // b.none
+   80c54:	f9003be2 	str	x2, [sp, #112]
+   80c58:	14000004 	b	80c68 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x710>
+   80c5c:	91004273 	add	x19, x19, #0x10
+   80c60:	eb13029f 	cmp	x20, x19
+   80c64:	54000220 	b.eq	80ca8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x750>  // b.none
+   80c68:	f9400260 	ldr	x0, [x19]
+   80c6c:	b4ffff80 	cbz	x0, 80c5c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x704>
+   80c70:	39402261 	ldrb	w1, [x19, #8]
+   80c74:	35ffff41 	cbnz	w1, 80c5c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x704>
+   80c78:	91002001 	add	x1, x0, #0x8
+   80c7c:	885ffc23 	ldaxr	w3, [x1]
+   80c80:	51000463 	sub	w3, w3, #0x1
+   80c84:	8802fc23 	stlxr	w2, w3, [x1]
+   80c88:	35ffffa2 	cbnz	w2, 80c7c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x724>
+   80c8c:	35fffe83 	cbnz	w3, 80c5c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x704>
+   80c90:	f9400001 	ldr	x1, [x0]
+   80c94:	91004273 	add	x19, x19, #0x10
+   80c98:	f9400821 	ldr	x1, [x1, #16]
+   80c9c:	d63f0020 	blr	x1
+   80ca0:	eb13029f 	cmp	x20, x19
+   80ca4:	54fffe21 	b.ne	80c68 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x710>  // b.any
+   80ca8:	f9403be2 	ldr	x2, [sp, #112]
+   80cac:	b4000062 	cbz	x2, 80cb8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x760>
+   80cb0:	aa0203e0 	mov	x0, x2
+   80cb4:	97feca27 	bl	33550 <operator delete(void*)@plt>
+   80cb8:	a95653f3 	ldp	x19, x20, [sp, #352]
+   80cbc:	eb14027f 	cmp	x19, x20
+   80cc0:	540000a1 	b.ne	80cd4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x77c>  // b.any
+   80cc4:	14000016 	b	80d1c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7c4>
+   80cc8:	91004273 	add	x19, x19, #0x10
+   80ccc:	eb13029f 	cmp	x20, x19
+   80cd0:	54000240 	b.eq	80d18 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7c0>  // b.none
+   80cd4:	f9400260 	ldr	x0, [x19]
+   80cd8:	b4ffff80 	cbz	x0, 80cc8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x770>
+   80cdc:	39402261 	ldrb	w1, [x19, #8]
+   80ce0:	35ffff41 	cbnz	w1, 80cc8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x770>
+   80ce4:	91002001 	add	x1, x0, #0x8
+   80ce8:	885ffc22 	ldaxr	w2, [x1]
+   80cec:	51000442 	sub	w2, w2, #0x1
+   80cf0:	8803fc22 	stlxr	w3, w2, [x1]
+   80cf4:	35ffffa3 	cbnz	w3, 80ce8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x790>
+   80cf8:	35fffe82 	cbnz	w2, 80cc8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x770>
+   80cfc:	f9400001 	ldr	x1, [x0]
+   80d00:	91004273 	add	x19, x19, #0x10
+   80d04:	f9400821 	ldr	x1, [x1, #16]
+   80d08:	d63f0020 	blr	x1
+   80d0c:	eb13029f 	cmp	x20, x19
+   80d10:	54fffe21 	b.ne	80cd4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x77c>  // b.any
+   80d14:	d503201f 	nop
+   80d18:	f940b3f4 	ldr	x20, [sp, #352]
+   80d1c:	b4000074 	cbz	x20, 80d28 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7d0>
+   80d20:	aa1403e0 	mov	x0, x20
+   80d24:	97feca0b 	bl	33550 <operator delete(void*)@plt>
+   80d28:	f9407be0 	ldr	x0, [sp, #240]
+   80d2c:	b4000060 	cbz	x0, 80d38 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7e0>
+   80d30:	3943e3e1 	ldrb	w1, [sp, #248]
+   80d34:	34005701 	cbz	w1, 81814 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x12bc>
+   80d38:	a95453f3 	ldp	x19, x20, [sp, #320]
+   80d3c:	eb14027f 	cmp	x19, x20
+   80d40:	540000a1 	b.ne	80d54 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7fc>  // b.any
+   80d44:	14000016 	b	80d9c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x844>
+   80d48:	91004273 	add	x19, x19, #0x10
+   80d4c:	eb13029f 	cmp	x20, x19
+   80d50:	54000240 	b.eq	80d98 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x840>  // b.none
+   80d54:	f9400260 	ldr	x0, [x19]
+   80d58:	b4ffff80 	cbz	x0, 80d48 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7f0>
+   80d5c:	39402261 	ldrb	w1, [x19, #8]
+   80d60:	35ffff41 	cbnz	w1, 80d48 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7f0>
+   80d64:	91002001 	add	x1, x0, #0x8
+   80d68:	885ffc22 	ldaxr	w2, [x1]
+   80d6c:	51000442 	sub	w2, w2, #0x1
+   80d70:	8803fc22 	stlxr	w3, w2, [x1]
+   80d74:	35ffffa3 	cbnz	w3, 80d68 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x810>
+   80d78:	35fffe82 	cbnz	w2, 80d48 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7f0>
+   80d7c:	f9400001 	ldr	x1, [x0]
+   80d80:	91004273 	add	x19, x19, #0x10
+   80d84:	f9400821 	ldr	x1, [x1, #16]
+   80d88:	d63f0020 	blr	x1
+   80d8c:	eb13029f 	cmp	x20, x19
+   80d90:	54fffe21 	b.ne	80d54 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7fc>  // b.any
+   80d94:	d503201f 	nop
+   80d98:	f940a3f4 	ldr	x20, [sp, #320]
+   80d9c:	b4000074 	cbz	x20, 80da8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x850>
+   80da0:	aa1403e0 	mov	x0, x20
+   80da4:	97fec9eb 	bl	33550 <operator delete(void*)@plt>
+   80da8:	f9405fe1 	ldr	x1, [sp, #184]
+   80dac:	f9402020 	ldr	x0, [x1, #64]
+   80db0:	b40000c0 	cbz	x0, 80dc8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x870>
+   80db4:	a94c93e3 	ldp	x3, x4, [sp, #200]
+   80db8:	9100c020 	add	x0, x1, #0x30
+   80dbc:	f9400c05 	ldr	x5, [x0, #24]
+   80dc0:	aa1603e2 	mov	x2, x22
+   80dc4:	d63f00a0 	blr	x5
+   80dc8:	aa1603e0 	mov	x0, x22
+   80dcc:	97fecee1 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   80dd0:	f947e722 	ldr	x2, [x25, #4040]
+   80dd4:	d2800003 	mov	x3, #0x0                   	// #0
+   80dd8:	f9454f41 	ldr	x1, [x26, #2712]
+   80ddc:	97fecabd 	bl	338d0 <__dynamic_cast@plt>
+   80de0:	b5004980 	cbnz	x0, 81710 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x11b8>
+   80de4:	a95053e1 	ldp	x1, x20, [sp, #256]
+   80de8:	aa1603e0 	mov	x0, x22
+   80dec:	cb010294 	sub	x20, x20, x1
+   80df0:	9344fe94 	asr	x20, x20, #4
+   80df4:	97feced7 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   80df8:	aa0003f9 	mov	x25, x0
+   80dfc:	f9003bff 	str	xzr, [sp, #112]
+   80e00:	f9402400 	ldr	x0, [x0, #72]
+   80e04:	b40000a0 	cbz	x0, 80e18 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x8c0>
+   80e08:	a9416801 	ldp	x1, x26, [x0, #16]
+   80e0c:	cb01035a 	sub	x26, x26, x1
+   80e10:	9344ff40 	asr	x0, x26, #4
+   80e14:	f9003be0 	str	x0, [sp, #112]
+   80e18:	f9403be0 	ldr	x0, [sp, #112]
+   80e1c:	eb00029f 	cmp	x20, x0
+   80e20:	540010a0 	b.eq	81034 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xadc>  // b.none
+   80e24:	9101c300 	add	x0, x24, #0x70
+   80e28:	97fec61e 	bl	326a0 <std::ios_base::ios_base()@plt>
+   80e2c:	4f000400 	movi	v0.4s, #0x0
+   80e30:	911203e2 	add	x2, sp, #0x480
+   80e34:	f9011bf5 	str	x21, [sp, #560]
+   80e38:	d2800001 	mov	x1, #0x0                   	// #0
+   80e3c:	f901bfff 	str	xzr, [sp, #888]
+   80e40:	790703ff 	strh	wzr, [sp, #896]
+   80e44:	f944a780 	ldr	x0, [x28, #2376]
+   80e48:	3c908040 	stur	q0, [x2, #-248]
+   80e4c:	3c918040 	stur	q0, [x2, #-232]
+   80e50:	91004000 	add	x0, x0, #0x10
+   80e54:	f85e82a2 	ldur	x2, [x21, #-24]
+   80e58:	f90153e0 	str	x0, [sp, #672]
+   80e5c:	f9406fe3 	ldr	x3, [sp, #216]
+   80e60:	8b020300 	add	x0, x24, x2
+   80e64:	f8226b03 	str	x3, [x24, x2]
+   80e68:	97fecbca 	bl	33d90 <std::basic_ios<char, std::char_traits<char> >::init(std::basic_streambuf<char, std::char_traits<char> >*)@plt>
+   80e6c:	f0000281 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80e70:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80e74:	9108c3e7 	add	x7, sp, #0x230
+   80e78:	910943e8 	add	x8, sp, #0x250
+   80e7c:	f9465400 	ldr	x0, [x0, #3240]
+   80e80:	f945a822 	ldr	x2, [x1, #2896]
+   80e84:	91006003 	add	x3, x0, #0x18
+   80e88:	91010001 	add	x1, x0, #0x40
+   80e8c:	a9017cff 	stp	xzr, xzr, [x7, #16]
+   80e90:	91004042 	add	x2, x2, #0x10
+   80e94:	a90008e3 	stp	x3, x2, [x7]
+   80e98:	91010300 	add	x0, x24, #0x40
+   80e9c:	a9007d1f 	stp	xzr, xzr, [x8]
+   80ea0:	a9017d1f 	stp	xzr, xzr, [x8, #16]
+   80ea4:	f90153e1 	str	x1, [sp, #672]
+   80ea8:	97fecf66 	bl	34c40 <std::locale::locale()@plt>
+   80eac:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80eb0:	91018302 	add	x2, x24, #0x60
+   80eb4:	52800201 	mov	w1, #0x10                  	// #16
+   80eb8:	b9027be1 	str	w1, [sp, #632]
+   80ebc:	f947e800 	ldr	x0, [x0, #4048]
+   80ec0:	91002301 	add	x1, x24, #0x8
+   80ec4:	f90143e2 	str	x2, [sp, #640]
+   80ec8:	91004000 	add	x0, x0, #0x10
+   80ecc:	f9011fe0 	str	x0, [sp, #568]
+   80ed0:	9101c300 	add	x0, x24, #0x70
+   80ed4:	f90147ff 	str	xzr, [sp, #648]
+   80ed8:	390a43ff 	strb	wzr, [sp, #656]
+   80edc:	97fecbad 	bl	33d90 <std::basic_ios<char, std::char_traits<char> >::init(std::basic_streambuf<char, std::char_traits<char> >*)@plt>
+   80ee0:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80ee4:	910082e8 	add	x8, x23, #0x20
+   80ee8:	f9404be4 	ldr	x4, [sp, #144]
+   80eec:	d2803e87 	mov	x7, #0x1f4                 	// #500
+   80ef0:	f9467806 	ldr	x6, [x0, #3312]
+   80ef4:	90000120 	adrp	x0, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   80ef8:	91310001 	add	x1, x0, #0xc40
+   80efc:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80f00:	d2800005 	mov	x5, #0x0                   	// #0
+   80f04:	d2800003 	mov	x3, #0x0                   	// #0
+   80f08:	f944ec00 	ldr	x0, [x0, #2520]
+   80f0c:	d28000a2 	mov	x2, #0x5                   	// #5
+   80f10:	f94000d3 	ldr	x19, [x6]
+   80f14:	910ec3e6 	add	x6, sp, #0x3b0
+   80f18:	91004000 	add	x0, x0, #0x10
+   80f1c:	a91f7fff 	stp	xzr, xzr, [sp, #496]
+   80f20:	a90020c0 	stp	x0, x8, [x6]
+   80f24:	aa1703e0 	mov	x0, x23
+   80f28:	a9011cdf 	stp	xzr, x7, [x6, #16]
+   80f2c:	97fece3d 	bl	34820 <void fmt::v8::detail::vformat_to<char>(fmt::v8::detail::buffer<char>&, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<std::conditional<std::is_same<fmt::v8::type_identity<char>::type, char>::value, fmt::v8::appender, std::back_insert_iterator<fmt::v8::detail::buffer<fmt::v8::type_identity<char>::type> > >::type, fmt::v8::type_identity<char>::type> >, fmt::v8::detail::locale_ref)@plt>
+   80f30:	f941dfe0 	ldr	x0, [sp, #952]
+   80f34:	aa1303e3 	mov	x3, x19
+   80f38:	f941e3f3 	ldr	x19, [sp, #960]
+   80f3c:	d2800021 	mov	x1, #0x1                   	// #1
+   80f40:	aa1303e2 	mov	x2, x19
+   80f44:	97fecdf7 	bl	34720 <fwrite@plt>
+   80f48:	eb00027f 	cmp	x19, x0
+   80f4c:	54006ba8 	b.hi	81cc0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1768>  // b.pmore
+   80f50:	f0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   80f54:	910082e2 	add	x2, x23, #0x20
+   80f58:	f944ec01 	ldr	x1, [x0, #2520]
+   80f5c:	f941dfe0 	ldr	x0, [sp, #952]
+   80f60:	91004021 	add	x1, x1, #0x10
+   80f64:	f901dbe1 	str	x1, [sp, #944]
+   80f68:	eb02001f 	cmp	x0, x2
+   80f6c:	54000040 	b.eq	80f74 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xa1c>  // b.none
+   80f70:	97fec978 	bl	33550 <operator delete(void*)@plt>
+   80f74:	f9404be3 	ldr	x3, [sp, #144]
+   80f78:	b0000141 	adrp	x1, a9000 <CSWTCH.1334+0x820>
+   80f7c:	b0000142 	adrp	x2, a9000 <CSWTCH.1334+0x820>
+   80f80:	910b0021 	add	x1, x1, #0x2c0
+   80f84:	91004060 	add	x0, x3, #0x10
+   80f88:	910c4042 	add	x2, x2, #0x310
+   80f8c:	f900fbe0 	str	x0, [sp, #496]
+   80f90:	aa0303e0 	mov	x0, x3
+   80f94:	97ffca93 	bl	739e0 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [clone .constprop.0]>
+   80f98:	aa1603e0 	mov	x0, x22
+   80f9c:	97fece6d 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   80fa0:	aa0003f3 	mov	x19, x0
+   80fa4:	aa1603e0 	mov	x0, x22
+   80fa8:	97fece6a 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   80fac:	f9400001 	ldr	x1, [x0]
+   80fb0:	f9400021 	ldr	x1, [x1]
+   80fb4:	d63f0020 	blr	x1
+   80fb8:	aa0003e3 	mov	x3, x0
+   80fbc:	aa0103e2 	mov	x2, x1
+   80fc0:	a95f07e0 	ldp	x0, x1, [sp, #496]
+   80fc4:	aa1b03e8 	mov	x8, x27
+   80fc8:	f9400a64 	ldr	x4, [x19, #16]
+   80fcc:	f901dbe4 	str	x4, [sp, #944]
+   80fd0:	f9403be4 	ldr	x4, [sp, #112]
+   80fd4:	f901e3e2 	str	x2, [sp, #960]
+   80fd8:	d2889a62 	mov	x2, #0x44d3                	// #17619
+   80fdc:	f901e7e3 	str	x3, [sp, #968]
+   80fe0:	aa1703e3 	mov	x3, x23
+   80fe4:	f901ebf4 	str	x20, [sp, #976]
+   80fe8:	f901f3e4 	str	x4, [sp, #992]
+   80fec:	97fece9d 	bl	34a60 <fmt::v8::vformat[abi:cxx11](fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   80ff0:	f9410be1 	ldr	x1, [sp, #528]
+   80ff4:	aa1803e0 	mov	x0, x24
+   80ff8:	f9410fe2 	ldr	x2, [sp, #536]
+   80ffc:	97feca49 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   81000:	f9410be0 	ldr	x0, [sp, #528]
+   81004:	91004361 	add	x1, x27, #0x10
+   81008:	eb01001f 	cmp	x0, x1
+   8100c:	54000040 	b.eq	81014 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xabc>  // b.none
+   81010:	97fec950 	bl	33550 <operator delete(void*)@plt>
+   81014:	f9404be1 	ldr	x1, [sp, #144]
+   81018:	f940fbe0 	ldr	x0, [sp, #496]
+   8101c:	91004021 	add	x1, x1, #0x10
+   81020:	eb01001f 	cmp	x0, x1
+   81024:	54000040 	b.eq	8102c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xad4>  // b.none
+   81028:	97fec94a 	bl	33550 <operator delete(void*)@plt>
+   8102c:	aa1803e0 	mov	x0, x24
+   81030:	97fec950 	bl	33570 <icraft::detail::LogMsg<(icraft::LogLevel)3>::~LogMsg()@plt>
+   81034:	d0000120 	adrp	x0, a7000 <fmt::v8::detail::dragonbox::divisible_by_power_of_5(unsigned long, int)::divtest_table+0x10>
+   81038:	9125601a 	add	x26, x0, #0x958
+   8103c:	f9403be0 	ldr	x0, [sp, #112]
+   81040:	d2800013 	mov	x19, #0x0                   	// #0
+   81044:	b4000fa0 	cbz	x0, 81238 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xce0>
+   81048:	f9402734 	ldr	x20, [x25, #72]
+   8104c:	b4002f74 	cbz	x20, 81638 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x10e0>
+   81050:	a9410281 	ldp	x1, x0, [x20, #16]
+   81054:	cb010000 	sub	x0, x0, x1
+   81058:	9344fc01 	asr	x1, x0, #4
+   8105c:	cb8013e0 	neg	x0, x0, asr #4
+   81060:	eb01027f 	cmp	x19, x1
+   81064:	fa40b261 	ccmp	x19, x0, #0x1, lt  // lt = tstop
+   81068:	54000a2a 	b.ge	811ac <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xc54>  // b.tcont
+   8106c:	aa1a03e0 	mov	x0, x26
+   81070:	528070a1 	mov	w1, #0x385                 	// #901
+   81074:	97ffca43 	bl	73980 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.2]>
+   81078:	97fec4de 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   8107c:	f0000121 	adrp	x1, a8000 <CSWTCH.2265+0x748>
+   81080:	aa0003f4 	mov	x20, x0
+   81084:	9108c021 	add	x1, x1, #0x230
+   81088:	d28009c2 	mov	x2, #0x4e                  	// #78
+   8108c:	97feca25 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   81090:	91004360 	add	x0, x27, #0x10
+   81094:	f0000121 	adrp	x1, a8000 <CSWTCH.2265+0x748>
+   81098:	f0000122 	adrp	x2, a8000 <CSWTCH.2265+0x748>
+   8109c:	910a0021 	add	x1, x1, #0x280
+   810a0:	910a6442 	add	x2, x2, #0x299
+   810a4:	f9010be0 	str	x0, [sp, #528]
+   810a8:	aa1b03e0 	mov	x0, x27
+   810ac:	97ffca4d 	bl	739e0 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [clone .constprop.0]>
+   810b0:	f9402720 	ldr	x0, [x25, #72]
+   810b4:	d2800003 	mov	x3, #0x0                   	// #0
+   810b8:	b4000080 	cbz	x0, 810c8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xb70>
+   810bc:	a9410c01 	ldp	x1, x3, [x0, #16]
+   810c0:	cb010063 	sub	x3, x3, x1
+   810c4:	9344fc63 	asr	x3, x3, #4
+   810c8:	d0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   810cc:	910082e4 	add	x4, x23, #0x20
+   810d0:	f9410be1 	ldr	x1, [sp, #528]
+   810d4:	d2803e86 	mov	x6, #0x1f4                 	// #500
+   810d8:	f944ec00 	ldr	x0, [x0, #2520]
+   810dc:	d2800005 	mov	x5, #0x0                   	// #0
+   810e0:	f9410fe2 	ldr	x2, [sp, #536]
+   810e4:	91004000 	add	x0, x0, #0x10
+   810e8:	f901dbe0 	str	x0, [sp, #944]
+   810ec:	aa0403e0 	mov	x0, x4
+   810f0:	f9404be4 	ldr	x4, [sp, #144]
+   810f4:	f900fbf3 	str	x19, [sp, #496]
+   810f8:	f90103e3 	str	x3, [sp, #512]
+   810fc:	d2800863 	mov	x3, #0x43                  	// #67
+   81100:	f901dfe0 	str	x0, [sp, #952]
+   81104:	aa1703e0 	mov	x0, x23
+   81108:	f901e3ff 	str	xzr, [sp, #960]
+   8110c:	f901e7e6 	str	x6, [sp, #968]
+   81110:	97fecdc4 	bl	34820 <void fmt::v8::detail::vformat_to<char>(fmt::v8::detail::buffer<char>&, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<std::conditional<std::is_same<fmt::v8::type_identity<char>::type, char>::value, fmt::v8::appender, std::back_insert_iterator<fmt::v8::detail::buffer<fmt::v8::type_identity<char>::type> > >::type, fmt::v8::type_identity<char>::type> >, fmt::v8::detail::locale_ref)@plt>
+   81114:	f941dfe1 	ldr	x1, [sp, #952]
+   81118:	91004300 	add	x0, x24, #0x10
+   8111c:	f941e3e2 	ldr	x2, [sp, #960]
+   81120:	f9011be0 	str	x0, [sp, #560]
+   81124:	aa1803e0 	mov	x0, x24
+   81128:	8b020022 	add	x2, x1, x2
+   8112c:	97ffca2d 	bl	739e0 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [clone .constprop.0]>
+   81130:	d0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   81134:	910082e2 	add	x2, x23, #0x20
+   81138:	f944ec01 	ldr	x1, [x0, #2520]
+   8113c:	f941dfe0 	ldr	x0, [sp, #952]
+   81140:	91004021 	add	x1, x1, #0x10
+   81144:	f901dbe1 	str	x1, [sp, #944]
+   81148:	eb02001f 	cmp	x0, x2
+   8114c:	54000040 	b.eq	81154 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xbfc>  // b.none
+   81150:	97fec900 	bl	33550 <operator delete(void*)@plt>
+   81154:	f9411be1 	ldr	x1, [sp, #560]
+   81158:	aa1403e0 	mov	x0, x20
+   8115c:	f9411fe2 	ldr	x2, [sp, #568]
+   81160:	97fec9f0 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   81164:	f9411be0 	ldr	x0, [sp, #560]
+   81168:	91004301 	add	x1, x24, #0x10
+   8116c:	eb01001f 	cmp	x0, x1
+   81170:	54000040 	b.eq	81178 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xc20>  // b.none
+   81174:	97fec8f7 	bl	33550 <operator delete(void*)@plt>
+   81178:	f9410be0 	ldr	x0, [sp, #528]
+   8117c:	91004361 	add	x1, x27, #0x10
+   81180:	eb01001f 	cmp	x0, x1
+   81184:	54000040 	b.eq	8118c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xc34>  // b.none
+   81188:	97fec8f2 	bl	33550 <operator delete(void*)@plt>
+   8118c:	97fec499 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   81190:	aa1703e8 	mov	x8, x23
+   81194:	97fec78b 	bl	32fc0 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   81198:	f94053e1 	ldr	x1, [sp, #160]
+   8119c:	aa1703e0 	mov	x0, x23
+   811a0:	f901dbe1 	str	x1, [sp, #944]
+   811a4:	97fec9b3 	bl	33870 <std::runtime_error::~runtime_error()@plt>
+   811a8:	f9402734 	ldr	x20, [x25, #72]
+   811ac:	aa1303f5 	mov	x21, x19
+   811b0:	b7f82093 	tbnz	x19, #63, 815c0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1068>
+   811b4:	b4002134 	cbz	x20, 815d8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1080>
+   811b8:	f9400a80 	ldr	x0, [x20, #16]
+   811bc:	d37ceeb5 	lsl	x21, x21, #4
+   811c0:	8b150002 	add	x2, x0, x21
+   811c4:	f8756801 	ldr	x1, [x0, x21]
+   811c8:	39402040 	ldrb	w0, [x2, #8]
+   811cc:	f100003f 	cmp	x1, #0x0
+   811d0:	1a9f17e2 	cset	w2, eq  // eq = none
+   811d4:	2a020000 	orr	w0, w0, w2
+   811d8:	34002680 	cbz	w0, 816a8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1150>
+   811dc:	f9403fe0 	ldr	x0, [sp, #120]
+   811e0:	d37cee74 	lsl	x20, x19, #4
+   811e4:	f94083f5 	ldr	x21, [sp, #256]
+   811e8:	f900b3e1 	str	x1, [sp, #352]
+   811ec:	3905a3ff 	strb	wzr, [sp, #360]
+   811f0:	8b1402bc 	add	x28, x21, x20
+   811f4:	97fecdd7 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   811f8:	9100c001 	add	x1, x0, #0x30
+   811fc:	f94043e0 	ldr	x0, [sp, #128]
+   81200:	97fec5f8 	bl	329e0 <std::__detail::_Map_base<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](long const&)@plt>
+   81204:	f8746aa1 	ldr	x1, [x21, x20]
+   81208:	39402382 	ldrb	w2, [x28, #8]
+   8120c:	b40021c1 	cbz	x1, 81644 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x10ec>
+   81210:	340023a2 	cbz	w2, 81684 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x112c>
+   81214:	f9000001 	str	x1, [x0]
+   81218:	f940b3e0 	ldr	x0, [sp, #352]
+   8121c:	b4000060 	cbz	x0, 81228 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xcd0>
+   81220:	3945a3e1 	ldrb	w1, [sp, #360]
+   81224:	340024e1 	cbz	w1, 816c0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1168>
+   81228:	f9403be0 	ldr	x0, [sp, #112]
+   8122c:	91000673 	add	x19, x19, #0x1
+   81230:	eb00027f 	cmp	x19, x0
+   81234:	54fff0a1 	b.ne	81048 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xaf0>  // b.any
+   81238:	f94047e0 	ldr	x0, [sp, #136]
+   8123c:	3944c000 	ldrb	w0, [x0, #304]
+   81240:	35002be0 	cbnz	w0, 817bc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1264>
+   81244:	f94047e0 	ldr	x0, [sp, #136]
+   81248:	3945e800 	ldrb	w0, [x0, #378]
+   8124c:	35002ae0 	cbnz	w0, 817a8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1250>
+   81250:	f94047e0 	ldr	x0, [sp, #136]
+   81254:	3945e400 	ldrb	w0, [x0, #377]
+   81258:	350029e0 	cbnz	w0, 81794 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x123c>
+   8125c:	f94047e0 	ldr	x0, [sp, #136]
+   81260:	39464000 	ldrb	w0, [x0, #400]
+   81264:	34000b20 	cbz	w0, 813c8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe70>
+   81268:	aa1603e0 	mov	x0, x22
+   8126c:	97fecdb9 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   81270:	f9402400 	ldr	x0, [x0, #72]
+   81274:	a9414c15 	ldp	x21, x19, [x0, #16]
+   81278:	a9167fff 	stp	xzr, xzr, [sp, #352]
+   8127c:	f900bbff 	str	xzr, [sp, #368]
+   81280:	cb150274 	sub	x20, x19, x21
+   81284:	9344fe80 	asr	x0, x20, #4
+   81288:	b7f83854 	tbnz	x20, #63, 81990 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1438>
+   8128c:	b4000080 	cbz	x0, 8129c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xd44>
+   81290:	aa1403e0 	mov	x0, x20
+   81294:	97fec8eb 	bl	33640 <operator new(unsigned long)@plt>
+   81298:	f90057e0 	str	x0, [sp, #168]
+   8129c:	f94057f7 	ldr	x23, [sp, #168]
+   812a0:	f900b3f7 	str	x23, [sp, #352]
+   812a4:	eb1302bf 	cmp	x21, x19
+   812a8:	8b1402f4 	add	x20, x23, x20
+   812ac:	f900bbf4 	str	x20, [sp, #368]
+   812b0:	54000480 	b.eq	81340 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xde8>  // b.none
+   812b4:	aa1503f4 	mov	x20, x21
+   812b8:	14000016 	b	81310 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xdb8>
+   812bc:	39402282 	ldrb	w2, [x20, #8]
+   812c0:	91002001 	add	x1, x0, #0x8
+   812c4:	34002122 	cbz	w2, 816e8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1190>
+   812c8:	f90002e0 	str	x0, [x23]
+   812cc:	390022ff 	strb	wzr, [x23, #8]
+   812d0:	885ffc22 	ldaxr	w2, [x1]
+   812d4:	11000442 	add	w2, w2, #0x1
+   812d8:	8803fc22 	stlxr	w3, w2, [x1]
+   812dc:	35ffffa3 	cbnz	w3, 812d0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xd78>
+   812e0:	885ffc22 	ldaxr	w2, [x1]
+   812e4:	51000442 	sub	w2, w2, #0x1
+   812e8:	8803fc22 	stlxr	w3, w2, [x1]
+   812ec:	35ffffa3 	cbnz	w3, 812e0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xd88>
+   812f0:	35000082 	cbnz	w2, 81300 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xda8>
+   812f4:	f9400001 	ldr	x1, [x0]
+   812f8:	f9400821 	ldr	x1, [x1, #16]
+   812fc:	d63f0020 	blr	x1
+   81300:	91004294 	add	x20, x20, #0x10
+   81304:	910042f7 	add	x23, x23, #0x10
+   81308:	eb14027f 	cmp	x19, x20
+   8130c:	54000120 	b.eq	81330 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xdd8>  // b.none
+   81310:	f9400280 	ldr	x0, [x20]
+   81314:	b5fffd40 	cbnz	x0, 812bc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xd64>
+   81318:	f90002ff 	str	xzr, [x23]
+   8131c:	91004294 	add	x20, x20, #0x10
+   81320:	390022ff 	strb	wzr, [x23, #8]
+   81324:	eb14027f 	cmp	x19, x20
+   81328:	910042f7 	add	x23, x23, #0x10
+   8132c:	54ffff21 	b.ne	81310 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xdb8>  // b.any
+   81330:	f94057e0 	ldr	x0, [sp, #168]
+   81334:	cb150273 	sub	x19, x19, x21
+   81338:	8b130000 	add	x0, x0, x19
+   8133c:	f90057e0 	str	x0, [sp, #168]
+   81340:	f9403fe2 	ldr	x2, [sp, #120]
+   81344:	f94057e3 	ldr	x3, [sp, #168]
+   81348:	f900b7e3 	str	x3, [sp, #360]
+   8134c:	f9405fe0 	ldr	x0, [sp, #184]
+   81350:	f9406be1 	ldr	x1, [sp, #208]
+   81354:	97fec5eb 	bl	32b00 <icraft::xrt::Session::dumpOutput(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&, std::vector<icraft::xir::Value, std::allocator<icraft::xir::Value> > const&)@plt>
+   81358:	a95653f3 	ldp	x19, x20, [sp, #352]
+   8135c:	eb14027f 	cmp	x19, x20
+   81360:	540000a1 	b.ne	81374 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe1c>  // b.any
+   81364:	14000016 	b	813bc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe64>
+   81368:	91004273 	add	x19, x19, #0x10
+   8136c:	eb13029f 	cmp	x20, x19
+   81370:	54000240 	b.eq	813b8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe60>  // b.none
+   81374:	f9400260 	ldr	x0, [x19]
+   81378:	b4ffff80 	cbz	x0, 81368 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe10>
+   8137c:	39402261 	ldrb	w1, [x19, #8]
+   81380:	35ffff41 	cbnz	w1, 81368 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe10>
+   81384:	91002001 	add	x1, x0, #0x8
+   81388:	885ffc22 	ldaxr	w2, [x1]
+   8138c:	51000442 	sub	w2, w2, #0x1
+   81390:	8803fc22 	stlxr	w3, w2, [x1]
+   81394:	35ffffa3 	cbnz	w3, 81388 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe30>
+   81398:	35fffe82 	cbnz	w2, 81368 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe10>
+   8139c:	f9400001 	ldr	x1, [x0]
+   813a0:	91004273 	add	x19, x19, #0x10
+   813a4:	f9400821 	ldr	x1, [x1, #16]
+   813a8:	d63f0020 	blr	x1
+   813ac:	eb13029f 	cmp	x20, x19
+   813b0:	54fffe21 	b.ne	81374 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe1c>  // b.any
+   813b4:	d503201f 	nop
+   813b8:	f940b3f4 	ldr	x20, [sp, #352]
+   813bc:	b4000074 	cbz	x20, 813c8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe70>
+   813c0:	aa1403e0 	mov	x0, x20
+   813c4:	97fec863 	bl	33550 <operator delete(void*)@plt>
+   813c8:	a95253f3 	ldp	x19, x20, [sp, #288]
+   813cc:	eb14027f 	cmp	x19, x20
+   813d0:	540000a1 	b.ne	813e4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe8c>  // b.any
+   813d4:	14000016 	b	8142c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xed4>
+   813d8:	91004273 	add	x19, x19, #0x10
+   813dc:	eb13029f 	cmp	x20, x19
+   813e0:	54000240 	b.eq	81428 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xed0>  // b.none
+   813e4:	f9400260 	ldr	x0, [x19]
+   813e8:	b4ffff80 	cbz	x0, 813d8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe80>
+   813ec:	39402261 	ldrb	w1, [x19, #8]
+   813f0:	35ffff41 	cbnz	w1, 813d8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe80>
+   813f4:	91002001 	add	x1, x0, #0x8
+   813f8:	885ffc22 	ldaxr	w2, [x1]
+   813fc:	51000442 	sub	w2, w2, #0x1
+   81400:	8803fc22 	stlxr	w3, w2, [x1]
+   81404:	35ffffa3 	cbnz	w3, 813f8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xea0>
+   81408:	35fffe82 	cbnz	w2, 813d8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe80>
+   8140c:	f9400001 	ldr	x1, [x0]
+   81410:	91004273 	add	x19, x19, #0x10
+   81414:	f9400821 	ldr	x1, [x1, #16]
+   81418:	d63f0020 	blr	x1
+   8141c:	eb13029f 	cmp	x20, x19
+   81420:	54fffe21 	b.ne	813e4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xe8c>  // b.any
+   81424:	d503201f 	nop
+   81428:	f94093f4 	ldr	x20, [sp, #288]
+   8142c:	b4ff9fd4 	cbz	x20, 80824 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x2cc>
+   81430:	aa1403e0 	mov	x0, x20
+   81434:	97fec847 	bl	33550 <operator delete(void*)@plt>
+   81438:	f94063e1 	ldr	x1, [sp, #192]
+   8143c:	910042c0 	add	x0, x22, #0x10
+   81440:	9101c2d6 	add	x22, x22, #0x70
+   81444:	eb00003f 	cmp	x1, x0
+   81448:	54ff9f81 	b.ne	80838 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x2e0>  // b.any
+   8144c:	f94073e0 	ldr	x0, [sp, #224]
+   81450:	b4000460 	cbz	x0, 814dc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xf84>
+   81454:	f94047f5 	ldr	x21, [sp, #136]
+   81458:	d2800013 	mov	x19, #0x0                   	// #0
+   8145c:	f9404ff4 	ldr	x20, [sp, #152]
+   81460:	f94073f6 	ldr	x22, [sp, #224]
+   81464:	d503201f 	nop
+   81468:	f9408aa0 	ldr	x0, [x21, #272]
+   8146c:	f8737805 	ldr	x5, [x0, x19, lsl #3]
+   81470:	a9580fe0 	ldp	x0, x3, [sp, #384]
+   81474:	9ac308a4 	udiv	x4, x5, x3
+   81478:	9b039484 	msub	x4, x4, x3, x5
+   8147c:	f8647800 	ldr	x0, [x0, x4, lsl #3]
+   81480:	b40027e0 	cbz	x0, 8197c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1424>
+   81484:	f9400000 	ldr	x0, [x0]
+   81488:	f9400401 	ldr	x1, [x0, #8]
+   8148c:	14000008 	b	814ac <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xf54>
+   81490:	f9400000 	ldr	x0, [x0]
+   81494:	b4002740 	cbz	x0, 8197c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1424>
+   81498:	f9400401 	ldr	x1, [x0, #8]
+   8149c:	9ac30822 	udiv	x2, x1, x3
+   814a0:	9b038442 	msub	x2, x2, x3, x1
+   814a4:	eb02009f 	cmp	x4, x2
+   814a8:	540026a1 	b.ne	8197c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1424>  // b.any
+   814ac:	eb0100bf 	cmp	x5, x1
+   814b0:	54ffff01 	b.ne	81490 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xf38>  // b.any
+   814b4:	f9400801 	ldr	x1, [x0, #16]
+   814b8:	d37cee62 	lsl	x2, x19, #4
+   814bc:	39406004 	ldrb	w4, [x0, #24]
+   814c0:	f9400283 	ldr	x3, [x20]
+   814c4:	b4001ac1 	cbz	x1, 8181c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x12c4>
+   814c8:	34001b84 	cbz	w4, 81838 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x12e0>
+   814cc:	f8226861 	str	x1, [x3, x2]
+   814d0:	91000673 	add	x19, x19, #0x1
+   814d4:	eb16027f 	cmp	x19, x22
+   814d8:	54fffc83 	b.cc	81468 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xf10>  // b.lo, b.ul, b.last
+   814dc:	900002a0 	adrp	x0, d5000 <std::__throw_out_of_range_fmt(char const*, ...)@GLIBCXX_3.4.20>
+   814e0:	912b8013 	add	x19, x0, #0xae0
+   814e4:	97fec37f 	bl	322e0 <std::chrono::_V2::system_clock::now()@plt>
+   814e8:	f9400662 	ldr	x2, [x19, #8]
+   814ec:	f9000a60 	str	x0, [x19, #16]
+   814f0:	cb020001 	sub	x1, x0, x2
+   814f4:	f94047e2 	ldr	x2, [sp, #136]
+   814f8:	f9406be0 	ldr	x0, [sp, #208]
+   814fc:	f900b841 	str	x1, [x2, #368]
+   81500:	97fecbe0 	bl	34480 <std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> >::~vector()@plt>
+   81504:	f94077e0 	ldr	x0, [sp, #232]
+   81508:	97fec60e 	bl	32d40 <std::_Hashtable<long, std::pair<long const, unsigned long>, std::allocator<std::pair<long const, unsigned long> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable()@plt>
+   8150c:	f94043e0 	ldr	x0, [sp, #128]
+   81510:	97fecd00 	bl	34910 <std::_Hashtable<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable()@plt>
+   81514:	d0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   81518:	f9451400 	ldr	x0, [x0, #2600]
+   8151c:	f942e7e1 	ldr	x1, [sp, #1480]
+   81520:	f9400002 	ldr	x2, [x0]
+   81524:	eb020021 	subs	x1, x1, x2
+   81528:	d2800002 	mov	x2, #0x0                   	// #0
+   8152c:	54002261 	b.ne	81978 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1420>  // b.any
+   81530:	a9407bfd 	ldp	x29, x30, [sp]
+   81534:	a94153f3 	ldp	x19, x20, [sp, #16]
+   81538:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   8153c:	a94363f7 	ldp	x23, x24, [sp, #48]
+   81540:	a9446bf9 	ldp	x25, x26, [sp, #64]
+   81544:	a94573fb 	ldp	x27, x28, [sp, #80]
+   81548:	6d4627e8 	ldp	d8, d9, [sp, #96]
+   8154c:	f9404fe0 	ldr	x0, [sp, #152]
+   81550:	911743ff 	add	sp, sp, #0x5d0
+   81554:	d65f03c0 	ret
+   81558:	91002022 	add	x2, x1, #0x8
+   8155c:	885ffc43 	ldaxr	w3, [x2]
+   81560:	11000463 	add	w3, w3, #0x1
+   81564:	8804fc43 	stlxr	w4, w3, [x2]
+   81568:	35ffffa4 	cbnz	w4, 8155c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1004>
+   8156c:	f9400003 	ldr	x3, [x0]
+   81570:	f9000001 	str	x1, [x0]
+   81574:	b4ff8ca3 	cbz	x3, 80708 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1b0>
+   81578:	aa0303e0 	mov	x0, x3
+   8157c:	97fec5e9 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   81580:	17fffc79 	b	80764 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x20c>
+   81584:	91002000 	add	x0, x0, #0x8
+   81588:	885ffc01 	ldaxr	w1, [x0]
+   8158c:	11000421 	add	w1, w1, #0x1
+   81590:	8802fc01 	stlxr	w2, w1, [x0]
+   81594:	35ffffa2 	cbnz	w2, 81588 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1030>
+   81598:	f94097e1 	ldr	x1, [sp, #296]
+   8159c:	17fffcdb 	b	80908 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x3b0>
+   815a0:	f9405be0 	ldr	x0, [sp, #176]
+   815a4:	91004042 	add	x2, x2, #0x10
+   815a8:	97feca12 	bl	33df0 <void std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> >::_M_realloc_insert<icraft::xrt::Tensor const&>(__gnu_cxx::__normal_iterator<icraft::xrt::Tensor*, std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > >, icraft::xrt::Tensor const&)@plt>
+   815ac:	17fffcd9 	b	80910 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x3b8>
+   815b0:	f94043e0 	ldr	x0, [sp, #128]
+   815b4:	aa1303e1 	mov	x1, x19
+   815b8:	97ffcac6 	bl	740d0 <std::_Hashtable<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_erase(std::integral_constant<bool, true>, long const&) [clone .constprop.0]>
+   815bc:	17fffcf2 	b	80984 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x42c>
+   815c0:	b40000d4 	cbz	x20, 815d8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1080>
+   815c4:	a9415680 	ldp	x0, x21, [x20, #16]
+   815c8:	cb0002b5 	sub	x21, x21, x0
+   815cc:	8b951275 	add	x21, x19, x21, asr #4
+   815d0:	b5ffdf54 	cbnz	x20, 811b8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xc60>
+   815d4:	d503201f 	nop
+   815d8:	aa1a03e0 	mov	x0, x26
+   815dc:	528071a1 	mov	w1, #0x38d                 	// #909
+   815e0:	97ffc8e8 	bl	73980 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.2]>
+   815e4:	97fec383 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   815e8:	d0000121 	adrp	x1, a7000 <fmt::v8::detail::dragonbox::divisible_by_power_of_5(unsigned long, int)::divtest_table+0x10>
+   815ec:	aa0003fc 	mov	x28, x0
+   815f0:	913ea021 	add	x1, x1, #0xfa8
+   815f4:	d28004c2 	mov	x2, #0x26                  	// #38
+   815f8:	97fec8ca 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   815fc:	d0000121 	adrp	x1, a7000 <fmt::v8::detail::dragonbox::divisible_by_power_of_5(unsigned long, int)::divtest_table+0x10>
+   81600:	aa1c03e0 	mov	x0, x28
+   81604:	913f4021 	add	x1, x1, #0xfd0
+   81608:	d28004a2 	mov	x2, #0x25                  	// #37
+   8160c:	97fec8c5 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   81610:	97fec378 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   81614:	aa1703e8 	mov	x8, x23
+   81618:	97fec66a 	bl	32fc0 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   8161c:	d0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   81620:	f9453001 	ldr	x1, [x0, #2656]
+   81624:	aa1703e0 	mov	x0, x23
+   81628:	91004021 	add	x1, x1, #0x10
+   8162c:	f901dbe1 	str	x1, [sp, #944]
+   81630:	97fec890 	bl	33870 <std::runtime_error::~runtime_error()@plt>
+   81634:	17fffee1 	b	811b8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xc60>
+   81638:	d2800000 	mov	x0, #0x0                   	// #0
+   8163c:	d2800001 	mov	x1, #0x0                   	// #0
+   81640:	17fffe88 	b	81060 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xb08>
+   81644:	f9400003 	ldr	x3, [x0]
+   81648:	f900001f 	str	xzr, [x0]
+   8164c:	f100007f 	cmp	x3, #0x0
+   81650:	7a401840 	ccmp	w2, #0x0, #0x0, ne  // ne = any
+   81654:	54ffde21 	b.ne	81218 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xcc0>  // b.any
+   81658:	91002060 	add	x0, x3, #0x8
+   8165c:	885ffc01 	ldaxr	w1, [x0]
+   81660:	51000421 	sub	w1, w1, #0x1
+   81664:	8802fc01 	stlxr	w2, w1, [x0]
+   81668:	35ffffa2 	cbnz	w2, 8165c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1104>
+   8166c:	35ffdd61 	cbnz	w1, 81218 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xcc0>
+   81670:	f9400061 	ldr	x1, [x3]
+   81674:	aa0303e0 	mov	x0, x3
+   81678:	f9400821 	ldr	x1, [x1, #16]
+   8167c:	d63f0020 	blr	x1
+   81680:	17fffee6 	b	81218 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xcc0>
+   81684:	91002022 	add	x2, x1, #0x8
+   81688:	885ffc43 	ldaxr	w3, [x2]
+   8168c:	11000463 	add	w3, w3, #0x1
+   81690:	8804fc43 	stlxr	w4, w3, [x2]
+   81694:	35ffffa4 	cbnz	w4, 81688 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1130>
+   81698:	f9400003 	ldr	x3, [x0]
+   8169c:	f9000001 	str	x1, [x0]
+   816a0:	b5fffdc3 	cbnz	x3, 81658 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1100>
+   816a4:	17fffedd 	b	81218 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xcc0>
+   816a8:	91002020 	add	x0, x1, #0x8
+   816ac:	885ffc02 	ldaxr	w2, [x0]
+   816b0:	11000442 	add	w2, w2, #0x1
+   816b4:	8803fc02 	stlxr	w3, w2, [x0]
+   816b8:	35ffffa3 	cbnz	w3, 816ac <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1154>
+   816bc:	17fffec8 	b	811dc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xc84>
+   816c0:	91002001 	add	x1, x0, #0x8
+   816c4:	885ffc22 	ldaxr	w2, [x1]
+   816c8:	51000442 	sub	w2, w2, #0x1
+   816cc:	8803fc22 	stlxr	w3, w2, [x1]
+   816d0:	35ffffa3 	cbnz	w3, 816c4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x116c>
+   816d4:	35ffdaa2 	cbnz	w2, 81228 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xcd0>
+   816d8:	f9400001 	ldr	x1, [x0]
+   816dc:	f9400821 	ldr	x1, [x1, #16]
+   816e0:	d63f0020 	blr	x1
+   816e4:	17fffed1 	b	81228 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xcd0>
+   816e8:	885ffc22 	ldaxr	w2, [x1]
+   816ec:	11000442 	add	w2, w2, #0x1
+   816f0:	8803fc22 	stlxr	w3, w2, [x1]
+   816f4:	35ffffa3 	cbnz	w3, 816e8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1190>
+   816f8:	17fffef4 	b	812c8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xd70>
+   816fc:	900002a0 	adrp	x0, d5000 <std::__throw_out_of_range_fmt(char const*, ...)@GLIBCXX_3.4.20>
+   81700:	912b8013 	add	x19, x0, #0xae0
+   81704:	97fec2f7 	bl	322e0 <std::chrono::_V2::system_clock::now()@plt>
+   81708:	f9000e60 	str	x0, [x19, #24]
+   8170c:	17fffc4e 	b	80844 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x2ec>
+   81710:	a95253f3 	ldp	x19, x20, [sp, #288]
+   81714:	eb13029f 	cmp	x20, x19
+   81718:	54000101 	b.ne	81738 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x11e0>  // b.any
+   8171c:	17fffdb2 	b	80de4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x88c>
+   81720:	f9404fe0 	ldr	x0, [sp, #152]
+   81724:	91004021 	add	x1, x1, #0x10
+   81728:	f9000401 	str	x1, [x0, #8]
+   8172c:	91004273 	add	x19, x19, #0x10
+   81730:	eb13029f 	cmp	x20, x19
+   81734:	54ffb580 	b.eq	80de4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x88c>  // b.none
+   81738:	f9404fe0 	ldr	x0, [sp, #152]
+   8173c:	a9408001 	ldp	x1, x0, [x0, #8]
+   81740:	eb00003f 	cmp	x1, x0
+   81744:	54000200 	b.eq	81784 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x122c>  // b.none
+   81748:	f9400260 	ldr	x0, [x19]
+   8174c:	39402262 	ldrb	w2, [x19, #8]
+   81750:	f9000020 	str	x0, [x1]
+   81754:	f100001f 	cmp	x0, #0x0
+   81758:	39002022 	strb	w2, [x1, #8]
+   8175c:	7a401840 	ccmp	w2, #0x0, #0x0, ne  // ne = any
+   81760:	54fffe01 	b.ne	81720 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x11c8>  // b.any
+   81764:	91002000 	add	x0, x0, #0x8
+   81768:	885ffc01 	ldaxr	w1, [x0]
+   8176c:	11000421 	add	w1, w1, #0x1
+   81770:	8802fc01 	stlxr	w2, w1, [x0]
+   81774:	35ffffa2 	cbnz	w2, 81768 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1210>
+   81778:	f9404fe0 	ldr	x0, [sp, #152]
+   8177c:	f9400401 	ldr	x1, [x0, #8]
+   81780:	17ffffe8 	b	81720 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x11c8>
+   81784:	f9404fe0 	ldr	x0, [sp, #152]
+   81788:	aa1303e2 	mov	x2, x19
+   8178c:	97fec999 	bl	33df0 <void std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> >::_M_realloc_insert<icraft::xrt::Tensor const&>(__gnu_cxx::__normal_iterator<icraft::xrt::Tensor*, std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > >, icraft::xrt::Tensor const&)@plt>
+   81790:	17ffffe7 	b	8172c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x11d4>
+   81794:	f9405fe0 	ldr	x0, [sp, #184]
+   81798:	aa1603e1 	mov	x1, x22
+   8179c:	f94067e2 	ldr	x2, [sp, #200]
+   817a0:	97fecbf0 	bl	34760 <icraft::xrt::Session::logTime(icraft::xir::Operation const&, icraft::xrt::Backend&)@plt>
+   817a4:	17fffeae 	b	8125c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xd04>
+   817a8:	f9405fe0 	ldr	x0, [sp, #184]
+   817ac:	aa1603e1 	mov	x1, x22
+   817b0:	f94067e2 	ldr	x2, [sp, #200]
+   817b4:	97fecd17 	bl	34c10 <icraft::xrt::Session::logIO(icraft::xir::Operation const&, icraft::xrt::Backend&)@plt>
+   817b8:	17fffea6 	b	81250 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xcf8>
+   817bc:	900002a0 	adrp	x0, d5000 <std::__throw_out_of_range_fmt(char const*, ...)@GLIBCXX_3.4.20>
+   817c0:	912b8013 	add	x19, x0, #0xae0
+   817c4:	97fec2c7 	bl	322e0 <std::chrono::_V2::system_clock::now()@plt>
+   817c8:	f9400e63 	ldr	x3, [x19, #24]
+   817cc:	f9001260 	str	x0, [x19, #32]
+   817d0:	cb030001 	sub	x1, x0, x3
+   817d4:	aa1603e0 	mov	x0, x22
+   817d8:	9e620028 	scvtf	d8, x1
+   817dc:	1e691908 	fdiv	d8, d8, d9
+   817e0:	97fecc5c 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   817e4:	91004001 	add	x1, x0, #0x10
+   817e8:	f94047e0 	ldr	x0, [sp, #136]
+   817ec:	9104e000 	add	x0, x0, #0x138
+   817f0:	97fec4b0 	bl	32ab0 <std::__detail::_Map_base<long, std::pair<long const, double>, std::allocator<std::pair<long const, double> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](long const&)@plt>
+   817f4:	fd000008 	str	d8, [x0]
+   817f8:	17fffe93 	b	81244 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xcec>
+   817fc:	91002000 	add	x0, x0, #0x8
+   81800:	885ffc01 	ldaxr	w1, [x0]
+   81804:	11000421 	add	w1, w1, #0x1
+   81808:	8802fc01 	stlxr	w2, w1, [x0]
+   8180c:	35ffffa2 	cbnz	w2, 81800 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x12a8>
+   81810:	17fffcfc 	b	80c00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x6a8>
+   81814:	97fec543 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   81818:	17fffd48 	b	80d38 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x7e0>
+   8181c:	f8626860 	ldr	x0, [x3, x2]
+   81820:	f822687f 	str	xzr, [x3, x2]
+   81824:	f100001f 	cmp	x0, #0x0
+   81828:	7a401880 	ccmp	w4, #0x0, #0x0, ne  // ne = any
+   8182c:	54ffe521 	b.ne	814d0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xf78>  // b.any
+   81830:	97fec53c 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   81834:	17ffff27 	b	814d0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xf78>
+   81838:	91002020 	add	x0, x1, #0x8
+   8183c:	885ffc04 	ldaxr	w4, [x0]
+   81840:	11000484 	add	w4, w4, #0x1
+   81844:	8805fc04 	stlxr	w5, w4, [x0]
+   81848:	35ffffa5 	cbnz	w5, 8183c <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x12e4>
+   8184c:	f8626860 	ldr	x0, [x3, x2]
+   81850:	f8226861 	str	x1, [x3, x2]
+   81854:	b4ffe3e0 	cbz	x0, 814d0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xf78>
+   81858:	97fec532 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   8185c:	17ffff1d 	b	814d0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xf78>
+   81860:	52856041 	mov	w1, #0x2b02                	// #11010
+   81864:	52803e40 	mov	w0, #0x1f2                 	// #498
+   81868:	97ffc838 	bl	73948 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.1]>
+   8186c:	97fec2e1 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   81870:	90000141 	adrp	x1, a9000 <CSWTCH.1334+0x820>
+   81874:	aa0003f4 	mov	x20, x0
+   81878:	9106e021 	add	x1, x1, #0x1b8
+   8187c:	97fec76d 	bl	33630 <std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)@plt>
+   81880:	9108c3f8 	add	x24, sp, #0x230
+   81884:	90000141 	adrp	x1, a9000 <CSWTCH.1334+0x820>
+   81888:	aa1803e0 	mov	x0, x24
+   8188c:	91080021 	add	x1, x1, #0x200
+   81890:	97ffc88c 	bl	73ac0 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [clone .constprop.0]>
+   81894:	f9411be0 	ldr	x0, [sp, #560]
+   81898:	910ec3f7 	add	x23, sp, #0x3b0
+   8189c:	f9411fe1 	ldr	x1, [sp, #568]
+   818a0:	aa1703e8 	mov	x8, x23
+   818a4:	910843e3 	add	x3, sp, #0x210
+   818a8:	d2800882 	mov	x2, #0x44                  	// #68
+   818ac:	f9010bf5 	str	x21, [sp, #528]
+   818b0:	f90113f3 	str	x19, [sp, #544]
+   818b4:	97fecc6b 	bl	34a60 <fmt::v8::vformat[abi:cxx11](fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   818b8:	f941dbe1 	ldr	x1, [sp, #944]
+   818bc:	aa1403e0 	mov	x0, x20
+   818c0:	f941dfe2 	ldr	x2, [sp, #952]
+   818c4:	97fec817 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   818c8:	f941dbe0 	ldr	x0, [sp, #944]
+   818cc:	910042f7 	add	x23, x23, #0x10
+   818d0:	eb17001f 	cmp	x0, x23
+   818d4:	54000040 	b.eq	818dc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1384>  // b.none
+   818d8:	97fec71e 	bl	33550 <operator delete(void*)@plt>
+   818dc:	f9411be0 	ldr	x0, [sp, #560]
+   818e0:	91004318 	add	x24, x24, #0x10
+   818e4:	eb18001f 	cmp	x0, x24
+   818e8:	54000040 	b.eq	818f0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1398>  // b.none
+   818ec:	97fec719 	bl	33550 <operator delete(void*)@plt>
+   818f0:	97ffc7ee 	bl	738a8 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   818f4:	17fffb80 	b	806f4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x19c>
+   818f8:	910ec3f7 	add	x23, sp, #0x3b0
+   818fc:	aa1703e0 	mov	x0, x23
+   81900:	97fec94c 	bl	33e30 <icraft::detail::LogMsg<(icraft::LogLevel)4>::LogMsg()@plt>
+   81904:	90000141 	adrp	x1, a9000 <CSWTCH.1334+0x820>
+   81908:	aa1703e0 	mov	x0, x23
+   8190c:	910c6021 	add	x1, x1, #0x318
+   81910:	97fec748 	bl	33630 <std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)@plt>
+   81914:	aa1703e0 	mov	x0, x23
+   81918:	97fec8ea 	bl	33cc0 <icraft::detail::LogMsg<(icraft::LogLevel)4>::~LogMsg()@plt>
+   8191c:	17fffb29 	b	805c0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x68>
+   81920:	f94047e0 	ldr	x0, [sp, #136]
+   81924:	f9008bff 	str	xzr, [sp, #272]
+   81928:	3d8043e0 	str	q0, [sp, #256]
+   8192c:	a9438016 	ldp	x22, x0, [x0, #56]
+   81930:	f90063e0 	str	x0, [sp, #192]
+   81934:	eb0002df 	cmp	x22, x0
+   81938:	54ff7601 	b.ne	807f8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x2a0>  // b.any
+   8193c:	910403e0 	add	x0, sp, #0x100
+   81940:	f9006be0 	str	x0, [sp, #208]
+   81944:	17fffee6 	b	814dc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xf84>
+   81948:	910403e0 	add	x0, sp, #0x100
+   8194c:	f9006be0 	str	x0, [sp, #208]
+   81950:	17fffec1 	b	81454 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0xefc>
+   81954:	f0000100 	adrp	x0, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   81958:	912c2000 	add	x0, x0, #0xb08
+   8195c:	97fec9b1 	bl	34020 <std::__throw_out_of_range(char const*)@plt>
+   81960:	f0000100 	adrp	x0, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   81964:	912c2000 	add	x0, x0, #0xb08
+   81968:	97fec9ae 	bl	34020 <std::__throw_out_of_range(char const*)@plt>
+   8196c:	90000120 	adrp	x0, a5000 <_fini+0x948>
+   81970:	913ce000 	add	x0, x0, #0xf38
+   81974:	97fec4cf 	bl	32cb0 <std::__throw_length_error(char const*)@plt>
+   81978:	97fec392 	bl	327c0 <__stack_chk_fail@plt>
+   8197c:	f0000100 	adrp	x0, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   81980:	912c2000 	add	x0, x0, #0xb08
+   81984:	97fec9a7 	bl	34020 <std::__throw_out_of_range(char const*)@plt>
+   81988:	910503f3 	add	x19, sp, #0x140
+   8198c:	97fec3c5 	bl	328a0 <std::__throw_bad_function_call()@plt>
+   81990:	90000120 	adrp	x0, a5000 <_fini+0x948>
+   81994:	913ce000 	add	x0, x0, #0xf38
+   81998:	97fec4c6 	bl	32cb0 <std::__throw_length_error(char const*)@plt>
+   8199c:	aa0003f3 	mov	x19, x0
+   819a0:	d0000280 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   819a4:	910082f7 	add	x23, x23, #0x20
+   819a8:	f944ec01 	ldr	x1, [x0, #2520]
+   819ac:	f941dfe0 	ldr	x0, [sp, #952]
+   819b0:	91004021 	add	x1, x1, #0x10
+   819b4:	f901dbe1 	str	x1, [sp, #944]
+   819b8:	eb17001f 	cmp	x0, x23
+   819bc:	54000040 	b.eq	819c4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x146c>  // b.none
+   819c0:	97fec6e4 	bl	33550 <operator delete(void*)@plt>
+   819c4:	aa1803e0 	mov	x0, x24
+   819c8:	97fec2ee 	bl	32580 <std::__cxx11::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> >::~basic_ostringstream()@plt>
+   819cc:	1400000d 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   819d0:	aa0003f3 	mov	x19, x0
+   819d4:	91002300 	add	x0, x24, #0x8
+   819d8:	97fecaba 	bl	344c0 <std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf()@plt>
+   819dc:	f85e82a0 	ldur	x0, [x21, #-24]
+   819e0:	f9011bf5 	str	x21, [sp, #560]
+   819e4:	f9406fe1 	ldr	x1, [sp, #216]
+   819e8:	f8206b01 	str	x1, [x24, x0]
+   819ec:	f944a781 	ldr	x1, [x28, #2376]
+   819f0:	9101c300 	add	x0, x24, #0x70
+   819f4:	91004021 	add	x1, x1, #0x10
+   819f8:	f90153e1 	str	x1, [sp, #672]
+   819fc:	97fec365 	bl	32790 <std::ios_base::~ios_base()@plt>
+   81a00:	f9405be0 	ldr	x0, [sp, #176]
+   81a04:	97feca9f 	bl	34480 <std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> >::~vector()@plt>
+   81a08:	f9406be0 	ldr	x0, [sp, #208]
+   81a0c:	97feca9d 	bl	34480 <std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> >::~vector()@plt>
+   81a10:	f9404fe0 	ldr	x0, [sp, #152]
+   81a14:	97feca9b 	bl	34480 <std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> >::~vector()@plt>
+   81a18:	f94077e0 	ldr	x0, [sp, #232]
+   81a1c:	97fec4c9 	bl	32d40 <std::_Hashtable<long, std::pair<long const, unsigned long>, std::allocator<std::pair<long const, unsigned long> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable()@plt>
+   81a20:	f94043e0 	ldr	x0, [sp, #128]
+   81a24:	97fecbbb 	bl	34910 <std::_Hashtable<long, std::pair<long const, icraft::xrt::Tensor>, std::allocator<std::pair<long const, icraft::xrt::Tensor> >, std::__detail::_Select1st, std::equal_to<long>, std::hash<long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable()@plt>
+   81a28:	aa1303e0 	mov	x0, x19
+   81a2c:	97fecb45 	bl	34740 <_Unwind_Resume@plt>
+   81a30:	aa0003f3 	mov	x19, x0
+   81a34:	17ffffee 	b	819ec <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1494>
+   81a38:	aa0003f3 	mov	x19, x0
+   81a3c:	17fffff3 	b	81a08 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14b0>
+   81a40:	aa0003f3 	mov	x19, x0
+   81a44:	17ffffef 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81a48:	aa0003f3 	mov	x19, x0
+   81a4c:	17fffff5 	b	81a20 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14c8>
+   81a50:	aa0003f3 	mov	x19, x0
+   81a54:	97ffc795 	bl	738a8 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   81a58:	aa1303e0 	mov	x0, x19
+   81a5c:	97fecb39 	bl	34740 <_Unwind_Resume@plt>
+   81a60:	d2800400 	mov	x0, #0x20                  	// #32
+   81a64:	97fec447 	bl	32b80 <__cxa_allocate_exception@plt>
+   81a68:	aa0003f4 	mov	x20, x0
+   81a6c:	97fec881 	bl	33c70 <__errno_location@plt>
+   81a70:	b9400000 	ldr	w0, [x0]
+   81a74:	910803e5 	add	x5, sp, #0x200
+   81a78:	f0000101 	adrp	x1, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   81a7c:	aa1403e8 	mov	x8, x20
+   81a80:	91312021 	add	x1, x1, #0xc48
+   81a84:	910843e4 	add	x4, sp, #0x210
+   81a88:	d2800003 	mov	x3, #0x0                   	// #0
+   81a8c:	d2800282 	mov	x2, #0x14                  	// #20
+   81a90:	a9017cbf 	stp	xzr, xzr, [x5, #16]
+   81a94:	97fec977 	bl	34070 <fmt::v8::vsystem_error(int, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   81a98:	d0000282 	adrp	x2, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   81a9c:	d0000281 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   81aa0:	aa1403e0 	mov	x0, x20
+   81aa4:	f9466c42 	ldr	x2, [x2, #3288]
+   81aa8:	f944bc21 	ldr	x1, [x1, #2424]
+   81aac:	97fecae1 	bl	34630 <__cxa_throw@plt>
+   81ab0:	17ffffc8 	b	819d0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1478>
+   81ab4:	aa0003f3 	mov	x19, x0
+   81ab8:	aa1403e0 	mov	x0, x20
+   81abc:	97fec589 	bl	330e0 <__cxa_free_exception@plt>
+   81ac0:	17ffffb8 	b	819a0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1448>
+   81ac4:	aa0003f3 	mov	x19, x0
+   81ac8:	17ffffc9 	b	819ec <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1494>
+   81acc:	f9407be1 	ldr	x1, [sp, #240]
+   81ad0:	aa0003f4 	mov	x20, x0
+   81ad4:	b40000a1 	cbz	x1, 81ae8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1590>
+   81ad8:	3943e3e0 	ldrb	w0, [sp, #248]
+   81adc:	35000060 	cbnz	w0, 81ae8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1590>
+   81ae0:	aa0103e0 	mov	x0, x1
+   81ae4:	97fec48f 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   81ae8:	aa1303e0 	mov	x0, x19
+   81aec:	aa1403f3 	mov	x19, x20
+   81af0:	97feca64 	bl	34480 <std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> >::~vector()@plt>
+   81af4:	17ffffc3 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81af8:	aa0003f3 	mov	x19, x0
+   81afc:	97ffc76b 	bl	738a8 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   81b00:	17ffffc6 	b	81a18 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14c0>
+   81b04:	f941dbe1 	ldr	x1, [sp, #944]
+   81b08:	910042f7 	add	x23, x23, #0x10
+   81b0c:	aa0003f3 	mov	x19, x0
+   81b10:	eb17003f 	cmp	x1, x23
+   81b14:	54000060 	b.eq	81b20 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x15c8>  // b.none
+   81b18:	aa0103e0 	mov	x0, x1
+   81b1c:	97fec68d 	bl	33550 <operator delete(void*)@plt>
+   81b20:	f9411be0 	ldr	x0, [sp, #560]
+   81b24:	91004318 	add	x24, x24, #0x10
+   81b28:	eb18001f 	cmp	x0, x24
+   81b2c:	54fffe80 	b.eq	81afc <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x15a4>  // b.none
+   81b30:	97fec688 	bl	33550 <operator delete(void*)@plt>
+   81b34:	97ffc75d 	bl	738a8 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   81b38:	17ffffb8 	b	81a18 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14c0>
+   81b3c:	aa0003f3 	mov	x19, x0
+   81b40:	17fffff8 	b	81b20 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x15c8>
+   81b44:	aa0003f3 	mov	x19, x0
+   81b48:	aa1703e0 	mov	x0, x23
+   81b4c:	97fec85d 	bl	33cc0 <icraft::detail::LogMsg<(icraft::LogLevel)4>::~LogMsg()@plt>
+   81b50:	aa1303e0 	mov	x0, x19
+   81b54:	97fecafb 	bl	34740 <_Unwind_Resume@plt>
+   81b58:	f940b3e1 	ldr	x1, [sp, #352]
+   81b5c:	aa0003f3 	mov	x19, x0
+   81b60:	b4fff501 	cbz	x1, 81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81b64:	3945a3e0 	ldrb	w0, [sp, #360]
+   81b68:	35fff4c0 	cbnz	w0, 81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81b6c:	aa0103e0 	mov	x0, x1
+   81b70:	97fec46c 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   81b74:	17ffffa3 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81b78:	f9411be1 	ldr	x1, [sp, #560]
+   81b7c:	91004318 	add	x24, x24, #0x10
+   81b80:	aa0003f3 	mov	x19, x0
+   81b84:	eb18003f 	cmp	x1, x24
+   81b88:	54000060 	b.eq	81b94 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x163c>  // b.none
+   81b8c:	aa0103e0 	mov	x0, x1
+   81b90:	97fec670 	bl	33550 <operator delete(void*)@plt>
+   81b94:	f9410be0 	ldr	x0, [sp, #528]
+   81b98:	91004361 	add	x1, x27, #0x10
+   81b9c:	eb01001f 	cmp	x0, x1
+   81ba0:	54000040 	b.eq	81ba8 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1650>  // b.none
+   81ba4:	97fec66b 	bl	33550 <operator delete(void*)@plt>
+   81ba8:	97ffc740 	bl	738a8 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   81bac:	17ffff95 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81bb0:	aa0003f3 	mov	x19, x0
+   81bb4:	17ffff7b 	b	819a0 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1448>
+   81bb8:	f940b3e1 	ldr	x1, [sp, #352]
+   81bbc:	aa0003f3 	mov	x19, x0
+   81bc0:	b4fff201 	cbz	x1, 81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81bc4:	aa0103e0 	mov	x0, x1
+   81bc8:	97fec662 	bl	33550 <operator delete(void*)@plt>
+   81bcc:	17ffff8d 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81bd0:	f9410be1 	ldr	x1, [sp, #528]
+   81bd4:	91004362 	add	x2, x27, #0x10
+   81bd8:	aa0003f3 	mov	x19, x0
+   81bdc:	eb02003f 	cmp	x1, x2
+   81be0:	54000060 	b.eq	81bec <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1694>  // b.none
+   81be4:	aa0103e0 	mov	x0, x1
+   81be8:	97fec65a 	bl	33550 <operator delete(void*)@plt>
+   81bec:	f9404be1 	ldr	x1, [sp, #144]
+   81bf0:	f940fbe0 	ldr	x0, [sp, #496]
+   81bf4:	91004021 	add	x1, x1, #0x10
+   81bf8:	eb01001f 	cmp	x0, x1
+   81bfc:	54000040 	b.eq	81c04 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x16ac>  // b.none
+   81c00:	97fec654 	bl	33550 <operator delete(void*)@plt>
+   81c04:	aa1803e0 	mov	x0, x24
+   81c08:	97fec65a 	bl	33570 <icraft::detail::LogMsg<(icraft::LogLevel)3>::~LogMsg()@plt>
+   81c0c:	17ffff7d 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81c10:	aa0003f3 	mov	x19, x0
+   81c14:	17ffff81 	b	81a18 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14c0>
+   81c18:	f941dbe1 	ldr	x1, [sp, #944]
+   81c1c:	910042f7 	add	x23, x23, #0x10
+   81c20:	aa0003f3 	mov	x19, x0
+   81c24:	eb17003f 	cmp	x1, x23
+   81c28:	54000060 	b.eq	81c34 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x16dc>  // b.none
+   81c2c:	aa0103e0 	mov	x0, x1
+   81c30:	97fec648 	bl	33550 <operator delete(void*)@plt>
+   81c34:	f9410be0 	ldr	x0, [sp, #528]
+   81c38:	91004361 	add	x1, x27, #0x10
+   81c3c:	eb01001f 	cmp	x0, x1
+   81c40:	54000040 	b.eq	81c48 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x16f0>  // b.none
+   81c44:	97fec643 	bl	33550 <operator delete(void*)@plt>
+   81c48:	aa1803e0 	mov	x0, x24
+   81c4c:	97fec741 	bl	33950 <icraft::detail::LogMsg<(icraft::LogLevel)1>::~LogMsg()@plt>
+   81c50:	17ffff6c 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81c54:	d0000281 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   81c58:	aa0003f3 	mov	x19, x0
+   81c5c:	f941dfe0 	ldr	x0, [sp, #952]
+   81c60:	910082f7 	add	x23, x23, #0x20
+   81c64:	f944ec21 	ldr	x1, [x1, #2520]
+   81c68:	eb17001f 	cmp	x0, x23
+   81c6c:	91004021 	add	x1, x1, #0x10
+   81c70:	f901dbe1 	str	x1, [sp, #944]
+   81c74:	54fff900 	b.eq	81b94 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x163c>  // b.none
+   81c78:	97fec636 	bl	33550 <operator delete(void*)@plt>
+   81c7c:	17ffffc6 	b	81b94 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x163c>
+   81c80:	aa0003f3 	mov	x19, x0
+   81c84:	97ffc709 	bl	738a8 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   81c88:	17ffff5e 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81c8c:	aa0003f3 	mov	x19, x0
+   81c90:	f9403fe0 	ldr	x0, [sp, #120]
+   81c94:	97fec91b 	bl	34100 <std::vector<icraft::xir::Value, std::allocator<icraft::xir::Value> >::~vector()@plt>
+   81c98:	17ffff5a 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81c9c:	aa0003f3 	mov	x19, x0
+   81ca0:	97ffc702 	bl	738a8 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   81ca4:	17ffff57 	b	81a00 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x14a8>
+   81ca8:	aa0003f3 	mov	x19, x0
+   81cac:	17ffffe2 	b	81c34 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x16dc>
+   81cb0:	aa0003f3 	mov	x19, x0
+   81cb4:	17ffffe5 	b	81c48 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x16f0>
+   81cb8:	aa0003f3 	mov	x19, x0
+   81cbc:	17ffffd2 	b	81c04 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x16ac>
+   81cc0:	d2800400 	mov	x0, #0x20                  	// #32
+   81cc4:	97fec3af 	bl	32b80 <__cxa_allocate_exception@plt>
+   81cc8:	aa0003f4 	mov	x20, x0
+   81ccc:	97fec7e9 	bl	33c70 <__errno_location@plt>
+   81cd0:	b9400000 	ldr	w0, [x0]
+   81cd4:	910803e5 	add	x5, sp, #0x200
+   81cd8:	f0000101 	adrp	x1, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   81cdc:	aa1b03e4 	mov	x4, x27
+   81ce0:	aa1403e8 	mov	x8, x20
+   81ce4:	91312021 	add	x1, x1, #0xc48
+   81ce8:	d2800003 	mov	x3, #0x0                   	// #0
+   81cec:	d2800282 	mov	x2, #0x14                  	// #20
+   81cf0:	a9017cbf 	stp	xzr, xzr, [x5, #16]
+   81cf4:	97fec8df 	bl	34070 <fmt::v8::vsystem_error(int, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   81cf8:	d0000282 	adrp	x2, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   81cfc:	d0000281 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   81d00:	aa1403e0 	mov	x0, x20
+   81d04:	f9466c42 	ldr	x2, [x2, #3288]
+   81d08:	f944bc21 	ldr	x1, [x1, #2424]
+   81d0c:	97feca49 	bl	34630 <__cxa_throw@plt>
+   81d10:	aa0003f3 	mov	x19, x0
+   81d14:	17ffffb6 	b	81bec <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x1694>
+   81d18:	17ffff67 	b	81ab4 <icraft::xrt::Session::forward(std::vector<icraft::xrt::Tensor, std::allocator<icraft::xrt::Tensor> > const&)+0x155c>
+   81d1c:	d503201f 	nop

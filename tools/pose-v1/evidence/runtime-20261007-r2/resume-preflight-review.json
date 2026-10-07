@@ -1,0 +1,16 @@
+{
+  "status": "read_only_resume_preflight_passed",
+  "boot_files_matched": 9,
+  "BOOT_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "runtime_packages": [
+    "customop\tarm64\t3.39.0",
+    "icraft\tarm64\t3.39.0",
+    "icraftmdzthirdparty\tarm64\t0.1.1"
+  ],
+  "fpga_state": "operating",
+  "available_MiB": 748,
+  "swap_MiB": 0,
+  "device_initialization_performed": false,
+  "scope": "FAT16/sysfs/process/resources only; no mount or register write",
+  "audit_sha256": "106a942323b1563a7e0f05f6af1230a2b7f86d6b9ab3a829388b39e127c4bba7"
+}

@@ -1,0 +1,47 @@
+{
+  "status": "approved_binding_snapshot_package_prepared_not_compiled",
+  "package": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-mixed-validation\\package-20261006-binding-r2",
+  "package_manifest_sha256": "05315e578e217e4f87438f5c0d15ad11e3015bd77aa1c70ae76f199f61ab0a62",
+  "package_files_verified": 290,
+  "unchanged_nonmanifest_files_vs_r1": 289,
+  "source_diff_vs_r1": [
+    "software/pose_v1/src/mixed_check.cpp"
+  ],
+  "sources": {
+    "software/pose_v1/include/mixed_bridge.hpp": "5771ef4b448e0d1f7a6f1c502a1be9917e993914d84c861300cd85ba32808e45",
+    "software/pose_v1/src/mixed_bridge.cpp": "cfc2b1d8d975a39fa74ed92c1e092fd47fb0cf02e0af0cea9b6d020051346c8d",
+    "software/pose_v1/src/mixed_check.cpp": "f349e0596377582bd88d48da1f7b8d47d82616ab24607e74036b2cea523f571c",
+    "software/pose_v1/src/mixed_host_check.cpp": "f836a0a2dd8c85bd696e3bc128eecbfbce88fbebbb0b443564a3ebe3cf4b0d57",
+    "software/pose_v1/include/host_cpu_adapter.hpp": "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4",
+    "software/pose_v1/src/host_cpu_adapter.cpp": "fc3ff85cbcf46af9a2615ab8756b266762d895ba56b5084e5e245682489241c7",
+    "software/pose_v1/include/preprocess.hpp": "ae70ba3f79722431d282bf5f610d6356b29072b4492f23dcc2adde29958f8118",
+    "software/pose_v1/src/preprocess.cpp": "e13a6bde842ae4d2531d2d0a455313f912d33942e6ee2681eacbd5c44df0b8b0",
+    "tools/pose-v1/mixed-validation-CMakeLists.txt": "5b9089138c0bb32523ae16c35c6ccaa8a25b596cccbffad9e614d42fbb8cdcfc",
+    "tools/pose-v1/aarch64-icraft.cmake": "93d3d7983e824d52a83f853b757891bc9bcf828e6190c6fed838d7be3215c6da",
+    "tools/pose-v1/Build-MixedValidation.ps1": "85a875b24a772bbc5dec0deb55af32f42c458490d459b87eb7dfb34154a8763a",
+    "tools/pose-v1/mixed_validation_gate.py": "17b543a20578381fa828b47a8195018ade00ade421f17ff4e3400f1c3eae557c",
+    "tools/pose-v1/run-mixed-validation.sh": "79ac48a58a15ddff61b836f5f0bd03c9574962b57f0840e9fd4eb2750262f029"
+  },
+  "preserved_files": {
+    "software/pose_v1/src/inference_check.cpp": "75e51aff69c61ed431e0201aa21b10463b43add17c0ad125739f8dd252accf6d",
+    "software/pose_v1/CMakeLists.txt": "0b2732d3fe62caa797628feb95f713a57d2f26812b379fb42f42d9ac114c76a3"
+  },
+  "candidate_exact_match": true,
+  "static_checks": {
+    "python_AST": "passed",
+    "board_Python_3_8_AST": "passed",
+    "package_and_runner_LF": true,
+    "strict_HardOp_and_Host_gates_unchanged": true,
+    "public_SDK_metadata_fields_reviewed": true,
+    "PowerShell_build_parser_errors": 0,
+    "PowerShell_command_blocks_parsed": 6
+  },
+  "r1_binary_preserved_sha256": "7cf761f1dd7d1ca1bf8a1db1826e4d9b34574b1a8dc0ac662c987eed52722a17",
+  "compiled": false,
+  "new_tests_executed": false,
+  "board_accessed": false,
+  "new_apply_executed": false,
+  "deployment_accepted": false,
+  "mixed_verified": false,
+  "new_command_doc_sha256": "0c92d36d8e0e98238b136943db9f3074c4726a8d19a225ef77ef7b5be3a064c0"
+}

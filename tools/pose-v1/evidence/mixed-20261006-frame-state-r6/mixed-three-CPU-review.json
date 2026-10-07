@@ -1,0 +1,204 @@
+{
+  "status": "real_captured_CPU_results_match_NumPy",
+  "checks": [
+    {
+      "invocation": 0,
+      "op_id": 188,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 188,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 192,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 437,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 437,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 582,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 649,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 188,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 188,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 192,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 437,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 437,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 582,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 649,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 188,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 188,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 192,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 437,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 437,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 582,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 649,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 188,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 188,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 192,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 437,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 437,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 582,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 649,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    }
+  ],
+  "total_values": 52000,
+  "Gather442_content_verified": false,
+  "full_model_numerical_accepted": false
+}

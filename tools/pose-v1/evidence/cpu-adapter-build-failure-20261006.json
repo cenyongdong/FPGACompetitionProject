@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-06",
+  "stage": "user_prepared_fixtures_build_stopped_before_cmake",
+  "actual_package": ".local\\pose-v1-cpu-adapter\\package\\20261005",
+  "fixture_manifest_sha256": "50833ee2d198747966c33550310b19c6e27e0867fffe850fbd67026c488cffc7",
+  "package_checksum_manifest_sha256": "bf4e5ace00f38a0a281e822f99e077492107b23b67e84391eee7c5acbd12fc51",
+  "package_file_hashes_verified": 282,
+  "case_count": 107,
+  "positive_case_count": 18,
+  "negative_case_count": 89,
+  "reference_output_count": 22,
+  "copied_build_files_hashes_verified": 5,
+  "fixture_generation_owner": "user",
+  "build_owner": "user",
+  "build_log": {
+    "path": "tools\\pose-v1\\evidence\\cpu-adapter-build-failure-20261006.log",
+    "sha256": "8d7e686f4a3b9fd91baa57671fc878323bdf700444ceac1851d0071ce6fd2aaa"
+  },
+  "image": {
+    "path": "tools\\pose-v1\\evidence\\cpu-adapter-build-failure-20261006.png",
+    "sha256": "fa75e48438041b2e9c17990937eeffd864cdaf1e0730e9349fcadce22354c329"
+  },
+  "reported_tools": {
+    "gcc": "9.4.0",
+    "cmake": "3.24.2",
+    "container": "FPAI"
+  },
+  "failure": {
+    "command": "docker exec FPAI python3 -c <SDK audit>",
+    "exit_code": 127,
+    "message": "executable file not found in $PATH",
+    "meaning": "python3 command unavailable in container exec PATH; does not establish absence of every interpreter"
+  },
+  "cmake_configured": false,
+  "cpp_compiled": false,
+  "cpu_tests_executed": false,
+  "device_accessed": false,
+  "mixed_verified": false,
+  "agent_checks": "existing local file hashes and script parsing only; no Docker/SSH/project test execution",
+  "active_build_script_sha256": "b06e3886a4a723eecc804b7e90a16ba0ced608f893232e94d08d7692efd587ae",
+  "active_script_changed": false,
+  "candidate": {
+    "path": "tools\\pose-v1\\Build-CpuAdapter.no-container-python.candidate.ps1",
+    "sha256": "5858e415135bd1dc2f6ffa5ea6e578b819863b938f7cb5a50b476be01413d3f1",
+    "patch_path": "tools\\pose-v1\\Build-CpuAdapter.no-container-python.candidate.patch",
+    "patch_sha256": "a685fa5de895414b28957ad778430225fdce55e1c1f7a7e405594f1d1c2a34dd",
+    "status": "pending_user_approval",
+    "powershell_parse_errors": 0,
+    "new_build_tag": "cpu-adapter-20261006-r1",
+    "sdk_audit_guards": "retained; audit executed via copied ARM bytes and Windows SHA256; follow symlinks with docker cp -L",
+    "execution_owner": "user"
+  }
+}

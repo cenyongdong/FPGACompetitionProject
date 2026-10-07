@@ -1,0 +1,12 @@
+{
+  "status": "review_entry_stdlib_import_fixed_without_altering_frozen_package",
+  "failure": "NameError: hashlib is not defined in original r3 offline reviewer",
+  "frozen_reviewer_sha256": "0a756e6e92e1cf8d931946041ff7f956d2dc8c381103cf3dee4bad3ba70e2bfe",
+  "repair_entry": "tools/pose-v1/review_perf_stage.py",
+  "repair_entry_sha256": "40df929ed4ff0fe22f7df7fe50c3afe7e7aa057b93d7b82a49ac63fac49f54e5",
+  "change": "Supply Python hashlib binding to the unchanged reviewer function globals",
+  "stage_data_modified": false,
+  "hash_checks_modified": false,
+  "scope_checks_modified": false,
+  "board_rerun": false
+}

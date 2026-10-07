@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.24)
+project(pose_mixed_validation LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(icraft-hostbackend 3.39.0.0 EXACT CONFIG REQUIRED)
+find_package(icraft-zg330backend 3.39.0.0 EXACT CONFIG REQUIRED)
+add_executable(pose_mixed_check mixed_check.cpp mixed_bridge.cpp mixed_host_check.cpp host_cpu_adapter.cpp preprocess.cpp)
+target_include_directories(pose_mixed_check PRIVATE .)
+target_link_libraries(pose_mixed_check PRIVATE Icraft::HostBackend Icraft::ZG330Backend)
+target_compile_options(pose_mixed_check PRIVATE -Wall -Wextra -Wpedantic -ffp-contract=off)
+# No automatic binary execution, CTest, model conversion or hardware access.

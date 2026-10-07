@@ -1,0 +1,28 @@
+{
+  "source": "agent_readonly_filesystem_and_registry_review",
+  "review_date": "2026-10-05",
+  "visual_studio_root": "D:\\Visual Studio\\ Visual Studio 2022\\Community",
+  "path_note": "The Visual Studio 2022 directory name starts with one space.",
+  "msvc_directory_version": "14.44.35207",
+  "compiler_file_version": "19.44.35213.0",
+  "linker_file_version": "14.44.35213.0",
+  "cmake_file_version": "3.31.6-msvc6",
+  "found_files": [
+    "VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+    "VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.exe",
+    "VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/nmake.exe",
+    "VC/Tools/MSVC/14.44.35207/include/vector",
+    "VC/Tools/MSVC/14.44.35207/lib/x64/msvcprt.lib",
+    "Common7/Tools/VsDevCmd.bat",
+    "Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe"
+  ],
+  "default_vswhere_found": false,
+  "common_windows_kits_registry_entries_returned": false,
+  "developer_environment_executed": false,
+  "compiler_executed": false,
+  "cmake_executed": false,
+  "windows_sdk_verified": false,
+  "visual_studio_generator_verified": false,
+  "host_build_passed": false,
+  "onnx_runtime_status": "previous_user_query_not_found_in_project_conda"
+}

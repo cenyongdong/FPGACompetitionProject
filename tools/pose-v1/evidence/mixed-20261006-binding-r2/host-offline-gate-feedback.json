@@ -1,0 +1,11 @@
+{
+  "status": "host_exit0_pending_independent_review;offline_stopped_at_preflight",
+  "host_results_returned": false,
+  "host_acceptance_generated": false,
+  "offline_exception": "Missing gates/host-check.acceptance.json",
+  "offline_program_invoked": false,
+  "source_verified_stop": "Gate load precedes SDK audit and checker invocation",
+  "screenshot_sha256": "3d76fc30c49d3ebfb9c35f3314d29f6a737a2c2ac70a52f91a1279d14d39de32",
+  "agent_board_access": false,
+  "next_action": "Return run-host-check and original run-offline-check to separate new local directories; review before generating acceptance or handling existing offline directory; no automatic rerun"
+}

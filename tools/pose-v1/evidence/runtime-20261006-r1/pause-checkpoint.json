@@ -1,0 +1,39 @@
+{
+  "status": "paused_by_explicit_user_request",
+  "reason": "Lite powered off; user away; resume only after explicit wake-up",
+  "date": "2026-10-06",
+  "plan": "tools/pose-v1/NEXT-PHASE-PLAN-20261006.md",
+  "package": ".local/pose-v1-runtime/package-20261006-e0-n1-p1-r1",
+  "build": ".local/pose-v1-build/mixed-20261006-runtime-r1",
+  "build_acceptance": "tools/pose-v1/evidence/runtime-20261006-r1/build.acceptance.json",
+  "onnx_reference": ".local/pose-v1-runtime/onnx-27-20261006-r1",
+  "completed": [
+    "Isolated E0/N1/P1 initial source and tooling implemented",
+    "Cross-build and source/ARM SDK identity review passed",
+    "27 real ORT inputs plus first repeat generated; self-check 86 files"
+  ],
+  "not_done": [
+    "Independent source/tooling review",
+    "Independent ORT reference review",
+    "H0 joint/HDMI/VPU source audit completion",
+    "Board transfer",
+    "Host107",
+    "E0 original3 plus repeat bitwise r6 regression",
+    "N1 board28 and error comparison",
+    "P1 3warmup plus30 measured"
+  ],
+  "resume_notes": [
+    "Read approved plan and frozen r6 identities; preserve all r1 build/package/reference evidence",
+    "Before board execution, complete reviewer checks of package/approval/reference identity and validate finite/RSS/state/callback coverage",
+    "P1 must compare warmup3 full outputs with frozen r6 BEFORE proceeding to measured30; initial driver compares r6 only in post-run reviewer, so pre-measurement guard must be added in a fresh source/package/build revision",
+    "Existing ORT27 environment records r1 package manifest; if source package is revised, independently prove same exact input/model identities before reusing reference; never edit old reference metadata",
+    "H0 read found limb_loss/visualization BONES differing from petr.py generic14 edges; anatomical joint names/physical axes unconfirmed, do not choose a skeleton without tracing dataset source",
+    "Static TopK437 produces index1137 consumed by Gather442; final output slots are ranks; query correspondence between ORT and board is still unproven",
+    "User resumes before any further connection or execution; no automatic retry or scheduled work"
+  ],
+  "frozen_r6_binary": "f826fc31441caf09ef22d94561672023737ab4c330ba22ec0159ecf7f77e144a",
+  "board_accessed": false,
+  "board_tests_passed": false,
+  "numerical_accepted": false,
+  "performance_accepted": false
+}

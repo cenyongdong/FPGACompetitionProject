@@ -1,0 +1,21 @@
+{
+  "status": "offline_missing_gate_preflight_reviewed_not_program_executed",
+  "returned_files": [
+    "package-check.log",
+    "timeout-path.txt",
+    "timeout-version.txt"
+  ],
+  "package_check_entries": 290,
+  "all_package_checks_OK": true,
+  "program_invoked": false,
+  "offline_stage_accepted": false,
+  "file_sha256": {
+    "package-check.log": "fd3d506cb91afbb4172b18daa70858941127e66bc6ba6887bf92fb7e1827c231",
+    "timeout-path.txt": "ff27a4aeefddb7da1a6911de1838e1ef42c47501e3c926c9a9e195fc9ea9f61e",
+    "timeout-version.txt": "9c9cc17a1cfd2c2ee7349883779e5d8b90e20c146ed1d0eed6d986620047ee10"
+  },
+  "host_acceptance_sha256": "777302c7ccfb3c7d116401e86bdfdf3720b8ed1d1d7f7c037e2c20d395445d08",
+  "local_preservation_directory": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\mixed-20261006-binding-r2\\offline-preflight-missing-gate",
+  "next_stage": "User transfers new r2 Host acceptance, preserves board failed directory with a guarded sibling rename, then executes offline-check once and returns results. No memory/apply/forward.",
+  "agent_board_accessed": false
+}

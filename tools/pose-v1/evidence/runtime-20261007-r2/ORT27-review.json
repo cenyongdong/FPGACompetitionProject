@@ -1,0 +1,19 @@
+{
+  "status": "existing_ORT27_independently_verified",
+  "reference_files_verified": 86,
+  "unique_cases": 27,
+  "forward_calls": 28,
+  "finite_values": 116100,
+  "distinct_output_count": 27,
+  "old_package_manifest_sha256": "e32bf87d945517749c55424077ec5c1ec8d3fbbb9eedb0576478da0786ab8dc7",
+  "new_package_manifest_sha256": "c99e3b6c07dd1111bcbdcf199e8350417d5252f232d60decb1de7df896e57fab",
+  "reference_environment_sha256": "e56711805142770ec9ae63c12a83ded8c305920a74c339cc185257f2dea6a041",
+  "reference_reused_without_rerun_or_metadata_change": true,
+  "repeated_first_bitwise_equal": true,
+  "existing308_bitwise_equal": true,
+  "current_module_paths": {
+    "numpy": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-onnx-conda\\lib\\site-packages\\numpy\\__init__.py",
+    "onnxruntime": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-onnx-conda\\lib\\site-packages\\onnxruntime\\__init__.py"
+  },
+  "numerical_board_accepted": false
+}

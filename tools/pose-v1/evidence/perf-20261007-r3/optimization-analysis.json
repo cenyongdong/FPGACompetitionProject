@@ -1,0 +1,111 @@
+{
+  "status": "measured_profile_off_bottlenecks_and_source_candidate",
+  "profile_on_mean_ms": 214.85948033333332,
+  "profile_off_instrumented_mean_ms": 212.93086266666668,
+  "observed_reduction_ms": 1.9286176666666393,
+  "observed_reduction_fraction": 0.008976181379916673,
+  "comparison_is_not_strict_single_factor_AB": true,
+  "profile_off_Hz": 4.696360064841579,
+  "process_P95_ms": 213.4457775,
+  "remaining_to_200ms_budget_ms": 12.930862666666684,
+  "mean_segments_ms": {
+    "bridge.allocate": 0.168565,
+    "bridge.copy": 0.4730986666666667,
+    "bridge.cpu": 29.590475333333337,
+    "bridge.spec": 0.19200299999999998,
+    "bridge.wait": 164.479881,
+    "op.host": 196.3606843333333,
+    "op.zg": 0.8466446666666667,
+    "runtime.final_wait": 0.13624899999999998,
+    "runtime.forward": 199.36719333333332,
+    "runtime.input_prepare": 0.03734433333333334,
+    "runtime.input_validation": 3.4663976666666665,
+    "runtime.observation": 0.08960266666666666,
+    "runtime.output_read": 2.3722119999999998,
+    "runtime.preprocess": 5.605747,
+    "runtime.raw_validation": 1.806363,
+    "runtime.selection": 0.001664666666666667,
+    "runtime.state_clear": 0.005587999999999998,
+    "runtime.total": 212.96266766666668
+  },
+  "forward_gaps_ms": {
+    "before_0": {
+      "mean": 0.6954999999999999,
+      "p95": 0.7200945
+    },
+    "before_9185": {
+      "mean": 0.052913999999999996,
+      "p95": 0.054625999999999994
+    },
+    "before_188": {
+      "mean": 0.052038999999999995,
+      "p95": 0.053447999999999996
+    },
+    "before_9186": {
+      "mean": 0.05617366666666666,
+      "p95": 0.0572165
+    },
+    "before_192": {
+      "mean": 0.06452566666666666,
+      "p95": 0.06674899999999999
+    },
+    "before_9187": {
+      "mean": 0.05611666666666667,
+      "p95": 0.06133399999999998
+    },
+    "before_437": {
+      "mean": 0.06266166666666666,
+      "p95": 0.06937899999999998
+    },
+    "before_9188": {
+      "mean": 0.052677999999999996,
+      "p95": 0.0540565
+    },
+    "before_442": {
+      "mean": 0.05140266666666667,
+      "p95": 0.052533
+    },
+    "before_9189": {
+      "mean": 0.06533199999999999,
+      "p95": 0.07202149999999996
+    },
+    "before_582": {
+      "mean": 0.07078433333333334,
+      "p95": 0.07529649999999999
+    },
+    "before_9190": {
+      "mean": 0.06794199999999999,
+      "p95": 0.14674549999999997
+    },
+    "before_649": {
+      "mean": 0.06963699999999999,
+      "p95": 0.0812475
+    },
+    "before_9191": {
+      "mean": 0.07840666666666665,
+      "p95": 0.15488899999999997
+    },
+    "after_last": {
+      "mean": 0.6637510000000001,
+      "p95": 0.857332
+    }
+  },
+  "checked_scalar_counts_per_frame": {
+    "raw": 5400,
+    "preprocessed": 10800,
+    "CPU_descriptors": {
+      "188": 181,
+      "192": 11760,
+      "437": 101,
+      "582": 21000,
+      "649": 21000
+    },
+    "total_literal_finite_guards": 70242
+  },
+  "candidate": "const char* overload to construct rejection/error strings only on failure, while preserving every check and numerical operation",
+  "candidate_not_implemented": true,
+  "per_guard_heap_allocation_is_source_based_inference_not_allocator_profile": true,
+  "possible_speedup_not_promised": true,
+  "NPU_wait_not_removed": true,
+  "new_model_or_cache_changes": false
+}

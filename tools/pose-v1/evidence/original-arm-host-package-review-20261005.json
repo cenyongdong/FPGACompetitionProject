@@ -1,0 +1,350 @@
+{
+  "scope": "Static original archive review only; binary strings are not a runtime support test",
+  "packages": [
+    {
+      "source": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\Icraft_V3.39.0安装包\\30TAI&100TAI\\30TAI&100TAI\\Icraft_3.39.0_onchip.deb",
+      "size": 9192096,
+      "sha256": "aa24f938566d8892d262bc87bac8048bb8b41c4e4199870debf96b5cc4615ab3",
+      "selected_files": [
+        {
+          "archive": "control.tar.xz",
+          "path": "./control",
+          "size": 162,
+          "link": "",
+          "sha256": "5616f9e2eeea3bff419b64e66952f5a21f28e2c65e57b35462aa8a75eeb8d71f",
+          "text": "Package: Icraft\nVersion: 3.39.0\nArchitecture: arm64\nMaintainer: FMSH-TX\nSecion: utils\nPriority: optional\nInstalled_Size: 20\nDescription: This is Icraft for arm64\n"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/cmake/icraft-hostbackend-config-version.cmake",
+          "size": 3374,
+          "link": "",
+          "sha256": "0c02228874143f50d7c2d4abf31e5acfafb284e5b9ee8a40c490dd762dd70e22",
+          "text": "# This is a basic version file for the Config-mode of find_package().\n# It is used by write_basic_package_version_file() as input file for configure_file()\n# to create a version-file which can be installed along a config.cmake file.\n#\n# The created file sets PACKAGE_VERSION_EXACT if the current version string and\n# the requested version string are exactly the same and it sets\n# PACKAGE_VERSION_COMPATIBLE if the current version is equal to the requested version.\n# The tweak version component is ignored.\n# The variable CVF_VERSION must be set before calling configure_file().\n\n\nif (PACKAGE_FIND_VERSION_RANGE)\n  message(AUTHOR_WARNING\n    \"`find_package()` specify a version range but the version strategy \"\n    \"(ExactVersion) of the module `${PACKAGE_FIND_NAME}` is incompatible \"\n    \"with this request. Only the lower endpoint of the range will be used.\")\nendif()\n\nset(PACKAGE_VERSION \"3.39.0.0\")\n\nif(\"3.39.0.0\" MATCHES \"^([0-9]+)\\\\.([0-9]+)\\\\.([0-9]+)\") # strip the tweak version\n  set(CVF_VERSION_MAJOR \"${CMAKE_MATCH_1}\")\n  set(CVF_VERSION_MINOR \"${CMAKE_MATCH_2}\")\n  set(CVF_VERSION_PATCH \"${CMAKE_MATCH_3}\")\n\n  if(NOT CVF_VERSION_MAJOR VERSION_EQUAL 0)\n    string(REGEX REPLACE \"^0+\" \"\" CVF_VERSION_MAJOR \"${CVF_VERSION_MAJOR}\")\n  endif()\n  if(NOT CVF_VERSION_MINOR VERSION_EQUAL 0)\n    string(REGEX REPLACE \"^0+\" \"\" CVF_VERSION_MINOR \"${CVF_VERSION_MINOR}\")\n  endif()\n  if(NOT CVF_VERSION_PATCH VERSION_EQUAL 0)\n    string(REGEX REPLACE \"^0+\" \"\" CVF_VERSION_PATCH \"${CVF_VERSION_PATCH}\")\n  endif()\n\n  set(CVF_VERSION_NO_TWEAK \"${CVF_VERSION_MAJOR}.${CVF_VERSION_MINOR}.${CVF_VERSION_PATCH}\")\nelse()\n  set(CVF_VERSION_NO_TWEAK \"3.39.0.0\")\nendif()\n\nif(PACKAGE_FIND_VERSION MATCHES \"^([0-9]+)\\\\.([0-9]+)\\\\.([0-9]+)\") # strip the tweak version\n  set(REQUESTED_VERSION_MAJOR \"${CMAKE_MATCH_1}\")\n  set(REQUESTED_VERSION_MINOR \"${CMAKE_MATCH_2}\")\n  set(REQUESTED_VERSION_PATCH \"${CMAKE_MATCH_3}\")\n\n  if(NOT REQUESTED_VERSION_MAJOR VERSION_EQUAL 0)\n    string(REGEX REPLACE \"^0+\" \"\" REQUESTED_VERSION_MAJOR \"${REQUESTED_VERSION_MAJOR}\")\n  endif()\n  if(NOT REQUESTED_VERSION_MINOR VERSION_EQUAL 0)\n    string(REGEX REPLACE \"^0+\" \"\" REQUESTED_VERSION_MINOR \"${REQUESTED_VERSION_MINOR}\")\n  endif()\n  if(NOT REQUESTED_VERSION_PATCH VERSION_EQUAL 0)\n    string(REGEX REPLACE \"^0+\" \"\" REQUESTED_VERSION_PATCH \"${REQUESTED_VERSION_PATCH}\")\n  endif()\n\n  set(REQUESTED_VERSION_NO_TWEAK\n      \"${REQUESTED_VERSION_MAJOR}.${REQUESTED_VERSION_MINOR}.${REQUESTED_VERSION_PATCH}\")\nelse()\n  set(REQUESTED_VERSION_NO_TWEAK \"${PACKAGE_FIND_VERSION}\")\nendif()\n\nif(REQUESTED_VERSION_NO_TWEAK STREQUAL CVF_VERSION_NO_TWEAK)\n  set(PACKAGE_VERSION_COMPATIBLE TRUE)\nelse()\n  set(PACKAGE_VERSION_COMPATIBLE FALSE)\nendif()\n\nif(PACKAGE_FIND_VERSION STREQUAL PACKAGE_VERSION)\n  set(PACKAGE_VERSION_EXACT TRUE)\nendif()\n\n\n# if the installed project requested no architecture check, don't perform the check\nif(\"FALSE\")\n  return()\nendif()\n\n# if the installed or the using project don't have CMAKE_SIZEOF_VOID_P set, ignore it:\nif(\"${CMAKE_SIZEOF_VOID_P}\" STREQUAL \"\" OR \"8\" STREQUAL \"\")\n  return()\nendif()\n\n# check that the installed version has the same 32/64bit-ness as the one which is currently searching:\nif(NOT CMAKE_SIZEOF_VOID_P STREQUAL \"8\")\n  math(EXPR installedBits \"8 * 8\")\n  set(PACKAGE_VERSION \"${PACKAGE_VERSION} (${installedBits}bit)\")\n  set(PACKAGE_VERSION_UNSUITABLE TRUE)\nendif()\n"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/cmake/icraft-hostbackend-config.cmake",
+          "size": 1332,
+          "link": "",
+          "sha256": "815b04bec47aae519a782651811f014fb0c65a0d4628ecfb0caf9ef0ecbc1c81",
+          "text": "\n####### Expanded from @PACKAGE_INIT@ by configure_package_config_file() #######\n####### Any changes to this file will be overwritten by the next CMake run ####\n####### The input file was icraft-hostbackend-config.cmake.in                            ########\n\nget_filename_component(PACKAGE_PREFIX_DIR \"${CMAKE_CURRENT_LIST_DIR}/../\" ABSOLUTE)\n\nmacro(set_and_check _var _file)\n  set(${_var} \"${_file}\")\n  if(NOT EXISTS \"${_file}\")\n    message(FATAL_ERROR \"File or directory ${_file} referenced by variable ${_var} does not exist !\")\n  endif()\nendmacro()\n\nmacro(check_required_components _NAME)\n  foreach(comp ${${_NAME}_FIND_COMPONENTS})\n    if(NOT ${_NAME}_${comp}_FOUND)\n      if(${_NAME}_FIND_REQUIRED_${comp})\n        set(${_NAME}_FOUND FALSE)\n      endif()\n    endif()\n  endforeach()\nendmacro()\n\n####################################################################################\n\ninclude(CMakeFindDependencyMacro)\nfind_dependency(Icraft-XRT)\n\nif (NOT TARGET Icraft::HostBackend)\n\tif(UNIX)\n\t\tif(CMAKE_SYSTEM_PROCESSOR MATCHES \"aarch64|arm64|armv[0-9]\")\n\t\t\tinclude(${CMAKE_CURRENT_LIST_DIR}/icraft-hostbackend-targets-aarch64.cmake)\n\t\telse()\n\t\t\tinclude(${CMAKE_CURRENT_LIST_DIR}/icraft-hostbackend-targets-x64.cmake)\n\t\tendif()\n\telse()\n\t\tinclude(${CMAKE_CURRENT_LIST_DIR}/icraft-hostbackend-targets-win.cmake)\n\tendif()\nendif ()\n"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/cmake/icraft-hostbackend-targets-aarch64-release.cmake",
+          "size": 1467,
+          "link": "",
+          "sha256": "049a27f48fd2b3ae594bbdfa5f11fb9a6b05ff3d9506f6e36352a001ce60fd13",
+          "text": "#----------------------------------------------------------------\n# Generated CMake target import file for configuration \"Release\".\n#----------------------------------------------------------------\n\n# Commands may need to know the format version.\nset(CMAKE_IMPORT_FILE_VERSION 1)\n\n# Import target \"Icraft::HostBackend\" for configuration \"Release\"\nset_property(TARGET Icraft::HostBackend APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)\nset_target_properties(Icraft::HostBackend PROPERTIES\n  IMPORTED_LOCATION_RELEASE \"${_IMPORT_PREFIX}/lib/aarch64-linux-gnu/libicraft_hostbackend.so\"\n  IMPORTED_SONAME_RELEASE \"libicraft_hostbackend.so\"\n  )\n\nlist(APPEND _cmake_import_check_targets Icraft::HostBackend )\nlist(APPEND _cmake_import_check_files_for_Icraft::HostBackend \"${_IMPORT_PREFIX}/lib/aarch64-linux-gnu/libicraft_hostbackend.so\" )\n\n# Import target \"Icraft::CudaDefault\" for configuration \"Release\"\nset_property(TARGET Icraft::CudaDefault APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)\nset_target_properties(Icraft::CudaDefault PROPERTIES\n  IMPORTED_LOCATION_RELEASE \"${_IMPORT_PREFIX}/lib/aarch64-linux-gnu/libcudadefault.so\"\n  IMPORTED_SONAME_RELEASE \"libcudadefault.so\"\n  )\n\nlist(APPEND _cmake_import_check_targets Icraft::CudaDefault )\nlist(APPEND _cmake_import_check_files_for_Icraft::CudaDefault \"${_IMPORT_PREFIX}/lib/aarch64-linux-gnu/libcudadefault.so\" )\n\n# Commands beyond this point should not need to know the version.\nset(CMAKE_IMPORT_FILE_VERSION)\n"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/cmake/icraft-hostbackend-targets-aarch64.cmake",
+          "size": 5066,
+          "link": "",
+          "sha256": "8895a1f11b049e6a0532a65316c1913833d9935e973f37b987b5d90b7da6e9ca",
+          "text": "# Generated by CMake\n\nif(\"${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}\" LESS 2.8)\n   message(FATAL_ERROR \"CMake >= 2.8.0 required\")\nendif()\nif(CMAKE_VERSION VERSION_LESS \"2.8.3\")\n   message(FATAL_ERROR \"CMake >= 2.8.3 required\")\nendif()\ncmake_policy(PUSH)\ncmake_policy(VERSION 2.8.3...3.22)\n#----------------------------------------------------------------\n# Generated CMake target import file.\n#----------------------------------------------------------------\n\n# Commands may need to know the format version.\nset(CMAKE_IMPORT_FILE_VERSION 1)\n\n# Protect against multiple inclusion, which would fail when already imported targets are added once more.\nset(_cmake_targets_defined \"\")\nset(_cmake_targets_not_defined \"\")\nset(_cmake_expected_targets \"\")\nforeach(_cmake_expected_target IN ITEMS Icraft::HostBackend Icraft::CudaDefault)\n  list(APPEND _cmake_expected_targets \"${_cmake_expected_target}\")\n  if(TARGET \"${_cmake_expected_target}\")\n    list(APPEND _cmake_targets_defined \"${_cmake_expected_target}\")\n  else()\n    list(APPEND _cmake_targets_not_defined \"${_cmake_expected_target}\")\n  endif()\nendforeach()\nunset(_cmake_expected_target)\nif(_cmake_targets_defined STREQUAL _cmake_expected_targets)\n  unset(_cmake_targets_defined)\n  unset(_cmake_targets_not_defined)\n  unset(_cmake_expected_targets)\n  unset(CMAKE_IMPORT_FILE_VERSION)\n  cmake_policy(POP)\n  return()\nendif()\nif(NOT _cmake_targets_defined STREQUAL \"\")\n  string(REPLACE \";\" \", \" _cmake_targets_defined_text \"${_cmake_targets_defined}\")\n  string(REPLACE \";\" \", \" _cmake_targets_not_defined_text \"${_cmake_targets_not_defined}\")\n  message(FATAL_ERROR \"Some (but not all) targets in this export set were already defined.\\nTargets Defined: ${_cmake_targets_defined_text}\\nTargets not yet defined: ${_cmake_targets_not_defined_text}\\n\")\nendif()\nunset(_cmake_targets_defined)\nunset(_cmake_targets_not_defined)\nunset(_cmake_expected_targets)\n\n\n# Compute the installation prefix relative to this file.\nget_filename_component(_IMPORT_PREFIX \"${CMAKE_CURRENT_LIST_FILE}\" PATH)\nget_filename_component(_IMPORT_PREFIX \"${_IMPORT_PREFIX}\" PATH)\nif(_IMPORT_PREFIX STREQUAL \"/\")\n  set(_IMPORT_PREFIX \"\")\nendif()\n\n# Create imported target Icraft::HostBackend\nadd_library(Icraft::HostBackend SHARED IMPORTED)\n\nset_target_properties(Icraft::HostBackend PROPERTIES\n  INTERFACE_INCLUDE_DIRECTORIES \"${_IMPORT_PREFIX}/include\"\n  INTERFACE_LINK_LIBRARIES \"Icraft::XRT;rt;dl;Icraft::CudaDefault\"\n)\n\n# Create imported target Icraft::CudaDefault\nadd_library(Icraft::CudaDefault SHARED IMPORTED)\n\nset_target_properties(Icraft::CudaDefault PROPERTIES\n  INTERFACE_INCLUDE_DIRECTORIES \"${_IMPORT_PREFIX}/include\"\n  INTERFACE_LINK_LIBRARIES \"Icraft::XRT\"\n)\n\nif(CMAKE_VERSION VERSION_LESS 2.8.12)\n  message(FATAL_ERROR \"This file relies on consumers using CMake 2.8.12 or greater.\")\nendif()\n\n# Load information for each installed configuration.\nfile(GLOB _cmake_config_files \"${CMAKE_CURRENT_LIST_DIR}/icraft-hostbackend-targets-aarch64-*.cmake\")\nforeach(_cmake_config_file IN LISTS _cmake_config_files)\n  include(\"${_cmake_config_file}\")\nendforeach()\nunset(_cmake_config_file)\nunset(_cmake_config_files)\n\n# Cleanup temporary variables.\nset(_IMPORT_PREFIX)\n\n# Loop over all imported files and verify that they actually exist\nforeach(_cmake_target IN LISTS _cmake_import_check_targets)\n  foreach(_cmake_file IN LISTS \"_cmake_import_check_files_for_${_cmake_target}\")\n    if(NOT EXISTS \"${_cmake_file}\")\n      message(FATAL_ERROR \"The imported target \\\"${_cmake_target}\\\" references the file\n   \\\"${_cmake_file}\\\"\nbut this file does not exist.  Possible reasons include:\n* The file was deleted, renamed, or moved to another location.\n* An install or uninstall procedure did not complete successfully.\n* The installation package was faulty and contained\n   \\\"${CMAKE_CURRENT_LIST_FILE}\\\"\nbut not all the files it references.\n\")\n    endif()\n  endforeach()\n  unset(_cmake_file)\n  unset(\"_cmake_import_check_files_for_${_cmake_target}\")\nendforeach()\nunset(_cmake_target)\nunset(_cmake_import_check_targets)\n\n# Make sure the targets which have been exported in some other\n# export set exist.\nunset(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets)\nforeach(_target \"Icraft::XRT\" )\n  if(NOT TARGET \"${_target}\" )\n    set(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets \"${${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets} ${_target}\")\n  endif()\nendforeach()\n\nif(DEFINED ${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets)\n  if(CMAKE_FIND_PACKAGE_NAME)\n    set( ${CMAKE_FIND_PACKAGE_NAME}_FOUND FALSE)\n    set( ${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE \"The following imported targets are referenced, but are missing: ${${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets}\")\n  else()\n    message(FATAL_ERROR \"The following imported targets are referenced, but are missing: ${${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets}\")\n  endif()\nendif()\nunset(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets)\n\n# Commands beyond this point should not need to know the version.\nset(CMAKE_IMPORT_FILE_VERSION)\ncmake_policy(POP)\n"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/_git_version.h",
+          "size": 626,
+          "link": "",
+          "sha256": "f5dd74082b64177e8d61154f9e8d82bc6383f8467938bcea80e58a6e4ab18709"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/backend.h",
+          "size": 7540,
+          "link": "",
+          "sha256": "8cf82840f340ff4173d6d855f8a39b72225dc5d7681fc3d7b7ed9b3cac2da378"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/common",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/common/tensor_kernel.h",
+          "size": 237680,
+          "link": "",
+          "sha256": "509d54a778dcbc25094be73dfc5250b0b84ba3681a3d0b9f49905779338e015d"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/cuda",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/cuda/device.h",
+          "size": 1727,
+          "link": "",
+          "sha256": "71b8714680088da061e671acb77f31e4d29643b7898347677313b7ca693f8ea5"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/cuda/dllexport.h",
+          "size": 218,
+          "link": "",
+          "sha256": "5098c9ef05aa183b048d521a42ae52f52775f8ce5b3729afd8736abfa1c80fda"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/cuda/memory.h",
+          "size": 3141,
+          "link": "",
+          "sha256": "406cf292b535c7dd7a6e2fd5d92faa6a989b3e8ed9f5549a8c32c8357245a88d"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/cuda/utils.h",
+          "size": 1514,
+          "link": "",
+          "sha256": "c63abf3540f7513e32a832cbca06f2b4a89e2f342457056435bcd4730921c9ad"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/decode_custom.h",
+          "size": 1278,
+          "link": "",
+          "sha256": "2b795f4b714710f0f5eb32192f3b5ecd73e9240a18825e06b9c5213c8529a4e0"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/dllexport.h",
+          "size": 222,
+          "link": "",
+          "sha256": "b9337314144a048d798d52266ed83dc48f94bea0a30a439aa914e967ff9de062"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/acoreos",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/acoreos/backend.h",
+          "size": 823,
+          "link": "",
+          "sha256": "05f064897c0ee19672fa7915fa7d833cc14109ecaeb30a49684dbac796d67610"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/baremetal",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/baremetal/backend.h",
+          "size": 823,
+          "link": "",
+          "sha256": "05f064897c0ee19672fa7915fa7d833cc14109ecaeb30a49684dbac796d67610"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/common",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/common/hostbackend_impl.h",
+          "size": 16864,
+          "link": "",
+          "sha256": "b1ddec12bf7f415ba25e8f37ba49218de98495437440ff4f4fc03c7b7794ec24"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/common/tensor_ops.h",
+          "size": 108298,
+          "link": "",
+          "sha256": "f339262a95a63ebe9e1834e56278e737312319a52413a1d749e1a63bf4e48e92"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/freertos",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/freertos/backend.h",
+          "size": 823,
+          "link": "",
+          "sha256": "05f064897c0ee19672fa7915fa7d833cc14109ecaeb30a49684dbac796d67610"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/reworks",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/reworks/README.md",
+          "size": 283,
+          "link": "",
+          "sha256": "83aa7530dec3ede100b5ba5a4db57d3d670d9e31478478a4e10e3c31d0c81c59"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/reworks/backend.h",
+          "size": 823,
+          "link": "",
+          "sha256": "05f064897c0ee19672fa7915fa7d833cc14109ecaeb30a49684dbac796d67610"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/sylixos",
+          "size": 0,
+          "link": ""
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/port/sylixos/backend.h",
+          "size": 823,
+          "link": "",
+          "sha256": "05f064897c0ee19672fa7915fa7d833cc14109ecaeb30a49684dbac796d67610"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-backends/hostbackend/utils.h",
+          "size": 2344,
+          "link": "",
+          "sha256": "939e380cd54fbad861243500681f34c40be5db2a36eb81fa35e117489fb68a2b"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-xir/ops/matmul.h",
+          "size": 703,
+          "link": "",
+          "sha256": "7636b7f1d51299798db378c3e9e9c6ae8ffc68a40c540fa9ba5da744831a5668"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/include/icraft-xir/ops/matmul_nbits.h",
+          "size": 1744,
+          "link": "",
+          "sha256": "532d7bb19312cdd410dbb0dfc3a896b4cd5aaf45de1e0a85c41ff45f96fce119"
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/lib/aarch64-linux-gnu/libcudadefault.so",
+          "size": 78984,
+          "link": "",
+          "sha256": "6cd2396f646196b5fe8882f5877f497d38f0c8740c2a52b47f1ee16a472242a9",
+          "literal_counts": {
+            "Matmul": 0,
+            "TopK": 0,
+            "Gather": 0,
+            "ScatterND": 0,
+            "icraft::xir::MatmulNode": 0
+          },
+          "matching_printable_strings": []
+        },
+        {
+          "archive": "data.tar.xz",
+          "path": "./usr/lib/aarch64-linux-gnu/libicraft_hostbackend.so",
+          "size": 20672776,
+          "link": "",
+          "sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+          "literal_counts": {
+            "Matmul": 2,
+            "TopK": 51,
+            "Gather": 232,
+            "ScatterND": 1,
+            "icraft::xir::MatmulNode": 0
+          },
+          "matching_printable_strings": [
+            "CPUTopKV2.cpp",
+            "GeometryTopK.cpp",
+            "ShapeTopKV2.cpp",
+            "StrassenMatmulComputor.cpp",
+            "TopK should have 2 output and 2~3 input, get %lu in and %lu out",
+            "TopKV2",
+            "TopKV2 data type not supported",
+            "_ZN3MNN12GeometryTopKD0Ev",
+            "_ZN3MNN12GeometryTopKD1Ev",
+            "_ZN3MNN12GeometryTopKD2Ev",
+            "_ZN3MNN18TopKV2SizeComputerD0Ev",
+            "_ZN3MNN18TopKV2SizeComputerD1Ev",
+            "_ZN3MNN18TopKV2SizeComputerD2Ev",
+            "_ZN3MNN26___GeometryTopK___create__Ev",
+            "_ZN3MNN29DenseConvolutionTiledExecutor25selectLowMemoryMatmulFuncEPPFvPfPKfS3_PKmS3_S3_S3_S3_EPPFvS1_S3_S3_mS5_S3_S3_S3_S3_ES1_iPKNS_13CoreFunctionsE",
+            "_ZN3MNN36___CPUTopKV2Creator__OpType_TopKV2__Ev",
+            "_ZN3MNN38___TopKV2SizeComputer__OpType_TopKV2__Ev",
+            "_ZN3MNN7Express7_TopKV2ENS0_4VARPES1_",
+            "_ZN3MNN8findTopKIfEEviiPKT_iPiPS1_b",
+            "_ZN3MNN8findTopKIiEEviiPKT_iPiPS1_b",
+            "_ZN3MNN9CPUTopKV29onExecuteERKSt6vectorIPNS_6TensorESaIS3_EES7_",
+            "_ZN3MNN9CPUTopKV2C1EPNS_7BackendEPKNS_2OpE",
+            "_ZN3MNN9CPUTopKV2C2EPNS_7BackendEPKNS_2OpE",
+            "_ZN3MNN9CPUTopKV2D0Ev",
+            "_ZN3MNN9CPUTopKV2D1Ev",
+            "_ZN3MNN9CPUTopKV2D2Ev",
+            "_ZN3MNNL14buildScatterNDEPKNS_2OpEPNS_6TensorES4_S4_S4_iiiiiRNS_16GeometryComputer7ContextERNS_13CommandBufferE",
+            "_ZNK3MNN12GeometryTopK9onComputeEPKNS_2OpERKSt6vectorIPNS_6TensorESaIS6_EESA_RNS_16GeometryComputer7ContextERNS_13CommandBufferE",
+            "_ZNK3MNN16CPUTopKV2Creator8onCreateERKSt6vectorIPNS_6TensorESaIS3_EES7_PKNS_2OpEPNS_7BackendE",
+            "_ZNK3MNN18TopKV2SizeComputer13onComputeSizeEPKNS_2OpERKSt6vectorIPNS_6TensorESaIS6_EESA_",
+            "_ZNSt14_Function_base13_Base_managerIZN3MNN9CPUTopKV29onExecuteERKSt6vectorIPNS1_6TensorESaIS5_EES9_EUliE0_E10_M_managerERSt9_Any_dataRKSC_St18_Manager_operation",
+            "_ZNSt14_Function_base13_Base_managerIZN3MNN9CPUTopKV29onExecuteERKSt6vectorIPNS1_6TensorESaIS5_EES9_EUliE_E10_M_managerERSt9_Any_dataRKSC_St18_Manager_operation",
+            "_ZNSt15_Sp_counted_ptrIPN3MNN12GeometryTopKELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv",
+            "_ZNSt15_Sp_counted_ptrIPN3MNN12GeometryTopKELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv",
+            "_ZNSt15_Sp_counted_ptrIPN3MNN12GeometryTopKELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info",
+            "_ZNSt15_Sp_counted_ptrIPN3MNN12GeometryTopKELN9__gnu_cxx12_Lock_policyE2EED0Ev",
+            "_ZNSt15_Sp_counted_ptrIPN3MNN12GeometryTopKELN9__gnu_cxx12_Lock_policyE2EED1Ev",
+            "_ZNSt15_Sp_counted_ptrIPN3MNN12GeometryTopKELN9__gnu_cxx12_Lock_policyE2EED2Ev",
+            "_ZNSt17_Function_handlerIFviEZN3MNN9CPUTopKV29onExecuteERKSt6vectorIPNS1_6TensorESaIS5_EES9_EUliE0_E9_M_invokeERKSt9_Any_dataOi",
+            "_ZNSt17_Function_handlerIFviEZN3MNN9CPUTopKV29onExecuteERKSt6vectorIPNS1_6TensorESaIS5_EES9_EUliE_E9_M_invokeERKSt9_Any_dataOi",
+            "_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPZN3MNN8findTopKIfEEviiPKT_iPiPS4_bE8DataTypeSt6vectorIS9_SaIS9_EEEElS9_NS0_5__ops15_Iter_comp_iterIZNS3_IfEEviiS6_iS7_S8_bEUlRKS9_SI_E0_EEEvS4_T0_SL_T1_T2_",
+            "_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPZN3MNN8findTopKIfEEviiPKT_iPiPS4_bE8DataTypeSt6vectorIS9_SaIS9_EEEElS9_NS0_5__ops15_Iter_comp_iterIZNS3_IfEEviiS6_iS7_S8_bEUlRKS9_SI_E_EEEvS4_T0_SL_T1_T2_",
+            "_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPZN3MNN8findTopKIiEEviiPKT_iPiPS4_bE8DataTypeSt6vectorIS9_SaIS9_EEEElS9_NS0_5__ops15_Iter_comp_iterIZNS3_IiEEviiS6_iS7_S8_bEUlRKS9_SI_E0_EEEvS4_T0_SL_T1_T2_",
+            "_ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPZN3MNN8findTopKIiEEviiPKT_iPiPS4_bE8DataTypeSt6vectorIS9_SaIS9_EEEElS9_NS0_5__ops15_Iter_comp_iterIZNS3_IiEEviiS6_iS7_S8_bEUlRKS9_SI_E_EEEvS4_T0_SL_T1_T2_",
+            "_ZTVN3MNN12GeometryTopKE",
+            "_ZTVN3MNN16CPUTopKV2CreatorE",
+            "_ZTVN3MNN18TopKV2SizeComputerE",
+            "_ZTVN3MNN9CPUTopKV2E",
+            "_ZTVSt15_Sp_counted_ptrIPN3MNN12GeometryTopKELN9__gnu_cxx12_Lock_policyE2EE",
+            "_ZZN3MNN36___CPUTopKV2Creator__OpType_TopKV2__EvE5_temp"
+          ]
+        }
+      ],
+      "payload_executed": false
+    },
+    {
+      "source": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\Icraft_V3.39.0安装包\\30TAI&100TAI\\30TAI&100TAI\\CustomOp_3.39.0_onchip.deb",
+      "size": 314660,
+      "sha256": "9361e31a4371ea5d8e3278bdb66e01849f4c639b43e3a1167a65f65795651036",
+      "selected_files": [
+        {
+          "archive": "control.tar.xz",
+          "path": "./control",
+          "size": 173,
+          "link": "",
+          "sha256": "791ef2f130194edc4607094b73d357d3cd7d615bb60ffb284b055b995703694c",
+          "text": "Package: CustomOp\nVersion: 3.39.0\nArchitecture: arm64\nMaintainer: FMSH-TX\nSecion: utils\nPriority: optional\nInstalled_Size: 20\nDescription: This is Icraft CustomOp for arm64\n"
+        }
+      ],
+      "payload_executed": false
+    }
+  ]
+}

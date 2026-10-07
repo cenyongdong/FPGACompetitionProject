@@ -1,0 +1,13 @@
+{
+  "status": "profile_off_single_clock_source_reviewed",
+  "r2_sources_preserved": true,
+  "SDK_model_unchanged": true,
+  "same_frame_completion_protocol": true,
+  "timing_uses_single_steady_clock": true,
+  "no_timing_file_IO_within_forward": true,
+  "Host_math_and_memory_strategy_unchanged": true,
+  "SDK_profile_disabled": true,
+  "async_intermediate_observation_not_mistaken_for_completion": true,
+  "nested_times_not_double_counted": true,
+  "board_executed": false
+}
