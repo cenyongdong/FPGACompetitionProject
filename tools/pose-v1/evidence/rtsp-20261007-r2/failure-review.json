@@ -1,0 +1,11 @@
+{
+  "status": "initial_client_keepalive_omission_preserved",
+  "server_exit": 0,
+  "client_status": "timeout_after88_verified_frames",
+  "valid_NAL_frames": 88,
+  "server_reclamation_seconds": 10,
+  "client_keepalive_sent": false,
+  "correction": "Client GET_PARAMETER every3s; server/binary/payload unchanged in new r3",
+  "proof": "RTSPServer.hh documents command/RTCP RR inactivity reclamation; same program passes100 frames/session with3 GET_PARAMETER responses each",
+  "not_a_VPU_or_NPU_failure": true
+}

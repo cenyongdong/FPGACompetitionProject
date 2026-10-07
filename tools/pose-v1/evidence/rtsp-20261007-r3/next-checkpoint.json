@@ -1,0 +1,20 @@
+{
+  "status": "isolated_RTSP_transport_and_standard_player_completed",
+  "paused": false,
+  "user_dynamic_video_review": "completed, user requested continued implementation",
+  "date": "2026-10-07",
+  "program_sha256": "454d21c24831f88a513747710540294914b6e2d4fddc8ed2993420bc28758fb2",
+  "package": ".local/pose-v1-rtsp/package-20261007-r2",
+  "current_report": "tools/pose-v1/RTSP-RESULTS-20261007.md",
+  "next": "F0 bounded actual Engine result -> renderer -> encoder integration; see F0-INTEGRATION-PREP-20261007.md. Preserve r5 VPU and r2 RTSP baselines. HDMI mapping still unavailable.",
+  "all_services_stopped": true,
+  "ssh_sftp_closed": true,
+  "no_automation_or_background_job": true,
+  "not_verified": [
+    "Concurrent inference/encoding",
+    "Online VPU-to-RTSP owned AU bridge",
+    "Explicit color signal",
+    "1080p60 HDMI",
+    "Whole-system 5Hz/30min"
+  ]
+}

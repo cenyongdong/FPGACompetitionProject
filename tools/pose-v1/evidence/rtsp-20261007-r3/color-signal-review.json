@@ -1,0 +1,11 @@
+{
+  "status": "SPS_signal_inspected",
+  "parser": "existing board FFmpeg4.2.7 trace_headers",
+  "h264_sha256": "d51c98b183b4b0ff5ff7142403c1fa1c8146a5be4be71672afcd17e9d38eaac3",
+  "video_signal_type_present_flag": 0,
+  "timing_info_present_flag": 1,
+  "num_units_in_tick": 32768,
+  "time_scale": 655360,
+  "explicit_matrix_primaries_transfer": false,
+  "scope": "No pixel, VCL or SPS modification; metadata treatment remains for integration"
+}

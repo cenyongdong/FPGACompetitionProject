@@ -1,0 +1,52 @@
+{
+  "status": "isolated_RTSP_transport_reconnect_decode_verified",
+  "scope": "owned prerecorded VPU output; no concurrent VPU or inference",
+  "program_sha256": "454d21c24831f88a513747710540294914b6e2d4fddc8ed2993420bc28758fb2",
+  "source_sha256": "f7eb9292fb26121f5be55001e7488c8096f0ee77c3f5cbe225af2f758a9a6dd7",
+  "package_sha256": "21b911252e5bce66d1ce76761c054e94e274e4b11feb807df889b3679b043bc9",
+  "package_payloads": 6,
+  "returned_hashed_files": 12,
+  "exit": 0,
+  "kernel_unchanged": true,
+  "boot_sdk_unchanged": true,
+  "stderr_empty": false,
+  "stderr_classification": "two exact vendor RTCP diagnostic lines, retained",
+  "completion": {
+    "event": "completed",
+    "sources_created": 3,
+    "sources_live": 0,
+    "elapsed_us": 60000371,
+    "failed": false
+  },
+  "clients": [
+    {
+      "client": 1,
+      "received_frames": 100,
+      "first_encoded_id": 30,
+      "last_encoded_id": 21,
+      "keepalive_count": 3,
+      "RTP_packets": 306,
+      "RTCP_packets": 3,
+      "decoded_exact_r5": true,
+      "NAL_exact_r5": true,
+      "received_h264_sha256": "92a77112ca6596dc1bb454251be1151b329d6c4890cdf0ad94427a41d28758ab"
+    },
+    {
+      "client": 2,
+      "received_frames": 100,
+      "first_encoded_id": 0,
+      "last_encoded_id": 45,
+      "keepalive_count": 3,
+      "RTP_packets": 307,
+      "RTCP_packets": 3,
+      "decoded_exact_r5": true,
+      "NAL_exact_r5": true,
+      "received_h264_sha256": "92440532a01d45907b6b0e24391af449a7bbb83770057d5f08b6dae38f2224e4"
+    }
+  ],
+  "port_released": true,
+  "all_sources_released": true,
+  "color_VUI_verified": false,
+  "whole_system_5Hz_verified": false,
+  "HDMI_mode_changed": false
+}

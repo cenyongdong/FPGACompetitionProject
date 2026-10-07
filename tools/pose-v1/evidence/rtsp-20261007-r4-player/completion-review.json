@@ -1,0 +1,20 @@
+{
+  "status": "direct_RTSP_player_and_board_cleanup_verified",
+  "program_sha256": "454d21c24831f88a513747710540294914b6e2d4fddc8ed2993420bc28758fb2",
+  "returned_hashed_files": 12,
+  "exit": 0,
+  "kernel_unchanged": true,
+  "boot_sdk_unchanged": true,
+  "stderr_empty": false,
+  "stderr": "one exact retained vendor RTCP diagnostic",
+  "completion": {
+    "event": "completed",
+    "sources_created": 2,
+    "sources_live": 0,
+    "elapsed_us": 60000358,
+    "failed": false
+  },
+  "host_decoded_frames": 100,
+  "host_pixels_equal_r5": true,
+  "port_released": true
+}

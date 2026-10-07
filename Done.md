@@ -1,5 +1,16 @@
 # 已完成工作记录
 
+## 2026-10-07：独立RTSP传输/重连与标准播放器首批完成
+
+### 工程内容总结
+
+用户已审查动态骨架视频并要求继续。复用厂商live5552024.11.28和配套OpenSSL头/静态库，新增SDK无关有界RTSP回放。原r5输入/编码、推理/渲染/SDK/BOOT保持，无新安装。r1缺ARM配套头路径失败保留，r2构建454d21c2…58fb2。
+首客户端缺保活导致10秒会话回收，88正确帧和全记录保留；仅客户端补每3秒GET_PARAMETER，新r3两个会话各100帧通过，实际SPS/PPS/IDR加入/TEARDOWN/重连/FU-A/NAL/9000 ticks时基均核验。200帧全解码像素逐位r5；r4现有OpenCV/FFmpeg直接RTSP另100帧通过。两60秒服务上下文退出0，内核/BOOT/SDK保持、sources/端口全部归还。stderr厂商诊断行原样保留并分类，不谎称为空。[完整结果/录制视频](tools/pose-v1/RTSP-RESULTS-20261007.md)。
+
+### 对后续开发的参考
+
+SPS实际video_signal_type_present_flag=0，显式色彩仍待。当前回放为已有VPU输出，不是在线VPU或NPU编码并发；固定单slice索引也非通用AU解析。下一[F0门检](tools/pose-v1/F0-INTEGRATION-PREP-20261007.md)先真实Engine结果→渲染→有限编码，再owned AU/有界工作者/RTSP。HDMI时序配套仍缺，整机5Hz与长期未验收。会话关闭，新恢复检查点已保存，旧失败/暂停按历史保留。
+
 ## 2026-10-07：恢复视频任务，MMAP描述兼容修正与真实骨架完整编码通过
 
 ### 工程内容总结
