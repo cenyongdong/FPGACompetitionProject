@@ -1,0 +1,12 @@
+/tmp/pose-v1-mixed-validation/20261006-readiness-r5-r1/pose_mixed_check
+offline-check
+--output
+/tmp/pose-v1-mixed-validation/20261006-readiness-r5-r1/run-offline-check/results
+--graph
+/tmp/pose-v1-mixed-validation/20261006-readiness-r5-r1/package/graph/piw24_ZG.json
+--raw
+/tmp/pose-v1-mixed-validation/20261006-readiness-r5-r1/package/graph/piw24_ZG.raw
+--inputs
+/tmp/pose-v1-mixed-validation/20261006-readiness-r5-r1/package/inputs
+--reference-tokens
+/tmp/pose-v1-mixed-validation/20261006-readiness-r5-r1/package/reference

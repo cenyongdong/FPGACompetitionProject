@@ -1,0 +1,1809 @@
+{
+  "status": "content_diagnostic_inspected_not_stage_accepted",
+  "records": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "caller_input",
+      "op_id": 0,
+      "slot": 0,
+      "file": "call0.caller_input.op0.slot0.f32",
+      "bytes": 43200,
+      "tensor": {
+        "allocated": true,
+        "bytes": 43200,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 43200
+      },
+      "matches_expected": true,
+      "same_handle_as_caller": true,
+      "same_chunk_as_caller": true,
+      "sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+      "all_finite": true,
+      "matches_fixed_reference": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "input0_output",
+      "op_id": 0,
+      "slot": 0,
+      "file": "call0.input0_output.op0.slot0.f32",
+      "bytes": 43200,
+      "tensor": {
+        "allocated": true,
+        "bytes": 43200,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 43200
+      },
+      "matches_expected": true,
+      "same_handle_as_caller": true,
+      "same_chunk_as_caller": true,
+      "sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+      "all_finite": true,
+      "matches_fixed_reference": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_input",
+      "op_id": 188,
+      "slot": 0,
+      "file": "call0.bridge_input.op188.slot0.f32",
+      "bytes": 720,
+      "tensor": {
+        "allocated": true,
+        "bytes": 720,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 720
+      },
+      "sha256": "4995255ad18ad555931c54093234a9381505ec2e9cc60917c0d262c65fd7675e",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 0,
+      "file": "call0.bridge_result.op188.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "bdfbb2e54ab0b20027e36c2f60e3386538b01bd536c0d472877d3aa1ca8a9b7b",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 1,
+      "file": "call0.bridge_result.op188.slot1.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "97038bec93056a14409d33a83a5687260c6d847d85a434e24e0dce378b4389c6",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 0,
+      "file": "call0.bridge_input.op192.slot0.f32",
+      "bytes": 30240,
+      "tensor": {
+        "allocated": true,
+        "bytes": 30240,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 30240
+      },
+      "sha256": "7ccbaf9e24fda7fa6b16bf2f9e9045445500180b2075ea32cb7642875579d775",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 1,
+      "file": "call0.bridge_input.op192.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "9e0f5eb8c006d3547b8e3845de908cb61b3d271f3fb570e62360b9fb36d592cb",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_result",
+      "op_id": 192,
+      "slot": 0,
+      "file": "call0.bridge_result.op192.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "dca38fabc8b6605fc77489323a5de7e1a0141f4cb737cf712c3f91d77facfe78",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_input",
+      "op_id": 437,
+      "slot": 0,
+      "file": "call0.bridge_input.op437.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "488882ba5c99fb98f245b8eb0ab415fe9fc53467d5b0d689ec0ada45aa5b8de4",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 0,
+      "file": "call0.bridge_result.op437.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 1,
+      "file": "call0.bridge_result.op437.slot1.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "f47556731ea0274d349e9a286aaef9ae1c4c8e1788f2d2664a43c4a334af979e",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 0,
+      "file": "call0.bridge_input.op582.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "714f8e722663cbb3803efb359fc7abbfab12c0d12d94dc74b5ff2719699760e7",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 1,
+      "file": "call0.bridge_input.op582.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_result",
+      "op_id": 582,
+      "slot": 0,
+      "file": "call0.bridge_result.op582.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 0,
+      "file": "call0.bridge_input.op649.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "5ccd7b3a3299d4fc63f6854aa4537e9fb6bf99afdd9b79a490563402b1bc6038",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 1,
+      "file": "call0.bridge_input.op649.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "kind": "bridge_result",
+      "op_id": 649,
+      "slot": 0,
+      "file": "call0.bridge_result.op649.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "caller_input",
+      "op_id": 0,
+      "slot": 0,
+      "file": "call1.caller_input.op0.slot0.f32",
+      "bytes": 43200,
+      "tensor": {
+        "allocated": true,
+        "bytes": 43200,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 43200
+      },
+      "matches_expected": true,
+      "same_handle_as_caller": true,
+      "same_chunk_as_caller": true,
+      "sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300",
+      "all_finite": true,
+      "matches_fixed_reference": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "input0_output",
+      "op_id": 0,
+      "slot": 0,
+      "file": "call1.input0_output.op0.slot0.f32",
+      "bytes": 43200,
+      "tensor": {
+        "allocated": true,
+        "bytes": 43200,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 43200
+      },
+      "matches_expected": true,
+      "same_handle_as_caller": true,
+      "same_chunk_as_caller": true,
+      "sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300",
+      "all_finite": true,
+      "matches_fixed_reference": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 188,
+      "slot": 0,
+      "file": "call1.bridge_input.op188.slot0.f32",
+      "bytes": 720,
+      "tensor": {
+        "allocated": true,
+        "bytes": 720,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 720
+      },
+      "sha256": "4995255ad18ad555931c54093234a9381505ec2e9cc60917c0d262c65fd7675e",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 0,
+      "file": "call1.bridge_result.op188.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "bdfbb2e54ab0b20027e36c2f60e3386538b01bd536c0d472877d3aa1ca8a9b7b",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 1,
+      "file": "call1.bridge_result.op188.slot1.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "97038bec93056a14409d33a83a5687260c6d847d85a434e24e0dce378b4389c6",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 0,
+      "file": "call1.bridge_input.op192.slot0.f32",
+      "bytes": 30240,
+      "tensor": {
+        "allocated": true,
+        "bytes": 30240,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 30240
+      },
+      "sha256": "7ccbaf9e24fda7fa6b16bf2f9e9045445500180b2075ea32cb7642875579d775",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 1,
+      "file": "call1.bridge_input.op192.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "9e0f5eb8c006d3547b8e3845de908cb61b3d271f3fb570e62360b9fb36d592cb",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 192,
+      "slot": 0,
+      "file": "call1.bridge_result.op192.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "dca38fabc8b6605fc77489323a5de7e1a0141f4cb737cf712c3f91d77facfe78",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 437,
+      "slot": 0,
+      "file": "call1.bridge_input.op437.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "488882ba5c99fb98f245b8eb0ab415fe9fc53467d5b0d689ec0ada45aa5b8de4",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 0,
+      "file": "call1.bridge_result.op437.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 1,
+      "file": "call1.bridge_result.op437.slot1.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "f47556731ea0274d349e9a286aaef9ae1c4c8e1788f2d2664a43c4a334af979e",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 0,
+      "file": "call1.bridge_input.op582.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "714f8e722663cbb3803efb359fc7abbfab12c0d12d94dc74b5ff2719699760e7",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 1,
+      "file": "call1.bridge_input.op582.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 582,
+      "slot": 0,
+      "file": "call1.bridge_result.op582.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 0,
+      "file": "call1.bridge_input.op649.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "5ccd7b3a3299d4fc63f6854aa4537e9fb6bf99afdd9b79a490563402b1bc6038",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 1,
+      "file": "call1.bridge_input.op649.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 649,
+      "slot": 0,
+      "file": "call1.bridge_result.op649.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "caller_input",
+      "op_id": 0,
+      "slot": 0,
+      "file": "call2.caller_input.op0.slot0.f32",
+      "bytes": 43200,
+      "tensor": {
+        "allocated": true,
+        "bytes": 43200,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 43200
+      },
+      "matches_expected": true,
+      "same_handle_as_caller": true,
+      "same_chunk_as_caller": true,
+      "sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187",
+      "all_finite": true,
+      "matches_fixed_reference": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "input0_output",
+      "op_id": 0,
+      "slot": 0,
+      "file": "call2.input0_output.op0.slot0.f32",
+      "bytes": 43200,
+      "tensor": {
+        "allocated": true,
+        "bytes": 43200,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 43200
+      },
+      "matches_expected": true,
+      "same_handle_as_caller": true,
+      "same_chunk_as_caller": true,
+      "sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187",
+      "all_finite": true,
+      "matches_fixed_reference": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 188,
+      "slot": 0,
+      "file": "call2.bridge_input.op188.slot0.f32",
+      "bytes": 720,
+      "tensor": {
+        "allocated": true,
+        "bytes": 720,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 720
+      },
+      "sha256": "776689ff5c24250b175ebab8ee01fbb0e3a7d26f6eaeead41933831c4ed168b5",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 0,
+      "file": "call2.bridge_result.op188.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "72b1e4ea07e99a55c6d5864eee69df1b2d71379d8710d92bf87eb08ce8d44da2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 1,
+      "file": "call2.bridge_result.op188.slot1.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "db8afbad22a1ca68371ccbe699eb0f95f5da68582165e336676121ca3347d651",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 0,
+      "file": "call2.bridge_input.op192.slot0.f32",
+      "bytes": 30240,
+      "tensor": {
+        "allocated": true,
+        "bytes": 30240,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 30240
+      },
+      "sha256": "76d87d76c13fca966ea2da8555e7359c106d5c946e14c1ae1465f4cb1f8f0808",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 1,
+      "file": "call2.bridge_input.op192.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "9e0f5eb8c006d3547b8e3845de908cb61b3d271f3fb570e62360b9fb36d592cb",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 192,
+      "slot": 0,
+      "file": "call2.bridge_result.op192.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "1e6379cbc40065fefdc24807e43af09f51b55b467cb61a18540a93b59b017f6e",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 437,
+      "slot": 0,
+      "file": "call2.bridge_input.op437.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "b402cd19a12eb39683807c2b4af11d597b297e48c35c1ade084196caa99c26af",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 0,
+      "file": "call2.bridge_result.op437.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 1,
+      "file": "call2.bridge_result.op437.slot1.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "d8a3d7884e2aba76dcbcdb0af176da7b578caf30bab7b7fb40e40c8e56b73e7e",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 0,
+      "file": "call2.bridge_input.op582.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "714f8e722663cbb3803efb359fc7abbfab12c0d12d94dc74b5ff2719699760e7",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 1,
+      "file": "call2.bridge_input.op582.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 582,
+      "slot": 0,
+      "file": "call2.bridge_result.op582.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 0,
+      "file": "call2.bridge_input.op649.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "5ccd7b3a3299d4fc63f6854aa4537e9fb6bf99afdd9b79a490563402b1bc6038",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 1,
+      "file": "call2.bridge_input.op649.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 649,
+      "slot": 0,
+      "file": "call2.bridge_result.op649.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "caller_input",
+      "op_id": 0,
+      "slot": 0,
+      "file": "call3.caller_input.op0.slot0.f32",
+      "bytes": 43200,
+      "tensor": {
+        "allocated": true,
+        "bytes": 43200,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 43200
+      },
+      "matches_expected": true,
+      "same_handle_as_caller": true,
+      "same_chunk_as_caller": true,
+      "sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+      "all_finite": true,
+      "matches_fixed_reference": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "input0_output",
+      "op_id": 0,
+      "slot": 0,
+      "file": "call3.input0_output.op0.slot0.f32",
+      "bytes": 43200,
+      "tensor": {
+        "allocated": true,
+        "bytes": 43200,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 43200
+      },
+      "matches_expected": true,
+      "same_handle_as_caller": true,
+      "same_chunk_as_caller": true,
+      "sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+      "all_finite": true,
+      "matches_fixed_reference": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 188,
+      "slot": 0,
+      "file": "call3.bridge_input.op188.slot0.f32",
+      "bytes": 720,
+      "tensor": {
+        "allocated": true,
+        "bytes": 720,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 720
+      },
+      "sha256": "776689ff5c24250b175ebab8ee01fbb0e3a7d26f6eaeead41933831c4ed168b5",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 0,
+      "file": "call3.bridge_result.op188.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "72b1e4ea07e99a55c6d5864eee69df1b2d71379d8710d92bf87eb08ce8d44da2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 1,
+      "file": "call3.bridge_result.op188.slot1.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "db8afbad22a1ca68371ccbe699eb0f95f5da68582165e336676121ca3347d651",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 0,
+      "file": "call3.bridge_input.op192.slot0.f32",
+      "bytes": 30240,
+      "tensor": {
+        "allocated": true,
+        "bytes": 30240,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 30240
+      },
+      "sha256": "76d87d76c13fca966ea2da8555e7359c106d5c946e14c1ae1465f4cb1f8f0808",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 1,
+      "file": "call3.bridge_input.op192.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "9e0f5eb8c006d3547b8e3845de908cb61b3d271f3fb570e62360b9fb36d592cb",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 192,
+      "slot": 0,
+      "file": "call3.bridge_result.op192.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "1e6379cbc40065fefdc24807e43af09f51b55b467cb61a18540a93b59b017f6e",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 437,
+      "slot": 0,
+      "file": "call3.bridge_input.op437.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "b402cd19a12eb39683807c2b4af11d597b297e48c35c1ade084196caa99c26af",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 0,
+      "file": "call3.bridge_result.op437.slot0.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 1,
+      "file": "call3.bridge_result.op437.slot1.f32",
+      "bytes": 400,
+      "tensor": {
+        "allocated": true,
+        "bytes": 400,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 400
+      },
+      "sha256": "d8a3d7884e2aba76dcbcdb0af176da7b578caf30bab7b7fb40e40c8e56b73e7e",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 0,
+      "file": "call3.bridge_input.op582.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "714f8e722663cbb3803efb359fc7abbfab12c0d12d94dc74b5ff2719699760e7",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 1,
+      "file": "call3.bridge_input.op582.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 582,
+      "slot": 0,
+      "file": "call3.bridge_result.op582.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 0,
+      "file": "call3.bridge_input.op649.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "5ccd7b3a3299d4fc63f6854aa4537e9fb6bf99afdd9b79a490563402b1bc6038",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 1,
+      "file": "call3.bridge_input.op649.slot1.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "all_finite": true
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 649,
+      "slot": 0,
+      "file": "call3.bridge_result.op649.slot0.f32",
+      "bytes": 16800,
+      "tensor": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "all_finite": true
+    }
+  ],
+  "comparisons_to_first": [
+    {
+      "invocation": 1,
+      "kind": "caller_input",
+      "op_id": 0,
+      "slot": 0,
+      "changed_elements": 10431,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 1,
+      "kind": "input0_output",
+      "op_id": 0,
+      "slot": 0,
+      "changed_elements": 10431,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 188,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 192,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 437,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 582,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "kind": "bridge_result",
+      "op_id": 649,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "kind": "caller_input",
+      "op_id": 0,
+      "slot": 0,
+      "changed_elements": 10445,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "input0_output",
+      "op_id": 0,
+      "slot": 0,
+      "changed_elements": 10445,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 188,
+      "slot": 0,
+      "changed_elements": 180,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 0,
+      "changed_elements": 100,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 1,
+      "changed_elements": 100,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 0,
+      "changed_elements": 7470,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 192,
+      "slot": 0,
+      "changed_elements": 4171,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 437,
+      "slot": 0,
+      "changed_elements": 100,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 0,
+      "changed_elements": 100,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 1,
+      "changed_elements": 95,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 582,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "kind": "bridge_result",
+      "op_id": 649,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "kind": "caller_input",
+      "op_id": 0,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "kind": "input0_output",
+      "op_id": 0,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 188,
+      "slot": 0,
+      "changed_elements": 180,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 0,
+      "changed_elements": 100,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 188,
+      "slot": 1,
+      "changed_elements": 100,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 0,
+      "changed_elements": 7470,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 192,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 192,
+      "slot": 0,
+      "changed_elements": 4171,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 437,
+      "slot": 0,
+      "changed_elements": 100,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 0,
+      "changed_elements": 100,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 437,
+      "slot": 1,
+      "changed_elements": 95,
+      "bitwise_equal": false
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 582,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 582,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_input",
+      "op_id": 649,
+      "slot": 1,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "kind": "bridge_result",
+      "op_id": 649,
+      "slot": 0,
+      "changed_elements": 0,
+      "bitwise_equal": true
+    }
+  ],
+  "first_mismatch": null,
+  "numerical_accepted": false
+}

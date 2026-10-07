@@ -1,0 +1,112 @@
+{
+  "status": "offline_real_parameters_and_PS_independently_verified",
+  "case_count": 3,
+  "input_fp32_values": 32400,
+  "input_bitwise_equal_to_fixed_and_ONNX_reference": true,
+  "also_matches_accepted_r2": true,
+  "all_inputs_finite": true,
+  "real_parameter_count": 4,
+  "real_parameters": [
+    {
+      "op_id": 188,
+      "input": 1,
+      "value_id": 484,
+      "bytes": 4,
+      "loaded_from_real_RAW": true,
+      "elements": 1,
+      "sha256": "2238f30df488055daf5e8f362cf904e370011a172d20df193c1b7ae8e5db8e01",
+      "observed_index_pattern": "K=100"
+    },
+    {
+      "op_id": 437,
+      "input": 1,
+      "value_id": 1135,
+      "bytes": 4,
+      "loaded_from_real_RAW": true,
+      "elements": 1,
+      "sha256": "2238f30df488055daf5e8f362cf904e370011a172d20df193c1b7ae8e5db8e01",
+      "observed_index_pattern": "K=100"
+    },
+    {
+      "op_id": 582,
+      "input": 1,
+      "value_id": 1550,
+      "bytes": 50400,
+      "loaded_from_real_RAW": true,
+      "elements": 12600,
+      "sha256": "168c35ff2cd1f557bfcbc8744b4931f38a532c9c37568eec66ac918b5c6dafe2",
+      "observed_index_pattern": "full [100,14,3] coordinate grid"
+    },
+    {
+      "op_id": 649,
+      "input": 1,
+      "value_id": 1726,
+      "bytes": 50400,
+      "loaded_from_real_RAW": true,
+      "elements": 12600,
+      "sha256": "168c35ff2cd1f557bfcbc8744b4931f38a532c9c37568eec66ac918b5c6dafe2",
+      "observed_index_pattern": "full [100,14,3] coordinate grid"
+    }
+  ],
+  "raw_sha256": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3",
+  "graph_sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
+  "registry_records": 12,
+  "returned_hash_count": 32,
+  "package_hash_count": 291,
+  "sdk": {
+    "versions": {
+      "icraft:arm64": "3.39.0",
+      "customop:arm64": "3.39.0"
+    },
+    "headers_normalized_sha256": {
+      "icraft-backends/hostbackend/backend.h": "8cf82840f340ff4173d6d855f8a39b72225dc5d7681fc3d7b7ed9b3cac2da378",
+      "icraft-backends/hostbackend/common/tensor_kernel.h": "509d54a778dcbc25094be73dfc5250b0b84ba3681a3d0b9f49905779338e015d",
+      "icraft-backends/hostbackend/port/common/tensor_ops.h": "f339262a95a63ebe9e1834e56278e737312319a52413a1d749e1a63bf4e48e92",
+      "icraft-xrt/core/backend.h": "f6a8ee61524cff91b2a4bfa5409cf46633d101ffe0528ac0c7599c21dd8b2607",
+      "icraft-xrt/core/tensor.h": "4b2c4d0ad24db042f151a56afce2fba881ad8f2fe1c87c9d32d620caf89b365a",
+      "icraft-xir/core/data_type_attr.h": "a0461bf7f078443fb609d472e802aed9f86407a536c8aa2058bc60a7dab50cec",
+      "icraft-xrt/core/device.h": "7bd98080ea4b228242caa184682703cc2d8610db6a28015810b5d7d8af16ecff",
+      "icraft-xrt/core/session.h": "f26063b529cef9ba2cc48ae07aafe4a4498169240d243cd71a5972bc34e0ebc7",
+      "icraft-xrt/dev/host_device.h": "642a8aec2e3832e0ecd823efa665d32ed42fb08a177878a33945714e633c887f",
+      "icraft-xir/core/data.h": "92c9e344979748e4ff03f8d59de2f4de398b052e70a90411d41be976e6830ed6",
+      "icraft-xir/base/array.h": "4f01421c9fe63a29ed2c0f90482209257bb8d8cfe5508af09edb924eed88058d",
+      "icraft-xir/base/object.h": "37a6f69afd6eabb7aaec95e785903e816e772fc248d920031f54a50109ba2df3",
+      "icraft-backends/zg330backend/zg330backend.h": "9017d5808e00b30746d79f1380879a3056db64d27845fd033dc13513eef7bd8f",
+      "icraft-xrt/dev/zg330_device.h": "43f634de3dd253c1c1fa84c8b6298ca562747744c04721a1debb809ee3b22286",
+      "icraft-utils/osal/cache.hpp": "991eff53ec361874e07d93893580e2e0c68e6587e7e859648737c55b0ce88756"
+    },
+    "host_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "zg_sha256": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57"
+  },
+  "program_sha256": "e8d66113ad3d9a34f9f210e5f7038560bc3dbfa681b9a057d748ff39e6c696a8",
+  "dmesg_before_after_bitwise_equal": true,
+  "dmesg_sha256": "70053e9e2c23294a99cddb4cd1a75fc61cb1e774c806ba397dc52ad0c60d79a8",
+  "exit": 0,
+  "stdout_bytes": 0,
+  "stderr_bytes": 0,
+  "preprocess_observations": [
+    {
+      "frame_id": 6,
+      "preprocess_ms": 5.65894,
+      "input_bitwise_equal": true
+    },
+    {
+      "frame_id": 7,
+      "preprocess_ms": 5.54286,
+      "input_bitwise_equal": true
+    },
+    {
+      "frame_id": 8,
+      "preprocess_ms": 5.55557,
+      "input_bitwise_equal": true
+    }
+  ],
+  "mode": "offline-check",
+  "device_initialized": false,
+  "full_session_executed": false,
+  "NPU_executed": false,
+  "mixed_verified": false,
+  "agent_board_accessed": false,
+  "acceptance_sha256": "66aeebb5b6e6db09aded9174a6cc10a6e83a6f0361fd13bebf1512f43a6fc537",
+  "next_stage": "User transfers new r3 offline acceptance, then memory-check only after unchanged BOOT/JTAG and no competing device access."
+}

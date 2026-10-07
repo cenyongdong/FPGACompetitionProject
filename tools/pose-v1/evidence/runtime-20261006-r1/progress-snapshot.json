@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-06",
+  "status": "paused_by_user",
+  "pause_revoked": false,
+  "request_scope": "project_progress_and_resume_documentation_only",
+  "current_project_stage": "small_sample_mixed_inference_verified; numerical_performance_and_application_integration_pending",
+  "progress_estimate": {
+    "scope": "approved_CSI_replay_first_version_only",
+    "range_percent": [
+      50,
+      60
+    ],
+    "weighted_planning_points": 58,
+    "total_planning_weight": 100,
+    "subjective": true,
+    "not_measured_work_or_eta": true
+  },
+  "resume_entry": "tools/pose-v1/RESUME-20261006.md",
+  "original_checkpoint": "tools/pose-v1/evidence/runtime-20261006-r1/pause-checkpoint.json",
+  "r1_artifact_identity_checks": {
+    "r1_binary": true,
+    "r1_manifest": true
+  },
+  "r1_build": {
+    "status": "mixed_build_reviewed",
+    "binary_sha256": "2738b5150db4d63a949470984ec72cec56abea7b044e6f2236ded2ad94362242",
+    "package_manifest_sha256": "e32bf87d945517749c55424077ec5c1ec8d3fbbb9eedb0576478da0786ab8dc7",
+    "sources_verified": 15,
+    "device_accessed": false,
+    "runtime_verified": false
+  },
+  "gates": {
+    "r6_small_sample_mixed": "passed",
+    "runtime_r1_build": "passed",
+    "runtime_source_independent_review": "pending",
+    "runtime_Host107": "not_run",
+    "E0_board4": "not_run",
+    "ORT27_generation": "completed_self_checked",
+    "ORT27_independent_review": "pending",
+    "N1_board28": "not_run",
+    "P1_warmup_r6_pre_measurement_guard": "needs_completion",
+    "P1_board33": "not_run",
+    "H0": "partial_readonly",
+    "E1_network_rendering": "not_implemented",
+    "HDMI_RTSP": "not_accepted",
+    "30min_full_system": "not_run"
+  },
+  "next_action": "After explicit resume, read RESUME, review source and add P1 pre-measurement guard in fresh revision; do not transfer r1 directly.",
+  "no_new_board_access": true,
+  "no_new_build": true,
+  "no_new_inference": true,
+  "docs_sha256": {
+    "PROJECT-PROGRESS.md": "ff6d5873a5087298854f5f8f64f1a8f208f7aad7d7ddd5275b64888b5b71e0de",
+    "ToDoLists.md": "d31fc2ce7257a7d6759e929b0e55acdbdcad2063e0bd45d7d7087315fd61ad41",
+    "tools/pose-v1/RESUME-20261006.md": "3ab28ff8763e30095a56d33a3a3ba8bc3b420165adca704f3ca595adecd3adf4"
+  }
+}

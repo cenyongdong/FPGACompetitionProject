@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-07",
+  "status": "performance_local_optimization_completed_next_application_scope_pending",
+  "user_numerical_stage_accepted": true,
+  "numerical_decision_path": "tools/pose-v1/evidence/perf-20261007-r3/user-numerical-acceptance.json",
+  "preferred_candidate_package": ".local/pose-v1-perf/package-20261007-lazy-r4",
+  "preferred_build": ".local/pose-v1-build/mixed-20261007-lazy-r4",
+  "completion_review_sha256": "e5a0268e4b2f5461aefa202f046a36b53823215ed999625980bc4ce99330625e",
+  "SDK_profiling_enabled": false,
+  "processing_baseline_Hz": 5.246549647285223,
+  "processing_P95_ms": 190.75408950000002,
+  "processing_baseline_5Hz_met": true,
+  "full_system_5Hz_accepted": false,
+  "frames_measured": 30,
+  "unknown_window_production_interface_implemented": false,
+  "SSH_SFTP_closed": true,
+  "no_background_jobs": true,
+  "N2_query_identity_optional_nonblocking": true,
+  "next_steps": [
+    "Define production window interface without fixed reference requirement",
+    "Budget network/render/convert/encode against about9.4ms processing headroom",
+    "Resolve current bitstream720p clock mapping and14joint semantic order",
+    "Approve concrete application/video stages before execution"
+  ],
+  "preserve_r2_r3_r4_and_all_evidence": true,
+  "reexecute_passed_stages": false
+}

@@ -1,0 +1,22 @@
+--- a/software/pose_v1/src/host_cpu_adapter.cpp
++++ b/software/pose_v1/src/host_cpu_adapter.cpp
+@@ -12,6 +12,9 @@
+ namespace kernel = icraft::hostbackend::common;
+ namespace port = icraft::hostbackend::port;
+ namespace {
++void need(bool condition, const char* code, const char* detail) {
++    if (!condition) throw Rejection(code, detail);
++}
+ void need(bool condition, const char* code, const std::string& detail) {
+     if (!condition) throw Rejection(code, detail);
+ }
+--- a/software/pose_v1/include/runtime_validation.hpp
++++ b/software/pose_v1/include/runtime_validation.hpp
+@@ -32,6 +32,7 @@
+ using Clock=std::chrono::steady_clock;
+ inline const std::set<int64_t> host_ids={188,192,437,442,582,649};
+ inline constexpr const char* url="axi://zg330aiu?npu=0x40000000&dma=0x80000000";
++inline void need(bool yes,const char* why) { if(!yes) throw std::runtime_error(why); }
+ inline void need(bool yes,const std::string& why) { if(!yes) throw std::runtime_error(why); }
+ inline std::string quote(const std::string& s) {
+     std::ostringstream out; out << '"';

@@ -1,0 +1,11 @@
+{
+  "status": "literal_message_overloads_only",
+  "parent_manifest_sha256": "72b92fd506c874b37e4767343cd732c4e5c2a81d20b730e08ee014195f5978a3",
+  "original_CPU_and_helper_unchanged": true,
+  "all_checks_retained": true,
+  "all_numerical_operations_retained": true,
+  "dynamic_string_messages_use_original_overload": true,
+  "SDK_sync_memory_strategy_unchanged": true,
+  "profile_disabled": true,
+  "measuring_unchanged": true
+}

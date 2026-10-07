@@ -1,0 +1,15 @@
+{
+  "status": "approved_binding_snapshot_applied_not_compiled",
+  "user_authorization": "User explicitly replied 同意方案 to MIXED-BINDING-SNAPSHOT-PLAN.md",
+  "old_source_sha256": "cb9cb7bbd7cf31447d7e30be3a0483479e69bf802b541841b7edead09587a1bc",
+  "candidate_sha256": "f349e0596377582bd88d48da1f7b8d47d82616ab24607e74036b2cea523f571c",
+  "active_source_sha256": "f349e0596377582bd88d48da1f7b8d47d82616ab24607e74036b2cea523f571c",
+  "candidate_exact_byte_match": true,
+  "original_source_backup": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\mixed-20261006-binding-r2\\mixed_check.before-binding-snapshot.cpp",
+  "strict_binding_gate_retained": true,
+  "SDK_model_BOOT_and_math_changes": false,
+  "compiled": false,
+  "board_executed": false,
+  "old_r1_not_retried": true,
+  "expected_scope": "New identity/build; user Host/offline/memory gates; once apply diagnostic, no forward; original strict gate can still fail."
+}

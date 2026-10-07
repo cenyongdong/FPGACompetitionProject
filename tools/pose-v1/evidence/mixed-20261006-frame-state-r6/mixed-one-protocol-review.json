@@ -1,0 +1,24 @@
+{
+  "status": "frame_state_protocol_verified",
+  "returned_files_verified": 70,
+  "calls": [
+    {
+      "invocation": 0,
+      "case": "S11_01_308",
+      "start_count": 0,
+      "before_clear_count": 0,
+      "end_count": 745
+    }
+  ],
+  "outputs": [
+    {
+      "case": "S11_01_308",
+      "scores": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+      "poses": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+    }
+  ],
+  "content_records": 17,
+  "same_session_repeat_all_captured_content_equal": false,
+  "numerical_accepted": false,
+  "performance_accepted": false
+}

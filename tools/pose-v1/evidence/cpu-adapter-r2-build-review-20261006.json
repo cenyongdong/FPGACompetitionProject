@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-06",
+  "status": "cross_compile_review_passed_runtime_pending",
+  "build_owner": "user",
+  "review_owner": "agent",
+  "review_method": "existing local file hashes, metadata, log and ELF parsing only",
+  "tools": {
+    "gcc": "9.4.0",
+    "cmake": "3.24.2",
+    "icraft_arm64": "3.39.0",
+    "customop_arm64": "3.39.0",
+    "container": "FPAI"
+  },
+  "build_tag": "cpu-adapter-20261006-r2",
+  "package": ".local\\pose-v1-cpu-adapter\\package\\20261006-r2",
+  "build": ".local\\pose-v1-build\\cpu-adapter-20261006-r2",
+  "package_files_verified": 282,
+  "old_package_files_verified": 282,
+  "unchanged_non_manifest_files": 281,
+  "positive_cases_designed": 18,
+  "negative_cases_designed": 89,
+  "expected_output_files": 22,
+  "runtime_cases_executed": 0,
+  "source_files_verified": 5,
+  "manifest_sha256": "8d18197dd245a49e282a512550ea8769eb141500f5774052e501c153506f78eb",
+  "binary_sha256": "8cf2017cedf6a97f98ce485d979239b659291f3c91d3a3d550382c1c94588622",
+  "binary_bytes": 368880,
+  "build_script_sha256": "e72361d888b087a4ee0c1dec18da72083d63f107c6fd7fae55d87c4a4cadaec0",
+  "sdk_headers_verified": 6,
+  "host_library_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+  "elf": {
+    "class": 64,
+    "endianness": "little",
+    "machine": "AArch64",
+    "type": "ET_DYN PIE",
+    "interpreter": "/lib/ld-linux-aarch64.so.1",
+    "direct_dependencies": [
+      "libicraft_hostbackend.so",
+      "libicraft_xrt.so",
+      "libicraft_xir.so",
+      "libicraft_utils.so",
+      "libstdc++.so.6",
+      "libm.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6",
+      "ld-linux-aarch64.so.1"
+    ],
+    "rpath_runpath": false
+  },
+  "configuration_compile_link_completed": true,
+  "compiler_warning_error_lines": 0,
+  "no_direct_ZG_dependency": true,
+  "board_loader_verified": false,
+  "cpu_tests_executed": false,
+  "device_accessed": false,
+  "mixed_verified": false,
+  "next_authorized_step": "User CPU-only Lite check per CPU-ADAPTER-COMMANDS.md C; no Session/Device::Open/NPU/DMA/HDMI",
+  "evidence_sha256": {
+    "build.log": "58b4afa7b214958ea2cc4a98824f9fb22a6e8731e49b5fa5ae4c17dac12afada",
+    "build-result.json": "b085b39225ca617c416b1ac9a34d5d5198fd3532797c609681ef630008dd3a90",
+    "sdk-audit.json": "73157d93c6498ab1a1ab6991099b4333cb325b0079e06962271dace342def413"
+  }
+}

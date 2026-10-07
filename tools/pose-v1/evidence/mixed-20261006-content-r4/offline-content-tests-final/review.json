@@ -1,0 +1,70 @@
+{
+  "status": "offline_content_parser_tests_passed_not_ARM",
+  "positive_paths": [
+    "Host smoke",
+    "one call",
+    "four calls"
+  ],
+  "malformed_or_partial_cases": 11,
+  "tests": [
+    {
+      "case": "missing_bridge_record",
+      "rejected": true,
+      "reason": "Mixed content capture incomplete"
+    },
+    {
+      "case": "metadata_ADDR",
+      "rejected": true,
+      "reason": "Content was not bounded Host CPTR"
+    },
+    {
+      "case": "unsafe_bounds",
+      "rejected": true,
+      "reason": "Content was not bounded Host CPTR"
+    },
+    {
+      "case": "numeric_boolean",
+      "rejected": true,
+      "reason": "Invalid content boolean"
+    },
+    {
+      "case": "boolean_invocation",
+      "rejected": true,
+      "reason": "Invalid content integer"
+    },
+    {
+      "case": "wrong_frame",
+      "rejected": true,
+      "reason": "Content frame differs"
+    },
+    {
+      "case": "unsafe_case_path",
+      "rejected": true,
+      "reason": "Unknown/unsafe content case"
+    },
+    {
+      "case": "wrong_byte_count",
+      "rejected": true,
+      "reason": "Content bytes differ"
+    },
+    {
+      "case": "nonfinite_bridge",
+      "rejected": true,
+      "reason": "Non-finite captured FP32"
+    },
+    {
+      "case": "partial_stale_Input0_localized",
+      "rejected": true,
+      "reason": "Correctly localized mismatch before bridge/NPU records"
+    },
+    {
+      "case": "caller_mismatch_localized",
+      "rejected": true,
+      "reason": "Caller readback mismatch distinguished from Input0"
+    }
+  ],
+  "SDK_called": false,
+  "compiled": false,
+  "board_accessed": false,
+  "content_origin": "Synthetic files; actual C++ Host content paths still require user ARM execution."
+}

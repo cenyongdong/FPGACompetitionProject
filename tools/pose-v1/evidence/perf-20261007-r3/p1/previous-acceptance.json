@@ -1,0 +1,392 @@
+{
+  "status": "stage_engineering_review_passed",
+  "stage": "e0",
+  "binary_sha256": "e69b69f18d5ad5026316955fc2e3c88e0144eed391807a03f980652052ea8c0d",
+  "package_manifest_sha256": "72b92fd506c874b37e4767343cd732c4e5c2a81d20b730e08ee014195f5978a3",
+  "returned_files_verified": 125,
+  "calls": 4,
+  "different_outputs": 3,
+  "session_init_ms": 29841.40143,
+  "numerical_accepted": false,
+  "performance_accepted": false,
+  "content": {
+    "records": 68,
+    "real_CPU_values_bitwise_equal": 52000,
+    "Gather_content_verified": false,
+    "provided_output_writeback_verified": false
+  },
+  "monotonic_breakdown": {
+    "clock": "std::chrono::steady_clock",
+    "raw_unit": "ns",
+    "callback_spans_are_backend_wall_not_pure_NPU": true,
+    "nested_bridge_times_not_added_again_to_forward": true,
+    "aggregate_ms": {
+      "bridge.allocate": {
+        "mean": 0.17183249999999997,
+        "median": 0.16141,
+        "p95": 0.19959649999999995,
+        "max": 0.20620999999999998
+      },
+      "bridge.copy": {
+        "mean": 0.4874275,
+        "median": 0.47757499999999997,
+        "p95": 0.5209525,
+        "max": 0.5278
+      },
+      "bridge.cpu": {
+        "mean": 29.668915000000002,
+        "median": 29.670645,
+        "p95": 29.7290895,
+        "max": 29.73654
+      },
+      "bridge.spec": {
+        "mean": 0.19910500000000003,
+        "median": 0.19855,
+        "p95": 0.20744200000000002,
+        "max": 0.20782
+      },
+      "bridge.wait": {
+        "mean": 164.09112499999998,
+        "median": 164.070585,
+        "p95": 164.165651,
+        "max": 164.17919
+      },
+      "op.host": {
+        "mean": 200.258215,
+        "median": 200.27099,
+        "p95": 200.35334849999998,
+        "max": 200.35433999999998
+      },
+      "op.zg": {
+        "mean": 0.8772825,
+        "median": 0.84551,
+        "p95": 0.9686410000000001,
+        "max": 0.9891400000000001
+      },
+      "runtime.final_wait": {
+        "mean": 0.126835,
+        "median": 0.12856499999999998,
+        "p95": 0.13914249999999997,
+        "max": 0.14089
+      },
+      "runtime.forward": {
+        "mean": 204.55919,
+        "median": 204.50789500000002,
+        "p95": 204.846261,
+        "max": 204.88527
+      },
+      "runtime.input_prepare": {
+        "mean": 0.04680000000000001,
+        "median": 0.03869,
+        "p95": 0.06788899999999999,
+        "max": 0.07301
+      },
+      "runtime.input_validation": {
+        "mean": 3.457745,
+        "median": 3.456595,
+        "p95": 3.463003,
+        "max": 3.46378
+      },
+      "runtime.observation": {
+        "mean": 0.25201250000000003,
+        "median": 0.252695,
+        "p95": 0.2579565,
+        "max": 0.25866
+      },
+      "runtime.output_read": {
+        "mean": 2.6284574999999997,
+        "median": 2.5901899999999998,
+        "p95": 2.7331705,
+        "max": 2.75668
+      },
+      "runtime.preprocess": {
+        "mean": 5.6778575,
+        "median": 5.6589,
+        "p95": 5.740084,
+        "max": 5.75398
+      },
+      "runtime.raw_validation": {
+        "mean": 1.812535,
+        "median": 1.811825,
+        "p95": 1.8309645,
+        "max": 1.83369
+      },
+      "runtime.selection": {
+        "mean": 0.0019475000000000002,
+        "median": 0.001905,
+        "p95": 0.0021945000000000003,
+        "max": 0.00222
+      },
+      "runtime.state_clear": {
+        "mean": 0.006105,
+        "median": 0.00618,
+        "p95": 0.006385,
+        "max": 0.0064
+      },
+      "runtime.total": {
+        "mean": 219.04076,
+        "median": 218.885245,
+        "p95": 219.6002705,
+        "max": 219.70118
+      }
+    },
+    "per_op_ms": {
+      "0": {
+        "mean": 0.07393,
+        "median": 0.0521,
+        "p95": 0.12661049999999996,
+        "max": 0.13974
+      },
+      "188": {
+        "mean": 5.028945,
+        "median": 5.030615,
+        "p95": 5.0428405000000005,
+        "max": 5.04436
+      },
+      "192": {
+        "mean": 7.260145,
+        "median": 7.245455,
+        "p95": 7.320240500000001,
+        "max": 7.33091
+      },
+      "437": {
+        "mean": 4.1102075000000005,
+        "median": 4.11028,
+        "p95": 4.123193499999999,
+        "max": 4.12534
+      },
+      "442": {
+        "mean": 0.95977,
+        "median": 0.90047,
+        "p95": 1.109407,
+        "max": 1.14517
+      },
+      "582": {
+        "mean": 95.646355,
+        "median": 95.56771,
+        "p95": 95.865573,
+        "max": 95.91741
+      },
+      "649": {
+        "mean": 87.17886250000001,
+        "median": 87.19172,
+        "p95": 87.22165,
+        "max": 87.22615
+      },
+      "9185": {
+        "mean": 0.19925,
+        "median": 0.16103,
+        "p95": 0.29283999999999993,
+        "max": 0.31582
+      },
+      "9186": {
+        "mean": 0.093595,
+        "median": 0.092585,
+        "p95": 0.097414,
+        "max": 0.09814
+      },
+      "9187": {
+        "mean": 0.11162,
+        "median": 0.11132,
+        "p95": 0.113068,
+        "max": 0.11329
+      },
+      "9188": {
+        "mean": 0.02842,
+        "median": 0.028585,
+        "p95": 0.0289665,
+        "max": 0.02901
+      },
+      "9189": {
+        "mean": 0.1308275,
+        "median": 0.13067499999999999,
+        "p95": 0.1326695,
+        "max": 0.1328
+      },
+      "9190": {
+        "mean": 0.14042749999999998,
+        "median": 0.13613,
+        "p95": 0.1556205,
+        "max": 0.15834
+      },
+      "9191": {
+        "mean": 0.1731425,
+        "median": 0.17303000000000002,
+        "p95": 0.17503,
+        "max": 0.17536
+      }
+    },
+    "forward_unattributed_ms": {
+      "mean": 3.42369249999998,
+      "median": 3.3961799999999727,
+      "p95": 3.5242714999999665,
+      "max": 3.5417899999999634
+    },
+    "calls": [
+      {
+        "invocation": 0,
+        "case": "S11_01_308",
+        "values_ms": {
+          "runtime.observation": 0.25866,
+          "bridge.wait": 164.04414,
+          "bridge.cpu": 29.68687,
+          "runtime.preprocess": 5.75398,
+          "bridge.copy": 0.46676,
+          "runtime.forward": 204.88527,
+          "runtime.final_wait": 0.10932,
+          "runtime.total": 219.70118,
+          "runtime.input_validation": 3.46378,
+          "runtime.raw_validation": 1.83369,
+          "op.zg": 0.9891400000000001,
+          "bridge.spec": 0.20782,
+          "runtime.input_prepare": 0.07301,
+          "runtime.output_read": 2.75668,
+          "runtime.selection": 0.00176,
+          "op.host": 200.35433999999998,
+          "bridge.allocate": 0.16212,
+          "runtime.state_clear": 0.0063
+        },
+        "forward_unattributed_ms": 3.5417899999999634,
+        "per_op_ms": {
+          "0": 0.13974,
+          "9185": 0.31582,
+          "188": 5.027,
+          "9186": 0.09814,
+          "192": 7.21876,
+          "9187": 0.11329,
+          "437": 4.09493,
+          "9188": 0.02872,
+          "442": 1.14517,
+          "9189": 0.12916,
+          "582": 95.53259,
+          "9190": 0.13111,
+          "649": 87.19615,
+          "9191": 0.1729
+        }
+      },
+      {
+        "invocation": 1,
+        "case": "S11_01_309",
+        "values_ms": {
+          "runtime.observation": 0.25397000000000003,
+          "bridge.wait": 164.05223999999998,
+          "bridge.cpu": 29.65442,
+          "runtime.preprocess": 5.63965,
+          "bridge.copy": 0.5278,
+          "runtime.forward": 204.62521,
+          "runtime.final_wait": 0.12789,
+          "runtime.total": 219.02845,
+          "runtime.input_validation": 3.4586,
+          "runtime.raw_validation": 1.81552,
+          "op.zg": 0.85248,
+          "bridge.spec": 0.1915,
+          "runtime.input_prepare": 0.03681,
+          "runtime.output_read": 2.59995,
+          "runtime.selection": 0.00205,
+          "op.host": 200.34773,
+          "bridge.allocate": 0.20620999999999998,
+          "runtime.state_clear": 0.0064
+        },
+        "forward_unattributed_ms": 3.424999999999983,
+        "per_op_ms": {
+          "0": 0.05199,
+          "9185": 0.15944,
+          "188": 5.01019,
+          "9186": 0.09187,
+          "192": 7.25978,
+          "9187": 0.11055,
+          "437": 4.10953,
+          "9188": 0.0275,
+          "442": 0.89297,
+          "9189": 0.12942,
+          "582": 95.91741,
+          "9190": 0.15834,
+          "649": 87.10586,
+          "9191": 0.17536
+        }
+      },
+      {
+        "invocation": 2,
+        "case": "S11_01_310",
+        "values_ms": {
+          "runtime.observation": 0.25142,
+          "bridge.wait": 164.17919,
+          "bridge.cpu": 29.59783,
+          "runtime.preprocess": 5.66134,
+          "bridge.copy": 0.48214999999999997,
+          "runtime.forward": 204.3357,
+          "runtime.final_wait": 0.12924,
+          "runtime.total": 218.69137,
+          "runtime.input_validation": 3.45401,
+          "runtime.raw_validation": 1.80813,
+          "op.zg": 0.8385399999999998,
+          "bridge.spec": 0.19180000000000003,
+          "runtime.input_prepare": 0.03851,
+          "runtime.output_read": 2.57677,
+          "runtime.selection": 0.00222,
+          "op.host": 200.13654000000002,
+          "bridge.allocate": 0.16069999999999998,
+          "runtime.state_clear": 0.00566
+        },
+        "forward_unattributed_ms": 3.3606200000000115,
+        "per_op_ms": {
+          "0": 0.05178,
+          "9185": 0.15912,
+          "188": 5.04436,
+          "9186": 0.0933,
+          "192": 7.23113,
+          "9187": 0.11181,
+          "437": 4.12534,
+          "9188": 0.02901,
+          "442": 0.89419,
+          "9189": 0.13193,
+          "582": 95.56359,
+          "9190": 0.14021,
+          "649": 87.22615,
+          "9191": 0.17316
+        }
+      },
+      {
+        "invocation": 3,
+        "case": "S11_01_308",
+        "values_ms": {
+          "runtime.observation": 0.24400000000000002,
+          "bridge.wait": 164.08893,
+          "bridge.cpu": 29.73654,
+          "runtime.preprocess": 5.65646,
+          "bridge.copy": 0.473,
+          "runtime.forward": 204.39058,
+          "runtime.final_wait": 0.14089,
+          "runtime.total": 218.74204,
+          "runtime.input_validation": 3.45459,
+          "runtime.raw_validation": 1.7928,
+          "op.zg": 0.82897,
+          "bridge.spec": 0.2053,
+          "runtime.input_prepare": 0.03887,
+          "runtime.output_read": 2.58043,
+          "runtime.selection": 0.00176,
+          "op.host": 200.19425,
+          "bridge.allocate": 0.1583,
+          "runtime.state_clear": 0.00606
+        },
+        "forward_unattributed_ms": 3.3673599999999624,
+        "per_op_ms": {
+          "0": 0.05221,
+          "9185": 0.16262,
+          "188": 5.03423,
+          "9186": 0.09107,
+          "192": 7.33091,
+          "9187": 0.11083,
+          "437": 4.11103,
+          "9188": 0.02845,
+          "442": 0.90675,
+          "9189": 0.1328,
+          "582": 95.57183,
+          "9190": 0.13205,
+          "649": 87.18729,
+          "9191": 0.17115
+        }
+      }
+    ]
+  }
+}

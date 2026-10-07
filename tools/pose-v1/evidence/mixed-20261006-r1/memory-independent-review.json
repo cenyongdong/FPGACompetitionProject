@@ -1,0 +1,118 @@
+{
+  "status": "SDK_device_memory_roundtrip_independently_verified",
+  "stage": "memory-check",
+  "buffers": 2,
+  "bytes_per_buffer": 16384,
+  "pattern_passes": 3,
+  "returned_output_files": 6,
+  "fp32_values": 24576,
+  "all_finite": true,
+  "max_abs_error": 0.0,
+  "bitwise_equal_including_signed_zero": true,
+  "memory_metadata": {
+    "left": {
+      "allocated": true,
+      "bytes": 16384,
+      "pointer": "ADDR",
+      "region": "AXIZG330AIPLDDRMemRegionNode",
+      "offset": 0,
+      "chunk_bytes": 16384
+    },
+    "right": {
+      "allocated": true,
+      "bytes": 16384,
+      "pointer": "ADDR",
+      "region": "AXIZG330AIPLDDRMemRegionNode",
+      "offset": 0,
+      "chunk_bytes": 16384
+    }
+  },
+  "allocation_owner_nonoverlap_validation": "Pinned checker validates defaultMemRegion owner against opened Device and checks numeric addresses for non-overlap. Absolute addresses were not emitted; no independent address map claim.",
+  "outputs": [
+    {
+      "pass": 0,
+      "side": "left",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "08edf10dbbda72914db8d2dfa36fb9bf49e324b7759477a363cea9d8fdd022ac",
+      "first_value_bits": "00000080",
+      "bitwise_equal": true
+    },
+    {
+      "pass": 0,
+      "side": "right",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "e1e793aa3b5d0e4e6506f512ab86ff157f99014137323d5621ad9097baf74067",
+      "first_value_bits": "00000000",
+      "bitwise_equal": true
+    },
+    {
+      "pass": 1,
+      "side": "left",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "9b769eda5b00186703bb38af2e5c68c80ba6181adb50d91b1b6da2beb0cdc254",
+      "first_value_bits": "00000080",
+      "bitwise_equal": true
+    },
+    {
+      "pass": 1,
+      "side": "right",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "73cfbc04ce3fb33e0561d738c18b15d129852a7e8214265993709b1f35a05930",
+      "first_value_bits": "00000000",
+      "bitwise_equal": true
+    },
+    {
+      "pass": 2,
+      "side": "left",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "baa7cb8d601a8a20fb0d8984ab63628e0f6f4ef23c750fe3d2dd9e7ba7599703",
+      "first_value_bits": "00000080",
+      "bitwise_equal": true
+    },
+    {
+      "pass": 2,
+      "side": "right",
+      "bytes": 16384,
+      "elements": 4096,
+      "sha256": "63822ca95c56d3a1418d6f59bb7eb87e623aa34606ae8ec472f46c131367b438",
+      "first_value_bits": "00000000",
+      "bitwise_equal": true
+    }
+  ],
+  "device_version": {
+    "url": "axi://zg330aiu?npu=0x40000000&dma=0x80000000",
+    "versions": {
+      "device": "25122301",
+      "icore": "FMSHZGV3TECH-AID - 24160628"
+    },
+    "numerical_accepted": false
+  },
+  "package_files_verified": 290,
+  "returned_files_verified": 28,
+  "sdk_headers_verified": 15,
+  "sdk_versions": {
+    "icraft:arm64": "3.39.0",
+    "customop:arm64": "3.39.0"
+  },
+  "program_sha256": "7cf761f1dd7d1ca1bf8a1db1826e4d9b34574b1a8dc0ac662c987eed52722a17",
+  "exit": 0,
+  "stderr_bytes": 0,
+  "dmesg_before_after_bitwise_equal": true,
+  "dmesg_sha256": "70053e9e2c23294a99cddb4cd1a75fc61cb1e774c806ba397dc52ad0c60d79a8",
+  "device_initialized": true,
+  "device_copy_verified": true,
+  "full_session_created": false,
+  "model_forward_executed": false,
+  "NPU_producer_CPU_consumer_coherence_verified": false,
+  "numerical_deployment_accepted": false,
+  "performance_accepted": false,
+  "acceptance_sha256": "ab7cfe30a816867bf8448e07b967a9c5d906ab0e72bca6ffb405b7055d6aa8f2",
+  "agent_activity": "File analysis only; no board access/rerun/reset/configuration modification.",
+  "board_wall_clock_note": "Original SDK stdout dates retained; artifact date is project review date, not inferred board time.",
+  "next_stage": "User transfers memory acceptance and runs apply-check only (300 seconds; no model forward), returns evidence before mixed-one."
+}

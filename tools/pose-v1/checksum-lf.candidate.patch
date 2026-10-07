@@ -1,0 +1,11 @@
+--- a/tools/pose-v1/inference_gate.py
++++ b/tools/pose-v1/inference_gate.py
+@@ -90,7 +90,7 @@
+     save(args.output / 'manifest.json', {'schema_version': 1, 'model': '2024 epoch442',
+          'source_fixture_manifest_sha256': digest(args.fixtures / 'manifest.json'),
+          'cases': cases, 'files': files, 'numerical_acceptance': 'pending_execution'})
+-    (args.output / 'files.sha256').write_text(''.join(f"{f['sha256']}  {f['relative_path']}\n" for f in files), encoding='ascii')
++    (args.output / 'files.sha256').write_bytes(''.join(f"{f['sha256']}  {f['relative_path']}\n" for f in files).encode('ascii'))
+     print('Prepared and hashed; no inference: ' + str(args.output))
+ 
+ 

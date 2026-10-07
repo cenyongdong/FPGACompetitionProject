@@ -1,0 +1,97 @@
+    PID COMMAND         COMMAND
+      1 systemd         /sbin/init
+      2 kthreadd        [kthreadd]
+      3 rcu_gp          [rcu_gp]
+      4 rcu_par_gp      [rcu_par_gp]
+      6 kworker/0:0H-mm [kworker/0:0H-mmc_complete]
+      8 mm_percpu_wq    [mm_percpu_wq]
+      9 ksoftirqd/0     [ksoftirqd/0]
+     10 rcu_sched       [rcu_sched]
+     11 migration/0     [migration/0]
+     12 cpuhp/0         [cpuhp/0]
+     13 cpuhp/1         [cpuhp/1]
+     14 migration/1     [migration/1]
+     15 ksoftirqd/1     [ksoftirqd/1]
+     18 cpuhp/2         [cpuhp/2]
+     19 migration/2     [migration/2]
+     20 ksoftirqd/2     [ksoftirqd/2]
+     23 cpuhp/3         [cpuhp/3]
+     24 migration/3     [migration/3]
+     25 ksoftirqd/3     [ksoftirqd/3]
+     28 kdevtmpfs       [kdevtmpfs]
+     29 kworker/0:1-eve [kworker/0:1-events]
+     31 kworker/2:1-eve [kworker/2:1-events]
+     32 kauditd         [kauditd]
+     33 oom_reaper      [oom_reaper]
+     34 writeback       [writeback]
+     35 kcompactd0      [kcompactd0]
+     36 khugepaged      [khugepaged]
+     54 kblockd         [kblockd]
+     55 edac-poller     [edac-poller]
+     56 watchdogd       [watchdogd]
+     57 rpciod          [rpciod]
+     58 kworker/u9:0-kb [kworker/u9:0-kbase_pm_poweroff_wait]
+     59 xprtiod         [xprtiod]
+     60 kswapd0         [kswapd0]
+     61 ecryptfs-kthrea [ecryptfs-kthrea]
+     62 nfsiod          [nfsiod]
+     63 spi3            [spi3]
+     64 stmmac_wq       [stmmac_wq]
+     68 kworker/u8:2-ev [kworker/u8:2-events_unbound]
+     69 kpktgend_0      [kpktgend_0]
+     71 kpktgend_1      [kpktgend_1]
+     72 kpktgend_2      [kpktgend_2]
+     73 kpktgend_3      [kpktgend_3]
+     74 ipv6_addrconf   [ipv6_addrconf]
+     75 mmc_complete    [mmc_complete]
+     77 kworker/1:1H-kb [kworker/1:1H-kblockd]
+     80 jbd2/mmcblk0p2- [jbd2/mmcblk0p2-]
+     81 ext4-rsv-conver [ext4-rsv-conver]
+     82 kworker/2:1H-kb [kworker/2:1H-kblockd]
+     85 kworker/3:1H-kb [kworker/3:1H-kblockd]
+    102 systemd-journal /lib/systemd/systemd-journald
+    113 kbase_job_fault [kbase_job_fault]
+    114 kworker/u9:1    [kworker/u9:1]
+    117 mvx_securevideo [mvx_securevideo]
+    118 fw_cache        [fw_cache]
+    119 mvx_sched       [mvx_sched]
+    124 systemd-timesyn /lib/systemd/systemd-timesyncd
+    129 cron            /usr/sbin/cron -f
+    130 dbus-daemon     /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    135 rsyslogd        /usr/sbin/rsyslogd -n -iNONE
+    136 systemd-logind  /lib/systemd/systemd-logind
+    148 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    149 systemd-resolve /lib/systemd/systemd-resolved
+    185 sshd            sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    187 agetty          /sbin/agetty -o -p -- \u --noclear tty1 linux
+    188 agetty          /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+  46786 kworker/0:2-cgr [kworker/0:2-cgroup_destroy]
+  47896 sshd            sshd: root@pts/0
+  47898 sshd            sshd: root@notty
+  47901 systemd         /lib/systemd/systemd --user
+  47902 (sd-pam)        (sd-pam)
+  47917 bash            -bash
+  47919 kworker/u8:1-fl [kworker/u8:1-flush-179:0]
+  47939 sftp-server     /usr/lib/openssh/sftp-server
+  77589 kworker/1:0-eve [kworker/1:0-events]
+ 101757 kworker/1:0H-kb [kworker/1:0H-kblockd]
+ 117718 bash            bash -c while true; do sleep 1;head -v -n 8 /proc/meminfo; head -v -n 2 /proc/stat /proc/version /proc/uptime /proc/loadavg /proc/sys/fs/file-nr /proc/sys/kernel/hostname; tail -v -n 32 /proc/net/dev;echo '==> /proc/df <==';df -l;echo '==> /proc/who <==';who;echo '==> /proc/end <==';echo '##Moba##'; done
+ 133233 kworker/0:2H    [kworker/0:2H]
+ 136386 kworker/3:0-eve [kworker/3:0-events]
+ 137638 kworker/2:2     [kworker/2:2]
+ 140446 kworker/3:2-mm_ [kworker/3:2-mm_percpu_wq]
+ 140831 sshd            sshd: root@notty
+ 141005 sh              sh
+ 141405 sshd            sshd: root@notty
+ 141603 sftp-server     /usr/lib/openssh/sftp-server
+ 141772 kworker/1:1-mm_ [kworker/1:1-mm_percpu_wq]
+ 141787 kworker/2:2H-kb [kworker/2:2H-kblockd]
+ 141954 kworker/3:2H    [kworker/3:2H]
+ 142268 kworker/1:2H    [kworker/1:2H]
+ 142527 kworker/3:1-eve [kworker/3:1-events]
+ 143752 kworker/1:2-eve [kworker/1:2-events]
+ 143849 kworker/3:0H    [kworker/3:0H]
+ 143977 sh              sh -c set -eu; cd /tmp/pose-v1-mixed-validation/20261006-readiness-r5-r1; test -f gates/host-check.acceptance.json; sh package/run-mixed-validation.sh offline-check
+ 143978 sh              sh package/run-mixed-validation.sh offline-check
+ 144000 sleep           sleep 1
+ 144010 ps              ps -eo pid,comm,args

@@ -56,3 +56,47 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+
+# ==========================================
+# 4.日志文件
+# ==========================================
+*.log
+logs/
+
+# ==========================================
+# 5. C/C++ 构建产物与测试缓存
+# ==========================================
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dll
+*.pdb
+*.ilk
+*.exp
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# ==========================================
+# 6. Pose 板端回传的生成物（原始文件仍保留在本机）
+# ==========================================
+# 仓库保留报告、验收 JSON、哈希清单、JSONL 轨迹及历史修正源码。
+# 完整数值复核需要本机原始回传数据；Git 中的摘要不能替代完整证据包。
+/tools/pose-v1/evidence/**/*.f32
+/tools/pose-v1/evidence/**/pose_cpu_adapter_check
+/tools/pose-v1/evidence/**/pose_mixed_check
+/tools/pose-v1/evidence/**/host_registry_probe
+# SDK 库的反汇编派生文本，不作为项目源码提交。
+/tools/pose-v1/evidence/mixed-20261006-readiness-r5/zg-disassembly.txt

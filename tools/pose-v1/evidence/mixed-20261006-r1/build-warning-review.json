@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-06",
+  "status": "build_verified_with_one_reviewed_style_warning",
+  "build_acceptance": {
+    "status": "mixed_build_reviewed",
+    "binary_sha256": "7cf761f1dd7d1ca1bf8a1db1826e4d9b34574b1a8dc0ac662c987eed52722a17",
+    "package_manifest_sha256": "dd6b97193aec8dbfafb279c8ba25b6534b02214ec6098d67af204cebd358a215",
+    "sources_verified": 10,
+    "device_accessed": false,
+    "runtime_verified": false
+  },
+  "package_files_verified": 290,
+  "source_files_verified": 10,
+  "sdk_headers_verified": 15,
+  "warnings": [
+    "/tmp/pose-v1-mixed-20261006-r1/source/mixed_check.cpp:142:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]"
+  ],
+  "errors": [],
+  "warning_reason": "C++ if without braces controls only comma output; resetting first and writing the key/value pair are intentionally unconditional. Multiple statements on one line trigger misleading-indentation warning.",
+  "warning_affects_logic": false,
+  "no_rebuild_needed_for_this_warning": true,
+  "native_source_changed": false,
+  "agent_compiled": false,
+  "board_accessed": false,
+  "runtime_verified": false,
+  "next_allowed_stage": "User transfers matching package/program/build identity/acceptance (B), then host-check only; review before offline or hardware stages.",
+  "identities": {
+    "build.log": "259fd5beb7a2d4f73e9653a9a63c786e4bf67c1dfb6507b8718208c54a64b753",
+    "build-result.json": "79bc6c2937a645d8cff4e3551fe2c3b0d6187768737c848424bb1e8c190e4691",
+    "sdk-audit.json": "a3f4b43403791bbcbfb62de78240222f69dfcf777f38ce0a671649a219ae5b46",
+    "pose_mixed_check.arm64": "7cf761f1dd7d1ca1bf8a1db1826e4d9b34574b1a8dc0ac662c987eed52722a17"
+  }
+}

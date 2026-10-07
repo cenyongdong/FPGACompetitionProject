@@ -1,0 +1,26 @@
+{
+  "status": "offline_missing_gate_preflight_reviewed_not_program_executed",
+  "returned_files": [
+    "package-check.log",
+    "timeout-path.txt",
+    "timeout-version.txt"
+  ],
+  "package_check_entries": 290,
+  "all_package_checks_OK": true,
+  "contains_results": false,
+  "contains_exit_record": false,
+  "contains_sdk_audit_or_program_logs": false,
+  "stop_reason": "Prior screenshot FileNotFoundError loading gates/host-check.acceptance.json; returned artifacts match script operations before gate load.",
+  "program_invoked": false,
+  "host_acceptance_now_created": true,
+  "host_acceptance_sha256": "688869faf7167f52554076229f64eb8603941df21e514f2f4d629b182e7c99fd",
+  "host_acceptance_board_transfer": "User reports completed; next runner independently checks binary/package/stage identities.",
+  "file_sha256": {
+    "package-check.log": "fd3d506cb91afbb4172b18daa70858941127e66bc6ba6887bf92fb7e1827c231",
+    "timeout-path.txt": "ff27a4aeefddb7da1a6911de1838e1ef42c47501e3c926c9a9e195fc9ea9f61e",
+    "timeout-version.txt": "9c9cc17a1cfd2c2ee7349883779e5d8b90e20c146ed1d0eed6d986620047ee10"
+  },
+  "next_stage": "User preserves failed directory under fixed sibling name, then runs offline-check once (30 seconds, no device initialization), returns full results.",
+  "agent_board_accessed": false,
+  "offline_stage_accepted": false
+}

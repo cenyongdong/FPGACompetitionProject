@@ -1,0 +1,36 @@
+{
+  "status": "binding_snapshot_r2_build_verified_not_run",
+  "build_acceptance": {
+    "status": "mixed_build_reviewed",
+    "binary_sha256": "94a03a903a4a97f229b1549dcbd1bade193d60dbb23753c1f030431fbd061248",
+    "package_manifest_sha256": "05315e578e217e4f87438f5c0d15ad11e3015bd77aa1c70ae76f199f61ab0a62",
+    "sources_verified": 10,
+    "device_accessed": false,
+    "runtime_verified": false
+  },
+  "build_directory": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-build\\mixed-20261006-binding-r2",
+  "package_hash_count": 290,
+  "build_sources_verified": 10,
+  "ARM_headers_verified": 15,
+  "candidate_exact_source_match": true,
+  "compiler": "GCC9.4.0",
+  "cmake": "3.24.2",
+  "SDK": "Icraft/CustomOp arm64 3.39.0",
+  "binary_bytes": 518712,
+  "warnings": [
+    "/tmp/pose-v1-mixed-20261006-binding-r2/source/mixed_check.cpp:142:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]"
+  ],
+  "errors": [],
+  "warning_review": "Same line142 JSON separator code as r1; if controls comma only, unconditional reset/output intended, no source change requested.",
+  "ELF": "AArch64 ELF64 little endian PIE, direct Host/ZG dependencies, no RPATH/RUNPATH",
+  "identities": {
+    "build.log": "c774b155f928b2f923e8f00f4e92a2e39899e3f862a6f7287a599f29cdd92181",
+    "build-result.json": "fdeaf1d32bcb59d6e23dcbcb0c3ff09c993dc77b74187ea621d24c92e8aa2323",
+    "sdk-audit.json": "a3f4b43403791bbcbfb62de78240222f69dfcf777f38ce0a671649a219ae5b46",
+    "pose_mixed_check.arm64": "94a03a903a4a97f229b1549dcbd1bade193d60dbb23753c1f030431fbd061248"
+  },
+  "runtime_or_snapshot_executed": false,
+  "apply_accepted": false,
+  "agent_compiled_or_board_accessed": false,
+  "next_stage": "User new r2 directory/transfer/Host107; review before offline/memory/apply."
+}

@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-06",
+  "status": "mixed_candidate_source_and_package_delivered_not_compiled",
+  "package": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-mixed-validation\\package-20261006-final",
+  "package_manifest_sha256": "dd6b97193aec8dbfafb279c8ba25b6534b02214ec6098d67af204cebd358a215",
+  "package_files_verified": 290,
+  "build_file_count": 10,
+  "sources": {
+    "software/pose_v1/include/mixed_bridge.hpp": "5771ef4b448e0d1f7a6f1c502a1be9917e993914d84c861300cd85ba32808e45",
+    "software/pose_v1/src/mixed_bridge.cpp": "cfc2b1d8d975a39fa74ed92c1e092fd47fb0cf02e0af0cea9b6d020051346c8d",
+    "software/pose_v1/src/mixed_check.cpp": "cb9cb7bbd7cf31447d7e30be3a0483479e69bf802b541841b7edead09587a1bc",
+    "software/pose_v1/src/mixed_host_check.cpp": "f836a0a2dd8c85bd696e3bc128eecbfbce88fbebbb0b443564a3ebe3cf4b0d57",
+    "software/pose_v1/include/host_cpu_adapter.hpp": "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4",
+    "software/pose_v1/src/host_cpu_adapter.cpp": "fc3ff85cbcf46af9a2615ab8756b266762d895ba56b5084e5e245682489241c7",
+    "software/pose_v1/include/preprocess.hpp": "ae70ba3f79722431d282bf5f610d6356b29072b4492f23dcc2adde29958f8118",
+    "software/pose_v1/src/preprocess.cpp": "e13a6bde842ae4d2531d2d0a455313f912d33942e6ee2681eacbd5c44df0b8b0",
+    "tools/pose-v1/mixed-validation-CMakeLists.txt": "5b9089138c0bb32523ae16c35c6ccaa8a25b596cccbffad9e614d42fbb8cdcfc",
+    "tools/pose-v1/aarch64-icraft.cmake": "93d3d7983e824d52a83f853b757891bc9bcf828e6190c6fed838d7be3215c6da",
+    "tools/pose-v1/Build-MixedValidation.ps1": "85a875b24a772bbc5dec0deb55af32f42c458490d459b87eb7dfb34154a8763a",
+    "tools/pose-v1/mixed_validation_gate.py": "17b543a20578381fa828b47a8195018ade00ade421f17ff4e3400f1c3eae557c",
+    "tools/pose-v1/run-mixed-validation.sh": "79ac48a58a15ddff61b836f5f0bd03c9574962b57f0840e9fd4eb2750262f029"
+  },
+  "preserved_files": {
+    "software/pose_v1/src/inference_check.cpp": "75e51aff69c61ed431e0201aa21b10463b43add17c0ad125739f8dd252accf6d",
+    "software/pose_v1/CMakeLists.txt": "0b2732d3fe62caa797628feb95f713a57d2f26812b379fb42f42d9ac114c76a3",
+    "software/pose_v1/include/host_cpu_adapter.hpp": "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4",
+    "software/pose_v1/src/host_cpu_adapter.cpp": "fc3ff85cbcf46af9a2615ab8756b266762d895ba56b5084e5e245682489241c7",
+    "software/pose_v1/src/host_cpu_adapter_check.cpp": "8240ff074ce8995d27f073a553b936a673a69a5591ac7aa9268dcbd78e22dec9"
+  },
+  "sdk_pins": {
+    "original_arm_deb_sha256": "aa24f938566d8892d262bc87bac8048bb8b41c4e4199870debf96b5cc4615ab3",
+    "headers": {
+      "icraft-backends/hostbackend/backend.h": "8cf82840f340ff4173d6d855f8a39b72225dc5d7681fc3d7b7ed9b3cac2da378",
+      "icraft-backends/hostbackend/common/tensor_kernel.h": "509d54a778dcbc25094be73dfc5250b0b84ba3681a3d0b9f49905779338e015d",
+      "icraft-backends/hostbackend/port/common/tensor_ops.h": "f339262a95a63ebe9e1834e56278e737312319a52413a1d749e1a63bf4e48e92",
+      "icraft-xrt/core/backend.h": "f6a8ee61524cff91b2a4bfa5409cf46633d101ffe0528ac0c7599c21dd8b2607",
+      "icraft-xrt/core/tensor.h": "4b2c4d0ad24db042f151a56afce2fba881ad8f2fe1c87c9d32d620caf89b365a",
+      "icraft-xir/core/data_type_attr.h": "a0461bf7f078443fb609d472e802aed9f86407a536c8aa2058bc60a7dab50cec",
+      "icraft-xrt/core/device.h": "7bd98080ea4b228242caa184682703cc2d8610db6a28015810b5d7d8af16ecff",
+      "icraft-xrt/core/session.h": "f26063b529cef9ba2cc48ae07aafe4a4498169240d243cd71a5972bc34e0ebc7",
+      "icraft-xrt/dev/host_device.h": "642a8aec2e3832e0ecd823efa665d32ed42fb08a177878a33945714e633c887f",
+      "icraft-xir/core/data.h": "92c9e344979748e4ff03f8d59de2f4de398b052e70a90411d41be976e6830ed6",
+      "icraft-xir/base/array.h": "4f01421c9fe63a29ed2c0f90482209257bb8d8cfe5508af09edb924eed88058d",
+      "icraft-xir/base/object.h": "37a6f69afd6eabb7aaec95e785903e816e772fc248d920031f54a50109ba2df3",
+      "icraft-backends/zg330backend/zg330backend.h": "9017d5808e00b30746d79f1380879a3056db64d27845fd033dc13513eef7bd8f",
+      "icraft-xrt/dev/zg330_device.h": "43f634de3dd253c1c1fa84c8b6298ca562747744c04721a1debb809ee3b22286",
+      "icraft-utils/osal/cache.hpp": "991eff53ec361874e07d93893580e2e0c68e6587e7e859648737c55b0ce88756"
+    },
+    "host_library_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "zg_library_sha256": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57"
+  },
+  "static_checks": {
+    "python_AST": "passed",
+    "embedded_board_python_3_8_AST": "passed",
+    "PowerShell_parser_errors": 0,
+    "bash_n_exit": 0,
+    "bash_n_context": "MSYS signal-pipe creation failed in sandbox; same static-only bash -n approved outside sandbox passed. Shell commands not executed.",
+    "board_shell_LF": true,
+    "package_checksum_LF": true
+  },
+  "onnx_reference": "completed; onnx-reference-environment-20261006.json",
+  "cpp_compiled": false,
+  "host_bridge_executed": false,
+  "board_new_stages_executed": false,
+  "mixed_verified": false,
+  "numeric_accepted": false,
+  "performance_accepted": false,
+  "execution_owner": "User: FPAI compile/transfer/Lite; agent: ONNX reference/source/evidence review",
+  "same_session_repeat": "Three-case phase performs 308/309/310 then repeat 308; separate repeat output, profile, callbacks, fourth invocation record; not yet run.",
+  "superseded_uncompiled_packages": [
+    ".local/pose-v1-mixed-validation/package-20261006",
+    ".local/pose-v1-mixed-validation/package-20261006-r1"
+  ],
+  "onnx_reference_files_verified": 12,
+  "pure_preprocess_timing_excludes_reference_read_and_output_write": true,
+  "documents_sha256": {
+    "Done.md": "acc670105edfc856edaa30c489f9a4631db10ca58036757b6b3332b4f55cb2b5",
+    "ADR/ADR_00.md": "dc1b635276ff7935186c403a72c715c966467c05768a08faec761f73c83a1fa0",
+    "REFERENCES.md": "fc8e4330fb7175c55bd836b9514d50ba3e487c74fdf99abef80fe2c8beed5808",
+    "Agents.md": "1cc7a834fbb8a2fe8d3c36436e30e1d1fdbba55db36d6571227c64d1115e76fd",
+    "tools/pose-v1/MIXED-VALIDATION.md": "57455113d49d1a71196b75f09f68bb31643ca235d8f89021828462df57df01eb",
+    "tools/pose-v1/MIXED-VALIDATION-COMMANDS.md": "342b5fb506df6f7ad33272322c037983ce342ad3ca51f1313ed21325e2ed3cee",
+    "tools/pose-v1/ONNX-REFERENCE-RESULTS-20261006.md": "af1133854e7e0a1feac10e77422533e4c76ad35df4a3025c7c0607a47af1b873",
+    "tools/pose-v1/STATUS.md": "e987ad325d361e7f1641019a07463b2dee0a25706065ec9ce52dabcc47c5319e"
+  }
+}

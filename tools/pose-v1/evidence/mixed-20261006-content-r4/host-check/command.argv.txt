@@ -1,0 +1,9 @@
+/tmp/pose-v1-mixed-validation/20261006-content-r4-final/pose_mixed_check
+host-check
+--output
+/tmp/pose-v1-mixed-validation/20261006-content-r4-final/run-host-check/results
+--graph
+/tmp/pose-v1-mixed-validation/20261006-content-r4-final/package/graph/piw24_ZG.json
+--fixtures
+/tmp/pose-v1-mixed-validation/20261006-content-r4-final/package/fixtures
+--capture-host-content

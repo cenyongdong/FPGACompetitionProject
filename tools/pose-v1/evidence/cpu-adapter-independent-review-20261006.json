@@ -1,0 +1,241 @@
+{
+  "date": "2026-10-06",
+  "status": "cpu_candidate_gate_independently_verified",
+  "review_method": "direct returned file reads, checksums, JSON registration/case matching, binary reference comparisons and finite FP32 inspection; no candidate rerun",
+  "execution_owner": "user",
+  "review_owner": "agent",
+  "package_files_verified": 282,
+  "returned_files_verified": 40,
+  "runtime_cases_verified": 107,
+  "positive_cases": 18,
+  "negative_cases": 89,
+  "negative_rejection_counts": {
+    "axis": 3,
+    "dtype": 5,
+    "shape": 5,
+    "layout": 5,
+    "distribution": 15,
+    "storage": 5,
+    "arity": 10,
+    "output": 7,
+    "finite": 13,
+    "spec": 2,
+    "k": 8,
+    "kernel": 9,
+    "reduction": 2
+  },
+  "registry_records_verified": 12,
+  "original_Gather_registered_before_and_after": true,
+  "missing_node_ids_registered_and_forward_tested": [
+    188,
+    192,
+    437,
+    582,
+    649
+  ],
+  "numerical_output_files": 22,
+  "float32_output_values": 59600,
+  "numeric": [
+    {
+      "case_id": "op188_allocated",
+      "output": 0,
+      "count": 100,
+      "sha256": "0042fabe751e39672612ea30713e5e0ee6336d3d7d48dcf53f27597c3909a4a3",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op188_allocated",
+      "output": 1,
+      "count": 100,
+      "sha256": "22b932d4017ca5ca5c5d99ae52468c6379a476dd6df6885f7b32a3050bce66b4",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op188_buffers",
+      "output": 0,
+      "count": 100,
+      "sha256": "0042fabe751e39672612ea30713e5e0ee6336d3d7d48dcf53f27597c3909a4a3",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op188_buffers",
+      "output": 1,
+      "count": 100,
+      "sha256": "22b932d4017ca5ca5c5d99ae52468c6379a476dd6df6885f7b32a3050bce66b4",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op192_allocated",
+      "output": 0,
+      "count": 4200,
+      "sha256": "0a98cef135d474190acf6c4484f24dc1ad21bc1c04669888e2b12e4cae29a8fd",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op192_buffers",
+      "output": 0,
+      "count": 4200,
+      "sha256": "0a98cef135d474190acf6c4484f24dc1ad21bc1c04669888e2b12e4cae29a8fd",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op437_allocated",
+      "output": 0,
+      "count": 100,
+      "sha256": "2dc49116a335957057dc64bb3da9ae46d1bf66bf5fc15205b0f427089c9ce45c",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op437_allocated",
+      "output": 1,
+      "count": 100,
+      "sha256": "55aa60bf25625a397618829204aa075333b5a070bab470e68935ffeeabdc2e88",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op437_buffers",
+      "output": 0,
+      "count": 100,
+      "sha256": "2dc49116a335957057dc64bb3da9ae46d1bf66bf5fc15205b0f427089c9ce45c",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op437_buffers",
+      "output": 1,
+      "count": 100,
+      "sha256": "55aa60bf25625a397618829204aa075333b5a070bab470e68935ffeeabdc2e88",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op442_allocated",
+      "output": 0,
+      "count": 4200,
+      "sha256": "0fe77d49d10f38b08effab3c343ec8bc5b5e6999e8c064ff10db933c73b302cc",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op442_buffers",
+      "output": 0,
+      "count": 4200,
+      "sha256": "0fe77d49d10f38b08effab3c343ec8bc5b5e6999e8c064ff10db933c73b302cc",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op582_allocated",
+      "output": 0,
+      "count": 4200,
+      "sha256": "7d4ab03171da51d9097df6a2ae8e4cf33470ba3f669acc540e63fcc409c75186",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op582_buffers",
+      "output": 0,
+      "count": 4200,
+      "sha256": "7d4ab03171da51d9097df6a2ae8e4cf33470ba3f669acc540e63fcc409c75186",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op649_allocated",
+      "output": 0,
+      "count": 4200,
+      "sha256": "7d4ab03171da51d9097df6a2ae8e4cf33470ba3f669acc540e63fcc409c75186",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op649_buffers",
+      "output": 0,
+      "count": 4200,
+      "sha256": "7d4ab03171da51d9097df6a2ae8e4cf33470ba3f669acc540e63fcc409c75186",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op192_negative_indices",
+      "output": 0,
+      "count": 4200,
+      "sha256": "0a98cef135d474190acf6c4484f24dc1ad21bc1c04669888e2b12e4cae29a8fd",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op192_negative_indices_buffers",
+      "output": 0,
+      "count": 4200,
+      "sha256": "0a98cef135d474190acf6c4484f24dc1ad21bc1c04669888e2b12e4cae29a8fd",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op582_negative_indices",
+      "output": 0,
+      "count": 4200,
+      "sha256": "7d4ab03171da51d9097df6a2ae8e4cf33470ba3f669acc540e63fcc409c75186",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op582_negative_indices_buffers",
+      "output": 0,
+      "count": 4200,
+      "sha256": "7d4ab03171da51d9097df6a2ae8e4cf33470ba3f669acc540e63fcc409c75186",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op649_negative_indices",
+      "output": 0,
+      "count": 4200,
+      "sha256": "7d4ab03171da51d9097df6a2ae8e4cf33470ba3f669acc540e63fcc409c75186",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "op649_negative_indices_buffers",
+      "output": 0,
+      "count": 4200,
+      "sha256": "7d4ab03171da51d9097df6a2ae8e4cf33470ba3f669acc540e63fcc409c75186",
+      "bitwise_equal": true,
+      "max_abs_error": 0.0
+    }
+  ],
+  "binary_sha256": "8cf2017cedf6a97f98ce485d979239b659291f3c91d3a3d550382c1c94588622",
+  "model_sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
+  "host_library_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+  "user_review_sha256": "3923c259fd663bcb4ce88d7ba84f7c730e674d2e9168be8a3a72092a6f2d3c78",
+  "board_stderr_bytes": 0,
+  "board_package_check_OK_count": 282,
+  "board_ldd_resolved": true,
+  "submitted_dmesg_tail_unchanged": true,
+  "memory_snapshots": {
+    "before": "              total        used        free      shared  buff/cache   available\nMem:            993         180         618           0         194         748\nSwap:             0           0           0\n",
+    "after": "              total        used        free      shared  buff/cache   available\nMem:            993         182         608           0         202         746\nSwap:             0           0           0\n",
+    "peak_or_full_model_memory_measured": false
+  },
+  "Matmul_cpu_reference_added": false,
+  "formal_inference_integrated": false,
+  "device_accessed": false,
+  "full_model_executed": false,
+  "mixed_verified": false,
+  "performance_verified": false,
+  "agent_connected_board_or_reran": false,
+  "feedback_screenshot": {
+    "path": "tools\\pose-v1\\evidence\\cpu-adapter-user-review-feedback-20261006.png",
+    "sha256": "b036729e8a5a280ed365dc968cfeccc8506698b0bf5529007138886ad6bc6695"
+  },
+  "scope_limit": "frozen FP32 shapes, full-valid distributions and HostDevice CPTR memory; no NPU buffer/caching/transfer or complete model Session verification"
+}

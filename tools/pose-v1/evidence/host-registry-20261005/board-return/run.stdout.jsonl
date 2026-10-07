@@ -1,0 +1,8 @@
+{"graph":"optimized","op_id":1,"type_key":"icraft::xir::MatmulNode","supported":false,"init_registered":false,"forward_registered":false}
+{"graph":"ZG_host","op_id":188,"type_key":"icraft::xir::TopKNode","supported":false,"init_registered":false,"forward_registered":false}
+{"graph":"ZG_host","op_id":192,"type_key":"icraft::xir::GatherElementsNode","supported":false,"init_registered":false,"forward_registered":false}
+{"graph":"ZG_host","op_id":437,"type_key":"icraft::xir::TopKNode","supported":false,"init_registered":false,"forward_registered":false}
+{"graph":"ZG_host","op_id":442,"type_key":"icraft::xir::GatherNode","supported":true,"init_registered":true,"forward_registered":true}
+{"graph":"ZG_host","op_id":582,"type_key":"icraft::xir::ScatterNDNode","supported":false,"init_registered":false,"forward_registered":false}
+{"graph":"ZG_host","op_id":649,"type_key":"icraft::xir::ScatterNDNode","supported":false,"init_registered":false,"forward_registered":false}
+{"stage":"registration_queries_completed_no_inference","device_opened":false}

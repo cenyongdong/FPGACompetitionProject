@@ -1,0 +1,11 @@
+{
+  "status": "all_regression_gates_passed_before_measurement",
+  "host_acceptance_sha256": "937dc2236916a31bee593dc07fa6c058d9de4c97006f229fa4c879b7ecbe3d57",
+  "e0_acceptance_sha256": "42b710e751a174dcc13ca5d7fcfa64c50a836e69f40c5eb47fff150983b50adc",
+  "all_four_real_outputs_bitwise_r6": true,
+  "actual_CPU_values_verified": 52000,
+  "all_107_fixture_cases_passed": true,
+  "same_sync_protocol": true,
+  "SDK_profile_enabled": false,
+  "measurement_running": true
+}

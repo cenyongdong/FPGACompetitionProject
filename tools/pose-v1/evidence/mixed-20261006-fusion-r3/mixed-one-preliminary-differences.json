@@ -1,0 +1,32 @@
+{
+  "status": "single_sample_preliminary_differences_no_tolerance_acceptance",
+  "case": "S11_01_308",
+  "score_same_slot": {
+    "max_abs": 0.003045201301574707,
+    "mean_abs": 0.001227954626083374,
+    "rms": 0.0013894573409458273,
+    "p95_abs": 0.002123892307281494
+  },
+  "poses_same_slot": {
+    "max_abs": 1.3232958316802979,
+    "mean_abs": 0.2292276295309975,
+    "rms": 0.35551594885713383,
+    "p95_abs": 0.8269554555416098
+  },
+  "score_bitwise_equal": false,
+  "poses_bitwise_equal": false,
+  "ONNX_top_index": 0,
+  "board_top_index": 0,
+  "ONNX_top_score": 0.9451969861984253,
+  "board_top_score": 0.9482421875,
+  "selected_best_pose_coordinates": {
+    "max_abs": 0.01611638069152832,
+    "mean_abs": 0.00550001859664917,
+    "rms": 0.007097285260808138,
+    "p95_abs": 0.013288867473602292
+  },
+  "candidate_slot_identity_assumed": false,
+  "coordinate_units": "model_raw_units_not_physical_calibration",
+  "GT_or_MPJPE_evaluated": false,
+  "numerical_accepted": false
+}

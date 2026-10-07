@@ -1,0 +1,209 @@
+
+/usr/lib/aarch64-linux-gnu/libicraft_xrt.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000009e328 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)>:
+   9e328:	d10b83ff 	sub	sp, sp, #0x2e0
+   9e32c:	a9007bfd 	stp	x29, x30, [sp]
+   9e330:	910003fd 	mov	x29, sp
+   9e334:	a90363f7 	stp	x23, x24, [sp, #48]
+   9e338:	b00001b7 	adrp	x23, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   9e33c:	f94516e3 	ldr	x3, [x23, #2600]
+   9e340:	a9025bf5 	stp	x21, x22, [sp, #32]
+   9e344:	aa0203f5 	mov	x21, x2
+   9e348:	aa0103f6 	mov	x22, x1
+   9e34c:	aa020021 	orr	x1, x1, x2
+   9e350:	f9400062 	ldr	x2, [x3]
+   9e354:	f9016fe2 	str	x2, [sp, #728]
+   9e358:	d2800002 	mov	x2, #0x0                   	// #0
+   9e35c:	a90153f3 	stp	x19, x20, [sp, #16]
+   9e360:	f240183f 	tst	x1, #0x7f
+   9e364:	aa0003f3 	mov	x19, x0
+   9e368:	fa400aa4 	ccmp	x21, #0x0, #0x4, eq  // eq = none
+   9e36c:	540009c1 	b.ne	9e4a4 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x17c>  // b.any
+   9e370:	52856041 	mov	w1, #0x2b02                	// #11010
+   9e374:	528031a0 	mov	w0, #0x18d                 	// #397
+   9e378:	a9046bf9 	stp	x25, x26, [sp, #64]
+   9e37c:	f9002bfb 	str	x27, [sp, #80]
+   9e380:	97ffefc0 	bl	9a280 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.1]>
+   9e384:	97fe501b 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   9e388:	d0000061 	adrp	x1, ac000 <_ZTSUlPKN6icraft3xrt12SegTableNodeEPS1_RKNS_3xir13ReduceVisitorEE_+0x220>
+   9e38c:	aa0003fb 	mov	x27, x0
+   9e390:	91298021 	add	x1, x1, #0xa60
+   9e394:	d2800922 	mov	x2, #0x49                  	// #73
+   9e398:	97fe5562 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   9e39c:	910203f8 	add	x24, sp, #0x80
+   9e3a0:	b0000061 	adrp	x1, ab000 <CSWTCH.1357+0xcf0>
+   9e3a4:	91004304 	add	x4, x24, #0x10
+   9e3a8:	b0000062 	adrp	x2, ab000 <CSWTCH.1357+0xcf0>
+   9e3ac:	aa1803e0 	mov	x0, x24
+   9e3b0:	9125e021 	add	x1, x1, #0x978
+   9e3b4:	91265842 	add	x2, x2, #0x996
+   9e3b8:	52800003 	mov	w3, #0x0                   	// #0
+   9e3bc:	f90043e4 	str	x4, [sp, #128]
+   9e3c0:	97fe5160 	bl	32940 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)@plt>
+   9e3c4:	b00001b4 	adrp	x20, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   9e3c8:	910303fa 	add	x26, sp, #0xc0
+   9e3cc:	a9480be1 	ldp	x1, x2, [sp, #128]
+   9e3d0:	91008348 	add	x8, x26, #0x20
+   9e3d4:	f944ee86 	ldr	x6, [x20, #2520]
+   9e3d8:	d2803e87 	mov	x7, #0x1f4                 	// #500
+   9e3dc:	aa1a03e0 	mov	x0, x26
+   9e3e0:	910183e4 	add	x4, sp, #0x60
+   9e3e4:	910040c6 	add	x6, x6, #0x10
+   9e3e8:	d2800005 	mov	x5, #0x0                   	// #0
+   9e3ec:	d2800883 	mov	x3, #0x44                  	// #68
+   9e3f0:	f90033f6 	str	x22, [sp, #96]
+   9e3f4:	f9003bf5 	str	x21, [sp, #112]
+   9e3f8:	a90c23e6 	stp	x6, x8, [sp, #192]
+   9e3fc:	a90d1fff 	stp	xzr, x7, [sp, #208]
+   9e400:	97fe5908 	bl	34820 <void fmt::v8::detail::vformat_to<char>(fmt::v8::detail::buffer<char>&, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<std::conditional<std::is_same<fmt::v8::type_identity<char>::type, char>::value, fmt::v8::appender, std::back_insert_iterator<fmt::v8::detail::buffer<fmt::v8::type_identity<char>::type> > >::type, fmt::v8::type_identity<char>::type> >, fmt::v8::detail::locale_ref)@plt>
+   9e404:	910283f9 	add	x25, sp, #0xa0
+   9e408:	a94c8be1 	ldp	x1, x2, [sp, #200]
+   9e40c:	91004324 	add	x4, x25, #0x10
+   9e410:	aa1903e0 	mov	x0, x25
+   9e414:	52800003 	mov	w3, #0x0                   	// #0
+   9e418:	f90053e4 	str	x4, [sp, #160]
+   9e41c:	8b020022 	add	x2, x1, x2
+   9e420:	97fe5148 	bl	32940 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)@plt>
+   9e424:	f944ee94 	ldr	x20, [x20, #2520]
+   9e428:	91008341 	add	x1, x26, #0x20
+   9e42c:	f94067e0 	ldr	x0, [sp, #200]
+   9e430:	91004294 	add	x20, x20, #0x10
+   9e434:	f90063f4 	str	x20, [sp, #192]
+   9e438:	eb01001f 	cmp	x0, x1
+   9e43c:	54000040 	b.eq	9e444 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x11c>  // b.none
+   9e440:	97fe5444 	bl	33550 <operator delete(void*)@plt>
+   9e444:	a94a0be1 	ldp	x1, x2, [sp, #160]
+   9e448:	aa1b03e0 	mov	x0, x27
+   9e44c:	97fe5535 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   9e450:	f94053e0 	ldr	x0, [sp, #160]
+   9e454:	91004339 	add	x25, x25, #0x10
+   9e458:	eb19001f 	cmp	x0, x25
+   9e45c:	54000040 	b.eq	9e464 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x13c>  // b.none
+   9e460:	97fe543c 	bl	33550 <operator delete(void*)@plt>
+   9e464:	f94043e0 	ldr	x0, [sp, #128]
+   9e468:	91004318 	add	x24, x24, #0x10
+   9e46c:	eb18001f 	cmp	x0, x24
+   9e470:	54000040 	b.eq	9e478 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x150>  // b.none
+   9e474:	97fe5437 	bl	33550 <operator delete(void*)@plt>
+   9e478:	97fe4fde 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   9e47c:	aa1a03e8 	mov	x8, x26
+   9e480:	97fe52d0 	bl	32fc0 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   9e484:	b00001a1 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   9e488:	aa1a03e0 	mov	x0, x26
+   9e48c:	f9453021 	ldr	x1, [x1, #2656]
+   9e490:	91004021 	add	x1, x1, #0x10
+   9e494:	f90063e1 	str	x1, [sp, #192]
+   9e498:	97fe54f6 	bl	33870 <std::runtime_error::~runtime_error()@plt>
+   9e49c:	a9446bf9 	ldp	x25, x26, [sp, #64]
+   9e4a0:	f9402bfb 	ldr	x27, [sp, #80]
+   9e4a4:	aa1303e0 	mov	x0, x19
+   9e4a8:	b941c261 	ldr	w1, [x19, #448]
+   9e4ac:	52800004 	mov	w4, #0x0                   	// #0
+   9e4b0:	52800003 	mov	w3, #0x0                   	// #0
+   9e4b4:	52800002 	mov	w2, #0x0                   	// #0
+   9e4b8:	97fe516e 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9e4bc:	b941c261 	ldr	w1, [x19, #448]
+   9e4c0:	aa1303e0 	mov	x0, x19
+   9e4c4:	52800024 	mov	w4, #0x1                   	// #1
+   9e4c8:	52800143 	mov	w3, #0xa                   	// #10
+   9e4cc:	52800002 	mov	w2, #0x0                   	// #0
+   9e4d0:	97fe5168 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9e4d4:	b941c261 	ldr	w1, [x19, #448]
+   9e4d8:	2a1603e4 	mov	w4, w22
+   9e4dc:	aa1303e0 	mov	x0, x19
+   9e4e0:	528000c3 	mov	w3, #0x6                   	// #6
+   9e4e4:	52800002 	mov	w2, #0x0                   	// #0
+   9e4e8:	97fe5162 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9e4ec:	b941c261 	ldr	w1, [x19, #448]
+   9e4f0:	aa1303e0 	mov	x0, x19
+   9e4f4:	2a1503e4 	mov	w4, w21
+   9e4f8:	52800103 	mov	w3, #0x8                   	// #8
+   9e4fc:	52800002 	mov	w2, #0x0                   	// #0
+   9e500:	97fe515c 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9e504:	b941c660 	ldr	w0, [x19, #452]
+   9e508:	7100041f 	cmp	w0, #0x1
+   9e50c:	540001cd 	b.le	9e544 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x21c>
+   9e510:	52800034 	mov	w20, #0x1                   	// #1
+   9e514:	d503201f 	nop
+   9e518:	b941c261 	ldr	w1, [x19, #448]
+   9e51c:	aa1303e0 	mov	x0, x19
+   9e520:	52800004 	mov	w4, #0x0                   	// #0
+   9e524:	52800143 	mov	w3, #0xa                   	// #10
+   9e528:	0b010281 	add	w1, w20, w1
+   9e52c:	52800002 	mov	w2, #0x0                   	// #0
+   9e530:	97fe5150 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9e534:	11000694 	add	w20, w20, #0x1
+   9e538:	b941c660 	ldr	w0, [x19, #452]
+   9e53c:	6b14001f 	cmp	w0, w20
+   9e540:	54fffecc 	b.gt	9e518 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x1f0>
+   9e544:	f94516f7 	ldr	x23, [x23, #2600]
+   9e548:	a91dd676 	stp	x22, x21, [x19, #472]
+   9e54c:	f9416fe0 	ldr	x0, [sp, #728]
+   9e550:	f94002e1 	ldr	x1, [x23]
+   9e554:	eb010000 	subs	x0, x0, x1
+   9e558:	d2800001 	mov	x1, #0x0                   	// #0
+   9e55c:	540000e1 	b.ne	9e578 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x250>  // b.any
+   9e560:	a9407bfd 	ldp	x29, x30, [sp]
+   9e564:	a94153f3 	ldp	x19, x20, [sp, #16]
+   9e568:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   9e56c:	a94363f7 	ldp	x23, x24, [sp, #48]
+   9e570:	910b83ff 	add	sp, sp, #0x2e0
+   9e574:	d65f03c0 	ret
+   9e578:	a9046bf9 	stp	x25, x26, [sp, #64]
+   9e57c:	f9002bfb 	str	x27, [sp, #80]
+   9e580:	97fe5090 	bl	327c0 <__stack_chk_fail@plt>
+   9e584:	aa0003f3 	mov	x19, x0
+   9e588:	97fe5a70 	bl	34f48 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   9e58c:	aa1303e0 	mov	x0, x19
+   9e590:	97fe586c 	bl	34740 <_Unwind_Resume@plt>
+   9e594:	f94053e1 	ldr	x1, [sp, #160]
+   9e598:	91004339 	add	x25, x25, #0x10
+   9e59c:	aa0003f3 	mov	x19, x0
+   9e5a0:	eb19003f 	cmp	x1, x25
+   9e5a4:	54000060 	b.eq	9e5b0 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x288>  // b.none
+   9e5a8:	aa0103e0 	mov	x0, x1
+   9e5ac:	97fe53e9 	bl	33550 <operator delete(void*)@plt>
+   9e5b0:	f94043e0 	ldr	x0, [sp, #128]
+   9e5b4:	91004318 	add	x24, x24, #0x10
+   9e5b8:	eb18001f 	cmp	x0, x24
+   9e5bc:	54fffe60 	b.eq	9e588 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x260>  // b.none
+   9e5c0:	97fe53e4 	bl	33550 <operator delete(void*)@plt>
+   9e5c4:	17fffff1 	b	9e588 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x260>
+   9e5c8:	f944ee94 	ldr	x20, [x20, #2520]
+   9e5cc:	aa0003f3 	mov	x19, x0
+   9e5d0:	f94067e0 	ldr	x0, [sp, #200]
+   9e5d4:	91004294 	add	x20, x20, #0x10
+   9e5d8:	f90063f4 	str	x20, [sp, #192]
+   9e5dc:	9100835a 	add	x26, x26, #0x20
+   9e5e0:	eb1a001f 	cmp	x0, x26
+   9e5e4:	54fffe41 	b.ne	9e5ac <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x284>  // b.any
+   9e5e8:	17fffff2 	b	9e5b0 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)+0x288>
+   9e5ec:	d503201f 	nop
+
+000000000009e5f0 <icraft::xrt::ZG330Device::icoreCalc(unsigned long, unsigned long)>:
+   9e5f0:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+   9e5f4:	910003fd 	mov	x29, sp
+   9e5f8:	a90153f3 	stp	x19, x20, [sp, #16]
+   9e5fc:	aa0003f3 	mov	x19, x0
+   9e600:	f9400014 	ldr	x20, [x0]
+   9e604:	f940ee80 	ldr	x0, [x20, #472]
+   9e608:	eb01001f 	cmp	x0, x1
+   9e60c:	54000081 	b.ne	9e61c <icraft::xrt::ZG330Device::icoreCalc(unsigned long, unsigned long)+0x2c>  // b.any
+   9e610:	f940f280 	ldr	x0, [x20, #480]
+   9e614:	eb02001f 	cmp	x0, x2
+   9e618:	54000060 	b.eq	9e624 <icraft::xrt::ZG330Device::icoreCalc(unsigned long, unsigned long)+0x34>  // b.none
+   9e61c:	aa1403e0 	mov	x0, x20
+   9e620:	97fe517c 	bl	32c10 <icraft::xrt::ZG330DeviceNode::configVPE(unsigned long, unsigned long)@plt>
+   9e624:	b941c281 	ldr	w1, [x20, #448]
+   9e628:	aa1303e0 	mov	x0, x19
+   9e62c:	a94153f3 	ldp	x19, x20, [sp, #16]
+   9e630:	52800024 	mov	w4, #0x1                   	// #1
+   9e634:	a8c27bfd 	ldp	x29, x30, [sp], #32
+   9e638:	52800123 	mov	w3, #0x9                   	// #9
+   9e63c:	52800002 	mov	w2, #0x0                   	// #0
+   9e640:	17fe56c4 	b	34150 <icraft::xrt::ZG330Device::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9e644:	d503201f 	nop

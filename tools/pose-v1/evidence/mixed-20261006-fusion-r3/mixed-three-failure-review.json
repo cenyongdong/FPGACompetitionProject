@@ -1,0 +1,314 @@
+{
+  "status": "mixed_three_failed_stopped_identical_outputs",
+  "exit": 1,
+  "error": "All outputs identical for distinct CSI; review needed",
+  "returned_files_verified": 61,
+  "package_files_verified": 291,
+  "reference_files_verified": 12,
+  "binary_sha256": "e8d66113ad3d9a34f9f210e5f7038560bc3dbfa681b9a057d748ff39e6c696a8",
+  "SDK_and_device_identity_matched": true,
+  "device_version": {
+    "url": "axi://zg330aiu?npu=0x40000000&dma=0x80000000",
+    "versions": {
+      "device": "25122301",
+      "icore": "FMSHZGV3TECH-AID - 24160628"
+    },
+    "numerical_accepted": false
+  },
+  "formal_fusion_binding_verified": true,
+  "inputs_match_fixed_and_ONNX": true,
+  "all_3_input_hashes_distinct": true,
+  "all_outputs_finite": true,
+  "three_cases_output_pairs_identical": true,
+  "within_session_first_repeat_equal": true,
+  "cross_session_first_equal": true,
+  "observations": [
+    {
+      "case": "S11_01_308",
+      "input_sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+      "outputs": {
+        "scores": {
+          "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+          "reference_sha256": "4f417f41c27c538f3a1b6c44e9572f15bd494c48617e6a4e4256d3f961b9e71e",
+          "elements": 100
+        },
+        "poses": {
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+          "reference_sha256": "c5ffa26cfb89568b9867371c50249070c1906ceee800eb9db5c69c66b370af4f",
+          "elements": 4200
+        }
+      }
+    },
+    {
+      "case": "S11_01_309",
+      "input_sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300",
+      "outputs": {
+        "scores": {
+          "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+          "reference_sha256": "238bd01a7da518c578bdd74795b1abfeef032d0e89fbf7b23fdb54165b608169",
+          "elements": 100
+        },
+        "poses": {
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+          "reference_sha256": "cd24e9be768da196a2d871cb21f21dc752e186a63a46d05294e250aff5002ab3",
+          "elements": 4200
+        }
+      }
+    },
+    {
+      "case": "S11_01_310",
+      "input_sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187",
+      "outputs": {
+        "scores": {
+          "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+          "reference_sha256": "ca58c33b64a3feaa77b187e41a619abc28bb7e6aa4254bae871f269d4392ac2a",
+          "elements": 100
+        },
+        "poses": {
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+          "reference_sha256": "e6f393a436cbf3b25405c3fd116be8d017aa683e4c2a21e222a77ae581a93f0f",
+          "elements": 4200
+        }
+      }
+    }
+  ],
+  "distinct_input_output_analysis": [
+    {
+      "case": "S11_01_309",
+      "input_changed_elements": 10431,
+      "input_max_abs_delta": 8.89354133605957,
+      "scores": {
+        "board_changed_elements": 0,
+        "ONNX_changed_elements": 100,
+        "ONNX_max_abs_delta": 0.030252814292907715
+      },
+      "poses": {
+        "board_changed_elements": 0,
+        "ONNX_changed_elements": 4200,
+        "ONNX_max_abs_delta": 1.4459444284439087
+      }
+    },
+    {
+      "case": "S11_01_310",
+      "input_changed_elements": 10445,
+      "input_max_abs_delta": 10.801506042480469,
+      "scores": {
+        "board_changed_elements": 0,
+        "ONNX_changed_elements": 100,
+        "ONNX_max_abs_delta": 0.012952744960784912
+      },
+      "poses": {
+        "board_changed_elements": 0,
+        "ONNX_changed_elements": 4200,
+        "ONNX_max_abs_delta": 2.0031504034996033
+      }
+    }
+  ],
+  "callbacks_by_invocation": {
+    "0": {
+      "ZG": [
+        9185,
+        9186,
+        9187,
+        9188,
+        9189,
+        9190,
+        9191
+      ],
+      "Host": [
+        0,
+        188,
+        192,
+        437,
+        442,
+        582,
+        649
+      ]
+    },
+    "1": {
+      "ZG": [
+        9185,
+        9186,
+        9187,
+        9188,
+        9189,
+        9190,
+        9191
+      ],
+      "Host": [
+        0,
+        188,
+        192,
+        437,
+        442,
+        582,
+        649
+      ]
+    },
+    "2": {
+      "ZG": [
+        9185,
+        9186,
+        9187,
+        9188,
+        9189,
+        9190,
+        9191
+      ],
+      "Host": [
+        0,
+        188,
+        192,
+        437,
+        442,
+        582,
+        649
+      ]
+    },
+    "3": {
+      "ZG": [
+        9185,
+        9186,
+        9187,
+        9188,
+        9189,
+        9190,
+        9191
+      ],
+      "Host": [
+        0,
+        188,
+        192,
+        437,
+        442,
+        582,
+        649
+      ]
+    }
+  },
+  "forward_calls_completed": 4,
+  "bridge_event_count": 32,
+  "dmesg_unchanged": true,
+  "stages": [
+    {
+      "stage": "started"
+    },
+    {
+      "stage": "real_parameters_validated"
+    },
+    {
+      "stage": "registered_before_session"
+    },
+    {
+      "stage": "opening_device_not_readonly"
+    },
+    {
+      "stage": "original_bindings_validated_before_apply"
+    },
+    {
+      "stage": "session_applied"
+    },
+    {
+      "stage": "original_to_effective_bindings_validated"
+    },
+    {
+      "stage": "forward_started"
+    },
+    {
+      "stage": "case_completed"
+    },
+    {
+      "stage": "forward_started"
+    },
+    {
+      "stage": "case_completed"
+    },
+    {
+      "stage": "forward_started"
+    },
+    {
+      "stage": "case_completed"
+    },
+    {
+      "stage": "forward_started"
+    },
+    {
+      "stage": "case_completed"
+    },
+    {
+      "stage": "failed_stop_no_retry"
+    }
+  ],
+  "case_timings": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "source_time_ns": 0,
+      "mode": "mixed",
+      "top_index": 0,
+      "top_score": 0.9482421875,
+      "forward_ms": 207.1123,
+      "output_dump_ms": 2.87951,
+      "case_wall_ms_including_evidence_io": 210.69511,
+      "session_init_ms": 26952.36405,
+      "observed_zg_callbacks": 7,
+      "repeated_first_within_session": false,
+      "numerical_acceptance": "pending_ONNX_comparison_and_tolerance_discussion"
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "source_time_ns": 0,
+      "mode": "mixed",
+      "top_index": 0,
+      "top_score": 0.9482421875,
+      "forward_ms": 39.10712,
+      "output_dump_ms": 2.43942,
+      "case_wall_ms_including_evidence_io": 42.17131,
+      "session_init_ms": 26952.36405,
+      "observed_zg_callbacks": 7,
+      "repeated_first_within_session": false,
+      "numerical_acceptance": "pending_ONNX_comparison_and_tolerance_discussion"
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "source_time_ns": 0,
+      "mode": "mixed",
+      "top_index": 0,
+      "top_score": 0.9482421875,
+      "forward_ms": 38.51481,
+      "output_dump_ms": 2.41103,
+      "case_wall_ms_including_evidence_io": 41.56677,
+      "session_init_ms": 26952.36405,
+      "observed_zg_callbacks": 7,
+      "repeated_first_within_session": false,
+      "numerical_acceptance": "pending_ONNX_comparison_and_tolerance_discussion"
+    }
+  ],
+  "repeat_timing": {
+    "case": "S11_01_308",
+    "frame_id": 6,
+    "invocation": 3,
+    "source_time_ns": 0,
+    "mode": "mixed",
+    "top_index": 0,
+    "top_score": 0.9482421875,
+    "forward_ms": 38.37844,
+    "output_dump_ms": 2.48849,
+    "case_wall_ms_including_evidence_io": 41.5166,
+    "session_init_ms": 26952.36405,
+    "observed_zg_callbacks": 7,
+    "repeated_first_within_session": true,
+    "numerical_acceptance": "pending_ONNX_comparison_and_tolerance_discussion"
+  },
+  "three_sample_engineering_accepted": false,
+  "numerical_accepted": false,
+  "performance_accepted": false,
+  "acceptance_generated": false,
+  "root_cause": "Unknown. Existing logs contain metadata/timing but no per-invocation actual Input0/ZG intermediate content; caching/input lifetime/ready-state and backend data reuse remain hypotheses.",
+  "agent_activity": "Read-only local artifact/SDK source inspection; no board access or rerun."
+}

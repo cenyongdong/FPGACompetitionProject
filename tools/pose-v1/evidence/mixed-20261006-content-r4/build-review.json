@@ -1,0 +1,37 @@
+{
+  "status": "r4_content_diagnostic_build_verified_not_run",
+  "build_acceptance": {
+    "status": "mixed_build_reviewed",
+    "binary_sha256": "ba8d53985fabdfdc12939d794825d31a0ee29bf9516567be5ba9356c515dcea7",
+    "package_manifest_sha256": "e2b514ad2421065c29ac3a14e28fbed275715999ab1760531305edb07d73518c",
+    "sources_verified": 12,
+    "device_accessed": false,
+    "runtime_verified": false
+  },
+  "package_hash_count": 291,
+  "source_identity_count": 20,
+  "build_files_verified": 12,
+  "ARM_headers_verified": 15,
+  "compiler": "GCC9.4.0",
+  "cmake": "3.24.2",
+  "SDK": "Icraft/CustomOp arm64 3.39.0",
+  "binary_bytes": 578960,
+  "warnings": [
+    "/tmp/pose-v1-mixed-20261006-content-r4-final/source/mixed_check.cpp:147:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]"
+  ],
+  "errors": [],
+  "warning_review": "Unchanged version-JSON comma/reset/output control flow, shifted to147; condition intentionally controls comma only.",
+  "ELF": "AArch64 ELF64 little-endian PIE, direct Host/ZG dependencies, no RPATH/RUNPATH",
+  "identities": {
+    "build.log": "3d3e620382af245ba71a2765dc601e76113378aa686677e037d5d3e4b22efe21",
+    "build-result.json": "54c7957972c72ef8b3724a1890bc2c63fb4de48eb9c32bb1b8c909a1f6365a9d",
+    "sdk-audit.json": "a3f4b43403791bbcbfb62de78240222f69dfcf777f38ce0a671649a219ae5b46",
+    "pose_mixed_check.arm64": "ba8d53985fabdfdc12939d794825d31a0ee29bf9516567be5ba9356c515dcea7"
+  },
+  "content_capture_API_compiled": true,
+  "Host_content_paths_executed": false,
+  "Session_content_capture_executed": false,
+  "r3_failure_fixed": false,
+  "agent_compiled_or_accessed_board": false,
+  "next_stage": "User creates new content-r4-final board directory, transfers four artifacts, then Host107 plus pure-Host content tests only; complete return before offline/hardware."
+}

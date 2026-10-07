@@ -204,3 +204,127 @@ PS 优先能降低首版的数值移植、硬件接口和系统集成复杂度�
 HDMI参考默认1080p60，其缓存包装器没有配置720p时序；720p60目标保持，实际时序与实屏验收待核对。
 用户确认屏幕尚未连接。尚未初始化SDK设备、运行模型或访问DMA/HDMI/VPU，完整首版仍未完成。
 最新结果见[阶段报告](../tools/pose-v1/RESULTS-300.md)，后续讨论范围见[NEXT-GATE.md](../tools/pose-v1/NEXT-GATE.md)。
+
+## 13. 2026-10-05：下一阶段实施与执行分工
+
+用户同意优先准备2024 epoch442独立混合推理门检，并静态核对HDMI配套；模型与首版目标保持不变。
+原三份真实样本来自已通过的300份固定清单，ONNX与Icraft Host使用同一参考输入，
+Lite从同一原始CSI在PS预处理后执行ZG330＋六个Host算子，保存完整候选及后端执行/耗时证据。
+分数与坐标误差容限依实测另行讨论，不自动修改模型或以CPU参考替代NPU。
+
+本轮完成源码和命令准备，未编译、测试、初始化设备或执行模型。
+软件/AI实际操作由用户完成，代理编写、审查程序和分析结果；FPGA仿真/实现/下载由代理执行，仍遵循审批规则。
+先查询SDK/编译工具/依赖，再编译并离线检查，单独probe结果复核后继续混合推理。
+新依赖、启动配置、模型或FPGA工程变更不包括在此次实施中。
+
+HDMI审查发现参考RTL可写时序项，但对应当前25122301位流及像素时钟的证据不足，
+未配置寄存器或改为1080p，720p60目标保持。执行入口见
+[INFERENCE-COMMANDS.md](../tools/pose-v1/INFERENCE-COMMANDS.md)；静态证据见
+[HDMI-STATIC-AUDIT.md](../tools/pose-v1/HDMI-STATIC-AUDIT.md)。
+
+2026-10-05执行状态补充（不改变上述架构）：用户完成固定三样本打包及FPAI GCC9.4.0/CMake3.24.2交叉编译，
+板端包11项哈希通过、动态库已列出依赖均解析，ZG JSON离线接口/阶段检查通过。
+用户随后完成SDK Device::Open/version探测，退出码0、初始化成功、阶段完整、stderr为空、无失败记录，
+device=25122301、icore=FMSHZGV3TECH-AID - 24160628；提供的内核尾部未见探测相关总线/DMA错误。
+该通过范围不包含RAW参数加载、模型执行、六个Host算子与NPU计算或数值/性能验收。
+compatibility_passed=false固定待验收标记保持；ONNX Runtime依赖缺失、Windows Host编译工具待确认，
+参考结果有效前不推进mixed。HDMI720p60、RTSP及完整闭环仍未验收，软件实际操作继续由用户执行。
+最新证据与命令见[阶段状态](../tools/pose-v1/STATUS.md)和[执行说明](../tools/pose-v1/INFERENCE-COMMANDS.md)。
+
+同日参考执行位置更新：用户在原开发CMD已验证MSVC x64/CMake3.31.6-msvc6可用，但Windows SDK未识别。
+用户明确同意本阶段先以Lite Host作为F2参考，复用现有AArch64检查器、optimized模型及三个固定参考张量。
+先资源查询，再运行一次受300秒限制的Host参考，保存完整候选/输入/后端/日志及哈希。
+这只调整数值参考的位置，不改变正式PS/NPU与双路目标；ARM支持/内存/数值仍待验证，CPU参考不能替代NPU验收。
+Windows Host路线保留，ORT依赖解析/安装仍需独立批准，未执行Host或mixed模型。
+具体范围[REFERENCE-NEXT-PLAN.md](../tools/pose-v1/REFERENCE-NEXT-PLAN.md)，
+用户命令[LITE-HOST-COMMANDS.md](../tools/pose-v1/LITE-HOST-COMMANDS.md)。
+
+## 14. 2026-10-06：CPU验收后接入候选、工程与数值分阶段
+
+用户批准“进度归档、ONNX参考与PS/NPU混合推理验证”方案，更新第13节后续路径。
+CPU独立候选107例/12注册/22输出59,600 FP32已验收，但Host CPTR测试不能证明真实NPU数据交接。
+Icraft全CPU optimized op1 Matmul未注册仍为事实；正式ZG图Matmul仍分配NPU。
+
+决定以ONNX完整模型直接对照板端，工程和数值分阶段，不等待Icraft全CPU Matmul打通。
+代理自行创建独立Conda并安装CPU ORT1.23.2、运行本机三样本参考；FPAI构建、传输和Lite阶段由用户执行。
+依赖解析实际锁定，DLL/版本冲突、源码构建则停。原环境/模型/权重/BOOT及原推理器保留。
+当前新环境Python3.10.21/NumPy2.2.5/ORT1.23.2及三样本参考已通过接口/有限性/重复性，
+新mixed候选尚未编译/板测；此处记录决定及实施状态，不声称NPU或部署精度通过。
+
+独立pose_mixed_check复用已验证CPU接口，仅注册三类缺失节点；Gather保持，不补CPU Matmul。
+桥先等待输入ready、用SDK复制至Host CPTR暂存、计算后SDK写回完整输出缓冲区；ADDR/BOTH不直接解引用。
+只接受当前FP32/布局/全有效分布和明确设备区域；真实RAW参数核对，不替换模型参数。
+Linux cache helper不是同步证明，真实NPU/CPU交接须工程阶段实测。
+
+顺序：构建身份→107例Host桥回归→离线图/RAW/PS输入→30秒SDK两16KiB往返→300秒Session apply不前向
+→180秒308→300秒三样本；每阶段证据核验后继续，硬件显式allow-device-init。
+保存1173HardOp与六Host绑定、实际后端回调、内存/搬运/耗时/失败位置；未明融合映射停止讨论。
+超时/OOM/总线/SDK异常、非有限、身份变化或全输出不变则保存停止，无自动重试/复位/改模型。
+
+完整分数/姿态报告绝对误差最大/平均/RMS/P95、逐位一致、最高分槽位切换及最佳候选姿态差异；
+同槽位不代表同候选身份，原始单位不作物理标定/MPJPE，容限根据实测另行讨论。
+ONNX失败只暂停数值比较，工程按阶段可独立推进。HDMI/RTSP/5Hz/延迟/30分钟闭环不属于本轮验收。
+入口[新命令](../tools/pose-v1/MIXED-VALIDATION-COMMANDS.md)、[范围](../tools/pose-v1/MIXED-VALIDATION.md)，
+实测[ONNX参考](../tools/pose-v1/ONNX-REFERENCE-RESULTS-20261006.md)；历史Host失败和审批快照保留。
+
+同日构建门检补充：用户完成mixed-20261006-r1，代理直接核对源码/ARM SDK/模型包和AArch64 PIE身份通过；
+唯一缩进warning为JSON输出多语句同一行，控制流符合预期，源码/包保持不变，无需因该警告重编译。
+build.acceptance.json已生成，按既定顺序由用户传板后先Host桥回归；未执行新板端阶段，不扩大为mixed通过。
+
+同日Host桥回归验收补充：用户执行并完整回传，107例/12注册/22输出59,600FP32逐位一致、全有限，
+回传45项及程序/SDK身份匹配；全部暂存搬运源/目标均Host CPTR。host-check.acceptance.json已生成，
+真实RAW/设备内存/Session/NPU仍待后续阶段，未改架构或原模型。提前offline因缺前阶段验收停在预检，失败目录保留回传再处理。
+完整[Host结果](../tools/pose-v1/MIXED-HOST-RESULTS-20261006.md)。
+
+同日正式离线验收补充：四真实RAW参数物化/范围合法，三份PS输入与固定及ONNX逐位一致，
+注册/32回传哈希/SDK身份/阶段核验通过。offline-check.acceptance.json已生成；无设备初始化/完整Session/前向。
+下一步保持原批准顺序，仅SDK两16KiB内存往返，用户确认BOOT/JTAG未变且无并发访问后执行，结果先核验再apply。
+结果[MIXED-OFFLINE-RESULTS-20261006.md](../tools/pose-v1/MIXED-OFFLINE-RESULTS-20261006.md)，未更改模型或架构。
+
+同日SDK内存阶段验收补充：用户Device::Open及两16KiB ADDR PLDDR缓冲区往返通过，版本25122301/icore24160628保持，
+六份24,576FP32模式含-0/+0逐位一致、28回传及SDK/程序身份匹配、内核前后相同；memory-check.acceptance.json已生成。
+仅SDK CPU↔设备copyFrom路径验收，未模型Session/前向/NPU生产者同步。按既定顺序下一步用户仅300秒apply-check并回传。
+结果[MIXED-MEMORY-RESULTS-20261006.md](../tools/pose-v1/MIXED-MEMORY-RESULTS-20261006.md)，未改方案/SDK/配置。
+
+## 15. 2026-10-06：apply失败后的绑定快照取证
+
+apply-r1已到session_applied，随后首个原HardOp8622缺预期绑定追溯，退出1，无模型forward。
+SDK提供autoMerge及HardOpInfo.merge_from，但已有日志仅绑定首行，实际映射未知；不直接放宽或改SDK默认优化。
+用户明确批准仅增加快照：Session创建后/apply后全量绑定键、原图/Session/后端视图、ZG hardop_map/merge_from/net_hardop/同步索引。
+已按审阅候选逐字节应用，保留旧源码/r1程序/包/失败目录；严格1173HardOp及六Host要求、数学/数据桥/前向保持。
+新package-20261006-binding-r2已准备并静态核验，尚未交叉编译/板测。
+用户新构建后先新身份Host107、离线、SDK内存门禁，再一次300秒apply取证，不执行mixed或另行autoMerge。
+原检查可能仍退出1，先完整回传分析；正式融合覆盖方案必须依据实际快照另行审阅，不自动宣称部署通过。
+执行入口[MIXED-BINDING-R2-COMMANDS.md](../tools/pose-v1/MIXED-BINDING-R2-COMMANDS.md)，
+方案[MIXED-BINDING-SNAPSHOT-PLAN.md](../tools/pose-v1/MIXED-BINDING-SNAPSHOT-PLAN.md)。
+
+同日r2构建验收更新：用户GCC9.4/CMake3.24.2完成新程序，10源码/15ARM头文件/Host＋ZG库/包及程序身份匹配，
+与审阅候选一致；新AArch64 PIE SHA25694a03a90…bd061248，只有原已审查的缩进warning。
+build.acceptance.json已生成，公共字段可编译不代表实际快照/融合覆盖通过；用户继续新目录传输后先Host回归。
+结果[MIXED-BINDING-R2-BUILD-RESULTS.md](../tools/pose-v1/MIXED-BINDING-R2-BUILD-RESULTS.md)，新运行阶段尚未执行。
+
+## 16. 2026-10-06：跨帧执行状态协议与r6工程验收
+
+用户明确将当前问题全部执行交给代理。r4内容证明caller/Input0更新和CPU计算正确；r5公共SDK状态取证显示执行计数跨帧累加，旧计数错误满足本帧完成阈值。
+依据匹配ARM实现及官方reset等级表，仅在安全帧边界使用Device::reset(1)清FPGA状态并验证0，完成输出waitForReady及固定745后才下一帧。
+同一Session/1173七组/六计算Host、模型/RAW、SDK和BOOT保持，Matmul仍NPU；未使用全复位、缓存清理、每帧Session重建或直接寄存器写。
+r6构建、Host107、离线、内存、apply、单/三全部通过，三帧分别响应、重复308全部内容逐位一致；工程验收与数值容限/持续性能分阶段保持。
+[完整结果](../tools/pose-v1/MIXED-FRAME-STATE-R6-RESULTS.md)和ONNX误差已归档。固定745来自当前融合基线，不能扩用到其他模型或SDK。
+早期停止和审批快照保留为历史；该协议不是失败后自动重试，后续显示/性能或新模型工作仍按原批准范围推进。
+
+
+## 17. 运行核心与扩展验证结果（2026-10-07）
+
+原批准E0/N1/P1已由代理完成，新隔离核心65次forward保留r6安全帧协议、模型/RAW/SDK/BOOT及profiling。
+27样本与ORT完整误差和三预热＋30计量已归档；工程通过不扩展为数值容限或5Hz通过。
+最高分候选存在排名交换线索而query身份未证，处理基线4.65420Hz且未包含网络/绘图/编码。
+下一步N2/P2及E1/视频为新候选待讨论，首版2024 epoch442/PS-NPU分工/720p HDMI＋H.264 RTSP目标保持。
+依据：[20261007结果](../tools/pose-v1/RUNTIME-RESULTS-20261007.md)、[H0审查](../tools/pose-v1/H0-INTEGRATION-AUDIT-20261007.md)。
+
+
+## 18. 用户数值验收及profiling-off性能定位（2026-10-07）
+
+用户明确验收现有27样本部署数值阶段，不要求query身份诊断阻断下一阶段；误差/排序推断及适用限制原样保留。
+用户要求关闭SDK profiling，单steady_clock定位forward开销。独立消息构造优化保留所有检查/计算/同步，处理基线5.24655Hz/P95 190.75409ms。
+此为短期处理核心，整机5Hz、10Hz、网络/渲染/双路/30分钟未验收。下一步生产接口与视频配套具体方案另议，模型/RAW/SDK/BOOT和首版目标保持。
+依据：[P2结果](../tools/pose-v1/P2-RESULTS-20261007.md)。

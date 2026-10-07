@@ -1,0 +1,31 @@
+{
+  "date_local": "2026-10-05",
+  "authorization": "User approved read-only library audit and special-problem direct tool assistance",
+  "board": "root@192.168.126.49",
+  "transport_exit": 0,
+  "stderr_empty": true,
+  "audit_command_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "board_host_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+  "original_package_host_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+  "host_matches_original": true,
+  "installed_packages": [
+    "icraft arm64 3.39.0 install ok installed",
+    "customop arm64 3.39.0 install ok installed"
+  ],
+  "icraft_verify_reported_differences": false,
+  "host_export_dependencies": "Icraft::XRT;rt;dl;Icraft::CudaDefault",
+  "readelf_path": "/usr/bin/readelf",
+  "model_run": false,
+  "device_open": false,
+  "sdk_or_model_changed": false,
+  "limitation": "File integrity and export metadata do not demonstrate runtime Matmul registration; independent probe remains unapproved",
+  "core_source_sha256": "75e51aff69c61ed431e0201aa21b10463b43add17c0ad125739f8dd252accf6d",
+  "original_binary_sha256": "d1006f9bd78050ffa484c64bf74fb62542d270c7acca5068e9da611a5bdc05e5"
+}

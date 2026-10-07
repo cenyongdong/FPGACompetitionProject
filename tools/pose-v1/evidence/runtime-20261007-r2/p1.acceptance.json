@@ -1,0 +1,87 @@
+{
+  "status": "stage_engineering_review_passed",
+  "stage": "p1",
+  "binary_sha256": "8970f692b8636e420ae972277fb2a45b79b844895e0664fd99d8352e4cf00192",
+  "package_manifest_sha256": "c99e3b6c07dd1111bcbdcf199e8350417d5252f232d60decb1de7df896e57fab",
+  "returned_files_verified": 113,
+  "calls": 33,
+  "different_outputs": 3,
+  "session_init_ms": 29474.642,
+  "numerical_accepted": false,
+  "performance_accepted": false,
+  "performance": {
+    "warmup": 3,
+    "measured": 30,
+    "metrics": {
+      "preprocess_ms": {
+        "min": 5.63475,
+        "median": 5.659925,
+        "p95": 5.6914115,
+        "max": 6.05795,
+        "mean": 5.674796999999999
+      },
+      "prepare_ms": {
+        "min": 0.03639,
+        "median": 0.037985000000000005,
+        "p95": 0.04205,
+        "max": 0.07241,
+        "mean": 0.039545666666666666
+      },
+      "state_clear_ms": {
+        "min": 0.00462,
+        "median": 0.0051199999999999996,
+        "p95": 0.005614999999999999,
+        "max": 0.006,
+        "mean": 0.005166333333333333
+      },
+      "forward_ms": {
+        "min": 200.94622,
+        "median": 201.20547,
+        "p95": 201.9137805,
+        "max": 203.29832,
+        "mean": 201.36566333333334
+      },
+      "final_wait_ms": {
+        "min": 0.00518,
+        "median": 0.005485,
+        "p95": 0.005964,
+        "max": 0.00631,
+        "mean": 0.005563999999999999
+      },
+      "output_ms": {
+        "min": 2.06867,
+        "median": 2.4319499999999996,
+        "p95": 2.5227365,
+        "max": 2.59717,
+        "mean": 2.3511716666666667
+      },
+      "selection_ms": {
+        "min": 0.0014,
+        "median": 0.00151,
+        "p95": 0.0018109999999999995,
+        "max": 0.00221,
+        "mean": 0.0015453333333333332
+      },
+      "process_ms": {
+        "min": 214.4202,
+        "median": 214.725055,
+        "p95": 215.49763950000002,
+        "max": 216.6138,
+        "mean": 214.85948033333332
+      },
+      "cpu_ms": {
+        "min": 214.391,
+        "median": 214.65949999999998,
+        "p95": 215.41745,
+        "max": 215.703,
+        "mean": 214.7574333333333
+      }
+    },
+    "processing_throughput_hz": 4.654204685074164,
+    "rss_kib_min": 87316,
+    "rss_kib_max": 88808,
+    "sdk_profiling": true,
+    "excludes": "Session initialization, input file/network IO, batched evidence IO and hashes; includes PS preprocessing/state clear/forward/wait/readout/finite/selection",
+    "full_system_5Hz_accepted": false
+  }
+}

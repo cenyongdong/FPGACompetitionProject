@@ -1,0 +1,87 @@
+{
+  "stage": "isolated_cpu_candidate_source_delivered_not_executed",
+  "recorded_local": "2026-10-05T22:10:30",
+  "scope": [
+    "application-side TopK/GatherElements/ScatterND registration",
+    "existing Gather preserved",
+    "Host-memory synthetic fixtures only"
+  ],
+  "source_sha256": {
+    "software/pose_v1/include/host_cpu_adapter.hpp": "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4",
+    "software/pose_v1/src/host_cpu_adapter.cpp": "fc3ff85cbcf46af9a2615ab8756b266762d895ba56b5084e5e245682489241c7",
+    "software/pose_v1/src/host_cpu_adapter_check.cpp": "7eeb0c205d88a7575f022b9fa9b262db4f55b56af2aafdb0fc4b6f28fdb82096",
+    "tools/pose-v1/cpu-adapter-CMakeLists.txt": "3eb56cc84d578774765e31cd7a0cd82513cff90fa17f30eafb32baee1ff4cb10",
+    "tools/pose-v1/aarch64-icraft.cmake": "93d3d7983e824d52a83f853b757891bc9bcf828e6190c6fed838d7be3215c6da",
+    "tools/pose-v1/cpu_adapter_gate.py": "00811171974992fc36522dd93a50300adb04446665b33fe5494f16fbbe2ab9ae",
+    "tools/pose-v1/Build-CpuAdapter.ps1": "b06e3886a4a723eecc804b7e90a16ba0ced608f893232e94d08d7692efd587ae",
+    "tools/pose-v1/run-cpu-adapter.sh": "25b80057e43ab273d868530ddc1d4646bcb26759547f7000c9ed26a78224a234",
+    "tools/pose-v1/CPU-ADAPTER.md": "1f49ac78ddefe80d14349534523a69f482242f2766313a2a058b3736046d8df6",
+    "tools/pose-v1/CPU-ADAPTER-COMMANDS.md": "b811aa78d7b4f4b8f7ac98fc46bd483aa5fc72289c1c0ff57729d3eea870f21e"
+  },
+  "preserved_source_sha256": {
+    "software/pose_v1/src/inference_check.cpp": "75e51aff69c61ed431e0201aa21b10463b43add17c0ad125739f8dd252accf6d",
+    "software/pose_v1/CMakeLists.txt": "0b2732d3fe62caa797628feb95f713a57d2f26812b379fb42f42d9ac114c76a3"
+  },
+  "graph_sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
+  "sdk_headers": {
+    "icraft-backends/hostbackend/backend.h": {
+      "raw_sha256": "a10b15ffb0c092f927885e3fe254e6350a5091396e397a48609ae2e7c4a3c388",
+      "normalized_sha256": "8cf82840f340ff4173d6d855f8a39b72225dc5d7681fc3d7b7ed9b3cac2da378"
+    },
+    "icraft-backends/hostbackend/common/tensor_kernel.h": {
+      "raw_sha256": "d43ff7495d67a0df1ca71b10ee4ae397d6405d78516703261f31f28ddfc5c96e",
+      "normalized_sha256": "509d54a778dcbc25094be73dfc5250b0b84ba3681a3d0b9f49905779338e015d"
+    },
+    "icraft-backends/hostbackend/port/common/tensor_ops.h": {
+      "raw_sha256": "4ce973156dbe42f5bffc86977d2a72b6d0d4bf1f189123478de81604984cf29a",
+      "normalized_sha256": "f339262a95a63ebe9e1834e56278e737312319a52413a1d749e1a63bf4e48e92"
+    },
+    "icraft-xrt/core/backend.h": {
+      "raw_sha256": "b8441d2bcd33b84bfca2c42840c0370abeb842da0dc3dd01a4576ed0f80d9ccc",
+      "normalized_sha256": "f6a8ee61524cff91b2a4bfa5409cf46633d101ffe0528ac0c7599c21dd8b2607"
+    },
+    "icraft-xrt/core/tensor.h": {
+      "raw_sha256": "3a9c83efb9f9a2da4f9e0280e80643582b4fbf43f993a8c647080eddb15b2676",
+      "normalized_sha256": "4b2c4d0ad24db042f151a56afce2fba881ad8f2fe1c87c9d32d620caf89b365a"
+    },
+    "icraft-xir/core/data_type_attr.h": {
+      "raw_sha256": "1fad866063d4afbc879c1185a76864443148008178cc0207364bcf4b135b33fc",
+      "normalized_sha256": "a0461bf7f078443fb609d472e802aed9f86407a536c8aa2058bc60a7dab50cec"
+    }
+  },
+  "original_arm_identity_evidence": "tools/pose-v1/evidence/original-arm-host-package-review-20261005.json",
+  "model_nodes": [
+    188,
+    192,
+    437,
+    442,
+    582,
+    649
+  ],
+  "full_valid_distribution_declarations": 9,
+  "design_counts": {
+    "cases": 107,
+    "positive": 18,
+    "negative": 89,
+    "numeric_outputs": 22,
+    "status": "designed_not_generated"
+  },
+  "static_checks": {
+    "python_ast": "valid",
+    "embedded_python_ast": "valid",
+    "powershell_parser_errors": 0,
+    "board_shell_lf_only": true,
+    "sdk_signatures_reviewed": true,
+    "preserved_sources_and_model_match": true,
+    "cpp_compilation": "not_performed",
+    "shell_execution": "not_performed"
+  },
+  "fixtures_generated": false,
+  "compiled": false,
+  "cpu_tests_executed": false,
+  "device_accessed": false,
+  "mixed_verified": false,
+  "existing_inference_integrated": false,
+  "execution_owner": "user",
+  "next": "CPU-ADAPTER-COMMANDS.md A/B; return build log and metadata before C"
+}

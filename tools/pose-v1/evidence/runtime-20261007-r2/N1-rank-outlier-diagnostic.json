@@ -1,0 +1,163 @@
+{
+  "status": "existing_output_rank_diagnostic_not_candidate_matching",
+  "case": "S52_18_317",
+  "invocation": 22,
+  "source_comparison_sha256": "0beecc448163633163852a1486183e77418bf7d42c2ae036d71efa7143936ce4",
+  "ORT_top_two_scores": [
+    0.9059783220291138,
+    0.8661561012268066
+  ],
+  "board_top_two_scores": [
+    0.94287109375,
+    0.931640625
+  ],
+  "ORT_top_margin": 0.03982222080230713,
+  "board_top_margin": 0.01123046875,
+  "fixed_top_two_coordinate_matrix": [
+    {
+      "ORT_rank": 0,
+      "board_rank": 0,
+      "max_abs": 2.6756198406219482,
+      "RMS": 1.4583567880627997
+    },
+    {
+      "ORT_rank": 0,
+      "board_rank": 1,
+      "max_abs": 0.016997098922729492,
+      "RMS": 0.006262944592493232
+    },
+    {
+      "ORT_rank": 1,
+      "board_rank": 0,
+      "max_abs": 0.02441239356994629,
+      "RMS": 0.007475785998733884
+    },
+    {
+      "ORT_rank": 1,
+      "board_rank": 1,
+      "max_abs": 2.6549821496009827,
+      "RMS": 1.4518113164548594
+    }
+  ],
+  "board_TopK437_top_two_indices": [
+    1,
+    0
+  ],
+  "board_TopK437_value_id": 1137,
+  "Gather442_uses_that_value": true,
+  "ORT_query_indices_unavailable": true,
+  "rank_exchange_is_inference_only": true,
+  "original_statistics_not_remapped": true,
+  "MPJPE_evaluated": false,
+  "numerical_accepted": false,
+  "per_frame_selected_max_ranked": [
+    {
+      "case": "S52_18_317",
+      "max_abs": 2.6756198406219482
+    },
+    {
+      "case": "S53_48_336",
+      "max_abs": 0.031717777252197266
+    },
+    {
+      "case": "S12_27_315",
+      "max_abs": 0.018749237060546875
+    },
+    {
+      "case": "S51_32_349",
+      "max_abs": 0.01669597625732422
+    },
+    {
+      "case": "S11_01_308",
+      "max_abs": 0.01611638069152832
+    },
+    {
+      "case": "S23_01_301",
+      "max_abs": 0.015521049499511719
+    },
+    {
+      "case": "S21_19_319",
+      "max_abs": 0.014514446258544922
+    },
+    {
+      "case": "S51_01_301",
+      "max_abs": 0.014092445373535156
+    },
+    {
+      "case": "S13_47_349",
+      "max_abs": 0.013385772705078125
+    },
+    {
+      "case": "S51_12_331",
+      "max_abs": 0.013256549835205078
+    },
+    {
+      "case": "S52_48_349",
+      "max_abs": 0.01292109489440918
+    },
+    {
+      "case": "S12_48_349",
+      "max_abs": 0.012726306915283203
+    },
+    {
+      "case": "S13_07_304",
+      "max_abs": 0.012577295303344727
+    },
+    {
+      "case": "S22_31_332",
+      "max_abs": 0.010077476501464844
+    },
+    {
+      "case": "S22_48_349",
+      "max_abs": 0.009455680847167969
+    },
+    {
+      "case": "S52_01_301",
+      "max_abs": 0.00912332534790039
+    },
+    {
+      "case": "S23_30_330",
+      "max_abs": 0.007684767246246338
+    },
+    {
+      "case": "S11_12_329",
+      "max_abs": 0.006266593933105469
+    },
+    {
+      "case": "S11_32_349",
+      "max_abs": 0.006155490875244141
+    },
+    {
+      "case": "S21_01_301",
+      "max_abs": 0.0057888031005859375
+    },
+    {
+      "case": "S13_28_312",
+      "max_abs": 0.00570225715637207
+    },
+    {
+      "case": "S12_01_331",
+      "max_abs": 0.005666017532348633
+    },
+    {
+      "case": "S21_31_349",
+      "max_abs": 0.005349636077880859
+    },
+    {
+      "case": "S53_19_308",
+      "max_abs": 0.005309104919433594
+    },
+    {
+      "case": "S23_48_349",
+      "max_abs": 0.005176544189453125
+    },
+    {
+      "case": "S22_01_301",
+      "max_abs": 0.004106998443603516
+    },
+    {
+      "case": "S53_02_301",
+      "max_abs": 0.004093170166015625
+    }
+  ]
+}

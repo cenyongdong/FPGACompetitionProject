@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-06",
+  "status": "approved_api_and_logging_fix_applied_not_compiled",
+  "authorization": "User explicitly agreed to CPU-ADAPTER-COMPILE-FIX-20261006.md",
+  "active_files": {
+    "software/pose_v1/src/host_cpu_adapter_check.cpp": {
+      "sha256": "8240ff074ce8995d27f073a553b936a673a69a5591ac7aa9268dcbd78e22dec9",
+      "matches_reviewed_candidate": true
+    },
+    "tools/pose-v1/Build-CpuAdapter.ps1": {
+      "sha256": "e72361d888b087a4ee0c1dec18da72083d63f107c6fd7fae55d87c4a4cadaec0",
+      "matches_reviewed_candidate": true
+    }
+  },
+  "backups": {
+    "host_cpu_adapter_check.before-array-set-20261006.cpp": "7eeb0c205d88a7575f022b9fa9b262db4f55b56af2aafdb0fc4b6f28fdb82096",
+    "Build-CpuAdapter.before-stderr-log-20261006.ps1": "5858e415135bd1dc2f6ffa5ea6e578b819863b938f7cb5a50b476be01413d3f1"
+  },
+  "reviewed_patch_sha256": "a04aa8971a0016d43df916450fca71c5fd4b203f31e2132efd0011eb10dccbaa",
+  "array_mutator_replacements": 3,
+  "powershell_parse_errors": 0,
+  "original_package_manifest_sha256": "50833ee2d198747966c33550310b19c6e27e0867fffe850fbd67026c488cffc7",
+  "original_checksum_manifest_sha256": "bf4e5ace00f38a0a281e822f99e077492107b23b67e84391eee7c5acbd12fc51",
+  "old_failed_build_unchanged": true,
+  "original_inference_sources_unchanged": {
+    "software/pose_v1/src/inference_check.cpp": "75e51aff69c61ed431e0201aa21b10463b43add17c0ad125739f8dd252accf6d",
+    "software/pose_v1/CMakeLists.txt": "0b2732d3fe62caa797628feb95f713a57d2f26812b379fb42f42d9ac114c76a3"
+  },
+  "registered_kernel_module_unchanged": true,
+  "fixture_generator_and_board_runner_unchanged": true,
+  "new_package": ".local/pose-v1-cpu-adapter/package/20261006-r2",
+  "new_build_tag": "cpu-adapter-20261006-r2",
+  "new_package_generated_by_agent": false,
+  "compiled_by_agent": false,
+  "container_commands_executed_by_agent": false,
+  "cpu_tests_executed": false,
+  "device_accessed": false,
+  "mixed_verified": false,
+  "other_compiler_errors_excluded": false,
+  "execution_owner": "user",
+  "next": "CPU-ADAPTER-COMMANDS.md A/B then return build evidence before C",
+  "documentation_sha256": {
+    "tools/pose-v1/CPU-ADAPTER-COMMANDS.md": "df568d1d1dc913d7ecaf39526be0a3d074da6b363071d3338af4c9be0fb85e95",
+    "tools/pose-v1/CPU-ADAPTER-COMPILE-FIX-20261006.md": "b9975a4e4a8307ffef28fff2733ccfb5bbcae1b2e45c77379813914e3c5df7c2"
+  }
+}

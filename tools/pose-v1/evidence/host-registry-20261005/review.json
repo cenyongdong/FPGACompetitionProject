@@ -1,0 +1,104 @@
+{
+  "date_local": "2026-10-05",
+  "authorization": "User approved independent CPU registration probe; special-problem agent execution",
+  "probe_exit": 0,
+  "stderr_empty": true,
+  "hash_checks": [
+    {
+      "name": "host_registry_probe",
+      "sha256": "4106daf64086e478b7540788eab52d4551680cb11f8b8b104a4f582d86d6d05c",
+      "passed": true
+    },
+    {
+      "name": "run.stdout.jsonl",
+      "sha256": "5fd672eb336017895000e7633823e4c9f37b3e4d9111538ea71165a9ca28ad25",
+      "passed": true
+    },
+    {
+      "name": "run.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": true
+    },
+    {
+      "name": "probe.exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "passed": true
+    },
+    {
+      "name": "input-identities.sha256",
+      "sha256": "1f6da380863ddd393a2baed2bbbf1c3f893492e27854b4e52debfe5b780a30eb",
+      "passed": true
+    }
+  ],
+  "registry_queries": [
+    {
+      "graph": "optimized",
+      "op_id": 1,
+      "type_key": "icraft::xir::MatmulNode",
+      "supported": false,
+      "init_registered": false,
+      "forward_registered": false
+    },
+    {
+      "graph": "ZG_host",
+      "op_id": 188,
+      "type_key": "icraft::xir::TopKNode",
+      "supported": false,
+      "init_registered": false,
+      "forward_registered": false
+    },
+    {
+      "graph": "ZG_host",
+      "op_id": 192,
+      "type_key": "icraft::xir::GatherElementsNode",
+      "supported": false,
+      "init_registered": false,
+      "forward_registered": false
+    },
+    {
+      "graph": "ZG_host",
+      "op_id": 437,
+      "type_key": "icraft::xir::TopKNode",
+      "supported": false,
+      "init_registered": false,
+      "forward_registered": false
+    },
+    {
+      "graph": "ZG_host",
+      "op_id": 442,
+      "type_key": "icraft::xir::GatherNode",
+      "supported": true,
+      "init_registered": true,
+      "forward_registered": true
+    },
+    {
+      "graph": "ZG_host",
+      "op_id": 582,
+      "type_key": "icraft::xir::ScatterNDNode",
+      "supported": false,
+      "init_registered": false,
+      "forward_registered": false
+    },
+    {
+      "graph": "ZG_host",
+      "op_id": 649,
+      "type_key": "icraft::xir::ScatterNDNode",
+      "supported": false,
+      "init_registered": false,
+      "forward_registered": false
+    },
+    {
+      "stage": "registration_queries_completed_no_inference",
+      "device_opened": false
+    }
+  ],
+  "gcc": "9.4.0",
+  "cmake": "3.24.2",
+  "icraft": "arm64 3.39.0",
+  "models_executed": false,
+  "device_opened": false,
+  "source_sha256": "a7aeb2193c8dd68ab047af4e817d65d27e4fb090a61b00abc7f98e56fdab51d3",
+  "original_core_source_sha256": "75e51aff69c61ed431e0201aa21b10463b43add17c0ad125739f8dd252accf6d",
+  "original_inference_binary_sha256": "d1006f9bd78050ffa484c64bf74fb62542d270c7acca5068e9da611a5bdc05e5",
+  "limitation": "Results describe registration in this process and SDK environment; no operator forward or mixed inference validation"
+}

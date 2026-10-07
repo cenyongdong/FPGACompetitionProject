@@ -1,0 +1,73 @@
+--- a/software/pose_v1/src/mixed_check.cpp
++++ b/software/pose_v1/src/mixed_check.cpp
+@@ -176,6 +176,60 @@
+     for(size_t i=0;i<count;++i){float f;std::memcpy(&f,raw.data()+i*4,4);need(std::isfinite(f),"Non-finite model output");}
+     return raw;
+ }
++// Candidate diagnostic: read public metadata only. Never invoke autoMerge again.
++static void snapshot_bindings(const Session& session,const xir::Network& original,
++                              const fs::path& output,const std::string& phase) {
++    auto all=file(output/(phase+".all-bindings.jsonl"));
++    const auto bindings=session.backendBindings();
++    for(const auto& item:std::map<int64_t,Backend>(bindings.begin(),bindings.end()))
++        all << "{\"binding_key\":" << item.first << ",\"backend\":"
++            << quote(std::string(item.second->typeKey())) << "}\n";
++    auto views=file(output/(phase+".views.jsonl"));
++    auto emit_view=[&](const xir::NetworkView& view,const std::string& owner) {
++        if(!view.defined()){views << "{\"owner\":" << quote(owner) << ",\"defined\":false}\n";return;}
++        size_t index=0;
++        for(const auto& op:view->ops)
++            views << "{\"owner\":" << quote(owner) << ",\"index\":" << index++
++                  << ",\"op_id\":" << op->op_id << ",\"operator\":" << quote(std::string(op->typeKey()))
++                  << ",\"is_hardop\":" << (op.is<xir::HardOp>()?"true":"false") << "}\n";
++    };
++    emit_view(original.view(),"original_graph");
++    emit_view(session->network_view,"session_view");
++    auto hard=file(output/(phase+".zg-hardop-map.jsonl"));
++    auto sync=file(output/(phase+".zg-sync-map.jsonl"));
++    auto inventories=file(output/(phase+".backends.jsonl"));
++    for(size_t i=0;i<session->backends.size();++i) {
++        const auto& backend=session->backends[i];
++        const auto owner="backend_"+std::to_string(i);
++        inventories << "{\"backend_index\":" << i << ",\"backend\":"
++                    << quote(std::string(backend->typeKey())) << "}\n";
++        emit_view(backend->network_view,owner);
++        if(!backend.is<zg330::ZG330Backend>())continue;
++        auto zg=backend.cast<zg330::ZG330Backend>();
++        const auto info=zg->forward_info;
++        if(!info.defined())continue;
++        for(const auto& item:info->hardop_map) {
++            hard << "{\"backend_index\":" << i << ",\"op_id\":" << item.first
++                 << ",\"entry_defined\":" << (item.second.defined()?"true":"false");
++            if(item.second.defined()) {
++                hard << ",\"sync_index\":" << item.second->sync_idx.first
++                     << ",\"layer_count\":" << item.second->sync_idx.second;
++                if(item.second->net_hardop.defined())hard << ",\"net_hardop_id\":" << item.second->net_hardop->op_id;
++                hard << ",\"merge_from\":[";
++                for(size_t j=0;j<item.second->merge_from.size();++j) {
++                    if(j)hard << ',';
++                    hard << item.second->merge_from[j];
++                }
++                hard << ']';
++            }
++            hard << "}\n";
++        }
++        for(const auto& item:info->idx_map)
++            sync << "{\"backend_index\":" << i << ",\"map_key\":" << item.first
++                 << ",\"sync_index\":" << item.second.first << ",\"layer_count\":" << item.second.second << "}\n";
++    }
++}
++
+ static int run(const Args& a) {
+     uint16_t little=1;need(sizeof(float)==4 && *reinterpret_cast<char*>(&little)==1,"Requires little-endian FP32");
+     need(!fs::exists(a.output),"Preserve earlier output");fs::create_directories(a.output);const fs::path output=a.output;
+@@ -217,7 +271,9 @@
+         mark("opening_device_not_readonly");auto device=open_device(output);bridge::configure(&trace,true,device);
+         const auto init=Clock::now();
+         auto session=Session::Create<zg330::ZG330Backend,HostBackend>(graph.view(),{device,HostDevice::Default()});
++        snapshot_bindings(session,graph,output,"after-create");
+         session.enableTimeProfile(true);session.apply();mark("session_applied");
++        snapshot_bindings(session,graph,output,"after-apply");
+         const double init_ms=ms(init);auto bindings=session.backendBindings();auto bind=file(output/"bindings.jsonl");
+         size_t bound_hard=0;
+         for(const auto& op:graph->ops) {

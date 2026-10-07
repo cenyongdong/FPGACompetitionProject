@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "review_date_local": "2026-10-05",
+  "timezone": "Asia/Shanghai",
+  "scope": "User-operated packaging/cross-build; agent reads and hashes existing artifacts only. No binary execution.",
+  "build_directory": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-build\\inference-20261005-165059-043b0c40",
+  "container": "FPAI",
+  "sdk_cmake_dir": "/usr/cmake",
+  "binary_sha256": "d1006f9bd78050ffa484c64bf74fb62542d270c7acca5068e9da611a5bdc05e5",
+  "binary_hash_log_matches": true,
+  "build_log_completed": true,
+  "elf_aarch64_in_log": true,
+  "pie_in_log": true,
+  "required_backend_dependencies_in_log": true,
+  "source_file_checks": [
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\CMakeLists.txt",
+      "expected_sha256": "0b2732d3fe62caa797628feb95f713a57d2f26812b379fb42f42d9ac114c76a3",
+      "actual_sha256": "0b2732d3fe62caa797628feb95f713a57d2f26812b379fb42f42d9ac114c76a3",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\PROTOCOL.md",
+      "expected_sha256": "9d6230819242f6de01de05fb67b743bab45fd764362f2535cf4f1d8be3645672",
+      "actual_sha256": "9d6230819242f6de01de05fb67b743bab45fd764362f2535cf4f1d8be3645672",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\README.md",
+      "expected_sha256": "6fd72c07e9d58cd1df095dee222f50bacdbd17860ae9066f2bc53041f489563c",
+      "actual_sha256": "6fd72c07e9d58cd1df095dee222f50bacdbd17860ae9066f2bc53041f489563c",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\include\\preprocess.hpp",
+      "expected_sha256": "ae70ba3f79722431d282bf5f610d6356b29072b4492f23dcc2adde29958f8118",
+      "actual_sha256": "ae70ba3f79722431d282bf5f610d6356b29072b4492f23dcc2adde29958f8118",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\src\\inference_check.cpp",
+      "expected_sha256": "75e51aff69c61ed431e0201aa21b10463b43add17c0ad125739f8dd252accf6d",
+      "actual_sha256": "75e51aff69c61ed431e0201aa21b10463b43add17c0ad125739f8dd252accf6d",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\src\\preprocess.cpp",
+      "expected_sha256": "e13a6bde842ae4d2531d2d0a455313f912d33942e6ee2681eacbd5c44df0b8b0",
+      "actual_sha256": "e13a6bde842ae4d2531d2d0a455313f912d33942e6ee2681eacbd5c44df0b8b0",
+      "matches": true
+    },
+    {
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\software\\pose_v1\\src\\preprocess_check.cpp",
+      "expected_sha256": "bd27896354c0af2506e09c173926121d71fa34c6d78bcaec6ce938f626956d3d",
+      "actual_sha256": "bd27896354c0af2506e09c173926121d71fa34c6d78bcaec6ce938f626956d3d",
+      "matches": true
+    }
+  ],
+  "package_file_checks": [
+    {
+      "relative_path": "inputs/S11_01_308.csi",
+      "expected_sha256": "63d34a02983549940326933415a7613747c2e86c72ed53120e5e518be46cb7b7",
+      "actual_sha256": "63d34a02983549940326933415a7613747c2e86c72ed53120e5e518be46cb7b7",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "reference/S11_01_308.input.f32",
+      "expected_sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+      "actual_sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "inputs/S11_01_309.csi",
+      "expected_sha256": "c2bca2e20d80442b67a85c9678e6e4f84f5d4d48ad5bc50b71fd2723eb545586",
+      "actual_sha256": "c2bca2e20d80442b67a85c9678e6e4f84f5d4d48ad5bc50b71fd2723eb545586",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "reference/S11_01_309.input.f32",
+      "expected_sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300",
+      "actual_sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "inputs/S11_01_310.csi",
+      "expected_sha256": "4033a5c5d8f9dfb1de3b8a0a801323f61c8a6783da7a8104438ba55a1e9d5e07",
+      "actual_sha256": "4033a5c5d8f9dfb1de3b8a0a801323f61c8a6783da7a8104438ba55a1e9d5e07",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "reference/S11_01_310.input.f32",
+      "expected_sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187",
+      "actual_sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "models/piw24_ZG.json",
+      "expected_sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
+      "actual_sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "models/piw24_ZG.raw",
+      "expected_sha256": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3",
+      "actual_sha256": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "models/piw24_optimized.json",
+      "expected_sha256": "3c95b99f35032f001643abb981193eb5558ad3e545a61cb3261388da6246e296",
+      "actual_sha256": "3c95b99f35032f001643abb981193eb5558ad3e545a61cb3261388da6246e296",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "models/piw24_optimized.raw",
+      "expected_sha256": "9b74e369a477bafced2a6664d447fd769f1c539aa1177b5e66ccd45aa900c780",
+      "actual_sha256": "9b74e369a477bafced2a6664d447fd769f1c539aa1177b5e66ccd45aa900c780",
+      "size_matches": true,
+      "matches": true
+    },
+    {
+      "relative_path": "models/person_in_wifi_2024_best_epoch442_full.onnx",
+      "expected_sha256": "7b04090e374e31e016d5703bbcf1d0a561d0b98f268fde984b0bf0461598bd21",
+      "actual_sha256": "7b04090e374e31e016d5703bbcf1d0a561d0b98f268fde984b0bf0461598bd21",
+      "size_matches": true,
+      "matches": true
+    }
+  ],
+  "cases": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "source_time_ns": 0,
+      "original_fixture_stem": "case_006"
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "source_time_ns": 0,
+      "original_fixture_stem": "case_007"
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "source_time_ns": 0,
+      "original_fixture_stem": "case_008"
+    }
+  ],
+  "board_transfer_verified": false,
+  "board_loader_verified": false,
+  "graph_inspection_verified": false,
+  "device_init_verified": false,
+  "inference_verified": false,
+  "numerical_acceptance": "pending_user_execution"
+}

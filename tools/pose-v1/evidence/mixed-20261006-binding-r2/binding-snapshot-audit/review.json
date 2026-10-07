@@ -1,0 +1,143 @@
+{
+  "status": "binding_snapshots_audited_not_apply_accepted",
+  "returned_files_verified": 45,
+  "package_files_verified": 290,
+  "binary_sha256": "94a03a903a4a97f229b1549dcbd1bade193d60dbb23753c1f030431fbd061248",
+  "snapshot_counts": {
+    "after-create": {
+      "all-bindings": 1181,
+      "views": 3543,
+      "backends": 2,
+      "zg-hardop-map": 0,
+      "zg-sync-map": 0
+    },
+    "after-apply": {
+      "all-bindings": 15,
+      "views": 3543,
+      "backends": 2,
+      "zg-hardop-map": 1180,
+      "zg-sync-map": 1180
+    }
+  },
+  "original_hardops_covered": 1173,
+  "missing": 0,
+  "duplicate_coverage": 0,
+  "extra_members": 0,
+  "host_computation_nodes_preserved": [
+    188,
+    192,
+    437,
+    442,
+    582,
+    649
+  ],
+  "groups": [
+    {
+      "effective_op_id": 9185,
+      "original_hardop_count": 366,
+      "sync_index": 0,
+      "layer_count": 223
+    },
+    {
+      "effective_op_id": 9186,
+      "original_hardop_count": 19,
+      "sync_index": 223,
+      "layer_count": 11
+    },
+    {
+      "effective_op_id": 9187,
+      "original_hardop_count": 412,
+      "sync_index": 234,
+      "layer_count": 243
+    },
+    {
+      "effective_op_id": 9188,
+      "original_hardop_count": 7,
+      "sync_index": 477,
+      "layer_count": 4
+    },
+    {
+      "effective_op_id": 9189,
+      "original_hardop_count": 189,
+      "sync_index": 481,
+      "layer_count": 157
+    },
+    {
+      "effective_op_id": 9190,
+      "original_hardop_count": 134,
+      "sync_index": 638,
+      "layer_count": 82
+    },
+    {
+      "effective_op_id": 9191,
+      "original_hardop_count": 46,
+      "sync_index": 720,
+      "layer_count": 25
+    }
+  ],
+  "original_zero_layer_entries": 428,
+  "failing_original": 8622,
+  "actual_effective_binding": 9185,
+  "rejection_checks": [
+    {
+      "case": "missing_original_member",
+      "rejected": true,
+      "reason": "Uncovered original HardOp"
+    },
+    {
+      "case": "duplicate_original_member",
+      "rejected": true,
+      "reason": "Empty/duplicate group members"
+    },
+    {
+      "case": "host_as_hardop_member",
+      "rejected": true,
+      "reason": "Extra or multiply covered original HardOp"
+    },
+    {
+      "case": "missing_effective_binding",
+      "rejected": true,
+      "reason": "Effective binding baseline differs"
+    },
+    {
+      "case": "wrong_effective_backend",
+      "rejected": true,
+      "reason": "Effective binding baseline differs"
+    },
+    {
+      "case": "wrong_group_map_identity",
+      "rejected": true,
+      "reason": "ZG map identity differs"
+    },
+    {
+      "case": "sync_metadata_mismatch",
+      "rejected": true,
+      "reason": "ZG sync map mismatch"
+    },
+    {
+      "case": "host_binding_changed",
+      "rejected": true,
+      "reason": "Host binding changed"
+    },
+    {
+      "case": "create_hardop_on_host",
+      "rejected": true,
+      "reason": "Create backend assignment differs"
+    }
+  ],
+  "mapping_sha256": "985239e014a51adb4d6e4d49dc3890c83b1795a28ad44f83386873c00fc1fec2",
+  "device_version": {
+    "url": "axi://zg330aiu?npu=0x40000000&dma=0x80000000",
+    "versions": {
+      "device": "25122301",
+      "icore": "FMSHZGV3TECH-AID - 24160628"
+    },
+    "numerical_accepted": false
+  },
+  "dmesg_unchanged": true,
+  "model_forward_executed": false,
+  "apply_acceptance_generated": false,
+  "numerical_accepted": false,
+  "agent_activity": "Offline file analysis only; no board/SDK calls.",
+  "script_sha256": "21ef382e2bafca5bcfe8621121016444b37ee817117d0c2911c21af434290cde"
+}

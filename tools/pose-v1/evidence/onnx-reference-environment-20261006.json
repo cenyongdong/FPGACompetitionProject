@@ -1,0 +1,173 @@
+{
+  "date": "2026-10-06",
+  "status": "onnx_reference_ready",
+  "environment": {
+    "python": "3.10.21",
+    "numpy": "2.2.5",
+    "onnxruntime": "1.23.2",
+    "prefix": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-onnx-conda",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "execution_mode": "ORT_SEQUENTIAL",
+    "intra_op_threads": 1,
+    "inter_op_threads": 1,
+    "graph_optimization": "ORT_ENABLE_ALL",
+    "model_sha256": "7b04090e374e31e016d5703bbcf1d0a561d0b98f268fde984b0bf0461598bd21",
+    "source_manifest_sha256": "614c81028bcce906a08051129d0ee8fcc062ec20fb982aab7a64cdab380bb280",
+    "runner_sha256": "6d64b8a89872408a68917a5a8ad607e6b447abb878e3c185e5ea284d32e1f0f0",
+    "session_init_ms": 305.5586999980733,
+    "purpose": "deployment numerical reference; no ground-truth MPJPE"
+  },
+  "summary": {
+    "status": "onnx_reference_ready",
+    "cases": 3,
+    "repeated_first_bitwise_equal": true,
+    "distinct_input_response": true,
+    "board_numerical_accepted": false,
+    "mixed_verified": false
+  },
+  "reference_directory": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-mixed-validation\\onnx-20261006",
+  "reference_files_verified": 12,
+  "output_fp32_values": 12900,
+  "cases": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "source_time_ns": 0,
+      "original_fixture_stem": "case_006",
+      "mode": "onnx_cpu_reference",
+      "forward_ms": 221.80780000053346,
+      "top_index": 0,
+      "top_score": 0.9451969861984253,
+      "numerical_acceptance": "reference_ready_not_board_acceptance"
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "source_time_ns": 0,
+      "original_fixture_stem": "case_007",
+      "mode": "onnx_cpu_reference",
+      "forward_ms": 221.6062000079546,
+      "top_index": 0,
+      "top_score": 0.975449800491333,
+      "numerical_acceptance": "reference_ready_not_board_acceptance"
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "source_time_ns": 0,
+      "original_fixture_stem": "case_008",
+      "mode": "onnx_cpu_reference",
+      "forward_ms": 212.30469999136403,
+      "top_index": 0,
+      "top_score": 0.9581497311592102,
+      "numerical_acceptance": "reference_ready_not_board_acceptance"
+    }
+  ],
+  "wheel_identities": [
+    {
+      "name": "onnxruntime",
+      "version": "1.23.2",
+      "url": "https://files.pythonhosted.org/packages/cd/6d/738e50c47c2fd285b1e6c8083f15dac1a5f6199213378a5f14092497296d/onnxruntime-1.23.2-cp310-cp310-win_amd64.whl",
+      "filename": "onnxruntime-1.23.2-cp310-cp310-win_amd64.whl",
+      "sha256": "0be6a37a45e6719db5120e9986fcd30ea205ac8103fd1fb74b6c33348327a0cc"
+    },
+    {
+      "name": "coloredlogs",
+      "version": "15.0.1",
+      "url": "https://files.pythonhosted.org/packages/a7/06/3d6badcf13db419e25b07041d9c7b4a2c331d3f4e7134445ec5df57714cd/coloredlogs-15.0.1-py2.py3-none-any.whl",
+      "filename": "coloredlogs-15.0.1-py2.py3-none-any.whl",
+      "sha256": "612ee75c546f53e92e70049c9dbfcc18c935a2b9a53b66085ce9ef6a6e5c0934"
+    },
+    {
+      "name": "humanfriendly",
+      "version": "10.0",
+      "url": "https://files.pythonhosted.org/packages/f0/0f/310fb31e39e2d734ccaa2c0fb981ee41f7bd5056ce9bc29b2248bd569169/humanfriendly-10.0-py2.py3-none-any.whl",
+      "filename": "humanfriendly-10.0-py2.py3-none-any.whl",
+      "sha256": "1697e1a8a8f550fd43c2865cd84542fc175a61dcb779b6fee18cf6b6ccba1477"
+    },
+    {
+      "name": "flatbuffers",
+      "version": "25.12.19",
+      "url": "https://files.pythonhosted.org/packages/e8/2d/d2a548598be01649e2d46231d151a6c56d10b964d94043a335ae56ea2d92/flatbuffers-25.12.19-py2.py3-none-any.whl",
+      "filename": "flatbuffers-25.12.19-py2.py3-none-any.whl",
+      "sha256": "7634f50c427838bb021c2d66a3d1168e9d199b0607e6329399f04846d42e20b4"
+    },
+    {
+      "name": "protobuf",
+      "version": "7.36.2",
+      "url": "https://files.pythonhosted.org/packages/8a/55/b77bda4e5e5f5971fb51b07663694690e9afdb9402136c16a522bd621cad/protobuf-7.36.2-cp310-abi3-win_amd64.whl",
+      "filename": "protobuf-7.36.2-cp310-abi3-win_amd64.whl",
+      "sha256": "a300819d441e078a5608c0d3c709796bb548136058fda017ae51d425b44fd353"
+    },
+    {
+      "name": "pyreadline3",
+      "version": "3.5.6",
+      "url": "https://files.pythonhosted.org/packages/f7/5e/35c856e186b74678c24927847ad9895a51f1bc02a0c6126477a6c6040064/pyreadline3-3.5.6-py3-none-any.whl",
+      "filename": "pyreadline3-3.5.6-py3-none-any.whl",
+      "sha256": "8449b734232e42a5dcd74048e39b60db2839a4c38cf3ae2bf7707d58b5389c0d"
+    },
+    {
+      "name": "sympy",
+      "version": "1.14.0",
+      "url": "https://files.pythonhosted.org/packages/a2/09/77d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191/sympy-1.14.0-py3-none-any.whl",
+      "filename": "sympy-1.14.0-py3-none-any.whl",
+      "sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0",
+      "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+      "filename": "mpmath-1.3.0-py3-none-any.whl",
+      "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"
+    }
+  ],
+  "dependency_evidence_directory": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-reference-deps\\20261006",
+  "dependency_record_sha256": {
+    "conda-create-unsandboxed.exit.txt": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+    "conda-create-unsandboxed.json": "153b370fd399eda1432a3212247c0ac36fa551335d09005b56337bb7d56a2733",
+    "conda-create-unsandboxed.stderr.log": "d80f88716a359dab18a1285ea372ce48d33e5b4f65bc60de243e90bd8d4e1e1f",
+    "conda-create.exit.txt": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+    "conda-create.json": "ec264c9f230659a4256c9e842c788656b99a030654219638f5f540136dc39c69",
+    "conda-create.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "conda-explicit.txt": "afa4394eb402152194059a81ac254ef8cb25c485ebf42b8223f72786f0be9fa1",
+    "conda-history.txt": "fada27b782c14448d809371f4aea022d8ff5070b14a64bbe746704ebca28ddac",
+    "conda-list.json": "4419abec620649e70a1ff33698a2f6cb41f7cc4f035d8f6fc7e407901574f535",
+    "import-check.log": "676b03f818464b03929e1b459776c7997f0f162aa05f6a6bc0561ba630dcd7aa",
+    "import-check.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "onnx-reference.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "onnx-reference.stdout.log": "2ec1343e08cc8a52bb93e2bd38b028c9fa5ce9a3d48bda80327075b1f527427f",
+    "pip-check.log": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+    "pip-freeze.txt": "a25a9cc74b4fbd35b18e46fe5e66f1bd5e01cb8cdce2f0eb7795d7258d08c6bc",
+    "pip-install.json": "4eb90976d137f25d34a6cd40636f338872c8ae4e33d49268eab3f9d87a49d8e2",
+    "pip-install.stderr.log": "490a021f5dde58ebcd5c026a6b2758241b3d5395195aecaee8e37bfe5e7f4823",
+    "pip-install.stdout.log": "0a60c3cfa5fc4e109404789237b8e2a06e26c9115139907c03445c2b5df2558d",
+    "pip-resolution.exit.txt": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+    "pip-resolution.json": "05687e5fa6c66b78555adf295354580bca5a59d1419208d15b0f1e682499cea4",
+    "pip-resolution.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pip-resolution.stdout.log": "03c36fa8c7a63e448d4622f36624ec4cebcd9421a932ce2429adc0cc20e70192",
+    "requirements.lock": "329470d4f472be67eedaca78877258839e7fae38dd62e9a2c86341b6c863340e",
+    "wheel-download.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wheel-download.stdout.log": "bb63ca552b5715ba5851186235226c803656b858f7d67bb6926b6628598c37ba",
+    "wheel-identities.json": "aa42ceacf119267c8bcedf50cf977821cf73ad1be244b4a3a2d08407b854b408"
+  },
+  "output_sha256": {
+    "environment.json": "9913f2b314f58647c99b4c4aa1edff8068d4c92c864ef34fcab7454a64c5187b",
+    "files.sha256": "ef8beea783ec45715ba21a2e1332758923603cdc5002a00dc8ef57c2b973f632",
+    "results.jsonl": "f9d39789f99f68be3b60d910f69d70c0bef912a4f736a6a2490594a75b24c64c",
+    "S11_01_308.input.f32": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+    "S11_01_308.poses.f32": "c5ffa26cfb89568b9867371c50249070c1906ceee800eb9db5c69c66b370af4f",
+    "S11_01_308.scores.f32": "4f417f41c27c538f3a1b6c44e9572f15bd494c48617e6a4e4256d3f961b9e71e",
+    "S11_01_309.input.f32": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300",
+    "S11_01_309.poses.f32": "cd24e9be768da196a2d871cb21f21dc752e186a63a46d05294e250aff5002ab3",
+    "S11_01_309.scores.f32": "238bd01a7da518c578bdd74795b1abfeef032d0e89fbf7b23fdb54165b608169",
+    "S11_01_310.input.f32": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187",
+    "S11_01_310.poses.f32": "e6f393a436cbf3b25405c3fd116be8d017aa683e4c2a21e222a77ae581a93f0f",
+    "S11_01_310.scores.f32": "ca58c33b64a3feaa77b187e41a619abc28bb7e6aa4254bae871f269d4392ac2a",
+    "summary.json": "ab121ccf0775feedaa56c5a5e298a15d8ed0268597fa6780a76ba4753ac78ee3"
+  },
+  "sandbox_creation_issue": "Initial Conda failed in CUDA virtual-package IPC (WinError5); identical offline command approved outside sandbox succeeded. No dependency recipe change.",
+  "board_executed": false,
+  "numerical_accepted": false
+}

@@ -1,0 +1,11 @@
+/tmp/pose-v1-perf/20261007-lazy-r4/pose_mixed_check
+p1
+--output
+/tmp/pose-v1-perf/20261007-lazy-r4/run-p1/results
+--package
+/tmp/pose-v1-perf/20261007-lazy-r4/package
+--graph
+/tmp/pose-v1-perf/20261007-lazy-r4/package/graph/piw24_ZG.json
+--raw
+/tmp/pose-v1-perf/20261007-lazy-r4/package/graph/piw24_ZG.raw
+--allow-device-init

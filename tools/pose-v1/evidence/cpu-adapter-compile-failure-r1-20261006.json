@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-06",
+  "stage": "user_build_sdk_audit_and_cmake_passed_compiler_diagnostic_incomplete",
+  "container": "FPAI",
+  "build_tag": "cpu-adapter-20261006-r1",
+  "sdk_audit_identity_matched": true,
+  "copied_headers_checked": 6,
+  "copied_host_library_checked": true,
+  "cmake_configured": true,
+  "cmake_generated": true,
+  "cpp_build_completed": false,
+  "link_completed": false,
+  "cpu_tests_executed": false,
+  "device_accessed": false,
+  "mixed_verified": false,
+  "failure_screenshot": {
+    "path": "tools\\pose-v1\\evidence\\cpu-adapter-compile-failure-r1-20261006.png",
+    "sha256": "092f79a5c2c9267538e64484a3bd8a9dd68d03a726c3afd7e78c342edc96c2f4"
+  },
+  "build_log": {
+    "path": "tools\\pose-v1\\evidence\\cpu-adapter-compile-failure-r1-20261006.log",
+    "sha256": "99f228f255bde312107080270c35c7bc09c153b40b8d21b91e757ea16f7d2b35"
+  },
+  "sdk_audit": {
+    "path": "tools\\pose-v1\\evidence\\cpu-adapter-sdk-audit-r1-20261006.json",
+    "sha256": "73157d93c6498ab1a1ab6991099b4333cb325b0079e06962271dace342def413"
+  },
+  "static_source_defect": {
+    "location": "host_cpu_adapter_check.cpp three Array dimension mutations",
+    "expression": "dims.get_mutable()->at(dims.size()-1) -= 1;",
+    "sdk_get_mutable_returns": "Object*",
+    "Object_has_at_method": false,
+    "approved_sdk_mutator": "Array::set(int64_t,T)",
+    "full_compiler_error_text_captured": false,
+    "other_compiler_errors_excluded": false
+  },
+  "logging_defect": "Windows PowerShell Stop can terminate native stderr pipeline before remaining compiler diagnostics are recorded",
+  "active_files_changed": false,
+  "candidates": {
+    "tools\\pose-v1\\host_cpu_adapter_check.array-set.candidate.cpp": "8240ff074ce8995d27f073a553b936a673a69a5591ac7aa9268dcbd78e22dec9",
+    "tools\\pose-v1\\Build-CpuAdapter.stderr-log.candidate.ps1": "e72361d888b087a4ee0c1dec18da72083d63f107c6fd7fae55d87c4a4cadaec0",
+    "tools\\pose-v1\\CPU-ADAPTER-COMPILE-FIX-20261006.candidate.patch": "a04aa8971a0016d43df916450fca71c5fd4b203f31e2132efd0011eb10dccbaa"
+  },
+  "candidate_state": "pending_approval",
+  "proposed_package": ".local/pose-v1-cpu-adapter/package/20261006-r2",
+  "proposed_build_tag": "cpu-adapter-20261006-r2",
+  "execution_owner": "user",
+  "agent_checks": "local existing file review, static SDK API review and candidate preparation only; no Docker/SSH/compiler/test commands executed"
+}

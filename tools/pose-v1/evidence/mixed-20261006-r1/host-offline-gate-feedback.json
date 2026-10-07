@@ -1,0 +1,14 @@
+{
+  "status": "user_host_exit0_pending_independent_review;offline_stopped_at_preflight",
+  "stage": "host-check",
+  "user_reported_exit": 0,
+  "host_results_returned_at_expected_local_path": false,
+  "host_acceptance_exists_at_expected_local_path": false,
+  "offline_exception": "FileNotFoundError: /tmp/pose-v1-mixed-validation/20261006-r1/gates/host-check.acceptance.json",
+  "source_verified_stop_location": "run-mixed-validation.sh: gate load precedes SDK audit/ldd and program invocation",
+  "offline_program_invoked": false,
+  "board_new_host_independently_accepted": false,
+  "agent_board_access": false,
+  "screenshot_sha256": "9fbe57758f14db4f1dce30919b0d8b74be0695de0287d31699489d66e301dac6",
+  "next_action": "User returns run-host-check; agent reviews full files and generates stage acceptance if passing. Preserve prematurely created run-offline-check, return it before controlled rename; do not rerun host or hardware."
+}

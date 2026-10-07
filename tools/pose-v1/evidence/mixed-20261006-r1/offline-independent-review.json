@@ -1,0 +1,89 @@
+{
+  "status": "offline_real_parameters_and_PS_independently_verified",
+  "case_count": 3,
+  "input_fp32_values": 32400,
+  "input_bitwise_equal_to_fixed_and_ONNX_reference": true,
+  "all_inputs_finite": true,
+  "real_parameter_count": 4,
+  "real_parameters": [
+    {
+      "op_id": 188,
+      "bytes": 4,
+      "elements": 1,
+      "min": 100.0,
+      "max": 100.0,
+      "sha256": "2238f30df488055daf5e8f362cf904e370011a172d20df193c1b7ae8e5db8e01",
+      "observed_index_pattern": "K=100"
+    },
+    {
+      "op_id": 437,
+      "bytes": 4,
+      "elements": 1,
+      "min": 100.0,
+      "max": 100.0,
+      "sha256": "2238f30df488055daf5e8f362cf904e370011a172d20df193c1b7ae8e5db8e01",
+      "observed_index_pattern": "K=100"
+    },
+    {
+      "op_id": 582,
+      "bytes": 50400,
+      "elements": 12600,
+      "min": 0.0,
+      "max": 99.0,
+      "sha256": "168c35ff2cd1f557bfcbc8744b4931f38a532c9c37568eec66ac918b5c6dafe2",
+      "observed_index_pattern": "full [100,14,3] coordinate grid"
+    },
+    {
+      "op_id": 649,
+      "bytes": 50400,
+      "elements": 12600,
+      "min": 0.0,
+      "max": 99.0,
+      "sha256": "168c35ff2cd1f557bfcbc8744b4931f38a532c9c37568eec66ac918b5c6dafe2",
+      "observed_index_pattern": "full [100,14,3] coordinate grid"
+    }
+  ],
+  "parameter_materialized_by": "Pinned compiled checker calls SDK lazyLoadParamsFromFile, checks Params.hasData/storage, and dumps real graph parameter values; no fixture substitution in offline mode.",
+  "raw_sha256": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3",
+  "graph_sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
+  "registry_records": 12,
+  "returned_hash_count": 32,
+  "package_hash_count": 290,
+  "sdk_headers_verified": 15,
+  "sdk_versions": {
+    "icraft:arm64": "3.39.0",
+    "customop:arm64": "3.39.0"
+  },
+  "program_sha256": "7cf761f1dd7d1ca1bf8a1db1826e4d9b34574b1a8dc0ac662c987eed52722a17",
+  "dmesg_before_after_bitwise_equal": true,
+  "dmesg_sha256": "70053e9e2c23294a99cddb4cd1a75fc61cb1e774c806ba397dc52ad0c60d79a8",
+  "exit": 0,
+  "stdout_bytes": 0,
+  "stderr_bytes": 0,
+  "preprocess_observations": [
+    {
+      "frame_id": 6,
+      "preprocess_ms": 15.35236,
+      "input_bitwise_equal": true
+    },
+    {
+      "frame_id": 7,
+      "preprocess_ms": 5.60302,
+      "input_bitwise_equal": true
+    },
+    {
+      "frame_id": 8,
+      "preprocess_ms": 5.58911,
+      "input_bitwise_equal": true
+    }
+  ],
+  "timing_scope": "Three individual PS measurements, no continuous/end-to-end performance acceptance or cause inference.",
+  "mode": "offline-check",
+  "device_initialized": false,
+  "full_session_executed": false,
+  "NPU_executed": false,
+  "mixed_verified": false,
+  "agent_board_accessed": false,
+  "acceptance_sha256": "ee74fd191f408d98bafb83158a69c4e0a76d44a9136b7952a64bac486ac43321",
+  "next_stage": "User transfers offline acceptance then memory-check only, after confirming BOOT/JTAG unchanged and no competing AI/video access."
+}

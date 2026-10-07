@@ -1,0 +1,17 @@
+{
+    "stage":  "compiled_not_executed",
+    "container":  "FPAI",
+    "sdk_config":  "/usr/cmake",
+    "build_script_sha256":  "e72361d888b087a4ee0c1dec18da72083d63f107c6fd7fae55d87c4a4cadaec0",
+    "source_sha256":  {
+                          "software/pose_v1/include/host_cpu_adapter.hpp":  "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4",
+                          "software/pose_v1/src/host_cpu_adapter.cpp":  "fc3ff85cbcf46af9a2615ab8756b266762d895ba56b5084e5e245682489241c7",
+                          "software/pose_v1/src/host_cpu_adapter_check.cpp":  "8240ff074ce8995d27f073a553b936a673a69a5591ac7aa9268dcbd78e22dec9",
+                          "tools/pose-v1/cpu-adapter-CMakeLists.txt":  "3eb56cc84d578774765e31cd7a0cd82513cff90fa17f30eafb32baee1ff4cb10",
+                          "tools/pose-v1/aarch64-icraft.cmake":  "93d3d7983e824d52a83f853b757891bc9bcf828e6190c6fed838d7be3215c6da"
+                      },
+    "package_manifest_sha256":  "8d18197dd245a49e282a512550ea8769eb141500f5774052e501c153506f78eb",
+    "binary_sha256":  "8cf2017cedf6a97f98ce485d979239b659291f3c91d3a3d550382c1c94588622",
+    "device_accessed":  false,
+    "mixed_verified":  false
+}

@@ -1,0 +1,41 @@
+{
+  "status": "SDK_readonly_review_for_identical_output_failure",
+  "run_identity": {
+    "stage": "mixed-three",
+    "package_manifest_sha256": "f8f75181206593419f3fb97e1e91a77a3cc525597e7baf540d0f96f39a39fe68",
+    "binary_sha256": "e8d66113ad3d9a34f9f210e5f7038560bc3dbfa681b9a057d748ff39e6c696a8",
+    "previous_stage": "mixed-one"
+  },
+  "device_identity": {
+    "url": "axi://zg330aiu?npu=0x40000000&dma=0x80000000",
+    "versions": {
+      "device": "25122301",
+      "icore": "FMSHZGV3TECH-AID - 24160628"
+    },
+    "numerical_accepted": false
+  },
+  "all_active_r3_source_hashes_match_package": true,
+  "registry_records_verified": 12,
+  "references": {
+    "C:/Icraft/CLI v3.39.0/include/icraft-xrt/core/session.h": "34a956ca2f635faf4c196bcf068838899df8368a72df22cf829f47cdebb0f1bc",
+    "C:/Icraft/CLI v3.39.0/include/icraft-xrt/core/tensor.h": "3a9c83efb9f9a2da4f9e0280e80643582b4fbf43f993a8c647080eddb15b2676",
+    "C:/Icraft/CLI v3.39.0/include/icraft-backends/hostbackend/port/common/hostbackend_impl.h": "25fff575cee28799c3f1564d44bdc19adaaea89096a845b185832263319f7757",
+    "C:/Icraft/CLI v3.39.0/include/icraft-backends/zg330backend/zg330backend.h": "ec4d5eee6da054b6895d60b22a9681f1254970c732cb99b03b14f5bf16199354"
+  },
+  "facts": [
+    "Public Session.forward(inputs) receives input tensor vector; no public reset/clear-cache method in inspected header.",
+    "SessionNode has private tensor map and forward state; their existence does not prove a bug.",
+    "Local plaintext Host Input registration returns inputs. This is not proof of the exact ARM compiled implementation.",
+    "Tensor has persistent ready state and waitForReady can return immediately when ready; no proof that readiness was stale in this run.",
+    "ZG metadata contains input/value storage and reuse controls; those controls were not changed."
+  ],
+  "limitations": [
+    "Existing input files prove PS preprocessing values, but not per-invocation content of the actual SDK input tensor, Input0 returned tensor or staged intermediate tensors.",
+    "Callback counts prove dispatch records, not independently fresh hardware data for every invocation.",
+    "SDK profile units remain unconfirmed; timing differences and negative other fields are not synchronization proof."
+  ],
+  "active_runtime_changed": false,
+  "board_calls": false,
+  "model_forward_retried": false,
+  "SDK_options_changed": false
+}

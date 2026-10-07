@@ -1,0 +1,33 @@
+{
+  "status": "profile_off_single_clock_measurement_passed",
+  "stages": {
+    "host-check": {
+      "returned_files": 52,
+      "acceptance_sha256": "2a98e010d0d88bf74f8cfc60659e46f33f375283cdcb6d95a980497d701be62b",
+      "exit": 0,
+      "stderr_empty": true,
+      "dmesg_unchanged": true
+    },
+    "e0": {
+      "returned_files": 125,
+      "acceptance_sha256": "dd7317ea37a7699d507e4ca2dcd6cc58230383fb47dd2fe59eeef14c06b6da2f",
+      "exit": 0,
+      "stderr_empty": true,
+      "dmesg_unchanged": true
+    },
+    "p1": {
+      "returned_files": 114,
+      "acceptance_sha256": "270d63f7b81c418de84e2a84772fe02d26d55179bf24e867bd60ecbfbdeba4f6",
+      "exit": 0,
+      "stderr_empty": true,
+      "dmesg_unchanged": true
+    }
+  },
+  "SDK_profile_enabled": false,
+  "all_37_forward_outputs_equal_r6": true,
+  "user_numerical_stage_accepted": true,
+  "user_decision_sha256": "08404f73b74ccf9e70bf22b0bb51fff8e6609530a5d438de59914587ca739ebb",
+  "five_Hz_accepted": false,
+  "optimization_analysis_sha256": "ec47c1a87f36312d8b9b8ad42fea4477d94cab2284e0e0edc2ef3b1a01353f92",
+  "note": "Measured completed; independent literal-message implementation trial is in separate lazy-r4 directory."
+}

@@ -1,0 +1,12 @@
+{
+  "status": "preliminary_difference_sources_verified",
+  "reference_files_verified": 12,
+  "reference_environment_sha256": "9913f2b314f58647c99b4c4aa1edff8068d4c92c864ef34fcab7454a64c5187b",
+  "reference_summary_sha256": "ab121ccf0775feedaa56c5a5e298a15d8ed0268597fa6780a76ba4753ac78ee3",
+  "ONNX_model_sha256": "7b04090e374e31e016d5703bbcf1d0a561d0b98f268fde984b0bf0461598bd21",
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "preliminary_report_sha256": "cf4b92307edae0e0e78ad04e89db8ebbbf5c846510c433ea966b58840c62eb8d",
+  "numerical_accepted": false
+}

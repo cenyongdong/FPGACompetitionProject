@@ -1,0 +1,74 @@
+{
+  "status": "apply_failure_diagnosed;not_accepted",
+  "returned_files_verified": 35,
+  "package_files_verified": 290,
+  "program_sha256": "7cf761f1dd7d1ca1bf8a1db1826e4d9b34574b1a8dc0ac662c987eed52722a17",
+  "SDK_identity_matched": true,
+  "device_version": {
+    "url": "axi://zg330aiu?npu=0x40000000&dma=0x80000000",
+    "versions": {
+      "device": "25122301",
+      "icore": "FMSHZGV3TECH-AID - 24160628"
+    },
+    "numerical_accepted": false
+  },
+  "exit": 1,
+  "failure": {
+    "error": "Original op lacks traceable backend binding (including any fusion): 8622",
+    "status": "failed_stop_no_retry"
+  },
+  "stages": [
+    {
+      "stage": "started"
+    },
+    {
+      "stage": "real_parameters_validated"
+    },
+    {
+      "stage": "registered_before_session"
+    },
+    {
+      "stage": "opening_device_not_readonly"
+    },
+    {
+      "stage": "session_applied"
+    },
+    {
+      "stage": "failed_stop_no_retry"
+    }
+  ],
+  "bindings_saved": [
+    {
+      "op_id": 0,
+      "operator": "icraft::xir::InputNode",
+      "backend": "icraft::xrt::HostBackendNode"
+    }
+  ],
+  "host_registry_records_verified": 12,
+  "PS_inputs_bitwise_equal": true,
+  "dmesg_before_after_equal": true,
+  "full_binding_coverage_verified": false,
+  "session_apply_returned": true,
+  "model_forward_called": false,
+  "hypothesis": "SDK merged execution representation or binding table granularity; not established without complete binding/runtime/backend snapshots.",
+  "shell_disconnect_reason": "Screenshot executes set -eu in login shell (outer parentheses absent); failing test ! -e run-apply-check triggers errexit. Board read-only ls confirmed path exists.",
+  "agent_direct_operations": [
+    "SSH ls -l -R existing run directory",
+    "SCP existing artifacts to new local evidence directory"
+  ],
+  "agent_reran_check_or_initialized_device": false,
+  "board_files_modified": false,
+  "new_core_source_modified": false,
+  "no_apply_acceptance_generated": true,
+  "stop_scope": "No repeat apply, mixed-one/mixed-three, reset or config/model/SDK changes until reviewed new plan.",
+  "candidate_only": {
+    "source": "C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\tools\\pose-v1\\mixed_check.binding-snapshot.candidate.cpp",
+    "original_source_sha256": "cb9cb7bbd7cf31447d7e30be3a0483479e69bf802b541841b7edead09587a1bc",
+    "candidate_sha256": "f349e0596377582bd88d48da1f7b8d47d82616ab24607e74036b2cea523f571c",
+    "changes": "Two public-metadata snapshots after Session creation and apply, before unchanged strict binding gate. Full binding keys, runtime/backend views, ZG hardop/sync maps; no additional autoMerge/forward invocation.",
+    "applied": false,
+    "compiled": false,
+    "executed": false,
+    "extra_metadata": "ZG HardOpInfo.net_hardop ID and documented merge_from membership list; no autoMerge re-invocation."
+  }
+}

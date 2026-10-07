@@ -1,0 +1,95 @@
+    PID COMMAND         COMMAND
+      1 systemd         /sbin/init
+      2 kthreadd        [kthreadd]
+      3 rcu_gp          [rcu_gp]
+      4 rcu_par_gp      [rcu_par_gp]
+      8 mm_percpu_wq    [mm_percpu_wq]
+      9 ksoftirqd/0     [ksoftirqd/0]
+     10 rcu_sched       [rcu_sched]
+     11 migration/0     [migration/0]
+     12 cpuhp/0         [cpuhp/0]
+     13 cpuhp/1         [cpuhp/1]
+     14 migration/1     [migration/1]
+     15 ksoftirqd/1     [ksoftirqd/1]
+     18 cpuhp/2         [cpuhp/2]
+     19 migration/2     [migration/2]
+     20 ksoftirqd/2     [ksoftirqd/2]
+     23 cpuhp/3         [cpuhp/3]
+     24 migration/3     [migration/3]
+     25 ksoftirqd/3     [ksoftirqd/3]
+     28 kdevtmpfs       [kdevtmpfs]
+     29 kworker/0:1-eve [kworker/0:1-events]
+     32 kauditd         [kauditd]
+     33 oom_reaper      [oom_reaper]
+     34 writeback       [writeback]
+     35 kcompactd0      [kcompactd0]
+     36 khugepaged      [khugepaged]
+     53 kblockd         [kblockd]
+     54 edac-poller     [edac-poller]
+     55 watchdogd       [watchdogd]
+     56 rpciod          [rpciod]
+     57 kworker/u9:0-kb [kworker/u9:0-kbase_pm_poweroff_wait]
+     58 xprtiod         [xprtiod]
+     59 kswapd0         [kswapd0]
+     60 ecryptfs-kthrea [ecryptfs-kthrea]
+     61 nfsiod          [nfsiod]
+     62 spi3            [spi3]
+     63 kworker/3:1-eve [kworker/3:1-events]
+     64 stmmac_wq       [stmmac_wq]
+     65 kworker/u8:1-fl [kworker/u8:1-flush-179:0]
+     68 kworker/u8:2-ev [kworker/u8:2-events_unbound]
+     69 kpktgend_0      [kpktgend_0]
+     71 kpktgend_1      [kpktgend_1]
+     72 kpktgend_2      [kpktgend_2]
+     73 kpktgend_3      [kpktgend_3]
+     74 ipv6_addrconf   [ipv6_addrconf]
+     75 mmc_complete    [mmc_complete]
+     77 kworker/1:1H-kb [kworker/1:1H-kblockd]
+     80 jbd2/mmcblk0p2- [jbd2/mmcblk0p2-]
+     81 ext4-rsv-conver [ext4-rsv-conver]
+     82 kworker/2:1H-kb [kworker/2:1H-kblockd]
+     97 kworker/3:2H-kb [kworker/3:2H-kblockd]
+    103 systemd-journal /lib/systemd/systemd-journald
+    115 kbase_job_fault [kbase_job_fault]
+    116 kworker/u9:1    [kworker/u9:1]
+    118 mvx_securevideo [mvx_securevideo]
+    119 fw_cache        [fw_cache]
+    120 mvx_sched       [mvx_sched]
+    125 systemd-timesyn /lib/systemd/systemd-timesyncd
+    129 cron            /usr/sbin/cron -f
+    130 dbus-daemon     /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    135 rsyslogd        /usr/sbin/rsyslogd -n -iNONE
+    136 systemd-logind  /lib/systemd/systemd-logind
+    150 systemd-resolve /lib/systemd/systemd-resolved
+    151 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    178 kworker/3:2-eve [kworker/3:2-events]
+    187 sshd            sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    188 agetty          /sbin/agetty -o -p -- \u --noclear tty1 linux
+    189 agetty          /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+    193 sshd            sshd: root@pts/0
+    195 sshd            sshd: root@notty
+    197 systemd         /lib/systemd/systemd --user
+    199 (sd-pam)        (sd-pam)
+    224 bash            -bash
+    227 sftp-server     /usr/lib/openssh/sftp-server
+  40258 kworker/0:2H-mm [kworker/0:2H-mmc_complete]
+  44573 kworker/1:0-eve [kworker/1:0-events]
+  45445 kworker/2:1-mm_ [kworker/2:1-mm_percpu_wq]
+  46762 kworker/0:0-cgr [kworker/0:0-cgroup_destroy]
+  48140 sshd            sshd: root@notty
+  48230 sshd            sshd: root@notty
+  48713 sh              sh
+  48744 kworker/0:1H    [kworker/0:1H]
+  48779 sftp-server     /usr/lib/openssh/sftp-server
+  49353 kworker/2:0H-kb [kworker/2:0H-kblockd]
+  49517 kworker/2:2-eve [kworker/2:2-events]
+  49542 kworker/1:2H    [kworker/1:2H]
+  49939 kworker/3:1H    [kworker/3:1H]
+  50636 kworker/1:2-eve [kworker/1:2-events]
+  51238 kworker/0:0H    [kworker/0:0H]
+  51317 kworker/2:2H    [kworker/2:2H]
+  51528 kworker/2:0-eve [kworker/2:0-events]
+  51567 kworker/1:1-eve [kworker/1:1-events]
+  51568 sh              sh -c set -eu; cd /tmp/pose-v1-perf/20261007-lazy-r4; sh package/run-perf-validation.sh p1
+  51569 sh              sh package/run-perf-validation.sh p1
+  51589 ps              ps -eo pid,comm,args

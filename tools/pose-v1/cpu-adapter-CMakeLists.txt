@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.24)
+project(pose_cpu_adapter_candidate LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(icraft-hostbackend 3.39.0.0 EXACT CONFIG REQUIRED)
+add_executable(pose_cpu_adapter_check host_cpu_adapter.cpp host_cpu_adapter_check.cpp)
+target_include_directories(pose_cpu_adapter_check PRIVATE .)
+target_link_libraries(pose_cpu_adapter_check PRIVATE Icraft::HostBackend)
+target_compile_options(pose_cpu_adapter_check PRIVATE -Wall -Wextra -Wpedantic -ffp-contract=off)
+# Deliberately no ZG330 target, Session, integration option or executable tests.

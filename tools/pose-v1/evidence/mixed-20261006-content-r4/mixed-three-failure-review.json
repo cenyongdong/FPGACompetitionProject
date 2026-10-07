@@ -1,0 +1,1085 @@
+{
+  "status": "failed_r4_three_content_reviewed_no_acceptance",
+  "failure": {
+    "error": "All outputs identical for distinct CSI; review needed",
+    "status": "failed_stop_no_retry"
+  },
+  "exit": 1,
+  "returned_files_verified": 130,
+  "package_files_verified": 291,
+  "binary_sha256": "ba8d53985fabdfdc12939d794825d31a0ee29bf9516567be5ba9356c515dcea7",
+  "sdk": {
+    "versions": {
+      "icraft:arm64": "3.39.0",
+      "customop:arm64": "3.39.0"
+    },
+    "headers_normalized_sha256": {
+      "icraft-backends/hostbackend/backend.h": "8cf82840f340ff4173d6d855f8a39b72225dc5d7681fc3d7b7ed9b3cac2da378",
+      "icraft-backends/hostbackend/common/tensor_kernel.h": "509d54a778dcbc25094be73dfc5250b0b84ba3681a3d0b9f49905779338e015d",
+      "icraft-backends/hostbackend/port/common/tensor_ops.h": "f339262a95a63ebe9e1834e56278e737312319a52413a1d749e1a63bf4e48e92",
+      "icraft-xrt/core/backend.h": "f6a8ee61524cff91b2a4bfa5409cf46633d101ffe0528ac0c7599c21dd8b2607",
+      "icraft-xrt/core/tensor.h": "4b2c4d0ad24db042f151a56afce2fba881ad8f2fe1c87c9d32d620caf89b365a",
+      "icraft-xir/core/data_type_attr.h": "a0461bf7f078443fb609d472e802aed9f86407a536c8aa2058bc60a7dab50cec",
+      "icraft-xrt/core/device.h": "7bd98080ea4b228242caa184682703cc2d8610db6a28015810b5d7d8af16ecff",
+      "icraft-xrt/core/session.h": "f26063b529cef9ba2cc48ae07aafe4a4498169240d243cd71a5972bc34e0ebc7",
+      "icraft-xrt/dev/host_device.h": "642a8aec2e3832e0ecd823efa665d32ed42fb08a177878a33945714e633c887f",
+      "icraft-xir/core/data.h": "92c9e344979748e4ff03f8d59de2f4de398b052e70a90411d41be976e6830ed6",
+      "icraft-xir/base/array.h": "4f01421c9fe63a29ed2c0f90482209257bb8d8cfe5508af09edb924eed88058d",
+      "icraft-xir/base/object.h": "37a6f69afd6eabb7aaec95e785903e816e772fc248d920031f54a50109ba2df3",
+      "icraft-backends/zg330backend/zg330backend.h": "9017d5808e00b30746d79f1380879a3056db64d27845fd033dc13513eef7bd8f",
+      "icraft-xrt/dev/zg330_device.h": "43f634de3dd253c1c1fa84c8b6298ca562747744c04721a1debb809ee3b22286",
+      "icraft-utils/osal/cache.hpp": "991eff53ec361874e07d93893580e2e0c68e6587e7e859648737c55b0ce88756"
+    },
+    "host_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "zg_sha256": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57"
+  },
+  "device": {
+    "url": "axi://zg330aiu?npu=0x40000000&dma=0x80000000",
+    "versions": {
+      "device": "25122301",
+      "icore": "FMSHZGV3TECH-AID - 24160628"
+    },
+    "numerical_accepted": false
+  },
+  "binding_coverage_verified": true,
+  "real_parameters_match_offline": true,
+  "all_fixed_inputs_match": true,
+  "content_records": 68,
+  "content_bytes": 1015040,
+  "caller_Input0_all_match_current": true,
+  "calls": [
+    {
+      "invocation": 0,
+      "case": "S11_01_308",
+      "content": [
+        {
+          "kind": "caller_input",
+          "op_id": 0,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49"
+        },
+        {
+          "kind": "input0_output",
+          "op_id": 0,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 188,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "4995255ad18ad555931c54093234a9381505ec2e9cc60917c0d262c65fd7675e"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 188,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bdfbb2e54ab0b20027e36c2f60e3386538b01bd536c0d472877d3aa1ca8a9b7b"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 188,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "97038bec93056a14409d33a83a5687260c6d847d85a434e24e0dce378b4389c6"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "7ccbaf9e24fda7fa6b16bf2f9e9045445500180b2075ea32cb7642875579d775"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "9e0f5eb8c006d3547b8e3845de908cb61b3d271f3fb570e62360b9fb36d592cb"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "dca38fabc8b6605fc77489323a5de7e1a0141f4cb737cf712c3f91d77facfe78"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 437,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "488882ba5c99fb98f245b8eb0ab415fe9fc53467d5b0d689ec0ada45aa5b8de4"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 437,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 437,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "f47556731ea0274d349e9a286aaef9ae1c4c8e1788f2d2664a43c4a334af979e"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 582,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "714f8e722663cbb3803efb359fc7abbfab12c0d12d94dc74b5ff2719699760e7"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 582,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 582,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 649,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "5ccd7b3a3299d4fc63f6854aa4537e9fb6bf99afdd9b79a490563402b1bc6038"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 649,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 649,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+        }
+      ]
+    },
+    {
+      "invocation": 1,
+      "case": "S11_01_309",
+      "content": [
+        {
+          "kind": "caller_input",
+          "op_id": 0,
+          "slot": 0,
+          "changed_vs_first": 10431,
+          "equal_previous": false,
+          "sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300"
+        },
+        {
+          "kind": "input0_output",
+          "op_id": 0,
+          "slot": 0,
+          "changed_vs_first": 10431,
+          "equal_previous": false,
+          "sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 188,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "4995255ad18ad555931c54093234a9381505ec2e9cc60917c0d262c65fd7675e"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 188,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bdfbb2e54ab0b20027e36c2f60e3386538b01bd536c0d472877d3aa1ca8a9b7b"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 188,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "97038bec93056a14409d33a83a5687260c6d847d85a434e24e0dce378b4389c6"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "7ccbaf9e24fda7fa6b16bf2f9e9045445500180b2075ea32cb7642875579d775"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "9e0f5eb8c006d3547b8e3845de908cb61b3d271f3fb570e62360b9fb36d592cb"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "dca38fabc8b6605fc77489323a5de7e1a0141f4cb737cf712c3f91d77facfe78"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 437,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "488882ba5c99fb98f245b8eb0ab415fe9fc53467d5b0d689ec0ada45aa5b8de4"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 437,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 437,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "f47556731ea0274d349e9a286aaef9ae1c4c8e1788f2d2664a43c4a334af979e"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 582,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "714f8e722663cbb3803efb359fc7abbfab12c0d12d94dc74b5ff2719699760e7"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 582,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 582,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 649,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "5ccd7b3a3299d4fc63f6854aa4537e9fb6bf99afdd9b79a490563402b1bc6038"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 649,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 649,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+        }
+      ]
+    },
+    {
+      "invocation": 2,
+      "case": "S11_01_310",
+      "content": [
+        {
+          "kind": "caller_input",
+          "op_id": 0,
+          "slot": 0,
+          "changed_vs_first": 10445,
+          "equal_previous": false,
+          "sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187"
+        },
+        {
+          "kind": "input0_output",
+          "op_id": 0,
+          "slot": 0,
+          "changed_vs_first": 10445,
+          "equal_previous": false,
+          "sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 188,
+          "slot": 0,
+          "changed_vs_first": 180,
+          "equal_previous": false,
+          "sha256": "776689ff5c24250b175ebab8ee01fbb0e3a7d26f6eaeead41933831c4ed168b5"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 188,
+          "slot": 0,
+          "changed_vs_first": 100,
+          "equal_previous": false,
+          "sha256": "72b1e4ea07e99a55c6d5864eee69df1b2d71379d8710d92bf87eb08ce8d44da2"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 188,
+          "slot": 1,
+          "changed_vs_first": 100,
+          "equal_previous": false,
+          "sha256": "db8afbad22a1ca68371ccbe699eb0f95f5da68582165e336676121ca3347d651"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "changed_vs_first": 7470,
+          "equal_previous": false,
+          "sha256": "76d87d76c13fca966ea2da8555e7359c106d5c946e14c1ae1465f4cb1f8f0808"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "9e0f5eb8c006d3547b8e3845de908cb61b3d271f3fb570e62360b9fb36d592cb"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "changed_vs_first": 4171,
+          "equal_previous": false,
+          "sha256": "1e6379cbc40065fefdc24807e43af09f51b55b467cb61a18540a93b59b017f6e"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 437,
+          "slot": 0,
+          "changed_vs_first": 100,
+          "equal_previous": false,
+          "sha256": "b402cd19a12eb39683807c2b4af11d597b297e48c35c1ade084196caa99c26af"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 437,
+          "slot": 0,
+          "changed_vs_first": 100,
+          "equal_previous": false,
+          "sha256": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 437,
+          "slot": 1,
+          "changed_vs_first": 95,
+          "equal_previous": false,
+          "sha256": "d8a3d7884e2aba76dcbcdb0af176da7b578caf30bab7b7fb40e40c8e56b73e7e"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 582,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "714f8e722663cbb3803efb359fc7abbfab12c0d12d94dc74b5ff2719699760e7"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 582,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 582,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 649,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "5ccd7b3a3299d4fc63f6854aa4537e9fb6bf99afdd9b79a490563402b1bc6038"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 649,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 649,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+        }
+      ]
+    },
+    {
+      "invocation": 3,
+      "case": "S11_01_308",
+      "content": [
+        {
+          "kind": "caller_input",
+          "op_id": 0,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": false,
+          "sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49"
+        },
+        {
+          "kind": "input0_output",
+          "op_id": 0,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": false,
+          "sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 188,
+          "slot": 0,
+          "changed_vs_first": 180,
+          "equal_previous": true,
+          "sha256": "776689ff5c24250b175ebab8ee01fbb0e3a7d26f6eaeead41933831c4ed168b5"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 188,
+          "slot": 0,
+          "changed_vs_first": 100,
+          "equal_previous": true,
+          "sha256": "72b1e4ea07e99a55c6d5864eee69df1b2d71379d8710d92bf87eb08ce8d44da2"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 188,
+          "slot": 1,
+          "changed_vs_first": 100,
+          "equal_previous": true,
+          "sha256": "db8afbad22a1ca68371ccbe699eb0f95f5da68582165e336676121ca3347d651"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "changed_vs_first": 7470,
+          "equal_previous": true,
+          "sha256": "76d87d76c13fca966ea2da8555e7359c106d5c946e14c1ae1465f4cb1f8f0808"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "9e0f5eb8c006d3547b8e3845de908cb61b3d271f3fb570e62360b9fb36d592cb"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "changed_vs_first": 4171,
+          "equal_previous": true,
+          "sha256": "1e6379cbc40065fefdc24807e43af09f51b55b467cb61a18540a93b59b017f6e"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 437,
+          "slot": 0,
+          "changed_vs_first": 100,
+          "equal_previous": true,
+          "sha256": "b402cd19a12eb39683807c2b4af11d597b297e48c35c1ade084196caa99c26af"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 437,
+          "slot": 0,
+          "changed_vs_first": 100,
+          "equal_previous": true,
+          "sha256": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 437,
+          "slot": 1,
+          "changed_vs_first": 95,
+          "equal_previous": true,
+          "sha256": "d8a3d7884e2aba76dcbcdb0af176da7b578caf30bab7b7fb40e40c8e56b73e7e"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 582,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "714f8e722663cbb3803efb359fc7abbfab12c0d12d94dc74b5ff2719699760e7"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 582,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 582,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "c1b80aa993463b69a1f562c93aa044c17652247ec27d83a7b11756cb8c07d1c2"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 649,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "5ccd7b3a3299d4fc63f6854aa4537e9fb6bf99afdd9b79a490563402b1bc6038"
+        },
+        {
+          "kind": "bridge_input",
+          "op_id": 649,
+          "slot": 1,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+        },
+        {
+          "kind": "bridge_result",
+          "op_id": 649,
+          "slot": 0,
+          "changed_vs_first": 0,
+          "equal_previous": true,
+          "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd"
+        }
+      ]
+    }
+  ],
+  "graph_input_producers": [
+    {
+      "consumer": 188,
+      "model_slot": 0,
+      "value_id": 4378,
+      "producer": 8625,
+      "zg_group": 9185,
+      "shape": [
+        1,
+        180
+      ]
+    },
+    {
+      "consumer": 192,
+      "model_slot": 0,
+      "value_id": 4386,
+      "producer": 8629,
+      "zg_group": 9186,
+      "shape": [
+        1,
+        180,
+        42
+      ]
+    },
+    {
+      "consumer": 192,
+      "model_slot": 1,
+      "value_id": 4390,
+      "producer": 8631,
+      "zg_group": 9186,
+      "shape": [
+        1,
+        100,
+        42
+      ]
+    },
+    {
+      "consumer": 437,
+      "model_slot": 0,
+      "value_id": 4402,
+      "producer": 8635,
+      "zg_group": 9187,
+      "shape": [
+        100
+      ]
+    },
+    {
+      "consumer": 442,
+      "model_slot": 0,
+      "value_id": 4406,
+      "producer": 8637,
+      "zg_group": 9188,
+      "shape": [
+        100,
+        42
+      ]
+    },
+    {
+      "consumer": 442,
+      "model_slot": 1,
+      "value_id": 1137,
+      "producer": 437,
+      "zg_group": null,
+      "shape": [
+        100
+      ]
+    },
+    {
+      "consumer": 582,
+      "model_slot": 0,
+      "value_id": 4414,
+      "producer": 8130,
+      "zg_group": 9189,
+      "shape": [
+        100,
+        14,
+        3
+      ]
+    },
+    {
+      "consumer": 582,
+      "model_slot": 2,
+      "value_id": 4418,
+      "producer": 8131,
+      "zg_group": 9189,
+      "shape": [
+        100,
+        14,
+        3
+      ]
+    },
+    {
+      "consumer": 649,
+      "model_slot": 0,
+      "value_id": 4426,
+      "producer": 8132,
+      "zg_group": 9190,
+      "shape": [
+        100,
+        14,
+        3
+      ]
+    },
+    {
+      "consumer": 649,
+      "model_slot": 2,
+      "value_id": 4430,
+      "producer": 8133,
+      "zg_group": 9190,
+      "shape": [
+        100,
+        14,
+        3
+      ]
+    },
+    {
+      "consumer": 672,
+      "model_slot": 0,
+      "value_id": 4446,
+      "producer": 8652,
+      "zg_group": 9191,
+      "shape": [
+        1,
+        100
+      ]
+    },
+    {
+      "consumer": 672,
+      "model_slot": 1,
+      "value_id": 4450,
+      "producer": 8134,
+      "zg_group": 9191,
+      "shape": [
+        1,
+        100,
+        14,
+        3
+      ]
+    }
+  ],
+  "cpu_reference_checks": [
+    {
+      "invocation": 0,
+      "op_id": 188,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 188,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 192,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 437,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 437,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 582,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 0,
+      "op_id": 649,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 188,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 188,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 192,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 437,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 437,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 582,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 1,
+      "op_id": 649,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 188,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 188,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 192,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 437,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 437,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 582,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 2,
+      "op_id": 649,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 188,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 188,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 192,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 437,
+      "slot": 0,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 437,
+      "slot": 1,
+      "elements": 100,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 582,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    },
+    {
+      "invocation": 3,
+      "op_id": 649,
+      "slot": 0,
+      "elements": 4200,
+      "bitwise_equal": true
+    }
+  ],
+  "cpu_reference_values": 52000,
+  "outputs": [
+    {
+      "case": "S11_01_308",
+      "kind": "scores",
+      "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+      "equal_first": true
+    },
+    {
+      "case": "S11_01_308",
+      "kind": "poses",
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "equal_first": true
+    },
+    {
+      "case": "S11_01_309",
+      "kind": "scores",
+      "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+      "equal_first": true
+    },
+    {
+      "case": "S11_01_309",
+      "kind": "poses",
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "equal_first": true
+    },
+    {
+      "case": "S11_01_310",
+      "kind": "scores",
+      "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+      "equal_first": true
+    },
+    {
+      "case": "S11_01_310",
+      "kind": "poses",
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "equal_first": true
+    },
+    {
+      "case": "S11_01_308.repeat",
+      "kind": "scores",
+      "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+      "equal_first": true
+    },
+    {
+      "case": "S11_01_308.repeat",
+      "kind": "poses",
+      "sha256": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+      "equal_first": true
+    }
+  ],
+  "timing": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 0,
+      "source_time_ns": 0,
+      "mode": "mixed",
+      "top_index": 0,
+      "top_score": 0.9482421875,
+      "forward_ms": 212.88942,
+      "output_dump_ms": 2.74525,
+      "case_wall_ms_including_evidence_io": 216.7565,
+      "session_init_ms": 26584.71592,
+      "observed_zg_callbacks": 7,
+      "repeated_first_within_session": false,
+      "numerical_acceptance": "pending_ONNX_comparison_and_tolerance_discussion"
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "invocation": 1,
+      "source_time_ns": 0,
+      "mode": "mixed",
+      "top_index": 0,
+      "top_score": 0.9482421875,
+      "forward_ms": 40.57216,
+      "output_dump_ms": 2.53795,
+      "case_wall_ms_including_evidence_io": 44.07818,
+      "session_init_ms": 26584.71592,
+      "observed_zg_callbacks": 7,
+      "repeated_first_within_session": false,
+      "numerical_acceptance": "pending_ONNX_comparison_and_tolerance_discussion"
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "invocation": 2,
+      "source_time_ns": 0,
+      "mode": "mixed",
+      "top_index": 0,
+      "top_score": 0.9482421875,
+      "forward_ms": 40.62396,
+      "output_dump_ms": 2.55103,
+      "case_wall_ms_including_evidence_io": 44.05767,
+      "session_init_ms": 26584.71592,
+      "observed_zg_callbacks": 7,
+      "repeated_first_within_session": false,
+      "numerical_acceptance": "pending_ONNX_comparison_and_tolerance_discussion"
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "invocation": 3,
+      "source_time_ns": 0,
+      "mode": "mixed",
+      "top_index": 0,
+      "top_score": 0.9482421875,
+      "forward_ms": 40.4021,
+      "output_dump_ms": 2.52466,
+      "case_wall_ms_including_evidence_io": 43.86488,
+      "session_init_ms": 26584.71592,
+      "observed_zg_callbacks": 7,
+      "repeated_first_within_session": true,
+      "numerical_acceptance": "pending_ONNX_comparison_and_tolerance_discussion"
+    }
+  ],
+  "dmesg_unchanged": true,
+  "memory_before": "              total        used        free      shared  buff/cache   available\nMem:            993         220          83           0         690         685\nSwap:             0           0           0\n",
+  "memory_after": "              total        used        free      shared  buff/cache   available\nMem:            993         218          83           0         691         686\nSwap:             0           0           0\n",
+  "earliest_observed_nonresponse": "invocation1: Input0 changed 10431 FP32, but group9185->TopK188 staged input stayed bitwise equal to invocation0",
+  "later_observation": "invocation2/3: TopK188/GatherElements192/TopK437 content changes, but ScatterND582/649 staged inputs and complete model outputs remain equal to first",
+  "root_cause_proven": false,
+  "numerical_accepted": false,
+  "performance_accepted": false,
+  "stage_acceptance_generated": false,
+  "agent_activity": "Local file and SDK documentation audit only; no model rerun, device access or runtime source change."
+}
