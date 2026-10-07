@@ -1,0 +1,13 @@
+{
+  "status": "ARM_RTSP_program_and_vendor_identity_verified",
+  "program_sha256": "454d21c24831f88a513747710540294914b6e2d4fddc8ed2993420bc28758fb2",
+  "program_bytes": 3882104,
+  "source_sha256": "f7eb9292fb26121f5be55001e7488c8096f0ee77c3f5cbe225af2f758a9a6dd7",
+  "compiler": "GCC9.4.0",
+  "live555": "2024.11.28",
+  "vendor_files": 189,
+  "vendor_manifest_sha256": "986cc36c545cba4fc19723df64fd2967a5cf37e8d206a9cc98c205996d64c514",
+  "SDK_dependencies": false,
+  "installed_new_dependencies": false,
+  "first_build_failure": "r1 omitted vendor OpenSSL include root, preserved; r2 includes matching shipped headers"
+}

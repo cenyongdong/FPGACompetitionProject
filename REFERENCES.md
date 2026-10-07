@@ -1,5 +1,7 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-07RTSP当前：[结果/样片](tools/pose-v1/RTSP-RESULTS-20261007.md)、[200帧/重连](tools/pose-v1/evidence/rtsp-20261007-r3/completion-review.json)、[直接播放器100帧](tools/pose-v1/evidence/rtsp-20261007-r4-player/completion-review.json)、[SPS信号](tools/pose-v1/evidence/rtsp-20261007-r3/color-signal-review.json)、[F0准备](tools/pose-v1/F0-INTEGRATION-PREP-20261007.md)。厂商live555/SSL原包复用无安装；已通过独立回放，不代表在线编码或整机闭环。
+
 2026-10-07当前视频：[r5修正/动态MP4](tools/pose-v1/VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md)、[两上下文及主机核验](tools/pose-v1/evidence/video-descriptor-20261007-r5/completion-review.json)、[下一检查点](tools/pose-v1/evidence/video-descriptor-20261007-r5/next-checkpoint.json)。QUERYBUF cookie保留解决当前有限编码问题；旧MMU/色彩拒绝保留，HDMI时序及RTSP/整机待验。
 
 2026-10-07下一视频阶段：用户已审查样片并恢复HDMI测试授权，[新计划](tools/pose-v1/NEXT-VIDEO-PLAN-20261007.md)、[授权/来源哈希检查点](tools/pose-v1/evidence/video-next-plan-20261007.json)。参考HDMI类只分配RGB565缓存和提交地址，未配置时序；先建立当前BOOT配套，再1080p60实屏。旧暂停属历史，本轮无新板测。

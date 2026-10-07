@@ -1,5 +1,9 @@
 # 视频任务暂停与恢复入口（2026-10-07）
 
+**当前入口：独立RTSP首批已完成，用户已审查动态样片并要求继续。**
+
+先读[RTSP结果](RTSP-RESULTS-20261007.md)、[新检查点](evidence/rtsp-20261007-r3/next-checkpoint.json)、[F0接入门检](F0-INTEGRATION-PREP-20261007.md)。r3两会话200帧＋r4标准播放器100帧逐位原视频，服务/会话均关闭；不要重跑已通过的独立文件/传输阶段。下一有限真实Engine结果→渲染→VPU/owned AU接入；模型/SDK/BOOT与帧协议保持。HDMI配套仍缺，色彩SPS标记另列。原暂停、失败和r5入口均按历史保留。
+
 **当前入口已更新：用户已唤醒，整体暂停撤销，V2-A故障修正与完整视频核验完成。**
 
 先读[VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md](VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md)、[completion](evidence/video-descriptor-20261007-r5/completion-review.json)、[新检查点](evidence/video-descriptor-20261007-r5/next-checkpoint.json)。r5两独立上下文各54帧完整/相同码流，主机54ID/27来源/关节通过；无需重跑已通过文件编码。源码当前r5，冻结包/build及原失败均保留。

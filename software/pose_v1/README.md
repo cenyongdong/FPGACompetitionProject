@@ -1,5 +1,7 @@
 # CSI首版：当前实施状态（2026-10-07）
 
+> 当前RTSP首批已验证：200帧传输/重连与标准播放器100帧逐位原视频，有限上下文清理通过，无新依赖。[结果/录制视频](../../tools/pose-v1/RTSP-RESULTS-20261007.md)、[F0接入准备](../../tools/pose-v1/F0-INTEGRATION-PREP-20261007.md)。当前是预生成码流回放，在线VPU/实际推理合并、显式色彩、HDMI/整机长期仍待；旧未RTSP/暂停条目为历史。
+
 > 当前最新：视频任务已恢复，真实27骨架/54帧有限编码及两独立上下文重复通过，主机完整核验，MMAP描述兼容修正已采用。[结果/视频](../../tools/pose-v1/VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md)、[恢复入口](../../tools/pose-v1/RESUME-VIDEO-20261007.md)。原推理/SDK/BOOT保持，HDMI1080p60未改时序，RTSP/实时合并/整机长期未通过。旧暂停和失败条目按历史保留。
 
 > 当前视频任务暂停：新`vpu_encoder.hpp/.cpp`有限接口与`vpu_sequence_check`已构建/协商；真实27画面54输入测试发生固件MMU ABORT，未动态编码验收或生产接入。[报告](../../tools/pose-v1/VIDEO-SEQUENCE-RESULTS-20261007.md)、[恢复](../../tools/pose-v1/RESUME-VIDEO-20261007.md)。原30帧/推理/渲染保持，用户唤醒前不继续测试。
