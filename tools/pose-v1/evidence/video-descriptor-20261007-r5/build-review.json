@@ -1,0 +1,17 @@
+{
+  "status": "r5_frozen_source_build_package_verified",
+  "program_sha256": "01965fa28f15b94893eebc8a3f540699454ef0623664cb0888b6b7933aef23d3",
+  "bytes": 58728,
+  "compiler": "GCC9.4.0",
+  "elf": "AArch64 ELF64 PIE",
+  "icraft_dependencies": false,
+  "warnings": 0,
+  "source_files": {
+    "src/vpu_encoder.cpp": "983d4010dc6ac29c99a257c35e21b8ee5dbe55b6bd61929f812547f5ec6a3f16",
+    "src/vpu_sequence_check.cpp": "1090719bcdc1a277eff8d4b9c2e9f2990b637bf05f48ce5a5e174599b6c2ce04",
+    "include/vpu_encoder.hpp": "f85001ab0ea5725d3e59d479a64f999f2381bc76f9cc7321d7f5c332134e729f"
+  },
+  "change": "Retain QUERYBUF MMAP cookies when constructing QBUF planes; original multi-planar formats/capacities/copies/controls preserved",
+  "diff_sha256": "5764eaca4e49e9127aeb95c12042d8c7af2e38f303653c33f913c051c9beb731",
+  "build_log_sha256": "942331703e57433142b3a2eeb7398c4f379b632cc5fdfff72a861d1045d95b9d"
+}

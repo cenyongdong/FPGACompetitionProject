@@ -1,0 +1,11 @@
+{
+  "status": "cross_compile_passed",
+  "compiler": "GCC9.4.0",
+  "warnings": 0,
+  "source_sha256": "654ec99e7b20f35d1b196ca279814bfe341d6b3767858a79ec2fb1d4240e9562",
+  "program_sha256": "dfad6fd2720642cfb19e641cc94c52349c9efb53bf72e7c47574df6cd847c45a",
+  "linux_videodev2_sha256": "84bd85111a572a05f0631338b09c8db3a8a01e201678210214d31393f7f5d06c",
+  "linux_v4l2_controls_sha256": "9d1b9fbc3a04b99c360649f0e031b86b05abce02a60199e0d19260a2c5cd5120",
+  "links_icraft": false,
+  "test_executed": false
+}

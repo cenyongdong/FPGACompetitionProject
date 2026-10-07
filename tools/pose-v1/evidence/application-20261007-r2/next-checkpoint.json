@@ -1,0 +1,18 @@
+{
+  "status": "E1_A_B_completed_next_render_and_video_readiness",
+  "completion_review_sha256": "30885c5a7a958bccf087d823b2aac02342b458968ab57d7a8fdfc6658ff8bebf",
+  "preferred_package": ".local/pose-v1-application/package-20261007-r2",
+  "preferred_build": ".local/pose-v1-build/mixed-20261007-application-r2",
+  "read_first": [
+    "ADR/ADR_01.md",
+    "tools/pose-v1/APPLICATION-RESULTS-20261007.md",
+    "tools/pose-v1/FULL-FLOW-PLAN-20261007.md"
+  ],
+  "next_phase": "E1-C rendered skeleton and V0 hardware配套",
+  "fixed_reference_still_used_by_test_wrapper_only": true,
+  "unknown_data_distribution_accuracy_accepted": false,
+  "deep_optimizations_deferred": true,
+  "video_hardware_not_initialized": true,
+  "no_background_verification_jobs": true,
+  "reexecute_passed_tests": false
+}

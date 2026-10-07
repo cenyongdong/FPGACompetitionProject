@@ -1,5 +1,17 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-07当前视频：[r5修正/动态MP4](tools/pose-v1/VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md)、[两上下文及主机核验](tools/pose-v1/evidence/video-descriptor-20261007-r5/completion-review.json)、[下一检查点](tools/pose-v1/evidence/video-descriptor-20261007-r5/next-checkpoint.json)。QUERYBUF cookie保留解决当前有限编码问题；旧MMU/色彩拒绝保留，HDMI时序及RTSP/整机待验。
+
+2026-10-07下一视频阶段：用户已审查样片并恢复HDMI测试授权，[新计划](tools/pose-v1/NEXT-VIDEO-PLAN-20261007.md)、[授权/来源哈希检查点](tools/pose-v1/evidence/video-next-plan-20261007.json)。参考HDMI类只分配RGB565缓存和提交地址，未配置时序；先建立当前BOOT配套，再1080p60实屏。旧暂停属历史，本轮无新板测。
+
+2026-10-07独立VPU：[结果与主机MP4](tools/pose-v1/VPU-RESULTS-20261007.md)、[命令](tools/pose-v1/VPU-COMMANDS-20261007.md)、[完整核验](tools/pose-v1/evidence/vpu-20261007-r1/completion-review.json)。实际两端MPLANE/NV12两plane/H264单plane、30帧与主机解码通过；V4L2初始化/独立队列/drain依据[Linux stateful encoder官方接口](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/dev-encoder.html)和本机厂商vpu.h Encoder/mvx-v4l2-controls.h，未使用相机MMU及固定SPS/PPS切片。HDMI新目标1080p60、用户暂停，硬件时序未改；RTSP与色彩/时戳仍待。
+
+2026-10-07渲染与V0：[ARM画面/真实推理绘图结果](tools/pose-v1/RENDER-RESULTS-20261007.md)、[配套查询与差异](tools/pose-v1/V0-VIDEO-PAIRING-20261007.md)、[完整核验](tools/pose-v1/evidence/render-20261007-r1/completion-review.json)。CPU渲染与三格式逐位通过；VPU仅MPLANE枚举，HDMI未接/配套未确认，编码/RTSP及整机性能仍待。
+
+2026-10-07 E1首批：[生产接口/TCP完整实板结果](tools/pose-v1/APPLICATION-RESULTS-20261007.md)、[独立核验](tools/pose-v1/evidence/application-20261007-r2/completion-review.json)、[命令与超时修正](tools/pose-v1/APPLICATION-COMMANDS-20261007.md)。38成功前向逐位此前板端，2Hz网络正确性通过；渲染/双路/整机吞吐及长期仍待。旧“接口/网络尚未实现”按历史理解。
+
+2026-10-07首版取舍：[ADR_01当前异构方案与延期优化](ADR/ADR_01.md)、[全流程分阶段计划](tools/pose-v1/FULL-FLOW-PLAN-20261007.md)。用户确认先完成回放首版闭环，深度零拷贝/图/算子优化后置；本轮仅规划，E1及视频尚未实施，管理粗估保持。
+
 2026-10-07最新：[用户数值验收](tools/pose-v1/evidence/perf-20261007-r3/user-numerical-acceptance.json)、[P2定位与5.25Hz核心基线](tools/pose-v1/P2-RESULTS-20261007.md)。不含网络/绘图/编码，整机/长期与双路仍未验收；较早“数值待验收”属历史。
 
 2026-10-07最新：[运行核心/27样本/性能结果](tools/pose-v1/RUNTIME-RESULTS-20261007.md)、[H0配套资料](tools/pose-v1/H0-INTEGRATION-AUDIT-20261007.md)、[N2/P2候选](tools/pose-v1/NEXT-GATE-20261007.md)。原批准E0/N1/P1已执行完成；数值容限及5Hz未通过，视频未操作。以下20261006暂停文字为历史，最新以此结果及STATUS.md为准。

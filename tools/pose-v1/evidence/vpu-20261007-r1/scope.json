@@ -1,0 +1,20 @@
+{
+  "user_HDMI_target": [
+    1920,
+    1080,
+    60
+  ],
+  "HDMI_test_paused": true,
+  "HDMI_hardware_timing_modified": false,
+  "display": "DELL E2421HN",
+  "screenshot_scope": "PC active timing only; board unsupported timing reported by user",
+  "encoding_test": [
+    1280,
+    720,
+    10,
+    30
+  ],
+  "no_new_dependency": true,
+  "host_decoder_environment": "PI_wifi_sensing, OpenCV5.0.0 bundled FFmpeg61.19.100",
+  "preserved_failure": "r1 CRLF checksum preflight; r2 coded2x2; r3 coded default709-full observed before streaming"
+}

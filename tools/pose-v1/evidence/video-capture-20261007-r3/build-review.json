@@ -1,0 +1,13 @@
+{
+  "status": "single_capture_candidate_built",
+  "program_sha256": "ea4a0b4c2ff826db757487b21268f1968d53f85343802aa3ec197aa891aca769",
+  "source_files": {
+    "src/vpu_encoder.cpp": "27cdff895c4cf9f344433c7be76d783fa5ae16806eb9afe9f6f1fda442cf1bbf",
+    "src/vpu_sequence_check.cpp": "1090719bcdc1a277eff8d4b9c2e9f2990b637bf05f48ce5a5e174599b6c2ce04",
+    "include/vpu_encoder.hpp": "f85001ab0ea5725d3e59d479a64f999f2381bc76f9cc7321d7f5c332134e729f"
+  },
+  "input_sha256": "5da0b23d093eae65c9a3bd6cbcf8bceb86782ce38c6eacd0faae2189b13b6216",
+  "source_input_unchanged": true,
+  "change": "CAPTURE single-plane API per accepted TRY_FMT/vendor reference; NV12/720p10/2Mbps/Baseline/capacity/count unchanged",
+  "not_claimed_fix": true
+}

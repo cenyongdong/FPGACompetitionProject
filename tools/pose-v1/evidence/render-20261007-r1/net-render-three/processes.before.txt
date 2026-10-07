@@ -1,0 +1,100 @@
+    PID COMMAND         COMMAND
+      1 systemd         /sbin/init
+      2 kthreadd        [kthreadd]
+      3 rcu_gp          [rcu_gp]
+      4 rcu_par_gp      [rcu_par_gp]
+      8 mm_percpu_wq    [mm_percpu_wq]
+      9 ksoftirqd/0     [ksoftirqd/0]
+     10 rcu_sched       [rcu_sched]
+     11 migration/0     [migration/0]
+     12 cpuhp/0         [cpuhp/0]
+     13 cpuhp/1         [cpuhp/1]
+     14 migration/1     [migration/1]
+     15 ksoftirqd/1     [ksoftirqd/1]
+     18 cpuhp/2         [cpuhp/2]
+     19 migration/2     [migration/2]
+     20 ksoftirqd/2     [ksoftirqd/2]
+     23 cpuhp/3         [cpuhp/3]
+     24 migration/3     [migration/3]
+     25 ksoftirqd/3     [ksoftirqd/3]
+     28 kdevtmpfs       [kdevtmpfs]
+     29 kworker/0:1-eve [kworker/0:1-events]
+     31 kworker/2:1-eve [kworker/2:1-events]
+     32 kauditd         [kauditd]
+     33 oom_reaper      [oom_reaper]
+     34 writeback       [writeback]
+     35 kcompactd0      [kcompactd0]
+     36 khugepaged      [khugepaged]
+     38 kworker/3:1-mm_ [kworker/3:1-mm_percpu_wq]
+     54 kblockd         [kblockd]
+     55 edac-poller     [edac-poller]
+     56 watchdogd       [watchdogd]
+     57 rpciod          [rpciod]
+     58 kworker/u9:0-kb [kworker/u9:0-kbase_pm_poweroff_wait]
+     59 xprtiod         [xprtiod]
+     60 kswapd0         [kswapd0]
+     61 ecryptfs-kthrea [ecryptfs-kthrea]
+     62 nfsiod          [nfsiod]
+     63 spi3            [spi3]
+     64 stmmac_wq       [stmmac_wq]
+     68 kworker/u8:2-ev [kworker/u8:2-events_unbound]
+     69 kpktgend_0      [kpktgend_0]
+     71 kpktgend_1      [kpktgend_1]
+     72 kpktgend_2      [kpktgend_2]
+     73 kpktgend_3      [kpktgend_3]
+     74 ipv6_addrconf   [ipv6_addrconf]
+     75 mmc_complete    [mmc_complete]
+     77 kworker/1:1H-kb [kworker/1:1H-kblockd]
+     78 kworker/0:1H-mm [kworker/0:1H-mmc_complete]
+     80 kworker/2:1H-kb [kworker/2:1H-kblockd]
+     81 jbd2/mmcblk0p2- [jbd2/mmcblk0p2-]
+     82 ext4-rsv-conver [ext4-rsv-conver]
+     83 kworker/3:1H-kb [kworker/3:1H-kblockd]
+    103 systemd-journal /lib/systemd/systemd-journald
+    115 kbase_job_fault [kbase_job_fault]
+    116 kworker/u9:1    [kworker/u9:1]
+    119 mvx_securevideo [mvx_securevideo]
+    120 fw_cache        [fw_cache]
+    121 mvx_sched       [mvx_sched]
+    122 kworker/0:2-rcu [kworker/0:2-rcu_gp]
+    126 systemd-timesyn /lib/systemd/systemd-timesyncd
+    130 cron            /usr/sbin/cron -f
+    131 dbus-daemon     /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    136 rsyslogd        /usr/sbin/rsyslogd -n -iNONE
+    137 systemd-logind  /lib/systemd/systemd-logind
+    149 systemd-resolve /lib/systemd/systemd-resolved
+    150 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    185 sshd            sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    186 agetty          /sbin/agetty -o -p -- \u --noclear tty1 linux
+    187 agetty          /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+    266 systemd         /lib/systemd/systemd --user
+    267 (sd-pam)        (sd-pam)
+    268 kworker/2:2     [kworker/2:2]
+    425 sshd            sshd: root@pts/1
+    427 sshd            sshd: root@notty
+    439 bash            -bash
+    460 sftp-server     /usr/lib/openssh/sftp-server
+   6311 apt.systemd.dai /bin/sh /usr/lib/apt/apt.systemd.daily install
+   6315 apt.systemd.dai /bin/sh /usr/lib/apt/apt.systemd.daily lock_is_held install
+   6370 unattended-upgr /usr/bin/python3 /usr/bin/unattended-upgrade
+   8986 http            /usr/lib/apt/methods/http
+  10238 bash            bash -c while true; do sleep 1;head -v -n 8 /proc/meminfo; head -v -n 2 /proc/stat /proc/version /proc/uptime /proc/loadavg /proc/sys/fs/file-nr /proc/sys/kernel/hostname; tail -v -n 32 /proc/net/dev;echo '==> /proc/df <==';df -l;echo '==> /proc/who <==';who;echo '==> /proc/end <==';echo '##Moba##'; done
+  12726 kworker/3:0     [kworker/3:0]
+  18677 sshd            sshd: root@pts/0
+  18996 bash            -bash
+  18997 kworker/u8:0-ev [kworker/u8:0-events_unbound]
+  19046 sshd            sshd: root@notty
+  19725 sftp-server     /usr/lib/openssh/sftp-server
+  19895 kworker/0:0H    [kworker/0:0H]
+  21534 apt.systemd.dai /bin/sh /usr/lib/apt/apt.systemd.daily update
+  21537 flock           flock -w 3600 3
+  22659 kworker/1:0H    [kworker/1:0H]
+  23058 kworker/1:3-eve [kworker/1:3-events]
+  24240 kworker/3:0H    [kworker/3:0H]
+  25075 kworker/1:0-eve [kworker/1:0-events]
+  25094 kworker/2:2H    [kworker/2:2H]
+  27029 kworker/0:2H    [kworker/0:2H]
+  27036 sh              sh /tmp/pose-v1-render/20261007-r1/package/run-render-validation.sh net-render-three
+  27042 python3         python3 -c import pathlib,time; p=pathlib.Path("/tmp/pose-v1-render/20261007-r1/run-net-render-three/results/listener.json"); deadline=time.monotonic()+90; exec("while not p.exists() and time.monotonic()<deadline:\n time.sleep(0.2)"); print(p.read_text() if p.exists() else "NOT_READY")
+  27059 sleep           sleep 1
+  27069 ps              ps -eo pid,comm,args

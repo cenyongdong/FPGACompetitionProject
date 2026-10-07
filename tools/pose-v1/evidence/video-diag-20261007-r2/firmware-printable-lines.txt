@@ -1,0 +1,607 @@
+SESSION_RAM.live_stripe_head       12
+0 1 SESSION_RAM.live_stripe_head       12
+0 1 SESSION_RAM.live_stripe_tail.index 11
+0 1 SESSION_RAM.live_stripe_tail.index 11
+0 1 SESSION_RAM.live_stripe_tail.picid 3
+0 1 SESSION_RAM.live_stripe_tail.picid 3
+0 1 SESSION_RAM.live_stripe_tail.refy  46
+0 1 SESSION_RAM.live_stripe_tail.refy  46
+0 1 SESSION_RAM.output_buffer_next     6
+0 1 SESSION_RAM.output_buffer_next     6
+0 1 SESSION_RAM.output_buffer_tail     4
+0 1 SESSION_RAM.output_buffer_tail     4
+0 1 SESSION_RAM.output_buffer_head     10
+0 1 SESSION_RAM.output_buffer_head     10
+0 1 -- switching --
+0 1 -- switching --
+0 1 SESSION_RAM.next_boot_token        2
+0 1 SESSION_RAM.next_boot_token        2
+0 1 SESSION_RAM.job_queue.token        2
+0 1 SESSION_RAM.job_queue.token        2
+0 1 SESSION_RAM.job_active             1
+0 1 SESSION_RAM.job_active             1
+0 1 SESSION_RAM.job_phase_counter      3
+0 1 SESSION_RAM.job_phase_counter      3
+0 1 SESSION_RAM.job_start_pic          2
+0 1 SESSION_RAM.job_start_pic          2
+0 1 SESSION_RAM.job_end_pic            3
+0 1 SESSION_RAM.job_end_pic            3
+0 1 SESSION_RAM.stream_pic_head        9
+0 1 SESSION_RAM.stream_pic_head        9
+0 1 -- slice queues --
+0 1 -- slice queues --
+0 1 SESSION_RAM.fifo_slice_job         4 entries
+0 1 SESSION_RAM.fifo_slice_job         4 entries
+0 1 SESSION_RAM.fifo_slice_complete    0 entries
+0 1 SESSION_RAM.fifo_slice_complete    0 entries
+0 1  me_stripe_pos i=0 pos=0
+0 1  me_stripe_pos i=0 pos=0
+0 1  me_stripe_pos i=1 pos=0
+0 1  me_stripe_pos i=1 pos=0
+0 1  me_stripe_pos i=2 pos=0
+0 1  me_stripe_pos i=2 pos=0
+0 1  me_stripe_pos i=3 pos=0
+0 1  me_stripe_pos i=3 pos=0
+0 1  me_stripe_pos i=4 pos=0
+0 1  me_stripe_pos i=4 pos=0
+0 1  me_stripe_pos i=5 pos=0
+0 1  me_stripe_pos i=5 pos=0
+0 1  me_stripe_pos i=6 pos=0
+0 1  me_stripe_pos i=6 pos=0
+0 1  me_stripe_pos i=7 pos=0
+0 1  me_stripe_pos i=7 pos=0
+0 1  me_stripe_pos i=8 pos=0
+0 1  me_stripe_pos i=8 pos=0
+0 1  me_stripe_pos i=9 pos=0
+0 1  me_stripe_pos i=9 pos=0
+0 1  me_stripe_pos i=10 pos=0
+0 1  me_stripe_pos i=10 pos=0
+0 1  me_stripe_pos i=11 pos=-1
+0 1  me_stripe_pos i=11 pos=-1
+0 1  me_stripe_pos i=12 pos=0
+0 1  me_stripe_pos i=12 pos=0
+0 1  me_stripe_pos i=13 pos=0
+0 1  me_stripe_pos i=13 pos=0
+0 1  me_stripe_pos i=14 pos=0
+0 1  me_stripe_pos i=14 pos=0
+0 1  me_stripe_pos i=15 pos=0
+0 1  me_stripe_pos i=15 pos=0
+0 1 live_job->switch_request            0
+0 1 live_job->switch_request            0
+0 1 live_job->requested_number_of_cores 2
+0 1 live_job->requested_number_of_cores 2
+0 1 live_job->cores_booted              2
+0 1 live_job->cores_booted              2
+0 1 live_job->pipe_switch               4
+0 1 live_job->pipe_switch               4
+0 1 SOC_REF.STATUS          0x23
+0 1 SOC_REF.STATUS          0x23
+0 1 SOC_REF.CONFIG          0x800082b0
+0 1 SOC_REF.CONFIG          0x800082b0
+0 1 SOC_REF.LIVEREF         0x0
+0 1 SOC_REF.LIVEREF         0x0
+0 1 SOC_REF.STOPMASK        0xfffffffe
+0 1 SOC_REF.STOPMASK        0xfffffffe
+0 1 SOC_MC.START            0x0
+0 1 SOC_MC.START            0x0
+0 1 SOC_MC.STATUS           0xce000000
+0 1 SOC_MC.STATUS           0xce000000
+0 1 SOC_TRF.STATUS          0x7
+0 1 SOC_TRF.STATUS          0x7
+0 1 SOC_TRF.DBGSTATUS       0x1fffe50f
+0 1 SOC_TRF.DBGSTATUS       0x1fffe50f
+0 1 SOC_DBL.CTRL            0x1848002
+0 1 SOC_DBL.CTRL            0x1848002
+0 1 SOC_DBL.CTRL1           0x5011
+0 1 SOC_DBL.CTRL1           0x5011
+0 1 SOC_DBL.STATUS          0x3f
+0 1 SOC_DBL.STATUS          0x3f
+0 1 SOC_DBL.STATUS1         0x0
+0 1 SOC_DBL.STATUS1         0x0
+0 1 SOC_DBL.STATUS2         0x0
+0 1 SOC_DBL.STATUS2         0x0
+0 1 SOC_DBL.STATUS3         0x0
+0 1 SOC_DBL.STATUS3         0x0
+0 1 SOC_BITSTREAM.ACBAD.STATUS       0x2
+0 1 SOC_BITSTREAM.ACBAD.STATUS       0x2
+0 1 SOC_BITSTREAM.MDBITSAVAIL        0x0
+0 1 SOC_BITSTREAM.MDBITSAVAIL        0x0
+0 1 SOC_BITSTREAM.DEF_CTRL           0x1
+0 1 SOC_BITSTREAM.DEF_CTRL           0x1
+0 1 SOC_BITSTREAM.HMVPRED.STATUS     0x3
+0 1 SOC_BITSTREAM.HMVPRED.STATUS     0x3
+0 1 SOC_BITSTREAM.HCABAD.STATUS      0x2
+0 1 SOC_BITSTREAM.HCABAD.STATUS      0x2
+0 1 SOC_BITSTREAM.VP9BC.STATUS       0x1
+0 1 SOC_BITSTREAM.VP9BC.STATUS       0x1
+0 1 SOC_ME.STATUS           0x7e005
+0 1 SOC_ME.STATUS           0x7e005
+0 1 SOC_VDMA.IRQ_STATUS     0x5a
+0 1 SOC_VDMA.IRQ_STATUS     0x5a
+0 1  SOC_VDMA eq_0=0 dq_0=80000000 eq_1=0 dq_1=80000000 src_ctrl=1002
+0 1  SOC_VDMA eq_0=0 dq_0=80000000 eq_1=0 dq_1=80000000 src_ctrl=1002
+0 1 SHARED_RAM.pipe_state   2 (SWT)
+0 1 SHARED_RAM.pipe_state   2 (SWT)
+0 1 SHARED_RAM.is_last_core 0
+0 1 SHARED_RAM.is_last_core 0
+0 1 SHARED_RAM.job_phase    2
+0 1 SHARED_RAM.job_phase    2
+0 1 SHARED_RAM.job_state    10
+0 1 SHARED_RAM.job_state    10
+0 1 SHARED_RAM.output_stripes_completed 12
+0 1 SHARED_RAM.output_stripes_completed 12
+0 1 SHARED_RAM.areq_stripes_issued 12
+0 1 SHARED_RAM.areq_stripes_issued 12
+0 1 SDMA.FAULT              0x0
+0 1 SDMA.FAULT              0x0
+0 1   SDMA   status0    status1   | srclen  dstlen | stpen | stpid | dev# pending
+0 1   SDMA   status0    status1   | srclen  dstlen | stpen | stpid | dev# pending
+0 1   [ 0]  00000200   00000200   |     -1      -1 |  0  0 |  0  0 | #0 0,  #1 0
+0 1   [ 0]  00000200   00000200   |     -1      -1 |  0  0 |  0  0 | #0 0,  #1 0
+0 1   [ 1]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #2 0,  #3 0
+0 1   [ 1]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #2 0,  #3 0
+0 1   [ 2]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #4 0,  #5 0
+0 1   [ 2]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #4 0,  #5 0
+0 1   [ 3]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #6 0,  #7 0
+0 1   [ 3]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #6 0,  #7 0
+0 1   [ 4]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #8 0,  #9 116
+0 1   [ 4]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #8 0,  #9 116
+0 1   [ 5]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #10 0,  #11 0
+0 1   [ 5]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #10 0,  #11 0
+0 1   [ 6]  00000020   00000020   | 2096768  2097024 |  0  0 |  0  0 | #12 0,  #13 0
+0 1   [ 6]  00000020   00000020   | 2096768  2097024 |  0  0 |  0  0 | #12 0,  #13 0
+0 1   [ 7]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #14 0,  #15 0
+0 1   [ 7]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #14 0,  #15 0
+0 1   [ 8]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #16 0,  #17 0
+0 1   [ 8]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #16 0,  #17 0
+0 1   [ 9]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #18 0,  #19 0
+0 1   [ 9]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #18 0,  #19 0
+0 1   [10]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #20 128,  #21 0
+0 1   [10]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #20 128,  #21 0
+0 1   [11]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #22 0,  #23 0
+0 1   [11]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #22 0,  #23 0
+0 1   [12]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #24 0,  #25 0
+0 1   [12]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #24 0,  #25 0
+0 1   [13]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #26 0,  #27 0
+0 1   [13]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #26 0,  #27 0
+0 1   [14]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #28 0,  #29 128
+0 1   [14]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #28 0,  #29 128
+0 1   [15]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #30 0,  #31 0
+0 1   [15]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #30 0,  #31 0
+0 1   [16]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #32 128,  #33 0
+0 1   [16]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #32 128,  #33 0
+0 1   [17]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #34 0,  #35 0
+0 1   [17]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #34 0,  #35 0
+0 1   [18]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #36 0,  #37 0
+0 1   [18]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #36 0,  #37 0
+0 1   [19]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #38 0,  #39 0
+0 1   [19]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #38 0,  #39 0
+0 1   [20]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #40 0,  #41 0
+0 1   [20]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #40 0,  #41 0
+0 1   [21]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #42 0,  #43 0
+0 1   [21]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #42 0,  #43 0
+0 1   [22]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #44 0,  #45 0
+0 1   [22]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #44 0,  #45 0
+0 1   [23]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #46 0,  #47 0
+0 1   [23]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #46 0,  #47 0
+0 1   [24]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #48 0,  #49 128
+0 1   [24]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #48 0,  #49 128
+0 1   [25]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #50 128,  #51 0
+0 1   [25]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #50 128,  #51 0
+0 1   [26]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #52 0,  #53 0
+0 1   [26]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #52 0,  #53 0
+0 1   [27]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #54 0,  #55 0
+0 1   [27]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #54 0,  #55 0
+0 1   [28]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #56 0,  #57 0
+0 1   [28]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #56 0,  #57 0
+0 1   [29]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #58 0,  #59 0
+0 1   [29]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #58 0,  #59 0
+0 1   [30]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #60 0,  #61 0
+0 1   [30]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #60 0,  #61 0
+0 1   [31]  00000000   00000001   |     -1      -1 |  0  0 |  0  0 | #62 0,  #63 0
+0 1   [31]  00000000   00000001   |     -1      -1 |  0  0 |  0  0 | #62 0,  #63 0
+0 1   [32]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #64 0,  #65 0
+0 1   [32]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #64 0,  #65 0
+0 1   [33]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #66 0,  #67 0
+0 1   [33]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #66 0,  #67 0
+0 1   [34]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #68 0,  #69 0
+0 1   [34]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #68 0,  #69 0
+0 1   [35]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #70 0,  #71 0
+0 1   [35]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #70 0,  #71 0
+0 1   [36]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #72 0,  #73 0
+0 1   [36]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #72 0,  #73 0
+0 1   [37]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #74 0,  #75 0
+0 1   [37]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #74 0,  #75 0
+0 1   [38]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #76 0,  #77 0
+0 1   [38]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #76 0,  #77 0
+0 1   [39]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #78 0,  #79 0
+0 1   [39]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #78 0,  #79 0
+0 1 Status of blocked tasks for core 0: clk=14160 
+0 1 Status of blocked tasks for core 0: clk=14160 
+0 1 core 0 STREAM WAIT                code=  4 pic=  9 pos[pu]=(  0,  0) clk=13998
+0 1 core 0 STREAM WAIT                code=  4 pic=  9 pos[pu]=(  0,  0) clk=13998
+0 1 core 0 SLICE  ENCMBINFO           code= 13 pic=  3 pos[pu]=(  0, 40) clk=14003
+0 1 core 0 SLICE  ENCMBINFO           code= 13 pic=  3 pos[pu]=(  0, 40) clk=14003
+0 1 core 0 ME    SWITCH              code=  9 pic=  3 pos[pu]=( 42, 44) clk=14030
+0 1 core 0 ME    SWITCH              code=  9 pic=  3 pos[pu]=( 42, 44) clk=14030
+0 1 core 0 TRANS  DEQUEUE             code=  5 pic=  3 pos[pu]=( 79, 44) clk=14029
+0 1 core 0 TRANS  DEQUEUE             code=  5 pic=  3 pos[pu]=( 79, 44) clk=14029
+0 1 core 0 OUTPUT DEQUEUE             code=  5 pic=  3 pos[pu]=( 80, 45) clk=14029
+0 1 core 0 OUTPUT DEQUEUE             code=  5 pic=  3 pos[pu]=( 80, 45) clk=14029
+0 1 status 0 top 0 cnt 0 mcnum 0
+0 1 status 0 top 0 cnt 0 mcnum 0
+0 1 mbnum=0 rmemv=0
+0 1 mbnum=0 rmemv=0
+0 1 next_pic_to_parse     0
+0 1 next_pic_to_parse     0
+0 1 IntBuf:
+0 1 IntBuf:
+0 1   log2_page_size   num_pages (free)
+0 1   log2_page_size   num_pages (free)
+0 1     12                0  (0 bytes)
+0 1     12                0  (0 bytes)
+0 1     13                1  (8192 bytes)
+0 1     13                1  (8192 bytes)
+0 1     14                0  (0 bytes)
+0 1     14                0  (0 bytes)
+0 1     15                0  (0 bytes)
+0 1     15                0  (0 bytes)
+0 1     16                4  (262144 bytes)
+0 1     16                4  (262144 bytes)
+0 1     17                1  (131072 bytes)
+0 1     17                1  (131072 bytes)
+0 1     18                0  (0 bytes)
+0 1     18                0  (0 bytes)
+0 1     19                1  (524288 bytes)
+0 1     19                1  (524288 bytes)
+0 1     20                1  (1048576 bytes)
+0 1     20                1  (1048576 bytes)
+0 1     21                0  (0 bytes)
+0 1     21                0  (0 bytes)
+0 1     22                0  (0 bytes)
+0 1     22                0  (0 bytes)
+0 1     23                0  (0 bytes)
+0 1     23                0  (0 bytes)
+0 1     24                0  (0 bytes)
+0 1     24                0  (0 bytes)
+0 1     25                0  (0 bytes)
+0 1     25                0  (0 bytes)
+0 1     26                0  (0 bytes)
+0 1     26                0  (0 bytes)
+0 1     27                0  (0 bytes)
+0 1     27                0  (0 bytes)
+0 1 Unblocking resizes: 1
+0 1 Unblocking resizes: 1
+0 1 Total allocated  2949120 (used 974848, unfreeable 286720, free 1974272)
+0 1 Total allocated  2949120 (used 974848, unfreeable 286720, free 1974272)
+0 1 Reference picture table
+0 1 Reference picture table
+0 1 id  : sta use ref py1 py2 cmp fmt mbi_ptr  mbi_pages  ptr top:bot
+0 1 id  : sta use ref py1 py2 cmp fmt mbi_ptr  mbi_pages  ptr top:bot
+0 1   0 :   2   1   1 255 255   0   0 20c06000        0   0:0
+0 1   0 :   2   1   1 255 255   0   0 20c06000        0   0:0
+0 1   1 :   3   0   0 255 255   1   0 20c07000        5   0:0
+0 1   1 :   3   0   0 255 255   1   0 20c07000        5   0:0
+0 1   2 :   3   1   1   0 255   1   0 20c38000        5   70b71000:0
+0 1   2 :   3   1   1   0 255   1   0 20c38000        5   70b71000:0
+0 1   3 :   2   2   2   1 255   1   0 20c39000        0   70ce6c00:0
+0 1   3 :   2   2   2   1 255   1   0 20c39000        0   70ce6c00:0
+0 1   4 :   2   2   2   0 255   0   0 20c3a000        0   70b71000:0
+0 1   4 :   2   2   2   0 255   0   0 20c3a000        0   70b71000:0
+0 1   5 :   2   2   2 255 255   0   0 20c3b000        0   0:0
+0 1   5 :   2   2   2 255 255   0   0 20c3b000        0   0:0
+0 1   6 :   2   2   2 255 255   0   0 20c3c000        0   0:0
+0 1   6 :   2   2   2 255 255   0   0 20c3c000        0   0:0
+0 1   7 :   2   2   2 255 255   0   0 20c3d000        0   0:0
+0 1   7 :   2   2   2 255 255   0   0 20c3d000        0   0:0
+0 1 Live picture table
+0 1 Live picture table
+0 1 Num : 6   Oldest 3
+0 1 Num : 6   Oldest 3
+0 1 idx : sta use picid refid linesync ref  liverefs     ref2pic
+0 1 idx : sta use picid refid linesync ref  liverefs     ref2pic
+0 1   3 :   7   2     3     2        0   1  0x00000001   2 255   3 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   3 :   7   2     3     2        0   1  0x00000001   2 255   3 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   4 :   7   2     4     0        2   1  0x00000002   4 255   3 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   4 :   7   2     4     0        2   1  0x00000002   4 255   3 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   5 :   7   2     5     2        0   1  0x00000001   4 255   5 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   5 :   7   2     5     2        0   1  0x00000001   4 255   5 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   6 :   7   2     6     0        0   1  0x00000002   6 255   5 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   6 :   7   2     6     0        0   1  0x00000002   6 255   5 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   7 :   7   2     7     2        0   1  0x00000001   6 255   7 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   7 :   7   2     7     2        0   1  0x00000001   6 255   7 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   8 :   7   2     0     0        0   1  0x00000002   0 255   7 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1   8 :   7   2     0     0        0   1  0x00000002   0 255   7 255 255 255 255 255 255 255 255 255 255 255 255 255
+0 1 Private refbank: color 0x8001 max_buffers 2 mbw 80 mbh 45 base_addr 0x70b71000
+0 1 Private refbank: color 0x8001 max_buffers 2 mbw 80 mbh 45 base_addr 0x70b71000
+0 1    idx sta ref_addr   mbw  mbh
+0 1    idx sta ref_addr   mbw  mbh
+0 1      0   1 0x70b71000
+0 1      0   1 0x70b71000
+0 1      1   1 0x70ce6c00
+0 1      1   1 0x70ce6c00
+0 1      2   0 0x00000000
+0 1      2   0 0x00000000
+0 1      3   0 0x00000000
+0 1      3   0 0x00000000
+0 1      4   0 0x00000000
+0 1      4   0 0x00000000
+0 1      5   0 0x00000000
+0 1      5   0 0x00000000
+0 1      6   0 0x00000000
+0 1      6   0 0x00000000
+0 1 (end of private refbank dump)
+0 1 (end of private refbank dump)
+V5/V7-H264ENC: MMU ABORT
+56637002H.264 BP/MP/HP Encoder
+H264ENC af1a195fr0p0-00eac0
+1 1 **** MMU ABORT **** PC: 0x1888   SR: 0x19   FAR: 0x0
+1 1 **** MMU ABORT **** PC: 0x1888   SR: 0x19   FAR: 0x0
+1 1  R[ 0] = 0xff000000
+1 1  R[ 0] = 0xff000000
+1 1  R[ 1] = 0x00000000
+CVMLXVM2
+1 1  R[ 1] = 0x00000000
+1 1  R[ 2] = 0x0000001c
+1 1  R[ 2] = 0x0000001c
+1 1  R[ 3] = 0xffffc514
+1 1  R[ 3] = 0xffffc514
+1 1  R[ 4] = 0x00000066
+1 1  R[ 4] = 0x00000066
+1 1  R[ 5] = 0x00000000
+1 1  R[ 5] = 0x00000000
+1 1  R[ 6] = 0xff010000
+1 1  R[ 6] = 0xff010000
+1 1  R[ 7] = 0x00000000
+1 1  R[ 7] = 0x00000000
+1 1  R[ 8] = 0x00000000
+1 1  R[ 8] = 0x00000000
+1 1  R[ 9] = 0x00056804
+CVMLXVM2
+1 1  R[ 9] = 0x00056804
+1 1  R[10] = 0x00000001
+1 1  R[10] = 0x00000001
+1 1  R[11] = 0x00000000
+1 1  R[11] = 0x00000000
+1 1  R[12] = 0x00000000
+1 1  R[12] = 0x00000000
+1 1  R[13] = 0x00000001
+CVMLXVM2
+1 1  R[13] = 0x00000001
+1 1  R[14] = 0x00001f5e
+1 1  R[14] = 0x00001f5e
+Cr6LXVM6
+1 1  master #5 SDMA aborted
+1 1  master #5 SDMA aborted
+1 1    FAULT: 0x6
+1 1    FAULT: 0x6
+1 1    FADDR: 0x20600000
+1 1    FADDR: 0x20600000
+1 1 SOC_REF.STATUS          0x22
+1 1 SOC_REF.STATUS          0x22
+1 1 SOC_REF.CONFIG          0x800082b0
+1 1 SOC_REF.CONFIG          0x800082b0
+1 1 SOC_REF.LIVEREF         0x0
+1 1 SOC_REF.LIVEREF         0x0
+0VMLXVMA
+1 1 SOC_REF.STOPMASK        0xfffffffe
+1 1 SOC_REF.STOPMASK        0xfffffffe
+1 1 SOC_MC.START            0x2f
+1 1 SOC_MC.START            0x2f
+1 1 SOC_MC.STATUS           0xae000000
+1 1 SOC_MC.STATUS           0xae000000
+1 1 SOC_TRF.STATUS          0x5
+1 1 SOC_TRF.STATUS          0x5
+1 1 SOC_TRF.DBGSTATUS       0xeffe00f
+1 1 SOC_TRF.DBGSTATUS       0xeffe00f
+1 1 SOC_DBL.CTRL            0x1848002
+1 1 SOC_DBL.CTRL            0x1848002
+1 1 SOC_DBL.CTRL1           0x5011
+1 1 SOC_DBL.CTRL1           0x5011
+1 1 SOC_DBL.STATUS          0x80010fb
+1 1 SOC_DBL.STATUS          0x80010fb
+1 1 SOC_DBL.STATUS1         0x5557
+1 1 SOC_DBL.STATUS1         0x5557
+1 1 SOC_DBL.STATUS2         0xc003c
+1 1 SOC_DBL.STATUS2         0xc003c
+1 1 SOC_DBL.STATUS3         0x0
+1 1 SOC_DBL.STATUS3         0x0
+30pLXVMC
+1 1 SOC_BITSTREAM.ACBAD.STATUS       0x2
+1 1 SOC_BITSTREAM.ACBAD.STATUS       0x2
+1 1 SOC_BITSTREAM.MDBITSAVAIL        0x0
+1 1 SOC_BITSTREAM.MDBITSAVAIL        0x0
+1 1 SOC_BITSTREAM.DEF_CTRL           0x1
+1 1 SOC_BITSTREAM.DEF_CTRL           0x1
+1 1 SOC_BITSTREAM.HMVPRED.STATUS     0x3
+1 1 SOC_BITSTREAM.HMVPRED.STATUS     0x3
+1 1 SOC_BITSTREAM.HCABAD.STATUS      0x2
+1 1 SOC_BITSTREAM.HCABAD.STATUS      0x2
+1 1 SOC_BITSTREAM.VP9BC.STATUS       0x1
+1 1 SOC_BITSTREAM.VP9BC.STATUS       0x1
+1 1 SOC_ME.STATUS           0x2f8001
+1 1 SOC_ME.STATUS           0x2f8001
+1 1 SOC_VDMA.IRQ_STATUS     0x7b
+1 1 SOC_VDMA.IRQ_STATUS     0x7b
+1 1  SOC_VDMA eq_0=80000003 dq_0=40000003 eq_1=0 dq_1=80000000 src_ctrl=1007
+1 1  SOC_VDMA eq_0=80000003 dq_0=40000003 eq_1=0 dq_1=80000000 src_ctrl=1007
+1 1 SHARED_RAM.pipe_state   0 (RUN)
+1 1 SHARED_RAM.pipe_state   0 (RUN)
+1 1 SHARED_RAM.is_last_core 1
+1 1 SHARED_RAM.is_last_core 1
+1 1 SHARED_RAM.job_phase    1
+1 1 SHARED_RAM.job_phase    1
+1 1 SHARED_RAM.job_state    10
+1 1 SHARED_RAM.job_state    10
+1 1 SHARED_RAM.output_stripes_completed 10
+1 1 SHARED_RAM.output_stripes_completed 10
+1 1 SHARED_RAM.areq_stripes_issued 11
+1 1 SHARED_RAM.areq_stripes_issued 11
+1 1 SDMA.FAULT              0x0
+1 1 SDMA.FAULT              0x0
+1 1   SDMA   status0    status1   | srclen  dstlen | stpen | stpid | dev# pending
+1 1   SDMA   status0    status1   | srclen  dstlen | stpen | stpid | dev# pending
+1 1   [ 0]  00000200   00000200   |     -1      -1 |  0  0 |  0  0 | #0 0,  #1 0
+1 1   [ 0]  00000200   00000200   |     -1      -1 |  0  0 |  0  0 | #0 0,  #1 0
+1 1   [ 1]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #2 0,  #3 0
+1 1   [ 1]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #2 0,  #3 0
+1 1   [ 2]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #4 0,  #5 0
+1 1   [ 2]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #4 0,  #5 0
+1 1   [ 3]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #6 0,  #7 0
+1 1   [ 3]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #6 0,  #7 0
+1 1   [ 4]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #8 0,  #9 140
+1 1   [ 4]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #8 0,  #9 140
+1 1   [ 5]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #10 0,  #11 0
+XVMLXVMm
+1 1   [ 5]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #10 0,  #11 0
+1 1   [ 6]  00000020   00000020   | 2096000  2096256 |  0  0 |  0  0 | #12 0,  #13 0
+1 1   [ 6]  00000020   00000020   | 2096000  2096256 |  0  0 |  0  0 | #12 0,  #13 0
+1 1   [ 7]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #14 0,  #15 0
+1 1   [ 7]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #14 0,  #15 0
+1 1   [ 8]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #16 0,  #17 0
+1 1   [ 8]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #16 0,  #17 0
+1 1   [ 9]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #18 0,  #19 0
+1 1   [ 9]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #18 0,  #19 0
+1 1   [10]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #20 160,  #21 0
+1 1   [10]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #20 160,  #21 0
+1 1   [11]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #22 0,  #23 0
+1 1   [11]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #22 0,  #23 0
+1 1   [12]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #24 0,  #25 0
+1 1   [12]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #24 0,  #25 0
+XVMLXVMm
+1 1   [13]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #26 0,  #27 0
+XVMLXVMm
+1 1   [13]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #26 0,  #27 0
+1 1   [14]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #28 0,  #29 128
+1 1   [14]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #28 0,  #29 128
+1 1   [15]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #30 0,  #31 0
+1 1   [15]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #30 0,  #31 0
+1 1   [16]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #32 128,  #33 0
+1 1   [16]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #32 128,  #33 0
+1 1   [17]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #34 0,  #35 0
+1 1   [17]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #34 0,  #35 0
+1 1   [18]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #36 0,  #37 0
+1 1   [18]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #36 0,  #37 0
+1 1   [19]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #38 0,  #39 0
+1 1   [19]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #38 0,  #39 0
+1 1   [20]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #40 0,  #41 0
+XVMLXVMm
+1 1   [20]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #40 0,  #41 0
+XVMLXVMm
+1 1   [21]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #42 0,  #43 0
+1 1   [21]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #42 0,  #43 0
+1 1   [22]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #44 0,  #45 0
+1 1   [22]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #44 0,  #45 0
+1 1   [23]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #46 0,  #47 0
+XVMLXVMm
+1 1   [23]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #46 0,  #47 0
+1 1   [24]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #48 0,  #49 128
+1 1   [24]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #48 0,  #49 128
+1 1   [25]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #50 128,  #51 0
+1 1   [25]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #50 128,  #51 0
+1 1   [26]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #52 0,  #53 0
+1 1   [26]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #52 0,  #53 0
+1 1   [27]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #54 0,  #55 0
+1 1   [27]  00000000   00000020   |     -1      -1 |  0  0 |  0  0 | #54 0,  #55 0
+1 1   [28]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #56 0,  #57 0
+XVMLXVMm
+1 1   [28]  00000020   00000000   |     -1      -1 |  0  0 |  0  0 | #56 0,  #57 0
+1 1   [29]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #58 0,  #59 0
+1 1   [29]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #58 0,  #59 0
+1 1   [30]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #60 0,  #61 0
+1 1   [30]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #60 0,  #61 0
+1 1   [31]  00000000   00000001   |     -1      -1 |  0  0 |  0  0 | #62 0,  #63 0
+XVMLXVMm
+1 1   [31]  00000000   00000001   |     -1      -1 |  0  0 |  0  0 | #62 0,  #63 0
+1 1   [32]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #64 0,  #65 0
+1 1   [32]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #64 0,  #65 0
+1 1   [33]  00000200   00000200   |     -1      -1 |  0  0 |  0  0 | #66 0,  #67 0
+1 1   [33]  00000200   00000200   |     -1      -1 |  0  0 |  0  0 | #66 0,  #67 0
+1 1   [34]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #68 0,  #69 0
+1 1   [34]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #68 0,  #69 0
+1 1   [35]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #70 0,  #71 0
+1 1   [35]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #70 0,  #71 0
+1 1   [36]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #72 0,  #73 0
+1 1   [36]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #72 0,  #73 0
+1 1   [37]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #74 0,  #75 0
+1 1   [37]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #74 0,  #75 0
+XVMLXVMm
+1 1   [38]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #76 0,  #77 0
+1 1   [38]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #76 0,  #77 0
+8  LXVMm
+1 1   [39]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #78 0,  #79 0
+XVMLXVMm
+1 1   [39]  00000000   00000000   |     -1      -1 |  0  0 |  0  0 | #78 0,  #79 0
+0xfLXVMM
+1 1 Status of blocked tasks for core 1: clk=15348 
+1 1 Status of blocked tasks for core 1: clk=15348 
+1 1 core 1 STREAM not set waiting              pic=  0 pos[pu]=(  0,  0)
+1 1 core 1 STREAM not set waiting              pic=  0 pos[pu]=(  0,  0)
+1 1 core 1 SLICE  ENCMBINFO           code= 13 pic=  2 pos[pu]=(  0, 16) clk=15193
+1 1 core 1 SLICE  ENCMBINFO           code= 13 pic=  2 pos[pu]=(  0, 16) clk=15193
+1 1 core 1 ME    SWITCH              code=  9 pic=  2 pos[pu]=( 20, 43) clk=15249
+1 1 core 1 ME    SWITCH              code=  9 pic=  2 pos[pu]=( 20, 43) clk=15249
+1 1 core 1 TRANS  DEQUEUE             code=  5 pic=  2 pos[pu]=( 79, 43) clk=15249
+ 1 LXVMm
+1 1 core 1 TRANS  DEQUEUE             code=  5 pic=  2 pos[pu]=( 79, 43) clk=15249
+1 1 core 1 OUTPUT DEQUEUE             code=  5 pic=  2 pos[pu]=( 80, 43) clk=15249
+1 1 core 1 OUTPUT DEQUEUE             code=  5 pic=  2 pos[pu]=( 80, 43) clk=15249
+XVMLXVM;
+1 1 status 0 top 0 cnt 0 mcnum 0
+1 1 status 0 top 0 cnt 0 mcnum 0
+1 1 mbnum=0 rmemv=0
+1 1 mbnum=0 rmemv=0
+1 1 next_pic_to_parse     0
+1 1 next_pic_to_parse     0
+1 1 IntBuf:
+1 1 IntBuf:
+1 1   log2_page_size   num_pages (free)
+1 1   log2_page_size   num_pages (free)
+1 1     12                2  (8192 bytes)
+1 1     12                2  (8192 bytes)
+1 1     13                1  (8192 bytes)
+1 1     13                1  (8192 bytes)
+1 1     14                0  (0 bytes)
+1 1     14                0  (0 bytes)
+1 1     15                4  (131072 bytes)
+5VMLXVMF
+1 1     15                4  (131072 bytes)
+1 1     16                4  (262144 bytes)
+1 1     16                4  (262144 bytes)
+1 1     17                1  (131072 bytes)
+5VMLXVMF
+1 1     17                1  (131072 bytes)
+1 1     18                0  (0 bytes)
+e): LXVMA
+1 1     18                0  (0 bytes)
+e waLXVMF
+1 1     19                1  (524288 bytes)
+1 1     19                1  (524288 bytes)
+1 1     20                1  (1048576 bytes)
+1 1     20                1  (1048576 bytes)
+1 1     21                0  (0 bytes)
+t   LXVMA
+1 1     21                0  (0 bytes)
+t   LXVMA
+1 1     22                0  (0 bytes)
+ttedLXVMA
+1 1     22                0  (0 bytes)
+ttedLXVMA
+1 1     23                0  (0 bytes)
+ts  LXVMA
+1 1     23                0  (0 bytes)
+tESSLXVMA
+1 1     24                0  (0 bytes)
+1 1     24                0  (0 bytes)
+1 1     25                0  (0 bytes)
+1 1     25                0  (0 bytes)
+1 1     26                0  (0 bytes)
+1 1     26                0  (0 bytes)
+1 1     27                0  (0 bytes)
+1 1     27                0  (0 bytes)
+1 1 Unblocking resizes: 1
+1 1 Unblocking resizes: 1
+1 1 Total allocated  2949120 (used 835584, unfreeable 286720, free 2113536)
+1 1 Total allocated  2949120 (used 835584, unfreeable 286720, free 2113536)
+1teLXVM.
+V5/V7-H264ENC: MMU ABORT

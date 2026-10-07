@@ -1,0 +1,7 @@
+{"event":"identity","driver":"mvx","version":328756,"device_caps":86032387}
+{"event":"format","type":10,"fourcc":"NV12","width":1280,"height":720,"planes":2,"field":1,"colorspace":1,"ycbcr_enc":1,"quantization":2,"xfer_func":1,"layout":[{"stride":1280,"size":921600},{"stride":1280,"size":460800}]}
+{"event":"format","type":9,"fourcc":"H264","width":1280,"height":720,"planes":1,"field":1,"colorspace":1,"ycbcr_enc":1,"quantization":2,"xfer_func":1,"layout":[{"stride":0,"size":2097152}]}
+{"event":"control","id":10035200,"value":655360}
+{"event":"control","id":10029519,"value":2000000}
+{"event":"control","id":10029675,"value":0}
+{"event":"negotiation_complete","streamed":false}

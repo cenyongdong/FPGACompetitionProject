@@ -1,0 +1,8 @@
+{
+  "status": "compiler_failure_preserved_corrected_in_r2",
+  "error": "new CLI used nonexistent host_content_self_check; corrected to existing host_content_check(graph, output)",
+  "failed_build": ".local/pose-v1-build/mixed-20261007-application-r1",
+  "failed_package": ".local/pose-v1-application/package-20261007-r1",
+  "failed_log_sha256": "477b9ef7ae6462e81f5a9e01e9313afc8c1cef5cce194abfe006682b9b4a6a00",
+  "model_or_device_executed": false
+}

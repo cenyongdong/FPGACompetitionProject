@@ -1,0 +1,92 @@
+{
+  "status": "index_topology_and_display_sign_traced",
+  "bones": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      5,
+      9
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      7,
+      11
+    ],
+    [
+      9,
+      12
+    ],
+    [
+      11,
+      13
+    ]
+  ],
+  "sources": {
+    "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\visualization\\visualize_24_pose.py": "22496fa410c5f8523368a71ed7915429da7df774cc4255e219c2dff0c16617b7",
+    "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\opera\\models\\losses\\limb_loss.py": "aaa992c545df2badc5f5d7781e043243187d2513b70dd46179fea8410ea82652",
+    "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\visualization\\README.md": "3aab4e7b1288393ade78c1b2f01b380340d186b8ccd3e256ce065017c66e3881"
+  },
+  "display_C2_sign": -1,
+  "joint_anatomical_names_unconfirmed": true,
+  "physical_units_not_claimed": true,
+  "reference_GT_tracking_filter_threshold_not_imported": true,
+  "fixed_projection": {
+    "width": 1280,
+    "height": 720,
+    "centre_raw": [
+      1.75,
+      1.75,
+      3.4
+    ],
+    "yaw_degrees": 30,
+    "elevation_degrees": 20,
+    "pixels_per_model_unit": 220,
+    "screen_centre": [
+      460,
+      355
+    ],
+    "display_C2_sign": -1,
+    "bones_source": "24_visualization_and_limb_loss",
+    "raw_coordinate_unit": "model_units_not_calibrated",
+    "smoothing": false,
+    "tracking": false
+  },
+  "preview_manually_inspected_by_agent": true
+}

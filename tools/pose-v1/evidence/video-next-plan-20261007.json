@@ -1,0 +1,26 @@
+{
+  "status": "next_video_plan_prepared_HDMI_test_authorized",
+  "user_video_review_completed": true,
+  "HDMI_paused": false,
+  "HDMI_target": [
+    1920,
+    1080,
+    60
+  ],
+  "plan": "tools/pose-v1/NEXT-VIDEO-PLAN-20261007.md",
+  "plan_sha256": "6c7dd8c4d619a62f262972b595f7bc9ec67de9f1f76a0b2448c0dcf3f2043ab1",
+  "next_batch": [
+    "V2-A prerecorded27 skeletons54 encoded frames",
+    "V1-A currentBOOT HDMI clock/scanout/buffer ownership evidence"
+  ],
+  "actual_new_board_tests_executed": false,
+  "hardware_timing_changed": false,
+  "sessions_active": false,
+  "preserve_prior_completion": true,
+  "vendor_source_hashes": {
+    "README.md": "d4753c7ea2bc3ad68b7a34b970dd02f832e3cde86fc9877557c3eb96e7d4c997",
+    "deps/modelzoo_utils/include/pipeline/io/output/hdmi_display.hpp": "813b5545544278b634369e683c847ac16ceeced3f7aa7b31cfaa2d9556a3d174",
+    "deps/modelzoo_utils/include/et_device.hpp": "265dbe3f70a5ce76e1fdcac43f907eee32895b4535fe09983040287d492e129a"
+  },
+  "HDMI_source_finding": "1920x1080 buffer allocation and address submission only; no timing setter; SDK3.36.0 reference is not BOOT/register identity proof"
+}

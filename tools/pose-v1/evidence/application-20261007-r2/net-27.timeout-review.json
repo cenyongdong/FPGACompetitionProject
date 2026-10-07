@@ -1,0 +1,16 @@
+{
+  "status": "orchestration_timeout_not_numerical_failure",
+  "exit": 124,
+  "verified_returned_files": 60,
+  "completed_outputs": 7,
+  "all_completed_outputs_bitwise_prior": true,
+  "stderr_empty": true,
+  "dmesg_unchanged": true,
+  "listener_ready_seen": true,
+  "readiness_probe_seconds": 20,
+  "whole_run_budget_seconds": 120,
+  "sender_sent": 8,
+  "root_cause": "20s readiness probe expired before Session apply completed; manual diagnosis delayed sender until near120s whole-run deadline",
+  "correction": "new external controlled runner, new run directory,300s whole budget and up to90s readiness polling; identical binary/package/gates; once only",
+  "model_SDK_BOOT_sync_changed": false
+}

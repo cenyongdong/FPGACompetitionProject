@@ -1,0 +1,20 @@
+{
+  "status": "real_video_stage_independently_verified",
+  "stage": "negotiate",
+  "package_payloads": 6,
+  "returned_hashed_files": 10,
+  "program_sha256": "01965fa28f15b94893eebc8a3f540699454ef0623664cb0888b6b7933aef23d3",
+  "input_sha256": "5da0b23d093eae65c9a3bd6cbcf8bceb86782ce38c6eacd0faae2189b13b6216",
+  "package_sha256": "0ec951347eedb2adb8115d55f19eb8bd12bf227e53e25d0e7b31e0da0550ff1e",
+  "exit": 0,
+  "stderr_empty": true,
+  "kernel_unchanged": true,
+  "identity_checked": true,
+  "completion": {
+    "event": "negotiation_complete",
+    "streamed": false
+  },
+  "qbuf_descriptors_checked": 0,
+  "capture_chunks": 0,
+  "h264_sha256": null
+}

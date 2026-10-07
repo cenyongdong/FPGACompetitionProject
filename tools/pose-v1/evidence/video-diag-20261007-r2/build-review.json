@@ -1,0 +1,14 @@
+{
+  "status": "r2_trace_built_not_run",
+  "baseline_input_preserved": true,
+  "program_sha256": "d27271dffa8993ae71ae565af421f908360e0df0dce18ecb59414a0805b05669",
+  "input_sha256": "5da0b23d093eae65c9a3bd6cbcf8bceb86782ce38c6eacd0faae2189b13b6216",
+  "source_files": {
+    "src/vpu_encoder.cpp": "31747cacaf33333ad2fd629f8d23051cb88be7587e5b2e8c8e2bbe921a8bdaff",
+    "src/vpu_sequence_check.cpp": "1090719bcdc1a277eff8d4b9c2e9f2990b637bf05f48ce5a5e174599b6c2ce04",
+    "include/vpu_encoder.hpp": "f85001ab0ea5725d3e59d479a64f999f2381bc76f9cc7321d7f5c332134e729f"
+  },
+  "scope": "QUERYBUF/QBUF/DQBUF/mapping/copy-view/ownership/poll tracing only; no format/profile/bitrate/count/reset change",
+  "compiler": "GCC9.4.0",
+  "warnings": 0
+}

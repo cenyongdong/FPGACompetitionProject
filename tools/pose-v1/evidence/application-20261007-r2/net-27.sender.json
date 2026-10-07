@@ -1,0 +1,55 @@
+{
+  "status": "not_completed",
+  "cases": "27",
+  "fps": 2.0,
+  "sent": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "bytes": 86432,
+      "sha256": "63d34a02983549940326933415a7613747c2e86c72ed53120e5e518be46cb7b7"
+    },
+    {
+      "case": "S11_12_329",
+      "frame_id": 22,
+      "bytes": 86432,
+      "sha256": "757966b4be0b63bcc5e02e8e374f2b049fb7c7ca8f6e271dc783ca0e45a3cb85"
+    },
+    {
+      "case": "S11_32_349",
+      "frame_id": 39,
+      "bytes": 86432,
+      "sha256": "99a47099850a13451de4d2039245199d0f16534dccad5eeb45d4e148db9dc1ef"
+    },
+    {
+      "case": "S12_01_331",
+      "frame_id": 40,
+      "bytes": 86432,
+      "sha256": "e67b1fdc62564a2a10bc7aa7dc9594ae18711b1ccda2dab45ed3c744d84347c2"
+    },
+    {
+      "case": "S12_27_315",
+      "frame_id": 56,
+      "bytes": 86432,
+      "sha256": "f1ed9165f785728494c8b3e3d720730e3ccbb21de641cfc34a895b2bd6fa5919"
+    },
+    {
+      "case": "S12_48_349",
+      "frame_id": 73,
+      "bytes": 86432,
+      "sha256": "483ca51f171614367ebe5338f735c4f236ee39dfba0c20c0bb06afdf59afe510"
+    },
+    {
+      "case": "S13_07_304",
+      "frame_id": 74,
+      "bytes": 86432,
+      "sha256": "b2ba762740642cb51d3b1995eaeee7082567415e3a854c5c874ec3a017c4c6cd"
+    },
+    {
+      "case": "S13_28_312",
+      "frame_id": 90,
+      "bytes": 86432,
+      "sha256": "432cb58fa04319a02cccd2028927519c584403e3c9c460974a82fe8a0f34f79f"
+    }
+  ]
+}

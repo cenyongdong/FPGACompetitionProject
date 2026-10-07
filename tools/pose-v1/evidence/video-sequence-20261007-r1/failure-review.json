@@ -1,0 +1,51 @@
+{
+  "status": "dynamic_VPU_failed_firmware_MMU_abort_HDMI_pairing_incomplete",
+  "source_frames_verified": 27,
+  "prepared_encoded_frames": 54,
+  "program_sha256": "109e24bd32517f49f86a9f4f131ad2a3e1f070da48dd07c88db901429eef7e8c",
+  "input_sha256": "5da0b23d093eae65c9a3bd6cbcf8bceb86782ce38c6eacd0faae2189b13b6216",
+  "package_sha256": "63a577704b6836e417601a0193980a98458ed84ffd642b951eddf4339d3b2464",
+  "build": "GCC9.4.0 no warnings, SDK-independent",
+  "negotiation_passed": true,
+  "queued": 9,
+  "returned": 3,
+  "capture_chunks": 4,
+  "partial_bytes": 29879,
+  "partial_sha256": "602b6f3cf3d720e42d852df4f87b87f1ea9831a36fd5cd4473e4e4c89b3fdabc",
+  "partial_decoded_ids": [
+    0,
+    1,
+    2
+  ],
+  "exit": 1,
+  "stderr": "poll device failure",
+  "kernel_new_error": "[21504.907279] MVX session: 00000000eb7d0243 Firmware rsp: Error. code=0, message=V5/V7-H264ENC: MMU ABORT. (mvx_session.c:2120)",
+  "OOM_observed": false,
+  "completed_or_accepted": false,
+  "root_cause": "not established: firmware-reported translation abort does not identify bad address or whether client/driver/firmware/configuration is responsible",
+  "known_bounds": "negotiated NV12 two planes1280x720, strides1280, capacities921600/460800; H2642MiB; no buffer ERROR observed before poll failure",
+  "application_queue_checks": "source fread size/mapped capacities and row lengths checked; exact mem_offset,data_offset and ioctl traces not yet captured",
+  "fault_not_pinned_to_specific_frame": "asynchronous pipeline had9 queued/3 returned; decode0..2 does not prove encoded_frame3 caused abort",
+  "post_failure_BOOT_SDK_unchanged": true,
+  "post_failure_fpga_state": "operating",
+  "device_reset_or_retest": false,
+  "NPU_forward_executed": false,
+  "HDMI": {
+    "authorized": true,
+    "target": [
+      1920,
+      1080,
+      60
+    ],
+    "BOOT_archive_byte_match": true,
+    "fbdev": false,
+    "DRM_EDID": false,
+    "udmabuf_size": "134217728",
+    "udmabuf_phys_addr": "0x0000000030100000",
+    "actual_scan_timing": "unknown",
+    "reference_mapping_and_safe_stop": "not proven",
+    "hardware_written": false,
+    "offline_pattern_prepared": true
+  },
+  "scope": "stage stopped on actual hardware firmware error; no full dynamic video, HDMI screen test, RTSP or live combined acceptance"
+}

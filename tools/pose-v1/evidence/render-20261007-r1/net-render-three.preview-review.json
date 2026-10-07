@@ -1,0 +1,36 @@
+{
+  "status": "independent_render_review_passed",
+  "frames": [
+    {
+      "stem": "call0",
+      "frame_id": 6,
+      "top_index": 0,
+      "clipped": 0,
+      "rgb_sha256": "612d62cef9fb1cdc0a0288a657b09535c2274037130f0d52749af5f3849f13aa",
+      "render_ms": 12.45031,
+      "three_format_conversion_ms": 88.58718
+    },
+    {
+      "stem": "call1",
+      "frame_id": 7,
+      "top_index": 0,
+      "clipped": 0,
+      "rgb_sha256": "58326a997ca56d2f793b6ad3a2f2b69a053ce7806ff81303eeff6396e40ee57a",
+      "render_ms": 11.46495,
+      "three_format_conversion_ms": 88.94021
+    },
+    {
+      "stem": "call2",
+      "frame_id": 8,
+      "top_index": 0,
+      "clipped": 0,
+      "rgb_sha256": "4b8777bed1fb3f820aab1d022590e103bc1f85d31aa359d02caf6094d19ae0a6",
+      "render_ms": 11.51846,
+      "three_format_conversion_ms": 88.37602
+    }
+  ],
+  "all_formats_bitwise_numpy": true,
+  "raw_selected_coordinates_preserved": true,
+  "physical_calibration": false,
+  "hardware_output_tested": false
+}

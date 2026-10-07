@@ -1,0 +1,45 @@
+{
+  "status": "independent_render_review_passed",
+  "frames": [
+    {
+      "stem": "synthetic",
+      "frame_id": 999,
+      "top_index": 3,
+      "clipped": 0,
+      "rgb_sha256": "29fa31dc1e4b3813b558860ce0498c18c3b57ab664c23ac2cc3465ce42008138",
+      "render_ms": 1.500642,
+      "three_format_conversion_ms": 5.772232
+    },
+    {
+      "stem": "clipped",
+      "frame_id": 1000,
+      "top_index": 3,
+      "clipped": 14,
+      "rgb_sha256": "14022f6297589869811cc7eb8fe4986350ab5bc1fccdad69dfa6c141dc132a90",
+      "render_ms": 1.365221,
+      "three_format_conversion_ms": 5.927156
+    },
+    {
+      "stem": "no-input",
+      "frame_id": 1001,
+      "top_index": 3,
+      "clipped": 0,
+      "rgb_sha256": "e23f6af18bbab5409e73fe2e28a266c54f1edd9b0ddb4a888ad973a467d4adeb",
+      "render_ms": 1.345517,
+      "three_format_conversion_ms": 5.749728
+    },
+    {
+      "stem": "stopped",
+      "frame_id": 1002,
+      "top_index": 3,
+      "clipped": 0,
+      "rgb_sha256": "68751069aa8c281ae8e5e9a13f2f87e1e26d8a2b0d36f9515fa328dfb38ccffa",
+      "render_ms": 1.373821,
+      "three_format_conversion_ms": 5.671514
+    }
+  ],
+  "all_formats_bitwise_numpy": true,
+  "raw_selected_coordinates_preserved": true,
+  "physical_calibration": false,
+  "hardware_output_tested": false
+}

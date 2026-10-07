@@ -1,0 +1,20 @@
+{
+  "status": "V0_VPU_query_passed_HDMI_pairing_unresolved",
+  "node": "/dev/video0",
+  "driver": "mvx",
+  "card": "Linlon Video device",
+  "raw_output_type": 10,
+  "compressed_capture_type": 9,
+  "NV12_NV21_H264_enumerated": true,
+  "resolution720_within_enumeration": true,
+  "single_plane_enum_unsupported": true,
+  "reference_default_CAPTURE_single_plane_must_not_be_used": true,
+  "format_stride_plane_count_negotiated": false,
+  "encoding_executed": false,
+  "S_FMT_REQBUFS_STREAMON_or_SDK_open_called": false,
+  "dmesg_unchanged": true,
+  "display_connected": false,
+  "HDMI_720p_clock_mapping_confirmed": false,
+  "raw_query_sha256": "b37b5a57be6d142235d1b9090eb0b9a3cf19797770891f7d78212698dce6c7e3",
+  "sysfs_sha256": "9f538473a1da84c832a6ee65d7cfc30d3fedd5a913cec22a7f9f5e20ce58edb1"
+}

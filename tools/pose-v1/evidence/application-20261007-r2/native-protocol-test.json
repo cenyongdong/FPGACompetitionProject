@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "malformed_cases": 7,
+  "raw_bits": true,
+  "bounded_slot": true,
+  "loopback_fragmented": true,
+  "partial_disconnect": true,
+  "duplicate_rejected": true,
+  "idle_timeout": true,
+  "scope": "FPAI_x86_native_no_SDK_or_device",
+  "sources": {
+    "software/pose_v1/src/tcp_receiver.cpp": "c32991df81638258e0b692750ad197c9d31fe1842d9c63a075f0a084ab59f559",
+    "software/pose_v1/src/tcp_transport_check.cpp": "e649e0ae9cf0d9e155e66746918f71a00efb2b1033dfc842457019fb347088e4",
+    "software/pose_v1/include/tcp_receiver.hpp": "8bb03296868b9060e2f984f770ca813b169d0262450bde60b684661a76e75474"
+  }
+}

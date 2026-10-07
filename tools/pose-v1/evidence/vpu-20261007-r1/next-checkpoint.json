@@ -1,0 +1,11 @@
+{
+  "status": "V2_file_encode_host_review_complete_HDMI_paused",
+  "read_first": [
+    "tools/pose-v1/VPU-RESULTS-20261007.md",
+    "tools/pose-v1/evidence/vpu-20261007-r1/completion-review.json"
+  ],
+  "next": "bounded encoder interface / timestamp and color metadata / prerecorded real renderer frames / independent RTSP under approved full-flow scope",
+  "HDMI": "user paused; target1080p60, clock/scanout mapping still to establish when resumed",
+  "sessions_closed": true,
+  "do_not_repeat_passed_stage": true
+}

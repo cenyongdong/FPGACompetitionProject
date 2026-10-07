@@ -1,0 +1,16 @@
+{
+  "status": "ARM_transport_test_passed",
+  "tests": {
+    "self_test": "passed",
+    "malformed_cases": 7,
+    "raw_bits": true,
+    "bounded_slot": true,
+    "loopback_fragmented": true,
+    "partial_disconnect": true,
+    "duplicate_rejected": true,
+    "idle_timeout": true
+  },
+  "program_sha256": "62e58c149e7bf7c10e45c23f31fb83d91fd3074c1cf40f758b276fa28186f476",
+  "device_opened": false,
+  "stdout_sha256": "645dd06162504309de1ff61594038503d7b53d590ad7195509826732dcaf600d"
+}

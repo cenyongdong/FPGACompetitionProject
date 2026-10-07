@@ -1,0 +1,11 @@
+{
+  "status": "application_stage_passed",
+  "stage": "host-check",
+  "binary_sha256": "402cac43ca9de6bccb3ddf41ea7069d351f6d2e8e4500f33c41940d0869cc50c",
+  "package_manifest_sha256": "36caa27b7c4093b51b2b6d6c2d05af6e61e6418e5723dda97bb8d074def9c7cd",
+  "returned_files": 52,
+  "video_initialized": false,
+  "cases": 107,
+  "FP32_values": 59600,
+  "device_opened": false
+}

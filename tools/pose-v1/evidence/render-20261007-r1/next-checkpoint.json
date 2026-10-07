@@ -1,0 +1,23 @@
+{
+  "status": "CPU_render_done_next_independent_VPU_and_HDMI_pairing",
+  "completion_review_sha256": "42249b79d72932e3da9bcff63b9a7453f26faea81972dc0122f74caffb52e897",
+  "read_first": [
+    "tools/pose-v1/RENDER-RESULTS-20261007.md",
+    "tools/pose-v1/V0-VIDEO-PAIRING-20261007.md"
+  ],
+  "preferred_package": ".local/pose-v1-render/package-20261007-r1",
+  "preferred_build": ".local/pose-v1-build/mixed-20261007-render-r1",
+  "next_steps": [
+    "Review VPU720p H264MPLANE negotiation and finite synthetic encode plan",
+    "Validate planes/stride/colorimetry returned by driver before copying CPU buffers",
+    "Resolve actualBOOT720p HDMIclock/memory/flip mapping and connect monitor",
+    "After independent outputs pass, integrate bounded render/output workers and test fullsystem/30minutes"
+  ],
+  "HDMI_blockers": [
+    "monitor_not_connected",
+    "clock_and_scanout_pairing_unconfirmed"
+  ],
+  "deep_optimizations_deferred": true,
+  "no_background_verification_jobs": true,
+  "reexecute_passed_tests": false
+}

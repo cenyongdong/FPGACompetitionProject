@@ -1,5 +1,19 @@
 # 首版当前状态（2026-10-07，数值验收与P2更新）
 
+> 当前最新：视频任务已恢复，真实27骨架/54帧有限编码及两独立上下文重复通过，主机完整核验，MMAP描述兼容修正已采用。[结果/视频](VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md)、[恢复入口](RESUME-VIDEO-20261007.md)。原推理/SDK/BOOT保持，HDMI1080p60未改时序，RTSP/实时合并/整机长期未通过。旧暂停和失败条目按历史保留。
+
+当前最新：用户要求暂停并等待唤醒。[真实骨架首批失败报告](VIDEO-SEQUENCE-RESULTS-20261007.md)、[恢复说明](RESUME-VIDEO-20261007.md)、[暂停检查点](evidence/video-sequence-20261007-r1/next-checkpoint.json)。新API/真实27来源与54输入/协商通过，编码exit1且固件MMU ABORT，仅3部分图像，不作动态视频验收；HDMI配套不足未写，离线1080p图完成。会话关闭，补查认证前取消，不连接/构建/板测/后台；旧“接续执行”按历史理解。
+
+当前最新授权：用户已审查样片并允许HDMI测试，解除下文暂停；[NEXT-VIDEO-PLAN](NEXT-VIDEO-PLAN-20261007.md)为后续执行顺序，[新恢复点](evidence/video-next-plan-20261007.json)。先真实骨架54帧动态文件与HDMI当前BOOT配套，后1080p60实屏/RTSP/实际推理合并。本轮只计划和资料核对，未新板测/时序切换，旧暂停记录为历史。
+
+当前最新V2文件：独立H264720p10fps/30帧编码、回传MP4及主机逐帧ID/移动图审查通过，[结果/视频](VPU-RESULTS-20261007.md)、[核验](evidence/vpu-20261007-r1/completion-review.json)、[恢复点](evidence/vpu-20261007-r1/next-checkpoint.json)。无新依赖，原推理/SDK/BOOT保持，未RTSP/实时合并/长期。HDMI已接DELL E2421HN，用户目标1080p60、测试暂停，尚未硬件时序切换；此前未接屏/未编码属历史。下一步有界接口、真实预生成骨架帧与timestamp/VUI/RTSP。
+
+当前最新E1-C：CPU骨架画面、27帧ARM/Native逐位画面及RGB565/NV12/NV21、三帧真实网络结果绘图已核验，[结果/预览](RENDER-RESULTS-20261007.md)。[V0配套表](V0-VIDEO-PAIRING-20261007.md)确认当前MVX两端MPLANE及NV12/NV21/H264枚举，尚未协商/编码；HDMI未接屏、720p时钟/扫描未确认。新的[恢复点](evidence/render-20261007-r1/next-checkpoint.json)指向独立编码与HDMI配套，旧“下一渲染”按此前阶段理解。
+
+最新E1-A/B首批已执行完成：[结果](APPLICATION-RESULTS-20261007.md)、[完成证据](evidence/application-20261007-r2/completion-review.json)。生产入口无冻结Tokens依赖，TCP完整记录/单槽与3/27帧网络结果通过，38成功前向全输出逐位此前板端。2Hz验证无丢弃，27帧到达至结果P95 193.76084ms不作为整机5Hz。有限CLI与有界诊断不是长期服务；下一步渲染及视频配套，旧“本次未新应用”文字属此前规划历史。
+
+首版采用当前lazy-r4异构方案的决策已确认，见[ADR_01](../../ADR/ADR_01.md)。[全流程计划](FULL-FLOW-PLAN-20261007.md)已归档，下一批建议生产接口与TCP接收，随后渲染/独立视频/双路长期验证。零拷贝/图/新算子性能优化后置；本次未执行新应用或板测。
+
 用户明确验收现有27样本部署数值阶段；原误差不改写，query身份未证明，N2作为非阻断诊断保留。
 [验收决定](evidence/perf-20261007-r3/user-numerical-acceptance.json)、[P2完整结果](P2-RESULTS-20261007.md)。
 

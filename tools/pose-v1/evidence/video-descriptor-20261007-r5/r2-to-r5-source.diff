@@ -1,0 +1,35 @@
+--- diag-r2/vpu_encoder.cpp
++++ descriptor-r5/vpu_encoder.cpp
+@@ -42,7 +42,7 @@
+     }
+     log<<"]}"<<std::endl;
+ }
+-struct Plane { void* ptr=MAP_FAILED; unsigned size=0; };
++struct Plane { void* ptr=MAP_FAILED; unsigned size=0; unsigned mmapCookie=0; };
+ struct Queue {
+     int fd; v4l2_buf_type type; unsigned planes; bool streaming=false;
+     std::ostream* trace=nullptr;
+@@ -71,7 +71,7 @@
+             buffers[i].resize(planes);
+             for(unsigned j=0;j<planes;++j) {
+                 require(p[j].length>0 && p[j].length<=16*1024*1024,"unbounded buffer");
+-                auto& q=buffers[i][j]; q.size=p[j].length;
++                auto& q=buffers[i][j]; q.size=p[j].length;q.mmapCookie=p[j].m.mem_offset;
+                 q.ptr=mmap(nullptr,q.size,PROT_READ|PROT_WRITE,MAP_SHARED,fd,p[j].m.mem_offset);
+                 require(q.ptr!=MAP_FAILED,"mmap failed");
+                 log<<"{\"event\":\"buffer\",\"type\":"<<type<<",\"index\":"<<i<<",\"plane\":"<<j<<",\"length\":"<<q.size<<",\"mmap_cookie\":"<<p[j].m.mem_offset<<",\"data_offset\":"<<p[j].data_offset<<"}"<<std::endl;
+@@ -95,7 +95,13 @@
+         v4l2_buffer b{}; v4l2_plane p[VIDEO_MAX_PLANES]{};
+         b.type=type; b.memory=V4L2_MEMORY_MMAP; b.index=i; b.length=planes; b.m.planes=p;
+         b.field=V4L2_FIELD_NONE; b.timestamp.tv_sec=frame/FPS; b.timestamp.tv_usec=(frame%FPS)*100000;
+-        for(unsigned j=0;j<planes;++j) { require(used[j]<=buffers[i][j].size,"queue size"); p[j].length=buffers[i][j].size; p[j].bytesused=used[j]; }
++        for(unsigned j=0;j<planes;++j) {
++            require(used[j]<=buffers[i][j].size,"queue size");
++            p[j].length=buffers[i][j].size;p[j].bytesused=used[j];
++            // Preserve QUERYBUF's opaque cookie as the shipped client does.
++            // No physical address inference or allocation/capacity change.
++            p[j].m.mem_offset=buffers[i][j].mmapCookie;
++        }
+         describe("qbuf_enter",b,p);
+         checked(fd,VIDIOC_QBUF,&b,"QBUF");
+         ownedByDriver[i]=true;
