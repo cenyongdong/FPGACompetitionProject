@@ -1,0 +1,11 @@
+/tmp/pose-v1-application/20261007-r2/pose_application_check
+regression
+--output
+/tmp/pose-v1-application/20261007-r2/run-regression/results
+--package
+/tmp/pose-v1-application/20261007-r2/package
+--graph
+/tmp/pose-v1-application/20261007-r2/package/graph/piw24_ZG.json
+--raw
+/tmp/pose-v1-application/20261007-r2/package/graph/piw24_ZG.raw
+--allow-device-init

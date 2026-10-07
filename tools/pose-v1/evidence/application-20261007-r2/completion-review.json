@@ -1,0 +1,70 @@
+{
+  "status": "E1_A_B_fixed_replay_engineering_passed",
+  "binary_sha256": "402cac43ca9de6bccb3ddf41ea7069d351f6d2e8e4500f33c41940d0869cc50c",
+  "transport_binary_sha256": "62e58c149e7bf7c10e45c23f31fb83d91fd3074c1cf40f758b276fa28186f476",
+  "package_manifest_sha256": "36caa27b7c4093b51b2b6d6c2d05af6e61e6418e5723dda97bb8d074def9c7cd",
+  "package_files": 411,
+  "build_sources": 19,
+  "stages": {
+    "host-check": {
+      "returned_files": 52,
+      "gate_sha256": "cf8ffcc52280d425657cb4b559283c57636785df7049104427a278db6297aa87",
+      "exit": 0,
+      "stderr_empty": true,
+      "dmesg_unchanged": true
+    },
+    "regression": {
+      "returned_files": 68,
+      "gate_sha256": "15f772c4cb90e60cbec041613f019778806ed58599881abf0ebebfc453595956",
+      "exit": 0,
+      "stderr_empty": true,
+      "dmesg_unchanged": true
+    },
+    "net-three": {
+      "returned_files": 55,
+      "gate_sha256": "bfafd34c35de2ce8f37e1b9ab02322463af883fd97efd402ce188218ac3385d8",
+      "exit": 0,
+      "stderr_empty": true,
+      "dmesg_unchanged": true
+    },
+    "net-27": {
+      "returned_files": 128,
+      "gate_sha256": "34bc98b8007e0fe856245569e24c1a74a14780bfb7c999ace462c81747cbd3ac",
+      "exit": 0,
+      "stderr_empty": true,
+      "dmesg_unchanged": true
+    }
+  },
+  "host_cases": 107,
+  "host_FP32_values": 59600,
+  "regression_forward_calls": 8,
+  "network_forward_calls": 30,
+  "passed_forward_calls": 38,
+  "all_38_full_outputs_bitwise_prior": true,
+  "network_frames_require_frozen_reference": false,
+  "TCP_port": 39001,
+  "queue_capacity": 1,
+  "network_validation_fps": 2,
+  "network_drops": 0,
+  "network_rejections": 0,
+  "network27_arrival_to_result_ms": {
+    "mean": 191.95180296296297,
+    "p95": 193.760839
+  },
+  "profiler_enabled": false,
+  "model_RAW_SDK_BOOT_and_frozen_sources_preserved": true,
+  "deep_performance_optimization_performed": false,
+  "full_system_throughput_accepted": false,
+  "video_initialized": false,
+  "continuous_30minutes_accepted": false,
+  "r1_compiler_failure_preserved": true,
+  "initial_net27_timeout_preserved": true,
+  "initial_timeout_partial_outputs_bitwise_prior": 7,
+  "controlled_runner_sha256": "200683ec0fe3f8e25341543d7f742da622207da2282b71c40fd2a9e2c3f2256f",
+  "controlled_run_seconds": 300,
+  "active_program_telemetry_sampled_frames": 4,
+  "monotonic_record_capacity": 8192,
+  "validation_binary_max_frames": 1000,
+  "SSH_SFTP_closed": true,
+  "no_background_verification_jobs": true
+}

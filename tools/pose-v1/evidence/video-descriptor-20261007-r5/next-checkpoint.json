@@ -1,0 +1,21 @@
+{
+  "status": "V2-A_completed_V1-A_missing_mapping",
+  "paused": false,
+  "date": "2026-10-07",
+  "resume_report": "tools/pose-v1/VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md",
+  "program_sha256": "01965fa28f15b94893eebc8a3f540699454ef0623664cb0888b6b7933aef23d3",
+  "package": ".local/pose-v1-vpu-sequence/package-20261007-descriptor-r5",
+  "board_roots": [
+    "/tmp/pose-v1-vpu-sequence/20261007-descriptor-r5",
+    "/tmp/pose-v1-vpu-sequence/20261007-descriptor-r5-repeat"
+  ],
+  "next": "Review delivered dynamic clip; proceed with isolated RTSP preparation per NEXT-VIDEO-PLAN, using actual NAL/PTS and owned bytes. HDMI needs current BOOT clock/scanout/stop mapping before writes.",
+  "preserve": [
+    "Old r1/r2 MMU failures",
+    "r3/r4 pre-stream color rejection",
+    "Original synthetic encoder",
+    "SDK/model/RAW/BOOT/NPU frame protocol"
+  ],
+  "no_background_work": true,
+  "ssh_sftp_closed": true
+}

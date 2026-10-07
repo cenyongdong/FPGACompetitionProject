@@ -1,0 +1,251 @@
+{
+  "status": "independent_VPU_H264_file_and_host_decode_passed",
+  "program_sha256": "8f713fc8d6c76a03053544634591448f1068ef0a392261023bf73d5b1538e8ce",
+  "input_sha256": "34eb4ed557d1f2c399e0867b5cc8e5c64be88f1baec30d10799e1197a58d16cd",
+  "h264_sha256": "faff14c4955ca8d4eb584fc0573f22b4cfcc1ff60f5dc4152b27dc2a6b39ce62",
+  "mp4_sha256": "499c7c1f94619bc9abfd7039e18ff7856e9562cb48306937bd025dcf8b75e58d",
+  "encoded_bytes": 36717,
+  "mp4_bytes": 37649,
+  "frames": 30,
+  "width": 1280,
+  "height": 720,
+  "fps": 10,
+  "duration_seconds": 3,
+  "requested_bitrate": 2000000,
+  "actual_profile": "Constrained Baseline",
+  "NAL_type_counts": {
+    "7": 1,
+    "8": 1,
+    "5": 1,
+    "1": 29
+  },
+  "NAL_records": [
+    {
+      "offset": 0,
+      "prefix_bytes": 4,
+      "payload_bytes": 19,
+      "type": 7
+    },
+    {
+      "offset": 23,
+      "prefix_bytes": 4,
+      "payload_bytes": 4,
+      "type": 8
+    },
+    {
+      "offset": 31,
+      "prefix_bytes": 4,
+      "payload_bytes": 24989,
+      "type": 5
+    },
+    {
+      "offset": 25024,
+      "prefix_bytes": 4,
+      "payload_bytes": 1046,
+      "type": 1
+    },
+    {
+      "offset": 26074,
+      "prefix_bytes": 4,
+      "payload_bytes": 694,
+      "type": 1
+    },
+    {
+      "offset": 26772,
+      "prefix_bytes": 4,
+      "payload_bytes": 575,
+      "type": 1
+    },
+    {
+      "offset": 27351,
+      "prefix_bytes": 4,
+      "payload_bytes": 549,
+      "type": 1
+    },
+    {
+      "offset": 27904,
+      "prefix_bytes": 4,
+      "payload_bytes": 451,
+      "type": 1
+    },
+    {
+      "offset": 28359,
+      "prefix_bytes": 4,
+      "payload_bytes": 644,
+      "type": 1
+    },
+    {
+      "offset": 29007,
+      "prefix_bytes": 4,
+      "payload_bytes": 715,
+      "type": 1
+    },
+    {
+      "offset": 29726,
+      "prefix_bytes": 4,
+      "payload_bytes": 747,
+      "type": 1
+    },
+    {
+      "offset": 30477,
+      "prefix_bytes": 4,
+      "payload_bytes": 467,
+      "type": 1
+    },
+    {
+      "offset": 30948,
+      "prefix_bytes": 4,
+      "payload_bytes": 595,
+      "type": 1
+    },
+    {
+      "offset": 31547,
+      "prefix_bytes": 4,
+      "payload_bytes": 456,
+      "type": 1
+    },
+    {
+      "offset": 32007,
+      "prefix_bytes": 4,
+      "payload_bytes": 560,
+      "type": 1
+    },
+    {
+      "offset": 32571,
+      "prefix_bytes": 4,
+      "payload_bytes": 295,
+      "type": 1
+    },
+    {
+      "offset": 32870,
+      "prefix_bytes": 4,
+      "payload_bytes": 247,
+      "type": 1
+    },
+    {
+      "offset": 33121,
+      "prefix_bytes": 4,
+      "payload_bytes": 189,
+      "type": 1
+    },
+    {
+      "offset": 33314,
+      "prefix_bytes": 4,
+      "payload_bytes": 427,
+      "type": 1
+    },
+    {
+      "offset": 33745,
+      "prefix_bytes": 4,
+      "payload_bytes": 164,
+      "type": 1
+    },
+    {
+      "offset": 33913,
+      "prefix_bytes": 4,
+      "payload_bytes": 267,
+      "type": 1
+    },
+    {
+      "offset": 34184,
+      "prefix_bytes": 4,
+      "payload_bytes": 192,
+      "type": 1
+    },
+    {
+      "offset": 34380,
+      "prefix_bytes": 4,
+      "payload_bytes": 257,
+      "type": 1
+    },
+    {
+      "offset": 34641,
+      "prefix_bytes": 4,
+      "payload_bytes": 188,
+      "type": 1
+    },
+    {
+      "offset": 34833,
+      "prefix_bytes": 4,
+      "payload_bytes": 274,
+      "type": 1
+    },
+    {
+      "offset": 35111,
+      "prefix_bytes": 4,
+      "payload_bytes": 182,
+      "type": 1
+    },
+    {
+      "offset": 35297,
+      "prefix_bytes": 4,
+      "payload_bytes": 359,
+      "type": 1
+    },
+    {
+      "offset": 35660,
+      "prefix_bytes": 4,
+      "payload_bytes": 176,
+      "type": 1
+    },
+    {
+      "offset": 35840,
+      "prefix_bytes": 4,
+      "payload_bytes": 247,
+      "type": 1
+    },
+    {
+      "offset": 36091,
+      "prefix_bytes": 4,
+      "payload_bytes": 183,
+      "type": 1
+    },
+    {
+      "offset": 36278,
+      "prefix_bytes": 4,
+      "payload_bytes": 252,
+      "type": 1
+    },
+    {
+      "offset": 36534,
+      "prefix_bytes": 4,
+      "payload_bytes": 179,
+      "type": 1
+    }
+  ],
+  "source_ids_all_correct": true,
+  "raw_and_mp4_decoded_pixels_identical": true,
+  "kernel_unchanged": true,
+  "exit": 0,
+  "encoder_stderr_empty": true,
+  "host_decoder": "existing PI_wifi_sensing OpenCV5.0.0 FFmpeg avcodec61.19.100",
+  "no_dependencies_installed": true,
+  "RGB_mean_abs_8bit": 1.4227855541087964,
+  "RGB_max_abs_8bit": 64,
+  "RGB_PSNR_dB": 41.17324190637248,
+  "HDMI_target": [
+    1920,
+    1080,
+    60
+  ],
+  "HDMI_paused": true,
+  "HDMI_timing_hardware_modified": false,
+  "NPU_executed": false,
+  "RTSP_executed": false,
+  "live_dual_route_verified": false,
+  "system_performance_verified": false,
+  "limitations": [
+    "synthetic prerecorded renderer plus moving ID/marker, no live inference during encoding",
+    "offline MP4 nominal10fps reconstructed; not preserved container capture timestamps",
+    "ffprobe lacks explicit color metadata; negotiated601-limited does not prove H264 VUI color signaling",
+    "lossy RGB statistics include host conversion conventions; no color calibration or numerical acceptance",
+    "3-second finite test does not establish sustained throughput or long-run stability"
+  ],
+  "historical_failures": [
+    "r1 CRLF checksum stopped before preflight/program",
+    "r2 coded2x2 stopped before buffers/stream",
+    "r3 negotiated coded default709-full, superseded before streaming",
+    "first raw host review applied MP4 rate assertion to nakedH264, raw metadata25fps/negativecount untrusted; preserved and separate AnnexB mode used"
+  ],
+  "remux_warning": "[mp4 @ 0x557d66ea00] Timestamps are unset in a packet for stream 0. This is deprecated and will stop working in the future. Fix your code to set the timestamps properly"
+}

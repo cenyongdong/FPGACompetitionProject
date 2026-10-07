@@ -1,0 +1,25 @@
+{
+  "status": "raw_send_completed_no_receiver_ack",
+  "cases": "three",
+  "fps": 2.0,
+  "sent": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "bytes": 86432,
+      "sha256": "63d34a02983549940326933415a7613747c2e86c72ed53120e5e518be46cb7b7"
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "bytes": 86432,
+      "sha256": "c2bca2e20d80442b67a85c9678e6e4f84f5d4d48ad5bc50b71fd2723eb545586"
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "bytes": 86432,
+      "sha256": "4033a5c5d8f9dfb1de3b8a0a801323f61c8a6783da7a8104438ba55a1e9d5e07"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "status": "paused_at_user_request",
+  "date": "2026-10-07",
+  "user_instruction": "标记当前任务进度，在合适位置中断，等唤醒再继续",
+  "read_first": [
+    "tools/pose-v1/RESUME-VIDEO-20261007.md",
+    "tools/pose-v1/VIDEO-SEQUENCE-RESULTS-20261007.md",
+    "tools/pose-v1/evidence/video-sequence-20261007-r1/failure-review.json"
+  ],
+  "completed": {
+    "bounded_encoder_API_build": true,
+    "verified_real_ARM_sources": 27,
+    "prepared_encode_frames": 54,
+    "negotiation_exit": 0,
+    "HDMI_readonly_inventory": true,
+    "HDMI_offline_1080p_RGB565_pattern": true,
+    "failure_evidence_returned_and_reviewed": true
+  },
+  "failure": {
+    "encode_exit": 1,
+    "kernel_error": "V5/V7-H264ENC: MMU ABORT",
+    "submitted": 9,
+    "returned": 3,
+    "capture_chunks": 4,
+    "partial_bytes": 29879,
+    "decoded_partial_frame_ids": [0, 1, 2],
+    "root_cause": "unknown; no fault address or full buffer/ioctl trace yet",
+    "not_pinned_to_specific_input_frame": true,
+    "no_complete_video_acceptance": true
+  },
+  "identities": {
+    "program_sha256": "109e24bd32517f49f86a9f4f131ad2a3e1f070da48dd07c88db901429eef7e8c",
+    "input_sha256": "5da0b23d093eae65c9a3bd6cbcf8bceb86782ce38c6eacd0faae2189b13b6216",
+    "package_checksums_sha256": "63a577704b6836e417601a0193980a98458ed84ffd642b951eddf4339d3b2464",
+    "post_failure_BOOT_SDK_libraries_unchanged": true,
+    "post_failure_fpga_state": "operating"
+  },
+  "locations": {
+    "package": ".local/pose-v1-vpu-sequence/package-20261007-r1",
+    "build": ".local/pose-v1-build/vpu-sequence-20261007-r1",
+    "board": "/tmp/pose-v1-vpu-sequence/20261007-r1",
+    "evidence": "tools/pose-v1/evidence/video-sequence-20261007-r1"
+  },
+  "HDMI": {
+    "authorization_retained": true,
+    "whole_task_paused": true,
+    "target": [1920, 1080, 60],
+    "timing_and_safe_scanout_stop_mapping": "not established",
+    "hardware_written": false,
+    "published_BOOT_DTB_byte_match": true,
+    "download_bit_path_query": "cancelled_before_SSH_authentication; not executed"
+  },
+  "safe_boundary": {
+    "VPU_program_exited": true,
+    "prior_SSH_SFTP_closed": true,
+    "pending_SSH_authentication_cancelled": true,
+    "background_jobs_or_automations": false,
+    "no_device_reset_firmware_replacement_or_retry": true
+  },
+  "resume": [
+    "Wait for explicit user wakeup; do not connect, compile or test while paused",
+    "Verify local frozen source/package/failure evidence",
+    "Prepare minimal QUERYBUF/QBUF/DQBUF mapping/length/offset/ownership/PTS/poll trace candidate; r2 not yet applied or built",
+    "Clarify failure boundary and device state before a new bounded diagnostic revision; do not rerun r1",
+    "Continue HDMI read-only provenance and establish clock/scanout/safe-stop mapping before1080p60 writes"
+  ],
+  "RTSP_live_combined_long_run_verified": false
+}

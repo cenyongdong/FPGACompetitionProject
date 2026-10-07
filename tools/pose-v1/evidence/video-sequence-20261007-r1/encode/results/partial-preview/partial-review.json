@@ -1,0 +1,36 @@
+{
+  "status": "partial_failure_stream_only_not_accepted",
+  "decoded_frames": 3,
+  "frames": [
+    {
+      "decoded_index": 0,
+      "encoded_id": 0,
+      "shape": [
+        720,
+        1280,
+        3
+      ],
+      "pixel_sha256": "ac598f314f576b19cecd4e431d42784f79678566dc92e5f714e99afc02cc8878"
+    },
+    {
+      "decoded_index": 1,
+      "encoded_id": 1,
+      "shape": [
+        720,
+        1280,
+        3
+      ],
+      "pixel_sha256": "9501c8891b758afd90000e30fd87295c95b9016159ab9c18270cc1f47f2bc15b"
+    },
+    {
+      "decoded_index": 2,
+      "encoded_id": 2,
+      "shape": [
+        720,
+        1280,
+        3
+      ],
+      "pixel_sha256": "7a67334530afb705101add0c20d3dc41af9874be9acb1a71f48163863f1b613b"
+    }
+  ]
+}

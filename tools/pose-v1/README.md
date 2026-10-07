@@ -1,8 +1,20 @@
 # 首版实施工具与证据
 
+> 当前最新：视频任务已恢复，真实27骨架/54帧有限编码及两独立上下文重复通过，主机完整核验，MMAP描述兼容修正已采用。[结果/视频](VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md)、[恢复入口](RESUME-VIDEO-20261007.md)。原推理/SDK/BOOT保持，HDMI1080p60未改时序，RTSP/实时合并/整机长期未通过。旧暂停和失败条目按历史保留。
+
+> 当前暂停：真实骨架编码发生VPU固件MMU ABORT；[首批报告](VIDEO-SEQUENCE-RESULTS-20261007.md)、[失败核验](evidence/video-sequence-20261007-r1/failure-review.json)、[恢复说明](RESUME-VIDEO-20261007.md)。HDMI只读/离线色条已准备、无实屏写入，用户要求等待唤醒。Build-VpuSequence等新工具不是已验收生产编码器，不重跑失败包。
+
+> 最新安排：[下一视频计划](NEXT-VIDEO-PLAN-20261007.md)、[恢复授权与来源检查点](evidence/video-next-plan-20261007.json)。用户已审查编码样片并允许HDMI测试，暂停解除。首批真实骨架动态文件＋当前BOOT HDMI配套，随后1080p60实屏/RTSP/真实推理合并；未新板测。
+
+> 最新独立VPU：[720p10fps/30帧结果与MP4](VPU-RESULTS-20261007.md)、[执行位置/停止条件](VPU-COMMANDS-20261007.md)、[核验](evidence/vpu-20261007-r1/completion-review.json)。Build-Vpu/prepare_vpu_frames/run-vpu-stage/audit_vpu_stage/review_vpu_video为隔离工具，主机已有OpenCV，无新安装。HDMI目标1080p60、接屏不支持时序、测试暂停未改硬件；编码文件通过不等于RTSP/整机/长期。恢复读vpu新检查点，旧未编码记录为历史。
+
+> 最新渲染与V0：[结果/预览](RENDER-RESULTS-20261007.md)、[命令](RENDER-COMMANDS-20261007.md)、[配套差异](V0-VIDEO-PAIRING-20261007.md)、[核验](evidence/render-20261007-r1/completion-review.json)。CPU画面与三格式通过，VPU实际只枚举MPLANE，编码/HDMI/RTSP仍待；恢复按render-r1检查点。
+
+> 最新E1首批：[生产接口/TCP结果](APPLICATION-RESULTS-20261007.md)、[命令](APPLICATION-COMMANDS-20261007.md)、[完成核验](evidence/application-20261007-r2/completion-review.json)。当前入口为application_gate.py、Build-Application.ps1、send_application_cases.py；原P2/r6保持。下一阶段为渲染/视频配套，网络2Hz正确性不算整机5Hz。
+
 > 最新：现有数值阶段已由用户验收；profiling关闭＋单时钟计量及消息构造优化已完成，处理基线5.24655Hz/P95 190.75409ms，整机/视频/长期未验收。[P2结果](P2-RESULTS-20261007.md)。较早“数值未验收/4.65Hz/P2候选”保留为历史。
 
-当前入口：[20261007结果](RUNTIME-RESULTS-20261007.md)、[状态](STATUS.md)、[候选下一步](NEXT-GATE-20261007.md)。Host107/E0/N1/P1工程门检完成，原任务不再处于暂停或待板测。数值容限和5Hz未通过，视频未操作；旧恢复文字为历史，勿重复执行。
+当前状态见[STATUS.md](STATUS.md)、已批准[全流程计划](FULL-FLOW-PLAN-20261007.md)和[应用检查点](evidence/application-20261007-r2/next-checkpoint.json)。旧N1/P2“数值/核心5Hz未通过”按历史理解，当前固定样本数值由用户验收、核心短期5.25Hz；整机/视频/长期仍待，勿重复已完成门检。
 
 <details>
 <summary>历史工具交付和阶段说明（较早“当前/下一步”按当时日期理解）</summary>

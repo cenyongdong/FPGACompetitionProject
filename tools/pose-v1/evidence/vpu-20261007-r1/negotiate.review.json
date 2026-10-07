@@ -1,0 +1,61 @@
+{
+  "status": "returned_VPU_stage_verified",
+  "stage": "negotiate-r4",
+  "package_sha256": "935fdb0334126f2c5a8a89777682329634c32438fb1a6a7a10dfca6114f0c1fe",
+  "program_sha256": "8f713fc8d6c76a03053544634591448f1068ef0a392261023bf73d5b1538e8ce",
+  "input_sha256": "34eb4ed557d1f2c399e0867b5cc8e5c64be88f1baec30d10799e1197a58d16cd",
+  "returned_files": 12,
+  "exit": 0,
+  "stderr_empty": true,
+  "kernel_unchanged": true,
+  "format_records": [
+    {
+      "event": "format",
+      "type": 10,
+      "fourcc": "NV12",
+      "width": 1280,
+      "height": 720,
+      "planes": 2,
+      "field": 1,
+      "colorspace": 1,
+      "ycbcr_enc": 1,
+      "quantization": 2,
+      "xfer_func": 1,
+      "layout": [
+        {
+          "stride": 1280,
+          "size": 921600
+        },
+        {
+          "stride": 1280,
+          "size": 460800
+        }
+      ]
+    },
+    {
+      "event": "format",
+      "type": 9,
+      "fourcc": "H264",
+      "width": 1280,
+      "height": 720,
+      "planes": 1,
+      "field": 1,
+      "colorspace": 1,
+      "ycbcr_enc": 1,
+      "quantization": 2,
+      "xfer_func": 1,
+      "layout": [
+        {
+          "stride": 0,
+          "size": 2097152
+        }
+      ]
+    }
+  ],
+  "completion": {
+    "event": "negotiation_complete",
+    "streamed": false
+  },
+  "capture_chunks": 0,
+  "capture_pts_us": []
+}

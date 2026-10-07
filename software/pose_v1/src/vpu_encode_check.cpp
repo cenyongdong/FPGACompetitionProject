@@ -1,0 +1,211 @@
+// Isolated, finite V4L2 encoder test. No Icraft, HDMI, registers or camera MMU.
+#include <linux/videodev2.h>
+#include <sys/ioctl.h>
+#include <sys/mman.h>
+#include <fcntl.h>
+#include <poll.h>
+#include <unistd.h>
+#include <cerrno>
+#include <chrono>
+#include <cstring>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <stdexcept>
+#include <string>
+#include <vector>
+
+namespace {
+constexpr unsigned W=1280, H=720, FPS=10, FRAMES=30;
+constexpr auto IN=V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+constexpr auto OUT=V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+// Actual vendor reference mvx-v4l2-controls.h: Q16 frame rate.
+constexpr unsigned MVE_FRAME_RATE=V4L2_CTRL_CLASS_MPEG+0x2000;
+void require(bool ok,const char* message) { if(!ok) throw std::runtime_error(message); }
+int call(int fd,unsigned long op,void* p) {
+    int r; do { r=ioctl(fd,op,p); } while(r<0 && errno==EINTR); return r;
+}
+void checked(int fd,unsigned long op,void* p,const char* name) {
+    if(call(fd,op,p)<0) throw std::runtime_error(std::string(name)+": "+strerror(errno));
+}
+std::string fourcc(unsigned v) { std::string s; for(int i=0;i<4;++i) s+=char((v>>(8*i))&255); return s; }
+void format(std::ostream& log,const v4l2_format& f) {
+    const auto& p=f.fmt.pix_mp;
+    log<<"{\"event\":\"format\",\"type\":"<<f.type<<",\"fourcc\":\""<<fourcc(p.pixelformat)
+       <<"\",\"width\":"<<p.width<<",\"height\":"<<p.height<<",\"planes\":"<<unsigned(p.num_planes)
+       <<",\"field\":"<<p.field<<",\"colorspace\":"<<p.colorspace<<",\"ycbcr_enc\":"<<unsigned(p.ycbcr_enc)
+       <<",\"quantization\":"<<unsigned(p.quantization)<<",\"xfer_func\":"<<unsigned(p.xfer_func)<<",\"layout\":[";
+    for(unsigned i=0;i<p.num_planes;++i) {
+        if(i) log<<',';
+        log<<"{\"stride\":"<<p.plane_fmt[i].bytesperline<<",\"size\":"<<p.plane_fmt[i].sizeimage<<'}';
+    }
+    log<<"]}"<<std::endl;
+}
+struct Plane { void* ptr=MAP_FAILED; unsigned size=0; };
+struct Queue {
+    int fd; v4l2_buf_type type; unsigned planes; bool streaming=false;
+    std::vector<std::vector<Plane>> buffers;
+    Queue(int f,v4l2_buf_type t,unsigned p):fd(f),type(t),planes(p) {}
+    ~Queue() {
+        if(streaming) call(fd,VIDIOC_STREAMOFF,&type);
+        for(auto& b:buffers) for(auto& p:b) if(p.ptr!=MAP_FAILED) munmap(p.ptr,p.size);
+        if(!buffers.empty()) { v4l2_requestbuffers r{}; r.type=type; r.memory=V4L2_MEMORY_MMAP; call(fd,VIDIOC_REQBUFS,&r); }
+    }
+    void allocate(std::ostream& log) {
+        v4l2_requestbuffers r{}; r.type=type; r.memory=V4L2_MEMORY_MMAP; r.count=6;
+        checked(fd,VIDIOC_REQBUFS,&r,"REQBUFS"); require(r.count>=2 && r.count<=16,"unexpected buffer count");
+        buffers.resize(r.count);
+        for(unsigned i=0;i<r.count;++i) {
+            v4l2_buffer b{}; v4l2_plane p[VIDEO_MAX_PLANES]{};
+            b.type=type; b.memory=V4L2_MEMORY_MMAP; b.index=i; b.length=planes; b.m.planes=p;
+            checked(fd,VIDIOC_QUERYBUF,&b,"QUERYBUF"); require(b.length==planes,"query plane count changed");
+            buffers[i].resize(planes);
+            for(unsigned j=0;j<planes;++j) {
+                require(p[j].length>0 && p[j].length<=16*1024*1024,"unbounded buffer");
+                auto& q=buffers[i][j]; q.size=p[j].length;
+                q.ptr=mmap(nullptr,q.size,PROT_READ|PROT_WRITE,MAP_SHARED,fd,p[j].m.mem_offset);
+                require(q.ptr!=MAP_FAILED,"mmap failed");
+                log<<"{\"event\":\"buffer\",\"type\":"<<type<<",\"index\":"<<i<<",\"plane\":"<<j<<",\"length\":"<<q.size<<"}"<<std::endl;
+            }
+        }
+    }
+    void queue(unsigned i,const std::vector<unsigned>& used,unsigned frame=0) {
+        require(i<buffers.size() && used.size()==planes,"queue bounds");
+        v4l2_buffer b{}; v4l2_plane p[VIDEO_MAX_PLANES]{};
+        b.type=type; b.memory=V4L2_MEMORY_MMAP; b.index=i; b.length=planes; b.m.planes=p;
+        b.field=V4L2_FIELD_NONE; b.timestamp.tv_sec=frame/FPS; b.timestamp.tv_usec=(frame%FPS)*100000;
+        for(unsigned j=0;j<planes;++j) { require(used[j]<=buffers[i][j].size,"queue size"); p[j].length=buffers[i][j].size; p[j].bytesused=used[j]; }
+        checked(fd,VIDIOC_QBUF,&b,"QBUF");
+    }
+    bool dequeue(v4l2_buffer& b,v4l2_plane* p) {
+        b={}; b.type=type; b.memory=V4L2_MEMORY_MMAP; b.length=planes; b.m.planes=p;
+        if(call(fd,VIDIOC_DQBUF,&b)<0) {
+            if(errno==EAGAIN) return false;
+            throw std::runtime_error(std::string("DQBUF: ")+strerror(errno));
+        }
+        require(b.index<buffers.size() && b.length==planes,"dequeue bounds");
+        require(!(b.flags&V4L2_BUF_FLAG_ERROR),"driver buffer error"); return true;
+    }
+    void start() { checked(fd,VIDIOC_STREAMON,&type,"STREAMON"); streaming=true; }
+    void stop() { checked(fd,VIDIOC_STREAMOFF,&type,"STREAMOFF"); streaming=false; }
+};
+struct Device { int fd=-1; ~Device(){ if(fd>=0) close(fd); } };
+void control(int fd,unsigned id,int value,std::ostream& log) {
+    v4l2_queryctrl q{}; q.id=id; checked(fd,VIDIOC_QUERYCTRL,&q,"QUERYCTRL");
+    require(!(q.flags&V4L2_CTRL_FLAG_DISABLED) && value>=q.minimum && value<=q.maximum,"control unsupported/range");
+    v4l2_control c{}; c.id=id; c.value=value; checked(fd,VIDIOC_S_CTRL,&c,"S_CTRL");
+    checked(fd,VIDIOC_G_CTRL,&c,"G_CTRL"); require(c.value==value,"control readback differs");
+    log<<"{\"event\":\"control\",\"id\":"<<id<<",\"value\":"<<c.value<<"}"<<std::endl;
+}
+void run(bool encode,const std::filesystem::path& input,const std::filesystem::path& dest) {
+    require(!std::filesystem::exists(dest),"output exists; preserve and stop"); std::filesystem::create_directory(dest);
+    std::ofstream log(dest/"events.jsonl"); require(bool(log),"log open failed");
+    Device d; d.fd=open("/dev/video0",O_RDWR|O_NONBLOCK|O_CLOEXEC); require(d.fd>=0,"open video0 failed");
+    v4l2_capability cap{}; checked(d.fd,VIDIOC_QUERYCAP,&cap,"QUERYCAP");
+    require(std::string(reinterpret_cast<char*>(cap.driver))=="mvx","driver identity changed");
+    require(cap.device_caps&V4L2_CAP_VIDEO_M2M_MPLANE,"missing M2M MPLANE");
+    log<<"{\"event\":\"identity\",\"driver\":\"mvx\",\"version\":"<<cap.version<<",\"device_caps\":"<<cap.device_caps<<"}"<<std::endl;
+    v4l2_format coded{}; coded.type=OUT; coded.fmt.pix_mp.pixelformat=V4L2_PIX_FMT_H264;
+    coded.fmt.pix_mp.width=W; coded.fmt.pix_mp.height=H; coded.fmt.pix_mp.num_planes=1; coded.fmt.pix_mp.plane_fmt[0].sizeimage=2*1024*1024;
+    checked(d.fd,VIDIOC_S_FMT,&coded,"S_FMT H264");
+    v4l2_format raw{}; raw.type=IN; auto& rp=raw.fmt.pix_mp;
+    rp.width=W; rp.height=H; rp.pixelformat=V4L2_PIX_FMT_NV12; rp.field=V4L2_FIELD_NONE;
+    rp.colorspace=V4L2_COLORSPACE_SMPTE170M; rp.ycbcr_enc=V4L2_YCBCR_ENC_601;
+    rp.quantization=V4L2_QUANTIZATION_LIM_RANGE; rp.xfer_func=V4L2_XFER_FUNC_709;
+    checked(d.fd,VIDIOC_S_FMT,&raw,"S_FMT NV12");
+    // This MVX driver leaves coded size at 2x2 when CAPTURE precedes raw.
+    // Reapply coded format after raw as the shipped vendor Encoder does,
+    // then read both formats again; never accept a mismatching size.
+    coded.fmt.pix_mp.width=W; coded.fmt.pix_mp.height=H;
+    coded.fmt.pix_mp.colorspace=V4L2_COLORSPACE_SMPTE170M;
+    coded.fmt.pix_mp.ycbcr_enc=V4L2_YCBCR_ENC_601;
+    coded.fmt.pix_mp.quantization=V4L2_QUANTIZATION_LIM_RANGE;
+    coded.fmt.pix_mp.xfer_func=V4L2_XFER_FUNC_709;
+    checked(d.fd,VIDIOC_S_FMT,&coded,"S_FMT H264 after NV12");
+    checked(d.fd,VIDIOC_G_FMT,&raw,"G_FMT NV12"); checked(d.fd,VIDIOC_G_FMT,&coded,"G_FMT H264");
+    format(log,raw); format(log,coded);
+    require(rp.width==W && rp.height==H && rp.pixelformat==V4L2_PIX_FMT_NV12 && rp.field==V4L2_FIELD_NONE,"raw format changed");
+    require(rp.colorspace==V4L2_COLORSPACE_SMPTE170M && rp.ycbcr_enc==V4L2_YCBCR_ENC_601 && rp.quantization==V4L2_QUANTIZATION_LIM_RANGE,"raw colorimetry differs");
+    require(rp.num_planes==1 || rp.num_planes==2,"unsupported NV12 plane layout");
+    require(coded.fmt.pix_mp.pixelformat==V4L2_PIX_FMT_H264 && coded.fmt.pix_mp.num_planes==1 && coded.fmt.pix_mp.width==W && coded.fmt.pix_mp.height==H,"coded format changed");
+    require(coded.fmt.pix_mp.colorspace==rp.colorspace && coded.fmt.pix_mp.ycbcr_enc==rp.ycbcr_enc && coded.fmt.pix_mp.quantization==rp.quantization && coded.fmt.pix_mp.xfer_func==rp.xfer_func,"coded colorimetry differs");
+    const unsigned ys=rp.plane_fmt[0].bytesperline;
+    const unsigned uvs=rp.num_planes==1 ? ys:rp.plane_fmt[1].bytesperline;
+    require(ys>=W && uvs>=W && ys<=8192 && uvs<=8192,"unsupported stride");
+    const unsigned ybytes=ys*H, uvbytes=uvs*(H/2);
+    std::vector<unsigned> used=rp.num_planes==1 ? std::vector<unsigned>{ybytes+uvbytes}:std::vector<unsigned>{ybytes,uvbytes};
+    for(unsigned i=0;i<used.size();++i) require(rp.plane_fmt[i].sizeimage>=used[i],"format too small");
+    control(d.fd,MVE_FRAME_RATE,FPS<<16,log);
+    control(d.fd,V4L2_CID_MPEG_VIDEO_BITRATE,2000000,log);
+    control(d.fd,V4L2_CID_MPEG_VIDEO_H264_PROFILE,V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,log);
+    v4l2_encoder_cmd trycmd{}; trycmd.cmd=V4L2_ENC_CMD_STOP;
+    checked(d.fd,VIDIOC_TRY_ENCODER_CMD,&trycmd,"TRY_ENCODER_CMD STOP");
+    if(!encode) { log<<"{\"event\":\"negotiation_complete\",\"streamed\":false}"<<std::endl; return; }
+    require(std::filesystem::file_size(input)==size_t(W)*H*3/2*FRAMES,"input size differs");
+    std::ifstream frames(input,std::ios::binary); std::ofstream stream(dest/"video.h264",std::ios::binary);
+    require(bool(frames) && bool(stream),"data files open failed");
+    Queue in(d.fd,IN,rp.num_planes),out(d.fd,OUT,1); in.allocate(log); out.allocate(log);
+    for(const auto& b:in.buffers) for(unsigned j=0;j<used.size();++j) require(b[j].size>=used[j],"mapped raw buffer too small");
+    unsigned queued=0,returned=0; bool draining=false,last=false; size_t total=0;
+    std::vector<unsigned char> src(size_t(W)*H*3/2);
+    auto submit=[&](unsigned idx) {
+        frames.read(reinterpret_cast<char*>(src.data()),src.size()); require(frames.gcount()==std::streamsize(src.size()),"short input");
+        auto& b=in.buffers[idx];
+        for(auto& p:b) memset(p.ptr,0,p.size);
+        auto* y=static_cast<unsigned char*>(b[0].ptr);
+        auto* uv=rp.num_planes==1 ? y+ybytes:static_cast<unsigned char*>(b[1].ptr);
+        for(unsigned row=0;row<H;++row) memcpy(y+row*ys,src.data()+row*W,W);
+        for(unsigned row=0;row<H/2;++row) memcpy(uv+row*uvs,src.data()+size_t(W)*H+row*W,W);
+        in.queue(idx,used,queued);
+        log<<"{\"event\":\"input_queued\",\"frame\":"<<queued<<",\"pts_us\":"<<queued*100000<<",\"index\":"<<idx<<"}"<<std::endl;
+        ++queued;
+    };
+    for(unsigned i=0;i<out.buffers.size();++i) out.queue(i,{0});
+    for(unsigned i=0;i<in.buffers.size() && queued<FRAMES;++i) submit(i);
+    out.start(); in.start();
+    auto began=std::chrono::steady_clock::now(); auto progress=began;
+    while(!last || returned<FRAMES) {
+        bool moved=false;
+        if(!last) {
+            v4l2_buffer b{}; v4l2_plane p[VIDEO_MAX_PLANES]{};
+            while(out.dequeue(b,p)) {
+                require(p[0].data_offset<=p[0].bytesused && p[0].bytesused<=out.buffers[b.index][0].size,"capture length invalid");
+                unsigned size=p[0].bytesused-p[0].data_offset;
+                stream.write(static_cast<char*>(out.buffers[b.index][0].ptr)+p[0].data_offset,size); require(bool(stream),"stream write failed"); total+=size;
+                log<<"{\"event\":\"capture\",\"sequence\":"<<b.sequence<<",\"pts_us\":"<<b.timestamp.tv_sec*1000000LL+b.timestamp.tv_usec<<",\"bytes\":"<<size<<",\"flags\":"<<b.flags<<"}"<<std::endl;
+                moved=true; last=b.flags&V4L2_BUF_FLAG_LAST;
+                if(last) break;
+                out.queue(b.index,{0});
+                memset(p,0,sizeof(p));
+            }
+        }
+        v4l2_buffer b{}; v4l2_plane p[VIDEO_MAX_PLANES]{};
+        while(returned<queued && in.dequeue(b,p)) {
+            ++returned; moved=true;
+            log<<"{\"event\":\"input_returned\",\"index\":"<<b.index<<",\"count\":"<<returned<<"}"<<std::endl;
+            if(queued<FRAMES) submit(b.index);
+            memset(p,0,sizeof(p));
+        }
+        if(queued==FRAMES && !draining) {
+            v4l2_encoder_cmd c{}; c.cmd=V4L2_ENC_CMD_STOP; checked(d.fd,VIDIOC_ENCODER_CMD,&c,"ENCODER_CMD STOP");
+            draining=true; log<<"{\"event\":\"drain_started\"}"<<std::endl;
+        }
+        auto now=std::chrono::steady_clock::now();
+        if(moved) progress=now;
+        require(now-began<std::chrono::seconds(25),"total encode timeout");
+        require(now-progress<std::chrono::seconds(5),"encoder stalled");
+        if(!moved) { pollfd pfd{d.fd,POLLIN|POLLOUT|POLLPRI,0}; int r=poll(&pfd,1,20); require(r>=0 || errno==EINTR,"poll failed"); require(!(pfd.revents&(POLLERR|POLLHUP|POLLNVAL)),"poll device failure"); }
+    }
+    require(queued==FRAMES && returned==FRAMES && last && total>0,"incomplete stream");
+    in.stop(); out.stop(); stream.close(); require(bool(stream),"stream finalization failed");
+    log<<"{\"event\":\"encoding_complete\",\"queued\":"<<queued<<",\"returned\":"<<returned<<",\"last\":true,\"bytes\":"<<total<<",\"hdmi\":false,\"npu\":false}"<<std::endl;
+}
+}
+int main(int argc,char** argv) {
+    try {
+        require(argc==5,"usage: pose_vpu_encode_check negotiate|encode --allow-vpu-stream input.nv12 new-output-dir");
+        require(std::string(argv[2])=="--allow-vpu-stream","explicit VPU authorization required");
+        std::string mode=argv[1]; require(mode=="negotiate" || mode=="encode","unknown mode");
+        run(mode=="encode",argv[3],argv[4]); return 0;
+    } catch(const std::exception& e) { std::cerr<<e.what()<<std::endl; return 1; }
+}

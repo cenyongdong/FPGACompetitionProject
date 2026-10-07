@@ -1,0 +1,445 @@
+{
+  "status": "host_decode_30_frames_identity_passed",
+  "scope": "finite_independent_VPU_no_HDMI_no_NPU_no_RTSP",
+  "opencv_version": "5.0.0",
+  "video_sha256": "faff14c4955ca8d4eb584fc0573f22b4cfcc1ff60f5dc4152b27dc2a6b39ce62",
+  "input_sha256": "34eb4ed557d1f2c399e0867b5cc8e5c64be88f1baec30d10799e1197a58d16cd",
+  "metadata": {
+    "width": 1280.0,
+    "height": 720.0,
+    "fps": 25.0,
+    "declared_frames": -192153584101141.0,
+    "backend": "FFMPEG"
+  },
+  "decoded_frames": 30,
+  "all_frame_ids_correct": true,
+  "all_unique": true,
+  "raw_annexb": true,
+  "container_rate_verified": false,
+  "RGB_mean_abs_8bit": 1.4227855541087964,
+  "RGB_max_abs_8bit": 64,
+  "RGB_PSNR_dB": 41.17324190637248,
+  "lossy_metrics_reference": "OpenCV NV12-to-BGR decoding of original input; not an exact colorimetric calibration",
+  "records": [
+    {
+      "frame": 0,
+      "decoded_frame_id": 0,
+      "decoded_bgr_sha256": "bca1cca5114f0c5806ea04553e258ce644ee6cd22470d802e7c0dc323e9c32a8",
+      "mean_abs_RGB_8bit": 1.4119914641203704,
+      "PSNR_RGB_dB": 40.905880118085406,
+      "binary_block_levels": [
+        0.32916666666666666,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 1,
+      "decoded_frame_id": 1,
+      "decoded_bgr_sha256": "dd8d5ddfcd584c67ed9ce5a8fe12c620447ec17018f8f444c75c131ad42adbfa",
+      "mean_abs_RGB_8bit": 1.403076171875,
+      "PSNR_RGB_dB": 41.28463896374435,
+      "binary_block_levels": [
+        254.675,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 2,
+      "decoded_frame_id": 2,
+      "decoded_bgr_sha256": "d34d4f00388bc7e1032e5eeacee8cd0a48879e3d68ad8436d848d6bf5bfda130",
+      "mean_abs_RGB_8bit": 1.4078656684027777,
+      "PSNR_RGB_dB": 41.23829615555047,
+      "binary_block_levels": [
+        0.7416666666666667,
+        254.39305555555555,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 3,
+      "decoded_frame_id": 3,
+      "decoded_bgr_sha256": "599cf4dd30edbe586694fe01db701c55c57c1267058a51854ac73412d5d53ef7",
+      "mean_abs_RGB_8bit": 1.4087528935185185,
+      "PSNR_RGB_dB": 41.244875922947045,
+      "binary_block_levels": [
+        254.61111111111111,
+        254.39305555555555,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 4,
+      "decoded_frame_id": 4,
+      "decoded_bgr_sha256": "07f3d31857c265af3658de373642703cbb9249421f015bd16265a043f0b9250c",
+      "mean_abs_RGB_8bit": 1.411982421875,
+      "PSNR_RGB_dB": 41.243067704093484,
+      "binary_block_levels": [
+        0.8013888888888889,
+        0.6777777777777778,
+        254.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 5,
+      "decoded_frame_id": 5,
+      "decoded_bgr_sha256": "5364077d09752af8ef916c18dc03594d4cfce7070b88103fb053a1cf91273fb7",
+      "mean_abs_RGB_8bit": 1.4135130931712963,
+      "PSNR_RGB_dB": 41.23476105721381,
+      "binary_block_levels": [
+        254.55833333333334,
+        0.6777777777777778,
+        254.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 6,
+      "decoded_frame_id": 6,
+      "decoded_bgr_sha256": "08eac68732a8da5917b4337ef9ba3454ad239098243935b48d5adf9dd7adb8ab",
+      "mean_abs_RGB_8bit": 1.4158930121527777,
+      "PSNR_RGB_dB": 41.21654421362162,
+      "binary_block_levels": [
+        0.8013888888888889,
+        254.4111111111111,
+        254.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 7,
+      "decoded_frame_id": 7,
+      "decoded_bgr_sha256": "7a45a24e628017e1dafc1090b09d03903152a4662e9cc142559e0d604d39eadf",
+      "mean_abs_RGB_8bit": 1.4167230902777779,
+      "PSNR_RGB_dB": 41.19494870476479,
+      "binary_block_levels": [
+        254.55833333333334,
+        254.4111111111111,
+        254.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 8,
+      "decoded_frame_id": 8,
+      "decoded_bgr_sha256": "9445ca33b9666d3e635d268dd9bffffe71b271b0f2b97cb1fec53eb724042e17",
+      "mean_abs_RGB_8bit": 1.419529079861111,
+      "PSNR_RGB_dB": 41.196376478324126,
+      "binary_block_levels": [
+        0.8013888888888889,
+        0.6666666666666666,
+        0.7777777777777778,
+        254.4111111111111,
+        0.0
+      ]
+    },
+    {
+      "frame": 9,
+      "decoded_frame_id": 9,
+      "decoded_bgr_sha256": "26c32776ba565ea6493090223610dab850b5ac6b06c55aafffdee003f0e268ca",
+      "mean_abs_RGB_8bit": 1.4192549189814814,
+      "PSNR_RGB_dB": 41.20219295072304,
+      "binary_block_levels": [
+        254.6638888888889,
+        0.6666666666666666,
+        0.7777777777777778,
+        254.4111111111111,
+        0.0
+      ]
+    },
+    {
+      "frame": 10,
+      "decoded_frame_id": 10,
+      "decoded_bgr_sha256": "2286bbce69bcd7680227c63828d1001a404f0be1d06339e3da0ede5c164b8f99",
+      "mean_abs_RGB_8bit": 1.4220439091435184,
+      "PSNR_RGB_dB": 41.172658722361454,
+      "binary_block_levels": [
+        0.8013888888888889,
+        254.4111111111111,
+        0.7777777777777778,
+        254.4111111111111,
+        0.0
+      ]
+    },
+    {
+      "frame": 11,
+      "decoded_frame_id": 11,
+      "decoded_bgr_sha256": "3b2d94ef9724f5b8b373605b055481b80a3c9b5afb9cc0699c49a0dcfb4d5d1c",
+      "mean_abs_RGB_8bit": 1.4216116898148148,
+      "PSNR_RGB_dB": 41.17497544306567,
+      "binary_block_levels": [
+        254.61388888888888,
+        254.4111111111111,
+        0.7777777777777778,
+        254.4111111111111,
+        0.0
+      ]
+    },
+    {
+      "frame": 12,
+      "decoded_frame_id": 12,
+      "decoded_bgr_sha256": "2af66979a0a3bea46f013dcdca47087c9cafc90953ad8ac9df6764282ff69a69",
+      "mean_abs_RGB_8bit": 1.4235727719907407,
+      "PSNR_RGB_dB": 41.160574158694615,
+      "binary_block_levels": [
+        0.8444444444444444,
+        0.3333333333333333,
+        254.48611111111111,
+        254.4111111111111,
+        0.0
+      ]
+    },
+    {
+      "frame": 13,
+      "decoded_frame_id": 13,
+      "decoded_bgr_sha256": "37f814a3685713b04db819d046b8fc905a943568e8ebbf0a6164ad655b686944",
+      "mean_abs_RGB_8bit": 1.4221412037037038,
+      "PSNR_RGB_dB": 41.18180205790375,
+      "binary_block_levels": [
+        254.5611111111111,
+        0.3333333333333333,
+        254.48611111111111,
+        254.4111111111111,
+        0.0
+      ]
+    },
+    {
+      "frame": 14,
+      "decoded_frame_id": 14,
+      "decoded_bgr_sha256": "39a9c1baa2eb18b944077cd25d2a04d6966df52ae01072d3a18f342a1f440368",
+      "mean_abs_RGB_8bit": 1.4242683015046296,
+      "PSNR_RGB_dB": 41.17832688770396,
+      "binary_block_levels": [
+        0.8444444444444444,
+        254.4111111111111,
+        254.48611111111111,
+        254.4111111111111,
+        0.0
+      ]
+    },
+    {
+      "frame": 15,
+      "decoded_frame_id": 15,
+      "decoded_bgr_sha256": "c829c6f91df430df1184fc82a0b05038f67dc37f484c6c9b30887b159ac47c7a",
+      "mean_abs_RGB_8bit": 1.424033203125,
+      "PSNR_RGB_dB": 41.181170722523106,
+      "binary_block_levels": [
+        254.5611111111111,
+        254.4111111111111,
+        254.48611111111111,
+        254.4111111111111,
+        0.0
+      ]
+    },
+    {
+      "frame": 16,
+      "decoded_frame_id": 16,
+      "decoded_bgr_sha256": "25dbc5462b330ca13eda12e6d198a2921c585a0ab72515b441ebe11f36f1ecb9",
+      "mean_abs_RGB_8bit": 1.4270583767361111,
+      "PSNR_RGB_dB": 41.16452027793808,
+      "binary_block_levels": [
+        0.8444444444444444,
+        0.3333333333333333,
+        0.5111111111111111,
+        0.3333333333333333,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 17,
+      "decoded_frame_id": 17,
+      "decoded_bgr_sha256": "c48463481f6a0a53264f245fadf0a62d10be7ac36a11d6a49fb607938772503e",
+      "mean_abs_RGB_8bit": 1.426455078125,
+      "PSNR_RGB_dB": 41.167030181194505,
+      "binary_block_levels": [
+        254.6638888888889,
+        0.3333333333333333,
+        0.5111111111111111,
+        0.3333333333333333,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 18,
+      "decoded_frame_id": 18,
+      "decoded_bgr_sha256": "fbc396e011a3f75b4b281bb06353129f4bc8499465e0b7b5bb3967934bb3f234",
+      "mean_abs_RGB_8bit": 1.4281177662037037,
+      "PSNR_RGB_dB": 41.163721545817765,
+      "binary_block_levels": [
+        0.8444444444444444,
+        254.3875,
+        0.5111111111111111,
+        0.3333333333333333,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 19,
+      "decoded_frame_id": 19,
+      "decoded_bgr_sha256": "bc7388024f98304fe63b6514bba31cf38c92f43a6888da48a7e9d3e7c99f8c64",
+      "mean_abs_RGB_8bit": 1.4274305555555555,
+      "PSNR_RGB_dB": 41.16589037136393,
+      "binary_block_levels": [
+        254.6,
+        254.3875,
+        0.5111111111111111,
+        0.3333333333333333,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 20,
+      "decoded_frame_id": 20,
+      "decoded_bgr_sha256": "3f28a403ab63db2160139733506fc35123474bbdab156a3e699fe9fee6f92356",
+      "mean_abs_RGB_8bit": 1.428287037037037,
+      "PSNR_RGB_dB": 41.162534930834354,
+      "binary_block_levels": [
+        0.8013888888888889,
+        0.7222222222222222,
+        254.48888888888888,
+        0.3333333333333333,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 21,
+      "decoded_frame_id": 21,
+      "decoded_bgr_sha256": "872b918f2aef342b63b28685755e0cd5f31f33cd19fccce90cdce03341d2d532",
+      "mean_abs_RGB_8bit": 1.428035300925926,
+      "PSNR_RGB_dB": 41.16508917594837,
+      "binary_block_levels": [
+        254.6,
+        0.7222222222222222,
+        254.48888888888888,
+        0.3333333333333333,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 22,
+      "decoded_frame_id": 22,
+      "decoded_bgr_sha256": "d1f19f1e23832903d6941f55de379d69aed16027dc13d880865664b6496f2094",
+      "mean_abs_RGB_8bit": 1.4299772135416666,
+      "PSNR_RGB_dB": 41.15967014071068,
+      "binary_block_levels": [
+        0.8013888888888889,
+        254.48888888888888,
+        254.48888888888888,
+        0.3333333333333333,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 23,
+      "decoded_frame_id": 23,
+      "decoded_bgr_sha256": "fca194f0529d0f289c04d3ab776cdefd002e1e582179c3036deeb051f41d3628",
+      "mean_abs_RGB_8bit": 1.4296802662037038,
+      "PSNR_RGB_dB": 41.161688268650536,
+      "binary_block_levels": [
+        254.6,
+        254.48888888888888,
+        254.48888888888888,
+        0.3333333333333333,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 24,
+      "decoded_frame_id": 24,
+      "decoded_bgr_sha256": "0657a507d75f4cbe2704166a221276d33bd2ec365a46eb884adc6718c72e77ee",
+      "mean_abs_RGB_8bit": 1.4325766782407408,
+      "PSNR_RGB_dB": 41.15016773087892,
+      "binary_block_levels": [
+        0.8013888888888889,
+        0.6777777777777778,
+        0.7555555555555555,
+        254.42222222222222,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 25,
+      "decoded_frame_id": 25,
+      "decoded_bgr_sha256": "4a5c52c29345def8a19fc1ed68ee09beaa8fbaede897abf44935ef55d47ce50c",
+      "mean_abs_RGB_8bit": 1.4323227719907408,
+      "PSNR_RGB_dB": 41.14962124442797,
+      "binary_block_levels": [
+        254.6638888888889,
+        0.6777777777777778,
+        0.7555555555555555,
+        254.42222222222222,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 26,
+      "decoded_frame_id": 26,
+      "decoded_bgr_sha256": "7be4737c85d5ce3e35c53cdcd692e31c9163b8c32d66d14aedcb357fb84b30b9",
+      "mean_abs_RGB_8bit": 1.4318355758101853,
+      "PSNR_RGB_dB": 41.14983057587033,
+      "binary_block_levels": [
+        0.8013888888888889,
+        254.42222222222222,
+        0.7555555555555555,
+        254.42222222222222,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 27,
+      "decoded_frame_id": 27,
+      "decoded_bgr_sha256": "bfd737d5b1cdce87a222952cd993f4b2376d2e2c97b57b06f66312fbd5ec1220",
+      "mean_abs_RGB_8bit": 1.4308091001157408,
+      "PSNR_RGB_dB": 41.15190743850634,
+      "binary_block_levels": [
+        254.7,
+        254.42222222222222,
+        0.7555555555555555,
+        254.42222222222222,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 28,
+      "decoded_frame_id": 28,
+      "decoded_bgr_sha256": "093db1e2c35284c017c31a063b5c803380f4048c6295c1ee9a87dbcdcd74e1a6",
+      "mean_abs_RGB_8bit": 1.4328566261574074,
+      "PSNR_RGB_dB": 41.141949365806276,
+      "binary_block_levels": [
+        0.8444444444444444,
+        0.6666666666666666,
+        254.5888888888889,
+        254.42222222222222,
+        254.4111111111111
+      ]
+    },
+    {
+      "frame": 29,
+      "decoded_frame_id": 29,
+      "decoded_bgr_sha256": "00fba8bdde74df766fd5781f26b0afe498a6ad7b101048e807ee0ff9dfa7762c",
+      "mean_abs_RGB_8bit": 1.431871383101852,
+      "PSNR_RGB_dB": 41.145423525191504,
+      "binary_block_levels": [
+        254.69444444444446,
+        0.6666666666666666,
+        254.5888888888889,
+        254.42222222222222,
+        254.4111111111111
+      ]
+    }
+  ]
+}

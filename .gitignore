@@ -98,5 +98,19 @@ venv/
 /tools/pose-v1/evidence/**/pose_cpu_adapter_check
 /tools/pose-v1/evidence/**/pose_mixed_check
 /tools/pose-v1/evidence/**/host_registry_probe
+/tools/pose-v1/evidence/**/pose_application_check
+/tools/pose-v1/evidence/**/pose_transport_check
+/tools/pose-v1/evidence/**/pose_application_render_check
+/tools/pose-v1/evidence/**/pose_skeleton_render_check
+/tools/pose-v1/evidence/**/pose_video_capability_probe
+# 可复现的大尺寸画面/像素缓冲区；保留 PNG 预览、配置和哈希报告。
+/tools/pose-v1/evidence/**/*.ppm
+/tools/pose-v1/evidence/**/*.rgb24
+/tools/pose-v1/evidence/**/*.rgb565le
+/tools/pose-v1/evidence/**/*.nv12
+/tools/pose-v1/evidence/**/*.nv21
+# 独立VPU程序/原始码流；小尺寸MP4审查样片和PNG保留。
+/tools/pose-v1/evidence/**/pose_vpu_encode_check
+/tools/pose-v1/evidence/**/*.h264
 # SDK 库的反汇编派生文本，不作为项目源码提交。
 /tools/pose-v1/evidence/mixed-20261006-readiness-r5/zg-disassembly.txt

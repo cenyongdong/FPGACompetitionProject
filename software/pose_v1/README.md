@@ -1,8 +1,18 @@
 # CSI首版：当前实施状态（2026-10-07）
 
+> 当前最新：视频任务已恢复，真实27骨架/54帧有限编码及两独立上下文重复通过，主机完整核验，MMAP描述兼容修正已采用。[结果/视频](../../tools/pose-v1/VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md)、[恢复入口](../../tools/pose-v1/RESUME-VIDEO-20261007.md)。原推理/SDK/BOOT保持，HDMI1080p60未改时序，RTSP/实时合并/整机长期未通过。旧暂停和失败条目按历史保留。
+
+> 当前视频任务暂停：新`vpu_encoder.hpp/.cpp`有限接口与`vpu_sequence_check`已构建/协商；真实27画面54输入测试发生固件MMU ABORT，未动态编码验收或生产接入。[报告](../../tools/pose-v1/VIDEO-SEQUENCE-RESULTS-20261007.md)、[恢复](../../tools/pose-v1/RESUME-VIDEO-20261007.md)。原30帧/推理/渲染保持，用户唤醒前不继续测试。
+
+> 最新VPU独立文件：新增SDK无关`src/vpu_encode_check.cpp`，两端实际MPLANE、NV12两plane与H264单plane/30帧编码通过，MP4上传主机逐帧审查通过。[报告/样片](../../tools/pose-v1/VPU-RESULTS-20261007.md)、[命令](../../tools/pose-v1/VPU-COMMANDS-20261007.md)。暂未生产编码器/RTSP/并发推理，原渲染保持720p。HDMI按用户改为1080p60目标并暂停设备测试，未改时序/BOOT。
+
+> 最新E1-C：新增skeleton_render及独立检查器，实际CPU画面/三格式、ARM27图与三帧网络结果绘图通过。[报告与预览](../../tools/pose-v1/RENDER-RESULTS-20261007.md)、[命令](../../tools/pose-v1/RENDER-COMMANDS-20261007.md)。render-CMakeLists.txt为隔离构建入口；旧应用/引擎/数学保留。尚未HDMI/编码/RTSP，[V0查询](../../tools/pose-v1/V0-VIDEO-PAIRING-20261007.md)不替代输出验收。
+
+> 最新E1-A/B：生产入口已不依赖冻结Tokens，TCP完整组包/单槽与三/27帧真实网络对照通过；38次成功前向输入及全输出逐位此前板端。[结果](../../tools/pose-v1/APPLICATION-RESULTS-20261007.md)、[命令](../../tools/pose-v1/APPLICATION-COMMANDS-20261007.md)。2Hz为正确性验证，不作整机吞吐；尚无渲染/视频/长期服务。
+
 > 最新：现有数值阶段已由用户验收；profiling关闭＋单时钟计量及消息构造优化已完成，处理基线5.24655Hz/P95 190.75409ms，整机/视频/长期未验收。[P2结果](../../tools/pose-v1/P2-RESULTS-20261007.md)。较早“数值未验收/4.65Hz/P2候选”保留为历史。
 
-新runtime_core已通过Host107/E0/N1/P1限定验证，原r6和CPU/桥/预处理保持。当前API带固定参考Tokens门禁，正式未知窗口应用尚未接入。[20261007结果](../../tools/pose-v1/RUNTIME-RESULTS-20261007.md)记录27样本排名离群、4.65420Hz基线及未验收项；[下一步候选](../../tools/pose-v1/NEXT-GATE-20261007.md)待讨论。
+原runtime_core保留固定参考门禁与Host107/E0/N1/P1证据；新application_core提供生产和checked验证两入口、完整FP32数组及状态/耗时。生产配置使用minimal_log=true及有界采样，单Engine串行；隔离构建入口tools/pose-v1/application-CMakeLists.txt，原主CMake未覆盖。[后续路线](../../tools/pose-v1/FULL-FLOW-PLAN-20261007.md)已批准，下一步渲染和视频配套。
 
 <details>
 <summary>历史r1/r2与早期交付说明（不作当前执行入口）</summary>

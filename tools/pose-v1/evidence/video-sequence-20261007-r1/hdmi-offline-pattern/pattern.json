@@ -1,0 +1,11 @@
+{
+  "scope": "offline_CPU_only_no_HDMI_writes",
+  "width": 1920,
+  "height": 1080,
+  "target_refresh_hz": 60,
+  "format": "RGB565LE",
+  "logical_stride": 3840,
+  "bytes": 4147200,
+  "sha256": "5ab50bc379f7c49383d71756def97013420e057016e92ec8752ff100eb832df7",
+  "hardware_stride_and_region_verified": false
+}
