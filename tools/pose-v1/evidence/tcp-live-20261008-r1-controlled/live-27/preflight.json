@@ -1,0 +1,62 @@
+{
+  "scope": "read_only_no_mount_register_or_device_init",
+  "boot_files": [
+    {
+      "name": "AI7030~1.BIT",
+      "size": 5980604,
+      "sha256": "85fb81d09a0dcb51cb9d5d347c01de43eccec14c6eb9a87e1876105b3efc4b81"
+    },
+    {
+      "name": "BL31.ELF",
+      "size": 610824,
+      "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303"
+    },
+    {
+      "name": "BOOT.BIN",
+      "size": 7023552,
+      "sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef"
+    },
+    {
+      "name": "FMQLMP~1.DTB",
+      "size": 15996,
+      "sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038"
+    },
+    {
+      "name": "IMAGE",
+      "size": 13158408,
+      "sha256": "ee88eae627df17fdf615b44cb9fc5a7a7a37d2baaa3f21e90d613f48bedf0929"
+    },
+    {
+      "name": "U-BOOT",
+      "size": 6579840,
+      "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97"
+    },
+    {
+      "name": "UENV.TXT",
+      "size": 1499,
+      "sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560"
+    },
+    {
+      "name": "AI7030~2.BIT",
+      "size": 5980020,
+      "sha256": "1405d7f1cb992d8f9c78e7b4bbe756faa96eeecb2ff4bdd0d253e92b191e2575"
+    },
+    {
+      "name": "FSBL25~1.OUT",
+      "size": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f"
+    }
+  ],
+  "libraries": {
+    "libicraft_hostbackend.so": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+    "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96"
+  },
+  "SDK_packages": [
+    "customop arm64 3.39.0",
+    "icraft arm64 3.39.0"
+  ],
+  "fpga_state": "operating",
+  "memory": "MemTotal:        1017708 kB\nMemFree:           98872 kB\nMemAvailable:     737424 kB\nBuffers:           15208 kB\nCached:           671132 kB\nSwapCached:            0 kB\nActive:           486792 kB\nInactive:         237520 kB\nActive(anon):      37988 kB\nInactive(anon):       88 kB\nActive(file):     448804 kB\nInactive(file):   237432 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:             0 kB\nSwapFree:              0 kB\nDirty:               372 kB\nWriteback:             0 kB\nAnonPages:         38056 kB\nMapped:            32880 kB\nShmem:               104 kB\nKReclaimable:      32632 kB\nSlab:              45208 kB\nSReclaimable:      32632 kB\nSUnreclaim:        12576 kB\nKernelStack:        1696 kB\nPageTables:         1292 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:      508852 kB\nCommitted_AS:     133772 kB\nVmallocTotal:   262930368 kB\nVmallocUsed:        5232 kB\nVmallocChunk:          0 kB\nPercpu:              688 kB\nAnonHugePages:         0 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:         262144 kB\nCmaFree:           16008 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\n",
+  "processes": "    PID COMMAND         COMMAND\n      1 systemd         /sbin/init\n      2 kthreadd        [kthreadd]\n      3 rcu_gp          [rcu_gp]\n      4 rcu_par_gp      [rcu_par_gp]\n      8 mm_percpu_wq    [mm_percpu_wq]\n      9 ksoftirqd/0     [ksoftirqd/0]\n     10 rcu_sched       [rcu_sched]\n     11 migration/0     [migration/0]\n     12 cpuhp/0         [cpuhp/0]\n     13 cpuhp/1         [cpuhp/1]\n     14 migration/1     [migration/1]\n     15 ksoftirqd/1     [ksoftirqd/1]\n     18 cpuhp/2         [cpuhp/2]\n     19 migration/2     [migration/2]\n     20 ksoftirqd/2     [ksoftirqd/2]\n     23 cpuhp/3         [cpuhp/3]\n     24 migration/3     [migration/3]\n     25 ksoftirqd/3     [ksoftirqd/3]\n     28 kdevtmpfs       [kdevtmpfs]\n     31 kworker/2:1-mm_ [kworker/2:1-mm_percpu_wq]\n     32 kauditd         [kauditd]\n     33 oom_reaper      [oom_reaper]\n     34 writeback       [writeback]\n     35 kcompactd0      [kcompactd0]\n     36 khugepaged      [khugepaged]\n     38 kworker/3:1-mm_ [kworker/3:1-mm_percpu_wq]\n     54 kblockd         [kblockd]\n     55 edac-poller     [edac-poller]\n     56 watchdogd       [watchdogd]\n     57 rpciod          [rpciod]\n     58 kworker/u9:0-kb [kworker/u9:0-kbase_pm_poweroff_wait]\n     59 xprtiod         [xprtiod]\n     60 kswapd0         [kswapd0]\n     61 ecryptfs-kthrea [ecryptfs-kthrea]\n     62 nfsiod          [nfsiod]\n     63 spi3            [spi3]\n     64 stmmac_wq       [stmmac_wq]\n     69 kpktgend_0      [kpktgend_0]\n     71 kpktgend_1      [kpktgend_1]\n     72 kpktgend_2      [kpktgend_2]\n     73 kpktgend_3      [kpktgend_3]\n     74 ipv6_addrconf   [ipv6_addrconf]\n     75 mmc_complete    [mmc_complete]\n     80 kworker/2:1H-kb [kworker/2:1H-kblockd]\n     81 jbd2/mmcblk0p2- [jbd2/mmcblk0p2-]\n     82 ext4-rsv-conver [ext4-rsv-conver]\n    103 systemd-journal /lib/systemd/systemd-journald\n    115 kbase_job_fault [kbase_job_fault]\n    116 kworker/u9:1    [kworker/u9:1]\n    119 mvx_securevideo [mvx_securevideo]\n    120 fw_cache        [fw_cache]\n    121 mvx_sched       [mvx_sched]\n    126 systemd-timesyn /lib/systemd/systemd-timesyncd\n    130 cron            /usr/sbin/cron -f\n    131 dbus-daemon     /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    136 rsyslogd        /usr/sbin/rsyslogd -n -iNONE\n    137 systemd-logind  /lib/systemd/systemd-logind\n    149 systemd-resolve /lib/systemd/systemd-resolved\n    150 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal\n    185 sshd            sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\n    186 agetty          /sbin/agetty -o -p -- \\u --noclear tty1 linux\n    187 agetty          /sbin/agetty -o -p -- \\u --noclear ttyPS0 vt220\n    266 systemd         /lib/systemd/systemd --user\n    267 (sd-pam)        (sd-pam)\n    425 sshd            sshd: root@pts/1\n    427 sshd            sshd: root@notty\n    439 bash            -bash\n    460 sftp-server     /usr/lib/openssh/sftp-server\n  59195 kworker/0:1H-mm [kworker/0:1H-mmc_complete]\n  59689 kworker/0:1-eve [kworker/0:1-events]\n  83072 kworker/1:2H-kb [kworker/1:2H-kblockd]\n 128398 bash            bash -c while true; do sleep 1;head -v -n 8 /proc/meminfo; head -v -n 2 /proc/stat /proc/version /proc/uptime /proc/loadavg /proc/sys/fs/file-nr /proc/sys/kernel/hostname; tail -v -n 32 /proc/net/dev;echo '==> /proc/df <==';df -l;echo '==> /proc/who <==';who;echo '==> /proc/end <==';echo '##Moba##'; done\n 130056 kworker/0:2     [kworker/0:2]\n 131878 kworker/2:0     [kworker/2:0]\n 153648 kworker/u8:1-ev [kworker/u8:1-events_unbound]\n 168287 kworker/3:0     [kworker/3:0]\n 187461 sshd            sshd: root@pts/0\n 187749 bash            -bash\n 188064 kworker/u8:2-fl [kworker/u8:2-flush-179:0]\n 188132 sshd            sshd: root@notty\n 188290 sftp-server     /usr/lib/openssh/sftp-server\n 190025 kworker/3:0H-kb [kworker/3:0H-kblockd]\n 191130 kworker/1:1-eve [kworker/1:1-events_power_efficient]\n 192825 kworker/0:0H-kb [kworker/0:0H-kblockd]\n 193207 kworker/1:0-eve [kworker/1:0-events]\n 194982 kworker/1:0H    [kworker/1:0H]\n 196025 kworker/2:2H    [kworker/2:2H]\n 196097 kworker/3:2H    [kworker/3:2H]\n 197000 kworker/u8:3-f0 [kworker/u8:3-f0020000.mve]\n 197097 kworker/1:2-eve [kworker/1:2-events]\n 198017 kworker/3:1H    [kworker/3:1H]\n 198630 kworker/1:3-mm_ [kworker/1:3-mm_percpu_wq]\n 198687 kworker/0:2H-mm [kworker/0:2H-mmc_complete]\n 198915 kworker/2:0H-kb [kworker/2:0H-kblockd]\n 199871 sh              sh /tmp/pose-v1-tcp-live-20261008-r1-controlled/run-tcp-live.sh live-27\n 199890 python3         python3 board_application_preflight.py /tmp/pose-v1-tcp-live-20261008-r1-controlled/run-live-27/preflight.json\n 199902 sleep           sleep 1\n 199904 ps              ps -eo pid,comm,args\n"
+}

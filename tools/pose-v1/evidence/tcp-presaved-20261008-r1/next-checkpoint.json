@@ -1,0 +1,15 @@
+{
+  "status": "finite_TCP_guarded_pipeline_passed_ready_for_bounded_system_timing",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SFTP_closed": true,
+  "program_sha256": "c98b2286feed3cb7bd0a019be1e1121c0d56a86ba9349d632584353093d66f45",
+  "build": ".local/pose-v1-build/mixed-20261008-tcp-presaved-r1",
+  "package": ".local/pose-v1-tcp-presaved/package-20261008-r1",
+  "board": "/tmp/pose-v1-tcp-presaved-20261008-r1",
+  "report_sha256": "8bd205bf19b81d3f33a8e73a22a325dc4c3a8347d8e16658bc449b5831080394",
+  "compaction_once_already_consumed": true,
+  "old_mismatch_cause_unproven": true,
+  "next": "Read PRESAVED-RESULTS-20261008.md and WHOLE-SYSTEM-NEXT-20261008.md. Separate bounded low-log timing from save-first diagnostic oracle; retain all model/SDK/frame/encoder protocols. CMA driver solution requires matched allocation/MMU/DMA design, not larger reservation alone. No automatic repeated compaction/reboot or performance acceptance."
+}

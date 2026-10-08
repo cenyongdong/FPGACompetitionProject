@@ -1,0 +1,32 @@
+{
+  "status": "live_stage_passed",
+  "stage": "live-27",
+  "binary_sha256": "ec07076fdebf04b17b2fcb90b43679a02ca938ed50fabeddb304ab9ccc253fc1",
+  "package_manifest_sha256": "bdee55fcd8851d8ea14addd971c24a470421ce4b4985a00699239867844110fb",
+  "package_payloads": 403,
+  "build_sources": 34,
+  "sdk_headers": 15,
+  "vendor_files": 189,
+  "returned_hashed_files": 226,
+  "executed_runner_sha256": "c8aed40750d9e1011f6cfaca872586fb8852578aec9d5660e2a04fb30fd1da11",
+  "full_correct_forwards": 28,
+  "encoded_frames": 489,
+  "real_capture_AU_bridge": true,
+  "actual_clock_PTS": true,
+  "Engine_main_owner_alive_until_workers_joined": true,
+  "AU_high_water": 1,
+  "exit": 0,
+  "kernel_unchanged": true,
+  "network_frames": 429,
+  "network_all_sources": true,
+  "network_pixels_exact_current_capture": true,
+  "video_joint_visibility_checks": 2772,
+  "evidence_reviews_sha256": {
+    "tools\\pose-v1\\evidence\\live-20261008-r2-coordinated\\live-27.engine-review.json": "2d323c0f7767e234314d0ae96a6c220a588a339f58ad8804e5aad902ead43f9e",
+    "tools\\pose-v1\\evidence\\live-20261008-r2-coordinated\\expanded-video-review\\review.json": "a7c9edc96eb7b4e38f546f64ffa8e94e5b8ca5d7193ba1e2434b26f96169b6cc",
+    "tools\\pose-v1\\evidence\\live-20261008-r2-coordinated\\expanded-network-review\\review.json": "fb02a553124a822e70e8ec103935ad1809439b3fb8ad913faa4b88942b1659e3"
+  },
+  "complete_online_stage_verified": true,
+  "whole_system_5Hz_verified": false,
+  "long_run_verified": false
+}

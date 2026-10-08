@@ -115,6 +115,14 @@ venv/
 /tools/pose-v1/evidence/**/pose_resident_check
 /tools/pose-v1/evidence/**/pose_owned_rtsp_check
 /tools/pose-v1/evidence/**/pose_access_unit_selftest
+/tools/pose-v1/evidence/**/pose_live_pipeline_check
+/tools/pose-v1/evidence/**/pose_tcp_transport_check
+/tools/pose-v1/evidence/**/pose_failed_result_selftest
+/tools/pose-v1/evidence/**/pose_system_timing_selftest
+/tools/pose-v1/evidence/**/pose_display_worker
+/tools/pose-v1/evidence/**/pose_display_process_selftest
+/tools/pose-v1/evidence/**/pose_rtsp_pressure_check
+/tools/pose-v1/evidence/**/pose_rtsp_guarded_normal_check
 /tools/pose-v1/evidence/**/kernel-audit/amvx.ko
 /tools/pose-v1/evidence/**/*.h264
 # SDK 库的反汇编派生文本，不作为项目源码提交。

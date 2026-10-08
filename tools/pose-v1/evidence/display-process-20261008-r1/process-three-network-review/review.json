@@ -1,0 +1,2226 @@
+{
+  "status": "real_capture_RTSP_bytes_PTS_sources_pixels_verified",
+  "network_frames": 316,
+  "new_inference_sources": 4,
+  "NoInput_frames": 119,
+  "first_encoded_id": 180,
+  "last_encoded_id": 495,
+  "all_pixels_equal_current_capture": true,
+  "actual_RTP_capture_PTS": true,
+  "all_sources_present": true,
+  "records": [
+    {
+      "encoded_id": 180,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18000102,
+      "decoded_bgr_sha256": "9a138c05b142ce388532fd01658ceb9436e3d1ab7726bac17776b25c2ed36f55"
+    },
+    {
+      "encoded_id": 181,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18100086,
+      "decoded_bgr_sha256": "91b7f67a8bbfbb312c4b22e4a20861632f5e6a5a1aef7abb8fa5df02e47672d5"
+    },
+    {
+      "encoded_id": 182,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18200088,
+      "decoded_bgr_sha256": "6f819bb4f1ccf98c9f0523b5b908cbdb3856af3f89b882863fb218c1ba769631"
+    },
+    {
+      "encoded_id": 183,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18300099,
+      "decoded_bgr_sha256": "03211c94c018bfb2ede4271cd30e3e85bb50e35bf8163d128803d7a114c6fecc"
+    },
+    {
+      "encoded_id": 184,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18400126,
+      "decoded_bgr_sha256": "d0a344e9a2340c32732269c788203c8452a19dcf73c1484f34f93773aa07e61f"
+    },
+    {
+      "encoded_id": 185,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18500117,
+      "decoded_bgr_sha256": "f7f3f7f0f38db1c9ae18f3739f4b1cc4a842ddd8f95e602911265bd10ffb505d"
+    },
+    {
+      "encoded_id": 186,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18600109,
+      "decoded_bgr_sha256": "33eb24bea5fad0ef0334a40cf2bb0ab8cb28f130a2f73b139b507b13c58970dd"
+    },
+    {
+      "encoded_id": 187,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18700105,
+      "decoded_bgr_sha256": "8e0e9744fbb60533c00f6cf44f2a1abd3f3417b430e688c099ec024c712e0a3d"
+    },
+    {
+      "encoded_id": 188,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18800099,
+      "decoded_bgr_sha256": "1bf794aef922942813c37deb3c48ba8b984085312bb57df344fe41868a5bfb53"
+    },
+    {
+      "encoded_id": 189,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 18900111,
+      "decoded_bgr_sha256": "d69d16d1ffbd16859771ca519276440d03e376321122a25ec020bb84688b4776"
+    },
+    {
+      "encoded_id": 190,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19000095,
+      "decoded_bgr_sha256": "87ed36596fdcd4d25b379c5ed1674e712b08591e2798242b8e967ef2ef4f4155"
+    },
+    {
+      "encoded_id": 191,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19100097,
+      "decoded_bgr_sha256": "ee1b763f4c8e50decef45a5866c9335b02d6b3f860807224424b72d73fcccdb2"
+    },
+    {
+      "encoded_id": 192,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19200098,
+      "decoded_bgr_sha256": "3697181f464b181e242f27403db298238baabf744981cf5ef7b67d45100c900f"
+    },
+    {
+      "encoded_id": 193,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19300101,
+      "decoded_bgr_sha256": "31b18542849cb5d6da86fe8312c621d0fd359d763648496f072d3d6044658de4"
+    },
+    {
+      "encoded_id": 194,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19400090,
+      "decoded_bgr_sha256": "997e82b9fc682c5f889eeb11b3393c91bc59a93eff42689e5a6390a67b5c6e18"
+    },
+    {
+      "encoded_id": 195,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19500103,
+      "decoded_bgr_sha256": "8c8746d46080ec364834b576025caeceff2f936c3a6579f8dedc8b6b8b845c00"
+    },
+    {
+      "encoded_id": 196,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19600103,
+      "decoded_bgr_sha256": "7d8827d606c57a712fd0ad6af74be3e6cd937f44b43e8fac34606344c090417a"
+    },
+    {
+      "encoded_id": 197,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19700100,
+      "decoded_bgr_sha256": "793204a2df1f01af70b7c4c2297260efdbe4bb57b9e6d3141b788be95c813f40"
+    },
+    {
+      "encoded_id": 198,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19800098,
+      "decoded_bgr_sha256": "b3eaa39d050b3a7d8892897dab01fb76e1f20efcf66ebd303af5fe90628a15d6"
+    },
+    {
+      "encoded_id": 199,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 19900100,
+      "decoded_bgr_sha256": "14b8789022175a573d6d488f26a9ecd055072e6a76beb5936a77a92ab207c92c"
+    },
+    {
+      "encoded_id": 200,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20000090,
+      "decoded_bgr_sha256": "e70b60a772097f3fdc68f903916917b54e0c3db33f01d20cc20f310b544348bc"
+    },
+    {
+      "encoded_id": 201,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20100087,
+      "decoded_bgr_sha256": "5d03f4929852618e38064804d71ece754492ab14340785e806628d2ed0027bff"
+    },
+    {
+      "encoded_id": 202,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20200096,
+      "decoded_bgr_sha256": "8a105ed3defd325e432201f99e5bcfc6d4496060e6bcf36338c88d3fe16f2741"
+    },
+    {
+      "encoded_id": 203,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20300101,
+      "decoded_bgr_sha256": "a4bc7beafbe28e2b06ce7e7f6ee3f95459dc07e06123a288526dfbf8dab68c0c"
+    },
+    {
+      "encoded_id": 204,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20400102,
+      "decoded_bgr_sha256": "5d1c091eca6df0301356eb850ee756bebeaf5d969be950411eadac32555b9413"
+    },
+    {
+      "encoded_id": 205,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20500104,
+      "decoded_bgr_sha256": "3670ab31f82734c9b4a42253aee155521184a183c1f3fd495643c3ab0e1f763a"
+    },
+    {
+      "encoded_id": 206,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20600102,
+      "decoded_bgr_sha256": "a506e5157ff5732f099a331c7a7a2570ec908d4d8b0e11fec6984aba9e111d34"
+    },
+    {
+      "encoded_id": 207,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20700098,
+      "decoded_bgr_sha256": "978c7e1c0d629775517d0778973dc8ce5d55b3ae14604f122fbd90b881f9bd6a"
+    },
+    {
+      "encoded_id": 208,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20800100,
+      "decoded_bgr_sha256": "7aa11c256de193d2258f90afdb4cc327c4067fa12a0ccf28aa5f73c36903b10c"
+    },
+    {
+      "encoded_id": 209,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 20900098,
+      "decoded_bgr_sha256": "01009ad482b20b76cc2cf1aa5a2757ce90ab319e967f858ccb3c7bdac0bf389b"
+    },
+    {
+      "encoded_id": 210,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21000093,
+      "decoded_bgr_sha256": "1162789dc438c5bfac2539e4c1a5e907bda4c8c15772fbe4c6a2e8e0355fd607"
+    },
+    {
+      "encoded_id": 211,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21100089,
+      "decoded_bgr_sha256": "d1bbbaec204eec3b630beabf887a8ad64540f49a84d646850b893e37ea3b2094"
+    },
+    {
+      "encoded_id": 212,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21200098,
+      "decoded_bgr_sha256": "2e1c963d1779275dccdf4e94d69ffc2c2854970da9974294a9d0084c68939a15"
+    },
+    {
+      "encoded_id": 213,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21300105,
+      "decoded_bgr_sha256": "04fd05af1612180b1605c06f7d6e65fa8ddc6ec2d153e5575cd44c5938ddca35"
+    },
+    {
+      "encoded_id": 214,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21400094,
+      "decoded_bgr_sha256": "4172d8eea75aab0dc4865b96d65073292362308ee69377810467d71ef01d9004"
+    },
+    {
+      "encoded_id": 215,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21500105,
+      "decoded_bgr_sha256": "29698fb6f025671c8248c9716ba03921b5c335cda8e03d386bfc3362d460a117"
+    },
+    {
+      "encoded_id": 216,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21600113,
+      "decoded_bgr_sha256": "4516c879eeeb3df58120130485981f079f017640e1c19093cda4d2dca77cc721"
+    },
+    {
+      "encoded_id": 217,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21700142,
+      "decoded_bgr_sha256": "14d51c1a53649a245a91ad369e830431ab50879e66ae564c59ecc9a06a6dd17e"
+    },
+    {
+      "encoded_id": 218,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21800099,
+      "decoded_bgr_sha256": "c33ec41ff9ddfe1c3548e44b84571bcc38de6f26fb56506f35f90cb593a022ee"
+    },
+    {
+      "encoded_id": 219,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 21900098,
+      "decoded_bgr_sha256": "8c08d9991087ff2b585cf7ba7ba20a9f73edda459256908922ed05fc0564d1ac"
+    },
+    {
+      "encoded_id": 220,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22000092,
+      "decoded_bgr_sha256": "ec6b445f533ac111d5cd6d5e38a580627ed081688c2df8f570cf1e49ef56e0e4"
+    },
+    {
+      "encoded_id": 221,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22100105,
+      "decoded_bgr_sha256": "0bb818d03f956fe088cc8e03fed2fbf43672909158a60ca3abd5bac78a8a6fa0"
+    },
+    {
+      "encoded_id": 222,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22200110,
+      "decoded_bgr_sha256": "1d30c7dbb1b3664b35d1d3b03fbe82502629a157f013d97abac195c54788d0ba"
+    },
+    {
+      "encoded_id": 223,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22300101,
+      "decoded_bgr_sha256": "4822986137ba0d0d3b2655239eb0d6edc194a87e3c8f500cb48220fd0cc48dce"
+    },
+    {
+      "encoded_id": 224,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22400102,
+      "decoded_bgr_sha256": "23a246cc82b5c83a249a852e92ef3508d81d6e2c109b06e44c96193e59aefd8f"
+    },
+    {
+      "encoded_id": 225,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22500106,
+      "decoded_bgr_sha256": "fa892abf3540c12944c9fa58da7e153e170d6e2d8137cbad578fc4c477c62c4a"
+    },
+    {
+      "encoded_id": 226,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22600101,
+      "decoded_bgr_sha256": "df8fce1695d5e202c4e20555f1b60b423091cbaa7730caa80629551f3727b2d5"
+    },
+    {
+      "encoded_id": 227,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22700103,
+      "decoded_bgr_sha256": "8ab6f26a1df95f94ce8eac535f1acb491dca1e54864d0ecfdd29d7975d5ae698"
+    },
+    {
+      "encoded_id": 228,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22800101,
+      "decoded_bgr_sha256": "53e51ac29c2a5071f1e17c62cfd17bc5b710f8b44e533b6df0b395d46520064b"
+    },
+    {
+      "encoded_id": 229,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 22900111,
+      "decoded_bgr_sha256": "004cf45c4890c48935a83f8540b7601595986cb8391ec8ae8730bd793b246e31"
+    },
+    {
+      "encoded_id": 230,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23000089,
+      "decoded_bgr_sha256": "31730350d8edff9d0bd09053a985eacb2b95913f3bbe04cd68edee1ee68498a2"
+    },
+    {
+      "encoded_id": 231,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23100087,
+      "decoded_bgr_sha256": "1f64e7fb68d333d1774f8f2723dbfb9bfaf2c82e92dbc62afb8ca888496223ff"
+    },
+    {
+      "encoded_id": 232,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23200125,
+      "decoded_bgr_sha256": "e972bf7512cc54badc1dd3ae8a0c77b852d650d9ca27b454f52d445af9f2a5fe"
+    },
+    {
+      "encoded_id": 233,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23300103,
+      "decoded_bgr_sha256": "80904ba88509ccaf0076a70dccbe964198d826729598d12f9c000bde38f38324"
+    },
+    {
+      "encoded_id": 234,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23400103,
+      "decoded_bgr_sha256": "6dfd20e3643ecf3db1c021a4b7458e11707b4615744e127a6884873468427472"
+    },
+    {
+      "encoded_id": 235,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23500090,
+      "decoded_bgr_sha256": "2bba56f67838137463ab1be6aa682fec6897a7db37da83d15218304ade75a4f5"
+    },
+    {
+      "encoded_id": 236,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23600104,
+      "decoded_bgr_sha256": "d1de375f0deb3708d81ef4a7ac0012284cdf7c68b8ec1175cf7306eede24b54c"
+    },
+    {
+      "encoded_id": 237,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23700107,
+      "decoded_bgr_sha256": "b96b752f1d0043940755e326907e1700b362d2d318f18452cb45637fc8a3b971"
+    },
+    {
+      "encoded_id": 238,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23800100,
+      "decoded_bgr_sha256": "f81482f6dda3eaef51b0c00105985bebb41607b44e6fe032356cea60c341ec63"
+    },
+    {
+      "encoded_id": 239,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 23900097,
+      "decoded_bgr_sha256": "92b03f4ddecd1ec3c69597a56ac194772d53e28e6fb3b21e1e032cc3394d1148"
+    },
+    {
+      "encoded_id": 240,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24000090,
+      "decoded_bgr_sha256": "426c38ff8ca08cd69cf40e6e7e8e0006e821c71230f3f3496953e22e0f520e58"
+    },
+    {
+      "encoded_id": 241,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24100083,
+      "decoded_bgr_sha256": "57171d317894ea5085687f2870f96ca0362496ee7799601f95f1a472f3aa8c42"
+    },
+    {
+      "encoded_id": 242,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24200097,
+      "decoded_bgr_sha256": "137abc3104b8b08a19e27365eb660d9180640348524f0a7cfb2efc6be4073370"
+    },
+    {
+      "encoded_id": 243,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24300102,
+      "decoded_bgr_sha256": "faa4724e6f433c75d53988a79f1eddaa29fb8bb4c9593e829903aca76e39ebd2"
+    },
+    {
+      "encoded_id": 244,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24400114,
+      "decoded_bgr_sha256": "c9bfeac2fa95a24c8fdf457f5ffdb6329d411534fec5d221d8fb73d7faad9fb6"
+    },
+    {
+      "encoded_id": 245,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24500089,
+      "decoded_bgr_sha256": "c85114b61462bda9b526d107b2d0b95d3be3cbb463981d98b850b3efb5813530"
+    },
+    {
+      "encoded_id": 246,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24600107,
+      "decoded_bgr_sha256": "0018f9131b2c1e5763a19c9c80c26b6048feba77403d9edde044c9e5a89379c3"
+    },
+    {
+      "encoded_id": 247,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24700105,
+      "decoded_bgr_sha256": "5d5ca2ba561b2fde1005cede43dc70350956f3032ab4afa3369581dbc44d2108"
+    },
+    {
+      "encoded_id": 248,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24800097,
+      "decoded_bgr_sha256": "45866916c77361191c7a288e8196b77e436183362b14b6cd5a49e53ac03bfab9"
+    },
+    {
+      "encoded_id": 249,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 24900094,
+      "decoded_bgr_sha256": "406c9745c216ee916300473ecc0a93d57255c9dc8563897505113030ea7bce7d"
+    },
+    {
+      "encoded_id": 250,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25000088,
+      "decoded_bgr_sha256": "a86d7e5eea040e36a255f60cd8aba472d57800fdf31cc65a8b32bf3d3e727fee"
+    },
+    {
+      "encoded_id": 251,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25100087,
+      "decoded_bgr_sha256": "9726c9f03e14e6d2843388799f6b6da5ec502de68ea40bf243b6265dfde79b0f"
+    },
+    {
+      "encoded_id": 252,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25200100,
+      "decoded_bgr_sha256": "4e2795dc090f060d3269e626c833f1d53d4ca53be42a45e30f46548c42843699"
+    },
+    {
+      "encoded_id": 253,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25300098,
+      "decoded_bgr_sha256": "830d89b9d21874b678b7284f9f000b65f150a006c80d9388181d00cf3455dee4"
+    },
+    {
+      "encoded_id": 254,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25400098,
+      "decoded_bgr_sha256": "654e980b76b71e2db8c90cb455fe117d592580a1d9dda76e957d8a1308ba27c4"
+    },
+    {
+      "encoded_id": 255,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25500098,
+      "decoded_bgr_sha256": "20db430a81b8dad366a3fefdd5fb97c501f654ad7834795bd503d72cd106fee8"
+    },
+    {
+      "encoded_id": 256,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25600101,
+      "decoded_bgr_sha256": "63dbcdd6459250f4c89117862a2687242ca63f14237828aa20e1968352505a3a"
+    },
+    {
+      "encoded_id": 257,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25700098,
+      "decoded_bgr_sha256": "9683da2024b65ce05e7c981e7c05ffb213423f2ae1a810dc1be32d5aa5076461"
+    },
+    {
+      "encoded_id": 258,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25800098,
+      "decoded_bgr_sha256": "266d1cd54ce19c6071185f35f85be5aa23f500cfb36fb595d7560e58f9ab6aa0"
+    },
+    {
+      "encoded_id": 259,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 25900094,
+      "decoded_bgr_sha256": "e59481557e58d67eacae45134d5cba5d3678048a3bc635da6758c57e8a24815c"
+    },
+    {
+      "encoded_id": 260,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26000092,
+      "decoded_bgr_sha256": "86697d47496ba8a95d6712a8b1608d458a9355291cf354e806a58460f5c8b860"
+    },
+    {
+      "encoded_id": 261,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26100090,
+      "decoded_bgr_sha256": "bf4bdff0751d445838ca6134c762dc22fa08185fa68d1f4b47978804e92ac652"
+    },
+    {
+      "encoded_id": 262,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26200105,
+      "decoded_bgr_sha256": "66a0847fd4da81af1fa70aafbd4e4fcb32b696f5f42cc8e06e846f95f1d57855"
+    },
+    {
+      "encoded_id": 263,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26300105,
+      "decoded_bgr_sha256": "b8933a8ce33c48932271d3358112c8748226a3c71687e54e6261fbcd5ed7ae49"
+    },
+    {
+      "encoded_id": 264,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26400113,
+      "decoded_bgr_sha256": "265f24ee74d87f4fda30498b9d295485e6cfa5433b9ed4d7ca7fa564f956513a"
+    },
+    {
+      "encoded_id": 265,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26500102,
+      "decoded_bgr_sha256": "16ff0222d505c0f1aa96909b709436cbf55423b55dfa29d159f452d1f580ec1a"
+    },
+    {
+      "encoded_id": 266,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26600107,
+      "decoded_bgr_sha256": "bba76879d315f3cf216b16c0db8a9eb154aeeacedaa9711b41ad8ae10e3bb0e2"
+    },
+    {
+      "encoded_id": 267,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26700099,
+      "decoded_bgr_sha256": "2019474fa1ee315a9bc0b5b57df9643646e522f5bf1e52526cb8edf9e97b06bd"
+    },
+    {
+      "encoded_id": 268,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26800097,
+      "decoded_bgr_sha256": "c080df2784425ef4d95a12978ea81422f46af870f63f1700ae6441509f013dc2"
+    },
+    {
+      "encoded_id": 269,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 26900089,
+      "decoded_bgr_sha256": "b556f112b6626ae2502fce837c1a11a80f3ed49bc13af7e67e3834b977f62250"
+    },
+    {
+      "encoded_id": 270,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27000088,
+      "decoded_bgr_sha256": "ffd6c423219e5df25be25ef93adcc07f9f3f43f42690db341fa5295a90d8c766"
+    },
+    {
+      "encoded_id": 271,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27100106,
+      "decoded_bgr_sha256": "925dd45a48de340a1a74043376b76002dd69bd564d83d5f42204dd5c7dffeafd"
+    },
+    {
+      "encoded_id": 272,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27200112,
+      "decoded_bgr_sha256": "a191ec740a76a92e238b6e1981d59f1eee041b7e86b80808195ca78e1988f035"
+    },
+    {
+      "encoded_id": 273,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27300110,
+      "decoded_bgr_sha256": "780ac3fc4a3a355c1a65387992ef2d7c444aba42ed8b924d4d1586d84fbcaf32"
+    },
+    {
+      "encoded_id": 274,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27400110,
+      "decoded_bgr_sha256": "ed3288782c4a334c6ed0cc6d3cd30a5d10b9e65534d7944b2bf45a4e225325e0"
+    },
+    {
+      "encoded_id": 275,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27500099,
+      "decoded_bgr_sha256": "af33eade210a3bcaf3e41171306df378899fc125c03551e008caf089a2538d1e"
+    },
+    {
+      "encoded_id": 276,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27600107,
+      "decoded_bgr_sha256": "d2488deb81fc84dbb6de152bece6b800793cde90bc56674c42fe3cfda6486f5d"
+    },
+    {
+      "encoded_id": 277,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27700100,
+      "decoded_bgr_sha256": "12d39781415f2de0bfe4349634d41068a70b5ffb12bf631b522805636f750a12"
+    },
+    {
+      "encoded_id": 278,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27800097,
+      "decoded_bgr_sha256": "fb047ebb9796d35a2c32f4f5623a258519f6a2e0cbb7b4bafb814fa70254c0b7"
+    },
+    {
+      "encoded_id": 279,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 27900089,
+      "decoded_bgr_sha256": "ef43f8da61116ee90ef57693526a5217745baad1cbb8595aaa1788e0817c317e"
+    },
+    {
+      "encoded_id": 280,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28000098,
+      "decoded_bgr_sha256": "15e211c4f15925dab06252691abdb74ecdba08f6411b185f9245d040d9e2c4b1"
+    },
+    {
+      "encoded_id": 281,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28100100,
+      "decoded_bgr_sha256": "7aa53940386e441910da25994bb366183ab4d32715665a69b34e30984d34d9b4"
+    },
+    {
+      "encoded_id": 282,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28200100,
+      "decoded_bgr_sha256": "d13ea03bb8ad8fc3891c6e4d91fdffe4979445e601160eda66e9bd9e17b8e14e"
+    },
+    {
+      "encoded_id": 283,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28300098,
+      "decoded_bgr_sha256": "b10be128f5e0af4ba44b9a41c7abae89e2bf9582032cc7f92ef208b131234826"
+    },
+    {
+      "encoded_id": 284,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28400101,
+      "decoded_bgr_sha256": "a81796a7b088ba40692022c5300b92ed6d21e4bfeccf7735f748406f938a65b7"
+    },
+    {
+      "encoded_id": 285,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28500101,
+      "decoded_bgr_sha256": "44cc536212e624106f906272518827fc85eff5855c9f99c9e2af58988d51b554"
+    },
+    {
+      "encoded_id": 286,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28600104,
+      "decoded_bgr_sha256": "cce47f1736bd22030bb9e794591fe6bf0f4fd6967982b06d71fc7d21294b493e"
+    },
+    {
+      "encoded_id": 287,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28700097,
+      "decoded_bgr_sha256": "e57ef8c9305e823549c8afb29746bd8fcaea55b3b00404b2967289e80466129c"
+    },
+    {
+      "encoded_id": 288,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28800085,
+      "decoded_bgr_sha256": "1166e151d171425c8e98b5f0d42e687ad7311aafdc36baf022143d0a37e1bb59"
+    },
+    {
+      "encoded_id": 289,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 28900093,
+      "decoded_bgr_sha256": "2a18d144e3842006603acb733c09e1f15632005f7571cb41d67db266fffe810c"
+    },
+    {
+      "encoded_id": 290,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 29000103,
+      "decoded_bgr_sha256": "e5b2416177619804c4c4d16dfad7c9c81a2c74176baa094ae6ef898673c3156f"
+    },
+    {
+      "encoded_id": 291,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 29100081,
+      "decoded_bgr_sha256": "e6ef2a2d1ca1c807af45df96fdc00545fe48dbc7ee3844b2494b0c9beaa3e003"
+    },
+    {
+      "encoded_id": 292,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 29200088,
+      "decoded_bgr_sha256": "0ec56d1ce409532a4e6da4707b5a1c7ebd05299480ad9aa03c9a6fcaba7295cb"
+    },
+    {
+      "encoded_id": 293,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 29300079,
+      "decoded_bgr_sha256": "79faf025d3a1458d9cf6b4bc7b42be3113aa3f5e333199f5833a1d18f3a58cc6"
+    },
+    {
+      "encoded_id": 294,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 29400073,
+      "decoded_bgr_sha256": "76ff4e91b8dcdf1794e53305669bcd9bb6604ee08010b3019e54cc2461df8fe6"
+    },
+    {
+      "encoded_id": 295,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 29500077,
+      "decoded_bgr_sha256": "6e272ccb93437a3328a101e2fdcd9b6c161cb2eca591e22fcfaba56c19aa34d4"
+    },
+    {
+      "encoded_id": 296,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 29600077,
+      "decoded_bgr_sha256": "5944311cfbc0be48b494844d8d3eb0b76b13cdc9b6b1771ed96183cf123c8cac"
+    },
+    {
+      "encoded_id": 297,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 29700072,
+      "decoded_bgr_sha256": "bff8e0b953b55664ee6afa5401c1a6a24f88975821e4c9b15979abf6c2f954a6"
+    },
+    {
+      "encoded_id": 298,
+      "source_frame_id": 0,
+      "invocation": null,
+      "capture_pts_us": 29803163,
+      "decoded_bgr_sha256": "07b7a1bb41497eff0e518c9d0f5dc9df5a782dbd65bb535b9361c4555b326ace"
+    },
+    {
+      "encoded_id": 299,
+      "source_frame_id": 100000,
+      "invocation": 0,
+      "capture_pts_us": 29900493,
+      "decoded_bgr_sha256": "5ac60a8c12e1561e1f14557bf29219072b9998acf21d4d35724d9ec8b64f3f9a"
+    },
+    {
+      "encoded_id": 300,
+      "source_frame_id": 100000,
+      "invocation": 0,
+      "capture_pts_us": 30000069,
+      "decoded_bgr_sha256": "09058dca6037f1d994041a1e6bd98c2c9b2fedb1b3ff410b9987547a45854467"
+    },
+    {
+      "encoded_id": 301,
+      "source_frame_id": 100000,
+      "invocation": 0,
+      "capture_pts_us": 30100065,
+      "decoded_bgr_sha256": "acfbd9041193a00259c7f05f6462053e0501166cccb66012cd0df6c0e81a96de"
+    },
+    {
+      "encoded_id": 302,
+      "source_frame_id": 100000,
+      "invocation": 0,
+      "capture_pts_us": 30200069,
+      "decoded_bgr_sha256": "f6cc43be367b34be26a29eeb3b22b24b316d3434a2a45a455b48938aba3366b6"
+    },
+    {
+      "encoded_id": 303,
+      "source_frame_id": 100000,
+      "invocation": 0,
+      "capture_pts_us": 30300075,
+      "decoded_bgr_sha256": "fbc8db863f128528ef8b6293cab0fc547af5f1a5bd15230207cfe1851f137e64"
+    },
+    {
+      "encoded_id": 304,
+      "source_frame_id": 100001,
+      "invocation": 1,
+      "capture_pts_us": 30400074,
+      "decoded_bgr_sha256": "d94367862e61ba253e09bc164210c7b2cf0ee5d923fb0c408714db9535a910ca"
+    },
+    {
+      "encoded_id": 305,
+      "source_frame_id": 100001,
+      "invocation": 1,
+      "capture_pts_us": 30500070,
+      "decoded_bgr_sha256": "95cf04d742abe59450d0e2df3e4c3f0cdc6c31cd2799a57155a44fc8db8033e6"
+    },
+    {
+      "encoded_id": 306,
+      "source_frame_id": 100001,
+      "invocation": 1,
+      "capture_pts_us": 30600081,
+      "decoded_bgr_sha256": "e9ec59e02e6d22eea34fb3e30397ad89310abf3c2202a6b16ea5418073c4dd0b"
+    },
+    {
+      "encoded_id": 307,
+      "source_frame_id": 100001,
+      "invocation": 1,
+      "capture_pts_us": 30700107,
+      "decoded_bgr_sha256": "2119464f29de652671d27aab662af2f0f207851fc861a2d5e73faf7aab46b9db"
+    },
+    {
+      "encoded_id": 308,
+      "source_frame_id": 100001,
+      "invocation": 1,
+      "capture_pts_us": 30800075,
+      "decoded_bgr_sha256": "9585ebe0623b5e8af67f5ca2fe07ce82a973654fb109a381770b40af0ec33325"
+    },
+    {
+      "encoded_id": 309,
+      "source_frame_id": 100002,
+      "invocation": 2,
+      "capture_pts_us": 30900105,
+      "decoded_bgr_sha256": "2e7629ffeb57e91b10553cb5b9662e2127d39b8c9f80097ba75146ad0f0b2b5e"
+    },
+    {
+      "encoded_id": 310,
+      "source_frame_id": 100002,
+      "invocation": 2,
+      "capture_pts_us": 31000068,
+      "decoded_bgr_sha256": "f71e42bcc3ed55e5d97c118a21cd64f0ff9e2b46d4b0a141249106435ba33b2c"
+    },
+    {
+      "encoded_id": 311,
+      "source_frame_id": 100002,
+      "invocation": 2,
+      "capture_pts_us": 31100071,
+      "decoded_bgr_sha256": "cc26b4030ea54af3d208c5afa40e38ea45c083a41cce9fc683bf029d68a084a3"
+    },
+    {
+      "encoded_id": 312,
+      "source_frame_id": 100002,
+      "invocation": 2,
+      "capture_pts_us": 31200075,
+      "decoded_bgr_sha256": "214654b14d6161b247a0321b3abf979fcd0d1d200ae610c2a171e853d77c812e"
+    },
+    {
+      "encoded_id": 313,
+      "source_frame_id": 100002,
+      "invocation": 2,
+      "capture_pts_us": 31300069,
+      "decoded_bgr_sha256": "b5c538b05ba1538af3b7042e0b34272887d41e05082dda3064b4b6c25260fe85"
+    },
+    {
+      "encoded_id": 314,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 31400077,
+      "decoded_bgr_sha256": "f71b7518dbbce3a2668dd5323a37c27a7f235d8617feba8a52467b81308e6397"
+    },
+    {
+      "encoded_id": 315,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 31500076,
+      "decoded_bgr_sha256": "3b3610e337d94aaf5f52eba050916ec0fdd0d245ad2cc9a24a4f7cf8be933ad6"
+    },
+    {
+      "encoded_id": 316,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 31600068,
+      "decoded_bgr_sha256": "e90ddacad95f0944c01f968e5bada05e46759bea170964761d8402966792686e"
+    },
+    {
+      "encoded_id": 317,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 31700079,
+      "decoded_bgr_sha256": "ccd8bbc9618c29baea34c9c10cccb4cdc81fc4cf85eaeea4a33a86963d3cf9ad"
+    },
+    {
+      "encoded_id": 318,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 31800086,
+      "decoded_bgr_sha256": "ec682f8963609105e79ad318d69da564ae6beca9913fe9ec7bad7dc5bebc8b4c"
+    },
+    {
+      "encoded_id": 319,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 31900068,
+      "decoded_bgr_sha256": "b88a739bb8228d29af1095c585e58f2ee65ed2250b148ab9b1aeee3e17214c4d"
+    },
+    {
+      "encoded_id": 320,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32000078,
+      "decoded_bgr_sha256": "0a4574e7727a7b2741e1b7a02b7df68181843265300ddfc56f8094e480315d05"
+    },
+    {
+      "encoded_id": 321,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32100071,
+      "decoded_bgr_sha256": "71a71aa8b41b8ceb8a972ae52dbbc10c51462bf6bcd8cefd6080095572c0d311"
+    },
+    {
+      "encoded_id": 322,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32200069,
+      "decoded_bgr_sha256": "0cec78fd6baacbfb06379dc2526dc39a931ccda8f1d45fe3abfb064f60bf4c7a"
+    },
+    {
+      "encoded_id": 323,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32300071,
+      "decoded_bgr_sha256": "9479a99208dcc2c9390c87bbf31b6146a63c66c7bf428287b05d10883bc9e220"
+    },
+    {
+      "encoded_id": 324,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32400070,
+      "decoded_bgr_sha256": "89c793e3f2ad238dc5fda93bea7f8d945608b13fb6f38265bf49d6e5417ef554"
+    },
+    {
+      "encoded_id": 325,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32500078,
+      "decoded_bgr_sha256": "0842e823b06c968c6745b8b1219c73f72b77ba01638f15b3e3e2806f5049da31"
+    },
+    {
+      "encoded_id": 326,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32600071,
+      "decoded_bgr_sha256": "7c705895bf3d1b0ba78ba70649a0d9d50701d81bc3e4a762df765e99eb9ad41f"
+    },
+    {
+      "encoded_id": 327,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32700073,
+      "decoded_bgr_sha256": "020a091aa915dc9d494da6296eec8181b7c20cb0476bf4bcc6aa84429cacf64b"
+    },
+    {
+      "encoded_id": 328,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32800068,
+      "decoded_bgr_sha256": "2dfd8ecb9ebdc27803e8c71aa1f9bb49c7e2210e6b080f38371473d871b425bd"
+    },
+    {
+      "encoded_id": 329,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 32900087,
+      "decoded_bgr_sha256": "2aa4176e43e044e9123f16d897da8fe7a484929edf48955c1fc64c839157bdd2"
+    },
+    {
+      "encoded_id": 330,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33000083,
+      "decoded_bgr_sha256": "460f541c4d609a55d386d4d8f93a10ca810d3ad156ef72a23eff572f08642654"
+    },
+    {
+      "encoded_id": 331,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33100067,
+      "decoded_bgr_sha256": "60c2589edfbd2427f9947a4c41bba7d7ba217d3a9a263c709b7314fbc240cc52"
+    },
+    {
+      "encoded_id": 332,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33200076,
+      "decoded_bgr_sha256": "0df66e608d6db02dfb7b1b31b15e3c2ae3fc6f5af02aa86362dfe75e6cf099db"
+    },
+    {
+      "encoded_id": 333,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33300078,
+      "decoded_bgr_sha256": "17c3a838c1a84a319946cd0c794a773eba53fd99a7afc2190c627d8e3c866a69"
+    },
+    {
+      "encoded_id": 334,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33400070,
+      "decoded_bgr_sha256": "6e9d8f8c3038b5784ba7756e1f07b52a77bfaa9bb32631b1282beb79e0fbf8c8"
+    },
+    {
+      "encoded_id": 335,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33500133,
+      "decoded_bgr_sha256": "698ba74982a0f009d67eec5b36130713911d721f7ccd9450401555ba29f20bdb"
+    },
+    {
+      "encoded_id": 336,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33600072,
+      "decoded_bgr_sha256": "38ad6c79fe4bfff545b0d88e6fe030e47f022c3c3c1a60f77a99828c7b73d6d0"
+    },
+    {
+      "encoded_id": 337,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33700081,
+      "decoded_bgr_sha256": "e36ec7c3678b5f2a5b732caa3a22258d5014247ab05cb7431b969850f15e560d"
+    },
+    {
+      "encoded_id": 338,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33800099,
+      "decoded_bgr_sha256": "42b2ba5ab58f93ce2676f74084f522433eebfb0e7f2615f924c881360c77939f"
+    },
+    {
+      "encoded_id": 339,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 33900089,
+      "decoded_bgr_sha256": "adc6c8796aa5816faabda2fefa69054bcbc18675cf09f6ecd4e727e44f5d5384"
+    },
+    {
+      "encoded_id": 340,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34000070,
+      "decoded_bgr_sha256": "dc97a0c1f4fe6514d8cf8e0f6c2d69fea98ba92db190aa460d9ebbb65ee6a839"
+    },
+    {
+      "encoded_id": 341,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34100075,
+      "decoded_bgr_sha256": "3377c13c428684d379b7c1fe6d4dff6bd9e2e36602ed446716eefe2c95b4c955"
+    },
+    {
+      "encoded_id": 342,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34200086,
+      "decoded_bgr_sha256": "2637a485d9e6150ad21f4481f12d5da34569e2d3e1acfb8d17ceb07d0368e84e"
+    },
+    {
+      "encoded_id": 343,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34300074,
+      "decoded_bgr_sha256": "2f7b229c734919894b1358087953a806957938c4664cf086f512a41636d96637"
+    },
+    {
+      "encoded_id": 344,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34400070,
+      "decoded_bgr_sha256": "552463f46a168a08434b025287042187ba6bbb58b24d7210edcee241a0653e3b"
+    },
+    {
+      "encoded_id": 345,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34500102,
+      "decoded_bgr_sha256": "39c93d1037d0fefde460c9d02396c91302a435da45fa702e39b5b945195aa5a3"
+    },
+    {
+      "encoded_id": 346,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34600077,
+      "decoded_bgr_sha256": "f0dfd910f238bf85d06c397bfeddc858ca2baeedfd39016053cb4a959692ce4f"
+    },
+    {
+      "encoded_id": 347,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34700084,
+      "decoded_bgr_sha256": "bee0caac3a020ebc61a15a1394f427342925176dc103375e4a5f22bf9b215c93"
+    },
+    {
+      "encoded_id": 348,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34800072,
+      "decoded_bgr_sha256": "442f5749f0588ee91cb029db808f2172a7603ae1e8c0d218cfbe6a5bb9f82c77"
+    },
+    {
+      "encoded_id": 349,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 34900070,
+      "decoded_bgr_sha256": "ab0b4e84c21b7be270ba8decb1dc104d0c10cf0a596ab71651296d5d79fa601c"
+    },
+    {
+      "encoded_id": 350,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35000073,
+      "decoded_bgr_sha256": "12daf0b42da97148f7a6f5b61071a1f544ed1d1f43968e21e1583a0aaa6f47e9"
+    },
+    {
+      "encoded_id": 351,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35100072,
+      "decoded_bgr_sha256": "49813e8869f3c1c1cca57fe18d5a0b345971ef885cb2ef408c583cfd3c9ebdc8"
+    },
+    {
+      "encoded_id": 352,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35200070,
+      "decoded_bgr_sha256": "dfe0eb478e8df0f9efb00bb36fbc808876381cef1a01dca7c18404546d60b8f7"
+    },
+    {
+      "encoded_id": 353,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35300072,
+      "decoded_bgr_sha256": "8ed1284e8752bca6d65f5a3e8e16fbbc3759d1cd4c9397ba09c1b0b8a3129c7b"
+    },
+    {
+      "encoded_id": 354,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35400087,
+      "decoded_bgr_sha256": "89dffb9affcadd4a294f9382e6e09191489602b816299f8d189350425f0d6002"
+    },
+    {
+      "encoded_id": 355,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35500067,
+      "decoded_bgr_sha256": "3341e93a853e4e23cfd16c58bbb354d1263b25ec46de86a24aa2da12999d29d9"
+    },
+    {
+      "encoded_id": 356,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35600077,
+      "decoded_bgr_sha256": "12f6f73bc350784b37ec7f4a7875e3c9249711e5f63fa31649593f91e6b37d69"
+    },
+    {
+      "encoded_id": 357,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35700080,
+      "decoded_bgr_sha256": "adecfbf64b691010a2a6fa07e165aa148ac8ee2115964e2478cacff62ea8b389"
+    },
+    {
+      "encoded_id": 358,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35800068,
+      "decoded_bgr_sha256": "d536e0dfeee1cf0572d6aa304e8a780c8b7f4c078a451c0a9934fb17940107ca"
+    },
+    {
+      "encoded_id": 359,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 35900077,
+      "decoded_bgr_sha256": "58d1aad26731cdd4585ca33a5d2c18931fa23efaf722966ac7992326da5371ed"
+    },
+    {
+      "encoded_id": 360,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36000101,
+      "decoded_bgr_sha256": "2aa6500f8e39c2fd2517761c8a16ba9f730e1340496ffed6b5c4bf99756dd699"
+    },
+    {
+      "encoded_id": 361,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36100071,
+      "decoded_bgr_sha256": "0b4411dd6d35145fa4ee4f252c31a94847dcedc332762f30235a24dd60ae4a4e"
+    },
+    {
+      "encoded_id": 362,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36200073,
+      "decoded_bgr_sha256": "e3a25a96f6d3d9015408ad56de718fd0125461e1110ee7d4e0cb19459e0ed825"
+    },
+    {
+      "encoded_id": 363,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36300074,
+      "decoded_bgr_sha256": "ed2786f1b55a110cd202fb6692998ef7f5c492b121343a53bb9f91a19ee51609"
+    },
+    {
+      "encoded_id": 364,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36400068,
+      "decoded_bgr_sha256": "1287269f7ae33a8f587de9742ea4fd29257fa3b1ea898846df5cefd8d74dfede"
+    },
+    {
+      "encoded_id": 365,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36500073,
+      "decoded_bgr_sha256": "d8639a2b7eaadd726053a42626b13298d974fbea14a7806533da6680b180abe5"
+    },
+    {
+      "encoded_id": 366,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36600072,
+      "decoded_bgr_sha256": "903473e1a6462d671119a433a00ecab21d60aa246e9905ea3ddfa076baa4c178"
+    },
+    {
+      "encoded_id": 367,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36700077,
+      "decoded_bgr_sha256": "14a9dafe643e699196a9edea469424476bc5ba559bd30fb338c4389fb8777498"
+    },
+    {
+      "encoded_id": 368,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36800082,
+      "decoded_bgr_sha256": "77639917c61a82b04827425deb33525701378db1973216476735e1d67534b90d"
+    },
+    {
+      "encoded_id": 369,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 36900088,
+      "decoded_bgr_sha256": "b0db55ca603880564a000e53fdce1a0faa146e28cac9d7b5987404a04f9382bb"
+    },
+    {
+      "encoded_id": 370,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37000068,
+      "decoded_bgr_sha256": "e896a3e57de4add74c14918f4af8ff4424a0071701c141691751c3c4373271e3"
+    },
+    {
+      "encoded_id": 371,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37100086,
+      "decoded_bgr_sha256": "066e4bbff665d344e8dd702c0b52d4d998daad53105642502cb6ceb6e0d60f5e"
+    },
+    {
+      "encoded_id": 372,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37200087,
+      "decoded_bgr_sha256": "aff97b73ea8b61a75773826be5e4eb9dd8d2be7a6774d071c417e2926bb2db89"
+    },
+    {
+      "encoded_id": 373,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37300067,
+      "decoded_bgr_sha256": "fae45c7ad8388b64b323d915ca0cba288c6ef531601bd904a100eb56651ccfec"
+    },
+    {
+      "encoded_id": 374,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37400081,
+      "decoded_bgr_sha256": "fb6e16a1884675924d43d6d3cc9d384ae2b45377bee53d467e6f6e37101cde9f"
+    },
+    {
+      "encoded_id": 375,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37500090,
+      "decoded_bgr_sha256": "77bcb4260d405f36a26e8027e32eefd5d93affc4611540c5931e373eaaeba9cd"
+    },
+    {
+      "encoded_id": 376,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37600070,
+      "decoded_bgr_sha256": "db3a8521feba2863ec0452f29dbd3995ae47cadc931b6d71e0e892955c8748f0"
+    },
+    {
+      "encoded_id": 377,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37700098,
+      "decoded_bgr_sha256": "5380dae4899fc3c667e15abdfc52130d95054337f5946f5043a74936641ecef8"
+    },
+    {
+      "encoded_id": 378,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37800074,
+      "decoded_bgr_sha256": "1c176bb3e8d10d2aa8182d637858059ccec7054fe7a6067faca523f8259f888b"
+    },
+    {
+      "encoded_id": 379,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 37900068,
+      "decoded_bgr_sha256": "641094de35abec3d23a991bd464f168c62ac8a37d37147d106efd49e1d2da107"
+    },
+    {
+      "encoded_id": 380,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38000072,
+      "decoded_bgr_sha256": "48637e2ca46518451f51086f60101fcd6ea4f4d32d9116b3e8414f831e3dba6e"
+    },
+    {
+      "encoded_id": 381,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38100070,
+      "decoded_bgr_sha256": "d8c3d3bf50bc3dd0b862e35be7a612c3d979f36820cd2a9e9458956b6e35e541"
+    },
+    {
+      "encoded_id": 382,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38200068,
+      "decoded_bgr_sha256": "2a242d3b416c36141b35cf9845ea5c2d7d8d3dac63d5bff99ae112e4291f7343"
+    },
+    {
+      "encoded_id": 383,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38300070,
+      "decoded_bgr_sha256": "98b6d4c8cf05fce62776746814c89163cbcc093a67e230dbbba52380e9ca296e"
+    },
+    {
+      "encoded_id": 384,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38400088,
+      "decoded_bgr_sha256": "303faedc486bf3b8a66ee39cf85414ee7c2862468d611cacbd041121fb73aaa1"
+    },
+    {
+      "encoded_id": 385,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38500068,
+      "decoded_bgr_sha256": "783dbbe6be26ed99d092cbd641a344a4d139738348e6d9ccd8a38b9b86e31c5f"
+    },
+    {
+      "encoded_id": 386,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38600075,
+      "decoded_bgr_sha256": "d670e38c00fab16b4927b116830b234970eb9ee77e4c891068be5c29a53ebb4e"
+    },
+    {
+      "encoded_id": 387,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38700101,
+      "decoded_bgr_sha256": "eb0290fc9acbb65e30de9f0f113b5ac3a4ffa22d98beb77ffe51dd255ca7ebdb"
+    },
+    {
+      "encoded_id": 388,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38800072,
+      "decoded_bgr_sha256": "66c1d52359d49690cbe5f8194ce4c912cf59a671002aaf6ce848806d27718797"
+    },
+    {
+      "encoded_id": 389,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 38900086,
+      "decoded_bgr_sha256": "1ae32fa5cb49f80c54a243a824ffc8e295f17183929ac16af7d34fbaf04bdaf4"
+    },
+    {
+      "encoded_id": 390,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39000078,
+      "decoded_bgr_sha256": "069c87e333f04eaa0492b7298e415ff095d1258a9aeb095a32662cb6b521bf07"
+    },
+    {
+      "encoded_id": 391,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39100069,
+      "decoded_bgr_sha256": "6c1335407a25b4700b7e6aaa9cf5298fe59b9c36cfb58e3cb343106b386002b5"
+    },
+    {
+      "encoded_id": 392,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39200084,
+      "decoded_bgr_sha256": "5257d3dd85c19165905a6869fd39997aa4195f38aa40999312de0b9794d61c95"
+    },
+    {
+      "encoded_id": 393,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39300077,
+      "decoded_bgr_sha256": "68d85e16ab5d125a096413e657c8c33200aa1ba72222821b6610414e5be7ba80"
+    },
+    {
+      "encoded_id": 394,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39400069,
+      "decoded_bgr_sha256": "33770c12f918b6d70b7cd72fcd6714514c0e3fa1af327075f6049ded7b0f63a3"
+    },
+    {
+      "encoded_id": 395,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39500072,
+      "decoded_bgr_sha256": "8551d5d8a87d31facb4aeb62d5bdc1f89fb1d3ef07958b5f69ff7d7704d20700"
+    },
+    {
+      "encoded_id": 396,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39600076,
+      "decoded_bgr_sha256": "ace199fbbc26fa8ebdfcc892a10fedd596d6bd49039f4f7bf9d192607f5a1aed"
+    },
+    {
+      "encoded_id": 397,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39700070,
+      "decoded_bgr_sha256": "3952c50f808011a7ca7c11a64d5418342b2310b0a0c317a0f6e081134b16c509"
+    },
+    {
+      "encoded_id": 398,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39800082,
+      "decoded_bgr_sha256": "84e90d57c4f108daa0043e18316c2053a724a5a308d3c6b52da26663c5731a06"
+    },
+    {
+      "encoded_id": 399,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 39900084,
+      "decoded_bgr_sha256": "40e098f6de2232f1ee3a4171276d696e3cd8f9b7264181cca5aecf63ce201105"
+    },
+    {
+      "encoded_id": 400,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40000067,
+      "decoded_bgr_sha256": "a1f46e1f2bc6709cdbbf2d9b0f0248e8687b71e4d95e4856769b31ca2c30c3ec"
+    },
+    {
+      "encoded_id": 401,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40100087,
+      "decoded_bgr_sha256": "c867eb8126c337be3db05eef69c0979df1889cd8ce68a810ffda1f3800457d82"
+    },
+    {
+      "encoded_id": 402,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40200087,
+      "decoded_bgr_sha256": "59c098ab743b629ab37d5eb6dbcea851034f400b1531e37b944de403103390fb"
+    },
+    {
+      "encoded_id": 403,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40300068,
+      "decoded_bgr_sha256": "09fad043958b7acd9f415a720a0f8662c592d82826a57dbb715f365ac2529eae"
+    },
+    {
+      "encoded_id": 404,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40400092,
+      "decoded_bgr_sha256": "856ef75c75621649e60cffef1415b791505b7d39ea045e421dd6f61b5ee90763"
+    },
+    {
+      "encoded_id": 405,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40500089,
+      "decoded_bgr_sha256": "13e160736e0a0bbdac05fbc6359f1f49ea7cc868d3a66865c80a345ef55c7520"
+    },
+    {
+      "encoded_id": 406,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40600069,
+      "decoded_bgr_sha256": "a67452e2363f23cabba4d9c4c2adc26ac79b36cf79f2a440c5d1c7b4d7a28630"
+    },
+    {
+      "encoded_id": 407,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40700093,
+      "decoded_bgr_sha256": "8a21b602c6a489056d7fe85a63528c15dd26ef2ee792fe16c96edef6fd891112"
+    },
+    {
+      "encoded_id": 408,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40800118,
+      "decoded_bgr_sha256": "3fc0ae83ed46acbefdff9aa47f63960a959382e39989caec7e63e28ace563378"
+    },
+    {
+      "encoded_id": 409,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 40900067,
+      "decoded_bgr_sha256": "d387c5b1723524c95e1ab00ba59413ab98879b620a4762436769da56b9b67a0f"
+    },
+    {
+      "encoded_id": 410,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41000071,
+      "decoded_bgr_sha256": "d7d562ea99cdf9af477238f3f5e8a1f77ce69fb0d8d37920430f147111be820f"
+    },
+    {
+      "encoded_id": 411,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41100086,
+      "decoded_bgr_sha256": "2788f22c60ed1f3c387f79113e5fe9e742ceed27f9885bf81bc3457c0d93737a"
+    },
+    {
+      "encoded_id": 412,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41200070,
+      "decoded_bgr_sha256": "09f61f311dd259cbb569bc51dc1802e092692afca8803511a7bedf05ac2f794c"
+    },
+    {
+      "encoded_id": 413,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41300072,
+      "decoded_bgr_sha256": "cdc911f0774449f35ff488e342f3a5eff815e54e3cf1a4c9aebff6c443fb80b2"
+    },
+    {
+      "encoded_id": 414,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41400074,
+      "decoded_bgr_sha256": "75808172aa54f12237d101beb8874265628247b4bba65bbdfc7bf20f601b4a2e"
+    },
+    {
+      "encoded_id": 415,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41500078,
+      "decoded_bgr_sha256": "d43655ed84b8346acfbe56ead621a2fca43329bf2243d7088b7e82bd8bfc91a4"
+    },
+    {
+      "encoded_id": 416,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41600074,
+      "decoded_bgr_sha256": "f3edf2522cf3d73252b8d72cb33f6e3ca20e3ed62b5f24aeca3d2360e2375c04"
+    },
+    {
+      "encoded_id": 417,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41700077,
+      "decoded_bgr_sha256": "1175f3195bdfd7a9785166735a4bb711455209a78a2c86f5b199128252344946"
+    },
+    {
+      "encoded_id": 418,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41800076,
+      "decoded_bgr_sha256": "c030aa829820f1ce1b007b3ea49dcc59a37b1245aed3a894ed9665f156775f87"
+    },
+    {
+      "encoded_id": 419,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 41900083,
+      "decoded_bgr_sha256": "3d432e4260e7744ebbfa9ff504e2258f6907c1551e6508303b2957bf86cf3408"
+    },
+    {
+      "encoded_id": 420,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42000078,
+      "decoded_bgr_sha256": "6d12aae06ef9f0bd5896dbdc0a54ea9bf210c4fb6f7dcd172f791530081fe073"
+    },
+    {
+      "encoded_id": 421,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42100070,
+      "decoded_bgr_sha256": "0823368149ea0f4188d14bf87628f3330d520da5555b34696111b75af8e43769"
+    },
+    {
+      "encoded_id": 422,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42200078,
+      "decoded_bgr_sha256": "79f3beeb87270b1964b4b33233c0d0279cbcca75a163d2367a961055d6f2e257"
+    },
+    {
+      "encoded_id": 423,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42300078,
+      "decoded_bgr_sha256": "a181468a51e4b1d6ecf099eb7b9f0d7197dcd8b5ea7e38d6753658a8e9270a39"
+    },
+    {
+      "encoded_id": 424,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42400070,
+      "decoded_bgr_sha256": "70eb22cd0bcb42ac5e2231b46a4e15b486486cc60759f8aded5c410b669e3328"
+    },
+    {
+      "encoded_id": 425,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42500072,
+      "decoded_bgr_sha256": "57494d32ad1317fa1d6906767ce3b81935501308591010a77b629d9a688d9211"
+    },
+    {
+      "encoded_id": 426,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42600073,
+      "decoded_bgr_sha256": "91467f475a273915518240f6f8a1d8a40f9aab5fecce60589219e77352fd010d"
+    },
+    {
+      "encoded_id": 427,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42700070,
+      "decoded_bgr_sha256": "73a13905b3bced94a5ec8b64e0260651a9d21bf7457ee4cceb635dc21fef9252"
+    },
+    {
+      "encoded_id": 428,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42800079,
+      "decoded_bgr_sha256": "fe703d9d2a4af4d2cc283aab9a6d00eefcc67c307355caa2ebd9ed0c5d501413"
+    },
+    {
+      "encoded_id": 429,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 42900076,
+      "decoded_bgr_sha256": "7c2b843260c967adbce2f96c0b68804411eb5e258dbd7522b2236ee7af62bd5f"
+    },
+    {
+      "encoded_id": 430,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43000073,
+      "decoded_bgr_sha256": "f2eabe3107d418d80f2ff605cbdad569550acaec88e2e44bedf3a71f57925ea2"
+    },
+    {
+      "encoded_id": 431,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43100077,
+      "decoded_bgr_sha256": "bc6eabbb1fe2444e9535c22bb5f6f69f8a58f30620259c15fd174d9e9b268c7b"
+    },
+    {
+      "encoded_id": 432,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43200074,
+      "decoded_bgr_sha256": "0fe359b64bcea01b39191eae1e4a804218bb013a8704ed6173b41fdfd4168157"
+    },
+    {
+      "encoded_id": 433,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43300070,
+      "decoded_bgr_sha256": "7d10cc67104218d74c2cd1f22e1f1ce6584e14d41542f254a1477dd8305e709d"
+    },
+    {
+      "encoded_id": 434,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43400077,
+      "decoded_bgr_sha256": "6e58bdb1c506a49565c45ffffd0f5f208b9c5e3db6b8e1efc1cd632ab1b860a7"
+    },
+    {
+      "encoded_id": 435,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43500070,
+      "decoded_bgr_sha256": "5811f69551fa11b34a60e1219ab8267812f7c678835cbcebf185ee9ea43b40fb"
+    },
+    {
+      "encoded_id": 436,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43600074,
+      "decoded_bgr_sha256": "ca6757f46537775a3ab351b6e5a6596cff2913f6cdc3a6994bf9f23fc676e2bd"
+    },
+    {
+      "encoded_id": 437,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43700079,
+      "decoded_bgr_sha256": "9a6302a4e2011bd8f58f3fe13fa23333e6dd6570ce7f4c184e8f34c85caed6c7"
+    },
+    {
+      "encoded_id": 438,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43800082,
+      "decoded_bgr_sha256": "18da004cbcb880252806d289791d34de718f59f3cadad7d466a90626ff912681"
+    },
+    {
+      "encoded_id": 439,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 43900069,
+      "decoded_bgr_sha256": "31c11d57ea412f018d9422e8706ae8eeb835aa221c0a74164807a716205ef7b5"
+    },
+    {
+      "encoded_id": 440,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44000097,
+      "decoded_bgr_sha256": "078839608a947a627274cb8562894ba61478fa5775d452047d0af3b37c4f73ea"
+    },
+    {
+      "encoded_id": 441,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44100075,
+      "decoded_bgr_sha256": "4333263be6a0fc13e0e1d5df1993c989fe35d096658e784ac614c6c3384faff8"
+    },
+    {
+      "encoded_id": 442,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44200068,
+      "decoded_bgr_sha256": "842eb010a563cb9eb690bffcb91cc0cd5277a350d7d05c5a01f7142cfc671317"
+    },
+    {
+      "encoded_id": 443,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44300070,
+      "decoded_bgr_sha256": "1b3dd12a4bb3957f41a1e3518b2f58a51a08d76bad987979d447034fdc4cdf9e"
+    },
+    {
+      "encoded_id": 444,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44400076,
+      "decoded_bgr_sha256": "5ff8d9ceaa543ebf805a82fc4a5686e7979be964735428adba82b72f084f01ac"
+    },
+    {
+      "encoded_id": 445,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44500068,
+      "decoded_bgr_sha256": "1c54c3453b16d1ad93bdc1f4cae28258ab8efac530c58b9023cb3edcb5c71aea"
+    },
+    {
+      "encoded_id": 446,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44600072,
+      "decoded_bgr_sha256": "0af901f082e14a06a91999d5f09a2ebea43860978bfd0aa774d212901858f0b9"
+    },
+    {
+      "encoded_id": 447,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44700083,
+      "decoded_bgr_sha256": "6ab0d4b3029b667157879e6165476be127c83b9c7d0afe95a9cce09cba192474"
+    },
+    {
+      "encoded_id": 448,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44800080,
+      "decoded_bgr_sha256": "96b3831ba01defe5783547c52878d9ac7316238f35bea015097259775370cef7"
+    },
+    {
+      "encoded_id": 449,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 44900078,
+      "decoded_bgr_sha256": "57738139c1035a64fdf8ffad0560c7015e7ccdb648d2ccc73461cfdbcefd363e"
+    },
+    {
+      "encoded_id": 450,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45000089,
+      "decoded_bgr_sha256": "4a108dd826a77cbe114c5e58bef1fca5d42fa5d0e49947aa8fe53a66bc9368fd"
+    },
+    {
+      "encoded_id": 451,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45100069,
+      "decoded_bgr_sha256": "d8e8a1ebbc7806c5c20d0e6e9476db5bcd3cb5cf9190fdddf83fb998bbbdddfb"
+    },
+    {
+      "encoded_id": 452,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45200072,
+      "decoded_bgr_sha256": "f86e8d0c656a8a6aa628e366bd928d03d9f8eb81df5dd278104ea15fd2454efe"
+    },
+    {
+      "encoded_id": 453,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45300071,
+      "decoded_bgr_sha256": "a86c8d1e88eacd3b10d9eb4aeba89bfc434459ca0d0f07faa2f1028673200baf"
+    },
+    {
+      "encoded_id": 454,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45400068,
+      "decoded_bgr_sha256": "d00e4c1d0ef6aee4a4e99b79cf3b46b6f5dfaf49aafa73f48443e934ce9081d0"
+    },
+    {
+      "encoded_id": 455,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45500079,
+      "decoded_bgr_sha256": "70e55833ef05760751cb3509599647e23f3b181fb47132de7892f5865779bf52"
+    },
+    {
+      "encoded_id": 456,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45600083,
+      "decoded_bgr_sha256": "0610c8476ca5cfbe357ca71b10116007809fa9463f0c502791ae95f9eabc352c"
+    },
+    {
+      "encoded_id": 457,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45700069,
+      "decoded_bgr_sha256": "d514453ca13003ead97122216174e90060a2a2449b46ecf648d11434322db191"
+    },
+    {
+      "encoded_id": 458,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45800094,
+      "decoded_bgr_sha256": "94221d566ceadf4d3e0cdd78bb81217319af35b63076fcbe888ce8ae5b3f1962"
+    },
+    {
+      "encoded_id": 459,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 45900077,
+      "decoded_bgr_sha256": "3c44c6ba4235cda60934b230aae1e1eb0365ef1aef55c1f4f4ab7b6594dcade2"
+    },
+    {
+      "encoded_id": 460,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46000068,
+      "decoded_bgr_sha256": "4af8cfb82fdacab69682b3b10b4b0ee5c39f9f401a52450e0c488a4b15f31aed"
+    },
+    {
+      "encoded_id": 461,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46100081,
+      "decoded_bgr_sha256": "4ed172ab30211964efd6051872d0e898913ccdfd61a3f71af03f71633449dfe5"
+    },
+    {
+      "encoded_id": 462,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46200116,
+      "decoded_bgr_sha256": "43cd0e5e36928f89de512537cffc24f7866b6a04fc5e9283004091b16ec12983"
+    },
+    {
+      "encoded_id": 463,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46300070,
+      "decoded_bgr_sha256": "a9adbe4e0c9d95f75f0c515b070a36e7b40f4d91d9a675b2ce4749f5b35ae5d6"
+    },
+    {
+      "encoded_id": 464,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46400074,
+      "decoded_bgr_sha256": "f6bdea2c99b5db03292f70715af0b215ea335658b2f12ca015f69d838f920b43"
+    },
+    {
+      "encoded_id": 465,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46500072,
+      "decoded_bgr_sha256": "89064e31732a49cff709ae102bafd2fdcc12d3ad2eea7abc320cab7e67d1848e"
+    },
+    {
+      "encoded_id": 466,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46600068,
+      "decoded_bgr_sha256": "4083b39e9a60042bacedd35326faf146855d62ff4206c4d9291171f7e4b78d2c"
+    },
+    {
+      "encoded_id": 467,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46700075,
+      "decoded_bgr_sha256": "10105db10ebcbd1c34bbf63dca06cc8eb4826c927c94c76e83d1cf2abcd3a984"
+    },
+    {
+      "encoded_id": 468,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46800071,
+      "decoded_bgr_sha256": "391d8b7ef30cd5b96e921358a6dd732b48e478d47a9e59c749ec0dd5d02f2b86"
+    },
+    {
+      "encoded_id": 469,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 46900077,
+      "decoded_bgr_sha256": "028a0a7ea34fdec2a9d0ed1ebf3431b89dd29072cf41494714fdf83ed4464437"
+    },
+    {
+      "encoded_id": 470,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47000072,
+      "decoded_bgr_sha256": "0b82166723fb0473adc5b56544be1684a60acf2bd6293ca8b325962f07ac4f65"
+    },
+    {
+      "encoded_id": 471,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47100071,
+      "decoded_bgr_sha256": "af50494ffb857c2b9df3c28050079f92e8fd3275163cc72a537ea0e7762e0d14"
+    },
+    {
+      "encoded_id": 472,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47200068,
+      "decoded_bgr_sha256": "a24254aeba5cd71c8f8868c1eed465f5a572e07710e32363edd9d62aa1fa3d64"
+    },
+    {
+      "encoded_id": 473,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47300076,
+      "decoded_bgr_sha256": "a4b9bae682668de8f75f6b34dda79bea00ece25c9fdf02d6fa547754a3b7b42a"
+    },
+    {
+      "encoded_id": 474,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47400072,
+      "decoded_bgr_sha256": "3c7b7b87dbcf53a7ea75ce8d249e07784e6da10cbd39c9a4e093a1ff8f769f57"
+    },
+    {
+      "encoded_id": 475,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47500069,
+      "decoded_bgr_sha256": "2633e9693b35d5a2e04174db957a28d51e73b020047db5d336aa8d9aba13f13a"
+    },
+    {
+      "encoded_id": 476,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47600095,
+      "decoded_bgr_sha256": "d29a040ac72140a17e2362fab5e7c2e034e95ea3c4674522b9741a4016dbc9c0"
+    },
+    {
+      "encoded_id": 477,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47700094,
+      "decoded_bgr_sha256": "886663243e80b4a5b1903d598488acc2c59d352163604a5320e77174b1f4c513"
+    },
+    {
+      "encoded_id": 478,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47800070,
+      "decoded_bgr_sha256": "dd4defefc725e6f17c7773b5bb245784de2d83bebae440d58f51d9543acaf250"
+    },
+    {
+      "encoded_id": 479,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 47900100,
+      "decoded_bgr_sha256": "56397d39c2ba55d2aec9e8e75c84ce4c41ffd3821f772081ca44dba4e01286d1"
+    },
+    {
+      "encoded_id": 480,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48000093,
+      "decoded_bgr_sha256": "ca2bee9d3e92a8eba436825439dcf13a509873a9eb3fb05a6d57a9ad89b11e2a"
+    },
+    {
+      "encoded_id": 481,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48100069,
+      "decoded_bgr_sha256": "77a0b3ce0b5b2fbbce3d8917f4aa9980486be05966c3545c050ad345916b85fd"
+    },
+    {
+      "encoded_id": 482,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48200094,
+      "decoded_bgr_sha256": "f074632f0ffec329219df9b3db7e41a95e0d337307bcf9d96d15add4512ecf90"
+    },
+    {
+      "encoded_id": 483,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48300100,
+      "decoded_bgr_sha256": "9d87badd356f7ceb786bb0760d22af91b9a073d9ee33dfa28c2bfedc1269e870"
+    },
+    {
+      "encoded_id": 484,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48400069,
+      "decoded_bgr_sha256": "2149a61451433be0a98304b0970ee15aacd1f11b26041552d7af45e124534c0f"
+    },
+    {
+      "encoded_id": 485,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48500072,
+      "decoded_bgr_sha256": "078add75897103027570fe3685175118dce09c5f93d9f6ac8d0b8471a0b0aa21"
+    },
+    {
+      "encoded_id": 486,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48600073,
+      "decoded_bgr_sha256": "31482844f59e9c82be745357457fd5f3e6f228a34621ae165d013905f3411e61"
+    },
+    {
+      "encoded_id": 487,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48700069,
+      "decoded_bgr_sha256": "63b7124afdc2becb956f64970f2ff51d2160bf924a3bf383ae0f636c514054e8"
+    },
+    {
+      "encoded_id": 488,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48800072,
+      "decoded_bgr_sha256": "1e0491007fbe0ea4a1512381cf62a2f6ce94bbc2408e04e220e9d753a4100913"
+    },
+    {
+      "encoded_id": 489,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 48900100,
+      "decoded_bgr_sha256": "f83423d2c997af11eb68863a66c647be1a2e18e3e58ee6f3cd72c8f8c9f23d86"
+    },
+    {
+      "encoded_id": 490,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 49000070,
+      "decoded_bgr_sha256": "6d675b9e949710daa9569dbd87a1d94c51d246954c48b858f8493077fe73c150"
+    },
+    {
+      "encoded_id": 491,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 49100094,
+      "decoded_bgr_sha256": "affae0024704008bc69c1db2e2f0a8f429877e713dc4c5143eb5453ea92524cf"
+    },
+    {
+      "encoded_id": 492,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 49200073,
+      "decoded_bgr_sha256": "1e1fd444b4b337d78dad489412afe6d7600047cb8ae0964564a4f4f424062415"
+    },
+    {
+      "encoded_id": 493,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 49300071,
+      "decoded_bgr_sha256": "be9b1792b7444adfede2cd5ea7cdaeec01a35180304d5c9421d75a386e46b05c"
+    },
+    {
+      "encoded_id": 494,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 49400095,
+      "decoded_bgr_sha256": "7b81bf0a37b31b2552e5b34402cbb24cf5cff8e80b2ebf154c903fa41e3e41a2"
+    },
+    {
+      "encoded_id": 495,
+      "source_frame_id": 100003,
+      "invocation": 3,
+      "capture_pts_us": 49500071,
+      "decoded_bgr_sha256": "2f2822d07f3da4196f2e0b08e5f750060d4a6d58d60b54ae46ceeb2005de64d5"
+    }
+  ],
+  "scope": "bounded real capture pipeline, not whole-system5Hz or30minute acceptance"
+}

@@ -1,0 +1,127 @@
+{
+  "status": "not_completed",
+  "fps": 2,
+  "sent": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "session": 1,
+      "sha256": "63d34a02983549940326933415a7613747c2e86c72ed53120e5e518be46cb7b7",
+      "bytes": 86432
+    },
+    {
+      "case": "S11_12_329",
+      "frame_id": 22,
+      "session": 1,
+      "sha256": "757966b4be0b63bcc5e02e8e374f2b049fb7c7ca8f6e271dc783ca0e45a3cb85",
+      "bytes": 86432
+    },
+    {
+      "case": "S11_32_349",
+      "frame_id": 39,
+      "session": 1,
+      "sha256": "99a47099850a13451de4d2039245199d0f16534dccad5eeb45d4e148db9dc1ef",
+      "bytes": 86432
+    },
+    {
+      "case": "S12_01_331",
+      "frame_id": 40,
+      "session": 1,
+      "sha256": "e67b1fdc62564a2a10bc7aa7dc9594ae18711b1ccda2dab45ed3c744d84347c2",
+      "bytes": 86432
+    },
+    {
+      "case": "S12_27_315",
+      "frame_id": 56,
+      "session": 1,
+      "sha256": "f1ed9165f785728494c8b3e3d720730e3ccbb21de641cfc34a895b2bd6fa5919",
+      "bytes": 86432
+    },
+    {
+      "case": "S12_48_349",
+      "frame_id": 73,
+      "session": 1,
+      "sha256": "483ca51f171614367ebe5338f735c4f236ee39dfba0c20c0bb06afdf59afe510",
+      "bytes": 86432
+    },
+    {
+      "case": "S13_07_304",
+      "frame_id": 74,
+      "session": 1,
+      "sha256": "b2ba762740642cb51d3b1995eaeee7082567415e3a854c5c874ec3a017c4c6cd",
+      "bytes": 86432
+    }
+  ],
+  "startup_wait_only": true,
+  "startup_attempts": [
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 64.0
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 62.875
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 61.76599999998871
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 60.65699999999197
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 59.546999999991385
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 58.437999999994645
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 57.32799999999406
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 56.21899999999732
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 55.09399999999732
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 53.98500000000058
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 52.875
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 51.76599999998871
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 50.65699999999197
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 49.53199999999197
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 48.421999999991385
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 47.312999999994645
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 46.187999999994645
+    }
+  ],
+  "error": "[WinError 10053] \u4f60\u7684\u4e3b\u673a\u4e2d\u7684\u8f6f\u4ef6\u4e2d\u6b62\u4e86\u4e00\u4e2a\u5df2\u5efa\u7acb\u7684\u8fde\u63a5\u3002"
+}

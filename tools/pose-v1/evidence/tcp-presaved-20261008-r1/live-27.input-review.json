@@ -1,0 +1,15 @@
+{
+  "status": "complete_CSI_sender_receiver_result_mapping_verified",
+  "windows": 28,
+  "raw_bytes": 2420096,
+  "sessions": 2,
+  "repeat_original_bytes": true,
+  "loss_or_rejection": 0,
+  "reference_used_only_as_oracle": true,
+  "sender_sha256": "169662efdf5a85cb6e802fac1adf9942a4b4438e61273d9e5133996e6e7fe919",
+  "receiver_log_sha256": "92a33dbb38eba6210fcc2f0ca717772bbd6a508ee67eccf4eb845d307f67f25b",
+  "controller_sources": {
+    "tcp_live_peer_ready.py": "2497fb0c1a66f91d33ca987302860f3d0c3ab4448bb5130e968de8992168ad3c",
+    "send_live_windows_ready.py": "48e27bb3414ab5bd4f6d37f02225ad6c40b3538cb7f2aa013bfed52c41e4f087"
+  }
+}

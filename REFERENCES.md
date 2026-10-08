@@ -1,5 +1,15 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-08最新：[独立显示子进程可行性](tools/pose-v1/DISPLAY-PROCESS-RESULTS-20261008.md)、[尖峰/有界入口下一方案](tools/pose-v1/DISPLAY-PROCESS-NEXT-20261008.md)、[ADR_15](ADR/ADR_15.md)。70正确全链，5Hz输入33全消费，实测4.99165Hz不舍入验收；83/100保持，后续此前状态是历史。
+
+2026-10-08最新实测：[整机低日志/2Hz/5Hz结果](tools/pose-v1/SYSTEM-TIMING-RESULTS-20261008.md)、[最小显示worker方案](tools/pose-v1/SYSTEM-TIMING-NEXT-20261008.md)、[ADR_14](ADR/ADR_14.md)。实际4.22311Hz未达标，数值/视频正确；管理83/100保持。下方此前“推进前”记录为历史。
+
+2026-10-08推进前审阅：[当前进度、剩余难点与后续方案](tools/pose-v1/PROJECT-STATUS-AND-NEXT-20261008.md)。有限TCP全链已通过，下一建议独立低日志整机计量；当前仅核对文档，没有新执行，管理83/100保持。
+
+2026-10-08最新：[保存优先＋一次规整/32全链](tools/pose-v1/PRESAVED-RESULTS-20261008.md)、[完成审查](tools/pose-v1/evidence/tcp-presaved-20261008-r1/completion-review.json)、[检查点](tools/pose-v1/evidence/tcp-presaved-20261008-r1/next-checkpoint.json)、[ADR_13](ADR/ADR_13.md)。旧失配未复现，不证明截断原因；永久CMA/长期/性能/HDMI未验。
+
+2026-10-08当前：[guarded/TCP结果及两类停止](tools/pose-v1/TCP-INTEGRATION-RESULTS-20261008.md)、[检查点](tools/pose-v1/evidence/tcp-evidence-20261008-r1/next-checkpoint.json)、[恢复计划](tools/pose-v1/TCP-RECOVERY-NEXT-20261008.md)、[启动ADR_11](ADR/ADR_11.md)、[输出失配ADR_12](ADR/ADR_12.md)。guarded32与TCP三窗通过，27失配未解决；新捕获Host107通过而VPU普通连续页失败，未规整/重启，不推进性能。
+
 2026-10-08启动与有限常驻：[独立ADR_02](ADR/ADR_02.md)、[难点索引](DIFFICULTIES.md)、[实际模块/分配/三启动](tools/pose-v1/VPU-STARTUP-RESULTS-20261008.md)、[32前向/987视频/主线程对照](tools/pose-v1/RESIDENT-RESULTS-20261008.md)、[当前核验与检查点](tools/pose-v1/evidence/resident-20261008-r6/completion-review.json)。不扩大CMA、不泛称SDK线程限制；在线RTSP/HDMI/长期另列。
 
 2026-10-08 F0：[有限合并/新视频/失败与规整诊断](tools/pose-v1/PIPELINE-RESULTS-20261008.md)、[完整核验](tools/pose-v1/evidence/pipeline-20261008-r6/completion-review.json)、[接续分配取证与常驻方案](tools/pose-v1/PIPELINE-NEXT-20261008.md)。两有限成功不等于启动稳定/实时闭环；Linux连续分配及compact_memory官方依据见报告，不将一次诊断变生产策略。
@@ -1440,9 +1450,11 @@ CPU最小适配107例/12注册/22输出59,600 FP32已独立验收；正式Matmul
 ORT版本/安装依据：[PyPI1.23.2](https://pypi.org/project/onnxruntime/1.23.2/)、
 [官方CPU安装](https://onnxruntime.ai/docs/install/)；实际运行/加载结果以本机证据为准。
 
-2026-10-08当前入口：[ADR全项目难点索引](ADR/README.md)、[AU模块/网络门检](tools/pose-v1/OWNED-AU-RESULTS-20261008.md)、[在线接续](tools/pose-v1/ONLINE-INTEGRATION-NEXT-20261008.md)。以下“待板测”等为2026-10-06初期历史，后续混合/数值/核心性能/有限常驻已通过各自范围；真实在线RTSP、HDMI与整机长期仍待。
+2026-10-08当前入口：[ADR全项目难点索引](ADR/README.md)、[真实VPU/推理RTSP串联结果](tools/pose-v1/LIVE-RESULTS-20261008.md)、[恢复点](tools/pose-v1/evidence/live-20261008-completion/next-checkpoint.json)。以下“待板测”等为2026-10-06初期历史，后续固定输入混合/数值/核心性能/有限实时RTSP已通过各自范围；guarded候选正式固化、TCP前端合并、HDMI与整机长期仍待。
 
 真实RAW四参数、PS三输入、SDK两16KiB往返、Session1173HardOp/六Host绑定、308及三样本实际执行均待用户板测。
 ADDR/BOTH只通过SDK复制，Host staging不能替代NPU同步证明；区域或可追溯融合绑定缺失即停止讨论。
 工程通过后报告完整分数/坐标与最佳候选差异，容限据实测讨论，不做GT/MPJPE/物理标定。
 本机参考耗时不作板端性能。完整NPU/数值、HDMI/RTSP、5Hz/延迟/30分钟闭环尚未验收。
+
+最新：[前向尖峰取证结果](tools/pose-v1/FORWARD-TRACE-RESULTS-20261008.md)、[有界扩展设计](tools/pose-v1/BOUNDED-MEASUREMENT-DESIGN-20261008.md)、[ADR_16](ADR/ADR_16.md)。

@@ -1,0 +1,16 @@
+{
+  "status": "model_output_regression_failed_capture_gap",
+  "returned_hashed_files": 131,
+  "exit": 1,
+  "received_windows": 6,
+  "complete_correct_forwards": 5,
+  "failed_case": "S12_48_349",
+  "failed_frame_id": 73,
+  "failed_invocation": 5,
+  "actual_failed_output_preserved": false,
+  "raw_and_PS_checks_precede_failure": true,
+  "kernel_unchanged": true,
+  "root_cause": "unproven",
+  "no_acceptance": true,
+  "next": "Isolated failure-only result capture; unchanged math SDK and original comparisons"
+}

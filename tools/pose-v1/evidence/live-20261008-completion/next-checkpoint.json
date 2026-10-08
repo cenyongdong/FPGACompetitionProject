@@ -1,0 +1,22 @@
+{
+  "status": "module_validation_complete_ready_for_guarded_integration",
+  "user_paused": false,
+  "services_running": false,
+  "SSH_SFTP_closed": true,
+  "authorization": "User authorized agent continuation; no new execution-party confirmation required",
+  "entry": "tools/pose-v1/LIVE-RESULTS-20261008.md",
+  "completion": "tools/pose-v1/evidence/live-20261008-completion/completion-review.json",
+  "accepted_program": "ec07076fdebf04b17b2fcb90b43679a02ca938ed50fabeddb304ab9ccc253fc1",
+  "build": ".local/pose-v1-build/mixed-20261008-live-r2",
+  "package": ".local/pose-v1-live/package-20261008-r2",
+  "board_directories": [
+    "/tmp/pose-v1-live/20261008-r2",
+    "/tmp/pose-v1-live/20261008-r2-coordinated",
+    "/tmp/pose-rtsp-pressure-20261008-r1",
+    "/tmp/pose-rtsp-guarded-normal-20261008-r1"
+  ],
+  "guarded_network_candidate_integrated": false,
+  "next": "Freeze guarded normal/slow-peer-tested network candidate into a fresh integration target and regress Host/real source gates; then merge existing TCP complete-window interface before whole-system performance/long-run gates. HDMI配套未知不写。",
+  "preserve_failures": true,
+  "no_automatic_retry_compaction_reset_or_BOOT_change": true
+}

@@ -1,0 +1,13 @@
+{
+  "status": "host_launch_after_board_input_deadline",
+  "returned_files": 111,
+  "exit": 1,
+  "input_records": 0,
+  "model_forwards": 0,
+  "kernel_unchanged": true,
+  "board_error": "Complete CSI window exceeds5s",
+  "host_error": "Initial RTSP connect refused after stage had exited",
+  "correction": "Prearm host process then release START through existing process at actual board LIVE_READY",
+  "hardware_budgets_unchanged": true,
+  "program_package_unchanged": true
+}

@@ -1,0 +1,15 @@
+{
+  "status": "system_timing_complete_prepare_owned_output_worker_and_startup_conditions",
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SFTP_closed": true,
+  "build": ".local/pose-v1-build/mixed-20261008-system-timing-r2",
+  "package": ".local/pose-v1-system-timing/package-20261008-r2",
+  "board": "/tmp/pose-system-timing-20261008-r2",
+  "program_sha256": "265fd389db1ade2a4de05a6e99a860cd6cb144bb4966c9529e4bd16d8d913542",
+  "completion_sha256": "b399c2cc04437a2d9502754a82f599b6c5c0d046634bbd4139aa0d9993ba7f1c",
+  "whole5Hz": false,
+  "compaction_not_authorized_again": true,
+  "final_high_order_free_blocks": 0,
+  "next": "Read SYSTEM-TIMING-RESULTS-20261008.md and SYSTEM-TIMING-NEXT-20261008.md. Isolate owned output rendering/conversion while preserving main-owned Engine; do not move SDK to a worker. Restore/establish first-start resource conditions only by reviewed matched allocation design or explicit recovery choice; no automatic compaction/reboot/cache clearing. Prepare new sources/Host checks, then finite numeric/source/performance regression; current timings are baseline, not 5Hz acceptance."
+}

@@ -1,0 +1,13 @@
+{
+  "status": "intentional_slow_reader_completed",
+  "no_reads_after_PLAY": true,
+  "requested_receive_buffer": 4096,
+  "actual_receive_buffer": 4096,
+  "held_seconds": 6.015281599989976,
+  "raw_keepalive_sent_at_s": [
+    3.0019800999871222
+  ],
+  "send_error": "[WinError 10054] \u8fdc\u7a0b\u4e3b\u673a\u5f3a\u8feb\u5173\u95ed\u4e86\u4e00\u4e2a\u73b0\u6709\u7684\u8fde\u63a5\u3002",
+  "pre_PLAY_interleaved_packets": 1,
+  "VPU_NPU": false
+}

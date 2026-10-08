@@ -1,0 +1,91 @@
+{
+  "status": "finite_real_capture_pipeline_and_guarded_module_gates_verified",
+  "binary_sha256": "ec07076fdebf04b17b2fcb90b43679a02ca938ed50fabeddb304ab9ccc253fc1",
+  "manifest_sha256": "bdee55fcd8851d8ea14addd971c24a470421ce4b4985a00699239867844110fb",
+  "package_payloads": 403,
+  "build_sources": 34,
+  "SDK": "3.39.0",
+  "sdk_headers": 15,
+  "vendor_files": 189,
+  "Host_cases": 107,
+  "registry_records": 12,
+  "CPU_output_values": 59600,
+  "accepted_model_forwards": 32,
+  "accepted_input_scores_poses_FP32_values": 483200,
+  "accepted_real_encoded_frames": 980,
+  "accepted_real_RTSP_decoded_frames": 650,
+  "RTSP_actual_result_frames": 395,
+  "video_joint_checks": 5530,
+  "model_outputs_bitwise_old_board": true,
+  "all_current_capture_network_pixels_exact": true,
+  "actual_RTP_capture_PTS": true,
+  "Engine_main_owner_held_until_workers_joined": true,
+  "source_rate_Hz": 2,
+  "target_video_fps": 10,
+  "repeats_not_new_inference": true,
+  "SDK_profiling": false,
+  "guarded_candidate": {
+    "negative": {
+      "status": "SDK_free_slow_reader_guarded_module_rejected_correctly",
+      "program_sha256": "52bbdd1a4fcf8854442cb7bb8aba4cff53bbcbf59e6ca12ac47efd105151b0be",
+      "returned_hashed_files": 14,
+      "expected_exit": 1,
+      "RTP_send_error_propagated": true,
+      "TCP_send_buffer_actual": 131072,
+      "AU_high_water": 5,
+      "produced": 85,
+      "sources_live": 0,
+      "port_released": true,
+      "kernel_unchanged": true,
+      "VPU_NPU": false,
+      "guarded_module_integrated_into_r2": false
+    },
+    "normal": {
+      "status": "SDK_free_guarded_normal_reader_control_passed",
+      "program_sha256": "ee7a10a0b5b1e9c48647a10aaa2d05cd3c94556e78db9dc9b6edcef8c99c8481",
+      "returned_hashed_files": 14,
+      "producer_frames": 300,
+      "decoded_network_frames": 223,
+      "TCP_send_buffer_actual": 131072,
+      "guarded_module_same_negative": true,
+      "send_errors": 0,
+      "exact_seed_pixels": true,
+      "actual_producer_RTP_PTS": true,
+      "port_released": true,
+      "kernel_unchanged": true,
+      "VPU_NPU": false,
+      "guarded_module_integrated_into_r2": false
+    },
+    "integrated_into_pipeline_r2": false
+  },
+  "preserved_failures": {
+    "first27": {
+      "model_forwards_correct": 28,
+      "encoded_frames": 490,
+      "network_frames": 40,
+      "network_first_encoded_id": 450,
+      "reason": "client_started_too_late_no_full_source_gate"
+    },
+    "short_guarded_normal": {
+      "producer_frames": 160,
+      "received_frames": 91,
+      "minimum_client_gate": 100,
+      "reason": "16s_window_too_short_for_tool_startup; preserved_not_accepted"
+    }
+  },
+  "BOOT_model_RAW_SDK_unchanged": true,
+  "kernel_unchanged": true,
+  "all_services_and_SSH_SFTP_closed": true,
+  "user_paused": false,
+  "whole_system5Hz": false,
+  "long_run30minutes": false,
+  "HDMI": false,
+  "TCP_window_frontend_integrated_into_this_target": false,
+  "review_sha256": {
+    "tools/pose-v1/evidence/live-20261008-r2/live-three.acceptance.json": "bacb3a46fb8f898ddd9d071092c86c852ac4c1a75fd45e00b8243da4f01bfb28",
+    "tools/pose-v1/evidence/live-20261008-r2-coordinated/live-27.acceptance.json": "2317db5647a36331737073fa80a50c2794f272a768321b70acfbbbcc2908fe69",
+    "tools/pose-v1/evidence/rtsp-pressure-20261008-r1/completion-review.json": "f2ad580c0bf94c88085c6c74930b6514a96873d3f8cd1143c12506f06332100f",
+    "tools/pose-v1/evidence/guarded-normal-20261008-r1/completion-review.json": "6ac67adc6189a950db2c4e12c28f5a96e5814685b1309bf37d5ffdaddac292ca"
+  },
+  "next": "Freeze guarded normal/slow-peer-tested network candidate into a fresh integration target and regress Host/real source gates; then merge existing TCP complete-window interface before whole-system performance/long-run gates. HDMI配套未知不写。"
+}

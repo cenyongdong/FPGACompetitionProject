@@ -1,0 +1,106 @@
+
+/tmp/pose-v1-mixed-20261008-live-r2/vendor-audit/RTPInterface.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000890 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)>:
+     890:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
+     894:	910003fd 	mov	x29, sp
+     898:	a90153f3 	stp	x19, x20, [sp, #16]
+     89c:	aa0203f4 	mov	x20, x2
+     8a0:	a9025bf5 	stp	x21, x22, [sp, #32]
+     8a4:	2a0103f6 	mov	w22, w1
+     8a8:	2a0403f5 	mov	w21, w4
+     8ac:	a90363f7 	stp	x23, x24, [sp, #48]
+     8b0:	aa0003f7 	mov	x23, x0
+     8b4:	aa0303f8 	mov	x24, x3
+     8b8:	f90023f9 	str	x25, [sp, #64]
+     8bc:	12001cb9 	and	w25, w5, #0xff
+     8c0:	b4000062 	cbz	x2, 8cc <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0x3c>
+     8c4:	39402040 	ldrb	w0, [x2, #8]
+     8c8:	350006a0 	cbnz	w0, 99c <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0x10c>
+     8cc:	2a1503e2 	mov	w2, w21
+     8d0:	aa1803e1 	mov	x1, x24
+     8d4:	2a1603e0 	mov	w0, w22
+     8d8:	52880003 	mov	w3, #0x4000                	// #16384
+     8dc:	94000000 	bl	0 <send>
+			8dc: R_AARCH64_CALL26	send
+     8e0:	2a0003f3 	mov	w19, w0
+     8e4:	6b1302bf 	cmp	w21, w19
+     8e8:	540003cd 	b.le	960 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0xd0>
+     8ec:	7100027f 	cmp	w19, #0x0
+     8f0:	5400012c 	b.gt	914 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0x84>
+     8f4:	34000459 	cbz	w25, 97c <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0xec>
+     8f8:	f94006e0 	ldr	x0, [x23, #8]
+     8fc:	f9400400 	ldr	x0, [x0, #8]
+     900:	f9400001 	ldr	x1, [x0]
+     904:	f9402021 	ldr	x1, [x1, #64]
+     908:	d63f0020 	blr	x1
+     90c:	71002c1f 	cmp	w0, #0xb
+     910:	54000361 	b.ne	97c <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0xec>  // b.any
+     914:	7100027f 	cmp	w19, #0x0
+     918:	52803e81 	mov	w1, #0x1f4                 	// #500
+     91c:	1a9fa273 	csel	w19, w19, wzr, ge  // ge = tcont
+     920:	2a1603e0 	mov	w0, w22
+     924:	4b1302b5 	sub	w21, w21, w19
+     928:	94000000 	bl	0 <makeSocketBlocking(int, unsigned int)>
+			928: R_AARCH64_CALL26	makeSocketBlocking(int, unsigned int)
+     92c:	8b33c301 	add	x1, x24, w19, sxtw
+     930:	b4000074 	cbz	x20, 93c <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0xac>
+     934:	39402280 	ldrb	w0, [x20, #8]
+     938:	35000580 	cbnz	w0, 9e8 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0x158>
+     93c:	2a1503e2 	mov	w2, w21
+     940:	2a1603e0 	mov	w0, w22
+     944:	52880003 	mov	w3, #0x4000                	// #16384
+     948:	94000000 	bl	0 <send>
+			948: R_AARCH64_CALL26	send
+     94c:	2a0003f3 	mov	w19, w0
+     950:	2a1603e0 	mov	w0, w22
+     954:	94000000 	bl	0 <makeSocketNonBlocking(int)>
+			954: R_AARCH64_CALL26	makeSocketNonBlocking(int)
+     958:	6b15027f 	cmp	w19, w21
+     95c:	540003a1 	b.ne	9d0 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0x140>  // b.any
+     960:	52800020 	mov	w0, #0x1                   	// #1
+     964:	a94153f3 	ldp	x19, x20, [sp, #16]
+     968:	a9425bf5 	ldp	x21, x22, [sp, #32]
+     96c:	a94363f7 	ldp	x23, x24, [sp, #48]
+     970:	f94023f9 	ldr	x25, [sp, #64]
+     974:	a8c57bfd 	ldp	x29, x30, [sp], #80
+     978:	d65f03c0 	ret
+     97c:	350001d3 	cbnz	w19, 9b4 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0x124>
+     980:	52800000 	mov	w0, #0x0                   	// #0
+     984:	a94153f3 	ldp	x19, x20, [sp, #16]
+     988:	a9425bf5 	ldp	x21, x22, [sp, #32]
+     98c:	a94363f7 	ldp	x23, x24, [sp, #48]
+     990:	f94023f9 	ldr	x25, [sp, #64]
+     994:	a8c57bfd 	ldp	x29, x30, [sp], #80
+     998:	d65f03c0 	ret
+     99c:	2a0403e2 	mov	w2, w4
+     9a0:	aa0303e1 	mov	x1, x3
+     9a4:	aa1403e0 	mov	x0, x20
+     9a8:	94000000 	bl	0 <TLSState::write(char const*, unsigned int)>
+			9a8: R_AARCH64_CALL26	TLSState::write(char const*, unsigned int)
+     9ac:	2a0003f3 	mov	w19, w0
+     9b0:	17ffffcd 	b	8e4 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0x54>
+     9b4:	f94006e0 	ldr	x0, [x23, #8]
+     9b8:	f9400400 	ldr	x0, [x0, #8]
+     9bc:	f9400001 	ldr	x1, [x0]
+     9c0:	f9402021 	ldr	x1, [x1, #64]
+     9c4:	d63f0020 	blr	x1
+     9c8:	71002c1f 	cmp	w0, #0xb
+     9cc:	54fffda0 	b.eq	980 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0xf0>  // b.none
+     9d0:	aa1703e0 	mov	x0, x23
+     9d4:	2a1603e1 	mov	w1, w22
+     9d8:	12800002 	mov	w2, #0xffffffff            	// #-1
+     9dc:	94000000 	bl	7c0 <RTPInterface::removeStreamSocket(int, unsigned char)>
+			9dc: R_AARCH64_CALL26	RTPInterface::removeStreamSocket(int, unsigned char)
+     9e0:	52800000 	mov	w0, #0x0                   	// #0
+     9e4:	17ffffe8 	b	984 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0xf4>
+     9e8:	aa1403e0 	mov	x0, x20
+     9ec:	2a1503e2 	mov	w2, w21
+     9f0:	94000000 	bl	0 <TLSState::write(char const*, unsigned int)>
+			9f0: R_AARCH64_CALL26	TLSState::write(char const*, unsigned int)
+     9f4:	2a0003f3 	mov	w19, w0
+     9f8:	17ffffd6 	b	950 <RTPInterface::sendDataOverTCP(int, TLSState*, unsigned char const*, unsigned int, unsigned char)+0xc0>
+     9fc:	d503201f 	nop

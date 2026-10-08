@@ -1,0 +1,13 @@
+Page block order: 9
+Pages per block:  512
+
+Free pages count per migrate type at order       0      1      2      3      4      5      6      7      8      9     10 
+Node    0, zone    DMA32, type    Unmovable    124      8    138    101     52     17     14     13      8      5      0 
+Node    0, zone    DMA32, type      Movable    411    414    285    168     84     55     19     11      1      1      0 
+Node    0, zone    DMA32, type  Reclaimable   1031    879    422     78      9      0      0      0      0      0      0 
+Node    0, zone    DMA32, type   HighAtomic      0      0      0      0      0      0      0      0      0      0      0 
+Node    0, zone    DMA32, type          CMA     80     35     19      8      7      4      2      1      0      3      1 
+Node    0, zone    DMA32, type      Isolate      0      0      0      0      0      0      0      0      0      0      0 
+
+Number of blocks type     Unmovable      Movable  Reclaimable   HighAtomic          CMA      Isolate 
+Node 0, zone    DMA32           34          329           21            0          128            0 

@@ -1,0 +1,1 @@
+console=ttyPS0,115200n8 earlycon=uart8250,mmio32,0xe0004000 loglevel=8 root=/dev/mmcblk0p2 rootwait rw clk_ignore_unused mem=1024M

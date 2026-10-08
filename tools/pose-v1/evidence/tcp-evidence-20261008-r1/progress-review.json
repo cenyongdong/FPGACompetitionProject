@@ -1,0 +1,52 @@
+{
+  "status": "guarded_passed_TCP_three_passed_TCP27_unresolved",
+  "guarded": {
+    "program_sha256": "f02aceb88188b2eb96775169bbec035bfcb5e4499732673fcf12e797248c6458",
+    "Host_cases": 107,
+    "full_correct_forwards": 32,
+    "encoded_frames": 977,
+    "network_frames": 767,
+    "all_sources_PTS_pixels_verified": true
+  },
+  "TCP_three": {
+    "program_sha256": "02697797902d25a4664adbdfb6c69235e300a8e1fe13f2475bbc632176772855",
+    "complete_windows": 4,
+    "encoded_frames": 496,
+    "network_frames": 376,
+    "all_outputs_PTS_pixels_verified": true
+  },
+  "TCP27": {
+    "status": "failed",
+    "received_windows": 6,
+    "complete_correct_forwards": 5,
+    "failed_case": "S12_48_349",
+    "actual_rejected_output_missing": true,
+    "root_cause": "unproven"
+  },
+  "diagnostic": {
+    "program_sha256": "d7def2de0727cabe12c5d2b8a5cc692416bb63428e3b462202ce458734f98a47",
+    "manifest_sha256": "08052d25a852660ebab5de61c308f187dcf56d4806098ad4880c0044e9edf4c5",
+    "Host_cases": 107,
+    "CPU_output_FP32": 59600,
+    "Native_ARM_failure_capture_contracts": true,
+    "hardware_result": "VPU_first_start_order7_allocation_failure",
+    "returned_hashed_files": 85,
+    "model_forwards": 0,
+    "SDK_Engine_initialized": false
+  },
+  "ordinary_high_order_failure": {
+    "order": 7,
+    "bytes": 524288,
+    "GFP": "GFP_KERNEL|__GFP_NORETRY|__GFP_ZERO",
+    "kernel_snapshot_CmaFree_kB": 130604,
+    "at_failure_512KiB_and_larger_blocks_CMA_only": true,
+    "post_cleanup_order7_Unmovable_blocks": 5,
+    "post_cleanup_not_a_retry_gate": true
+  },
+  "whole_system_5Hz_verified": false,
+  "long_run_verified": false,
+  "HDMI_verified": false,
+  "compaction_cache_clear_reboot_BOOT_CMA_changes": false,
+  "services_running": false,
+  "SSH_SFTP_closed": true
+}
