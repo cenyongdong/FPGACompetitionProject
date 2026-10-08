@@ -1,0 +1,736 @@
+{
+  "status": "failed_run_partial_trace_only",
+  "traced_invocations": 3,
+  "records": 213,
+  "source_sha256": {
+    "results\\timing.jsonl": "8e2a09d0ef1c51eea8bdb3d88b408c829a3cea046fa1063bf3381a9c69ba3fd4",
+    "results\\engine\\monotonic-spans.jsonl": "5551f6054ade69fd8d30871739062267e608803835f1042491ef0bb8b4947aa7",
+    "results\\display-timing.jsonl": "182526e8eb4bc16b5570b2a8f68c3b20ca10968c1703ec9f91d39c1d032b396c",
+    "results\\packets.jsonl": "7a31f39f34f3001c913f23b314c13ebc1c99c137349b09f097c33f7dfc951079"
+  },
+  "frames": [
+    {
+      "invocation": 0,
+      "case": "S11_01_308",
+      "forward_ms": 184.54649,
+      "epoch_uncertainty_ns": 29680,
+      "categories": {
+        "bridge.allocate": {
+          "records": 8,
+          "sum_ms": 0.23239,
+          "union_ms": 0.23239
+        },
+        "bridge.copy": {
+          "records": 8,
+          "sum_ms": 0.55401,
+          "union_ms": 0.55401
+        },
+        "bridge.cpu": {
+          "records": 5,
+          "sum_ms": 13.75018,
+          "union_ms": 13.75018
+        },
+        "bridge.spec": {
+          "records": 5,
+          "sum_ms": 0.14665,
+          "union_ms": 0.14665
+        },
+        "bridge.wait": {
+          "records": 8,
+          "sum_ms": 164.49282,
+          "union_ms": 164.49282
+        },
+        "op.host": {
+          "records": 7,
+          "sum_ms": 181.00809,
+          "union_ms": 181.00809
+        },
+        "op.zg": {
+          "records": 7,
+          "sum_ms": 1.09004,
+          "union_ms": 1.09004
+        },
+        "runtime.final_wait": {
+          "records": 1,
+          "sum_ms": 0.14843,
+          "union_ms": 0.14843
+        },
+        "runtime.forward": {
+          "records": 1,
+          "sum_ms": 184.54649,
+          "union_ms": 184.54649
+        },
+        "runtime.input_prepare": {
+          "records": 1,
+          "sum_ms": 0.08764,
+          "union_ms": 0.08764
+        },
+        "runtime.input_validation": {
+          "records": 1,
+          "sum_ms": 0.11259,
+          "union_ms": 0.11259
+        },
+        "runtime.observation": {
+          "records": 5,
+          "sum_ms": 0.11604,
+          "union_ms": 0.11604
+        },
+        "runtime.output_read": {
+          "records": 1,
+          "sum_ms": 1.37676,
+          "union_ms": 1.37676
+        },
+        "runtime.preprocess": {
+          "records": 1,
+          "sum_ms": 5.74112,
+          "union_ms": 5.74112
+        },
+        "runtime.raw_validation": {
+          "records": 1,
+          "sum_ms": 0.09825,
+          "union_ms": 0.09825
+        },
+        "runtime.selection": {
+          "records": 1,
+          "sum_ms": 0.00142,
+          "union_ms": 0.00142
+        },
+        "runtime.state_clear": {
+          "records": 1,
+          "sum_ms": 0.00556,
+          "union_ms": 0.00556
+        },
+        "runtime.total": {
+          "records": 1,
+          "sum_ms": 192.37184,
+          "union_ms": 192.37184
+        }
+      },
+      "display_definite_overlap": 0,
+      "display_possible_overlap": 0,
+      "capture_callbacks_definitely_inside_forward": 3
+    },
+    {
+      "invocation": 1,
+      "case": "S11_12_329",
+      "forward_ms": 184.71472,
+      "epoch_uncertainty_ns": 46600,
+      "categories": {
+        "bridge.allocate": {
+          "records": 8,
+          "sum_ms": 0.26214,
+          "union_ms": 0.26214
+        },
+        "bridge.copy": {
+          "records": 8,
+          "sum_ms": 0.65589,
+          "union_ms": 0.65589
+        },
+        "bridge.cpu": {
+          "records": 5,
+          "sum_ms": 13.92075,
+          "union_ms": 13.92075
+        },
+        "bridge.spec": {
+          "records": 5,
+          "sum_ms": 0.15714,
+          "union_ms": 0.15714
+        },
+        "bridge.wait": {
+          "records": 8,
+          "sum_ms": 164.51279,
+          "union_ms": 164.51279
+        },
+        "op.host": {
+          "records": 7,
+          "sum_ms": 181.20137,
+          "union_ms": 181.20137
+        },
+        "op.zg": {
+          "records": 7,
+          "sum_ms": 0.99265,
+          "union_ms": 0.99265
+        },
+        "runtime.final_wait": {
+          "records": 1,
+          "sum_ms": 0.17358,
+          "union_ms": 0.17358
+        },
+        "runtime.forward": {
+          "records": 1,
+          "sum_ms": 184.71472,
+          "union_ms": 184.71472
+        },
+        "runtime.input_prepare": {
+          "records": 1,
+          "sum_ms": 0.07877,
+          "union_ms": 0.07877
+        },
+        "runtime.input_validation": {
+          "records": 1,
+          "sum_ms": 0.10967,
+          "union_ms": 0.10967
+        },
+        "runtime.observation": {
+          "records": 5,
+          "sum_ms": 0.10774,
+          "union_ms": 0.10774
+        },
+        "runtime.output_read": {
+          "records": 1,
+          "sum_ms": 1.20467,
+          "union_ms": 1.20467
+        },
+        "runtime.preprocess": {
+          "records": 1,
+          "sum_ms": 5.78458,
+          "union_ms": 5.78458
+        },
+        "runtime.raw_validation": {
+          "records": 1,
+          "sum_ms": 0.09814,
+          "union_ms": 0.09814
+        },
+        "runtime.selection": {
+          "records": 1,
+          "sum_ms": 0.00126,
+          "union_ms": 0.00126
+        },
+        "runtime.state_clear": {
+          "records": 1,
+          "sum_ms": 0.00572,
+          "union_ms": 0.00572
+        },
+        "runtime.total": {
+          "records": 1,
+          "sum_ms": 192.38287,
+          "union_ms": 192.38287
+        }
+      },
+      "display_definite_overlap": 1,
+      "display_possible_overlap": 1,
+      "capture_callbacks_definitely_inside_forward": 0
+    },
+    {
+      "invocation": 2,
+      "case": "S11_32_349",
+      "forward_ms": 184.87823,
+      "epoch_uncertainty_ns": 49820,
+      "categories": {
+        "bridge.allocate": {
+          "records": 8,
+          "sum_ms": 0.23855,
+          "union_ms": 0.23855
+        },
+        "bridge.copy": {
+          "records": 8,
+          "sum_ms": 0.58732,
+          "union_ms": 0.58732
+        },
+        "bridge.cpu": {
+          "records": 5,
+          "sum_ms": 13.89627,
+          "union_ms": 13.89627
+        },
+        "bridge.spec": {
+          "records": 5,
+          "sum_ms": 0.16986,
+          "union_ms": 0.16986
+        },
+        "bridge.wait": {
+          "records": 8,
+          "sum_ms": 164.37306,
+          "union_ms": 164.37306
+        },
+        "op.host": {
+          "records": 7,
+          "sum_ms": 180.9309,
+          "union_ms": 180.9309
+        },
+        "op.zg": {
+          "records": 7,
+          "sum_ms": 1.10555,
+          "union_ms": 1.10555
+        },
+        "runtime.final_wait": {
+          "records": 1,
+          "sum_ms": 0.16826,
+          "union_ms": 0.16826
+        },
+        "runtime.forward": {
+          "records": 1,
+          "sum_ms": 184.87823,
+          "union_ms": 184.87823
+        },
+        "runtime.input_prepare": {
+          "records": 1,
+          "sum_ms": 0.11395,
+          "union_ms": 0.11395
+        },
+        "runtime.input_validation": {
+          "records": 1,
+          "sum_ms": 0.10961,
+          "union_ms": 0.10961
+        },
+        "runtime.observation": {
+          "records": 5,
+          "sum_ms": 0.11432,
+          "union_ms": 0.11432
+        },
+        "runtime.output_read": {
+          "records": 1,
+          "sum_ms": 1.18717,
+          "union_ms": 1.18717
+        },
+        "runtime.preprocess": {
+          "records": 1,
+          "sum_ms": 5.78053,
+          "union_ms": 5.78053
+        },
+        "runtime.raw_validation": {
+          "records": 1,
+          "sum_ms": 0.09823,
+          "union_ms": 0.09823
+        },
+        "runtime.selection": {
+          "records": 1,
+          "sum_ms": 0.00135,
+          "union_ms": 0.00135
+        },
+        "runtime.state_clear": {
+          "records": 1,
+          "sum_ms": 0.00749,
+          "union_ms": 0.00749
+        },
+        "runtime.total": {
+          "records": 1,
+          "sum_ms": 192.55731,
+          "union_ms": 192.55731
+        }
+      },
+      "display_definite_overlap": 1,
+      "display_possible_overlap": 1,
+      "capture_callbacks_definitely_inside_forward": 3
+    }
+  ],
+  "union_ms_stats": {
+    "bridge.allocate": {
+      "count": 3,
+      "mean": 0.24436000000000002,
+      "P95": 0.259781,
+      "maximum": 0.26214
+    },
+    "bridge.copy": {
+      "count": 3,
+      "mean": 0.5990733333333332,
+      "P95": 0.649033,
+      "maximum": 0.65589
+    },
+    "bridge.cpu": {
+      "count": 3,
+      "mean": 13.855733333333333,
+      "P95": 13.918302,
+      "maximum": 13.92075
+    },
+    "bridge.spec": {
+      "count": 3,
+      "mean": 0.15788333333333335,
+      "P95": 0.16858800000000002,
+      "maximum": 0.16986
+    },
+    "bridge.wait": {
+      "count": 3,
+      "mean": 164.45955666666666,
+      "P95": 164.510793,
+      "maximum": 164.51279
+    },
+    "op.host": {
+      "count": 3,
+      "mean": 181.0467866666667,
+      "P95": 181.182042,
+      "maximum": 181.20137
+    },
+    "op.zg": {
+      "count": 3,
+      "mean": 1.0627466666666667,
+      "P95": 1.103999,
+      "maximum": 1.10555
+    },
+    "runtime.final_wait": {
+      "count": 3,
+      "mean": 0.16342333333333334,
+      "P95": 0.173048,
+      "maximum": 0.17358
+    },
+    "runtime.forward": {
+      "count": 3,
+      "mean": 184.7131466666667,
+      "P95": 184.861879,
+      "maximum": 184.87823
+    },
+    "runtime.input_prepare": {
+      "count": 3,
+      "mean": 0.09345333333333333,
+      "P95": 0.11131899999999999,
+      "maximum": 0.11395
+    },
+    "runtime.input_validation": {
+      "count": 3,
+      "mean": 0.11062333333333334,
+      "P95": 0.112298,
+      "maximum": 0.11259
+    },
+    "runtime.observation": {
+      "count": 3,
+      "mean": 0.11270000000000001,
+      "P95": 0.115868,
+      "maximum": 0.11604
+    },
+    "runtime.output_read": {
+      "count": 3,
+      "mean": 1.2562,
+      "P95": 1.359551,
+      "maximum": 1.37676
+    },
+    "runtime.preprocess": {
+      "count": 3,
+      "mean": 5.768743333333333,
+      "P95": 5.784175,
+      "maximum": 5.78458
+    },
+    "runtime.raw_validation": {
+      "count": 3,
+      "mean": 0.09820666666666666,
+      "P95": 0.098248,
+      "maximum": 0.09825
+    },
+    "runtime.selection": {
+      "count": 3,
+      "mean": 0.0013433333333333335,
+      "P95": 0.001413,
+      "maximum": 0.00142
+    },
+    "runtime.state_clear": {
+      "count": 3,
+      "mean": 0.006256666666666667,
+      "P95": 0.007313,
+      "maximum": 0.00749
+    },
+    "runtime.total": {
+      "count": 3,
+      "mean": 192.43733999999998,
+      "P95": 192.539866,
+      "maximum": 192.55731
+    }
+  },
+  "slowest": [
+    {
+      "invocation": 2,
+      "case": "S11_32_349",
+      "forward_ms": 184.87823,
+      "epoch_uncertainty_ns": 49820,
+      "categories": {
+        "bridge.allocate": {
+          "records": 8,
+          "sum_ms": 0.23855,
+          "union_ms": 0.23855
+        },
+        "bridge.copy": {
+          "records": 8,
+          "sum_ms": 0.58732,
+          "union_ms": 0.58732
+        },
+        "bridge.cpu": {
+          "records": 5,
+          "sum_ms": 13.89627,
+          "union_ms": 13.89627
+        },
+        "bridge.spec": {
+          "records": 5,
+          "sum_ms": 0.16986,
+          "union_ms": 0.16986
+        },
+        "bridge.wait": {
+          "records": 8,
+          "sum_ms": 164.37306,
+          "union_ms": 164.37306
+        },
+        "op.host": {
+          "records": 7,
+          "sum_ms": 180.9309,
+          "union_ms": 180.9309
+        },
+        "op.zg": {
+          "records": 7,
+          "sum_ms": 1.10555,
+          "union_ms": 1.10555
+        },
+        "runtime.final_wait": {
+          "records": 1,
+          "sum_ms": 0.16826,
+          "union_ms": 0.16826
+        },
+        "runtime.forward": {
+          "records": 1,
+          "sum_ms": 184.87823,
+          "union_ms": 184.87823
+        },
+        "runtime.input_prepare": {
+          "records": 1,
+          "sum_ms": 0.11395,
+          "union_ms": 0.11395
+        },
+        "runtime.input_validation": {
+          "records": 1,
+          "sum_ms": 0.10961,
+          "union_ms": 0.10961
+        },
+        "runtime.observation": {
+          "records": 5,
+          "sum_ms": 0.11432,
+          "union_ms": 0.11432
+        },
+        "runtime.output_read": {
+          "records": 1,
+          "sum_ms": 1.18717,
+          "union_ms": 1.18717
+        },
+        "runtime.preprocess": {
+          "records": 1,
+          "sum_ms": 5.78053,
+          "union_ms": 5.78053
+        },
+        "runtime.raw_validation": {
+          "records": 1,
+          "sum_ms": 0.09823,
+          "union_ms": 0.09823
+        },
+        "runtime.selection": {
+          "records": 1,
+          "sum_ms": 0.00135,
+          "union_ms": 0.00135
+        },
+        "runtime.state_clear": {
+          "records": 1,
+          "sum_ms": 0.00749,
+          "union_ms": 0.00749
+        },
+        "runtime.total": {
+          "records": 1,
+          "sum_ms": 192.55731,
+          "union_ms": 192.55731
+        }
+      },
+      "display_definite_overlap": 1,
+      "display_possible_overlap": 1,
+      "capture_callbacks_definitely_inside_forward": 3
+    },
+    {
+      "invocation": 1,
+      "case": "S11_12_329",
+      "forward_ms": 184.71472,
+      "epoch_uncertainty_ns": 46600,
+      "categories": {
+        "bridge.allocate": {
+          "records": 8,
+          "sum_ms": 0.26214,
+          "union_ms": 0.26214
+        },
+        "bridge.copy": {
+          "records": 8,
+          "sum_ms": 0.65589,
+          "union_ms": 0.65589
+        },
+        "bridge.cpu": {
+          "records": 5,
+          "sum_ms": 13.92075,
+          "union_ms": 13.92075
+        },
+        "bridge.spec": {
+          "records": 5,
+          "sum_ms": 0.15714,
+          "union_ms": 0.15714
+        },
+        "bridge.wait": {
+          "records": 8,
+          "sum_ms": 164.51279,
+          "union_ms": 164.51279
+        },
+        "op.host": {
+          "records": 7,
+          "sum_ms": 181.20137,
+          "union_ms": 181.20137
+        },
+        "op.zg": {
+          "records": 7,
+          "sum_ms": 0.99265,
+          "union_ms": 0.99265
+        },
+        "runtime.final_wait": {
+          "records": 1,
+          "sum_ms": 0.17358,
+          "union_ms": 0.17358
+        },
+        "runtime.forward": {
+          "records": 1,
+          "sum_ms": 184.71472,
+          "union_ms": 184.71472
+        },
+        "runtime.input_prepare": {
+          "records": 1,
+          "sum_ms": 0.07877,
+          "union_ms": 0.07877
+        },
+        "runtime.input_validation": {
+          "records": 1,
+          "sum_ms": 0.10967,
+          "union_ms": 0.10967
+        },
+        "runtime.observation": {
+          "records": 5,
+          "sum_ms": 0.10774,
+          "union_ms": 0.10774
+        },
+        "runtime.output_read": {
+          "records": 1,
+          "sum_ms": 1.20467,
+          "union_ms": 1.20467
+        },
+        "runtime.preprocess": {
+          "records": 1,
+          "sum_ms": 5.78458,
+          "union_ms": 5.78458
+        },
+        "runtime.raw_validation": {
+          "records": 1,
+          "sum_ms": 0.09814,
+          "union_ms": 0.09814
+        },
+        "runtime.selection": {
+          "records": 1,
+          "sum_ms": 0.00126,
+          "union_ms": 0.00126
+        },
+        "runtime.state_clear": {
+          "records": 1,
+          "sum_ms": 0.00572,
+          "union_ms": 0.00572
+        },
+        "runtime.total": {
+          "records": 1,
+          "sum_ms": 192.38287,
+          "union_ms": 192.38287
+        }
+      },
+      "display_definite_overlap": 1,
+      "display_possible_overlap": 1,
+      "capture_callbacks_definitely_inside_forward": 0
+    },
+    {
+      "invocation": 0,
+      "case": "S11_01_308",
+      "forward_ms": 184.54649,
+      "epoch_uncertainty_ns": 29680,
+      "categories": {
+        "bridge.allocate": {
+          "records": 8,
+          "sum_ms": 0.23239,
+          "union_ms": 0.23239
+        },
+        "bridge.copy": {
+          "records": 8,
+          "sum_ms": 0.55401,
+          "union_ms": 0.55401
+        },
+        "bridge.cpu": {
+          "records": 5,
+          "sum_ms": 13.75018,
+          "union_ms": 13.75018
+        },
+        "bridge.spec": {
+          "records": 5,
+          "sum_ms": 0.14665,
+          "union_ms": 0.14665
+        },
+        "bridge.wait": {
+          "records": 8,
+          "sum_ms": 164.49282,
+          "union_ms": 164.49282
+        },
+        "op.host": {
+          "records": 7,
+          "sum_ms": 181.00809,
+          "union_ms": 181.00809
+        },
+        "op.zg": {
+          "records": 7,
+          "sum_ms": 1.09004,
+          "union_ms": 1.09004
+        },
+        "runtime.final_wait": {
+          "records": 1,
+          "sum_ms": 0.14843,
+          "union_ms": 0.14843
+        },
+        "runtime.forward": {
+          "records": 1,
+          "sum_ms": 184.54649,
+          "union_ms": 184.54649
+        },
+        "runtime.input_prepare": {
+          "records": 1,
+          "sum_ms": 0.08764,
+          "union_ms": 0.08764
+        },
+        "runtime.input_validation": {
+          "records": 1,
+          "sum_ms": 0.11259,
+          "union_ms": 0.11259
+        },
+        "runtime.observation": {
+          "records": 5,
+          "sum_ms": 0.11604,
+          "union_ms": 0.11604
+        },
+        "runtime.output_read": {
+          "records": 1,
+          "sum_ms": 1.37676,
+          "union_ms": 1.37676
+        },
+        "runtime.preprocess": {
+          "records": 1,
+          "sum_ms": 5.74112,
+          "union_ms": 5.74112
+        },
+        "runtime.raw_validation": {
+          "records": 1,
+          "sum_ms": 0.09825,
+          "union_ms": 0.09825
+        },
+        "runtime.selection": {
+          "records": 1,
+          "sum_ms": 0.00142,
+          "union_ms": 0.00142
+        },
+        "runtime.state_clear": {
+          "records": 1,
+          "sum_ms": 0.00556,
+          "union_ms": 0.00556
+        },
+        "runtime.total": {
+          "records": 1,
+          "sum_ms": 192.37184,
+          "union_ms": 192.37184
+        }
+      },
+      "display_definite_overlap": 0,
+      "display_possible_overlap": 0,
+      "capture_callbacks_definitely_inside_forward": 3
+    }
+  ],
+  "performance_acceptance": false,
+  "ZG_span_is_pure_NPU_time": false,
+  "categories_overlap_do_not_sum": true,
+  "old_spike_reproduction_threshold_ms": 221.6102,
+  "old_spike_threshold_reached": false
+}

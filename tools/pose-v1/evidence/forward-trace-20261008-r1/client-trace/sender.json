@@ -1,0 +1,59 @@
+{
+  "fps": 5,
+  "sent": [
+    {
+      "sequence": 0,
+      "transport_id": 100000,
+      "case": "S11_01_308",
+      "fixture_frame_id": 6,
+      "sha256": "0fbdc9ec5b670a895ac6bcaa6e7230c391d4c96adc066b816c1086bae6f4e293",
+      "payload_sha256": "2adea73d75bd6376dcc9c2982b0a22acb33266b7df4a66ae21f4237b9a35a51b",
+      "begin_pc_ns": 113280906000000,
+      "end_pc_ns": 113280906000000
+    },
+    {
+      "sequence": 1,
+      "transport_id": 100001,
+      "case": "S11_12_329",
+      "fixture_frame_id": 22,
+      "sha256": "b6774bf402c990377e1bfcbfa7738ac204c17fb2f41b379ae68ed360be13bbc0",
+      "payload_sha256": "059908cc994bf2766c564d9c2af049bc062c96b0fc1017305684839c49a43bee",
+      "begin_pc_ns": 113281109000000,
+      "end_pc_ns": 113281109000000
+    },
+    {
+      "sequence": 2,
+      "transport_id": 100002,
+      "case": "S11_32_349",
+      "fixture_frame_id": 39,
+      "sha256": "1f3aca9d590c8245d10a5c49321284c5014f9524335972e54b37fd10d39633e0",
+      "payload_sha256": "cd650a605d63b6885b34509b013eeee6817c956462ef5615b60b405b283c5612",
+      "begin_pc_ns": 113281328000000,
+      "end_pc_ns": 113281328000000
+    },
+    {
+      "sequence": 3,
+      "transport_id": 100003,
+      "case": "S12_01_331",
+      "fixture_frame_id": 40,
+      "sha256": "689020edfc89b55e823c849db720d6cfa5036b1b9e274a103cfb33c12517e516",
+      "payload_sha256": "7e0f75d0df54447c427ecf6cbe34233f1828b0600426c85cf0d6352279dcbbf0",
+      "begin_pc_ns": 113281500000000,
+      "end_pc_ns": 113281500000000
+    },
+    {
+      "sequence": 4,
+      "transport_id": 100004,
+      "case": "S12_27_315",
+      "fixture_frame_id": 56,
+      "sha256": "a573ac8fce7306095a6fb56b81841b99070d6e302813b600eff2ec08ffc4e422",
+      "payload_sha256": "61ce13d053dec71b631ef9dd73704b8e38a6b5b9a92ba8b8836284378263577d",
+      "begin_pc_ns": 113281718000000,
+      "end_pc_ns": 113281718000000
+    }
+  ],
+  "startup_only": true,
+  "session_count": 1,
+  "status": "failed",
+  "error": "[WinError 10053] \u4f60\u7684\u4e3b\u673a\u4e2d\u7684\u8f6f\u4ef6\u4e2d\u6b62\u4e86\u4e00\u4e2a\u5df2\u5efa\u7acb\u7684\u8fde\u63a5\u3002"
+}

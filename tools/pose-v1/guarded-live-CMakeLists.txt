@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.24)
+project(pose_live_pipeline_check LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(Threads REQUIRED)
+find_package(icraft-hostbackend 3.39.0.0 EXACT REQUIRED)
+find_package(icraft-zg330backend 3.39.0.0 EXACT REQUIRED)
+set(VENDOR ${CMAKE_CURRENT_SOURCE_DIR}/../vendor)
+add_executable(pose_live_pipeline_check live_pipeline_check.cpp pipeline_fixture_source.cpp live_host_gate.cpp
+  vpu_resident_encoder.cpp application_core.cpp application_bridge.cpp mixed_host_check.cpp
+  host_cpu_adapter.cpp preprocess.cpp skeleton_render.cpp h264_access_unit.cpp access_unit_channel.cpp guarded_rtsp.cpp guarded_network_adapter.cpp)
+target_include_directories(pose_live_pipeline_check PRIVATE . ${VENDOR} ${VENDOR}/live/liveMedia/include
+  ${VENDOR}/live/UsageEnvironment/include ${VENDOR}/live/BasicUsageEnvironment/include ${VENDOR}/live/groupsock/include)
+target_link_libraries(pose_live_pipeline_check PRIVATE Icraft::HostBackend Icraft::ZG330Backend
+  -Wl,--start-group ${VENDOR}/libs/libliveMedia.a ${VENDOR}/libs/libgroupsock.a
+  ${VENDOR}/libs/libBasicUsageEnvironment.a ${VENDOR}/libs/libUsageEnvironment.a
+  ${VENDOR}/libs/libssl.a ${VENDOR}/libs/libcrypto.a -Wl,--end-group dl Threads::Threads)
+target_compile_options(pose_live_pipeline_check PRIVATE -Wall -Wextra -Wpedantic -ffp-contract=off)
+add_executable(pose_access_unit_selftest access_unit_selftest.cpp h264_access_unit.cpp access_unit_channel.cpp)
+target_include_directories(pose_access_unit_selftest PRIVATE .)
+target_link_libraries(pose_access_unit_selftest PRIVATE Threads::Threads)
+target_compile_options(pose_access_unit_selftest PRIVATE -Wall -Wextra -Wpedantic)

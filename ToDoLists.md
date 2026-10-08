@@ -1,10 +1,65 @@
-# 当前待办（2026-10-07）
+# 当前待办（2026-10-08）
+
+## 最新接续：forward取证与索引失败
+
+- [x] 隔离构建、Host107/IPC、原三窗完整数值与实际视频核验。
+- [x] 失败145回传/213时钟、异常释放、规整前后归档；103身份计划准备。
+- [ ] 新隔离纯计时控制，分离额外SDK状态查询；异常拥有值输入捕获。
+- [ ] 新Host/三窗后有限诊断，定位GatherElements192索引来源及原inv28尖峰。
+- [ ] 实施103有界低日志入口与完整来源核验；严格5Hz、启动可靠性、故障负载、HDMI及30分钟仍待。
+
+2026-10-08最新：[独立显示子进程结果](tools/pose-v1/DISPLAY-PROCESS-RESULTS-20261008.md)、[恢复点](tools/pose-v1/evidence/display-process-20261008-r1/next-checkpoint.json)。70数值/视频来源正确；名义5Hz33全消费/无覆盖，实际4.99165Hz严格5Hz未通过，管理83/100保持，无后台。
+
+- [x] 实际独立SDK无关显示进程、容量2/IPC信用1、拥有字节及退出回收；Host107/IPC/9拒绝通过。
+- [x] 原三窗重复、2Hz及5Hz全参考/视频/时钟/进程回收门检。
+- [ ] invocation28 forward221.61ms尖峰有限单钟定位与更长有界统计入口，见[下一方案](tools/pose-v1/DISPLAY-PROCESS-NEXT-20261008.md)。
+- [ ] 全链超载/断流/重连/子进程错误/慢客户端清理、严格5Hz及30分钟。
+- [ ] 安全连续申请/首次启动资源与HDMI匹配接口；本轮一次规整已用完，不自动再规整/重启。
+
+<details>
+<summary>历史清单与停止记录（不作当前任务指令）</summary>
+
+2026-10-08最新：[整机计量结果](tools/pose-v1/SYSTEM-TIMING-RESULTS-20261008.md)、[恢复点](tools/pose-v1/evidence/system-timing-20261008-r2/next-checkpoint.json)。62前向和视频来源正确；4.22311Hz未通过5Hz，管理估计83/100保持，无后台。
+
+- [x] 独立低日志/同steady_clock计量及Host107/传输身份拒绝测试。
+- [x] 2Hz三预热＋30计量，全部33消费，完整数值/来源通过。
+- [x] 5Hz33输入负载取证：29消费/4覆盖，扣预热26计量，严格参考与视频通过。
+- [ ] [SDK无关显示worker](tools/pose-v1/SYSTEM-TIMING-NEXT-20261008.md)：保持Engine主线程，容量2拥有值队列及释放/异常门检，新修订回归。
+- [ ] 首启动资源条件与安全连续分配；最终order7+为0，不自动再次规整/清缓存/重启/CMA改变。
+- [ ] 超载/断流/重连/慢客户端完整清理、HDMI和30分钟。
+
+
+2026-10-08最新：[保存优先/单次规整结果](tools/pose-v1/PRESAVED-RESULTS-20261008.md)、[检查点](tools/pose-v1/evidence/tcp-presaved-20261008-r1/next-checkpoint.json)。有限TCP三/27全链32前向通过，旧失配未复现/原因未知，长期内存可靠性另验；下方阻断为历史。
+
+- [x] 全输出保存后原门检，Host/协议/保存契约及32完整前向逐位验证。
+- [x] 一次规整取证、两个VPU进程/984编码/864网络完整来源/PTS/像素。
+- [ ] 独立低日志整机计量、超载/断流；旧失配复现时使用完整保存数据分类。
+- [ ] 匹配驱动CMA/预分配/MMU/DMA/释放方案及可靠性；HDMI、30分钟仍待。
+
+下一批具体建议见[当前进度与后续方案](tools/pose-v1/PROJECT-STATUS-AND-NEXT-20261008.md)。本轮仅整理，未新板测。
+
+
+2026-10-08当前：[guarded/TCP结果](tools/pose-v1/TCP-INTEGRATION-RESULTS-20261008.md)、[检查点](tools/pose-v1/evidence/tcp-evidence-20261008-r1/next-checkpoint.json)。guarded与TCP三窗通过，27第六窗失配，取证身份Host107通过而VPU普通order7分配失败。旧待guarded固化条目为历史。
+
+- [x] guarded策略适配与身份/Host/32真实来源回归。
+- [x] TCP完整Window、预先arm协调、三窗＋重复全链核验。
+- [x] 失败捕获、Native/ARM字节与原异常契约、44来源构建及Host107。
+- [ ] 用户选择首启动恢复方式，新目录三窗后27失败实际值/修复验证。
+- [ ] 27通过后整机计量/超载/长期；HDMI配套仍待。
+
+2026-10-08最新：[真实串联/候选模块结果](tools/pose-v1/LIVE-RESULTS-20261008.md)及[恢复点](tools/pose-v1/evidence/live-20261008-completion/next-checkpoint.json)。本地固定三/27窗32前向/980编码/650网络/全部来源与实际PTS通过，guarded独立正负通过但未入r2；旧“实时合并待测”是历史。无后台，原授权继续。
+
+- [x] 真实capture→AU→RTSP，主线程Engine全窗口存活，完整三/27窗/来源/时间/像素与释放。
+- [x] 晚加入40帧定位与协同修正，16秒91帧预算不足保留并30秒223帧控制通过。
+- [x] 独立guarded候选正常/慢客户端发送错误传播与TCP上限，ADR_09/10归档。
+- [ ] 新目标固化guarded并身份/Host/真实源回归，再接既有TCP完整窗口接口。
+- [ ] 整机5Hz/P95/过载/30分钟；HDMI1080p60配套与双路，显式SPS色彩。
 
 2026-10-08：全项目[ADR主题归档](ADR/README.md)及高内聚/低耦合规范已写入；owned AU模块Native/ARM、493记录AU→200帧网络字节/PTS/像素门检通过。首批网络帧来自NoInput，补独立延后加入骨架来源覆盖；不把记录字节门检记真实实时闭环。下一[接入入口](tools/pose-v1/ONLINE-INTEGRATION-NEXT-20261008.md)。
 
 - [x] 从开始到当前难点/解决/限制归档ADR_03–08，保留ADR_00–02。
 - [x] 独立AU解析/容量8通道/事件循环适配Native/ARM/有限网络门检。
-- [ ] 实际capture→AU网络、主线程Engine全窗口生命周期、完整三/27窗与慢客户端门检。
+- [x] 实际capture→AU网络与三/27窗通过；慢客户端候选另验证，正式固化仍见最新待办。
 
 2026-10-08最新：两缓冲启动三次回归、有限主线程Engine＋后台编码三/27输入及987源映射通过。下一在线AU/live555与27网络门检，整机/长期/HDMI未验收。[结果](tools/pose-v1/RESIDENT-RESULTS-20261008.md)。旧“启动仍未通过”仅指旧失败候选，证据保留。
 
@@ -84,3 +139,5 @@
 
 算法训练旁支保持已停止，不重启500轮或延长10轮；本轮首版继续采用2024 epoch442。
 已完成事项集中在[Done.md](Done.md)，不在本清单重复计进度。
+
+</details>

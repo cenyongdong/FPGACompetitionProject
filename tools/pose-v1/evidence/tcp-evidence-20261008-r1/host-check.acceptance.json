@@ -1,0 +1,22 @@
+{
+  "status": "live_stage_passed",
+  "stage": "host-check",
+  "binary_sha256": "d7def2de0727cabe12c5d2b8a5cc692416bb63428e3b462202ce458734f98a47",
+  "package_manifest_sha256": "08052d25a852660ebab5de61c308f187dcf56d4806098ad4880c0044e9edf4c5",
+  "package_payloads": 403,
+  "build_sources": 44,
+  "sdk_headers": 15,
+  "vendor_files": 189,
+  "returned_hashed_files": 71,
+  "executed_runner_sha256": "c7894e09db012c7970afeb0333bdb604a74ab208b8b186f390d9e34ad381f561",
+  "TCP_protocol_selftest": true,
+  "failure_capture_contracts": true,
+  "Host_cases": 107,
+  "registry_records": 12,
+  "CPU_output_values": 59600,
+  "AU_rejections": 17,
+  "AU_threaded_units": 2000,
+  "device_opened": false,
+  "exit": 0,
+  "kernel_unchanged": true
+}

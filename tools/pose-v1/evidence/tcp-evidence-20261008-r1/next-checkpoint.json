@@ -1,0 +1,16 @@
+{
+  "status": "hardware_testing_stopped_at_VPU_allocation_failure_TCP_output_diagnostic_pending",
+  "user_paused": false,
+  "active_test": false,
+  "services_running": false,
+  "SSH_SFTP_closed": true,
+  "build": ".local/pose-v1-build/mixed-20261008-tcp-evidence-r1",
+  "package": ".local/pose-v1-tcp-evidence/package-20261008-r1",
+  "board": "/tmp/pose-v1-tcp-evidence-20261008-r1",
+  "program_sha256": "d7def2de0727cabe12c5d2b8a5cc692416bb63428e3b462202ce458734f98a47",
+  "last_accepted_stage": "host-check",
+  "last_hardware_stage": "live-three exit1 before Engine",
+  "report_sha256": "ea3ec91d0292e37d4ce01a55aa93dfa21f1f0c7b3817efe9de2331757be30933",
+  "next": "Read TCP-INTEGRATION-RESULTS-20261008.md and TCP-RECOVERY-NEXT-20261008.md. Restore first-start conditions only with explicit user choice; new directory three source regression before27 failure-only capture. Do not rerun existing failure directories or start performance.",
+  "no_automatic_retry_compaction_cache_clear_reboot_or_BOOT_CMA_change": true
+}

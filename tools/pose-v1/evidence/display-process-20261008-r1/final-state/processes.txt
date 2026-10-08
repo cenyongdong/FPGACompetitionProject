@@ -1,0 +1,93 @@
+    PID STAT COMMAND
+      1 Ss   /sbin/init
+      2 S    [kthreadd]
+      3 I<   [rcu_gp]
+      4 I<   [rcu_par_gp]
+      8 I<   [mm_percpu_wq]
+      9 S    [ksoftirqd/0]
+     10 I    [rcu_sched]
+     11 S    [migration/0]
+     12 S    [cpuhp/0]
+     13 S    [cpuhp/1]
+     14 S    [migration/1]
+     15 S    [ksoftirqd/1]
+     18 S    [cpuhp/2]
+     19 S    [migration/2]
+     20 S    [ksoftirqd/2]
+     23 S    [cpuhp/3]
+     24 S    [migration/3]
+     25 S    [ksoftirqd/3]
+     28 S    [kdevtmpfs]
+     31 I    [kworker/2:1-mm_percpu_wq]
+     32 S    [kauditd]
+     33 S    [oom_reaper]
+     34 I<   [writeback]
+     35 S    [kcompactd0]
+     36 SN   [khugepaged]
+     38 I    [kworker/3:1-mm_percpu_wq]
+     54 I<   [kblockd]
+     55 I<   [edac-poller]
+     56 S    [watchdogd]
+     57 I<   [rpciod]
+     58 I<   [kworker/u9:0-kbase_pm_poweroff_wait]
+     59 I<   [xprtiod]
+     60 S    [kswapd0]
+     61 S    [ecryptfs-kthrea]
+     62 I<   [nfsiod]
+     63 S    [spi3]
+     64 I<   [stmmac_wq]
+     69 S    [kpktgend_0]
+     71 S    [kpktgend_1]
+     72 S    [kpktgend_2]
+     73 S    [kpktgend_3]
+     74 I<   [ipv6_addrconf]
+     75 I<   [mmc_complete]
+     80 I<   [kworker/2:1H-kblockd]
+     81 S    [jbd2/mmcblk0p2-]
+     82 I<   [ext4-rsv-conver]
+    103 S<s  /lib/systemd/systemd-journald
+    115 I<   [kbase_job_fault]
+    116 I<   [kworker/u9:1]
+    119 I<   [mvx_securevideo]
+    120 S    [fw_cache]
+    121 I<   [mvx_sched]
+    126 Ssl  /lib/systemd/systemd-timesyncd
+    130 Ss   /usr/sbin/cron -f
+    131 Ss   /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    136 Ssl  /usr/sbin/rsyslogd -n -iNONE
+    137 Ss   /lib/systemd/systemd-logind
+    149 Ss   /lib/systemd/systemd-resolved
+    150 Ssl  /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    185 Ss   sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    186 Ss+  /sbin/agetty -o -p -- \u --noclear tty1 linux
+    187 Ss+  /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+    266 Ss   /lib/systemd/systemd --user
+    267 S    (sd-pam)
+    425 Ss   sshd: root@pts/1
+    427 Ss   sshd: root@notty
+    439 Ss+  -bash
+    460 Ss   /usr/lib/openssh/sftp-server
+  59689 I    [kworker/0:1-events]
+  83072 I<   [kworker/1:2H-kblockd]
+ 128398 Ss   bash -c while true; do sleep 1;head -v -n 8 /proc/meminfo; head -v -n 2 /proc/stat /proc/version /proc/uptime /proc/loadavg /proc/sys/fs/file-nr /proc/sys/kernel/hostname; tail -v -n 32 /proc/net/dev;echo '==> /proc/df <==';df -l;echo '==> /proc/who <==';who;echo '==> /proc/end <==';echo '##Moba##'; done
+ 190025 I<   [kworker/3:0H-kblockd]
+ 209809 I    [kworker/u8:2-flush-179:0]
+ 260395 I    [kworker/u8:0-mvx_sched]
+ 281338 I<   [kworker/0:0H-mmc_complete]
+ 282125 I<   [kworker/2:0H]
+ 285088 I    [kworker/3:0-events]
+ 285866 I    [kworker/2:2-events]
+ 287863 I    [kworker/1:0-mm_percpu_wq]
+ 289183 I    [kworker/0:2-cgroup_destroy]
+ 289268 I<   [kworker/1:1H]
+ 291158 I<   [kworker/3:1H-kblockd]
+ 291287 I    [kworker/1:1-events_freezable]
+ 292756 I<   [kworker/0:2H]
+ 294305 I<   [kworker/1:0H]
+ 294355 I<   [kworker/2:2H]
+ 294369 I    [kworker/3:2]
+ 294824 I    [kworker/1:2-events]
+ 295614 Ss   sshd: root@notty
+ 295765 S    sleep 1
+ 295776 Ss   sh -c set -eu; cd /tmp/pose-display-process-20261008-r1; test ! -e final-state; mkdir final-state; for p in buddyinfo pagetypeinfo meminfo vmstat cmdline; do cat /proc/$p > final-state/$p.txt; done; ss -ltnp > final-state/ports.txt; ps -eo pid,stat,args > final-state/processes.txt; dmesg > final-state/dmesg.log; cd final-state; sha256sum *.txt *.log > files.sha256
+ 295784 R    ps -eo pid,stat,args

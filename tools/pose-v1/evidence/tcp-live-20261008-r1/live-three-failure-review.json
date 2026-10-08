@@ -1,0 +1,14 @@
+{
+  "status": "startup_control_failed_no_model_forward",
+  "returned_files": 111,
+  "program_sha256": "02697797902d25a4664adbdfb6c69235e300a8e1fe13f2475bbc632176772855",
+  "exit": 1,
+  "input_records": 0,
+  "model_forwards": 0,
+  "NoInput_samples": 344,
+  "kernel_unchanged": true,
+  "sender_error": "TimeoutError before first connection; startup handler only caught ConnectionRefusedError",
+  "board_error": "Complete CSI window exceeds5s",
+  "correction": "external bounded startup control only; preserve package, binary, Host and budgets",
+  "complete_pipeline_passed": false
+}

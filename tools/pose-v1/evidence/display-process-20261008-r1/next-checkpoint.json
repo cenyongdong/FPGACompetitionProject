@@ -1,0 +1,16 @@
+{
+  "status": "separate_display_process_feasibility_done_strict5Hz_jitter_and_reliability_pending",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "build": ".local/pose-v1-build/mixed-20261008-display-process-r1",
+  "package": ".local/pose-v1-display-process/package-20261008-r1",
+  "board": "/tmp/pose-display-process-20261008-r1",
+  "program_sha256": "3c95eaa7c49454391200dbf3ffd66c08a6edba7700902755a06673ffe1f37c05",
+  "display_worker_sha256": "de78f7cd1862d746033861c942ebce645c246667ede8cb3b2ba51e2667dbbfda",
+  "completion_sha256": "9c63cebbdc8b8d1c6276a39b43396a0dbdde67255bde662d66a932c4fb8da643",
+  "this_batch_compaction_authorization_consumed": true,
+  "strict5Hz_verified": false,
+  "next": "Read DISPLAY-PROCESS-RESULTS-20261008.md and DISPLAY-PROCESS-NEXT-20261008.md. Preserve separate executable and main-owned Engine. Investigate forward invocation28 spike with bounded single-clock trace before claiming strict5Hz; longer finite/load then overload/stream outage/cleanup. Match VPU allocation path for startup reliability; no automatic compaction/reboot/cache/BOOT/CMA/math/sync changes. HDMI and30min remain pending."
+}

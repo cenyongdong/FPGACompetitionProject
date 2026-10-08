@@ -1,0 +1,16 @@
+{
+  "status": "SDK_free_guarded_normal_reader_control_passed",
+  "program_sha256": "ee7a10a0b5b1e9c48647a10aaa2d05cd3c94556e78db9dc9b6edcef8c99c8481",
+  "returned_hashed_files": 14,
+  "producer_frames": 300,
+  "decoded_network_frames": 223,
+  "TCP_send_buffer_actual": 131072,
+  "guarded_module_same_negative": true,
+  "send_errors": 0,
+  "exact_seed_pixels": true,
+  "actual_producer_RTP_PTS": true,
+  "port_released": true,
+  "kernel_unchanged": true,
+  "VPU_NPU": false,
+  "guarded_module_integrated_into_r2": false
+}

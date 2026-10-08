@@ -1,0 +1,117 @@
+{
+  "status": "raw_stream_plus_repeat_sent_no_receiver_ack",
+  "fps": 2,
+  "sent": [
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "session": 1,
+      "sha256": "63d34a02983549940326933415a7613747c2e86c72ed53120e5e518be46cb7b7",
+      "bytes": 86432
+    },
+    {
+      "case": "S11_01_309",
+      "frame_id": 7,
+      "session": 1,
+      "sha256": "c2bca2e20d80442b67a85c9678e6e4f84f5d4d48ad5bc50b71fd2723eb545586",
+      "bytes": 86432
+    },
+    {
+      "case": "S11_01_310",
+      "frame_id": 8,
+      "session": 1,
+      "sha256": "4033a5c5d8f9dfb1de3b8a0a801323f61c8a6783da7a8104438ba55a1e9d5e07",
+      "bytes": 86432
+    },
+    {
+      "case": "S11_01_308",
+      "frame_id": 6,
+      "session": 2,
+      "sha256": "63d34a02983549940326933415a7613747c2e86c72ed53120e5e518be46cb7b7",
+      "bytes": 86432
+    }
+  ],
+  "startup_wait_only": true,
+  "startup_attempts": [
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 64.0
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 62.875
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 61.76499999999942
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 60.65600000000268
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 59.54700000000594
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 58.437000000005355
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 57.32799999999406
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 56.21899999999732
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 55.09399999999732
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 53.98399999999674
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 52.875
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 51.76499999999942
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 50.65600000000268
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 49.54700000000594
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 48.42200000000594
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 47.312000000005355
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 46.20299999999406
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 45.09399999999732
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 43.96899999999732
+    },
+    {
+      "kind": "TimeoutError",
+      "remaining_s": 42.85899999999674
+    }
+  ]
+}

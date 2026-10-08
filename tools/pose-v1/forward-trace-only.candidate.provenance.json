@@ -1,0 +1,11 @@
+{
+  "applied": false,
+  "compiled": false,
+  "hardware_executed": false,
+  "source_sha256": {
+    "software/pose_v1/include/application_core.hpp": "40a1c9e67d8358c5277726c9e3a65da4bcfc1a3f0ee8e2fc0629f5ee088417b6",
+    "software/pose_v1/src/application_core.cpp": "e0b6bfc84de56c9e47ddf5e3b777ad026dacbee5d798e6f1e7e09d88c38fd942",
+    "software/pose_v1/src/forward_trace_check.cpp": "aa15ecfe435e2cf2c2b0f71ce91f672ccdc055f4c15d7402abc8ddd822efcacb"
+  },
+  "note": "Must use new isolated header/core/entry destinations; never apply to frozen baselines. Failure-only staged-input capture requires separate implementation."
+}

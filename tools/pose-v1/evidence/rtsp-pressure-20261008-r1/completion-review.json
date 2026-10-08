@@ -1,0 +1,15 @@
+{
+  "status": "SDK_free_slow_reader_guarded_module_rejected_correctly",
+  "program_sha256": "52bbdd1a4fcf8854442cb7bb8aba4cff53bbcbf59e6ca12ac47efd105151b0be",
+  "returned_hashed_files": 14,
+  "expected_exit": 1,
+  "RTP_send_error_propagated": true,
+  "TCP_send_buffer_actual": 131072,
+  "AU_high_water": 5,
+  "produced": 85,
+  "sources_live": 0,
+  "port_released": true,
+  "kernel_unchanged": true,
+  "VPU_NPU": false,
+  "guarded_module_integrated_into_r2": false
+}

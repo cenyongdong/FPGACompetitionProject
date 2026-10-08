@@ -1,0 +1,92 @@
+    PID COMMAND
+      1 /sbin/init
+      2 [kthreadd]
+      3 [rcu_gp]
+      4 [rcu_par_gp]
+      8 [mm_percpu_wq]
+      9 [ksoftirqd/0]
+     10 [rcu_sched]
+     11 [migration/0]
+     12 [cpuhp/0]
+     13 [cpuhp/1]
+     14 [migration/1]
+     15 [ksoftirqd/1]
+     18 [cpuhp/2]
+     19 [migration/2]
+     20 [ksoftirqd/2]
+     23 [cpuhp/3]
+     24 [migration/3]
+     25 [ksoftirqd/3]
+     28 [kdevtmpfs]
+     31 [kworker/2:1-events]
+     32 [kauditd]
+     33 [oom_reaper]
+     34 [writeback]
+     35 [kcompactd0]
+     36 [khugepaged]
+     38 [kworker/3:1-events]
+     54 [kblockd]
+     55 [edac-poller]
+     56 [watchdogd]
+     57 [rpciod]
+     58 [kworker/u9:0-kbase_pm_poweroff_wait]
+     59 [xprtiod]
+     60 [kswapd0]
+     61 [ecryptfs-kthrea]
+     62 [nfsiod]
+     63 [spi3]
+     64 [stmmac_wq]
+     69 [kpktgend_0]
+     71 [kpktgend_1]
+     72 [kpktgend_2]
+     73 [kpktgend_3]
+     74 [ipv6_addrconf]
+     75 [mmc_complete]
+     80 [kworker/2:1H-kblockd]
+     81 [jbd2/mmcblk0p2-]
+     82 [ext4-rsv-conver]
+    103 /lib/systemd/systemd-journald
+    115 [kbase_job_fault]
+    116 [kworker/u9:1]
+    119 [mvx_securevideo]
+    120 [fw_cache]
+    121 [mvx_sched]
+    126 /lib/systemd/systemd-timesyncd
+    130 /usr/sbin/cron -f
+    131 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    136 /usr/sbin/rsyslogd -n -iNONE
+    137 /lib/systemd/systemd-logind
+    149 /lib/systemd/systemd-resolved
+    150 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    185 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    186 /sbin/agetty -o -p -- \u --noclear tty1 linux
+    187 /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+    266 /lib/systemd/systemd --user
+    267 (sd-pam)
+    425 sshd: root@pts/1
+    427 sshd: root@notty
+    439 -bash
+    460 /usr/lib/openssh/sftp-server
+  59195 [kworker/0:1H-mmc_complete]
+  59689 [kworker/0:1-events]
+  83072 [kworker/1:2H-kblockd]
+ 128398 bash -c while true; do sleep 1;head -v -n 8 /proc/meminfo; head -v -n 2 /proc/stat /proc/version /proc/uptime /proc/loadavg /proc/sys/fs/file-nr /proc/sys/kernel/hostname; tail -v -n 32 /proc/net/dev;echo '==> /proc/df <==';df -l;echo '==> /proc/who <==';who;echo '==> /proc/end <==';echo '##Moba##'; done
+ 130056 [kworker/0:2]
+ 131878 [kworker/2:0]
+ 190025 [kworker/3:0H-kblockd]
+ 209809 [kworker/u8:2-flush-179:0]
+ 253592 [kworker/1:0-events]
+ 260175 [kworker/3:2-cgroup_destroy]
+ 260352 [kworker/3:2H]
+ 260395 [kworker/u8:0-mvx_sched]
+ 260596 [kworker/2:0H]
+ 261451 [kworker/1:2-events]
+ 261746 [kworker/1:0H-kblockd]
+ 262138 [kworker/0:2H]
+ 262659 [kworker/2:2H]
+ 262883 [kworker/3:0-mm_percpu_wq]
+ 263354 [kworker/1:1-events_freezable]
+ 264139 sshd: root@notty
+ 264423 sleep 1
+ 264434 sh -c set -eu; cd /tmp/pose-system-timing-20261008-r2; mkdir final-state; for p in buddyinfo pagetypeinfo meminfo vmstat cmdline; do cat /proc/$p > final-state/$p.txt; done; ss -ltnp > final-state/ports.txt; ps -eo pid,args > final-state/processes.txt; dmesg > final-state/dmesg.log; cd final-state; sha256sum *.txt *.log > files.sha256
+ 264442 ps -eo pid,args

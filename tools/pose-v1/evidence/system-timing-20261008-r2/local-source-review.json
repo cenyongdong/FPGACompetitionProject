@@ -1,0 +1,16 @@
+{
+  "status": "local_source_review_passed",
+  "clock": "std::chrono::steady_clock",
+  "transport_base": 100000,
+  "max_sent": 33,
+  "warmup_consumed": 3,
+  "results_persist_after_workers_join": true,
+  "engine_owner": "main",
+  "receiver_capacity": 1,
+  "frame_capacity": 2,
+  "AU_capacity": 8,
+  "new_dependencies_installed": false,
+  "math_model_SDK_IOCTL_cookies_copies_unchanged": true,
+  "compaction_reboot_BOOT_change": false,
+  "known_build_failure": "r1 CMake referenced replaced source; r2 corrected"
+}

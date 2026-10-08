@@ -1,0 +1,14 @@
+{
+  "status": "trace_r1_failed_at_GatherElements192_root_cause_pending",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "package": ".local/pose-v1-forward-trace/package-20261008-r1",
+  "build": ".local/pose-v1-build/mixed-20261008-forward-trace-r1",
+  "board": "/tmp/pose-forward-trace-20261008-r1",
+  "program_sha256": "d4506060bbeea426bf0d6655da1f2ca526d0d00926a2774aef8ccd4650da4f7e",
+  "failure_review_sha256": "bba435362c639c4bf4d06be11c2d96fc1f13940ccaf84123732fbdbe38c5401d",
+  "compaction_policy": "Agent may decide based on current evidence; record every action. No new per-action user approval required.",
+  "next": "Read FORWARD-TRACE-RESULTS-20261008.md and ADR_16. Do not rerun r1 or expand load. Prepare isolated timing_frames config plus failure-only owned Host input capture; new identity Host/three gates precede bounded trace. Old221.6102ms spike and strict5Hz unresolved; 103-window schedule prepared only; HDMI/30min pending."
+}

@@ -1,0 +1,23 @@
+{
+  "status": "live_stage_passed",
+  "stage": "live-27",
+  "binary_sha256": "f02aceb88188b2eb96775169bbec035bfcb5e4499732673fcf12e797248c6458",
+  "package_manifest_sha256": "5370e19971e2ec2a0dcd225d802fbc5aaf7cd57fbce2ccbe03d5349fbab97e31",
+  "package_payloads": 403,
+  "build_sources": 36,
+  "sdk_headers": 15,
+  "vendor_files": 189,
+  "returned_hashed_files": 226,
+  "executed_runner_sha256": "c8aed40750d9e1011f6cfaca872586fb8852578aec9d5660e2a04fb30fd1da11",
+  "guarded_network_integrated": true,
+  "TCP_send_buffer_actual": 131072,
+  "send_errors": 0,
+  "full_correct_forwards": 28,
+  "encoded_frames": 487,
+  "real_capture_AU_bridge": true,
+  "actual_clock_PTS": true,
+  "Engine_main_owner_alive_until_workers_joined": true,
+  "AU_high_water": 1,
+  "exit": 0,
+  "kernel_unchanged": true
+}

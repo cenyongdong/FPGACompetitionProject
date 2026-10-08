@@ -1,0 +1,34 @@
+--- a/software/pose_v1/include/application_core.hpp
++++ b/software/pose_v1/include/application_core.hpp
+@@ -9,7 +9,7 @@
+ struct Config {
+     std::filesystem::path graph, raw, evidence;
+     bool allow_device_init=false, capture=false, minimal_log=false;
+-    size_t diagnostic_frames=4;
++    size_t diagnostic_frames=4; size_t timing_frames=0;
+ };
+ struct Result {
+     uint64_t frame_id=0, source_time_ns=0, invocation=0;
+--- a/software/pose_v1/src/application_core.cpp
++++ b/software/pose_v1/src/application_core.cpp
+@@ -27,7 +27,8 @@
+         need(c.allow_device_init,"Explicit device initialization authorization required");
+         need(c.diagnostic_frames<=32,"Diagnostic sampling is bounded to32 frames");
+         need(!c.capture || c.diagnostic_frames>0,"Capture requires bounded diagnostic frames");
+-        fc::sample_limit=c.diagnostic_frames;
++        need(c.timing_frames<=32,"Timing sampling is bounded to32 frames");
++        fc::sample_limit=c.timing_frames?c.timing_frames:c.diagnostic_frames;
+         need(!(c.capture && c.minimal_log),"Capture and minimal logging are mutually exclusive");
+         bool unused=false;
+         need(engine_consumed.compare_exchange_strong(unused,true),"Only one Engine may ever be constructed in this process");
+--- a/software/pose_v1/src/forward_trace_check.cpp
++++ b/software/pose_v1/src/forward_trace_check.cpp
+@@ -88,7 +88,7 @@
+             auCount=assembler.pictures();channel.close();
+         }catch(...){fail(std::current_exception());}});
+         {std::unique_lock<std::mutex> lock(mutex);check(cv.wait_for(lock,std::chrono::seconds(6),[&]{return firstCapture||abort.load();}),"First VPU capture timeout");if(failure)std::rethrow_exception(failure);}
+-        app::Config cfg;cfg.graph=package/"graph/piw24_ZG.json";cfg.raw=package/"graph/piw24_ZG.raw";cfg.evidence=out/"engine";cfg.allow_device_init=true;cfg.minimal_log=true;cfg.diagnostic_frames=mode=="trace-5hz"?32:0;
++        app::Config cfg;cfg.graph=package/"graph/piw24_ZG.json";cfg.raw=package/"graph/piw24_ZG.raw";cfg.evidence=out/"engine";cfg.allow_device_init=true;cfg.minimal_log=true;cfg.diagnostic_frames=0;cfg.timing_frames=mode=="trace-5hz"?32:0;
+         initializing=ns();engine=std::make_unique<app::Engine>(cfg);check(ns()-initializing<60000000000ULL,"Engine init exceeded60s");ready=ns();
+         lifecycle<<std::setprecision(17)<<"{\"event\":\"Engine_created\",\"time_ns\":"<<ready<<",\"init_ms\":"<<engine->init_ms()<<"}"<<std::endl;
+         pose::measurement::TimedWindowInput input;
