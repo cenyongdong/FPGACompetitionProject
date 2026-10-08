@@ -111,6 +111,7 @@ venv/
 /tools/pose-v1/evidence/**/*.nv21
 # 独立VPU程序/原始码流；小尺寸MP4审查样片和PNG保留。
 /tools/pose-v1/evidence/**/pose_vpu_encode_check
+/tools/pose-v1/evidence/**/pose_pipeline_encode_check
 /tools/pose-v1/evidence/**/*.h264
 # SDK 库的反汇编派生文本，不作为项目源码提交。
 /tools/pose-v1/evidence/mixed-20261006-readiness-r5/zg-disassembly.txt

@@ -1,0 +1,17 @@
+{
+  "status": "fresh_process_startup_failure_preserved",
+  "exit": 1,
+  "returned_hashed_files": 23,
+  "Engine_created": false,
+  "inference_calls": 0,
+  "capture_packets": 0,
+  "submitted_NoInput_frames": 2,
+  "abort_streamoff_returns": [
+    0,
+    0
+  ],
+  "requested_contiguous_bytes": 524288,
+  "diagnosis": "MVX firmware map_protocol_v2 order7 GFP_NORETRY contiguous allocation failure",
+  "startup_order_alone_not_sufficient": true,
+  "automatic_retry": false
+}

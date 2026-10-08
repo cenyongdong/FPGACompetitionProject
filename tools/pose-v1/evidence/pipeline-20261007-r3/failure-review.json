@@ -1,0 +1,12 @@
+{
+  "status": "preserved_Host_failure_no_hardware_stage",
+  "exit": 124,
+  "returned_hashed_files": 40,
+  "binary_sha256": "4a106fce61f2734c2b844c305b7e0abfc6acde2a297a86c25f543f072cafbde6",
+  "completed_cases": 23,
+  "all_completed_cases_passed": true,
+  "kernel_unchanged": true,
+  "device_opened": false,
+  "VPU_streamed": false,
+  "diagnosis": "60s wrapper budget;23 cases progressed. One independent graph parse2447.24ms predicts~264s for108 parses; original Host300s budget restored inr4"
+}

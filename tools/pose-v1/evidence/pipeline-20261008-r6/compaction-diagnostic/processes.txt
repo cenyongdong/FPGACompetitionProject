@@ -1,0 +1,93 @@
+    PID COMMAND         COMMAND
+      1 systemd         /sbin/init
+      2 kthreadd        [kthreadd]
+      3 rcu_gp          [rcu_gp]
+      4 rcu_par_gp      [rcu_par_gp]
+      8 mm_percpu_wq    [mm_percpu_wq]
+      9 ksoftirqd/0     [ksoftirqd/0]
+     10 rcu_sched       [rcu_sched]
+     11 migration/0     [migration/0]
+     12 cpuhp/0         [cpuhp/0]
+     13 cpuhp/1         [cpuhp/1]
+     14 migration/1     [migration/1]
+     15 ksoftirqd/1     [ksoftirqd/1]
+     18 cpuhp/2         [cpuhp/2]
+     19 migration/2     [migration/2]
+     20 ksoftirqd/2     [ksoftirqd/2]
+     23 cpuhp/3         [cpuhp/3]
+     24 migration/3     [migration/3]
+     25 ksoftirqd/3     [ksoftirqd/3]
+     28 kdevtmpfs       [kdevtmpfs]
+     29 kworker/0:1-eve [kworker/0:1-events]
+     31 kworker/2:1-eve [kworker/2:1-events]
+     32 kauditd         [kauditd]
+     33 oom_reaper      [oom_reaper]
+     34 writeback       [writeback]
+     35 kcompactd0      [kcompactd0]
+     36 khugepaged      [khugepaged]
+     38 kworker/3:1-eve [kworker/3:1-events]
+     54 kblockd         [kblockd]
+     55 edac-poller     [edac-poller]
+     56 watchdogd       [watchdogd]
+     57 rpciod          [rpciod]
+     58 kworker/u9:0-kb [kworker/u9:0-kbase_pm_poweroff_wait]
+     59 xprtiod         [xprtiod]
+     60 kswapd0         [kswapd0]
+     61 ecryptfs-kthrea [ecryptfs-kthrea]
+     62 nfsiod          [nfsiod]
+     63 spi3            [spi3]
+     64 stmmac_wq       [stmmac_wq]
+     69 kpktgend_0      [kpktgend_0]
+     71 kpktgend_1      [kpktgend_1]
+     72 kpktgend_2      [kpktgend_2]
+     73 kpktgend_3      [kpktgend_3]
+     74 ipv6_addrconf   [ipv6_addrconf]
+     75 mmc_complete    [mmc_complete]
+     80 kworker/2:1H-kb [kworker/2:1H-kblockd]
+     81 jbd2/mmcblk0p2- [jbd2/mmcblk0p2-]
+     82 ext4-rsv-conver [ext4-rsv-conver]
+     83 kworker/3:1H-kb [kworker/3:1H-kblockd]
+    103 systemd-journal /lib/systemd/systemd-journald
+    115 kbase_job_fault [kbase_job_fault]
+    116 kworker/u9:1    [kworker/u9:1]
+    119 mvx_securevideo [mvx_securevideo]
+    120 fw_cache        [fw_cache]
+    121 mvx_sched       [mvx_sched]
+    126 systemd-timesyn /lib/systemd/systemd-timesyncd
+    130 cron            /usr/sbin/cron -f
+    131 dbus-daemon     /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    136 rsyslogd        /usr/sbin/rsyslogd -n -iNONE
+    137 systemd-logind  /lib/systemd/systemd-logind
+    149 systemd-resolve /lib/systemd/systemd-resolved
+    150 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    185 sshd            sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    186 agetty          /sbin/agetty -o -p -- \u --noclear tty1 linux
+    187 agetty          /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+    266 systemd         /lib/systemd/systemd --user
+    267 (sd-pam)        (sd-pam)
+    425 sshd            sshd: root@pts/1
+    427 sshd            sshd: root@notty
+    439 bash            -bash
+    460 sftp-server     /usr/lib/openssh/sftp-server
+  58280 kworker/3:2     [kworker/3:2]
+  58666 kworker/0:0-eve [kworker/0:0-events]
+  58683 kworker/2:2     [kworker/2:2]
+  58884 sshd            sshd: root@pts/0
+  58896 bash            -bash
+  58918 sshd            sshd: root@notty
+  58930 sftp-server     /usr/lib/openssh/sftp-server
+  59176 kworker/1:0H-kb [kworker/1:0H-kblockd]
+  59195 kworker/0:1H-mm [kworker/0:1H-mmc_complete]
+  59212 kworker/u8:0-mv [kworker/u8:0-mvx_sched]
+  59239 kworker/2:2H    [kworker/2:2H]
+  59265 kworker/1:1H    [kworker/1:1H]
+  59277 kworker/3:2H    [kworker/3:2H]
+  59294 kworker/u8:2-ev [kworker/u8:2-events_unbound]
+  59315 kworker/1:0-eve [kworker/1:0-events]
+  59351 kworker/1:3-eve [kworker/1:3-events]
+  59352 kworker/0:2H-kb [kworker/0:2H-kblockd]
+  59361 kworker/1:2H    [kworker/1:2H]
+  59362 kworker/1:1-eve [kworker/1:1-events_power_efficient]
+  59363 kworker/0:0H    [kworker/0:0H]
+  59364 sh              sh -c set -eu; test -w /proc/sys/vm/compact_memory; test ! -e /tmp/pose-v1-pipeline/20261008-compaction-diagnostic; mkdir /tmp/pose-v1-pipeline/20261008-compaction-diagnostic; d=/tmp/pose-v1-pipeline/20261008-compaction-diagnostic; ps -eo pid,comm,args > "$d/processes.txt"; if ps -eo comm | grep -E "^pose_|^ffmpeg$|^rtsp"; then exit 1; fi; for n in buddyinfo pagetypeinfo meminfo vmstat; do cat /proc/$n > "$d/$n.before.txt"; done; dmesg > "$d/dmesg.before.log"; date +%s.%N > "$d/start.txt"; set +e; timeout --signal=TERM --kill-after=5s 30s sh -c "echo 1 > /proc/sys/vm/compact_memory"; c=$?; set -e; echo "$c" > "$d/exit.txt"; date +%s.%N > "$d/end.txt"; for n in buddyinfo pagetypeinfo meminfo vmstat; do cat /proc/$n > "$d/$n.after.txt"; done; dmesg > "$d/dmesg.after.log"; echo compaction-exit=$c; exit "$c"
+  59366 ps              ps -eo pid,comm,args

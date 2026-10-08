@@ -1,0 +1,16 @@
+--- r2/pipeline_encode_check.cpp
++++ r3/pipeline_encode_check.cpp
+@@ -6,6 +6,7 @@
+ 
+ using namespace pose_v1::runtime_detail;
+ namespace app=pose_v1::application;namespace rr=pose_v1::render;namespace vv=pose::video;
++namespace { // Local helper types must not collide with frozen Host fixture Case.
+ struct Case {std::string name;pose_v1::Window window;pose_v1::Tokens gold;std::vector<char> scores,poses;};
+ static std::vector<Case> catalog(const fs::path& package) {
+     std::ifstream cat(package/"cases.tsv");need(bool(cat),"Case catalog missing");std::vector<Case> cases;std::string row;
+@@ -115,4 +116,5 @@
+         engine->save_evidence();write(out/"summary.json","{\"stage\":\"combined\",\"regression_forward_calls\":4,\"production_forward_calls\":4,\"encoded_frames\":8,\"device_opened\":true,\"VPU_streamed\":true,\"RTSP_initialized\":false,\"HDMI_initialized\":false,\"realtime_throughput_verified\":false}\n");return 0;
+     }catch(...) {if(engine)try{engine->save_evidence();}catch(...){}throw;}
+ }
++}
+ int main(int argc,char** argv) {try{return run(argc,argv);}catch(const std::exception& e){std::cerr<<"STOP: "<<e.what()<<'\n';return 1;}}
