@@ -1,0 +1,30 @@
+00000000-3fffffff : System RAM
+  0fff9000-0fffcfff : reserved
+  10080000-10beffff : Kernel code
+  10bf0000-10c8ffff : reserved
+  10c90000-10d55fff : Kernel data
+  2ec00000-2edfffff : reserved
+  2efff000-2fbfffff : reserved
+  2fc12000-2fd92fff : reserved
+  2fd93000-2fde6fff : reserved
+  2fde9000-2fde9fff : reserved
+  2fdea000-2fdecfff : reserved
+  2fded000-3fffffff : reserved
+e0000000-e0000fff : e0000000.spi
+e0003000-e00030ff : e0003000.gpio
+e0003100-e00031ff : e0003100.gpio
+e0003200-e00032ff : e0003200.gpio
+e0003400-e00034ff : e0003400.gpio
+e0004000-e000401f : serial
+e0005000-e0005fff : sja1000_platform
+e0021000-e0021fff : e0021000.spi
+e0040000-e0040fff : e0040000.devcfg
+e0043000-e0043fff : e0043000.dwmmc
+e0045000-e0045fff : e0045000.usb
+e0047000-e0048fff : e0047000.ethernet
+e004b000-e004bfff : e004b000.dma
+e8000000-e8ffffff : e0000000.spi
+f0000000-f0003fff : f0000000.mali_gpu
+f0010000-f001ffff : f0010000.dma
+f0020000-f002ffff : f0020000.mve
+f9010000-f908ffff : f9010000.pmu

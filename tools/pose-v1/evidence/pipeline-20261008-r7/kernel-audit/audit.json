@@ -1,0 +1,22 @@
+{
+  "read_only": true,
+  "commands": {
+    "uname": {
+      "exit": 0
+    },
+    "module": {
+      "exit": 0
+    },
+    "module-path": {
+      "exit": 0
+    },
+    "modules": {
+      "exit": 0
+    },
+    "processes": {
+      "exit": 0
+    }
+  },
+  "reserved_properties": 0,
+  "device_initialized": false
+}

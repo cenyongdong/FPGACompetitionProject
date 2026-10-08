@@ -1,0 +1,107 @@
+
+/tmp/pose-vpu-amvx-r7.ko:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+00000000000096b0 <mvx_mmu_alloc_contiguous_pages>:
+    96b0:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+    96b4:	d2800003 	mov	x3, #0x0                   	// #0
+    96b8:	910003fd 	mov	x29, sp
+    96bc:	a9025bf5 	stp	x21, x22, [sp, #32]
+    96c0:	d374cc35 	lsl	x21, x1, #12
+    96c4:	d10006a2 	sub	x2, x21, #0x1
+    96c8:	a90153f3 	stp	x19, x20, [sp, #16]
+    96cc:	d28007f3 	mov	x19, #0x3f                  	// #63
+    96d0:	d34cfc42 	lsr	x2, x2, #12
+    96d4:	f100005f 	cmp	x2, #0x0
+    96d8:	dac01042 	clz	x2, x2
+    96dc:	cb020273 	sub	x19, x19, x2
+    96e0:	aa0003f4 	mov	x20, x0
+    96e4:	1a9307f3 	csinc	w19, wzr, w19, eq  // eq = none
+    96e8:	5281b800 	mov	w0, #0xdc0                 	// #3520
+    96ec:	72a00020 	movk	w0, #0x1, lsl #16
+    96f0:	52800002 	mov	w2, #0x0                   	// #0
+    96f4:	2a1303e1 	mov	w1, w19
+    96f8:	d2800016 	mov	x22, #0x0                   	// #0
+    96fc:	94000000 	bl	0 <__alloc_pages_nodemask>
+    9700:	b4000340 	cbz	x0, 9768 <mvx_mmu_alloc_contiguous_pages+0xb8>
+    9704:	f9001bf7 	str	x23, [sp, #48]
+    9708:	aa0003f7 	mov	x23, x0
+    970c:	f9410e80 	ldr	x0, [x20, #536]
+    9710:	b4000440 	cbz	x0, 9798 <mvx_mmu_alloc_contiguous_pages+0xe8>
+    9714:	f9401006 	ldr	x6, [x0, #32]
+    9718:	d2800005 	mov	x5, #0x0                   	// #0
+    971c:	52800004 	mov	w4, #0x0                   	// #0
+    9720:	aa1503e3 	mov	x3, x21
+    9724:	d2800002 	mov	x2, #0x0                   	// #0
+    9728:	aa1703e1 	mov	x1, x23
+    972c:	aa1403e0 	mov	x0, x20
+    9730:	d63f00c0 	blr	x6
+    9734:	aa0003f6 	mov	x22, x0
+    9738:	b10006df 	cmn	x22, #0x1
+    973c:	54000400 	b.eq	97bc <mvx_mmu_alloc_contiguous_pages+0x10c>  // b.none
+    9740:	f9410e80 	ldr	x0, [x20, #536]
+    9744:	b40001c0 	cbz	x0, 977c <mvx_mmu_alloc_contiguous_pages+0xcc>
+    9748:	f9402c04 	ldr	x4, [x0, #88]
+    974c:	b40000c4 	cbz	x4, 9764 <mvx_mmu_alloc_contiguous_pages+0xb4>
+    9750:	aa1503e2 	mov	x2, x21
+    9754:	aa1403e0 	mov	x0, x20
+    9758:	52800023 	mov	w3, #0x1                   	// #1
+    975c:	aa1603e1 	mov	x1, x22
+    9760:	d63f0080 	blr	x4
+    9764:	f9401bf7 	ldr	x23, [sp, #48]
+    9768:	aa1603e0 	mov	x0, x22
+    976c:	a94153f3 	ldp	x19, x20, [sp, #16]
+    9770:	a9425bf5 	ldp	x21, x22, [sp, #32]
+    9774:	a8c47bfd 	ldp	x29, x30, [sp], #64
+    9778:	d65f03c0 	ret
+    977c:	aa1503e2 	mov	x2, x21
+    9780:	aa1403e0 	mov	x0, x20
+    9784:	52800023 	mov	w3, #0x1                   	// #1
+    9788:	aa1603e1 	mov	x1, x22
+    978c:	94000000 	bl	0 <dma_direct_sync_single_for_device>
+    9790:	f9401bf7 	ldr	x23, [sp, #48]
+    9794:	17fffff5 	b	9768 <mvx_mmu_alloc_contiguous_pages+0xb8>
+    9798:	d2800005 	mov	x5, #0x0                   	// #0
+    979c:	52800004 	mov	w4, #0x0                   	// #0
+    97a0:	aa1503e3 	mov	x3, x21
+    97a4:	d2800002 	mov	x2, #0x0                   	// #0
+    97a8:	aa1703e1 	mov	x1, x23
+    97ac:	aa1403e0 	mov	x0, x20
+    97b0:	94000000 	bl	0 <dma_direct_map_page>
+    97b4:	aa0003f6 	mov	x22, x0
+    97b8:	17ffffe0 	b	9738 <mvx_mmu_alloc_contiguous_pages+0x88>
+    97bc:	90000001 	adrp	x1, a0 <mvx_seq_hash_start+0xa0>
+    97c0:	91000020 	add	x0, x1, #0x0
+    97c4:	b9400802 	ldr	w2, [x0, #8]
+    97c8:	7100045f 	cmp	w2, #0x1
+    97cc:	54000229 	b.ls	9810 <mvx_mmu_alloc_contiguous_pages+0x160>  // b.plast
+    97d0:	f9400814 	ldr	x20, [x0, #16]
+    97d4:	90000000 	adrp	x0, 0 <mvx_seq_hash_start>
+    97d8:	f9400036 	ldr	x22, [x1]
+    97dc:	91000000 	add	x0, x0, #0x0
+    97e0:	f9400295 	ldr	x21, [x20]
+    97e4:	94000000 	bl	e88 <mvx_log_strrchr>
+    97e8:	90000003 	adrp	x3, 0 <mvx_seq_hash_start>
+    97ec:	aa0003e6 	mov	x6, x0
+    97f0:	aa1603e2 	mov	x2, x22
+    97f4:	aa1403e0 	mov	x0, x20
+    97f8:	91000063 	add	x3, x3, #0x0
+    97fc:	52805767 	mov	w7, #0x2bb                 	// #699
+    9800:	aa1703e5 	mov	x5, x23
+    9804:	52800024 	mov	w4, #0x1                   	// #1
+    9808:	52800041 	mov	w1, #0x2                   	// #2
+    980c:	d63f02a0 	blr	x21
+    9810:	aa1703e0 	mov	x0, x23
+    9814:	2a1303e1 	mov	w1, w19
+    9818:	d2800016 	mov	x22, #0x0                   	// #0
+    981c:	94000000 	bl	0 <__free_pages>
+    9820:	f9401bf7 	ldr	x23, [sp, #48]
+    9824:	17ffffd1 	b	9768 <mvx_mmu_alloc_contiguous_pages+0xb8>
+
+Disassembly of section .init.text:
+
+Disassembly of section .exit.text:
+
+Disassembly of section .text.unlikely:

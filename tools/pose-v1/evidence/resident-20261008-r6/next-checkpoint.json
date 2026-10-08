@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-08",
+  "status": "bounded_resident_workers_completed",
+  "paused": false,
+  "report": "tools/pose-v1/RESIDENT-RESULTS-20261008.md",
+  "ADR": "ADR/ADR_02.md",
+  "package": ".local/pose-v1-resident/package-20261008-r6",
+  "build": ".local/pose-v1-build/mixed-20261008-resident-r6",
+  "program_sha256": "f4f15b7ea8806549ad91ca4e3bd69f0fcc5ea580722b18802d5268730efe7060",
+  "next": "Online owned AU/live555 bridge and source/PTS validation under approved F0 route; preserve main-owner/six-buffer originals/two-buffer candidate; no automatic startup retry or compaction.",
+  "failed_revision": "r5 background Engine owner; nonfinite first output preserved, do not run or lower checks",
+  "tested_bounds": "Host420s, hardware180s, firstcapture5s, Engine60s,20s after ready,1000encoded maximum",
+  "all_services_stopped": true,
+  "ssh_sftp_closed": true,
+  "no_background_or_automation": true,
+  "pending": [
+    "onlineRTSP",
+    "explicit SPS color",
+    "HDMI timing/scanout",
+    "whole-system5Hz/30min",
+    "unknown CSI/general startup guarantee"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "pipeline_stage_passed",
+  "stage": "resident-27",
+  "binary_sha256": "f4f15b7ea8806549ad91ca4e3bd69f0fcc5ea580722b18802d5268730efe7060",
+  "package_manifest_sha256": "271be561c4baad831b5c44465ed13f73fbf69f831290b0c5d3ee936d3bc56575",
+  "package_payloads": 402,
+  "build_sources": 23,
+  "returned_hashed_files": 225,
+  "full_correct_forwards": 28,
+  "encoded_frames": 494,
+  "actual_clock_PTS": true,
+  "contexts": 1,
+  "realtime_throughput_verified": false,
+  "exit": 0,
+  "kernel_unchanged": true,
+  "stderr_empty": true
+}

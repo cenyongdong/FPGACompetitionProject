@@ -1,0 +1,16 @@
+{
+  "status": "pipeline_stage_passed",
+  "stage": "host-check",
+  "binary_sha256": "f4f15b7ea8806549ad91ca4e3bd69f0fcc5ea580722b18802d5268730efe7060",
+  "package_manifest_sha256": "271be561c4baad831b5c44465ed13f73fbf69f831290b0c5d3ee936d3bc56575",
+  "package_payloads": 402,
+  "build_sources": 23,
+  "returned_hashed_files": 43,
+  "Host_cases": 107,
+  "registry_records": 12,
+  "CPU_output_values": 59600,
+  "device_opened": false,
+  "exit": 0,
+  "kernel_unchanged": true,
+  "stderr_empty": true
+}

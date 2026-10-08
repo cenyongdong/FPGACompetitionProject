@@ -9,21 +9,22 @@ def load(p):return json.loads(p.read_text(encoding='utf-8-sig'))
 def rows(p):return [json.loads(x) for x in p.read_text(encoding='utf-8').splitlines()]
 def save(p,obj):assert not p.exists();p.write_bytes((json.dumps(obj,indent=2)+'\n').encode())
 
-def identities(package,build):
+def identities(package,build,target='pose_pipeline_encode_check',builder='tools/pose-v1/Build-Pipeline.ps1'):
+    assert (target,builder) in [('pose_pipeline_encode_check','tools/pose-v1/Build-Pipeline.ps1'),('pose_resident_check','tools/pose-v1/Build-Resident.ps1')]
     count=old.verify(package);m=load(package/'manifest.json');b=load(build/'build-result.json')
     assert b['stage']=='compiled_not_executed' and not b['device_accessed']
     assert b['package_manifest_sha256']==sha(package/'manifest.json')
-    assert b['build_script_sha256']==sha(ROOT/'tools/pose-v1/Build-Pipeline.ps1')
+    assert b['build_script_sha256']==sha(ROOT/builder)
     for rel,h in m['sources'].items():assert sha(ROOT/rel)==h
     for rel,item in m['build_files'].items():assert sha(ROOT/rel)==sha(build/'source'/item['destination'])==item['sha256']==b['source_sha256'][rel]
     assert sha(ROOT/'software/pose_v1/src/vpu_encoder.cpp')==m['frozen_vpu_r5_sha256']
     old.sdk(load(build/'sdk-audit.json'),m)
     for rel,h in m['sdk_headers_normalized_sha256'].items():assert hashlib.sha256((build/'sdk-snapshot'/rel).read_bytes().replace(b'\r\n',b'\n')).hexdigest()==h
     for name,key in [('libicraft_hostbackend.so','host_library_sha256'),('libicraft_zg330backend.so','zg_library_sha256')]:assert sha(build/'sdk-snapshot'/name)==m[key]
-    blob=(build/'pose_pipeline_encode_check.arm64').read_bytes()
-    assert sha(build/'pose_pipeline_encode_check.arm64')==b['binary_sha256'] and blob[:6]==b'\x7fELF\x02\x01' and struct.unpack_from('<H',blob,18)[0]==183
+    blob=(build/(target+'.arm64')).read_bytes()
+    assert sha(build/(target+'.arm64'))==b['binary_sha256'] and blob[:6]==b'\x7fELF\x02\x01' and struct.unpack_from('<H',blob,18)[0]==183
     raw=(build/'build.log').read_bytes();log=raw.decode('utf-16' if raw[:2] in (b'\xff\xfe',b'\xfe\xff') else 'utf-8-sig')
-    assert 'Built target pose_pipeline_encode_check' in log and 'error:' not in log and '9.4.0' in log and 'cmake version 3.24.2' in log
+    assert 'Built target '+target in log and 'error:' not in log and '9.4.0' in log and 'cmake version 3.24.2' in log
     assert 'RPATH' not in log and 'RUNPATH' not in log
     warnings=[x for x in log.splitlines() if 'warning:' in x]
     assert len(warnings)==3 and all('lazy_runtime_validation.hpp:123:' in x or 'host_cpu_adapter.cpp:18:' in x for x in warnings)
@@ -76,7 +77,13 @@ def main():
         durations=[x for x in events if x['event']=='producer_duration'];assert [x['frame'] for x in durations]==list(range(10))
         assert all(0<=x['nanoseconds']<60000000000 for x in durations)
         assert sum(x['nanoseconds'] for x in durations[2:])==final['producer_paused_ns']
-        assert next(x for x in events if x['event']=='input_prime_policy')==dict(event='input_prime_policy',allocated_buffers=6,prime_count=2)
+        expected_buffers=m.get('requested_queue_buffers',6)
+        assert expected_buffers in (2,6)
+        assert next(x for x in events if x['event']=='input_prime_policy')==dict(event='input_prime_policy',allocated_buffers=expected_buffers,prime_count=2)
+        if expected_buffers==2:
+            mapped=[x for x in events if x['event']=='mapped_total']
+            assert mapped==[dict(event='mapped_total',type=10,bytes=2764800,buffers=2),dict(event='mapped_total',type=9,bytes=4194304,buffers=2)]
+            report['requested_and_returned_queue_buffers']=2
         lifecycle=rows(out/'lifecycle.jsonl');assert [x['event'] for x in lifecycle]==['VPU_capture_before_Engine','Engine_created']
         assert lifecycle[0]['packet_count']>0 and lifecycle[0]['time_ns']<lifecycle[1]['time_ns']
         source=[x for x in events if x['event']=='source_frame'];assert len(source)==10

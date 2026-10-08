@@ -43,6 +43,28 @@ void format(std::ostream& log,const v4l2_format& f) {
     log<<"]}"<<std::endl;
 }
 struct Plane { void* ptr=MAP_FAILED; unsigned size=0; unsigned mmapCookie=0; };
+// Read-only diagnostics. Snapshots perturb timing slightly, never reclaim or
+// compact memory and never infer that a later allocation must succeed.
+struct MemoryAudit {
+    std::filesystem::path dir;
+    std::ostream& log;
+    unsigned count=0;
+    MemoryAudit(const std::filesystem::path& dest,std::ostream& trace):dir(dest/"memory"),log(trace) {
+        require(std::filesystem::create_directory(dir),"memory audit directory creation failed");
+    }
+    void take(const std::string& stage) {
+        require(count<24,"memory snapshot bound exceeded");
+        auto prefix=std::to_string(count++)+"-"+stage;
+        for(const char* name:{"buddyinfo","pagetypeinfo","meminfo","vmstat"}) {
+            std::ifstream input(std::string("/proc/")+name);
+            std::ofstream output(dir/(prefix+"-"+name+".txt"));
+            require(bool(input)&&bool(output),"memory snapshot open failed");
+            output<<input.rdbuf();require(bool(output),"memory snapshot write failed");
+        }
+        log<<"{\"event\":\"memory_snapshot\",\"stage\":\""<<stage<<"\",\"prefix\":\""<<prefix
+           <<"\",\"time_ns\":"<<std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count()<<"}"<<std::endl;
+    }
+};
 struct Queue {
     int fd; v4l2_buf_type type; unsigned planes; bool streaming=false;
     std::ostream* trace=nullptr;
@@ -57,10 +79,13 @@ struct Queue {
         for(auto& b:buffers) for(auto& p:b) if(p.ptr!=MAP_FAILED) munmap(p.ptr,p.size);
         if(!buffers.empty()) { v4l2_requestbuffers r{}; r.type=type; r.memory=V4L2_MEMORY_MMAP; call(fd,VIDIOC_REQBUFS,&r); }
     }
-    void allocate(std::ostream& log) {
+    void allocate(std::ostream& log,MemoryAudit& audit) {
         trace=&log;
+        const auto label=type==IN ? "raw":"capture";
+        audit.take(std::string(label)+"-before-reqbufs");
         v4l2_requestbuffers r{}; r.type=type; r.memory=V4L2_MEMORY_MMAP; r.count=6;
         checked(fd,VIDIOC_REQBUFS,&r,"REQBUFS"); require(r.count>=2 && r.count<=16,"unexpected buffer count");
+        audit.take(std::string(label)+"-after-reqbufs");
         buffers.resize(r.count);
         ownedByDriver.resize(r.count,false);
         for(unsigned i=0;i<r.count;++i) {
@@ -77,6 +102,9 @@ struct Queue {
                 log<<"{\"event\":\"buffer\",\"type\":"<<type<<",\"index\":"<<i<<",\"plane\":"<<j<<",\"length\":"<<q.size<<",\"mmap_cookie\":"<<p[j].m.mem_offset<<",\"data_offset\":"<<p[j].data_offset<<"}"<<std::endl;
             }
         }
+        size_t mapped=0;for(const auto& buffer:buffers)for(const auto& plane:buffer)mapped+=plane.size;
+        log<<"{\"event\":\"mapped_total\",\"type\":"<<type<<",\"bytes\":"<<mapped<<",\"buffers\":"<<buffers.size()<<"}"<<std::endl;
+        audit.take(std::string(label)+"-after-mmap");
     }
     void describe(const char* event,const v4l2_buffer& b,const v4l2_plane* p) const {
         if(!trace) return;
@@ -151,7 +179,9 @@ EncodeResult encodeNv12Producer(const std::filesystem::path& dest,const EncodeOp
     require(bool(producer) && bool(consumer),"producer/consumer missing before device access");
     require(!std::filesystem::exists(dest),"output exists; preserve and stop"); std::filesystem::create_directory(dest);
     std::ofstream log(dest/"events.jsonl"); require(bool(log),"log open failed");
+    MemoryAudit audit(dest,log);audit.take("entry");
     Device d; d.fd=open("/dev/video0",O_RDWR|O_NONBLOCK|O_CLOEXEC); require(d.fd>=0,"open video0 failed");
+    audit.take("device-open");
     v4l2_capability cap{}; checked(d.fd,VIDIOC_QUERYCAP,&cap,"QUERYCAP");
     require(std::string(reinterpret_cast<char*>(cap.driver))=="mvx","driver identity changed");
     require(cap.device_caps&V4L2_CAP_VIDEO_M2M_MPLANE,"missing M2M MPLANE");
@@ -175,6 +205,7 @@ EncodeResult encodeNv12Producer(const std::filesystem::path& dest,const EncodeOp
     checked(d.fd,VIDIOC_S_FMT,&coded,"S_FMT H264 after NV12");
     checked(d.fd,VIDIOC_G_FMT,&raw,"G_FMT NV12"); checked(d.fd,VIDIOC_G_FMT,&coded,"G_FMT H264");
     format(log,raw); format(log,coded);
+    audit.take("formats");
     require(rp.width==W && rp.height==H && rp.pixelformat==V4L2_PIX_FMT_NV12 && rp.field==V4L2_FIELD_NONE,"raw format changed");
     require(rp.colorspace==V4L2_COLORSPACE_SMPTE170M && rp.ycbcr_enc==V4L2_YCBCR_ENC_601 && rp.quantization==V4L2_QUANTIZATION_LIM_RANGE,"raw colorimetry differs");
     require(rp.num_planes==1 || rp.num_planes==2,"unsupported NV12 plane layout");
@@ -193,7 +224,7 @@ EncodeResult encodeNv12Producer(const std::filesystem::path& dest,const EncodeOp
     checked(d.fd,VIDIOC_TRY_ENCODER_CMD,&trycmd,"TRY_ENCODER_CMD STOP");
     std::ofstream stream(dest/"video.h264",std::ios::binary),submitted(dest/"submitted.nv12",std::ios::binary);
     require(bool(stream) && bool(submitted),"data files open failed");
-    Queue in(d.fd,IN,rp.num_planes),out(d.fd,OUT,1); in.allocate(log); out.allocate(log);
+    Queue in(d.fd,IN,rp.num_planes),out(d.fd,OUT,1); in.allocate(log,audit); out.allocate(log,audit);
     for(const auto& b:in.buffers) for(unsigned j=0;j<used.size();++j) require(b[j].size>=used[j],"mapped raw buffer too small");
     unsigned queued=0,returned=0; bool draining=false,last=false; size_t total=0;
     std::chrono::steady_clock::duration producerPaused{};
@@ -231,13 +262,16 @@ EncodeResult encodeNv12Producer(const std::filesystem::path& dest,const EncodeOp
     for(unsigned i=0;i<out.buffers.size();++i) out.queue(i,{0});
     log<<"{\"event\":\"input_prime_policy\",\"allocated_buffers\":"<<in.buffers.size()<<",\"prime_count\":"<<primeInputs<<"}"<<std::endl;
     for(unsigned i=0;i<in.buffers.size() && i<primeInputs && queued<options.frameCount;++i) submit(i);
-    out.start(); in.start();
+    audit.take("prime");audit.take("before-capture-streamon");out.start();
+    audit.take("after-capture-streamon");audit.take("before-raw-streamon");in.start();audit.take("after-raw-streamon");
     auto began=std::chrono::steady_clock::now(); auto progress=began;
+    bool firstCapture=false;
     while(!last || returned<options.frameCount) {
         bool moved=false;
         if(!last) {
             v4l2_buffer b{}; v4l2_plane p[VIDEO_MAX_PLANES]{};
             while(out.dequeue(b,p)) {
+                if(!firstCapture) {audit.take("first-capture");firstCapture=true;}
                 require(p[0].data_offset<=p[0].bytesused && p[0].bytesused<=out.buffers[b.index][0].size,"capture length invalid");
                 unsigned size=p[0].bytesused-p[0].data_offset;
                 OwnedPacket packet;packet.ptsUs=b.timestamp.tv_sec*1000000LL+b.timestamp.tv_usec;packet.flags=b.flags;packet.sequence=b.sequence;
@@ -273,6 +307,7 @@ EncodeResult encodeNv12Producer(const std::filesystem::path& dest,const EncodeOp
         if(!moved) {
             pollfd pfd{d.fd,POLLIN|POLLOUT|POLLPRI,0}; int r=poll(&pfd,1,20);
             if(r<0 || (pfd.revents&(POLLERR|POLLHUP|POLLNVAL))) {
+                audit.take("poll-error");
                 log<<"{\"event\":\"poll_error\",\"return\":"<<r<<",\"revents\":"<<pfd.revents<<",\"errno\":"<<(r<0 ? errno:0)<<",\"queued\":"<<queued<<",\"returned\":"<<returned<<"}"<<std::endl;
             }
             require(r>=0 || errno==EINTR,"poll failed"); require(!(pfd.revents&(POLLERR|POLLHUP|POLLNVAL)),"poll device failure");
@@ -280,6 +315,7 @@ EncodeResult encodeNv12Producer(const std::filesystem::path& dest,const EncodeOp
     }
     require(queued==options.frameCount && returned==options.frameCount && last && total>0,"incomplete stream");
     in.stop(); out.stop(); stream.close();submitted.close();require(bool(stream) && bool(submitted),"stream finalization failed");
+    audit.take("completed");
     log<<"{\"event\":\"encoding_complete\",\"queued\":"<<queued<<",\"returned\":"<<returned<<",\"last\":true,\"bytes\":"<<total<<",\"producer_paused_ns\":"<<std::chrono::duration_cast<std::chrono::nanoseconds>(producerPaused).count()<<",\"hdmi\":false,\"npu_owned_by_caller\":true}"<<std::endl;
     return {queued,returned,total,last};
 }
