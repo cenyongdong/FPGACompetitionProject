@@ -1,0 +1,11 @@
+{
+  "scope": "current_review_and_resume_tool_identity",
+  "sha256": {
+    "tools/pose-v1/Build-OwnedRtsp.ps1": "184867950ff99c57021527eabfae2e1da7b31d8afc610bac32401bdcb66849d8",
+    "tools/pose-v1/prepare_owned_rtsp.py": "3eac164d5b6b7b9b79e84f59262fdfd913bc18c5eda6d2ed74db16d107752188",
+    "tools/pose-v1/owned_rtsp_client.py": "c4409c60456d423b34df8888db04782f7c79459bcf8dbcddb61bfcb4e9a0d0c7",
+    "tools/pose-v1/review_owned_rtsp.py": "52da28890b6240edb9ea2be3580233e726f9a24218206ea940ab0763723f38ae",
+    "tools/pose-v1/run-owned-rtsp.sh": "0bc6577635f3b6c99c54a3f2ee53eafab981b965fc861c9d63a4faeba79e6604"
+  },
+  "board_source_program_unchanged": true
+}

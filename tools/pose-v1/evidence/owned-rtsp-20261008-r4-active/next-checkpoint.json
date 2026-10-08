@@ -1,0 +1,23 @@
+{
+  "status":"AU_adapter_gate_complete_ready_for_real_capture_integration",
+  "date":"2026-10-08",
+  "authorization":"User approved continuation; documentation first then next stage. Authorization remains in force.",
+  "user_paused":false,
+  "documentation":{"new_ADRs":[3,4,5,6,7,8],"index":"ADR/README.md","cohesion_rule":"Agents.md","history_preserved":true},
+  "binary_sha256":"eafd397cbe2cc60c77f20ce5054ff2b0bf7268302d6caffa3c9a9a0cd86619f5",
+  "manifest_sha256":"3f9355633382360a28c03da71d813ff0dbc11fe1007e13f72506d9d730deb79a",
+  "build":".local/pose-v1-build/owned-rtsp-20261008-r3",
+  "package":".local/pose-v1-owned-rtsp/package-20261008-r3-final",
+  "evidence":["tools/pose-v1/evidence/owned-rtsp-20261008-r3/completion-review.json","tools/pose-v1/evidence/owned-rtsp-20261008-r4-active/completion-review.json"],
+  "board_directories":["/tmp/pose-owned-rtsp-20261008-r3","/tmp/pose-owned-rtsp-20261008-r4-active"],
+  "verified":{"native_ARM_rejections":17,"concurrent_units_per_test":2000,"AUs_per_network_context":493,"contexts":2,"network_decoded_frames":308,"recorded_active_invocations":[0,1,2,3],"actual_RTP_PTS":true,"decoded_pixels_exact":true,"ports_and_sources_released":true},
+  "new_VPU_NPU_initialized":false,
+  "real_online_pipeline_verified":false,
+  "services_running":false,
+  "SSH_SFTP_closed":true,
+  "next_entry":"tools/pose-v1/ONLINE-INTEGRATION-NEXT-20261008.md",
+  "next":"Independent orchestration target with main-owned Engine alive throughout service window, real owned capture AU callbacks and network thread. New build Host107 then real three/repeat and27 stages; independently verify all input/output and live sources/PTS/decoded video.",
+  "preserve":["resident-r6 and owned-rtsp-r3 sources and evidence","model RAW SDK BOOT","CPU math Gather NPU placement","reset(1) and0-to745 completion protocol","two VPU buffers prime2 format MMAP cookie and copies"],
+  "unverified":["live VPU network producer integration","slow-client full chain backpressure","whole-system5Hz and30minutes","HDMI1080p60 timing scanout and safe stop","explicit SPS color signal"],
+  "do_not":["treat recorded bytes as new inference","use NAL digest as unique P-frame identity","drop encoded P frames to meet queue limit","change CMA or compact/retry/reset automatically","install a daemon or write unknown display registers"]
+}

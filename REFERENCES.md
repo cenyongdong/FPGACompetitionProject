@@ -1440,6 +1440,8 @@ CPU最小适配107例/12注册/22输出59,600 FP32已独立验收；正式Matmul
 ORT版本/安装依据：[PyPI1.23.2](https://pypi.org/project/onnxruntime/1.23.2/)、
 [官方CPU安装](https://onnxruntime.ai/docs/install/)；实际运行/加载结果以本机证据为准。
 
+2026-10-08当前入口：[ADR全项目难点索引](ADR/README.md)、[AU模块/网络门检](tools/pose-v1/OWNED-AU-RESULTS-20261008.md)、[在线接续](tools/pose-v1/ONLINE-INTEGRATION-NEXT-20261008.md)。以下“待板测”等为2026-10-06初期历史，后续混合/数值/核心性能/有限常驻已通过各自范围；真实在线RTSP、HDMI与整机长期仍待。
+
 真实RAW四参数、PS三输入、SDK两16KiB往返、Session1173HardOp/六Host绑定、308及三样本实际执行均待用户板测。
 ADDR/BOTH只通过SDK复制，Host staging不能替代NPU同步证明；区域或可追溯融合绑定缺失即停止讨论。
 工程通过后报告完整分数/坐标与最佳候选差异，容限据实测讨论，不做GT/MPJPE/物理标定。
