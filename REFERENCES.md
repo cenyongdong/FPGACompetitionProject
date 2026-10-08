@@ -1,5 +1,7 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-08启动与有限常驻：[独立ADR_02](ADR/ADR_02.md)、[难点索引](DIFFICULTIES.md)、[实际模块/分配/三启动](tools/pose-v1/VPU-STARTUP-RESULTS-20261008.md)、[32前向/987视频/主线程对照](tools/pose-v1/RESIDENT-RESULTS-20261008.md)、[当前核验与检查点](tools/pose-v1/evidence/resident-20261008-r6/completion-review.json)。不扩大CMA、不泛称SDK线程限制；在线RTSP/HDMI/长期另列。
+
 2026-10-08 F0：[有限合并/新视频/失败与规整诊断](tools/pose-v1/PIPELINE-RESULTS-20261008.md)、[完整核验](tools/pose-v1/evidence/pipeline-20261008-r6/completion-review.json)、[接续分配取证与常驻方案](tools/pose-v1/PIPELINE-NEXT-20261008.md)。两有限成功不等于启动稳定/实时闭环；Linux连续分配及compact_memory官方依据见报告，不将一次诊断变生产策略。
 
 2026-10-07RTSP当前：[结果/样片](tools/pose-v1/RTSP-RESULTS-20261007.md)、[200帧/重连](tools/pose-v1/evidence/rtsp-20261007-r3/completion-review.json)、[直接播放器100帧](tools/pose-v1/evidence/rtsp-20261007-r4-player/completion-review.json)、[SPS信号](tools/pose-v1/evidence/rtsp-20261007-r3/color-signal-review.json)、[F0准备](tools/pose-v1/F0-INTEGRATION-PREP-20261007.md)。厂商live555/SSL原包复用无安装；已通过独立回放，不代表在线编码或整机闭环。

@@ -1,0 +1,10 @@
+filename:       /lib/modules/5.4.52/kernel/drivers/video/amvx.ko
+description:    Tiube VPU Driver.
+author:         ARMChina
+license:        GPL
+alias:          pci:v000013B5d00000001sv*sd*bc*sc*i*
+depends:        
+name:           amvx
+vermagic:       5.4.52 SMP mod_unload aarch64
+parm:           session_watchdog_timeout:int
+parm:           fw_watchdog_timeout:int

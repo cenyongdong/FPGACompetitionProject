@@ -1,0 +1,14 @@
+{
+  "status": "scheduled_before_hardware_combined",
+  "trials": [
+    "combined",
+    "repeat1",
+    "repeat2"
+  ],
+  "same_program_and_package": true,
+  "new_directory_each": true,
+  "stop_remaining_on_failure": true,
+  "compaction": false,
+  "reboot": false,
+  "CMA_change": false
+}

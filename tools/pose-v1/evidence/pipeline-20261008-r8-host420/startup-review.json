@@ -1,0 +1,18 @@
+{
+  "status": "bounded_startup_regression3_passed",
+  "binary_sha256": "33f865a281df277297c6ff277832cb000407369cfee30e8295df79db2c171273",
+  "package_manifest_sha256": "727f06ab569e9443a508dba265a861646215be38395dc319d69445726da6266c",
+  "trials": 3,
+  "forwards": 24,
+  "encoded_frames": 30,
+  "returned_files": 459,
+  "only_encoder_change": "requested queue buffers6->2",
+  "mapped_bytes_old": 20877312,
+  "mapped_bytes_new": 6959104,
+  "streams_equal": true,
+  "bitstream_sha256": "7a8fdb2ed9c1381506fe9a4f26f20a0c4bf619231f661e83aa8532dcd5fa7407",
+  "compaction": false,
+  "CMA_MiB": 256,
+  "BOOT_kernel_model_changed": false,
+  "universal_startup_guarantee": false
+}

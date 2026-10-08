@@ -1,0 +1,22 @@
+{
+  "status": "preserved_nonfinite_first_forward",
+  "exit": 1,
+  "returned_files": 108,
+  "kernel_unchanged": true,
+  "actual_operator_callbacks": 14,
+  "completed_layer_count": 745,
+  "final_ready": [
+    true,
+    true
+  ],
+  "published_results": 0,
+  "encoded_submissions": 292,
+  "cleanup_streamoff": [
+    0,
+    0
+  ],
+  "root_cause": "unknown: owner thread context or concurrent activity to isolate",
+  "next_candidate": "Engine owner main thread; background encoder unchanged; fresh build/Host then bounded diagnostic",
+  "resident27_started": false,
+  "numeric_gate_weakened": false
+}

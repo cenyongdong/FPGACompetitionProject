@@ -1,5 +1,12 @@
 # 当前待办（2026-10-07）
 
+2026-10-08最新：两缓冲启动三次回归、有限主线程Engine＋后台编码三/27输入及987源映射通过。下一在线AU/live555与27网络门检，整机/长期/HDMI未验收。[结果](tools/pose-v1/RESIDENT-RESULTS-20261008.md)。旧“启动仍未通过”仅指旧失败候选，证据保留。
+
+- [x] 独立ADR_02及逐难点索引/规范。
+- [x] r7分配取证、两缓冲启动三次回归，无CMA/BOOT修改。
+- [x] 有界同进程工作者、实际PTS/全部源码与视频源映射；r5失败/主线程对照记录。
+- [ ] 在线owned AU→RTSP、网络争用与整机长期；永久服务部署另列。
+
 2026-10-08当前：[有限接入结果](tools/pose-v1/PIPELINE-RESULTS-20261008.md)、[下一门检](tools/pose-v1/PIPELINE-NEXT-20261008.md)。有限内容通过，启动稳定性未过，优先定位REQBUFS/STREAMON内存；常驻/真实PTS/在线RTSP仍待。
 
 当前接续：[RTSP结果](tools/pose-v1/RTSP-RESULTS-20261007.md)、[F0门检](tools/pose-v1/F0-INTEGRATION-PREP-20261007.md)。

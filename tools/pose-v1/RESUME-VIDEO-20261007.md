@@ -1,5 +1,7 @@
 # 视频任务暂停与恢复入口（2026-10-07）
 
+> 2026-10-08当前：两缓冲启动三次回归及有限主线程Engine＋后台VPU三/27窗口通过，987原始编码帧全解码核验。[启动](VPU-STARTUP-RESULTS-20261008.md)、[常驻/预览](RESIDENT-RESULTS-20261008.md)、[恢复点](evidence/resident-20261008-r6/next-checkpoint.json)。下一在线owned AU/live555，保留原模型/数学/SDK/BOOT、主线程模式/两缓冲候选；旧后台Engine/六缓冲失败勿重跑。任务未被用户暂停，测试与SSH/SFTP已关闭，无后台。不是daemon/RTSP/整机5Hz/长期验收，预览名义10fps不当真实PTS；旧入口为历史。
+
 **2026-10-08恢复入口已更新，任务未被用户暂停。** 先读[有限合并结果](PIPELINE-RESULTS-20261008.md)、[检查点](evidence/pipeline-20261008-r6/next-checkpoint.json)、[下一门检](PIPELINE-NEXT-20261008.md)。Host107与两有限合并成功，r6无规整新进程重复失败；不要重跑旧失败或自动compact。下一新修订只读取证分配时序，保留6队列/prime2/cookie/math，再有依据最小修正。测试与会话已关闭，无后台。以下入口均为历史阶段。
 
 **当前入口：独立RTSP首批已完成，用户已审查动态样片并要求继续。**

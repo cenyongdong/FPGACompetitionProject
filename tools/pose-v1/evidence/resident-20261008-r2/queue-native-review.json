@@ -1,0 +1,16 @@
+{
+  "status": "native_SDK_free_queue_test_passed",
+  "test_source_sha256": "4541858b8cbb4d1ef5d41516e91f248666ffbd11ce23d82ae69abcf78e7798f9",
+  "header_sha256": "770cdc02f9aebc42cc1f67584b8cfd1ce4bf4763aab51ced0a6ed2bc7e0c91f3",
+  "cases": [
+    "capacity2",
+    "overwrite_oldest",
+    "immutable_copy",
+    "thread_publication20",
+    "3_failure_paths",
+    "publish_after_stop"
+  ],
+  "SDK_used": false,
+  "hardware_accessed": false,
+  "observed_stdout": "Capacity2/overwrite/immutable-copy/thread-publication/failure/stop passed; no hardware"
+}
