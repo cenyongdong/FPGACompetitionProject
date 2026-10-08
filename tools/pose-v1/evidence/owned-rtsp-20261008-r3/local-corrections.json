@@ -1,0 +1,13 @@
+{
+  "scope": "local_preparation_and_review_corrections_no_failed_hardware_run",
+  "records": [
+    {"stage":"build-r1","observed":"PowerShell property collection Count compared incorrectly","fix":"explicit array Count; new build-r2 retained r1 directory","board_executed":false},
+    {"stage":"build-r2","observed":"actual capture empty LAST has PTS0","fix":"strict n=0/PTS0 terminator permitted; source rebuilt r3","board_executed":false},
+    {"stage":"package-r3","observed":"different encoded P pictures can have equal VCL bytes; unique SHA256 assertion failed","fix":"unique initial IDR plus sequence/PTS; fresh r3-final package","board_executed":false},
+    {"stage":"host-review-r1","observed":"existing OpenCV Python3.8 lacks str.removeprefix and Path.is_relative_to","fix":"explicit prefix slicing and resolved parent membership; failed review folder retained","board_repeated":false},
+    {"stage":"host-review-r2","observed":"three source objects rather than two","evidence":"SDP source0 immediately closed without NAL; actual sources1/2 delivered then closed","fix":"verify all three lifecycles and two transmitting sources; no extra client","board_repeated":false}
+  ],
+  "r3_board_runs":1,
+  "first_network_subset":{"frames":200,"encoded_ranges":[[30,129],[150,249]],"active_model_invocations":[],"content":"all recorded startup NoInput; adapter/PTS/pixel proof only"},
+  "followup":"new r4-active context intentionally joins later to cover recorded active sources; no VPU/NPU reinitialization"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "owned_AU_adapter_native_ARM_network_gate_passed",
+  "programs": {
+    "pose_owned_rtsp_check": "eafd397cbe2cc60c77f20ce5054ff2b0bf7268302d6caffa3c9a9a0cd86619f5",
+    "pose_access_unit_selftest": "4d2b79f078247ae3852cfdc97cde227a6efab3e84d36c950f6ae4d42cccb1697"
+  },
+  "manifest_sha256": "3f9355633382360a28c03da71d813ff0dbc11fe1007e13f72506d9d730deb79a",
+  "returned_hashed_files": 17,
+  "host_rejections": 17,
+  "concurrent_units_per_Host": 2000,
+  "capture_AUs": 493,
+  "network_frames": 200,
+  "actual_RTP_PTS": true,
+  "decoded_pixels_equal_resident": true,
+  "kernel_unchanged": true,
+  "port_released": true,
+  "stderr_vendor_diagnostic_lines": 2,
+  "new_VPU_NPU": false,
+  "online_pipeline_verified": false
+}

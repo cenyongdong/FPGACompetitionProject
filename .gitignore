@@ -113,6 +113,8 @@ venv/
 /tools/pose-v1/evidence/**/pose_vpu_encode_check
 /tools/pose-v1/evidence/**/pose_pipeline_encode_check
 /tools/pose-v1/evidence/**/pose_resident_check
+/tools/pose-v1/evidence/**/pose_owned_rtsp_check
+/tools/pose-v1/evidence/**/pose_access_unit_selftest
 /tools/pose-v1/evidence/**/kernel-audit/amvx.ko
 /tools/pose-v1/evidence/**/*.h264
 # SDK 库的反汇编派生文本，不作为项目源码提交。

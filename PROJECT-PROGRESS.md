@@ -1,5 +1,7 @@
 # 项目进度总览（2026-10-07）
 
+> 2026-10-08最新：全项目难点归档到[ADR主题索引](ADR/README.md)，模块设计规范写入Agents。下一阶段已完成owned AU桥Native/ARM及200网络帧/像素/实际PTS门检；输入是已记录的capture，未新初始化VPU/NPU，真实在线闭环尚待。[结果](tools/pose-v1/OWNED-AU-RESULTS-20261008.md)、[接续入口](tools/pose-v1/ONLINE-INTEGRATION-NEXT-20261008.md)。工程粗估81/100保持，不能以模块门检提高整机通过率。
+
 > 2026-10-08当前：VPU启动资源修正三次独立进程通过，同进程有限工作者32前向/987编码及全部源映射通过。[启动结果](tools/pose-v1/VPU-STARTUP-RESULTS-20261008.md)、[常驻/视频](tools/pose-v1/RESIDENT-RESULTS-20261008.md)、[检查点](tools/pose-v1/evidence/resident-20261008-r6/next-checkpoint.json)。下一在线owned AU/RTSP；不是常驻daemon或整机/长期验收，HDMI仍待配套。旧“启动未过”对应六缓冲/后台Engine失败，历史保留。管理粗估81/100保持，非用户暂停，无后台。
 
 > 2026-10-08最新：同进程真实推理→画面→VPU有限链路已核验，但无规整的新进程重复在MVX固件连续页分配失败。[完整结果](tools/pose-v1/PIPELINE-RESULTS-20261008.md)、[下一分配取证](tools/pose-v1/PIPELINE-NEXT-20261008.md)。两成功不记稳定启动/实时RTSP验收，主观管理估计81/100保持；HDMI/整机5Hz/30分钟仍待。已关闭测试与连接，无后台；旧RTSP准备合并条目按历史理解。

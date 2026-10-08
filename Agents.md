@@ -1,5 +1,9 @@
 # 项目执行规范
 
+- 源码设计原则（2026-10-08，用户要求）：从现在起，所有源码程序遵循高内聚、低耦合原则。每个功能的具体实现封装在自己的模块中，通过明确、最小的接口协作，尽量避免与其他功能块的实现细节耦合，增强可维护性与健壮性。共享类型只表达必要契约；资源所有权、线程归属、错误传播和释放顺序应明确。不通过包含其他功能的.cpp、访问其私有状态或重复其算法来接入功能；新增集成采用独立适配层，保留已验收基线。
+
+- 全项目归档及AU模块门检（2026-10-08）：按用户要求先新增ADR_03–08/README和早期难点入口，再执行F0-A3基础门检。新SDK无关AU解析/容量8通道/pipe通知/单线程live555隔离模块，Native与ARM各17拒绝/2000通知通过；189厂商头库保持，程序eafd397c…86619f5，包manifest3f935563…30deb79a，9载荷。r3记录capture493AU→200网络帧为NoInput；新r4-active延后加入108帧覆盖四调用，VCL/实际RTP PTS/10bitID及全部像素逐位旧resident视频，合308解码/34回传；两上下文各一次exit0/dmesg同/端口与source归还，厂商RTCP各两行stderr保留。P帧NAL哈希非唯一，首IDR＋序列＋实际PTS＋解码ID联合定位；本机计数/Python3.8/SDP探测修正历史保留。未新VPU/NPU/HDMI、不是在线实时推理闭环，未整机/长期验收。结果OWNED-AU-RESULTS-20261008.md、r4-active completion/next-checkpoint及ONLINE-INTEGRATION-NEXT当前入口，下一主线程Engine全窗口存活＋实际capture接入与三/27门检，原授权继续，无须重复执行方确认；当前测试/SSH/SFTP均关闭、无后台。原r6/旧RTSP/模型/SDK/BOOT保持。
+
 - VPU启动与有限常驻完成（2026-10-08）：用户批准方案并选同进程工作线程。r7仅快照/模块核验，Host107通过但六缓冲capture REQBUFS耗尽普通order7+页，固件512KiB失败；amvx300496e2…074b5直接__alloc_pages_nodemask(0x10dc0)，CMA256MiB@0x30000000保持。隔离r8只请求6→2、实际两端2、映射19.9→6.64MiB，Host107及三次独立启动24前向/30编码均通过，三码流逐位，无规整/重启/BOOT或SDK变化；r8Host300秒95正确例超时保留，新外部420秒完成107，硬件180秒不扩。常驻r5后台Engine首次输出非有限失败，14回调/745/ready/内核正常，停止保留108文件，未27。r6仅Engine所有者回主线程（创建/前向/销毁同owner），编码仍后台，CPU数学/帧协议不改；Host107/32正确前向483200FP32/987编码、实际PTS/28来源和首帧重复通过，5530关节核验，397成功回传；程序f4f15b7ea8806549ad91ca4e3bd69f0fcc5ea580722b18802d5268730efe7060，402包/23来源。容量2 popLatest/coalesced与overwritten独立，固定2Hz两者0。结果VPU-STARTUP-RESULTS/RESIDENT-RESULTS-20261008.md、ADR_02、DIFFICULTIES及resident-r6 completion/next-checkpoint。主线程对照不证明SDK普遍禁止后台线程；三次启动不保证任意碎片。不是常驻daemon部署/在线RTSP/整机5Hz或30min；预览10fps重编码197帧仅审查，真实PTS/原码流保留。下一已批准F0 owned AU/live555门检，不重复旧Host/文件测试，不自动规整/重试；HDMI配套未知不写。原六缓冲、失败、模型/SDK/BOOT保持；测试/会话全关闭，无后台/自动化。
 
 - ADR与难点记录：用户要求添加ADR时，原则上新建下一个未使用的ADR_XX.md，避免持续追加无关内容使旧文档拥挤。同一决策的后续验证和解决结果可更新其对应ADR，保留历史依据。项目推进中的每个难点应及时记录现象、影响、证据、假设、尝试及结果；有架构取舍的难点建立独立ADR，尚未查明的问题明确标记待验证。
