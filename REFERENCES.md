@@ -1,5 +1,7 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-08 F0：[有限合并/新视频/失败与规整诊断](tools/pose-v1/PIPELINE-RESULTS-20261008.md)、[完整核验](tools/pose-v1/evidence/pipeline-20261008-r6/completion-review.json)、[接续分配取证与常驻方案](tools/pose-v1/PIPELINE-NEXT-20261008.md)。两有限成功不等于启动稳定/实时闭环；Linux连续分配及compact_memory官方依据见报告，不将一次诊断变生产策略。
+
 2026-10-07RTSP当前：[结果/样片](tools/pose-v1/RTSP-RESULTS-20261007.md)、[200帧/重连](tools/pose-v1/evidence/rtsp-20261007-r3/completion-review.json)、[直接播放器100帧](tools/pose-v1/evidence/rtsp-20261007-r4-player/completion-review.json)、[SPS信号](tools/pose-v1/evidence/rtsp-20261007-r3/color-signal-review.json)、[F0准备](tools/pose-v1/F0-INTEGRATION-PREP-20261007.md)。厂商live555/SSL原包复用无安装；已通过独立回放，不代表在线编码或整机闭环。
 
 2026-10-07当前视频：[r5修正/动态MP4](tools/pose-v1/VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md)、[两上下文及主机核验](tools/pose-v1/evidence/video-descriptor-20261007-r5/completion-review.json)、[下一检查点](tools/pose-v1/evidence/video-descriptor-20261007-r5/next-checkpoint.json)。QUERYBUF cookie保留解决当前有限编码问题；旧MMU/色彩拒绝保留，HDMI时序及RTSP/整机待验。

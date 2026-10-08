@@ -1,0 +1,21 @@
+{
+  "status": "preserved_finite_pipeline_firmware_allocation_failure",
+  "returned_hashed_files": 69,
+  "exit": 1,
+  "full_correct_forward_calls": 7,
+  "complete_regression_calls": 4,
+  "production_calls": 3,
+  "source_frames_submitted": 6,
+  "capture_packets": 0,
+  "streamoff_cleanup_returns": [
+    0,
+    0
+  ],
+  "diagnosis": "MVX map_protocol_v2 firmware initialization: order7 contiguous page allocation failed, GFP_KERNEL|__GFP_NORETRY|ZERO",
+  "requested_contiguous_bytes": 524288,
+  "MMU_abort": false,
+  "not_general_OOM": true,
+  "not_numeric_or_CPU_adapter_failure": true,
+  "next_candidate": "VPU output observed before model allocation;2 explicit NoInput startup frames, allocated buffers6 unchanged, prime inputs2, then8 inference-source frames; no cache/compaction/reset/BOOT changes",
+  "primary_memory_reference": "https://kernel.org/doc/html/v5.12/core-api/memory-allocation.html"
+}

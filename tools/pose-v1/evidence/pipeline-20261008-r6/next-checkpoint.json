@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-08",
+  "status": "finite_coupling_verified_startup_stability_unresolved",
+  "paused": false,
+  "report": "tools/pose-v1/PIPELINE-RESULTS-20261008.md",
+  "next_plan": "tools/pose-v1/PIPELINE-NEXT-20261008.md",
+  "binary_sha256": "13693d45f9f124a287f84647fe87b3a8d2bc7d8204a4a08036afd01399f8f086",
+  "package": ".local/pose-v1-pipeline/package-20261008-r6",
+  "build": ".local/pose-v1-build/mixed-20261008-pipeline-r6",
+  "passed": [
+    "Host107/12registry/59600FP32",
+    "two finite8forward/10encoded runs;second after explicit compaction"
+  ],
+  "unresolved": [
+    "fresh process startup order7 firmware allocation failure",
+    "online RTSP",
+    "real clock/persistent workers",
+    "HDMI timing/scanout",
+    "whole-system5Hz/30min"
+  ],
+  "next": "New read-only allocation snapshots at format/REQBUFS/prime/STREAMON; preserve six buffers and all current behavior, then evidence-based startup correction before A2/A3.",
+  "authority": "User approved agent execution and resumed task; no stage execution reapproval needed within approved route.",
+  "no_automatic_retry_or_compaction": true,
+  "all_test_processes_stopped": true,
+  "fpga_state": "operating",
+  "ssh_sftp_closed": true,
+  "no_background_or_automation": true
+}

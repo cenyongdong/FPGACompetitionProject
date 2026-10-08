@@ -1,0 +1,12 @@
+{
+  "status": "finite_pipeline_caller_deadline_failure_preserved",
+  "exit": 1,
+  "returned_hashed_files": 76,
+  "full_correct_forwards": 8,
+  "kernel_unchanged": true,
+  "VPU_output_before_Engine": true,
+  "model_init_ms": 28338.86526,
+  "decoder_limit_seconds": 25,
+  "diagnosis": "File-oriented wall deadline included caller model initialization28.34s; no new allocation failure",
+  "next": "Separately record bounded producer time; retain codec25s/stall5s and whole-stage180s; preserve originalr5"
+}

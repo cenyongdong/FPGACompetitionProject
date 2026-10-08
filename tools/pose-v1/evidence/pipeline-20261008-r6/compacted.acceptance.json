@@ -1,0 +1,23 @@
+{
+  "status": "pipeline_stage_passed",
+  "stage": "combined",
+  "binary_sha256": "13693d45f9f124a287f84647fe87b3a8d2bc7d8204a4a08036afd01399f8f086",
+  "package_manifest_sha256": "011a746977c103f0910f7b2a9df14ca1cbed896cc237e16445dd38cecf36523d",
+  "package_payloads": 350,
+  "build_sources": 21,
+  "sdk_headers": 15,
+  "returned_hashed_files": 88,
+  "full_forward_calls": 8,
+  "production_new_results": 4,
+  "encoded_frames": 10,
+  "warmup_frames": 2,
+  "VPU_capture_before_Engine": true,
+  "producer_after_VPU_streamon": true,
+  "owned_capture_matches_stream": true,
+  "NV12_bitwise_numpy": true,
+  "kernel_unchanged": true,
+  "throughput_verified": false,
+  "exit": 0,
+  "stderr_empty": true,
+  "BOOT_SDK_preserved": true
+}

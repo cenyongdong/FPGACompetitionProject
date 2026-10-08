@@ -1,0 +1,12 @@
+{
+  "status": "preserved_Host_failure_no_hardware_stage",
+  "exit": 139,
+  "returned_hashed_files": 18,
+  "binary_sha256": "b5dfa702ba1b43e3c8584157c3f9da5b4dc198891c647baac535723f9b0fb22f",
+  "completed_cases": 0,
+  "all_completed_cases_passed": true,
+  "kernel_unchanged": true,
+  "device_opened": false,
+  "VPU_streamed": false,
+  "diagnosis": "Different global Case layouts share vector weak symbols; new helper made internal inr3"
+}

@@ -1,0 +1,19 @@
+{
+  "status": "pipeline_stage_passed",
+  "stage": "host-check",
+  "binary_sha256": "4a106fce61f2734c2b844c305b7e0abfc6acde2a297a86c25f543f072cafbde6",
+  "package_manifest_sha256": "112d63075c7978d10662a0ccfbbcb07f2f0d7e2d6a710a42efe9f39aacffb63b",
+  "package_payloads": 350,
+  "build_sources": 21,
+  "sdk_headers": 15,
+  "returned_hashed_files": 42,
+  "Host_cases": 107,
+  "CPU_output_values": 59600,
+  "registry_records": 12,
+  "contract_negative_cases": 6,
+  "device_opened": false,
+  "VPU_streamed": false,
+  "exit": 0,
+  "stderr_empty": true,
+  "BOOT_SDK_preserved": true
+}

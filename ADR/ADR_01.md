@@ -1,5 +1,7 @@
 # ADR_01：以已验证PS/NPU异构方案完成首版闭环，深度性能优化后置
 
+2026-10-08 F0补充：真实PS/NPU结果→绘图→同进程VPU两次有限成功，其中一次需显式规整诊断；无规整新进程重复仍有MVX固件512KiB高阶连续分配失败。采用owned帧/packet与原显式复制、opaque cookie，原六缓冲和数学保持；VPU先观测capture再Engine初始化，producer/codec期限分别有界，但启动顺序本身未解决重复可靠性。当前不将全局内存规整纳入生产，不自动重试、丢缓存或更换BOOT。下一先分配阶段取证；应用初始化先后、最小协商队列占用或匹配MVX高阶申请修正均需实际依据，常驻资源不能代替首次启动修复。[证据/边界](../tools/pose-v1/PIPELINE-RESULTS-20261008.md)、[接续](../tools/pose-v1/PIPELINE-NEXT-20261008.md)。深度异构优化后置；新全局助手类型以匿名namespace隔离，避免冻结源ODR冲突。
+
 2026-10-07RTSP接口决策：复用已提供live555/SSL配套，NAL拥有字节并保持实际capture PTS，单线程事件循环、至多2个source、60秒有限上下文；加入等待实际IDR，SPS/PPS按真实长度，不保存已归还VPU指针。客户端发GET_PARAMETER保活，保留缺保活历史而不扩大服务回收时间掩盖问题。两个100帧会话与直接播放器100帧逐位原视频通过；预生成replay不冒充实时推理/编码并发。SPS无显式色彩信号留待有依据的元数据处理。接续[F0门检](../tools/pose-v1/F0-INTEGRATION-PREP-20261007.md)，HDMI/深度优化后置保持。
 
 2026-10-07视频修正决策：有限VPU编码保留QUERYBUF opaque MMAP cookie并用于QBUF，与厂商客户端对应；不转换为物理地址、不换BOOT/固件、不扩大队列或放宽色彩。r5两独立上下文54帧完整、码流逐位一致，原r1/r2 MMU失败及r3/r4拒绝保留。[证据与差异](../tools/pose-v1/VIDEO-DESCRIPTOR-R5-RESULTS-20261007.md)。此结论限当前板端/固件组合；RTSP先复制为owned AU再归还VPU，按实际NAL/PTS处理，禁止固定24/8参数集和临时指针跨队列。HDMI1080p60仍需当前BOOT配套，不因编码通过猜写。深度异构优化后置保持。

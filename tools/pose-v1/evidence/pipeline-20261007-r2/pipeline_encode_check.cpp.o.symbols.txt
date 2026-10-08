@@ -1,0 +1,6 @@
+0000000000002990 t record(std::filesystem::__cxx11::path const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, pose_v1::application::Result const&, Case const&, std::ostream&)
+0000000000000228 t compare(pose_v1::application::Result const&, Case const&)
+0000000000000000 W void std::vector<Case, std::allocator<Case> >::_M_realloc_insert<Case>(__gnu_cxx::__normal_iterator<Case*, std::vector<Case, std::allocator<Case> > >, Case&&)
+0000000000000000 W std::vector<Case, std::allocator<Case> >::~vector()
+0000000000000000 W std::vector<Case, std::allocator<Case> >::~vector()
+0000000000000000 n std::vector<Case, std::allocator<Case> >::~vector()
