@@ -1,0 +1,102 @@
+"""Prearmed finite 33-window peer; same transport and no data retries."""
+import argparse
+import hashlib
+import json
+import socket
+import struct
+import threading
+import time
+from pathlib import Path
+from source_readback_peer_stream_ready import StreamReadyClient
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--package', type=Path, required=True)
+    parser.add_argument('--fps', type=int, choices=[2, 5], required=True)
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    assert not args.output.exists()
+    args.output.mkdir(parents=True)
+    catalog = []
+    for line in (args.package / 'cases.tsv').read_text().splitlines():
+        group, name, frame, stamp = line.split()
+        if group == 'expanded':
+            raw = (args.package / 'inputs' / (name + '.csi')).read_bytes()
+            assert len(raw) > 32
+            catalog.append((name, raw, int(frame)))
+    assert len(catalog) == 27
+    scripts = [Path(__file__), Path(__file__).with_name('source_readback_peer_stream_ready.py'),
+               Path(__file__).with_name('live_rtsp_client.py'), Path(__file__).with_name('rtsp_replay_client.py')]
+    (args.output / 'controller-source.json').write_text(json.dumps(dict(
+        sources={p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in scripts},
+        startup_only_connection_wait=True, frame_protocol_unchanged=True,
+        one_input_session=True, planned_frames=33, fps=args.fps)) + '\n')
+    sent, errors = [], []
+
+    def sender():
+        report = dict(fps=args.fps, sent=sent, session_count=1)
+        try:
+            deadline = time.monotonic() + 110
+            while True:
+                try:
+                    connection = socket.create_connection(('192.168.126.49', 39001), 1)
+                    break
+                except (ConnectionRefusedError, TimeoutError):
+                    assert time.monotonic() < deadline, 'First input listener timed out'
+                    time.sleep(.1)
+            with connection:
+                connection.settimeout(5)
+                connection.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+                epoch = time.monotonic()
+                for i in range(33):
+                    delay = epoch + i / args.fps - time.monotonic()
+                    if delay > 0:
+                        time.sleep(delay)
+                    name, original, fixture = catalog[i % 27]
+                    raw = bytearray(original)
+                    struct.pack_into('<Q', raw, 16, 100000 + i)
+                    assert raw[:16] == original[:16] and raw[24:] == original[24:]
+                    before = time.monotonic_ns()
+                    connection.sendall(raw)
+                    sent.append(dict(sequence=i, transport_id=100000+i, case=name,
+                        fixture_frame_id=fixture, sha256=hashlib.sha256(raw).hexdigest(),
+                        payload_sha256=hashlib.sha256(raw[32:]).hexdigest(),
+                        begin_pc_ns=before, end_pc_ns=time.monotonic_ns()))
+            report['status'] = 'sent_no_receiver_ack'
+        except Exception as error:
+            errors.append(error)
+            report.update(status='failed', error=str(error))
+        finally:
+            (args.output / 'sender.json').write_text(json.dumps(report, indent=2)+'\n')
+
+    worker = threading.Thread(target=sender)
+    worker.start()
+    client = None
+    print('PEER_ARMED: 33 windows; first listeners only, no data retries', flush=True)
+    try:
+        deadline = time.monotonic()+110
+        while True:
+            try:
+                client = StreamReadyClient(args.output)
+                break
+            except (ConnectionRefusedError, TimeoutError):
+                assert time.monotonic() < deadline, 'First RTSP listener timed out'
+                time.sleep(.1)
+        result = client.run_live()
+        client.save(result)
+    except Exception as error:
+        if client:
+            client.save(dict(status='failed', error=str(error), frames=client.frames,
+                             packets=client.packet_log))
+        raise
+    finally:
+        if client:
+            client.sock.close()
+        worker.join(timeout=115)
+    assert not worker.is_alive() and not errors and len(sent) == 33, str(errors)
+    print('Finite coverage peer completed:', len(client.frames), 'AUs', flush=True)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,14 @@
+{
+  "status": "pure_timing_and_failure_capture_Host_passed_periodic_data_block_failure_pending",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "package": ".local/pose-v1-forward-trace/package-20261009-r3",
+  "build": ".local/pose-v1-build/mixed-20261009-forward-trace-r3",
+  "board": "/tmp/pose-forward-trace-20261009-r3",
+  "program_sha256": "6ce50e142d6635c4554b6280d9727ba00bba3c55414d97fa89c09a66f39ea1fd",
+  "failure_review_sha256": "d129d9daa6f176a87f5360f1fbae7d599dcb7e5ce577b746761066b7465a9769",
+  "compactions": 0,
+  "next": "Read FORWARD-TRACE-R3-RESULTS-20261009.md and ADR_17. Preserve r1/r2/r3; no same-package retry or relaxed finite/index gates. Next isolated bounded source Tensor metadata and two SDK readbacks to discriminate source versus Host staging. No direct ADDR/BOTH dereference, sleep/reset/cache/BOOT/CMA change. Long103/5Hz trace/HDMI/30min not executed."
+}

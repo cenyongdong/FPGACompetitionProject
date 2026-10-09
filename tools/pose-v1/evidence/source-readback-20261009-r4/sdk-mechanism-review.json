@@ -1,0 +1,19 @@
+{
+  "status": "matching_ARM_binary_entry_route_audit_only",
+  "library_sha256": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+  "library_matches_board": true,
+  "Tensor_copyFrom_address": "0x682f8",
+  "Tensor_copyFrom_size": "0x70",
+  "Tensor_read_address": "0x6bf90",
+  "Tensor_read_size": "0x410",
+  "copy_route": "Tensor::copyFrom -> MemChunk::copyFrom -> MemRegion::memcpy",
+  "read_route": "Tensor::read -> MemChunk::read -> MemRegion::read",
+  "concrete_region_DMA_cache_implementation_fully_proven": false,
+  "root_cause_proven": false,
+  "window_sha256": {
+    "MemChunk-read-copy.txt": "1268ea789eec0dd8bf74e7cffcd9afc9c4f6344091479ad3dda62b09bd4b618e",
+    "Tensor-copy.txt": "b22b43ef7054c50a32a8521855b119d634245abdd992b5d3ff90631e00894ecf",
+    "Tensor-read.txt": "745889887de9e730d45c10c3834714c6efbcf583fbf80be916f985e0c107aac4"
+  },
+  "note": "Disassembly windows may include neighboring functions; entry sizes and call sites define this limited conclusion."
+}

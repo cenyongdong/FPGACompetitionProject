@@ -1,0 +1,35 @@
+{
+  "status": "same_CSI_prior_bridge_input_block_comparison",
+  "actual_sha256": "575ad4a66b26f30a81f9f9288ffc91e367c7639a0f15c36878b38413b832a9d8",
+  "reference_sha256": "4995255ad18ad555931c54093234a9381505ec2e9cc60917c0d262c65fd7675e",
+  "reference_scope": "Accepted r6 mixed-one 308 bridge input; historical, without simultaneous VPU",
+  "changed_FP32": 96,
+  "unchanged_FP32": 84,
+  "changed_byte_ranges": [
+    [
+      0,
+      128
+    ],
+    [
+      256,
+      384
+    ],
+    [
+      512,
+      640
+    ]
+  ],
+  "byte_ranges_half_open": true,
+  "unchanged_tail_bytes": [
+    640,
+    720
+  ],
+  "changed_values_zero": 95,
+  "NaN_flat_index": 11,
+  "NaN_bits": "0xffffffff",
+  "source_transport": 100000,
+  "CSI_case": "S11_01_308",
+  "pattern_explained_by_small_arithmetic_roundoff": false,
+  "cache_DMA_or_writer_root_cause_proven": false,
+  "independent_source_device_read_performed": false
+}

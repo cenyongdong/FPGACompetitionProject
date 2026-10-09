@@ -1,0 +1,13 @@
+{
+  "status": "live_stage_passed",
+  "stage": "host-check",
+  "binary_sha256": "6ce50e142d6635c4554b6280d9727ba00bba3c55414d97fa89c09a66f39ea1fd",
+  "package_manifest_sha256": "529bc28224241e27e2e9f85eb2f221f6d991333467e65d4f7719c40c4187cd07",
+  "payloads": 403,
+  "build_sources": 61,
+  "returned_files": 110,
+  "Host_cases": 107,
+  "CPU_FP32": 59600,
+  "registry_records": 12,
+  "transport_fixture_tests": true
+}

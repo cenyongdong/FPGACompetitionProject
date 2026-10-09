@@ -1,0 +1,92 @@
+    PID    PPID STAT COMMAND
+      1       0 Ss   /sbin/init
+      2       0 S    [kthreadd]
+      3       2 I<   [rcu_gp]
+      4       2 I<   [rcu_par_gp]
+      8       2 I<   [mm_percpu_wq]
+      9       2 S    [ksoftirqd/0]
+     10       2 I    [rcu_sched]
+     11       2 S    [migration/0]
+     12       2 S    [cpuhp/0]
+     13       2 S    [cpuhp/1]
+     14       2 S    [migration/1]
+     15       2 S    [ksoftirqd/1]
+     16       2 I    [kworker/1:0-events]
+     18       2 S    [cpuhp/2]
+     19       2 S    [migration/2]
+     20       2 S    [ksoftirqd/2]
+     23       2 S    [cpuhp/3]
+     24       2 S    [migration/3]
+     25       2 S    [ksoftirqd/3]
+     28       2 S    [kdevtmpfs]
+     29       2 I    [kworker/0:1-events]
+     32       2 S    [kauditd]
+     33       2 S    [oom_reaper]
+     34       2 I<   [writeback]
+     35       2 S    [kcompactd0]
+     36       2 SN   [khugepaged]
+     54       2 I<   [kblockd]
+     55       2 I<   [edac-poller]
+     56       2 S    [watchdogd]
+     57       2 I<   [rpciod]
+     58       2 I<   [kworker/u9:0-kbase_pm_poweroff_wait]
+     59       2 I<   [xprtiod]
+     60       2 S    [kswapd0]
+     61       2 S    [ecryptfs-kthrea]
+     62       2 I<   [nfsiod]
+     63       2 S    [spi3]
+     64       2 I<   [stmmac_wq]
+     65       2 I    [kworker/u8:1-mvx_sched]
+     69       2 S    [kpktgend_0]
+     70       2 S    [kpktgend_1]
+     71       2 S    [kpktgend_2]
+     72       2 S    [kpktgend_3]
+     73       2 I<   [ipv6_addrconf]
+     74       2 I<   [mmc_complete]
+     76       2 I<   [kworker/1:1H-kblockd]
+     77       2 I<   [kworker/0:1H-kblockd]
+     78       2 I<   [kworker/3:1H-kblockd]
+     79       2 S    [jbd2/mmcblk0p2-]
+     80       2 I<   [ext4-rsv-conver]
+     81       2 I<   [kworker/2:1H-kblockd]
+    101       1 S<s  /lib/systemd/systemd-journald
+    113       2 I<   [kbase_job_fault]
+    114       2 I<   [kworker/u9:1]
+    118       2 I<   [mvx_securevideo]
+    119       2 S    [fw_cache]
+    120       2 I<   [mvx_sched]
+    125       1 Ssl  /lib/systemd/systemd-timesyncd
+    129       1 Ss   /usr/sbin/cron -f
+    130       1 Ss   /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    136       1 Ssl  /usr/sbin/rsyslogd -n -iNONE
+    137       1 Ss   /lib/systemd/systemd-logind
+    151       1 Ss   /lib/systemd/systemd-resolved
+    152       1 Ssl  /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    187       1 Ss   sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    188       1 Ss+  /sbin/agetty -o -p -- \u --noclear tty1 linux
+    189       1 Ss+  /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+    190     187 Ss   sshd: root@pts/0
+    192     187 Ss   sshd: root@notty
+    195       1 Ss   /lib/systemd/systemd --user
+    196     195 S    (sd-pam)
+    221     190 Ss+  -bash
+    222     190 Ss   bash -c while true; do sleep 1;head -v -n 8 /proc/meminfo; head -v -n 2 /proc/stat /proc/version /proc/uptime /proc/loadavg /proc/sys/fs/file-nr /proc/sys/kernel/hostname; tail -v -n 32 /proc/net/dev;echo '==> /proc/df <==';df -l;echo '==> /proc/who <==';who;echo '==> /proc/end <==';echo '##Moba##'; done
+    226     192 Ss   /usr/lib/openssh/sftp-server
+   2148       2 I<   [kworker/0:0H]
+   3396       2 I    [kworker/2:0-events]
+   5620       2 I    [kworker/2:2-cgroup_destroy]
+   6213       2 I    [kworker/3:2-mm_percpu_wq]
+   6442       2 I<   [kworker/2:0H]
+   6502       2 I    [kworker/0:2]
+   6695       2 I<   [kworker/1:0H]
+   7080       2 I<   [kworker/3:2H]
+   7155       2 I    [kworker/u8:3-flush-179:0]
+   8203       2 I    [kworker/1:1-events]
+   8354       2 I    [kworker/3:0-events_power_efficient]
+   8979       2 I<   [kworker/1:2H]
+  10151       2 I    [kworker/3:1-events]
+  10230       2 I    [kworker/1:2-events]
+  10387     187 Ss   sshd: root@notty
+  10490     222 S    sleep 1
+  10501   10387 Ss   sh -c set -eu; cd /tmp/pose-forward-trace-20261009-r3; test ! -e final-audit; mkdir final-audit; for n in buddyinfo pagetypeinfo meminfo vmstat cmdline; do cat /proc/$n > final-audit/$n.txt; done; dmesg > final-audit/dmesg.log; ss -ltnp > final-audit/listeners.txt; ps -eo pid,ppid,stat,args > final-audit/processes.txt; python3 board_application_preflight.py final-audit/preflight.json; cd final-audit; sha256sum *.txt *.log *.json > files.sha256; cd ../resources-before-three; sha256sum *.txt *.log > files.sha256
+  10510   10501 R    ps -eo pid,ppid,stat,args

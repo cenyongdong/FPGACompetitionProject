@@ -1,0 +1,153 @@
+{
+  "status": "live_stage_passed",
+  "stage": "process-three",
+  "binary_sha256": "a7903f6a98c37585c4b9764a899fa6a9c3183024d49b45a7c1b8e9c7fba21cf6",
+  "package_manifest_sha256": "4f85e8148bdc1b47bacb0848dc7282bc5167b726329cd335568269996705aa8d",
+  "payloads": 403,
+  "build_sources": 63,
+  "returned_files": 160,
+  "display_subprocess": true,
+  "child_sdk_dependencies": false,
+  "child_reaped": true,
+  "display_covered": 4,
+  "parent_forward_display_overlap": 0,
+  "measured_consumed": 4,
+  "warmups": 0,
+  "sent": 4,
+  "consumed": 4,
+  "overwritten": 0,
+  "encoded": 499,
+  "repeated_video_frames": 191,
+  "new_pose_completion_interval_Hz": 1.9768143269433842,
+  "metrics": {
+    "queue_ms": {
+      "count": 4,
+      "mean": 0.9825400000000001,
+      "P95": 1.0696575,
+      "maximum": 1.0791
+    },
+    "process_ms": {
+      "count": 4,
+      "mean": 193.10783249999997,
+      "P95": 194.537222,
+      "maximum": 194.86124
+    },
+    "oracle_ms": {
+      "count": 4,
+      "mean": 0.48006,
+      "P95": 0.4858305,
+      "maximum": 0.48639
+    },
+    "draw_ms": {
+      "count": 4,
+      "mean": 11.8884475,
+      "P95": 12.661501999999999,
+      "maximum": 12.68588
+    },
+    "NV12_ms": {
+      "count": 4,
+      "mean": 34.3562425,
+      "P95": 35.037487000000006,
+      "maximum": 35.12971
+    },
+    "publish_ms": {
+      "count": 4,
+      "mean": 2.06052,
+      "P95": 2.4995114999999997,
+      "maximum": 2.52837
+    },
+    "arrival_to_picture_ms": {
+      "count": 4,
+      "mean": 241.2621275,
+      "P95": 242.6772385,
+      "maximum": 242.8099
+    },
+    "preprocess_ms": {
+      "count": 4,
+      "mean": 5.906855,
+      "P95": 6.431794,
+      "maximum": 6.55837
+    },
+    "prepare_ms": {
+      "count": 4,
+      "mean": 0.0762725,
+      "P95": 0.08076549999999999,
+      "maximum": 0.08173
+    },
+    "state_clear_ms": {
+      "count": 4,
+      "mean": 0.0051400000000000005,
+      "P95": 0.005371,
+      "maximum": 0.00538
+    },
+    "forward_ms": {
+      "count": 4,
+      "mean": 184.67741500000002,
+      "P95": 184.9201945,
+      "maximum": 184.93921
+    },
+    "final_wait_ms": {
+      "count": 4,
+      "mean": 0.1910575,
+      "P95": 0.199458,
+      "maximum": 0.2004
+    },
+    "output_ms": {
+      "count": 4,
+      "mean": 1.8787325000000001,
+      "P95": 3.3773054999999994,
+      "maximum": 3.73014
+    },
+    "selection_ms": {
+      "count": 4,
+      "mean": 0.0012274999999999999,
+      "P95": 0.0013694999999999998,
+      "maximum": 0.00138
+    },
+    "picture_to_first_adopt_ms": {
+      "count": 4,
+      "mean": 67.72557499999999,
+      "P95": 73.523009,
+      "maximum": 73.56734
+    },
+    "arrival_to_first_capture_callback_ms": {
+      "count": 4,
+      "mean": 639.718665,
+      "P95": 716.3054165000001,
+      "maximum": 719.22017
+    },
+    "arrival_to_RTSP_handoff_ms": {
+      "count": 4,
+      "mean": 639.8595224999999,
+      "P95": 716.477095,
+      "maximum": 719.3962
+    },
+    "display_queue_IPC_request_ms": {
+      "count": 4,
+      "mean": 0.335855,
+      "P95": 0.3576375,
+      "maximum": 0.36015
+    },
+    "IPC_reply_ms": {
+      "count": 4,
+      "mean": 2.0505050000000002,
+      "P95": 2.4898835,
+      "maximum": 2.51885
+    },
+    "parent_result_handoff_ms": {
+      "count": 4,
+      "mean": 0.0096725,
+      "P95": 0.012799499999999998,
+      "maximum": 0.01344
+    }
+  },
+  "full_numeric_bitwise": true,
+  "steady_clock_only": true,
+  "whole_5Hz_threshold_met": false,
+  "PC_presentation_measured": false,
+  "nested_spans_not_summed": true,
+  "independent_media_reviews": {
+    "tools\\pose-v1\\evidence\\source-readback-20261009-r4\\video-stream-ready\\review.json": "0cb018a30683e95789716f09f9ac5301aac952f50428b37e14f90fff16a95e33",
+    "tools\\pose-v1\\evidence\\source-readback-20261009-r4\\network-stream-ready\\review.json": "02278444439baaeb1254125d133e793c863bfe10f0a8ecc8e227f200b77fbe85"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "status": "single_board_clock_interval_identity",
+  "measured_samples": 30,
+  "arrival_span_ms": 5823.89573,
+  "picture_span_ms": 5815.86022,
+  "endpoint_latency_change_ms": -8.03551,
+  "arrival_interval_Hz": 4.979484754614588,
+  "picture_interval_Hz": 4.986364682609239,
+  "strict_rate_pass": false,
+  "root_cause_proven": false,
+  "not_capacity_measurement": true,
+  "formula": "picture span = arrival span + endpoint latency change; finite input-paced interval, not unconstrained capacity"
+}

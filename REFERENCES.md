@@ -1,5 +1,7 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-09最新：[保留异常读取后的覆盖/纯计时结果](tools/pose-v1/SOURCE-COVERAGE-RESULTS-20261009.md)、[完成与恢复入口](tools/pose-v1/evidence/source-coverage-20261009-r4/next-checkpoint.json)、[有限执行方案](tools/pose-v1/SOURCE-COVERAGE-PLAN-20261009.md)、[ADR_16](ADR/ADR_16.md)、[ADR_17](ADR/ADR_17.md)。66正确前向/997编码937网络，旧故障未复现，诊断不作5Hz验收；下面此前“最新”保留为历史。
+
 2026-10-08最新：[独立显示子进程可行性](tools/pose-v1/DISPLAY-PROCESS-RESULTS-20261008.md)、[尖峰/有界入口下一方案](tools/pose-v1/DISPLAY-PROCESS-NEXT-20261008.md)、[ADR_15](ADR/ADR_15.md)。70正确全链，5Hz输入33全消费，实测4.99165Hz不舍入验收；83/100保持，后续此前状态是历史。
 
 2026-10-08最新实测：[整机低日志/2Hz/5Hz结果](tools/pose-v1/SYSTEM-TIMING-RESULTS-20261008.md)、[最小显示worker方案](tools/pose-v1/SYSTEM-TIMING-NEXT-20261008.md)、[ADR_14](ADR/ADR_14.md)。实际4.22311Hz未达标，数值/视频正确；管理83/100保持。下方此前“推进前”记录为历史。
@@ -1458,3 +1460,7 @@ ADDR/BOTH只通过SDK复制，Host staging不能替代NPU同步证明；区域�
 本机参考耗时不作板端性能。完整NPU/数值、HDMI/RTSP、5Hz/延迟/30分钟闭环尚未验收。
 
 最新：[前向尖峰取证结果](tools/pose-v1/FORWARD-TRACE-RESULTS-20261008.md)、[有界扩展设计](tools/pose-v1/BOUNDED-MEASUREMENT-DESIGN-20261008.md)、[ADR_16](ADR/ADR_16.md)。
+
+最新：[纯计时与异常字节结果](tools/pose-v1/FORWARD-TRACE-R3-RESULTS-20261009.md)、[源数据判别计划](tools/pose-v1/FORWARD-DATA-RECOVERY-NEXT-20261009.md)、[ADR_17](ADR/ADR_17.md)。
+
+最新：[r4源读回结果](tools/pose-v1/SOURCE-READBACK-R4-RESULTS-20261009.md)／[完成证据](tools/pose-v1/evidence/source-readback-20261009-r4/completion-review.json)。
