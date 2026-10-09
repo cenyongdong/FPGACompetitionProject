@@ -1,0 +1,41 @@
+{
+  "status": "failure_Host_bytes_classified_no_fix",
+  "frame_id": 100060,
+  "invocation": 60,
+  "op_id": 582,
+  "original_error": "CPU_CANDIDATE[finite]: NaN/Inf input is prohibited",
+  "phase": "owned_Host_staging_after_kernel_exception",
+  "inputs": [
+    {
+      "slot": 0,
+      "shape": [
+        100,
+        14,
+        3
+      ],
+      "bytes": 16800,
+      "sha256": "e08e4f43b163c4f746349d251985269a1517b89b2df4b9ff11707d6c834ff2c8",
+      "NaN": 4,
+      "positive_Inf": 0,
+      "negative_Inf": 0,
+      "finite_noninteger": 4189,
+      "dtype_layout": "**C"
+    },
+    {
+      "slot": 1,
+      "shape": [
+        100,
+        14,
+        3
+      ],
+      "bytes": 16800,
+      "sha256": "04eb9436650bbbb844fb60b148ea90d03ab0d25aaa2073e4adf57b3345ccc5f0",
+      "NaN": 0,
+      "positive_Inf": 0,
+      "negative_Inf": 0,
+      "finite_noninteger": 4196,
+      "dtype_layout": "**C"
+    }
+  ],
+  "upstream_origin_proven": false
+}

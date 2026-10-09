@@ -1,0 +1,142 @@
+{
+  "status": "local_pattern_comparison_not_causal_proof",
+  "changed_values": 2096,
+  "top": [
+    {
+      "file": "call6.bridge_input.op582.slot1.f32",
+      "case": "S13_07_304",
+      "kind": "bridge_input",
+      "slot": 1,
+      "op_id": 582,
+      "matches_changed_region": 155,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call6.bridge_result.op582.slot0.f32",
+      "case": "S13_07_304",
+      "kind": "bridge_result",
+      "slot": 0,
+      "op_id": 582,
+      "matches_changed_region": 155,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call6.bridge_input.op649.slot1.f32",
+      "case": "S13_07_304",
+      "kind": "bridge_input",
+      "slot": 1,
+      "op_id": 649,
+      "matches_changed_region": 151,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call6.bridge_result.op649.slot0.f32",
+      "case": "S13_07_304",
+      "kind": "bridge_result",
+      "slot": 0,
+      "op_id": 649,
+      "matches_changed_region": 151,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call11.bridge_input.op649.slot1.f32",
+      "case": "S21_31_349",
+      "kind": "bridge_input",
+      "slot": 1,
+      "op_id": 649,
+      "matches_changed_region": 10,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call11.bridge_result.op649.slot0.f32",
+      "case": "S21_31_349",
+      "kind": "bridge_result",
+      "slot": 0,
+      "op_id": 649,
+      "matches_changed_region": 10,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call6.bridge_result.op192.slot0.f32",
+      "case": "S13_07_304",
+      "kind": "bridge_result",
+      "slot": 0,
+      "op_id": 192,
+      "matches_changed_region": 9,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call11.bridge_input.op582.slot1.f32",
+      "case": "S21_31_349",
+      "kind": "bridge_input",
+      "slot": 1,
+      "op_id": 582,
+      "matches_changed_region": 7,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call11.bridge_result.op582.slot0.f32",
+      "case": "S21_31_349",
+      "kind": "bridge_result",
+      "slot": 0,
+      "op_id": 582,
+      "matches_changed_region": 7,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call14.bridge_input.op582.slot1.f32",
+      "case": "S22_48_349",
+      "kind": "bridge_input",
+      "slot": 1,
+      "op_id": 582,
+      "matches_changed_region": 7,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call14.bridge_result.op582.slot0.f32",
+      "case": "S22_48_349",
+      "kind": "bridge_result",
+      "slot": 0,
+      "op_id": 582,
+      "matches_changed_region": 7,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call14.bridge_input.op649.slot1.f32",
+      "case": "S22_48_349",
+      "kind": "bridge_input",
+      "slot": 1,
+      "op_id": 649,
+      "matches_changed_region": 7,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call14.bridge_result.op649.slot0.f32",
+      "case": "S22_48_349",
+      "kind": "bridge_result",
+      "slot": 0,
+      "op_id": 649,
+      "matches_changed_region": 7,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call9.bridge_input.op582.slot1.f32",
+      "case": "S21_01_301",
+      "kind": "bridge_input",
+      "slot": 1,
+      "op_id": 582,
+      "matches_changed_region": 6,
+      "changed_region_values": 2096
+    },
+    {
+      "file": "call9.bridge_result.op582.slot0.f32",
+      "case": "S21_01_301",
+      "kind": "bridge_result",
+      "slot": 0,
+      "op_id": 582,
+      "matches_changed_region": 6,
+      "changed_region_values": 2096
+    }
+  ],
+  "root_cause_proven": false
+}

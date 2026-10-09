@@ -1,5 +1,7 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-09最新：[103实施与失败/真实源结果](tools/pose-v1/BOUNDED-LOAD-RESULTS-20261009.md)、[执行方案](tools/pose-v1/BOUNDED-LOAD-PLAN-20261009.md)、[下一Host shadow准备](tools/pose-v1/HOST-STAGING-FAULT-NEXT-20261009.md)、[ADR_18](ADR/ADR_18.md)、[ADR_17](ADR/ADR_17.md)、[恢复检查点](tools/pose-v1/evidence/bounded-load-20261009-r2/next-checkpoint.json)。Host及三窗全链通过，103在第61次拒绝NaN后停止；两轮真实源正确但原暂存0异常，不提前宣布根因/性能修复。
+
 2026-10-09最新：[保留异常读取后的覆盖/纯计时结果](tools/pose-v1/SOURCE-COVERAGE-RESULTS-20261009.md)、[完成与恢复入口](tools/pose-v1/evidence/source-coverage-20261009-r4/next-checkpoint.json)、[有限执行方案](tools/pose-v1/SOURCE-COVERAGE-PLAN-20261009.md)、[ADR_16](ADR/ADR_16.md)、[ADR_17](ADR/ADR_17.md)。66正确前向/997编码937网络，旧故障未复现，诊断不作5Hz验收；下面此前“最新”保留为历史。
 
 2026-10-08最新：[独立显示子进程可行性](tools/pose-v1/DISPLAY-PROCESS-RESULTS-20261008.md)、[尖峰/有界入口下一方案](tools/pose-v1/DISPLAY-PROCESS-NEXT-20261008.md)、[ADR_15](ADR/ADR_15.md)。70正确全链，5Hz输入33全消费，实测4.99165Hz不舍入验收；83/100保持，后续此前状态是历史。

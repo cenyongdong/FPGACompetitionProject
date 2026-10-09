@@ -1,0 +1,370 @@
+{
+  "status": "two_source_reads_and_original_staging_compared",
+  "frame_id": 100060,
+  "invocation": 60,
+  "op_id": 582,
+  "original_error": "CPU_CANDIDATE[finite]: NaN/Inf input is prohibited",
+  "single_round_bytes": 33600,
+  "additional_source_read_bytes": 67200,
+  "comparisons": [
+    {
+      "slot": 0,
+      "shape": [
+        100,
+        14,
+        3
+      ],
+      "pointer": "ADDR",
+      "region": "AXIZG330AIPLDDRMemRegionNode",
+      "source_address": 109264896,
+      "source_chunk": "0x559ed855b0",
+      "source_offset": 0,
+      "source_capacity": 16800,
+      "read_ms": [
+        0.09729,
+        0.04932
+      ],
+      "classification": [
+        {
+          "name": "original_staging",
+          "sha256": "e08e4f43b163c4f746349d251985269a1517b89b2df4b9ff11707d6c834ff2c8",
+          "NaN": 4,
+          "Inf": 0,
+          "zeros": 4
+        },
+        {
+          "name": "source_round0",
+          "sha256": "b9f4b01fbd898c6b5227f34dc8200cf2139203ae86fcc2f1aec61085667348e6",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 0
+        },
+        {
+          "name": "source_round1",
+          "sha256": "b9f4b01fbd898c6b5227f34dc8200cf2139203ae86fcc2f1aec61085667348e6",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 0
+        }
+      ],
+      "staging_to_round0_changed_FP32": 2096,
+      "staging_to_round1_changed_FP32": 2096,
+      "round0_to_round1_changed_FP32": 0,
+      "staging_to_round0_changed_ranges_FP32": [
+        [
+          0,
+          16
+        ],
+        [
+          48,
+          80
+        ],
+        [
+          112,
+          144
+        ],
+        [
+          176,
+          208
+        ],
+        [
+          240,
+          272
+        ],
+        [
+          304,
+          336
+        ],
+        [
+          368,
+          400
+        ],
+        [
+          432,
+          464
+        ],
+        [
+          496,
+          528
+        ],
+        [
+          560,
+          592
+        ],
+        [
+          624,
+          656
+        ],
+        [
+          688,
+          720
+        ],
+        [
+          752,
+          784
+        ],
+        [
+          816,
+          848
+        ],
+        [
+          880,
+          912
+        ],
+        [
+          944,
+          976
+        ],
+        [
+          1008,
+          1040
+        ],
+        [
+          1072,
+          1104
+        ],
+        [
+          1136,
+          1168
+        ],
+        [
+          1200,
+          1232
+        ],
+        [
+          1264,
+          1296
+        ],
+        [
+          1328,
+          1360
+        ],
+        [
+          1392,
+          1424
+        ],
+        [
+          1456,
+          1488
+        ],
+        [
+          1520,
+          1552
+        ],
+        [
+          1584,
+          1616
+        ],
+        [
+          1648,
+          1680
+        ],
+        [
+          1712,
+          1744
+        ],
+        [
+          1776,
+          1808
+        ],
+        [
+          1840,
+          1872
+        ],
+        [
+          1904,
+          1936
+        ],
+        [
+          1968,
+          2000
+        ],
+        [
+          2032,
+          2064
+        ],
+        [
+          2096,
+          2128
+        ],
+        [
+          2160,
+          2192
+        ],
+        [
+          2224,
+          2256
+        ],
+        [
+          2288,
+          2320
+        ],
+        [
+          2352,
+          2384
+        ],
+        [
+          2416,
+          2448
+        ],
+        [
+          2480,
+          2512
+        ],
+        [
+          2544,
+          2576
+        ],
+        [
+          2608,
+          2640
+        ],
+        [
+          2672,
+          2704
+        ],
+        [
+          2736,
+          2768
+        ],
+        [
+          2800,
+          2832
+        ],
+        [
+          2864,
+          2896
+        ],
+        [
+          2928,
+          2960
+        ],
+        [
+          2992,
+          3024
+        ],
+        [
+          3056,
+          3088
+        ],
+        [
+          3120,
+          3152
+        ],
+        [
+          3184,
+          3216
+        ],
+        [
+          3248,
+          3280
+        ],
+        [
+          3312,
+          3344
+        ],
+        [
+          3376,
+          3408
+        ],
+        [
+          3440,
+          3472
+        ],
+        [
+          3504,
+          3536
+        ],
+        [
+          3568,
+          3600
+        ],
+        [
+          3632,
+          3664
+        ],
+        [
+          3696,
+          3728
+        ],
+        [
+          3760,
+          3792
+        ],
+        [
+          3824,
+          3856
+        ],
+        [
+          3888,
+          3920
+        ],
+        [
+          3952,
+          3984
+        ],
+        [
+          4016,
+          4048
+        ],
+        [
+          4080,
+          4112
+        ],
+        [
+          4144,
+          4176
+        ]
+      ]
+    },
+    {
+      "slot": 1,
+      "shape": [
+        100,
+        14,
+        3
+      ],
+      "pointer": "ADDR",
+      "region": "AXIZG330AIPLDDRMemRegionNode",
+      "source_address": 109187072,
+      "source_chunk": "0x559ed627f0",
+      "source_offset": 0,
+      "source_capacity": 16800,
+      "read_ms": [
+        0.05168,
+        0.05038
+      ],
+      "classification": [
+        {
+          "name": "original_staging",
+          "sha256": "04eb9436650bbbb844fb60b148ea90d03ab0d25aaa2073e4adf57b3345ccc5f0",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 0
+        },
+        {
+          "name": "source_round0",
+          "sha256": "04eb9436650bbbb844fb60b148ea90d03ab0d25aaa2073e4adf57b3345ccc5f0",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 0
+        },
+        {
+          "name": "source_round1",
+          "sha256": "04eb9436650bbbb844fb60b148ea90d03ab0d25aaa2073e4adf57b3345ccc5f0",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 0
+        }
+      ],
+      "staging_to_round0_changed_FP32": 0,
+      "staging_to_round1_changed_FP32": 0,
+      "round0_to_round1_changed_FP32": 0,
+      "staging_to_round0_changed_ranges_FP32": []
+    }
+  ],
+  "inference": "Later source reads differ from original staging; investigate copy/storage visibility or source completion after original copy. This does not prove which operation caused the difference.",
+  "root_cause_proven": false,
+  "reads_are_later_than_original_copy": true,
+  "source_hardware_read": true
+}

@@ -1,0 +1,100 @@
+    PID COMMAND         COMMAND
+      1 systemd         /sbin/init
+      2 kthreadd        [kthreadd]
+      3 rcu_gp          [rcu_gp]
+      4 rcu_par_gp      [rcu_par_gp]
+      8 mm_percpu_wq    [mm_percpu_wq]
+      9 ksoftirqd/0     [ksoftirqd/0]
+     10 rcu_sched       [rcu_sched]
+     11 migration/0     [migration/0]
+     12 cpuhp/0         [cpuhp/0]
+     13 cpuhp/1         [cpuhp/1]
+     14 migration/1     [migration/1]
+     15 ksoftirqd/1     [ksoftirqd/1]
+     18 cpuhp/2         [cpuhp/2]
+     19 migration/2     [migration/2]
+     20 ksoftirqd/2     [ksoftirqd/2]
+     23 cpuhp/3         [cpuhp/3]
+     24 migration/3     [migration/3]
+     25 ksoftirqd/3     [ksoftirqd/3]
+     28 kdevtmpfs       [kdevtmpfs]
+     29 kworker/0:1-eve [kworker/0:1-events]
+     32 kauditd         [kauditd]
+     33 oom_reaper      [oom_reaper]
+     34 writeback       [writeback]
+     35 kcompactd0      [kcompactd0]
+     36 khugepaged      [khugepaged]
+     54 kblockd         [kblockd]
+     55 edac-poller     [edac-poller]
+     56 watchdogd       [watchdogd]
+     57 rpciod          [rpciod]
+     58 kworker/u9:0-kb [kworker/u9:0-kbase_pm_poweroff_wait]
+     59 xprtiod         [xprtiod]
+     60 kswapd0         [kswapd0]
+     61 ecryptfs-kthrea [ecryptfs-kthrea]
+     62 nfsiod          [nfsiod]
+     63 spi3            [spi3]
+     64 stmmac_wq       [stmmac_wq]
+     69 kpktgend_0      [kpktgend_0]
+     70 kpktgend_1      [kpktgend_1]
+     71 kpktgend_2      [kpktgend_2]
+     72 kpktgend_3      [kpktgend_3]
+     73 ipv6_addrconf   [ipv6_addrconf]
+     74 mmc_complete    [mmc_complete]
+     76 kworker/1:1H-kb [kworker/1:1H-kblockd]
+     77 kworker/0:1H-mm [kworker/0:1H-mmc_complete]
+     78 kworker/3:1H-kb [kworker/3:1H-kblockd]
+     79 jbd2/mmcblk0p2- [jbd2/mmcblk0p2-]
+     80 ext4-rsv-conver [ext4-rsv-conver]
+     81 kworker/2:1H-kb [kworker/2:1H-kblockd]
+    101 systemd-journal /lib/systemd/systemd-journald
+    113 kbase_job_fault [kbase_job_fault]
+    114 kworker/u9:1    [kworker/u9:1]
+    118 mvx_securevideo [mvx_securevideo]
+    119 fw_cache        [fw_cache]
+    120 mvx_sched       [mvx_sched]
+    125 systemd-timesyn /lib/systemd/systemd-timesyncd
+    129 cron            /usr/sbin/cron -f
+    130 dbus-daemon     /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    136 rsyslogd        /usr/sbin/rsyslogd -n -iNONE
+    137 systemd-logind  /lib/systemd/systemd-logind
+    151 systemd-resolve /lib/systemd/systemd-resolved
+    152 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    187 sshd            sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    188 agetty          /sbin/agetty -o -p -- \u --noclear tty1 linux
+    189 agetty          /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+    190 sshd            sshd: root@pts/0
+    192 sshd            sshd: root@notty
+    195 systemd         /lib/systemd/systemd --user
+    196 (sd-pam)        (sd-pam)
+    221 bash            -bash
+    222 bash            bash -c while true; do sleep 1;head -v -n 8 /proc/meminfo; head -v -n 2 /proc/stat /proc/version /proc/uptime /proc/loadavg /proc/sys/fs/file-nr /proc/sys/kernel/hostname; tail -v -n 32 /proc/net/dev;echo '==> /proc/df <==';df -l;echo '==> /proc/who <==';who;echo '==> /proc/end <==';echo '##Moba##'; done
+    226 sftp-server     /usr/lib/openssh/sftp-server
+  47840 kworker/2:2H    [kworker/2:2H]
+  48783 kworker/u8:3-fl [kworker/u8:3-flush-179:0]
+  49305 kworker/2:1-eve [kworker/2:1-events]
+  64257 kworker/0:0-eve [kworker/0:0-events]
+  67465 kworker/3:1-eve [kworker/3:1-events]
+  67561 apt.systemd.dai /bin/sh /usr/lib/apt/apt.systemd.daily install
+  67565 apt.systemd.dai /bin/sh /usr/lib/apt/apt.systemd.daily lock_is_held install
+  67620 unattended-upgr /usr/bin/python3 /usr/bin/unattended-upgrade
+  70360 http            /usr/lib/apt/methods/http
+  71017 kworker/1:1-mm_ [kworker/1:1-mm_percpu_wq]
+  71174 kworker/0:0H-mm [kworker/0:0H-mmc_complete]
+  71380 kworker/3:0H    [kworker/3:0H]
+  71663 kworker/3:0-eve [kworker/3:0-events]
+  72611 kworker/u8:1-mv [kworker/u8:1-mvx_sched]
+  72678 kworker/u8:2-f0 [kworker/u8:2-f0020000.mve]
+  72986 kworker/1:0-mm_ [kworker/1:0-mm_percpu_wq]
+  72987 kworker/1:0H    [kworker/1:0H]
+  73212 kworker/2:0     [kworker/2:0]
+  73766 kworker/0:2     [kworker/0:2]
+  73799 kworker/3:2H    [kworker/3:2H]
+  73818 kworker/3:2-mm_ [kworker/3:2-mm_percpu_wq]
+  74077 kworker/0:2H    [kworker/0:2H]
+  74480 kworker/2:0H    [kworker/2:0H]
+  75078 kworker/1:2-eve [kworker/1:2-events]
+  75204 sshd            sshd: root@notty
+  75337 sleep           sleep 1
+  75348 bash            bash -c set -eu; dst=/tmp/pose-bounded-load-20261009-r2; r="$dst/run-load-103"; cat "$r/stderr.log"; wc -l "$r/results/inference.jsonl"; find "$r/results/failed-host-inputs" -maxdepth 2 -type f -print; mkdir "$dst/final-audit"; for name in buddyinfo pagetypeinfo meminfo vmstat; do cat /proc/$name > "$dst/final-audit/$name"; done; dmesg > "$dst/final-audit/dmesg"; ps -eo pid,comm,args > "$dst/final-audit/processes"; ss -ltn > "$dst/final-audit/ports"; python3 "$dst/package/board_application_preflight.py" "$dst/final-audit/preflight.json"; cd "$dst"; find resources-before resources-before-load final-audit -type f -print0 | sort -z | xargs -0 sha256sum > resources.sha256; tar -cf resource-audit.tar resources-before resources-before-load final-audit resources.sha256; grep -E "MemAvailable|CmaFree" final-audit/meminfo; ss -ltn
+  75358 ps              ps -eo pid,comm,args

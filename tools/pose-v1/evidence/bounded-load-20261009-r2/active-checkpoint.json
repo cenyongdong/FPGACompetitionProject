@@ -1,0 +1,17 @@
+{
+  "status": "completed_with_preserved_load_failure",
+  "user_paused": false,
+  "package": ".local/pose-v1-bounded-load/package-20261009-r2",
+  "build": ".local/pose-v1-build/mixed-20261009-bounded-load-r2",
+  "board": "/tmp/pose-bounded-load-20261009-r2",
+  "program_sha256": "8510f6e120ae5a21a3a6c155da210d67e2ab31f7c94d1fd67bc948820f1f3a19",
+  "Host_cases": 107,
+  "three_complete_forwards": 4,
+  "compactions": 0,
+  "source_readback_retained": true,
+  "hardware_timeout_seconds": 180,
+  "do_not_restart_on_interruption": true,
+  "active_tests": false,
+  "services_running": false,
+  "completion_sha256": "8d57d2e84a26c5f806e18954ab45dfa6be1a61d0f46e3b0e18741166b8ef7203"
+}

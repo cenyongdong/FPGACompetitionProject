@@ -1,0 +1,78 @@
+{
+  "status": "late_device_sources_compared_with_previously_verified_same_CSI",
+  "case": "S13_07_304",
+  "frame_id": 100060,
+  "invocation": 60,
+  "op_id": 582,
+  "golden_manifest_files_verified": 604,
+  "golden_file_list_sha256": "6b7ead3bee0e11caca7a333bcf1be423b746377aee0d678e6dd52a3c5392af0f",
+  "comparisons": [
+    {
+      "slot": 0,
+      "golden_file": "tools\\pose-v1\\evidence\\runtime-20261007-r2\\n1\\results\\content\\call6.bridge_input.op582.slot0.f32",
+      "golden_sha256": "b9f4b01fbd898c6b5227f34dc8200cf2139203ae86fcc2f1aec61085667348e6",
+      "golden_case": "S13_07_304",
+      "shape": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "source_round0_matches_same_case_gold": true,
+      "source_round1_matches_same_case_gold": true,
+      "staging_matches_gold": false,
+      "changed_FP32": 2096,
+      "NaN_indices": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "NaN_bits": [
+        "0xffffffff",
+        "0xffffffff",
+        "0xffffffff",
+        "0xffffffff"
+      ],
+      "changed_first_12": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "slot": 1,
+      "golden_file": "tools\\pose-v1\\evidence\\runtime-20261007-r2\\n1\\results\\content\\call6.bridge_input.op582.slot1.f32",
+      "golden_sha256": "04eb9436650bbbb844fb60b148ea90d03ab0d25aaa2073e4adf57b3345ccc5f0",
+      "golden_case": "S13_07_304",
+      "shape": {
+        "allocated": true,
+        "bytes": 16800,
+        "pointer": "CPTR",
+        "region": "icraft::xrt::HostMemRegionNode",
+        "offset": 0,
+        "chunk_bytes": 16800
+      },
+      "source_round0_matches_same_case_gold": true,
+      "source_round1_matches_same_case_gold": true,
+      "staging_matches_gold": true,
+      "changed_FP32": 0,
+      "NaN_indices": [],
+      "NaN_bits": [],
+      "changed_first_12": []
+    }
+  ],
+  "copy_vs_completion_root_cause_proven": false,
+  "source_reads_are_later": true
+}

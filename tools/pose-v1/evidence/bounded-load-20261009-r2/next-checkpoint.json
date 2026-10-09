@@ -1,0 +1,13 @@
+{
+  "status": "bounded103_implemented_Host_three_passed_device_error_capture_triggered_load_failed",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "package": ".local/pose-v1-bounded-load/package-20261009-r2",
+  "build": ".local/pose-v1-build/mixed-20261009-bounded-load-r2",
+  "board": "/tmp/pose-bounded-load-20261009-r2",
+  "program_sha256": "8510f6e120ae5a21a3a6c155da210d67e2ab31f7c94d1fd67bc948820f1f3a19",
+  "completion_sha256": "8d57d2e84a26c5f806e18954ab45dfa6be1a61d0f46e3b0e18741166b8ef7203",
+  "next": "Read BOUNDED-LOAD-RESULTS-20261009.md, ADR_18/17 and HOST-STAGING-FAULT-NEXT-20261009.md. Keep failed load and source reads.60 good calls then Scatter582 bad Host slot0; both later device reads exact old same-case gold. No load acceptance/retry. Prepare post-copy owned shadow + Host destination alignment/region metadata and receiver failure accounting; normal copy/waits/math remain. SDK default cross-copy uses temporary/source.read/dest.write; direct Tensor.read alone not proven repair. No cache/BOOT/CMA changes. Await next agreed diagnostic execution; HDMI/30min pending."
+}
