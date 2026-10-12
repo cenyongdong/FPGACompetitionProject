@@ -1,0 +1,96 @@
+{
+  "status": "single_resident_VPU_Engine_three_then103_passed_fault_unresolved",
+  "program_SHA256": "c4c5caaf83f82c07e663eedae2b94ae0723884e8f134e88bd8b9b1863c601822",
+  "manifest_SHA256": "45dfbd83e7fcc422b11ef96866c3e6613b25a77b4bde96f303d7763701f0fc8a",
+  "original_main_SHA256": "fbf330d73ec34c43c7c2757253115e720ba7dccfd6fc6f54a28c6cbaacb8702d",
+  "old_model_VPU_SHA256": "4bab1a1d61c54fdebde33eaa71a1ec378e3159c964c5dcd8e6e198aa749aab2a",
+  "payloads": 403,
+  "build_sources": 108,
+  "Host107_new_run": false,
+  "Host107_reused": 107,
+  "registry_reused": 12,
+  "CPU_FP32_reused": 59600,
+  "Native_ARM_contracts_each": {
+    "sequence": 13,
+    "producer": 16,
+    "load": 6,
+    "run": 9
+  },
+  "phases": [
+    {
+      "offset": 0,
+      "calls": 4,
+      "FP32": 60400,
+      "period_ns": 500000000
+    },
+    {
+      "offset": 4,
+      "calls": 103,
+      "FP32": 1555300,
+      "period_ns": 200000000
+    }
+  ],
+  "correct_calls": 107,
+  "FP32_compared": 1615700,
+  "all_raw_inputs_full100_scores_and_poses_saved_before_gate": true,
+  "unique_calls_and_frames": true,
+  "source_addresses": [
+    109232128,
+    109285376
+  ],
+  "object_rows": 1712,
+  "shadow_rows": 856,
+  "producer192_queries": 856,
+  "all192_counts234": true,
+  "copy_metadata": 963,
+  "completion582_extra_polls": 0,
+  "Host_destination_mod64": [
+    0,
+    16,
+    32
+  ],
+  "VPU_contexts": 1,
+  "Engine_instances": 1,
+  "Engine_init_ms": 29321.69921,
+  "VPU_synthetic_images": 518,
+  "VPU_stream_bytes": 93978,
+  "VPU_packets": 520,
+  "VPU_actual_PTS_and_pixels_verified": true,
+  "VPU_first_ready_may_be_parameter_packet": true,
+  "drain_LAST_and_two_STREAMOFF": true,
+  "worker_joined_before_Engine_destroyed": true,
+  "synthetic_frames_not_pose_throughput": true,
+  "stage103_actual_begin_span_ms": 20407.15648,
+  "agent_compactions": 1,
+  "compaction_elapsed_ms": 144.80296,
+  "final_MemAvailable_KiB": 745488,
+  "final_CmaFree_KiB": 28892,
+  "final_ordinary_units": 30,
+  "normal_source_reads_added": 0,
+  "exception_late_source_reads_triggered": 0,
+  "old_exception_and_two_late_reads_retained": true,
+  "root_cause_fixed": false,
+  "VPU_model_fault_cause_proven": false,
+  "permanent_first_startup_accepted": false,
+  "performance_accepted": false,
+  "long_term_accepted": false,
+  "render_display_network_HDMI": false,
+  "BOOT_SDK_model_math_changed": false,
+  "active_tests": false,
+  "services_running": false,
+  "all_agent_sessions_closed": true,
+  "archive_SHA256": {
+    "contracts.tar": "11b7b50d37294fa48984ff3b9a8677e36a0ce6c03ed5a962f979a8a784f2c5a9",
+    "resident.tar": "41a00e2405e0bb82d3e5c589991dd318f7a30c9c3f32b8a9d2cbed1e495e8c55"
+  },
+  "evidence_SHA256": {
+    "build.acceptance.json": "01cc1d5ea134898c32311b42c9507ec8de098e415aa81fb0538dc290bce1549b",
+    "baseline.acceptance.json": "f021c48fb85a5ab20b166cb7f5db40a1840250f46fac83d963d730dda408e15a",
+    "contracts.acceptance.json": "efc54daaff18ff4dac5b00d4193324ddd69729343cf8f14f36f10d932aea81b1",
+    "resident.acceptance.json": "e9c36164fe5329efb1ce1828ad0083723565259b335578a03d6e24d46fa0fa4c",
+    "resident.objects.json": "768faaeb38fa7e13dada371419d4491b771e8b69db8af51e3409dbcdc8d4f24a",
+    "resident.counts.json": "dbe64ba77b1efeb08efb9b45c97de448336b2202d18c8600c5627a8ca705169a",
+    "resident.video.json": "9d07a3f3ec5a3f3734f6bb24128e4306dce14ab3c7c83b1dbdf11e62f39af879",
+    "resource-review.json": "935ffa8c7d74bf970e84b7bd469daa8042562c78b00bf924e6bd748da2ee8cd3"
+  }
+}

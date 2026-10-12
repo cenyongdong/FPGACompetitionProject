@@ -1,0 +1,13 @@
+{
+  "status": "recorded_pre_VPU_resource_decision",
+  "ordinary_512KiB_units_before": 9,
+  "policy_margin_units": 16,
+  "compaction_writes": 1,
+  "elapsed_ns": 95601300,
+  "reason": "Frozen two-buffer mappings are about6.64MiB and firmware has an observed512KiB ordinary-page request; below16 units is a preparation policy, not a proven allocation bound.",
+  "kernel_unchanged": true,
+  "drop_caches": false,
+  "reboot": false,
+  "CMA_changed": false,
+  "numerical_fault_fixed": false
+}

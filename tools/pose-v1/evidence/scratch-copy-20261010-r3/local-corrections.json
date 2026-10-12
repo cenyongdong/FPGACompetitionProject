@@ -1,0 +1,11 @@
+{
+  "status": "local_tools_corrected_without_board_retry",
+  "corrections": [
+    "r1 natural SDK B address34336 was mod64=32; preserved successful100-pair memory evidence, no r1 VPU run. r2 adds SDK-owned32-byte padding, no fixed source address.",
+    "r2 explicitUTF8 preparation corrects Windows GBK read failure; partial generated source asserted identical and retained. r2 built only, no ARM device run.",
+    "Before r2 hardware transfer, audit found first-copy owned bytes lost on second-copy throw; r3 caller-owned Pair/saveAvailable and independent two late reads added. Native/ARM partial-byte tests passed.",
+    "Initial local video review counted SPS/PPS capture as image. Corrected by parsing actual per-capture NAL types:1 header packet,200 VCL packets,1 empty LAST;200 decoded IDs and actual queued/capture PTS match. No source/package/board rerun."
+  ],
+  "hardware_failures_this_batch": 0,
+  "automatic_retry": false
+}

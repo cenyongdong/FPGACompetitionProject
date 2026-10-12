@@ -1,0 +1,149 @@
+{
+  "status": "live_stage_passed",
+  "stage": "process-three",
+  "binary_sha256": "27b9ff09278daa2232f320af37183a7d41a7e7d74cdbbee5a30d747d2769e086",
+  "package_manifest_sha256": "de32738d0322923b59295a206f42b3ac6e42d6a2b7a7107820a5e78aa96ed48d",
+  "payloads": 403,
+  "build_sources": 71,
+  "returned_files": 162,
+  "display_subprocess": true,
+  "child_sdk_dependencies": false,
+  "child_reaped": true,
+  "display_covered": 4,
+  "parent_forward_display_overlap": 0,
+  "measured_consumed": 4,
+  "warmups": 0,
+  "sent": 4,
+  "consumed": 4,
+  "overwritten": 0,
+  "encoded": 494,
+  "repeated_video_frames": 192,
+  "new_pose_completion_interval_Hz": 1.999311543734287,
+  "metrics": {
+    "queue_ms": {
+      "count": 4,
+      "mean": 0.9895799999999999,
+      "P95": 1.0970324999999999,
+      "maximum": 1.1172
+    },
+    "process_ms": {
+      "count": 4,
+      "mean": 193.27851249999998,
+      "P95": 193.826556,
+      "maximum": 193.92822
+    },
+    "oracle_ms": {
+      "count": 4,
+      "mean": 0.5008775,
+      "P95": 0.5133935000000001,
+      "maximum": 0.51539
+    },
+    "draw_ms": {
+      "count": 4,
+      "mean": 11.103185,
+      "P95": 12.366328,
+      "maximum": 12.51409
+    },
+    "NV12_ms": {
+      "count": 4,
+      "mean": 36.1244175,
+      "P95": 40.2928435,
+      "maximum": 41.26459
+    },
+    "publish_ms": {
+      "count": 4,
+      "mean": 2.4715175,
+      "P95": 3.0240575,
+      "maximum": 3.0608
+    },
+    "arrival_to_picture_ms": {
+      "count": 4,
+      "mean": 242.44012999999998,
+      "P95": 248.41247449999997,
+      "maximum": 249.75776
+    },
+    "preprocess_ms": {
+      "count": 4,
+      "mean": 5.698002499999999,
+      "P95": 5.746547,
+      "maximum": 5.75705
+    },
+    "prepare_ms": {
+      "count": 4,
+      "mean": 0.07866000000000001,
+      "P95": 0.088203,
+      "maximum": 0.09027
+    },
+    "state_clear_ms": {
+      "count": 4,
+      "mean": 0.0054425,
+      "P95": 0.0057564999999999995,
+      "maximum": 0.0058
+    },
+    "forward_ms": {
+      "count": 4,
+      "mean": 185.6927025,
+      "P95": 186.057664,
+      "maximum": 186.1093
+    },
+    "final_wait_ms": {
+      "count": 4,
+      "mean": 0.1893,
+      "P95": 0.2033885,
+      "maximum": 0.20474
+    },
+    "output_ms": {
+      "count": 4,
+      "mean": 1.25418,
+      "P95": 1.386579,
+      "maximum": 1.41699
+    },
+    "selection_ms": {
+      "count": 4,
+      "mean": 0.0013275000000000001,
+      "P95": 0.001483,
+      "maximum": 0.00151
+    },
+    "picture_to_first_adopt_ms": {
+      "count": 4,
+      "mean": 76.80471,
+      "P95": 77.98393899999999,
+      "maximum": 78.06178
+    },
+    "arrival_to_first_capture_callback_ms": {
+      "count": 4,
+      "mean": 601.4430649999999,
+      "P95": 707.6619119999999,
+      "maximum": 722.99961
+    },
+    "arrival_to_RTSP_handoff_ms": {
+      "count": 4,
+      "mean": 601.539675,
+      "P95": 707.7703039999999,
+      "maximum": 723.11222
+    },
+    "display_queue_IPC_request_ms": {
+      "count": 4,
+      "mean": 0.3391375,
+      "P95": 0.344336,
+      "maximum": 0.34547
+    },
+    "IPC_reply_ms": {
+      "count": 4,
+      "mean": 2.4614,
+      "P95": 3.013211,
+      "maximum": 3.04985
+    },
+    "parent_result_handoff_ms": {
+      "count": 4,
+      "mean": 0.009055,
+      "P95": 0.012496499999999997,
+      "maximum": 0.01326
+    }
+  },
+  "full_numeric_bitwise": true,
+  "steady_clock_only": true,
+  "whole_5Hz_threshold_met": false,
+  "PC_presentation_measured": false,
+  "nested_spans_not_summed": true
+}

@@ -1,0 +1,128 @@
+{
+  "status": "position_scratch_resource_and_cleanup_checked",
+  "decision": {
+    "status": "recorded_pre_VPU_resource_decision",
+    "ordinary_512KiB_units_before": 24,
+    "policy_margin_units": 16,
+    "compaction_writes": 0,
+    "elapsed_ns": 3210,
+    "reason": "Frozen two-buffer mappings are about6.64MiB and firmware has an observed512KiB ordinary-page request; below16 units is a preparation policy, not a proven allocation bound.",
+    "kernel_unchanged": true,
+    "drop_caches": false,
+    "reboot": false,
+    "CMA_changed": false,
+    "numerical_fault_fixed": false
+  },
+  "agent_compactions": 0,
+  "snapshots": [
+    {
+      "label": "contracts.before",
+      "ordinary_512KiB_units": 16,
+      "MemAvailable_KiB": 699568,
+      "CmaFree_KiB": 130360,
+      "sha256": {
+        "buddyinfo": "86829c770b30930e7194b30ee6fd71c43ea24a4892354b865cabfcd0ad9d74fa",
+        "pagetypeinfo": "2b0bd15c3e324a43e7d0132af55f1298daf6bdab1b2b566bfa706bb391c5f4f5",
+        "meminfo": "525d16ef6688ce0c33e5cf379e4dd7c62ef37be8e4b6fc68ee790d52fd22199b",
+        "vmstat": "fcff4aba6190a9168c882dec3775c8a933a4ab7ce7522617a401086a56531740"
+      }
+    },
+    {
+      "label": "contracts.after",
+      "ordinary_512KiB_units": 16,
+      "MemAvailable_KiB": 699876,
+      "CmaFree_KiB": 130360,
+      "sha256": {
+        "buddyinfo": "e03bceeac15e1196a27536b326ee3a71bfb28e080f0f0a4f815927734b22f63f",
+        "pagetypeinfo": "b662e24d4f9f22561cde79cae9c6c64004806e2adfc1316dcdd58dc809c17f4b",
+        "meminfo": "f2eb808532edc3c8bd4bee5cafe79bc839b072df48332c5056b0e3d6ded2245d",
+        "vmstat": "fad995514b6235b840e962a71cb657e410d672217a957ea8e5cf9425df28a901"
+      }
+    },
+    {
+      "label": "dynamic.before",
+      "ordinary_512KiB_units": 22,
+      "MemAvailable_KiB": 670540,
+      "CmaFree_KiB": 130360,
+      "sha256": {
+        "buddyinfo": "418e93459e73a08832451ead6321af92191c51fa956664ae9c4d26c3bc3449f9",
+        "pagetypeinfo": "0734c2d8e5bbf55f41a6c3c0ea5494e74096fde86fc15eabe0838b92e0487fd5",
+        "meminfo": "d3664cfdec5fb9009f82b2ccef9159531af806e1bf8db62a8a6c99d25747d742",
+        "vmstat": "778ef5f9a345d19c2071a2ccbf767ab77f406e2f01210b9cab31625f22219f00"
+      }
+    },
+    {
+      "label": "dynamic.after",
+      "ordinary_512KiB_units": 22,
+      "MemAvailable_KiB": 671624,
+      "CmaFree_KiB": 130360,
+      "sha256": {
+        "buddyinfo": "22b57eec31bc84cee5b44b0fafe2994cc51f979684aadcc64978072ef97a1e3f",
+        "pagetypeinfo": "2dc81ca34bcdd718eecd41fb3cda927c1ffc0ee3afe20edc4ba25673a0bee552",
+        "meminfo": "6d42146518fb63d9ec62d2c2fb0c74257ecc54590f251b22ea583a44f42b0761",
+        "vmstat": "7f4d2f5cebfea5d2a5f9be93d1553c3ab4c418029334cb0d72a63571b64e226f"
+      }
+    },
+    {
+      "label": "vpu.before",
+      "ordinary_512KiB_units": 23,
+      "MemAvailable_KiB": 698788,
+      "CmaFree_KiB": 130360,
+      "sha256": {
+        "buddyinfo": "cd2231211578a88e2fe2b28352a4375807aba495179b5ed853c389beb120f20c",
+        "pagetypeinfo": "f888fa7902959413ef1498b748bd771ee2b2e4cb4128c57a06e61218aa26dd60",
+        "meminfo": "18f50fccf3b9ec2251131a08230caa3b911399f0802966dd33b8e53781aa39d7",
+        "vmstat": "d3516c23f455216438d22174eefe9f3fca07cbc22b69cd5a0f1bc25104803858"
+      }
+    },
+    {
+      "label": "vpu.after",
+      "ordinary_512KiB_units": 24,
+      "MemAvailable_KiB": 698728,
+      "CmaFree_KiB": 130360,
+      "sha256": {
+        "buddyinfo": "6c08ff8df57e65a1c80958c93531f096b387b77fb3257245863e12ab0152d8bb",
+        "pagetypeinfo": "7b694de790eed549dd84213bf3187ce9fe729c011f1ba0611af10ea15b490e76",
+        "meminfo": "df762d07545998f7496b3a885f16920f8d6cc466cdb9ed400062a6bd756a1418",
+        "vmstat": "878473aeceec5dbfb91ad4ea14f566ea79cd90f9d65ef7cc8bc7cce699721e14"
+      }
+    }
+  ],
+  "pre_VPU_snapshots": [
+    {
+      "label": "resource.before",
+      "ordinary_512KiB_units": 24,
+      "MemAvailable_KiB": 667044,
+      "CmaFree_KiB": 130360,
+      "sha256": {
+        "buddyinfo": "1785273d599bbd86e2bfe3d6b92ccf1f60880bc177bd94a9b0172477dcda4b09",
+        "pagetypeinfo": "816d98fd0d2f42c9a7678671de1545d9552dc24e3cb3d76ed1a303d1bde08bc0",
+        "meminfo": "e7152740b3d19737fd1e6d90a1e83b3f84f55886d17f9208f6ead82f26f4b6da",
+        "vmstat": "4ab619434a40a843662a8f9dff7772466d7184717e8f6eb6cc2a99bde3b3480c"
+      }
+    },
+    {
+      "label": "resource.after",
+      "ordinary_512KiB_units": 24,
+      "MemAvailable_KiB": 667184,
+      "CmaFree_KiB": 130360,
+      "sha256": {
+        "buddyinfo": "1b1898d747613f98ec26c9cfc5fb9667ad371e791bfd8cb69aeac39dec709d20",
+        "pagetypeinfo": "56f354b1035be7a8eedbe08bbdf36a49f812545e75bfda6e29e2b4021154269a",
+        "meminfo": "2643a37b15c6ed56186b2bf599fc20466548924b63a61ab8f0466b7cb03bcecd",
+        "vmstat": "264a8a854230ceaae2187cde896628348f4626afc0582e2c365ce4536b7fc85f"
+      }
+    }
+  ],
+  "kernel_events_unchanged": true,
+  "each_stage_raw_kernel_unchanged": true,
+  "resource_raw_kernel_unchanged": true,
+  "cross_capture_boot_copyright_escape_only": true,
+  "exact_whitelist_line": "[    1.729153] jffs2: version 2.2. (NAND) \\xc2\\xa9 2001-2006 Red Hat, Inc.\n",
+  "drop_caches": false,
+  "reboot": false,
+  "CMA_changed": false,
+  "program_processes_remaining": 0,
+  "input_RTSP_ports_released": true,
+  "not_leak_or_permanent_startup_proof": true
+}

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "stage": "host",
+  "manifest_sha256": "de0ace33c2a682c0a2d4875171a773e1f42d7ec969ebeffce15aa41d785bf975",
+  "programs": {
+    "pose_axi_pair_check": "b2f7db68b72db95aa868b5b73454a8566736c1b2fdebc1f31095c20c3273fec7",
+    "pose_axi_pair_host_check": "a182324441521f9b657e425b0f926cc9b20fcb009c4c72d2f2ea8fcde386406c"
+  },
+  "archive_sha256": "a00bdf7d3dfabd2361f5541925fa04b449366112ddc161497939b2a2a142ce21",
+  "Host_bytes": 376320,
+  "refusals": 8,
+  "device_opened": false,
+  "kernel_unchanged": true
+}

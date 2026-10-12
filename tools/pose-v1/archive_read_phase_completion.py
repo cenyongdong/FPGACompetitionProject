@@ -1,0 +1,28 @@
+"""Bind reviewed identities and evidence at safe failure stop; no hardware calls."""
+import json,hashlib
+from pathlib import Path
+from review_read_phase_r3_stage import identities
+r=Path(__file__).resolve().parents[2];e=r/'tools/pose-v1/evidence/read-phase-20261011-r3'
+load=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+def write(p,value):assert not p.exists();p.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
+m,b,n=identities(r/'.local/pose-v1-read-phase/package-20261011-r3',r/'.local/pose-v1-build/mixed-20261011-read-phase-r3')
+assert n==403 and len(m['build_files'])==154
+h=load(e/'host-check.acceptance.json');t=load(e/'process-three.acceptance.json');f=load(e/'failure-review.json')
+assert h['Host_cases']==107 and h['CPU_FP32']==59600 and t['FP32_compared']==60400 and t['read_phase_complete']
+assert f['complete_correct']==48 and f['correct_FP32']==724800 and f['first_snapshot_vs_gold']['changed_FP32']==592 and f['changed_values_equal_same_offset_previous_slot0']==592
+assert f['first_equals_beforeCPU_and_original_failure_Host'] and f['two_late_source_reads_bitwise_gold'] and f['cleanup_verified'] and not f['root_cause_proven']
+archives={'host.tar':'d0f5458a86ecc885d70ac6168f90e7febd28938dc15443b67d35c9c0ef32f196','three.tar':'227b3c610c031129e78148a4b8346a4c1b8407a9a81d04b8afb7f34200fec54e','diagnostic.tar':'96701cd0e844d6320588e24ffd2aa5dfc4fb623177b25efa7c3e759fe33ab44d'}
+assert all(sha(e/name)==digest for name,digest in archives.items())
+refs=['build.acceptance.json','host.numeric.json','host-check.acceptance.json','host.phase-contracts.json','host.upstream-contracts.json','host.Gather-boundary.json','ARM-core.review.json','ARM-SDK.review.json','bridge-structure-review.json','process-three.acceptance.json','process-three.numeric.json','process-three.read-phase.json','process-three.boundary.json','three-video/review.json','three-network-prefix/review.json','client-three/sender.json','client-diagnostic/sender.json','failure-review.json','diagnostic.read-phase.json','diagnostic.partial-boundary.json','objects.json','counts.json','diagnostic-video-prefix/review.json','diagnostic-network-prefix/review.json','resource-three.log','resource-diagnostic.log']
+prior=r/'tools/pose-v1/evidence/read-phase-20261011-r2';history=['Native.review.json','Native-run.log','Native-selftest','SDK-xrt-hash.log','SDK-Tensor-read.log','SDK-Tensor-read-tail.log','host-permission-failure.tar','three.tar','three-wiring-failure-review.json','three-video/review.json','three-network-prefix/review.json']
+for copied,rel in [('read_phase.hpp','include/read_phase.hpp'),('read_phase.cpp','src/read_phase.cpp'),('read_phase_selftest.cpp','src/read_phase_selftest_r2.cpp')]:
+    assert sha(prior/'Native-source'/copied)==sha(r/'software/pose_v1'/rel)
+    history.append('Native-source/'+copied)
+reports=['tools/pose-v1/READ-PHASE-RESULTS-20261011.md','tools/pose-v1/READ-PHASE-NEXT-20261011.md']
+completion=dict(status='read_return_anomaly_localized_bounded_diagnostic_completed_root_unresolved',date='2026-10-11',binary_sha256=b['binary_sha256'],manifest_sha256=b['package_manifest_sha256'],payloads=n,build_sources=154,frozen_ELFs_bitwise=39,Native_same_module_passed=True,Host_cases=107,registry=12,Host_FP32=59600,four_window_FP32=60400,four_window_encoded=492,four_window_network=462,four_window_joint_checks=2716,unique_fixed_QPC505_tests=1,diagnostic_correct=48,diagnostic_correct_FP32=724800,failed_invocation=48,failed_frame=100049,case='S52_18_317',failed_op=192,first_snapshot_changed=592,noninteger=589,nonfinite=0,immediate_equals_CPU_and_failure_Host=True,all49_between_snapshot_byte_changes=0,all592_bad_values_equal_same_offset_prior_data=True,two_late_reads_bitwise_gold=True,target_mod64=0,root_cause_proven=False,high_load103_passed=False,strict_5Hz_passed=False,video_prefix=386,network_prefix=356,visible_sources=46,missing_completed_sources=[46,47],uncaptured_sample_tail=3,failed_run_normal_drain=False,all_ten_save_tasks_passed=True,all_processes_ports_connections_closed=True,compactions_this_approved_scope=1,compaction_ms=[143.23443],r3_compaction=False,kernel_unchanged=True,next_plan_executed=False,management_estimate=83,estimate_is_not_acceptance_rate=True,archive_SHA256=archives,evidence_SHA256={name:sha(e/name) for name in refs},r2_history_SHA256={name:sha(prior/name) for name in history},r1_compile_failure_SHA256=sha(r/'tools/pose-v1/evidence/read-phase-20261011-r1/Native-build.log'),documents_SHA256={name:sha(r/name) for name in reports},build_result_SHA256=sha(r/'.local/pose-v1-build/mixed-20261011-read-phase-r3/build-result.json'),frozen_reuse_SHA256=sha(r/'.local/pose-v1-build/mixed-20261011-read-phase-r3/frozen-build-reuse.json'),wrapper_time_not_pure_DMA=True)
+write(e/'completion-review.json',completion)
+checkpoint=dict(status='approved_batch_completed_safe_failure_stop',date='2026-10-11',paused_by_user=False,active_processes=False,active_connections=False,root_fixed=False,completion_SHA256=sha(e/'completion-review.json'),read_first=reports+['ADR/ADR_35.md'],next='Audit matched AXI region/UDMA read dispatch, shared staging ownership and completion before designing a new bounded comparison.',hardware_retry_pending=False,no_rerun_old_failed_Engine=True,no_frequency_adjustment=True,no_reboot_drop_caches_CMA_BOOT_model_SDK_changes=True)
+write(e/'next-checkpoint.json',checkpoint)
+(e/'in-progress-checkpoint.json').write_text(json.dumps(checkpoint,indent=2)+'\n',encoding='utf-8',newline='\n')
+print('r3 completion, source identities, archive hashes and recovery entry bound; root unresolved')

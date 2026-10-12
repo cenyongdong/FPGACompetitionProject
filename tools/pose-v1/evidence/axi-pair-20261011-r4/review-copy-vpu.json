@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "stage": "copy-vpu",
+  "manifest_sha256": "de0ace33c2a682c0a2d4875171a773e1f42d7ec969ebeffce15aa41d785bf975",
+  "programs": {
+    "pose_axi_pair_check": "b2f7db68b72db95aa868b5b73454a8566736c1b2fdebc1f31095c20c3273fec7",
+    "pose_axi_pair_host_check": "a182324441521f9b657e425b0f926cc9b20fcb009c4c72d2f2ea8fcde386406c"
+  },
+  "archive_sha256": "73df8a17aba1100bb5d5aa560af9df22c492c9713ffe7a9d0ec96f0818589856",
+  "VPU": {
+    "first_capture_ns": 168706315238080,
+    "last_capture_ns": 168728765766920,
+    "packets": 228,
+    "submitted": 226,
+    "returned": 226,
+    "drained": true,
+    "SDK_on_encoder_thread": false,
+    "joined": true
+  },
+  "pairs": 100,
+  "FP32_Cpp_bitwise": 1176000,
+  "NumPy_FNV_trace_pairs": 100,
+  "NumPy_saved_FP32_bitwise": 35280,
+  "NPU_forward": false,
+  "all_chunks_released": true,
+  "kernel_unchanged": true
+}

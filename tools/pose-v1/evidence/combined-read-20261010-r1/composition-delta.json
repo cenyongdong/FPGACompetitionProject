@@ -1,0 +1,14 @@
+{
+  "status": "frozen_composition_plus_explicit_2Hz_budget_and_strict_coverage_only",
+  "frozen_main_SHA256": "fd01e698898249520ed9c666ddad64ecb38f4d3486be67e399ba11c68dbfac4a",
+  "new_main_SHA256": "ea0464bdd6cc8f6f97494ca1b195d7618a088b3a7a381718c754a675a6362669",
+  "bridge_SHA256": "ff13c5befd0b474fc7aee127fec683f02c36754a8b3f6d6ff1f03f654e3d5fa1",
+  "policy_SHA256": "9da6f199ed8140c20d5e966ebd71ec3a0e192619f370de76aa9120031e3aabca",
+  "read_bridge_unchanged_from_passed_picture": true,
+  "first_capture_seconds": 5,
+  "ready_seconds": 60,
+  "network_seconds": 120,
+  "hardware_seconds": 180,
+  "encoder_frame_limit": 1000,
+  "strict_all_input_and_picture_coverage": true
+}

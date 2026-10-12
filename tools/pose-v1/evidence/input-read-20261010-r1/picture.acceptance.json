@@ -1,0 +1,71 @@
+{
+  "stage": "picture",
+  "status": "picture_stage_passed",
+  "read_picture_binary_sha256": "70c9df9f566c0b7fa55c1f86ef1440cf52ce610dba5e8de3ce0b711c0ae2082d",
+  "package_manifest_sha256": "dbf88b3f1cf877aa8ffeaa766a3b94775f978d93f3cc2fa523b727adad37d06f",
+  "payloads": 403,
+  "build_sources": 126,
+  "Host107_new_run": false,
+  "normal_source_reads_added": 0,
+  "root_cause_fixed": false,
+  "performance_accepted": false,
+  "Native_contracts": {
+    "source": 13,
+    "sequence": 13,
+    "producer": 16,
+    "load": 6,
+    "run": 9
+  },
+  "returned_files": 1089,
+  "kernel_unchanged": true,
+  "first_capture": true,
+  "Engine_created": true,
+  "correct": 107,
+  "attempted": 107,
+  "FP32_compared": 1615700,
+  "stage_records": [
+    {
+      "event": "stage_started",
+      "phase": 0,
+      "name": "three",
+      "offset": 0,
+      "count": 4,
+      "period_ns": 500000000,
+      "time_ns": 117776961450980,
+      "Engine_object": 367842479392,
+      "VPU_object": 367842488944
+    },
+    {
+      "event": "stage_completed",
+      "phase": 0,
+      "offset": 0,
+      "count": 4,
+      "time_ns": 117778710205050
+    },
+    {
+      "event": "stage_started",
+      "phase": 1,
+      "name": "load-103",
+      "offset": 4,
+      "count": 103,
+      "period_ns": 500000000,
+      "time_ns": 117778710225410,
+      "Engine_object": 367842479392,
+      "VPU_object": 367842488944
+    },
+    {
+      "event": "stage_completed",
+      "phase": 1,
+      "offset": 4,
+      "count": 103,
+      "time_ns": 117832280148730
+    }
+  ],
+  "single_Engine_and_VPU_objects": true,
+  "worker_joined": true,
+  "first_ready_precedes_Engine": true,
+  "synthetic_VPU_only": false,
+  "real_owned_pictures": true,
+  "VPU_images": 824,
+  "VPU_drained": true
+}

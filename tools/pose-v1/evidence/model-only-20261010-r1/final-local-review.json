@@ -1,0 +1,23 @@
+{
+  "status": "model_only_final_identity_sources_evidence_links_checked",
+  "payloads": 403,
+  "source_files": 98,
+  "frozen_Engine_bridge_CPU_in_manifest": true,
+  "no_video_in_new_target": true,
+  "local_links_checked": 30,
+  "completion_sha256": "e99b475a0cb20f4dd36f93662a38a15db6f8b9d841e4782bc923f6f8755077d8",
+  "documents_sha256": {
+    "ADR/ADR_26.md": "f879f322210ff525b3f54bd660deede5fb13d63e2cc7c8c5f20d98e6f7df014d",
+    "tools/pose-v1/MODEL-ONLY-RESULTS-20261010.md": "fa6b67a76c9a13a1de88ce3eb354dd954606c4f6023ef9e8efa12e0f5b5a57c0",
+    "tools/pose-v1/MODEL-ONLY-NEXT-20261010.md": "a3ac8db9dbd316a9d4177d42bb156ac2896d8099d2e911395affd2aea1d5612b",
+    "Agents.md": "8c25448a31b6d2d0b1c872e73b80feeca85e9f61fbeb715666b959668acd79ad",
+    "Done.md": "aabe28d2593b9cee2e2b46f3ee2a99ccc68006fd066d5a6bdbbb89277767d98d",
+    "PROJECT-PROGRESS.md": "bca1c846f1c812f7383c6bd149c594dcd5f560ed7471f7ea643beacbc189378a",
+    "DIFFICULTIES.md": "aa1eb9f8de0c3f93811b6160bc21918f74aec92ed7368cf44c68145fbf559aa3",
+    "REFERENCES.md": "05a7f30bb79343ee68664394e8a9f6229be70ac1bffa38a3de39ffa09722ecc3",
+    "ToDoLists.md": "1fe62e17cfd9b33ddb59888c66759ae5d41aaa3a81c31bc670abdf20f5535372",
+    "ADR/README.md": "5ea736389776e06fbb946afa091c8275c95d9a7343609748cd24d6f4dbddf3f1"
+  },
+  "additional_tests_executed": false,
+  "hardware_accessed": false
+}

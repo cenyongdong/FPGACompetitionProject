@@ -1,0 +1,28 @@
+{
+  "status": "matched_ARM_interfaces_and_function_ranges_read_only_audited",
+  "XRT_sha256": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+  "AXI_sha256": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178",
+  "CacheSyncHost_Linux_read_write_memcpy": true,
+  "UDMA_read_sync_attribute_path": true,
+  "PLDDR_public_CPTR_mapping_verified": false,
+  "GP_maps_are_register_evidence": true,
+  "agent_direct_register_or_dev_mem_access": false,
+  "zero_copy_executed": false,
+  "artifact_sha256": {
+    "ARM-cache-helper.hpp.txt": "a7ecc48c6e3802cc82146ccaa7ec3e50cff84042115bf746d8e8830c4e8c5069",
+    "AXI-after-regions-map-audit.txt": "fa92dd078569e6d3f320b1db87289e777477f64668125a3551f927154771d336",
+    "AXI-function-ranges.txt": "74da0b6436878fbd888a22b58126729ec31427955d5ce4df86f8bd1678890983",
+    "AXI-memory-exports.txt": "05716c6d9045d165dab62d4c4483c81dc33f78390421cdf60f9cefd0c7aaf6be",
+    "AXI-reg-region-init.txt": "d47142aca29df5c8432a632cab4d46e22596fb13f653aa08974e8b809f48317f",
+    "AXI-region-initialization-complete.txt": "ac9dd4d9d770c12608b73a39e0d66334ca26d4c17ed26d64797176ebd61d9343",
+    "Host-cache-read-write-audit.txt": "adaf30edeb677460c916724c5742e74206c8fb0188589a1b5b3d13d9b8c8a8b0",
+    "Host-memory-exports.txt": "51ab0b83883d22f639408d7598f959595f266980d45e813c63b1ff08bfa98063",
+    "PLDDR-DMA-read-audit.txt": "8175ea5aeaf974b1c5b7855d39284f56f107e49286913a48cf81247beb918b7b",
+    "private-map-function-ranges.txt": "ea1c087c716a0525b2a73d0f1c4caed96f8ea02e9ed98a6532d256c37cca514e",
+    "Reg-map-labels.txt": "7883709cdc6ebfc9c6b21652671e858b2ff56e5b69b658317a311f33a319c858",
+    "UDMA-open-map-audit.txt": "144e3c487b17c01b92963f7042fc0e65f7e0a95e8e514e3f67336b9b32547636",
+    "UDMA-path-strings.txt": "46543e0af1cef2974787ff6a022dcb0d7c183d7a88fcb299afc676dfb40d8d2a",
+    "UDMA-read-audit.txt": "81ef146e5f023abfc3b0f0385bbe183f250fe1226605b1bdd4258cd6ed3bbaa8",
+    "UDMA-sync-attributes.txt": "5f53adcc994d2b7e3b1599ac5c3275d3ab4aea09e53aa504e298261feaac447e"
+  }
+}

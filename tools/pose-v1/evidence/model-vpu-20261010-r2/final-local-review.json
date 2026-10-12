@@ -1,0 +1,34 @@
+{
+  "status": "final_local_archive_source_bindings_and_links_passed",
+  "local_links_checked": 24,
+  "build_sources_checked": 102,
+  "source_payloads_checked": 403,
+  "completion_review_SHA256": "9fbfe6adcec1b603696dd2fbcfa0e373641617d94d14ad9597c7c5cbcf385ab4",
+  "next_checkpoint_SHA256": "dabed779a51fa0a310ef1e656614d17d70e8ed7d907081e9961a206f57b99289",
+  "review_tools_SHA256": {
+    "ssh_memory_transport.py": "c7fc5d1b15ef18dc0a1a8b2b7e4fe0077725336b1c93f88f03a648297d5a2b80",
+    "review_model_vpu.py": "abbaede0d943c79ab2afdb26a2d29029e347040575182ea7d3a32e5ee71ed1f3",
+    "review_model_vpu_startup_failure.py": "b98894c03b35a16b1e9d695b95fd795d67959ae34af5d8bc8cdd5fcd12fd43b8",
+    "record_model_vpu_completion.py": "cfef885625a77d33c29725bce7740d97190786774fb99273670a2194bac8fdc8",
+    "update_model_vpu_documents.py": "ef40ed200dfa6c221ec8ff72faa69360e74997d85463bd6bc6817a9129bd4ac9",
+    "verify_model_vpu_archive.py": "f82b024c674567d3b616d2e47af5b254d2fb00335b7b6149484f374e17776047",
+    "run-model-vpu.sh": "7e63115ab6b6a15a2d0208c1fbe60f220573d5f2f497aa3926a781d470cb5af5",
+    "review_model_only_objects.py": "973f546736745e3bbdcb6077a9786b41a1937b7f976adc6252a22ef009d0a675",
+    "review_model_only_counts.py": "d1872b51fdebe09ced7f5c97ff272e9d4e3c4d03df49575b83fd4d95d4a06eaf",
+    "review_scratch_video.py": "ff073777c06618d37b4f056a0d6a564943df4dbed7605a4868d7b1d19e04bba4"
+  },
+  "documents_SHA256": {
+    "tools/pose-v1/MODEL-VPU-RESULTS-20261010.md": "662c79b92c271f8c1676ad78fbe3969e8a5ff5038865d053b662998db2adf2f2",
+    "tools/pose-v1/MODEL-VPU-NEXT-20261010.md": "cca657e623003f8ad326dfa13bf1cab7b16ea4a902c8a7a1fec8317a99e434ff",
+    "tools/pose-v1/MODEL-VPU-RESUME-20261010.md": "643b357bf47d5056731217f75a58291b63f7cb36e7c1e126a1e973ee56babeb7",
+    "ADR/ADR_27.md": "6c486944f97603e73332723af8e1f1fb7d7a5cb6b9cf9fbf6c040f26290aa9df",
+    "AGENTS.md": "07af9df5b96af47b91c10cd7244e14b1d3d1061c38482e7731ed09d74cec92d0",
+    "Done.md": "2e6da9c20c9521b3dcf7e45ef1c64c0ad3dc07e969eb3af218dfc0b458dc7bb5",
+    "PROJECT-PROGRESS.md": "78c120fc572ffc2205463793ce55d90bf8768b723e0d950f1017391ae8ae9000",
+    "DIFFICULTIES.md": "ed6322b4b96e1ebd87791bfe0e4b0b5ec2a5f6eb4c95ea327d4f6142df9b4d97",
+    "ADR/ADR_02.md": "0e637528200c98335864b8ec58de1e4f73784a7bebf01beccaa3d1f6faa2bb24",
+    "ADR/README.md": "c7f404a7d05794df4cfeef2dab62d599d57e23b5218fc49c02a4d316f9b3153a",
+    "tools/pose-v1/README.md": "be1ee4827ba563da08bfdf76503634462697aef94b883a206eb4c7c8ac9a508c"
+  },
+  "new_board_operations": false
+}

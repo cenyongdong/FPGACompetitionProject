@@ -1,0 +1,59 @@
+{
+  "status": "resource_identity_and_cleanup_checked",
+  "kernel_unchanged": true,
+  "compactions": 0,
+  "reason": "Ordinary high-order free blocks sufficient before both stages; no compact_memory write performed.",
+  "drop_caches": false,
+  "reboot": false,
+  "CMA_changed": false,
+  "program_processes_remaining": 0,
+  "input_RTSP_ports_released": true,
+  "snapshots": [
+    {
+      "path": "tools\\pose-v1\\evidence\\invocation-guard-20261009-r1\\host-return\\resources-before-three",
+      "ordinary_512KiB_units": 57,
+      "MemAvailable_KiB": 748092,
+      "CmaFree_KiB": 968,
+      "sha256": {
+        "buddyinfo": "5235320941a296964e37007d060e946274674cd1a74cebb9b17da872930c75fa",
+        "dmesg": "72c217e4f9509b1061a0fb2567181b1325f3403aea58652dd0d44a45362a847b",
+        "meminfo": "be63130100ac4b68ca8aaca1268de0363b78e7216cfabae60f923ae7d67f3a3d",
+        "pagetypeinfo": "cb3de8987e1cf7b0ee3b38b37fe822d5fbe497e19610b3a96aa3d8699dfa0241",
+        "ports": "70306173a450d82407677bcd00cba24dd172fe7829591d445bc25caacf0af6bd",
+        "processes": "8f9e81081b203782e35640521abf578eb818521c2d69ee8ddd6d1c4715cdebfe",
+        "vmstat": "731fa6d1692d0ece1997c9f75bdb24000c69b4afa7df9bd02df4cea8baf55b47"
+      }
+    },
+    {
+      "path": "tools\\pose-v1\\evidence\\invocation-guard-20261009-r1\\three-return\\resources-before-load",
+      "ordinary_512KiB_units": 40,
+      "MemAvailable_KiB": 748832,
+      "CmaFree_KiB": 1228,
+      "sha256": {
+        "buddyinfo": "b2b7329b792a1a44c4d746f60797a5a8e0b8c207c8860cc13544a9a48c48e39b",
+        "dmesg": "72c217e4f9509b1061a0fb2567181b1325f3403aea58652dd0d44a45362a847b",
+        "meminfo": "61ea5559d3cf86a7b79e63df9d5967c1e952a1789109a03e3624331561fc1781",
+        "pagetypeinfo": "b41d87faa07e8ee6e0514758d9aea2a48dbfe4a169c26409dd4821b5e6f181dc",
+        "ports": "70306173a450d82407677bcd00cba24dd172fe7829591d445bc25caacf0af6bd",
+        "processes": "85e81d062efbe36d820423b32a00fe74ad9e328c4d492ef4231a2eb97fcfd7fa",
+        "vmstat": "c3404aab132fd5cc02c870d630493af8946c0e0baf025505f068312a06046e2f"
+      }
+    },
+    {
+      "path": "tools\\pose-v1\\evidence\\invocation-guard-20261009-r1\\failed-return\\resources-final",
+      "ordinary_512KiB_units": 15,
+      "MemAvailable_KiB": 748128,
+      "CmaFree_KiB": 2120,
+      "sha256": {
+        "buddyinfo": "4b23a9c93c2b8d40b2df48f61271e40af353b48707ac44a4c58570992af71ad4",
+        "dmesg": "72c217e4f9509b1061a0fb2567181b1325f3403aea58652dd0d44a45362a847b",
+        "meminfo": "9f3aa2a800fb8a683339736ddf47c32ed9439a7b9afeef829f2e7554b2f70deb",
+        "pagetypeinfo": "6d7063dd825ba1abdd7ab4967a586ac1d8073762b604a6719b14fcf21802a96c",
+        "ports": "70306173a450d82407677bcd00cba24dd172fe7829591d445bc25caacf0af6bd",
+        "processes": "276ea26016b91a3a8d111e9868d036956b609856d4be4b185143692112bf8efb",
+        "vmstat": "d78d297e4fbecd0cfcf9e0834cf4139fff62b54012c4f1948fd640163dd49c05"
+      }
+    }
+  ],
+  "not_leak_or_permanent_startup_proof": true
+}

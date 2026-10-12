@@ -1,0 +1,77 @@
+
+0000000000075900 u guard variable for AXIZG330AIRegRegionNode::DMA[abi:cxx11]
+00000000000758f0 u guard variable for AXIZG330AIPLDDRMemRegionNode::DMA_TIMEOUT_S[abi:cxx11]
+0000000000050998 W AXIZG330AIUDeviceNode::initAfterRegions()
+0000000000029d10 W AXIZG330AIUDeviceNode::initBeforeRegions()
+000000000002b090 W AXIZG330AIUDeviceNode::deinitAfterRegions()
+0000000000029d18 W AXIZG330AIUDeviceNode::deinitBeforeRegions()
+0000000000029d20 W AXIZG330AIOcmRegionNode::init()
+0000000000029d28 W AXIZG330AIOcmRegionNode::deinit()
+00000000000769e8 u AXIZG330AIRegRegionNode::DMA[abi:cxx11]
+000000000004d280 W AXIZG330AIRegRegionNode::init()
+000000000004ee38 W AXIZG330AIRegRegionNode::deinit()
+0000000000029d00 W AXIZG330AIUdmaMemRegionNode::init()
+000000000004ee88 W AXIZG330AIUdmaMemRegionNode::deinit()
+000000000002caa8 W AXIZG330AIUdmaMemRegionNode::~AXIZG330AIUdmaMemRegionNode()
+000000000002ca08 W AXIZG330AIUdmaMemRegionNode::~AXIZG330AIUdmaMemRegionNode()
+000000000002ca08 W AXIZG330AIUdmaMemRegionNode::~AXIZG330AIUdmaMemRegionNode()
+00000000000761a8 u AXIZG330AIPLDDRMemRegionNode::DMA_TIMEOUT_S[abi:cxx11]
+000000000003e388 W AXIZG330AIPLDDRMemRegionNode::init()
+0000000000029d08 W AXIZG330AIPLDDRMemRegionNode::deinit()
+000000000002c3c0 W AXIZG330AIPLDDRMemRegionNode::~AXIZG330AIPLDDRMemRegionNode()
+000000000002e1e8 W AXIZG330AIPLDDRMemRegionNode::~AXIZG330AIPLDDRMemRegionNode()
+000000000002e1e8 W AXIZG330AIPLDDRMemRegionNode::~AXIZG330AIPLDDRMemRegionNode()
+00000000000724c0 u icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>::type_key
+00000000000724b0 u icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>::type_key
+000000000004d040 W AXIZG330AIUDeviceNode::openUDMABuf(char const*) const
+000000000004e050 W AXIZG330AIUDeviceNode::readUDMABuf(char const*, char const*) const
+000000000004e328 W AXIZG330AIUDeviceNode::writeUDMABuf(char const*, unsigned long, char const*) const
+0000000000039070 W AXIZG330AIOcmRegionNode::read(char*, icraft::xrt::MemPtr const&, unsigned long) const
+00000000000391b0 W AXIZG330AIOcmRegionNode::write(icraft::xrt::MemPtr const&, char*, unsigned long) const
+0000000000039358 W AXIZG330AIOcmRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemPtr const&, unsigned long) const
+000000000004ea80 W AXIZG330AIRegRegionNode::read(unsigned long, bool) const
+000000000004e6c0 W AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const
+000000000002b208 W AXIZG330AIUdmaMemRegionNode::free(icraft::xrt::MemPtr const&) const
+000000000002c4f8 W AXIZG330AIUdmaMemRegionNode::read(char*, icraft::xrt::MemPtr const&, unsigned long) const
+000000000002c780 W AXIZG330AIUdmaMemRegionNode::write(icraft::xrt::MemPtr const&, char*, unsigned long) const
+0000000000031bc8 W AXIZG330AIUdmaMemRegionNode::malloc(icraft::xrt::MemPtr, unsigned long, std::function<void (icraft::xrt::MemPtr const&)>, bool) const
+000000000002b270 W AXIZG330AIUdmaMemRegionNode::malloc(unsigned long, bool, unsigned long) const
+000000000002b320 W AXIZG330AIUdmaMemRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemPtr const&, unsigned long) const
+000000000002b210 W AXIZG330AIPLDDRMemRegionNode::free(icraft::xrt::MemPtr const&) const
+0000000000053e20 W AXIZG330AIPLDDRMemRegionNode::read(char*, icraft::xrt::MemPtr const&, unsigned long) const
+0000000000053fa0 W AXIZG330AIPLDDRMemRegionNode::write(icraft::xrt::MemPtr const&, char*, unsigned long) const
+0000000000031d60 W AXIZG330AIPLDDRMemRegionNode::malloc(icraft::xrt::MemPtr, unsigned long, std::function<void (icraft::xrt::MemPtr const&)>, bool) const
+000000000002b2c8 W AXIZG330AIPLDDRMemRegionNode::malloc(unsigned long, bool, unsigned long) const
+00000000000286c0 T AXIZG330AIPLDDRMemRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemPtr const&, unsigned long) const
+0000000000053860 W AXIZG330AIPLDDRMemRegionNode::dmaRead(char*, unsigned long, unsigned long) const
+00000000000532b0 W AXIZG330AIPLDDRMemRegionNode::dmaWrite(char*, unsigned long, unsigned long) const
+000000000002ad48 W icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002ab68 W icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a050 W icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>::typeKey() const
+000000000002aa00 W icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002aa78 W icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a010 W icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>::typeKey() const
+0000000000072b08 V typeinfo for AXIZG330AIUdmaMemRegionNode
+0000000000072b38 V typeinfo for AXIZG330AIPLDDRMemRegionNode
+0000000000072af0 V typeinfo for icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>
+0000000000072b20 V typeinfo for icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>
+0000000000057d68 V typeinfo name for AXIZG330AIUdmaMemRegionNode
+0000000000057dd8 V typeinfo name for AXIZG330AIPLDDRMemRegionNode
+0000000000057d18 V typeinfo name for icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>
+0000000000057d88 V typeinfo name for icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>
+00000000000737a8 V vtable for AXIZG330AIUdmaMemRegionNode
+0000000000073990 V vtable for AXIZG330AIPLDDRMemRegionNode
+00000000000595a8 u fmt::v8::detail::dragonbox::cache_accessor<double>::get_cached_power(int)::powers_of_5_64
+0000000000059680 u fmt::v8::detail::dragonbox::cache_accessor<double>::get_cached_power(int)::pow10_significands
+0000000000059508 u fmt::v8::detail::dragonbox::cache_accessor<double>::get_cached_power(int)::pow10_recovery_errors
+00000000000597f0 u fmt::v8::detail::dragonbox::cache_accessor<float>::get_cached_power(int)::pow10_significands
+0000000000075d28 u AXIZG330AIUDeviceNode::readUDMABuf(char const*, char const*) const::attr
+0000000000075d20 u AXIZG330AIUDeviceNode::readUDMABuf(char const*, char const*) const::value
+0000000000075920 u AXIZG330AIUDeviceNode::writeUDMABuf(char const*, unsigned long, char const*) const::attr
+00000000000761c8 u AXIZG330AIUdmaMemRegionNode::syncForCPU(unsigned long, unsigned long) const::attr
+00000000000765c8 u AXIZG330AIUdmaMemRegionNode::syncForDevice(unsigned long, unsigned long) const::attr
+0000000000076168 u AXIZG330AIPLDDRMemRegionNode::read(char*, icraft::xrt::MemPtr const&, unsigned long) const::rem_buf
+0000000000076128 u AXIZG330AIPLDDRMemRegionNode::write(icraft::xrt::MemPtr const&, char*, unsigned long) const::rem_buf
+                 U mmap
+                 U munmap
+

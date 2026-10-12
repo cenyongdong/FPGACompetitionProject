@@ -1,0 +1,14 @@
+{
+  "status": "implementation_and_build_in_progress",
+  "approved": true,
+  "package": ".local/pose-v1-final-evidence/package-20261010-r1",
+  "build": ".local/pose-v1-build/mixed-20261010-final-evidence-r1",
+  "board": "/tmp/pose-final-evidence-20261010-r1",
+  "Native": "passed",
+  "Host107": "pending",
+  "three": "pending",
+  "QPC505": "pending",
+  "hardware_seconds": 180,
+  "old_failure_not_retried": true,
+  "no_root_cause_claim": true
+}

@@ -1,0 +1,94 @@
+{
+  "status": "read_only_library_audit_captured",
+  "libraries": {
+    "libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178",
+    "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96"
+  },
+  "sections": {
+    "PL-read": [
+      "libaxizg330aiu.so",
+      343584,
+      343964
+    ],
+    "DMA-read": [
+      "libaxizg330aiu.so",
+      342112,
+      343584
+    ],
+    "UDMA-read": [
+      "libaxizg330aiu.so",
+      181496,
+      182144
+    ],
+    "UDMA-write": [
+      "libaxizg330aiu.so",
+      182144,
+      182788
+    ],
+    "PL-init": [
+      "libaxizg330aiu.so",
+      254856,
+      256528
+    ],
+    "UDMA-init": [
+      "libaxizg330aiu.so",
+      171264,
+      171268
+    ],
+    "MemRegion-read": [
+      "libicraft_xrt.so",
+      222672,
+      222704
+    ],
+    "MemChunk-read": [
+      "libicraft_xrt.so",
+      238632,
+      238748
+    ],
+    "Tensor-read": [
+      "libicraft_xrt.so",
+      442256,
+      443160
+    ]
+  },
+  "files_SHA256": {
+    "copy-libaxizg330aiu.so.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy-libaxizg330aiu.so.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy-libicraft_xrt.so.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy-libicraft_xrt.so.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "customop-arm64.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "customop-arm64.stdout": "dcdc35d047363b81afca7375e389531197a75b550b960c9a2de6d634ba4035ff",
+    "DMA-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "DMA-read.stdout": "61f147c35da4909c012714face92903a8f268a5b60c40ecbc2824f04db8ab317",
+    "icraft-arm64.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "icraft-arm64.stdout": "dcdc35d047363b81afca7375e389531197a75b550b960c9a2de6d634ba4035ff",
+    "libaxizg330aiu.so-strings.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libaxizg330aiu.so-strings.stdout": "9f470efc6afe6fcf32fe5f2a64d216fec3b3bd606ef8ffdfa26d3b0352149b25",
+    "libaxizg330aiu.so-symbols.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libaxizg330aiu.so-symbols.stdout": "687034f3fa020569bc8574c6251062dd4a5a828c90263fc5df7d97b968a6bf0c",
+    "libicraft_xrt.so-strings.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libicraft_xrt.so-strings.stdout": "dc7119fe3e65eba16b6a1ab54274f118b62b350bfc95d2ccd66fa7432c3f8a55",
+    "libicraft_xrt.so-symbols.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libicraft_xrt.so-symbols.stdout": "497cccb8c1c394082bd6261627fac13a959baea67e909d8d65c077c5756982d8",
+    "MemChunk-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "MemChunk-read.stdout": "b05b3a7ce9aabaebc5a22c44e2b8ff0d2363bcb4e2b4ba87f937a4363669ceea",
+    "MemRegion-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "MemRegion-read.stdout": "df168b17ce253634d95e0f4cdec975f3f1f68b9c79c2b20e3f60b81fafb37914",
+    "PL-init.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "PL-init.stdout": "cf98e92db6bd090e947dd942321b53d8fb543a7f5d949f0c3cd17d556197467c",
+    "PL-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "PL-read.stdout": "407f1484857715be1ac948b1f5ac6ab63e73763b89afcb23cbc7b809aa5c870c",
+    "Tensor-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tensor-read.stdout": "9252a5b0d356550323a727c5ab0732ff30c1ca49a7c072694a6a568cb62e577c",
+    "UDMA-init.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "UDMA-init.stdout": "9d97e1ee2da647376314168b12a97bc066968be37b9648c4b639b8d2a3288029",
+    "UDMA-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "UDMA-read.stdout": "d0285e6ba81bebfe2fcd6dee52eaf832b30521f8d898ac990ce857c5687c3f3f",
+    "UDMA-write.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "UDMA-write.stdout": "b33b418484c2581f33a06683c19187325b4f8d2ff11f5db72ac671f31dd6c6db",
+    "sdk/libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178",
+    "sdk/libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96"
+  },
+  "no_device_execution": true,
+  "no_register_access": true
+}

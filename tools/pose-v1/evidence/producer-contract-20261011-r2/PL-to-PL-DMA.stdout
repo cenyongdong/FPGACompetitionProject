@@ -1,0 +1,189 @@
+
+/usr/lib/aarch64-linux-gnu/libicraft_xrt.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000009b928 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const>:
+   9b928:	a9b57bfd 	stp	x29, x30, [sp, #-176]!
+   9b92c:	910003fd 	mov	x29, sp
+   9b930:	a90363f7 	stp	x23, x24, [sp, #48]
+   9b934:	900001d8 	adrp	x24, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   9b938:	2a0403f7 	mov	w23, w4
+   9b93c:	f9451705 	ldr	x5, [x24, #2600]
+   9b940:	a90153f3 	stp	x19, x20, [sp, #16]
+   9b944:	aa0103f4 	mov	x20, x1
+   9b948:	aa020021 	orr	x1, x1, x2
+   9b94c:	a9025bf5 	stp	x21, x22, [sp, #32]
+   9b950:	aa0203f5 	mov	x21, x2
+   9b954:	f94000a2 	ldr	x2, [x5]
+   9b958:	f90057e2 	str	x2, [sp, #168]
+   9b95c:	d2800002 	mov	x2, #0x0                   	// #0
+   9b960:	f90023f9 	str	x25, [sp, #64]
+   9b964:	aa0003f3 	mov	x19, x0
+   9b968:	aa0303f6 	mov	x22, x3
+   9b96c:	f240143f 	tst	x1, #0x3f
+   9b970:	54000260 	b.eq	9b9bc <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x94>  // b.none
+   9b974:	52800021 	mov	w1, #0x1                   	// #1
+   9b978:	52801fa0 	mov	w0, #0xfd                  	// #253
+   9b97c:	97fffa41 	bl	9a280 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.1]>
+   9b980:	97fe5a9c 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   9b984:	90000081 	adrp	x1, ab000 <CSWTCH.1357+0xcf0>
+   9b988:	d28005c2 	mov	x2, #0x2e                  	// #46
+   9b98c:	913d2021 	add	x1, x1, #0xf48
+   9b990:	97fe5fe4 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   9b994:	97fe5a97 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   9b998:	910223f9 	add	x25, sp, #0x88
+   9b99c:	aa1903e8 	mov	x8, x25
+   9b9a0:	97fe5d88 	bl	32fc0 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   9b9a4:	900001c1 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   9b9a8:	aa1903e0 	mov	x0, x25
+   9b9ac:	f9453021 	ldr	x1, [x1, #2656]
+   9b9b0:	91004021 	add	x1, x1, #0x10
+   9b9b4:	f90047e1 	str	x1, [sp, #136]
+   9b9b8:	97fe5fae 	bl	33870 <std::runtime_error::~runtime_error()@plt>
+   9b9bc:	2a1503e4 	mov	w4, w21
+   9b9c0:	aa1303e0 	mov	x0, x19
+   9b9c4:	528008c3 	mov	w3, #0x46                  	// #70
+   9b9c8:	52800042 	mov	w2, #0x2                   	// #2
+   9b9cc:	52800001 	mov	w1, #0x0                   	// #0
+   9b9d0:	97fe5c28 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9b9d4:	0b1502c4 	add	w4, w22, w21
+   9b9d8:	aa1303e0 	mov	x0, x19
+   9b9dc:	528008e3 	mov	w3, #0x47                  	// #71
+   9b9e0:	52800042 	mov	w2, #0x2                   	// #2
+   9b9e4:	52800001 	mov	w1, #0x0                   	// #0
+   9b9e8:	97fe5c22 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9b9ec:	2a1403e4 	mov	w4, w20
+   9b9f0:	aa1303e0 	mov	x0, x19
+   9b9f4:	52800903 	mov	w3, #0x48                  	// #72
+   9b9f8:	52800042 	mov	w2, #0x2                   	// #2
+   9b9fc:	52800001 	mov	w1, #0x0                   	// #0
+   9ba00:	97fe5c1c 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9ba04:	0b160284 	add	w4, w20, w22
+   9ba08:	aa1303e0 	mov	x0, x19
+   9ba0c:	52800923 	mov	w3, #0x49                  	// #73
+   9ba10:	52800042 	mov	w2, #0x2                   	// #2
+   9ba14:	52800001 	mov	w1, #0x0                   	// #0
+   9ba18:	97fe5c16 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9ba1c:	aa1303e0 	mov	x0, x19
+   9ba20:	52800004 	mov	w4, #0x0                   	// #0
+   9ba24:	528008a3 	mov	w3, #0x45                  	// #69
+   9ba28:	52800042 	mov	w2, #0x2                   	// #2
+   9ba2c:	52800001 	mov	w1, #0x0                   	// #0
+   9ba30:	97fe5c10 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9ba34:	aa1303e0 	mov	x0, x19
+   9ba38:	52800024 	mov	w4, #0x1                   	// #1
+   9ba3c:	52800823 	mov	w3, #0x41                  	// #65
+   9ba40:	52800042 	mov	w2, #0x2                   	// #2
+   9ba44:	52800001 	mov	w1, #0x0                   	// #0
+   9ba48:	97fe5c0a 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9ba4c:	aa1303e0 	mov	x0, x19
+   9ba50:	52884814 	mov	w20, #0x4240                	// #16960
+   9ba54:	52800004 	mov	w4, #0x0                   	// #0
+   9ba58:	52800823 	mov	w3, #0x41                  	// #65
+   9ba5c:	52800042 	mov	w2, #0x2                   	// #2
+   9ba60:	52800001 	mov	w1, #0x0                   	// #0
+   9ba64:	72a001f4 	movk	w20, #0xf, lsl #16
+   9ba68:	97fe5c02 	bl	32a70 <icraft::xrt::ZG330DeviceNode::writeReg(unsigned int, unsigned int, unsigned int, unsigned int) const@plt>
+   9ba6c:	97fe60ad 	bl	33d20 <std::chrono::_V2::steady_clock::now()@plt>
+   9ba70:	aa0003f5 	mov	x21, x0
+   9ba74:	9b347ef4 	smull	x20, w23, w20
+   9ba78:	14000005 	b	9ba8c <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x164>
+   9ba7c:	97fe60a9 	bl	33d20 <std::chrono::_V2::steady_clock::now()@plt>
+   9ba80:	cb150000 	sub	x0, x0, x21
+   9ba84:	eb14001f 	cmp	x0, x20
+   9ba88:	5400026c 	b.gt	9bad4 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x1ac>
+   9ba8c:	aa1303e0 	mov	x0, x19
+   9ba90:	52800c23 	mov	w3, #0x61                  	// #97
+   9ba94:	52800042 	mov	w2, #0x2                   	// #2
+   9ba98:	52800001 	mov	w1, #0x0                   	// #0
+   9ba9c:	97fe601d 	bl	33b10 <icraft::xrt::ZG330DeviceNode::readReg(unsigned int, unsigned int, unsigned int) const@plt>
+   9baa0:	35fffee0 	cbnz	w0, 9ba7c <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x154>
+   9baa4:	f9451700 	ldr	x0, [x24, #2600]
+   9baa8:	f94057e1 	ldr	x1, [sp, #168]
+   9baac:	f9400002 	ldr	x2, [x0]
+   9bab0:	eb020021 	subs	x1, x1, x2
+   9bab4:	d2800002 	mov	x2, #0x0                   	// #0
+   9bab8:	54000741 	b.ne	9bba0 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x278>  // b.any
+   9babc:	a94153f3 	ldp	x19, x20, [sp, #16]
+   9bac0:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   9bac4:	a94363f7 	ldp	x23, x24, [sp, #48]
+   9bac8:	f94023f9 	ldr	x25, [sp, #64]
+   9bacc:	a8cb7bfd 	ldp	x29, x30, [sp], #176
+   9bad0:	d65f03c0 	ret
+   9bad4:	aa1303e0 	mov	x0, x19
+   9bad8:	52800c23 	mov	w3, #0x61                  	// #97
+   9badc:	52800042 	mov	w2, #0x2                   	// #2
+   9bae0:	52800001 	mov	w1, #0x0                   	// #0
+   9bae4:	97fe600b 	bl	33b10 <icraft::xrt::ZG330DeviceNode::readReg(unsigned int, unsigned int, unsigned int) const@plt>
+   9bae8:	2a0003f5 	mov	w21, w0
+   9baec:	528560c1 	mov	w1, #0x2b06                	// #11014
+   9baf0:	52802220 	mov	w0, #0x111                 	// #273
+   9baf4:	97fff9e3 	bl	9a280 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.1]>
+   9baf8:	97fe5a3e 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   9bafc:	9101a3f3 	add	x19, sp, #0x68
+   9bb00:	aa0003f6 	mov	x22, x0
+   9bb04:	91004264 	add	x4, x19, #0x10
+   9bb08:	90000081 	adrp	x1, ab000 <CSWTCH.1357+0xcf0>
+   9bb0c:	90000082 	adrp	x2, ab000 <CSWTCH.1357+0xcf0>
+   9bb10:	aa1303e0 	mov	x0, x19
+   9bb14:	913de021 	add	x1, x1, #0xf78
+   9bb18:	913e8842 	add	x2, x2, #0xfa2
+   9bb1c:	52800003 	mov	w3, #0x0                   	// #0
+   9bb20:	f90037e4 	str	x4, [sp, #104]
+   9bb24:	97fe5b87 	bl	32940 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)@plt>
+   9bb28:	a94687e0 	ldp	x0, x1, [sp, #104]
+   9bb2c:	910223f4 	add	x20, sp, #0x88
+   9bb30:	aa1403e8 	mov	x8, x20
+   9bb34:	910143e3 	add	x3, sp, #0x50
+   9bb38:	d2800082 	mov	x2, #0x4                   	// #4
+   9bb3c:	f9002bf5 	str	x21, [sp, #80]
+   9bb40:	97fe63c8 	bl	34a60 <fmt::v8::vformat[abi:cxx11](fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   9bb44:	a9488be1 	ldp	x1, x2, [sp, #136]
+   9bb48:	aa1603e0 	mov	x0, x22
+   9bb4c:	97fe5f75 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   9bb50:	f94047e0 	ldr	x0, [sp, #136]
+   9bb54:	91004281 	add	x1, x20, #0x10
+   9bb58:	eb01001f 	cmp	x0, x1
+   9bb5c:	54000040 	b.eq	9bb64 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x23c>  // b.none
+   9bb60:	97fe5e7c 	bl	33550 <operator delete(void*)@plt>
+   9bb64:	f94037e0 	ldr	x0, [sp, #104]
+   9bb68:	91004273 	add	x19, x19, #0x10
+   9bb6c:	eb13001f 	cmp	x0, x19
+   9bb70:	54000040 	b.eq	9bb78 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x250>  // b.none
+   9bb74:	97fe5e77 	bl	33550 <operator delete(void*)@plt>
+   9bb78:	97fe5a1e 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   9bb7c:	aa1403e8 	mov	x8, x20
+   9bb80:	97fe5d10 	bl	32fc0 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   9bb84:	900001c1 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   9bb88:	aa1403e0 	mov	x0, x20
+   9bb8c:	f9453021 	ldr	x1, [x1, #2656]
+   9bb90:	91004021 	add	x1, x1, #0x10
+   9bb94:	f90047e1 	str	x1, [sp, #136]
+   9bb98:	97fe5f36 	bl	33870 <std::runtime_error::~runtime_error()@plt>
+   9bb9c:	17ffffc2 	b	9baa4 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x17c>
+   9bba0:	97fe5b08 	bl	327c0 <__stack_chk_fail@plt>
+   9bba4:	aa0003f4 	mov	x20, x0
+   9bba8:	97fe64e8 	bl	34f48 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   9bbac:	aa1403e0 	mov	x0, x20
+   9bbb0:	97fe62e4 	bl	34740 <_Unwind_Resume@plt>
+   9bbb4:	aa0003f4 	mov	x20, x0
+   9bbb8:	f94037e0 	ldr	x0, [sp, #104]
+   9bbbc:	91004273 	add	x19, x19, #0x10
+   9bbc0:	eb13001f 	cmp	x0, x19
+   9bbc4:	54ffff20 	b.eq	9bba8 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x280>  // b.none
+   9bbc8:	97fe5e62 	bl	33550 <operator delete(void*)@plt>
+   9bbcc:	17fffff7 	b	9bba8 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x280>
+   9bbd0:	aa0003f3 	mov	x19, x0
+   9bbd4:	97fe64dd 	bl	34f48 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   9bbd8:	aa1303e0 	mov	x0, x19
+   9bbdc:	97fe62d9 	bl	34740 <_Unwind_Resume@plt>
+   9bbe0:	f94047e1 	ldr	x1, [sp, #136]
+   9bbe4:	91004282 	add	x2, x20, #0x10
+   9bbe8:	aa0003f4 	mov	x20, x0
+   9bbec:	eb02003f 	cmp	x1, x2
+   9bbf0:	54fffe40 	b.eq	9bbb8 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x290>  // b.none
+   9bbf4:	aa0103e0 	mov	x0, x1
+   9bbf8:	97fe5e56 	bl	33550 <operator delete(void*)@plt>
+   9bbfc:	17ffffef 	b	9bbb8 <icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const+0x290>

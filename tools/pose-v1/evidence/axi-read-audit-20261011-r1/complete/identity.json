@@ -1,0 +1,57 @@
+{
+  "windows": {
+    "Tensor-read": [
+      "libicraft_xrt.so",
+      442256,
+      1040
+    ],
+    "Tensor-copyFrom": [
+      "libicraft_xrt.so",
+      426744,
+      112
+    ],
+    "MemChunk-read": [
+      "libicraft_xrt.so",
+      238632,
+      260
+    ],
+    "MemRegion-read": [
+      "libicraft_xrt.so",
+      222672,
+      72
+    ],
+    "PL-init": [
+      "libaxizg330aiu.so",
+      254856,
+      1068
+    ],
+    "Reg-read": [
+      "libaxizg330aiu.so",
+      322176,
+      952
+    ],
+    "Reg-write": [
+      "libaxizg330aiu.so",
+      321216,
+      960
+    ]
+  },
+  "files": {
+    "MemChunk-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "MemChunk-read.stdout": "da7bb52016b39ec165274c5966360db586b11c7c29d6b5f8e9ad0e1ee9fe3e06",
+    "MemRegion-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "MemRegion-read.stdout": "234d1484d7bd6625d8bd89d14008b5e2b2917c9f48ee987183af4f04fbe6e9b0",
+    "PL-init.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "PL-init.stdout": "aac9ffee18b5f601c92d04f7844b01b5d8ca5e747db456d59b69ec356d12138a",
+    "Reg-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Reg-read.stdout": "b0bb209d70f337f01f3baa8b22f521e40f3e7f87719279a2acea3c4f6e0093a6",
+    "Reg-write.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Reg-write.stdout": "746d80c0daa5e8dfc462fb22f8ab8f3cd696d0863b75746380b235eace7ed1b7",
+    "region-name.stdout": "1b5202c623dec3a0f85aaeaf40aa90e8b8c183c61859be3425642a453e4aae89",
+    "Tensor-copyFrom.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tensor-copyFrom.stdout": "1759b823fcee2c7e2f37abc96148f0e671a0baeb625113bc215e364829efc6c9",
+    "Tensor-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tensor-read.stdout": "7966071f1b00dfe5c312a61d1ccfc740925e973c0fbccf087b2367d0535907e0"
+  },
+  "read_only": true
+}

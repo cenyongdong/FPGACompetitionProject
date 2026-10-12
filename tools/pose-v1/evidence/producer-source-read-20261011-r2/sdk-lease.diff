@@ -1,0 +1,60 @@
+--- producer_high_sdk.cpp
++++ producer_read_sdk.cpp
+@@ -1,4 +1,5 @@
+-#include "producer_high_sdk.hpp"
++#include "producer_read_sdk.hpp"
++#include "producer_output_source.hpp"
+ #include "producer_address_sdk.hpp"
+ #include "mixed_fusion_baseline.hpp"
+ #include <icraft-xrt/core/session.h>
+@@ -24,10 +25,10 @@
+     const auto k=t.data().ptype();need(k==xrt::PtrType::ADDR||k==xrt::PtrType::BOTH||k==xrt::PtrType::CPTR,"Unsupported pointer type");
+ }
+ }
+-struct SdkAddressGroup::Impl {
++struct SdkReadGroup::Impl {
+     bool mock;std::thread::id owner=std::this_thread::get_id();std::filesystem::path evidence;
+     xir::Network graph;xir::NetworkView selected;xrt::Device device;std::unique_ptr<pose::producer_address::Reservation> reservation;xrt::Session session;
+-    std::array<xir::Value,2> ins,outs;
++    std::array<xir::Value,2> ins,outs;std::shared_ptr<pose::producer_read::ReadScope> readScope=pose::producer_read::createScope();
+     void check()const{need(owner==std::this_thread::get_id(),"SDK owner changed");}
+     Impl(const std::filesystem::path&g,const std::filesystem::path&raw,const std::filesystem::path&e,bool simulated):mock(simulated),evidence(e){
+         const auto started=now();graph=xir::Network::CreateFromJsonFile(g.string());graph.lazyLoadParamsFromFile(raw.string(),true);
+@@ -61,6 +62,7 @@
+         report<<"]}\n";backend.log();saveText(evidence/"deployment.json",report.str());
+     }
+     ~Impl(){
++        try{pose::producer_read::expireScope(readScope,evidence);}catch(const std::exception&e){try{saveText(evidence/"lease-release.error.txt",e.what());}catch(...){} }
+         session=xrt::Session{};selected=xir::NetworkView{};graph=xir::Network{};
+         try{reservation->release(evidence);}catch(const std::exception&e){try{saveText(evidence/"prefix-release.error.txt",e.what());}catch(...){} }
+         reservation.reset(); // Drop the address owner while Device is still alive, including failed release audits.
+@@ -76,9 +78,9 @@
+         return list;
+     }
+ };
+-SdkAddressGroup::SdkAddressGroup(const std::filesystem::path&g,const std::filesystem::path&r,const std::filesystem::path&e,bool m):p_(std::make_unique<Impl>(g,r,e,m)){}
+-SdkAddressGroup::~SdkAddressGroup()=default;
+-void SdkAddressGroup::memoryRoundTrip(const Payload&p,const std::filesystem::path&out){
++SdkReadGroup::SdkReadGroup(const std::filesystem::path&g,const std::filesystem::path&r,const std::filesystem::path&e,bool m):p_(std::make_unique<Impl>(g,r,e,m)){}
++SdkReadGroup::~SdkReadGroup()=default;
++void SdkReadGroup::memoryRoundTrip(const Payload&p,const std::filesystem::path&out){
+     p_->check();validate(p);auto inputs=p_->inputs(p);
+     // Matching mock PLDDR read/write are no-ops. Test actual Host CPTR here;
+     // real SDK-owned PLDDR is separately required before releasing NPU.
+@@ -88,7 +90,8 @@
+         Bytes bytes(inputSizes[i]);dest.read(bytes.data(),0,bytes.size());saveFile(out/("input-"+std::to_string(inputIds[i])+".roundtrip"),bytes);need(bytes==p.inputs[i],"SDK memory roundtrip differs");}
+     saveText(out/"memory.json","{\"region\":\""+std::string(p_->mock?"HostCPTR":"physicalSDKownedPLDDR")+"\",\"forward_called\":false,\"input_bytes\":17680,\"bitwise_equal\":true}\n");
+ }
+-void SdkAddressGroup::forwardSave(const Payload&p,const std::filesystem::path&out,size_t invocation,phase::Trace& trace,uint64_t planned){
++std::unique_ptr<pose::producer_read::OutputLease> SdkReadGroup::forwardSave(const Payload&p,const std::filesystem::path&out,size_t invocation,phase::Trace& trace,uint64_t planned){
++    pose::producer_read::checkIdle(p_->readScope);
+     trace.run(phase::Phase::OwnerCheck,-1,[&]{p_->check();need(!p_->mock,"Never forward on mock");});
+     trace.run(phase::Phase::Validate,-1,[&]{validate(p);});auto inputs=p_->inputs(p,&trace);
+     std::ofstream journal;trace.run(phase::Phase::JournalOpen,-1,[&]{journal.open(out/"stages.jsonl");need(bool(journal),"Cannot save per-call stages");});
+@@ -112,5 +115,6 @@
+         if(i){report<<',';}report<<"{\"value\":"<<outputIds[i]<<",\"wait_begin_ns\":"<<waitBegin<<",\"wait_end_ns\":"<<waitEnd<<",\"copy_begin_ns\":"<<copyBegin<<",\"copy_end_ns\":"<<copyEnd<<",\"owned_end_ns\":"<<shadowEnd<<",\"source_address\":"<<t.data().addr()<<",\"source_offset\":"<<t.offset()<<",\"source_capacity\":"<<t.chunk()->byte_size<<",\"source_chunk_identity\":"<<reinterpret_cast<uintptr_t>(t.chunk().operator->())<<",\"source_ready\":"<<(t.isReady()?"true":"false")<<",\"owned_fingerprint\":"<<fingerprint(bytes)<<'}';
+     }
+     const auto after=zg.layerCount();report<<"],\"after_ready_count\":"<<after<<"}\n";trace.run(phase::Phase::SaveTrace,-1,[&]{saveText(out/"trace.json",report.str());});need(after==11,"Independent completion count differs");
++    return pose::producer_read::makeLease(p_->readScope,std::move(outputs),{p_->outs[0].tensorType(),p_->outs[1].tensorType()},p_->device,invocation);
+ }
+ }

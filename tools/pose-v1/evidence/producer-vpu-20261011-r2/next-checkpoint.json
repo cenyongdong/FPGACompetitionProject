@@ -1,0 +1,16 @@
+{
+  "active_work": false,
+  "user_paused": false,
+  "services_running": false,
+  "all_agent_programs_connections_closed": true,
+  "root_cause_resolved": false,
+  "current_stage": "off100_passed_on82_correct_pacing_failed_archived",
+  "next_entry": "tools/pose-v1/PRODUCER-VPU-NEXT-20261011.md",
+  "next_implemented": false,
+  "no_failed_hardware_retry": true,
+  "preserve_original_failure_and_reads": true,
+  "original_final_count": 745,
+  "independent_count": 11,
+  "management_estimate": 83,
+  "next": "separate pre-reset save/SDK Host preparation/scheduling; add absolute deadline recheck after preparation"
+}

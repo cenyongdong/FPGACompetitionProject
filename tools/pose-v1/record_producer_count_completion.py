@@ -1,0 +1,36 @@
+"""Bind stopped192 diagnostic results, resources and provenance; no hardware."""
+import json,re
+import mixed_validation_gate as g
+root=g.ROOT;e=root/'tools/pose-v1/evidence/producer-count-20261009-r2'
+def load(n):return g.load(e/n)
+def write(n,x):p=e/n;assert not p.exists();p.write_text(json.dumps(x,indent=2)+'\n')
+host=load('host-check.acceptance.json');three=load('process-three.acceptance.json');failed=load('failed-load.numeric-review.json');pattern=load('bad-block-pattern.json')
+assert host['Host_cases']==107 and host['CPU_FP32']==59600 and three['consumed']==4 and failed['consumed']==3 and failed['all_seven_persistence_tasks_saved']
+assert pattern['changed_FP32']==1728 and pattern['changed_ranges']==55 and pattern['all_changed_bytes_equal_previous_copy_same_offset']
+assert load('three.counter.json')['query_rows']==load('failed.counter.json')['query_rows']==32 and not load('failed.counter.json')['below234']
+dirs=[e/'host-return/resources-before-three',e/'three-return/resources-before-load',e/'failed-return/resources-final'];snapshots=[]
+for d in dirs:
+    units=0
+    for line in (d/'pagetypeinfo').read_text().splitlines():
+        m=re.search(r'type\s+(Unmovable|Movable|Reclaimable|HighAtomic)\s+([\d\s]+)$',line)
+        if m:
+            counts=list(map(int,m[2].split()));assert len(counts)==11;units+=sum(counts[i]*2**(i-7) for i in range(7,11))
+    mem={m[1]:int(m[2]) for m in re.finditer(r'^(\w+):\s+(\d+) kB$',(d/'meminfo').read_text(),re.M)}
+    snapshots.append(dict(path=str(d.relative_to(root)),ordinary_512KiB_units=units,MemAvailable_KiB=mem['MemAvailable'],CmaFree_KiB=mem['CmaFree'],sha256={p.name:g.sha(p) for p in d.iterdir() if p.is_file()}))
+kernel=[(d/'dmesg').read_bytes() for d in dirs];assert kernel[0]==kernel[1]==kernel[2]
+for label,stage in [('host-return','host-check'),('three-return','process-three'),('failed-return','load-103')]:
+    r=e/label/('run-'+stage);assert (r/'dmesg.before.log').read_bytes()==(r/'dmesg.after.log').read_bytes()==kernel[0]
+final=dirs[-1];assert not any(line.split(maxsplit=2)[1].startswith('pose_') for line in (final/'processes').read_text().splitlines()[1:]);ports=(final/'ports').read_text();assert ':39001 ' not in ports and ':8554 ' not in ports
+assert (e/'host-return/axi.identity').read_text().split()[0]=='d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178'
+write('resource-review.json',dict(status='resource_identity_and_cleanup_checked',kernel_unchanged=True,agent_compactions=0,reason='Ordinary high-order pages present before both stages; no compact_memory write.',drop_caches=False,reboot=False,CMA_changed=False,program_processes_remaining=0,input_RTSP_ports_released=True,snapshots=snapshots,not_leak_or_permanent_startup_proof=True))
+archives={'host-check.tar':'dda87bbce6b6511635425dfcb37a03dc8123bc72c887a43a3230f94c6ec898eb','process-three.tar':'85887c2dc204a56d091b8b5f24b66366207f982751e2fca5be191e674353ac21','failed-load-103.tar':'863b6fe67ddc70e35c74154601764229258bb0d8f85170d0012005d25a3ed649'}
+for name,digest in archives.items():assert g.sha(e/name)==digest
+media={}
+for label in ('three','failed'):
+    v=load('video-'+label+'/review.json');n=load('network-'+label+'/review.json');media[label]=dict(encoded=v['decoded_frames'],network=n['network_frames'],sources=v.get('inference_sources',v.get('decoded_inference_sources')),joint_checks=v['joint_visibility_checks'],complete=label=='three',missing_completed_sources=v.get('missing_completed_sources',[]),uncaptured_sample_tail=v.get('uncaptured_sample_tail',0))
+refs=['build.acceptance.json','native-contract-review.json','SDK-path-audit.json','host-check.acceptance.json','host.invocation.json','host.counter.json','process-three.acceptance.json','three.invocation.json','three.counter.json','reference-three-review.json','video-three/review.json','network-three/review.json','failed-load.numeric-review.json','failed.invocation.json','failed.counter.json','failed-frame-golden.json','failed-Host-classification.json','source-readback-analysis.json','bad-block-pattern.json','reference-failed-review.json','video-failed/review.json','network-failed/review.json','resource-review.json']
+report=dict(status='public192_counts_integrated_failure_at234_stopped_complete_evidence',program_sha256=host['binary_sha256'],manifest_sha256=host['package_manifest_sha256'],payloads=403,build_sources=77,Host_cases=107,registry_records=12,Host_FP32=59600,producer_Native_ARM_refusals_each=16,invocation_Native_ARM_refusals_each=12,three_forwards=4,three_FP32=60400,load_correct_prefix=3,load_correct_FP32=45300,all_correct_forwards=7,all_correct_FP32=105700,failed_invocation=3,failed_frame=100003,failed_case='S12_01_331',failed_op=192,owned_failed_frame_inputs=3,owned_failed_frame_bytes=47760,Host_index_noninteger_values=1728,changed_ranges=55,all_bad_blocks_equal_previous_copy_same_offset=True,both_late_device_sources_gold=True,actual_late_device_source_bytes=94080,all_public192_queries=64,all_public192_counts=234,failed_copy_start_count=234,copy_start_below234_observed=False,additional_wait_to234_would_not_wait_at_observed_start=True,wait_added=False,normal_device_data_reads_added=0,failed_original_metadata_rows=30,failed_counter_rows=32,all_seven_persistence_tasks_saved=True,original_error_preserved=True,media=media,load103_passed=False,performance_accepted=False,root_cause_fixed=False,DMA_cache_fence_proven=False,agent_compactions=0,BOOT_SDK_model_math_changed=False,all_agent_sessions_closed=True,final_MemAvailable_KiB=snapshots[-1]['MemAvailable_KiB'],final_CmaFree_KiB=snapshots[-1]['CmaFree_KiB'],evidence_sha256={name:g.sha(e/name) for name in refs},archive_sha256=archives)
+write('completion-review.json',report)
+checkpoint=dict(status=report['status'],user_paused=False,active_tests=False,services_running=False,SSH_SCP_closed=True,package='.local/pose-v1-producer-count/package-20261009-r2',build='.local/pose-v1-build/mixed-20261009-producer-count-r2',board='/tmp/pose-producer-count-20261009-r2',completion_sha256=g.sha(e/'completion-review.json'),next='Read PRODUCER-COUNT-RESULTS, ADR_21 and PRODUCER-COUNT-NEXT. New192 four-point queries show234 before/after wait/copy including inv3 failure; adding wait-to234 would not wait at that observed start.1728 finite noninteger indices/55 blocks equal prior data-copy same offsets; late device sources gold. Stop batch; no failed run retry or wait/cache/BOOT/CMA/SDK guess. Next design isolated SDK-owned scratch30240/16800 sequential-copy consistency without NPU then optional VPU concurrency, based on previously verified defaultMemRegion contract; exact new plan must bound ownership/sync/cleanup and error evidence. Preserve full model gates and original failure source reads. Actual zero-copy and long-term/HDMI pending.')
+write('next-checkpoint.json',checkpoint);active=load('active-checkpoint.json');active.update(status=report['status'],active_stage=None,active_tests=False,services_running=False,SSH_SCP_closed=True,completion_sha256=checkpoint['completion_sha256']);(e/'active-checkpoint.json').write_text(json.dumps(active,indent=2)+'\n')
+print(json.dumps({k:report[k] for k in ('status','all_correct_forwards','all_public192_counts','Host_index_noninteger_values','root_cause_fixed','all_agent_sessions_closed')}))

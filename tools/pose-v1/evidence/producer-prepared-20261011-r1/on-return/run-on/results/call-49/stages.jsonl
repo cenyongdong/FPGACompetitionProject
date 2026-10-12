@@ -1,0 +1,12 @@
+{"stage":"before_reset","value":-1,"time_ns":207970919453080}
+{"stage":"before_forward","value":-1,"time_ns":207970919524650}
+{"stage":"before_wait","value":4386,"time_ns":207970919976120}
+{"stage":"after_wait","value":4386,"time_ns":207970920036150}
+{"stage":"before_copy","value":4386,"time_ns":207970920110940}
+{"stage":"after_copy","value":4386,"time_ns":207970920233210}
+{"stage":"output_saved","value":4386,"time_ns":207970920477140}
+{"stage":"before_wait","value":4390,"time_ns":207970920805410}
+{"stage":"after_wait","value":4390,"time_ns":207970920841020}
+{"stage":"before_copy","value":4390,"time_ns":207970920901920}
+{"stage":"after_copy","value":4390,"time_ns":207970920996610}
+{"stage":"output_saved","value":4390,"time_ns":207970921205560}

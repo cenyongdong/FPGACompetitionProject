@@ -1,5 +1,59 @@
 # 项目难点索引
 
+最新：[ADR_45](ADR/ADR_45.md)记录演示整合、VPU连续页失败/一次获准重启、Engine目录与Producer Recorder配置遗漏，以及独立demo_engine修正。三窗口与60窗口全链显示/正常回收已过；成功阶段规整0。首次启动永久可靠性未证，旧DATA96/800坏读定位按用户要求暂停，原保护/证据保持。[技术总汇](ADR/TechDetails.md)／[结果](tools/pose-v1/DEMO-RESULTS-20261011.md)。以下当前为历史。
+
+最新：[ADR_44](ADR/ADR_44.md)，目录mkdir等待以放行前预建/热一次令牌移出并验；首次DATA96/拥有副本指纹与文件一致但保存后记录、全部上一B，四晚物理源读正确，首次Host目的后续状态未观测，责任未证。Host测试symlink回传解包拒绝以普通字节/精确链接元数据修正，无板测重跑。[结果](tools/pose-v1/PRODUCER-PREPARED-RESULTS-20261011.md)。以下当前为历史。
+
+2026-10-11最新：[ADR_43](ADR/ADR_43.md)记录源租约/Host188160字节read过、153前向正确、有VPUinv49目录等待915.86ms且准备截止成功拦截，物理晚源read未触发／根因未修；[结果](tools/pose-v1/PRODUCER-SOURCE-READ-RESULTS-20261011.md)／[下一目录预备](tools/pose-v1/PRODUCER-SOURCE-READ-NEXT-20261011.md)／[恢复](tools/pose-v1/evidence/producer-source-read-20261011-r2/next-checkpoint.json)。221 NoInput视频前缀/abort清理过，所有连接结束，原异常读取保持，下一未执行，以下当前为历史。
+
+2026-10-11最新：[ADR_42](ADR/ADR_42.md)记录高地址SDK前缀控制、四调用/off100通过、on inv49 DATA800逐位前帧A的独立更小失配；首次输出已错但无晚源证据，责任未证。214 NoInput视频前缀/abort清理过，全部连接结束；[结果](tools/pose-v1/PRODUCER-ADDRESS-RESULTS-20261011.md)／[下一失败只读租约](tools/pose-v1/PRODUCER-ADDRESS-NEXT-20261011.md)／[恢复](tools/pose-v1/evidence/producer-address-20261011-r2/next-checkpoint.json)。下一未执行、原正式异常读取保留，以下当前为历史。
+
+2026-10-11最新：[ADR_41](ADR/ADR_41.md)归档reset前分段／准备后绝对时隙、off/on各100及307 NoInput视频正常回收。2352000 FP32逐位，旧1.764秒尖峰未复现，保存区间等待已观察但底层原因未证，正式坏读未修；[结果](tools/pose-v1/PRODUCER-PHASE-RESULTS-20261011.md)／[下一公开高地址可行性](tools/pose-v1/PRODUCER-PHASE-NEXT-20261011.md)／[恢复](tools/pose-v1/evidence/producer-phase-20261011-r2/next-checkpoint.json)。原异常读取保持、下一未执行、程序连接全结束，以下当前为历史。
+
+2026-10-11最新：[ADR_40](ADR/ADR_40.md)记录同身份off100通过、on82数值正确后时隙失败及reset前1.764秒空档，正式根因未修。271packet／270 NoInput图像／162复制交叠、异常清理通过，正常drain-LAST未过；[结果](tools/pose-v1/PRODUCER-VPU-RESULTS-20261011.md)／[下一分段观察](tools/pose-v1/PRODUCER-VPU-NEXT-20261011.md)／[恢复](tools/pose-v1/evidence/producer-vpu-20261011-r2/next-checkpoint.json)。原异常读取保留，下一未执行，全部程序连接结束，以下当前为历史。
+
+2026-10-11最新：[ADR_39](ADR/ADR_39.md)记录独立19成员物理部署／四调用、mock无数据搬运的门检修正与locale只读核验。47040 FP32／0→11／释放通过，正式并发根因未修；[结果](tools/pose-v1/PRODUCER-GROUP-RESULTS-20261011.md)／[下一有无VPU对照](tools/pose-v1/PRODUCER-GROUP-NEXT-20261011.md)／[恢复](tools/pose-v1/evidence/producer-group-20261011-r2/next-checkpoint.json)。100调用未实施，原异常读取保持，以下当前为历史。
+
+2026-10-11最新：[ADR_38](ADR/ADR_38.md)记录真实参数／19来源映射／受限FP16-TF32参考及mock独立0→11。数学参考已闭合，物理读取根因未修；[结果](tools/pose-v1/PRODUCER-REFERENCE-RESULTS-20261011.md)／[下一](tools/pose-v1/PRODUCER-REFERENCE-NEXT-20261011.md)／[恢复](tools/pose-v1/evidence/producer-reference-20261011-r2/next-checkpoint.json)。无新物理前向／并发通过，全部程序和连接结束，以下当前为历史。
+
+2026-10-11最新：[ADR_37](ADR/ADR_37.md)记录生产者检查器条件copy、零指令Cast、19成员参考缺口、官方部署映射与日志门检/误检索修正。[结果](tools/pose-v1/PRODUCER-CONTRACT-RESULTS-20261011.md)／[下一](tools/pose-v1/PRODUCER-CONTRACT-NEXT-20261011.md)／[数据核验](tools/pose-v1/evidence/producer-contract-20261011-r2/data-review.json)／[恢复](tools/pose-v1/evidence/producer-contract-20261011-r2/next-checkpoint.json)。无模型前向，新根因未修；r3 exit1为一/两日志数量错误，原码/数据保留，r4仅编译。全部会话结束，以下当前为历史。
+
+2026-10-11最新：[ADR_36](ADR/ADR_36.md)匹配AXI／UDMA责任审查及两方法／四条件内存对照完成；400动态对过，无NPU生产，原模型根因未修。锁／轮询／cache同步存在但生产完成未知。[结果](tools/pose-v1/AXI-READ-RESULTS-20261011.md)／[责任证据入口](tools/pose-v1/AXI-READ-RESPONSIBILITY-20261011.md)／[下一](tools/pose-v1/AXI-READ-NEXT-20261011.md)／[恢复](tools/pose-v1/evidence/axi-pair-20261011-r4/next-checkpoint.json)。本批已结束、无规整／后台；以下当前为历史。
+
+2026-10-11最新：[ADR_35](ADR/ADR_35.md)记录read返回／CPU前快照、实际目标链接遗漏及修正、执行位、参考覆盖难点。48正确后192立即592坏值全部等于前输入同偏移，CPU前不变、两晚源正确；共享读取暂存／完成责任待证。[结果](tools/pose-v1/READ-PHASE-RESULTS-20261011.md)／[下一](tools/pose-v1/READ-PHASE-NEXT-20261011.md)／[恢复](tools/pose-v1/evidence/read-phase-20261011-r3/next-checkpoint.json)。原异常读取保留，已停止无重跑，以下当前为历史。
+
+2026-10-11最新：[ADR_34](ADR/ADR_34.md)记录公开回调outputs契约／生产句柄边界限制、Host原Gather绑定上下文、打包身份、8任务保存预算及实际传输ID审查难点。Host／四窗口已通过；55正确后192初始Host索引1584变化、两晚源正确，首次read／暂存责任待查。[结果](tools/pose-v1/UPSTREAM-BOUNDARY-RESULTS-20261011.md)／[下一](tools/pose-v1/UPSTREAM-BOUNDARY-NEXT-20261011.md)／[恢复](tools/pose-v1/evidence/upstream-boundary-20261011-r4/next-checkpoint.json)。异常保存停止，根因未修，以下当前为历史。
+
+2026-10-10最新：[完整保存与晚源结果](tools/pose-v1/FINAL-EVIDENCE-RESULTS-20261010.md)／[ADR_33](ADR/ADR_33.md)／[下一边界方案](tools/pose-v1/FINAL-EVIDENCE-NEXT-20261010.md)／[当前恢复点](tools/pose-v1/evidence/final-evidence-20261010-r2/next-checkpoint.json)。保存缺口已解决，582上游数据异常未解决；本批已停止、无后台，严格5Hz/长期/HDMI保持待验。以下最新为历史。
+
+2026-10-10当前：[ADR_31](ADR/ADR_31.md)组合有限内容门检过；[ADR_32](ADR/ADR_32.md)PC粗时钟和严格吞吐未过；[ADR_33](ADR/ADR_33.md)582有限更新数据异常、最终门检晚源未触发和结果汇总重复验收缺口，root未证，已停止。本批错误和bad拥有数据完整保留，[下一](tools/pose-v1/COMBINED-READ-NEXT-20261010.md)。 以下当前为历史。
+
+2026-10-10当前：[ADR_30](ADR/ADR_30.md)公开read直接进入自有Host输入暂存，真实画面107完整数值及视频有限门检通过；旧192坏块本轮未复现，read仍共享源区域，根因与长期可靠性未证。异常取证保持，旧失败不改。用户暂停已撤销，[结果](tools/pose-v1/INPUT-READ-RESULTS-20261010.md)／[下一](tools/pose-v1/INPUT-READ-NEXT-20261010.md)。以下当前为历史。
+
+2026-10-10当前：[ADR_29](ADR/ADR_29.md)真实拥有画面2Hz条件inv20的192残留复现：144非整数／8段同此前slot0字节，两晚源正确，对象／计数稳定；20正确输出与视频前缀已核验，root未修。用户要求暂停，[恢复入口](tools/pose-v1/RESUME-PICTURE-20261010.md)。以下当前为历史。
+
+2026-10-10当前：[ADR_28](ADR/ADR_28.md)单次常驻三窗→103通过，解决阶段重复申请的编排与107诊断容量／编号碰撞边界；旧192坏块未复现，首次启动在一次规整及普通高阶余量条件下成功，不认定永久可靠。[结果](tools/pose-v1/RESIDENT-SEQUENCE-RESULTS-20261010.md)／[下一](tools/pose-v1/RESIDENT-SEQUENCE-NEXT-20261010.md)。以下当前为历史。
+
+2026-10-10当前：[ADR_27](ADR/ADR_27.md)同程序对照前三阶段通过，最后VPU启动512KiB普通连续页不足，规整后仍失败；Engine创建前退出，不归因192模型坏块。[ADR_02](ADR/ADR_02.md)同决策追加首次启动反例，明确常驻与首次启动分别验收。[结果](tools/pose-v1/MODEL-VPU-RESULTS-20261010.md)／[下一方案](tools/pose-v1/MODEL-VPU-NEXT-20261010.md)。以下当前为历史。
+
+2026-10-10当前：[ADR_26](ADR/ADR_26.md)记录无视频真实混合模型4＋103全部完整输出正确、192源同旧失败／对象和计数稳定。坏块未复现，视频不是已证根因；堆、初始化与保存I/O差别保留。规整0、全项目程序／会话结束。下一同身份仅模型／合成VPU对照仅准备。[结果](tools/pose-v1/MODEL-ONLY-RESULTS-20261010.md)／[方案](tools/pose-v1/MODEL-ONLY-NEXT-20261010.md)。以下当前为历史。
+
+2026-10-10当前：[ADR_25](ADR/ADR_25.md)记录公开容量／合法较高位置对照：DefaultMemManager公开地址空间确认，96MiB SDK自有占位未触碰数据，实际两源100667392／100697664动态100及VPU100全正确、公共块全部归还。本批规整0、根因未修；约96MiB位置不能替代实际模型104MiB／NPU生产。下一原Engine无视频有限对照仅准备。[结果](tools/pose-v1/PLDDR-POSITION-RESULTS-20261010.md)／[方案](tools/pose-v1/PLDDR-POSITION-NEXT-20261010.md)。以下当前为历史。
+
+2026-10-10当前：[ADR_24](ADR/ADR_24.md)记录真实192类型／动态更新／VPU并发独立三阶段各100对正确，低位SDK源4096／34368未复现坏块；与模型约104MiB来源及NPU生产仍不同。一次资源规整不当数值修复，跨内核采集格式仅旧©单行精确对齐，原字节保持。[结果](tools/pose-v1/TYPED-SCRATCH-RESULTS-20261010.md)／[下一合法源位置对照](tools/pose-v1/TYPED-SCRATCH-NEXT-20261010.md)。全测试关闭，根因未修，以下当前为历史。
+
+2026-10-10当前：[ADR_23](ADR/ADR_23.md)记录真实模型公开对象／dtype／全有效分布／范围与原shadow一致、同copy前后稳定，但inv72的192仍有128有限非整数、7段同前次复制，晚源正确。没有观察到同域源或Host范围重叠，内部暂存／DMA／生产瞬间可见性仍未证；元数据分配／时序扰动不当修复。[结果](tools/pose-v1/TENSOR-IDENTITY-RESULTS-20261010.md)／[下一类型与动态模式对照](tools/pose-v1/TENSOR-IDENTITY-NEXT-20261010.md)，已安全停止，无失败重跑。以下当前为历史。
+
+2026-10-10当前：[ADR_22](ADR/ADR_22.md)记录SDK-owned双源100对无VPU＋100对编码并发均正确，200合成图像／实际PTS通过。模型坏块未在独立1D／低位／固定模式条件复现，实际dtype／分布／chunk／源位置／生产时序差别继续待证，未根因修复。部分异常保存补caller-owned字节，Host107明确身份复用。[结果](tools/pose-v1/SCRATCH-COPY-RESULTS-20261010.md)／[下一对象身份观察](tools/pose-v1/SCRATCH-COPY-NEXT-20261010.md)。规整0、会话关闭，以下当前／最新为历史。
+
+2026-10-09当前：[ADR_21](ADR/ADR_21.md)独立记录192四点计数和残留判别。新103第4次失败时计数234，1728坏索引55段逐位前次数据复制同偏移、晚源正确；不默认加wait-to234，搬运／可见性待证。[结果](tools/pose-v1/PRODUCER-COUNT-RESULTS-20261009.md)／[受控搬运方案](tools/pose-v1/PRODUCER-COUNT-NEXT-20261009.md)。七项保存完好，103／性能未过。以下“当前／最新”为历史。
+
+2026-10-09当前：[ADR_20](ADR/ADR_20.md)单帧取证／独立落盘已接入，Host／三窗通过；新103第12次192索引496非整数拒绝。18坏段同前次数据复制同偏移，Host256对齐、两个晚源正确；早读与SDK DMA暂存／同步责任未证。六项保存、3输入47760字节、102元数据及ARM参考完整。[结果](tools/pose-v1/INVOCATION-GUARD-RESULTS-20261009.md)／[下一定位](tools/pose-v1/INVOCATION-GUARD-NEXT-20261009.md)，没有新103／性能通过。以下“最新”为历史。
+
+2026-10-09最新：[ADR_20](ADR/ADR_20.md)记录有限姿态652值/35候选失配、最高分骨架不变以及保存再比较导致元数据缺失。新SDK-free单帧拥有值/独立flush模块测试通过，主程序接入待；原异常/拒绝及源码保持。静态638仅覆盖582，649结束720；[SDK审计](tools/pose-v1/SDK-MAPPING-AUDIT-20261009.md)区分UDMA同步与PL DDR映射，不猜零拷贝修复。以下“最新”为历史。
+
+2026-10-09最新：[ADR_19](ADR/ADR_19.md)新增Host原复制后shadow、元数据/FP32对齐与582生产组638完成检查。Host、三窗及103全链通过，107次新增检查均首次638、无额外等待；旧异常未复现，不能写等待修复或DMA/cache fence已证。[ADR_17](ADR/ADR_17.md)保留NaN/周期坏块及稍后正确源，根因继续待验证。短期100计量5.000193338Hz达到门限且余量极小，不代替永久可靠性/长期。见[完整结果](tools/pose-v1/STAGE-GUARD-RESULTS-20261009.md)。下面“最新”为历史。
+
 2026-10-09最新：[103边界/参考工程](ADR/ADR_18.md)已实现Host/三窗通过，负载第61 Scatter582失败；[ADR_17](ADR/ADR_17.md)首次实际设备源67200字节与旧正确同CSI中间值一致，而Host暂存0有2096值/四NaN异常。原复制瞬间的源/临时/目标责任未证，下一复制返回shadow和指针对齐取证，不以换API或规整猜修复。[当前结果](tools/pose-v1/BOUNDED-LOAD-RESULTS-20261009.md)。以下以前“最新”为历史。
 
 2026-10-09最新：[异常捕获保留与66次覆盖](tools/pose-v1/SOURCE-COVERAGE-RESULTS-20261009.md)、[ADR_17](ADR/ADR_17.md)、[纯计时与有限节拍ADR_16](ADR/ADR_16.md)。旧三个坏块未复现、设备异常源读取0；32次无额外查询forward最大190.55ms，旧221.61ms原因未证。实际输入4.97948Hz/画面4.98636Hz须与计算容量分开，不按名义5Hz或舍入判过。103全边界/参考策略是下一工程准备，以下此前“最新”按历史读取。

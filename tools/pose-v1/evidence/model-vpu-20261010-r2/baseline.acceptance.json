@@ -1,0 +1,23 @@
+{
+  "status": "model_vpu_baseline_exact_main_Host107_reused",
+  "stage": "baseline",
+  "binary_sha256": "fbf330d73ec34c43c7c2757253115e720ba7dccfd6fc6f54a28c6cbaacb8702d",
+  "model_only_binary_sha256": "9ed61d9dc29712d9bf28f88d182d5f103bbdda8545b4ae4c9329604e0d925741",
+  "model_vpu_binary_sha256": "4bab1a1d61c54fdebde33eaa71a1ec378e3159c964c5dcd8e6e198aa749aab2a",
+  "package_manifest_sha256": "28d76b0245bc7b406fc9f66d1a5ed92699e1d25ba48ee9e7ac3de4b46cde6da0",
+  "payloads": 403,
+  "build_sources": 102,
+  "video": false,
+  "network": false,
+  "normal_source_reads_added": 0,
+  "Native_refusals": 9,
+  "Native_load_refusals": 6,
+  "Host107_new_run": false,
+  "Host107_reused": 107,
+  "registry_reused": 12,
+  "CPU_FP32_reused": 59600,
+  "old_Host_gate_sha256": "58ce67f33c4bcf4998ad361efb3d91be16b222a1777873b547a401cdd07a5edb",
+  "old_failure_contract_sha256": "0ae6860cc651a394a52c8d78d1277b37d54899fba51a77717352e5fd44c6d90d",
+  "new_Engine_entry_not_Host107_executed": true,
+  "preserved_payloads": 402
+}

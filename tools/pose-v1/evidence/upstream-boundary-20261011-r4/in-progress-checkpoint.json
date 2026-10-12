@@ -1,0 +1,19 @@
+{
+  "status": "batch_completed_at_failure_safe_stop",
+  "date": "2026-10-11",
+  "paused_by_user": false,
+  "active_processes": false,
+  "active_connections": false,
+  "hardware_retry_pending": false,
+  "root_cause_fixed": false,
+  "completion_SHA256": "6bca62300c97eaed43559467aa515fd2c9c01feaff144fece6c37da2df125e35",
+  "read_first": [
+    "tools/pose-v1/UPSTREAM-BOUNDARY-RESULTS-20261011.md",
+    "ADR/ADR_34.md",
+    "tools/pose-v1/UPSTREAM-BOUNDARY-NEXT-20261011.md"
+  ],
+  "next": "Review actual SDK read completion and capture first-read/Host-staging boundaries in a new isolated identity.",
+  "no_retry_old_failed_run": true,
+  "no_frequency_adjustment": true,
+  "no_reboot_cache_clear_CMA_BOOT_model_SDK_change": true
+}

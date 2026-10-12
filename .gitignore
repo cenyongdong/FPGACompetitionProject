@@ -130,3 +130,145 @@ venv/
 /tools/pose-v1/evidence/**/*.h264
 # SDK 库的反汇编派生文本，不作为项目源码提交。
 /tools/pose-v1/evidence/mixed-20261006-readiness-r5/zg-disassembly.txt
+/tools/pose-v1/evidence/**/pose_stage_observation_selftest
+# 本批传输归档包含已回传的原始值和程序，保留本机及哈希，不重复提交。
+/tools/pose-v1/evidence/stage-guard-20261009-r1/*.tar
+# 独立启动回传归档和SDK-free测试二进制，哈希与审查结果保留。
+/tools/pose-v1/evidence/startup-guard-20261009-r1/*.tar
+/tools/pose-v1/evidence/startup-guard-20261009-r1/invocation-arm-r2/program
+# 隔离单帧取证接入的可重建程序及原始回传归档。
+/tools/pose-v1/evidence/**/pose_invocation_evidence_selftest
+/tools/pose-v1/evidence/invocation-guard-20261009-r1/*.tar
+# 192公开生产计数诊断的重建程序、回传归档。
+/tools/pose-v1/evidence/**/pose_producer_count_selftest
+/tools/pose-v1/evidence/producer-count-20261009-r2/*.tar
+# 独立SDK scratch回传：提交文本证据与身份，原始归档／ELF保留本机。
+/tools/pose-v1/evidence/**/pose_scratch_copy_check
+/tools/pose-v1/evidence/**/pose_scratch_copy_selftest
+/tools/pose-v1/evidence/scratch-copy-20261010-r1/*.tar
+/tools/pose-v1/evidence/scratch-copy-20261010-r3/*.tar
+# 真实对象取证可重建ARM测试程序及原始回传归档，身份／文本证据提交。
+/tools/pose-v1/evidence/**/pose_tensor_identity_selftest
+/tools/pose-v1/evidence/tensor-identity-20261010-r3/*.tar
+# 真实类型／动态搬运探针回传，保留文本身份与审查，不提交可重建ELF和归档。
+/tools/pose-v1/evidence/**/pose_typed_scratch_check
+/tools/pose-v1/evidence/**/pose_typed_scratch_selftest
+/tools/pose-v1/evidence/typed-scratch-20261010-r1/*.tar
+# 公开PLDDR容量与合法位置对照的本机归档／可重建二进制。
+/tools/pose-v1/evidence/plddr-position-20261010-r1/*.tar
+/tools/pose-v1/evidence/**/pose_plddr_manager_check
+/tools/pose-v1/evidence/**/pose_position_scratch_check
+/tools/pose-v1/evidence/**/pose_plddr_position_selftest
+/tools/pose-v1/evidence/plddr-position-20261010-r1/native-*/native-*
+# 无视频真实混合模型诊断：原始归档和可重建程序保留本机。
+/tools/pose-v1/evidence/model-only-20261010-r1/*.tar
+/tools/pose-v1/evidence/**/pose_model_only_check
+/tools/pose-v1/evidence/**/pose_model_only_selftest
+/tools/pose-v1/evidence/model-only-20261010-r1/native/model-only.native
+# 同身份模型／VPU对照的可重建ELF、Native程序和本机归档。
+/tools/pose-v1/evidence/model-vpu-20261010-r2/*.tar
+/tools/pose-v1/evidence/**/pose_model_vpu_check
+/tools/pose-v1/evidence/**/pose_model_load_selftest
+/tools/pose-v1/evidence/model-vpu-20261010-r2/native-*/*.native
+# 单次常驻生命周期的可重建ELF、Native与本机回传归档。
+/tools/pose-v1/evidence/resident-sequence-20261010-r1/*.tar
+/tools/pose-v1/evidence/**/pose_resident_sequence_check
+/tools/pose-v1/evidence/**/pose_resident_sequence_selftest
+/tools/pose-v1/evidence/**/pose_resident_producer_selftest
+/tools/pose-v1/evidence/resident-sequence-20261010-r1/native-*/*.native
+# 单次常驻真实画面的可重建程序与本机原始归档。
+/tools/pose-v1/evidence/picture-20261010-r1/*.tar
+/tools/pose-v1/evidence/**/pose_picture_check
+/tools/pose-v1/evidence/**/pose_picture_source_selftest
+/tools/pose-v1/evidence/**/pose_picture_sequence_selftest
+/tools/pose-v1/evidence/picture-20261010-r1/**/*.native
+
+# AXI读取隔离对照：归档、可重建ELF、原始解包及重复传输目录留在本机。
+# readable保留可提交文本证据；Linux归档权限不导入该审查副本。
+/tools/pose-v1/evidence/axi-pair-20261011-r4/*.tar
+/tools/pose-v1/evidence/axi-pair-20261011-r4/transfer/
+/tools/pose-v1/evidence/axi-pair-20261011-r4/return-*/
+/tools/pose-v1/evidence/axi-pair-20261011-r4/resource-*/
+/tools/pose-v1/evidence/**/pose_axi_pair_check
+/tools/pose-v1/evidence/**/pose_axi_pair_host_check
+/tools/pose-v1/evidence/axi-read-audit-20261011-r1/sdk/
+
+# 生产者契约取证的可重建程序、SDK副本与原始传输档案留在本机。
+/tools/pose-v1/evidence/producer-contract-20261011-r*/sdk/
+/tools/pose-v1/evidence/producer-contract-20261011-r*/*.tar
+/tools/pose-v1/evidence/producer-contract-20261011-r*/transfer/
+/tools/pose-v1/evidence/producer-contract-20261011-r*/deployment-transfer*/
+/tools/pose-v1/evidence/producer-contract-20261011-r*/doc-*.txt
+/tools/pose-v1/evidence/**/pose_producer_view_audit
+/tools/pose-v1/evidence/**/pose_producer_deployment_log
+
+# 原生产者参考的模型／载荷归档和可重建ELF；身份、报告与文本证据提交。
+/tools/pose-v1/evidence/producer-reference-20261011-r*/*.tar
+/tools/pose-v1/evidence/producer-reference-20261011-r*/transfer/
+/tools/pose-v1/evidence/producer-reference-20261011-r*/mock-transfer/
+/tools/pose-v1/evidence/producer-reference-20261011-r*/patterns*/
+/tools/pose-v1/evidence/**/pose_producer_raw_audit
+/tools/pose-v1/evidence/**/pose_producer_mock_contract
+
+# 独立真实生产者对照的原始归档、可重建程序与二进制载荷。
+/tools/pose-v1/evidence/producer-group-20261011-r*/*.tar
+/tools/pose-v1/evidence/producer-group-20261011-r*/transfer/
+/tools/pose-v1/evidence/producer-group-20261011-r*/**/*.roundtrip
+/tools/pose-v1/evidence/producer-group-20261011-r*/**/*.f16
+/tools/pose-v1/evidence/**/pose_producer_group_check
+/tools/pose-v1/evidence/**/pose_producer_payload_selftest
+
+# 独立生产者/VPU对照：保留报告和文本证据，原始二进制留在本机。
+/tools/pose-v1/evidence/producer-vpu-20261011-r*/*.tar
+/tools/pose-v1/evidence/producer-vpu-20261011-r*/transfer/
+/tools/pose-v1/evidence/producer-vpu-20261011-r*/**/*.roundtrip
+/tools/pose-v1/evidence/producer-vpu-20261011-r*/**/*.f16
+/tools/pose-v1/evidence/**/pose_producer_vpu_check
+/tools/pose-v1/evidence/**/pose_producer_schedule_selftest
+/tools/pose-v1/evidence/**/pose_producer_observer_selftest
+
+# reset前分段观察：原始二进制归档留在本机，阶段/身份文本保留。
+/tools/pose-v1/evidence/producer-phase-20261011-r*/*.tar
+/tools/pose-v1/evidence/producer-phase-20261011-r*/transfer/
+/tools/pose-v1/evidence/producer-phase-20261011-r*/**/*.roundtrip
+/tools/pose-v1/evidence/producer-phase-20261011-r*/**/*.f16
+/tools/pose-v1/evidence/**/pose_producer_phase_check
+/tools/pose-v1/evidence/**/pose_producer_phase_selftest
+
+# 高地址独立生产者：原始二进制保留本机，身份和失配证据文本提交。
+/tools/pose-v1/evidence/producer-address-20261011-r*/*.tar
+/tools/pose-v1/evidence/producer-address-20261011-r*/transfer/
+/tools/pose-v1/evidence/producer-address-20261011-r*/**/*.roundtrip
+/tools/pose-v1/evidence/producer-address-20261011-r*/**/*.f16
+/tools/pose-v1/evidence/**/pose_producer_high_check
+/tools/pose-v1/evidence/**/pose_producer_address_selftest
+
+# 单调用输出租约：原始归档和可重建程序留本机，文本证据保留。
+/tools/pose-v1/evidence/producer-source-read-20261011-r*/*.tar
+/tools/pose-v1/evidence/producer-source-read-20261011-r*/transfer/
+/tools/pose-v1/evidence/producer-source-read-20261011-r*/**/*.roundtrip
+/tools/pose-v1/evidence/producer-source-read-20261011-r*/**/*.f16
+/tools/pose-v1/evidence/**/pose_producer_read_check
+/tools/pose-v1/evidence/**/pose_producer_read_selftest
+/tools/pose-v1/evidence/**/pose_producer_read_host_check
+
+# 目录预建：原始字节/测试ELF保留本机，身份/失败分析文本保留。
+/tools/pose-v1/evidence/producer-prepared-20261011-r*/*.tar
+/tools/pose-v1/evidence/producer-prepared-20261011-r*/transfer/
+/tools/pose-v1/evidence/producer-prepared-20261011-r*/host-return-partial/
+/tools/pose-v1/evidence/producer-prepared-20261011-r*/**/*.roundtrip
+/tools/pose-v1/evidence/producer-prepared-20261011-r*/**/*.f16
+/tools/pose-v1/evidence/**/pose_producer_prepared_check
+/tools/pose-v1/evidence/**/pose_producer_directories_selftest
+
+# 首版演示：模型/传输档案、原始负载与可重建产物保留本机。
+# 报告、身份JSON、来源轨迹与小尺寸PNG预览仍可提交。
+/tools/pose-v1/evidence/demo-20261011-r*/transfer/
+/tools/pose-v1/evidence/demo-20261011-r*/*.tar
+/tools/pose-v1/evidence/demo-20261011-r*/**/*.payload
+/tools/pose-v1/evidence/demo-20261011-r*/short-render-input/
+/tools/pose-v1/evidence/demo-20261011-r*/demo-render-input/
+/tools/pose-v1/evidence/demo-20261011-r*/short-native-render/
+/tools/pose-v1/evidence/demo-20261011-r*/demo-native-render/
+/tools/pose-v1/evidence/**/pose_demo
+/tools/pose-v1/evidence/**/pose_demo_transport_test

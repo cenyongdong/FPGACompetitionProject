@@ -1,0 +1,2637 @@
+
+/usr/lib/aarch64-linux-gnu/libaxizg330aiu.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000050998 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv>:
+   50998:	d110c3ff 	sub	sp, sp, #0x430
+   5099c:	90000121 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   509a0:	a9007bfd 	stp	x29, x30, [sp]
+   509a4:	910003fd 	mov	x29, sp
+   509a8:	f9454c21 	ldr	x1, [x1, #2712]
+   509ac:	a90363f7 	stp	x23, x24, [sp, #48]
+   509b0:	90000138 	adrp	x24, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   509b4:	f9400022 	ldr	x2, [x1]
+   509b8:	f90217e2 	str	x2, [sp, #1064]
+   509bc:	d2800002 	mov	x2, #0x0                   	// #0
+   509c0:	a90153f3 	stp	x19, x20, [sp, #16]
+   509c4:	a9025bf5 	stp	x21, x22, [sp, #32]
+   509c8:	a9046bf9 	stp	x25, x26, [sp, #64]
+   509cc:	a90573fb 	stp	x27, x28, [sp, #80]
+   509d0:	f9004be0 	str	x0, [sp, #144]
+   509d4:	f946df00 	ldr	x0, [x24, #3512]
+   509d8:	08dffc01 	ldarb	w1, [x0]
+   509dc:	90000137 	adrp	x23, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   509e0:	3600b921 	tbz	w1, #0, 52104 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x176c>
+   509e4:	f946bee0 	ldr	x0, [x23, #3448]
+   509e8:	f940a415 	ldr	x21, [x0, #328]
+   509ec:	910102a0 	add	x0, x21, #0x40
+   509f0:	b9400014 	ldr	w20, [x0]
+   509f4:	910262a0 	add	x0, x21, #0x98
+   509f8:	39400000 	ldrb	w0, [x0]
+   509fc:	72001c13 	ands	w19, w0, #0xff
+   50a00:	7a420a84 	ccmp	w20, #0x2, #0x4, eq  // eq = none
+   50a04:	540088ad 	b.le	51b18 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1180>
+   50a08:	f9404be0 	ldr	x0, [sp, #144]
+   50a0c:	9103a3e2 	add	x2, sp, #0xe8
+   50a10:	f90053e2 	str	x2, [sp, #160]
+   50a14:	aa0203e8 	mov	x8, x2
+   50a18:	f9400001 	ldr	x1, [x0]
+   50a1c:	f9403421 	ldr	x1, [x1, #104]
+   50a20:	d63f0020 	blr	x1
+   50a24:	f9407ff4 	ldr	x20, [sp, #248]
+   50a28:	b4000e34 	cbz	x20, 50bec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x254>
+   50a2c:	910a83fa 	add	x26, sp, #0x2a0
+   50a30:	910603e0 	add	x0, sp, #0x180
+   50a34:	9101835b 	add	x27, x26, #0x60
+   50a38:	f9004fe0 	str	x0, [sp, #152]
+   50a3c:	910683e0 	add	x0, sp, #0x1a0
+   50a40:	f90037e0 	str	x0, [sp, #104]
+   50a44:	d503201f 	nop
+   50a48:	f946df00 	ldr	x0, [x24, #3512]
+   50a4c:	08dffc01 	ldarb	w1, [x0]
+   50a50:	36003c81 	tbz	w1, #0, 511e0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x848>
+   50a54:	f946bee0 	ldr	x0, [x23, #3448]
+   50a58:	f0000021 	adrp	x1, 57000 <_fini+0xdd4>
+   50a5c:	91156021 	add	x1, x1, #0x558
+   50a60:	f940a415 	ldr	x21, [x0, #328]
+   50a64:	910102a0 	add	x0, x21, #0x40
+   50a68:	b9400019 	ldr	w25, [x0]
+   50a6c:	910262a0 	add	x0, x21, #0x98
+   50a70:	39400016 	ldrb	w22, [x0]
+   50a74:	72001ed6 	ands	w22, w22, #0xff
+   50a78:	7a420b24 	ccmp	w25, #0x2, #0x4, eq  // eq = none
+   50a7c:	540008ac 	b.gt	50b90 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1f8>
+   50a80:	f94037e2 	ldr	x2, [sp, #104]
+   50a84:	d2801f40 	mov	x0, #0xfa                  	// #250
+   50a88:	90000133 	adrp	x19, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   50a8c:	a918ffe2 	stp	x2, xzr, [sp, #392]
+   50a90:	910a83ec 	add	x12, sp, #0x2a0
+   50a94:	f900cfe0 	str	x0, [sp, #408]
+   50a98:	aa1a03e4 	mov	x4, x26
+   50a9c:	f9452e66 	ldr	x6, [x19, #2648]
+   50aa0:	d2800005 	mov	x5, #0x0                   	// #0
+   50aa4:	a940a68a 	ldp	x10, x9, [x20, #8]
+   50aa8:	910040c6 	add	x6, x6, #0x10
+   50aac:	a9429e88 	ldp	x8, x7, [x20, #40]
+   50ab0:	a900258a 	stp	x10, x9, [x12]
+   50ab4:	d2801ba3 	mov	x3, #0xdd                  	// #221
+   50ab8:	f9404fe0 	ldr	x0, [sp, #152]
+   50abc:	a9011d88 	stp	x8, x7, [x12, #16]
+   50ac0:	d28000e2 	mov	x2, #0x7                   	// #7
+   50ac4:	f900c3e6 	str	x6, [sp, #384]
+   50ac8:	97ff5d8a 	bl	280f0 <_ZN3fmt2v86detail10vformat_toIcEEvRNS1_6bufferIT_EENS0_17basic_string_viewIS4_EENS0_17basic_format_argsINS0_20basic_format_contextINSt11conditionalIXsrSt7is_sameINS0_13type_identityIS4_E4typeEcE5valueENS0_8appenderESt20back_insert_iteratorINS3_ISF_EEEE4typeESF_EEEENS1_10locale_refE@plt>
+   50acc:	a94096a6 	ldp	x6, x5, [x21, #8]
+   50ad0:	d53bd05c 	mrs	x28, tpidr_el0
+   50ad4:	f940c7e0 	ldr	x0, [sp, #392]
+   50ad8:	f9003be0 	str	x0, [sp, #112]
+   50adc:	f940cbe0 	ldr	x0, [sp, #400]
+   50ae0:	f9003fe0 	str	x0, [sp, #120]
+   50ae4:	a9081be5 	stp	x5, x6, [sp, #128]
+   50ae8:	97ff59c6 	bl	27200 <_ZNSt6chrono3_V212system_clock3nowEv@plt>
+   50aec:	aa0003e3 	mov	x3, x0
+   50af0:	b0000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   50af4:	f943fc01 	ldr	x1, [x0, #2040]
+   50af8:	911fe000 	add	x0, x0, #0x7f8
+   50afc:	d63f0020 	blr	x1
+   50b00:	52800044 	mov	w4, #0x2                   	// #2
+   50b04:	f8606b82 	ldr	x2, [x28, x0]
+   50b08:	b90133e4 	str	w4, [sp, #304]
+   50b0c:	a9481be5 	ldp	x5, x6, [sp, #128]
+   50b10:	a91217e6 	stp	x6, x5, [sp, #288]
+   50b14:	f9009fe3 	str	x3, [sp, #312]
+   50b18:	8b000386 	add	x6, x28, x0
+   50b1c:	360048c2 	tbz	w2, #0, 51434 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xa9c>
+   50b20:	b0000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   50b24:	f9440401 	ldr	x1, [x0, #2056]
+   50b28:	91202000 	add	x0, x0, #0x808
+   50b2c:	d63f0020 	blr	x1
+   50b30:	f8606b82 	ldr	x2, [x28, x0]
+   50b34:	a9147fe2 	stp	x2, xzr, [sp, #320]
+   50b38:	71000b3f 	cmp	w25, #0x2
+   50b3c:	f9403be0 	ldr	x0, [sp, #112]
+   50b40:	a91683ff 	stp	xzr, x0, [sp, #360]
+   50b44:	f9403fe0 	ldr	x0, [sp, #120]
+   50b48:	a9157fff 	stp	xzr, xzr, [sp, #336]
+   50b4c:	b90163ff 	str	wzr, [sp, #352]
+   50b50:	f900bfe0 	str	x0, [sp, #376]
+   50b54:	540000cc 	b.gt	50b6c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1d4>
+   50b58:	f94002a2 	ldr	x2, [x21]
+   50b5c:	910483e1 	add	x1, sp, #0x120
+   50b60:	aa1503e0 	mov	x0, x21
+   50b64:	f9400c42 	ldr	x2, [x2, #24]
+   50b68:	d63f0040 	blr	x2
+   50b6c:	350047f6 	cbnz	w22, 51468 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xad0>
+   50b70:	f9452e73 	ldr	x19, [x19, #2648]
+   50b74:	f94037e1 	ldr	x1, [sp, #104]
+   50b78:	91004273 	add	x19, x19, #0x10
+   50b7c:	f940c7e0 	ldr	x0, [sp, #392]
+   50b80:	f900c3f3 	str	x19, [sp, #384]
+   50b84:	eb01001f 	cmp	x0, x1
+   50b88:	54000040 	b.eq	50b90 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1f8>  // b.none
+   50b8c:	97ff5b65 	bl	27920 <_ZdlPv@plt>
+   50b90:	f9400294 	ldr	x20, [x20]
+   50b94:	b5fff5b4 	cbnz	x20, 50a48 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xb0>
+   50b98:	f9407ff3 	ldr	x19, [sp, #248]
+   50b9c:	b4000293 	cbz	x19, 50bec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x254>
+   50ba0:	f9401660 	ldr	x0, [x19, #40]
+   50ba4:	9100e261 	add	x1, x19, #0x38
+   50ba8:	f9400274 	ldr	x20, [x19]
+   50bac:	eb01001f 	cmp	x0, x1
+   50bb0:	54000040 	b.eq	50bb8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x220>  // b.none
+   50bb4:	97ff5b5b 	bl	27920 <_ZdlPv@plt>
+   50bb8:	f9400660 	ldr	x0, [x19, #8]
+   50bbc:	91006261 	add	x1, x19, #0x18
+   50bc0:	eb01001f 	cmp	x0, x1
+   50bc4:	540000e0 	b.eq	50be0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x248>  // b.none
+   50bc8:	97ff5b56 	bl	27920 <_ZdlPv@plt>
+   50bcc:	aa1303e0 	mov	x0, x19
+   50bd0:	97ff5b54 	bl	27920 <_ZdlPv@plt>
+   50bd4:	b40000d4 	cbz	x20, 50bec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x254>
+   50bd8:	aa1403f3 	mov	x19, x20
+   50bdc:	17fffff1 	b	50ba0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x208>
+   50be0:	aa1303e0 	mov	x0, x19
+   50be4:	97ff5b4f 	bl	27920 <_ZdlPv@plt>
+   50be8:	b5ffff94 	cbnz	x20, 50bd8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x240>
+   50bec:	a94e8be0 	ldp	x0, x2, [sp, #232]
+   50bf0:	52800001 	mov	w1, #0x0                   	// #0
+   50bf4:	d37df042 	lsl	x2, x2, #3
+   50bf8:	97ff5a8e 	bl	27630 <memset@plt>
+   50bfc:	f94053e1 	ldr	x1, [sp, #160]
+   50c00:	a90fffff 	stp	xzr, xzr, [sp, #248]
+   50c04:	f94077e0 	ldr	x0, [sp, #232]
+   50c08:	9100c021 	add	x1, x1, #0x30
+   50c0c:	eb01001f 	cmp	x0, x1
+   50c10:	54000040 	b.eq	50c18 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x280>  // b.none
+   50c14:	97ff5b43 	bl	27920 <_ZdlPv@plt>
+   50c18:	f946df00 	ldr	x0, [x24, #3512]
+   50c1c:	08dffc01 	ldarb	w1, [x0]
+   50c20:	3600a8c1 	tbz	w1, #0, 52138 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x17a0>
+   50c24:	f946bee0 	ldr	x0, [x23, #3448]
+   50c28:	f0000021 	adrp	x1, 57000 <_fini+0xdd4>
+   50c2c:	91158021 	add	x1, x1, #0x560
+   50c30:	f940a416 	ldr	x22, [x0, #328]
+   50c34:	910102c0 	add	x0, x22, #0x40
+   50c38:	b9400019 	ldr	w25, [x0]
+   50c3c:	910262c0 	add	x0, x22, #0x98
+   50c40:	3940001a 	ldrb	w26, [x0]
+   50c44:	72001f5a 	ands	w26, w26, #0xff
+   50c48:	7a420b24 	ccmp	w25, #0x2, #0x4, eq  // eq = none
+   50c4c:	54008d2d 	b.le	51df0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1458>
+   50c50:	f946df00 	ldr	x0, [x24, #3512]
+   50c54:	08dffc01 	ldarb	w1, [x0]
+   50c58:	36009541 	tbz	w1, #0, 51f00 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1568>
+   50c5c:	f946bee0 	ldr	x0, [x23, #3448]
+   50c60:	f0000021 	adrp	x1, 57000 <_fini+0xdd4>
+   50c64:	9115e021 	add	x1, x1, #0x578
+   50c68:	f940a416 	ldr	x22, [x0, #328]
+   50c6c:	910102c0 	add	x0, x22, #0x40
+   50c70:	b9400019 	ldr	w25, [x0]
+   50c74:	910262c0 	add	x0, x22, #0x98
+   50c78:	3940001a 	ldrb	w26, [x0]
+   50c7c:	72001f5a 	ands	w26, w26, #0xff
+   50c80:	7a420b24 	ccmp	w25, #0x2, #0x4, eq  // eq = none
+   50c84:	5400814d 	b.le	51cac <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1314>
+   50c88:	f946df00 	ldr	x0, [x24, #3512]
+   50c8c:	08dffc01 	ldarb	w1, [x0]
+   50c90:	36008961 	tbz	w1, #0, 51dbc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1424>
+   50c94:	f946bee0 	ldr	x0, [x23, #3448]
+   50c98:	f940a416 	ldr	x22, [x0, #328]
+   50c9c:	910102c0 	add	x0, x22, #0x40
+   50ca0:	b9400014 	ldr	w20, [x0]
+   50ca4:	910262c0 	add	x0, x22, #0x98
+   50ca8:	39400000 	ldrb	w0, [x0]
+   50cac:	72001c13 	ands	w19, w0, #0xff
+   50cb0:	7a420a84 	ccmp	w20, #0x2, #0x4, eq  // eq = none
+   50cb4:	5400940d 	b.le	51f34 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x159c>
+   50cb8:	f9404be0 	ldr	x0, [sp, #144]
+   50cbc:	f940b014 	ldr	x20, [x0, #352]
+   50cc0:	b4000b94 	cbz	x20, 50e30 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x498>
+   50cc4:	910a83fa 	add	x26, sp, #0x2a0
+   50cc8:	910603e0 	add	x0, sp, #0x180
+   50ccc:	9101835b 	add	x27, x26, #0x60
+   50cd0:	f9004fe0 	str	x0, [sp, #152]
+   50cd4:	910683e0 	add	x0, sp, #0x1a0
+   50cd8:	f90037e0 	str	x0, [sp, #104]
+   50cdc:	d503201f 	nop
+   50ce0:	f946df00 	ldr	x0, [x24, #3512]
+   50ce4:	08dffc01 	ldarb	w1, [x0]
+   50ce8:	36002961 	tbz	w1, #0, 51214 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x87c>
+   50cec:	f946bee0 	ldr	x0, [x23, #3448]
+   50cf0:	f0000021 	adrp	x1, 57000 <_fini+0xdd4>
+   50cf4:	91156021 	add	x1, x1, #0x558
+   50cf8:	f940a415 	ldr	x21, [x0, #328]
+   50cfc:	910102a0 	add	x0, x21, #0x40
+   50d00:	b9400019 	ldr	w25, [x0]
+   50d04:	910262a0 	add	x0, x21, #0x98
+   50d08:	39400016 	ldrb	w22, [x0]
+   50d0c:	72001ed6 	ands	w22, w22, #0xff
+   50d10:	7a420b24 	ccmp	w25, #0x2, #0x4, eq  // eq = none
+   50d14:	540008ac 	b.gt	50e28 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x490>
+   50d18:	90000133 	adrp	x19, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   50d1c:	d2801f40 	mov	x0, #0xfa                  	// #250
+   50d20:	f94037e2 	ldr	x2, [sp, #104]
+   50d24:	a918ffe2 	stp	x2, xzr, [sp, #392]
+   50d28:	aa1a03e4 	mov	x4, x26
+   50d2c:	f9452e66 	ldr	x6, [x19, #2648]
+   50d30:	f900cfe0 	str	x0, [sp, #408]
+   50d34:	f9404fe0 	ldr	x0, [sp, #152]
+   50d38:	910040c6 	add	x6, x6, #0x10
+   50d3c:	a940a68a 	ldp	x10, x9, [x20, #8]
+   50d40:	d2800005 	mov	x5, #0x0                   	// #0
+   50d44:	a9429e88 	ldp	x8, x7, [x20, #40]
+   50d48:	f900c3e6 	str	x6, [sp, #384]
+   50d4c:	910a83e6 	add	x6, sp, #0x2a0
+   50d50:	d2801ba3 	mov	x3, #0xdd                  	// #221
+   50d54:	d28000e2 	mov	x2, #0x7                   	// #7
+   50d58:	a90024ca 	stp	x10, x9, [x6]
+   50d5c:	a9011cc8 	stp	x8, x7, [x6, #16]
+   50d60:	97ff5ce4 	bl	280f0 <_ZN3fmt2v86detail10vformat_toIcEEvRNS1_6bufferIT_EENS0_17basic_string_viewIS4_EENS0_17basic_format_argsINS0_20basic_format_contextINSt11conditionalIXsrSt7is_sameINS0_13type_identityIS4_E4typeEcE5valueENS0_8appenderESt20back_insert_iteratorINS3_ISF_EEEE4typeESF_EEEENS1_10locale_refE@plt>
+   50d64:	a94096a6 	ldp	x6, x5, [x21, #8]
+   50d68:	d53bd05c 	mrs	x28, tpidr_el0
+   50d6c:	f940c7e0 	ldr	x0, [sp, #392]
+   50d70:	f9003be0 	str	x0, [sp, #112]
+   50d74:	f940cbe0 	ldr	x0, [sp, #400]
+   50d78:	f9003fe0 	str	x0, [sp, #120]
+   50d7c:	a9081be5 	stp	x5, x6, [sp, #128]
+   50d80:	97ff5920 	bl	27200 <_ZNSt6chrono3_V212system_clock3nowEv@plt>
+   50d84:	aa0003e3 	mov	x3, x0
+   50d88:	b0000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   50d8c:	f943fc01 	ldr	x1, [x0, #2040]
+   50d90:	911fe000 	add	x0, x0, #0x7f8
+   50d94:	d63f0020 	blr	x1
+   50d98:	52800044 	mov	w4, #0x2                   	// #2
+   50d9c:	f8606b82 	ldr	x2, [x28, x0]
+   50da0:	b90133e4 	str	w4, [sp, #304]
+   50da4:	a9481be5 	ldp	x5, x6, [sp, #128]
+   50da8:	a91217e6 	stp	x6, x5, [sp, #288]
+   50dac:	f9009fe3 	str	x3, [sp, #312]
+   50db0:	8b000386 	add	x6, x28, x0
+   50db4:	36006822 	tbz	w2, #0, 51ab8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1120>
+   50db8:	b0000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   50dbc:	f9440401 	ldr	x1, [x0, #2056]
+   50dc0:	91202000 	add	x0, x0, #0x808
+   50dc4:	d63f0020 	blr	x1
+   50dc8:	f8606b82 	ldr	x2, [x28, x0]
+   50dcc:	a9147fe2 	stp	x2, xzr, [sp, #320]
+   50dd0:	71000b3f 	cmp	w25, #0x2
+   50dd4:	f9403be0 	ldr	x0, [sp, #112]
+   50dd8:	a91683ff 	stp	xzr, x0, [sp, #360]
+   50ddc:	f9403fe0 	ldr	x0, [sp, #120]
+   50de0:	a9157fff 	stp	xzr, xzr, [sp, #336]
+   50de4:	b90163ff 	str	wzr, [sp, #352]
+   50de8:	f900bfe0 	str	x0, [sp, #376]
+   50dec:	540000cc 	b.gt	50e04 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x46c>
+   50df0:	f94002a2 	ldr	x2, [x21]
+   50df4:	910483e1 	add	x1, sp, #0x120
+   50df8:	aa1503e0 	mov	x0, x21
+   50dfc:	f9400c42 	ldr	x2, [x2, #24]
+   50e00:	d63f0040 	blr	x2
+   50e04:	35004cb6 	cbnz	w22, 51798 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xe00>
+   50e08:	f9452e73 	ldr	x19, [x19, #2648]
+   50e0c:	f94037e1 	ldr	x1, [sp, #104]
+   50e10:	91004273 	add	x19, x19, #0x10
+   50e14:	f940c7e0 	ldr	x0, [sp, #392]
+   50e18:	f900c3f3 	str	x19, [sp, #384]
+   50e1c:	eb01001f 	cmp	x0, x1
+   50e20:	54000040 	b.eq	50e28 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x490>  // b.none
+   50e24:	97ff5abf 	bl	27920 <_ZdlPv@plt>
+   50e28:	f9400294 	ldr	x20, [x20]
+   50e2c:	b5fff5b4 	cbnz	x20, 50ce0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x348>
+   50e30:	f9404bf3 	ldr	x19, [sp, #144]
+   50e34:	52800001 	mov	w1, #0x0                   	// #0
+   50e38:	aa1303e0 	mov	x0, x19
+   50e3c:	f9400262 	ldr	x2, [x19]
+   50e40:	f9402842 	ldr	x2, [x2, #80]
+   50e44:	d63f0040 	blr	x2
+   50e48:	aa1303e0 	mov	x0, x19
+   50e4c:	97ff5b2d 	bl	27b00 <_ZN6icraft3xrt15ZG330DeviceNode16initAfterRegionsEv@plt>
+   50e50:	d2800500 	mov	x0, #0x28                  	// #40
+   50e54:	97ff5ad7 	bl	279b0 <_Znwm@plt>
+   50e58:	aa0003f8 	mov	x24, x0
+   50e5c:	aa0003f5 	mov	x21, x0
+   50e60:	90000121 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   50e64:	91002000 	add	x0, x0, #0x8
+   50e68:	f90047e0 	str	x0, [sp, #136]
+   50e6c:	a9007f1f 	stp	xzr, xzr, [x24]
+   50e70:	f9467c21 	ldr	x1, [x1, #3320]
+   50e74:	a9817ebf 	stp	xzr, xzr, [x21, #16]!
+   50e78:	f9000abf 	str	xzr, [x21, #16]
+   50e7c:	91004021 	add	x1, x1, #0x10
+   50e80:	f9000301 	str	x1, [x24]
+   50e84:	885ffc01 	ldaxr	w1, [x0]
+   50e88:	11000421 	add	w1, w1, #0x1
+   50e8c:	8802fc01 	stlxr	w2, w1, [x0]
+   50e90:	35ffffa2 	cbnz	w2, 50e84 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x4ec>
+   50e94:	f9400b13 	ldr	x19, [x24, #16]
+   50e98:	f9401300 	ldr	x0, [x24, #32]
+   50e9c:	cb130000 	sub	x0, x0, x19
+   50ea0:	f100fc1f 	cmp	x0, #0x3f
+   50ea4:	54009649 	b.ls	5216c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x17d4>  // b.plast
+   50ea8:	d2800500 	mov	x0, #0x28                  	// #40
+   50eac:	97ff5ac1 	bl	279b0 <_Znwm@plt>
+   50eb0:	aa0003f9 	mov	x25, x0
+   50eb4:	aa0003f6 	mov	x22, x0
+   50eb8:	90000121 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   50ebc:	91002000 	add	x0, x0, #0x8
+   50ec0:	f9004fe0 	str	x0, [sp, #152]
+   50ec4:	a9007f3f 	stp	xzr, xzr, [x25]
+   50ec8:	f9473421 	ldr	x1, [x1, #3688]
+   50ecc:	a9817edf 	stp	xzr, xzr, [x22, #16]!
+   50ed0:	f9000adf 	str	xzr, [x22, #16]
+   50ed4:	91004021 	add	x1, x1, #0x10
+   50ed8:	f9000321 	str	x1, [x25]
+   50edc:	885ffc01 	ldaxr	w1, [x0]
+   50ee0:	11000421 	add	w1, w1, #0x1
+   50ee4:	8802fc01 	stlxr	w2, w1, [x0]
+   50ee8:	35ffffa2 	cbnz	w2, 50edc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x544>
+   50eec:	f9400b21 	ldr	x1, [x25, #16]
+   50ef0:	f9401320 	ldr	x0, [x25, #32]
+   50ef4:	cb010000 	sub	x0, x0, x1
+   50ef8:	f1007c1f 	cmp	x0, #0x1f
+   50efc:	54009a49 	b.ls	52244 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x18ac>  // b.plast
+   50f00:	d0000022 	adrp	x2, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   50f04:	913ac042 	add	x2, x2, #0xeb0
+   50f08:	f9404be0 	ldr	x0, [sp, #144]
+   50f0c:	d2800083 	mov	x3, #0x4                   	// #4
+   50f10:	910363e1 	add	x1, sp, #0xd8
+   50f14:	a90d8be3 	stp	x3, x2, [sp, #216]
+   50f18:	91004000 	add	x0, x0, #0x10
+   50f1c:	97ff59d5 	bl	27670 <_ZNSt8__detail9_Map_baseISt17basic_string_viewIcSt11char_traitsIcEESt4pairIKS4_N6icraft3xrt9MemRegionEESaISA_ENS_10_Select1stESt8equal_toIS4_ESt4hashIS4_ENS_18_Mod_range_hashingENS_20_Default_ranged_hashENS_20_Prime_rehash_policyENS_17_Hashtable_traitsILb1ELb0ELb1EEELb1EEixEOS4_@plt>
+   50f20:	f94053e8 	ldr	x8, [sp, #160]
+   50f24:	97ff5b2b 	bl	27bd0 <_ZNK6icraft3xrt9MemRegion10memManagerEv@plt>
+   50f28:	f94077e0 	ldr	x0, [sp, #232]
+   50f2c:	f90093e0 	str	x0, [sp, #288]
+   50f30:	3943c3e1 	ldrb	w1, [sp, #240]
+   50f34:	3904a3e1 	strb	w1, [sp, #296]
+   50f38:	f100001f 	cmp	x0, #0x0
+   50f3c:	7a401820 	ccmp	w1, #0x0, #0x0, ne  // ne = any
+   50f40:	54009a20 	b.eq	52284 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x18ec>  // b.none
+   50f44:	910483f3 	add	x19, sp, #0x120
+   50f48:	aa1303e0 	mov	x0, x19
+   50f4c:	97ff5a85 	bl	27960 <_ZNK6icraft3xir9ObjectRef7definedEv@plt>
+   50f50:	72001c1f 	tst	w0, #0xff
+   50f54:	54008be1 	b.ne	520d0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1738>  // b.any
+   50f58:	f94093e1 	ldr	x1, [sp, #288]
+   50f5c:	f90067ff 	str	xzr, [sp, #200]
+   50f60:	390343ff 	strb	wzr, [sp, #208]
+   50f64:	b4000061 	cbz	x1, 50f70 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x5d8>
+   50f68:	3944a3e0 	ldrb	w0, [sp, #296]
+   50f6c:	34005d00 	cbz	w0, 51b0c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1174>
+   50f70:	f94077e0 	ldr	x0, [sp, #232]
+   50f74:	b4000060 	cbz	x0, 50f80 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x5e8>
+   50f78:	3943c3e1 	ldrb	w1, [sp, #240]
+   50f7c:	34005c41 	cbz	w1, 51b04 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x116c>
+   50f80:	910323fc 	add	x28, sp, #0xc8
+   50f84:	aa1c03e0 	mov	x0, x28
+   50f88:	97ff5c62 	bl	28110 <_ZNK6icraft3xir9ObjectRef3getEv@plt>
+   50f8c:	aa0003f7 	mov	x23, x0
+   50f90:	91004261 	add	x1, x19, #0x10
+   50f94:	f90043e1 	str	x1, [sp, #128]
+   50f98:	f8430ef4 	ldr	x20, [x23, #48]!
+   50f9c:	eb17029f 	cmp	x20, x23
+   50fa0:	540003c1 	b.ne	51018 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x680>  // b.any
+   50fa4:	140000b5 	b	51278 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x8e0>
+   50fa8:	f9400840 	ldr	x0, [x2, #16]
+   50fac:	f9009be0 	str	x0, [sp, #304]
+   50fb0:	f94006b3 	ldr	x19, [x21, #8]
+   50fb4:	f9400aa0 	ldr	x0, [x21, #16]
+   50fb8:	eb00027f 	cmp	x19, x0
+   50fbc:	54000540 	b.eq	51064 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x6cc>  // b.none
+   50fc0:	f94093e0 	ldr	x0, [sp, #288]
+   50fc4:	3944a3e1 	ldrb	w1, [sp, #296]
+   50fc8:	f9000260 	str	x0, [x19]
+   50fcc:	f100001f 	cmp	x0, #0x0
+   50fd0:	39002261 	strb	w1, [x19, #8]
+   50fd4:	7a401820 	ccmp	w1, #0x0, #0x0, ne  // ne = any
+   50fd8:	54001fc0 	b.eq	513d0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xa38>  // b.none
+   50fdc:	a94082c1 	ldp	x1, x0, [x22, #8]
+   50fe0:	91004273 	add	x19, x19, #0x10
+   50fe4:	f90006b3 	str	x19, [x21, #8]
+   50fe8:	eb00003f 	cmp	x1, x0
+   50fec:	54000f20 	b.eq	511d0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x838>  // b.none
+   50ff0:	f9409be0 	ldr	x0, [sp, #304]
+   50ff4:	f8008420 	str	x0, [x1], #8
+   50ff8:	f90006c1 	str	x1, [x22, #8]
+   50ffc:	f94093e0 	ldr	x0, [sp, #288]
+   51000:	b4000060 	cbz	x0, 5100c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x674>
+   51004:	3944a3e1 	ldrb	w1, [sp, #296]
+   51008:	34001201 	cbz	w1, 51248 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x8b0>
+   5100c:	f9400294 	ldr	x20, [x20]
+   51010:	eb1402ff 	cmp	x23, x20
+   51014:	54001320 	b.eq	51278 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x8e0>  // b.none
+   51018:	f9400a80 	ldr	x0, [x20, #16]
+   5101c:	91004282 	add	x2, x20, #0x10
+   51020:	39406281 	ldrb	w1, [x20, #24]
+   51024:	f90093e0 	str	x0, [sp, #288]
+   51028:	f100001f 	cmp	x0, #0x0
+   5102c:	3904a3e1 	strb	w1, [sp, #296]
+   51030:	7a401820 	ccmp	w1, #0x0, #0x0, ne  // ne = any
+   51034:	54fffba1 	b.ne	50fa8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x610>  // b.any
+   51038:	91002000 	add	x0, x0, #0x8
+   5103c:	885ffc01 	ldaxr	w1, [x0]
+   51040:	11000421 	add	w1, w1, #0x1
+   51044:	8803fc01 	stlxr	w3, w1, [x0]
+   51048:	35ffffa3 	cbnz	w3, 5103c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x6a4>
+   5104c:	f9400840 	ldr	x0, [x2, #16]
+   51050:	f9009be0 	str	x0, [sp, #304]
+   51054:	f94006b3 	ldr	x19, [x21, #8]
+   51058:	f9400aa0 	ldr	x0, [x21, #16]
+   5105c:	eb00027f 	cmp	x19, x0
+   51060:	54fffb01 	b.ne	50fc0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x628>  // b.any
+   51064:	f9400b1a 	ldr	x26, [x24, #16]
+   51068:	92ff0000 	mov	x0, #0x7ffffffffffffff     	// #576460752303423487
+   5106c:	cb1a027b 	sub	x27, x19, x26
+   51070:	eb9b101f 	cmp	x0, x27, asr #4
+   51074:	9344ff60 	asr	x0, x27, #4
+   51078:	5400dba0 	b.eq	52bec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2254>  // b.none
+   5107c:	b4008240 	cbz	x0, 520c4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x172c>
+   51080:	b27cebe1 	mov	x1, #0x7ffffffffffffff0    	// #9223372036854775792
+   51084:	f90037e1 	str	x1, [sp, #104]
+   51088:	eb00041f 	cmp	x0, x0, lsl #1
+   5108c:	d37ff800 	lsl	x0, x0, #1
+   51090:	54001ae9 	b.ls	513ec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xa54>  // b.plast
+   51094:	f94037e0 	ldr	x0, [sp, #104]
+   51098:	97ff5a46 	bl	279b0 <_Znwm@plt>
+   5109c:	aa0003e5 	mov	x5, x0
+   510a0:	91004002 	add	x2, x0, #0x10
+   510a4:	f94037e0 	ldr	x0, [sp, #104]
+   510a8:	8b1b00a3 	add	x3, x5, x27
+   510ac:	3944a3e1 	ldrb	w1, [sp, #296]
+   510b0:	8b0000a0 	add	x0, x5, x0
+   510b4:	f90037e0 	str	x0, [sp, #104]
+   510b8:	f94093e0 	ldr	x0, [sp, #288]
+   510bc:	f83b68a0 	str	x0, [x5, x27]
+   510c0:	39002061 	strb	w1, [x3, #8]
+   510c4:	f100001f 	cmp	x0, #0x0
+   510c8:	7a401820 	ccmp	w1, #0x0, #0x0, ne  // ne = any
+   510cc:	54001a80 	b.eq	5141c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xa84>  // b.none
+   510d0:	eb1a027f 	cmp	x19, x26
+   510d4:	54000660 	b.eq	511a0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x808>  // b.none
+   510d8:	aa0503e3 	mov	x3, x5
+   510dc:	aa1a03e1 	mov	x1, x26
+   510e0:	14000005 	b	510f4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x75c>
+   510e4:	91004021 	add	x1, x1, #0x10
+   510e8:	91004063 	add	x3, x3, #0x10
+   510ec:	eb01027f 	cmp	x19, x1
+   510f0:	54000220 	b.eq	51134 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x79c>  // b.none
+   510f4:	f9400022 	ldr	x2, [x1]
+   510f8:	39402024 	ldrb	w4, [x1, #8]
+   510fc:	f9000062 	str	x2, [x3]
+   51100:	f100005f 	cmp	x2, #0x0
+   51104:	39002064 	strb	w4, [x3, #8]
+   51108:	7a401880 	ccmp	w4, #0x0, #0x0, ne  // ne = any
+   5110c:	54fffec1 	b.ne	510e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x74c>  // b.any
+   51110:	91002042 	add	x2, x2, #0x8
+   51114:	885ffc40 	ldaxr	w0, [x2]
+   51118:	11000400 	add	w0, w0, #0x1
+   5111c:	8804fc40 	stlxr	w4, w0, [x2]
+   51120:	35ffffa4 	cbnz	w4, 51114 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x77c>
+   51124:	91004021 	add	x1, x1, #0x10
+   51128:	91004063 	add	x3, x3, #0x10
+   5112c:	eb01027f 	cmp	x19, x1
+   51130:	54fffe21 	b.ne	510f4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x75c>  // b.any
+   51134:	cb1a0262 	sub	x2, x19, x26
+   51138:	aa1a03fb 	mov	x27, x26
+   5113c:	91004042 	add	x2, x2, #0x10
+   51140:	8b0200a2 	add	x2, x5, x2
+   51144:	14000004 	b	51154 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x7bc>
+   51148:	9100437b 	add	x27, x27, #0x10
+   5114c:	eb1b027f 	cmp	x19, x27
+   51150:	54000280 	b.eq	511a0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x808>  // b.none
+   51154:	f9400360 	ldr	x0, [x27]
+   51158:	b4ffff80 	cbz	x0, 51148 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x7b0>
+   5115c:	39402361 	ldrb	w1, [x27, #8]
+   51160:	35ffff41 	cbnz	w1, 51148 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x7b0>
+   51164:	91002001 	add	x1, x0, #0x8
+   51168:	885ffc23 	ldaxr	w3, [x1]
+   5116c:	51000463 	sub	w3, w3, #0x1
+   51170:	8804fc23 	stlxr	w4, w3, [x1]
+   51174:	35ffffa4 	cbnz	w4, 51168 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x7d0>
+   51178:	35fffe83 	cbnz	w3, 51148 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x7b0>
+   5117c:	f9400001 	ldr	x1, [x0]
+   51180:	a90717e2 	stp	x2, x5, [sp, #112]
+   51184:	9100437b 	add	x27, x27, #0x10
+   51188:	f9400821 	ldr	x1, [x1, #16]
+   5118c:	d63f0020 	blr	x1
+   51190:	eb1b027f 	cmp	x19, x27
+   51194:	a94717e2 	ldp	x2, x5, [sp, #112]
+   51198:	54fffde1 	b.ne	51154 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x7bc>  // b.any
+   5119c:	d503201f 	nop
+   511a0:	b40000ba 	cbz	x26, 511b4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x81c>
+   511a4:	aa1a03e0 	mov	x0, x26
+   511a8:	a90717e2 	stp	x2, x5, [sp, #112]
+   511ac:	97ff59dd 	bl	27920 <_ZdlPv@plt>
+   511b0:	a94717e2 	ldp	x2, x5, [sp, #112]
+   511b4:	a9000aa5 	stp	x5, x2, [x21]
+   511b8:	f94037e0 	ldr	x0, [sp, #104]
+   511bc:	f9000aa0 	str	x0, [x21, #16]
+   511c0:	a94082c1 	ldp	x1, x0, [x22, #8]
+   511c4:	eb00003f 	cmp	x1, x0
+   511c8:	54fff141 	b.ne	50ff0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x658>  // b.any
+   511cc:	d503201f 	nop
+   511d0:	f94043e2 	ldr	x2, [sp, #128]
+   511d4:	aa1603e0 	mov	x0, x22
+   511d8:	97ff5b5a 	bl	27f40 <_ZNSt6vectorImSaImEE17_M_realloc_insertIJRKmEEEvN9__gnu_cxx17__normal_iteratorIPmS1_EEDpOT_@plt>
+   511dc:	17ffff88 	b	50ffc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x664>
+   511e0:	97ff5bb8 	bl	280c0 <__cxa_guard_acquire@plt>
+   511e4:	34ffc380 	cbz	w0, 50a54 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xbc>
+   511e8:	f946bee0 	ldr	x0, [x23, #3448]
+   511ec:	97ff5b69 	bl	27f90 <_ZN6spdlog7details8registryC1Ev@plt>
+   511f0:	f0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   511f4:	90000122 	adrp	x2, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   511f8:	f946bee1 	ldr	x1, [x23, #3448]
+   511fc:	91206042 	add	x2, x2, #0x818
+   51200:	f9462000 	ldr	x0, [x0, #3136]
+   51204:	97ff5a4b 	bl	27b30 <__cxa_atexit@plt>
+   51208:	f946df00 	ldr	x0, [x24, #3512]
+   5120c:	97ff5959 	bl	27770 <__cxa_guard_release@plt>
+   51210:	17fffe11 	b	50a54 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xbc>
+   51214:	97ff5bab 	bl	280c0 <__cxa_guard_acquire@plt>
+   51218:	34ffd6a0 	cbz	w0, 50cec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x354>
+   5121c:	f946bee0 	ldr	x0, [x23, #3448]
+   51220:	97ff5b5c 	bl	27f90 <_ZN6spdlog7details8registryC1Ev@plt>
+   51224:	f0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   51228:	90000122 	adrp	x2, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   5122c:	f946bee1 	ldr	x1, [x23, #3448]
+   51230:	91206042 	add	x2, x2, #0x818
+   51234:	f9462000 	ldr	x0, [x0, #3136]
+   51238:	97ff5a3e 	bl	27b30 <__cxa_atexit@plt>
+   5123c:	f946df00 	ldr	x0, [x24, #3512]
+   51240:	97ff594c 	bl	27770 <__cxa_guard_release@plt>
+   51244:	17fffeaa 	b	50cec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x354>
+   51248:	91002001 	add	x1, x0, #0x8
+   5124c:	885ffc22 	ldaxr	w2, [x1]
+   51250:	51000442 	sub	w2, w2, #0x1
+   51254:	8803fc22 	stlxr	w3, w2, [x1]
+   51258:	35ffffa3 	cbnz	w3, 5124c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x8b4>
+   5125c:	35ffed82 	cbnz	w2, 5100c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x674>
+   51260:	f9400001 	ldr	x1, [x0]
+   51264:	f9400821 	ldr	x1, [x1, #16]
+   51268:	d63f0020 	blr	x1
+   5126c:	f9400294 	ldr	x20, [x20]
+   51270:	eb1402ff 	cmp	x23, x20
+   51274:	54ffed21 	b.ne	51018 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x680>  // b.any
+   51278:	aa1c03e0 	mov	x0, x28
+   5127c:	97ff58b1 	bl	27540 <_ZNK6icraft3xrt10MemManager16getMemRegionInfoB5cxx11Ev@plt>
+   51280:	910a83f4 	add	x20, sp, #0x2a0
+   51284:	aa0003f3 	mov	x19, x0
+   51288:	91004284 	add	x4, x20, #0x10
+   5128c:	d0000021 	adrp	x1, 57000 <_fini+0xdd4>
+   51290:	d0000022 	adrp	x2, 57000 <_fini+0xdd4>
+   51294:	aa1403e0 	mov	x0, x20
+   51298:	91168021 	add	x1, x1, #0x5a0
+   5129c:	9116a842 	add	x2, x2, #0x5aa
+   512a0:	52800003 	mov	w3, #0x0                   	// #0
+   512a4:	f90153e4 	str	x4, [sp, #672]
+   512a8:	97ff5872 	bl	27470 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag@plt>
+   512ac:	f94047e0 	ldr	x0, [sp, #136]
+   512b0:	f90163f8 	str	x24, [sp, #704]
+   512b4:	390b23ff 	strb	wzr, [sp, #712]
+   512b8:	885ffc01 	ldaxr	w1, [x0]
+   512bc:	11000421 	add	w1, w1, #0x1
+   512c0:	8802fc01 	stlxr	w2, w1, [x0]
+   512c4:	35ffffa2 	cbnz	w2, 512b8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x920>
+   512c8:	aa1303e0 	mov	x0, x19
+   512cc:	aa1403e1 	mov	x1, x20
+   512d0:	97ff59f0 	bl	27a90 <_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N6icraft3xir9ObjectRefEESt10_Select1stISB_ESt4lessIS5_ESaISB_EE16_M_insert_uniqueISB_EES6_ISt17_Rb_tree_iteratorISB_EbEOT_@plt>
+   512d4:	f94163e0 	ldr	x0, [sp, #704]
+   512d8:	b4000060 	cbz	x0, 512e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x94c>
+   512dc:	394b23e1 	ldrb	w1, [sp, #712]
+   512e0:	340040e1 	cbz	w1, 51afc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1164>
+   512e4:	f94153e0 	ldr	x0, [sp, #672]
+   512e8:	91004281 	add	x1, x20, #0x10
+   512ec:	eb01001f 	cmp	x0, x1
+   512f0:	54000040 	b.eq	512f8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x960>  // b.none
+   512f4:	97ff598b 	bl	27920 <_ZdlPv@plt>
+   512f8:	aa1c03e0 	mov	x0, x28
+   512fc:	97ff5891 	bl	27540 <_ZNK6icraft3xrt10MemManager16getMemRegionInfoB5cxx11Ev@plt>
+   51300:	91004284 	add	x4, x20, #0x10
+   51304:	aa0003f3 	mov	x19, x0
+   51308:	d0000021 	adrp	x1, 57000 <_fini+0xdd4>
+   5130c:	d0000022 	adrp	x2, 57000 <_fini+0xdd4>
+   51310:	9116c021 	add	x1, x1, #0x5b0
+   51314:	9116ec42 	add	x2, x2, #0x5bb
+   51318:	aa1403e0 	mov	x0, x20
+   5131c:	52800003 	mov	w3, #0x0                   	// #0
+   51320:	f90153e4 	str	x4, [sp, #672]
+   51324:	97ff5853 	bl	27470 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag@plt>
+   51328:	f9404fe0 	ldr	x0, [sp, #152]
+   5132c:	f90163f9 	str	x25, [sp, #704]
+   51330:	390b23ff 	strb	wzr, [sp, #712]
+   51334:	885ffc01 	ldaxr	w1, [x0]
+   51338:	11000421 	add	w1, w1, #0x1
+   5133c:	8802fc01 	stlxr	w2, w1, [x0]
+   51340:	35ffffa2 	cbnz	w2, 51334 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x99c>
+   51344:	aa1303e0 	mov	x0, x19
+   51348:	aa1403e1 	mov	x1, x20
+   5134c:	97ff59d1 	bl	27a90 <_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N6icraft3xir9ObjectRefEESt10_Select1stISB_ESt4lessIS5_ESaISB_EE16_M_insert_uniqueISB_EES6_ISt17_Rb_tree_iteratorISB_EbEOT_@plt>
+   51350:	f94163e0 	ldr	x0, [sp, #704]
+   51354:	b4000060 	cbz	x0, 51360 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x9c8>
+   51358:	394b23e1 	ldrb	w1, [sp, #712]
+   5135c:	34003cc1 	cbz	w1, 51af4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x115c>
+   51360:	f94153e0 	ldr	x0, [sp, #672]
+   51364:	91004294 	add	x20, x20, #0x10
+   51368:	eb14001f 	cmp	x0, x20
+   5136c:	54000040 	b.eq	51374 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x9dc>  // b.none
+   51370:	97ff596c 	bl	27920 <_ZdlPv@plt>
+   51374:	f94067e0 	ldr	x0, [sp, #200]
+   51378:	b4000060 	cbz	x0, 51384 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x9ec>
+   5137c:	394343e1 	ldrb	w1, [sp, #208]
+   51380:	34003b61 	cbz	w1, 51aec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1154>
+   51384:	aa1903e0 	mov	x0, x25
+   51388:	97ff58a6 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   5138c:	aa1803e0 	mov	x0, x24
+   51390:	97ff58a4 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   51394:	f0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   51398:	f9454c00 	ldr	x0, [x0, #2712]
+   5139c:	f94217e1 	ldr	x1, [sp, #1064]
+   513a0:	f9400002 	ldr	x2, [x0]
+   513a4:	eb020021 	subs	x1, x1, x2
+   513a8:	d2800002 	mov	x2, #0x0                   	// #0
+   513ac:	5400c341 	b.ne	52c14 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x227c>  // b.any
+   513b0:	a9407bfd 	ldp	x29, x30, [sp]
+   513b4:	a94153f3 	ldp	x19, x20, [sp, #16]
+   513b8:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   513bc:	a94363f7 	ldp	x23, x24, [sp, #48]
+   513c0:	a9446bf9 	ldp	x25, x26, [sp, #64]
+   513c4:	a94573fb 	ldp	x27, x28, [sp, #80]
+   513c8:	9110c3ff 	add	sp, sp, #0x430
+   513cc:	d65f03c0 	ret
+   513d0:	91002000 	add	x0, x0, #0x8
+   513d4:	885ffc01 	ldaxr	w1, [x0]
+   513d8:	11000421 	add	w1, w1, #0x1
+   513dc:	8802fc01 	stlxr	w2, w1, [x0]
+   513e0:	35ffffa2 	cbnz	w2, 513d4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xa3c>
+   513e4:	f94006b3 	ldr	x19, [x21, #8]
+   513e8:	17fffefd 	b	50fdc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x644>
+   513ec:	b500c060 	cbnz	x0, 52bf8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2260>
+   513f0:	d2800005 	mov	x5, #0x0                   	// #0
+   513f4:	8b1b00a3 	add	x3, x5, x27
+   513f8:	f94093e0 	ldr	x0, [sp, #288]
+   513fc:	f83b68a0 	str	x0, [x5, x27]
+   51400:	3944a3e1 	ldrb	w1, [sp, #296]
+   51404:	d2800202 	mov	x2, #0x10                  	// #16
+   51408:	39002061 	strb	w1, [x3, #8]
+   5140c:	f100001f 	cmp	x0, #0x0
+   51410:	f90037ff 	str	xzr, [sp, #104]
+   51414:	7a401820 	ccmp	w1, #0x0, #0x0, ne  // ne = any
+   51418:	54ffe5c1 	b.ne	510d0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x738>  // b.any
+   5141c:	91002000 	add	x0, x0, #0x8
+   51420:	885ffc01 	ldaxr	w1, [x0]
+   51424:	11000421 	add	w1, w1, #0x1
+   51428:	8803fc01 	stlxr	w3, w1, [x0]
+   5142c:	35ffffa3 	cbnz	w3, 51420 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xa88>
+   51430:	17ffff28 	b	510d0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x738>
+   51434:	d2801640 	mov	x0, #0xb2                  	// #178
+   51438:	f90043e6 	str	x6, [sp, #128]
+   5143c:	97ff5919 	bl	278a0 <syscall@plt>
+   51440:	aa0003e2 	mov	x2, x0
+   51444:	f94043e6 	ldr	x6, [sp, #128]
+   51448:	d2800023 	mov	x3, #0x1                   	// #1
+   5144c:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51450:	f9440401 	ldr	x1, [x0, #2056]
+   51454:	91202000 	add	x0, x0, #0x808
+   51458:	d63f0020 	blr	x1
+   5145c:	f8206b82 	str	x2, [x28, x0]
+   51460:	f90000c3 	str	x3, [x6]
+   51464:	17fffdb4 	b	50b34 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x19c>
+   51468:	f0000101 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   5146c:	9101a2a2 	add	x2, x21, #0x68
+   51470:	a9078be1 	stp	x1, x2, [sp, #120]
+   51474:	f9462c20 	ldr	x0, [x1, #3160]
+   51478:	b4000080 	cbz	x0, 51488 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xaf0>
+   5147c:	aa0203e0 	mov	x0, x2
+   51480:	97ff57c4 	bl	27390 <pthread_mutex_lock@plt>
+   51484:	3500bc60 	cbnz	w0, 52c10 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2278>
+   51488:	a95203e3 	ldp	x3, x0, [sp, #288]
+   5148c:	f9000740 	str	x0, [x26, #8]
+   51490:	f9452e60 	ldr	x0, [x19, #2648]
+   51494:	91020341 	add	x1, x26, #0x80
+   51498:	d2801f42 	mov	x2, #0xfa                  	// #250
+   5149c:	f90187e1 	str	x1, [sp, #776]
+   514a0:	91004000 	add	x0, x0, #0x10
+   514a4:	f90183e0 	str	x0, [sp, #768]
+   514a8:	f9018bff 	str	xzr, [sp, #784]
+   514ac:	aa0303f9 	mov	x25, x3
+   514b0:	f9018fe2 	str	x2, [sp, #792]
+   514b4:	a9531fe6 	ldp	x6, x7, [sp, #304]
+   514b8:	a95417e4 	ldp	x4, x5, [sp, #320]
+   514bc:	f94157fc 	ldr	x28, [sp, #680]
+   514c0:	a9011f46 	stp	x6, x7, [x26, #16]
+   514c4:	a9021744 	stp	x4, x5, [x26, #32]
+   514c8:	8b1c007c 	add	x28, x3, x28
+   514cc:	eb1c007f 	cmp	x3, x28
+   514d0:	a95507e0 	ldp	x0, x1, [sp, #336]
+   514d4:	f9000343 	str	x3, [x26]
+   514d8:	a9561fe6 	ldp	x6, x7, [sp, #352]
+   514dc:	a9030740 	stp	x0, x1, [x26, #48]
+   514e0:	a95717e4 	ldp	x4, x5, [sp, #368]
+   514e4:	a9041f46 	stp	x6, x7, [x26, #64]
+   514e8:	a9051744 	stp	x4, x5, [x26, #80]
+   514ec:	54000260 	b.eq	51538 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xba0>  // b.none
+   514f0:	cb030396 	sub	x22, x28, x3
+   514f4:	d2800000 	mov	x0, #0x0                   	// #0
+   514f8:	8b0002c1 	add	x1, x22, x0
+   514fc:	eb02003f 	cmp	x1, x2
+   51500:	540000a9 	b.ls	51514 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xb7c>  // b.plast
+   51504:	aa1b03e0 	mov	x0, x27
+   51508:	97ff5886 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   5150c:	f9418be0 	ldr	x0, [sp, #784]
+   51510:	f9418fe2 	ldr	x2, [sp, #792]
+   51514:	cb000042 	sub	x2, x2, x0
+   51518:	eb16005f 	cmp	x2, x22
+   5151c:	9a969042 	csel	x2, x2, x22, ls  // ls = plast
+   51520:	b50011e2 	cbnz	x2, 5175c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xdc4>
+   51524:	f9018be0 	str	x0, [sp, #784]
+   51528:	eb19039f 	cmp	x28, x25
+   5152c:	540000a0 	b.eq	51540 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xba8>  // b.none
+   51530:	f9418fe2 	ldr	x2, [sp, #792]
+   51534:	17fffff1 	b	514f8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xb60>
+   51538:	d2800000 	mov	x0, #0x0                   	// #0
+   5153c:	d503201f 	nop
+   51540:	f9417bf9 	ldr	x25, [sp, #752]
+   51544:	f9417ffc 	ldr	x28, [sp, #760]
+   51548:	8b1c033c 	add	x28, x25, x28
+   5154c:	eb1c033f 	cmp	x25, x28
+   51550:	54000220 	b.eq	51594 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xbfc>  // b.none
+   51554:	f9418fe3 	ldr	x3, [sp, #792]
+   51558:	cb190396 	sub	x22, x28, x25
+   5155c:	8b0002c1 	add	x1, x22, x0
+   51560:	eb03003f 	cmp	x1, x3
+   51564:	540000a9 	b.ls	51578 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xbe0>  // b.plast
+   51568:	aa1b03e0 	mov	x0, x27
+   5156c:	97ff586d 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   51570:	f9418be0 	ldr	x0, [sp, #784]
+   51574:	f9418fe3 	ldr	x3, [sp, #792]
+   51578:	cb000062 	sub	x2, x3, x0
+   5157c:	eb16005f 	cmp	x2, x22
+   51580:	9a969042 	csel	x2, x2, x22, ls  // ls = plast
+   51584:	b5000322 	cbnz	x2, 515e8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xc50>
+   51588:	f9018be0 	str	x0, [sp, #784]
+   5158c:	eb19039f 	cmp	x28, x25
+   51590:	54fffe61 	b.ne	5155c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xbc4>  // b.any
+   51594:	f94157e1 	ldr	x1, [sp, #680]
+   51598:	910282a4 	add	x4, x21, #0xa0
+   5159c:	f94187e0 	ldr	x0, [sp, #776]
+   515a0:	f94052a2 	ldr	x2, [x21, #160]
+   515a4:	8b010001 	add	x1, x0, x1
+   515a8:	f90153e0 	str	x0, [sp, #672]
+   515ac:	f9017be1 	str	x1, [sp, #752]
+   515b0:	b5000442 	cbnz	x2, 51638 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xca0>
+   515b4:	f9452e61 	ldr	x1, [x19, #2648]
+   515b8:	91020342 	add	x2, x26, #0x80
+   515bc:	eb02001f 	cmp	x0, x2
+   515c0:	91004021 	add	x1, x1, #0x10
+   515c4:	f90183e1 	str	x1, [sp, #768]
+   515c8:	54000040 	b.eq	515d0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xc38>  // b.none
+   515cc:	97ff58d5 	bl	27920 <_ZdlPv@plt>
+   515d0:	f9403fe0 	ldr	x0, [sp, #120]
+   515d4:	f9462c00 	ldr	x0, [x0, #3160]
+   515d8:	b4ffacc0 	cbz	x0, 50b70 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1d8>
+   515dc:	f94043e0 	ldr	x0, [sp, #128]
+   515e0:	97ff5820 	bl	27660 <pthread_mutex_unlock@plt>
+   515e4:	17fffd63 	b	50b70 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1d8>
+   515e8:	f94187e3 	ldr	x3, [sp, #776]
+   515ec:	aa1903e1 	mov	x1, x25
+   515f0:	8b020339 	add	x25, x25, x2
+   515f4:	f9003be2 	str	x2, [sp, #112]
+   515f8:	8b000060 	add	x0, x3, x0
+   515fc:	97ff5979 	bl	27be0 <memmove@plt>
+   51600:	f9403be2 	ldr	x2, [sp, #112]
+   51604:	eb19039f 	cmp	x28, x25
+   51608:	f9418be0 	ldr	x0, [sp, #784]
+   5160c:	8b000040 	add	x0, x2, x0
+   51610:	f9018be0 	str	x0, [sp, #784]
+   51614:	54fffa01 	b.ne	51554 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xbbc>  // b.any
+   51618:	f94157e1 	ldr	x1, [sp, #680]
+   5161c:	910282a4 	add	x4, x21, #0xa0
+   51620:	f94187e0 	ldr	x0, [sp, #776]
+   51624:	f94052a2 	ldr	x2, [x21, #160]
+   51628:	8b010001 	add	x1, x0, x1
+   5162c:	f90153e0 	str	x0, [sp, #672]
+   51630:	f9017be1 	str	x1, [sp, #752]
+   51634:	b4fffc02 	cbz	x2, 515b4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xc1c>
+   51638:	f9400883 	ldr	x3, [x4, #16]
+   5163c:	f94062a5 	ldr	x5, [x21, #192]
+   51640:	8b030463 	add	x3, x3, x3, lsl #1
+   51644:	a9400740 	ldp	x0, x1, [x26]
+   51648:	d379e063 	lsl	x3, x3, #7
+   5164c:	8b0300b6 	add	x22, x5, x3
+   51650:	910202dc 	add	x28, x22, #0x80
+   51654:	a90006c0 	stp	x0, x1, [x22]
+   51658:	a9410740 	ldp	x0, x1, [x26, #16]
+   5165c:	a90106c0 	stp	x0, x1, [x22, #16]
+   51660:	a9420740 	ldp	x0, x1, [x26, #32]
+   51664:	a90206c0 	stp	x0, x1, [x22, #32]
+   51668:	a9430740 	ldp	x0, x1, [x26, #48]
+   5166c:	a90306c0 	stp	x0, x1, [x22, #48]
+   51670:	a9440740 	ldp	x0, x1, [x26, #64]
+   51674:	a90406c0 	stp	x0, x1, [x22, #64]
+   51678:	a9450740 	ldp	x0, x1, [x26, #80]
+   5167c:	a90506c0 	stp	x0, x1, [x22, #80]
+   51680:	f94036c0 	ldr	x0, [x22, #104]
+   51684:	eb1c001f 	cmp	x0, x28
+   51688:	54000100 	b.eq	516a8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xd10>  // b.none
+   5168c:	f9003be3 	str	x3, [sp, #112]
+   51690:	f90047e5 	str	x5, [sp, #136]
+   51694:	f90057e4 	str	x4, [sp, #168]
+   51698:	97ff58a2 	bl	27920 <_ZdlPv@plt>
+   5169c:	f9403be3 	ldr	x3, [sp, #112]
+   516a0:	f94047e5 	ldr	x5, [sp, #136]
+   516a4:	f94057e4 	ldr	x4, [sp, #168]
+   516a8:	91020340 	add	x0, x26, #0x80
+   516ac:	f94187e1 	ldr	x1, [sp, #776]
+   516b0:	f9418be2 	ldr	x2, [sp, #784]
+   516b4:	eb00003f 	cmp	x1, x0
+   516b8:	f9418ff9 	ldr	x25, [sp, #792]
+   516bc:	54007980 	b.eq	525ec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1c54>  // b.none
+   516c0:	910182c6 	add	x6, x22, #0x60
+   516c4:	f90036c1 	str	x1, [x22, #104]
+   516c8:	f9003ed9 	str	x25, [x22, #120]
+   516cc:	f9018fff 	str	xzr, [sp, #792]
+   516d0:	f90187e0 	str	x0, [sp, #776]
+   516d4:	f9400cd9 	ldr	x25, [x6, #24]
+   516d8:	eb02033f 	cmp	x25, x2
+   516dc:	54007842 	b.cs	525e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1c4c>  // b.hs, b.nlast
+   516e0:	aa0203e1 	mov	x1, x2
+   516e4:	aa0603e0 	mov	x0, x6
+   516e8:	f9003be6 	str	x6, [sp, #112]
+   516ec:	f90047e2 	str	x2, [sp, #136]
+   516f0:	a90a97e3 	stp	x3, x5, [sp, #168]
+   516f4:	f9005fe4 	str	x4, [sp, #184]
+   516f8:	97ff580a 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   516fc:	f9403be6 	ldr	x6, [sp, #112]
+   51700:	a94a97e3 	ldp	x3, x5, [sp, #168]
+   51704:	f9400cd9 	ldr	x25, [x6, #24]
+   51708:	f94036dc 	ldr	x28, [x22, #104]
+   5170c:	f94047e2 	ldr	x2, [sp, #136]
+   51710:	f9405fe4 	ldr	x4, [sp, #184]
+   51714:	eb02033f 	cmp	x25, x2
+   51718:	f9400880 	ldr	x0, [x4, #16]
+   5171c:	9a829339 	csel	x25, x25, x2, ls  // ls = plast
+   51720:	f94052a2 	ldr	x2, [x21, #160]
+   51724:	91000401 	add	x1, x0, #0x1
+   51728:	f90008d9 	str	x25, [x6, #16]
+   5172c:	f9400486 	ldr	x6, [x4, #8]
+   51730:	9ac20820 	udiv	x0, x1, x2
+   51734:	f94006c7 	ldr	x7, [x22, #8]
+   51738:	f82368bc 	str	x28, [x5, x3]
+   5173c:	9b028400 	msub	x0, x0, x2, x1
+   51740:	8b07039c 	add	x28, x28, x7
+   51744:	f9002adc 	str	x28, [x22, #80]
+   51748:	f9000880 	str	x0, [x4, #16]
+   5174c:	eb06001f 	cmp	x0, x6
+   51750:	540071a0 	b.eq	52584 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1bec>  // b.none
+   51754:	f94187e0 	ldr	x0, [sp, #776]
+   51758:	17ffff97 	b	515b4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xc1c>
+   5175c:	f94187e3 	ldr	x3, [sp, #776]
+   51760:	aa1903e1 	mov	x1, x25
+   51764:	8b020339 	add	x25, x25, x2
+   51768:	f9003be2 	str	x2, [sp, #112]
+   5176c:	8b000060 	add	x0, x3, x0
+   51770:	97ff591c 	bl	27be0 <memmove@plt>
+   51774:	f9403be2 	ldr	x2, [sp, #112]
+   51778:	eb19039f 	cmp	x28, x25
+   5177c:	f9418be0 	ldr	x0, [sp, #784]
+   51780:	8b000040 	add	x0, x2, x0
+   51784:	f9018be0 	str	x0, [sp, #784]
+   51788:	54ffedc0 	b.eq	51540 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xba8>  // b.none
+   5178c:	cb190396 	sub	x22, x28, x25
+   51790:	f9418fe2 	ldr	x2, [sp, #792]
+   51794:	17ffff59 	b	514f8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xb60>
+   51798:	f0000101 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   5179c:	9101a2a2 	add	x2, x21, #0x68
+   517a0:	a9078be1 	stp	x1, x2, [sp, #120]
+   517a4:	f9462c20 	ldr	x0, [x1, #3160]
+   517a8:	b4000080 	cbz	x0, 517b8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xe20>
+   517ac:	aa0203e0 	mov	x0, x2
+   517b0:	97ff56f8 	bl	27390 <pthread_mutex_lock@plt>
+   517b4:	3500a380 	cbnz	w0, 52c24 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x228c>
+   517b8:	a95203e3 	ldp	x3, x0, [sp, #288]
+   517bc:	f9000740 	str	x0, [x26, #8]
+   517c0:	f9452e60 	ldr	x0, [x19, #2648]
+   517c4:	91020341 	add	x1, x26, #0x80
+   517c8:	d2801f42 	mov	x2, #0xfa                  	// #250
+   517cc:	f90187e1 	str	x1, [sp, #776]
+   517d0:	91004000 	add	x0, x0, #0x10
+   517d4:	f90183e0 	str	x0, [sp, #768]
+   517d8:	f9018bff 	str	xzr, [sp, #784]
+   517dc:	aa0303f9 	mov	x25, x3
+   517e0:	f9018fe2 	str	x2, [sp, #792]
+   517e4:	a9531fe6 	ldp	x6, x7, [sp, #304]
+   517e8:	a95417e4 	ldp	x4, x5, [sp, #320]
+   517ec:	f94157fc 	ldr	x28, [sp, #680]
+   517f0:	a9011f46 	stp	x6, x7, [x26, #16]
+   517f4:	a9021744 	stp	x4, x5, [x26, #32]
+   517f8:	8b1c007c 	add	x28, x3, x28
+   517fc:	eb1c007f 	cmp	x3, x28
+   51800:	a95507e0 	ldp	x0, x1, [sp, #336]
+   51804:	f9000343 	str	x3, [x26]
+   51808:	a9561fe6 	ldp	x6, x7, [sp, #352]
+   5180c:	a9030740 	stp	x0, x1, [x26, #48]
+   51810:	a95717e4 	ldp	x4, x5, [sp, #368]
+   51814:	a9041f46 	stp	x6, x7, [x26, #64]
+   51818:	a9051744 	stp	x4, x5, [x26, #80]
+   5181c:	54000260 	b.eq	51868 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xed0>  // b.none
+   51820:	cb030396 	sub	x22, x28, x3
+   51824:	d2800000 	mov	x0, #0x0                   	// #0
+   51828:	8b160001 	add	x1, x0, x22
+   5182c:	eb01005f 	cmp	x2, x1
+   51830:	540000a2 	b.cs	51844 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xeac>  // b.hs, b.nlast
+   51834:	aa1b03e0 	mov	x0, x27
+   51838:	97ff57ba 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   5183c:	f9418be0 	ldr	x0, [sp, #784]
+   51840:	f9418fe2 	ldr	x2, [sp, #792]
+   51844:	cb000042 	sub	x2, x2, x0
+   51848:	eb16005f 	cmp	x2, x22
+   5184c:	9a969042 	csel	x2, x2, x22, ls  // ls = plast
+   51850:	b5001162 	cbnz	x2, 51a7c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x10e4>
+   51854:	f9018be0 	str	x0, [sp, #784]
+   51858:	eb1c033f 	cmp	x25, x28
+   5185c:	540000a0 	b.eq	51870 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xed8>  // b.none
+   51860:	f9418fe2 	ldr	x2, [sp, #792]
+   51864:	17fffff1 	b	51828 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xe90>
+   51868:	d2800000 	mov	x0, #0x0                   	// #0
+   5186c:	d503201f 	nop
+   51870:	f9417bf9 	ldr	x25, [sp, #752]
+   51874:	f9417ffc 	ldr	x28, [sp, #760]
+   51878:	8b1c033c 	add	x28, x25, x28
+   5187c:	eb1c033f 	cmp	x25, x28
+   51880:	54000220 	b.eq	518c4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xf2c>  // b.none
+   51884:	f9418fe3 	ldr	x3, [sp, #792]
+   51888:	cb190396 	sub	x22, x28, x25
+   5188c:	8b0002c1 	add	x1, x22, x0
+   51890:	eb03003f 	cmp	x1, x3
+   51894:	540000a9 	b.ls	518a8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xf10>  // b.plast
+   51898:	aa1b03e0 	mov	x0, x27
+   5189c:	97ff57a1 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   518a0:	f9418be0 	ldr	x0, [sp, #784]
+   518a4:	f9418fe3 	ldr	x3, [sp, #792]
+   518a8:	cb000062 	sub	x2, x3, x0
+   518ac:	eb16005f 	cmp	x2, x22
+   518b0:	9a969042 	csel	x2, x2, x22, ls  // ls = plast
+   518b4:	b5000322 	cbnz	x2, 51918 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xf80>
+   518b8:	f9018be0 	str	x0, [sp, #784]
+   518bc:	eb1c033f 	cmp	x25, x28
+   518c0:	54fffe61 	b.ne	5188c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xef4>  // b.any
+   518c4:	f94157e1 	ldr	x1, [sp, #680]
+   518c8:	910282a3 	add	x3, x21, #0xa0
+   518cc:	f94187e0 	ldr	x0, [sp, #776]
+   518d0:	f94052a2 	ldr	x2, [x21, #160]
+   518d4:	8b010001 	add	x1, x0, x1
+   518d8:	f90153e0 	str	x0, [sp, #672]
+   518dc:	f9017be1 	str	x1, [sp, #752]
+   518e0:	b5000442 	cbnz	x2, 51968 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xfd0>
+   518e4:	f9452e61 	ldr	x1, [x19, #2648]
+   518e8:	91020342 	add	x2, x26, #0x80
+   518ec:	eb02001f 	cmp	x0, x2
+   518f0:	91004021 	add	x1, x1, #0x10
+   518f4:	f90183e1 	str	x1, [sp, #768]
+   518f8:	54000040 	b.eq	51900 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xf68>  // b.none
+   518fc:	97ff5809 	bl	27920 <_ZdlPv@plt>
+   51900:	f9403fe0 	ldr	x0, [sp, #120]
+   51904:	f9462c00 	ldr	x0, [x0, #3160]
+   51908:	b4ffa800 	cbz	x0, 50e08 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x470>
+   5190c:	f94043e0 	ldr	x0, [sp, #128]
+   51910:	97ff5754 	bl	27660 <pthread_mutex_unlock@plt>
+   51914:	17fffd3d 	b	50e08 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x470>
+   51918:	f94187e3 	ldr	x3, [sp, #776]
+   5191c:	aa1903e1 	mov	x1, x25
+   51920:	8b020339 	add	x25, x25, x2
+   51924:	f9003be2 	str	x2, [sp, #112]
+   51928:	8b000060 	add	x0, x3, x0
+   5192c:	97ff58ad 	bl	27be0 <memmove@plt>
+   51930:	f9403be2 	ldr	x2, [sp, #112]
+   51934:	eb1c033f 	cmp	x25, x28
+   51938:	f9418be0 	ldr	x0, [sp, #784]
+   5193c:	8b000040 	add	x0, x2, x0
+   51940:	f9018be0 	str	x0, [sp, #784]
+   51944:	54fffa01 	b.ne	51884 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xeec>  // b.any
+   51948:	f94157e1 	ldr	x1, [sp, #680]
+   5194c:	910282a3 	add	x3, x21, #0xa0
+   51950:	f94187e0 	ldr	x0, [sp, #776]
+   51954:	f94052a2 	ldr	x2, [x21, #160]
+   51958:	8b010001 	add	x1, x0, x1
+   5195c:	f90153e0 	str	x0, [sp, #672]
+   51960:	f9017be1 	str	x1, [sp, #752]
+   51964:	b4fffc02 	cbz	x2, 518e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xf4c>
+   51968:	f940087c 	ldr	x28, [x3, #16]
+   5196c:	f94062a5 	ldr	x5, [x21, #192]
+   51970:	8b1c079c 	add	x28, x28, x28, lsl #1
+   51974:	a9400740 	ldp	x0, x1, [x26]
+   51978:	d379e39c 	lsl	x28, x28, #7
+   5197c:	8b1c00b6 	add	x22, x5, x28
+   51980:	910202d9 	add	x25, x22, #0x80
+   51984:	a90006c0 	stp	x0, x1, [x22]
+   51988:	a9410740 	ldp	x0, x1, [x26, #16]
+   5198c:	a90106c0 	stp	x0, x1, [x22, #16]
+   51990:	a9420740 	ldp	x0, x1, [x26, #32]
+   51994:	a90206c0 	stp	x0, x1, [x22, #32]
+   51998:	a9430740 	ldp	x0, x1, [x26, #48]
+   5199c:	a90306c0 	stp	x0, x1, [x22, #48]
+   519a0:	a9440740 	ldp	x0, x1, [x26, #64]
+   519a4:	a90406c0 	stp	x0, x1, [x22, #64]
+   519a8:	a9450740 	ldp	x0, x1, [x26, #80]
+   519ac:	a90506c0 	stp	x0, x1, [x22, #80]
+   519b0:	f94036c0 	ldr	x0, [x22, #104]
+   519b4:	eb19001f 	cmp	x0, x25
+   519b8:	540000c0 	b.eq	519d0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1038>  // b.none
+   519bc:	f9003be5 	str	x5, [sp, #112]
+   519c0:	f90047e3 	str	x3, [sp, #136]
+   519c4:	97ff57d7 	bl	27920 <_ZdlPv@plt>
+   519c8:	f9403be5 	ldr	x5, [sp, #112]
+   519cc:	f94047e3 	ldr	x3, [sp, #136]
+   519d0:	91020340 	add	x0, x26, #0x80
+   519d4:	f94187e1 	ldr	x1, [sp, #776]
+   519d8:	f9418be2 	ldr	x2, [sp, #784]
+   519dc:	eb00003f 	cmp	x1, x0
+   519e0:	f9418fe4 	ldr	x4, [sp, #792]
+   519e4:	54005e20 	b.eq	525a8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1c10>  // b.none
+   519e8:	910182c6 	add	x6, x22, #0x60
+   519ec:	f90036c1 	str	x1, [x22, #104]
+   519f0:	f9003ec4 	str	x4, [x22, #120]
+   519f4:	f9018fff 	str	xzr, [sp, #792]
+   519f8:	f90187e0 	str	x0, [sp, #776]
+   519fc:	f9400cc4 	ldr	x4, [x6, #24]
+   51a00:	eb04005f 	cmp	x2, x4
+   51a04:	54006129 	b.ls	52628 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1c90>  // b.plast
+   51a08:	aa0203e1 	mov	x1, x2
+   51a0c:	aa0603e0 	mov	x0, x6
+   51a10:	f9003be6 	str	x6, [sp, #112]
+   51a14:	f90047e2 	str	x2, [sp, #136]
+   51a18:	a90a8fe5 	stp	x5, x3, [sp, #168]
+   51a1c:	97ff5741 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   51a20:	f9403be6 	ldr	x6, [sp, #112]
+   51a24:	a94a8fe5 	ldp	x5, x3, [sp, #168]
+   51a28:	f9400cc4 	ldr	x4, [x6, #24]
+   51a2c:	f94036d9 	ldr	x25, [x22, #104]
+   51a30:	f94047e2 	ldr	x2, [sp, #136]
+   51a34:	eb04005f 	cmp	x2, x4
+   51a38:	f9400860 	ldr	x0, [x3, #16]
+   51a3c:	9a849042 	csel	x2, x2, x4, ls  // ls = plast
+   51a40:	f94052a4 	ldr	x4, [x21, #160]
+   51a44:	91000401 	add	x1, x0, #0x1
+   51a48:	f90008c2 	str	x2, [x6, #16]
+   51a4c:	f9400462 	ldr	x2, [x3, #8]
+   51a50:	9ac40820 	udiv	x0, x1, x4
+   51a54:	f94006c6 	ldr	x6, [x22, #8]
+   51a58:	f83c68b9 	str	x25, [x5, x28]
+   51a5c:	9b048400 	msub	x0, x0, x4, x1
+   51a60:	8b060339 	add	x25, x25, x6
+   51a64:	f9002ad9 	str	x25, [x22, #80]
+   51a68:	f9000860 	str	x0, [x3, #16]
+   51a6c:	eb02001f 	cmp	x0, x2
+   51a70:	54005780 	b.eq	52560 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1bc8>  // b.none
+   51a74:	f94187e0 	ldr	x0, [sp, #776]
+   51a78:	17ffff9b 	b	518e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xf4c>
+   51a7c:	f94187e3 	ldr	x3, [sp, #776]
+   51a80:	aa1903e1 	mov	x1, x25
+   51a84:	8b020339 	add	x25, x25, x2
+   51a88:	f9003be2 	str	x2, [sp, #112]
+   51a8c:	8b000060 	add	x0, x3, x0
+   51a90:	97ff5854 	bl	27be0 <memmove@plt>
+   51a94:	f9403be2 	ldr	x2, [sp, #112]
+   51a98:	eb19039f 	cmp	x28, x25
+   51a9c:	f9418be0 	ldr	x0, [sp, #784]
+   51aa0:	8b000040 	add	x0, x2, x0
+   51aa4:	f9018be0 	str	x0, [sp, #784]
+   51aa8:	54ffee40 	b.eq	51870 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xed8>  // b.none
+   51aac:	cb190396 	sub	x22, x28, x25
+   51ab0:	f9418fe2 	ldr	x2, [sp, #792]
+   51ab4:	17ffff5d 	b	51828 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xe90>
+   51ab8:	d2801640 	mov	x0, #0xb2                  	// #178
+   51abc:	f90043e6 	str	x6, [sp, #128]
+   51ac0:	97ff5778 	bl	278a0 <syscall@plt>
+   51ac4:	aa0003e2 	mov	x2, x0
+   51ac8:	f94043e6 	ldr	x6, [sp, #128]
+   51acc:	d2800023 	mov	x3, #0x1                   	// #1
+   51ad0:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51ad4:	f9440401 	ldr	x1, [x0, #2056]
+   51ad8:	91202000 	add	x0, x0, #0x808
+   51adc:	d63f0020 	blr	x1
+   51ae0:	f8206b82 	str	x2, [x28, x0]
+   51ae4:	f90000c3 	str	x3, [x6]
+   51ae8:	17fffcb9 	b	50dcc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x434>
+   51aec:	97ff56cd 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   51af0:	17fffe25 	b	51384 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x9ec>
+   51af4:	97ff56cb 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   51af8:	17fffe1a 	b	51360 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x9c8>
+   51afc:	97ff56c9 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   51b00:	17fffdf9 	b	512e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x94c>
+   51b04:	97ff56c7 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   51b08:	17fffd1e 	b	50f80 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x5e8>
+   51b0c:	aa0103e0 	mov	x0, x1
+   51b10:	97ff56c4 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   51b14:	17fffd17 	b	50f70 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x5d8>
+   51b18:	d53bd056 	mrs	x22, tpidr_el0
+   51b1c:	a940e6ba 	ldp	x26, x25, [x21, #8]
+   51b20:	97ff55b8 	bl	27200 <_ZNSt6chrono3_V212system_clock3nowEv@plt>
+   51b24:	aa0003e2 	mov	x2, x0
+   51b28:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51b2c:	f943fc01 	ldr	x1, [x0, #2040]
+   51b30:	911fe000 	add	x0, x0, #0x7f8
+   51b34:	d63f0020 	blr	x1
+   51b38:	f8606ac1 	ldr	x1, [x22, x0]
+   51b3c:	52800043 	mov	w3, #0x2                   	// #2
+   51b40:	a91267fa 	stp	x26, x25, [sp, #288]
+   51b44:	8b0002da 	add	x26, x22, x0
+   51b48:	b90133e3 	str	w3, [sp, #304]
+   51b4c:	f9009fe2 	str	x2, [sp, #312]
+   51b50:	36003b01 	tbz	w1, #0, 522b0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1918>
+   51b54:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51b58:	f9440401 	ldr	x1, [x0, #2056]
+   51b5c:	91202000 	add	x0, x0, #0x808
+   51b60:	d63f0020 	blr	x1
+   51b64:	f8606ac2 	ldr	x2, [x22, x0]
+   51b68:	d0000021 	adrp	x1, 57000 <_fini+0xdd4>
+   51b6c:	d28006c0 	mov	x0, #0x36                  	// #54
+   51b70:	91148021 	add	x1, x1, #0x520
+   51b74:	a9147fe2 	stp	x2, xzr, [sp, #320]
+   51b78:	71000a9f 	cmp	w20, #0x2
+   51b7c:	a9157fff 	stp	xzr, xzr, [sp, #336]
+   51b80:	b90163ff 	str	wzr, [sp, #352]
+   51b84:	a91687ff 	stp	xzr, x1, [sp, #360]
+   51b88:	f900bfe0 	str	x0, [sp, #376]
+   51b8c:	540000cc 	b.gt	51ba4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x120c>
+   51b90:	f94002a2 	ldr	x2, [x21]
+   51b94:	910483e1 	add	x1, sp, #0x120
+   51b98:	aa1503e0 	mov	x0, x21
+   51b9c:	f9400c42 	ldr	x2, [x2, #24]
+   51ba0:	d63f0040 	blr	x2
+   51ba4:	34ff7333 	cbz	w19, 50a08 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x70>
+   51ba8:	f0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   51bac:	f9003fe0 	str	x0, [sp, #120]
+   51bb0:	9101a2b6 	add	x22, x21, #0x68
+   51bb4:	f9462c00 	ldr	x0, [x0, #3160]
+   51bb8:	b4000080 	cbz	x0, 51bc8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1230>
+   51bbc:	aa1603e0 	mov	x0, x22
+   51bc0:	97ff55f4 	bl	27390 <pthread_mutex_lock@plt>
+   51bc4:	350082e0 	cbnz	w0, 52c20 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2288>
+   51bc8:	f94097e0 	ldr	x0, [sp, #296]
+   51bcc:	f90157e0 	str	x0, [sp, #680]
+   51bd0:	f94093e0 	ldr	x0, [sp, #288]
+   51bd4:	f90153e0 	str	x0, [sp, #672]
+   51bd8:	f94157e2 	ldr	x2, [sp, #680]
+   51bdc:	aa0003e1 	mov	x1, x0
+   51be0:	a95327e8 	ldp	x8, x9, [sp, #304]
+   51be4:	8b020002 	add	x2, x0, x2
+   51be8:	910983e0 	add	x0, sp, #0x260
+   51bec:	f0000113 	adrp	x19, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   51bf0:	a9541fe6 	ldp	x6, x7, [sp, #320]
+   51bf4:	910a83f4 	add	x20, sp, #0x2a0
+   51bf8:	a9052408 	stp	x8, x9, [x0, #80]
+   51bfc:	910983e8 	add	x8, sp, #0x260
+   51c00:	910983e9 	add	x9, sp, #0x260
+   51c04:	f9452e63 	ldr	x3, [x19, #2648]
+   51c08:	a9061d06 	stp	x6, x7, [x8, #96]
+   51c0c:	910c03ed 	add	x13, sp, #0x300
+   51c10:	a95517e4 	ldp	x4, x5, [sp, #336]
+   51c14:	9102028c 	add	x12, x20, #0x80
+   51c18:	a9562fea 	ldp	x10, x11, [sp, #352]
+   51c1c:	91004063 	add	x3, x3, #0x10
+   51c20:	a9571fe6 	ldp	x6, x7, [sp, #368]
+   51c24:	d2801f48 	mov	x8, #0xfa                  	// #250
+   51c28:	a9071524 	stp	x4, x5, [x9, #112]
+   51c2c:	91018280 	add	x0, x20, #0x60
+   51c30:	a9082d2a 	stp	x10, x11, [x9, #128]
+   51c34:	a9091d26 	stp	x6, x7, [x9, #144]
+   51c38:	a90031a3 	stp	x3, x12, [x13]
+   51c3c:	a90121bf 	stp	xzr, x8, [x13, #16]
+   51c40:	97ff55f4 	bl	27410 <_ZN3fmt2v86detail6bufferIcE6appendIcEEvPKT_S7_@plt>
+   51c44:	91018280 	add	x0, x20, #0x60
+   51c48:	f9417be1 	ldr	x1, [sp, #752]
+   51c4c:	f9417fe2 	ldr	x2, [sp, #760]
+   51c50:	8b020022 	add	x2, x1, x2
+   51c54:	97ff55ef 	bl	27410 <_ZN3fmt2v86detail6bufferIcE6appendIcEEvPKT_S7_@plt>
+   51c58:	f94157e1 	ldr	x1, [sp, #680]
+   51c5c:	910282ba 	add	x26, x21, #0xa0
+   51c60:	f94187e0 	ldr	x0, [sp, #776]
+   51c64:	f94052a2 	ldr	x2, [x21, #160]
+   51c68:	8b010001 	add	x1, x0, x1
+   51c6c:	f90153e0 	str	x0, [sp, #672]
+   51c70:	f9017be1 	str	x1, [sp, #752]
+   51c74:	b50067e2 	cbnz	x2, 52970 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1fd8>
+   51c78:	f9452e61 	ldr	x1, [x19, #2648]
+   51c7c:	91020294 	add	x20, x20, #0x80
+   51c80:	eb14001f 	cmp	x0, x20
+   51c84:	91004021 	add	x1, x1, #0x10
+   51c88:	f90183e1 	str	x1, [sp, #768]
+   51c8c:	54000040 	b.eq	51c94 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x12fc>  // b.none
+   51c90:	97ff5724 	bl	27920 <_ZdlPv@plt>
+   51c94:	f9403fe0 	ldr	x0, [sp, #120]
+   51c98:	f9462c00 	ldr	x0, [x0, #3160]
+   51c9c:	b4ff6b60 	cbz	x0, 50a08 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x70>
+   51ca0:	aa1603e0 	mov	x0, x22
+   51ca4:	97ff566f 	bl	27660 <pthread_mutex_unlock@plt>
+   51ca8:	17fffb58 	b	50a08 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x70>
+   51cac:	f9404be0 	ldr	x0, [sp, #144]
+   51cb0:	f0000113 	adrp	x19, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   51cb4:	910603f5 	add	x21, sp, #0x180
+   51cb8:	d2801f48 	mov	x8, #0xfa                  	// #250
+   51cbc:	f9452e62 	ldr	x2, [x19, #2648]
+   51cc0:	910082a9 	add	x9, x21, #0x20
+   51cc4:	a9511807 	ldp	x7, x6, [x0, #272]
+   51cc8:	91004042 	add	x2, x2, #0x10
+   51ccc:	910a83f4 	add	x20, sp, #0x2a0
+   51cd0:	aa1503e0 	mov	x0, x21
+   51cd4:	aa1403e4 	mov	x4, x20
+   51cd8:	d2800005 	mov	x5, #0x0                   	// #0
+   51cdc:	d28001a3 	mov	x3, #0xd                   	// #13
+   51ce0:	a91827e2 	stp	x2, x9, [sp, #384]
+   51ce4:	d28001e2 	mov	x2, #0xf                   	// #15
+   51ce8:	a91923ff 	stp	xzr, x8, [sp, #400]
+   51cec:	f90153e7 	str	x7, [sp, #672]
+   51cf0:	f90157e6 	str	x6, [sp, #680]
+   51cf4:	97ff58ff 	bl	280f0 <_ZN3fmt2v86detail10vformat_toIcEEvRNS1_6bufferIT_EENS0_17basic_string_viewIS4_EENS0_17basic_format_argsINS0_20basic_format_contextINSt11conditionalIXsrSt7is_sameINS0_13type_identityIS4_E4typeEcE5valueENS0_8appenderESt20back_insert_iteratorINS3_ISF_EEEE4typeESF_EEEENS1_10locale_refE@plt>
+   51cf8:	a94096c6 	ldp	x6, x5, [x22, #8]
+   51cfc:	d53bd05b 	mrs	x27, tpidr_el0
+   51d00:	a958f3e0 	ldp	x0, x28, [sp, #392]
+   51d04:	a90697e0 	stp	x0, x5, [sp, #104]
+   51d08:	f9003fe6 	str	x6, [sp, #120]
+   51d0c:	97ff553d 	bl	27200 <_ZNSt6chrono3_V212system_clock3nowEv@plt>
+   51d10:	aa0003e3 	mov	x3, x0
+   51d14:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51d18:	f943fc01 	ldr	x1, [x0, #2040]
+   51d1c:	911fe000 	add	x0, x0, #0x7f8
+   51d20:	d63f0020 	blr	x1
+   51d24:	52800044 	mov	w4, #0x2                   	// #2
+   51d28:	f8606b62 	ldr	x2, [x27, x0]
+   51d2c:	b90133e4 	str	w4, [sp, #304]
+   51d30:	a9471be5 	ldp	x5, x6, [sp, #112]
+   51d34:	a91217e6 	stp	x6, x5, [sp, #288]
+   51d38:	f9009fe3 	str	x3, [sp, #312]
+   51d3c:	8b000366 	add	x6, x27, x0
+   51d40:	36002ce2 	tbz	w2, #0, 522dc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1944>
+   51d44:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51d48:	f9440401 	ldr	x1, [x0, #2056]
+   51d4c:	91202000 	add	x0, x0, #0x808
+   51d50:	d63f0020 	blr	x1
+   51d54:	f8606b62 	ldr	x2, [x27, x0]
+   51d58:	a9147fe2 	stp	x2, xzr, [sp, #320]
+   51d5c:	71000b3f 	cmp	w25, #0x2
+   51d60:	f94037e0 	ldr	x0, [sp, #104]
+   51d64:	a9157fff 	stp	xzr, xzr, [sp, #336]
+   51d68:	b90163ff 	str	wzr, [sp, #352]
+   51d6c:	a91683ff 	stp	xzr, x0, [sp, #360]
+   51d70:	f900bffc 	str	x28, [sp, #376]
+   51d74:	540000cc 	b.gt	51d8c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x13f4>
+   51d78:	f94002c2 	ldr	x2, [x22]
+   51d7c:	910483e1 	add	x1, sp, #0x120
+   51d80:	aa1603e0 	mov	x0, x22
+   51d84:	f9400c42 	ldr	x2, [x2, #24]
+   51d88:	d63f0040 	blr	x2
+   51d8c:	3500359a 	cbnz	w26, 5243c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1aa4>
+   51d90:	f9452e73 	ldr	x19, [x19, #2648]
+   51d94:	910082b5 	add	x21, x21, #0x20
+   51d98:	f940c7e0 	ldr	x0, [sp, #392]
+   51d9c:	91004273 	add	x19, x19, #0x10
+   51da0:	f900c3f3 	str	x19, [sp, #384]
+   51da4:	eb15001f 	cmp	x0, x21
+   51da8:	54ff7700 	b.eq	50c88 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2f0>  // b.none
+   51dac:	97ff56dd 	bl	27920 <_ZdlPv@plt>
+   51db0:	f946df00 	ldr	x0, [x24, #3512]
+   51db4:	08dffc01 	ldarb	w1, [x0]
+   51db8:	370776e1 	tbnz	w1, #0, 50c94 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2fc>
+   51dbc:	97ff58c1 	bl	280c0 <__cxa_guard_acquire@plt>
+   51dc0:	34ff76a0 	cbz	w0, 50c94 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2fc>
+   51dc4:	f946bee0 	ldr	x0, [x23, #3448]
+   51dc8:	97ff5872 	bl	27f90 <_ZN6spdlog7details8registryC1Ev@plt>
+   51dcc:	f0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   51dd0:	90000122 	adrp	x2, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51dd4:	f946bee1 	ldr	x1, [x23, #3448]
+   51dd8:	91206042 	add	x2, x2, #0x818
+   51ddc:	f9462000 	ldr	x0, [x0, #3136]
+   51de0:	97ff5754 	bl	27b30 <__cxa_atexit@plt>
+   51de4:	f946df00 	ldr	x0, [x24, #3512]
+   51de8:	97ff5662 	bl	27770 <__cxa_guard_release@plt>
+   51dec:	17fffbaa 	b	50c94 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2fc>
+   51df0:	f9404be0 	ldr	x0, [sp, #144]
+   51df4:	f0000113 	adrp	x19, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   51df8:	910603f5 	add	x21, sp, #0x180
+   51dfc:	d2801f48 	mov	x8, #0xfa                  	// #250
+   51e00:	f9452e62 	ldr	x2, [x19, #2648]
+   51e04:	910082a9 	add	x9, x21, #0x20
+   51e08:	a94f1807 	ldp	x7, x6, [x0, #240]
+   51e0c:	91004042 	add	x2, x2, #0x10
+   51e10:	910a83f4 	add	x20, sp, #0x2a0
+   51e14:	aa1503e0 	mov	x0, x21
+   51e18:	aa1403e4 	mov	x4, x20
+   51e1c:	d2800005 	mov	x5, #0x0                   	// #0
+   51e20:	d28001a3 	mov	x3, #0xd                   	// #13
+   51e24:	a91827e2 	stp	x2, x9, [sp, #384]
+   51e28:	d2800262 	mov	x2, #0x13                  	// #19
+   51e2c:	a91923ff 	stp	xzr, x8, [sp, #400]
+   51e30:	f90153e7 	str	x7, [sp, #672]
+   51e34:	f90157e6 	str	x6, [sp, #680]
+   51e38:	97ff58ae 	bl	280f0 <_ZN3fmt2v86detail10vformat_toIcEEvRNS1_6bufferIT_EENS0_17basic_string_viewIS4_EENS0_17basic_format_argsINS0_20basic_format_contextINSt11conditionalIXsrSt7is_sameINS0_13type_identityIS4_E4typeEcE5valueENS0_8appenderESt20back_insert_iteratorINS3_ISF_EEEE4typeESF_EEEENS1_10locale_refE@plt>
+   51e3c:	a94096c6 	ldp	x6, x5, [x22, #8]
+   51e40:	d53bd05b 	mrs	x27, tpidr_el0
+   51e44:	a958f3e0 	ldp	x0, x28, [sp, #392]
+   51e48:	a90697e0 	stp	x0, x5, [sp, #104]
+   51e4c:	f9003fe6 	str	x6, [sp, #120]
+   51e50:	97ff54ec 	bl	27200 <_ZNSt6chrono3_V212system_clock3nowEv@plt>
+   51e54:	aa0003e3 	mov	x3, x0
+   51e58:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51e5c:	f943fc01 	ldr	x1, [x0, #2040]
+   51e60:	911fe000 	add	x0, x0, #0x7f8
+   51e64:	d63f0020 	blr	x1
+   51e68:	52800044 	mov	w4, #0x2                   	// #2
+   51e6c:	f8606b62 	ldr	x2, [x27, x0]
+   51e70:	b90133e4 	str	w4, [sp, #304]
+   51e74:	a9471be5 	ldp	x5, x6, [sp, #112]
+   51e78:	a91217e6 	stp	x6, x5, [sp, #288]
+   51e7c:	f9009fe3 	str	x3, [sp, #312]
+   51e80:	8b000366 	add	x6, x27, x0
+   51e84:	36002c22 	tbz	w2, #0, 52408 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1a70>
+   51e88:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51e8c:	f9440401 	ldr	x1, [x0, #2056]
+   51e90:	91202000 	add	x0, x0, #0x808
+   51e94:	d63f0020 	blr	x1
+   51e98:	f8606b62 	ldr	x2, [x27, x0]
+   51e9c:	a9147fe2 	stp	x2, xzr, [sp, #320]
+   51ea0:	71000b3f 	cmp	w25, #0x2
+   51ea4:	f94037e0 	ldr	x0, [sp, #104]
+   51ea8:	a9157fff 	stp	xzr, xzr, [sp, #336]
+   51eac:	b90163ff 	str	wzr, [sp, #352]
+   51eb0:	a91683ff 	stp	xzr, x0, [sp, #360]
+   51eb4:	f900bffc 	str	x28, [sp, #376]
+   51eb8:	540000cc 	b.gt	51ed0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1538>
+   51ebc:	f94002c2 	ldr	x2, [x22]
+   51ec0:	910483e1 	add	x1, sp, #0x120
+   51ec4:	aa1603e0 	mov	x0, x22
+   51ec8:	f9400c42 	ldr	x2, [x2, #24]
+   51ecc:	d63f0040 	blr	x2
+   51ed0:	3500221a 	cbnz	w26, 52310 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1978>
+   51ed4:	f9452e73 	ldr	x19, [x19, #2648]
+   51ed8:	910082b5 	add	x21, x21, #0x20
+   51edc:	f940c7e0 	ldr	x0, [sp, #392]
+   51ee0:	91004273 	add	x19, x19, #0x10
+   51ee4:	f900c3f3 	str	x19, [sp, #384]
+   51ee8:	eb15001f 	cmp	x0, x21
+   51eec:	54ff6b20 	b.eq	50c50 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2b8>  // b.none
+   51ef0:	97ff568c 	bl	27920 <_ZdlPv@plt>
+   51ef4:	f946df00 	ldr	x0, [x24, #3512]
+   51ef8:	08dffc01 	ldarb	w1, [x0]
+   51efc:	37076b01 	tbnz	w1, #0, 50c5c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2c4>
+   51f00:	97ff5870 	bl	280c0 <__cxa_guard_acquire@plt>
+   51f04:	34ff6ac0 	cbz	w0, 50c5c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2c4>
+   51f08:	f946bee0 	ldr	x0, [x23, #3448]
+   51f0c:	97ff5821 	bl	27f90 <_ZN6spdlog7details8registryC1Ev@plt>
+   51f10:	f0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   51f14:	90000122 	adrp	x2, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51f18:	f946bee1 	ldr	x1, [x23, #3448]
+   51f1c:	91206042 	add	x2, x2, #0x818
+   51f20:	f9462000 	ldr	x0, [x0, #3136]
+   51f24:	97ff5703 	bl	27b30 <__cxa_atexit@plt>
+   51f28:	f946df00 	ldr	x0, [x24, #3512]
+   51f2c:	97ff5611 	bl	27770 <__cxa_guard_release@plt>
+   51f30:	17fffb4b 	b	50c5c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2c4>
+   51f34:	d53bd055 	mrs	x21, tpidr_el0
+   51f38:	a940e6da 	ldp	x26, x25, [x22, #8]
+   51f3c:	97ff54b1 	bl	27200 <_ZNSt6chrono3_V212system_clock3nowEv@plt>
+   51f40:	aa0003e2 	mov	x2, x0
+   51f44:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51f48:	f943fc01 	ldr	x1, [x0, #2040]
+   51f4c:	911fe000 	add	x0, x0, #0x7f8
+   51f50:	d63f0020 	blr	x1
+   51f54:	f8606aa1 	ldr	x1, [x21, x0]
+   51f58:	52800043 	mov	w3, #0x2                   	// #2
+   51f5c:	a91267fa 	stp	x26, x25, [sp, #288]
+   51f60:	8b0002ba 	add	x26, x21, x0
+   51f64:	b90133e3 	str	w3, [sp, #304]
+   51f68:	f9009fe2 	str	x2, [sp, #312]
+   51f6c:	36002e41 	tbz	w1, #0, 52534 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1b9c>
+   51f70:	90000120 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   51f74:	f9440401 	ldr	x1, [x0, #2056]
+   51f78:	91202000 	add	x0, x0, #0x808
+   51f7c:	d63f0020 	blr	x1
+   51f80:	f8606aa2 	ldr	x2, [x21, x0]
+   51f84:	d0000021 	adrp	x1, 57000 <_fini+0xdd4>
+   51f88:	d2800260 	mov	x0, #0x13                  	// #19
+   51f8c:	91162021 	add	x1, x1, #0x588
+   51f90:	a9147fe2 	stp	x2, xzr, [sp, #320]
+   51f94:	71000a9f 	cmp	w20, #0x2
+   51f98:	a9157fff 	stp	xzr, xzr, [sp, #336]
+   51f9c:	b90163ff 	str	wzr, [sp, #352]
+   51fa0:	a91687ff 	stp	xzr, x1, [sp, #360]
+   51fa4:	f900bfe0 	str	x0, [sp, #376]
+   51fa8:	540000cc 	b.gt	51fc0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1628>
+   51fac:	f94002c2 	ldr	x2, [x22]
+   51fb0:	910483e1 	add	x1, sp, #0x120
+   51fb4:	aa1603e0 	mov	x0, x22
+   51fb8:	f9400c42 	ldr	x2, [x2, #24]
+   51fbc:	d63f0040 	blr	x2
+   51fc0:	34ff67d3 	cbz	w19, 50cb8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x320>
+   51fc4:	f0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   51fc8:	f9003fe0 	str	x0, [sp, #120]
+   51fcc:	9101a2d5 	add	x21, x22, #0x68
+   51fd0:	f9462c00 	ldr	x0, [x0, #3160]
+   51fd4:	b4000080 	cbz	x0, 51fe4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x164c>
+   51fd8:	aa1503e0 	mov	x0, x21
+   51fdc:	97ff54ed 	bl	27390 <pthread_mutex_lock@plt>
+   51fe0:	35006200 	cbnz	w0, 52c20 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2288>
+   51fe4:	f94097e0 	ldr	x0, [sp, #296]
+   51fe8:	f90157e0 	str	x0, [sp, #680]
+   51fec:	f94093e0 	ldr	x0, [sp, #288]
+   51ff0:	f90153e0 	str	x0, [sp, #672]
+   51ff4:	f94157e2 	ldr	x2, [sp, #680]
+   51ff8:	aa0003e1 	mov	x1, x0
+   51ffc:	a95327e8 	ldp	x8, x9, [sp, #304]
+   52000:	8b020002 	add	x2, x0, x2
+   52004:	910983e0 	add	x0, sp, #0x260
+   52008:	d0000113 	adrp	x19, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   5200c:	a9541fe6 	ldp	x6, x7, [sp, #320]
+   52010:	910a83f4 	add	x20, sp, #0x2a0
+   52014:	a9052408 	stp	x8, x9, [x0, #80]
+   52018:	910983e9 	add	x9, sp, #0x260
+   5201c:	9102028a 	add	x10, x20, #0x80
+   52020:	a95517e4 	ldp	x4, x5, [sp, #336]
+   52024:	a9061d26 	stp	x6, x7, [x9, #96]
+   52028:	d2801f48 	mov	x8, #0xfa                  	// #250
+   5202c:	a9561fe6 	ldp	x6, x7, [sp, #352]
+   52030:	a9071524 	stp	x4, x5, [x9, #112]
+   52034:	91018280 	add	x0, x20, #0x60
+   52038:	f9452e63 	ldr	x3, [x19, #2648]
+   5203c:	a9081d26 	stp	x6, x7, [x9, #128]
+   52040:	910c03e7 	add	x7, sp, #0x300
+   52044:	a95717e4 	ldp	x4, x5, [sp, #368]
+   52048:	91004063 	add	x3, x3, #0x10
+   5204c:	a9091524 	stp	x4, x5, [x9, #144]
+   52050:	a90028e3 	stp	x3, x10, [x7]
+   52054:	a90120ff 	stp	xzr, x8, [x7, #16]
+   52058:	97ff54ee 	bl	27410 <_ZN3fmt2v86detail6bufferIcE6appendIcEEvPKT_S7_@plt>
+   5205c:	f9417be1 	ldr	x1, [sp, #752]
+   52060:	91018280 	add	x0, x20, #0x60
+   52064:	f9417fe2 	ldr	x2, [sp, #760]
+   52068:	8b020022 	add	x2, x1, x2
+   5206c:	97ff54e9 	bl	27410 <_ZN3fmt2v86detail6bufferIcE6appendIcEEvPKT_S7_@plt>
+   52070:	f94157e1 	ldr	x1, [sp, #680]
+   52074:	910282da 	add	x26, x22, #0xa0
+   52078:	f94187e0 	ldr	x0, [sp, #776]
+   5207c:	f94052c2 	ldr	x2, [x22, #160]
+   52080:	8b010001 	add	x1, x0, x1
+   52084:	f90153e0 	str	x0, [sp, #672]
+   52088:	f9017be1 	str	x1, [sp, #752]
+   5208c:	b50035e2 	cbnz	x2, 52748 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1db0>
+   52090:	f9452e61 	ldr	x1, [x19, #2648]
+   52094:	91020294 	add	x20, x20, #0x80
+   52098:	eb14001f 	cmp	x0, x20
+   5209c:	91004021 	add	x1, x1, #0x10
+   520a0:	f90183e1 	str	x1, [sp, #768]
+   520a4:	54000040 	b.eq	520ac <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1714>  // b.none
+   520a8:	97ff561e 	bl	27920 <_ZdlPv@plt>
+   520ac:	f9403fe0 	ldr	x0, [sp, #120]
+   520b0:	f9462c00 	ldr	x0, [x0, #3160]
+   520b4:	b4ff6020 	cbz	x0, 50cb8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x320>
+   520b8:	aa1503e0 	mov	x0, x21
+   520bc:	97ff5569 	bl	27660 <pthread_mutex_unlock@plt>
+   520c0:	17fffafe 	b	50cb8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x320>
+   520c4:	d2800200 	mov	x0, #0x10                  	// #16
+   520c8:	f90037e0 	str	x0, [sp, #104]
+   520cc:	17fffbf2 	b	51094 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x6fc>
+   520d0:	aa1303e0 	mov	x0, x19
+   520d4:	97ff580f 	bl	28110 <_ZNK6icraft3xir9ObjectRef3getEv@plt>
+   520d8:	d0000102 	adrp	x2, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   520dc:	d0000101 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   520e0:	d2800003 	mov	x3, #0x0                   	// #0
+   520e4:	f9458021 	ldr	x1, [x1, #2816]
+   520e8:	f9468042 	ldr	x2, [x2, #3328]
+   520ec:	97ff5689 	bl	27b10 <__dynamic_cast@plt>
+   520f0:	f94093e1 	ldr	x1, [sp, #288]
+   520f4:	b4ff7340 	cbz	x0, 50f5c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x5c4>
+   520f8:	f90067e1 	str	x1, [sp, #200]
+   520fc:	390343ff 	strb	wzr, [sp, #208]
+   52100:	17fffb9c 	b	50f70 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x5d8>
+   52104:	97ff57ef 	bl	280c0 <__cxa_guard_acquire@plt>
+   52108:	34ff46e0 	cbz	w0, 509e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x4c>
+   5210c:	f946bee0 	ldr	x0, [x23, #3448]
+   52110:	97ff57a0 	bl	27f90 <_ZN6spdlog7details8registryC1Ev@plt>
+   52114:	d0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   52118:	f0000102 	adrp	x2, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   5211c:	f946bee1 	ldr	x1, [x23, #3448]
+   52120:	91206042 	add	x2, x2, #0x818
+   52124:	f9462000 	ldr	x0, [x0, #3136]
+   52128:	97ff5682 	bl	27b30 <__cxa_atexit@plt>
+   5212c:	f946df00 	ldr	x0, [x24, #3512]
+   52130:	97ff5590 	bl	27770 <__cxa_guard_release@plt>
+   52134:	17fffa2c 	b	509e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x4c>
+   52138:	97ff57e2 	bl	280c0 <__cxa_guard_acquire@plt>
+   5213c:	34ff5740 	cbz	w0, 50c24 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x28c>
+   52140:	f946bee0 	ldr	x0, [x23, #3448]
+   52144:	97ff5793 	bl	27f90 <_ZN6spdlog7details8registryC1Ev@plt>
+   52148:	d0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   5214c:	f0000102 	adrp	x2, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   52150:	f946bee1 	ldr	x1, [x23, #3448]
+   52154:	91206042 	add	x2, x2, #0x818
+   52158:	f9462000 	ldr	x0, [x0, #3136]
+   5215c:	97ff5675 	bl	27b30 <__cxa_atexit@plt>
+   52160:	f946df00 	ldr	x0, [x24, #3512]
+   52164:	97ff5583 	bl	27770 <__cxa_guard_release@plt>
+   52168:	17fffaaf 	b	50c24 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x28c>
+   5216c:	f9400f16 	ldr	x22, [x24, #24]
+   52170:	d2800800 	mov	x0, #0x40                  	// #64
+   52174:	cb1302d4 	sub	x20, x22, x19
+   52178:	97ff560e 	bl	279b0 <_Znwm@plt>
+   5217c:	eb16027f 	cmp	x19, x22
+   52180:	aa0003f7 	mov	x23, x0
+   52184:	aa0003e1 	mov	x1, x0
+   52188:	540000c1 	b.ne	521a0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1808>  // b.any
+   5218c:	14000015 	b	521e0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1848>
+   52190:	91004273 	add	x19, x19, #0x10
+   52194:	91004021 	add	x1, x1, #0x10
+   52198:	eb1302df 	cmp	x22, x19
+   5219c:	54000220 	b.eq	521e0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1848>  // b.none
+   521a0:	f9400262 	ldr	x2, [x19]
+   521a4:	39402263 	ldrb	w3, [x19, #8]
+   521a8:	f9000022 	str	x2, [x1]
+   521ac:	f100005f 	cmp	x2, #0x0
+   521b0:	39002023 	strb	w3, [x1, #8]
+   521b4:	7a401860 	ccmp	w3, #0x0, #0x0, ne  // ne = any
+   521b8:	54fffec1 	b.ne	52190 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x17f8>  // b.any
+   521bc:	91002042 	add	x2, x2, #0x8
+   521c0:	885ffc40 	ldaxr	w0, [x2]
+   521c4:	11000400 	add	w0, w0, #0x1
+   521c8:	8803fc40 	stlxr	w3, w0, [x2]
+   521cc:	35ffffa3 	cbnz	w3, 521c0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1828>
+   521d0:	91004273 	add	x19, x19, #0x10
+   521d4:	91004021 	add	x1, x1, #0x10
+   521d8:	eb1302df 	cmp	x22, x19
+   521dc:	54fffe21 	b.ne	521a0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1808>  // b.any
+   521e0:	f94006b6 	ldr	x22, [x21, #8]
+   521e4:	f9400b13 	ldr	x19, [x24, #16]
+   521e8:	eb16027f 	cmp	x19, x22
+   521ec:	540000a1 	b.ne	52200 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1868>  // b.any
+   521f0:	1400000d 	b	52224 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x188c>
+   521f4:	91004273 	add	x19, x19, #0x10
+   521f8:	eb1302df 	cmp	x22, x19
+   521fc:	54000120 	b.eq	52220 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1888>  // b.none
+   52200:	f9400260 	ldr	x0, [x19]
+   52204:	b4ffff80 	cbz	x0, 521f4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x185c>
+   52208:	39402261 	ldrb	w1, [x19, #8]
+   5220c:	35ffff41 	cbnz	w1, 521f4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x185c>
+   52210:	91004273 	add	x19, x19, #0x10
+   52214:	97ff5503 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   52218:	eb1302df 	cmp	x22, x19
+   5221c:	54ffff21 	b.ne	52200 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1868>  // b.any
+   52220:	f9400b16 	ldr	x22, [x24, #16]
+   52224:	b4000076 	cbz	x22, 52230 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1898>
+   52228:	aa1603e0 	mov	x0, x22
+   5222c:	97ff55bd 	bl	27920 <_ZdlPv@plt>
+   52230:	f9000b17 	str	x23, [x24, #16]
+   52234:	8b1402f4 	add	x20, x23, x20
+   52238:	910102f7 	add	x23, x23, #0x40
+   5223c:	a900deb4 	stp	x20, x23, [x21, #8]
+   52240:	17fffb1a 	b	50ea8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x510>
+   52244:	f9400f33 	ldr	x19, [x25, #24]
+   52248:	d2800400 	mov	x0, #0x20                  	// #32
+   5224c:	cb010273 	sub	x19, x19, x1
+   52250:	97ff55d8 	bl	279b0 <_Znwm@plt>
+   52254:	f94006c2 	ldr	x2, [x22, #8]
+   52258:	aa0003f4 	mov	x20, x0
+   5225c:	f9400b37 	ldr	x23, [x25, #16]
+   52260:	cb170042 	sub	x2, x2, x23
+   52264:	f100005f 	cmp	x2, #0x0
+   52268:	540001ac 	b.gt	5229c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1904>
+   5226c:	b50001d7 	cbnz	x23, 522a4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x190c>
+   52270:	f9000b34 	str	x20, [x25, #16]
+   52274:	8b130293 	add	x19, x20, x19
+   52278:	91008294 	add	x20, x20, #0x20
+   5227c:	a900d2d3 	stp	x19, x20, [x22, #8]
+   52280:	17fffb20 	b	50f00 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x568>
+   52284:	91002000 	add	x0, x0, #0x8
+   52288:	885ffc01 	ldaxr	w1, [x0]
+   5228c:	11000421 	add	w1, w1, #0x1
+   52290:	8802fc01 	stlxr	w2, w1, [x0]
+   52294:	35ffffa2 	cbnz	w2, 52288 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x18f0>
+   52298:	17fffb2b 	b	50f44 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x5ac>
+   5229c:	aa1703e1 	mov	x1, x23
+   522a0:	97ff5650 	bl	27be0 <memmove@plt>
+   522a4:	aa1703e0 	mov	x0, x23
+   522a8:	97ff559e 	bl	27920 <_ZdlPv@plt>
+   522ac:	17fffff1 	b	52270 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x18d8>
+   522b0:	d2801640 	mov	x0, #0xb2                  	// #178
+   522b4:	97ff557b 	bl	278a0 <syscall@plt>
+   522b8:	d2800021 	mov	x1, #0x1                   	// #1
+   522bc:	aa0003e2 	mov	x2, x0
+   522c0:	f0000100 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   522c4:	f9440403 	ldr	x3, [x0, #2056]
+   522c8:	91202000 	add	x0, x0, #0x808
+   522cc:	d63f0060 	blr	x3
+   522d0:	f9000341 	str	x1, [x26]
+   522d4:	f8206ac2 	str	x2, [x22, x0]
+   522d8:	17fffe24 	b	51b68 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x11d0>
+   522dc:	d2801640 	mov	x0, #0xb2                  	// #178
+   522e0:	f9003be6 	str	x6, [sp, #112]
+   522e4:	97ff556f 	bl	278a0 <syscall@plt>
+   522e8:	aa0003e2 	mov	x2, x0
+   522ec:	f9403be6 	ldr	x6, [sp, #112]
+   522f0:	d2800023 	mov	x3, #0x1                   	// #1
+   522f4:	f0000100 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   522f8:	f9440401 	ldr	x1, [x0, #2056]
+   522fc:	91202000 	add	x0, x0, #0x808
+   52300:	d63f0020 	blr	x1
+   52304:	f8206b62 	str	x2, [x27, x0]
+   52308:	f90000c3 	str	x3, [x6]
+   5230c:	17fffe93 	b	51d58 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x13c0>
+   52310:	d0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   52314:	f9003fe0 	str	x0, [sp, #120]
+   52318:	9101a2d9 	add	x25, x22, #0x68
+   5231c:	f9462c00 	ldr	x0, [x0, #3160]
+   52320:	b4000080 	cbz	x0, 52330 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1998>
+   52324:	aa1903e0 	mov	x0, x25
+   52328:	97ff541a 	bl	27390 <pthread_mutex_lock@plt>
+   5232c:	35004780 	cbnz	w0, 52c1c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2284>
+   52330:	f94097e0 	ldr	x0, [sp, #296]
+   52334:	f90157e0 	str	x0, [sp, #680]
+   52338:	f94093e0 	ldr	x0, [sp, #288]
+   5233c:	f90153e0 	str	x0, [sp, #672]
+   52340:	f94157e2 	ldr	x2, [sp, #680]
+   52344:	aa0003e1 	mov	x1, x0
+   52348:	910983ea 	add	x10, sp, #0x260
+   5234c:	910c03eb 	add	x11, sp, #0x300
+   52350:	8b020002 	add	x2, x0, x2
+   52354:	910983e0 	add	x0, sp, #0x260
+   52358:	a9531fe6 	ldp	x6, x7, [sp, #304]
+   5235c:	91020288 	add	x8, x20, #0x80
+   52360:	a9051c06 	stp	x6, x7, [x0, #80]
+   52364:	d2801f49 	mov	x9, #0xfa                  	// #250
+   52368:	91018280 	add	x0, x20, #0x60
+   5236c:	a95417e4 	ldp	x4, x5, [sp, #320]
+   52370:	a9061544 	stp	x4, x5, [x10, #96]
+   52374:	a9551fe6 	ldp	x6, x7, [sp, #336]
+   52378:	a9071d46 	stp	x6, x7, [x10, #112]
+   5237c:	f9452e63 	ldr	x3, [x19, #2648]
+   52380:	a95617e4 	ldp	x4, x5, [sp, #352]
+   52384:	91004063 	add	x3, x3, #0x10
+   52388:	a9571fe6 	ldp	x6, x7, [sp, #368]
+   5238c:	a9081544 	stp	x4, x5, [x10, #128]
+   52390:	a9091d46 	stp	x6, x7, [x10, #144]
+   52394:	a9002163 	stp	x3, x8, [x11]
+   52398:	a901257f 	stp	xzr, x9, [x11, #16]
+   5239c:	97ff541d 	bl	27410 <_ZN3fmt2v86detail6bufferIcE6appendIcEEvPKT_S7_@plt>
+   523a0:	f9417be1 	ldr	x1, [sp, #752]
+   523a4:	91018280 	add	x0, x20, #0x60
+   523a8:	f9417fe2 	ldr	x2, [sp, #760]
+   523ac:	8b020022 	add	x2, x1, x2
+   523b0:	97ff5418 	bl	27410 <_ZN3fmt2v86detail6bufferIcE6appendIcEEvPKT_S7_@plt>
+   523b4:	f94157e1 	ldr	x1, [sp, #680]
+   523b8:	910282db 	add	x27, x22, #0xa0
+   523bc:	f94187e0 	ldr	x0, [sp, #776]
+   523c0:	f94052c2 	ldr	x2, [x22, #160]
+   523c4:	8b010001 	add	x1, x0, x1
+   523c8:	f90153e0 	str	x0, [sp, #672]
+   523cc:	f9017be1 	str	x1, [sp, #752]
+   523d0:	b5002442 	cbnz	x2, 52858 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1ec0>
+   523d4:	f9452e61 	ldr	x1, [x19, #2648]
+   523d8:	91020294 	add	x20, x20, #0x80
+   523dc:	eb14001f 	cmp	x0, x20
+   523e0:	91004021 	add	x1, x1, #0x10
+   523e4:	f90183e1 	str	x1, [sp, #768]
+   523e8:	54000040 	b.eq	523f0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1a58>  // b.none
+   523ec:	97ff554d 	bl	27920 <_ZdlPv@plt>
+   523f0:	f9403fe0 	ldr	x0, [sp, #120]
+   523f4:	f9462c00 	ldr	x0, [x0, #3160]
+   523f8:	b4ffd6e0 	cbz	x0, 51ed4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x153c>
+   523fc:	aa1903e0 	mov	x0, x25
+   52400:	97ff5498 	bl	27660 <pthread_mutex_unlock@plt>
+   52404:	17fffeb4 	b	51ed4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x153c>
+   52408:	d2801640 	mov	x0, #0xb2                  	// #178
+   5240c:	f9003be6 	str	x6, [sp, #112]
+   52410:	97ff5524 	bl	278a0 <syscall@plt>
+   52414:	aa0003e2 	mov	x2, x0
+   52418:	f9403be6 	ldr	x6, [sp, #112]
+   5241c:	d2800023 	mov	x3, #0x1                   	// #1
+   52420:	f0000100 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   52424:	f9440401 	ldr	x1, [x0, #2056]
+   52428:	91202000 	add	x0, x0, #0x808
+   5242c:	d63f0020 	blr	x1
+   52430:	f8206b62 	str	x2, [x27, x0]
+   52434:	f90000c3 	str	x3, [x6]
+   52438:	17fffe99 	b	51e9c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1504>
+   5243c:	d0000100 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   52440:	f9003fe0 	str	x0, [sp, #120]
+   52444:	9101a2d9 	add	x25, x22, #0x68
+   52448:	f9462c00 	ldr	x0, [x0, #3160]
+   5244c:	b4000080 	cbz	x0, 5245c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1ac4>
+   52450:	aa1903e0 	mov	x0, x25
+   52454:	97ff53cf 	bl	27390 <pthread_mutex_lock@plt>
+   52458:	35003e00 	cbnz	w0, 52c18 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2280>
+   5245c:	f94097e0 	ldr	x0, [sp, #296]
+   52460:	f90157e0 	str	x0, [sp, #680]
+   52464:	f94093e0 	ldr	x0, [sp, #288]
+   52468:	f90153e0 	str	x0, [sp, #672]
+   5246c:	f94157e2 	ldr	x2, [sp, #680]
+   52470:	aa0003e1 	mov	x1, x0
+   52474:	910983ea 	add	x10, sp, #0x260
+   52478:	91020288 	add	x8, x20, #0x80
+   5247c:	8b020002 	add	x2, x0, x2
+   52480:	910983e0 	add	x0, sp, #0x260
+   52484:	a9531fe6 	ldp	x6, x7, [sp, #304]
+   52488:	d2801f49 	mov	x9, #0xfa                  	// #250
+   5248c:	a9051c06 	stp	x6, x7, [x0, #80]
+   52490:	91018280 	add	x0, x20, #0x60
+   52494:	a95417e4 	ldp	x4, x5, [sp, #320]
+   52498:	a9061544 	stp	x4, x5, [x10, #96]
+   5249c:	a9551fe6 	ldp	x6, x7, [sp, #336]
+   524a0:	a9071d46 	stp	x6, x7, [x10, #112]
+   524a4:	f9452e63 	ldr	x3, [x19, #2648]
+   524a8:	a95617e4 	ldp	x4, x5, [sp, #352]
+   524ac:	a9081544 	stp	x4, x5, [x10, #128]
+   524b0:	91004063 	add	x3, x3, #0x10
+   524b4:	a9571fe6 	ldp	x6, x7, [sp, #368]
+   524b8:	a9091d46 	stp	x6, x7, [x10, #144]
+   524bc:	910c03ea 	add	x10, sp, #0x300
+   524c0:	a9002143 	stp	x3, x8, [x10]
+   524c4:	a901255f 	stp	xzr, x9, [x10, #16]
+   524c8:	97ff53d2 	bl	27410 <_ZN3fmt2v86detail6bufferIcE6appendIcEEvPKT_S7_@plt>
+   524cc:	f9417be1 	ldr	x1, [sp, #752]
+   524d0:	91018280 	add	x0, x20, #0x60
+   524d4:	f9417fe2 	ldr	x2, [sp, #760]
+   524d8:	8b020022 	add	x2, x1, x2
+   524dc:	97ff53cd 	bl	27410 <_ZN3fmt2v86detail6bufferIcE6appendIcEEvPKT_S7_@plt>
+   524e0:	f94157e1 	ldr	x1, [sp, #680]
+   524e4:	910282db 	add	x27, x22, #0xa0
+   524e8:	f94187e0 	ldr	x0, [sp, #776]
+   524ec:	f94052c2 	ldr	x2, [x22, #160]
+   524f0:	8b010001 	add	x1, x0, x1
+   524f4:	f90153e0 	str	x0, [sp, #672]
+   524f8:	f9017be1 	str	x1, [sp, #752]
+   524fc:	b50009a2 	cbnz	x2, 52630 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1c98>
+   52500:	f9452e61 	ldr	x1, [x19, #2648]
+   52504:	91020294 	add	x20, x20, #0x80
+   52508:	eb14001f 	cmp	x0, x20
+   5250c:	91004021 	add	x1, x1, #0x10
+   52510:	f90183e1 	str	x1, [sp, #768]
+   52514:	54000040 	b.eq	5251c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1b84>  // b.none
+   52518:	97ff5502 	bl	27920 <_ZdlPv@plt>
+   5251c:	f9403fe0 	ldr	x0, [sp, #120]
+   52520:	f9462c00 	ldr	x0, [x0, #3160]
+   52524:	b4ffc360 	cbz	x0, 51d90 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x13f8>
+   52528:	aa1903e0 	mov	x0, x25
+   5252c:	97ff544d 	bl	27660 <pthread_mutex_unlock@plt>
+   52530:	17fffe18 	b	51d90 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x13f8>
+   52534:	d2801640 	mov	x0, #0xb2                  	// #178
+   52538:	97ff54da 	bl	278a0 <syscall@plt>
+   5253c:	d2800021 	mov	x1, #0x1                   	// #1
+   52540:	aa0003e2 	mov	x2, x0
+   52544:	f0000100 	adrp	x0, 75000 <_ZN3fmt2v819basic_memory_bufferIcLm500ESaIcEE4growEm@@Base+0x4aac0>
+   52548:	f9440403 	ldr	x3, [x0, #2056]
+   5254c:	91202000 	add	x0, x0, #0x808
+   52550:	d63f0060 	blr	x3
+   52554:	f9000341 	str	x1, [x26]
+   52558:	f8206aa2 	str	x2, [x21, x0]
+   5255c:	17fffe8a 	b	51f84 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x15ec>
+   52560:	91000401 	add	x1, x0, #0x1
+   52564:	f9400c65 	ldr	x5, [x3, #24]
+   52568:	9ac40822 	udiv	x2, x1, x4
+   5256c:	910004a5 	add	x5, x5, #0x1
+   52570:	f94187e0 	ldr	x0, [sp, #776]
+   52574:	f9000c65 	str	x5, [x3, #24]
+   52578:	9b048441 	msub	x1, x2, x4, x1
+   5257c:	f9000461 	str	x1, [x3, #8]
+   52580:	17fffcd9 	b	518e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xf4c>
+   52584:	91000401 	add	x1, x0, #0x1
+   52588:	f9400c85 	ldr	x5, [x4, #24]
+   5258c:	9ac20823 	udiv	x3, x1, x2
+   52590:	910004a5 	add	x5, x5, #0x1
+   52594:	f94187e0 	ldr	x0, [sp, #776]
+   52598:	f9000c85 	str	x5, [x4, #24]
+   5259c:	9b028461 	msub	x1, x3, x2, x1
+   525a0:	f9000481 	str	x1, [x4, #8]
+   525a4:	17fffc04 	b	515b4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xc1c>
+   525a8:	f90036d9 	str	x25, [x22, #104]
+   525ac:	910182c6 	add	x6, x22, #0x60
+   525b0:	f9003ec4 	str	x4, [x22, #120]
+   525b4:	b4ffa402 	cbz	x2, 51a34 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x109c>
+   525b8:	aa1903e0 	mov	x0, x25
+   525bc:	f9003be2 	str	x2, [sp, #112]
+   525c0:	f90047e4 	str	x4, [sp, #136]
+   525c4:	a90a8fe5 	stp	x5, x3, [sp, #168]
+   525c8:	f9005fe6 	str	x6, [sp, #184]
+   525cc:	97ff5585 	bl	27be0 <memmove@plt>
+   525d0:	f9403be2 	ldr	x2, [sp, #112]
+   525d4:	f94047e4 	ldr	x4, [sp, #136]
+   525d8:	a94a8fe5 	ldp	x5, x3, [sp, #168]
+   525dc:	f9405fe6 	ldr	x6, [sp, #184]
+   525e0:	17fffd08 	b	51a00 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1068>
+   525e4:	f94036dc 	ldr	x28, [x22, #104]
+   525e8:	17fffc4b 	b	51714 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xd7c>
+   525ec:	f90036dc 	str	x28, [x22, #104]
+   525f0:	910182c6 	add	x6, x22, #0x60
+   525f4:	f9003ed9 	str	x25, [x22, #120]
+   525f8:	b4ff88e2 	cbz	x2, 51714 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xd7c>
+   525fc:	aa1c03e0 	mov	x0, x28
+   52600:	f9003be2 	str	x2, [sp, #112]
+   52604:	f90047e3 	str	x3, [sp, #136]
+   52608:	a90a93e5 	stp	x5, x4, [sp, #168]
+   5260c:	f9005fe6 	str	x6, [sp, #184]
+   52610:	97ff5574 	bl	27be0 <memmove@plt>
+   52614:	f9403be2 	ldr	x2, [sp, #112]
+   52618:	f94047e3 	ldr	x3, [sp, #136]
+   5261c:	a94a93e5 	ldp	x5, x4, [sp, #168]
+   52620:	f9405fe6 	ldr	x6, [sp, #184]
+   52624:	17fffc2d 	b	516d8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0xd40>
+   52628:	f94036d9 	ldr	x25, [x22, #104]
+   5262c:	17fffd02 	b	51a34 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x109c>
+   52630:	f9400b60 	ldr	x0, [x27, #16]
+   52634:	910983e1 	add	x1, sp, #0x260
+   52638:	f94062c4 	ldr	x4, [x22, #192]
+   5263c:	8b000400 	add	x0, x0, x0, lsl #1
+   52640:	a9440c22 	ldp	x2, x3, [x1, #64]
+   52644:	d379e01c 	lsl	x28, x0, #7
+   52648:	8b1c009a 	add	x26, x4, x28
+   5264c:	91020345 	add	x5, x26, #0x80
+   52650:	a9000f42 	stp	x2, x3, [x26]
+   52654:	a9450420 	ldp	x0, x1, [x1, #80]
+   52658:	a9010740 	stp	x0, x1, [x26, #16]
+   5265c:	910983e0 	add	x0, sp, #0x260
+   52660:	a9460400 	ldp	x0, x1, [x0, #96]
+   52664:	a9020740 	stp	x0, x1, [x26, #32]
+   52668:	910983e0 	add	x0, sp, #0x260
+   5266c:	a9470400 	ldp	x0, x1, [x0, #112]
+   52670:	a9030740 	stp	x0, x1, [x26, #48]
+   52674:	910983e0 	add	x0, sp, #0x260
+   52678:	a9480400 	ldp	x0, x1, [x0, #128]
+   5267c:	a9040740 	stp	x0, x1, [x26, #64]
+   52680:	910983e0 	add	x0, sp, #0x260
+   52684:	a9490400 	ldp	x0, x1, [x0, #144]
+   52688:	a9050740 	stp	x0, x1, [x26, #80]
+   5268c:	f9403740 	ldr	x0, [x26, #104]
+   52690:	eb05001f 	cmp	x0, x5
+   52694:	54000080 	b.eq	526a4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1d0c>  // b.none
+   52698:	a90693e5 	stp	x5, x4, [sp, #104]
+   5269c:	97ff54a1 	bl	27920 <_ZdlPv@plt>
+   526a0:	a94693e5 	ldp	x5, x4, [sp, #104]
+   526a4:	91020280 	add	x0, x20, #0x80
+   526a8:	f94187e1 	ldr	x1, [sp, #776]
+   526ac:	f9418be2 	ldr	x2, [sp, #784]
+   526b0:	eb00003f 	cmp	x1, x0
+   526b4:	f9418fe3 	ldr	x3, [sp, #792]
+   526b8:	54001e80 	b.eq	52a88 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x20f0>  // b.none
+   526bc:	91018347 	add	x7, x26, #0x60
+   526c0:	f9003741 	str	x1, [x26, #104]
+   526c4:	f9003f43 	str	x3, [x26, #120]
+   526c8:	f9018fff 	str	xzr, [sp, #792]
+   526cc:	f90187e0 	str	x0, [sp, #776]
+   526d0:	f9400ce3 	ldr	x3, [x7, #24]
+   526d4:	eb03005f 	cmp	x2, x3
+   526d8:	54002829 	b.ls	52bdc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2244>  // b.plast
+   526dc:	aa0203e1 	mov	x1, x2
+   526e0:	aa0703e0 	mov	x0, x7
+   526e4:	a9068be7 	stp	x7, x2, [sp, #104]
+   526e8:	f90043e4 	str	x4, [sp, #128]
+   526ec:	97ff540d 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   526f0:	a9468be7 	ldp	x7, x2, [sp, #104]
+   526f4:	f9403745 	ldr	x5, [x26, #104]
+   526f8:	f94043e4 	ldr	x4, [sp, #128]
+   526fc:	f9400ce3 	ldr	x3, [x7, #24]
+   52700:	eb03005f 	cmp	x2, x3
+   52704:	f9400b61 	ldr	x1, [x27, #16]
+   52708:	9a839042 	csel	x2, x2, x3, ls  // ls = plast
+   5270c:	f94052c6 	ldr	x6, [x22, #160]
+   52710:	91000423 	add	x3, x1, #0x1
+   52714:	f90008e2 	str	x2, [x7, #16]
+   52718:	f9400762 	ldr	x2, [x27, #8]
+   5271c:	9ac60861 	udiv	x1, x3, x6
+   52720:	f9400740 	ldr	x0, [x26, #8]
+   52724:	f83c6885 	str	x5, [x4, x28]
+   52728:	9b068c21 	msub	x1, x1, x6, x3
+   5272c:	8b0000a0 	add	x0, x5, x0
+   52730:	f9002b40 	str	x0, [x26, #80]
+   52734:	f9000b61 	str	x1, [x27, #16]
+   52738:	eb02003f 	cmp	x1, x2
+   5273c:	54002240 	b.eq	52b84 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x21ec>  // b.none
+   52740:	f94187e0 	ldr	x0, [sp, #776]
+   52744:	17ffff6f 	b	52500 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1b68>
+   52748:	f9400b40 	ldr	x0, [x26, #16]
+   5274c:	910983e1 	add	x1, sp, #0x260
+   52750:	f94062c4 	ldr	x4, [x22, #192]
+   52754:	8b000400 	add	x0, x0, x0, lsl #1
+   52758:	a9440c22 	ldp	x2, x3, [x1, #64]
+   5275c:	d379e01b 	lsl	x27, x0, #7
+   52760:	8b1b0099 	add	x25, x4, x27
+   52764:	91020325 	add	x5, x25, #0x80
+   52768:	a9000f22 	stp	x2, x3, [x25]
+   5276c:	a9450420 	ldp	x0, x1, [x1, #80]
+   52770:	a9010720 	stp	x0, x1, [x25, #16]
+   52774:	910983e0 	add	x0, sp, #0x260
+   52778:	a9460400 	ldp	x0, x1, [x0, #96]
+   5277c:	a9020720 	stp	x0, x1, [x25, #32]
+   52780:	910983e0 	add	x0, sp, #0x260
+   52784:	a9470400 	ldp	x0, x1, [x0, #112]
+   52788:	a9030720 	stp	x0, x1, [x25, #48]
+   5278c:	910983e0 	add	x0, sp, #0x260
+   52790:	a9480400 	ldp	x0, x1, [x0, #128]
+   52794:	a9040720 	stp	x0, x1, [x25, #64]
+   52798:	910983e0 	add	x0, sp, #0x260
+   5279c:	a9490400 	ldp	x0, x1, [x0, #144]
+   527a0:	a9050720 	stp	x0, x1, [x25, #80]
+   527a4:	f9403720 	ldr	x0, [x25, #104]
+   527a8:	eb05001f 	cmp	x0, x5
+   527ac:	54000080 	b.eq	527bc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1e24>  // b.none
+   527b0:	a90693e5 	stp	x5, x4, [sp, #104]
+   527b4:	97ff545b 	bl	27920 <_ZdlPv@plt>
+   527b8:	a94693e5 	ldp	x5, x4, [sp, #104]
+   527bc:	91020280 	add	x0, x20, #0x80
+   527c0:	f94187e1 	ldr	x1, [sp, #776]
+   527c4:	f9418bfc 	ldr	x28, [sp, #784]
+   527c8:	eb00003f 	cmp	x1, x0
+   527cc:	f9418fe3 	ldr	x3, [sp, #792]
+   527d0:	54001720 	b.eq	52ab4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x211c>  // b.none
+   527d4:	91018326 	add	x6, x25, #0x60
+   527d8:	f9003721 	str	x1, [x25, #104]
+   527dc:	f9003f23 	str	x3, [x25, #120]
+   527e0:	f9018fff 	str	xzr, [sp, #792]
+   527e4:	f90187e0 	str	x0, [sp, #776]
+   527e8:	f9400cc3 	ldr	x3, [x6, #24]
+   527ec:	eb03039f 	cmp	x28, x3
+   527f0:	54001f29 	b.ls	52bd4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x223c>  // b.plast
+   527f4:	aa0603e0 	mov	x0, x6
+   527f8:	aa1c03e1 	mov	x1, x28
+   527fc:	a90693e6 	stp	x6, x4, [sp, #104]
+   52800:	97ff53c8 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   52804:	a94693e6 	ldp	x6, x4, [sp, #104]
+   52808:	f9403725 	ldr	x5, [x25, #104]
+   5280c:	f9400cc3 	ldr	x3, [x6, #24]
+   52810:	eb03039f 	cmp	x28, x3
+   52814:	f9400b41 	ldr	x1, [x26, #16]
+   52818:	9a83939c 	csel	x28, x28, x3, ls  // ls = plast
+   5281c:	f94052c3 	ldr	x3, [x22, #160]
+   52820:	91000422 	add	x2, x1, #0x1
+   52824:	f90008dc 	str	x28, [x6, #16]
+   52828:	f9400746 	ldr	x6, [x26, #8]
+   5282c:	9ac30841 	udiv	x1, x2, x3
+   52830:	f9400720 	ldr	x0, [x25, #8]
+   52834:	f83b6885 	str	x5, [x4, x27]
+   52838:	9b038821 	msub	x1, x1, x3, x2
+   5283c:	8b0000a0 	add	x0, x5, x0
+   52840:	f9002b20 	str	x0, [x25, #80]
+   52844:	f9000b41 	str	x1, [x26, #16]
+   52848:	eb06003f 	cmp	x1, x6
+   5284c:	54001ae0 	b.eq	52ba8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2210>  // b.none
+   52850:	f94187e0 	ldr	x0, [sp, #776]
+   52854:	17fffe0f 	b	52090 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x16f8>
+   52858:	f9400b60 	ldr	x0, [x27, #16]
+   5285c:	910983e1 	add	x1, sp, #0x260
+   52860:	f94062c4 	ldr	x4, [x22, #192]
+   52864:	8b000400 	add	x0, x0, x0, lsl #1
+   52868:	a9440c22 	ldp	x2, x3, [x1, #64]
+   5286c:	d379e01c 	lsl	x28, x0, #7
+   52870:	8b1c009a 	add	x26, x4, x28
+   52874:	91020345 	add	x5, x26, #0x80
+   52878:	a9000f42 	stp	x2, x3, [x26]
+   5287c:	a9450420 	ldp	x0, x1, [x1, #80]
+   52880:	a9010740 	stp	x0, x1, [x26, #16]
+   52884:	910983e0 	add	x0, sp, #0x260
+   52888:	a9460400 	ldp	x0, x1, [x0, #96]
+   5288c:	a9020740 	stp	x0, x1, [x26, #32]
+   52890:	910983e0 	add	x0, sp, #0x260
+   52894:	a9470400 	ldp	x0, x1, [x0, #112]
+   52898:	a9030740 	stp	x0, x1, [x26, #48]
+   5289c:	910983e0 	add	x0, sp, #0x260
+   528a0:	a9480400 	ldp	x0, x1, [x0, #128]
+   528a4:	a9040740 	stp	x0, x1, [x26, #64]
+   528a8:	910983e0 	add	x0, sp, #0x260
+   528ac:	a9490400 	ldp	x0, x1, [x0, #144]
+   528b0:	a9050740 	stp	x0, x1, [x26, #80]
+   528b4:	f9403740 	ldr	x0, [x26, #104]
+   528b8:	eb05001f 	cmp	x0, x5
+   528bc:	54000080 	b.eq	528cc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1f34>  // b.none
+   528c0:	a90693e5 	stp	x5, x4, [sp, #104]
+   528c4:	97ff5417 	bl	27920 <_ZdlPv@plt>
+   528c8:	a94693e5 	ldp	x5, x4, [sp, #104]
+   528cc:	91020280 	add	x0, x20, #0x80
+   528d0:	f94187e1 	ldr	x1, [sp, #776]
+   528d4:	f9418be2 	ldr	x2, [sp, #784]
+   528d8:	eb00003f 	cmp	x1, x0
+   528dc:	f9418fe3 	ldr	x3, [sp, #792]
+   528e0:	54001020 	b.eq	52ae4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x214c>  // b.none
+   528e4:	91018347 	add	x7, x26, #0x60
+   528e8:	f9003741 	str	x1, [x26, #104]
+   528ec:	f9003f43 	str	x3, [x26, #120]
+   528f0:	f9018fff 	str	xzr, [sp, #792]
+   528f4:	f90187e0 	str	x0, [sp, #776]
+   528f8:	f9400ce3 	ldr	x3, [x7, #24]
+   528fc:	eb03005f 	cmp	x2, x3
+   52900:	54001729 	b.ls	52be4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x224c>  // b.plast
+   52904:	aa0203e1 	mov	x1, x2
+   52908:	aa0703e0 	mov	x0, x7
+   5290c:	a9068be7 	stp	x7, x2, [sp, #104]
+   52910:	f90043e4 	str	x4, [sp, #128]
+   52914:	97ff5383 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   52918:	a9468be7 	ldp	x7, x2, [sp, #104]
+   5291c:	f9403745 	ldr	x5, [x26, #104]
+   52920:	f94043e4 	ldr	x4, [sp, #128]
+   52924:	f9400ce3 	ldr	x3, [x7, #24]
+   52928:	eb03005f 	cmp	x2, x3
+   5292c:	f9400b61 	ldr	x1, [x27, #16]
+   52930:	9a839042 	csel	x2, x2, x3, ls  // ls = plast
+   52934:	f94052c6 	ldr	x6, [x22, #160]
+   52938:	91000423 	add	x3, x1, #0x1
+   5293c:	f90008e2 	str	x2, [x7, #16]
+   52940:	f9400762 	ldr	x2, [x27, #8]
+   52944:	9ac60861 	udiv	x1, x3, x6
+   52948:	f9400740 	ldr	x0, [x26, #8]
+   5294c:	f83c6885 	str	x5, [x4, x28]
+   52950:	9b068c21 	msub	x1, x1, x6, x3
+   52954:	8b0000a0 	add	x0, x5, x0
+   52958:	f9002b40 	str	x0, [x26, #80]
+   5295c:	f9000b61 	str	x1, [x27, #16]
+   52960:	eb02003f 	cmp	x1, x2
+   52964:	54000ec0 	b.eq	52b3c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x21a4>  // b.none
+   52968:	f94187e0 	ldr	x0, [sp, #776]
+   5296c:	17fffe9a 	b	523d4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1a3c>
+   52970:	f9400b40 	ldr	x0, [x26, #16]
+   52974:	910983e1 	add	x1, sp, #0x260
+   52978:	f94062a4 	ldr	x4, [x21, #192]
+   5297c:	8b000400 	add	x0, x0, x0, lsl #1
+   52980:	a9440c22 	ldp	x2, x3, [x1, #64]
+   52984:	d379e01b 	lsl	x27, x0, #7
+   52988:	8b1b0099 	add	x25, x4, x27
+   5298c:	9102033c 	add	x28, x25, #0x80
+   52990:	a9000f22 	stp	x2, x3, [x25]
+   52994:	a9450420 	ldp	x0, x1, [x1, #80]
+   52998:	a9010720 	stp	x0, x1, [x25, #16]
+   5299c:	910983e0 	add	x0, sp, #0x260
+   529a0:	a9460400 	ldp	x0, x1, [x0, #96]
+   529a4:	a9020720 	stp	x0, x1, [x25, #32]
+   529a8:	910983e0 	add	x0, sp, #0x260
+   529ac:	a9470400 	ldp	x0, x1, [x0, #112]
+   529b0:	a9030720 	stp	x0, x1, [x25, #48]
+   529b4:	910983e0 	add	x0, sp, #0x260
+   529b8:	a9480400 	ldp	x0, x1, [x0, #128]
+   529bc:	a9040720 	stp	x0, x1, [x25, #64]
+   529c0:	910983e0 	add	x0, sp, #0x260
+   529c4:	a9490400 	ldp	x0, x1, [x0, #144]
+   529c8:	a9050720 	stp	x0, x1, [x25, #80]
+   529cc:	f9403720 	ldr	x0, [x25, #104]
+   529d0:	eb1c001f 	cmp	x0, x28
+   529d4:	54000080 	b.eq	529e4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x204c>  // b.none
+   529d8:	f90037e4 	str	x4, [sp, #104]
+   529dc:	97ff53d1 	bl	27920 <_ZdlPv@plt>
+   529e0:	f94037e4 	ldr	x4, [sp, #104]
+   529e4:	91020280 	add	x0, x20, #0x80
+   529e8:	f94187e1 	ldr	x1, [sp, #776]
+   529ec:	f9418be2 	ldr	x2, [sp, #784]
+   529f0:	eb00003f 	cmp	x1, x0
+   529f4:	f9418fe3 	ldr	x3, [sp, #792]
+   529f8:	540008c0 	b.eq	52b10 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2178>  // b.none
+   529fc:	91018325 	add	x5, x25, #0x60
+   52a00:	f9003721 	str	x1, [x25, #104]
+   52a04:	f9003f23 	str	x3, [x25, #120]
+   52a08:	f9018fff 	str	xzr, [sp, #792]
+   52a0c:	f90187e0 	str	x0, [sp, #776]
+   52a10:	f9400ca3 	ldr	x3, [x5, #24]
+   52a14:	eb03005f 	cmp	x2, x3
+   52a18:	54000da9 	b.ls	52bcc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2234>  // b.plast
+   52a1c:	aa0203e1 	mov	x1, x2
+   52a20:	aa0503e0 	mov	x0, x5
+   52a24:	a9068be5 	stp	x5, x2, [sp, #104]
+   52a28:	f90043e4 	str	x4, [sp, #128]
+   52a2c:	97ff533d 	bl	27720 <_ZN3fmt2v819basic_memory_bufferIcLm250ESaIcEE4growEm@plt>
+   52a30:	a9468be5 	ldp	x5, x2, [sp, #104]
+   52a34:	f940373c 	ldr	x28, [x25, #104]
+   52a38:	f94043e4 	ldr	x4, [sp, #128]
+   52a3c:	f9400ca3 	ldr	x3, [x5, #24]
+   52a40:	eb03005f 	cmp	x2, x3
+   52a44:	f9400b40 	ldr	x0, [x26, #16]
+   52a48:	9a839042 	csel	x2, x2, x3, ls  // ls = plast
+   52a4c:	f94052a3 	ldr	x3, [x21, #160]
+   52a50:	91000401 	add	x1, x0, #0x1
+   52a54:	f90008a2 	str	x2, [x5, #16]
+   52a58:	f9400742 	ldr	x2, [x26, #8]
+   52a5c:	9ac30820 	udiv	x0, x1, x3
+   52a60:	f9400725 	ldr	x5, [x25, #8]
+   52a64:	f83b689c 	str	x28, [x4, x27]
+   52a68:	9b038400 	msub	x0, x0, x3, x1
+   52a6c:	8b05039c 	add	x28, x28, x5
+   52a70:	f9002b3c 	str	x28, [x25, #80]
+   52a74:	f9000b40 	str	x0, [x26, #16]
+   52a78:	eb02001f 	cmp	x0, x2
+   52a7c:	54000720 	b.eq	52b60 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x21c8>  // b.none
+   52a80:	f94187e0 	ldr	x0, [sp, #776]
+   52a84:	17fffc7d 	b	51c78 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x12e0>
+   52a88:	f9003745 	str	x5, [x26, #104]
+   52a8c:	91018347 	add	x7, x26, #0x60
+   52a90:	f9003f43 	str	x3, [x26, #120]
+   52a94:	b4ffe362 	cbz	x2, 52700 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1d68>
+   52a98:	aa0503e0 	mov	x0, x5
+   52a9c:	a9068fe2 	stp	x2, x3, [sp, #104]
+   52aa0:	a9081fe4 	stp	x4, x7, [sp, #128]
+   52aa4:	97ff544f 	bl	27be0 <memmove@plt>
+   52aa8:	a9468fe2 	ldp	x2, x3, [sp, #104]
+   52aac:	a9481fe4 	ldp	x4, x7, [sp, #128]
+   52ab0:	17ffff09 	b	526d4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1d3c>
+   52ab4:	f9003725 	str	x5, [x25, #104]
+   52ab8:	91018326 	add	x6, x25, #0x60
+   52abc:	f9003f23 	str	x3, [x25, #120]
+   52ac0:	b4ffea9c 	cbz	x28, 52810 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1e78>
+   52ac4:	aa0503e0 	mov	x0, x5
+   52ac8:	aa1c03e2 	mov	x2, x28
+   52acc:	a90693e3 	stp	x3, x4, [sp, #104]
+   52ad0:	f90043e6 	str	x6, [sp, #128]
+   52ad4:	97ff5443 	bl	27be0 <memmove@plt>
+   52ad8:	a94693e3 	ldp	x3, x4, [sp, #104]
+   52adc:	f94043e6 	ldr	x6, [sp, #128]
+   52ae0:	17ffff43 	b	527ec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1e54>
+   52ae4:	f9003745 	str	x5, [x26, #104]
+   52ae8:	91018347 	add	x7, x26, #0x60
+   52aec:	f9003f43 	str	x3, [x26, #120]
+   52af0:	b4fff1c2 	cbz	x2, 52928 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1f90>
+   52af4:	aa0503e0 	mov	x0, x5
+   52af8:	a9068fe2 	stp	x2, x3, [sp, #104]
+   52afc:	a9081fe4 	stp	x4, x7, [sp, #128]
+   52b00:	97ff5438 	bl	27be0 <memmove@plt>
+   52b04:	a9468fe2 	ldp	x2, x3, [sp, #104]
+   52b08:	a9481fe4 	ldp	x4, x7, [sp, #128]
+   52b0c:	17ffff7c 	b	528fc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1f64>
+   52b10:	f900373c 	str	x28, [x25, #104]
+   52b14:	91018325 	add	x5, x25, #0x60
+   52b18:	f9003f23 	str	x3, [x25, #120]
+   52b1c:	b4fff922 	cbz	x2, 52a40 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x20a8>
+   52b20:	aa1c03e0 	mov	x0, x28
+   52b24:	a9068fe2 	stp	x2, x3, [sp, #104]
+   52b28:	a90817e4 	stp	x4, x5, [sp, #128]
+   52b2c:	97ff542d 	bl	27be0 <memmove@plt>
+   52b30:	a9468fe2 	ldp	x2, x3, [sp, #104]
+   52b34:	a94817e4 	ldp	x4, x5, [sp, #128]
+   52b38:	17ffffb7 	b	52a14 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x207c>
+   52b3c:	91000421 	add	x1, x1, #0x1
+   52b40:	f9400f63 	ldr	x3, [x27, #24]
+   52b44:	9ac60822 	udiv	x2, x1, x6
+   52b48:	91000463 	add	x3, x3, #0x1
+   52b4c:	f94187e0 	ldr	x0, [sp, #776]
+   52b50:	f9000f63 	str	x3, [x27, #24]
+   52b54:	9b068441 	msub	x1, x2, x6, x1
+   52b58:	f9000761 	str	x1, [x27, #8]
+   52b5c:	17fffe1e 	b	523d4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1a3c>
+   52b60:	91000401 	add	x1, x0, #0x1
+   52b64:	f9400f44 	ldr	x4, [x26, #24]
+   52b68:	9ac30822 	udiv	x2, x1, x3
+   52b6c:	91000484 	add	x4, x4, #0x1
+   52b70:	f94187e0 	ldr	x0, [sp, #776]
+   52b74:	f9000f44 	str	x4, [x26, #24]
+   52b78:	9b038441 	msub	x1, x2, x3, x1
+   52b7c:	f9000741 	str	x1, [x26, #8]
+   52b80:	17fffc3e 	b	51c78 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x12e0>
+   52b84:	91000421 	add	x1, x1, #0x1
+   52b88:	f9400f63 	ldr	x3, [x27, #24]
+   52b8c:	9ac60822 	udiv	x2, x1, x6
+   52b90:	91000463 	add	x3, x3, #0x1
+   52b94:	f94187e0 	ldr	x0, [sp, #776]
+   52b98:	f9000f63 	str	x3, [x27, #24]
+   52b9c:	9b068441 	msub	x1, x2, x6, x1
+   52ba0:	f9000761 	str	x1, [x27, #8]
+   52ba4:	17fffe57 	b	52500 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1b68>
+   52ba8:	91000421 	add	x1, x1, #0x1
+   52bac:	f9400f44 	ldr	x4, [x26, #24]
+   52bb0:	9ac30822 	udiv	x2, x1, x3
+   52bb4:	91000484 	add	x4, x4, #0x1
+   52bb8:	f94187e0 	ldr	x0, [sp, #776]
+   52bbc:	f9000f44 	str	x4, [x26, #24]
+   52bc0:	9b038441 	msub	x1, x2, x3, x1
+   52bc4:	f9000741 	str	x1, [x26, #8]
+   52bc8:	17fffd32 	b	52090 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x16f8>
+   52bcc:	f940373c 	ldr	x28, [x25, #104]
+   52bd0:	17ffff9c 	b	52a40 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x20a8>
+   52bd4:	f9403725 	ldr	x5, [x25, #104]
+   52bd8:	17ffff0e 	b	52810 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1e78>
+   52bdc:	f9403745 	ldr	x5, [x26, #104]
+   52be0:	17fffec8 	b	52700 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1d68>
+   52be4:	f9403745 	ldr	x5, [x26, #104]
+   52be8:	17ffff50 	b	52928 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1f90>
+   52bec:	90000020 	adrp	x0, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   52bf0:	91300000 	add	x0, x0, #0xc00
+   52bf4:	97ff5287 	bl	27610 <_ZSt20__throw_length_errorPKc@plt>
+   52bf8:	92ff0001 	mov	x1, #0x7ffffffffffffff     	// #576460752303423487
+   52bfc:	eb01001f 	cmp	x0, x1
+   52c00:	9a819000 	csel	x0, x0, x1, ls  // ls = plast
+   52c04:	d37cec00 	lsl	x0, x0, #4
+   52c08:	f90037e0 	str	x0, [sp, #104]
+   52c0c:	17fff922 	b	51094 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x6fc>
+   52c10:	97ff52e0 	bl	27790 <_ZSt20__throw_system_errori@plt>
+   52c14:	97ff5207 	bl	27430 <__stack_chk_fail@plt>
+   52c18:	97ff52de 	bl	27790 <_ZSt20__throw_system_errori@plt>
+   52c1c:	97ff52dd 	bl	27790 <_ZSt20__throw_system_errori@plt>
+   52c20:	97ff52dc 	bl	27790 <_ZSt20__throw_system_errori@plt>
+   52c24:	97ff52db 	bl	27790 <_ZSt20__throw_system_errori@plt>
+   52c28:	aa0003f6 	mov	x22, x0
+   52c2c:	aa0103f9 	mov	x25, x1
+   52c30:	f9452e61 	ldr	x1, [x19, #2648]
+   52c34:	f940c7e0 	ldr	x0, [sp, #392]
+   52c38:	91004021 	add	x1, x1, #0x10
+   52c3c:	f900c3e1 	str	x1, [sp, #384]
+   52c40:	f94037e1 	ldr	x1, [sp, #104]
+   52c44:	eb01001f 	cmp	x0, x1
+   52c48:	54000040 	b.eq	52c50 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x22b8>  // b.none
+   52c4c:	97ff5335 	bl	27920 <_ZdlPv@plt>
+   52c50:	aa1603e0 	mov	x0, x22
+   52c54:	f100073f 	cmp	x25, #0x1
+   52c58:	54000ba1 	b.ne	52dcc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2434>  // b.any
+   52c5c:	97ff521d 	bl	274d0 <__cxa_begin_catch@plt>
+   52c60:	f9400001 	ldr	x1, [x0]
+   52c64:	f9400821 	ldr	x1, [x1, #16]
+   52c68:	d63f0020 	blr	x1
+   52c6c:	aa0003e1 	mov	x1, x0
+   52c70:	aa1a03e0 	mov	x0, x26
+   52c74:	97ff56d3 	bl	287c0 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_.constprop.0>
+   52c78:	aa1a03e1 	mov	x1, x26
+   52c7c:	aa1503e0 	mov	x0, x21
+   52c80:	97ff51c0 	bl	27380 <_ZN6spdlog6logger12err_handler_ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@plt>
+   52c84:	f94153e0 	ldr	x0, [sp, #672]
+   52c88:	91004341 	add	x1, x26, #0x10
+   52c8c:	eb01001f 	cmp	x0, x1
+   52c90:	54000040 	b.eq	52c98 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2300>  // b.none
+   52c94:	97ff5323 	bl	27920 <_ZdlPv@plt>
+   52c98:	97ff54b6 	bl	27f70 <__cxa_end_catch@plt>
+   52c9c:	17fff7bd 	b	50b90 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x1f8>
+   52ca0:	aa0003f3 	mov	x19, x0
+   52ca4:	f946df00 	ldr	x0, [x24, #3512]
+   52ca8:	97ff52a6 	bl	27740 <__cxa_guard_abort@plt>
+   52cac:	aa1303e0 	mov	x0, x19
+   52cb0:	97ff54f8 	bl	28090 <_Unwind_Resume@plt>
+   52cb4:	17fffffb 	b	52ca0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2308>
+   52cb8:	f94093e1 	ldr	x1, [sp, #288]
+   52cbc:	aa0003f3 	mov	x19, x0
+   52cc0:	b40000a1 	cbz	x1, 52cd4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x233c>
+   52cc4:	3944a3e0 	ldrb	w0, [sp, #296]
+   52cc8:	35000060 	cbnz	w0, 52cd4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x233c>
+   52ccc:	aa0103e0 	mov	x0, x1
+   52cd0:	97ff5254 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   52cd4:	f94067e0 	ldr	x0, [sp, #200]
+   52cd8:	b50002e0 	cbnz	x0, 52d34 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x239c>
+   52cdc:	aa1903e0 	mov	x0, x25
+   52ce0:	97ff5250 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   52ce4:	aa1803e0 	mov	x0, x24
+   52ce8:	97ff524e 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   52cec:	aa1303e0 	mov	x0, x19
+   52cf0:	97ff54e8 	bl	28090 <_Unwind_Resume@plt>
+   52cf4:	f9452e62 	ldr	x2, [x19, #2648]
+   52cf8:	aa0003f6 	mov	x22, x0
+   52cfc:	f94187e0 	ldr	x0, [sp, #776]
+   52d00:	91004042 	add	x2, x2, #0x10
+   52d04:	f90183e2 	str	x2, [sp, #768]
+   52d08:	91020342 	add	x2, x26, #0x80
+   52d0c:	aa0103f9 	mov	x25, x1
+   52d10:	eb02001f 	cmp	x0, x2
+   52d14:	54000040 	b.eq	52d1c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2384>  // b.none
+   52d18:	97ff5302 	bl	27920 <_ZdlPv@plt>
+   52d1c:	f9403fe0 	ldr	x0, [sp, #120]
+   52d20:	f9462c00 	ldr	x0, [x0, #3160]
+   52d24:	b4fff860 	cbz	x0, 52c30 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2298>
+   52d28:	f94043e0 	ldr	x0, [sp, #128]
+   52d2c:	97ff524d 	bl	27660 <pthread_mutex_unlock@plt>
+   52d30:	17ffffc0 	b	52c30 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2298>
+   52d34:	394343e1 	ldrb	w1, [sp, #208]
+   52d38:	35fffd21 	cbnz	w1, 52cdc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2344>
+   52d3c:	97ff5239 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   52d40:	17ffffe7 	b	52cdc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2344>
+   52d44:	17ffffd7 	b	52ca0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2308>
+   52d48:	f9452e73 	ldr	x19, [x19, #2648]
+   52d4c:	91020294 	add	x20, x20, #0x80
+   52d50:	f94187e1 	ldr	x1, [sp, #776]
+   52d54:	91004273 	add	x19, x19, #0x10
+   52d58:	f90183f3 	str	x19, [sp, #768]
+   52d5c:	aa0003f3 	mov	x19, x0
+   52d60:	eb14003f 	cmp	x1, x20
+   52d64:	54000060 	b.eq	52d70 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x23d8>  // b.none
+   52d68:	aa0103e0 	mov	x0, x1
+   52d6c:	97ff52ed 	bl	27920 <_ZdlPv@plt>
+   52d70:	f9403fe0 	ldr	x0, [sp, #120]
+   52d74:	f9462c00 	ldr	x0, [x0, #3160]
+   52d78:	b4fffba0 	cbz	x0, 52cec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2354>
+   52d7c:	aa1603e0 	mov	x0, x22
+   52d80:	97ff5238 	bl	27660 <pthread_mutex_unlock@plt>
+   52d84:	17ffffda 	b	52cec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2354>
+   52d88:	17ffffc6 	b	52ca0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2308>
+   52d8c:	f9452e73 	ldr	x19, [x19, #2648]
+   52d90:	91020294 	add	x20, x20, #0x80
+   52d94:	f94187e1 	ldr	x1, [sp, #776]
+   52d98:	91004273 	add	x19, x19, #0x10
+   52d9c:	f90183f3 	str	x19, [sp, #768]
+   52da0:	aa0003f3 	mov	x19, x0
+   52da4:	eb14003f 	cmp	x1, x20
+   52da8:	54000060 	b.eq	52db4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x241c>  // b.none
+   52dac:	aa0103e0 	mov	x0, x1
+   52db0:	97ff52dc 	bl	27920 <_ZdlPv@plt>
+   52db4:	f9403fe0 	ldr	x0, [sp, #120]
+   52db8:	f9462c00 	ldr	x0, [x0, #3160]
+   52dbc:	b4fff980 	cbz	x0, 52cec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2354>
+   52dc0:	aa1503e0 	mov	x0, x21
+   52dc4:	97ff5227 	bl	27660 <pthread_mutex_unlock@plt>
+   52dc8:	17ffffc9 	b	52cec <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2354>
+   52dcc:	97ff51c1 	bl	274d0 <__cxa_begin_catch@plt>
+   52dd0:	90000021 	adrp	x1, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   52dd4:	aa1a03e0 	mov	x0, x26
+   52dd8:	9131a021 	add	x1, x1, #0xc68
+   52ddc:	97ff5679 	bl	287c0 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_.constprop.0>
+   52de0:	aa1a03e1 	mov	x1, x26
+   52de4:	aa1503e0 	mov	x0, x21
+   52de8:	97ff5166 	bl	27380 <_ZN6spdlog6logger12err_handler_ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@plt>
+   52dec:	f94153e0 	ldr	x0, [sp, #672]
+   52df0:	9100435a 	add	x26, x26, #0x10
+   52df4:	eb1a001f 	cmp	x0, x26
+   52df8:	54000040 	b.eq	52e00 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2468>  // b.none
+   52dfc:	97ff52c9 	bl	27920 <_ZdlPv@plt>
+   52e00:	97ff5400 	bl	27e00 <__cxa_rethrow@plt>
+   52e04:	f94153e1 	ldr	x1, [sp, #672]
+   52e08:	9100435a 	add	x26, x26, #0x10
+   52e0c:	aa0003f3 	mov	x19, x0
+   52e10:	eb1a003f 	cmp	x1, x26
+   52e14:	54000101 	b.ne	52e34 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x249c>  // b.any
+   52e18:	97ff5456 	bl	27f70 <__cxa_end_catch@plt>
+   52e1c:	f94053e0 	ldr	x0, [sp, #160]
+   52e20:	97ff5384 	bl	27c30 <_ZNSt10_HashtableINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESaIS8_ENSt8__detail10_Select1stESt8equal_toIS5_ESt4hashIS5_ENSA_18_Mod_range_hashingENSA_20_Default_ranged_hashENSA_20_Prime_rehash_policyENSA_17_Hashtable_traitsILb1ELb0ELb1EEEED1Ev@plt>
+   52e24:	aa1303e0 	mov	x0, x19
+   52e28:	97ff549a 	bl	28090 <_Unwind_Resume@plt>
+   52e2c:	aa0003f3 	mov	x19, x0
+   52e30:	17fffffa 	b	52e18 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2480>
+   52e34:	aa0103e0 	mov	x0, x1
+   52e38:	97ff52ba 	bl	27920 <_ZdlPv@plt>
+   52e3c:	17fffff7 	b	52e18 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2480>
+   52e40:	f94153e1 	ldr	x1, [sp, #672]
+   52e44:	9100435a 	add	x26, x26, #0x10
+   52e48:	aa0003f3 	mov	x19, x0
+   52e4c:	eb1a003f 	cmp	x1, x26
+   52e50:	54000060 	b.eq	52e5c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x24c4>  // b.none
+   52e54:	aa0103e0 	mov	x0, x1
+   52e58:	97ff52b2 	bl	27920 <_ZdlPv@plt>
+   52e5c:	97ff5445 	bl	27f70 <__cxa_end_catch@plt>
+   52e60:	17ffffef 	b	52e1c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2484>
+   52e64:	aa0003f3 	mov	x19, x0
+   52e68:	97ff5442 	bl	27f70 <__cxa_end_catch@plt>
+   52e6c:	17ffffec 	b	52e1c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2484>
+   52e70:	f9452e62 	ldr	x2, [x19, #2648]
+   52e74:	aa0003fa 	mov	x26, x0
+   52e78:	f94187e0 	ldr	x0, [sp, #776]
+   52e7c:	91004042 	add	x2, x2, #0x10
+   52e80:	f90183e2 	str	x2, [sp, #768]
+   52e84:	91020282 	add	x2, x20, #0x80
+   52e88:	aa0103fb 	mov	x27, x1
+   52e8c:	eb02001f 	cmp	x0, x2
+   52e90:	54000040 	b.eq	52e98 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2500>  // b.none
+   52e94:	97ff52a3 	bl	27920 <_ZdlPv@plt>
+   52e98:	f9403fe0 	ldr	x0, [sp, #120]
+   52e9c:	f9462c00 	ldr	x0, [x0, #3160]
+   52ea0:	b4000060 	cbz	x0, 52eac <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2514>
+   52ea4:	aa1903e0 	mov	x0, x25
+   52ea8:	97ff51ee 	bl	27660 <pthread_mutex_unlock@plt>
+   52eac:	f9452e61 	ldr	x1, [x19, #2648]
+   52eb0:	910082b5 	add	x21, x21, #0x20
+   52eb4:	f940c7e0 	ldr	x0, [sp, #392]
+   52eb8:	91004021 	add	x1, x1, #0x10
+   52ebc:	f900c3e1 	str	x1, [sp, #384]
+   52ec0:	eb15001f 	cmp	x0, x21
+   52ec4:	54000040 	b.eq	52ecc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2534>  // b.none
+   52ec8:	97ff5296 	bl	27920 <_ZdlPv@plt>
+   52ecc:	aa1a03e0 	mov	x0, x26
+   52ed0:	f100077f 	cmp	x27, #0x1
+   52ed4:	540007a1 	b.ne	52fc8 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2630>  // b.any
+   52ed8:	97ff517e 	bl	274d0 <__cxa_begin_catch@plt>
+   52edc:	f9400001 	ldr	x1, [x0]
+   52ee0:	f9400821 	ldr	x1, [x1, #16]
+   52ee4:	d63f0020 	blr	x1
+   52ee8:	aa0003e1 	mov	x1, x0
+   52eec:	aa1403e0 	mov	x0, x20
+   52ef0:	97ff5634 	bl	287c0 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_.constprop.0>
+   52ef4:	aa1403e1 	mov	x1, x20
+   52ef8:	aa1603e0 	mov	x0, x22
+   52efc:	97ff5121 	bl	27380 <_ZN6spdlog6logger12err_handler_ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@plt>
+   52f00:	f94153e0 	ldr	x0, [sp, #672]
+   52f04:	91004294 	add	x20, x20, #0x10
+   52f08:	eb14001f 	cmp	x0, x20
+   52f0c:	54000040 	b.eq	52f14 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x257c>  // b.none
+   52f10:	97ff5284 	bl	27920 <_ZdlPv@plt>
+   52f14:	97ff5417 	bl	27f70 <__cxa_end_catch@plt>
+   52f18:	17fff75c 	b	50c88 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2f0>
+   52f1c:	f9452e62 	ldr	x2, [x19, #2648]
+   52f20:	aa0003fa 	mov	x26, x0
+   52f24:	f94187e0 	ldr	x0, [sp, #776]
+   52f28:	91004042 	add	x2, x2, #0x10
+   52f2c:	f90183e2 	str	x2, [sp, #768]
+   52f30:	91020282 	add	x2, x20, #0x80
+   52f34:	aa0103fb 	mov	x27, x1
+   52f38:	eb02001f 	cmp	x0, x2
+   52f3c:	54000040 	b.eq	52f44 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x25ac>  // b.none
+   52f40:	97ff5278 	bl	27920 <_ZdlPv@plt>
+   52f44:	f9403fe0 	ldr	x0, [sp, #120]
+   52f48:	f9462c00 	ldr	x0, [x0, #3160]
+   52f4c:	b4000060 	cbz	x0, 52f58 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x25c0>
+   52f50:	aa1903e0 	mov	x0, x25
+   52f54:	97ff51c3 	bl	27660 <pthread_mutex_unlock@plt>
+   52f58:	f9452e61 	ldr	x1, [x19, #2648]
+   52f5c:	910082b5 	add	x21, x21, #0x20
+   52f60:	f940c7e0 	ldr	x0, [sp, #392]
+   52f64:	91004021 	add	x1, x1, #0x10
+   52f68:	f900c3e1 	str	x1, [sp, #384]
+   52f6c:	eb15001f 	cmp	x0, x21
+   52f70:	54000040 	b.eq	52f78 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x25e0>  // b.none
+   52f74:	97ff526b 	bl	27920 <_ZdlPv@plt>
+   52f78:	aa1a03e0 	mov	x0, x26
+   52f7c:	f100077f 	cmp	x27, #0x1
+   52f80:	540015e1 	b.ne	5323c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x28a4>  // b.any
+   52f84:	97ff5153 	bl	274d0 <__cxa_begin_catch@plt>
+   52f88:	f9400001 	ldr	x1, [x0]
+   52f8c:	f9400821 	ldr	x1, [x1, #16]
+   52f90:	d63f0020 	blr	x1
+   52f94:	aa0003e1 	mov	x1, x0
+   52f98:	aa1403e0 	mov	x0, x20
+   52f9c:	97ff5609 	bl	287c0 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_.constprop.0>
+   52fa0:	aa1403e1 	mov	x1, x20
+   52fa4:	aa1603e0 	mov	x0, x22
+   52fa8:	97ff50f6 	bl	27380 <_ZN6spdlog6logger12err_handler_ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@plt>
+   52fac:	f94153e0 	ldr	x0, [sp, #672]
+   52fb0:	91004294 	add	x20, x20, #0x10
+   52fb4:	eb14001f 	cmp	x0, x20
+   52fb8:	54000040 	b.eq	52fc0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2628>  // b.none
+   52fbc:	97ff5259 	bl	27920 <_ZdlPv@plt>
+   52fc0:	97ff53ec 	bl	27f70 <__cxa_end_catch@plt>
+   52fc4:	17fff723 	b	50c50 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2b8>
+   52fc8:	97ff5142 	bl	274d0 <__cxa_begin_catch@plt>
+   52fcc:	90000021 	adrp	x1, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   52fd0:	aa1403e0 	mov	x0, x20
+   52fd4:	9131a021 	add	x1, x1, #0xc68
+   52fd8:	97ff55fa 	bl	287c0 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_.constprop.0>
+   52fdc:	aa1403e1 	mov	x1, x20
+   52fe0:	aa1603e0 	mov	x0, x22
+   52fe4:	97ff50e7 	bl	27380 <_ZN6spdlog6logger12err_handler_ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@plt>
+   52fe8:	f94153e0 	ldr	x0, [sp, #672]
+   52fec:	91004294 	add	x20, x20, #0x10
+   52ff0:	eb14001f 	cmp	x0, x20
+   52ff4:	54000040 	b.eq	52ffc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2664>  // b.none
+   52ff8:	97ff524a 	bl	27920 <_ZdlPv@plt>
+   52ffc:	97ff5381 	bl	27e00 <__cxa_rethrow@plt>
+   53000:	f94153e1 	ldr	x1, [sp, #672]
+   53004:	91004294 	add	x20, x20, #0x10
+   53008:	aa0003f3 	mov	x19, x0
+   5300c:	eb14003f 	cmp	x1, x20
+   53010:	54000060 	b.eq	5301c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2684>  // b.none
+   53014:	aa0103e0 	mov	x0, x1
+   53018:	97ff5242 	bl	27920 <_ZdlPv@plt>
+   5301c:	97ff53d5 	bl	27f70 <__cxa_end_catch@plt>
+   53020:	aa1303e0 	mov	x0, x19
+   53024:	97ff541b 	bl	28090 <_Unwind_Resume@plt>
+   53028:	aa0003f3 	mov	x19, x0
+   5302c:	17fffffc 	b	5301c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2684>
+   53030:	f94153e1 	ldr	x1, [sp, #672]
+   53034:	91004294 	add	x20, x20, #0x10
+   53038:	aa0003f3 	mov	x19, x0
+   5303c:	eb14003f 	cmp	x1, x20
+   53040:	54000060 	b.eq	5304c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x26b4>  // b.none
+   53044:	aa0103e0 	mov	x0, x1
+   53048:	97ff5236 	bl	27920 <_ZdlPv@plt>
+   5304c:	97ff53c9 	bl	27f70 <__cxa_end_catch@plt>
+   53050:	aa1303e0 	mov	x0, x19
+   53054:	97ff540f 	bl	28090 <_Unwind_Resume@plt>
+   53058:	aa0003f3 	mov	x19, x0
+   5305c:	17fffffc 	b	5304c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x26b4>
+   53060:	aa0003f6 	mov	x22, x0
+   53064:	aa0103f9 	mov	x25, x1
+   53068:	f9452e61 	ldr	x1, [x19, #2648]
+   5306c:	f940c7e0 	ldr	x0, [sp, #392]
+   53070:	91004021 	add	x1, x1, #0x10
+   53074:	f900c3e1 	str	x1, [sp, #384]
+   53078:	f94037e1 	ldr	x1, [sp, #104]
+   5307c:	eb01001f 	cmp	x0, x1
+   53080:	54000040 	b.eq	53088 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x26f0>  // b.none
+   53084:	97ff5227 	bl	27920 <_ZdlPv@plt>
+   53088:	aa1603e0 	mov	x0, x22
+   5308c:	f100073f 	cmp	x25, #0x1
+   53090:	54000281 	b.ne	530e0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2748>  // b.any
+   53094:	97ff510f 	bl	274d0 <__cxa_begin_catch@plt>
+   53098:	f9400001 	ldr	x1, [x0]
+   5309c:	f9400821 	ldr	x1, [x1, #16]
+   530a0:	d63f0020 	blr	x1
+   530a4:	aa0003e1 	mov	x1, x0
+   530a8:	aa1a03e0 	mov	x0, x26
+   530ac:	97ff55c5 	bl	287c0 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_.constprop.0>
+   530b0:	aa1a03e1 	mov	x1, x26
+   530b4:	aa1503e0 	mov	x0, x21
+   530b8:	97ff50b2 	bl	27380 <_ZN6spdlog6logger12err_handler_ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@plt>
+   530bc:	f94153e0 	ldr	x0, [sp, #672]
+   530c0:	91004341 	add	x1, x26, #0x10
+   530c4:	eb01001f 	cmp	x0, x1
+   530c8:	54000040 	b.eq	530d0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2738>  // b.none
+   530cc:	97ff5215 	bl	27920 <_ZdlPv@plt>
+   530d0:	97ff53a8 	bl	27f70 <__cxa_end_catch@plt>
+   530d4:	17fff755 	b	50e28 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x490>
+   530d8:	aa0003f3 	mov	x19, x0
+   530dc:	17ffff00 	b	52cdc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2344>
+   530e0:	97ff50fc 	bl	274d0 <__cxa_begin_catch@plt>
+   530e4:	f0000001 	adrp	x1, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   530e8:	aa1a03e0 	mov	x0, x26
+   530ec:	9131a021 	add	x1, x1, #0xc68
+   530f0:	97ff55b4 	bl	287c0 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_.constprop.0>
+   530f4:	aa1a03e1 	mov	x1, x26
+   530f8:	aa1503e0 	mov	x0, x21
+   530fc:	97ff50a1 	bl	27380 <_ZN6spdlog6logger12err_handler_ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@plt>
+   53100:	f94153e0 	ldr	x0, [sp, #672]
+   53104:	9100435a 	add	x26, x26, #0x10
+   53108:	eb1a001f 	cmp	x0, x26
+   5310c:	54000040 	b.eq	53114 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x277c>  // b.none
+   53110:	97ff5204 	bl	27920 <_ZdlPv@plt>
+   53114:	97ff533b 	bl	27e00 <__cxa_rethrow@plt>
+   53118:	f94153e1 	ldr	x1, [sp, #672]
+   5311c:	9100435a 	add	x26, x26, #0x10
+   53120:	aa0003f3 	mov	x19, x0
+   53124:	eb1a003f 	cmp	x1, x26
+   53128:	54fff8e1 	b.ne	53044 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x26ac>  // b.any
+   5312c:	17ffffc8 	b	5304c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x26b4>
+   53130:	aa0003f3 	mov	x19, x0
+   53134:	17ffffc6 	b	5304c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x26b4>
+   53138:	f94153e1 	ldr	x1, [sp, #672]
+   5313c:	9100435a 	add	x26, x26, #0x10
+   53140:	aa0003f3 	mov	x19, x0
+   53144:	eb1a003f 	cmp	x1, x26
+   53148:	54000060 	b.eq	53154 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x27bc>  // b.none
+   5314c:	aa0103e0 	mov	x0, x1
+   53150:	97ff51f4 	bl	27920 <_ZdlPv@plt>
+   53154:	97ff5387 	bl	27f70 <__cxa_end_catch@plt>
+   53158:	aa1303e0 	mov	x0, x19
+   5315c:	97ff53cd 	bl	28090 <_Unwind_Resume@plt>
+   53160:	aa0003f3 	mov	x19, x0
+   53164:	17fffffc 	b	53154 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x27bc>
+   53168:	17fffece 	b	52ca0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2308>
+   5316c:	aa0003f3 	mov	x19, x0
+   53170:	17fffedd 	b	52ce4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x234c>
+   53174:	aa0003f3 	mov	x19, x0
+   53178:	f946df00 	ldr	x0, [x24, #3512]
+   5317c:	97ff5171 	bl	27740 <__cxa_guard_abort@plt>
+   53180:	17ffff27 	b	52e1c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2484>
+   53184:	f9452e62 	ldr	x2, [x19, #2648]
+   53188:	aa0003f6 	mov	x22, x0
+   5318c:	f94187e0 	ldr	x0, [sp, #776]
+   53190:	91004042 	add	x2, x2, #0x10
+   53194:	f90183e2 	str	x2, [sp, #768]
+   53198:	91020342 	add	x2, x26, #0x80
+   5319c:	aa0103f9 	mov	x25, x1
+   531a0:	eb02001f 	cmp	x0, x2
+   531a4:	54000040 	b.eq	531ac <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2814>  // b.none
+   531a8:	97ff51de 	bl	27920 <_ZdlPv@plt>
+   531ac:	f9403fe0 	ldr	x0, [sp, #120]
+   531b0:	f9462c00 	ldr	x0, [x0, #3160]
+   531b4:	b4fff5a0 	cbz	x0, 53068 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x26d0>
+   531b8:	f94043e0 	ldr	x0, [sp, #128]
+   531bc:	97ff5129 	bl	27660 <pthread_mutex_unlock@plt>
+   531c0:	17ffffaa 	b	53068 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x26d0>
+   531c4:	f94093e1 	ldr	x1, [sp, #288]
+   531c8:	aa0003f3 	mov	x19, x0
+   531cc:	b40000a1 	cbz	x1, 531e0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2848>
+   531d0:	3944a3e0 	ldrb	w0, [sp, #296]
+   531d4:	35000060 	cbnz	w0, 531e0 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2848>
+   531d8:	aa0103e0 	mov	x0, x1
+   531dc:	97ff5111 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   531e0:	f94077e0 	ldr	x0, [sp, #232]
+   531e4:	b4ffd7c0 	cbz	x0, 52cdc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2344>
+   531e8:	3943c3e1 	ldrb	w1, [sp, #240]
+   531ec:	35ffd781 	cbnz	w1, 52cdc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2344>
+   531f0:	97ff510c 	bl	27620 <_ZN6icraft3xir6Object6decrefEv@plt>
+   531f4:	17fffeba 	b	52cdc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2344>
+   531f8:	aa0003f3 	mov	x19, x0
+   531fc:	17fffeb6 	b	52cd4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x233c>
+   53200:	aa0003f3 	mov	x19, x0
+   53204:	aa1403e0 	mov	x0, x20
+   53208:	97ff5072 	bl	273d0 <_ZNSt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN6icraft3xir9ObjectRefEED1Ev@plt>
+   5320c:	17fffeb2 	b	52cd4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x233c>
+   53210:	17fffffc 	b	53200 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2868>
+   53214:	aa0003f3 	mov	x19, x0
+   53218:	17fffeb3 	b	52ce4 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x234c>
+   5321c:	aa0003f3 	mov	x19, x0
+   53220:	17fffeaf 	b	52cdc <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2344>
+   53224:	aa0003fa 	mov	x26, x0
+   53228:	aa0103fb 	mov	x27, x1
+   5322c:	17ffff20 	b	52eac <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2514>
+   53230:	aa0003fa 	mov	x26, x0
+   53234:	aa0103fb 	mov	x27, x1
+   53238:	17ffff48 	b	52f58 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x25c0>
+   5323c:	97ff50a5 	bl	274d0 <__cxa_begin_catch@plt>
+   53240:	f0000001 	adrp	x1, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   53244:	aa1403e0 	mov	x0, x20
+   53248:	9131a021 	add	x1, x1, #0xc68
+   5324c:	97ff555d 	bl	287c0 <_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_.constprop.0>
+   53250:	aa1403e1 	mov	x1, x20
+   53254:	aa1603e0 	mov	x0, x22
+   53258:	97ff504a 	bl	27380 <_ZN6spdlog6logger12err_handler_ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE@plt>
+   5325c:	f94153e0 	ldr	x0, [sp, #672]
+   53260:	91004294 	add	x20, x20, #0x10
+   53264:	eb14001f 	cmp	x0, x20
+   53268:	54000040 	b.eq	53270 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x28d8>  // b.none
+   5326c:	97ff51ad 	bl	27920 <_ZdlPv@plt>
+   53270:	97ff52e4 	bl	27e00 <__cxa_rethrow@plt>
+   53274:	f94153e1 	ldr	x1, [sp, #672]
+   53278:	91004294 	add	x20, x20, #0x10
+   5327c:	aa0003f3 	mov	x19, x0
+   53280:	eb14003f 	cmp	x1, x20
+   53284:	54000060 	b.eq	53290 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x28f8>  // b.none
+   53288:	aa0103e0 	mov	x0, x1
+   5328c:	97ff51a5 	bl	27920 <_ZdlPv@plt>
+   53290:	97ff5338 	bl	27f70 <__cxa_end_catch@plt>
+   53294:	aa1303e0 	mov	x0, x19
+   53298:	97ff537e 	bl	28090 <_Unwind_Resume@plt>
+   5329c:	aa0003f3 	mov	x19, x0
+   532a0:	17fffffc 	b	53290 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x28f8>
+   532a4:	17ffff63 	b	53030 <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x2698>
+   532a8:	aa0003f3 	mov	x19, x0
+   532ac:	17ffff68 	b	5304c <_ZN21AXIZG330AIUDeviceNode16initAfterRegionsEv+0x26b4>

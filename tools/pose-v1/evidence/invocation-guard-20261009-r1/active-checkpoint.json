@@ -1,0 +1,15 @@
+{
+  "status": "invocation_retention_integrated_Host_three_passed_load_failed192_evidence_complete",
+  "user_paused": false,
+  "active_tests": false,
+  "active_stage": null,
+  "board": "/tmp/pose-invocation-guard-20261009-r1",
+  "package": ".local/pose-v1-invocation-guard/package-20261009-r1",
+  "build": ".local/pose-v1-build/mixed-20261009-invocation-guard-r1",
+  "program_sha256": "a281cb1acf7783baa6469d0e9e6e41fec7e63ea70945432ded8ac572b50a1e79",
+  "manifest_sha256": "c8de2aa8dd162dba0bfce7c25055338ae12ac8acff9f74fca3dd95c2df08e2de",
+  "next": "Host107 plus real Host finite-output rejection proof; review before new three then one bounded103; preserve all exceptions and old failures",
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "completion_sha256": "a473c1d76d6ae17d3b137f9c7f8c5e7c5bd1f25279c74f2924760300e9e13b48"
+}

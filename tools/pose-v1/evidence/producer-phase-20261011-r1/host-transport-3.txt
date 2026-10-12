@@ -1,0 +1,19 @@
+transfer.tar: OK
+tar: board_application_preflight.py: time stamp 2026-10-11 06:10:01.2869859 is 18141283.077338 s in the future
+tar: board_producer_vpu_run.py: time stamp 2026-10-11 06:10:01.2869859 is 18141283.07673818 s in the future
+tar: build-result.json: time stamp 2026-10-11 06:10:01.283988 is 18141283.07341012 s in the future
+tar: files.sha256: time stamp 2026-10-11 06:10:01.3489487 is 18141283.13806856 s in the future
+tar: patterns/pattern-0/input-478.f16: time stamp 2026-10-11 04:27:41.4410343 is 18135143.22854848 s in the future
+tar: patterns/pattern-0/input-486.f32: time stamp 2026-10-11 04:27:41.4405253 is 18135143.22769441 s in the future
+tar: patterns/pattern-0/output-4386.f32: time stamp 2026-10-11 04:27:41.4410343 is 18135143.22776064 s in the future
+tar: patterns/pattern-0/output-4390.f32: time stamp 2026-10-11 04:27:41.442036 is 18135143.22838722 s in the future
+tar: patterns/pattern-1/input-478.f16: time stamp 2026-10-11 04:27:41.475322 is 18135143.26121032 s in the future
+tar: patterns/pattern-1/input-486.f32: time stamp 2026-10-11 04:27:41.475322 is 18135143.26087817 s in the future
+tar: patterns/pattern-1/output-4386.f32: time stamp 2026-10-11 04:27:41.4763207 is 18135143.26144253 s in the future
+tar: patterns/pattern-1/output-4390.f32: time stamp 2026-10-11 04:27:41.4773226 is 18135143.26205142 s in the future
+tar: pose_producer_observer_selftest: time stamp 2026-10-11 06:10:01.285986 is 18141283.07023264 s in the future
+tar: pose_producer_payload_selftest: time stamp 2026-10-11 06:10:01.284986 is 18141283.0687501 s in the future
+tar: pose_producer_phase_check: time stamp 2026-10-11 06:10:01.2732935 is 18141283.05543297 s in the future
+tar: pose_producer_phase_selftest: time stamp 2026-10-11 06:10:01.285986 is 18141283.06756116 s in the future
+tar: pose_producer_schedule_selftest: time stamp 2026-10-11 06:10:01.284986 is 18141283.0661975 s in the future
+python3: can't open file 'board_producer_phase_run.py': [Errno 2] No such file or directory

@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.24)
+project(plddr_manager_audit LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(icraft-hostbackend 3.39.0.0 EXACT REQUIRED)
+find_package(icraft-zg330backend 3.39.0.0 EXACT REQUIRED)
+add_executable(pose_plddr_manager_check plddr_manager_check.cpp)
+target_link_libraries(pose_plddr_manager_check PRIVATE Icraft::HostBackend Icraft::ZG330Backend)
+target_compile_options(pose_plddr_manager_check PRIVATE -Wall -Wextra -Wpedantic -Werror)

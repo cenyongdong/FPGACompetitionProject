@@ -1,0 +1,24 @@
+{
+  "stage": "baseline",
+  "status": "picture_baseline_exact_main_Host107_reused",
+  "read_picture_binary_sha256": "70c9df9f566c0b7fa55c1f86ef1440cf52ce610dba5e8de3ce0b711c0ae2082d",
+  "package_manifest_sha256": "dbf88b3f1cf877aa8ffeaa766a3b94775f978d93f3cc2fa523b727adad37d06f",
+  "payloads": 403,
+  "build_sources": 126,
+  "Host107_new_run": false,
+  "normal_source_reads_added": 0,
+  "root_cause_fixed": false,
+  "performance_accepted": false,
+  "Native_contracts": {
+    "source": 13,
+    "sequence": 13,
+    "producer": 16,
+    "load": 6,
+    "run": 9
+  },
+  "Host107_reused": 107,
+  "registry_reused": 12,
+  "CPU_FP32_reused": 59600,
+  "preserved_payloads": 402,
+  "original_main_sha256": "fbf330d73ec34c43c7c2757253115e720ba7dccfd6fc6f54a28c6cbaacb8702d"
+}

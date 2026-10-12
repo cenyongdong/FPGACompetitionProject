@@ -1,0 +1,40 @@
+{
+  "status": "single_clock_endpoint_cadence_decomposition",
+  "frames": 100,
+  "intervals": 99,
+  "nominal_Hz": 5,
+  "ideal_span_s": 19.8,
+  "board_arrival_span_s": 19.81752659,
+  "board_arrival_Hz": 4.995578007699295,
+  "board_picture_span_s": 19.80607148,
+  "board_picture_Hz": 4.9984672679773645,
+  "board_arrival_span_excess_ms": 17.52658999999923,
+  "board_endpoint_latency_delta_ms": -11.45511,
+  "identity_picture_span_equals_arrival_span_plus_latency_change": true,
+  "PC_send_span_s": 19.813,
+  "PC_send_Hz": 4.996719325695251,
+  "PC_and_board_offsets_not_compared": true,
+  "process_ms": {
+    "mean": 196.2664904,
+    "P95": 196.703138,
+    "max": 198.27018,
+    "min": 195.80208
+  },
+  "process_over200_ms": 0,
+  "arrival_intervals_ms": {
+    "mean": 200.17703626262627,
+    "P95": 214.020859,
+    "max": 215.5454,
+    "min": 179.73812
+  },
+  "queue_ms": {
+    "mean": 5.0765542,
+    "P95": 15.3195,
+    "max": 19.46062,
+    "min": 1.04234
+  },
+  "presumed_unpaced_capacity_not_declared": true,
+  "strict_ge5_passed": false,
+  "diagnostic_counters_retained": true,
+  "not_long_term_or_PC_presentation": true
+}

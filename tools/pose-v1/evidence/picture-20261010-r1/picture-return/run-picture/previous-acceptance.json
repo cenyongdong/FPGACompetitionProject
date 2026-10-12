@@ -1,0 +1,29 @@
+{
+  "stage": "contracts",
+  "status": "picture_contracts_passed",
+  "picture_binary_sha256": "7d421b40b9fbd50376347ff6283c83474c4857b305227e6d5bbee0495b1b59e9",
+  "package_manifest_sha256": "e7c4b944b124034c6758a0211563044647dad6cef448524da5665e71101adb98",
+  "payloads": 403,
+  "build_sources": 118,
+  "Host107_new_run": false,
+  "normal_source_reads_added": 0,
+  "root_cause_fixed": false,
+  "performance_accepted": false,
+  "Native_contracts": {
+    "source": 13,
+    "sequence": 13,
+    "producer": 16,
+    "load": 6,
+    "run": 9
+  },
+  "returned_files": 42,
+  "kernel_unchanged": true,
+  "ARM_contracts": {
+    "source": 13,
+    "sequence": 13,
+    "producer": 16,
+    "load": 6,
+    "run": 9
+  },
+  "NPU_forward": false
+}

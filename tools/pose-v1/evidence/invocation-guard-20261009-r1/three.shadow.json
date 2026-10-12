@@ -1,0 +1,12 @@
+{
+  "status": "normal_snapshot_sync_accounting_passed",
+  "selftest_SHA": "a7a29300375b50ea91b3aa80823275bc43067137840cb4991d8cf84da0326090",
+  "DMA_cache_fence_proven": false,
+  "zero_copy": false,
+  "calls": 4,
+  "snapshot_rows": 32,
+  "fresh_sync_rows": 4,
+  "sync_actual_waited": 0,
+  "sync_max_ms": 0.0034,
+  "metadata_rows": 36
+}

@@ -1,0 +1,15 @@
+{
+  "hz": 2.0,
+  "records": [
+    {
+      "sequence": 0,
+      "frame_id": 1000000,
+      "source_file": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\test_data\\csi\\S11_01_308.mat",
+      "source_sha256": "6a326467b2fabc2263dd18ea2761e4904ef7c3ce39423bbde71d1976008d58e5",
+      "payload_sha256": "2adea73d75bd6376dcc9c2982b0a22acb33266b7df4a66ae21f4237b9a35a51b",
+      "source_time_ns": 371720341893500,
+      "send_end_pc_ns": 371720342040800
+    }
+  ],
+  "sent_is_not_receiver_ack": true
+}

@@ -1,0 +1,429 @@
+{
+  "status": "exact_bad_blocks_ranked_pattern_not_origin_proof",
+  "case": "S21_31_349",
+  "changed_FP32": 496,
+  "changed_ranges": 18,
+  "blocks_found_in_same_case": 18,
+  "all_bad_blocks_found_somewhere": true,
+  "all_changed_bytes_equal_previous_copy_same_offset": true,
+  "previous_copy_sha256": "17f193b96ff9172abe514ab200bb045b1ed58cc6cab276844b6c7b1d328a34eb",
+  "root_cause_proven": false,
+  "actual_sha256": "d11184a814536ed76e2f785f0194319f172a6b85520398fc7ace1cd9d5fa207e",
+  "gold_sha256": "9759511de4720d798fadf57246210bd7be116714ad9360839d3d4ca846abac17",
+  "blocks": [
+    {
+      "range_FP32": [
+        3040,
+        3056
+      ],
+      "bytes": 64,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3040,
+          "same_case": true
+        },
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 2452,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3104,
+        3120
+      ],
+      "bytes": 64,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3104,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3168,
+        3184
+      ],
+      "bytes": 64,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3168,
+          "same_case": true
+        },
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 2538,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3232,
+        3248
+      ],
+      "bytes": 64,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3232,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3296,
+        3312
+      ],
+      "bytes": 64,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3296,
+          "same_case": true
+        },
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 2330,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3360,
+        3392
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3360,
+          "same_case": true
+        },
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 504,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3424,
+        3456
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3424,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3488,
+        3520
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3488,
+          "same_case": true
+        },
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 884,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3552,
+        3584
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3552,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3616,
+        3648
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3616,
+          "same_case": true
+        },
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 802,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3680,
+        3712
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3680,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3744,
+        3776
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3744,
+          "same_case": true
+        },
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 930,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3808,
+        3840
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3808,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3872,
+        3904
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3872,
+          "same_case": true
+        },
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 176,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        3936,
+        3968
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 3936,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        4000,
+        4032
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 4000,
+          "same_case": true
+        },
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_result",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 52,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        4064,
+        4096
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 4064,
+          "same_case": true
+        }
+      ]
+    },
+    {
+      "range_FP32": [
+        4128,
+        4160
+      ],
+      "bytes": 128,
+      "mod256": 128,
+      "equals_previous_copy_same_offset": true,
+      "matches": [
+        {
+          "case": "S21_31_349",
+          "kind": "bridge_input",
+          "op_id": 192,
+          "slot": 0,
+          "offset_FP32": 4128,
+          "same_case": true
+        }
+      ]
+    }
+  ]
+}

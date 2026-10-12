@@ -1,0 +1,85 @@
+{
+  "status": "model_only_resources_and_cleanup_checked",
+  "snapshots": [
+    {
+      "label": "contracts.before",
+      "MemAvailable_KiB": 698508,
+      "CmaFree_KiB": 14388,
+      "ordinary_512KiB_units": 24,
+      "sha256": {
+        "meminfo": "57d21300792ddd9c5e0a7485bdb0c6a66aa6ef037a4c8afc5619a0f61a2831a8",
+        "buddyinfo": "42d6d59c4cae273b56c1d36d86ea3f844c25b1ea3d38b7dccf1d404a9a002458",
+        "pagetypeinfo": "96c2a51b1d5f7c906636c1fc559c2d4615b0ecaf20479b7233b89612a791582f",
+        "vmstat": "512fa5cbc964721dadc8f12b428f9533b67e8b73f3116537f9b5e86ac4035775"
+      }
+    },
+    {
+      "label": "contracts.after",
+      "MemAvailable_KiB": 698676,
+      "CmaFree_KiB": 14160,
+      "ordinary_512KiB_units": 24,
+      "sha256": {
+        "meminfo": "2a04895100d484f63784139ce054e4e8870f20dd210c87938fd7c94cb996beef",
+        "buddyinfo": "6b459fa64ca28ad3527f04a488fcec9641b4764c0a4c2b4cf39a0a41042b3ea4",
+        "pagetypeinfo": "1e8ee4d6acc3378054fb25be487975ba15cd226a86a6b0cdd22f7c2f574e45d9",
+        "vmstat": "17403ea1bb0b19407d63e219b89f24ae69fd3509ef17fb6e024910cc721449e8"
+      }
+    },
+    {
+      "label": "three.before",
+      "MemAvailable_KiB": 700940,
+      "CmaFree_KiB": 15200,
+      "ordinary_512KiB_units": 22,
+      "sha256": {
+        "meminfo": "8c5186251c440018c5ce483b2636c85e77621e23813d044047ee86a432db9e14",
+        "buddyinfo": "3eb20572f22454f0bed110427f08ea366d635925772a630b0d72a51f589295b2",
+        "pagetypeinfo": "e7807281475edd6de92b351561549d4c75d198e8c4ce3693ea1ff411700dbcc4",
+        "vmstat": "d7661121398ceab124c49017361920e6d9069285f41d42120258168655d38063"
+      }
+    },
+    {
+      "label": "three.after",
+      "MemAvailable_KiB": 699624,
+      "CmaFree_KiB": 14652,
+      "ordinary_512KiB_units": 17,
+      "sha256": {
+        "meminfo": "6a7916db7388f29f5f77433eac0680ed084bd04afd4386ab3f2980f8f3d2b16b",
+        "buddyinfo": "5fae3afa98c3a18cc96c2ab828f8303029b600338bd7782304a2561bb57acd71",
+        "pagetypeinfo": "71936c3062f8f760268d31a93e1bcca397c20ed694292f3496574c9aff594adf",
+        "vmstat": "a3afa0bb092b3e4ce725d115996915592bd9b49ff1ed3f61413015ce82576d86"
+      }
+    },
+    {
+      "label": "load.before",
+      "MemAvailable_KiB": 698812,
+      "CmaFree_KiB": 14776,
+      "ordinary_512KiB_units": 15,
+      "sha256": {
+        "meminfo": "2602192941159980e952110a3baa8e908b72fb7a43c4b54016bb6592cd7478c9",
+        "buddyinfo": "89195bef36839faf0ce298b33384c63942bf7c269fb6213fcd6b12fc950bbc01",
+        "pagetypeinfo": "62b14ca87db2123f8b6851c22ce4eecc2f9f3dbfac89caade07ef5ad16cd68ac",
+        "vmstat": "d2059d82cfc412fded70b32cf6f5d82e45dbf755c4e5026168cb2e8c16e0e5e2"
+      }
+    },
+    {
+      "label": "load.after",
+      "MemAvailable_KiB": 700208,
+      "CmaFree_KiB": 9312,
+      "ordinary_512KiB_units": 1,
+      "sha256": {
+        "meminfo": "30d08cdc665d1ccd14d583f78c4966198dfd989b09f999f2d81c87c9090bbc7f",
+        "buddyinfo": "c6765c290ae2f460560b71989bb5bfbfd2de073acfc36f3b29a75a93fa37e2f5",
+        "pagetypeinfo": "5a4b6ec6d40139c60db4ddd2639c10c28ea1c1b630722dc0aae6ba2cbfa53b71",
+        "vmstat": "c502840bb93ca50ffea4679ad94099617214ebb19fae18c36b968985a60542db"
+      }
+    }
+  ],
+  "agent_compactions": 0,
+  "kernel_raw_all_stages_identical": true,
+  "program_processes_remaining": 0,
+  "input_RTSP_ports_released": true,
+  "drop_caches": false,
+  "reboot": false,
+  "CMA_changed": false,
+  "not_leak_or_permanent_startup_proof": true
+}

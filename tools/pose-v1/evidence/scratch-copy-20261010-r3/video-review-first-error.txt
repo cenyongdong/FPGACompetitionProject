@@ -1,0 +1,1 @@
+Initial local review assertion failed: len(queued)==len(nonempty_capture)==submitted. Actual raw packet0=31-byte SPS/PPS, next200 packets VCL, last packet empty LAST. Corrected only local parser to classify NAL types; decoded IDs and PTS unchanged; no board rerun.

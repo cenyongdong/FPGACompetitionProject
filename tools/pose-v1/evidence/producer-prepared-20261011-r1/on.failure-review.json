@@ -1,0 +1,162 @@
+{
+  "status": "original_failure_and_owned_late_sources_verified",
+  "failure": "Saved physical outputs differ from independent reference",
+  "completed_correct": 94,
+  "forward_calls": 95,
+  "FP32_correct_prefix": 1105440,
+  "failed_invocation": 94,
+  "first_outputs": {
+    "4386": {
+      "changed_count": 96,
+      "nonfinite_count": 0,
+      "same_previous_offset": 96,
+      "first_sha256": "d4f3e6f87ed0db0a127ebafe1e70ab5e10001bf180d2b8cdfd18086b8947cd72",
+      "expected_sha256": "a86b3da84429ea8d1e8123c7a5aba44b5664d4afe10e4e7e43bf6a6734c59cc7",
+      "runs": [
+        [
+          28672,
+          28736
+        ],
+        [
+          28928,
+          28992
+        ],
+        [
+          29184,
+          29248
+        ],
+        [
+          29440,
+          29504
+        ],
+        [
+          29696,
+          29760
+        ],
+        [
+          29952,
+          30016
+        ]
+      ]
+    },
+    "4390": {
+      "changed_count": 0,
+      "nonfinite_count": 0,
+      "same_previous_offset": 0,
+      "first_sha256": "8541ec3a87c8633899fcfe292a87bdd665f7fb2caa01e0114e08036b78243034",
+      "expected_sha256": "8541ec3a87c8633899fcfe292a87bdd665f7fb2caa01e0114e08036b78243034",
+      "runs": []
+    }
+  },
+  "late_sources": [
+    {
+      "invocation": 94,
+      "round": 0,
+      "value": 4386,
+      "bytes": 30240,
+      "metadata_ns": 207979834756670,
+      "read_begin_ns": 207979834759040,
+      "read_end_ns": 207979834836030,
+      "saved_ns": 207979835037740,
+      "source_address": 109113344,
+      "source_offset": 0,
+      "source_capacity": 30240,
+      "chunk_identity": 367358390864,
+      "source_ready": true,
+      "count_before": 11,
+      "count_after": 11,
+      "owned_fingerprint": 6489879278203572678,
+      "changed_vs_expected": 0,
+      "changed_vs_first": 96,
+      "nonfinite": 0,
+      "sha256": "a86b3da84429ea8d1e8123c7a5aba44b5664d4afe10e4e7e43bf6a6734c59cc7"
+    },
+    {
+      "invocation": 94,
+      "round": 0,
+      "value": 4390,
+      "bytes": 16800,
+      "metadata_ns": 207979835337400,
+      "read_begin_ns": 207979835338980,
+      "read_end_ns": 207979835393960,
+      "saved_ns": 207979835537480,
+      "source_address": 109092864,
+      "source_offset": 0,
+      "source_capacity": 16800,
+      "chunk_identity": 367358325776,
+      "source_ready": true,
+      "count_before": 11,
+      "count_after": 11,
+      "owned_fingerprint": 9584755738956334389,
+      "changed_vs_expected": 0,
+      "changed_vs_first": 0,
+      "nonfinite": 0,
+      "sha256": "8541ec3a87c8633899fcfe292a87bdd665f7fb2caa01e0114e08036b78243034"
+    },
+    {
+      "invocation": 94,
+      "round": 1,
+      "value": 4386,
+      "bytes": 30240,
+      "metadata_ns": 207979835717960,
+      "read_begin_ns": 207979835719600,
+      "read_end_ns": 207979835785050,
+      "saved_ns": 207979835968930,
+      "source_address": 109113344,
+      "source_offset": 0,
+      "source_capacity": 30240,
+      "chunk_identity": 367358390864,
+      "source_ready": true,
+      "count_before": 11,
+      "count_after": 11,
+      "owned_fingerprint": 6489879278203572678,
+      "changed_vs_expected": 0,
+      "changed_vs_first": 96,
+      "nonfinite": 0,
+      "sha256": "a86b3da84429ea8d1e8123c7a5aba44b5664d4afe10e4e7e43bf6a6734c59cc7"
+    },
+    {
+      "invocation": 94,
+      "round": 1,
+      "value": 4390,
+      "bytes": 16800,
+      "metadata_ns": 207979836324790,
+      "read_begin_ns": 207979836326500,
+      "read_end_ns": 207979836380660,
+      "saved_ns": 207979836527190,
+      "source_address": 109092864,
+      "source_offset": 0,
+      "source_capacity": 16800,
+      "chunk_identity": 367358325776,
+      "source_ready": true,
+      "count_before": 11,
+      "count_after": 11,
+      "owned_fingerprint": 9584755738956334389,
+      "changed_vs_expected": 0,
+      "changed_vs_first": 0,
+      "nonfinite": 0,
+      "sha256": "8541ec3a87c8633899fcfe292a87bdd665f7fb2caa01e0114e08036b78243034"
+    }
+  ],
+  "late_bytes": 94080,
+  "first_outputs_hashes_after_review": {
+    "4386": "d4f3e6f87ed0db0a127ebafe1e70ab5e10001bf180d2b8cdfd18086b8947cd72",
+    "4390": "8541ec3a87c8633899fcfe292a87bdd665f7fb2caa01e0114e08036b78243034"
+  },
+  "first_saved_files_not_repaired": true,
+  "source_read_calls": 4,
+  "counter_not_fence": true,
+  "lease_summary": {
+    "opened": 95,
+    "closed": 95,
+    "forced_expired": 0,
+    "failure_capture_calls": 1,
+    "source_read_calls": 4,
+    "before_Session_destroy": true
+  },
+  "kernel_unchanged": true,
+  "API": "public Tensor::read to owned bytes; no added wait/reset/forward/write/sleep",
+  "normal_drain_LAST_pass": false,
+  "root_cause_resolved": false,
+  "no_hardware_retry": true
+}

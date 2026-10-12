@@ -1,0 +1,9 @@
+
+/usr/lib/aarch64-linux-gnu/libmockzg330.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000000cfa8 <MockZG330RegRegionNode::read(unsigned long, bool) const>:
+    cfa8:	92800000 	mov	x0, #0xffffffffffffffff    	// #-1
+    cfac:	d65f03c0 	ret

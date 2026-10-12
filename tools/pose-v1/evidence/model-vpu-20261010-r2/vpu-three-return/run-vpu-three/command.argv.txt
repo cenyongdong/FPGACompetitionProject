@@ -1,0 +1,8 @@
+/tmp/pose-model-vpu-20261010-r2/pose_model_vpu_check
+model-vpu
+three
+/tmp/pose-model-vpu-20261010-r2/package
+/tmp/pose-model-vpu-20261010-r2/run-vpu-three/results
+--finite-check
+--allow-device-init
+--allow-vpu-stream

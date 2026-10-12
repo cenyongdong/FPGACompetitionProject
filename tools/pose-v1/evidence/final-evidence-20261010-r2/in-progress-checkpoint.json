@@ -1,0 +1,22 @@
+{
+  "status": "final_gate_evidence_and_save_only_verified_high_load_data_failure_preserved",
+  "active": false,
+  "pause_requested": false,
+  "approved_batch_completed_and_failure_stopped": true,
+  "current_entry": "tools/pose-v1/FINAL-EVIDENCE-RESULTS-20261010.md",
+  "next_plan": "tools/pose-v1/FINAL-EVIDENCE-NEXT-20261010.md",
+  "ADR": "ADR/ADR_33.md",
+  "completion_SHA256": "46a779521dc85296d4b53e11b021d395d7cfcb45eb3604b9ad36d881fdda993d",
+  "evidence": "tools\\pose-v1\\evidence\\final-evidence-20261010-r2",
+  "package": ".local/pose-v1-final-evidence/package-20261010-r2",
+  "build": ".local/pose-v1-build/mixed-20261010-final-evidence-r2",
+  "board": "/tmp/pose-final-evidence-20261010-r2",
+  "next": [
+    "read result and frozen identities",
+    "prepare public442 pre/post and ZG9189/Hard8131 bounded boundary capture; no registration replacement",
+    "new stage only after review; never continue stoppedEngine or retry failed folder"
+  ],
+  "no_running_processes_clients_or_sessions": true,
+  "root_cause_unresolved": true,
+  "old_failure_kept": true
+}

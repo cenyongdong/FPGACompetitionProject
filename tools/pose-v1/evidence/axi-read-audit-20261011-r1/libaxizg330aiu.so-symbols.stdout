@@ -1,0 +1,1198 @@
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+                 U _Unwind_Resume
+0000000000029870 00000000000003b4 T UnMapDevice(char const*, char*, unsigned long)
+0000000000075900 0000000000000008 u guard variable for AXIZG330AIRegRegionNode::DMA[abi:cxx11]
+0000000000075908 0000000000000008 u guard variable for AXIZG330AIRegRegionNode::NPU[abi:cxx11]
+00000000000758f8 0000000000000008 u guard variable for AXIZG330AIRegRegionNode::MAP_SIZE[abi:cxx11]
+00000000000758f0 0000000000000008 u guard variable for AXIZG330AIPLDDRMemRegionNode::DMA_TIMEOUT_S[abi:cxx11]
+0000000000075918 0000000000000008 u guard variable for icraft::xir::CloneContextNode::default_overrive_func_map
+0000000000075910 0000000000000008 u guard variable for icraft::xir::EqualContextNode::default_overrive_func_map
+0000000000076c08 0000000000000008 u guard variable for spdlog::details::os::is_color_terminal()::result
+0000000000000000 0000000000000008 u guard variable for spdlog::details::os::thread_id()::tid
+0000000000076a28 0000000000000008 u guard variable for spdlog::details::registry::instance()::s_instance
+0000000000050998 0000000000002918 W AXIZG330AIUDeviceNode::initAfterRegions()
+0000000000029d10 0000000000000004 W AXIZG330AIUDeviceNode::initBeforeRegions()
+000000000002b090 0000000000000044 W AXIZG330AIUDeviceNode::deinitAfterRegions()
+0000000000029d18 0000000000000004 W AXIZG330AIUDeviceNode::deinitBeforeRegions()
+0000000000028bc8 0000000000000c3c T AXIZG330AIUDeviceNode::AXIZG330AIUDeviceNode()
+0000000000028bc8 0000000000000c3c T AXIZG330AIUDeviceNode::AXIZG330AIUDeviceNode()
+00000000000329f0 0000000000000084 W AXIZG330AIUDeviceNode::~AXIZG330AIUDeviceNode()
+0000000000032958 0000000000000094 W AXIZG330AIUDeviceNode::~AXIZG330AIUDeviceNode()
+0000000000032958 0000000000000094 W AXIZG330AIUDeviceNode::~AXIZG330AIUDeviceNode()
+0000000000029d20 0000000000000004 W AXIZG330AIOcmRegionNode::init()
+0000000000029d28 0000000000000004 W AXIZG330AIOcmRegionNode::deinit()
+000000000002cb28 000000000000007c W AXIZG330AIOcmRegionNode::~AXIZG330AIOcmRegionNode()
+000000000002ca58 0000000000000050 W AXIZG330AIOcmRegionNode::~AXIZG330AIOcmRegionNode()
+000000000002ca58 0000000000000050 W AXIZG330AIOcmRegionNode::~AXIZG330AIOcmRegionNode()
+0000000000075840 0000000000000008 u AXIZG330AIRegRegionNode::GP0_BOTTOM
+0000000000075830 0000000000000008 u AXIZG330AIRegRegionNode::GP1_BOTTOM
+0000000000075820 0000000000000008 u AXIZG330AIRegRegionNode::GP_MAP_SIZE
+00000000000769e8 0000000000000020 u AXIZG330AIRegRegionNode::DMA[abi:cxx11]
+0000000000076a08 0000000000000020 u AXIZG330AIRegRegionNode::NPU[abi:cxx11]
+000000000004d280 000000000000048c W AXIZG330AIRegRegionNode::init()
+000000000004ee38 0000000000000050 W AXIZG330AIRegRegionNode::deinit()
+0000000000075838 0000000000000008 u AXIZG330AIRegRegionNode::GP0_TOP
+0000000000075828 0000000000000008 u AXIZG330AIRegRegionNode::GP1_TOP
+00000000000769c8 0000000000000020 u AXIZG330AIRegRegionNode::MAP_SIZE[abi:cxx11]
+000000000002a338 0000000000000008 W AXIZG330AIRegRegionNode::~AXIZG330AIRegRegionNode()
+0000000000029fd0 0000000000000004 W AXIZG330AIRegRegionNode::~AXIZG330AIRegRegionNode()
+0000000000029fd0 0000000000000004 W AXIZG330AIRegRegionNode::~AXIZG330AIRegRegionNode()
+0000000000029d00 0000000000000004 W AXIZG330AIUdmaMemRegionNode::init()
+000000000004ee88 000000000000001c W AXIZG330AIUdmaMemRegionNode::deinit()
+000000000002caa8 000000000000007c W AXIZG330AIUdmaMemRegionNode::~AXIZG330AIUdmaMemRegionNode()
+000000000002ca08 0000000000000050 W AXIZG330AIUdmaMemRegionNode::~AXIZG330AIUdmaMemRegionNode()
+000000000002ca08 0000000000000050 W AXIZG330AIUdmaMemRegionNode::~AXIZG330AIUdmaMemRegionNode()
+00000000000761a8 0000000000000020 u AXIZG330AIPLDDRMemRegionNode::DMA_TIMEOUT_S[abi:cxx11]
+000000000003e388 000000000000042c W AXIZG330AIPLDDRMemRegionNode::init()
+0000000000029d08 0000000000000004 W AXIZG330AIPLDDRMemRegionNode::deinit()
+000000000002c3c0 0000000000000134 W AXIZG330AIPLDDRMemRegionNode::~AXIZG330AIPLDDRMemRegionNode()
+000000000002e1e8 0000000000000124 W AXIZG330AIPLDDRMemRegionNode::~AXIZG330AIPLDDRMemRegionNode()
+000000000002e1e8 0000000000000124 W AXIZG330AIPLDDRMemRegionNode::~AXIZG330AIPLDDRMemRegionNode()
+000000000002a978 0000000000000038 W fmt::v8::format_error::~format_error()
+000000000002a960 0000000000000014 W fmt::v8::format_error::~format_error()
+000000000002a960 0000000000000014 W fmt::v8::format_error::~format_error()
+000000000004dd18 0000000000000338 W fmt::v8::vsystem_error(int, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)
+000000000002a610 00000000000000cc W fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >::grow(unsigned long)
+000000000002a540 00000000000000cc W fmt::v8::basic_memory_buffer<char, 500ul, std::allocator<char> >::grow(unsigned long)
+000000000002a8a8 00000000000000b4 W fmt::v8::basic_memory_buffer<int, 500ul, std::allocator<int> >::grow(unsigned long)
+000000000002a7f0 00000000000000b4 W fmt::v8::basic_memory_buffer<unsigned int, 32ul, std::allocator<unsigned int> >::grow(unsigned long)
+000000000004ca80 00000000000004b0 W void fmt::v8::detail::vformat_to<char>(fmt::v8::detail::buffer<char>&, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<std::conditional<std::is_same<fmt::v8::type_identity<char>::type, char>::value, fmt::v8::appender, std::back_insert_iterator<fmt::v8::detail::buffer<fmt::v8::type_identity<char>::type> > >::type, fmt::v8::type_identity<char>::type> >, fmt::v8::detail::locale_ref)
+000000000002f7b8 0000000000000130 W fmt::v8::detail::add_compare(fmt::v8::detail::bigint const&, fmt::v8::detail::bigint const&, fmt::v8::detail::bigint const&)
+0000000000040cd0 0000000000000a44 W int fmt::v8::detail::format_float<double>(double, int, fmt::v8::detail::float_specs, fmt::v8::detail::buffer<char>&)
+000000000002f8e8 0000000000002118 W fmt::v8::detail::format_dragon(fmt::v8::detail::fp, bool, int, fmt::v8::detail::buffer<char>&, int&)
+0000000000040198 0000000000000278 W fmt::v8::detail::digit_grouping<char>::digit_grouping(fmt::v8::detail::locale_ref, bool)
+0000000000040198 0000000000000278 W fmt::v8::detail::digit_grouping<char>::digit_grouping(fmt::v8::detail::locale_ref, bool)
+0000000000044a70 0000000000000950 W fmt::v8::appender fmt::v8::detail::do_write_float<fmt::v8::appender, fmt::v8::detail::big_decimal_fp, char, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, fmt::v8::detail::big_decimal_fp const&, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::float_specs, fmt::v8::detail::locale_ref)
+0000000000047680 0000000000000854 W fmt::v8::appender fmt::v8::detail::do_write_float<fmt::v8::appender, fmt::v8::detail::dragonbox::decimal_fp<double>, char, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, fmt::v8::detail::dragonbox::decimal_fp<double> const&, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::float_specs, fmt::v8::detail::locale_ref)
+00000000000467b0 00000000000008b0 W fmt::v8::appender fmt::v8::detail::do_write_float<fmt::v8::appender, fmt::v8::detail::dragonbox::decimal_fp<float>, char, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, fmt::v8::detail::dragonbox::decimal_fp<float> const&, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::float_specs, fmt::v8::detail::locale_ref)
+0000000000038788 0000000000000088 W fmt::v8::detail::format_decimal_result<char*> fmt::v8::detail::format_decimal<char, unsigned int>(char*, unsigned int, int)
+0000000000038f20 0000000000000094 W fmt::v8::detail::format_decimal_result<char*> fmt::v8::detail::format_decimal<char, unsigned long>(char*, unsigned long, int)
+000000000003c6d0 0000000000000108 W fmt::v8::detail::format_decimal_result<char*> fmt::v8::detail::format_decimal<char, unsigned __int128>(char*, unsigned __int128, int)
+0000000000039928 00000000000003e4 W int fmt::v8::detail::snprintf_float<double>(double, int, fmt::v8::detail::float_specs, fmt::v8::detail::buffer<char>&)
+0000000000039d10 0000000000000414 W int fmt::v8::detail::snprintf_float<long double>(long double, int, fmt::v8::detail::float_specs, fmt::v8::detail::buffer<char>&)
+0000000000059c38 00000000000000a0 u fmt::v8::detail::basic_impl_data<void>::power_of_10_64
+0000000000059cd8 00000000000000ae u fmt::v8::detail::basic_impl_data<void>::pow10_exponents
+0000000000059d88 00000000000002b8 u fmt::v8::detail::basic_impl_data<void>::pow10_significands
+000000000002a6e0 0000000000000060 W fmt::v8::detail::iterator_buffer<std::back_insert_iterator<fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> > >, char, fmt::v8::detail::buffer_traits>::grow(unsigned long)
+00000000000426c0 000000000000020c W fmt::v8::appender fmt::v8::detail::write_nonfinite<char, fmt::v8::appender>(fmt::v8::appender, bool, fmt::v8::basic_format_specs<char>, fmt::v8::detail::float_specs const&)
+00000000000330f0 0000000000000140 W int fmt::v8::detail::get_dynamic_spec<fmt::v8::detail::width_checker, fmt::v8::basic_format_arg<fmt::v8::basic_format_context<fmt::v8::appender, char> >, fmt::v8::detail::error_handler>(fmt::v8::basic_format_arg<fmt::v8::basic_format_context<fmt::v8::appender, char> >, fmt::v8::detail::error_handler)
+00000000000332a0 0000000000000140 W int fmt::v8::detail::get_dynamic_spec<fmt::v8::detail::precision_checker, fmt::v8::basic_format_arg<fmt::v8::basic_format_context<fmt::v8::appender, char> >, fmt::v8::detail::error_handler>(fmt::v8::basic_format_arg<fmt::v8::basic_format_context<fmt::v8::appender, char> >, fmt::v8::detail::error_handler)
+0000000000039800 00000000000000bc W fmt::v8::appender fmt::v8::detail::copy_str_noinline<char, char const*, fmt::v8::appender>(char const*, char const*, fmt::v8::appender)
+0000000000040410 00000000000000bc W fmt::v8::appender fmt::v8::detail::copy_str_noinline<char, char*, fmt::v8::appender>(char*, char*, fmt::v8::appender)
+0000000000046488 0000000000000324 W fmt::v8::appender fmt::v8::detail::write_significand<fmt::v8::appender, char, unsigned int, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, unsigned int, int, int, char, fmt::v8::detail::digit_grouping<char> const&)
+0000000000047330 0000000000000350 W fmt::v8::appender fmt::v8::detail::write_significand<fmt::v8::appender, char, unsigned long, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, unsigned long, int, int, char, fmt::v8::detail::digit_grouping<char> const&)
+0000000000044770 00000000000002fc W fmt::v8::appender fmt::v8::detail::write_significand<char, fmt::v8::appender, char const*, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, char const*, int, int, fmt::v8::detail::digit_grouping<char> const&)
+00000000000462a0 00000000000001e8 W fmt::v8::appender fmt::v8::detail::write_significand<char, fmt::v8::appender, unsigned int, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, unsigned int, int, int, fmt::v8::detail::digit_grouping<char> const&)
+0000000000047148 00000000000001e8 W fmt::v8::appender fmt::v8::detail::write_significand<char, fmt::v8::appender, unsigned long, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, unsigned long, int, int, fmt::v8::detail::digit_grouping<char> const&)
+00000000000281d0 0000000000000064 W fmt::v8::detail::throw_format_error(char const*)
+0000000000042e40 0000000000000b94 W fmt::v8::appender fmt::v8::detail::write_int_noinline<char, fmt::v8::appender, unsigned int>(fmt::v8::appender, fmt::v8::detail::write_int_arg<unsigned int>, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::locale_ref)
+0000000000043b30 0000000000000c3c W fmt::v8::appender fmt::v8::detail::write_int_noinline<char, fmt::v8::appender, unsigned long>(fmt::v8::appender, fmt::v8::detail::write_int_arg<unsigned long>, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::locale_ref)
+0000000000049c18 0000000000000d0c W fmt::v8::appender fmt::v8::detail::write_int_noinline<char, fmt::v8::appender, unsigned __int128>(fmt::v8::appender, fmt::v8::detail::write_int_arg<unsigned __int128>, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::locale_ref)
+0000000000042bf8 0000000000000248 W fmt::v8::appender fmt::v8::detail::write_int_localized<fmt::v8::appender, unsigned long, char>(fmt::v8::appender, unsigned long, unsigned int, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::digit_grouping<char> const&)
+00000000000498a0 0000000000000378 W fmt::v8::appender fmt::v8::detail::write_int_localized<fmt::v8::appender, unsigned __int128, char>(fmt::v8::appender, unsigned __int128, unsigned int, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::digit_grouping<char> const&)
+00000000000333e0 000000000000008c W int fmt::v8::detail::parse_nonnegative_int<char>(char const*&, char const*, int)
+000000000004c1c8 00000000000008b8 W char const* fmt::v8::detail::parse_replacement_field<char, fmt::v8::detail::vformat_to<char>(fmt::v8::detail::buffer<char>&, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<std::conditional<std::is_same<fmt::v8::type_identity<char>::type, char>::value, fmt::v8::appender, std::back_insert_iterator<fmt::v8::detail::buffer<fmt::v8::type_identity<char>::type> > >::type, fmt::v8::type_identity<char>::type> >, fmt::v8::detail::locale_ref)::format_handler&>(char const*, char const*, fmt::v8::detail::vformat_to<char>(fmt::v8::detail::buffer<char>&, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<std::conditional<std::is_same<fmt::v8::type_identity<char>::type, char>::value, fmt::v8::appender, std::back_insert_iterator<fmt::v8::detail::buffer<fmt::v8::type_identity<char>::type> > >::type, fmt::v8::type_identity<char>::type> >, fmt::v8::detail::locale_ref)::format_handler&)
+0000000000042238 0000000000000190 W fmt::v8::appender fmt::v8::detail::fill<fmt::v8::appender, char>(fmt::v8::appender, unsigned long, fmt::v8::detail::fill_t<char> const&)
+00000000000439d8 0000000000000158 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, bool, 0>(fmt::v8::appender, bool, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::locale_ref)
+0000000000047ed8 00000000000000ec W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, double, 0>(fmt::v8::appender, double)
+0000000000045e30 000000000000046c W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, double, 0>(fmt::v8::appender, double, fmt::v8::basic_format_specs<char>, fmt::v8::detail::locale_ref)
+00000000000453c0 00000000000005f0 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, long double, 0>(fmt::v8::appender, long double, fmt::v8::basic_format_specs<char>, fmt::v8::detail::locale_ref)
+0000000000047060 00000000000000e8 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, float, 0>(fmt::v8::appender, float)
+00000000000459b0 0000000000000480 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, float, 0>(fmt::v8::appender, float, fmt::v8::basic_format_specs<char>, fmt::v8::detail::locale_ref)
+0000000000041718 0000000000000150 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, int, 0>(fmt::v8::appender, int)
+0000000000040b30 00000000000000c8 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, unsigned int, 0>(fmt::v8::appender, unsigned int)
+00000000000407d8 0000000000000358 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, __int128, 0>(fmt::v8::appender, __int128)
+00000000000404d0 0000000000000308 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, unsigned __int128, 0>(fmt::v8::appender, unsigned __int128)
+0000000000041868 0000000000000160 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, long long, 0>(fmt::v8::appender, long long)
+0000000000040bf8 00000000000000d4 W fmt::v8::appender fmt::v8::detail::write<char, fmt::v8::appender, unsigned long long, 0>(fmt::v8::appender, unsigned long long)
+000000000002f698 0000000000000068 W fmt::v8::detail::bigint::assign(unsigned long)
+000000000002f700 00000000000000b4 W fmt::v8::detail::bigint::operator<<=(int)
+0000000000033520 00000000000000bc W void fmt::v8::detail::buffer<char>::append<char>(char const*, char const*)
+000000000003cd08 0000000000000e44 W fmt::v8::detail::dragonbox::decimal_fp<double> fmt::v8::detail::dragonbox::to_decimal<double>(double)
+000000000003c840 00000000000004c8 W fmt::v8::detail::dragonbox::decimal_fp<float> fmt::v8::detail::dragonbox::to_decimal<float>(float)
+00000000000423c8 00000000000002f8 W fmt::v8::appender fmt::v8::detail::write_ptr<char, fmt::v8::appender, unsigned long>(fmt::v8::appender, unsigned long, fmt::v8::basic_format_specs<char> const*)
+000000000004cf30 0000000000000110 W fmt::v8::vformat[abi:cxx11](fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)
+                 U icraft::xir::IntegerType::SInt64()
+000000000002a330 0000000000000008 W icraft::xir::FPGATargetNode::~FPGATargetNode()
+0000000000029fd8 0000000000000004 W icraft::xir::FPGATargetNode::~FPGATargetNode()
+0000000000029fd8 0000000000000004 W icraft::xir::FPGATargetNode::~FPGATargetNode()
+0000000000076c50 0000000000000038 u icraft::xir::CloneContextNode::default_overrive_func_map
+0000000000076c18 0000000000000038 u icraft::xir::EqualContextNode::default_overrive_func_map
+                 U icraft::xir::ExecOverriveFunc(icraft::xir::Node const*, icraft::xir::Node*, icraft::xir::ReduceVisitor const&, std::basic_string_view<char, std::char_traits<char> >, bool&)
+0000000000029c38 0000000000000004 W icraft::xir::CompileTargetNode::accept(icraft::xir::AttrVisitor&)
+                 U icraft::xir::IntImm::IntImm(long, icraft::xir::ScalarType, icraft::xir::MemType)
+0000000000031a00 000000000000002c W icraft::xir::Object::decref()
+000000000002bfe8 00000000000000b0 W icraft::xir::detail::BaseArrayNode<icraft::xir::ObjectRef>::~BaseArrayNode()
+000000000002bf30 00000000000000b4 W icraft::xir::detail::BaseArrayNode<icraft::xir::ObjectRef>::~BaseArrayNode()
+000000000002bf30 00000000000000b4 W icraft::xir::detail::BaseArrayNode<icraft::xir::ObjectRef>::~BaseArrayNode()
+000000000002a498 0000000000000040 W icraft::xir::detail::BaseArrayNode<unsigned long>::~BaseArrayNode()
+000000000002a470 0000000000000024 W icraft::xir::detail::BaseArrayNode<unsigned long>::~BaseArrayNode()
+000000000002a470 0000000000000024 W icraft::xir::detail::BaseArrayNode<unsigned long>::~BaseArrayNode()
+00000000000724a0 0000000000000010 u icraft::xir::NodeBase<AXIZG330AIUDeviceNode, icraft::xrt::ZG330DeviceNode>::type_key
+0000000000072490 0000000000000010 u icraft::xir::NodeBase<AXIZG330AIOcmRegionNode, icraft::xrt::MemRegionNode>::type_key
+00000000000724d0 0000000000000010 u icraft::xir::NodeBase<AXIZG330AIRegRegionNode, icraft::xrt::RegRegionNode>::type_key
+00000000000724c0 0000000000000010 u icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>::type_key
+00000000000724b0 0000000000000010 u icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>::type_key
+00000000000725a0 0000000000000010 u icraft::xir::NodeBase<icraft::xir::FPGATargetNode, icraft::xir::CompileTargetNode>::type_key
+00000000000725b0 0000000000000010 u icraft::xir::NodeBase<icraft::xir::CompileTargetNode, icraft::xir::Node>::type_key
+0000000000072570 0000000000000010 u icraft::xir::NodeBase<icraft::xrt::DeviceNode, icraft::xir::Node>::type_key
+0000000000072590 0000000000000010 u icraft::xir::NodeBase<icraft::xrt::MemRegionNode, icraft::xir::Node>::type_key
+0000000000072580 0000000000000010 u icraft::xir::NodeBase<icraft::xrt::RegRegionNode, icraft::xir::Node>::type_key
+0000000000072560 0000000000000010 u icraft::xir::NodeBase<icraft::xrt::ZG330DeviceNode, icraft::xrt::DeviceNode>::type_key
+000000000002c098 00000000000000b0 W icraft::xir::ArrayNode<icraft::xir::ObjectRef>::~ArrayNode()
+000000000002be78 00000000000000b4 W icraft::xir::ArrayNode<icraft::xir::ObjectRef>::~ArrayNode()
+000000000002be78 00000000000000b4 W icraft::xir::ArrayNode<icraft::xir::ObjectRef>::~ArrayNode()
+000000000002a500 0000000000000040 W icraft::xir::ArrayNode<unsigned long>::~ArrayNode()
+000000000002a4d8 0000000000000024 W icraft::xir::ArrayNode<unsigned long>::~ArrayNode()
+000000000002a4d8 0000000000000024 W icraft::xir::ArrayNode<unsigned long>::~ArrayNode()
+0000000000029c50 0000000000000030 W icraft::xrt::DeviceNode::accept(icraft::xir::AttrVisitor&)
+0000000000032a78 0000000000000028 W icraft::xrt::DeviceNode::~DeviceNode()
+0000000000032698 00000000000002c0 W icraft::xrt::DeviceNode::~DeviceNode()
+0000000000032698 00000000000002c0 W icraft::xrt::DeviceNode::~DeviceNode()
+                 U icraft::xrt::MemManager::free(icraft::xrt::MemPtr const&)
+                 U icraft::xrt::MemManager::malloc(icraft::xrt::MemPtr, unsigned long, std::function<void (icraft::xrt::MemPtr const&)>, bool)
+                 U icraft::xrt::MemManager::malloc(unsigned long, bool, unsigned long)
+0000000000029c40 0000000000000004 W icraft::xrt::MemRegionNode::accept(icraft::xir::AttrVisitor&)
+0000000000029c48 0000000000000004 W icraft::xrt::RegRegionNode::accept(icraft::xir::AttrVisitor&)
+                 U icraft::xrt::DeviceRegistry::set_creator(std::function<icraft::xrt::Device ()>)
+                 U icraft::xrt::DeviceRegistry::Register(std::basic_string_view<char, std::char_traits<char> >, bool)
+0000000000029d30 0000000000000028 W icraft::xrt::DeviceRegistry::~DeviceRegistry()
+0000000000029d30 0000000000000028 W icraft::xrt::DeviceRegistry::~DeviceRegistry()
+                 U icraft::xrt::ZG330DeviceNode::initAfterRegions()
+                 U icraft::xrt::ZG330DeviceNode::reset(int)
+000000000003ea10 0000000000000414 W icraft::xrt::DefaultMemManagerNode::DefaultMemManagerNode(icraft::xrt::MemPtr, unsigned long)
+000000000003ea10 0000000000000414 W icraft::xrt::DefaultMemManagerNode::DefaultMemManagerNode(icraft::xrt::MemPtr, unsigned long)
+                 U icraft::xrt::MemPtr::MemPtr(void*, unsigned long)
+                 U icraft::xrt::MemPtr::MemPtr(unsigned long)
+                 U icraft::xrt::MemRegion::_bindDevice(icraft::xrt::DeviceNode const*)
+                 U icraft::xrt::MemRegion::_bindMemmanager(icraft::xrt::MemManagerNode const*)
+                 U icraft::xrt::RegRegion::_bindDevice(icraft::xrt::DeviceNode const*)
+000000000002a9c8 0000000000000038 W icraft::Error::~Error()
+000000000002a9b0 0000000000000014 W icraft::Error::~Error()
+000000000002a9b0 0000000000000014 W icraft::Error::~Error()
+                 U icraft::Logger::log(icraft::LogLevel, std::basic_string_view<char, std::char_traits<char> >)
+                 U icraft::Logger::Global()
+000000000003c588 0000000000000144 W icraft::detail::LogMsg<(icraft::LogLevel)3>::~LogMsg()
+000000000003c588 0000000000000144 W icraft::detail::LogMsg<(icraft::LogLevel)3>::~LogMsg()
+                 U icraft::detail::LogExcept::Entry::init(char const*, int, int)
+                 U icraft::detail::LogExcept::Entry::finalize()
+                 U icraft::detail::LogExcept::GetEntry()
+000000000003a498 0000000000000db8 W void spdlog::pattern_formatter::handle_flag_<spdlog::details::scoped_padder>(char, spdlog::details::padding_info)
+000000000003b250 0000000000000db8 W void spdlog::pattern_formatter::handle_flag_<spdlog::details::null_scoped_padder>(char, spdlog::details::padding_info)
+000000000003c008 0000000000000374 W spdlog::pattern_formatter::compile_pattern_(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+000000000002ef48 00000000000001ac W spdlog::pattern_formatter::format(spdlog::details::log_msg const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002c148 0000000000000138 W spdlog::pattern_formatter::~pattern_formatter()
+000000000002c280 000000000000013c W spdlog::pattern_formatter::~pattern_formatter()
+000000000002c280 000000000000013c W spdlog::pattern_formatter::~pattern_formatter()
+000000000003ee28 00000000000003c4 W spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>::set_pattern(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+000000000002b6b0 0000000000000084 W spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>::set_formatter(std::unique_ptr<spdlog::formatter, std::default_delete<spdlog::formatter> >)
+000000000002d260 0000000000000338 W spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>::log(spdlog::details::log_msg const&)
+000000000002b628 0000000000000084 W spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>::flush()
+000000000002b7d0 0000000000000088 W spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>::~ansicolor_sink()
+000000000002a740 0000000000000094 W spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>::~ansicolor_sink()
+000000000002a740 0000000000000094 W spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>::~ansicolor_sink()
+000000000002b858 0000000000000088 W spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>::~ansicolor_stdout_sink()
+000000000002b738 0000000000000094 W spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>::~ansicolor_stdout_sink()
+000000000002b738 0000000000000094 W spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>::~ansicolor_stdout_sink()
+0000000000032aa0 00000000000001b8 W spdlog::logger::err_handler_(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+0000000000037e68 000000000000047c W spdlog::logger::clone(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
+0000000000032c58 000000000000021c W spdlog::logger::flush_()
+000000000004d710 0000000000000608 W spdlog::logger::sink_it_(spdlog::details::log_msg const&)
+000000000002b8e0 00000000000001d0 W spdlog::logger::~logger()
+000000000002bca8 00000000000001d0 W spdlog::logger::~logger()
+000000000002bca8 00000000000001d0 W spdlog::logger::~logger()
+0000000000038390 000000000000017c W void spdlog::details::fmt_helper::append_int<int>(int, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000004eea8 0000000000000164 W spdlog::details::fmt_helper::pad2(int, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+0000000000038810 00000000000001a0 W void spdlog::details::fmt_helper::pad3<unsigned int>(unsigned int, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+00000000000352f0 00000000000001f4 W spdlog::details::A_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2f0 0000000000000008 W spdlog::details::A_formatter<spdlog::details::scoped_padder>::~A_formatter()
+0000000000029d88 0000000000000004 W spdlog::details::A_formatter<spdlog::details::scoped_padder>::~A_formatter()
+0000000000029d88 0000000000000004 W spdlog::details::A_formatter<spdlog::details::scoped_padder>::~A_formatter()
+000000000002d808 00000000000000d0 W spdlog::details::A_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1c0 0000000000000008 W spdlog::details::A_formatter<spdlog::details::null_scoped_padder>::~A_formatter()
+0000000000029ed0 0000000000000004 W spdlog::details::A_formatter<spdlog::details::null_scoped_padder>::~A_formatter()
+0000000000029ed0 0000000000000004 W spdlog::details::A_formatter<spdlog::details::null_scoped_padder>::~A_formatter()
+0000000000034f00 00000000000001f4 W spdlog::details::B_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2e0 0000000000000008 W spdlog::details::B_formatter<spdlog::details::scoped_padder>::~B_formatter()
+0000000000029d98 0000000000000004 W spdlog::details::B_formatter<spdlog::details::scoped_padder>::~B_formatter()
+0000000000029d98 0000000000000004 W spdlog::details::B_formatter<spdlog::details::scoped_padder>::~B_formatter()
+000000000002d668 00000000000000d0 W spdlog::details::B_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1b0 0000000000000008 W spdlog::details::B_formatter<spdlog::details::null_scoped_padder>::~B_formatter()
+0000000000029ee0 0000000000000004 W spdlog::details::B_formatter<spdlog::details::null_scoped_padder>::~B_formatter()
+0000000000029ee0 0000000000000004 W spdlog::details::B_formatter<spdlog::details::null_scoped_padder>::~B_formatter()
+00000000000554d8 0000000000000260 W spdlog::details::C_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2d0 0000000000000008 W spdlog::details::C_formatter<spdlog::details::scoped_padder>::~C_formatter()
+0000000000029da8 0000000000000004 W spdlog::details::C_formatter<spdlog::details::scoped_padder>::~C_formatter()
+0000000000029da8 0000000000000004 W spdlog::details::C_formatter<spdlog::details::scoped_padder>::~C_formatter()
+0000000000054888 0000000000000180 W spdlog::details::C_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1a0 0000000000000008 W spdlog::details::C_formatter<spdlog::details::null_scoped_padder>::~C_formatter()
+0000000000029ef0 0000000000000004 W spdlog::details::C_formatter<spdlog::details::null_scoped_padder>::~C_formatter()
+0000000000029ef0 0000000000000004 W spdlog::details::C_formatter<spdlog::details::null_scoped_padder>::~C_formatter()
+000000000004f480 00000000000001f4 W spdlog::details::D_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2c0 0000000000000008 W spdlog::details::D_formatter<spdlog::details::scoped_padder>::~D_formatter()
+0000000000029db8 0000000000000004 W spdlog::details::D_formatter<spdlog::details::scoped_padder>::~D_formatter()
+0000000000029db8 0000000000000004 W spdlog::details::D_formatter<spdlog::details::scoped_padder>::~D_formatter()
+000000000004f0c0 00000000000000d0 W spdlog::details::D_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a190 0000000000000008 W spdlog::details::D_formatter<spdlog::details::null_scoped_padder>::~D_formatter()
+0000000000029f00 0000000000000004 W spdlog::details::D_formatter<spdlog::details::null_scoped_padder>::~D_formatter()
+0000000000029f00 0000000000000004 W spdlog::details::D_formatter<spdlog::details::null_scoped_padder>::~D_formatter()
+00000000000338e0 00000000000002b8 W spdlog::details::E_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a270 0000000000000008 W spdlog::details::E_formatter<spdlog::details::scoped_padder>::~E_formatter()
+0000000000029e08 0000000000000004 W spdlog::details::E_formatter<spdlog::details::scoped_padder>::~E_formatter()
+0000000000029e08 0000000000000004 W spdlog::details::E_formatter<spdlog::details::scoped_padder>::~E_formatter()
+000000000002e610 00000000000001c4 W spdlog::details::E_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a140 0000000000000008 W spdlog::details::E_formatter<spdlog::details::null_scoped_padder>::~E_formatter()
+0000000000029f50 0000000000000004 W spdlog::details::E_formatter<spdlog::details::null_scoped_padder>::~E_formatter()
+0000000000029f50 0000000000000004 W spdlog::details::E_formatter<spdlog::details::null_scoped_padder>::~E_formatter()
+0000000000033b98 00000000000003c8 W spdlog::details::F_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a278 0000000000000008 W spdlog::details::F_formatter<spdlog::details::scoped_padder>::~F_formatter()
+0000000000029e00 0000000000000004 W spdlog::details::F_formatter<spdlog::details::scoped_padder>::~F_formatter()
+0000000000029e00 0000000000000004 W spdlog::details::F_formatter<spdlog::details::scoped_padder>::~F_formatter()
+000000000002db20 00000000000002e0 W spdlog::details::F_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a148 0000000000000008 W spdlog::details::F_formatter<spdlog::details::null_scoped_padder>::~F_formatter()
+0000000000029f48 0000000000000004 W spdlog::details::F_formatter<spdlog::details::null_scoped_padder>::~F_formatter()
+0000000000029f48 0000000000000004 W spdlog::details::F_formatter<spdlog::details::null_scoped_padder>::~F_formatter()
+0000000000055028 0000000000000254 W spdlog::details::H_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2a8 0000000000000008 W spdlog::details::H_formatter<spdlog::details::scoped_padder>::~H_formatter()
+0000000000029dd0 0000000000000004 W spdlog::details::H_formatter<spdlog::details::scoped_padder>::~H_formatter()
+0000000000029dd0 0000000000000004 W spdlog::details::H_formatter<spdlog::details::scoped_padder>::~H_formatter()
+0000000000054450 0000000000000164 W spdlog::details::H_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a178 0000000000000008 W spdlog::details::H_formatter<spdlog::details::null_scoped_padder>::~H_formatter()
+0000000000029f18 0000000000000004 W spdlog::details::H_formatter<spdlog::details::null_scoped_padder>::~H_formatter()
+0000000000029f18 0000000000000004 W spdlog::details::H_formatter<spdlog::details::null_scoped_padder>::~H_formatter()
+0000000000055998 0000000000000264 W spdlog::details::I_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2a0 0000000000000008 W spdlog::details::I_formatter<spdlog::details::scoped_padder>::~I_formatter()
+0000000000029dd8 0000000000000004 W spdlog::details::I_formatter<spdlog::details::scoped_padder>::~I_formatter()
+0000000000029dd8 0000000000000004 W spdlog::details::I_formatter<spdlog::details::scoped_padder>::~I_formatter()
+0000000000054a08 000000000000016c W spdlog::details::I_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a170 0000000000000008 W spdlog::details::I_formatter<spdlog::details::null_scoped_padder>::~I_formatter()
+0000000000029f20 0000000000000004 W spdlog::details::I_formatter<spdlog::details::null_scoped_padder>::~I_formatter()
+0000000000029f20 0000000000000004 W spdlog::details::I_formatter<spdlog::details::null_scoped_padder>::~I_formatter()
+0000000000054b78 0000000000000254 W spdlog::details::M_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a298 0000000000000008 W spdlog::details::M_formatter<spdlog::details::scoped_padder>::~M_formatter()
+0000000000029de0 0000000000000004 W spdlog::details::M_formatter<spdlog::details::scoped_padder>::~M_formatter()
+0000000000029de0 0000000000000004 W spdlog::details::M_formatter<spdlog::details::scoped_padder>::~M_formatter()
+00000000000542e8 0000000000000164 W spdlog::details::M_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a168 0000000000000008 W spdlog::details::M_formatter<spdlog::details::null_scoped_padder>::~M_formatter()
+0000000000029f28 0000000000000004 W spdlog::details::M_formatter<spdlog::details::null_scoped_padder>::~M_formatter()
+0000000000029f28 0000000000000004 W spdlog::details::M_formatter<spdlog::details::null_scoped_padder>::~M_formatter()
+0000000000055ea0 000000000000038c W spdlog::details::R_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a258 0000000000000008 W spdlog::details::R_formatter<spdlog::details::scoped_padder>::~R_formatter()
+0000000000029e20 0000000000000004 W spdlog::details::R_formatter<spdlog::details::scoped_padder>::~R_formatter()
+0000000000029e20 0000000000000004 W spdlog::details::R_formatter<spdlog::details::scoped_padder>::~R_formatter()
+0000000000055c00 00000000000002a0 W spdlog::details::R_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a128 0000000000000008 W spdlog::details::R_formatter<spdlog::details::null_scoped_padder>::~R_formatter()
+0000000000029f68 0000000000000004 W spdlog::details::R_formatter<spdlog::details::null_scoped_padder>::~R_formatter()
+0000000000029f68 0000000000000004 W spdlog::details::R_formatter<spdlog::details::null_scoped_padder>::~R_formatter()
+0000000000055280 0000000000000254 W spdlog::details::S_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a290 0000000000000008 W spdlog::details::S_formatter<spdlog::details::scoped_padder>::~S_formatter()
+0000000000029de8 0000000000000004 W spdlog::details::S_formatter<spdlog::details::scoped_padder>::~S_formatter()
+0000000000029de8 0000000000000004 W spdlog::details::S_formatter<spdlog::details::scoped_padder>::~S_formatter()
+00000000000545b8 0000000000000164 W spdlog::details::S_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a160 0000000000000008 W spdlog::details::S_formatter<spdlog::details::null_scoped_padder>::~S_formatter()
+0000000000029f30 0000000000000004 W spdlog::details::S_formatter<spdlog::details::null_scoped_padder>::~S_formatter()
+0000000000029f30 0000000000000004 W spdlog::details::S_formatter<spdlog::details::null_scoped_padder>::~S_formatter()
+000000000004f2a8 00000000000001d4 W spdlog::details::T_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a250 0000000000000008 W spdlog::details::T_formatter<spdlog::details::scoped_padder>::~T_formatter()
+0000000000029e28 0000000000000004 W spdlog::details::T_formatter<spdlog::details::scoped_padder>::~T_formatter()
+0000000000029e28 0000000000000004 W spdlog::details::T_formatter<spdlog::details::scoped_padder>::~T_formatter()
+000000000004f010 00000000000000b0 W spdlog::details::T_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a120 0000000000000008 W spdlog::details::T_formatter<spdlog::details::null_scoped_padder>::~T_formatter()
+0000000000029f70 0000000000000004 W spdlog::details::T_formatter<spdlog::details::null_scoped_padder>::~T_formatter()
+0000000000029f70 0000000000000004 W spdlog::details::T_formatter<spdlog::details::null_scoped_padder>::~T_formatter()
+0000000000033658 0000000000000288 W spdlog::details::Y_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2c8 0000000000000008 W spdlog::details::Y_formatter<spdlog::details::scoped_padder>::~Y_formatter()
+0000000000029db0 0000000000000004 W spdlog::details::Y_formatter<spdlog::details::scoped_padder>::~Y_formatter()
+0000000000029db0 0000000000000004 W spdlog::details::Y_formatter<spdlog::details::scoped_padder>::~Y_formatter()
+000000000002cd18 0000000000000184 W spdlog::details::Y_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a198 0000000000000008 W spdlog::details::Y_formatter<spdlog::details::null_scoped_padder>::~Y_formatter()
+0000000000029ef8 0000000000000004 W spdlog::details::Y_formatter<spdlog::details::null_scoped_padder>::~Y_formatter()
+0000000000029ef8 0000000000000004 W spdlog::details::Y_formatter<spdlog::details::null_scoped_padder>::~Y_formatter()
+0000000000034b10 00000000000001f4 W spdlog::details::a_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2f8 0000000000000008 W spdlog::details::a_formatter<spdlog::details::scoped_padder>::~a_formatter()
+0000000000029d80 0000000000000004 W spdlog::details::a_formatter<spdlog::details::scoped_padder>::~a_formatter()
+0000000000029d80 0000000000000004 W spdlog::details::a_formatter<spdlog::details::scoped_padder>::~a_formatter()
+000000000002d8d8 00000000000000d0 W spdlog::details::a_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1c8 0000000000000008 W spdlog::details::a_formatter<spdlog::details::null_scoped_padder>::~a_formatter()
+0000000000029ec8 0000000000000004 W spdlog::details::a_formatter<spdlog::details::null_scoped_padder>::~a_formatter()
+0000000000029ec8 0000000000000004 W spdlog::details::a_formatter<spdlog::details::null_scoped_padder>::~a_formatter()
+0000000000034d08 00000000000001f4 W spdlog::details::b_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2e8 0000000000000008 W spdlog::details::b_formatter<spdlog::details::scoped_padder>::~b_formatter()
+0000000000029d90 0000000000000004 W spdlog::details::b_formatter<spdlog::details::scoped_padder>::~b_formatter()
+0000000000029d90 0000000000000004 W spdlog::details::b_formatter<spdlog::details::scoped_padder>::~b_formatter()
+000000000002d738 00000000000000d0 W spdlog::details::b_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1b8 0000000000000008 W spdlog::details::b_formatter<spdlog::details::null_scoped_padder>::~b_formatter()
+0000000000029ed8 0000000000000004 W spdlog::details::b_formatter<spdlog::details::null_scoped_padder>::~b_formatter()
+0000000000029ed8 0000000000000004 W spdlog::details::b_formatter<spdlog::details::null_scoped_padder>::~b_formatter()
+00000000000501e0 00000000000003a0 W spdlog::details::c_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2d8 0000000000000008 W spdlog::details::c_formatter<spdlog::details::scoped_padder>::~c_formatter()
+0000000000029da0 0000000000000004 W spdlog::details::c_formatter<spdlog::details::scoped_padder>::~c_formatter()
+0000000000029da0 0000000000000004 W spdlog::details::c_formatter<spdlog::details::scoped_padder>::~c_formatter()
+000000000004ff20 00000000000002c0 W spdlog::details::c_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1a8 0000000000000008 W spdlog::details::c_formatter<spdlog::details::null_scoped_padder>::~c_formatter()
+0000000000029ee8 0000000000000004 W spdlog::details::c_formatter<spdlog::details::null_scoped_padder>::~c_formatter()
+0000000000029ee8 0000000000000004 W spdlog::details::c_formatter<spdlog::details::null_scoped_padder>::~c_formatter()
+0000000000054dd0 0000000000000254 W spdlog::details::d_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2b0 0000000000000008 W spdlog::details::d_formatter<spdlog::details::scoped_padder>::~d_formatter()
+0000000000029dc8 0000000000000004 W spdlog::details::d_formatter<spdlog::details::scoped_padder>::~d_formatter()
+0000000000029dc8 0000000000000004 W spdlog::details::d_formatter<spdlog::details::scoped_padder>::~d_formatter()
+0000000000054180 0000000000000164 W spdlog::details::d_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a180 0000000000000008 W spdlog::details::d_formatter<spdlog::details::null_scoped_padder>::~d_formatter()
+0000000000029f10 0000000000000004 W spdlog::details::d_formatter<spdlog::details::null_scoped_padder>::~d_formatter()
+0000000000029f10 0000000000000004 W spdlog::details::d_formatter<spdlog::details::null_scoped_padder>::~d_formatter()
+0000000000038c50 00000000000002d0 W spdlog::details::e_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a288 0000000000000008 W spdlog::details::e_formatter<spdlog::details::scoped_padder>::~e_formatter()
+0000000000029df0 0000000000000004 W spdlog::details::e_formatter<spdlog::details::scoped_padder>::~e_formatter()
+0000000000029df0 0000000000000004 W spdlog::details::e_formatter<spdlog::details::scoped_padder>::~e_formatter()
+0000000000036530 0000000000000248 W spdlog::details::e_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a158 0000000000000008 W spdlog::details::e_formatter<spdlog::details::null_scoped_padder>::~e_formatter()
+0000000000029f38 0000000000000004 W spdlog::details::e_formatter<spdlog::details::null_scoped_padder>::~e_formatter()
+0000000000029f38 0000000000000004 W spdlog::details::e_formatter<spdlog::details::null_scoped_padder>::~e_formatter()
+0000000000034520 00000000000003e8 W spdlog::details::f_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a280 0000000000000008 W spdlog::details::f_formatter<spdlog::details::scoped_padder>::~f_formatter()
+0000000000029df8 0000000000000004 W spdlog::details::f_formatter<spdlog::details::scoped_padder>::~f_formatter()
+0000000000029df8 0000000000000004 W spdlog::details::f_formatter<spdlog::details::scoped_padder>::~f_formatter()
+000000000002e310 0000000000000300 W spdlog::details::f_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a150 0000000000000008 W spdlog::details::f_formatter<spdlog::details::null_scoped_padder>::~f_formatter()
+0000000000029f40 0000000000000004 W spdlog::details::f_formatter<spdlog::details::null_scoped_padder>::~f_formatter()
+0000000000029f40 0000000000000004 W spdlog::details::f_formatter<spdlog::details::null_scoped_padder>::~f_formatter()
+0000000000055738 000000000000025c W spdlog::details::m_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a2b8 0000000000000008 W spdlog::details::m_formatter<spdlog::details::scoped_padder>::~m_formatter()
+0000000000029dc0 0000000000000004 W spdlog::details::m_formatter<spdlog::details::scoped_padder>::~m_formatter()
+0000000000029dc0 0000000000000004 W spdlog::details::m_formatter<spdlog::details::scoped_padder>::~m_formatter()
+0000000000054720 0000000000000168 W spdlog::details::m_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a188 0000000000000008 W spdlog::details::m_formatter<spdlog::details::null_scoped_padder>::~m_formatter()
+0000000000029f08 0000000000000004 W spdlog::details::m_formatter<spdlog::details::null_scoped_padder>::~m_formatter()
+0000000000029f08 0000000000000004 W spdlog::details::m_formatter<spdlog::details::null_scoped_padder>::~m_formatter()
+0000000000034150 00000000000001e0 W spdlog::details::p_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a268 0000000000000008 W spdlog::details::p_formatter<spdlog::details::scoped_padder>::~p_formatter()
+0000000000029e10 0000000000000004 W spdlog::details::p_formatter<spdlog::details::scoped_padder>::~p_formatter()
+0000000000029e10 0000000000000004 W spdlog::details::p_formatter<spdlog::details::scoped_padder>::~p_formatter()
+000000000002d198 00000000000000c8 W spdlog::details::p_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a138 0000000000000008 W spdlog::details::p_formatter<spdlog::details::null_scoped_padder>::~p_formatter()
+0000000000029f58 0000000000000004 W spdlog::details::p_formatter<spdlog::details::null_scoped_padder>::~p_formatter()
+0000000000029f58 0000000000000004 W spdlog::details::p_formatter<spdlog::details::null_scoped_padder>::~p_formatter()
+000000000004f678 000000000000023c W spdlog::details::r_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a260 0000000000000008 W spdlog::details::r_formatter<spdlog::details::scoped_padder>::~r_formatter()
+0000000000029e18 0000000000000004 W spdlog::details::r_formatter<spdlog::details::scoped_padder>::~r_formatter()
+0000000000029e18 0000000000000004 W spdlog::details::r_formatter<spdlog::details::scoped_padder>::~r_formatter()
+000000000004f190 0000000000000118 W spdlog::details::r_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a130 0000000000000008 W spdlog::details::r_formatter<spdlog::details::null_scoped_padder>::~r_formatter()
+0000000000029f60 0000000000000004 W spdlog::details::r_formatter<spdlog::details::null_scoped_padder>::~r_formatter()
+0000000000029f60 0000000000000004 W spdlog::details::r_formatter<spdlog::details::null_scoped_padder>::~r_formatter()
+0000000000035760 00000000000002ac W spdlog::details::t_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a308 0000000000000008 W spdlog::details::t_formatter<spdlog::details::scoped_padder>::~t_formatter()
+0000000000029d70 0000000000000004 W spdlog::details::t_formatter<spdlog::details::scoped_padder>::~t_formatter()
+0000000000029d70 0000000000000004 W spdlog::details::t_formatter<spdlog::details::scoped_padder>::~t_formatter()
+000000000002d9a8 0000000000000178 W spdlog::details::t_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1d8 0000000000000008 W spdlog::details::t_formatter<spdlog::details::null_scoped_padder>::~t_formatter()
+0000000000029eb8 0000000000000004 W spdlog::details::t_formatter<spdlog::details::null_scoped_padder>::~t_formatter()
+0000000000029eb8 0000000000000004 W spdlog::details::t_formatter<spdlog::details::null_scoped_padder>::~t_formatter()
+0000000000034330 00000000000001f0 W spdlog::details::v_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a300 0000000000000008 W spdlog::details::v_formatter<spdlog::details::scoped_padder>::~v_formatter()
+0000000000029d78 0000000000000004 W spdlog::details::v_formatter<spdlog::details::scoped_padder>::~v_formatter()
+0000000000029d78 0000000000000004 W spdlog::details::v_formatter<spdlog::details::scoped_padder>::~v_formatter()
+000000000002cf58 00000000000000b8 W spdlog::details::v_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1d0 0000000000000008 W spdlog::details::v_formatter<spdlog::details::null_scoped_padder>::~v_formatter()
+0000000000029ec0 0000000000000004 W spdlog::details::v_formatter<spdlog::details::null_scoped_padder>::~v_formatter()
+0000000000029ec0 0000000000000004 W spdlog::details::v_formatter<spdlog::details::null_scoped_padder>::~v_formatter()
+00000000000506e0 00000000000002b8 W spdlog::details::z_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a248 0000000000000008 W spdlog::details::z_formatter<spdlog::details::scoped_padder>::~z_formatter()
+0000000000029e30 0000000000000004 W spdlog::details::z_formatter<spdlog::details::scoped_padder>::~z_formatter()
+0000000000029e30 0000000000000004 W spdlog::details::z_formatter<spdlog::details::scoped_padder>::~z_formatter()
+0000000000050580 000000000000015c W spdlog::details::z_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a118 0000000000000008 W spdlog::details::z_formatter<spdlog::details::null_scoped_padder>::~z_formatter()
+0000000000029f78 0000000000000004 W spdlog::details::z_formatter<spdlog::details::null_scoped_padder>::~z_formatter()
+0000000000029f78 0000000000000004 W spdlog::details::z_formatter<spdlog::details::null_scoped_padder>::~z_formatter()
+0000000000029c88 0000000000000058 W spdlog::details::ch_formatter::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a0c8 0000000000000008 W spdlog::details::ch_formatter::~ch_formatter()
+0000000000029e78 0000000000000004 W spdlog::details::ch_formatter::~ch_formatter()
+0000000000029e78 0000000000000004 W spdlog::details::ch_formatter::~ch_formatter()
+00000000000354e8 0000000000000278 W spdlog::details::pid_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a240 0000000000000008 W spdlog::details::pid_formatter<spdlog::details::scoped_padder>::~pid_formatter()
+0000000000029e38 0000000000000004 W spdlog::details::pid_formatter<spdlog::details::scoped_padder>::~pid_formatter()
+0000000000029e38 0000000000000004 W spdlog::details::pid_formatter<spdlog::details::scoped_padder>::~pid_formatter()
+000000000002cba8 000000000000016c W spdlog::details::pid_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a110 0000000000000008 W spdlog::details::pid_formatter<spdlog::details::null_scoped_padder>::~pid_formatter()
+0000000000029f80 0000000000000004 W spdlog::details::pid_formatter<spdlog::details::null_scoped_padder>::~pid_formatter()
+0000000000029f80 0000000000000004 W spdlog::details::pid_formatter<spdlog::details::null_scoped_padder>::~pid_formatter()
+00000000000335e0 0000000000000078 W spdlog::details::scoped_padder::~scoped_padder()
+00000000000335e0 0000000000000078 W spdlog::details::scoped_padder::~scoped_padder()
+000000000004f8b8 0000000000000664 W spdlog::details::full_formatter::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a398 000000000000005c W spdlog::details::full_formatter::~full_formatter()
+000000000002a358 0000000000000040 W spdlog::details::full_formatter::~full_formatter()
+000000000002a358 0000000000000040 W spdlog::details::full_formatter::~full_formatter()
+0000000000033f60 00000000000001f0 W spdlog::details::name_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a320 0000000000000008 W spdlog::details::name_formatter<spdlog::details::scoped_padder>::~name_formatter()
+0000000000029d58 0000000000000004 W spdlog::details::name_formatter<spdlog::details::scoped_padder>::~name_formatter()
+0000000000029d58 0000000000000004 W spdlog::details::name_formatter<spdlog::details::scoped_padder>::~name_formatter()
+000000000002cea0 00000000000000b8 W spdlog::details::name_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1f0 0000000000000008 W spdlog::details::name_formatter<spdlog::details::null_scoped_padder>::~name_formatter()
+0000000000029ea0 0000000000000004 W spdlog::details::name_formatter<spdlog::details::null_scoped_padder>::~name_formatter()
+0000000000029ea0 0000000000000004 W spdlog::details::name_formatter<spdlog::details::null_scoped_padder>::~name_formatter()
+0000000000034908 0000000000000208 W spdlog::details::level_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a318 0000000000000008 W spdlog::details::level_formatter<spdlog::details::scoped_padder>::~level_formatter()
+0000000000029d60 0000000000000004 W spdlog::details::level_formatter<spdlog::details::scoped_padder>::~level_formatter()
+0000000000029d60 0000000000000004 W spdlog::details::level_formatter<spdlog::details::scoped_padder>::~level_formatter()
+000000000002d0c8 00000000000000d0 W spdlog::details::level_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1e8 0000000000000008 W spdlog::details::level_formatter<spdlog::details::null_scoped_padder>::~level_formatter()
+0000000000029ea8 0000000000000004 W spdlog::details::level_formatter<spdlog::details::null_scoped_padder>::~level_formatter()
+0000000000029ea8 0000000000000004 W spdlog::details::level_formatter<spdlog::details::null_scoped_padder>::~level_formatter()
+0000000000035a10 00000000000002a8 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a210 0000000000000008 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::~elapsed_formatter()
+0000000000029e80 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::~elapsed_formatter()
+0000000000029e80 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::~elapsed_formatter()
+0000000000035f88 00000000000002d0 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a208 0000000000000008 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >::~elapsed_formatter()
+0000000000029e88 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >::~elapsed_formatter()
+0000000000029e88 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >::~elapsed_formatter()
+0000000000035cb8 00000000000002d0 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a200 0000000000000008 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >::~elapsed_formatter()
+0000000000029e90 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >::~elapsed_formatter()
+0000000000029e90 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >::~elapsed_formatter()
+0000000000036258 00000000000002d8 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1f8 0000000000000008 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::~elapsed_formatter()
+0000000000029e98 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::~elapsed_formatter()
+0000000000029e98 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::~elapsed_formatter()
+000000000002e7d8 0000000000000188 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a0e8 0000000000000008 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::~elapsed_formatter()
+0000000000029fb0 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::~elapsed_formatter()
+0000000000029fb0 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >::~elapsed_formatter()
+000000000002ebf0 00000000000001b0 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a0e0 0000000000000008 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >::~elapsed_formatter()
+0000000000029fb8 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >::~elapsed_formatter()
+0000000000029fb8 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >::~elapsed_formatter()
+000000000002eda0 00000000000001a8 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a0d8 0000000000000008 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >::~elapsed_formatter()
+0000000000029fc0 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >::~elapsed_formatter()
+0000000000029fc0 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >::~elapsed_formatter()
+000000000002ea40 00000000000001b0 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a0d0 0000000000000008 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::~elapsed_formatter()
+0000000000029fc8 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::~elapsed_formatter()
+0000000000029fc8 0000000000000004 W spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::~elapsed_formatter()
+000000000002d010 00000000000000b8 W spdlog::details::aggregate_formatter::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a428 0000000000000048 W spdlog::details::aggregate_formatter::~aggregate_formatter()
+000000000002a3f8 000000000000002c W spdlog::details::aggregate_formatter::~aggregate_formatter()
+000000000002a3f8 000000000000002c W spdlog::details::aggregate_formatter::~aggregate_formatter()
+0000000000029cf0 000000000000000c W spdlog::details::color_stop_formatter::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a0b8 0000000000000008 W spdlog::details::color_stop_formatter::~color_stop_formatter()
+0000000000029e48 0000000000000004 W spdlog::details::color_stop_formatter::~color_stop_formatter()
+0000000000029e48 0000000000000004 W spdlog::details::color_stop_formatter::~color_stop_formatter()
+0000000000029ce0 000000000000000c W spdlog::details::color_start_formatter::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a0c0 0000000000000008 W spdlog::details::color_start_formatter::~color_start_formatter()
+0000000000029e40 0000000000000004 W spdlog::details::color_start_formatter::~color_start_formatter()
+0000000000029e40 0000000000000004 W spdlog::details::color_start_formatter::~color_start_formatter()
+00000000000350f8 00000000000001f4 W spdlog::details::short_level_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a310 0000000000000008 W spdlog::details::short_level_formatter<spdlog::details::scoped_padder>::~short_level_formatter()
+0000000000029d68 0000000000000004 W spdlog::details::short_level_formatter<spdlog::details::scoped_padder>::~short_level_formatter()
+0000000000029d68 0000000000000004 W spdlog::details::short_level_formatter<spdlog::details::scoped_padder>::~short_level_formatter()
+000000000002d598 00000000000000d0 W spdlog::details::short_level_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a1e0 0000000000000008 W spdlog::details::short_level_formatter<spdlog::details::null_scoped_padder>::~short_level_formatter()
+0000000000029eb0 0000000000000004 W spdlog::details::short_level_formatter<spdlog::details::null_scoped_padder>::~short_level_formatter()
+0000000000029eb0 0000000000000004 W spdlog::details::short_level_formatter<spdlog::details::null_scoped_padder>::~short_level_formatter()
+0000000000036fa0 00000000000001f8 W spdlog::details::short_filename_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a230 0000000000000008 W spdlog::details::short_filename_formatter<spdlog::details::scoped_padder>::~short_filename_formatter()
+0000000000029e58 0000000000000004 W spdlog::details::short_filename_formatter<spdlog::details::scoped_padder>::~short_filename_formatter()
+0000000000029e58 0000000000000004 W spdlog::details::short_filename_formatter<spdlog::details::scoped_padder>::~short_filename_formatter()
+000000000002e960 00000000000000e0 W spdlog::details::short_filename_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a328 0000000000000008 W spdlog::details::short_filename_formatter<spdlog::details::null_scoped_padder>::~short_filename_formatter()
+0000000000029f90 0000000000000004 W spdlog::details::short_filename_formatter<spdlog::details::null_scoped_padder>::~short_filename_formatter()
+0000000000029f90 0000000000000004 W spdlog::details::short_filename_formatter<spdlog::details::null_scoped_padder>::~short_filename_formatter()
+0000000000036778 00000000000002d4 W spdlog::details::source_linenum_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a220 0000000000000008 W spdlog::details::source_linenum_formatter<spdlog::details::scoped_padder>::~source_linenum_formatter()
+0000000000029e68 0000000000000004 W spdlog::details::source_linenum_formatter<spdlog::details::scoped_padder>::~source_linenum_formatter()
+0000000000029e68 0000000000000004 W spdlog::details::source_linenum_formatter<spdlog::details::scoped_padder>::~source_linenum_formatter()
+000000000002f0f8 0000000000000194 W spdlog::details::source_linenum_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a0f8 0000000000000008 W spdlog::details::source_linenum_formatter<spdlog::details::null_scoped_padder>::~source_linenum_formatter()
+0000000000029fa0 0000000000000004 W spdlog::details::source_linenum_formatter<spdlog::details::null_scoped_padder>::~source_linenum_formatter()
+0000000000029fa0 0000000000000004 W spdlog::details::source_linenum_formatter<spdlog::details::null_scoped_padder>::~source_linenum_formatter()
+0000000000036cf8 00000000000002a4 W spdlog::details::source_filename_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a228 0000000000000008 W spdlog::details::source_filename_formatter<spdlog::details::scoped_padder>::~source_filename_formatter()
+0000000000029e60 0000000000000004 W spdlog::details::source_filename_formatter<spdlog::details::scoped_padder>::~source_filename_formatter()
+0000000000029e60 0000000000000004 W spdlog::details::source_filename_formatter<spdlog::details::scoped_padder>::~source_filename_formatter()
+000000000002f360 00000000000000cc W spdlog::details::source_filename_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a100 0000000000000008 W spdlog::details::source_filename_formatter<spdlog::details::null_scoped_padder>::~source_filename_formatter()
+0000000000029f98 0000000000000004 W spdlog::details::source_filename_formatter<spdlog::details::null_scoped_padder>::~source_filename_formatter()
+0000000000029f98 0000000000000004 W spdlog::details::source_filename_formatter<spdlog::details::null_scoped_padder>::~source_filename_formatter()
+0000000000036a50 00000000000002a4 W spdlog::details::source_funcname_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a218 0000000000000008 W spdlog::details::source_funcname_formatter<spdlog::details::scoped_padder>::~source_funcname_formatter()
+0000000000029e70 0000000000000004 W spdlog::details::source_funcname_formatter<spdlog::details::scoped_padder>::~source_funcname_formatter()
+0000000000029e70 0000000000000004 W spdlog::details::source_funcname_formatter<spdlog::details::scoped_padder>::~source_funcname_formatter()
+000000000002f290 00000000000000cc W spdlog::details::source_funcname_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a0f0 0000000000000008 W spdlog::details::source_funcname_formatter<spdlog::details::null_scoped_padder>::~source_funcname_formatter()
+0000000000029fa8 0000000000000004 W spdlog::details::source_funcname_formatter<spdlog::details::null_scoped_padder>::~source_funcname_formatter()
+0000000000029fa8 0000000000000004 W spdlog::details::source_funcname_formatter<spdlog::details::null_scoped_padder>::~source_funcname_formatter()
+00000000000389b0 000000000000029c W spdlog::details::source_location_formatter<spdlog::details::scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a238 0000000000000008 W spdlog::details::source_location_formatter<spdlog::details::scoped_padder>::~source_location_formatter()
+0000000000029e50 0000000000000004 W spdlog::details::source_location_formatter<spdlog::details::scoped_padder>::~source_location_formatter()
+0000000000029e50 0000000000000004 W spdlog::details::source_location_formatter<spdlog::details::scoped_padder>::~source_location_formatter()
+000000000002f430 0000000000000264 W spdlog::details::source_location_formatter<spdlog::details::null_scoped_padder>::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)
+000000000002a108 0000000000000008 W spdlog::details::source_location_formatter<spdlog::details::null_scoped_padder>::~source_location_formatter()
+0000000000029f88 0000000000000004 W spdlog::details::source_location_formatter<spdlog::details::null_scoped_padder>::~source_location_formatter()
+0000000000029f88 0000000000000004 W spdlog::details::source_location_formatter<spdlog::details::null_scoped_padder>::~source_location_formatter()
+00000000000482b0 00000000000015f0 W spdlog::details::registry::registry()
+00000000000482b0 00000000000015f0 W spdlog::details::registry::registry()
+000000000002de00 00000000000003e8 W spdlog::details::registry::~registry()
+000000000002de00 00000000000003e8 W spdlog::details::registry::~registry()
+000000000002b488 0000000000000050 W spdlog::spdlog_ex::~spdlog_ex()
+000000000002b368 0000000000000044 W spdlog::spdlog_ex::~spdlog_ex()
+000000000002b368 0000000000000044 W spdlog::spdlog_ex::~spdlog_ex()
+000000000004d040 0000000000000240 W AXIZG330AIUDeviceNode::openUDMABuf(char const*) const
+000000000004e050 00000000000002d8 W AXIZG330AIUDeviceNode::readUDMABuf(char const*, char const*) const
+000000000004e328 0000000000000398 W AXIZG330AIUDeviceNode::writeUDMABuf(char const*, unsigned long, char const*) const
+000000000002b200 0000000000000008 W AXIZG330AIOcmRegionNode::free(icraft::xrt::MemPtr const&) const
+0000000000039070 000000000000013c W AXIZG330AIOcmRegionNode::read(char*, icraft::xrt::MemPtr const&, unsigned long) const
+00000000000391b0 00000000000001a8 W AXIZG330AIOcmRegionNode::write(icraft::xrt::MemPtr const&, char*, unsigned long) const
+0000000000031a30 0000000000000198 W AXIZG330AIOcmRegionNode::malloc(icraft::xrt::MemPtr, unsigned long, std::function<void (icraft::xrt::MemPtr const&)>, bool) const
+000000000002b218 0000000000000054 W AXIZG330AIOcmRegionNode::malloc(unsigned long, bool, unsigned long) const
+0000000000039358 0000000000000254 W AXIZG330AIOcmRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemPtr const&, unsigned long) const
+000000000004ea80 00000000000003b8 W AXIZG330AIRegRegionNode::read(unsigned long, bool) const
+000000000004e6c0 00000000000003c0 W AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const
+000000000002b208 0000000000000008 W AXIZG330AIUdmaMemRegionNode::free(icraft::xrt::MemPtr const&) const
+000000000002c4f8 0000000000000288 W AXIZG330AIUdmaMemRegionNode::read(char*, icraft::xrt::MemPtr const&, unsigned long) const
+000000000002c780 0000000000000284 W AXIZG330AIUdmaMemRegionNode::write(icraft::xrt::MemPtr const&, char*, unsigned long) const
+0000000000031bc8 0000000000000198 W AXIZG330AIUdmaMemRegionNode::malloc(icraft::xrt::MemPtr, unsigned long, std::function<void (icraft::xrt::MemPtr const&)>, bool) const
+000000000002b270 0000000000000054 W AXIZG330AIUdmaMemRegionNode::malloc(unsigned long, bool, unsigned long) const
+000000000002b320 0000000000000048 W AXIZG330AIUdmaMemRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemPtr const&, unsigned long) const
+000000000002b210 0000000000000008 W AXIZG330AIPLDDRMemRegionNode::free(icraft::xrt::MemPtr const&) const
+0000000000053e20 000000000000017c W AXIZG330AIPLDDRMemRegionNode::read(char*, icraft::xrt::MemPtr const&, unsigned long) const
+0000000000053fa0 00000000000001dc W AXIZG330AIPLDDRMemRegionNode::write(icraft::xrt::MemPtr const&, char*, unsigned long) const
+0000000000031d60 0000000000000198 W AXIZG330AIPLDDRMemRegionNode::malloc(icraft::xrt::MemPtr, unsigned long, std::function<void (icraft::xrt::MemPtr const&)>, bool) const
+000000000002b2c8 0000000000000054 W AXIZG330AIPLDDRMemRegionNode::malloc(unsigned long, bool, unsigned long) const
+00000000000286c0 000000000000005c T AXIZG330AIPLDDRMemRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemPtr const&, unsigned long) const
+0000000000053860 00000000000005c0 W AXIZG330AIPLDDRMemRegionNode::dmaRead(char*, unsigned long, unsigned long) const
+00000000000532b0 00000000000005ac W AXIZG330AIPLDDRMemRegionNode::dmaWrite(char*, unsigned long, unsigned long) const
+0000000000033230 000000000000006c W fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >::get(int) const
+00000000000428d0 0000000000000324 W fmt::v8::appender fmt::v8::detail::digit_grouping<char>::apply<fmt::v8::appender, char>(fmt::v8::appender, fmt::v8::basic_string_view<char>) const
+0000000000029c28 0000000000000010 W icraft::xir::Object::typeKey() const
+000000000002ac58 0000000000000074 W icraft::xir::NodeBase<AXIZG330AIUDeviceNode, icraft::xrt::ZG330DeviceNode>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002b4d8 000000000000014c W icraft::xir::NodeBase<AXIZG330AIUDeviceNode, icraft::xrt::ZG330DeviceNode>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a040 0000000000000010 W icraft::xir::NodeBase<AXIZG330AIUDeviceNode, icraft::xrt::ZG330DeviceNode>::typeKey() const
+000000000002abe0 0000000000000074 W icraft::xir::NodeBase<AXIZG330AIOcmRegionNode, icraft::xrt::MemRegionNode>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002aaf0 0000000000000074 W icraft::xir::NodeBase<AXIZG330AIOcmRegionNode, icraft::xrt::MemRegionNode>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a020 0000000000000010 W icraft::xir::NodeBase<AXIZG330AIOcmRegionNode, icraft::xrt::MemRegionNode>::typeKey() const
+000000000002adc0 0000000000000074 W icraft::xir::NodeBase<AXIZG330AIRegRegionNode, icraft::xrt::RegRegionNode>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002ae38 0000000000000074 W icraft::xir::NodeBase<AXIZG330AIRegRegionNode, icraft::xrt::RegRegionNode>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a060 0000000000000010 W icraft::xir::NodeBase<AXIZG330AIRegRegionNode, icraft::xrt::RegRegionNode>::typeKey() const
+000000000002ad48 0000000000000074 W icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002ab68 0000000000000074 W icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a050 0000000000000010 W icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>::typeKey() const
+000000000002aa00 0000000000000074 W icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002aa78 0000000000000074 W icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a010 0000000000000010 W icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>::typeKey() const
+000000000002b018 0000000000000074 W icraft::xir::NodeBase<icraft::xir::FPGATargetNode, icraft::xir::CompileTargetNode>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002afa0 0000000000000074 W icraft::xir::NodeBase<icraft::xir::FPGATargetNode, icraft::xir::CompileTargetNode>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a098 0000000000000010 W icraft::xir::NodeBase<icraft::xir::FPGATargetNode, icraft::xir::CompileTargetNode>::typeKey() const
+000000000002aeb0 0000000000000074 W icraft::xir::NodeBase<icraft::xrt::DeviceNode, icraft::xir::Node>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a090 0000000000000008 W icraft::xir::NodeBase<icraft::xrt::DeviceNode, icraft::xir::Node>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a080 0000000000000010 W icraft::xir::NodeBase<icraft::xrt::DeviceNode, icraft::xir::Node>::typeKey() const
+000000000002acd0 0000000000000074 W icraft::xir::NodeBase<icraft::xrt::ZG330DeviceNode, icraft::xrt::DeviceNode>::reduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002af28 0000000000000074 W icraft::xir::NodeBase<icraft::xrt::ZG330DeviceNode, icraft::xrt::DeviceNode>::parentReduceAccept(icraft::xir::Node*, icraft::xir::ReduceVisitor const&) const
+000000000002a070 0000000000000010 W icraft::xir::NodeBase<icraft::xrt::ZG330DeviceNode, icraft::xrt::DeviceNode>::typeKey() const
+000000000002a0a8 0000000000000010 W icraft::xir::ArrayNode<icraft::xir::ObjectRef>::typeKey() const
+000000000002a030 0000000000000010 W icraft::xir::ArrayNode<unsigned long>::typeKey() const
+                 U icraft::xir::ObjectRef::get() const
+                 U icraft::xir::ObjectRef::defined() const
+                 U icraft::xrt::MemManager::getMemRegionInfo[abi:cxx11]() const
+                 U icraft::xrt::MemRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemRegion const&, icraft::xrt::MemPtr const&, unsigned long) const
+                 U icraft::xrt::ZG330DeviceNode::showStatus(int) const
+                 U icraft::xrt::ZG330DeviceNode::readOcmData() const
+                 U icraft::xrt::ZG330DeviceNode::writeOcmData(std::shared_ptr<char []>, unsigned long) const
+0000000000031ef8 0000000000000724 W icraft::xrt::ZG330DeviceNode::compileTargets() const
+                 U icraft::xrt::ZG330DeviceNode::check(int) const
+                 U icraft::xrt::ZG330DeviceNode::version[abi:cxx11]() const
+                 U icraft::xrt::ZG330DeviceNode::dmaMemcpy(unsigned long, unsigned long, unsigned long, int) const
+                 U icraft::xrt::Device::getMemRegion(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+                 U icraft::xrt::Device::defaultRegRegion() const
+                 U icraft::xrt::MemPtr::addr() const
+                 U icraft::xrt::MemPtr::cptr() const
+                 U icraft::xrt::MemChunk::read(char*, unsigned long, unsigned long) const
+                 U icraft::xrt::MemChunk::write(unsigned long, char*, unsigned long) const
+                 U icraft::xrt::MemRegion::memManager() const
+                 U icraft::xrt::MemRegion::malloc(unsigned long, bool, unsigned long) const
+                 U icraft::xrt::RegRegion::read(unsigned long, bool) const
+                 U icraft::xrt::RegRegion::write(unsigned long, unsigned long, bool) const
+                 U icraft::detail::StreamBuf::str[abi:cxx11]() const
+000000000003f6a8 0000000000000638 W spdlog::pattern_formatter::clone() const
+0000000000029c80 0000000000000008 W spdlog::spdlog_ex::what() const
+0000000000039660 00000000000000e0 W std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::count(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+000000000003f1f0 00000000000000c4 W std::_Hashtable<std::basic_string_view<char, std::char_traits<char> >, std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::MemRegion>, std::allocator<std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::MemRegion> >, std::__detail::_Select1st, std::equal_to<std::basic_string_view<char, std::char_traits<char> > >, std::hash<std::basic_string_view<char, std::char_traits<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_before_node(unsigned long, std::basic_string_view<char, std::char_traits<char> > const&, unsigned long) const
+000000000003fe08 00000000000000c4 W std::_Hashtable<std::basic_string_view<char, std::char_traits<char> >, std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::RegRegion>, std::allocator<std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::RegRegion> >, std::__detail::_Select1st, std::equal_to<std::basic_string_view<char, std::char_traits<char> > >, std::hash<std::basic_string_view<char, std::char_traits<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_find_before_node(unsigned long, std::basic_string_view<char, std::char_traits<char> > const&, unsigned long) const
+                 U std::runtime_error::what() const
+                 U std::__detail::_Prime_rehash_policy::_M_need_rehash(unsigned long, unsigned long, unsigned long) const
+000000000003dfc0 00000000000003c8 W void std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_assign<std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_assign(std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> > const&)::{lambda(std::__detail::_Hash_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, true> const*)#1}>(std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> > const&, std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_assign(std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> > const&)::{lambda(std::__detail::_Hash_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, true> const*)#1} const&)
+0000000000033470 00000000000000b0 W std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::~_Hashtable()
+0000000000033470 00000000000000b0 W std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::~_Hashtable()
+000000000003fce0 0000000000000124 W std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_rehash(unsigned long, unsigned long const&)
+00000000000385f0 0000000000000194 W std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::~_Hashtable()
+00000000000385f0 0000000000000194 W std::_Hashtable<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::~_Hashtable()
+000000000003f2b8 0000000000000124 W std::_Hashtable<std::basic_string_view<char, std::char_traits<char> >, std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::MemRegion>, std::allocator<std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::MemRegion> >, std::__detail::_Select1st, std::equal_to<std::basic_string_view<char, std::char_traits<char> > >, std::hash<std::basic_string_view<char, std::char_traits<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_rehash(unsigned long, unsigned long const&)
+000000000003fed0 0000000000000124 W std::_Hashtable<std::basic_string_view<char, std::char_traits<char> >, std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::RegRegion>, std::allocator<std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::RegRegion> >, std::__detail::_Select1st, std::equal_to<std::basic_string_view<char, std::char_traits<char> > >, std::hash<std::basic_string_view<char, std::char_traits<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_rehash(unsigned long, unsigned long const&)
+000000000003f580 0000000000000124 W std::_Hashtable<char, std::pair<char const, std::unique_ptr<spdlog::custom_flag_formatter, std::default_delete<spdlog::custom_flag_formatter> > >, std::allocator<std::pair<char const, std::unique_ptr<spdlog::custom_flag_formatter, std::default_delete<spdlog::custom_flag_formatter> > > >, std::__detail::_Select1st, std::equal_to<char>, std::hash<char>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, unsigned long const&)
+00000000000382e8 00000000000000a8 W std::_Hashtable<char, std::pair<char const, std::unique_ptr<spdlog::custom_flag_formatter, std::default_delete<spdlog::custom_flag_formatter> > >, std::allocator<std::pair<char const, std::unique_ptr<spdlog::custom_flag_formatter, std::default_delete<spdlog::custom_flag_formatter> > > >, std::__detail::_Select1st, std::equal_to<char>, std::hash<char>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable()
+00000000000382e8 00000000000000a8 W std::_Hashtable<char, std::pair<char const, std::unique_ptr<spdlog::custom_flag_formatter, std::default_delete<spdlog::custom_flag_formatter> > >, std::allocator<std::pair<char const, std::unique_ptr<spdlog::custom_flag_formatter, std::default_delete<spdlog::custom_flag_formatter> > > >, std::__detail::_Select1st, std::equal_to<char>, std::hash<char>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable()
+                 U std::system_error::~system_error()
+                 U std::runtime_error::runtime_error(char const*)
+                 U std::runtime_error::runtime_error(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+                 U std::runtime_error::~runtime_error()
+000000000002b3b0 00000000000000a8 W std::unordered_map<std::basic_string_view<char, std::char_traits<char> >, std::function<bool (icraft::xir::Node const*, icraft::xir::Node*, icraft::xir::ReduceVisitor const&)>, std::hash<std::basic_string_view<char, std::char_traits<char> > >, std::equal_to<std::basic_string_view<char, std::char_traits<char> > >, std::allocator<std::pair<std::basic_string_view<char, std::char_traits<char> > const, std::function<bool (icraft::xir::Node const*, icraft::xir::Node*, icraft::xir::ReduceVisitor const&)> > > >::~unordered_map()
+000000000002b3b0 00000000000000a8 W std::unordered_map<std::basic_string_view<char, std::char_traits<char> >, std::function<bool (icraft::xir::Node const*, icraft::xir::Node*, icraft::xir::ReduceVisitor const&)>, std::hash<std::basic_string_view<char, std::char_traits<char> > >, std::equal_to<std::basic_string_view<char, std::char_traits<char> > >, std::allocator<std::pair<std::basic_string_view<char, std::char_traits<char> > const, std::function<bool (icraft::xir::Node const*, icraft::xir::Node*, icraft::xir::ReduceVisitor const&)> > > >::~unordered_map()
+0000000000038fb8 00000000000000b8 W std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>::_M_release()
+                 U std::condition_variable::notify_one()
+                 U std::condition_variable::~condition_variable()
+000000000002a7e8 0000000000000004 W std::_Sp_counted_deleter<char*, std::__sp_array_delete, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::_M_destroy()
+000000000002b1f0 0000000000000010 W std::_Sp_counted_deleter<char*, std::__sp_array_delete, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::_M_dispose()
+000000000002b198 0000000000000054 W std::_Sp_counted_deleter<char*, std::__sp_array_delete, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::_M_get_deleter(std::type_info const&)
+000000000002a340 0000000000000008 W std::_Sp_counted_deleter<char*, std::__sp_array_delete, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_deleter()
+000000000002a008 0000000000000004 W std::_Sp_counted_deleter<char*, std::__sp_array_delete, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_deleter()
+000000000002a008 0000000000000004 W std::_Sp_counted_deleter<char*, std::__sp_array_delete, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_deleter()
+00000000000398c0 0000000000000068 W std::back_insert_iterator<fmt::v8::detail::buffer<char> >::operator=(char&&)
+000000000003c7d8 0000000000000068 W std::back_insert_iterator<fmt::v8::detail::buffer<char> >::operator=(char const&)
+000000000002a7d8 0000000000000004 W std::_Sp_counted_ptr_inplace<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>, std::allocator<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex> >, (__gnu_cxx::_Lock_policy)2>::_M_destroy()
+0000000000029fe8 0000000000000018 W std::_Sp_counted_ptr_inplace<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>, std::allocator<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex> >, (__gnu_cxx::_Lock_policy)2>::_M_dispose()
+000000000002b138 0000000000000060 W std::_Sp_counted_ptr_inplace<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>, std::allocator<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex> >, (__gnu_cxx::_Lock_policy)2>::_M_get_deleter(std::type_info const&)
+000000000002a350 0000000000000008 W std::_Sp_counted_ptr_inplace<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>, std::allocator<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex> >, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_ptr_inplace()
+0000000000029fe0 0000000000000004 W std::_Sp_counted_ptr_inplace<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>, std::allocator<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex> >, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_ptr_inplace()
+0000000000029fe0 0000000000000004 W std::_Sp_counted_ptr_inplace<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>, std::allocator<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex> >, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_ptr_inplace()
+000000000002a7e0 0000000000000004 W std::_Sp_counted_ptr_inplace<spdlog::logger, std::allocator<spdlog::logger>, (__gnu_cxx::_Lock_policy)2>::_M_destroy()
+000000000002bab0 00000000000001f8 W std::_Sp_counted_ptr_inplace<spdlog::logger, std::allocator<spdlog::logger>, (__gnu_cxx::_Lock_policy)2>::_M_dispose()
+000000000002b0d8 0000000000000060 W std::_Sp_counted_ptr_inplace<spdlog::logger, std::allocator<spdlog::logger>, (__gnu_cxx::_Lock_policy)2>::_M_get_deleter(std::type_info const&)
+000000000002a348 0000000000000008 W std::_Sp_counted_ptr_inplace<spdlog::logger, std::allocator<spdlog::logger>, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_ptr_inplace()
+000000000002a000 0000000000000004 W std::_Sp_counted_ptr_inplace<spdlog::logger, std::allocator<spdlog::logger>, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_ptr_inplace()
+000000000002a000 0000000000000004 W std::_Sp_counted_ptr_inplace<spdlog::logger, std::allocator<spdlog::logger>, (__gnu_cxx::_Lock_policy)2>::~_Sp_counted_ptr_inplace()
+                 U std::_V2::generic_category()
+0000000000032620 0000000000000078 W std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef>::~pair()
+0000000000032620 0000000000000078 W std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef>::~pair()
+0000000000047fc8 00000000000000e0 W std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> >::~pair()
+0000000000047fc8 00000000000000e0 W std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> >::~pair()
+                 U std::chrono::_V2::steady_clock::now()
+                 U std::chrono::_V2::system_clock::now()
+                 U std::locale::locale(std::locale const&)
+                 U std::locale::locale()
+                 U std::locale::~locale()
+                 U std::thread::join()
+0000000000037198 0000000000000b94 W std::vector<spdlog::details::log_msg_buffer, std::allocator<spdlog::details::log_msg_buffer> >::operator=(std::vector<spdlog::details::log_msg_buffer, std::allocator<spdlog::details::log_msg_buffer> > const&)
+0000000000037d30 0000000000000138 W std::vector<std::shared_ptr<spdlog::sinks::sink>, std::allocator<std::shared_ptr<spdlog::sinks::sink> > >::~vector()
+0000000000037d30 0000000000000138 W std::vector<std::shared_ptr<spdlog::sinks::sink>, std::allocator<std::shared_ptr<spdlog::sinks::sink> > >::~vector()
+000000000003a438 0000000000000060 W std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> >& std::vector<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> >, std::allocator<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> > > >::emplace_back<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> > >(std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> >&&)
+000000000003a280 00000000000001b8 W void std::vector<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> >, std::allocator<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> > > >::_M_realloc_insert<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> > >(__gnu_cxx::__normal_iterator<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> >*, std::vector<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> >, std::allocator<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> > > > >, std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> >&&)
+0000000000038510 0000000000000084 W std::vector<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> >, std::allocator<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> > > >::~vector()
+0000000000038510 0000000000000084 W std::vector<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> >, std::allocator<std::unique_ptr<spdlog::details::flag_formatter, std::default_delete<spdlog::details::flag_formatter> > > >::~vector()
+000000000003a128 0000000000000154 W void std::vector<std::basic_string_view<char, std::char_traits<char> >, std::allocator<std::basic_string_view<char, std::char_traits<char> > > >::_M_realloc_insert<std::basic_string_view<char, std::char_traits<char> > >(__gnu_cxx::__normal_iterator<std::basic_string_view<char, std::char_traits<char> >*, std::vector<std::basic_string_view<char, std::char_traits<char> >, std::allocator<std::basic_string_view<char, std::char_traits<char> > > > >, std::basic_string_view<char, std::char_traits<char> >&&)
+000000000003c380 0000000000000128 W void std::vector<unsigned long, std::allocator<unsigned long> >::_M_realloc_insert<unsigned long const&>(__gnu_cxx::__normal_iterator<unsigned long*, std::vector<unsigned long, std::allocator<unsigned long> > >, unsigned long const&)
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long)
+000000000003c4a8 00000000000000dc W void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+000000000003dee0 00000000000000dc W void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag)
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long)
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long)
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long)
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::push_back(char)
+                 U std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string()
+                 U std::__cxx11::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> >::~basic_ostringstream()
+000000000003e7b8 0000000000000254 W std::pair<std::_Rb_tree_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef> >, bool> std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef> > >::_M_insert_unique<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef> >(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef>&&)
+00000000000395b0 00000000000000b0 W std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef> > >::_M_erase(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, icraft::xir::ObjectRef> >*)
+0000000000039740 00000000000000bc W std::__detail::_Map_base<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::at(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+00000000000480a8 0000000000000208 W std::__detail::_Map_base<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::shared_ptr<spdlog::logger> > >, std::__detail::_Select1st, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::operator[](std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)
+000000000003f3e0 00000000000001a0 W std::__detail::_Map_base<std::basic_string_view<char, std::char_traits<char> >, std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::MemRegion>, std::allocator<std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::MemRegion> >, std::__detail::_Select1st, std::equal_to<std::basic_string_view<char, std::char_traits<char> > >, std::hash<std::basic_string_view<char, std::char_traits<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::operator[](std::basic_string_view<char, std::char_traits<char> >&&)
+000000000003fff8 00000000000001a0 W std::__detail::_Map_base<std::basic_string_view<char, std::char_traits<char> >, std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::RegRegion>, std::allocator<std::pair<std::basic_string_view<char, std::char_traits<char> > const, icraft::xrt::RegRegion> >, std::__detail::_Select1st, std::equal_to<std::basic_string_view<char, std::char_traits<char> > >, std::hash<std::basic_string_view<char, std::char_traits<char> > >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true>, true>::operator[](std::basic_string_view<char, std::char_traits<char> >&&)
+                 U std::ios_base::Init::Init()
+                 U std::ios_base::Init::~Init()
+                 U std::ios_base::ios_base()
+                 U std::ios_base::~ios_base()
+                 U std::basic_ios<char, std::char_traits<char> >::init(std::basic_streambuf<char, std::char_traits<char> >*)
+                 U std::exception::~exception()
+                 U std::_Hash_bytes(void const*, unsigned long, unsigned long)
+0000000000038598 0000000000000058 W std::_MakeUniq<spdlog::details::aggregate_formatter>::__single_object std::make_unique<spdlog::details::aggregate_formatter>()
+                 U std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+                 U std::__throw_bad_alloc()
+                 U std::_Rb_tree_decrement(std::_Rb_tree_node_base*)
+                 U std::__throw_logic_error(char const*)
+                 U std::__throw_length_error(char const*)
+                 U std::__throw_out_of_range(char const*)
+                 U std::__throw_system_error(int)
+                 U std::__throw_invalid_argument(char const*)
+                 U std::_Rb_tree_insert_and_rebalance(bool, std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::_Rb_tree_node_base&)
+                 U std::terminate()
+                 U std::__cxx11::numpunct<char> const& std::use_facet<std::__cxx11::numpunct<char> >(std::locale const&)
+0000000000072b68 0000000000000018 V typeinfo for AXIZG330AIUDeviceNode
+0000000000072bc8 0000000000000018 V typeinfo for AXIZG330AIOcmRegionNode
+0000000000072ad8 0000000000000018 V typeinfo for AXIZG330AIRegRegionNode
+0000000000072b08 0000000000000018 V typeinfo for AXIZG330AIUdmaMemRegionNode
+0000000000072b38 0000000000000018 V typeinfo for AXIZG330AIPLDDRMemRegionNode
+00000000000727e0 0000000000000018 V typeinfo for fmt::v8::format_error
+00000000000729c0 0000000000000018 V typeinfo for fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >
+0000000000072820 0000000000000018 V typeinfo for fmt::v8::basic_memory_buffer<char, 500ul, std::allocator<char> >
+0000000000072808 0000000000000018 V typeinfo for fmt::v8::basic_memory_buffer<int, 500ul, std::allocator<int> >
+0000000000072848 0000000000000018 V typeinfo for fmt::v8::basic_memory_buffer<unsigned int, 32ul, std::allocator<unsigned int> >
+00000000000732e8 0000000000000018 V typeinfo for fmt::v8::detail::iterator_buffer<std::back_insert_iterator<fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> > >, char, fmt::v8::detail::buffer_traits>
+00000000000727d0 0000000000000010 V typeinfo for fmt::v8::detail::buffer<char>
+00000000000727f8 0000000000000010 V typeinfo for fmt::v8::detail::buffer<int>
+0000000000072838 0000000000000010 V typeinfo for fmt::v8::detail::buffer<unsigned int>
+0000000000072918 0000000000000018 V typeinfo for icraft::xir::FPGATargetNode
+00000000000728e8 0000000000000018 V typeinfo for icraft::xir::CompileTargetNode
+0000000000072888 0000000000000018 V typeinfo for icraft::xir::Node
+0000000000072878 0000000000000010 V typeinfo for icraft::xir::Object
+00000000000728a0 0000000000000018 V typeinfo for icraft::xir::detail::BaseArrayNode<icraft::xir::ObjectRef>
+0000000000072b80 0000000000000018 V typeinfo for icraft::xir::detail::BaseArrayNode<unsigned long>
+0000000000072b50 0000000000000018 V typeinfo for icraft::xir::NodeBase<AXIZG330AIUDeviceNode, icraft::xrt::ZG330DeviceNode>
+0000000000072bb0 0000000000000018 V typeinfo for icraft::xir::NodeBase<AXIZG330AIOcmRegionNode, icraft::xrt::MemRegionNode>
+0000000000072ac0 0000000000000018 V typeinfo for icraft::xir::NodeBase<AXIZG330AIRegRegionNode, icraft::xrt::RegRegionNode>
+0000000000072af0 0000000000000018 V typeinfo for icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>
+0000000000072b20 0000000000000018 V typeinfo for icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>
+0000000000072900 0000000000000018 V typeinfo for icraft::xir::NodeBase<icraft::xir::FPGATargetNode, icraft::xir::CompileTargetNode>
+00000000000728d0 0000000000000018 V typeinfo for icraft::xir::NodeBase<icraft::xir::CompileTargetNode, icraft::xir::Node>
+0000000000072960 0000000000000018 V typeinfo for icraft::xir::NodeBase<icraft::xrt::DeviceNode, icraft::xir::Node>
+0000000000072930 0000000000000018 V typeinfo for icraft::xir::NodeBase<icraft::xrt::RegRegionNode, icraft::xir::Node>
+0000000000072990 0000000000000018 V typeinfo for icraft::xir::NodeBase<icraft::xrt::ZG330DeviceNode, icraft::xrt::DeviceNode>
+00000000000728b8 0000000000000018 V typeinfo for icraft::xir::ArrayNode<icraft::xir::ObjectRef>
+0000000000072b98 0000000000000018 V typeinfo for icraft::xir::ArrayNode<unsigned long>
+0000000000072978 0000000000000018 V typeinfo for icraft::xrt::DeviceNode
+                 U typeinfo for icraft::xrt::MemRegionNode
+0000000000072948 0000000000000018 V typeinfo for icraft::xrt::RegRegionNode
+                 U typeinfo for icraft::xrt::ZG330DeviceNode
+                 U typeinfo for icraft::xrt::DefaultMemManagerNode
+0000000000072860 0000000000000018 V typeinfo for icraft::Error
+0000000000072a18 0000000000000018 V typeinfo for spdlog::pattern_formatter
+0000000000073300 0000000000000018 V typeinfo for spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>
+0000000000073318 0000000000000018 V typeinfo for spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>
+00000000000729f8 0000000000000010 V typeinfo for spdlog::sinks::sink
+00000000000729d8 0000000000000010 V typeinfo for spdlog::logger
+0000000000072c70 0000000000000018 V typeinfo for spdlog::details::A_formatter<spdlog::details::scoped_padder>
+0000000000073000 0000000000000018 V typeinfo for spdlog::details::A_formatter<spdlog::details::null_scoped_padder>
+0000000000072ca0 0000000000000018 V typeinfo for spdlog::details::B_formatter<spdlog::details::scoped_padder>
+0000000000073030 0000000000000018 V typeinfo for spdlog::details::B_formatter<spdlog::details::null_scoped_padder>
+0000000000072cd0 0000000000000018 V typeinfo for spdlog::details::C_formatter<spdlog::details::scoped_padder>
+0000000000073060 0000000000000018 V typeinfo for spdlog::details::C_formatter<spdlog::details::null_scoped_padder>
+0000000000072d00 0000000000000018 V typeinfo for spdlog::details::D_formatter<spdlog::details::scoped_padder>
+0000000000073090 0000000000000018 V typeinfo for spdlog::details::D_formatter<spdlog::details::null_scoped_padder>
+0000000000072df0 0000000000000018 V typeinfo for spdlog::details::E_formatter<spdlog::details::scoped_padder>
+0000000000073180 0000000000000018 V typeinfo for spdlog::details::E_formatter<spdlog::details::null_scoped_padder>
+0000000000072dd8 0000000000000018 V typeinfo for spdlog::details::F_formatter<spdlog::details::scoped_padder>
+0000000000073168 0000000000000018 V typeinfo for spdlog::details::F_formatter<spdlog::details::null_scoped_padder>
+0000000000072d48 0000000000000018 V typeinfo for spdlog::details::H_formatter<spdlog::details::scoped_padder>
+00000000000730d8 0000000000000018 V typeinfo for spdlog::details::H_formatter<spdlog::details::null_scoped_padder>
+0000000000072d60 0000000000000018 V typeinfo for spdlog::details::I_formatter<spdlog::details::scoped_padder>
+00000000000730f0 0000000000000018 V typeinfo for spdlog::details::I_formatter<spdlog::details::null_scoped_padder>
+0000000000072d78 0000000000000018 V typeinfo for spdlog::details::M_formatter<spdlog::details::scoped_padder>
+0000000000073108 0000000000000018 V typeinfo for spdlog::details::M_formatter<spdlog::details::null_scoped_padder>
+0000000000072e38 0000000000000018 V typeinfo for spdlog::details::R_formatter<spdlog::details::scoped_padder>
+00000000000731c8 0000000000000018 V typeinfo for spdlog::details::R_formatter<spdlog::details::null_scoped_padder>
+0000000000072d90 0000000000000018 V typeinfo for spdlog::details::S_formatter<spdlog::details::scoped_padder>
+0000000000073120 0000000000000018 V typeinfo for spdlog::details::S_formatter<spdlog::details::null_scoped_padder>
+0000000000072e50 0000000000000018 V typeinfo for spdlog::details::T_formatter<spdlog::details::scoped_padder>
+00000000000731e0 0000000000000018 V typeinfo for spdlog::details::T_formatter<spdlog::details::null_scoped_padder>
+0000000000072ce8 0000000000000018 V typeinfo for spdlog::details::Y_formatter<spdlog::details::scoped_padder>
+0000000000073078 0000000000000018 V typeinfo for spdlog::details::Y_formatter<spdlog::details::null_scoped_padder>
+0000000000072c58 0000000000000018 V typeinfo for spdlog::details::a_formatter<spdlog::details::scoped_padder>
+0000000000072fe8 0000000000000018 V typeinfo for spdlog::details::a_formatter<spdlog::details::null_scoped_padder>
+0000000000072c88 0000000000000018 V typeinfo for spdlog::details::b_formatter<spdlog::details::scoped_padder>
+0000000000073018 0000000000000018 V typeinfo for spdlog::details::b_formatter<spdlog::details::null_scoped_padder>
+0000000000072cb8 0000000000000018 V typeinfo for spdlog::details::c_formatter<spdlog::details::scoped_padder>
+0000000000073048 0000000000000018 V typeinfo for spdlog::details::c_formatter<spdlog::details::null_scoped_padder>
+0000000000072d30 0000000000000018 V typeinfo for spdlog::details::d_formatter<spdlog::details::scoped_padder>
+00000000000730c0 0000000000000018 V typeinfo for spdlog::details::d_formatter<spdlog::details::null_scoped_padder>
+0000000000072da8 0000000000000018 V typeinfo for spdlog::details::e_formatter<spdlog::details::scoped_padder>
+0000000000073138 0000000000000018 V typeinfo for spdlog::details::e_formatter<spdlog::details::null_scoped_padder>
+0000000000072dc0 0000000000000018 V typeinfo for spdlog::details::f_formatter<spdlog::details::scoped_padder>
+0000000000073150 0000000000000018 V typeinfo for spdlog::details::f_formatter<spdlog::details::null_scoped_padder>
+0000000000072d18 0000000000000018 V typeinfo for spdlog::details::m_formatter<spdlog::details::scoped_padder>
+00000000000730a8 0000000000000018 V typeinfo for spdlog::details::m_formatter<spdlog::details::null_scoped_padder>
+0000000000072e08 0000000000000018 V typeinfo for spdlog::details::p_formatter<spdlog::details::scoped_padder>
+0000000000073198 0000000000000018 V typeinfo for spdlog::details::p_formatter<spdlog::details::null_scoped_padder>
+0000000000072e20 0000000000000018 V typeinfo for spdlog::details::r_formatter<spdlog::details::scoped_padder>
+00000000000731b0 0000000000000018 V typeinfo for spdlog::details::r_formatter<spdlog::details::null_scoped_padder>
+0000000000072c28 0000000000000018 V typeinfo for spdlog::details::t_formatter<spdlog::details::scoped_padder>
+0000000000072fb8 0000000000000018 V typeinfo for spdlog::details::t_formatter<spdlog::details::null_scoped_padder>
+0000000000072c40 0000000000000018 V typeinfo for spdlog::details::v_formatter<spdlog::details::scoped_padder>
+0000000000072fd0 0000000000000018 V typeinfo for spdlog::details::v_formatter<spdlog::details::null_scoped_padder>
+0000000000072e68 0000000000000018 V typeinfo for spdlog::details::z_formatter<spdlog::details::scoped_padder>
+00000000000731f8 0000000000000018 V typeinfo for spdlog::details::z_formatter<spdlog::details::null_scoped_padder>
+0000000000072a30 0000000000000018 V typeinfo for spdlog::details::ch_formatter
+0000000000072e80 0000000000000018 V typeinfo for spdlog::details::pid_formatter<spdlog::details::scoped_padder>
+0000000000073210 0000000000000018 V typeinfo for spdlog::details::pid_formatter<spdlog::details::null_scoped_padder>
+0000000000072a08 0000000000000010 V typeinfo for spdlog::details::flag_formatter
+0000000000072a90 0000000000000018 V typeinfo for spdlog::details::full_formatter
+0000000000072be0 0000000000000018 V typeinfo for spdlog::details::name_formatter<spdlog::details::scoped_padder>
+0000000000072f70 0000000000000018 V typeinfo for spdlog::details::name_formatter<spdlog::details::null_scoped_padder>
+0000000000072bf8 0000000000000018 V typeinfo for spdlog::details::level_formatter<spdlog::details::scoped_padder>
+0000000000072f88 0000000000000018 V typeinfo for spdlog::details::level_formatter<spdlog::details::null_scoped_padder>
+0000000000072f10 0000000000000018 V typeinfo for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >
+0000000000072f28 0000000000000018 V typeinfo for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >
+0000000000072f40 0000000000000018 V typeinfo for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >
+0000000000072f58 0000000000000018 V typeinfo for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >
+0000000000073288 0000000000000018 V typeinfo for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >
+00000000000732a0 0000000000000018 V typeinfo for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >
+00000000000732b8 0000000000000018 V typeinfo for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >
+00000000000732d0 0000000000000018 V typeinfo for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >
+0000000000072a48 0000000000000018 V typeinfo for spdlog::details::aggregate_formatter
+0000000000072a78 0000000000000018 V typeinfo for spdlog::details::color_stop_formatter
+0000000000072a60 0000000000000018 V typeinfo for spdlog::details::color_start_formatter
+0000000000072c10 0000000000000018 V typeinfo for spdlog::details::short_level_formatter<spdlog::details::scoped_padder>
+0000000000072fa0 0000000000000018 V typeinfo for spdlog::details::short_level_formatter<spdlog::details::null_scoped_padder>
+0000000000072eb0 0000000000000018 V typeinfo for spdlog::details::short_filename_formatter<spdlog::details::scoped_padder>
+0000000000072aa8 0000000000000018 V typeinfo for spdlog::details::short_filename_formatter<spdlog::details::null_scoped_padder>
+0000000000072ee0 0000000000000018 V typeinfo for spdlog::details::source_linenum_formatter<spdlog::details::scoped_padder>
+0000000000073258 0000000000000018 V typeinfo for spdlog::details::source_linenum_formatter<spdlog::details::null_scoped_padder>
+0000000000072ec8 0000000000000018 V typeinfo for spdlog::details::source_filename_formatter<spdlog::details::scoped_padder>
+0000000000073240 0000000000000018 V typeinfo for spdlog::details::source_filename_formatter<spdlog::details::null_scoped_padder>
+0000000000072ef8 0000000000000018 V typeinfo for spdlog::details::source_funcname_formatter<spdlog::details::scoped_padder>
+0000000000073270 0000000000000018 V typeinfo for spdlog::details::source_funcname_formatter<spdlog::details::null_scoped_padder>
+0000000000072e98 0000000000000018 V typeinfo for spdlog::details::source_location_formatter<spdlog::details::scoped_padder>
+0000000000073228 0000000000000018 V typeinfo for spdlog::details::source_location_formatter<spdlog::details::null_scoped_padder>
+00000000000729e8 0000000000000010 V typeinfo for spdlog::formatter
+00000000000729a8 0000000000000018 V typeinfo for spdlog::spdlog_ex
+00000000000727a8 0000000000000010 V typeinfo for std::_Mutex_base<(__gnu_cxx::_Lock_policy)2>
+                 U typeinfo for std::system_error
+                 U typeinfo for std::runtime_error
+00000000000727b8 0000000000000018 V typeinfo for std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>
+0000000000073330 0000000000000018 V typeinfo for std::_Sp_counted_deleter<char*, std::__sp_array_delete, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>
+0000000000073360 0000000000000018 V typeinfo for std::_Sp_counted_ptr_inplace<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>, std::allocator<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex> >, (__gnu_cxx::_Lock_policy)2>
+0000000000073348 0000000000000018 V typeinfo for std::_Sp_counted_ptr_inplace<spdlog::logger, std::allocator<spdlog::logger>, (__gnu_cxx::_Lock_policy)2>
+                 U typeinfo for std::exception
+0000000000057e48 0000000000000018 V typeinfo name for AXIZG330AIUDeviceNode
+0000000000057ef8 000000000000001a V typeinfo name for AXIZG330AIOcmRegionNode
+0000000000057cf8 000000000000001a V typeinfo name for AXIZG330AIRegRegionNode
+0000000000057d68 000000000000001e V typeinfo name for AXIZG330AIUdmaMemRegionNode
+0000000000057dd8 000000000000001f V typeinfo name for AXIZG330AIPLDDRMemRegionNode
+0000000000057770 0000000000000018 V typeinfo name for fmt::v8::format_error
+0000000000057ad8 000000000000002d V typeinfo name for fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >
+00000000000577d8 000000000000002d V typeinfo name for fmt::v8::basic_memory_buffer<char, 500ul, std::allocator<char> >
+00000000000577a8 000000000000002d V typeinfo name for fmt::v8::basic_memory_buffer<int, 500ul, std::allocator<int> >
+0000000000057828 000000000000002c V typeinfo name for fmt::v8::basic_memory_buffer<unsigned int, 32ul, std::allocator<unsigned int> >
+00000000000592c8 000000000000007b V typeinfo name for fmt::v8::detail::iterator_buffer<std::back_insert_iterator<fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> > >, char, fmt::v8::detail::buffer_traits>
+0000000000057750 000000000000001b V typeinfo name for fmt::v8::detail::buffer<char>
+0000000000057788 000000000000001b V typeinfo name for fmt::v8::detail::buffer<int>
+0000000000057808 000000000000001b V typeinfo name for fmt::v8::detail::buffer<unsigned int>
+00000000000579a0 000000000000001e V typeinfo name for icraft::xir::FPGATargetNode
+0000000000057930 0000000000000021 V typeinfo name for icraft::xir::CompileTargetNode
+0000000000057870 0000000000000013 V typeinfo name for icraft::xir::Node
+0000000000057858 0000000000000015 V typeinfo name for icraft::xir::Object
+0000000000057888 0000000000000035 V typeinfo name for icraft::xir::detail::BaseArrayNode<icraft::xir::ObjectRef>
+0000000000057e60 0000000000000027 V typeinfo name for icraft::xir::detail::BaseArrayNode<unsigned long>
+0000000000057df8 0000000000000049 V typeinfo name for icraft::xir::NodeBase<AXIZG330AIUDeviceNode, icraft::xrt::ZG330DeviceNode>
+0000000000057ea8 0000000000000049 V typeinfo name for icraft::xir::NodeBase<AXIZG330AIOcmRegionNode, icraft::xrt::MemRegionNode>
+0000000000057ca8 0000000000000049 V typeinfo name for icraft::xir::NodeBase<AXIZG330AIRegRegionNode, icraft::xrt::RegRegionNode>
+0000000000057d18 000000000000004d V typeinfo name for icraft::xir::NodeBase<AXIZG330AIUdmaMemRegionNode, icraft::xrt::MemRegionNode>
+0000000000057d88 000000000000004e V typeinfo name for icraft::xir::NodeBase<AXIZG330AIPLDDRMemRegionNode, icraft::xrt::MemRegionNode>
+0000000000057958 0000000000000046 V typeinfo name for icraft::xir::NodeBase<icraft::xir::FPGATargetNode, icraft::xir::CompileTargetNode>
+00000000000578f0 000000000000003b V typeinfo name for icraft::xir::NodeBase<icraft::xir::CompileTargetNode, icraft::xir::Node>
+0000000000057a20 0000000000000037 V typeinfo name for icraft::xir::NodeBase<icraft::xrt::DeviceNode, icraft::xir::Node>
+00000000000579c0 000000000000003a V typeinfo name for icraft::xir::NodeBase<icraft::xrt::RegRegionNode, icraft::xir::Node>
+0000000000057a78 0000000000000043 V typeinfo name for icraft::xir::NodeBase<icraft::xrt::ZG330DeviceNode, icraft::xrt::DeviceNode>
+00000000000578c0 0000000000000029 V typeinfo name for icraft::xir::ArrayNode<icraft::xir::ObjectRef>
+0000000000057e88 000000000000001b V typeinfo name for icraft::xir::ArrayNode<unsigned long>
+0000000000057a58 000000000000001a V typeinfo name for icraft::xrt::DeviceNode
+0000000000057a00 000000000000001d V typeinfo name for icraft::xrt::RegRegionNode
+00000000000576d8 0000000000000010 V typeinfo name for icraft::Error
+0000000000057b78 000000000000001d V typeinfo name for spdlog::pattern_formatter
+0000000000059348 000000000000003d V typeinfo name for spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>
+0000000000059388 0000000000000044 V typeinfo name for spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>
+0000000000057b38 0000000000000015 V typeinfo name for spdlog::sinks::sink
+0000000000057b08 0000000000000011 V typeinfo name for spdlog::logger
+0000000000058078 0000000000000035 V typeinfo name for spdlog::details::A_formatter<spdlog::details::scoped_padder>
+0000000000058a20 000000000000003a V typeinfo name for spdlog::details::A_formatter<spdlog::details::null_scoped_padder>
+00000000000580e8 0000000000000035 V typeinfo name for spdlog::details::B_formatter<spdlog::details::scoped_padder>
+0000000000058aa0 000000000000003a V typeinfo name for spdlog::details::B_formatter<spdlog::details::null_scoped_padder>
+0000000000058158 0000000000000035 V typeinfo name for spdlog::details::C_formatter<spdlog::details::scoped_padder>
+0000000000058b20 000000000000003a V typeinfo name for spdlog::details::C_formatter<spdlog::details::null_scoped_padder>
+00000000000581c8 0000000000000035 V typeinfo name for spdlog::details::D_formatter<spdlog::details::scoped_padder>
+0000000000058ba0 000000000000003a V typeinfo name for spdlog::details::D_formatter<spdlog::details::null_scoped_padder>
+00000000000583f8 0000000000000035 V typeinfo name for spdlog::details::E_formatter<spdlog::details::scoped_padder>
+0000000000058e20 000000000000003a V typeinfo name for spdlog::details::E_formatter<spdlog::details::null_scoped_padder>
+00000000000583c0 0000000000000035 V typeinfo name for spdlog::details::F_formatter<spdlog::details::scoped_padder>
+0000000000058de0 000000000000003a V typeinfo name for spdlog::details::F_formatter<spdlog::details::null_scoped_padder>
+0000000000058270 0000000000000035 V typeinfo name for spdlog::details::H_formatter<spdlog::details::scoped_padder>
+0000000000058c60 000000000000003a V typeinfo name for spdlog::details::H_formatter<spdlog::details::null_scoped_padder>
+00000000000582a8 0000000000000035 V typeinfo name for spdlog::details::I_formatter<spdlog::details::scoped_padder>
+0000000000058ca0 000000000000003a V typeinfo name for spdlog::details::I_formatter<spdlog::details::null_scoped_padder>
+00000000000582e0 0000000000000035 V typeinfo name for spdlog::details::M_formatter<spdlog::details::scoped_padder>
+0000000000058ce0 000000000000003a V typeinfo name for spdlog::details::M_formatter<spdlog::details::null_scoped_padder>
+00000000000584a0 0000000000000035 V typeinfo name for spdlog::details::R_formatter<spdlog::details::scoped_padder>
+0000000000058ee0 000000000000003a V typeinfo name for spdlog::details::R_formatter<spdlog::details::null_scoped_padder>
+0000000000058318 0000000000000035 V typeinfo name for spdlog::details::S_formatter<spdlog::details::scoped_padder>
+0000000000058d20 000000000000003a V typeinfo name for spdlog::details::S_formatter<spdlog::details::null_scoped_padder>
+00000000000584d8 0000000000000035 V typeinfo name for spdlog::details::T_formatter<spdlog::details::scoped_padder>
+0000000000058f20 000000000000003a V typeinfo name for spdlog::details::T_formatter<spdlog::details::null_scoped_padder>
+0000000000058190 0000000000000035 V typeinfo name for spdlog::details::Y_formatter<spdlog::details::scoped_padder>
+0000000000058b60 000000000000003a V typeinfo name for spdlog::details::Y_formatter<spdlog::details::null_scoped_padder>
+0000000000058040 0000000000000035 V typeinfo name for spdlog::details::a_formatter<spdlog::details::scoped_padder>
+00000000000589e0 000000000000003a V typeinfo name for spdlog::details::a_formatter<spdlog::details::null_scoped_padder>
+00000000000580b0 0000000000000035 V typeinfo name for spdlog::details::b_formatter<spdlog::details::scoped_padder>
+0000000000058a60 000000000000003a V typeinfo name for spdlog::details::b_formatter<spdlog::details::null_scoped_padder>
+0000000000058120 0000000000000035 V typeinfo name for spdlog::details::c_formatter<spdlog::details::scoped_padder>
+0000000000058ae0 000000000000003a V typeinfo name for spdlog::details::c_formatter<spdlog::details::null_scoped_padder>
+0000000000058238 0000000000000035 V typeinfo name for spdlog::details::d_formatter<spdlog::details::scoped_padder>
+0000000000058c20 000000000000003a V typeinfo name for spdlog::details::d_formatter<spdlog::details::null_scoped_padder>
+0000000000058350 0000000000000035 V typeinfo name for spdlog::details::e_formatter<spdlog::details::scoped_padder>
+0000000000058d60 000000000000003a V typeinfo name for spdlog::details::e_formatter<spdlog::details::null_scoped_padder>
+0000000000058388 0000000000000035 V typeinfo name for spdlog::details::f_formatter<spdlog::details::scoped_padder>
+0000000000058da0 000000000000003a V typeinfo name for spdlog::details::f_formatter<spdlog::details::null_scoped_padder>
+0000000000058200 0000000000000035 V typeinfo name for spdlog::details::m_formatter<spdlog::details::scoped_padder>
+0000000000058be0 000000000000003a V typeinfo name for spdlog::details::m_formatter<spdlog::details::null_scoped_padder>
+0000000000058430 0000000000000035 V typeinfo name for spdlog::details::p_formatter<spdlog::details::scoped_padder>
+0000000000058e60 000000000000003a V typeinfo name for spdlog::details::p_formatter<spdlog::details::null_scoped_padder>
+0000000000058468 0000000000000035 V typeinfo name for spdlog::details::r_formatter<spdlog::details::scoped_padder>
+0000000000058ea0 000000000000003a V typeinfo name for spdlog::details::r_formatter<spdlog::details::null_scoped_padder>
+0000000000057fd0 0000000000000035 V typeinfo name for spdlog::details::t_formatter<spdlog::details::scoped_padder>
+0000000000058960 000000000000003a V typeinfo name for spdlog::details::t_formatter<spdlog::details::null_scoped_padder>
+0000000000058008 0000000000000035 V typeinfo name for spdlog::details::v_formatter<spdlog::details::scoped_padder>
+00000000000589a0 000000000000003a V typeinfo name for spdlog::details::v_formatter<spdlog::details::null_scoped_padder>
+0000000000058510 0000000000000035 V typeinfo name for spdlog::details::z_formatter<spdlog::details::scoped_padder>
+0000000000058f60 000000000000003a V typeinfo name for spdlog::details::z_formatter<spdlog::details::null_scoped_padder>
+0000000000057b98 0000000000000020 V typeinfo name for spdlog::details::ch_formatter
+0000000000058548 0000000000000037 V typeinfo name for spdlog::details::pid_formatter<spdlog::details::scoped_padder>
+0000000000058fa0 000000000000003c V typeinfo name for spdlog::details::pid_formatter<spdlog::details::null_scoped_padder>
+0000000000057b50 0000000000000022 V typeinfo name for spdlog::details::flag_formatter
+0000000000057c38 0000000000000022 V typeinfo name for spdlog::details::full_formatter
+0000000000057f18 0000000000000038 V typeinfo name for spdlog::details::name_formatter<spdlog::details::scoped_padder>
+0000000000058898 000000000000003d V typeinfo name for spdlog::details::name_formatter<spdlog::details::null_scoped_padder>
+0000000000057f50 0000000000000039 V typeinfo name for spdlog::details::level_formatter<spdlog::details::scoped_padder>
+00000000000588d8 000000000000003e V typeinfo name for spdlog::details::level_formatter<spdlog::details::null_scoped_padder>
+00000000000586e8 000000000000006d V typeinfo name for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >
+0000000000058758 000000000000006a V typeinfo name for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >
+00000000000587c8 0000000000000067 V typeinfo name for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >
+0000000000058830 0000000000000064 V typeinfo name for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >
+0000000000059100 0000000000000072 V typeinfo name for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >
+0000000000059178 000000000000006f V typeinfo name for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >
+00000000000591e8 000000000000006c V typeinfo name for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >
+0000000000059258 0000000000000069 V typeinfo name for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >
+0000000000057bb8 0000000000000027 V typeinfo name for spdlog::details::aggregate_formatter
+0000000000057c10 0000000000000028 V typeinfo name for spdlog::details::color_stop_formatter
+0000000000057be0 0000000000000029 V typeinfo name for spdlog::details::color_start_formatter
+0000000000057f90 000000000000003f V typeinfo name for spdlog::details::short_level_formatter<spdlog::details::scoped_padder>
+0000000000058918 0000000000000044 V typeinfo name for spdlog::details::short_level_formatter<spdlog::details::null_scoped_padder>
+00000000000585c8 0000000000000042 V typeinfo name for spdlog::details::short_filename_formatter<spdlog::details::scoped_padder>
+0000000000057c60 0000000000000047 V typeinfo name for spdlog::details::short_filename_formatter<spdlog::details::null_scoped_padder>
+0000000000058658 0000000000000042 V typeinfo name for spdlog::details::source_linenum_formatter<spdlog::details::scoped_padder>
+0000000000059070 0000000000000047 V typeinfo name for spdlog::details::source_linenum_formatter<spdlog::details::null_scoped_padder>
+0000000000058610 0000000000000043 V typeinfo name for spdlog::details::source_filename_formatter<spdlog::details::scoped_padder>
+0000000000059028 0000000000000048 V typeinfo name for spdlog::details::source_filename_formatter<spdlog::details::null_scoped_padder>
+00000000000586a0 0000000000000043 V typeinfo name for spdlog::details::source_funcname_formatter<spdlog::details::scoped_padder>
+00000000000590b8 0000000000000048 V typeinfo name for spdlog::details::source_funcname_formatter<spdlog::details::null_scoped_padder>
+0000000000058580 0000000000000043 V typeinfo name for spdlog::details::source_location_formatter<spdlog::details::scoped_padder>
+0000000000058fe0 0000000000000048 V typeinfo name for spdlog::details::source_location_formatter<spdlog::details::null_scoped_padder>
+0000000000057b20 0000000000000014 V typeinfo name for spdlog::formatter
+0000000000057ac0 0000000000000014 V typeinfo name for spdlog::spdlog_ex
+00000000000576a8 000000000000002f V typeinfo name for std::_Mutex_base<(__gnu_cxx::_Lock_policy)2>
+0000000000057718 0000000000000034 V typeinfo name for std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>
+0000000000057700 0000000000000016 V typeinfo name for std::__sp_array_delete
+00000000000593d0 0000000000000053 V typeinfo name for std::_Sp_counted_deleter<char*, std::__sp_array_delete, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>
+00000000000576e8 0000000000000018 V typeinfo name for std::_Sp_make_shared_tag
+0000000000059480 0000000000000086 V typeinfo name for std::_Sp_counted_ptr_inplace<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>, std::allocator<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex> >, (__gnu_cxx::_Lock_policy)2>
+0000000000059428 0000000000000052 V typeinfo name for std::_Sp_counted_ptr_inplace<spdlog::logger, std::allocator<spdlog::logger>, (__gnu_cxx::_Lock_policy)2>
+                 U VTT for std::__cxx11::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> >
+0000000000073830 0000000000000088 V vtable for AXIZG330AIUDeviceNode
+0000000000073908 0000000000000088 V vtable for AXIZG330AIOcmRegionNode
+0000000000073748 0000000000000060 V vtable for AXIZG330AIRegRegionNode
+00000000000737a8 0000000000000088 V vtable for AXIZG330AIUdmaMemRegionNode
+0000000000073990 0000000000000088 V vtable for AXIZG330AIPLDDRMemRegionNode
+                 U vtable for __cxxabiv1::__class_type_info
+                 U vtable for __cxxabiv1::__si_class_type_info
+00000000000733a8 0000000000000028 V vtable for fmt::v8::format_error
+00000000000735b0 0000000000000018 V vtable for fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >
+0000000000073390 0000000000000018 V vtable for fmt::v8::basic_memory_buffer<char, 500ul, std::allocator<char> >
+0000000000073378 0000000000000018 V vtable for fmt::v8::basic_memory_buffer<int, 500ul, std::allocator<int> >
+00000000000733d0 0000000000000018 V vtable for fmt::v8::basic_memory_buffer<unsigned int, 32ul, std::allocator<unsigned int> >
+00000000000745d0 0000000000000018 V vtable for fmt::v8::detail::iterator_buffer<std::back_insert_iterator<fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> > >, char, fmt::v8::detail::buffer_traits>
+                 U vtable for icraft::xir::HostMemNode
+0000000000073460 0000000000000040 V vtable for icraft::xir::FPGATargetNode
+                 U vtable for icraft::xir::ZhugeTargetNode
+0000000000073410 0000000000000028 V vtable for icraft::xir::detail::BaseArrayNode<icraft::xir::ObjectRef>
+00000000000738b8 0000000000000028 V vtable for icraft::xir::detail::BaseArrayNode<unsigned long>
+0000000000073528 0000000000000088 V vtable for icraft::xir::NodeBase<icraft::xrt::ZG330DeviceNode, icraft::xrt::DeviceNode>
+0000000000073438 0000000000000028 V vtable for icraft::xir::ArrayNode<icraft::xir::ObjectRef>
+00000000000738e0 0000000000000028 V vtable for icraft::xir::ArrayNode<unsigned long>
+00000000000734a0 0000000000000088 V vtable for icraft::xrt::DeviceNode
+                 U vtable for icraft::xrt::MemRegionNode
+                 U vtable for icraft::xrt::ZG330DeviceNode
+                 U vtable for icraft::xrt::DefaultMemManagerNode
+00000000000733e8 0000000000000028 V vtable for icraft::Error
+00000000000736e0 0000000000000030 V vtable for spdlog::pattern_formatter
+00000000000745e8 0000000000000040 V vtable for spdlog::sinks::ansicolor_sink<spdlog::details::console_mutex>
+0000000000074628 0000000000000040 V vtable for spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>
+0000000000073710 0000000000000038 V vtable for spdlog::logger
+0000000000073b08 0000000000000028 V vtable for spdlog::details::A_formatter<spdlog::details::scoped_padder>
+00000000000740f8 0000000000000028 V vtable for spdlog::details::A_formatter<spdlog::details::null_scoped_padder>
+0000000000073b58 0000000000000028 V vtable for spdlog::details::B_formatter<spdlog::details::scoped_padder>
+0000000000074148 0000000000000028 V vtable for spdlog::details::B_formatter<spdlog::details::null_scoped_padder>
+0000000000073ba8 0000000000000028 V vtable for spdlog::details::C_formatter<spdlog::details::scoped_padder>
+0000000000074198 0000000000000028 V vtable for spdlog::details::C_formatter<spdlog::details::null_scoped_padder>
+0000000000073bf8 0000000000000028 V vtable for spdlog::details::D_formatter<spdlog::details::scoped_padder>
+00000000000741e8 0000000000000028 V vtable for spdlog::details::D_formatter<spdlog::details::null_scoped_padder>
+0000000000073d88 0000000000000028 V vtable for spdlog::details::E_formatter<spdlog::details::scoped_padder>
+0000000000074378 0000000000000028 V vtable for spdlog::details::E_formatter<spdlog::details::null_scoped_padder>
+0000000000073d60 0000000000000028 V vtable for spdlog::details::F_formatter<spdlog::details::scoped_padder>
+0000000000074350 0000000000000028 V vtable for spdlog::details::F_formatter<spdlog::details::null_scoped_padder>
+0000000000073c70 0000000000000028 V vtable for spdlog::details::H_formatter<spdlog::details::scoped_padder>
+0000000000074260 0000000000000028 V vtable for spdlog::details::H_formatter<spdlog::details::null_scoped_padder>
+0000000000073c98 0000000000000028 V vtable for spdlog::details::I_formatter<spdlog::details::scoped_padder>
+0000000000074288 0000000000000028 V vtable for spdlog::details::I_formatter<spdlog::details::null_scoped_padder>
+0000000000073cc0 0000000000000028 V vtable for spdlog::details::M_formatter<spdlog::details::scoped_padder>
+00000000000742b0 0000000000000028 V vtable for spdlog::details::M_formatter<spdlog::details::null_scoped_padder>
+0000000000073e00 0000000000000028 V vtable for spdlog::details::R_formatter<spdlog::details::scoped_padder>
+00000000000743f0 0000000000000028 V vtable for spdlog::details::R_formatter<spdlog::details::null_scoped_padder>
+0000000000073ce8 0000000000000028 V vtable for spdlog::details::S_formatter<spdlog::details::scoped_padder>
+00000000000742d8 0000000000000028 V vtable for spdlog::details::S_formatter<spdlog::details::null_scoped_padder>
+0000000000073e28 0000000000000028 V vtable for spdlog::details::T_formatter<spdlog::details::scoped_padder>
+0000000000074418 0000000000000028 V vtable for spdlog::details::T_formatter<spdlog::details::null_scoped_padder>
+0000000000073bd0 0000000000000028 V vtable for spdlog::details::Y_formatter<spdlog::details::scoped_padder>
+00000000000741c0 0000000000000028 V vtable for spdlog::details::Y_formatter<spdlog::details::null_scoped_padder>
+0000000000073ae0 0000000000000028 V vtable for spdlog::details::a_formatter<spdlog::details::scoped_padder>
+00000000000740d0 0000000000000028 V vtable for spdlog::details::a_formatter<spdlog::details::null_scoped_padder>
+0000000000073b30 0000000000000028 V vtable for spdlog::details::b_formatter<spdlog::details::scoped_padder>
+0000000000074120 0000000000000028 V vtable for spdlog::details::b_formatter<spdlog::details::null_scoped_padder>
+0000000000073b80 0000000000000028 V vtable for spdlog::details::c_formatter<spdlog::details::scoped_padder>
+0000000000074170 0000000000000028 V vtable for spdlog::details::c_formatter<spdlog::details::null_scoped_padder>
+0000000000073c48 0000000000000028 V vtable for spdlog::details::d_formatter<spdlog::details::scoped_padder>
+0000000000074238 0000000000000028 V vtable for spdlog::details::d_formatter<spdlog::details::null_scoped_padder>
+0000000000073d10 0000000000000028 V vtable for spdlog::details::e_formatter<spdlog::details::scoped_padder>
+0000000000074300 0000000000000028 V vtable for spdlog::details::e_formatter<spdlog::details::null_scoped_padder>
+0000000000073d38 0000000000000028 V vtable for spdlog::details::f_formatter<spdlog::details::scoped_padder>
+0000000000074328 0000000000000028 V vtable for spdlog::details::f_formatter<spdlog::details::null_scoped_padder>
+0000000000073c20 0000000000000028 V vtable for spdlog::details::m_formatter<spdlog::details::scoped_padder>
+0000000000074210 0000000000000028 V vtable for spdlog::details::m_formatter<spdlog::details::null_scoped_padder>
+0000000000073db0 0000000000000028 V vtable for spdlog::details::p_formatter<spdlog::details::scoped_padder>
+00000000000743a0 0000000000000028 V vtable for spdlog::details::p_formatter<spdlog::details::null_scoped_padder>
+0000000000073dd8 0000000000000028 V vtable for spdlog::details::r_formatter<spdlog::details::scoped_padder>
+00000000000743c8 0000000000000028 V vtable for spdlog::details::r_formatter<spdlog::details::null_scoped_padder>
+0000000000073a90 0000000000000028 V vtable for spdlog::details::t_formatter<spdlog::details::scoped_padder>
+0000000000074080 0000000000000028 V vtable for spdlog::details::t_formatter<spdlog::details::null_scoped_padder>
+0000000000073ab8 0000000000000028 V vtable for spdlog::details::v_formatter<spdlog::details::scoped_padder>
+00000000000740a8 0000000000000028 V vtable for spdlog::details::v_formatter<spdlog::details::null_scoped_padder>
+0000000000073e50 0000000000000028 V vtable for spdlog::details::z_formatter<spdlog::details::scoped_padder>
+0000000000074440 0000000000000028 V vtable for spdlog::details::z_formatter<spdlog::details::null_scoped_padder>
+00000000000735f0 0000000000000028 V vtable for spdlog::details::ch_formatter
+0000000000073e78 0000000000000028 V vtable for spdlog::details::pid_formatter<spdlog::details::scoped_padder>
+0000000000074468 0000000000000028 V vtable for spdlog::details::pid_formatter<spdlog::details::null_scoped_padder>
+0000000000073690 0000000000000028 V vtable for spdlog::details::full_formatter
+0000000000073a18 0000000000000028 V vtable for spdlog::details::name_formatter<spdlog::details::scoped_padder>
+0000000000074008 0000000000000028 V vtable for spdlog::details::name_formatter<spdlog::details::null_scoped_padder>
+0000000000073a40 0000000000000028 V vtable for spdlog::details::level_formatter<spdlog::details::scoped_padder>
+0000000000074030 0000000000000028 V vtable for spdlog::details::level_formatter<spdlog::details::null_scoped_padder>
+0000000000073f68 0000000000000028 V vtable for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >
+0000000000073f90 0000000000000028 V vtable for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >
+0000000000073fb8 0000000000000028 V vtable for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >
+0000000000073fe0 0000000000000028 V vtable for spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >
+0000000000074530 0000000000000028 V vtable for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000000l> > >
+0000000000074558 0000000000000028 V vtable for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000000l> > >
+0000000000074580 0000000000000028 V vtable for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1000l> > >
+00000000000745a8 0000000000000028 V vtable for spdlog::details::elapsed_formatter<spdlog::details::null_scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >
+0000000000073618 0000000000000028 V vtable for spdlog::details::aggregate_formatter
+0000000000073668 0000000000000028 V vtable for spdlog::details::color_stop_formatter
+0000000000073640 0000000000000028 V vtable for spdlog::details::color_start_formatter
+0000000000073a68 0000000000000028 V vtable for spdlog::details::short_level_formatter<spdlog::details::scoped_padder>
+0000000000074058 0000000000000028 V vtable for spdlog::details::short_level_formatter<spdlog::details::null_scoped_padder>
+0000000000073ec8 0000000000000028 V vtable for spdlog::details::short_filename_formatter<spdlog::details::scoped_padder>
+00000000000736b8 0000000000000028 V vtable for spdlog::details::short_filename_formatter<spdlog::details::null_scoped_padder>
+0000000000073f18 0000000000000028 V vtable for spdlog::details::source_linenum_formatter<spdlog::details::scoped_padder>
+00000000000744e0 0000000000000028 V vtable for spdlog::details::source_linenum_formatter<spdlog::details::null_scoped_padder>
+0000000000073ef0 0000000000000028 V vtable for spdlog::details::source_filename_formatter<spdlog::details::scoped_padder>
+00000000000744b8 0000000000000028 V vtable for spdlog::details::source_filename_formatter<spdlog::details::null_scoped_padder>
+0000000000073f40 0000000000000028 V vtable for spdlog::details::source_funcname_formatter<spdlog::details::scoped_padder>
+0000000000074508 0000000000000028 V vtable for spdlog::details::source_funcname_formatter<spdlog::details::null_scoped_padder>
+0000000000073ea0 0000000000000028 V vtable for spdlog::details::source_location_formatter<spdlog::details::scoped_padder>
+0000000000074490 0000000000000028 V vtable for spdlog::details::source_location_formatter<spdlog::details::null_scoped_padder>
+00000000000735c8 0000000000000028 V vtable for spdlog::spdlog_ex
+                 U vtable for std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >
+                 U vtable for std::__cxx11::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> >
+                 U vtable for std::system_error
+                 U vtable for std::basic_streambuf<char, std::char_traits<char> >
+0000000000074668 0000000000000038 V vtable for std::_Sp_counted_deleter<char*, std::__sp_array_delete, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>
+00000000000746d8 0000000000000038 V vtable for std::_Sp_counted_ptr_inplace<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>, std::allocator<spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex> >, (__gnu_cxx::_Lock_policy)2>
+00000000000746a0 0000000000000038 V vtable for std::_Sp_counted_ptr_inplace<spdlog::logger, std::allocator<spdlog::logger>, (__gnu_cxx::_Lock_policy)2>
+                 U vtable for std::basic_ios<char, std::char_traits<char> >
+000000000004a928 000000000000189c W fmt::v8::detail::vformat_to<char>(fmt::v8::detail::buffer<char>&, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<std::conditional<std::is_same<fmt::v8::type_identity<char>::type, char>::value, fmt::v8::appender, std::back_insert_iterator<fmt::v8::detail::buffer<fmt::v8::type_identity<char>::type> > >::type, fmt::v8::type_identity<char>::type> >, fmt::v8::detail::locale_ref)::format_handler::on_format_specs(int, char const*, char const*)
+000000000003db50 000000000000038c W fmt::v8::detail::do_write_float<fmt::v8::appender, fmt::v8::detail::big_decimal_fp, char, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, fmt::v8::detail::big_decimal_fp const&, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::float_specs, fmt::v8::detail::locale_ref)::{lambda(fmt::v8::appender)#2}::operator()(fmt::v8::appender) const
+0000000000041e18 0000000000000420 W fmt::v8::detail::do_write_float<fmt::v8::appender, fmt::v8::detail::dragonbox::decimal_fp<double>, char, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, fmt::v8::detail::dragonbox::decimal_fp<double> const&, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::float_specs, fmt::v8::detail::locale_ref)::{lambda(fmt::v8::appender)#2}::operator()(fmt::v8::appender) const
+00000000000419c8 0000000000000450 W fmt::v8::detail::do_write_float<fmt::v8::appender, fmt::v8::detail::dragonbox::decimal_fp<float>, char, fmt::v8::detail::digit_grouping<char> >(fmt::v8::appender, fmt::v8::detail::dragonbox::decimal_fp<float> const&, fmt::v8::basic_format_specs<char> const&, fmt::v8::detail::float_specs, fmt::v8::detail::locale_ref)::{lambda(fmt::v8::appender)#2}::operator()(fmt::v8::appender) const
+000000000005a040 0000000000000100 u fmt::v8::detail::do_count_digits(unsigned int)::table
+000000000005a140 00000000000000a8 u fmt::v8::detail::do_count_digits(unsigned long)::zero_or_powers_of_10
+000000000005a1e8 0000000000000040 u fmt::v8::detail::do_count_digits(unsigned long)::bsr2log10
+0000000000032e78 0000000000000274 W fmt::v8::detail::for_each_codepoint<fmt::v8::detail::compute_width(fmt::v8::basic_string_view<char>)::count_code_points>(fmt::v8::basic_string_view<char>, fmt::v8::detail::compute_width(fmt::v8::basic_string_view<char>)::count_code_points)::{lambda(char const*, char const*)#1}::operator()(char const*, char const*) const
+00000000000595a8 00000000000000d8 u fmt::v8::detail::dragonbox::cache_accessor<double>::get_cached_power(int)::powers_of_5_64
+0000000000059680 0000000000000170 u fmt::v8::detail::dragonbox::cache_accessor<double>::get_cached_power(int)::pow10_significands
+0000000000059508 000000000000009c u fmt::v8::detail::dragonbox::cache_accessor<double>::get_cached_power(int)::pow10_recovery_errors
+00000000000597f0 0000000000000270 u fmt::v8::detail::dragonbox::cache_accessor<float>::get_cached_power(int)::pow10_significands
+0000000000059be0 0000000000000058 u fmt::v8::detail::dragonbox::divisible_by_power_of_5(unsigned int, int)::divtest_table
+0000000000059a60 0000000000000180 u fmt::v8::detail::dragonbox::divisible_by_power_of_5(unsigned long, int)::divtest_table
+0000000000076bc8 0000000000000008 u spdlog::logger::err_handler_(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)::err_counter
+0000000000076bd0 0000000000000008 u spdlog::logger::err_handler_(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)::last_report_time
+0000000000076bd8 0000000000000030 u spdlog::logger::err_handler_(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)::mutex
+0000000000076b98 0000000000000030 u spdlog::details::console_mutex::mutex()::s_mutex
+0000000000076c10 0000000000000001 u spdlog::details::os::is_color_terminal()::result
+0000000000000008 0000000000000008 u spdlog::details::os::thread_id()::tid
+0000000000076a30 0000000000000168 u spdlog::details::registry::instance()::s_instance
+0000000000075d28 0000000000000400 u AXIZG330AIUDeviceNode::readUDMABuf(char const*, char const*) const::attr
+0000000000075d20 0000000000000008 u AXIZG330AIUDeviceNode::readUDMABuf(char const*, char const*) const::value
+0000000000075920 0000000000000400 u AXIZG330AIUDeviceNode::writeUDMABuf(char const*, unsigned long, char const*) const::attr
+00000000000761c8 0000000000000400 u AXIZG330AIUdmaMemRegionNode::syncForCPU(unsigned long, unsigned long) const::attr
+00000000000765c8 0000000000000400 u AXIZG330AIUdmaMemRegionNode::syncForDevice(unsigned long, unsigned long) const::attr
+0000000000076168 0000000000000040 u AXIZG330AIPLDDRMemRegionNode::read(char*, icraft::xrt::MemPtr const&, unsigned long) const::rem_buf
+0000000000076128 0000000000000040 u AXIZG330AIPLDDRMemRegionNode::write(icraft::xrt::MemPtr const&, char*, unsigned long) const::rem_buf
+000000000005a228 0000000000000010 u std::_Sp_make_shared_tag::_S_ti()::__tag
+00000000000724e0 0000000000000080 u spdlog::details::os::is_color_terminal()::{lambda()#1}::operator()() const::terms
+                 U operator delete[](void*)
+                 U operator delete(void*)
+                 U operator delete(void*, unsigned long)
+                 U operator new[](unsigned long)
+                 U operator new(unsigned long)
+                 U __cxa_allocate_exception
+                 U __cxa_atexit
+                 U __cxa_begin_catch
+                 U __cxa_end_catch
+                 w __cxa_finalize
+                 U __cxa_free_exception
+                 U __cxa_guard_abort
+                 U __cxa_guard_acquire
+                 U __cxa_guard_release
+                 U __cxa_pure_virtual
+                 U __cxa_rethrow
+                 U __cxa_throw
+                 U __dynamic_cast
+                 U __errno_location
+                 U __fprintf_chk
+                 w __gmon_start__
+                 U __gttf2
+                 U __gxx_personality_v0
+                 U __isoc99_sscanf
+                 U __letf2
+                 U __memcpy_chk
+                 w __pthread_key_create
+                 U __snprintf_chk
+                 U __sprintf_chk
+                 U __stack_chk_fail
+                 U __stack_chk_guard
+                 U __udivti3
+                 U __umodti3
+                 U __unordtf2
+                 U close
+                 U fflush
+                 U fileno
+                 U fwrite
+                 U getenv
+                 U getpid
+                 U gmtime_r
+                 U isatty
+                 U localtime_r
+                 U memchr
+                 U memcmp
+                 U memcpy
+                 U memmove
+                 U memset
+                 U mmap
+                 U munmap
+                 U open
+                 w pthread_mutex_lock
+                 w pthread_mutex_unlock
+                 U read
+                 U stderr
+                 U stdout
+                 U strcmp
+                 U strftime
+                 U strlen
+                 U strrchr
+                 U strstr
+                 U strtoull
+                 U syscall
+                 U write

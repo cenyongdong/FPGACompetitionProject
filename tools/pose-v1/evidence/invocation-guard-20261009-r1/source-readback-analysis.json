@@ -1,0 +1,178 @@
+{
+  "status": "two_source_reads_and_original_staging_compared",
+  "frame_id": 100011,
+  "invocation": 11,
+  "op_id": 192,
+  "original_error": "CPU_CANDIDATE[kernel]: floating-point index is not a finite integer",
+  "single_round_bytes": 47040,
+  "additional_source_read_bytes": 94080,
+  "comparisons": [
+    {
+      "slot": 0,
+      "shape": [
+        1,
+        180,
+        42
+      ],
+      "pointer": "ADDR",
+      "region": "AXIZG330AIPLDDRMemRegionNode",
+      "source_address": 109232128,
+      "source_chunk": "0x55b1604e50",
+      "source_offset": 0,
+      "source_capacity": 30240,
+      "read_ms": [
+        0.09886,
+        0.06079
+      ],
+      "classification": [
+        {
+          "name": "original_staging",
+          "sha256": "17f193b96ff9172abe514ab200bb045b1ed58cc6cab276844b6c7b1d328a34eb",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 0
+        },
+        {
+          "name": "source_round0",
+          "sha256": "17f193b96ff9172abe514ab200bb045b1ed58cc6cab276844b6c7b1d328a34eb",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 0
+        },
+        {
+          "name": "source_round1",
+          "sha256": "17f193b96ff9172abe514ab200bb045b1ed58cc6cab276844b6c7b1d328a34eb",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 0
+        }
+      ],
+      "staging_to_round0_changed_FP32": 0,
+      "staging_to_round1_changed_FP32": 0,
+      "round0_to_round1_changed_FP32": 0,
+      "staging_to_round0_changed_ranges_FP32": []
+    },
+    {
+      "slot": 1,
+      "shape": [
+        1,
+        100,
+        42
+      ],
+      "pointer": "ADDR",
+      "region": "AXIZG330AIPLDDRMemRegionNode",
+      "source_address": 109285376,
+      "source_chunk": "0x55b15fb0f0",
+      "source_offset": 0,
+      "source_capacity": 16800,
+      "read_ms": [
+        0.04751,
+        0.04558
+      ],
+      "classification": [
+        {
+          "name": "original_staging",
+          "sha256": "d11184a814536ed76e2f785f0194319f172a6b85520398fc7ace1cd9d5fa207e",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 42
+        },
+        {
+          "name": "source_round0",
+          "sha256": "9759511de4720d798fadf57246210bd7be116714ad9360839d3d4ca846abac17",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 42
+        },
+        {
+          "name": "source_round1",
+          "sha256": "9759511de4720d798fadf57246210bd7be116714ad9360839d3d4ca846abac17",
+          "NaN": 0,
+          "Inf": 0,
+          "zeros": 42
+        }
+      ],
+      "staging_to_round0_changed_FP32": 496,
+      "staging_to_round1_changed_FP32": 496,
+      "round0_to_round1_changed_FP32": 0,
+      "staging_to_round0_changed_ranges_FP32": [
+        [
+          3040,
+          3056
+        ],
+        [
+          3104,
+          3120
+        ],
+        [
+          3168,
+          3184
+        ],
+        [
+          3232,
+          3248
+        ],
+        [
+          3296,
+          3312
+        ],
+        [
+          3360,
+          3392
+        ],
+        [
+          3424,
+          3456
+        ],
+        [
+          3488,
+          3520
+        ],
+        [
+          3552,
+          3584
+        ],
+        [
+          3616,
+          3648
+        ],
+        [
+          3680,
+          3712
+        ],
+        [
+          3744,
+          3776
+        ],
+        [
+          3808,
+          3840
+        ],
+        [
+          3872,
+          3904
+        ],
+        [
+          3936,
+          3968
+        ],
+        [
+          4000,
+          4032
+        ],
+        [
+          4064,
+          4096
+        ],
+        [
+          4128,
+          4160
+        ]
+      ]
+    }
+  ],
+  "inference": "Later source reads differ from original staging; investigate copy/storage visibility or source completion after original copy. This does not prove which operation caused the difference.",
+  "root_cause_proven": false,
+  "reads_are_later_than_original_copy": true,
+  "source_hardware_read": true
+}

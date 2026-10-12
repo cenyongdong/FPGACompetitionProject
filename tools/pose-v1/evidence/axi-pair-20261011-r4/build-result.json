@@ -1,0 +1,117 @@
+{
+  "status": "compiled_not_executed",
+  "sources": {
+    "software/pose_v1/src/axi_pair_sdk.cpp": {
+      "destination": "axi_pair_sdk.cpp",
+      "sha256": "e8e6c6bdc41da6adac5e74589bfb35db2dd5c0f129d7f6038e2ad566fdc530bd"
+    },
+    "software/pose_v1/include/plddr_position_contract.hpp": {
+      "destination": "plddr_position_contract.hpp",
+      "sha256": "aafdbc4c1fcd20d9f82a6c8b4aff02526473611437a58b924a8c9516fc870f8a"
+    },
+    "software/pose_v1/include/axi_pair_probe.hpp": {
+      "destination": "axi_pair_probe.hpp",
+      "sha256": "009a70d131a7e822e3586eee3d95b1b90f1d196bff00691724bde8f31cb677a3"
+    },
+    "software/pose_v1/include/typed_scratch_sdk.hpp": {
+      "destination": "typed_scratch_sdk.hpp",
+      "sha256": "ddad10eb6a51def9953ee18e33414d9b7494cd3e290ce8ca9e65bba5ac726446"
+    },
+    "software/pose_v1/include/typed_scratch_pattern.hpp": {
+      "destination": "typed_scratch_pattern.hpp",
+      "sha256": "05097fe9b293fa7858d0b27f73416075b7ebaf96629124bd4519a3c7d92e9246"
+    },
+    "software/pose_v1/include/scratch_copy_pattern_r3.hpp": {
+      "destination": "scratch_copy_pattern.hpp",
+      "sha256": "5a14f16798a8cb993d25708ba04ec33afd5c6d5ce34291b61f08324a1bfe49ea"
+    },
+    "software/pose_v1/src/axi_pair_host_check.cpp": {
+      "destination": "axi_pair_host_check.cpp",
+      "sha256": "b1dd32a4d195b460aade73901bc15c545c49eb6a2b4e1bd29c239a64c3c15067"
+    },
+    "software/pose_v1/src/scratch_vpu_load.cpp": {
+      "destination": "scratch_vpu_load.cpp",
+      "sha256": "2676a7236c97645930d44852627473aea3d0f17e525dafede08595eaadd6790e"
+    },
+    "software/pose_v1/include/vpu_resident_encoder.hpp": {
+      "destination": "vpu_resident_encoder.hpp",
+      "sha256": "13b7e746e1715dd03043970bc0729ca23fb821da1f018fa43c46b0f266d0f83e"
+    },
+    "software/pose_v1/include/vpu_pipeline_encoder.hpp": {
+      "destination": "vpu_pipeline_encoder.hpp",
+      "sha256": "badd90d3ef797b57f04e1f26f27d419fe8b0a1c2b7487bc34ffc248416dc03e2"
+    },
+    "software/pose_v1/include/vpu_encoder.hpp": {
+      "destination": "vpu_encoder.hpp",
+      "sha256": "f85001ab0ea5725d3e59d479a64f999f2381bc76f9cc7321d7f5c332134e729f"
+    },
+    "software/pose_v1/include/scratch_vpu_load.hpp": {
+      "destination": "scratch_vpu_load.hpp",
+      "sha256": "dcf75edd579b22c819c6db1bb7992d4a6699807eaafdb0fa812a636af13ee12d"
+    },
+    "software/pose_v1/src/timed_resident_encoder.cpp": {
+      "destination": "timed_resident_encoder.cpp",
+      "sha256": "aba355f8175a2f2fa608c0548b51a7b8c5923305c1de804bc4d31d8a12ed02fc"
+    },
+    "software/pose_v1/src/scratch_copy_pattern_r3.cpp": {
+      "destination": "scratch_copy_pattern.cpp",
+      "sha256": "cbd78a9a96ecff6a89a2dac9d77c1d4ca720fb9d26b54cc2094ce9feb4e4d286"
+    },
+    "software/pose_v1/src/typed_scratch_pattern.cpp": {
+      "destination": "typed_scratch_pattern.cpp",
+      "sha256": "1a4f331112bb52432b169ae35107a7f11513681bc2208b3d160475c72c86d1c4"
+    },
+    "software/pose_v1/src/invocation_evidence.cpp": {
+      "destination": "invocation_evidence.cpp",
+      "sha256": "51a3e605f6ed0433e2e9079752d068b6a8e0e94dc99ae0dc911cd6d66e007255"
+    },
+    "software/pose_v1/include/invocation_evidence.hpp": {
+      "destination": "invocation_evidence.hpp",
+      "sha256": "2b97b27a0fc21b6e3bdc6855bac5db42065c420d85693aae0478785d4881f88b"
+    },
+    "software/pose_v1/src/input_read_sdk.cpp": {
+      "destination": "input_read_sdk.cpp",
+      "sha256": "c1cd34bc6dcb6829b4f9c74a23c080dd32e4f1d2c0772df0308783bae1253251"
+    },
+    "software/pose_v1/include/input_read_contract.hpp": {
+      "destination": "input_read_contract.hpp",
+      "sha256": "fdc404521736b3d8c2c08fa5a5ef48e2ebeb1c8901ffb33ae97b675bb2b2a137"
+    },
+    "software/pose_v1/include/input_read_sdk.hpp": {
+      "destination": "input_read_sdk.hpp",
+      "sha256": "86bdf0ca883146830461afafce3ed490bbdd2a167b00a8b438090bfc3613be1a"
+    },
+    "software/pose_v1/src/axi_pair_transfer.cpp": {
+      "destination": "axi_pair_transfer.cpp",
+      "sha256": "bdd0f3b7c5ee2354f29507a443cdc7fda184d16f1f315bf28964e5d11cfe5dfb"
+    },
+    "software/pose_v1/src/plddr_position_contract.cpp": {
+      "destination": "plddr_position_contract.cpp",
+      "sha256": "10a2c4b9d9cf063a5bcb87e2d47961cac4a7eff38244f7bef99aabc450e8df11"
+    },
+    "software/pose_v1/src/input_read_contract.cpp": {
+      "destination": "input_read_contract.cpp",
+      "sha256": "5615292a1de13cd96bd1bff6b35d53ff54b66c0513ae78523325bc456766e694"
+    },
+    "software/pose_v1/src/axi_pair_check.cpp": {
+      "destination": "axi_pair_check.cpp",
+      "sha256": "15c1258737a9a8bc381035955d87503ade5dfe1652a265a3fa5bcd8e68f16e17"
+    },
+    "tools/pose-v1/axi-pair-CMakeLists.txt": {
+      "destination": "CMakeLists.txt",
+      "sha256": "9ae818d415df93eba9f477b14723617aef987a1e7004abc36cf271fdb245a848"
+    }
+  },
+  "manifest_sha256": "de0ace33c2a682c0a2d4875171a773e1f42d7ec969ebeffce15aa41d785bf975",
+  "libraries": {
+    "libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178",
+    "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+    "libicraft_hostbackend.so": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57"
+  },
+  "programs": {
+    "pose_axi_pair_check": "b2f7db68b72db95aa868b5b73454a8566736c1b2fdebc1f31095c20c3273fec7",
+    "pose_axi_pair_host_check": "a182324441521f9b657e425b0f926cc9b20fcb009c4c72d2f2ea8fcde386406c"
+  },
+  "device_opened": false
+}

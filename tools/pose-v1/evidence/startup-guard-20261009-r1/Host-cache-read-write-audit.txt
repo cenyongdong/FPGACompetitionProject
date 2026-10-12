@@ -1,0 +1,183 @@
+
+/usr/lib/aarch64-linux-gnu/libicraft_xrt.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000008d8f8 <_ZNK6icraft3xrt26CacheSyncHostMemRegionNode5writeERKNS0_6MemPtrEPcm>:
+   8d8f8:	a9ba7bfd 	stp	x29, x30, [sp, #-96]!
+   8d8fc:	910003fd 	mov	x29, sp
+   8d900:	a90153f3 	stp	x19, x20, [sp, #16]
+   8d904:	d0000233 	adrp	x19, d3000 <_ZTIN6icraft3xir8NodeBaseINS_3xrt26CacheSyncHostMemRegionNodeENS2_13MemRegionNodeEEE@@Base+0x28>
+   8d908:	aa0203f4 	mov	x20, x2
+   8d90c:	f9451664 	ldr	x4, [x19, #2600]
+   8d910:	a9025bf5 	stp	x21, x22, [sp, #32]
+   8d914:	aa0103f6 	mov	x22, x1
+   8d918:	f9400080 	ldr	x0, [x4]
+   8d91c:	f9002fe0 	str	x0, [sp, #88]
+   8d920:	d2800000 	mov	x0, #0x0                   	// #0
+   8d924:	aa0303f5 	mov	x21, x3
+   8d928:	b4000202 	cbz	x2, 8d968 <_ZNK6icraft3xrt26CacheSyncHostMemRegionNode5writeERKNS0_6MemPtrEPcm+0x70>
+   8d92c:	aa1603e0 	mov	x0, x22
+   8d930:	97fe9a40 	bl	34230 <_ZNK6icraft3xrt6MemPtr4cptrEv@plt>
+   8d934:	aa1403e1 	mov	x1, x20
+   8d938:	aa1503e2 	mov	x2, x21
+   8d93c:	97fe9281 	bl	32340 <memcpy@plt>
+   8d940:	f9451673 	ldr	x19, [x19, #2600]
+   8d944:	f9402fe0 	ldr	x0, [sp, #88]
+   8d948:	f9400261 	ldr	x1, [x19]
+   8d94c:	eb010000 	subs	x0, x0, x1
+   8d950:	d2800001 	mov	x1, #0x0                   	// #0
+   8d954:	54000341 	b.ne	8d9bc <_ZNK6icraft3xrt26CacheSyncHostMemRegionNode5writeERKNS0_6MemPtrEPcm+0xc4>  // b.any
+   8d958:	a94153f3 	ldp	x19, x20, [sp, #16]
+   8d95c:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   8d960:	a8c67bfd 	ldp	x29, x30, [sp], #96
+   8d964:	d65f03c0 	ret
+   8d968:	52800021 	mov	w1, #0x1                   	// #1
+   8d96c:	52801440 	mov	w0, #0xa2                  	// #162
+   8d970:	f9001bf7 	str	x23, [sp, #48]
+   8d974:	97ffff9b 	bl	8d7e0 <_ZN6icraft6detail9LogExceptC2EPKcii.constprop.1>
+   8d978:	97fe929e 	bl	323f0 <_ZN6icraft6detail9LogExcept8GetEntryEv@plt>
+   8d97c:	900000e1 	adrp	x1, a9000 <CSWTCH.1334+0x820>
+   8d980:	d28004e2 	mov	x2, #0x27                  	// #39
+   8d984:	913bc021 	add	x1, x1, #0xef0
+   8d988:	97fe97e6 	bl	33920 <_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@plt>
+   8d98c:	97fe9299 	bl	323f0 <_ZN6icraft6detail9LogExcept8GetEntryEv@plt>
+   8d990:	910123f7 	add	x23, sp, #0x48
+   8d994:	aa1703e8 	mov	x8, x23
+   8d998:	97fe958a 	bl	32fc0 <_ZN6icraft6detail9LogExcept5Entry8finalizeEv@plt>
+   8d99c:	d0000221 	adrp	x1, d3000 <_ZTIN6icraft3xir8NodeBaseINS_3xrt26CacheSyncHostMemRegionNodeENS2_13MemRegionNodeEEE@@Base+0x28>
+   8d9a0:	aa1703e0 	mov	x0, x23
+   8d9a4:	f9453021 	ldr	x1, [x1, #2656]
+   8d9a8:	91004021 	add	x1, x1, #0x10
+   8d9ac:	f90027e1 	str	x1, [sp, #72]
+   8d9b0:	97fe97b0 	bl	33870 <_ZNSt13runtime_errorD2Ev@plt>
+   8d9b4:	f9401bf7 	ldr	x23, [sp, #48]
+   8d9b8:	17ffffdd 	b	8d92c <_ZNK6icraft3xrt26CacheSyncHostMemRegionNode5writeERKNS0_6MemPtrEPcm+0x34>
+   8d9bc:	f9001bf7 	str	x23, [sp, #48]
+   8d9c0:	97fe9380 	bl	327c0 <__stack_chk_fail@plt>
+   8d9c4:	aa0003f3 	mov	x19, x0
+   8d9c8:	97ffff6a 	bl	8d770 <_ZN6icraft6detail9LogExceptD2Ev.constprop.0>
+   8d9cc:	aa1303e0 	mov	x0, x19
+   8d9d0:	97fe9b5c 	bl	34740 <_Unwind_Resume@plt>
+   8d9d4:	d503201f 	nop
+
+000000000008d9d8 <_ZNK6icraft3xrt26CacheSyncHostMemRegionNode4readEPcRKNS0_6MemPtrEm>:
+   8d9d8:	a9ba7bfd 	stp	x29, x30, [sp, #-96]!
+   8d9dc:	910003fd 	mov	x29, sp
+   8d9e0:	a90153f3 	stp	x19, x20, [sp, #16]
+   8d9e4:	d0000233 	adrp	x19, d3000 <_ZTIN6icraft3xir8NodeBaseINS_3xrt26CacheSyncHostMemRegionNodeENS2_13MemRegionNodeEEE@@Base+0x28>
+   8d9e8:	aa0203f4 	mov	x20, x2
+   8d9ec:	f9451662 	ldr	x2, [x19, #2600]
+   8d9f0:	a9025bf5 	stp	x21, x22, [sp, #32]
+   8d9f4:	aa0103f5 	mov	x21, x1
+   8d9f8:	f9400041 	ldr	x1, [x2]
+   8d9fc:	f9002fe1 	str	x1, [sp, #88]
+   8da00:	d2800001 	mov	x1, #0x0                   	// #0
+   8da04:	aa0303f6 	mov	x22, x3
+   8da08:	aa1403e0 	mov	x0, x20
+   8da0c:	97fe9a09 	bl	34230 <_ZNK6icraft3xrt6MemPtr4cptrEv@plt>
+   8da10:	b4000220 	cbz	x0, 8da54 <_ZNK6icraft3xrt26CacheSyncHostMemRegionNode4readEPcRKNS0_6MemPtrEm+0x7c>
+   8da14:	aa1403e0 	mov	x0, x20
+   8da18:	97fe9a06 	bl	34230 <_ZNK6icraft3xrt6MemPtr4cptrEv@plt>
+   8da1c:	aa1603e2 	mov	x2, x22
+   8da20:	aa0003e1 	mov	x1, x0
+   8da24:	aa1503e0 	mov	x0, x21
+   8da28:	97fe9246 	bl	32340 <memcpy@plt>
+   8da2c:	f9451673 	ldr	x19, [x19, #2600]
+   8da30:	f9402fe0 	ldr	x0, [sp, #88]
+   8da34:	f9400261 	ldr	x1, [x19]
+   8da38:	eb010000 	subs	x0, x0, x1
+   8da3c:	d2800001 	mov	x1, #0x0                   	// #0
+   8da40:	54000341 	b.ne	8daa8 <_ZNK6icraft3xrt26CacheSyncHostMemRegionNode4readEPcRKNS0_6MemPtrEm+0xd0>  // b.any
+   8da44:	a94153f3 	ldp	x19, x20, [sp, #16]
+   8da48:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   8da4c:	a8c67bfd 	ldp	x29, x30, [sp], #96
+   8da50:	d65f03c0 	ret
+   8da54:	52800021 	mov	w1, #0x1                   	// #1
+   8da58:	52801300 	mov	w0, #0x98                  	// #152
+   8da5c:	f9001bf7 	str	x23, [sp, #48]
+   8da60:	97ffff60 	bl	8d7e0 <_ZN6icraft6detail9LogExceptC2EPKcii.constprop.1>
+   8da64:	97fe9263 	bl	323f0 <_ZN6icraft6detail9LogExcept8GetEntryEv@plt>
+   8da68:	900000e1 	adrp	x1, a9000 <CSWTCH.1334+0x820>
+   8da6c:	d28004c2 	mov	x2, #0x26                  	// #38
+   8da70:	913c6021 	add	x1, x1, #0xf18
+   8da74:	97fe97ab 	bl	33920 <_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@plt>
+   8da78:	97fe925e 	bl	323f0 <_ZN6icraft6detail9LogExcept8GetEntryEv@plt>
+   8da7c:	910123f7 	add	x23, sp, #0x48
+   8da80:	aa1703e8 	mov	x8, x23
+   8da84:	97fe954f 	bl	32fc0 <_ZN6icraft6detail9LogExcept5Entry8finalizeEv@plt>
+   8da88:	d0000221 	adrp	x1, d3000 <_ZTIN6icraft3xir8NodeBaseINS_3xrt26CacheSyncHostMemRegionNodeENS2_13MemRegionNodeEEE@@Base+0x28>
+   8da8c:	aa1703e0 	mov	x0, x23
+   8da90:	f9453021 	ldr	x1, [x1, #2656]
+   8da94:	91004021 	add	x1, x1, #0x10
+   8da98:	f90027e1 	str	x1, [sp, #72]
+   8da9c:	97fe9775 	bl	33870 <_ZNSt13runtime_errorD2Ev@plt>
+   8daa0:	f9401bf7 	ldr	x23, [sp, #48]
+   8daa4:	17ffffdc 	b	8da14 <_ZNK6icraft3xrt26CacheSyncHostMemRegionNode4readEPcRKNS0_6MemPtrEm+0x3c>
+   8daa8:	f9001bf7 	str	x23, [sp, #48]
+   8daac:	97fe9345 	bl	327c0 <__stack_chk_fail@plt>
+   8dab0:	aa0003f3 	mov	x19, x0
+   8dab4:	97ffff2f 	bl	8d770 <_ZN6icraft6detail9LogExceptD2Ev.constprop.0>
+   8dab8:	aa1303e0 	mov	x0, x19
+   8dabc:	97fe9b21 	bl	34740 <_Unwind_Resume@plt>
+
+000000000008dac0 <_ZNK6icraft3xrt17HostMemRegionNode4readEPcRKNS0_6MemPtrEm>:
+   8dac0:	a9ba7bfd 	stp	x29, x30, [sp, #-96]!
+   8dac4:	910003fd 	mov	x29, sp
+   8dac8:	a90153f3 	stp	x19, x20, [sp, #16]
+   8dacc:	d0000233 	adrp	x19, d3000 <_ZTIN6icraft3xir8NodeBaseINS_3xrt26CacheSyncHostMemRegionNodeENS2_13MemRegionNodeEEE@@Base+0x28>
+   8dad0:	aa0203f4 	mov	x20, x2
+   8dad4:	f9451662 	ldr	x2, [x19, #2600]
+   8dad8:	a9025bf5 	stp	x21, x22, [sp, #32]
+   8dadc:	aa0103f5 	mov	x21, x1
+   8dae0:	f9400041 	ldr	x1, [x2]
+   8dae4:	f9002fe1 	str	x1, [sp, #88]
+   8dae8:	d2800001 	mov	x1, #0x0                   	// #0
+   8daec:	aa0303f6 	mov	x22, x3
+   8daf0:	aa1403e0 	mov	x0, x20
+   8daf4:	97fe99cf 	bl	34230 <_ZNK6icraft3xrt6MemPtr4cptrEv@plt>
+   8daf8:	b4000220 	cbz	x0, 8db3c <_ZNK6icraft3xrt17HostMemRegionNode4readEPcRKNS0_6MemPtrEm+0x7c>
+   8dafc:	aa1403e0 	mov	x0, x20
+   8db00:	97fe99cc 	bl	34230 <_ZNK6icraft3xrt6MemPtr4cptrEv@plt>
+   8db04:	aa1603e2 	mov	x2, x22
+   8db08:	aa0003e1 	mov	x1, x0
+   8db0c:	aa1503e0 	mov	x0, x21
+   8db10:	97fe920c 	bl	32340 <memcpy@plt>
+   8db14:	f9451673 	ldr	x19, [x19, #2600]
+   8db18:	f9402fe0 	ldr	x0, [sp, #88]
+   8db1c:	f9400261 	ldr	x1, [x19]
+   8db20:	eb010000 	subs	x0, x0, x1
+   8db24:	d2800001 	mov	x1, #0x0                   	// #0
+   8db28:	54000341 	b.ne	8db90 <_ZNK6icraft3xrt17HostMemRegionNode4readEPcRKNS0_6MemPtrEm+0xd0>  // b.any
+   8db2c:	a94153f3 	ldp	x19, x20, [sp, #16]
+   8db30:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   8db34:	a8c67bfd 	ldp	x29, x30, [sp], #96
+   8db38:	d65f03c0 	ret
+   8db3c:	52800021 	mov	w1, #0x1                   	// #1
+   8db40:	52800ca0 	mov	w0, #0x65                  	// #101
+   8db44:	f9001bf7 	str	x23, [sp, #48]
+   8db48:	97ffff26 	bl	8d7e0 <_ZN6icraft6detail9LogExceptC2EPKcii.constprop.1>
+   8db4c:	97fe9229 	bl	323f0 <_ZN6icraft6detail9LogExcept8GetEntryEv@plt>
+   8db50:	900000e1 	adrp	x1, a9000 <CSWTCH.1334+0x820>
+   8db54:	d28004c2 	mov	x2, #0x26                  	// #38
+   8db58:	913c6021 	add	x1, x1, #0xf18
+   8db5c:	97fe9771 	bl	33920 <_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@plt>
+   8db60:	97fe9224 	bl	323f0 <_ZN6icraft6detail9LogExcept8GetEntryEv@plt>
+   8db64:	910123f7 	add	x23, sp, #0x48
+   8db68:	aa1703e8 	mov	x8, x23
+   8db6c:	97fe9515 	bl	32fc0 <_ZN6icraft6detail9LogExcept5Entry8finalizeEv@plt>
+   8db70:	d0000221 	adrp	x1, d3000 <_ZTIN6icraft3xir8NodeBaseINS_3xrt26CacheSyncHostMemRegionNodeENS2_13MemRegionNodeEEE@@Base+0x28>
+   8db74:	aa1703e0 	mov	x0, x23
+   8db78:	f9453021 	ldr	x1, [x1, #2656]
+   8db7c:	91004021 	add	x1, x1, #0x10
+   8db80:	f90027e1 	str	x1, [sp, #72]
+   8db84:	97fe973b 	bl	33870 <_ZNSt13runtime_errorD2Ev@plt>
+   8db88:	f9401bf7 	ldr	x23, [sp, #48]
+   8db8c:	17ffffdc 	b	8dafc <_ZNK6icraft3xrt17HostMemRegionNode4readEPcRKNS0_6MemPtrEm+0x3c>
+   8db90:	f9001bf7 	str	x23, [sp, #48]
+   8db94:	97fe930b 	bl	327c0 <__stack_chk_fail@plt>
+   8db98:	aa0003f3 	mov	x19, x0
+   8db9c:	97fffef5 	bl	8d770 <_ZN6icraft6detail9LogExceptD2Ev.constprop.0>
+   8dba0:	aa1303e0 	mov	x0, x19
+   8dba4:	97fe9ae7 	bl	34740 <_Unwind_Resume@plt>

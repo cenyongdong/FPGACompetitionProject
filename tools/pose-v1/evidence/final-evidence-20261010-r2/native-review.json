@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "refusals": 7,
+  "foreign_thread_refused": true,
+  "owned_bytes": true,
+  "two_rounds": true,
+  "partial_read_saved": true,
+  "bad_result_saved": true,
+  "previous_frame_cleared": true,
+  "strict_finite_error": "Timing actual model output differs",
+  "strict_nonfinite_error": "Timing score nonfinite",
+  "device_opened": false
+}

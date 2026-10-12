@@ -1,0 +1,20 @@
+{
+  "status": "same_ELF_contrast_three_stages_passed_final_VPU_startup_failed",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "program_SHA256": "4bab1a1d61c54fdebde33eaa71a1ec378e3159c964c5dcd8e6e198aa749aab2a",
+  "manifest_SHA256": "28d76b0245bc7b406fc9f66d1a5ed92699e1d25ba48ee9e7ac3de4b46cde6da0",
+  "passed_stages": [
+    "contracts",
+    "model-three",
+    "vpu-three",
+    "model-103"
+  ],
+  "failed_stage": "vpu-103",
+  "failed_stage_Engine_created": false,
+  "compactions": 3,
+  "completion_review_SHA256": "9fbfe6adcec1b603696dd2fbcfa0e373641617d94d14ad9597c7c5cbcf385ab4",
+  "resume": "Read MODEL-VPU-RESULTS/NEXT-20261010.md and ADR_27/ADR_02. Last stage stopped on pre-Engine VPU512KiB ordinary-page firmware allocation failure despite recorded compaction; no model forward occurred, no192 fault reproduction. Do not retry failed directory or compact in a loop. Next prepare resource-lifetime/first-context acquisition feasibility, not CMA/BOOT/cache guesses; explicit review before new hardware. Keep original exception/two late reads. Stable concurrent103/5Hz/long-term/HDMI/zero-copy pending."
+}

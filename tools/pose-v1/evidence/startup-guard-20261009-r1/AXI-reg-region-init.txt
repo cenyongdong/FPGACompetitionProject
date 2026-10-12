@@ -1,0 +1,298 @@
+
+/usr/lib/aarch64-linux-gnu/libaxizg330aiu.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000004d280 <_ZN23AXIZG330AIRegRegionNode4initEv>:
+   4d280:	a9b47bfd 	stp	x29, x30, [sp, #-192]!
+   4d284:	910003fd 	mov	x29, sp
+   4d288:	a90153f3 	stp	x19, x20, [sp, #16]
+   4d28c:	aa0003f3 	mov	x19, x0
+   4d290:	9101c3f4 	add	x20, sp, #0x70
+   4d294:	a90363f7 	stp	x23, x24, [sp, #48]
+   4d298:	f0000137 	adrp	x23, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d29c:	f9400a61 	ldr	x1, [x19, #16]
+   4d2a0:	a9025bf5 	stp	x21, x22, [sp, #32]
+   4d2a4:	f0000135 	adrp	x21, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d2a8:	f9454ee0 	ldr	x0, [x23, #2712]
+   4d2ac:	a9046bf9 	stp	x25, x26, [sp, #64]
+   4d2b0:	9101a3fa 	add	x26, sp, #0x68
+   4d2b4:	a9571424 	ldp	x4, x5, [x1, #368]
+   4d2b8:	f9400002 	ldr	x2, [x0]
+   4d2bc:	f9005fe2 	str	x2, [sp, #184]
+   4d2c0:	d2800002 	mov	x2, #0x0                   	// #0
+   4d2c4:	f940ac23 	ldr	x3, [x1, #344]
+   4d2c8:	a9070fff 	stp	xzr, x3, [sp, #112]
+   4d2cc:	91054021 	add	x1, x1, #0x150
+   4d2d0:	f9400c23 	ldr	x3, [x1, #24]
+   4d2d4:	aa1403e0 	mov	x0, x20
+   4d2d8:	aa1a03e2 	mov	x2, x26
+   4d2dc:	a90573fb 	stp	x27, x28, [sp, #80]
+   4d2e0:	f90037f4 	str	x20, [sp, #104]
+   4d2e4:	f90043ff 	str	xzr, [sp, #128]
+   4d2e8:	f90047e3 	str	x3, [sp, #136]
+   4d2ec:	a90917e4 	stp	x4, x5, [sp, #144]
+   4d2f0:	f90053ff 	str	xzr, [sp, #160]
+   4d2f4:	97ff6953 	bl	27840 <_ZNSt10_HashtableINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESaIS8_ENSt8__detail10_Select1stESt8equal_toIS5_ESt4hashIS5_ENSA_18_Mod_range_hashingENSA_20_Default_ranged_hashENSA_20_Prime_rehash_policyENSA_17_Hashtable_traitsILb1ELb0ELb1EEEE9_M_assignIZNSL_C4ERKSL_EUlPKNSA_10_Hash_nodeIS8_Lb1EEEE_EEvSO_RKT_@plt>
+   4d2f8:	f945feb5 	ldr	x21, [x21, #3064]
+   4d2fc:	aa1403e0 	mov	x0, x20
+   4d300:	aa1503e1 	mov	x1, x21
+   4d304:	97ff69a3 	bl	27990 <_ZNKSt10_HashtableINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESaIS8_ENSt8__detail10_Select1stESt8equal_toIS5_ESt4hashIS5_ENSA_18_Mod_range_hashingENSA_20_Default_ranged_hashENSA_20_Prime_rehash_policyENSA_17_Hashtable_traitsILb1ELb0ELb1EEEE5countERS7_@plt>
+   4d308:	b4000300 	cbz	x0, 4d368 <_ZN23AXIZG330AIRegRegionNode4initEv+0xe8>
+   4d30c:	aa1503e1 	mov	x1, x21
+   4d310:	aa1403e0 	mov	x0, x20
+   4d314:	97ff6b1b 	bl	27f80 <_ZNSt8__detail9_Map_baseINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS6_S6_ESaIS9_ENS_10_Select1stESt8equal_toIS6_ESt4hashIS6_ENS_18_Mod_range_hashingENS_20_Default_ranged_hashENS_20_Prime_rehash_policyENS_17_Hashtable_traitsILb1ELb0ELb1EEELb1EE2atERS8_@plt>
+   4d318:	f9400016 	ldr	x22, [x0]
+   4d31c:	97ff6a5d 	bl	27c90 <__errno_location@plt>
+   4d320:	aa0003f5 	mov	x21, x0
+   4d324:	aa1a03e1 	mov	x1, x26
+   4d328:	aa1603e0 	mov	x0, x22
+   4d32c:	52800002 	mov	w2, #0x0                   	// #0
+   4d330:	b94002b8 	ldr	w24, [x21]
+   4d334:	b90002bf 	str	wzr, [x21]
+   4d338:	97ff6af2 	bl	27f00 <strtoull@plt>
+   4d33c:	f94037e1 	ldr	x1, [sp, #104]
+   4d340:	eb0102df 	cmp	x22, x1
+   4d344:	54001900 	b.eq	4d664 <_ZN23AXIZG330AIRegRegionNode4initEv+0x3e4>  // b.none
+   4d348:	b94002a1 	ldr	w1, [x21]
+   4d34c:	7100883f 	cmp	w1, #0x22
+   4d350:	54001980 	b.eq	4d680 <_ZN23AXIZG330AIRegRegionNode4initEv+0x400>  // b.none
+   4d354:	35000041 	cbnz	w1, 4d35c <_ZN23AXIZG330AIRegRegionNode4initEv+0xdc>
+   4d358:	b90002b8 	str	w24, [x21]
+   4d35c:	f0000121 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d360:	f944c821 	ldr	x1, [x1, #2448]
+   4d364:	f9000020 	str	x0, [x1]
+   4d368:	f0000139 	adrp	x25, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d36c:	f0000135 	adrp	x21, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d370:	aa1403e0 	mov	x0, x20
+   4d374:	f9475b21 	ldr	x1, [x25, #3760]
+   4d378:	f946aab5 	ldr	x21, [x21, #3408]
+   4d37c:	f9400036 	ldr	x22, [x1]
+   4d380:	aa1503e1 	mov	x1, x21
+   4d384:	97ff6983 	bl	27990 <_ZNKSt10_HashtableINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESaIS8_ENSt8__detail10_Select1stESt8equal_toIS5_ESt4hashIS5_ENSA_18_Mod_range_hashingENSA_20_Default_ranged_hashENSA_20_Prime_rehash_policyENSA_17_Hashtable_traitsILb1ELb0ELb1EEEE5countERS7_@plt>
+   4d388:	b4000400 	cbz	x0, 4d408 <_ZN23AXIZG330AIRegRegionNode4initEv+0x188>
+   4d38c:	aa1503e1 	mov	x1, x21
+   4d390:	aa1403e0 	mov	x0, x20
+   4d394:	97ff6afb 	bl	27f80 <_ZNSt8__detail9_Map_baseINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS6_S6_ESaIS9_ENS_10_Select1stESt8equal_toIS6_ESt4hashIS6_ENS_18_Mod_range_hashingENS_20_Default_ranged_hashENS_20_Prime_rehash_policyENS_17_Hashtable_traitsILb1ELb0ELb1EEELb1EE2atERS8_@plt>
+   4d398:	f9400018 	ldr	x24, [x0]
+   4d39c:	97ff6a3d 	bl	27c90 <__errno_location@plt>
+   4d3a0:	aa0003f5 	mov	x21, x0
+   4d3a4:	aa1a03e1 	mov	x1, x26
+   4d3a8:	aa1803e0 	mov	x0, x24
+   4d3ac:	52800002 	mov	w2, #0x0                   	// #0
+   4d3b0:	b94002bb 	ldr	w27, [x21]
+   4d3b4:	b90002bf 	str	wzr, [x21]
+   4d3b8:	97ff6ad2 	bl	27f00 <strtoull@plt>
+   4d3bc:	aa0003f6 	mov	x22, x0
+   4d3c0:	f94037e1 	ldr	x1, [sp, #104]
+   4d3c4:	eb01031f 	cmp	x24, x1
+   4d3c8:	540016e0 	b.eq	4d6a4 <_ZN23AXIZG330AIRegRegionNode4initEv+0x424>  // b.none
+   4d3cc:	b94002a0 	ldr	w0, [x21]
+   4d3d0:	7100881f 	cmp	w0, #0x22
+   4d3d4:	54001500 	b.eq	4d674 <_ZN23AXIZG330AIRegRegionNode4initEv+0x3f4>  // b.none
+   4d3d8:	35000040 	cbnz	w0, 4d3e0 <_ZN23AXIZG330AIRegRegionNode4initEv+0x160>
+   4d3dc:	b90002bb 	str	w27, [x21]
+   4d3e0:	f0000120 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d3e4:	f0000121 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d3e8:	f9475b22 	ldr	x2, [x25, #3760]
+   4d3ec:	f944c800 	ldr	x0, [x0, #2448]
+   4d3f0:	f945f421 	ldr	x1, [x1, #3048]
+   4d3f4:	f9000056 	str	x22, [x2]
+   4d3f8:	f9400000 	ldr	x0, [x0]
+   4d3fc:	d1000400 	sub	x0, x0, #0x1
+   4d400:	8b160000 	add	x0, x0, x22
+   4d404:	f9000020 	str	x0, [x1]
+   4d408:	f0000138 	adrp	x24, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d40c:	f000013b 	adrp	x27, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d410:	aa1403e0 	mov	x0, x20
+   4d414:	f944e301 	ldr	x1, [x24, #2496]
+   4d418:	f946cb7b 	ldr	x27, [x27, #3472]
+   4d41c:	f9400035 	ldr	x21, [x1]
+   4d420:	aa1b03e1 	mov	x1, x27
+   4d424:	97ff695b 	bl	27990 <_ZNKSt10_HashtableINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESaIS8_ENSt8__detail10_Select1stESt8equal_toIS5_ESt4hashIS5_ENSA_18_Mod_range_hashingENSA_20_Default_ranged_hashENSA_20_Prime_rehash_policyENSA_17_Hashtable_traitsILb1ELb0ELb1EEEE5countERS7_@plt>
+   4d428:	b5000ac0 	cbnz	x0, 4d580 <_ZN23AXIZG330AIRegRegionNode4initEv+0x300>
+   4d42c:	52820041 	mov	w1, #0x1002                	// #4098
+   4d430:	d0000040 	adrp	x0, 57000 <_fini+0xdd4>
+   4d434:	72a00201 	movk	w1, #0x10, lsl #16
+   4d438:	910d8000 	add	x0, x0, #0x360
+   4d43c:	97ff6831 	bl	27500 <open@plt>
+   4d440:	b9001a60 	str	w0, [x19, #24]
+   4d444:	2a0003e1 	mov	w1, w0
+   4d448:	3100041f 	cmn	w0, #0x1
+   4d44c:	54000da0 	b.eq	4d600 <_ZN23AXIZG330AIRegRegionNode4initEv+0x380>  // b.none
+   4d450:	f000013a 	adrp	x26, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d454:	d0000040 	adrp	x0, 57000 <_fini+0xdd4>
+   4d458:	f9475b22 	ldr	x2, [x25, #3760]
+   4d45c:	910f0000 	add	x0, x0, #0x3c0
+   4d460:	f944cb43 	ldr	x3, [x26, #2448]
+   4d464:	f9400042 	ldr	x2, [x2]
+   4d468:	f9400063 	ldr	x3, [x3]
+   4d46c:	97ff6d67 	bl	28a08 <_ZL9MapDevicePKcimm>
+   4d470:	f944cb5a 	ldr	x26, [x26, #2448]
+   4d474:	f9001260 	str	x0, [x19, #32]
+   4d478:	f944e302 	ldr	x2, [x24, #2496]
+   4d47c:	d0000040 	adrp	x0, 57000 <_fini+0xdd4>
+   4d480:	b9401a61 	ldr	w1, [x19, #24]
+   4d484:	910f2000 	add	x0, x0, #0x3c8
+   4d488:	f9400343 	ldr	x3, [x26]
+   4d48c:	f9400042 	ldr	x2, [x2]
+   4d490:	97ff6d5e 	bl	28a08 <_ZL9MapDevicePKcimm>
+   4d494:	f944e318 	ldr	x24, [x24, #2496]
+   4d498:	f9475b39 	ldr	x25, [x25, #3760]
+   4d49c:	f9400304 	ldr	x4, [x24]
+   4d4a0:	f9400323 	ldr	x3, [x25]
+   4d4a4:	cb0402a1 	sub	x1, x21, x4
+   4d4a8:	f9401262 	ldr	x2, [x19, #32]
+   4d4ac:	cb0302d6 	sub	x22, x22, x3
+   4d4b0:	f94043f5 	ldr	x21, [sp, #128]
+   4d4b4:	8b010001 	add	x1, x0, x1
+   4d4b8:	8b160056 	add	x22, x2, x22
+   4d4bc:	cb030042 	sub	x2, x2, x3
+   4d4c0:	a902da60 	stp	x0, x22, [x19, #40]
+   4d4c4:	cb040000 	sub	x0, x0, x4
+   4d4c8:	a9038a61 	stp	x1, x2, [x19, #56]
+   4d4cc:	f9002660 	str	x0, [x19, #72]
+   4d4d0:	b40002b5 	cbz	x21, 4d524 <_ZN23AXIZG330AIRegRegionNode4initEv+0x2a4>
+   4d4d4:	d503201f 	nop
+   4d4d8:	f94016a0 	ldr	x0, [x21, #40]
+   4d4dc:	9100e2a1 	add	x1, x21, #0x38
+   4d4e0:	f94002b3 	ldr	x19, [x21]
+   4d4e4:	eb01001f 	cmp	x0, x1
+   4d4e8:	54000040 	b.eq	4d4f0 <_ZN23AXIZG330AIRegRegionNode4initEv+0x270>  // b.none
+   4d4ec:	97ff690d 	bl	27920 <_ZdlPv@plt>
+   4d4f0:	f94006a0 	ldr	x0, [x21, #8]
+   4d4f4:	910062a1 	add	x1, x21, #0x18
+   4d4f8:	eb01001f 	cmp	x0, x1
+   4d4fc:	540000e0 	b.eq	4d518 <_ZN23AXIZG330AIRegRegionNode4initEv+0x298>  // b.none
+   4d500:	97ff6908 	bl	27920 <_ZdlPv@plt>
+   4d504:	aa1503e0 	mov	x0, x21
+   4d508:	97ff6906 	bl	27920 <_ZdlPv@plt>
+   4d50c:	b40000d3 	cbz	x19, 4d524 <_ZN23AXIZG330AIRegRegionNode4initEv+0x2a4>
+   4d510:	aa1303f5 	mov	x21, x19
+   4d514:	17fffff1 	b	4d4d8 <_ZN23AXIZG330AIRegRegionNode4initEv+0x258>
+   4d518:	aa1503e0 	mov	x0, x21
+   4d51c:	97ff6901 	bl	27920 <_ZdlPv@plt>
+   4d520:	b5ffff93 	cbnz	x19, 4d510 <_ZN23AXIZG330AIRegRegionNode4initEv+0x290>
+   4d524:	a9470be0 	ldp	x0, x2, [sp, #112]
+   4d528:	52800001 	mov	w1, #0x0                   	// #0
+   4d52c:	9100c294 	add	x20, x20, #0x30
+   4d530:	d37df042 	lsl	x2, x2, #3
+   4d534:	97ff683f 	bl	27630 <memset@plt>
+   4d538:	f9403be0 	ldr	x0, [sp, #112]
+   4d53c:	a9087fff 	stp	xzr, xzr, [sp, #128]
+   4d540:	eb14001f 	cmp	x0, x20
+   4d544:	54000040 	b.eq	4d54c <_ZN23AXIZG330AIRegRegionNode4initEv+0x2cc>  // b.none
+   4d548:	97ff68f6 	bl	27920 <_ZdlPv@plt>
+   4d54c:	f9454ef7 	ldr	x23, [x23, #2712]
+   4d550:	f9405fe0 	ldr	x0, [sp, #184]
+   4d554:	f94002e1 	ldr	x1, [x23]
+   4d558:	eb010000 	subs	x0, x0, x1
+   4d55c:	d2800001 	mov	x1, #0x0                   	// #0
+   4d560:	54000881 	b.ne	4d670 <_ZN23AXIZG330AIRegRegionNode4initEv+0x3f0>  // b.any
+   4d564:	a94153f3 	ldp	x19, x20, [sp, #16]
+   4d568:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   4d56c:	a94363f7 	ldp	x23, x24, [sp, #48]
+   4d570:	a9446bf9 	ldp	x25, x26, [sp, #64]
+   4d574:	a94573fb 	ldp	x27, x28, [sp, #80]
+   4d578:	a8cc7bfd 	ldp	x29, x30, [sp], #192
+   4d57c:	d65f03c0 	ret
+   4d580:	aa1b03e1 	mov	x1, x27
+   4d584:	aa1403e0 	mov	x0, x20
+   4d588:	97ff6a7e 	bl	27f80 <_ZNSt8__detail9_Map_baseINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS6_S6_ESaIS9_ENS_10_Select1stESt8equal_toIS6_ESt4hashIS6_ENS_18_Mod_range_hashingENS_20_Default_ranged_hashENS_20_Prime_rehash_policyENS_17_Hashtable_traitsILb1ELb0ELb1EEELb1EE2atERS8_@plt>
+   4d58c:	f940001b 	ldr	x27, [x0]
+   4d590:	97ff69c0 	bl	27c90 <__errno_location@plt>
+   4d594:	aa1a03e1 	mov	x1, x26
+   4d598:	aa0003fa 	mov	x26, x0
+   4d59c:	52800002 	mov	w2, #0x0                   	// #0
+   4d5a0:	aa1b03e0 	mov	x0, x27
+   4d5a4:	b940035c 	ldr	w28, [x26]
+   4d5a8:	b900035f 	str	wzr, [x26]
+   4d5ac:	97ff6a55 	bl	27f00 <strtoull@plt>
+   4d5b0:	aa0003f5 	mov	x21, x0
+   4d5b4:	f94037e1 	ldr	x1, [sp, #104]
+   4d5b8:	eb01037f 	cmp	x27, x1
+   4d5bc:	54000680 	b.eq	4d68c <_ZN23AXIZG330AIRegRegionNode4initEv+0x40c>  // b.none
+   4d5c0:	b9400340 	ldr	w0, [x26]
+   4d5c4:	7100881f 	cmp	w0, #0x22
+   4d5c8:	54000680 	b.eq	4d698 <_ZN23AXIZG330AIRegRegionNode4initEv+0x418>  // b.none
+   4d5cc:	35000040 	cbnz	w0, 4d5d4 <_ZN23AXIZG330AIRegRegionNode4initEv+0x354>
+   4d5d0:	b900035c 	str	w28, [x26]
+   4d5d4:	f0000120 	adrp	x0, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d5d8:	f0000121 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d5dc:	f944e302 	ldr	x2, [x24, #2496]
+   4d5e0:	f944c800 	ldr	x0, [x0, #2448]
+   4d5e4:	f944e421 	ldr	x1, [x1, #2504]
+   4d5e8:	f9000055 	str	x21, [x2]
+   4d5ec:	f9400000 	ldr	x0, [x0]
+   4d5f0:	d1000400 	sub	x0, x0, #0x1
+   4d5f4:	8b150000 	add	x0, x0, x21
+   4d5f8:	f9000020 	str	x0, [x1]
+   4d5fc:	17ffff8c 	b	4d42c <_ZN23AXIZG330AIRegRegionNode4initEv+0x1ac>
+   4d600:	52800c80 	mov	w0, #0x64                  	// #100
+   4d604:	97ff6c63 	bl	28790 <_ZN6icraft6detail9LogExceptC2EPKcii.constprop.1>
+   4d608:	97ff6722 	bl	27290 <_ZN6icraft6detail9LogExcept8GetEntryEv@plt>
+   4d60c:	d0000041 	adrp	x1, 57000 <_fini+0xdd4>
+   4d610:	aa0003fa 	mov	x26, x0
+   4d614:	910dc021 	add	x1, x1, #0x370
+   4d618:	d2800642 	mov	x2, #0x32                  	// #50
+   4d61c:	97ff6949 	bl	27b40 <_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@plt>
+   4d620:	d0000041 	adrp	x1, 57000 <_fini+0xdd4>
+   4d624:	aa1a03e0 	mov	x0, x26
+   4d628:	910ea021 	add	x1, x1, #0x3a8
+   4d62c:	d2800282 	mov	x2, #0x14                  	// #20
+   4d630:	97ff6944 	bl	27b40 <_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@plt>
+   4d634:	97ff6717 	bl	27290 <_ZN6icraft6detail9LogExcept8GetEntryEv@plt>
+   4d638:	9102a3fa 	add	x26, sp, #0xa8
+   4d63c:	aa1a03e8 	mov	x8, x26
+   4d640:	97ff6850 	bl	27780 <_ZN6icraft6detail9LogExcept5Entry8finalizeEv@plt>
+   4d644:	f0000121 	adrp	x1, 74000 <_ZN6spdlog7details17elapsed_formatterINS0_13scoped_padderENSt6chrono8durationIlSt5ratioILl1ELl1EEEEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE@@Base+0x3dda8>
+   4d648:	aa1a03e0 	mov	x0, x26
+   4d64c:	f9455821 	ldr	x1, [x1, #2736]
+   4d650:	91004021 	add	x1, x1, #0x10
+   4d654:	f90057e1 	str	x1, [sp, #168]
+   4d658:	97ff691a 	bl	27ac0 <_ZNSt13runtime_errorD2Ev@plt>
+   4d65c:	b9401a61 	ldr	w1, [x19, #24]
+   4d660:	17ffff7c 	b	4d450 <_ZN23AXIZG330AIRegRegionNode4initEv+0x1d0>
+   4d664:	b0000040 	adrp	x0, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   4d668:	913aa000 	add	x0, x0, #0xea8
+   4d66c:	97ff6819 	bl	276d0 <_ZSt24__throw_invalid_argumentPKc@plt>
+   4d670:	97ff6770 	bl	27430 <__stack_chk_fail@plt>
+   4d674:	b0000040 	adrp	x0, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   4d678:	913aa000 	add	x0, x0, #0xea8
+   4d67c:	97ff69d9 	bl	27de0 <_ZSt20__throw_out_of_rangePKc@plt>
+   4d680:	b0000040 	adrp	x0, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   4d684:	913aa000 	add	x0, x0, #0xea8
+   4d688:	97ff69d6 	bl	27de0 <_ZSt20__throw_out_of_rangePKc@plt>
+   4d68c:	b0000040 	adrp	x0, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   4d690:	913aa000 	add	x0, x0, #0xea8
+   4d694:	97ff680f 	bl	276d0 <_ZSt24__throw_invalid_argumentPKc@plt>
+   4d698:	b0000040 	adrp	x0, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   4d69c:	913aa000 	add	x0, x0, #0xea8
+   4d6a0:	97ff69d0 	bl	27de0 <_ZSt20__throw_out_of_rangePKc@plt>
+   4d6a4:	b0000040 	adrp	x0, 56000 <_ZN6spdlog7details11R_formatterINS0_13scoped_padderEE6formatERKNS0_7log_msgERK2tmRN3fmt2v819basic_memory_bufferIcLm250ESaIcEEE+0x160>
+   4d6a8:	913aa000 	add	x0, x0, #0xea8
+   4d6ac:	97ff6809 	bl	276d0 <_ZSt24__throw_invalid_argumentPKc@plt>
+   4d6b0:	b94002a1 	ldr	w1, [x21]
+   4d6b4:	aa0003f3 	mov	x19, x0
+   4d6b8:	350000e1 	cbnz	w1, 4d6d4 <_ZN23AXIZG330AIRegRegionNode4initEv+0x454>
+   4d6bc:	b90002b8 	str	w24, [x21]
+   4d6c0:	14000005 	b	4d6d4 <_ZN23AXIZG330AIRegRegionNode4initEv+0x454>
+   4d6c4:	aa0003f3 	mov	x19, x0
+   4d6c8:	14000003 	b	4d6d4 <_ZN23AXIZG330AIRegRegionNode4initEv+0x454>
+   4d6cc:	aa0003f3 	mov	x19, x0
+   4d6d0:	97ff6c14 	bl	28720 <_ZN6icraft6detail9LogExceptD2Ev.constprop.0>
+   4d6d4:	aa1403e0 	mov	x0, x20
+   4d6d8:	97ff6956 	bl	27c30 <_ZNSt10_HashtableINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESaIS8_ENSt8__detail10_Select1stESt8equal_toIS5_ESt4hashIS5_ENSA_18_Mod_range_hashingENSA_20_Default_ranged_hashENSA_20_Prime_rehash_policyENSA_17_Hashtable_traitsILb1ELb0ELb1EEEED1Ev@plt>
+   4d6dc:	aa1303e0 	mov	x0, x19
+   4d6e0:	97ff6a6c 	bl	28090 <_Unwind_Resume@plt>
+   4d6e4:	b94002a1 	ldr	w1, [x21]
+   4d6e8:	aa0003f3 	mov	x19, x0
+   4d6ec:	35ffff41 	cbnz	w1, 4d6d4 <_ZN23AXIZG330AIRegRegionNode4initEv+0x454>
+   4d6f0:	b90002bb 	str	w27, [x21]
+   4d6f4:	17fffff8 	b	4d6d4 <_ZN23AXIZG330AIRegRegionNode4initEv+0x454>
+   4d6f8:	b9400341 	ldr	w1, [x26]
+   4d6fc:	aa0003f3 	mov	x19, x0
+   4d700:	35fffea1 	cbnz	w1, 4d6d4 <_ZN23AXIZG330AIRegRegionNode4initEv+0x454>
+   4d704:	b900035c 	str	w28, [x26]
+   4d708:	17fffff3 	b	4d6d4 <_ZN23AXIZG330AIRegRegionNode4initEv+0x454>

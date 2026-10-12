@@ -1,0 +1,47 @@
+{
+  "status": "QPC_capacity_finite_pose_mismatch_preserved_not_acceptance",
+  "program_SHA256": "d0e6bb8abb6538adfe6dc2480c6b407eacca02e64db334473841be9b0bad89ab",
+  "manifest_SHA256": "6e2a92742dfa9ded8be046767b00dfb6c915b3c5321995143aad5b62dfb8e629",
+  "complete_correct": 33,
+  "full_F32_compared": 498300,
+  "owned_returned": 34,
+  "failed_invocation": 33,
+  "case": "S13_07_304",
+  "failed_frame_id": 100033,
+  "failed_owned_output_bytes": 60400,
+  "poses_changed_F32": 128,
+  "maximum_pose_abs": 0.5546875,
+  "input_and_scores_bitwise": true,
+  "all_values_finite": true,
+  "earliest_observed_bad_Host_input": {
+    "op": 582,
+    "slot": 1,
+    "changed": 128
+  },
+  "also_bad_Host_input": {
+    "op": 649,
+    "slot": 1,
+    "changed": 128
+  },
+  "Host_bytes_preserved": 115360,
+  "output_gate_did_not_trigger_CPU_exception_or_late_reads": true,
+  "late_device_reads_saved": false,
+  "complete_result_flush_failed_but_all34_presaved": true,
+  "seven_other_flush_tasks_saved": true,
+  "kernel_unchanged": true,
+  "abort_STREAMOFF_succeeded": true,
+  "child_reaped": true,
+  "network_sources_released": true,
+  "Engine_destroyed_after_join": true,
+  "all_services_closed": true,
+  "video_prefix": 360,
+  "network_prefix": 330,
+  "uncaptured_sample_tail": 3,
+  "missing_completed_video_sources": [
+    31,
+    32
+  ],
+  "normal_drain": false,
+  "root_cause_proven": false,
+  "capacity_5Hz_passed": false
+}

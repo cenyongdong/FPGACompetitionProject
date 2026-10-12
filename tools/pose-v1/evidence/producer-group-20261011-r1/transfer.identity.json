@@ -1,0 +1,35 @@
+{
+  "archive_sha256": "77d696989d113b1b012d00530b9c1d5764d3901a55f99511663afe3ba0bf9903",
+  "build": {
+    "program_sha256": "4a6a72519297c6a6c64b62acb6a30b3b020a90d11b3da4ec29df2d59a8da0494",
+    "selftest_sha256": "39db6c8b359c9e4a9f098621be11e2a6f39d402f29cf7d7397f05e73ed8c404d",
+    "sources": {
+      "software/pose_v1/include/producer_payload.hpp": "e2f0427b960f2c0fe12cbf695e1d4101fe71b68d2fc8b1c962d6f39a0f663b3c",
+      "software/pose_v1/src/producer_payload.cpp": "9f50dd4b0ea7f3da71c1cec45950e57d165823223ec783ca565c2ce8284e2834",
+      "software/pose_v1/src/producer_payload_selftest.cpp": "c6c2851716554ab7ef81d060ca1017eb65a102a8a25a2ee5747e0f5e09b520ac",
+      "software/pose_v1/include/producer_sdk.hpp": "d9e97733dc217fcd80b8826936851c77dd13ae7e5c9a1c55fc6a10573dd3356b",
+      "software/pose_v1/src/producer_sdk.cpp": "ffd0f30e8010eaa822d71ee718605693e09597ae21f43c68da247b30b3bbb5b8",
+      "software/pose_v1/src/producer_group_check.cpp": "9209142f9bf95ae56de7e22e56b874cbaa349ced04ea6d0a18c542ee7b609376",
+      "software/pose_v1/include/mixed_fusion_baseline.hpp": "52dc965d2cc1b75ddee14ad53d270d76b41f4a473add103bf30c7bdfb487f33f"
+    },
+    "headers_normalized_sha256": {
+      "icraft-xrt/core/tensor.h": "4b2c4d0ad24db042f151a56afce2fba881ad8f2fe1c87c9d32d620caf89b365a",
+      "icraft-xrt/core/session.h": "f26063b529cef9ba2cc48ae07aafe4a4498169240d243cd71a5972bc34e0ebc7",
+      "icraft-xrt/core/device.h": "7bd98080ea4b228242caa184682703cc2d8610db6a28015810b5d7d8af16ecff",
+      "icraft-xrt/dev/host_device.h": "642a8aec2e3832e0ecd823efa665d32ed42fb08a177878a33945714e633c887f",
+      "icraft-xrt/dev/zg330_device.h": "43f634de3dd253c1c1fa84c8b6298ca562747744c04721a1debb809ee3b22286",
+      "icraft-backends/zg330backend/zg330backend.h": "9017d5808e00b30746d79f1380879a3056db64d27845fd033dc13513eef7bd8f"
+    },
+    "libraries": {
+      "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+      "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+      "libicraft_xir.so": "377a2cac1a8834836503d9805451449d42d99a888b8f96b38d4c2ba8c585af3e",
+      "libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178"
+    },
+    "graph_sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
+    "raw_sha256": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3",
+    "reference_review_sha256": "a728f355230b6e930da8617b22c9808cef35fa656a49358192cfdc4caf981abd",
+    "physical_device_opened": false,
+    "NPU_executed": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "contract": {
+    "status": "passed",
+    "refusals": 7,
+    "foreign_thread_refused": true,
+    "owned_bytes": true,
+    "two_rounds": true,
+    "partial_read_saved": true,
+    "bad_result_saved": true,
+    "previous_frame_cleared": true,
+    "device_opened": false
+  },
+  "SDK_contract": {
+    "status": "passed",
+    "public_Host_reads": 8,
+    "source_bytes": 67200,
+    "CPU_output_bytes": 17600,
+    "device_opened": false
+  },
+  "public_Host_bytes_two_rounds": 134400,
+  "device_opened": false
+}

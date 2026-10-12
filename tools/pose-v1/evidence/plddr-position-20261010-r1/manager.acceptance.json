@@ -1,0 +1,28 @@
+{
+  "status": "public_allocator_audit_passed",
+  "stage": "manager",
+  "bounds": {
+    "start": 4096,
+    "capacity": 4294963200,
+    "end_exclusive": 4294967296,
+    "initial_chunks": 0,
+    "large_allocation_executed": false
+  },
+  "manager_sha256": "d674be53ade516b2e456e20a5784dfb5f0182fbe23d0b73db4b5f3e8193cecdc",
+  "archive_sha256": "f90aebee931b23d8e0c4a4736d325df98b3a13f415dd3baaeccaa779790ec8a0",
+  "build_result_sha256": "3f554d1adabe52c811270052a3fdddb0c8993b3941ad83dd1e64a6cf40d1a60f",
+  "disassembly_sha256": {
+    "CreateMemChunk.asm": "ee9d81666ebfc70273f78656e4124bc32c3763839c5c306538000a10f4e09af0",
+    "Default-align.asm": "4df1b04f1e419bb30286d8fc17c2dfe80632d918d91b7a9f8345923769a93a2f",
+    "Default-info.asm": "d94aa9d4e667652f374acd9314dc6889b32f33c03fda7c7150dd74ced7611bb0",
+    "Default-malloc.asm": "67bed8e563ab0690386b7c755090d5e1e4a7a1c1cebfce29f176353cf8ca23b2",
+    "MemChunk-constructor.asm": "195f85af08a6ba4600e5046e354438f09e9abb3ef18890db86bafcc586d34201",
+    "PLDDR-init.asm": "cf98e92db6bd090e947dd942321b53d8fb543a7f5d949f0c3cd17d556197467c",
+    "PLDDR-malloc.asm": "c4f0b609e2908a5c850a6036231ebab5200a4b0f42198e86d3ac8bf0e680b79e",
+    "Region-CreateMemChunk.asm": "b7137e9bb6989ed8e5c2e4259c22a197791c2a52c22d0682d17dfbf30618c3b6",
+    "Tensor-mallocOn.asm": "56613e851fe5943c93d9140e310634b9dbde4cf560855ebe4b1cd7bcd2d24984"
+  },
+  "header_sha256": "7bd98080ea4b228242caa184682703cc2d8610db6a28015810b5d7d8af16ecff",
+  "Tensor_allocations": 0,
+  "NPU_forward": false
+}

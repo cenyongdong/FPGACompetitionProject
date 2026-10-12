@@ -1,0 +1,7 @@
+/tmp/pose-model-vpu-20261010-r2/pose_model_vpu_check
+model
+load-103
+/tmp/pose-model-vpu-20261010-r2/package
+/tmp/pose-model-vpu-20261010-r2/run-model-103/results
+--finite-check
+--allow-device-init

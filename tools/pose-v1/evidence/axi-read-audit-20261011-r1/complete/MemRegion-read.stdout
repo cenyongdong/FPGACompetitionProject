@@ -1,0 +1,25 @@
+
+/usr/lib/aarch64-linux-gnu/libicraft_xrt.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+00000000000365d0 <icraft::xrt::MemRegion::read(char*, icraft::xrt::MemPtr const&, unsigned long) const>:
+   365d0:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+   365d4:	910003fd 	mov	x29, sp
+   365d8:	a90153f3 	stp	x19, x20, [sp, #16]
+   365dc:	aa0103f3 	mov	x19, x1
+   365e0:	aa0203f4 	mov	x20, x2
+   365e4:	f90013f5 	str	x21, [sp, #32]
+   365e8:	aa0303f5 	mov	x21, x3
+   365ec:	97fff8d9 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   365f0:	f9400004 	ldr	x4, [x0]
+   365f4:	aa1503e3 	mov	x3, x21
+   365f8:	aa1403e2 	mov	x2, x20
+   365fc:	aa1303e1 	mov	x1, x19
+   36600:	a94153f3 	ldp	x19, x20, [sp, #16]
+   36604:	f94013f5 	ldr	x21, [sp, #32]
+   36608:	a8c37bfd 	ldp	x29, x30, [sp], #48
+   3660c:	f9402084 	ldr	x4, [x4, #64]
+   36610:	aa0403f0 	mov	x16, x4
+   36614:	d61f0200 	br	x16

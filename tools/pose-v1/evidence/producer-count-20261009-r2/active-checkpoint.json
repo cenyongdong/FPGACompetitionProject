@@ -1,0 +1,14 @@
+{
+  "status": "public192_counts_integrated_failure_at234_stopped_complete_evidence",
+  "user_paused": false,
+  "active_tests": false,
+  "active_stage": null,
+  "board": "/tmp/pose-producer-count-20261009-r2",
+  "package": ".local/pose-v1-producer-count/package-20261009-r2",
+  "build": ".local/pose-v1-build/mixed-20261009-producer-count-r2",
+  "program_sha256": "3f0ad06c666d40921479cdb0a428783a3f01c0b145e85af02e6f430b419f1e37",
+  "manifest_sha256": "d362ee965059b8e0b0557d81252cb11b5a4d028b540c847323e53522986adc14",
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "completion_sha256": "e4a45a6e210a782945ad23dc4e62584c9ab25c84d852b3236baae86c731f8a80"
+}

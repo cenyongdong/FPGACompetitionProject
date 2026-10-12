@@ -1,0 +1,1214 @@
+{
+  "status": "pacing_failure_preserved82_outputs_correct_not100_pass",
+  "stage_exit": 1,
+  "completed": 82,
+  "requested": 100,
+  "FP32_values_verified": 964320,
+  "all_saved_outputs_bitwise": true,
+  "all_saved_finite": true,
+  "failed_invocation": 81,
+  "failure": "Call exhausted slot; no catch-up",
+  "last_invocation": {
+    "invocation": 81,
+    "planned_ns": 183259567281900,
+    "sample_ns": 183259567357650,
+    "before_reset_ns": 183261331044960,
+    "pre_reset_gap_ms": 1763.68731,
+    "forward_us": 460.98,
+    "copy_us": [
+      91.12,
+      109.15
+    ],
+    "owned_end_ns": 183261332615380,
+    "call_to_owned_ms": 1765.25773
+  },
+  "frames": [
+    {
+      "invocation": 0,
+      "planned_ns": 183243527677940,
+      "sample_ns": 183243527678630,
+      "before_reset_ns": 183243528862000,
+      "pre_reset_gap_ms": 1.18337,
+      "forward_us": 463.98,
+      "copy_us": [
+        136.52,
+        56.86
+      ],
+      "owned_end_ns": 183243530406220,
+      "call_to_owned_ms": 2.72759
+    },
+    {
+      "invocation": 1,
+      "planned_ns": 183243725697741,
+      "sample_ns": 183243725769770,
+      "before_reset_ns": 183243726872550,
+      "pre_reset_gap_ms": 1.10278,
+      "forward_us": 311.22,
+      "copy_us": [
+        83.84,
+        56.64
+      ],
+      "owned_end_ns": 183243728234950,
+      "call_to_owned_ms": 2.46518
+    },
+    {
+      "invocation": 2,
+      "planned_ns": 183243923717543,
+      "sample_ns": 183243923792760,
+      "before_reset_ns": 183243924976980,
+      "pre_reset_gap_ms": 1.18422,
+      "forward_us": 313.79,
+      "copy_us": [
+        84.15,
+        55.52
+      ],
+      "owned_end_ns": 183243926291030,
+      "call_to_owned_ms": 2.49827
+    },
+    {
+      "invocation": 3,
+      "planned_ns": 183244121737345,
+      "sample_ns": 183244121806150,
+      "before_reset_ns": 183244122992340,
+      "pre_reset_gap_ms": 1.18619,
+      "forward_us": 312.34,
+      "copy_us": [
+        86.01,
+        55.39
+      ],
+      "owned_end_ns": 183244124350700,
+      "call_to_owned_ms": 2.54455
+    },
+    {
+      "invocation": 4,
+      "planned_ns": 183244319757147,
+      "sample_ns": 183244319823870,
+      "before_reset_ns": 183244321006930,
+      "pre_reset_gap_ms": 1.18306,
+      "forward_us": 311.35,
+      "copy_us": [
+        86.04,
+        56.44
+      ],
+      "owned_end_ns": 183244322311410,
+      "call_to_owned_ms": 2.48754
+    },
+    {
+      "invocation": 5,
+      "planned_ns": 183244517776949,
+      "sample_ns": 183244517844170,
+      "before_reset_ns": 183244519021810,
+      "pre_reset_gap_ms": 1.17764,
+      "forward_us": 309.33,
+      "copy_us": [
+        83.36,
+        55.5
+      ],
+      "owned_end_ns": 183244520349430,
+      "call_to_owned_ms": 2.50526
+    },
+    {
+      "invocation": 6,
+      "planned_ns": 183244715796751,
+      "sample_ns": 183244715863280,
+      "before_reset_ns": 183244717048040,
+      "pre_reset_gap_ms": 1.18476,
+      "forward_us": 312.56,
+      "copy_us": [
+        83.15,
+        55.05
+      ],
+      "owned_end_ns": 183244718356200,
+      "call_to_owned_ms": 2.49292
+    },
+    {
+      "invocation": 7,
+      "planned_ns": 183244913816553,
+      "sample_ns": 183244913890340,
+      "before_reset_ns": 183244915020410,
+      "pre_reset_gap_ms": 1.13007,
+      "forward_us": 310.77,
+      "copy_us": [
+        85.71,
+        55.86
+      ],
+      "owned_end_ns": 183244916362570,
+      "call_to_owned_ms": 2.47223
+    },
+    {
+      "invocation": 8,
+      "planned_ns": 183245111836355,
+      "sample_ns": 183245111903530,
+      "before_reset_ns": 183245113036030,
+      "pre_reset_gap_ms": 1.1325,
+      "forward_us": 309.12,
+      "copy_us": [
+        84.33,
+        57.45
+      ],
+      "owned_end_ns": 183245114331710,
+      "call_to_owned_ms": 2.42818
+    },
+    {
+      "invocation": 9,
+      "planned_ns": 183245309856157,
+      "sample_ns": 183245309923150,
+      "before_reset_ns": 183245311088210,
+      "pre_reset_gap_ms": 1.16506,
+      "forward_us": 313.29,
+      "copy_us": [
+        82.71,
+        57.4
+      ],
+      "owned_end_ns": 183245312429170,
+      "call_to_owned_ms": 2.50602
+    },
+    {
+      "invocation": 10,
+      "planned_ns": 183245507875959,
+      "sample_ns": 183245507944570,
+      "before_reset_ns": 183245509117700,
+      "pre_reset_gap_ms": 1.17313,
+      "forward_us": 319.12,
+      "copy_us": [
+        83.8,
+        56.28
+      ],
+      "owned_end_ns": 183245510436110,
+      "call_to_owned_ms": 2.49154
+    },
+    {
+      "invocation": 11,
+      "planned_ns": 183245705895761,
+      "sample_ns": 183245705962270,
+      "before_reset_ns": 183245707167730,
+      "pre_reset_gap_ms": 1.20546,
+      "forward_us": 317.71,
+      "copy_us": [
+        93.6,
+        55.83
+      ],
+      "owned_end_ns": 183245708527640,
+      "call_to_owned_ms": 2.56537
+    },
+    {
+      "invocation": 12,
+      "planned_ns": 183245903915563,
+      "sample_ns": 183245903992110,
+      "before_reset_ns": 183245905149700,
+      "pre_reset_gap_ms": 1.15759,
+      "forward_us": 311.04,
+      "copy_us": [
+        84.81,
+        56.03
+      ],
+      "owned_end_ns": 183245906451230,
+      "call_to_owned_ms": 2.45912
+    },
+    {
+      "invocation": 13,
+      "planned_ns": 183246101935365,
+      "sample_ns": 183246102009300,
+      "before_reset_ns": 183246103209660,
+      "pre_reset_gap_ms": 1.20036,
+      "forward_us": 312.13,
+      "copy_us": [
+        83.49,
+        55.73
+      ],
+      "owned_end_ns": 183246104545830,
+      "call_to_owned_ms": 2.53653
+    },
+    {
+      "invocation": 14,
+      "planned_ns": 183246299955167,
+      "sample_ns": 183246300022810,
+      "before_reset_ns": 183246301196640,
+      "pre_reset_gap_ms": 1.17383,
+      "forward_us": 311.39,
+      "copy_us": [
+        81.74,
+        56.11
+      ],
+      "owned_end_ns": 183246302513190,
+      "call_to_owned_ms": 2.49038
+    },
+    {
+      "invocation": 15,
+      "planned_ns": 183246497974969,
+      "sample_ns": 183246498047460,
+      "before_reset_ns": 183246499263110,
+      "pre_reset_gap_ms": 1.21565,
+      "forward_us": 309.84,
+      "copy_us": [
+        84.16,
+        55.93
+      ],
+      "owned_end_ns": 183246500609010,
+      "call_to_owned_ms": 2.56155
+    },
+    {
+      "invocation": 16,
+      "planned_ns": 183246695994771,
+      "sample_ns": 183246696061470,
+      "before_reset_ns": 183246697247570,
+      "pre_reset_gap_ms": 1.1861,
+      "forward_us": 311.92,
+      "copy_us": [
+        83.42,
+        57.1
+      ],
+      "owned_end_ns": 183246698548670,
+      "call_to_owned_ms": 2.4872
+    },
+    {
+      "invocation": 17,
+      "planned_ns": 183246894014573,
+      "sample_ns": 183246894083630,
+      "before_reset_ns": 183246895301210,
+      "pre_reset_gap_ms": 1.21758,
+      "forward_us": 313.22,
+      "copy_us": [
+        82.37,
+        55.23
+      ],
+      "owned_end_ns": 183246896627850,
+      "call_to_owned_ms": 2.54422
+    },
+    {
+      "invocation": 18,
+      "planned_ns": 183247092034375,
+      "sample_ns": 183247092107480,
+      "before_reset_ns": 183247093309200,
+      "pre_reset_gap_ms": 1.20172,
+      "forward_us": 310.64,
+      "copy_us": [
+        83.08,
+        55.81
+      ],
+      "owned_end_ns": 183247094611620,
+      "call_to_owned_ms": 2.50414
+    },
+    {
+      "invocation": 19,
+      "planned_ns": 183247290054177,
+      "sample_ns": 183247290120230,
+      "before_reset_ns": 183247291262650,
+      "pre_reset_gap_ms": 1.14242,
+      "forward_us": 307.63,
+      "copy_us": [
+        84.45,
+        56.11
+      ],
+      "owned_end_ns": 183247292588610,
+      "call_to_owned_ms": 2.46838
+    },
+    {
+      "invocation": 20,
+      "planned_ns": 183247488073979,
+      "sample_ns": 183247488142800,
+      "before_reset_ns": 183247489331220,
+      "pre_reset_gap_ms": 1.18842,
+      "forward_us": 309.87,
+      "copy_us": [
+        84.46,
+        56.62
+      ],
+      "owned_end_ns": 183247490631260,
+      "call_to_owned_ms": 2.48846
+    },
+    {
+      "invocation": 21,
+      "planned_ns": 183247686093781,
+      "sample_ns": 183247686164700,
+      "before_reset_ns": 183247687380840,
+      "pre_reset_gap_ms": 1.21614,
+      "forward_us": 312.33,
+      "copy_us": [
+        83.57,
+        57.48
+      ],
+      "owned_end_ns": 183247688715610,
+      "call_to_owned_ms": 2.55091
+    },
+    {
+      "invocation": 22,
+      "planned_ns": 183247884113583,
+      "sample_ns": 183247884620220,
+      "before_reset_ns": 183247885769350,
+      "pre_reset_gap_ms": 1.14913,
+      "forward_us": 311.82,
+      "copy_us": [
+        83.3,
+        56.25
+      ],
+      "owned_end_ns": 183247887078350,
+      "call_to_owned_ms": 2.45813
+    },
+    {
+      "invocation": 23,
+      "planned_ns": 183248082133385,
+      "sample_ns": 183248082221730,
+      "before_reset_ns": 183248083439810,
+      "pre_reset_gap_ms": 1.21808,
+      "forward_us": 333.07,
+      "copy_us": [
+        140.84,
+        63.26
+      ],
+      "owned_end_ns": 183248084903610,
+      "call_to_owned_ms": 2.68188
+    },
+    {
+      "invocation": 24,
+      "planned_ns": 183248280153187,
+      "sample_ns": 183248280230460,
+      "before_reset_ns": 183248281461620,
+      "pre_reset_gap_ms": 1.23116,
+      "forward_us": 312.58,
+      "copy_us": [
+        85.27,
+        55.87
+      ],
+      "owned_end_ns": 183248282773970,
+      "call_to_owned_ms": 2.54351
+    },
+    {
+      "invocation": 25,
+      "planned_ns": 183248478172989,
+      "sample_ns": 183248478244550,
+      "before_reset_ns": 183248479473760,
+      "pre_reset_gap_ms": 1.22921,
+      "forward_us": 310.24,
+      "copy_us": [
+        102.15,
+        64.98
+      ],
+      "owned_end_ns": 183248480825760,
+      "call_to_owned_ms": 2.58121
+    },
+    {
+      "invocation": 26,
+      "planned_ns": 183248676192791,
+      "sample_ns": 183248676269720,
+      "before_reset_ns": 183248677486230,
+      "pre_reset_gap_ms": 1.21651,
+      "forward_us": 311.96,
+      "copy_us": [
+        83.2,
+        55.26
+      ],
+      "owned_end_ns": 183248678788920,
+      "call_to_owned_ms": 2.5192
+    },
+    {
+      "invocation": 27,
+      "planned_ns": 183248874212593,
+      "sample_ns": 183248874289490,
+      "before_reset_ns": 183248876146470,
+      "pre_reset_gap_ms": 1.85698,
+      "forward_us": 350.94,
+      "copy_us": [
+        103.85,
+        65.31
+      ],
+      "owned_end_ns": 183248877664780,
+      "call_to_owned_ms": 3.37529
+    },
+    {
+      "invocation": 28,
+      "planned_ns": 183249072232395,
+      "sample_ns": 183249072315540,
+      "before_reset_ns": 183249073532430,
+      "pre_reset_gap_ms": 1.21689,
+      "forward_us": 311.21,
+      "copy_us": [
+        84.76,
+        58.06
+      ],
+      "owned_end_ns": 183249074841860,
+      "call_to_owned_ms": 2.52632
+    },
+    {
+      "invocation": 29,
+      "planned_ns": 183249270252197,
+      "sample_ns": 183249270344080,
+      "before_reset_ns": 183249313624250,
+      "pre_reset_gap_ms": 43.28017,
+      "forward_us": 313.29,
+      "copy_us": [
+        84.37,
+        56.53
+      ],
+      "owned_end_ns": 183249315059930,
+      "call_to_owned_ms": 44.71585
+    },
+    {
+      "invocation": 30,
+      "planned_ns": 183249468271999,
+      "sample_ns": 183249468339110,
+      "before_reset_ns": 183249469591540,
+      "pre_reset_gap_ms": 1.25243,
+      "forward_us": 342.46,
+      "copy_us": [
+        113.1,
+        57.31
+      ],
+      "owned_end_ns": 183249471055010,
+      "call_to_owned_ms": 2.7159
+    },
+    {
+      "invocation": 31,
+      "planned_ns": 183249666291801,
+      "sample_ns": 183249666360090,
+      "before_reset_ns": 183249667541980,
+      "pre_reset_gap_ms": 1.18189,
+      "forward_us": 392.85,
+      "copy_us": [
+        179.27,
+        75.66
+      ],
+      "owned_end_ns": 183249669249580,
+      "call_to_owned_ms": 2.88949
+    },
+    {
+      "invocation": 32,
+      "planned_ns": 183249864311603,
+      "sample_ns": 183249864383900,
+      "before_reset_ns": 183249865479530,
+      "pre_reset_gap_ms": 1.09563,
+      "forward_us": 430.42,
+      "copy_us": [
+        88.17,
+        56.48
+      ],
+      "owned_end_ns": 183249866916970,
+      "call_to_owned_ms": 2.53307
+    },
+    {
+      "invocation": 33,
+      "planned_ns": 183250062331405,
+      "sample_ns": 183250062403050,
+      "before_reset_ns": 183250063613600,
+      "pre_reset_gap_ms": 1.21055,
+      "forward_us": 310.36,
+      "copy_us": [
+        84.69,
+        55.22
+      ],
+      "owned_end_ns": 183250064952460,
+      "call_to_owned_ms": 2.54941
+    },
+    {
+      "invocation": 34,
+      "planned_ns": 183250260351207,
+      "sample_ns": 183250260418650,
+      "before_reset_ns": 183250261578580,
+      "pre_reset_gap_ms": 1.15993,
+      "forward_us": 309.88,
+      "copy_us": [
+        83.32,
+        56.18
+      ],
+      "owned_end_ns": 183250262886600,
+      "call_to_owned_ms": 2.46795
+    },
+    {
+      "invocation": 35,
+      "planned_ns": 183250458371009,
+      "sample_ns": 183250458439330,
+      "before_reset_ns": 183250459640880,
+      "pre_reset_gap_ms": 1.20155,
+      "forward_us": 311.49,
+      "copy_us": [
+        85.16,
+        55.8
+      ],
+      "owned_end_ns": 183250460987020,
+      "call_to_owned_ms": 2.54769
+    },
+    {
+      "invocation": 36,
+      "planned_ns": 183250656390811,
+      "sample_ns": 183250656457570,
+      "before_reset_ns": 183250657652520,
+      "pre_reset_gap_ms": 1.19495,
+      "forward_us": 311.27,
+      "copy_us": [
+        84.43,
+        55.94
+      ],
+      "owned_end_ns": 183250658951980,
+      "call_to_owned_ms": 2.49441
+    },
+    {
+      "invocation": 37,
+      "planned_ns": 183250854410613,
+      "sample_ns": 183250854481770,
+      "before_reset_ns": 183250855661630,
+      "pre_reset_gap_ms": 1.17986,
+      "forward_us": 362.74,
+      "copy_us": [
+        85.12,
+        55.84
+      ],
+      "owned_end_ns": 183250857029070,
+      "call_to_owned_ms": 2.5473
+    },
+    {
+      "invocation": 38,
+      "planned_ns": 183251052430415,
+      "sample_ns": 183251052507350,
+      "before_reset_ns": 183251053628500,
+      "pre_reset_gap_ms": 1.12115,
+      "forward_us": 315.3,
+      "copy_us": [
+        83.11,
+        55.84
+      ],
+      "owned_end_ns": 183251054939710,
+      "call_to_owned_ms": 2.43236
+    },
+    {
+      "invocation": 39,
+      "planned_ns": 183251250450217,
+      "sample_ns": 183251250518160,
+      "before_reset_ns": 183251251723000,
+      "pre_reset_gap_ms": 1.20484,
+      "forward_us": 336.57,
+      "copy_us": [
+        85.83,
+        54.83
+      ],
+      "owned_end_ns": 183251253045400,
+      "call_to_owned_ms": 2.52724
+    },
+    {
+      "invocation": 40,
+      "planned_ns": 183251448470019,
+      "sample_ns": 183251448537720,
+      "before_reset_ns": 183251449719980,
+      "pre_reset_gap_ms": 1.18226,
+      "forward_us": 309.71,
+      "copy_us": [
+        85.28,
+        56.37
+      ],
+      "owned_end_ns": 183251451040700,
+      "call_to_owned_ms": 2.50298
+    },
+    {
+      "invocation": 41,
+      "planned_ns": 183251646489821,
+      "sample_ns": 183251646555440,
+      "before_reset_ns": 183251647680680,
+      "pre_reset_gap_ms": 1.12524,
+      "forward_us": 334.13,
+      "copy_us": [
+        83.96,
+        55.3
+      ],
+      "owned_end_ns": 183251649018000,
+      "call_to_owned_ms": 2.46256
+    },
+    {
+      "invocation": 42,
+      "planned_ns": 183251844509623,
+      "sample_ns": 183251844582110,
+      "before_reset_ns": 183251845777710,
+      "pre_reset_gap_ms": 1.1956,
+      "forward_us": 311.59,
+      "copy_us": [
+        84.88,
+        56.45
+      ],
+      "owned_end_ns": 183251847076120,
+      "call_to_owned_ms": 2.49401
+    },
+    {
+      "invocation": 43,
+      "planned_ns": 183252042529425,
+      "sample_ns": 183252042604450,
+      "before_reset_ns": 183252043815380,
+      "pre_reset_gap_ms": 1.21093,
+      "forward_us": 337.81,
+      "copy_us": [
+        87.96,
+        58.37
+      ],
+      "owned_end_ns": 183252045171370,
+      "call_to_owned_ms": 2.56692
+    },
+    {
+      "invocation": 44,
+      "planned_ns": 183252240549227,
+      "sample_ns": 183252240619440,
+      "before_reset_ns": 183252241749620,
+      "pre_reset_gap_ms": 1.13018,
+      "forward_us": 310.28,
+      "copy_us": [
+        84.02,
+        56.62
+      ],
+      "owned_end_ns": 183252243051110,
+      "call_to_owned_ms": 2.43167
+    },
+    {
+      "invocation": 45,
+      "planned_ns": 183252438569029,
+      "sample_ns": 183252438638710,
+      "before_reset_ns": 183252439780970,
+      "pre_reset_gap_ms": 1.14226,
+      "forward_us": 335.01,
+      "copy_us": [
+        90.03,
+        56.12
+      ],
+      "owned_end_ns": 183252441112040,
+      "call_to_owned_ms": 2.47333
+    },
+    {
+      "invocation": 46,
+      "planned_ns": 183252636588831,
+      "sample_ns": 183252636657080,
+      "before_reset_ns": 183252637857640,
+      "pre_reset_gap_ms": 1.20056,
+      "forward_us": 310.11,
+      "copy_us": [
+        87.99,
+        55.38
+      ],
+      "owned_end_ns": 183252639159930,
+      "call_to_owned_ms": 2.50285
+    },
+    {
+      "invocation": 47,
+      "planned_ns": 183252834608633,
+      "sample_ns": 183252834679820,
+      "before_reset_ns": 183252835832010,
+      "pre_reset_gap_ms": 1.15219,
+      "forward_us": 434.97,
+      "copy_us": [
+        86.5,
+        55.0
+      ],
+      "owned_end_ns": 183252837292700,
+      "call_to_owned_ms": 2.61288
+    },
+    {
+      "invocation": 48,
+      "planned_ns": 183253032628435,
+      "sample_ns": 183253032713100,
+      "before_reset_ns": 183253033974020,
+      "pre_reset_gap_ms": 1.26092,
+      "forward_us": 335.7,
+      "copy_us": [
+        128.33,
+        63.79
+      ],
+      "owned_end_ns": 183253035420780,
+      "call_to_owned_ms": 2.70768
+    },
+    {
+      "invocation": 49,
+      "planned_ns": 183253230648237,
+      "sample_ns": 183253230722230,
+      "before_reset_ns": 183253231898960,
+      "pre_reset_gap_ms": 1.17673,
+      "forward_us": 330.69,
+      "copy_us": [
+        83.08,
+        56.13
+      ],
+      "owned_end_ns": 183253233227520,
+      "call_to_owned_ms": 2.50529
+    },
+    {
+      "invocation": 50,
+      "planned_ns": 183253428668039,
+      "sample_ns": 183253428739050,
+      "before_reset_ns": 183253429952430,
+      "pre_reset_gap_ms": 1.21338,
+      "forward_us": 313.14,
+      "copy_us": [
+        82.54,
+        55.24
+      ],
+      "owned_end_ns": 183253431245440,
+      "call_to_owned_ms": 2.50639
+    },
+    {
+      "invocation": 51,
+      "planned_ns": 183253626687840,
+      "sample_ns": 183253626766220,
+      "before_reset_ns": 183253627947510,
+      "pre_reset_gap_ms": 1.18129,
+      "forward_us": 332.72,
+      "copy_us": [
+        90.72,
+        55.11
+      ],
+      "owned_end_ns": 183253629288300,
+      "call_to_owned_ms": 2.52208
+    },
+    {
+      "invocation": 52,
+      "planned_ns": 183253824707642,
+      "sample_ns": 183253824782280,
+      "before_reset_ns": 183253825987840,
+      "pre_reset_gap_ms": 1.20556,
+      "forward_us": 312.39,
+      "copy_us": [
+        85.23,
+        56.94
+      ],
+      "owned_end_ns": 183253827293480,
+      "call_to_owned_ms": 2.5112
+    },
+    {
+      "invocation": 53,
+      "planned_ns": 183254022727444,
+      "sample_ns": 183254022800460,
+      "before_reset_ns": 183254023951300,
+      "pre_reset_gap_ms": 1.15084,
+      "forward_us": 332.13,
+      "copy_us": [
+        84.22,
+        56.47
+      ],
+      "owned_end_ns": 183254025288160,
+      "call_to_owned_ms": 2.4877
+    },
+    {
+      "invocation": 54,
+      "planned_ns": 183254220747246,
+      "sample_ns": 183254220814890,
+      "before_reset_ns": 183254222021330,
+      "pre_reset_gap_ms": 1.20644,
+      "forward_us": 314.63,
+      "copy_us": [
+        90.01,
+        56.12
+      ],
+      "owned_end_ns": 183254223334670,
+      "call_to_owned_ms": 2.51978
+    },
+    {
+      "invocation": 55,
+      "planned_ns": 183254418767048,
+      "sample_ns": 183254418835260,
+      "before_reset_ns": 183254466398060,
+      "pre_reset_gap_ms": 47.5628,
+      "forward_us": 451.44,
+      "copy_us": [
+        87.22,
+        58.7
+      ],
+      "owned_end_ns": 183254467856970,
+      "call_to_owned_ms": 49.02171
+    },
+    {
+      "invocation": 56,
+      "planned_ns": 183254616786850,
+      "sample_ns": 183254616856040,
+      "before_reset_ns": 183254617988420,
+      "pre_reset_gap_ms": 1.13238,
+      "forward_us": 308.53,
+      "copy_us": [
+        83.63,
+        56.98
+      ],
+      "owned_end_ns": 183254619291320,
+      "call_to_owned_ms": 2.43528
+    },
+    {
+      "invocation": 57,
+      "planned_ns": 183254814806652,
+      "sample_ns": 183254814872600,
+      "before_reset_ns": 183254816189030,
+      "pre_reset_gap_ms": 1.31643,
+      "forward_us": 313.63,
+      "copy_us": [
+        82.38,
+        55.68
+      ],
+      "owned_end_ns": 183254817494800,
+      "call_to_owned_ms": 2.6222
+    },
+    {
+      "invocation": 58,
+      "planned_ns": 183255012826454,
+      "sample_ns": 183255012900640,
+      "before_reset_ns": 183255014089190,
+      "pre_reset_gap_ms": 1.18855,
+      "forward_us": 318.89,
+      "copy_us": [
+        84.28,
+        56.02
+      ],
+      "owned_end_ns": 183255015409660,
+      "call_to_owned_ms": 2.50902
+    },
+    {
+      "invocation": 59,
+      "planned_ns": 183255210846256,
+      "sample_ns": 183255210914770,
+      "before_reset_ns": 183255212142090,
+      "pre_reset_gap_ms": 1.22732,
+      "forward_us": 313.37,
+      "copy_us": [
+        86.92,
+        54.93
+      ],
+      "owned_end_ns": 183255213443330,
+      "call_to_owned_ms": 2.52856
+    },
+    {
+      "invocation": 60,
+      "planned_ns": 183255408866058,
+      "sample_ns": 183255408934420,
+      "before_reset_ns": 183255410141650,
+      "pre_reset_gap_ms": 1.20723,
+      "forward_us": 312.43,
+      "copy_us": [
+        84.88,
+        55.7
+      ],
+      "owned_end_ns": 183255411449730,
+      "call_to_owned_ms": 2.51531
+    },
+    {
+      "invocation": 61,
+      "planned_ns": 183255606885860,
+      "sample_ns": 183255606953030,
+      "before_reset_ns": 183255608189120,
+      "pre_reset_gap_ms": 1.23609,
+      "forward_us": 310.12,
+      "copy_us": [
+        90.95,
+        55.83
+      ],
+      "owned_end_ns": 183255609493530,
+      "call_to_owned_ms": 2.5405
+    },
+    {
+      "invocation": 62,
+      "planned_ns": 183255804905662,
+      "sample_ns": 183255804974630,
+      "before_reset_ns": 183255806109150,
+      "pre_reset_gap_ms": 1.13452,
+      "forward_us": 313.07,
+      "copy_us": [
+        83.57,
+        55.68
+      ],
+      "owned_end_ns": 183255807407280,
+      "call_to_owned_ms": 2.43265
+    },
+    {
+      "invocation": 63,
+      "planned_ns": 183256002925464,
+      "sample_ns": 183256002996940,
+      "before_reset_ns": 183256004196700,
+      "pre_reset_gap_ms": 1.19976,
+      "forward_us": 313.41,
+      "copy_us": [
+        88.39,
+        56.8
+      ],
+      "owned_end_ns": 183256005527170,
+      "call_to_owned_ms": 2.53023
+    },
+    {
+      "invocation": 64,
+      "planned_ns": 183256200945266,
+      "sample_ns": 183256201016040,
+      "before_reset_ns": 183256202225190,
+      "pre_reset_gap_ms": 1.20915,
+      "forward_us": 312.92,
+      "copy_us": [
+        84.56,
+        56.13
+      ],
+      "owned_end_ns": 183256203527980,
+      "call_to_owned_ms": 2.51194
+    },
+    {
+      "invocation": 65,
+      "planned_ns": 183256398965068,
+      "sample_ns": 183256399033640,
+      "before_reset_ns": 183256400279310,
+      "pre_reset_gap_ms": 1.24567,
+      "forward_us": 310.16,
+      "copy_us": [
+        82.19,
+        56.62
+      ],
+      "owned_end_ns": 183256401574610,
+      "call_to_owned_ms": 2.54097
+    },
+    {
+      "invocation": 66,
+      "planned_ns": 183256596984870,
+      "sample_ns": 183256597052030,
+      "before_reset_ns": 183256598241860,
+      "pre_reset_gap_ms": 1.18983,
+      "forward_us": 313.55,
+      "copy_us": [
+        83.03,
+        54.93
+      ],
+      "owned_end_ns": 183256599552960,
+      "call_to_owned_ms": 2.50093
+    },
+    {
+      "invocation": 67,
+      "planned_ns": 183256795004672,
+      "sample_ns": 183256795078240,
+      "before_reset_ns": 183256796478670,
+      "pre_reset_gap_ms": 1.40043,
+      "forward_us": 312.15,
+      "copy_us": [
+        85.02,
+        55.38
+      ],
+      "owned_end_ns": 183256797784940,
+      "call_to_owned_ms": 2.7067
+    },
+    {
+      "invocation": 68,
+      "planned_ns": 183256993024474,
+      "sample_ns": 183256993094600,
+      "before_reset_ns": 183256994297270,
+      "pre_reset_gap_ms": 1.20267,
+      "forward_us": 331.73,
+      "copy_us": [
+        99.7,
+        59.29
+      ],
+      "owned_end_ns": 183256995706390,
+      "call_to_owned_ms": 2.61179
+    },
+    {
+      "invocation": 69,
+      "planned_ns": 183257191044276,
+      "sample_ns": 183257191114900,
+      "before_reset_ns": 183257192360250,
+      "pre_reset_gap_ms": 1.24535,
+      "forward_us": 309.57,
+      "copy_us": [
+        84.33,
+        58.77
+      ],
+      "owned_end_ns": 183257193677630,
+      "call_to_owned_ms": 2.56273
+    },
+    {
+      "invocation": 70,
+      "planned_ns": 183257389064078,
+      "sample_ns": 183257389132630,
+      "before_reset_ns": 183257390331880,
+      "pre_reset_gap_ms": 1.19925,
+      "forward_us": 315.29,
+      "copy_us": [
+        83.34,
+        55.76
+      ],
+      "owned_end_ns": 183257391644950,
+      "call_to_owned_ms": 2.51232
+    },
+    {
+      "invocation": 71,
+      "planned_ns": 183257587083880,
+      "sample_ns": 183257587150620,
+      "before_reset_ns": 183257588333240,
+      "pre_reset_gap_ms": 1.18262,
+      "forward_us": 313.04,
+      "copy_us": [
+        86.04,
+        55.25
+      ],
+      "owned_end_ns": 183257589639630,
+      "call_to_owned_ms": 2.48901
+    },
+    {
+      "invocation": 72,
+      "planned_ns": 183257785103682,
+      "sample_ns": 183257785171800,
+      "before_reset_ns": 183257786394530,
+      "pre_reset_gap_ms": 1.22273,
+      "forward_us": 314.34,
+      "copy_us": [
+        85.38,
+        56.52
+      ],
+      "owned_end_ns": 183257787694590,
+      "call_to_owned_ms": 2.52279
+    },
+    {
+      "invocation": 73,
+      "planned_ns": 183257983123484,
+      "sample_ns": 183257984071050,
+      "before_reset_ns": 183257985248890,
+      "pre_reset_gap_ms": 1.17784,
+      "forward_us": 324.19,
+      "copy_us": [
+        87.02,
+        90.31
+      ],
+      "owned_end_ns": 183257988177950,
+      "call_to_owned_ms": 4.1069
+    },
+    {
+      "invocation": 74,
+      "planned_ns": 183258181143286,
+      "sample_ns": 183258181224490,
+      "before_reset_ns": 183258182472410,
+      "pre_reset_gap_ms": 1.24792,
+      "forward_us": 332.57,
+      "copy_us": [
+        91.95,
+        62.76
+      ],
+      "owned_end_ns": 183258183874590,
+      "call_to_owned_ms": 2.6501
+    },
+    {
+      "invocation": 75,
+      "planned_ns": 183258379163088,
+      "sample_ns": 183258379239070,
+      "before_reset_ns": 183258380481010,
+      "pre_reset_gap_ms": 1.24194,
+      "forward_us": 312.04,
+      "copy_us": [
+        85.37,
+        55.39
+      ],
+      "owned_end_ns": 183258381785530,
+      "call_to_owned_ms": 2.54646
+    },
+    {
+      "invocation": 76,
+      "planned_ns": 183258577182890,
+      "sample_ns": 183258577255550,
+      "before_reset_ns": 183258578464040,
+      "pre_reset_gap_ms": 1.20849,
+      "forward_us": 331.02,
+      "copy_us": [
+        92.01,
+        62.82
+      ],
+      "owned_end_ns": 183258579854020,
+      "call_to_owned_ms": 2.59847
+    },
+    {
+      "invocation": 77,
+      "planned_ns": 183258775202692,
+      "sample_ns": 183258775333130,
+      "before_reset_ns": 183258776556900,
+      "pre_reset_gap_ms": 1.22377,
+      "forward_us": 327.2,
+      "copy_us": [
+        88.79,
+        57.05
+      ],
+      "owned_end_ns": 183258777879640,
+      "call_to_owned_ms": 2.54651
+    },
+    {
+      "invocation": 78,
+      "planned_ns": 183258973222494,
+      "sample_ns": 183258973302750,
+      "before_reset_ns": 183258974531170,
+      "pre_reset_gap_ms": 1.22842,
+      "forward_us": 315.06,
+      "copy_us": [
+        82.42,
+        55.34
+      ],
+      "owned_end_ns": 183258975825230,
+      "call_to_owned_ms": 2.52248
+    },
+    {
+      "invocation": 79,
+      "planned_ns": 183259171242296,
+      "sample_ns": 183259171316120,
+      "before_reset_ns": 183259172610860,
+      "pre_reset_gap_ms": 1.29474,
+      "forward_us": 318.32,
+      "copy_us": [
+        90.07,
+        55.97
+      ],
+      "owned_end_ns": 183259173939830,
+      "call_to_owned_ms": 2.62371
+    },
+    {
+      "invocation": 80,
+      "planned_ns": 183259369262098,
+      "sample_ns": 183259369353870,
+      "before_reset_ns": 183259370600170,
+      "pre_reset_gap_ms": 1.2463,
+      "forward_us": 313.67,
+      "copy_us": [
+        84.21,
+        55.65
+      ],
+      "owned_end_ns": 183259371896400,
+      "call_to_owned_ms": 2.54253
+    },
+    {
+      "invocation": 81,
+      "planned_ns": 183259567281900,
+      "sample_ns": 183259567357650,
+      "before_reset_ns": 183261331044960,
+      "pre_reset_gap_ms": 1763.68731,
+      "forward_us": 460.98,
+      "copy_us": [
+        91.12,
+        109.15
+      ],
+      "owned_end_ns": 183261332615380,
+      "call_to_owned_ms": 1765.25773
+    }
+  ],
+  "unobserved_pre_reset_components": [
+    "directory/input/identity saves",
+    "SDK Host input validation/allocation/write",
+    "thread scheduling"
+  ],
+  "ioctl_records": 1628,
+  "largest_ioctl_gap_ns": 1655394530,
+  "largest_ioctl_gap_between_ordinals": [
+    1620,
+    1621
+  ],
+  "largest_ioctl_call_ns": 1671100,
+  "vmstat_delta": {
+    "allocstall_dma32": 0,
+    "allocstall_normal": 0,
+    "allocstall_movable": 0,
+    "pgmajfault": 17,
+    "pgsteal_kswapd": 0,
+    "pgsteal_direct": 0,
+    "pgscan_kswapd": 0,
+    "pgscan_direct": 0,
+    "pgscan_direct_throttle": 0,
+    "oom_kill": 0,
+    "compact_migrate_scanned": 0,
+    "compact_free_scanned": 0,
+    "compact_isolated": 0,
+    "compact_stall": 0,
+    "compact_fail": 0,
+    "compact_success": 0,
+    "compact_daemon_wake": 0,
+    "compact_daemon_migrate_scanned": 0,
+    "compact_daemon_free_scanned": 0
+  },
+  "aborted_streamoff_successes": 2,
+  "SDK_chunks_after_release": 0,
+  "stage_kernel_unchanged": true,
+  "no_normal_drain_LAST_pass": true,
+  "root_cause_resolved": false,
+  "no_hardware_retry": true
+}

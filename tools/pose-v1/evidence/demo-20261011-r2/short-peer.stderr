@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\cenyongdong\.codex\worktrees\dea3\FPGACompetitionProject\software\demo\host\run.py", line 31, in <module>
+    if __name__=='__main__':main()
+  File "C:\Users\cenyongdong\.codex\worktrees\dea3\FPGACompetitionProject\software\demo\host\run.py", line 24, in main
+    sent=send(a.board,a.input_port,a.hz,catalog,payloads,a.output,viewer)
+  File "C:\Users\cenyongdong\.codex\worktrees\dea3\FPGACompetitionProject\software\demo\host\replay.py", line 33, in send
+    if viewer.poll() is not None:raise RuntimeError('Viewer exited before first decoded RTSP frame')
+RuntimeError: Viewer exited before first decoded RTSP frame

@@ -1,0 +1,93 @@
+    PID COMMAND         COMMAND
+      1 systemd         /sbin/init
+      2 kthreadd        [kthreadd]
+      3 rcu_gp          [rcu_gp]
+      4 rcu_par_gp      [rcu_par_gp]
+      8 mm_percpu_wq    [mm_percpu_wq]
+      9 ksoftirqd/0     [ksoftirqd/0]
+     10 rcu_sched       [rcu_sched]
+     11 migration/0     [migration/0]
+     12 cpuhp/0         [cpuhp/0]
+     13 cpuhp/1         [cpuhp/1]
+     14 migration/1     [migration/1]
+     15 ksoftirqd/1     [ksoftirqd/1]
+     18 cpuhp/2         [cpuhp/2]
+     19 migration/2     [migration/2]
+     20 ksoftirqd/2     [ksoftirqd/2]
+     23 cpuhp/3         [cpuhp/3]
+     24 migration/3     [migration/3]
+     25 ksoftirqd/3     [ksoftirqd/3]
+     28 kdevtmpfs       [kdevtmpfs]
+     32 kauditd         [kauditd]
+     33 oom_reaper      [oom_reaper]
+     34 writeback       [writeback]
+     35 kcompactd0      [kcompactd0]
+     36 khugepaged      [khugepaged]
+     54 kblockd         [kblockd]
+     55 edac-poller     [edac-poller]
+     56 watchdogd       [watchdogd]
+     57 rpciod          [rpciod]
+     58 kworker/u9:0-kb [kworker/u9:0-kbase_pm_poweroff_wait]
+     59 xprtiod         [xprtiod]
+     60 kswapd0         [kswapd0]
+     61 ecryptfs-kthrea [ecryptfs-kthrea]
+     62 nfsiod          [nfsiod]
+     63 spi3            [spi3]
+     64 stmmac_wq       [stmmac_wq]
+     69 kpktgend_0      [kpktgend_0]
+     70 kpktgend_1      [kpktgend_1]
+     71 kpktgend_2      [kpktgend_2]
+     72 kpktgend_3      [kpktgend_3]
+     73 ipv6_addrconf   [ipv6_addrconf]
+     74 mmc_complete    [mmc_complete]
+     76 kworker/1:1H-kb [kworker/1:1H-kblockd]
+     79 jbd2/mmcblk0p2- [jbd2/mmcblk0p2-]
+     80 ext4-rsv-conver [ext4-rsv-conver]
+    101 systemd-journal /lib/systemd/systemd-journald
+    113 kbase_job_fault [kbase_job_fault]
+    114 kworker/u9:1    [kworker/u9:1]
+    118 mvx_securevideo [mvx_securevideo]
+    119 fw_cache        [fw_cache]
+    120 mvx_sched       [mvx_sched]
+    125 systemd-timesyn /lib/systemd/systemd-timesyncd
+    129 cron            /usr/sbin/cron -f
+    130 dbus-daemon     /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    136 rsyslogd        /usr/sbin/rsyslogd -n -iNONE
+    137 systemd-logind  /lib/systemd/systemd-logind
+    151 systemd-resolve /lib/systemd/systemd-resolved
+    152 unattended-upgr /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    187 sshd            sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    188 agetty          /sbin/agetty -o -p -- \u --noclear tty1 linux
+    189 agetty          /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+    190 sshd            sshd: root@pts/0
+    192 sshd            sshd: root@notty
+    195 systemd         /lib/systemd/systemd --user
+    196 (sd-pam)        (sd-pam)
+    221 bash            -bash
+    222 bash            bash -c while true; do sleep 1;head -v -n 8 /proc/meminfo; head -v -n 2 /proc/stat /proc/version /proc/uptime /proc/loadavg /proc/sys/fs/file-nr /proc/sys/kernel/hostname; tail -v -n 32 /proc/net/dev;echo '==> /proc/df <==';df -l;echo '==> /proc/who <==';who;echo '==> /proc/end <==';echo '##Moba##'; done
+    226 sftp-server     /usr/lib/openssh/sftp-server
+ 214203 kworker/0:2-mm_ [kworker/0:2-mm_percpu_wq]
+ 555456 kworker/2:0H-kb [kworker/2:0H-kblockd]
+ 612477 kworker/1:0-mm_ [kworker/1:0-mm_percpu_wq]
+ 629012 kworker/3:2H-kb [kworker/3:2H-kblockd]
+ 651534 kworker/2:2-mm_ [kworker/2:2-mm_percpu_wq]
+ 654799 kworker/u8:1-ev [kworker/u8:1-events_unbound]
+ 700755 kworker/0:1H-mm [kworker/0:1H-mmc_complete]
+ 703307 kworker/2:1-cgr [kworker/2:1-cgroup_destroy]
+ 719510 kworker/3:2-mm_ [kworker/3:2-mm_percpu_wq]
+ 719960 kworker/0:1     [kworker/0:1]
+ 722991 kworker/1:2-eve [kworker/1:2-events]
+ 723364 kworker/0:2H    [kworker/0:2H]
+ 724493 kworker/3:1H    [kworker/3:1H]
+ 724495 kworker/u8:3-fl [kworker/u8:3-flush-179:0]
+ 724863 kworker/1:2H-kb [kworker/1:2H-kblockd]
+ 724881 kworker/2:1H    [kworker/2:1H]
+ 725821 kworker/3:1-mm_ [kworker/3:1-mm_percpu_wq]
+ 726843 kworker/1:0H    [kworker/1:0H]
+ 726886 kworker/1:1-eve [kworker/1:1-events]
+ 727841 kworker/3:0-mm_ [kworker/3:0-mm_percpu_wq]
+ 728702 sshd            sshd: root@notty
+ 728714 bash            bash -c cd /tmp/pose-combined-read-20261010-r1 || exit 1 python3 -c "import json;g=json.load(open('gates/load-103.acceptance.json'));assert g['stage']=='load-103' and g['complete_composition_content_passed'] and g['consumed']==103 and g['input_fps']==2" || exit 1 test ! -e fps5 || exit 1 mkdir fps5 fps5/gates || exit 1 cp run-combined-read.sh board_application_preflight.py compact_typed_before_vpu.py pose_combined_read_check pose_display_worker build-result.json fps5/ || exit 1 cp gates/process-three.acceptance.json gates/load-103.acceptance.json fps5/gates/ || exit 1 ln -s ../package fps5/package || exit 1 cd fps5 || exit 1 python3 compact_typed_before_vpu.py resource-five || exit 1 sh run-combined-read.sh load-103 code=$? printf '%s\n' "$code" > five.controller.exit.txt test -d run-load-103 || exit 1 tar -cf five.tar run-load-103 resource-five gates/load-103.acceptance.json sha256sum five.tar
+ 728720 python3         python3 compact_typed_before_vpu.py resource-five
+ 728726 sleep           sleep 1
+ 728730 ps              ps -eo pid,comm,args

@@ -1,0 +1,81 @@
+{
+  "status": "owned_read_phase_reviewed",
+  "kind": "runtime",
+  "rows": 4,
+  "owned_frames": 4,
+  "results": [
+    {
+      "invocation": 0,
+      "frame": 100000,
+      "immediate_to_CPU_byte_changes": 0,
+      "case": "S11_01_308",
+      "immediate_vs_gold": {
+        "changed_FP32": 0,
+        "nonfinite": 0,
+        "noninteger": 0,
+        "bitwise": true
+      },
+      "CPU_vs_gold": {
+        "changed_FP32": 0,
+        "nonfinite": 0,
+        "noninteger": 0,
+        "bitwise": true
+      }
+    },
+    {
+      "invocation": 1,
+      "frame": 100001,
+      "immediate_to_CPU_byte_changes": 0,
+      "case": "S11_01_309",
+      "immediate_vs_gold": {
+        "changed_FP32": 0,
+        "nonfinite": 0,
+        "noninteger": 0,
+        "bitwise": true
+      },
+      "CPU_vs_gold": {
+        "changed_FP32": 0,
+        "nonfinite": 0,
+        "noninteger": 0,
+        "bitwise": true
+      }
+    },
+    {
+      "invocation": 2,
+      "frame": 100002,
+      "immediate_to_CPU_byte_changes": 0,
+      "case": "S11_01_310",
+      "immediate_vs_gold": {
+        "changed_FP32": 0,
+        "nonfinite": 0,
+        "noninteger": 0,
+        "bitwise": true
+      },
+      "CPU_vs_gold": {
+        "changed_FP32": 0,
+        "nonfinite": 0,
+        "noninteger": 0,
+        "bitwise": true
+      }
+    },
+    {
+      "invocation": 3,
+      "frame": 100003,
+      "immediate_to_CPU_byte_changes": 0,
+      "case": "S11_01_308",
+      "immediate_vs_gold": {
+        "changed_FP32": 0,
+        "nonfinite": 0,
+        "noninteger": 0,
+        "bitwise": true
+      },
+      "CPU_vs_gold": {
+        "changed_FP32": 0,
+        "nonfinite": 0,
+        "noninteger": 0,
+        "bitwise": true
+      }
+    }
+  ],
+  "root_cause_proven": false
+}

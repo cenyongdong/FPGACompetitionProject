@@ -1,0 +1,233 @@
+
+/usr/lib/aarch64-linux-gnu/libicraft_xrt.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000006bf90 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const>:
+   6bf90:	d10c83ff 	sub	sp, sp, #0x320
+   6bf94:	a9007bfd 	stp	x29, x30, [sp]
+   6bf98:	910003fd 	mov	x29, sp
+   6bf9c:	a9025bf5 	stp	x21, x22, [sp, #32]
+   6bfa0:	90000355 	adrp	x21, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   6bfa4:	aa0103f6 	mov	x22, x1
+   6bfa8:	f94516a4 	ldr	x4, [x21, #2600]
+   6bfac:	a90153f3 	stp	x19, x20, [sp, #16]
+   6bfb0:	aa0203f3 	mov	x19, x2
+   6bfb4:	f9400081 	ldr	x1, [x4]
+   6bfb8:	f9018fe1 	str	x1, [sp, #792]
+   6bfbc:	d2800001 	mov	x1, #0x0                   	// #0
+   6bfc0:	aa0303f4 	mov	x20, x3
+   6bfc4:	a90363f7 	stp	x23, x24, [sp, #48]
+   6bfc8:	aa0003f7 	mov	x23, x0
+   6bfcc:	a9046bf9 	stp	x25, x26, [sp, #64]
+   6bfd0:	a90573fb 	stp	x27, x28, [sp, #80]
+   6bfd4:	97ff225f 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   6bfd8:	f9401001 	ldr	x1, [x0, #32]
+   6bfdc:	f90043e1 	str	x1, [sp, #128]
+   6bfe0:	3940a000 	ldrb	w0, [x0, #40]
+   6bfe4:	390223e0 	strb	w0, [sp, #136]
+   6bfe8:	f100003f 	cmp	x1, #0x0
+   6bfec:	7a401800 	ccmp	w0, #0x0, #0x0, ne  // ne = any
+   6bff0:	54001580 	b.eq	6c2a0 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x310>  // b.none
+   6bff4:	aa1703e0 	mov	x0, x23
+   6bff8:	97ff2256 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   6bffc:	aa0003e1 	mov	x1, x0
+   6c000:	aa1703e0 	mov	x0, x23
+   6c004:	f940183a 	ldr	x26, [x1, #48]
+   6c008:	97ff2252 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   6c00c:	91004000 	add	x0, x0, #0x10
+   6c010:	97ff1c60 	bl	33190 <icraft::xir::DataType::bytes() const@plt>
+   6c014:	aa0003f8 	mov	x24, x0
+   6c018:	aa1703e0 	mov	x0, x23
+   6c01c:	97ff1a7d 	bl	32a10 <icraft::xrt::Tensor::hasData() const@plt>
+   6c020:	72001c1f 	tst	w0, #0xff
+   6c024:	540010c0 	b.eq	6c23c <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x2ac>  // b.none
+   6c028:	8b140260 	add	x0, x19, x20
+   6c02c:	eb18001f 	cmp	x0, x24
+   6c030:	54000d49 	b.ls	6c1d8 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x248>  // b.plast
+   6c034:	52855f61 	mov	w1, #0x2afb                	// #11003
+   6c038:	52800fc0 	mov	w0, #0x7e                  	// #126
+   6c03c:	97ffeaf9 	bl	66c20 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.2]>
+   6c040:	97ff18ec 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   6c044:	f00001c1 	adrp	x1, a7000 <fmt::v8::detail::dragonbox::divisible_by_power_of_5(unsigned long, int)::divtest_table+0x10>
+   6c048:	d28007c2 	mov	x2, #0x3e                  	// #62
+   6c04c:	913a6021 	add	x1, x1, #0xe98
+   6c050:	f90033e0 	str	x0, [sp, #96]
+   6c054:	97ff1e33 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   6c058:	910243f9 	add	x25, sp, #0x90
+   6c05c:	d2800824 	mov	x4, #0x41                  	// #65
+   6c060:	91004323 	add	x3, x25, #0x10
+   6c064:	9101e3e0 	add	x0, sp, #0x78
+   6c068:	aa0003e1 	mov	x1, x0
+   6c06c:	d2800002 	mov	x2, #0x0                   	// #0
+   6c070:	aa1903e0 	mov	x0, x25
+   6c074:	f90037e1 	str	x1, [sp, #104]
+   6c078:	f9003fe4 	str	x4, [sp, #120]
+   6c07c:	f9004be3 	str	x3, [sp, #144]
+   6c080:	97ff21c0 	bl	34780 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long)@plt>
+   6c084:	f00001c2 	adrp	x2, a7000 <fmt::v8::detail::dragonbox::divisible_by_power_of_5(unsigned long, int)::divtest_table+0x10>
+   6c088:	913b6042 	add	x2, x2, #0xed8
+   6c08c:	aa0003e1 	mov	x1, x0
+   6c090:	f9004be1 	str	x1, [sp, #144]
+   6c094:	f9403fe0 	ldr	x0, [sp, #120]
+   6c098:	f90053e0 	str	x0, [sp, #160]
+   6c09c:	a9401444 	ldp	x4, x5, [x2]
+   6c0a0:	a9001424 	stp	x4, x5, [x1]
+   6c0a4:	39410043 	ldrb	w3, [x2, #64]
+   6c0a8:	a9411444 	ldp	x4, x5, [x2, #16]
+   6c0ac:	a9011424 	stp	x4, x5, [x1, #16]
+   6c0b0:	910403f7 	add	x23, sp, #0x100
+   6c0b4:	a9421444 	ldp	x4, x5, [x2, #32]
+   6c0b8:	a9021424 	stp	x4, x5, [x1, #32]
+   6c0bc:	910082e8 	add	x8, x23, #0x20
+   6c0c0:	a9431444 	ldp	x4, x5, [x2, #48]
+   6c0c4:	a9031424 	stp	x4, x5, [x1, #48]
+   6c0c8:	d2803e87 	mov	x7, #0x1f4                 	// #500
+   6c0cc:	39010023 	strb	w3, [x1, #64]
+   6c0d0:	f0000323 	adrp	x3, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   6c0d4:	f9404be2 	ldr	x2, [sp, #144]
+   6c0d8:	aa1703e0 	mov	x0, x23
+   6c0dc:	f9403fe1 	ldr	x1, [sp, #120]
+   6c0e0:	f9004fe1 	str	x1, [sp, #152]
+   6c0e4:	f944ec66 	ldr	x6, [x3, #2520]
+   6c0e8:	910343e4 	add	x4, sp, #0xd0
+   6c0ec:	3821685f 	strb	wzr, [x2, x1]
+   6c0f0:	d2808883 	mov	x3, #0x444                 	// #1092
+   6c0f4:	910040c6 	add	x6, x6, #0x10
+   6c0f8:	d2800005 	mov	x5, #0x0                   	// #0
+   6c0fc:	a9490be1 	ldp	x1, x2, [sp, #144]
+   6c100:	f9006bf3 	str	x19, [sp, #208]
+   6c104:	f90073f4 	str	x20, [sp, #224]
+   6c108:	f9007bf8 	str	x24, [sp, #240]
+   6c10c:	a91023e6 	stp	x6, x8, [sp, #256]
+   6c110:	a9111fff 	stp	xzr, x7, [sp, #272]
+   6c114:	97ff21c3 	bl	34820 <void fmt::v8::detail::vformat_to<char>(fmt::v8::detail::buffer<char>&, fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<std::conditional<std::is_same<fmt::v8::type_identity<char>::type, char>::value, fmt::v8::appender, std::back_insert_iterator<fmt::v8::detail::buffer<fmt::v8::type_identity<char>::type> > >::type, fmt::v8::type_identity<char>::type> >, fmt::v8::detail::locale_ref)@plt>
+   6c118:	9102c3fc 	add	x28, sp, #0xb0
+   6c11c:	a950e3fb 	ldp	x27, x24, [sp, #264]
+   6c120:	91004380 	add	x0, x28, #0x10
+   6c124:	f9005be0 	str	x0, [sp, #176]
+   6c128:	ab18037f 	cmn	x27, x24
+   6c12c:	fa401b60 	ccmp	x27, #0x0, #0x0, ne  // ne = any
+   6c130:	54000e40 	b.eq	6c2f8 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x368>  // b.none
+   6c134:	f9003ff8 	str	x24, [sp, #120]
+   6c138:	f1003f1f 	cmp	x24, #0xf
+   6c13c:	54000c48 	b.hi	6c2c4 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x334>  // b.pmore
+   6c140:	f100071f 	cmp	x24, #0x1
+   6c144:	54000ba1 	b.ne	6c2b8 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x328>  // b.any
+   6c148:	39400362 	ldrb	w2, [x27]
+   6c14c:	aa0003e1 	mov	x1, x0
+   6c150:	390303e2 	strb	w2, [sp, #192]
+   6c154:	f0000320 	adrp	x0, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   6c158:	f9005ff8 	str	x24, [sp, #184]
+   6c15c:	3838683f 	strb	wzr, [x1, x24]
+   6c160:	910082e1 	add	x1, x23, #0x20
+   6c164:	f944ec02 	ldr	x2, [x0, #2520]
+   6c168:	f94087e0 	ldr	x0, [sp, #264]
+   6c16c:	91004042 	add	x2, x2, #0x10
+   6c170:	f90083e2 	str	x2, [sp, #256]
+   6c174:	eb01001f 	cmp	x0, x1
+   6c178:	54000040 	b.eq	6c180 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x1f0>  // b.none
+   6c17c:	97ff1cf5 	bl	33550 <operator delete(void*)@plt>
+   6c180:	a94b0be1 	ldp	x1, x2, [sp, #176]
+   6c184:	f94033e0 	ldr	x0, [sp, #96]
+   6c188:	97ff1de6 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   6c18c:	f9405be0 	ldr	x0, [sp, #176]
+   6c190:	91004381 	add	x1, x28, #0x10
+   6c194:	eb01001f 	cmp	x0, x1
+   6c198:	54000040 	b.eq	6c1a0 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x210>  // b.none
+   6c19c:	97ff1ced 	bl	33550 <operator delete(void*)@plt>
+   6c1a0:	f9404be0 	ldr	x0, [sp, #144]
+   6c1a4:	91004339 	add	x25, x25, #0x10
+   6c1a8:	eb19001f 	cmp	x0, x25
+   6c1ac:	54000040 	b.eq	6c1b4 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x224>  // b.none
+   6c1b0:	97ff1ce8 	bl	33550 <operator delete(void*)@plt>
+   6c1b4:	97ff188f 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   6c1b8:	aa1703e8 	mov	x8, x23
+   6c1bc:	97ff1b81 	bl	32fc0 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   6c1c0:	f0000321 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   6c1c4:	aa1703e0 	mov	x0, x23
+   6c1c8:	f9453021 	ldr	x1, [x1, #2656]
+   6c1cc:	91004021 	add	x1, x1, #0x10
+   6c1d0:	f90083e1 	str	x1, [sp, #256]
+   6c1d4:	97ff1da7 	bl	33870 <std::runtime_error::~runtime_error()@plt>
+   6c1d8:	aa1403e3 	mov	x3, x20
+   6c1dc:	8b130342 	add	x2, x26, x19
+   6c1e0:	aa1603e1 	mov	x1, x22
+   6c1e4:	910203e0 	add	x0, sp, #0x80
+   6c1e8:	97ff214a 	bl	34710 <icraft::xrt::MemChunk::read(char*, unsigned long, unsigned long) const@plt>
+   6c1ec:	f94043e0 	ldr	x0, [sp, #128]
+   6c1f0:	b4000060 	cbz	x0, 6c1fc <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x26c>
+   6c1f4:	394223e1 	ldrb	w1, [sp, #136]
+   6c1f8:	340001e1 	cbz	w1, 6c234 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x2a4>
+   6c1fc:	f94516b5 	ldr	x21, [x21, #2600]
+   6c200:	f9418fe0 	ldr	x0, [sp, #792]
+   6c204:	f94002a1 	ldr	x1, [x21]
+   6c208:	eb010000 	subs	x0, x0, x1
+   6c20c:	d2800001 	mov	x1, #0x0                   	// #0
+   6c210:	540007a1 	b.ne	6c304 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x374>  // b.any
+   6c214:	a9407bfd 	ldp	x29, x30, [sp]
+   6c218:	a94153f3 	ldp	x19, x20, [sp, #16]
+   6c21c:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   6c220:	a94363f7 	ldp	x23, x24, [sp, #48]
+   6c224:	a9446bf9 	ldp	x25, x26, [sp, #64]
+   6c228:	a94573fb 	ldp	x27, x28, [sp, #80]
+   6c22c:	910c83ff 	add	sp, sp, #0x320
+   6c230:	d65f03c0 	ret
+   6c234:	97ff1abb 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   6c238:	17fffff1 	b	6c1fc <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x26c>
+   6c23c:	52856081 	mov	w1, #0x2b04                	// #11012
+   6c240:	52800fa0 	mov	w0, #0x7d                  	// #125
+   6c244:	97ffea77 	bl	66c20 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.2]>
+   6c248:	97ff186a 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   6c24c:	f00001c1 	adrp	x1, a7000 <fmt::v8::detail::dragonbox::divisible_by_power_of_5(unsigned long, int)::divtest_table+0x10>
+   6c250:	aa0003f7 	mov	x23, x0
+   6c254:	9138e021 	add	x1, x1, #0xe38
+   6c258:	d2800462 	mov	x2, #0x23                  	// #35
+   6c25c:	97ff1db1 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   6c260:	f00001c1 	adrp	x1, a7000 <fmt::v8::detail::dragonbox::divisible_by_power_of_5(unsigned long, int)::divtest_table+0x10>
+   6c264:	aa1703e0 	mov	x0, x23
+   6c268:	91398021 	add	x1, x1, #0xe60
+   6c26c:	d28006e2 	mov	x2, #0x37                  	// #55
+   6c270:	97ff1dac 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   6c274:	97ff185f 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   6c278:	910403f7 	add	x23, sp, #0x100
+   6c27c:	aa1703e8 	mov	x8, x23
+   6c280:	97ff1b50 	bl	32fc0 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   6c284:	f0000321 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   6c288:	aa1703e0 	mov	x0, x23
+   6c28c:	f9453021 	ldr	x1, [x1, #2656]
+   6c290:	91004021 	add	x1, x1, #0x10
+   6c294:	f90083e1 	str	x1, [sp, #256]
+   6c298:	97ff1d76 	bl	33870 <std::runtime_error::~runtime_error()@plt>
+   6c29c:	17ffff63 	b	6c028 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x98>
+   6c2a0:	91002021 	add	x1, x1, #0x8
+   6c2a4:	885ffc20 	ldaxr	w0, [x1]
+   6c2a8:	11000400 	add	w0, w0, #0x1
+   6c2ac:	8802fc20 	stlxr	w2, w0, [x1]
+   6c2b0:	35ffffa2 	cbnz	w2, 6c2a4 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x314>
+   6c2b4:	17ffff50 	b	6bff4 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x64>
+   6c2b8:	aa0003e1 	mov	x1, x0
+   6c2bc:	b4fff4d8 	cbz	x24, 6c154 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x1c4>
+   6c2c0:	14000008 	b	6c2e0 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x350>
+   6c2c4:	f94037e1 	ldr	x1, [sp, #104]
+   6c2c8:	aa1c03e0 	mov	x0, x28
+   6c2cc:	d2800002 	mov	x2, #0x0                   	// #0
+   6c2d0:	97ff212c 	bl	34780 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_create(unsigned long&, unsigned long)@plt>
+   6c2d4:	f9403fe1 	ldr	x1, [sp, #120]
+   6c2d8:	f9005be0 	str	x0, [sp, #176]
+   6c2dc:	f90063e1 	str	x1, [sp, #192]
+   6c2e0:	aa1803e2 	mov	x2, x24
+   6c2e4:	aa1b03e1 	mov	x1, x27
+   6c2e8:	97ff1816 	bl	32340 <memcpy@plt>
+   6c2ec:	f9403ff8 	ldr	x24, [sp, #120]
+   6c2f0:	f9405be1 	ldr	x1, [sp, #176]
+   6c2f4:	17ffff98 	b	6c154 <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x1c4>
+   6c2f8:	900001c0 	adrp	x0, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   6c2fc:	9122c000 	add	x0, x0, #0x8b0
+   6c300:	97ff1b70 	bl	330c0 <std::__throw_logic_error(char const*)@plt>
+   6c304:	97ff192f 	bl	327c0 <__stack_chk_fail@plt>
+   6c308:	aa0003f3 	mov	x19, x0
+   6c30c:	14000014 	b	6c35c <icraft::xrt::Tensor::read(char*, unsigned long, unsigned long) const+0x3cc>
+   6c310:	f9405be2 	ldr	x2, [sp, #176]
+   6c314:	91004381 	add	x1, x28, #0x10

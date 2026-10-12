@@ -1,0 +1,59 @@
+{
+  "status": "resource_identity_and_cleanup_checked",
+  "kernel_unchanged": true,
+  "agent_compactions": 0,
+  "reason": "Ordinary high-order pages present before both stages; no compact_memory write.",
+  "drop_caches": false,
+  "reboot": false,
+  "CMA_changed": false,
+  "program_processes_remaining": 0,
+  "input_RTSP_ports_released": true,
+  "snapshots": [
+    {
+      "path": "tools\\pose-v1\\evidence\\producer-count-20261009-r2\\host-return\\resources-before-three",
+      "ordinary_512KiB_units": 24,
+      "MemAvailable_KiB": 750424,
+      "CmaFree_KiB": 52276,
+      "sha256": {
+        "buddyinfo": "5054fd15b912ffe9fd9d76676cee4af6b3ec483686590f63b605ee7edaf1e70c",
+        "dmesg": "72c217e4f9509b1061a0fb2567181b1325f3403aea58652dd0d44a45362a847b",
+        "meminfo": "4889bafd50de966780e3d28d8f9bbd847dbb995f93ce95e7eb118ef90c7244ce",
+        "pagetypeinfo": "6b44e3e62337c0e0c4e3f9bf1f3ec2362fda29efb1f5daeeb8a2c02520c3f195",
+        "ports": "70306173a450d82407677bcd00cba24dd172fe7829591d445bc25caacf0af6bd",
+        "processes": "a1e5e56c9232c4605fdae0ab12ee7670fcf045ef535d9c8d170ed2877600cf32",
+        "vmstat": "c87915a63f0350c7949f70e56c06bb24e9f43b2303b072fb4d1e2efa9ab72c47"
+      }
+    },
+    {
+      "path": "tools\\pose-v1\\evidence\\producer-count-20261009-r2\\three-return\\resources-before-load",
+      "ordinary_512KiB_units": 27,
+      "MemAvailable_KiB": 749640,
+      "CmaFree_KiB": 67184,
+      "sha256": {
+        "buddyinfo": "6c748f9191d92c04719291226a02ec64ccebca8eea58f9a25eec5dafcaec9051",
+        "dmesg": "72c217e4f9509b1061a0fb2567181b1325f3403aea58652dd0d44a45362a847b",
+        "meminfo": "dfe2e8faf3b197f4bf8454fa374c352da06d0b391ae14847748463f3ae5254b0",
+        "pagetypeinfo": "3ce1a8a4f0619dad2b53581c4c1f40f5c3ef528e88f44c2c705ab70181447b9e",
+        "ports": "70306173a450d82407677bcd00cba24dd172fe7829591d445bc25caacf0af6bd",
+        "processes": "16d698a6ed5e606d9c863a604527c2704a84631cf60d1194c6fe321c1aa50ce3",
+        "vmstat": "d439791fd0700e7fd6450c0d044c826adf142d541a0054eb228aad32aa64d9b1"
+      }
+    },
+    {
+      "path": "tools\\pose-v1\\evidence\\producer-count-20261009-r2\\failed-return\\resources-final",
+      "ordinary_512KiB_units": 48,
+      "MemAvailable_KiB": 753672,
+      "CmaFree_KiB": 88464,
+      "sha256": {
+        "buddyinfo": "b0c4396b02a4cf23695088c7c8f512ac522096645cd5aca4efe95e1977f6c51f",
+        "dmesg": "72c217e4f9509b1061a0fb2567181b1325f3403aea58652dd0d44a45362a847b",
+        "meminfo": "064d929e64b378b6971014371b60299e2aba75f46fcd71afa3675844a5def772",
+        "pagetypeinfo": "5395062c82fb4abe785c67f436291a7a8aca59d087c579d58bc7e99e764edd5a",
+        "ports": "70306173a450d82407677bcd00cba24dd172fe7829591d445bc25caacf0af6bd",
+        "processes": "bb91218396860e67dcabd8187d8f7191c657afe79f358ee7501e0d62c8eaadb3",
+        "vmstat": "8c98618efa5b7703363e6100a577ad95c03a2f0732d54fff4fd75e626dc14dcd"
+      }
+    }
+  ],
+  "not_leak_or_permanent_startup_proof": true
+}

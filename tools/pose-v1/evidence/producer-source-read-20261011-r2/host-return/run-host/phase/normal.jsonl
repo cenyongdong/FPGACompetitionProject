@@ -1,0 +1,4 @@
+{"phase":"host_write","value":486,"invocation":7,"edge":"begin","exceptional":false,"wall_ns":200148462112490,"thread_cpu_ns":5950400,"minor_faults":154,"major_faults":0,"voluntary_switches":0,"involuntary_switches":0,"trace_failed":false}
+{"phase":"host_write","value":486,"invocation":7,"edge":"end","exceptional":false,"wall_ns":200148462116160,"thread_cpu_ns":5965300,"minor_faults":155,"major_faults":0,"voluntary_switches":0,"involuntary_switches":0,"trace_failed":false}
+{"phase":"save_input","value":478,"invocation":7,"edge":"begin","exceptional":false,"wall_ns":200148462118780,"thread_cpu_ns":5968240,"minor_faults":155,"major_faults":0,"voluntary_switches":0,"involuntary_switches":0,"trace_failed":false}
+{"phase":"save_input","value":478,"invocation":7,"edge":"end","exceptional":true,"wall_ns":200148462242070,"thread_cpu_ns":6090790,"minor_faults":160,"major_faults":0,"voluntary_switches":0,"involuntary_switches":0,"trace_failed":false}

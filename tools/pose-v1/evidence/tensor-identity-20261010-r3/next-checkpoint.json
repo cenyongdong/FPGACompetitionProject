@@ -1,0 +1,12 @@
+{
+  "status": "real_model_objects_stable_copy_residue_recurred_stopped",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "package": ".local/pose-v1-tensor-identity/package-20261010-r3",
+  "build": ".local/pose-v1-build/mixed-20261010-tensor-identity-r3",
+  "board": "/tmp/pose-tensor-identity-20261010-r3",
+  "completion_sha256": "17e6ca7ed2a697dfb08d1bd257d078be8c1e52a04d7aa84733e8c4f99b63e0f6",
+  "next": "Read TENSOR-IDENTITY-RESULTS-20261010, ADR_23 and TENSOR-IDENTITY-NEXT-20261010. New Host107/three passed, sole103 fails inv72 at192.128 finite noninteger/7 ranges equal preceding data copy same offsets. Same public region/chunk/device/type/bounds before/after, source and Host ranges distinct, late sources gold. No root fix. Stop batch/no old run retry. Next isolated scratch with actual model types and controlled changing source patterns, original copy order/shadows/error capture and bounded ownership; no model addresses/mapping/cache/BOOT/SDK guess. Model/long-term/HDMI pending."
+}

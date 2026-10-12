@@ -1,0 +1,141 @@
+{
+  "status": "all_fresh_stages_passed_root_unresolved",
+  "programs": {
+    "pose_axi_pair_check": "b2f7db68b72db95aa868b5b73454a8566736c1b2fdebc1f31095c20c3273fec7",
+    "pose_axi_pair_host_check": "a182324441521f9b657e425b0f926cc9b20fcb009c4c72d2f2ea8fcde386406c"
+  },
+  "manifest_sha256": "de0ace33c2a682c0a2d4875171a773e1f42d7ec969ebeffce15aa41d785bf975",
+  "sources": 25,
+  "stage_statistics": {
+    "copy": {
+      "elapsed_pairs_ms": 97.26898,
+      "source_addresses": [
+        100667392,
+        100697664
+      ]
+    },
+    "read": {
+      "elapsed_pairs_ms": 97.25424,
+      "source_addresses": [
+        100667392,
+        100697664
+      ]
+    },
+    "copy-vpu": {
+      "elapsed_pairs_ms": 19800.36292,
+      "source_addresses": [
+        100667392,
+        100697664
+      ],
+      "decoded": 226,
+      "stream_bytes": 41492
+    },
+    "read-vpu": {
+      "elapsed_pairs_ms": 19800.36011,
+      "source_addresses": [
+        100667392,
+        100697664
+      ],
+      "decoded": 229,
+      "stream_bytes": 41683
+    }
+  },
+  "prior_CPU_sources_unchanged": {
+    "software/pose_v1/include/host_cpu_adapter.hpp": "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4",
+    "software/pose_v1/src/lazy_host_cpu_adapter.cpp": "672e2c775fbb8703f31b809554a8db2416c414fc9c156b4f4c0ce9761db403b8"
+  },
+  "Host107_rerun": false,
+  "Host107_prior_completion_sha256": "ffb0ff194ebcbe5769945dd040e4224db9fad8a8af55cb300d7fd24ff53f51ef",
+  "compactions": 0,
+  "all_processes_ports_closed": true,
+  "kernel_all_stages_and_final_unchanged": true,
+  "final_MemAvailable_KiB": 714320,
+  "final_CmaFree_KiB": 37544,
+  "audit_SHA256": {
+    "board-readonly.log": "c61bb84438a1d590ecb26ee6b4225d3057f752ff98f859067ce1ce684946bcc7",
+    "copy-libaxizg330aiu.so.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy-libaxizg330aiu.so.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy-libicraft_xrt.so.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy-libicraft_xrt.so.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "customop-arm64.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "customop-arm64.stdout": "dcdc35d047363b81afca7375e389531197a75b550b960c9a2de6d634ba4035ff",
+    "DMA-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "DMA-read.stdout": "61f147c35da4909c012714face92903a8f268a5b60c40ecbc2824f04db8ab317",
+    "icraft-arm64.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "icraft-arm64.stdout": "dcdc35d047363b81afca7375e389531197a75b550b960c9a2de6d634ba4035ff",
+    "identity.json": "c5b2e2ac009428d7547a194a6c96af5f77ca1d45a077a051cbee4549158864fe",
+    "libaxizg330aiu.so-strings.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libaxizg330aiu.so-strings.stdout": "9f470efc6afe6fcf32fe5f2a64d216fec3b3bd606ef8ffdfa26d3b0352149b25",
+    "libaxizg330aiu.so-symbols.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libaxizg330aiu.so-symbols.stdout": "687034f3fa020569bc8574c6251062dd4a5a828c90263fc5df7d97b968a6bf0c",
+    "libicraft_xrt.so-strings.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libicraft_xrt.so-strings.stdout": "dc7119fe3e65eba16b6a1ab54274f118b62b350bfc95d2ccd66fa7432c3f8a55",
+    "libicraft_xrt.so-symbols.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libicraft_xrt.so-symbols.stdout": "497cccb8c1c394082bd6261627fac13a959baea67e909d8d65c077c5756982d8",
+    "MemChunk-copyFrom.stdout": "5d161c79e280975820364daef6be9f7ff0d5544fa42b17a6f0886430eea5d487",
+    "MemChunk-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "MemChunk-read.stdout": "b05b3a7ce9aabaebc5a22c44e2b8ff0d2363bcb4e2b4ba87f937a4363669ceea",
+    "MemRegion-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "MemRegion-read.stdout": "df168b17ce253634d95e0f4cdec975f3f1f68b9c79c2b20e3f60b81fafb37914",
+    "MemRegionNode-memcpy.stdout": "fdeb5d383347e43d787563eab692464fabefe5a915e7c0bf0a9eb3c28eeec6f3",
+    "module-download.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "module-syncCPU.disassembly": "e3c50411375908ed0fb330c40dc07da91047811f38475f04e92870013ebb8bbe",
+    "PL-init.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "PL-init.stdout": "cf98e92db6bd090e947dd942321b53d8fb543a7f5d949f0c3cd17d556197467c",
+    "PL-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "PL-read.stdout": "407f1484857715be1ac948b1f5ac6ab63e73763b89afcb23cbc7b809aa5c870c",
+    "Tensor-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tensor-read.stdout": "9252a5b0d356550323a727c5ab0732ff30c1ca49a7c072694a6a568cb62e577c",
+    "UDMA-init.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "UDMA-init.stdout": "9d97e1ee2da647376314168b12a97bc066968be37b9648c4b639b8d2a3288029",
+    "UDMA-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "UDMA-read.stdout": "d0285e6ba81bebfe2fcd6dee52eaf832b30521f8d898ac990ce857c5687c3f3f",
+    "UDMA-write.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "UDMA-write.stdout": "b33b418484c2581f33a06683c19187325b4f8d2ff11f5db72ac671f31dd6c6db",
+    "complete/identity.json": "d28a0e045e2261cc6f7395056452acf7d729e46fe641991a2a08a212264a682d",
+    "complete/MemChunk-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "complete/MemChunk-read.stdout": "da7bb52016b39ec165274c5966360db586b11c7c29d6b5f8e9ad0e1ee9fe3e06",
+    "complete/MemRegion-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "complete/MemRegion-read.stdout": "234d1484d7bd6625d8bd89d14008b5e2b2917c9f48ee987183af4f04fbe6e9b0",
+    "complete/PL-init.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "complete/PL-init.stdout": "aac9ffee18b5f601c92d04f7844b01b5d8ca5e747db456d59b69ec356d12138a",
+    "complete/Reg-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "complete/Reg-read.stdout": "b0bb209d70f337f01f3baa8b22f521e40f3e7f87719279a2acea3c4f6e0093a6",
+    "complete/Reg-write.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "complete/Reg-write.stdout": "746d80c0daa5e8dfc462fb22f8ab8f3cd696d0863b75746380b235eace7ed1b7",
+    "complete/region-name.stdout": "1b5202c623dec3a0f85aaeaf40aa90e8b8c183c61859be3425642a453e4aae89",
+    "complete/Tensor-copyFrom.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "complete/Tensor-copyFrom.stdout": "1759b823fcee2c7e2f37abc96148f0e671a0baeb625113bc215e364829efc6c9",
+    "complete/Tensor-read.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "complete/Tensor-read.stdout": "7966071f1b00dfe5c312a61d1ccfc740925e973c0fbccf087b2367d0535907e0",
+    "sdk/libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178",
+    "sdk/libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+    "sdk/u-dma-buf.board.ko": "78cae7106e5273fc297178d5cfe226ea8737feaef34dbec8bce450478f35436c"
+  },
+  "archives_SHA256": {
+    "return-copy-vpu.tar": "73df8a17aba1100bb5d5aa560af9df22c492c9713ffe7a9d0ec96f0818589856",
+    "return-copy.tar": "d753afcd99fdfac1b9e281479bf8712ffa1001f23940677bab8606c9f8fec207",
+    "return-final.tar": "83c33c7f87bc04f61f16743175d8591a94bbbdf554eb209e48f59d3b88338f7d",
+    "return-host.tar": "a00bdf7d3dfabd2361f5541925fa04b449366112ddc161497939b2a2a142ce21",
+    "return-read-vpu.tar": "8ee6b6fb4c3e46fd4b642cffc9074f43d5b25c23fc9cc94723780c4ff2f175b7",
+    "return-read.tar": "9529c736185b5ca1de6c83bd0060d9cdc48385e3cb1ef5c1c3813beefe0196ba",
+    "return-resource-copy-vpu.tar": "ba289b123d3dbc39b2d708971837d96364b34535f2fe2f219b10cf1d75a25ae7",
+    "return-resource-read-vpu.tar": "3376b967ee90d3ba0de800264398ed4574b22a31bc0b59c369763e33efc983dd",
+    "transfer.tar": "d5d43f330b1dccbb66fd0d3c05ce43572dda3f03e86fdb89e98df2d956b2f786"
+  },
+  "stage_reviews_SHA256": {
+    "review-copy-vpu.json": "08052f4e3ac6df9a32364146388aa8c98c4ad9a62d456e1506f3ffac01c486ed",
+    "review-copy.json": "14f6910d99ca21c10e0ef4beb421a9b7787e850f96be2c79c676d981398bc5fa",
+    "review-host.json": "a7605d0f82e8033445fe4a748c7b963c241bab571cc9319d74eb807a3256de73",
+    "review-read-vpu.json": "8003bb16cb7d144a8a0c64838026bac6a1e3c10d281ff0f463025460fcfe0e80",
+    "review-read.json": "18e9f14c8c61d68fd2b2d94a462c56a0a3e72eceda667219b0ae5d98e5790752"
+  },
+  "video_reviews_SHA256": {
+    "video-copy-vpu.review.json": "8826400e7814dd3d6f268d84d651f5a776f4762a3b0bb8ccbe6ab8011ba37283",
+    "video-read-vpu.review.json": "9fa47f8d8a6ecd8aeaff131ffc21e3be5019f317cf8b790ad2ea58e4d03755ce"
+  },
+  "library_audit_is_not_hardware_completion_proof": true,
+  "full_model_Session": false,
+  "NPU_forward": false,
+  "root_fixed": false
+}

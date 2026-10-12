@@ -1,0 +1,27 @@
+{
+  "host-return.tar": {
+    "bytes": 6440960,
+    "sha256": "14aefefa2b2f7c82373f264e3f055e1cf3a7b245e8558785ed617ca07add4c8d",
+    "local_archive_retained": true
+  },
+  "load-return.tar": {
+    "bytes": 73082880,
+    "sha256": "bd20a82d7d1141fef279389c63faf03c5ddb94b8b900643fc27eb7d667d140bc",
+    "local_archive_retained": true
+  },
+  "resources-final.tar": {
+    "bytes": 133120,
+    "sha256": "11b821e4b749bbc2a8962adec9a0f66055f6b1ab956a6c5d2806d0969c0ab1a2",
+    "local_archive_retained": true
+  },
+  "resources-start.tar": {
+    "bytes": 81920,
+    "sha256": "c078b17372415631ca9dd215e2dacb3b013f5d5545d0768ce748dd9b51808cdd",
+    "local_archive_retained": true
+  },
+  "three-return.tar": {
+    "bytes": 15872000,
+    "sha256": "b7bbc19d6d0f64e8416049a4ae8d5081ea9b6d99ba130397413d457a760f62ba",
+    "local_archive_retained": true
+  }
+}

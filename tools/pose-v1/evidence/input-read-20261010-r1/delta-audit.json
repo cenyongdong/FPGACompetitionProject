@@ -1,0 +1,13 @@
+{
+  "status": "exact_input_API_only_delta_verified",
+  "frozen_bridge_sha256": "3d005e4f304cc8c217640f85d3b77e1519141e280b359e36f5496c44d6a17de3",
+  "new_bridge_sha256": "ff13c5befd0b474fc7aee127fec683f02c36754a8b3f6d6ff1f03f654e3d5fa1",
+  "Native_read_refusals": 8,
+  "Native_owned_guard_bytes": 16,
+  "Native_test_binary_sha256": "0c0af8e0a850d72db806a70fd28815595d3a3f7b77637a099aec56aceebaa4d5",
+  "SDK_signature": "void read(char*, uint64_t src_offset, uint64_t byte_size) const",
+  "Host_input_and_output_copyFrom_preserved": true,
+  "wait_and_failure_evidence_preserved": true,
+  "zero_copy": false,
+  "root_cause_fixed": false
+}

@@ -1,0 +1,38 @@
+"""Bind failed identity diagnostic, resources, media prefixes and recovery."""
+import json,re
+import mixed_validation_gate as g
+root=g.ROOT;e=root/'tools/pose-v1/evidence/tensor-identity-20261010-r3'
+def load(n):return g.load(e/n)
+def write(n,v):p=e/n;assert not p.exists();p.write_text(json.dumps(v,indent=2)+'\n')
+h=load('host-check.acceptance.json');t=load('process-three.acceptance.json');f=load('failed-load.numeric-review.json');pattern=load('bad-block-pattern.json')
+assert h['Host_cases']==107 and h['CPU_FP32']==59600 and t['consumed']==4 and f['correct_prefix']==72
+assert f['changed_FP32']==f['noninteger_FP32']==128 and not f['nonfinite_FP32'] and pattern['changed_ranges']==7 and pattern['all_changed_bytes_equal_previous_copy_same_offset']
+assert load('failed.objects.json')['object_changed_across_copy'] is False and f['all_eight_tasks_saved']
+archives={'host-check.tar':'3e3bc33534f0e1a91ddbb83658bf6a072e7858b3e89c5c4107bc6b9020d10573','process-three.tar':'cad8b8ecc6885db7a02b968b9a61d65f87b29810e78942ac0124b0d659d21aaa','load-103.tar':'4a8969738c09c176eafa44960e2d61989cc9d74f56503e17785de5039a97f0e8'}
+for name,digest in archives.items():assert g.sha(e/name)==digest
+dirs=[e/'three-return/resources-after-host',e/'three-return/resources-after-three',e/'failed-return-bytes/resources-final'];snapshots=[]
+for d in dirs:
+    units=0
+    for line in (d/'pagetypeinfo').read_text().splitlines():
+        m=re.search(r'type\s+(Unmovable|Movable|Reclaimable|HighAtomic)\s+([\d\s]+)$',line)
+        if m:
+            counts=list(map(int,m[2].split()));assert len(counts)==11;units+=sum(counts[i]*2**(i-7) for i in range(7,11))
+    mem={m[1]:int(m[2]) for m in re.finditer(r'^(\w+):\s+(\d+) kB$',(d/'meminfo').read_text(),re.M)}
+    snapshots.append(dict(path=str(d.relative_to(root)),ordinary_512KiB_units=units,MemAvailable_KiB=mem['MemAvailable'],CmaFree_KiB=mem['CmaFree'],sha256={p.name:g.sha(p) for p in d.iterdir() if p.is_file()}))
+kernel=[(d/'dmesg').read_bytes() for d in dirs];assert all(v==kernel[0] for v in kernel)
+for label,stage in [('host-return','host-check'),('three-return','process-three'),('failed-return-bytes','load-103')]:
+    r=e/label/('run-'+stage);assert (r/'dmesg.before.log').read_bytes()==(r/'dmesg.after.log').read_bytes()==kernel[0]
+assert not any(line.split(maxsplit=2)[1].startswith('pose_') for line in (dirs[-1]/'processes').read_text().splitlines()[1:])
+ports=(dirs[-1]/'ports').read_text();assert ':39001 ' not in ports and ':8554 ' not in ports
+write('resource-review.json',dict(status='stopped_identity_diagnostic_cleanup_checked',snapshots=snapshots,kernel_unchanged=True,agent_compactions=0,reason='Ordinary high-order pages present before model stages; no compact_memory write.',drop_caches=False,reboot=False,CMA_changed=False,program_processes_remaining=0,input_RTSP_ports_released=True,not_leak_or_permanent_startup_proof=True))
+media={}
+for label in ('three','failed'):
+    v=load('video-'+label+'/review.json');n=load('network-'+label+'/review.json')
+    media[label]=dict(encoded=v['decoded_frames'],network=n['network_frames'],sources=v.get('inference_sources',v.get('decoded_inference_sources')),joint_checks=v['joint_visibility_checks'],complete=label=='three',missing_completed_sources=v.get('missing_completed_sources',[]),uncaptured_sample_tail=v.get('uncaptured_sample_tail',0))
+refs=['build.acceptance.json','integration.review.json','native.review.json','host-check.acceptance.json','host.objects.json','host.invocation.json','process-three.acceptance.json','three.objects.json','three.invocation.json','three.counter.json','reference-three-review.json','video-three/review.json','network-three/review.json','failed-load.numeric-review.json','failed.objects.json','failed.invocation.json','failed.counter.json','failed-frame-golden.json','bad-block-pattern.json','reference-failed-review.json','video-failed/review.json','network-failed/review.json','resource-review.json']
+fo=f['failed_objects'];s=[v['source'] for v in fo];d=[v['destination'] for v in fo]
+report=dict(status='real_model_objects_stable_copy_residue_recurred_stopped',program_sha256=h['binary_sha256'],manifest_sha256=h['package_manifest_sha256'],payloads=403,build_sources=80,Host_cases_new_run=107,registry_records=12,Host_FP32=59600,Native_ARM_identity_refusals_each=17,old_Host_owned_failure_bytes=47040,old_Host_source_read_bytes=94080,three_forwards=4,three_FP32=60400,load_correct_forwards=72,load_correct_FP32=1087200,all_correct_forwards=76,all_correct_FP32=1147600,failed_invocation=72,failed_frame=100072,failed_case=f['failed_case'],failed_op=192,Host_owned_failed_inputs=3,Host_owned_failed_bytes=47760,changed_FP32=128,finite_noninteger_FP32=128,bad_ranges=7,all_bad_bytes_equal_previous_copy_same_offset=True,late_device_source_bytes=94080,both_late_sources_gold=True,new_object_rows=1222,failed_stage_object_rows=1158,failed_stage_shadow_rows=579,failed_stage_metadata_rows=651,all_public192_queries=616,failed_public192_counts=[234]*8,object_changes_across_copy=0,all_actual_types_bounds_and_distributions_matched=True,failed_source_ranges_overlap=False,failed_Host_ranges_overlap=False,failed_source_addresses=[v['address_identity'] for v in s],failed_Host_addresses=[v['address_identity'] for v in d],failed_Host_address_mod64=[v['address_identity']%64 for v in d],all_eight_tasks_saved=True,normal_device_data_reads_added=0,copy_wait_math_changed=False,media=media,load103_accepted=False,performance_accepted=False,root_cause_fixed=False,DMA_cache_fence_proven=False,agent_compactions=0,BOOT_SDK_model_changed=False,all_agent_sessions_closed=True,final_MemAvailable_KiB=snapshots[-1]['MemAvailable_KiB'],final_CmaFree_KiB=snapshots[-1]['CmaFree_KiB'],evidence_sha256={n:g.sha(e/n) for n in refs},archive_sha256=archives,local_corrections=['r1/r2 strict formatting build failures preserved; r3 fixes braces only, no compiler option relaxation, no r1/r2 board runs.','Initial PowerShell inline review generation quoting failed before file creation; replaced with explicit Python preparation tool.','Initial extraction attempted before SCP completion and failed with file lock; after SCP exit0 and archive hash match extracted fresh failed-return-bytes, no board rerun.'])
+write('completion-review.json',report)
+checkpoint=dict(status=report['status'],user_paused=False,active_tests=False,services_running=False,SSH_SCP_closed=True,package='.local/pose-v1-tensor-identity/package-20261010-r3',build='.local/pose-v1-build/mixed-20261010-tensor-identity-r3',board='/tmp/pose-tensor-identity-20261010-r3',completion_sha256=g.sha(e/'completion-review.json'),next='Read TENSOR-IDENTITY-RESULTS-20261010, ADR_23 and TENSOR-IDENTITY-NEXT-20261010. New Host107/three passed, sole103 fails inv72 at192.128 finite noninteger/7 ranges equal preceding data copy same offsets. Same public region/chunk/device/type/bounds before/after, source and Host ranges distinct, late sources gold. No root fix. Stop batch/no old run retry. Next isolated scratch with actual model types and controlled changing source patterns, original copy order/shadows/error capture and bounded ownership; no model addresses/mapping/cache/BOOT/SDK guess. Model/long-term/HDMI pending.')
+write('next-checkpoint.json',checkpoint);active=load('active-checkpoint.json');active.update(status=report['status'],active_stage=None,active_tests=False,services_running=False,SSH_SCP_closed=True,completion_sha256=checkpoint['completion_sha256']);(e/'active-checkpoint.json').write_text(json.dumps(active,indent=2)+'\n')
+print(json.dumps({k:report[k] for k in ('status','all_correct_forwards','changed_FP32','object_changes_across_copy','all_agent_sessions_closed')}))

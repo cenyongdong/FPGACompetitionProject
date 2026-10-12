@@ -1,0 +1,36 @@
+{
+  "status": "demo_completed_waiting_user_review",
+  "date": "2026-10-11",
+  "active_work": false,
+  "overall_task_user_paused": false,
+  "fault_investigation_paused_by_user": true,
+  "current_readme": "software/demo/README.md",
+  "technical_report": "ADR/TechDetails.md",
+  "results": "tools/pose-v1/DEMO-RESULTS-20261011.md",
+  "completion_review_sha256": "6346eda22b9547aee51b63775f4afb1eba1d777c9871ef06f2eda68c399a54f6",
+  "verified_program": "82201e97547504ccd0c883191dbbb9e05957e378a77de0cbda5006c6f5d987e0",
+  "verified_build": ".local/pose-v1-build/demo-20261011-r5",
+  "completed_board_directory": "/tmp/wifi-pose-demo-20261011-r4",
+  "next_unused_demo_directory": "/tmp/wifi-pose-demo-20261011-r5",
+  "next_unused_evidence_directory": "tools/pose-v1/evidence/demo-20261011-r5",
+  "all_owned_processes_and_connections_ended": true,
+  "no_background_or_automatic_continuation": true,
+  "controlled_reboot_permission_used": true,
+  "remaining": [
+    "permanent VPU first-start reliability",
+    "high-load first-read DATA fault (paused)",
+    "full independent references for additional 57 demo windows",
+    "strict 5Hz and 30-minute operation",
+    "HDMI",
+    "actual live CSI acquisition",
+    "zero copy"
+  ],
+  "previous_fault_checkpoint": "tools/pose-v1/evidence/producer-prepared-20261011-r1/next-checkpoint.json",
+  "resume_constraints": [
+    "Read current demo result and ADR_45 before action",
+    "Do not resume paused DATA fault investigation without user steering",
+    "Never continue failed Session or rely on pre-reboot /tmp handles",
+    "Use fresh output directory and verify source/program/SDK/model/BOOT identity",
+    "No additional reboot authorized by one-time permission"
+  ]
+}

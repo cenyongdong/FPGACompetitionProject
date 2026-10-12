@@ -1,0 +1,247 @@
+
+/usr/lib/aarch64-linux-gnu/libaxizg330aiu.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000004e6c0 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const>:
+   4e6c0:	a9b57bfd 	stp	x29, x30, [sp, #-176]!
+   4e6c4:	72001c7f 	tst	w3, #0xff
+   4e6c8:	910003fd 	mov	x29, sp
+   4e6cc:	a9025bf5 	stp	x21, x22, [sp, #32]
+   4e6d0:	d0000135 	adrp	x21, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e6d4:	f9454ea4 	ldr	x4, [x21, #2712]
+   4e6d8:	a90153f3 	stp	x19, x20, [sp, #16]
+   4e6dc:	aa0003f4 	mov	x20, x0
+   4e6e0:	f9400080 	ldr	x0, [x4]
+   4e6e4:	f90057e0 	str	x0, [sp, #168]
+   4e6e8:	d2800000 	mov	x0, #0x0                   	// #0
+   4e6ec:	a90363f7 	stp	x23, x24, [sp, #48]
+   4e6f0:	aa0103f3 	mov	x19, x1
+   4e6f4:	aa0203f7 	mov	x23, x2
+   4e6f8:	54000460 	b.eq	4e784 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0xc4>  // b.none
+   4e6fc:	d0000120 	adrp	x0, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e700:	a9046bf9 	stp	x25, x26, [sp, #64]
+   4e704:	92407c38 	and	x24, x1, #0xffffffff
+   4e708:	f944c800 	ldr	x0, [x0, #2448]
+   4e70c:	f9400000 	ldr	x0, [x0]
+   4e710:	eb21401f 	cmp	x0, w1, uxtw
+   4e714:	54001009 	b.ls	4e914 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x254>  // b.plast
+   4e718:	f260027f 	tst	x19, #0x100000000
+   4e71c:	d0000136 	adrp	x22, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e720:	a9434e81 	ldp	x1, x19, [x20, #48]
+   4e724:	91014299 	add	x25, x20, #0x50
+   4e728:	f9462ec0 	ldr	x0, [x22, #3160]
+   4e72c:	9a811273 	csel	x19, x19, x1, ne  // ne = any
+   4e730:	b4000080 	cbz	x0, 4e740 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x80>
+   4e734:	aa1903e0 	mov	x0, x25
+   4e738:	97ff6316 	bl	27390 <pthread_mutex_lock@plt>
+   4e73c:	35001540 	cbnz	w0, 4e9e4 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x324>
+   4e740:	f9462ed6 	ldr	x22, [x22, #3160]
+   4e744:	b8386a77 	str	w23, [x19, x24]
+   4e748:	b4001456 	cbz	x22, 4e9d0 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x310>
+   4e74c:	aa1903e0 	mov	x0, x25
+   4e750:	97ff63c4 	bl	27660 <pthread_mutex_unlock@plt>
+   4e754:	a9446bf9 	ldp	x25, x26, [sp, #64]
+   4e758:	f9454eb5 	ldr	x21, [x21, #2712]
+   4e75c:	f94057e0 	ldr	x0, [sp, #168]
+   4e760:	f94002a1 	ldr	x1, [x21]
+   4e764:	eb010000 	subs	x0, x0, x1
+   4e768:	d2800001 	mov	x1, #0x0                   	// #0
+   4e76c:	54001361 	b.ne	4e9d8 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x318>  // b.any
+   4e770:	a94153f3 	ldp	x19, x20, [sp, #16]
+   4e774:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   4e778:	a94363f7 	ldp	x23, x24, [sp, #48]
+   4e77c:	a8cb7bfd 	ldp	x29, x30, [sp], #176
+   4e780:	d65f03c0 	ret
+   4e784:	d0000120 	adrp	x0, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e788:	f9475800 	ldr	x0, [x0, #3760]
+   4e78c:	f9400000 	ldr	x0, [x0]
+   4e790:	eb01001f 	cmp	x0, x1
+   4e794:	54000a29 	b.ls	4e8d8 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x218>  // b.plast
+   4e798:	d0000120 	adrp	x0, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e79c:	f944e000 	ldr	x0, [x0, #2496]
+   4e7a0:	f9400000 	ldr	x0, [x0]
+   4e7a4:	eb13001f 	cmp	x0, x19
+   4e7a8:	540000e8 	b.hi	4e7c4 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x104>  // b.pmore
+   4e7ac:	d0000121 	adrp	x1, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e7b0:	f944c821 	ldr	x1, [x1, #2448]
+   4e7b4:	f9400021 	ldr	x1, [x1]
+   4e7b8:	8b010000 	add	x0, x0, x1
+   4e7bc:	eb13001f 	cmp	x0, x19
+   4e7c0:	540009a8 	b.hi	4e8f4 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x234>  // b.pmore
+   4e7c4:	528011a0 	mov	w0, #0x8d                  	// #141
+   4e7c8:	a9046bf9 	stp	x25, x26, [sp, #64]
+   4e7cc:	97ff67f1 	bl	28790 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.1]>
+   4e7d0:	97ff62b0 	bl	27290 <icraft::detail::LogExcept::GetEntry()@plt>
+   4e7d4:	b0000041 	adrp	x1, 57000 <_fini+0xdd4>
+   4e7d8:	aa0003f8 	mov	x24, x0
+   4e7dc:	91116021 	add	x1, x1, #0x458
+   4e7e0:	d2801302 	mov	x2, #0x98                  	// #152
+   4e7e4:	97ff64d7 	bl	27b40 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   4e7e8:	9101a3f6 	add	x22, sp, #0x68
+   4e7ec:	b0000041 	adrp	x1, 57000 <_fini+0xdd4>
+   4e7f0:	910042c4 	add	x4, x22, #0x10
+   4e7f4:	b0000042 	adrp	x2, 57000 <_fini+0xdd4>
+   4e7f8:	aa1603e0 	mov	x0, x22
+   4e7fc:	9113e021 	add	x1, x1, #0x4f8
+   4e800:	91144c42 	add	x2, x2, #0x513
+   4e804:	52800003 	mov	w3, #0x0                   	// #0
+   4e808:	f90037e4 	str	x4, [sp, #104]
+   4e80c:	97ff6319 	bl	27470 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)@plt>
+   4e810:	a94687e0 	ldp	x0, x1, [sp, #104]
+   4e814:	910223f9 	add	x25, sp, #0x88
+   4e818:	aa1903e8 	mov	x8, x25
+   4e81c:	910143e3 	add	x3, sp, #0x50
+   4e820:	d2800082 	mov	x2, #0x4                   	// #4
+   4e824:	f9002bf3 	str	x19, [sp, #80]
+   4e828:	97ff664a 	bl	28150 <fmt::v8::vformat[abi:cxx11](fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   4e82c:	a9488be1 	ldp	x1, x2, [sp, #136]
+   4e830:	aa1803e0 	mov	x0, x24
+   4e834:	97ff64c3 	bl	27b40 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   4e838:	f94047e0 	ldr	x0, [sp, #136]
+   4e83c:	91004321 	add	x1, x25, #0x10
+   4e840:	eb01001f 	cmp	x0, x1
+   4e844:	54000040 	b.eq	4e84c <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x18c>  // b.none
+   4e848:	97ff6436 	bl	27920 <operator delete(void*)@plt>
+   4e84c:	f94037e0 	ldr	x0, [sp, #104]
+   4e850:	910042d6 	add	x22, x22, #0x10
+   4e854:	eb16001f 	cmp	x0, x22
+   4e858:	54000040 	b.eq	4e860 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x1a0>  // b.none
+   4e85c:	97ff6431 	bl	27920 <operator delete(void*)@plt>
+   4e860:	97ff628c 	bl	27290 <icraft::detail::LogExcept::GetEntry()@plt>
+   4e864:	aa1903e8 	mov	x8, x25
+   4e868:	97ff63c6 	bl	27780 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   4e86c:	d0000121 	adrp	x1, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e870:	aa1903e0 	mov	x0, x25
+   4e874:	f9455821 	ldr	x1, [x1, #2736]
+   4e878:	91004021 	add	x1, x1, #0x10
+   4e87c:	f90047e1 	str	x1, [sp, #136]
+   4e880:	97ff6490 	bl	27ac0 <std::runtime_error::~runtime_error()@plt>
+   4e884:	a9446bf9 	ldp	x25, x26, [sp, #64]
+   4e888:	d0000136 	adrp	x22, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e88c:	91014298 	add	x24, x20, #0x50
+   4e890:	f9462ec0 	ldr	x0, [x22, #3160]
+   4e894:	b4000080 	cbz	x0, 4e8a4 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x1e4>
+   4e898:	aa1803e0 	mov	x0, x24
+   4e89c:	97ff62bd 	bl	27390 <pthread_mutex_lock@plt>
+   4e8a0:	35000a00 	cbnz	w0, 4e9e0 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x320>
+   4e8a4:	d0000120 	adrp	x0, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e8a8:	2a1703e1 	mov	w1, w23
+   4e8ac:	f944e000 	ldr	x0, [x0, #2496]
+   4e8b0:	f9400000 	ldr	x0, [x0]
+   4e8b4:	eb13001f 	cmp	x0, x19
+   4e8b8:	54000289 	b.ls	4e908 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x248>  // b.plast
+   4e8bc:	f9402280 	ldr	x0, [x20, #64]
+   4e8c0:	b8336817 	str	w23, [x0, x19]
+   4e8c4:	f9462ed6 	ldr	x22, [x22, #3160]
+   4e8c8:	b4fff496 	cbz	x22, 4e758 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x98>
+   4e8cc:	aa1803e0 	mov	x0, x24
+   4e8d0:	97ff6364 	bl	27660 <pthread_mutex_unlock@plt>
+   4e8d4:	17ffffa1 	b	4e758 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x98>
+   4e8d8:	d0000121 	adrp	x1, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e8dc:	f944c821 	ldr	x1, [x1, #2448]
+   4e8e0:	f9400021 	ldr	x1, [x1]
+   4e8e4:	8b010000 	add	x0, x0, x1
+   4e8e8:	eb13001f 	cmp	x0, x19
+   4e8ec:	54fffce8 	b.hi	4e888 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x1c8>  // b.pmore
+   4e8f0:	17ffffaa 	b	4e798 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0xd8>
+   4e8f4:	d0000136 	adrp	x22, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e8f8:	91014298 	add	x24, x20, #0x50
+   4e8fc:	2a1703e1 	mov	w1, w23
+   4e900:	f9462ec0 	ldr	x0, [x22, #3160]
+   4e904:	b5fffca0 	cbnz	x0, 4e898 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x1d8>
+   4e908:	f9402680 	ldr	x0, [x20, #72]
+   4e90c:	b8336801 	str	w1, [x0, x19]
+   4e910:	17ffffed 	b	4e8c4 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x204>
+   4e914:	528010e0 	mov	w0, #0x87                  	// #135
+   4e918:	97ff679e 	bl	28790 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.1]>
+   4e91c:	97ff625d 	bl	27290 <icraft::detail::LogExcept::GetEntry()@plt>
+   4e920:	b0000041 	adrp	x1, 57000 <_fini+0xdd4>
+   4e924:	aa0003fa 	mov	x26, x0
+   4e928:	910fe021 	add	x1, x1, #0x3f8
+   4e92c:	d2800602 	mov	x2, #0x30                  	// #48
+   4e930:	97ff6484 	bl	27b40 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   4e934:	9101a3f6 	add	x22, sp, #0x68
+   4e938:	b0000041 	adrp	x1, 57000 <_fini+0xdd4>
+   4e93c:	910042c4 	add	x4, x22, #0x10
+   4e940:	b0000042 	adrp	x2, 57000 <_fini+0xdd4>
+   4e944:	aa1603e0 	mov	x0, x22
+   4e948:	9110c021 	add	x1, x1, #0x430
+   4e94c:	91115042 	add	x2, x2, #0x454
+   4e950:	52800003 	mov	w3, #0x0                   	// #0
+   4e954:	f90037e4 	str	x4, [sp, #104]
+   4e958:	97ff62c6 	bl	27470 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)@plt>
+   4e95c:	a94687e0 	ldp	x0, x1, [sp, #104]
+   4e960:	910223f9 	add	x25, sp, #0x88
+   4e964:	aa1903e8 	mov	x8, x25
+   4e968:	910143e3 	add	x3, sp, #0x50
+   4e96c:	d2800082 	mov	x2, #0x4                   	// #4
+   4e970:	f9002bf8 	str	x24, [sp, #80]
+   4e974:	97ff65f7 	bl	28150 <fmt::v8::vformat[abi:cxx11](fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   4e978:	a9488be1 	ldp	x1, x2, [sp, #136]
+   4e97c:	aa1a03e0 	mov	x0, x26
+   4e980:	97ff6470 	bl	27b40 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   4e984:	f94047e0 	ldr	x0, [sp, #136]
+   4e988:	91004339 	add	x25, x25, #0x10
+   4e98c:	eb19001f 	cmp	x0, x25
+   4e990:	54000040 	b.eq	4e998 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x2d8>  // b.none
+   4e994:	97ff63e3 	bl	27920 <operator delete(void*)@plt>
+   4e998:	f94037e0 	ldr	x0, [sp, #104]
+   4e99c:	910042d6 	add	x22, x22, #0x10
+   4e9a0:	eb16001f 	cmp	x0, x22
+   4e9a4:	54000040 	b.eq	4e9ac <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x2ec>  // b.none
+   4e9a8:	97ff63de 	bl	27920 <operator delete(void*)@plt>
+   4e9ac:	97ff675d 	bl	28720 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   4e9b0:	d0000136 	adrp	x22, 74000 <spdlog::details::elapsed_formatter<spdlog::details::scoped_padder, std::chrono::duration<long, std::ratio<1l, 1l> > >::format(spdlog::details::log_msg const&, tm const&, fmt::v8::basic_memory_buffer<char, 250ul, std::allocator<char> >&)@@Base+0x3dda8>
+   4e9b4:	f260027f 	tst	x19, #0x100000000
+   4e9b8:	91014299 	add	x25, x20, #0x50
+   4e9bc:	a9434e81 	ldp	x1, x19, [x20, #48]
+   4e9c0:	f9462ec0 	ldr	x0, [x22, #3160]
+   4e9c4:	9a811273 	csel	x19, x19, x1, ne  // ne = any
+   4e9c8:	b5ffeb60 	cbnz	x0, 4e734 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x74>
+   4e9cc:	17ffff5d 	b	4e740 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x80>
+   4e9d0:	a9446bf9 	ldp	x25, x26, [sp, #64]
+   4e9d4:	17ffff61 	b	4e758 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x98>
+   4e9d8:	a9046bf9 	stp	x25, x26, [sp, #64]
+   4e9dc:	97ff6295 	bl	27430 <__stack_chk_fail@plt>
+   4e9e0:	a9046bf9 	stp	x25, x26, [sp, #64]
+   4e9e4:	97ff636b 	bl	27790 <std::__throw_system_error(int)@plt>
+   4e9e8:	f94047e1 	ldr	x1, [sp, #136]
+   4e9ec:	91004339 	add	x25, x25, #0x10
+   4e9f0:	aa0003f3 	mov	x19, x0
+   4e9f4:	eb19003f 	cmp	x1, x25
+   4e9f8:	54000060 	b.eq	4ea04 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x344>  // b.none
+   4e9fc:	aa0103e0 	mov	x0, x1
+   4ea00:	97ff63c8 	bl	27920 <operator delete(void*)@plt>
+   4ea04:	f94037e0 	ldr	x0, [sp, #104]
+   4ea08:	910042d6 	add	x22, x22, #0x10
+   4ea0c:	eb16001f 	cmp	x0, x22
+   4ea10:	54000040 	b.eq	4ea18 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x358>  // b.none
+   4ea14:	97ff63c3 	bl	27920 <operator delete(void*)@plt>
+   4ea18:	97ff6742 	bl	28720 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   4ea1c:	aa1303e0 	mov	x0, x19
+   4ea20:	97ff659c 	bl	28090 <_Unwind_Resume@plt>
+   4ea24:	aa0003f3 	mov	x19, x0
+   4ea28:	17fffffc 	b	4ea18 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x358>
+   4ea2c:	f94047e1 	ldr	x1, [sp, #136]
+   4ea30:	91004339 	add	x25, x25, #0x10
+   4ea34:	aa0003f3 	mov	x19, x0
+   4ea38:	eb19003f 	cmp	x1, x25
+   4ea3c:	54000060 	b.eq	4ea48 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x388>  // b.none
+   4ea40:	aa0103e0 	mov	x0, x1
+   4ea44:	97ff63b7 	bl	27920 <operator delete(void*)@plt>
+   4ea48:	f94037e0 	ldr	x0, [sp, #104]
+   4ea4c:	910042d6 	add	x22, x22, #0x10
+   4ea50:	eb16001f 	cmp	x0, x22
+   4ea54:	54000040 	b.eq	4ea5c <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x39c>  // b.none
+   4ea58:	97ff63b2 	bl	27920 <operator delete(void*)@plt>
+   4ea5c:	97ff6731 	bl	28720 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   4ea60:	aa1303e0 	mov	x0, x19
+   4ea64:	97ff658b 	bl	28090 <_Unwind_Resume@plt>
+   4ea68:	aa0003f3 	mov	x19, x0
+   4ea6c:	17fffff7 	b	4ea48 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x388>
+   4ea70:	aa0003f3 	mov	x19, x0
+   4ea74:	17fffffa 	b	4ea5c <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x39c>
+   4ea78:	aa0003f3 	mov	x19, x0
+   4ea7c:	17ffffe2 	b	4ea04 <AXIZG330AIRegRegionNode::write(unsigned long, unsigned long, bool) const+0x344>

@@ -1,0 +1,2 @@
+{"frame":100000,"invocation":0,"point":"topk_indices","value":1137,"bytes":400,"FNV64_diagnostic_only":2710272260523604645,"wait_begin_ns":0,"wait_end_ns":0,"read_begin_ns":0,"read_end_ns":0,"count_before":0,"count_after":0,"storage":{},"error":""}
+{"frame":100001,"invocation":1,"point":"gather_post","value":1148,"bytes":0,"FNV64_diagnostic_only":14695981039346656037,"wait_begin_ns":0,"wait_end_ns":0,"read_begin_ns":0,"read_end_ns":0,"count_before":0,"count_after":0,"storage":{},"error":"Injected\nread\u001bfailure"}

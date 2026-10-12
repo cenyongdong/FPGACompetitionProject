@@ -1,0 +1,36 @@
+
+/usr/lib/aarch64-linux-gnu/libicraft_xrt.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000003a428 <icraft::xrt::MemChunk::read(char*, unsigned long, unsigned long) const>:
+   3a428:	a9b97bfd 	stp	x29, x30, [sp, #-112]!
+   3a42c:	910003fd 	mov	x29, sp
+   3a430:	a90153f3 	stp	x19, x20, [sp, #16]
+   3a434:	b00004d3 	adrp	x19, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   3a438:	910163f4 	add	x20, sp, #0x58
+   3a43c:	f9451664 	ldr	x4, [x19, #2600]
+   3a440:	a9025bf5 	stp	x21, x22, [sp, #32]
+   3a444:	aa0103f6 	mov	x22, x1
+   3a448:	f9400081 	ldr	x1, [x4]
+   3a44c:	f90037e1 	str	x1, [sp, #104]
+   3a450:	d2800001 	mov	x1, #0x0                   	// #0
+   3a454:	a90363f7 	stp	x23, x24, [sp, #48]
+   3a458:	aa0203f8 	mov	x24, x2
+   3a45c:	aa0303f7 	mov	x23, x3
+   3a460:	f90023f9 	str	x25, [sp, #64]
+   3a464:	aa0003f9 	mov	x25, x0
+   3a468:	97ffe93a 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a46c:	aa0003f5 	mov	x21, x0
+   3a470:	aa1903e0 	mov	x0, x25
+   3a474:	97ffe937 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a478:	91004000 	add	x0, x0, #0x10
+   3a47c:	aa1403e8 	mov	x8, x20
+   3a480:	aa1803e1 	mov	x1, x24
+   3a484:	97ffe99f 	bl	34b00 <icraft::xrt::operator+(icraft::xrt::MemPtr const&, unsigned long)@plt>
+   3a488:	aa1703e3 	mov	x3, x23
+   3a48c:	aa1403e2 	mov	x2, x20
+   3a490:	aa1603e1 	mov	x1, x22
+   3a494:	9100a2a0 	add	x0, x21, #0x28
+   3a498:	97ffe842 	bl	345a0 <icraft::xrt::MemRegion::read(char*, icraft::xrt::MemPtr const&, unsigned long) const@plt>

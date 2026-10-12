@@ -1,0 +1,14 @@
+{
+  "status": "bounded_producer_contract_audit_finished_root_unresolved",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "root_fixed": false,
+  "completion_sha256": "053455cb3604e3a8c9620533afc5ccbaa5866d0a5ba620ad607e69bf3b68a8af",
+  "board_offline": "/tmp/pose-producer-contract-20261011-r2",
+  "board_apply": "/tmp/pose-producer-deployment-20261011-r3",
+  "corrected_gate_build": ".local/pose-v1-build/producer-deployment-20261011-r4",
+  "corrected_gate_executed": false,
+  "next": "Read PRODUCER-CONTRACT-RESULTS/NEXT and ADR_37. Zero-instruction Cast producers cannot supply NPU computation; full19-member view needs exact parameters/FP16 layout/reference closure. First public RAW-only extraction and independent reference design, no graph/math/SDK/BOOT change. Conditional ready-copy actual use and DDR guarantee unproven; keep original failure snapshots/late reads. No new dynamic observer or dependency installed; strace unavailable. r3 exit1 is log-count gate error, both logs valid, no hardware rerun for corrected gate. Strict5Hz/103/long-term/HDMI pending."
+}

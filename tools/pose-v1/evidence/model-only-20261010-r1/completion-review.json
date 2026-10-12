@@ -1,0 +1,126 @@
+{
+  "status": "real_mixed_model_without_video_three_and103_passed_fault_unresolved",
+  "program_sha256": "9ed61d9dc29712d9bf28f88d182d5f103bbdda8545b4ae4c9329604e0d925741",
+  "original_main_sha256": "fbf330d73ec34c43c7c2757253115e720ba7dccfd6fc6f54a28c6cbaacb8702d",
+  "manifest_sha256": "34c3c25cd290f185165996b6abce84c7506d22cfadb7e2b4ab712b742e355903",
+  "payloads": 403,
+  "build_sources": 98,
+  "Native_ARM_refusals_each": 9,
+  "Host107_new_run": false,
+  "Host107_reused": 107,
+  "registry_reused": 12,
+  "Host_FP32_reused": 59600,
+  "three_calls": 4,
+  "load_calls": 103,
+  "correct_calls": 107,
+  "FP32_compared": 1615700,
+  "all_raw_windows_and_complete_outputs_saved": true,
+  "all_outputs_bitwise_old_board_reference": true,
+  "stage_facts": [
+    {
+      "stage": "three",
+      "calls": 4,
+      "init_ms": 29542.30089,
+      "source_addresses": [
+        109232128,
+        109285376
+      ],
+      "Host_destination_mod64": [
+        16,
+        48
+      ],
+      "actual_begin_span_ms": 1500.21709,
+      "normal_source_reads_added": 0,
+      "all192_counts": 234,
+      "completion582_no_extra_poll": true
+    },
+    {
+      "stage": "load-103",
+      "calls": 103,
+      "init_ms": 29044.92305,
+      "source_addresses": [
+        109232128,
+        109285376
+      ],
+      "Host_destination_mod64": [
+        0,
+        16,
+        32,
+        48
+      ],
+      "actual_begin_span_ms": 20407.74408,
+      "normal_source_reads_added": 0,
+      "all192_counts": 234,
+      "completion582_no_extra_poll": true
+    }
+  ],
+  "shadow_records": 856,
+  "copy_metadata_rows": 963,
+  "object_rows": 1712,
+  "producer192_queries": 856,
+  "source_addresses": [
+    109232128,
+    109285376
+  ],
+  "all192_counts234": true,
+  "completion582_no_extra_poll": true,
+  "independent_persistence_tasks_per_run": 7,
+  "single_main_Engine": true,
+  "full_model_Session": true,
+  "NPU_forward": true,
+  "VPU": false,
+  "display": false,
+  "network": false,
+  "HDMI": false,
+  "profiling": false,
+  "normal_device_source_reads_added": 0,
+  "hardware_error_source_reads_triggered": 0,
+  "model_fault_reproduced": false,
+  "root_cause_fixed": false,
+  "VPU_proven_cause": false,
+  "DMA_cache_fence_proven": false,
+  "zero_copy_verified": false,
+  "performance_accepted": false,
+  "long_term_accepted": false,
+  "agent_compactions": 0,
+  "BOOT_SDK_model_math_changed": false,
+  "all_agent_sessions_closed": true,
+  "final_MemAvailable_KiB": 700208,
+  "final_CmaFree_KiB": 9312,
+  "final_ordinary_512KiB_units": 1,
+  "evidence_sha256": {
+    "build.acceptance.json": "53d854d830f297901b2c2c51eac898558b23ce063862513b27ef9e8a6436a26e",
+    "baseline.acceptance.json": "dc276ff81dd2e1a8c52ffb817b182cf2d757ed6c6ca97d0ecd52f6746f15db18",
+    "contracts.acceptance.json": "86be26b931c7bb4f278b763f595c8334f4db42417d5e527db09ea75c07a5bf87",
+    "three.acceptance.json": "0d651c506169420ee25afb7752d2e6f4069a6445c874b8b4a95222f805a725c4",
+    "three.objects.json": "32b61aa8991e4375a839d2554797e7c8790f10fa6a3888de417b493afca2996b",
+    "three.counts.json": "6f8ee56b6ab4ca353ff49f6232a9ef2d1577ce08aaed06a291113a0606017878",
+    "load.acceptance.json": "89ea2b059cd3d6a0cdbd03bd61ba54ce698e13fe62740c3a44c9dbfa1008e951",
+    "load.objects.json": "155c1d4a0a8e59d3fffb8bcd0df6f57391ff724cb2fc464ba85e05dc414a9ca1",
+    "load.counts.json": "0eb9f915b2bf6df76e626c73393cbf14ce80a0162d5a19b4bff330194f73ba2c",
+    "resource-review.json": "af7273689bb64103e20c7e28397df3bce8dcb215ca21aff741d98cc314e638b2"
+  },
+  "review_tools_sha256": {
+    "prepare_model_only_r1.py": "fcd763a82fc78cfb7205b784ffd13173bbade4743518aa1d512a0d393a132b8c",
+    "Build-ModelOnly.ps1": "695e9588b461410657947a6c95beb4b2cb33a063a057f3d92be54ffbc945b167",
+    "review_model_only_build_base.py": "d4565f0c57ff4078d033df544c229effaa6fb3d30641ef75c399e92869ad4cca",
+    "review_model_only.py": "39f28ce364543cadb95c85cf7aadf50c2ff52834701446d1966b1e4c596be6f5",
+    "review_model_only_objects.py": "973f546736745e3bbdcb6077a9786b41a1937b7f976adc6252a22ef009d0a675",
+    "review_model_only_counts.py": "d1872b51fdebe09ced7f5c97ff272e9d4e3c4d03df49575b83fd4d95d4a06eaf",
+    "run_model_only_native.py": "d5c495b19c2ae01e09336039a267f6d695d91fdd47fbab464ba132a037ba5d47",
+    "run-model-only.sh": "25c16997511d11e30c416f9c9b8206e39310fef21dadf612c52556d8fa5e8d4c",
+    "model_only_transfer.py": "1ad1521edaa20f1ee2d39adaa581bbe864c7de9fe065790bdbab8c4943415c3d",
+    "record_model_only_completion.py": "6425cfccf3bb3300243c38e2607c9424d04686b51cf87ca755cf3e7377e13547"
+  },
+  "archive_sha256": {
+    "contracts.tar": "27ad01e78b4817872c14b0b11c6c6d4fa9b849cb035a8bf82580705281dc6d6c",
+    "three.tar": "27387ab1182ef38d2678596336878aea0dd589e8808cfe018dc38cfb249c8b54",
+    "load.tar": "ee447f31f6a8f4d9a4f3de43a4eb7ea359dade077d2546cd381c7936d2a548ff"
+  },
+  "limitations": [
+    "No video/display/network; one103 sequence is not permanent concurrency reliability.",
+    "Saved output IO, wrapper heap, and no VPU-first initialization alter conditions; no causal proof from non-reproduction.",
+    "Correct FP32-aligned Host destinations include nonzero mod64 values; not a64byte alignment fix.",
+    "Old failed Host bytes and both late reads remain archived; no new device exception this batch."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "status": "scratch_baseline_Host107_reused_exact_main_and_payload",
+  "stage": "baseline",
+  "package_manifest_sha256": "5212fb544056c448a3ff0f885ef452fa413321c81ca35bdc34f364efc8ad8701",
+  "scratch_binary_sha256": "3bcdea1b6a6e611a219dea3a5eed7e2a551fd2eb2985c10ddd376c64f777006a",
+  "binary_sha256": "3f0ad06c666d40921479cdb0a428783a3f01c0b145e85af02e6f430b419f1e37",
+  "payloads": 403,
+  "build_sources": 85,
+  "full_model_Session": false,
+  "NPU_forward": false,
+  "Host_cases_reused": 107,
+  "registry_records_reused": 12,
+  "CPU_FP32_reused": 59600,
+  "Host107_new_run": false,
+  "preserved_payloads": 402,
+  "original_main_ELF_bitwise": true,
+  "old_Host_gate_sha256": "f11ebd6b037f718e8fcc0f8b77ab8ae48924986278dcc8f59773615037c6941f",
+  "old_Host_source_read_contract_sha256": "0ae6860cc651a394a52c8d78d1277b37d54899fba51a77717352e5fd44c6d90d",
+  "Native_pattern_refusals": 8
+}

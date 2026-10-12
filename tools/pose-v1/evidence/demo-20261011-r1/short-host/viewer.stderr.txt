@@ -1,0 +1,47 @@
+[ WARN:0@2.037] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2025.484000 ms
+[ WARN:0@4.265] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2019.351000 ms
+[ WARN:0@6.505] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2028.175000 ms
+[ WARN:0@8.743] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2022.708000 ms
+[ WARN:0@10.981] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2023.099000 ms
+[ WARN:0@13.222] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2027.776000 ms
+[ WARN:0@15.466] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2029.885000 ms
+[ WARN:0@17.700] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2020.429000 ms
+[ WARN:0@19.939] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2025.359000 ms
+[ WARN:0@22.170] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2016.393000 ms
+[ WARN:0@24.403] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2018.598000 ms
+[ WARN:0@26.635] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2017.722000 ms
+[ WARN:0@28.871] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2021.939000 ms
+[ WARN:0@31.110] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2025.277000 ms
+[ WARN:0@33.340] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2015.557000 ms
+[ WARN:0@35.578] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2024.799000 ms
+[ WARN:0@37.814] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2023.039000 ms
+[ WARN:0@40.047] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2019.820000 ms
+[ WARN:0@42.277] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2017.483000 ms
+[ WARN:0@44.519] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2027.573000 ms
+[ WARN:0@46.751] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2017.489000 ms
+[ WARN:0@48.974] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2022.714000 ms
+[ WARN:0@51.211] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2024.937000 ms
+[ WARN:0@53.442] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2018.749000 ms
+[ WARN:0@55.672] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2015.696000 ms
+[ WARN:0@57.912] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2027.335000 ms
+[ WARN:0@60.150] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2023.675000 ms
+[ WARN:0@62.383] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2022.169000 ms
+[ WARN:0@64.620] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2022.734000 ms
+[ WARN:0@66.854] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2021.084000 ms
+[ WARN:0@69.094] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2028.051000 ms
+[ WARN:0@71.325] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2019.200000 ms
+[ WARN:0@73.556] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2018.476000 ms
+[ WARN:0@75.792] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2020.990000 ms
+[ WARN:0@78.027] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2021.684000 ms
+[ WARN:0@80.260] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2021.730000 ms
+[ WARN:0@82.505] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2030.733000 ms
+[ WARN:0@84.739] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2022.014000 ms
+[ WARN:0@86.974] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2023.692000 ms
+[ WARN:0@89.209] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2021.813000 ms
+[ WARN:0@91.443] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 2019.463000 ms
+Traceback (most recent call last):
+  File "C:\Users\cenyongdong\.codex\worktrees\dea3\FPGACompetitionProject\software\demo\host\viewer.py", line 46, in <module>
+    if __name__=='__main__':main()
+  File "C:\Users\cenyongdong\.codex\worktrees\dea3\FPGACompetitionProject\software\demo\host\viewer.py", line 45, in main
+    if error:raise RuntimeError(error)
+RuntimeError: RTSP startup timeout

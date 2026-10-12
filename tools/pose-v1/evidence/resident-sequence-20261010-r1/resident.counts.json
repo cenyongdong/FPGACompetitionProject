@@ -1,0 +1,18 @@
+{
+  "status": "public192_counts_source_and_copy_timing_checked",
+  "selftest_SHA": "27776b8d7db59febff12c9ba737e3ecf4bdd6aa4408da659a467a73e3e1d108d",
+  "target": 234,
+  "wait_added": false,
+  "normal_device_data_reads_added": 0,
+  "DMA_cache_fence_proven": false,
+  "Native_refusals": 16,
+  "query_rows": 856,
+  "complete_observed_calls": 107,
+  "metadata_rows": 963,
+  "combined_rows": 1819,
+  "below234": [],
+  "query_errors": [],
+  "copy_before_below234": 0,
+  "all_persistence_tasks_saved": true,
+  "diagnostic_not_performance_acceptance": true
+}

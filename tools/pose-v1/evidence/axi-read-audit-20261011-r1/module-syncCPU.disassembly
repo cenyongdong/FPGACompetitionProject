@@ -1,0 +1,91 @@
+
+/tmp/pose-v1-axi-pair-20261011-r4/u-dma-buf.board.ko:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+00000000000017c8 <udmabuf_set_sync_for_cpu>:
+    17c8:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
+    17cc:	910003fd 	mov	x29, sp
+    17d0:	a90153f3 	stp	x19, x20, [sp, #16]
+    17d4:	d5384113 	mrs	x19, sp_el0
+    17d8:	aa0203f4 	mov	x20, x2
+    17dc:	a9025bf5 	stp	x21, x22, [sp, #32]
+    17e0:	aa0303f5 	mov	x21, x3
+    17e4:	f9001bf7 	str	x23, [sp, #48]
+    17e8:	f9403c16 	ldr	x22, [x0, #120]
+    17ec:	f941d660 	ldr	x0, [x19, #936]
+    17f0:	f90027e0 	str	x0, [sp, #72]
+    17f4:	d2800000 	mov	x0, #0x0                   	// #0
+    17f8:	910202d7 	add	x23, x22, #0x80
+    17fc:	aa1703e0 	mov	x0, x23
+    1800:	94000000 	bl	0 <mutex_lock_interruptible>
+			1800: R_AARCH64_CALL26	mutex_lock_interruptible
+    1804:	35000760 	cbnz	w0, 18f0 <udmabuf_set_sync_for_cpu+0x128>
+    1808:	aa1403e0 	mov	x0, x20
+    180c:	910103e2 	add	x2, sp, #0x40
+    1810:	52800001 	mov	w1, #0x0                   	// #0
+    1814:	94000000 	bl	0 <kstrtoull>
+			1814: R_AARCH64_CALL26	kstrtoull
+    1818:	93407c14 	sxtw	x20, w0
+    181c:	340001e0 	cbz	w0, 1858 <udmabuf_set_sync_for_cpu+0x90>
+    1820:	aa1703e0 	mov	x0, x23
+    1824:	94000000 	bl	0 <mutex_unlock>
+			1824: R_AARCH64_CALL26	mutex_unlock
+    1828:	910ea273 	add	x19, x19, #0x3a8
+    182c:	f94027e0 	ldr	x0, [sp, #72]
+    1830:	f9400261 	ldr	x1, [x19]
+    1834:	eb010000 	subs	x0, x0, x1
+    1838:	d2800001 	mov	x1, #0x0                   	// #0
+    183c:	54000621 	b.ne	1900 <udmabuf_set_sync_for_cpu+0x138>  // b.any
+    1840:	aa1403e0 	mov	x0, x20
+    1844:	a94153f3 	ldp	x19, x20, [sp, #16]
+    1848:	a9425bf5 	ldp	x21, x22, [sp, #32]
+    184c:	f9401bf7 	ldr	x23, [sp, #48]
+    1850:	a8c57bfd 	ldp	x29, x30, [sp], #80
+    1854:	d65f03c0 	ret
+    1858:	f94023e0 	ldr	x0, [sp, #64]
+    185c:	f90076c0 	str	x0, [x22, #232]
+    1860:	b5000060 	cbnz	x0, 186c <udmabuf_set_sync_for_cpu+0xa4>
+    1864:	aa1503f4 	mov	x20, x21
+    1868:	17ffffee 	b	1820 <udmabuf_set_sync_for_cpu+0x58>
+    186c:	f27ff81f 	tst	x0, #0xfffffffffffffffe
+    1870:	54000340 	b.eq	18d8 <udmabuf_set_sync_for_cpu+0x110>  // b.none
+    1874:	d360fc01 	lsr	x1, x0, #32
+    1878:	927c6c02 	and	x2, x0, #0xfffffff0
+    187c:	53020c03 	ubfx	w3, w0, #2, #2
+    1880:	f94056c0 	ldr	x0, [x22, #168]
+    1884:	8b020024 	add	x4, x1, x2
+    1888:	eb00009f 	cmp	x4, x0
+    188c:	54000368 	b.hi	18f8 <udmabuf_set_sync_for_cpu+0x130>  // b.pmore
+    1890:	f94006c0 	ldr	x0, [x22, #8]
+    1894:	7100047f 	cmp	w3, #0x1
+    1898:	f94062c5 	ldr	x5, [x22, #192]
+    189c:	f9410c04 	ldr	x4, [x0, #536]
+    18a0:	8b050021 	add	x1, x1, x5
+    18a4:	54000200 	b.eq	18e4 <udmabuf_set_sync_for_cpu+0x11c>  // b.none
+    18a8:	7100087f 	cmp	w3, #0x2
+    18ac:	1a9f17e3 	cset	w3, eq  // eq = none
+    18b0:	531f7863 	lsl	w3, w3, #1
+    18b4:	b40001a4 	cbz	x4, 18e8 <udmabuf_set_sync_for_cpu+0x120>
+    18b8:	f9402884 	ldr	x4, [x4, #80]
+    18bc:	b4000064 	cbz	x4, 18c8 <udmabuf_set_sync_for_cpu+0x100>
+    18c0:	d63f0080 	blr	x4
+    18c4:	d503201f 	nop
+    18c8:	aa1503f4 	mov	x20, x21
+    18cc:	390392df 	strb	wzr, [x22, #228]
+    18d0:	f90076df 	str	xzr, [x22, #232]
+    18d4:	17ffffd3 	b	1820 <udmabuf_set_sync_for_cpu+0x58>
+    18d8:	b940e2c3 	ldr	w3, [x22, #224]
+    18dc:	a94d0ac1 	ldp	x1, x2, [x22, #208]
+    18e0:	17ffffe8 	b	1880 <udmabuf_set_sync_for_cpu+0xb8>
+    18e4:	b5fffea4 	cbnz	x4, 18b8 <udmabuf_set_sync_for_cpu+0xf0>
+    18e8:	94000000 	bl	0 <dma_direct_sync_single_for_cpu>
+			18e8: R_AARCH64_CALL26	dma_direct_sync_single_for_cpu
+    18ec:	17fffff7 	b	18c8 <udmabuf_set_sync_for_cpu+0x100>
+    18f0:	92803ff4 	mov	x20, #0xfffffffffffffe00    	// #-512
+    18f4:	17ffffcd 	b	1828 <udmabuf_set_sync_for_cpu+0x60>
+    18f8:	928002b4 	mov	x20, #0xffffffffffffffea    	// #-22
+    18fc:	17ffffc9 	b	1820 <udmabuf_set_sync_for_cpu+0x58>
+    1900:	94000000 	bl	0 <__stack_chk_fail>
+			1900: R_AARCH64_CALL26	__stack_chk_fail

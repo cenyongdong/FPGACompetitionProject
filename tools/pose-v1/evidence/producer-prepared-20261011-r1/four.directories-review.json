@@ -1,0 +1,14 @@
+{
+  "status": "prepared_directory_ownership_and_consumption_verified",
+  "mode": "four",
+  "prepared": 4,
+  "consumed": 4,
+  "completed": 4,
+  "prepare_ms": 0.56224,
+  "hot_filesystem_calls": 0,
+  "unconsumed_paths_empty": true,
+  "Directory_trace_semantics": "in-memory token consume, not mkdir",
+  "data_saving_location_unchanged": true,
+  "initial_gate_budget_seconds": 50,
+  "archive_sha256": "ad4e84fdf89efb373fbce7e4c5e6d0d8db54439cb2651b0d8bfea3c86255af69"
+}

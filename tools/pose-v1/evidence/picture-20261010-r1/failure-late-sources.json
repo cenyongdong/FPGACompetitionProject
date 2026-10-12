@@ -1,0 +1,54 @@
+{
+  "status": "both_late_PLDDR_source_reads_correct_failed_Host_index_not_correct",
+  "case": "S23_30_330",
+  "invocation": 20,
+  "source_addresses": [
+    109232128,
+    109285376
+  ],
+  "device_source_read_bytes": 94080,
+  "records": [
+    {
+      "slot": 0,
+      "round": 0,
+      "bytes": 30240,
+      "late_source_bitwise_gold": true,
+      "equal_failed_Host": true,
+      "SHA256": "feb5f0f83ca5937666603b291a2b362352f618e6d92c5bdfe2e8865d7fd77e48",
+      "begin_ns": 113234493153220,
+      "end_ns": 113234493240430
+    },
+    {
+      "slot": 0,
+      "round": 1,
+      "bytes": 30240,
+      "late_source_bitwise_gold": true,
+      "equal_failed_Host": true,
+      "SHA256": "feb5f0f83ca5937666603b291a2b362352f618e6d92c5bdfe2e8865d7fd77e48",
+      "begin_ns": 113234493288760,
+      "end_ns": 113234493347990
+    },
+    {
+      "slot": 1,
+      "round": 0,
+      "bytes": 16800,
+      "late_source_bitwise_gold": true,
+      "equal_failed_Host": false,
+      "SHA256": "1f4cf6c2a77d1d21392ebb44961d84c89b493bab659188ad639f83f6200bf0a5",
+      "begin_ns": 113234493240820,
+      "end_ns": 113234493288550
+    },
+    {
+      "slot": 1,
+      "round": 1,
+      "bytes": 16800,
+      "late_source_bitwise_gold": true,
+      "equal_failed_Host": false,
+      "SHA256": "1f4cf6c2a77d1d21392ebb44961d84c89b493bab659188ad639f83f6200bf0a5",
+      "begin_ns": 113234493348160,
+      "end_ns": 113234493393460
+    }
+  ],
+  "late_read_does_not_prove_copy_time_correct": true,
+  "root_cause_proven": false
+}

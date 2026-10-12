@@ -1,0 +1,110 @@
+{
+  "status": "public_boundaries_compared_not_internal_Session_arguments_proof",
+  "rows": 440,
+  "invocations": 55,
+  "complete_owned_frames": 4,
+  "per_frame_owned_bytes": 101600,
+  "frames": [
+    {
+      "invocation": 0,
+      "frame": 100000,
+      "Gather_from_observed_retained_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "producer_data_to_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "TopK_indices_to_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "Gather_post_to_ZG_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      }
+    },
+    {
+      "invocation": 1,
+      "frame": 100001,
+      "Gather_from_observed_retained_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "producer_data_to_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "TopK_indices_to_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "Gather_post_to_ZG_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      }
+    },
+    {
+      "invocation": 2,
+      "frame": 100002,
+      "Gather_from_observed_retained_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "producer_data_to_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "TopK_indices_to_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "Gather_post_to_ZG_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      }
+    },
+    {
+      "invocation": 3,
+      "frame": 100003,
+      "Gather_from_observed_retained_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "producer_data_to_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "TopK_indices_to_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      },
+      "Gather_post_to_ZG_pre": {
+        "changed_FP32": 0,
+        "bitwise_equal": true,
+        "finite_max_abs": 0.0
+      }
+    }
+  ],
+  "pre_vector_not_read_as_inputs": true,
+  "private_tmap_access": false,
+  "physical_reuse_possible": true,
+  "shared_SDK_read_path": true,
+  "root_cause_proven": false
+}

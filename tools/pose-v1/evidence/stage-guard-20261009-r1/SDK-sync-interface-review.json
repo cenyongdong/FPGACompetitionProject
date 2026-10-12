@@ -1,0 +1,16 @@
+{
+  "sdk_tensor_header_sha256": "4b2c4d0ad24db042f151a56afce2fba881ad8f2fe1c87c9d32d620caf89b365a",
+  "waitForReady_ready_cache_present": true,
+  "public_layerCount_declared": true,
+  "DMA_cache_fence_proven": false,
+  "observations_module_files": {
+    "software\\pose_v1\\include\\host_stage_observation.hpp": "b0bdab852c0beebdb7df4b2c2d4942c18ec390478383200d792946889cd12ee2",
+    "software\\pose_v1\\src\\host_stage_observation.cpp": "2df4f038e2f9fb63e6353a674012184663db5bba4b18dd9264a80b2f85841f15",
+    "software\\pose_v1\\src\\host_stage_observation_selftest.cpp": "130da6e775982f61998912911fb0cd43bdf4c7cc7074102f1f4f65267d3a80ea"
+  },
+  "actual_XRT_SHA256": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+  "ZG330Device_layerCount_address": "0x9a7f8",
+  "ZG330DeviceNode_layerCount_address": "0x9a680",
+  "layerCount_delegates_public_SDK_readReg": true,
+  "agent_register_writes": false
+}

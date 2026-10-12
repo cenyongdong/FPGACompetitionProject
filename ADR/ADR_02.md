@@ -51,3 +51,17 @@ TCP输出失配诊断新目标在首次VPU启动处再次失败，尚未创建En
 - [r6完成及失败核验](../tools/pose-v1/evidence/pipeline-20261008-r6/completion-review.json)
 - [Linux5.4 GFP定义](https://raw.githubusercontent.com/torvalds/linux/v5.4/include/linux/gfp.h)：mobility与NORETRY行为；上游机制不代替板端定制驱动证明。
 - [Linux5.4启动参数](https://www.kernel.org/doc/html/v5.4/admin-guide/kernel-parameters.html)：CMA大小/地址属于启动配置；本轮不调整。
+
+
+## 2026-10-10补充：规整后首次启动反例
+
+同程序模型／合成VPU对照前三阶段111前向／1676100FP32正确，310合成码流通过；第四阶段在Engine之前DQBUF EIO，内核同一路径order7／512KiB普通连续申请失败。启动前有记录规整8→9单位／14.12106ms，raw REQBUFS后7、capture REQBUFS后0，约104MiB总空闲不能满足该连续申请；失败后释放恢复普通8并不反证瞬间不足。没有新模型坏块，不能将此错误归为192／ScatterND早读。
+
+本批总3次资源准备规整，不清缓存、重启、改CMA／BOOT／驱动。两abort STREAMOFF成功／worker join／七项落盘保存，未重试旧失败。该反例将“规整可诊断并偶尔推进”与“可靠首次启动”明确分开；常驻能减少重新分配，但第一次成功仍要单独取得。下一仅准备同上下文跨短／长阶段编排和匹配驱动分配路径审计，安全连续申请／CMA修改另议。[结果](../tools/pose-v1/MODEL-VPU-RESULTS-20261010.md)／[ADR_27](ADR_27.md)／[下一](../tools/pose-v1/MODEL-VPU-NEXT-20261010.md)。
+
+
+## 2026-10-10补充：单次上下文保持通过，首次资源条件仍需区分
+
+按新[ADR_28](ADR_28.md)，一次VPU实际capture后创建同一主线程Engine，连续三窗4＋103完整通过，107前向1615700FP32／518合成图像正确；窗口切换无VPU／MMAP／Engine重建。准备规整9→28单位／144.80296ms，实际进入31、raw后29、capture后21、首capture20；与上批9→7→0的失败条件不同。保留context可避免阶段重开，但不能声称因此独自修复第一次启动或普通页分配永久可靠。
+
+原两缓冲／cookie／6.64MiB映射／CMA256MiB／驱动／BOOT保持，正常drain-LAST／两STREAMOFF、join后Engine销毁，最终原内核同／进程结束。未清缓存／重启／改CMA／内核。进一步安全连续申请仍须匹配DMA／MMU／cache／固件与释放路径，不能由本次成功跳过。[实际结果](../tools/pose-v1/RESIDENT-SEQUENCE-RESULTS-20261010.md)。

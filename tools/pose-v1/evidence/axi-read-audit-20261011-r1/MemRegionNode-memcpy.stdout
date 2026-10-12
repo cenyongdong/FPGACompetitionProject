@@ -1,0 +1,68 @@
+
+/usr/lib/aarch64-linux-gnu/libicraft_xrt.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+00000000000358e8 <icraft::xrt::MemRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemRegion const&, icraft::xrt::MemPtr const&, unsigned long) const>:
+   358e8:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+   358ec:	910003fd 	mov	x29, sp
+   358f0:	a9025bf5 	stp	x21, x22, [sp, #32]
+   358f4:	aa0003f6 	mov	x22, x0
+   358f8:	aa0303f5 	mov	x21, x3
+   358fc:	aa0203e0 	mov	x0, x2
+   35900:	a90153f3 	stp	x19, x20, [sp, #16]
+   35904:	aa0403f3 	mov	x19, x4
+   35908:	a90363f7 	stp	x23, x24, [sp, #48]
+   3590c:	aa0203f7 	mov	x23, x2
+   35910:	aa0103f8 	mov	x24, x1
+   35914:	97fffc0f 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   35918:	eb0002df 	cmp	x22, x0
+   3591c:	54000400 	b.eq	3599c <icraft::xrt::MemRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemRegion const&, icraft::xrt::MemPtr const&, unsigned long) const+0xb4>  // b.none
+   35920:	aa1303e0 	mov	x0, x19
+   35924:	97fff237 	bl	32200 <operator new[](unsigned long)@plt>
+   35928:	f100067f 	cmp	x19, #0x1
+   3592c:	aa0003f4 	mov	x20, x0
+   35930:	540000c4 	b.mi	35948 <icraft::xrt::MemRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemRegion const&, icraft::xrt::MemPtr const&, unsigned long) const+0x60>  // b.first
+   35934:	d1000a63 	sub	x3, x19, #0x2
+   35938:	52800001 	mov	w1, #0x0                   	// #0
+   3593c:	b100047f 	cmn	x3, #0x1
+   35940:	9a9fa662 	csinc	x2, x19, xzr, ge  // ge = tcont
+   35944:	97fff4fb 	bl	32d30 <memset@plt>
+   35948:	aa1703e0 	mov	x0, x23
+   3594c:	97fffc01 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   35950:	f9400004 	ldr	x4, [x0]
+   35954:	aa1503e2 	mov	x2, x21
+   35958:	aa1303e3 	mov	x3, x19
+   3595c:	aa1403e1 	mov	x1, x20
+   35960:	f9402084 	ldr	x4, [x4, #64]
+   35964:	d63f0080 	blr	x4
+   35968:	f94002c4 	ldr	x4, [x22]
+   3596c:	aa1303e3 	mov	x3, x19
+   35970:	aa1803e1 	mov	x1, x24
+   35974:	aa1603e0 	mov	x0, x22
+   35978:	aa1403e2 	mov	x2, x20
+   3597c:	f9402484 	ldr	x4, [x4, #72]
+   35980:	d63f0080 	blr	x4
+   35984:	aa1403e0 	mov	x0, x20
+   35988:	a94153f3 	ldp	x19, x20, [sp, #16]
+   3598c:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   35990:	a94363f7 	ldp	x23, x24, [sp, #48]
+   35994:	a8c47bfd 	ldp	x29, x30, [sp], #64
+   35998:	17fff8a2 	b	33c20 <operator delete[](void*)@plt>
+   3599c:	f94002c4 	ldr	x4, [x22]
+   359a0:	aa1303e3 	mov	x3, x19
+   359a4:	aa1503e2 	mov	x2, x21
+   359a8:	aa1803e1 	mov	x1, x24
+   359ac:	a94153f3 	ldp	x19, x20, [sp, #16]
+   359b0:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   359b4:	a94363f7 	ldp	x23, x24, [sp, #48]
+   359b8:	a8c47bfd 	ldp	x29, x30, [sp], #64
+   359bc:	f9403484 	ldr	x4, [x4, #104]
+   359c0:	aa0403f0 	mov	x16, x4
+   359c4:	d61f0200 	br	x16
+   359c8:	aa0003f3 	mov	x19, x0
+   359cc:	aa1403e0 	mov	x0, x20
+   359d0:	97fff894 	bl	33c20 <operator delete[](void*)@plt>
+   359d4:	aa1303e0 	mov	x0, x19
+   359d8:	97fffb5a 	bl	34740 <_Unwind_Resume@plt>

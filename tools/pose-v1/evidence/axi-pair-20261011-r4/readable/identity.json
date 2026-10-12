@@ -1,0 +1,30 @@
+{
+  "return-copy-vpu.tar": {
+    "archive_sha256": "73df8a17aba1100bb5d5aa560af9df22c492c9713ffe7a9d0ec96f0818589856",
+    "files": 108
+  },
+  "return-copy.tar": {
+    "archive_sha256": "d753afcd99fdfac1b9e281479bf8712ffa1001f23940677bab8606c9f8fec207",
+    "files": 40
+  },
+  "return-host.tar": {
+    "archive_sha256": "a00bdf7d3dfabd2361f5541925fa04b449366112ddc161497939b2a2a142ce21",
+    "files": 21
+  },
+  "return-read-vpu.tar": {
+    "archive_sha256": "8ee6b6fb4c3e46fd4b642cffc9074f43d5b25c23fc9cc94723780c4ff2f175b7",
+    "files": 108
+  },
+  "return-read.tar": {
+    "archive_sha256": "9529c736185b5ca1de6c83bd0060d9cdc48385e3cb1ef5c1c3813beefe0196ba",
+    "files": 40
+  },
+  "return-resource-copy-vpu.tar": {
+    "archive_sha256": "ba289b123d3dbc39b2d708971837d96364b34535f2fe2f219b10cf1d75a25ae7",
+    "files": 14
+  },
+  "return-resource-read-vpu.tar": {
+    "archive_sha256": "3376b967ee90d3ba0de800264398ed4574b22a31bc0b59c369763e33efc983dd",
+    "files": 14
+  }
+}

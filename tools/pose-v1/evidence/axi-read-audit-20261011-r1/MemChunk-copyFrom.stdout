@@ -1,0 +1,272 @@
+
+/usr/lib/aarch64-linux-gnu/libicraft_xrt.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000003a720 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const>:
+   3a720:	a9b07bfd 	stp	x29, x30, [sp, #-256]!
+   3a724:	910003fd 	mov	x29, sp
+   3a728:	a90363f7 	stp	x23, x24, [sp, #48]
+   3a72c:	b00004d8 	adrp	x24, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   3a730:	aa0003f7 	mov	x23, x0
+   3a734:	f9451705 	ldr	x5, [x24, #2600]
+   3a738:	a9025bf5 	stp	x21, x22, [sp, #32]
+   3a73c:	aa0103f6 	mov	x22, x1
+   3a740:	f94000a1 	ldr	x1, [x5]
+   3a744:	f9007fe1 	str	x1, [sp, #248]
+   3a748:	d2800001 	mov	x1, #0x0                   	// #0
+   3a74c:	aa0303f5 	mov	x21, x3
+   3a750:	a90153f3 	stp	x19, x20, [sp, #16]
+   3a754:	aa0403f3 	mov	x19, x4
+   3a758:	aa0203f4 	mov	x20, x2
+   3a75c:	a9046bf9 	stp	x25, x26, [sp, #64]
+   3a760:	97ffe87c 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a764:	8b1302c1 	add	x1, x22, x19
+   3a768:	f9401000 	ldr	x0, [x0, #32]
+   3a76c:	eb00003f 	cmp	x1, x0
+   3a770:	54001068 	b.hi	3a97c <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x25c>  // b.pmore
+   3a774:	aa1403e0 	mov	x0, x20
+   3a778:	97ffe876 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a77c:	f9401000 	ldr	x0, [x0, #32]
+   3a780:	8b150261 	add	x1, x19, x21
+   3a784:	eb00003f 	cmp	x1, x0
+   3a788:	54000888 	b.hi	3a898 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x178>  // b.pmore
+   3a78c:	aa1703e0 	mov	x0, x23
+   3a790:	97ffe870 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a794:	910183fa 	add	x26, sp, #0x60
+   3a798:	9100a019 	add	x25, x0, #0x28
+   3a79c:	aa1703e0 	mov	x0, x23
+   3a7a0:	97ffe86c 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a7a4:	aa1603e1 	mov	x1, x22
+   3a7a8:	aa1a03e8 	mov	x8, x26
+   3a7ac:	91004000 	add	x0, x0, #0x10
+   3a7b0:	97ffe8d4 	bl	34b00 <icraft::xrt::operator+(icraft::xrt::MemPtr const&, unsigned long)@plt>
+   3a7b4:	aa1403e0 	mov	x0, x20
+   3a7b8:	97ffe866 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a7bc:	aa0003e1 	mov	x1, x0
+   3a7c0:	aa1403e0 	mov	x0, x20
+   3a7c4:	9100a034 	add	x20, x1, #0x28
+   3a7c8:	97ffe862 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a7cc:	9101c3f6 	add	x22, sp, #0x70
+   3a7d0:	91004000 	add	x0, x0, #0x10
+   3a7d4:	aa1503e1 	mov	x1, x21
+   3a7d8:	aa1603e8 	mov	x8, x22
+   3a7dc:	97ffe8c9 	bl	34b00 <icraft::xrt::operator+(icraft::xrt::MemPtr const&, unsigned long)@plt>
+   3a7e0:	aa1303e4 	mov	x4, x19
+   3a7e4:	aa1603e3 	mov	x3, x22
+   3a7e8:	aa1403e2 	mov	x2, x20
+   3a7ec:	aa1a03e1 	mov	x1, x26
+   3a7f0:	aa1903e0 	mov	x0, x25
+   3a7f4:	97ffe3cf 	bl	33730 <icraft::xrt::MemRegion::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemRegion const&, icraft::xrt::MemPtr const&, unsigned long) const@plt>
+   3a7f8:	f9403be0 	ldr	x0, [sp, #112]
+   3a7fc:	b4000060 	cbz	x0, 3a808 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0xe8>
+   3a800:	3941e3e1 	ldrb	w1, [sp, #120]
+   3a804:	34000361 	cbz	w1, 3a870 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x150>
+   3a808:	f94033e0 	ldr	x0, [sp, #96]
+   3a80c:	b4000060 	cbz	x0, 3a818 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0xf8>
+   3a810:	3941a3e1 	ldrb	w1, [sp, #104]
+   3a814:	340001a1 	cbz	w1, 3a848 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x128>
+   3a818:	f9451718 	ldr	x24, [x24, #2600]
+   3a81c:	f9407fe0 	ldr	x0, [sp, #248]
+   3a820:	f9400301 	ldr	x1, [x24]
+   3a824:	eb010000 	subs	x0, x0, x1
+   3a828:	d2800001 	mov	x1, #0x0                   	// #0
+   3a82c:	540011a1 	b.ne	3aa60 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x340>  // b.any
+   3a830:	a94153f3 	ldp	x19, x20, [sp, #16]
+   3a834:	a9425bf5 	ldp	x21, x22, [sp, #32]
+   3a838:	a94363f7 	ldp	x23, x24, [sp, #48]
+   3a83c:	a9446bf9 	ldp	x25, x26, [sp, #64]
+   3a840:	a8d07bfd 	ldp	x29, x30, [sp], #256
+   3a844:	d65f03c0 	ret
+   3a848:	91002001 	add	x1, x0, #0x8
+   3a84c:	885ffc22 	ldaxr	w2, [x1]
+   3a850:	51000442 	sub	w2, w2, #0x1
+   3a854:	8803fc22 	stlxr	w3, w2, [x1]
+   3a858:	35ffffa3 	cbnz	w3, 3a84c <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x12c>
+   3a85c:	35fffde2 	cbnz	w2, 3a818 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0xf8>
+   3a860:	f9400001 	ldr	x1, [x0]
+   3a864:	f9400821 	ldr	x1, [x1, #16]
+   3a868:	d63f0020 	blr	x1
+   3a86c:	17ffffeb 	b	3a818 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0xf8>
+   3a870:	91002001 	add	x1, x0, #0x8
+   3a874:	885ffc22 	ldaxr	w2, [x1]
+   3a878:	51000442 	sub	w2, w2, #0x1
+   3a87c:	8803fc22 	stlxr	w3, w2, [x1]
+   3a880:	35ffffa3 	cbnz	w3, 3a874 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x154>
+   3a884:	35fffc22 	cbnz	w2, 3a808 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0xe8>
+   3a888:	f9400001 	ldr	x1, [x0]
+   3a88c:	f9400821 	ldr	x1, [x1, #16]
+   3a890:	d63f0020 	blr	x1
+   3a894:	17ffffdd 	b	3a808 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0xe8>
+   3a898:	52855f61 	mov	w1, #0x2afb                	// #11003
+   3a89c:	528025e0 	mov	w0, #0x12f                 	// #303
+   3a8a0:	a90573fb 	stp	x27, x28, [sp, #80]
+   3a8a4:	97ffec6b 	bl	35a50 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.1]>
+   3a8a8:	97ffded2 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   3a8ac:	d0000341 	adrp	x1, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   3a8b0:	aa0003fc 	mov	x28, x0
+   3a8b4:	91328021 	add	x1, x1, #0xca0
+   3a8b8:	d2800802 	mov	x2, #0x40                  	// #64
+   3a8bc:	97ffe419 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   3a8c0:	910203f9 	add	x25, sp, #0x80
+   3a8c4:	d0000341 	adrp	x1, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   3a8c8:	91004324 	add	x4, x25, #0x10
+   3a8cc:	d0000342 	adrp	x2, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   3a8d0:	aa1903e0 	mov	x0, x25
+   3a8d4:	9133a021 	add	x1, x1, #0xce8
+   3a8d8:	9134c842 	add	x2, x2, #0xd32
+   3a8dc:	52800003 	mov	w3, #0x0                   	// #0
+   3a8e0:	f90043e4 	str	x4, [sp, #128]
+   3a8e4:	97ffe017 	bl	32940 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)@plt>
+   3a8e8:	aa1403e0 	mov	x0, x20
+   3a8ec:	97ffe819 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a8f0:	f9401004 	ldr	x4, [x0, #32]
+   3a8f4:	910303fb 	add	x27, sp, #0xc0
+   3a8f8:	a94807e0 	ldp	x0, x1, [sp, #128]
+   3a8fc:	910283fa 	add	x26, sp, #0xa0
+   3a900:	aa1b03e3 	mov	x3, x27
+   3a904:	aa1a03e8 	mov	x8, x26
+   3a908:	d2808882 	mov	x2, #0x444                 	// #1092
+   3a90c:	f90063f5 	str	x21, [sp, #192]
+   3a910:	f9006bf3 	str	x19, [sp, #208]
+   3a914:	f90073e4 	str	x4, [sp, #224]
+   3a918:	97ffe852 	bl	34a60 <fmt::v8::vformat[abi:cxx11](fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   3a91c:	a94a0be1 	ldp	x1, x2, [sp, #160]
+   3a920:	aa1c03e0 	mov	x0, x28
+   3a924:	97ffe3ff 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   3a928:	f94053e0 	ldr	x0, [sp, #160]
+   3a92c:	9100435a 	add	x26, x26, #0x10
+   3a930:	eb1a001f 	cmp	x0, x26
+   3a934:	54000040 	b.eq	3a93c <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x21c>  // b.none
+   3a938:	97ffe306 	bl	33550 <operator delete(void*)@plt>
+   3a93c:	f94043e0 	ldr	x0, [sp, #128]
+   3a940:	91004339 	add	x25, x25, #0x10
+   3a944:	eb19001f 	cmp	x0, x25
+   3a948:	54000040 	b.eq	3a950 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x230>  // b.none
+   3a94c:	97ffe301 	bl	33550 <operator delete(void*)@plt>
+   3a950:	97ffdea8 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   3a954:	aa1b03e8 	mov	x8, x27
+   3a958:	97ffe19a 	bl	32fc0 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   3a95c:	b00004c1 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   3a960:	aa1b03e0 	mov	x0, x27
+   3a964:	f9453021 	ldr	x1, [x1, #2656]
+   3a968:	91004021 	add	x1, x1, #0x10
+   3a96c:	f90063e1 	str	x1, [sp, #192]
+   3a970:	97ffe3c0 	bl	33870 <std::runtime_error::~runtime_error()@plt>
+   3a974:	a94573fb 	ldp	x27, x28, [sp, #80]
+   3a978:	17ffff85 	b	3a78c <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x6c>
+   3a97c:	52855f61 	mov	w1, #0x2afb                	// #11003
+   3a980:	528025e0 	mov	w0, #0x12f                 	// #303
+   3a984:	a90573fb 	stp	x27, x28, [sp, #80]
+   3a988:	97ffec32 	bl	35a50 <icraft::detail::LogExcept::LogExcept(char const*, int, int) [clone .constprop.1]>
+   3a98c:	97ffde99 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   3a990:	d0000341 	adrp	x1, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   3a994:	aa0003fc 	mov	x28, x0
+   3a998:	91328021 	add	x1, x1, #0xca0
+   3a99c:	d2800802 	mov	x2, #0x40                  	// #64
+   3a9a0:	97ffe3e0 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   3a9a4:	910203f9 	add	x25, sp, #0x80
+   3a9a8:	d0000341 	adrp	x1, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   3a9ac:	91004324 	add	x4, x25, #0x10
+   3a9b0:	d0000342 	adrp	x2, a4000 <icraft::xrt::utils::Ftmp2Tensor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, icraft::xir::Value const&)+0x58>
+   3a9b4:	aa1903e0 	mov	x0, x25
+   3a9b8:	9133a021 	add	x1, x1, #0xce8
+   3a9bc:	9134c842 	add	x2, x2, #0xd32
+   3a9c0:	52800003 	mov	w3, #0x0                   	// #0
+   3a9c4:	f90043e4 	str	x4, [sp, #128]
+   3a9c8:	97ffdfde 	bl	32940 <void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)@plt>
+   3a9cc:	aa1703e0 	mov	x0, x23
+   3a9d0:	97ffe7e0 	bl	34950 <icraft::xir::ObjectRef::get() const@plt>
+   3a9d4:	f9401004 	ldr	x4, [x0, #32]
+   3a9d8:	910303fb 	add	x27, sp, #0xc0
+   3a9dc:	a94807e0 	ldp	x0, x1, [sp, #128]
+   3a9e0:	910283fa 	add	x26, sp, #0xa0
+   3a9e4:	aa1b03e3 	mov	x3, x27
+   3a9e8:	aa1a03e8 	mov	x8, x26
+   3a9ec:	d2808882 	mov	x2, #0x444                 	// #1092
+   3a9f0:	f90063f6 	str	x22, [sp, #192]
+   3a9f4:	f9006bf3 	str	x19, [sp, #208]
+   3a9f8:	f90073e4 	str	x4, [sp, #224]
+   3a9fc:	97ffe819 	bl	34a60 <fmt::v8::vformat[abi:cxx11](fmt::v8::basic_string_view<char>, fmt::v8::basic_format_args<fmt::v8::basic_format_context<fmt::v8::appender, char> >)@plt>
+   3aa00:	a94a0be1 	ldp	x1, x2, [sp, #160]
+   3aa04:	aa1c03e0 	mov	x0, x28
+   3aa08:	97ffe3c6 	bl	33920 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+   3aa0c:	f94053e0 	ldr	x0, [sp, #160]
+   3aa10:	9100435a 	add	x26, x26, #0x10
+   3aa14:	eb1a001f 	cmp	x0, x26
+   3aa18:	54000040 	b.eq	3aa20 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x300>  // b.none
+   3aa1c:	97ffe2cd 	bl	33550 <operator delete(void*)@plt>
+   3aa20:	f94043e0 	ldr	x0, [sp, #128]
+   3aa24:	91004339 	add	x25, x25, #0x10
+   3aa28:	eb19001f 	cmp	x0, x25
+   3aa2c:	54000040 	b.eq	3aa34 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x314>  // b.none
+   3aa30:	97ffe2c8 	bl	33550 <operator delete(void*)@plt>
+   3aa34:	97ffde6f 	bl	323f0 <icraft::detail::LogExcept::GetEntry()@plt>
+   3aa38:	aa1b03e8 	mov	x8, x27
+   3aa3c:	97ffe161 	bl	32fc0 <icraft::detail::LogExcept::Entry::finalize()@plt>
+   3aa40:	b00004c1 	adrp	x1, d3000 <typeinfo for icraft::xir::NodeBase<icraft::xrt::CacheSyncHostMemRegionNode, icraft::xrt::MemRegionNode>@@Base+0x28>
+   3aa44:	aa1b03e0 	mov	x0, x27
+   3aa48:	f9453021 	ldr	x1, [x1, #2656]
+   3aa4c:	91004021 	add	x1, x1, #0x10
+   3aa50:	f90063e1 	str	x1, [sp, #192]
+   3aa54:	97ffe387 	bl	33870 <std::runtime_error::~runtime_error()@plt>
+   3aa58:	a94573fb 	ldp	x27, x28, [sp, #80]
+   3aa5c:	17ffff46 	b	3a774 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x54>
+   3aa60:	a90573fb 	stp	x27, x28, [sp, #80]
+   3aa64:	97ffdf57 	bl	327c0 <__stack_chk_fail@plt>
+   3aa68:	aa0003f3 	mov	x19, x0
+   3aa6c:	f94043e0 	ldr	x0, [sp, #128]
+   3aa70:	91004339 	add	x25, x25, #0x10
+   3aa74:	eb19001f 	cmp	x0, x25
+   3aa78:	54000040 	b.eq	3aa80 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x360>  // b.none
+   3aa7c:	97ffe2b5 	bl	33550 <operator delete(void*)@plt>
+   3aa80:	97ffebd8 	bl	359e0 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   3aa84:	aa1303e0 	mov	x0, x19
+   3aa88:	97ffe72e 	bl	34740 <_Unwind_Resume@plt>
+   3aa8c:	f94053e1 	ldr	x1, [sp, #160]
+   3aa90:	9100435a 	add	x26, x26, #0x10
+   3aa94:	aa0003f3 	mov	x19, x0
+   3aa98:	eb1a003f 	cmp	x1, x26
+   3aa9c:	54fffe80 	b.eq	3aa6c <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x34c>  // b.none
+   3aaa0:	aa0103e0 	mov	x0, x1
+   3aaa4:	97ffe2ab 	bl	33550 <operator delete(void*)@plt>
+   3aaa8:	17fffff1 	b	3aa6c <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x34c>
+   3aaac:	aa0003f3 	mov	x19, x0
+   3aab0:	17fffff4 	b	3aa80 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x360>
+   3aab4:	f94053e1 	ldr	x1, [sp, #160]
+   3aab8:	9100435a 	add	x26, x26, #0x10
+   3aabc:	aa0003f3 	mov	x19, x0
+   3aac0:	eb1a003f 	cmp	x1, x26
+   3aac4:	54000060 	b.eq	3aad0 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x3b0>  // b.none
+   3aac8:	aa0103e0 	mov	x0, x1
+   3aacc:	97ffe2a1 	bl	33550 <operator delete(void*)@plt>
+   3aad0:	f94043e0 	ldr	x0, [sp, #128]
+   3aad4:	91004339 	add	x25, x25, #0x10
+   3aad8:	eb19001f 	cmp	x0, x25
+   3aadc:	54000040 	b.eq	3aae4 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x3c4>  // b.none
+   3aae0:	97ffe29c 	bl	33550 <operator delete(void*)@plt>
+   3aae4:	97ffebbf 	bl	359e0 <icraft::detail::LogExcept::~LogExcept() [clone .constprop.0]>
+   3aae8:	aa1303e0 	mov	x0, x19
+   3aaec:	97ffe715 	bl	34740 <_Unwind_Resume@plt>
+   3aaf0:	aa0003f3 	mov	x19, x0
+   3aaf4:	17fffffc 	b	3aae4 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x3c4>
+   3aaf8:	aa0003f3 	mov	x19, x0
+   3aafc:	17fffff5 	b	3aad0 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x3b0>
+   3ab00:	f9403be1 	ldr	x1, [sp, #112]
+   3ab04:	aa0003f3 	mov	x19, x0
+   3ab08:	b40000a1 	cbz	x1, 3ab1c <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x3fc>
+   3ab0c:	3941e3e0 	ldrb	w0, [sp, #120]
+   3ab10:	35000060 	cbnz	w0, 3ab1c <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x3fc>
+   3ab14:	aa0103e0 	mov	x0, x1
+   3ab18:	97ffe082 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   3ab1c:	f94033e0 	ldr	x0, [sp, #96]
+   3ab20:	a90573fb 	stp	x27, x28, [sp, #80]
+   3ab24:	b4000080 	cbz	x0, 3ab34 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x414>
+   3ab28:	3941a3e1 	ldrb	w1, [sp, #104]
+   3ab2c:	35000041 	cbnz	w1, 3ab34 <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x414>
+   3ab30:	97ffe07c 	bl	32d20 <icraft::xir::Object::decref()@plt>
+   3ab34:	aa1303e0 	mov	x0, x19
+   3ab38:	97ffe702 	bl	34740 <_Unwind_Resume@plt>
+   3ab3c:	aa0003f3 	mov	x19, x0
+   3ab40:	17fffff7 	b	3ab1c <icraft::xrt::MemChunk::copyFrom(unsigned long, icraft::xrt::MemChunk const&, unsigned long, unsigned long) const+0x3fc>

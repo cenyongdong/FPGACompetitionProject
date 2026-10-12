@@ -1,0 +1,59 @@
+{
+  "status": "stopped_identity_diagnostic_cleanup_checked",
+  "snapshots": [
+    {
+      "path": "tools\\pose-v1\\evidence\\tensor-identity-20261010-r3\\three-return\\resources-after-host",
+      "ordinary_512KiB_units": 34,
+      "MemAvailable_KiB": 749716,
+      "CmaFree_KiB": 30548,
+      "sha256": {
+        "buddyinfo": "d092dd5ea93ea84fcaffba0f9ede70334543befa713960ed9e60a937a49cb861",
+        "dmesg": "72c217e4f9509b1061a0fb2567181b1325f3403aea58652dd0d44a45362a847b",
+        "meminfo": "1b409d1837348ba169cd5283531ebc84c009c06a0c7b48941a3a8ba926739327",
+        "pagetypeinfo": "c650c902755028e0be2f11ef86a7d97da4f59b099acdb7b4afe8252b20a5fecd",
+        "ports": "70306173a450d82407677bcd00cba24dd172fe7829591d445bc25caacf0af6bd",
+        "processes": "93370dad38ed2cf820e934d86274cd4a38dec180f51a903c19a1ac11cc7f19ac",
+        "vmstat": "766e98b58d6ebc262f8b277f4d80f86048e9892eadf08370970a65cf96fa3510"
+      }
+    },
+    {
+      "path": "tools\\pose-v1\\evidence\\tensor-identity-20261010-r3\\three-return\\resources-after-three",
+      "ordinary_512KiB_units": 33,
+      "MemAvailable_KiB": 749584,
+      "CmaFree_KiB": 30552,
+      "sha256": {
+        "buddyinfo": "58e153eeb79ade3defed66406d413571f16bb2ece2307ce6c7d86d121b251c0b",
+        "dmesg": "72c217e4f9509b1061a0fb2567181b1325f3403aea58652dd0d44a45362a847b",
+        "meminfo": "6407e2cd5ba33653fae59d79d9f3478f324ef15dca7600cf1f46a007b001af6f",
+        "pagetypeinfo": "05bf8589f05bc2119f9aba82b23d044273a1153eb70b4363c7db5c01d85a24b2",
+        "ports": "70306173a450d82407677bcd00cba24dd172fe7829591d445bc25caacf0af6bd",
+        "processes": "93e9f6c8dd70e6a3ef8a623e42e877a30cad26941eb8804482c40c2c1a8d2070",
+        "vmstat": "c562c5145ef13fc0aa82f6b0b14d1745844733a8ab1897655db31ce311046cea"
+      }
+    },
+    {
+      "path": "tools\\pose-v1\\evidence\\tensor-identity-20261010-r3\\failed-return-bytes\\resources-final",
+      "ordinary_512KiB_units": 23,
+      "MemAvailable_KiB": 749348,
+      "CmaFree_KiB": 4228,
+      "sha256": {
+        "buddyinfo": "be933d02ed5fcba307886b6688cf6252a33d2b1412358ac75cd3d612372b30ca",
+        "dmesg": "72c217e4f9509b1061a0fb2567181b1325f3403aea58652dd0d44a45362a847b",
+        "meminfo": "da7f4e46765891e24566294839f5986b19d4b37f56b052f6a34dbbc45c4ce177",
+        "pagetypeinfo": "e017d88f251dc5d7f34ad96d042310842dbea5ca43f7fb1d876812aa680714aa",
+        "ports": "70306173a450d82407677bcd00cba24dd172fe7829591d445bc25caacf0af6bd",
+        "processes": "1912d5099520eef99c07dfe4a6b48e80817dd4f8f78c0ac75624ed79f91ff435",
+        "vmstat": "e97089ef62430898ad69795f5937bf31dbb5e803ccfc9b3acb7c3c64480acb35"
+      }
+    }
+  ],
+  "kernel_unchanged": true,
+  "agent_compactions": 0,
+  "reason": "Ordinary high-order pages present before model stages; no compact_memory write.",
+  "drop_caches": false,
+  "reboot": false,
+  "CMA_changed": false,
+  "program_processes_remaining": 0,
+  "input_RTSP_ports_released": true,
+  "not_leak_or_permanent_startup_proof": true
+}

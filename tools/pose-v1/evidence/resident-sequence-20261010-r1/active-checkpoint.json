@@ -1,0 +1,15 @@
+{
+  "status": "single_resident_VPU_Engine_three_then103_passed_fault_unresolved",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "package": ".local/pose-v1-resident-sequence/package-20261010-r1",
+  "build": ".local/pose-v1-build/mixed-20261010-resident-sequence-r1",
+  "board": "/tmp/pose-resident-sequence-20261010-r1",
+  "program_SHA256": "c4c5caaf83f82c07e663eedae2b94ae0723884e8f134e88bd8b9b1863c601822",
+  "manifest_SHA256": "45dfbd83e7fcc422b11ef96866c3e6613b25a77b4bde96f303d7763701f0fc8a",
+  "completion_review_SHA256": "64cc405f91957158e49525ca1f3eb3561c188e72432fc77b856dd865fd288571",
+  "compactions": 1,
+  "resume": "Read RESIDENT-SEQUENCE-RESULTS/NEXT-20261010.md and ADR_28/ADR_02. Approved single-lifecycle run completed107 correct forward/1615700FP32,518 synthetic images; old failure remains unresolved. No rerun or background. Next only prepare one real owned-image/render factor in same lifecycle, source/PTS/pixel and three/103 gates; no display child/network/HDMI yet. First startup under one recorded compaction is not permanent reliability; retain old exceptions/two late source reads and frozen model/SDK/BOOT. No5Hz/long-term/zero-copy acceptance."
+}

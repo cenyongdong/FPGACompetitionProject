@@ -1,0 +1,25 @@
+
+/usr/lib/aarch64-linux-gnu/libmockzg330.so:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+000000000000d758 <MockZG330PLDDRMemRegionNode::memcpy(icraft::xrt::MemPtr const&, icraft::xrt::MemPtr const&, unsigned long) const>:
+    d758:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+    d75c:	aa0103e0 	mov	x0, x1
+    d760:	910003fd 	mov	x29, sp
+    d764:	a90153f3 	stp	x19, x20, [sp, #16]
+    d768:	aa0303f4 	mov	x20, x3
+    d76c:	f90013f5 	str	x21, [sp, #32]
+    d770:	aa0203f5 	mov	x21, x2
+    d774:	97fffc5f 	bl	c8f0 <icraft::xrt::MemPtr::cptr() const@plt>
+    d778:	aa0003f3 	mov	x19, x0
+    d77c:	aa1503e0 	mov	x0, x21
+    d780:	97fffc5c 	bl	c8f0 <icraft::xrt::MemPtr::cptr() const@plt>
+    d784:	aa1403e2 	mov	x2, x20
+    d788:	aa0003e1 	mov	x1, x0
+    d78c:	aa1303e0 	mov	x0, x19
+    d790:	a94153f3 	ldp	x19, x20, [sp, #16]
+    d794:	f94013f5 	ldr	x21, [sp, #32]
+    d798:	a8c37bfd 	ldp	x29, x30, [sp], #48
+    d79c:	17fffa45 	b	c0b0 <memcpy@plt>

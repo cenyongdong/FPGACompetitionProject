@@ -1,0 +1,17 @@
+{
+  "stage_bytes": 20859,
+  "Python_subprocess_bytes": 20853,
+  "diff": [
+    "--- \n",
+    "+++ \n",
+    "@@ -106,7 +106,7 @@\n",
+    " [    1.714160] Key type id_resolver registered\n",
+    " [    1.718365] Key type id_legacy registered\n",
+    " [    1.722402] nfs4filelayout_init: NFSv4 File Layout Driver Registering...\n",
+    "-[    1.729153] jffs2: version 2.2. (NAND) \\xc2\\xa9 2001-2006 Red Hat, Inc.\n",
+    "+[    1.729153] jffs2: version 2.2. (NAND) \u00a9 2001-2006 Red Hat, Inc.\n",
+    " [    1.735523] Key type asymmetric registered\n",
+    " [    1.739646] Asymmetric key parser 'x509' registered\n",
+    " [    1.744570] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 247)\n"
+  ]
+}

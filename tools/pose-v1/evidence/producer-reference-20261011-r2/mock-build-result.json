@@ -1,0 +1,15 @@
+{
+  "sources": {
+    "software/pose_v1/src/producer_mock_contract.cpp": "bf187d2a077b348e3f469fe8a59436c18a68244249b7cd7114480860557d949b",
+    "software/pose_v1/include/mixed_fusion_baseline.hpp": "52dc965d2cc1b75ddee14ad53d270d76b41f4a473add103bf30c7bdfb487f33f"
+  },
+  "program_sha256": "7cc0e0b63d094ef8b1471fa88d632329a1e8d20a53c6ae85a0169b0d4c028884",
+  "URL": "mock://zg330",
+  "physical_device_opened": false,
+  "forward_called": false,
+  "libraries": {
+    "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+    "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+    "libicraft_xir.so": "377a2cac1a8834836503d9805451449d42d99a888b8f96b38d4c2ba8c585af3e"
+  }
+}

@@ -1,0 +1,232 @@
+# Agent executes the approved integration build. No devices or model forward.
+param([Parameter(Mandatory=$true)][string]$Package,
+      [string]$BuildTag = 'mixed-20261011-read-phase-r1')
+$ErrorActionPreference = 'Stop'
+if ($BuildTag -notmatch '^mixed-[a-zA-Z0-9_-]+$') { throw 'Unsafe build tag.' }
+$poseRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
+$posePackage = (Resolve-Path -LiteralPath $Package).Path
+$poseManifestPath = Join-Path $posePackage 'manifest.json'
+$poseManifest = Get-Content -LiteralPath $poseManifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
+$poseDocker = 'C:\Program Files\Docker\Docker\resources\bin\docker.exe'
+$poseContainer = 'FPAI'
+$poseFrozenRemote = '/tmp/pose-v1-mixed-20261010-final-evidence-r2'
+$poseRemote = '/tmp/pose-v1-' + $BuildTag
+$poseOutput = Join-Path $poseRoot ('.local\pose-v1-build\' + $BuildTag)
+if (Test-Path -LiteralPath $poseOutput) { throw 'Build directory exists; preserve evidence and stop.' }
+if (-not (Test-Path -LiteralPath $poseDocker -PathType Leaf)) { throw 'Confirmed Docker executable missing.' }
+foreach ($entry in $poseManifest.build_files.PSObject.Properties) {
+    $source = Join-Path $poseRoot $entry.Name
+    if ((Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant() -ne $entry.Value.sha256) {
+        throw "Source differs from prepared fixtures: $($entry.Name)"
+    }
+}
+New-Item -ItemType Directory -Path $poseOutput | Out-Null
+$poseSource = Join-Path $poseOutput 'source'
+New-Item -ItemType Directory -Path $poseSource | Out-Null
+foreach ($entry in $poseManifest.build_files.PSObject.Properties) {
+    Copy-Item -LiteralPath (Join-Path $poseRoot $entry.Name) -Destination (Join-Path $poseSource $entry.Value.destination)
+}
+Copy-Item -LiteralPath $poseManifestPath -Destination (Join-Path $poseSource 'fixture-manifest.json')
+$poseLog = Join-Path $poseOutput 'build.log'
+function Invoke-MixedDocker {
+    param([string[]]$CommandArgs)
+    # Windows PowerShell wraps native stderr as ErrorRecord. Log every line,
+    # then use the actual native exit code; do not abort on the first stderr.
+    $poseSavedPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'Continue'
+        & $poseDocker @CommandArgs 2>&1 | ForEach-Object { $_.ToString() } |
+            Tee-Object -FilePath $poseLog -Append | Out-Host
+        $poseNativeExit = $LASTEXITCODE
+    } finally { $ErrorActionPreference = $poseSavedPreference }
+    if ($poseNativeExit -ne 0) { throw "Mixed candidate build stopped ($poseNativeExit); preserve $poseOutput" }
+}
+Invoke-MixedDocker @('exec',$poseContainer,'test','!','-e',$poseRemote)
+Invoke-MixedDocker @('exec',$poseContainer,'mkdir',$poseRemote)
+Invoke-MixedDocker @('cp',$poseSource,($poseContainer + ':' + $poseRemote + '/source'))
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-g++','--version')
+Invoke-MixedDocker @('exec',$poseContainer,'cmake','--version')
+# SDK audit runs in Windows; FPAI needs no Python interpreter.
+# Retain exact exported bytes, then normalize CRLF only for header identities.
+$poseSnapshot = Join-Path $poseOutput 'sdk-snapshot'
+New-Item -ItemType Directory -Path $poseSnapshot | Out-Null
+$poseVersions = [ordered]@{}
+foreach ($posePackageName in @('icraft:arm64','customop:arm64')) {
+    $poseVersionLines = @(& $poseDocker exec $poseContainer dpkg-query -W '-f=${Version}' $posePackageName 2>&1)
+    $poseVersionExit = $LASTEXITCODE
+    $poseVersionLines | Tee-Object -FilePath $poseLog -Append | Out-Host
+    if ($poseVersionExit -ne 0) { throw "SDK package query failed: $posePackageName" }
+    $poseVersion = ($poseVersionLines -join "`n").Trim()
+    if ($poseVersion -ne '3.39.0') { throw "SDK version differs: $posePackageName $poseVersion" }
+    $poseVersions[$posePackageName] = $poseVersion
+}
+$poseHeaderHashes = [ordered]@{}
+$poseUtf8 = [System.Text.UTF8Encoding]::new($false,$true)
+foreach ($poseHeader in $poseManifest.sdk_headers_normalized_sha256.PSObject.Properties) {
+    $poseHeaderFile = Join-Path $poseSnapshot $poseHeader.Name
+    New-Item -ItemType Directory -Path (Split-Path -Parent $poseHeaderFile) -Force | Out-Null
+    Invoke-MixedDocker @('cp','-L',($poseContainer + ':/usr/include/' + $poseHeader.Name),$poseHeaderFile)
+    $poseHeaderText = $poseUtf8.GetString([System.IO.File]::ReadAllBytes($poseHeaderFile))
+    $poseHeaderBytes = $poseUtf8.GetBytes($poseHeaderText.Replace("`r`n","`n"))
+    $poseHasher = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $poseHeaderHash = [System.BitConverter]::ToString($poseHasher.ComputeHash($poseHeaderBytes)).Replace('-','').ToLowerInvariant()
+    } finally { $poseHasher.Dispose() }
+    if ($poseHeaderHash -ne $poseHeader.Value) { throw "SDK header baseline differs: $($poseHeader.Name)" }
+    $poseHeaderHashes[$poseHeader.Name] = $poseHeaderHash
+}
+$poseHostSnapshot = Join-Path $poseSnapshot 'libicraft_hostbackend.so'
+Invoke-MixedDocker @('cp','-L',($poseContainer + ':/usr/lib/aarch64-linux-gnu/libicraft_hostbackend.so'),$poseHostSnapshot)
+$poseHostHash = (Get-FileHash -LiteralPath $poseHostSnapshot -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($poseHostHash -ne $poseManifest.host_library_sha256) { throw 'ARM Host library baseline differs.' }
+$poseZgSnapshot = Join-Path $poseSnapshot 'libicraft_zg330backend.so'
+Invoke-MixedDocker @('cp','-L',($poseContainer + ':/usr/lib/aarch64-linux-gnu/libicraft_zg330backend.so'),$poseZgSnapshot)
+$poseZgHash = (Get-FileHash -LiteralPath $poseZgSnapshot -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($poseZgHash -ne $poseManifest.zg_library_sha256) { throw 'ARM ZG library baseline differs.' }
+$poseAudit = [ordered]@{
+    versions=$poseVersions; headers_normalized_sha256=$poseHeaderHashes; host_sha256=$poseHostHash; zg_sha256=$poseZgHash;
+    method='docker_copy_and_windows_sha256'; container_python_required=$false
+}
+[System.IO.File]::WriteAllText((Join-Path $poseOutput 'sdk-audit.json'),
+    (($poseAudit | ConvertTo-Json -Depth 8) + "`n"),[System.Text.UTF8Encoding]::new($false))
+Write-Host 'ARM SDK versions, copied headers and Host/ZG libraries matched; no candidate executed.'
+# Copy the already pinned vendor headers/libs into this isolated build.
+$poseVendor='D:\Dowload from Chrome\嵌赛资料\Icraft\参考实现\单路PLIM+VPU\fpai_demo_package_26040702\fpai_demo_package_26040702\deps\thirdparty'
+foreach($poseEntry in $poseManifest.vendor_files.PSObject.Properties){
+    if((Get-FileHash -LiteralPath (Join-Path $poseVendor $poseEntry.Name) -Algorithm SHA256).Hash.ToLower() -ne $poseEntry.Value){throw 'Vendor payload changed'}
+}
+$poseManifest.vendor_files | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $poseOutput 'vendor-files.json') -Encoding utf8
+Invoke-MixedDocker @('exec',$poseContainer,'mkdir','-p',($poseRemote+'/vendor/libs'))
+Invoke-MixedDocker @('cp',(Join-Path $poseVendor 'include/live'),($poseContainer+':'+$poseRemote+'/vendor/live'))
+Invoke-MixedDocker @('cp',(Join-Path $poseVendor 'include/openssl'),($poseContainer+':'+$poseRemote+'/vendor/openssl'))
+foreach($poseLib in @('libliveMedia.a','libgroupsock.a','libBasicUsageEnvironment.a','libUsageEnvironment.a','libssl.a','libcrypto.a')){
+    Invoke-MixedDocker @('cp',(Join-Path $poseVendor ('a/'+$poseLib)),($poseContainer+':'+$poseRemote+'/vendor/libs/'+$poseLib))
+}
+
+Invoke-MixedDocker @('exec',$poseContainer,'cmake','-S',($poseRemote+'/source'),'-B',($poseRemote+'/build'),
+    ('-DCMAKE_TOOLCHAIN_FILE='+$poseRemote+'/source/toolchain.cmake'),'-DCMAKE_BUILD_TYPE=Release',
+    '-DCMAKE_CXX_FLAGS_RELEASE=-O2 -DNDEBUG','-DCMAKE_PREFIX_PATH=/usr/cmake')
+Invoke-MixedDocker @('exec',$poseContainer,'cmake','--build',($poseRemote+'/build'),
+    '--target','pose_read_phase_check','pose_read_phase_selftest','pose_read_phase_sdk_selftest','--parallel','2')
+Invoke-MixedDocker @('exec',$poseContainer,'file',($poseFrozenRemote+'/build/pose_live_pipeline_check'))
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseFrozenRemote+'/build/pose_live_pipeline_check'))
+$poseBinary = Join-Path $poseOutput 'pose_live_pipeline_check.arm64'
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_live_pipeline_check'),$poseBinary)
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_access_unit_selftest'),(Join-Path $poseOutput 'pose_access_unit_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_tcp_transport_check'),(Join-Path $poseOutput 'pose_tcp_transport_check'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_failed_result_selftest'),(Join-Path $poseOutput 'pose_failed_result_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_system_timing_selftest'),(Join-Path $poseOutput 'pose_system_timing_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_display_worker'),(Join-Path $poseOutput 'pose_display_worker'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_display_process_selftest'),(Join-Path $poseOutput 'pose_display_process_selftest'))
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseFrozenRemote+'/build/pose_display_worker'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_failure_evidence_selftest'),(Join-Path $poseOutput 'pose_failure_evidence_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_bounded_load_selftest'),(Join-Path $poseOutput 'pose_bounded_load_selftest'))
+# Frozen native reference is copied verbatim; parent build is never written.
+Invoke-MixedDocker @('cp',($poseContainer+':'+($poseFrozenRemote+'/build/pose_bounded_reference_export.native')),(Join-Path $poseOutput 'pose_bounded_reference_export.native'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_stage_observation_selftest'),(Join-Path $poseOutput 'pose_stage_observation_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_invocation_evidence_selftest'),(Join-Path $poseOutput 'pose_invocation_evidence_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_producer_count_selftest'),(Join-Path $poseOutput 'pose_producer_count_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_tensor_identity_selftest'),(Join-Path $poseOutput 'pose_tensor_identity_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_typed_scratch_check'),(Join-Path $poseOutput 'pose_typed_scratch_check'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_typed_scratch_selftest'),(Join-Path $poseOutput 'pose_typed_scratch_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_position_scratch_check'),(Join-Path $poseOutput 'pose_position_scratch_check'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_plddr_position_selftest'),(Join-Path $poseOutput 'pose_plddr_position_selftest'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_model_only_check'),(Join-Path $poseOutput 'pose_model_only_check'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_model_only_selftest'),(Join-Path $poseOutput 'pose_model_only_selftest'))
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseFrozenRemote+'/build/pose_model_only_check'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_model_vpu_check'),(Join-Path $poseOutput 'pose_model_vpu_check'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_model_load_selftest'),(Join-Path $poseOutput 'pose_model_load_selftest'))
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseFrozenRemote+'/build/pose_model_vpu_check'))
+foreach ($poseNew in @('pose_resident_sequence_check','pose_resident_sequence_selftest','pose_resident_producer_selftest')) {
+    Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/'+$poseNew),(Join-Path $poseOutput $poseNew))
+}
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseFrozenRemote+'/build/pose_resident_sequence_check'))
+foreach ($posePicture in @('pose_picture_check','pose_picture_source_selftest','pose_picture_sequence_selftest')) {
+    Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/'+$posePicture),(Join-Path $poseOutput $posePicture))
+}
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseFrozenRemote+'/build/pose_picture_check'))
+foreach ($poseRead in @('pose_picture_read_check','pose_input_read_host_check','pose_input_read_selftest','pose_input_read_sdk_selftest')) {
+    Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/'+$poseRead),(Join-Path $poseOutput $poseRead))
+}
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseFrozenRemote+'/build/pose_picture_read_check'))
+Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/pose_combined_read_check'),(Join-Path $poseOutput 'pose_combined_read_check'))
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseFrozenRemote+'/build/pose_combined_read_check'))
+foreach ($poseFinal in @('pose_final_evidence_check','pose_final_source_selftest','pose_final_source_sdk_selftest')) {
+    Invoke-MixedDocker @('cp',($poseContainer+':'+$poseFrozenRemote+'/build/'+$poseFinal),(Join-Path $poseOutput $poseFinal))
+}
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseFrozenRemote+'/build/pose_final_evidence_check'))
+foreach ($poseUpstream in @('pose_upstream_boundary_check','pose_upstream_boundary_selftest','pose_upstream_boundary_sdk_selftest')) {
+    Invoke-MixedDocker @('cp',($poseContainer+':/tmp/pose-v1-mixed-20261011-upstream-boundary-r4/build/'+$poseUpstream),(Join-Path $poseOutput $poseUpstream))
+}
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',('/tmp/pose-v1-mixed-20261011-upstream-boundary-r4/build/pose_upstream_boundary_check'))
+$posePriorBuild = Join-Path $poseRoot '.local/pose-v1-build/mixed-20261011-upstream-boundary-r4'
+$poseFrozenProof = [ordered]@{}
+foreach ($poseFrozen in (Get-ChildItem -LiteralPath $posePriorBuild -File | Where-Object { $_.Name.StartsWith('pose_') })) {
+    $poseCurrent = Join-Path $poseOutput $poseFrozen.Name
+    if (!(Test-Path -LiteralPath $poseCurrent)) { throw 'Frozen artifact not copied.' }
+    $poseDigest = (Get-FileHash -LiteralPath $poseCurrent -Algorithm SHA256).Hash.ToLowerInvariant()
+    if ($poseDigest -ne (Get-FileHash -LiteralPath $poseFrozen.FullName -Algorithm SHA256).Hash.ToLowerInvariant()) { throw 'Frozen artifact changed.' }
+    $poseFrozenProof[$poseFrozen.Name] = $poseDigest
+}
+[System.IO.File]::WriteAllText((Join-Path $poseOutput 'frozen-build-reuse.json'),(($poseFrozenProof | ConvertTo-Json) + "`n"),[System.Text.UTF8Encoding]::new($false))
+foreach ($posePhase in @('pose_read_phase_check','pose_read_phase_selftest','pose_read_phase_sdk_selftest')) {
+    Invoke-MixedDocker @('cp',($poseContainer+':'+$poseRemote+'/build/'+$posePhase),(Join-Path $poseOutput $posePhase))
+}
+Invoke-MixedDocker @('exec',$poseContainer,'aarch64-linux-gnu-readelf','-d',($poseRemote+'/build/pose_read_phase_check'))
+$poseHashes = [ordered]@{}
+foreach ($entry in $poseManifest.build_files.PSObject.Properties) {
+    $poseHashes[$entry.Name] = (Get-FileHash -LiteralPath (Join-Path $poseSource $entry.Value.destination) -Algorithm SHA256).Hash.ToLowerInvariant()
+}
+$poseResult = [ordered]@{
+    read_picture_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_picture_read_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    read_host_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_input_read_host_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    read_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_input_read_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    read_sdk_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_input_read_sdk_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    combined_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_combined_read_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    final_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_final_evidence_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    final_contract_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_final_source_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    final_sdk_contract_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_final_source_sdk_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    upstream_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_upstream_boundary_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    upstream_contract_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_upstream_boundary_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    upstream_sdk_contract_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_upstream_boundary_sdk_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    phase_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_read_phase_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    phase_contract_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_read_phase_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    phase_sdk_contract_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_read_phase_sdk_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    stage='compiled_not_executed'; container='FPAI';
+    picture_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_picture_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    picture_source_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_picture_source_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    picture_sequence_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_picture_sequence_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    resident_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_resident_sequence_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    resident_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_resident_sequence_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    resident_producer_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_resident_producer_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    model_vpu_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_model_vpu_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    load_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_model_load_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    model_only_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_model_only_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    model_only_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_model_only_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    position_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_position_scratch_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    position_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_plddr_position_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    typed_binary_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_typed_scratch_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    typed_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_typed_scratch_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    tensor_identity_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_tensor_identity_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    producer_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_producer_count_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    invocation_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_invocation_evidence_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    stage_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_stage_observation_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    bounded_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_bounded_load_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    native_reference_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_bounded_reference_export.native') -Algorithm SHA256).Hash.ToLowerInvariant();
+    failure_evidence_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_failure_evidence_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    display_worker_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_display_worker') -Algorithm SHA256).Hash.ToLowerInvariant();
+    display_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_display_process_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    timing_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_system_timing_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    failed_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_failed_result_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    tcp_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_tcp_transport_check') -Algorithm SHA256).Hash.ToLowerInvariant();
+    au_selftest_sha256=(Get-FileHash -LiteralPath (Join-Path $poseOutput 'pose_access_unit_selftest') -Algorithm SHA256).Hash.ToLowerInvariant();
+    sdk_config='/usr/cmake';
+    build_script_sha256=(Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant();
+    source_sha256=$poseHashes;
+    package_manifest_sha256=(Get-FileHash -LiteralPath $poseManifestPath -Algorithm SHA256).Hash.ToLowerInvariant();
+    binary_sha256=(Get-FileHash -LiteralPath $poseBinary -Algorithm SHA256).Hash.ToLowerInvariant();
+    device_accessed=$false; mixed_verified=$false
+}
+[System.IO.File]::WriteAllText((Join-Path $poseOutput 'build-result.json'),
+    (($poseResult | ConvertTo-Json -Depth 8) + "`n"),[System.Text.UTF8Encoding]::new($false))
+Write-Host "Compilation completed, no tests/model/device operations executed. Review: $poseOutput"

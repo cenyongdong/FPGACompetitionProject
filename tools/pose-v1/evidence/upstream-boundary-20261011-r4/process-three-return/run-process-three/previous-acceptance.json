@@ -1,0 +1,14 @@
+{
+  "status": "live_stage_passed",
+  "stage": "host-check",
+  "binary_sha256": "2534bdacade59bd92e7c073473df8c9bf8c7300da053696c847e160cfe08eb7b",
+  "package_manifest_sha256": "7ab71582c2a4b73c132438e83addcbdad182f00a569534016bab0f0c81a25cf6",
+  "payloads": 403,
+  "build_sources": 146,
+  "returned_files": 257,
+  "Host_cases": 107,
+  "CPU_FP32": 59600,
+  "registry_records": 12,
+  "transport_fixture_tests": true,
+  "new_contracts_SHA256": "c5f44204e153eb9d5f0f9589c95882ec28445905e11b848f8c2331a1581d3d8c"
+}

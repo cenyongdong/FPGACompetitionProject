@@ -1,0 +1,45 @@
+{
+  "decision": "audit_only",
+  "reason": "Agent selected from off-stage ordinary high-order availability; not a guaranteed startup gate",
+  "before_units512KiB": 101,
+  "after_units512KiB": 101,
+  "before_rows": [
+    {
+      "zone": "DMA32",
+      "type": "Unmovable",
+      "units512KiB": 37
+    },
+    {
+      "zone": "DMA32",
+      "type": "Movable",
+      "units512KiB": 63
+    },
+    {
+      "zone": "DMA32",
+      "type": "Reclaimable",
+      "units512KiB": 1
+    }
+  ],
+  "after_rows": [
+    {
+      "zone": "DMA32",
+      "type": "Unmovable",
+      "units512KiB": 37
+    },
+    {
+      "zone": "DMA32",
+      "type": "Movable",
+      "units512KiB": 63
+    },
+    {
+      "zone": "DMA32",
+      "type": "Reclaimable",
+      "units512KiB": 1
+    }
+  ],
+  "writes": 0,
+  "elapsed_ns": 2900,
+  "drop_caches": false,
+  "reboot": false,
+  "CMA_changed": false
+}

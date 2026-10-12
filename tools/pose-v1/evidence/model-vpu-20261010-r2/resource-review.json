@@ -1,0 +1,258 @@
+{
+  "status": "paired_resources_cleanup_checked_with_final_startup_failure",
+  "snapshots": [
+    {
+      "label": "contracts.before",
+      "ordinary_512KiB_units": 3,
+      "MemAvailable_KiB": 700116,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "2640133d1792c03856ef46da2a758a8612e04fd7a15c74c853733a862b30f96c",
+        "pagetypeinfo": "b3b84fddee6cfb47352f6930104be55d701754209ac7e17b02eee662a2c04725",
+        "meminfo": "8dfa894ed2194d922e585e0c1aa397bbadb946129fb01bfb309077b848e8e8cc",
+        "vmstat": "1917c1879c97985f1e8023cc91dc4d828ff2b0bf8e272c5f363749515455717d"
+      }
+    },
+    {
+      "label": "contracts.after",
+      "ordinary_512KiB_units": 3,
+      "MemAvailable_KiB": 699940,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "34a5c414c295c3ef1af598a54e09f55b06b13a76c875f41595e3f0641a959144",
+        "pagetypeinfo": "b5b11df7382134cac8f63d1acdbd26ab481654735d56702c6d13297875bbc98a",
+        "meminfo": "1ed8c28c44edf78e3da0a22c3dbaa9c48ad26af50ecfe7035ef6c385cdc69041",
+        "vmstat": "f38956e100672b3978becc60c9dcb1ecf2742c781d2aa640f363a34f8bb71ca5"
+      }
+    },
+    {
+      "label": "model-three.before",
+      "ordinary_512KiB_units": 11,
+      "MemAvailable_KiB": 700584,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "63670dab9feac4a8e487ad55b2c703523e0246afde06bea4015af2f0ea666dcc",
+        "pagetypeinfo": "8da4f54cb7ae083abe156be146073ede745b562a62210da93dbce3cf06467b15",
+        "meminfo": "b5d28f6a920a6be00a4c0759f8d2413355bbd3440b1ec724ed5dd890a0669ff8",
+        "vmstat": "c0f13d148d68358e1fa323ffa4851570ad034cf077b757a3e4e934d0e6042b8f"
+      }
+    },
+    {
+      "label": "model-three.after",
+      "ordinary_512KiB_units": 6,
+      "MemAvailable_KiB": 701304,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "a7ebb96904c4d677af556846c0d05a8201445ea0ecbb9c152a5a48d2aa5326b4",
+        "pagetypeinfo": "e4a9d06eb8339739e2e616022577959dcd480a2dac6d439440931c28926bf364",
+        "meminfo": "3f15466fac137e5ea2f8be9d93a57da85945a4429a9be21dbe4b0c736af6ff5d",
+        "vmstat": "7813b540fb04bba0c1d7cca3d3b17a577d1165737ed1fd40c86b29d1f16dd053"
+      }
+    },
+    {
+      "label": "vpu-three.before",
+      "ordinary_512KiB_units": 8,
+      "MemAvailable_KiB": 700232,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "af88109d9e5a726ea503ef78ea842357bf524e16312a67111795796de400c261",
+        "pagetypeinfo": "62ab66071c761b65bdcf2b1bea608755226e847e8544a4b985f6a3801145d0c9",
+        "meminfo": "fdf1e659372256aba677a16dd74dd14d8744da079d8a834bd9c636420c478abb",
+        "vmstat": "a2f1a424f62978ba0d2df20f42c3d0b31036819297f0cc7fd70b1a44765efc53"
+      }
+    },
+    {
+      "label": "vpu-three.after",
+      "ordinary_512KiB_units": 10,
+      "MemAvailable_KiB": 702088,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "8f2c71485efd9475a10742642980f220b8763946aac48a6b484b92794d34ca06",
+        "pagetypeinfo": "9b5887629d233a6455425865bbbab1d6c9a13c6424123a5e3f1d209e360a1c2b",
+        "meminfo": "e3fde2306ec5c2193554e63efdbcde42cbc154272e9cb49835947cb6179dd482",
+        "vmstat": "fd4d20dd70dd7200365589ea0be697e0145a82b9746cc7851921c5711ec29a82"
+      }
+    },
+    {
+      "label": "model-103.before",
+      "ordinary_512KiB_units": 11,
+      "MemAvailable_KiB": 739908,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "6438e4cd3cacd08dbda1653396da2f13a05cb6119fb18e506b64f6f968d928e2",
+        "pagetypeinfo": "00202423721f56a5de1b20027bcd594b8527f3c278a5b9accffa4c77948ba722",
+        "meminfo": "d4c198b14d0fe2f43e360a1f4429dfb4e2102c694eee85e34d4c27e68e16b555",
+        "vmstat": "feb6a59a1a7b02e1ebc1855f9e16831aef21dd98223136fc9246876a8f453fa5"
+      }
+    },
+    {
+      "label": "model-103.after",
+      "ordinary_512KiB_units": 8,
+      "MemAvailable_KiB": 738868,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "2d4790d50903b06091180c750b28fb9c4f96b99218be4355186db1d8d9c66336",
+        "pagetypeinfo": "6634a5387dfb3bd88d7a43e0d885dfdebaec7bbbbb4762ace98fb710720ea79a",
+        "meminfo": "299c5d81eb5e2756964071022d5101793c623a9d3e7612df9322b9eecc1213e5",
+        "vmstat": "b856c437110a95e6fd639a94eab6e75e85a01ca04ea304933990ba354fa2b4a3"
+      }
+    },
+    {
+      "label": "vpu-103.before",
+      "ordinary_512KiB_units": 9,
+      "MemAvailable_KiB": 738116,
+      "CmaFree_KiB": 0,
+      "sha256": {
+        "buddyinfo": "68f9736dc5a3b5ec3f7839bd6b0826a1e588a10418f7b637c4e5d87402790dfa",
+        "pagetypeinfo": "190e25f1e3812ca8fae908b921c06c21939dacc7654b4a9bd484ea5f908b79cc",
+        "meminfo": "cb999a9fbad53d9d1bef74a9e700c4df416d4524050410ffd9003fbd2034bd13",
+        "vmstat": "b0c5c459fab38588ef95a4e8feec1e478ff3590b84038366a2007f587278372e"
+      }
+    },
+    {
+      "label": "vpu-103.after",
+      "ordinary_512KiB_units": 8,
+      "MemAvailable_KiB": 740060,
+      "CmaFree_KiB": 40,
+      "sha256": {
+        "buddyinfo": "0445615bc7001bb636018504fc83aaeefa22764227b9faa40e718ae8e52baba7",
+        "pagetypeinfo": "134d31be28e1f4b41fb5378bb28e11fdae3dde4dc801b3ec4c65b0724ff68ec8",
+        "meminfo": "6fbf36400f6a356e718b3363a6be196ed3127bff215625ef569e52ff96aa4e6a",
+        "vmstat": "51130a470b97d785e720c9796e83dffb3e92c10901fec9f27dd7b601eee95ea6"
+      }
+    },
+    {
+      "label": "resources-common.before",
+      "ordinary_512KiB_units": 3,
+      "MemAvailable_KiB": 698284,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "dbc2cdbba85dded96a80f11e4856e441f0a9d6ffc9aa21ec261569f446602e1e",
+        "pagetypeinfo": "3009e055ae2991254df9726650b400f3c1075fa4276ffa8b2e1582e3bce19a99",
+        "meminfo": "2969d8954c710e65f45b01f9312cb9d3c30958c2f6b7c622007f22eb13ae9dc6",
+        "vmstat": "87b0aa7a97acf0f59fda15066ea76769217be1ff2e721177bcbc83f4e2ab73d0"
+      }
+    },
+    {
+      "label": "resources-common.after",
+      "ordinary_512KiB_units": 10,
+      "MemAvailable_KiB": 696796,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "a97401aed7427aaddec348f9f2e90fbc9b49465cd1939d33d0b012678911e642",
+        "pagetypeinfo": "f99d935cbc78c4ecbca748cfcc7b2b80dbe6994f13d62e90d584ae2521a7f143",
+        "meminfo": "ea8908b7327e9f243cb2cc977184a112d5102c2d355cf4600fe940af961e1db3",
+        "vmstat": "f334078ede7dd8f46a0f16f4cedd8eaac24ce2096ce5ffec6e5907fc4fb87190"
+      }
+    },
+    {
+      "label": "resources-vpu-three.before",
+      "ordinary_512KiB_units": 6,
+      "MemAvailable_KiB": 697516,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "92edc3000a2cf22d6847c58c97fa6019a79e02dd36aa52364079d39a08f35e45",
+        "pagetypeinfo": "10fa3b96a939c1d6a85db22a09af9384db6f8abf2b2904499afc34670246e275",
+        "meminfo": "fee617f3c0cb11c0bc146ea912306dfb5e53bb6210bf5fb1814e44ffa3b1dfbe",
+        "vmstat": "d3bcfacc89228c5862f2f36bdb95e536b0662321a2ce9f47da0cd6ff8992e579"
+      }
+    },
+    {
+      "label": "resources-vpu-three.after",
+      "ordinary_512KiB_units": 6,
+      "MemAvailable_KiB": 696032,
+      "CmaFree_KiB": 72,
+      "sha256": {
+        "buddyinfo": "3d943d38a275ff3972d0cb5de6c91254455f9d68e8cf2b755a93a2e40b6fedf7",
+        "pagetypeinfo": "8e7b1dad0ff955d092c719488de5f9730aed0b1444e4d66838d09c694dc3dc78",
+        "meminfo": "3904e5999ab46baa9438adb0d1c7e1bf9f2e5cba1b25aefca83f5f01d0b0ea60",
+        "vmstat": "47d7f1ca29f65b479b58a83fa519cc4011bdaa647f7c34d894e0fb301f9da97f"
+      }
+    },
+    {
+      "label": "resources-vpu-103.before",
+      "ordinary_512KiB_units": 8,
+      "MemAvailable_KiB": 737060,
+      "CmaFree_KiB": 0,
+      "sha256": {
+        "buddyinfo": "ef33107a9f3c345e3d27d464127a2abb945cfa9fa36eaea75de0ede4c7b3cb5b",
+        "pagetypeinfo": "a3010febd00c6c0ac5860b38d357adbf8455e5a16f3e237961804e441b138fc5",
+        "meminfo": "a2ea83b2ad62b15a15bea9ee8be17d820fa71a0b07fec7d7f8d557a7914eb2da",
+        "vmstat": "dffdc366f4b1fc5d01fffcd9e79cc03463c31a5335e22c9ef4929b613d06e652"
+      }
+    },
+    {
+      "label": "resources-vpu-103.after",
+      "ordinary_512KiB_units": 9,
+      "MemAvailable_KiB": 735040,
+      "CmaFree_KiB": 0,
+      "sha256": {
+        "buddyinfo": "540e320866aa67a834718f3357423cdcfdcbb807357a4bac85eacacb8e184403",
+        "pagetypeinfo": "dcb0db759de3a23703d89f383bd4925213c8d2217e52e4fca1a0ca6a80609707",
+        "meminfo": "2f3d89f8fbe1168f1cf90fd7a34541bc2bae0a4d67267102b79cd028320a5ce2",
+        "vmstat": "f69888860eb067a65ec77f892f1260f3e888ea16b83f24d3f04700f93a7cf8ae"
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "stage": "model-three",
+      "decision": {
+        "status": "recorded_pre_VPU_resource_decision",
+        "ordinary_512KiB_units_before": 3,
+        "policy_margin_units": 16,
+        "compaction_writes": 1,
+        "elapsed_ns": 61469120,
+        "reason": "Frozen two-buffer mappings are about6.64MiB and firmware has an observed512KiB ordinary-page request; below16 units is a preparation policy, not a proven allocation bound.",
+        "kernel_unchanged": true,
+        "drop_caches": false,
+        "reboot": false,
+        "CMA_changed": false,
+        "numerical_fault_fixed": false
+      },
+      "sha256": "653f9fb4d25c8ad8c31207ad3c1f675d9140a2fa43abeaa12e1697a21c7ea57d"
+    },
+    {
+      "stage": "vpu-three",
+      "decision": {
+        "status": "recorded_pre_VPU_resource_decision",
+        "ordinary_512KiB_units_before": 6,
+        "policy_margin_units": 16,
+        "compaction_writes": 1,
+        "elapsed_ns": 15203050,
+        "reason": "Frozen two-buffer mappings are about6.64MiB and firmware has an observed512KiB ordinary-page request; below16 units is a preparation policy, not a proven allocation bound.",
+        "kernel_unchanged": true,
+        "drop_caches": false,
+        "reboot": false,
+        "CMA_changed": false,
+        "numerical_fault_fixed": false
+      },
+      "sha256": "282d5fd441736630dce7be3ceee0c45e1f0c03306a57143331595bbcb9f1b708"
+    },
+    {
+      "stage": "vpu-103",
+      "decision": {
+        "status": "recorded_pre_VPU_resource_decision",
+        "ordinary_512KiB_units_before": 8,
+        "policy_margin_units": 16,
+        "compaction_writes": 1,
+        "elapsed_ns": 14121060,
+        "reason": "Frozen two-buffer mappings are about6.64MiB and firmware has an observed512KiB ordinary-page request; below16 units is a preparation policy, not a proven allocation bound.",
+        "kernel_unchanged": true,
+        "drop_caches": false,
+        "reboot": false,
+        "CMA_changed": false,
+        "numerical_fault_fixed": false
+      },
+      "sha256": "f723a8701356b948e17a12159ef93db33d94914ed54f5b0c8ea09abebac764b1"
+    }
+  ],
+  "agent_compactions": 3,
+  "between_groups_preparation_difference": true,
+  "kernel_raw_successful_stages_identical": true,
+  "kernel_raw_all_stages_identical": false,
+  "final_new_kernel_allocation_failure": true,
+  "programs_remaining": 0,
+  "ports_released": true,
+  "not_leak_or_permanent_startup_proof": true
+}

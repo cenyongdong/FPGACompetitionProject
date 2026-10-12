@@ -1,0 +1,12 @@
+{
+  "status": "invocation_retention_integrated_Host_three_passed_load_failed192_evidence_complete",
+  "user_paused": false,
+  "active_tests": false,
+  "services_running": false,
+  "SSH_SCP_closed": true,
+  "package": ".local/pose-v1-invocation-guard/package-20261009-r1",
+  "build": ".local/pose-v1-build/mixed-20261009-invocation-guard-r1",
+  "board": "/tmp/pose-invocation-guard-20261009-r1",
+  "completion_sha256": "a473c1d76d6ae17d3b137f9c7f8c5e7c5bd1f25279c74f2924760300e9e13b48",
+  "next": "Read INVOCATION-GUARD-RESULTS, ADR_20 and INVOCATION-GUARD-NEXT. New retention/independent persistence works, original CPU source reads kept. New103 stopped at inv11/op192;3 shadows47760 bytes,496 finite noninteger index values in18 blocks equal preceding data-input copy at same offsets. Both later SDK sources equal N1. Only582 fresh638 checked on11 completed calls; failed192 not covered. Next separately observe public producer234 counter before/after192 copying, retain bounded exact snapshots and audit SDK shared UDMA staging/sync; do not infer early read or stale DMA root from pattern alone. No retry this failed run, no cache/BOOT/CMA/math/ready guesses. Long-term/HDMI/zero-copy remain pending."
+}

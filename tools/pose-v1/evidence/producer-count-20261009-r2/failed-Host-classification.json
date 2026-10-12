@@ -1,0 +1,367 @@
+{
+  "status": "failure_Host_bytes_classified_no_fix",
+  "frame_id": 100003,
+  "invocation": 3,
+  "op_id": 192,
+  "original_error": "CPU_CANDIDATE[kernel]: floating-point index is not a finite integer",
+  "phase": "owned_Host_staging_after_kernel_exception",
+  "inputs": [
+    {
+      "slot": 0,
+      "shape": [
+        1,
+        180,
+        42
+      ],
+      "bytes": 30240,
+      "sha256": "808e296f1aa7652619b6d466053e1457fbec2b4cc10db91982885dca851d3218",
+      "NaN": 0,
+      "positive_Inf": 0,
+      "negative_Inf": 0,
+      "finite_noninteger": 7556,
+      "dtype_layout": "**C"
+    },
+    {
+      "slot": 1,
+      "shape": [
+        1,
+        100,
+        42
+      ],
+      "bytes": 16800,
+      "sha256": "8d2dc610ec6a58ebcc44f6ac2feb3c763fed87ed7fd57b1d9f8b63bce4877050",
+      "NaN": 0,
+      "positive_Inf": 0,
+      "negative_Inf": 0,
+      "finite_noninteger": 1728,
+      "dtype_layout": "**C",
+      "axis": 1,
+      "axis_extent": 180,
+      "outside_Numpy_index_bounds": 0,
+      "invalid_indices": 1728,
+      "first_invalid": [
+        {
+          "flat": 672,
+          "coordinate": [
+            0,
+            16,
+            0
+          ],
+          "fp32_hex": "3fc48000",
+          "value": 1.53515625
+        },
+        {
+          "flat": 673,
+          "coordinate": [
+            0,
+            16,
+            1
+          ],
+          "fp32_hex": "3fb4a000",
+          "value": 1.4111328125
+        },
+        {
+          "flat": 674,
+          "coordinate": [
+            0,
+            16,
+            2
+          ],
+          "fp32_hex": "402e4000",
+          "value": 2.72265625
+        },
+        {
+          "flat": 675,
+          "coordinate": [
+            0,
+            16,
+            3
+          ],
+          "fp32_hex": "3fc42000",
+          "value": 1.5322265625
+        },
+        {
+          "flat": 676,
+          "coordinate": [
+            0,
+            16,
+            4
+          ],
+          "fp32_hex": "3fb4e000",
+          "value": 1.4130859375
+        },
+        {
+          "flat": 677,
+          "coordinate": [
+            0,
+            16,
+            5
+          ],
+          "fp32_hex": "402a2000",
+          "value": 2.658203125
+        },
+        {
+          "flat": 678,
+          "coordinate": [
+            0,
+            16,
+            6
+          ],
+          "fp32_hex": "3fd60000",
+          "value": 1.671875
+        },
+        {
+          "flat": 679,
+          "coordinate": [
+            0,
+            16,
+            7
+          ],
+          "fp32_hex": "3fb00000",
+          "value": 1.375
+        },
+        {
+          "flat": 680,
+          "coordinate": [
+            0,
+            16,
+            8
+          ],
+          "fp32_hex": "402f2000",
+          "value": 2.736328125
+        },
+        {
+          "flat": 681,
+          "coordinate": [
+            0,
+            16,
+            9
+          ],
+          "fp32_hex": "3fb46000",
+          "value": 1.4091796875
+        },
+        {
+          "flat": 682,
+          "coordinate": [
+            0,
+            16,
+            10
+          ],
+          "fp32_hex": "3fb8c000",
+          "value": 1.443359375
+        },
+        {
+          "flat": 683,
+          "coordinate": [
+            0,
+            16,
+            11
+          ],
+          "fp32_hex": "40300000",
+          "value": 2.75
+        },
+        {
+          "flat": 684,
+          "coordinate": [
+            0,
+            16,
+            12
+          ],
+          "fp32_hex": "3fe4e000",
+          "value": 1.7880859375
+        },
+        {
+          "flat": 685,
+          "coordinate": [
+            0,
+            16,
+            13
+          ],
+          "fp32_hex": "3fa40000",
+          "value": 1.28125
+        },
+        {
+          "flat": 686,
+          "coordinate": [
+            0,
+            16,
+            14
+          ],
+          "fp32_hex": "402ae000",
+          "value": 2.669921875
+        },
+        {
+          "flat": 687,
+          "coordinate": [
+            0,
+            16,
+            15
+          ],
+          "fp32_hex": "3fcdc000",
+          "value": 1.607421875
+        },
+        {
+          "flat": 736,
+          "coordinate": [
+            0,
+            17,
+            22
+          ],
+          "fp32_hex": "3fb1c000",
+          "value": 1.388671875
+        },
+        {
+          "flat": 737,
+          "coordinate": [
+            0,
+            17,
+            23
+          ],
+          "fp32_hex": "4048c000",
+          "value": 3.13671875
+        },
+        {
+          "flat": 738,
+          "coordinate": [
+            0,
+            17,
+            24
+          ],
+          "fp32_hex": "3fe94000",
+          "value": 1.822265625
+        },
+        {
+          "flat": 739,
+          "coordinate": [
+            0,
+            17,
+            25
+          ],
+          "fp32_hex": "3f950000",
+          "value": 1.1640625
+        },
+        {
+          "flat": 740,
+          "coordinate": [
+            0,
+            17,
+            26
+          ],
+          "fp32_hex": "401c8000",
+          "value": 2.4453125
+        },
+        {
+          "flat": 741,
+          "coordinate": [
+            0,
+            17,
+            27
+          ],
+          "fp32_hex": "3fe14000",
+          "value": 1.759765625
+        },
+        {
+          "flat": 742,
+          "coordinate": [
+            0,
+            17,
+            28
+          ],
+          "fp32_hex": "3faa6000",
+          "value": 1.3310546875
+        },
+        {
+          "flat": 743,
+          "coordinate": [
+            0,
+            17,
+            29
+          ],
+          "fp32_hex": "405e6000",
+          "value": 3.474609375
+        },
+        {
+          "flat": 744,
+          "coordinate": [
+            0,
+            17,
+            30
+          ],
+          "fp32_hex": "3fb9a000",
+          "value": 1.4501953125
+        },
+        {
+          "flat": 745,
+          "coordinate": [
+            0,
+            17,
+            31
+          ],
+          "fp32_hex": "3fa6a000",
+          "value": 1.3017578125
+        },
+        {
+          "flat": 746,
+          "coordinate": [
+            0,
+            17,
+            32
+          ],
+          "fp32_hex": "4033a000",
+          "value": 2.806640625
+        },
+        {
+          "flat": 747,
+          "coordinate": [
+            0,
+            17,
+            33
+          ],
+          "fp32_hex": "3fc98000",
+          "value": 1.57421875
+        },
+        {
+          "flat": 748,
+          "coordinate": [
+            0,
+            17,
+            34
+          ],
+          "fp32_hex": "3fb22000",
+          "value": 1.3916015625
+        },
+        {
+          "flat": 749,
+          "coordinate": [
+            0,
+            17,
+            35
+          ],
+          "fp32_hex": "405e6000",
+          "value": 3.474609375
+        },
+        {
+          "flat": 750,
+          "coordinate": [
+            0,
+            17,
+            36
+          ],
+          "fp32_hex": "3fe74000",
+          "value": 1.806640625
+        },
+        {
+          "flat": 751,
+          "coordinate": [
+            0,
+            17,
+            37
+          ],
+          "fp32_hex": "3fae2000",
+          "value": 1.3603515625
+        }
+      ]
+    }
+  ],
+  "upstream_origin_proven": false
+}
