@@ -1,0 +1,1634 @@
+{
+  "date": "2026-10-13",
+  "source": "Agents.md before reorganization",
+  "original_Agents_sha256": "55e5ffc7c20aba6bd4b4b4c1d6dc500441fbf1248540b9bd3c32cfe13cfa1f5e",
+  "source_backup": ".local/document-reorganization-20261013/Agents.md",
+  "historical_records": 161,
+  "execution_rule_blocks": 19,
+  "tool_reference": 1,
+  "records": [
+    {
+      "source_lines": [
+        3,
+        4
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/demo.md#a003",
+      "source_sha256": "fb5ac3e0913f729951a3540fd8b2c74875693d5eb6e89e45f787b52e3422ce92"
+    },
+    {
+      "source_lines": [
+        5,
+        6
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/demo.md#a005",
+      "source_sha256": "47f388a78e10b3bdfff77c9243d381a3811a8516f6a2381705090a332d21dbf2"
+    },
+    {
+      "source_lines": [
+        7,
+        8
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/demo.md#a007",
+      "source_sha256": "a800d74f59a6d5ad8d84b75e685f904773bdd034f97217a050fac070cf52bf34"
+    },
+    {
+      "source_lines": [
+        9,
+        10
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a009",
+      "source_sha256": "b16a0f9be5f833e2c07944edaef9f544fca41a5b6ad584edfb8b415c4f73a59f"
+    },
+    {
+      "source_lines": [
+        11,
+        12
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a011",
+      "source_sha256": "5a17ce342692178e11f5d48a9066457f56fc9d9c4f6697211e1a4547fe5fef90"
+    },
+    {
+      "source_lines": [
+        13,
+        14
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a013",
+      "source_sha256": "6eb375cecc3940aa0bb5941ee7bb0ddc3f1823457c56436c63b3f0826a4020d7"
+    },
+    {
+      "source_lines": [
+        15,
+        16
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a015",
+      "source_sha256": "26258fc2d6edc45a736631f72d9341f0d2088261b34a38b7f42edb8e27d51ad7"
+    },
+    {
+      "source_lines": [
+        17,
+        18
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a017",
+      "source_sha256": "7405f0e4ac471931032c32476dfce45d3fda58a6aa5425482b292b416def5cbf"
+    },
+    {
+      "source_lines": [
+        19,
+        20
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a019",
+      "source_sha256": "cdf7b2b2689328d5c7abc7af3ea26c6c97d43fe5e77d31378a17810e1ca5da2c"
+    },
+    {
+      "source_lines": [
+        21,
+        22
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a021",
+      "source_sha256": "9d0a7489ba96dbac7f057f516850864f9e6497aec23e3be868f155d124f5dbb4"
+    },
+    {
+      "source_lines": [
+        23,
+        24
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a023",
+      "source_sha256": "4d47015e5124b1ea6200f47c145ed158e21ebc62ea973dc5bb90358091e7da2d"
+    },
+    {
+      "source_lines": [
+        25,
+        26
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a025",
+      "source_sha256": "14ad3406e19534615664947047a4ac18238d8510d82e80b9051f8d7cd9a006f7"
+    },
+    {
+      "source_lines": [
+        27,
+        28
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a027",
+      "source_sha256": "fd18a6a7c1bca19f8103cccd5c48c794b0ea09efb0ba8271ba2380e990964ab3"
+    },
+    {
+      "source_lines": [
+        29,
+        30
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a029",
+      "source_sha256": "b7d0a83f78eeaf9372c3185a5fd38f6665bf8ed12acc24cc9619eb36955d9558"
+    },
+    {
+      "source_lines": [
+        31,
+        32
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a031",
+      "source_sha256": "26c2e4ed32adec654a1df360f4ab451a326acb03fe4a707b75f926db81025c32"
+    },
+    {
+      "source_lines": [
+        33,
+        34
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a033",
+      "source_sha256": "46c8a4fb5b853a58ba535784405157c1ed84c42ca8b042cfc86380e0cc277c1c"
+    },
+    {
+      "source_lines": [
+        35,
+        36
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a035",
+      "source_sha256": "94e4d9063612313677a9b4f39fa69fc3f40951e71799ee0c2477ee371f60b09b"
+    },
+    {
+      "source_lines": [
+        37,
+        38
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a037",
+      "source_sha256": "8ac19596b96216598cdeacb63b8698452e7b90b36ac7ec43aaac297b4daa5f0e"
+    },
+    {
+      "source_lines": [
+        39,
+        42
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a039",
+      "source_sha256": "49c09f6e0c1c0fe70192602f2c77ca5e8c2a7cf35fa06d0a2025273674163705"
+    },
+    {
+      "source_lines": [
+        43,
+        45
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a043",
+      "source_sha256": "0767677d4e8d1d7ddc932c67a1e74e50c39055a1b066dbc75a97a90a840fdf8b"
+    },
+    {
+      "source_lines": [
+        46,
+        47
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a046",
+      "source_sha256": "f0ad5007577bcc28ef293e02b90dde7498abe93a2d4553912853345dd71b98c1"
+    },
+    {
+      "source_lines": [
+        48,
+        49
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a048",
+      "source_sha256": "dfedee82fe7fa354ff471da8aec52d0112585e83c84014d8c4a9696293a8ae89"
+    },
+    {
+      "source_lines": [
+        50,
+        51
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a050",
+      "source_sha256": "d3ce600b911acd478187d9bee4ed043bfd192527093133c1518de1132f15623e"
+    },
+    {
+      "source_lines": [
+        52,
+        53
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a052",
+      "source_sha256": "e74c91e6d9bed4cec54c4365a17cb2fbf16d48cc2f6f6aae90a091fc2f542e93"
+    },
+    {
+      "source_lines": [
+        54,
+        55
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a054",
+      "source_sha256": "d5181d953e55e859e7f515bc8270a2da42dfe6873fdbad453a16e0fe5660297b"
+    },
+    {
+      "source_lines": [
+        56,
+        57
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a056",
+      "source_sha256": "bdafcf6327293e3f8d4eaed86356c95090bce117d0359816736caf31efe1910c"
+    },
+    {
+      "source_lines": [
+        58,
+        59
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a058",
+      "source_sha256": "f4c2c97f40d797ad17bfb884738d6a1a741f57c3e9d5b7d6804a296c02c81ef5"
+    },
+    {
+      "source_lines": [
+        60,
+        61
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "9ca1bb587b329c8bbaf5e76784be1de2dd867bf94c822e65ea4b5dcb56753f8b",
+      "connection_metadata_destination": "PROJECT-PROGRESS.md",
+      "credential_handling": "Original credential retained only in ignored local pre-edit backup; not duplicated in migrated public history"
+    },
+    {
+      "source_lines": [
+        62,
+        63
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a062",
+      "source_sha256": "cb3125f799283169a861866b86428107ca4f470fdb9db9dc5132b435c16191b1"
+    },
+    {
+      "source_lines": [
+        64,
+        65
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a064",
+      "source_sha256": "079df6b92cb07bb98a0529714b8df39a18866ffd15f3fed8cb58d720789d2733"
+    },
+    {
+      "source_lines": [
+        66,
+        67
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a066",
+      "source_sha256": "37d2697d22455d01ed9dc316699a55f82a6997d1a53a234c77da3f613b31503d"
+    },
+    {
+      "source_lines": [
+        68,
+        69
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a068",
+      "source_sha256": "65978255713b7f50f4a11b3619c69ae2774941b0712f30064a854830e76d6195"
+    },
+    {
+      "source_lines": [
+        70,
+        71
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a070",
+      "source_sha256": "4f62ad9d3615ef0439dcdab85e19ed4a35fe784427abb7e1d57cac6838178b3e"
+    },
+    {
+      "source_lines": [
+        72,
+        73
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a072",
+      "source_sha256": "25a55d921a13f462d0045ac6ca7106f9b9f02212b383b3356de8fde6d063357f"
+    },
+    {
+      "source_lines": [
+        74,
+        75
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a074",
+      "source_sha256": "247c9bcd230e0f4458f66d97c967e3e48d4a899d40ee758cb093e55940f3071f"
+    },
+    {
+      "source_lines": [
+        76,
+        77
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a076",
+      "source_sha256": "79df70c10e0a79046014dd10f5292e4b02651d9a46e5c72dd526b79ef63a6737"
+    },
+    {
+      "source_lines": [
+        78,
+        79
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a078",
+      "source_sha256": "b0c8dee041d359ee06286bb24de110b9cf6d175ce7092bf82d1cbc2b19d6f25b"
+    },
+    {
+      "source_lines": [
+        80,
+        81
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a080",
+      "source_sha256": "b09ad9c149d4316252d4ad974bcc964a3e65e6809b6829ea4712bfe9800b8bdc"
+    },
+    {
+      "source_lines": [
+        82,
+        83
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a082",
+      "source_sha256": "663b5210ae99a4a17bcf92074267c8fd8e1d05ea17ce2c33af11171a52aed308"
+    },
+    {
+      "source_lines": [
+        84,
+        85
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a084",
+      "source_sha256": "855b9cb92920ca1356c0b7f3ffc72c0b1e14f7457b838e3170a2d89943b545fd"
+    },
+    {
+      "source_lines": [
+        86,
+        87
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/read-diagnostics.md#a086",
+      "source_sha256": "d852ad0780fbdd00bffc491e2f884d3406e1c368b6c7bcac2c74c48d706d693f"
+    },
+    {
+      "source_lines": [
+        88,
+        89
+      ],
+      "kind": "execution_rule_and_stage_history",
+      "destination": "Agents.md",
+      "source_sha256": "4f34f362a8261b025d4670d91c1d947c82358fb8c3f0a0ca85d82b9edcc3dd29",
+      "history_destination": "ADR/history/20261013/read-diagnostics.md#a088"
+    },
+    {
+      "source_lines": [
+        90,
+        93
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a090",
+      "source_sha256": "896830601b35da8ba7ef1c8e1987b99c5d841054c52df4da23141e5f569f6b76"
+    },
+    {
+      "source_lines": [
+        94,
+        97
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a094",
+      "source_sha256": "4579e8bcf7ec95dc6ea15a1a40f3189c04d6e84cc5dca287d26ca69b1ce3f8d6"
+    },
+    {
+      "source_lines": [
+        98,
+        101
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a098",
+      "source_sha256": "4519ffea6ae6af8f4f13d8afbac382602655cf9cc3e2239d915e694b26970307"
+    },
+    {
+      "source_lines": [
+        102,
+        103
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "75c3b287ef836768d905d8c53b6d88378a7906b68e260c5afbba807f669071c5"
+    },
+    {
+      "source_lines": [
+        104,
+        105
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a104",
+      "source_sha256": "bff11966ef08ebad462701c09b1c0534d97223faeae7f0b1a0999208f76061fa"
+    },
+    {
+      "source_lines": [
+        106,
+        107
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a106",
+      "source_sha256": "8fdb57692ba142e463c524eeb9d9ca63b92a443339c98d0d0d683da1d0a44fe9"
+    },
+    {
+      "source_lines": [
+        108,
+        109
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a108",
+      "source_sha256": "9a15f20f8fbe8c01fca49aeb9a5c4ddf3be0ac510d4951716ae9157563c0d275"
+    },
+    {
+      "source_lines": [
+        110,
+        111
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a110",
+      "source_sha256": "bab114c4845d29abf8ee1d117932e3f2d0bdbf8e35c88be7d26a795bd209b58e"
+    },
+    {
+      "source_lines": [
+        112,
+        113
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a112",
+      "source_sha256": "58a376be84e0cb5fcc558067d0a4dade809f2bffb13f9e240e36bece05d134ed"
+    },
+    {
+      "source_lines": [
+        114,
+        115
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a114",
+      "source_sha256": "6f79e255a18d310f088140b8bf6d4533a16a2bc950bae85faef21458b26dc1c5"
+    },
+    {
+      "source_lines": [
+        116,
+        117
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a116",
+      "source_sha256": "0294e429edef3b7e84f8d81f7452d6c88a7676e96050bb733d19ebf1366483ff"
+    },
+    {
+      "source_lines": [
+        118,
+        119
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a118",
+      "source_sha256": "70410c42122c0be067685d3da8ba2bcd2c214491a209681fde51afae6e8b3cc7"
+    },
+    {
+      "source_lines": [
+        120,
+        121
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "8c3e58930440d2df45299f3ee248c9db77ca53a27e3c7b515f1802718240a12f"
+    },
+    {
+      "source_lines": [
+        122,
+        123
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a122",
+      "source_sha256": "510486729378ae72a75e452f6f0eaf1c08937667e328f0393358b609022ce4cd"
+    },
+    {
+      "source_lines": [
+        124,
+        125
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a124",
+      "source_sha256": "ee76f7688b8b6937790e5f691e25b074cd21b688012edbdddd93248920c6d3a4"
+    },
+    {
+      "source_lines": [
+        126,
+        127
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "df38afe99aee9b061d1313c08a4b8b73f130e3ada35c321a220b859ac1e1d0a9"
+    },
+    {
+      "source_lines": [
+        128,
+        129
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a128",
+      "source_sha256": "755b0defdf49a07f823a48ce8bb9135332379e6000c8db74d38bfed878b3f5d8"
+    },
+    {
+      "source_lines": [
+        130,
+        131
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a130",
+      "source_sha256": "17d557f96bbd44be6491aa62e14a1bd4e1f9f3fda7c4f65b6bf04f2942b9266b"
+    },
+    {
+      "source_lines": [
+        132,
+        133
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a132",
+      "source_sha256": "dcf916518aae9d02350ad3652e386a24316eb04c91e0bfbcabc9179828f5512c"
+    },
+    {
+      "source_lines": [
+        134,
+        135
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a134",
+      "source_sha256": "6fad550084a1a7f331997a9ebf1eb3a4aea9985f47d9eeb4ce5677478d9e9c74"
+    },
+    {
+      "source_lines": [
+        136,
+        137
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a136",
+      "source_sha256": "33bc272c3d518033fa80820977ed87d2519e139f7aefcb5e3c9b4efd26f2b35e"
+    },
+    {
+      "source_lines": [
+        138,
+        139
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a138",
+      "source_sha256": "95d722e6f5d42ed7a86260ca857566d030ac31712c8e343ed6e213cf412ed670"
+    },
+    {
+      "source_lines": [
+        140,
+        141
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a140",
+      "source_sha256": "e8de791c83fd0323b0218bec99a23b152b5e62395fa70e04212041aae7c092cb"
+    },
+    {
+      "source_lines": [
+        142,
+        143
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a142",
+      "source_sha256": "57e9c6883f61261e014ae647b610c55437d77e80fd522a5993f82ef8634297d9"
+    },
+    {
+      "source_lines": [
+        144,
+        145
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a144",
+      "source_sha256": "947c305a4e14e491f0859de8e63113da959364e7aac9bef3954448ff5de4b210"
+    },
+    {
+      "source_lines": [
+        146,
+        147
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/video-lifecycle.md#a146",
+      "source_sha256": "1eed7d16477b3ceab90b55d9ac75d58d216f632c768668b52a734ad4537de494"
+    },
+    {
+      "source_lines": [
+        148,
+        149
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a148",
+      "source_sha256": "3e4d6675cd2dd4277566d5876bf3abdef4d37fe64802a13dd0785d1e445dea39"
+    },
+    {
+      "source_lines": [
+        150,
+        151
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a150",
+      "source_sha256": "164e748bda4a4688f1245e88df4d20b5af831e69a7592fe75e9dcad3774006ba"
+    },
+    {
+      "source_lines": [
+        152,
+        153
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a152",
+      "source_sha256": "c0c1fc16d8b24111d804311b0b18339d6ead4929e0d530f7e20a822f05cfa799"
+    },
+    {
+      "source_lines": [
+        154,
+        155
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a154",
+      "source_sha256": "d565d560a400c6dffbdb11be2af9ef66cdf432ac8a52d37c435e70a87cb8ce64"
+    },
+    {
+      "source_lines": [
+        156,
+        157
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a156",
+      "source_sha256": "b981a12d0ddfa684d35bfd34b907f5d387fb567623d423584cec9aead5e20b36"
+    },
+    {
+      "source_lines": [
+        158,
+        159
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a158",
+      "source_sha256": "86b2b520f2a29e79b44926be996cf4c82fac6e6ff790e64997de2266f18e1636"
+    },
+    {
+      "source_lines": [
+        160,
+        161
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a160",
+      "source_sha256": "dff3e61cbc4e0047e33069aec46e9b69df221e65c0e33abccb7d82fa56188e81"
+    },
+    {
+      "source_lines": [
+        162,
+        163
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a162",
+      "source_sha256": "d3f6fbe731e339a76db6713c8391055d21f8131eb1fd6f48f4fc2f718312f317"
+    },
+    {
+      "source_lines": [
+        164,
+        165
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a164",
+      "source_sha256": "8d137ad67ce52c5e50a6f959caf434378d92d9145bd006ed258955e6004e8735"
+    },
+    {
+      "source_lines": [
+        166,
+        167
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a166",
+      "source_sha256": "f06c40c6b221ccdf8e1e5d80d4fd4e48e00ef87478db2142ac96109bb8d81e5b"
+    },
+    {
+      "source_lines": [
+        168,
+        169
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a168",
+      "source_sha256": "4957b3d76a4e8bff9985b75299af5299fbb44505ae5b03a442e741b9585c8e73"
+    },
+    {
+      "source_lines": [
+        170,
+        171
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a170",
+      "source_sha256": "e1c6f23f5350ca13192f827ad7d9312c84c2e8e20af3578903382e50c46e2dc9"
+    },
+    {
+      "source_lines": [
+        172,
+        173
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a172",
+      "source_sha256": "b8b966a8f6f33de830c4f299d42d9a3378383eca7bdc9fead94902ae5e05cabc"
+    },
+    {
+      "source_lines": [
+        174,
+        175
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a174",
+      "source_sha256": "3f6388ec0ccfaad31b6465964559a9bb031dca32fc2204bc331142adfbb2d956"
+    },
+    {
+      "source_lines": [
+        176,
+        177
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a176",
+      "source_sha256": "c6eaa9e2cc48ce77ed2b60bc4b6bd8f005a6771399ae71a2e36d2f84b4ecfad8"
+    },
+    {
+      "source_lines": [
+        178,
+        179
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a178",
+      "source_sha256": "17de133e4fa9136a5c661f80c047af3ddd4e8208e353470c1a9e520fb3b08ee8"
+    },
+    {
+      "source_lines": [
+        180,
+        181
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a180",
+      "source_sha256": "7988615f988be2635182eba7f21bdd093491d4c67b8a6e7624db9a93aa36505f"
+    },
+    {
+      "source_lines": [
+        182,
+        183
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a182",
+      "source_sha256": "ad30d8df51bbdbc3123b0c7df28028b9003df5fc695f027dc43fc868319a0272"
+    },
+    {
+      "source_lines": [
+        184,
+        185
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a184",
+      "source_sha256": "046861e96ba92c73181697b3036c1ecf3770cd66af59be4dfac3e11c46b02795"
+    },
+    {
+      "source_lines": [
+        186,
+        187
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a186",
+      "source_sha256": "24a2a35d684fb6745f2af951d05782594299bfe6a0059f5fe679bc6cecfa6248"
+    },
+    {
+      "source_lines": [
+        188,
+        189
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a188",
+      "source_sha256": "e6ae9c829e1a499a3a8287b8936210a49878ca8852345969c26b7ef011c2ced7"
+    },
+    {
+      "source_lines": [
+        190,
+        191
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a190",
+      "source_sha256": "a59c6a223683dec30462ed3993b657026e106c26249b269a3b62a6629061f620"
+    },
+    {
+      "source_lines": [
+        192,
+        193
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a192",
+      "source_sha256": "8909d625c055cd02bbeb6e890996b9fa870b01778198481ba978c8dcb67993bc"
+    },
+    {
+      "source_lines": [
+        194,
+        195
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a194",
+      "source_sha256": "c23717f241109cba4a8cbafbe63713f64006c198a247c1031189af1d9a14c947"
+    },
+    {
+      "source_lines": [
+        196,
+        197
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a196",
+      "source_sha256": "cc1cd8a3d91571ba5e67f442aa538532cda37a18f1a350285d526b40c586b5ce"
+    },
+    {
+      "source_lines": [
+        198,
+        199
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a198",
+      "source_sha256": "fb2a5564ee45742cb79686155605e0c79c3aa6e32b402c6bd7b12d294cfdb909"
+    },
+    {
+      "source_lines": [
+        200,
+        201
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a200",
+      "source_sha256": "5f27e9df36bce6d5559cf086e9d2f2edbbab8a117f941fe7dd491d58c396a37f"
+    },
+    {
+      "source_lines": [
+        202,
+        203
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a202",
+      "source_sha256": "79c0449d77f83200f2e2b83f8eedfd53d708c25f8c1f52b610fb4bacb54d347d"
+    },
+    {
+      "source_lines": [
+        204,
+        205
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a204",
+      "source_sha256": "4ebe152e76f9516198c681edf1ea5dfcf32ab3f8655d33fd0243e35d82b7367c"
+    },
+    {
+      "source_lines": [
+        206,
+        207
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a206",
+      "source_sha256": "7da5b5849c6c9a7bc3109bafa0963fe5f11c32a143b54a1852153362eb835ff7"
+    },
+    {
+      "source_lines": [
+        208,
+        209
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a208",
+      "source_sha256": "37cfe24f284486daaf84f1c2fff09d6377fdd23dcbc1816fa2028d3db3f3ea28"
+    },
+    {
+      "source_lines": [
+        210,
+        211
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a210",
+      "source_sha256": "c5867bdc243eda7466c3a2ee3bf2f0f57e3fe773328944a4736429d64c203d31"
+    },
+    {
+      "source_lines": [
+        212,
+        213
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a212",
+      "source_sha256": "e2ea0a76897af201e88f4c2bda943ea1361fc00bae7b3aa7725be90b19568ace"
+    },
+    {
+      "source_lines": [
+        214,
+        215
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a214",
+      "source_sha256": "e4cf74212797351fc145cad12348e5c62c418611f815825732f3d3c1952f03ea"
+    },
+    {
+      "source_lines": [
+        216,
+        217
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a216",
+      "source_sha256": "d1b166872d1757634f29947fbb8fd2551442bf023641a04efe2ea28af8bd0a81"
+    },
+    {
+      "source_lines": [
+        218,
+        219
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a218",
+      "source_sha256": "41536062758c788befecc94920da908b9e50d81cb9b18298fb3c329df21d17f5"
+    },
+    {
+      "source_lines": [
+        220,
+        221
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a220",
+      "source_sha256": "473b7f0a951802873c522bd4ce88040e05b1b6184657aa44d76f086db331e79a"
+    },
+    {
+      "source_lines": [
+        222,
+        223
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a222",
+      "source_sha256": "a7b8a26f2d297dc2929f78b338754bb33172c24a6c26b8567f62719f2d64209e"
+    },
+    {
+      "source_lines": [
+        224,
+        225
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a224",
+      "source_sha256": "34139f86612cd03ec9cf5a74586e25770f70b8f3dceb565bb0a9e703a926b68e"
+    },
+    {
+      "source_lines": [
+        226,
+        227
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a226",
+      "source_sha256": "1ea0c942fb417ffaaf444ebde63ee066d4b57595002c5ea9aa1600a412e77507"
+    },
+    {
+      "source_lines": [
+        228,
+        229
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a228",
+      "source_sha256": "2d0ccf1a3602a62e59b0ffa5094ac5237c9da82c2197df108f080273dfce8a3a"
+    },
+    {
+      "source_lines": [
+        230,
+        231
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a230",
+      "source_sha256": "e23ab7af6db3eeec1148d092f0908bae1949525d6097010b07c2c5ec06fff36f"
+    },
+    {
+      "source_lines": [
+        232,
+        233
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a232",
+      "source_sha256": "c5b1486782aba407bc31711a7ee1bce8c4de1d9ffb05fe8cfa0ca42effa00a9d"
+    },
+    {
+      "source_lines": [
+        234,
+        235
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a234",
+      "source_sha256": "5bd8bcccfa0d12bf7b480d98c58f09012dd78f4002eec968c7c7ecd84c280401"
+    },
+    {
+      "source_lines": [
+        236,
+        237
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a236",
+      "source_sha256": "77f1ab139b6833fb7e1a0e76eb7c4625ffd5ccdcfc8d481d87bfcaffe84f27ef"
+    },
+    {
+      "source_lines": [
+        238,
+        239
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a238",
+      "source_sha256": "e117b80bf3df8514a54e7f120ce5488fc45bb194883645981550da4bd70bd613"
+    },
+    {
+      "source_lines": [
+        240,
+        241
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a240",
+      "source_sha256": "53528e9108359d5b894bf1cc9c47b2bce23c37b6b14db181db800b56a9152a8c"
+    },
+    {
+      "source_lines": [
+        242,
+        243
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a242",
+      "source_sha256": "46190341353da2cb9c6273940d81aafa82215e38e98ec3cf4a027293091c729e"
+    },
+    {
+      "source_lines": [
+        244,
+        245
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a244",
+      "source_sha256": "99b65a065ad5da5f93bbc105293c0cb369b4492811012634023ce300788eccbc"
+    },
+    {
+      "source_lines": [
+        246,
+        247
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a246",
+      "source_sha256": "a1ee6d595c3d69ee14661e72fc96497256c8ee35b9f437f3248bd7430dc12c13"
+    },
+    {
+      "source_lines": [
+        248,
+        249
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a248",
+      "source_sha256": "5ff5855875f816868c96f88ad99f228c56592545425403f0c061baad0b802d17"
+    },
+    {
+      "source_lines": [
+        250,
+        251
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a250",
+      "source_sha256": "93a67005df1a8dab6219065f075296b36f9023d8f17df1e41559546055462cf4"
+    },
+    {
+      "source_lines": [
+        252,
+        253
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a252",
+      "source_sha256": "b80daa8aaeccd29d675a2a3a4318da5199a8182f030380dffd9568aa1323b60a"
+    },
+    {
+      "source_lines": [
+        254,
+        255
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a254",
+      "source_sha256": "801a2a0fa35012c57a2bfb2afb6a845f2528edaadee31e85e437c7ac870dd141"
+    },
+    {
+      "source_lines": [
+        256,
+        257
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a256",
+      "source_sha256": "de4a36ca796c9ba147add1455c7683b7013b866edaff9604d126fcb5d892c79f"
+    },
+    {
+      "source_lines": [
+        258,
+        259
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a258",
+      "source_sha256": "9987498fa9a55e8edb20bf74b83527d24e719ee89c52d7231a2554582085e66c"
+    },
+    {
+      "source_lines": [
+        260,
+        261
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a260",
+      "source_sha256": "5f8675cd080ec607264419419905bff7b4c9a5a870c8a0cec5f4fcb6f584ae98"
+    },
+    {
+      "source_lines": [
+        262,
+        263
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a262",
+      "source_sha256": "144be9ca89a8a4254d254af04e20a47fd967c8699fa25132f450eb87674ad178"
+    },
+    {
+      "source_lines": [
+        264,
+        265
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a264",
+      "source_sha256": "c0aab55d187c767f38ac1d6ae6460ca75393337b6b194efee731678f2e51005c"
+    },
+    {
+      "source_lines": [
+        266,
+        267
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a266",
+      "source_sha256": "799d17bc5ad7b87c3d33ee67a45be0ab4b1a3edbe5fb98111604300d5d80727e"
+    },
+    {
+      "source_lines": [
+        268,
+        269
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a268",
+      "source_sha256": "4563f15482181862fd3d721b5b0b66f5dce0ecf3f8dfab540dd2ad38ee6e4765"
+    },
+    {
+      "source_lines": [
+        270,
+        271
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a270",
+      "source_sha256": "1c2f62fa7c00f96742490d411e29219f9959398998969c7b8d7574b304605e4f"
+    },
+    {
+      "source_lines": [
+        272,
+        273
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a272",
+      "source_sha256": "41fc9bc1a8e383875dacc411796db7a1e9e476d3e22f193d640451495fdf8fd4"
+    },
+    {
+      "source_lines": [
+        274,
+        275
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a274",
+      "source_sha256": "75bec3d66f9f4535e8908ca595de19b0d542d729e79b4800691514898d9c3b5f"
+    },
+    {
+      "source_lines": [
+        276,
+        277
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a276",
+      "source_sha256": "8e7ba4062a94da334dc001221cc7272b02c1b70f872bb169152d65bbc37722d8"
+    },
+    {
+      "source_lines": [
+        278,
+        279
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a278",
+      "source_sha256": "7dbea566e995699bfd16bc532c1d45ab535e4a39c17bf3a0cfe3c24b6b51c142"
+    },
+    {
+      "source_lines": [
+        280,
+        281
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a280",
+      "source_sha256": "4c7892f3874107d903c77e5824e9a35f9de378cbb60b90a0843bd0bc0632de04"
+    },
+    {
+      "source_lines": [
+        282,
+        283
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a282",
+      "source_sha256": "3db59b3baf03d5f0911fa41c4bf48318f9398cb6493bcbafb031084376e40fcf"
+    },
+    {
+      "source_lines": [
+        284,
+        285
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a284",
+      "source_sha256": "c2c55bbf6aee89e86de36e848195b9e703f2509ba3ba6921ab77695673257f25"
+    },
+    {
+      "source_lines": [
+        286,
+        287
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a286",
+      "source_sha256": "f6292ee2e1fb6d11bd9eed9eeb974de03ccfc212b1bda66bc25b1b91cd4e473c"
+    },
+    {
+      "source_lines": [
+        288,
+        289
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a288",
+      "source_sha256": "77aee26d7b533b60212d48d46618c6fc3469b635c954d96c5098941aaef932d8"
+    },
+    {
+      "source_lines": [
+        290,
+        291
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/cpu-sdk.md#a290",
+      "source_sha256": "a9cb61b6459c95db03618e9c15724d521f3a22f6fa2b2d0195ea0b6ed43b31a0"
+    },
+    {
+      "source_lines": [
+        292,
+        293
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/training.md#a292",
+      "source_sha256": "2dfc1cd059318bae1841453a8be8800d1b81f97dbb381a2dd15473c855c6801a"
+    },
+    {
+      "source_lines": [
+        294,
+        295
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/training.md#a294",
+      "source_sha256": "2a94110ccc9e6f438ea97105cf13269ba065ad483441400d7571b002b6a48a6a"
+    },
+    {
+      "source_lines": [
+        296,
+        297
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/training.md#a296",
+      "source_sha256": "92021e84fa6cb7c878effe481b1d6d83d25e2018730ddf4ad17cbff20614f825"
+    },
+    {
+      "source_lines": [
+        298,
+        299
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/training.md#a298",
+      "source_sha256": "e3760f0ce966dc01702f6ad61df99e5e0020acc45c58e92b13e4049eadb86a91"
+    },
+    {
+      "source_lines": [
+        300,
+        301
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/training.md#a300",
+      "source_sha256": "f605d5a4f2637933613bd6d2995180e419a360905e5ee60a50f5d1e7d4847831"
+    },
+    {
+      "source_lines": [
+        302,
+        303
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/training.md#a302",
+      "source_sha256": "6d8f4bf9077f3929548297270b2f0d9d96c742b103c1f17ef761bc9dac339d7a"
+    },
+    {
+      "source_lines": [
+        304,
+        305
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/training.md#a304",
+      "source_sha256": "02bf2cb3b05beedf5cb3b12344e56a4f9d9ca51d5a2201935209a888369a88a5"
+    },
+    {
+      "source_lines": [
+        306,
+        307
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/training.md#a306",
+      "source_sha256": "c2a3eb1bb68860e6778046e306afddadffcc87c411bbae4e44a4f9244b93a47c"
+    },
+    {
+      "source_lines": [
+        308,
+        308
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a308",
+      "source_sha256": "a3975c69a73034cdf06562148255d6974f2a0a0b23156fbafe9c081d9dd1785c"
+    },
+    {
+      "source_lines": [
+        309,
+        309
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "adff8ed773404da23aa0153d1d5443e2779ce41ca942a96e3d582692d387517e"
+    },
+    {
+      "source_lines": [
+        310,
+        310
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/training.md#a310",
+      "source_sha256": "4ceb0549be917a06916155648439824d8f6321d3ab7b974f12bf2715039ed22f"
+    },
+    {
+      "source_lines": [
+        311,
+        311
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "e1ddbc338af2fd8af1ba01bcc9e1df7d3a5d12c82f16ba3b17c3e59d9dc2e6e3"
+    },
+    {
+      "source_lines": [
+        312,
+        312
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "83319269c572ef62eab0a4409210d384f4762545a0d27325ec6d59c05f3517b8"
+    },
+    {
+      "source_lines": [
+        313,
+        313
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "2ee15507cca7b17ba4ae0217062d08809d78a859bb62cf031ab292e0e83827c9"
+    },
+    {
+      "source_lines": [
+        314,
+        314
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "04d6e7b972deb5d43d24243ea923e79bbf3deb86c6d41fa6665f55489bba4eda"
+    },
+    {
+      "source_lines": [
+        315,
+        315
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "010f74f3df68bda49fe6d5be91a028d72931bb50f91c64b1b5dee57ce20a8f9c"
+    },
+    {
+      "source_lines": [
+        316,
+        316
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "332774687e492a2d893296ab1a479b0b16f4a6b397d512b9f895aa71c6b4cd2a"
+    },
+    {
+      "source_lines": [
+        317,
+        317
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "9a40e7ade57e0312f5fec11d3e192a0f66a954eb8b1a112aceaa963b3bb1dc21"
+    },
+    {
+      "source_lines": [
+        318,
+        318
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "b44a1bf6c5f311e7104dc52813224ef519825bc7dc6dff7bef0366e21bb7fc93"
+    },
+    {
+      "source_lines": [
+        319,
+        319
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "45a4174e199343a354837fb62c2adb69bf1bdac12b9f672d2f3ff1ed2fd24eb4"
+    },
+    {
+      "source_lines": [
+        320,
+        320
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "40fb74a0fb8be7cfb1ab164051fd74c61a7576bfbae72e98efe414b6458706e0"
+    },
+    {
+      "source_lines": [
+        321,
+        321
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a321",
+      "source_sha256": "d117506202e70a5de4f7527da6948864e43ff1ad934627173e62b46500ddec57"
+    },
+    {
+      "source_lines": [
+        322,
+        322
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "cac35c19f8bcb89ff2e7c1c79247c43865e17e1b4d01952210bdd5b35fde1020"
+    },
+    {
+      "source_lines": [
+        323,
+        323
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a323",
+      "source_sha256": "79de02a8c3897cc30dd251a72698d3a85de2df82f3bfd388ee852e5aceab98c1"
+    },
+    {
+      "source_lines": [
+        324,
+        324
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a324",
+      "source_sha256": "0936707d9594647a76c9a33b700113de41f11e69d24dc57dcde7f02d0aa6c3d5"
+    },
+    {
+      "source_lines": [
+        325,
+        325
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a325",
+      "source_sha256": "2254c8260918ed6942883f8d7edf628df1744b861d4c317246b2de784564447c"
+    },
+    {
+      "source_lines": [
+        326,
+        326
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a326",
+      "source_sha256": "c15b2d0087751f3dc7ffb9a94a69343d56c80acebe3a3e78ec709d1935ec8fd5"
+    },
+    {
+      "source_lines": [
+        327,
+        327
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a327",
+      "source_sha256": "3895308e3df44bd5bd4d84fa301ea3ec49c44e48e8ea6f10281eb597c4b59e66"
+    },
+    {
+      "source_lines": [
+        328,
+        328
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a328",
+      "source_sha256": "380f6ee7ae1afbf45d8a7b71aa7f93bc06e4aee1d36e43af1a068c3d6c365331"
+    },
+    {
+      "source_lines": [
+        329,
+        329
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/mixed-inference.md#a329",
+      "source_sha256": "bdb54786a369b949f821d863185f63e3bba3d703d6b3e03d3f4150da2d260791"
+    },
+    {
+      "source_lines": [
+        330,
+        330
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a330",
+      "source_sha256": "a53e7c550ff71b0e95282c3e2dce3f4441bbae2ae938d136583cc3df9e90cf84"
+    },
+    {
+      "source_lines": [
+        331,
+        331
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "38cf7448f831e77bd3829a95088ec2e8cb8076d13cee93cc9e9e48d173fd0159"
+    },
+    {
+      "source_lines": [
+        332,
+        332
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a332",
+      "source_sha256": "19d88a92e53515455f05e79ebd3b9781f2d992aba8ace26280c6579eb3ae894b"
+    },
+    {
+      "source_lines": [
+        333,
+        334
+      ],
+      "kind": "execution_rule",
+      "destination": "Agents.md",
+      "source_sha256": "dbe1b6f0978837ff674754548f84ed977faa6d5610733866ebb46d1ba5b88838"
+    },
+    {
+      "source_lines": [
+        335,
+        336
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a335",
+      "source_sha256": "561a1676ba9d0c5968ac0d5eb5e835374affc5b5add1dd96b7161384e862ee01"
+    },
+    {
+      "source_lines": [
+        337,
+        338
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a337",
+      "source_sha256": "8b9a15e64e3e70a29e44dec5bd36033307f4b1c6fa26ad014ecea982d0447295"
+    },
+    {
+      "source_lines": [
+        339,
+        340
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a339",
+      "source_sha256": "a0f56261dd3ca0735b8d1924bc4ed70f57dcc6b835eb50959b4e5168a9b6f076"
+    },
+    {
+      "source_lines": [
+        341,
+        342
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a341",
+      "source_sha256": "c71b477054d239a6cb62a0a84eafad03db561324b69d11c6b5d622bd55c4d816"
+    },
+    {
+      "source_lines": [
+        343,
+        344
+      ],
+      "kind": "historical_record",
+      "destination": "ADR/history/20261013/platform-tools.md#a343",
+      "source_sha256": "f0755de0d23d8c8c28057613cdba4baddd0d2bd5cf3229c1b43f005aa75657ec"
+    },
+    {
+      "source_lines": [
+        345,
+        465
+      ],
+      "kind": "tool_reference",
+      "destination": "ADR/history/20261013/toolchain-runbook.md",
+      "source_sha256": "5b348fe43b8d8eb6b93fd11678b2a992be6ea47235e0efc755cf8c45b8191780"
+    }
+  ]
+}
