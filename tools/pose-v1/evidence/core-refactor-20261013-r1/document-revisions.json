@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-13",
+  "historical_manifests_not_rewritten": true,
+  "files": [
+    {
+      "path": "ADR/README.md",
+      "before_sha256": "d6bccdfecbf94b5193a14e7364b23b70e2430deb5ef937496f116a067507b3e9",
+      "after_sha256": "2dde206573c152cc2714954fd1a01147a6a0c8ea39552c9f72140b74c067da26",
+      "original_snapshot": "tools/pose-v1/evidence/core-refactor-20261013-r1/original-documents/ADR/README.md"
+    },
+    {
+      "path": "ADR/TechDetails.md",
+      "before_sha256": "2d6a538dbe2758362789d813aa716306033dcab8da1cdf1fc07f1a13ca98cbab",
+      "after_sha256": "d082afabf056be982f1b8fff918774b2ff01255d5450ea3c7a0530f9352d6d14",
+      "original_snapshot": "tools/pose-v1/evidence/core-refactor-20261013-r1/original-documents/ADR/TechDetails.md"
+    },
+    {
+      "path": "DIFFICULTIES.md",
+      "before_sha256": "cc926470e5689b4498aea2121bade7b1a583e18bac0a8961097a1a5d127869e8",
+      "after_sha256": "52edb102be02e3fc4c84039c95ca683c315e4c98e2ad4b1905cf131b06b47822",
+      "original_snapshot": "tools/pose-v1/evidence/core-refactor-20261013-r1/original-documents/DIFFICULTIES.md"
+    },
+    {
+      "path": "Done.md",
+      "before_sha256": "7bb21ec2f8cc3f2b75a5f7ed5d1c0a04f8a3adfa0c021c224e350c57c33fce7b",
+      "after_sha256": "7a008d448b1bdfbcc1157ee9de0bd04daaac6893b2af6993d191c941c14c3628",
+      "original_snapshot": "tools/pose-v1/evidence/core-refactor-20261013-r1/original-documents/Done.md"
+    },
+    {
+      "path": "PROJECT-PROGRESS.md",
+      "before_sha256": "ce25db42a235800fb99cbb97b21f691b3bd207d0785193307a452adc38de1d15",
+      "after_sha256": "1dec6d7613a9f6f09ec515ef12a058d5f2835c7c5ea464883fe3219d225d69ba",
+      "original_snapshot": "tools/pose-v1/evidence/core-refactor-20261013-r1/original-documents/PROJECT-PROGRESS.md"
+    },
+    {
+      "path": "REFERENCES.md",
+      "before_sha256": "e1d06cdb6627db7c4191d8c751cc70e3e52f237c9c7f9047f03a5ae5e66f6ba6",
+      "after_sha256": "842015786fa6ce55f092474506f21b1d756e6b71fe11fb0eed05c4f741cf6611",
+      "original_snapshot": "tools/pose-v1/evidence/core-refactor-20261013-r1/original-documents/REFERENCES.md"
+    },
+    {
+      "path": "software/demo/README.md",
+      "before_sha256": "3e3abc66535e42ffff71aac81b6e6c3a564d4667992c86024e517c1d145bb30b",
+      "after_sha256": "15f43e370b86d0d8b19aaa50a94deddab19c1a725fa68f94b3e5b049400ddbf0",
+      "original_snapshot": "tools/pose-v1/evidence/core-refactor-20261013-r1/original-documents/software/demo/README.md"
+    }
+  ],
+  "added_documents": {
+    "software/core/README.md": "b7b80a195b440042696564299f24e3356ba6c093213afa067571771512c3d79e",
+    "ADR/ADR_47.md": "044eed9645bbd35a5d03878890e0fc695329cd09ffe75f9b22ae3ab584b06d3f",
+    "tools/pose-v1/evidence/core-refactor-20261013-r1/README.md": "f9ddd3aa3954e8894cc5bb67a8a7a2cb002ba521019c4e1c21ea6104346d01b1"
+  }
+}

@@ -1,5 +1,7 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-13当前源码：[正式核心导读](software/core/README.md)、[重构ADR_47](ADR/ADR_47.md)、[本机/CPU107/三窗口实际证据](tools/pose-v1/evidence/core-refactor-20261013-r1/README.md)。旧源码、协议、SDK及模型保持；以下历史阶段结果保留各自范围，旧DATA排查仍暂停。
+
 最新：[全项目技术细节](ADR/TechDetails.md)、[演示运行说明](software/demo/README.md)、[ADR_45](ADR/ADR_45.md)、[63窗口板测/视频结果](tools/pose-v1/DEMO-RESULTS-20261011.md)、[完成核验](tools/pose-v1/evidence/demo-20261011-r4/completion-review.json)。原坏读排查暂停，演示完成；57份额外姿态非完整精度验收，HDMI未接。以下当前为历史。
 
 最新证据：[目录预建/首次与晚源结果](tools/pose-v1/PRODUCER-PREPARED-RESULTS-20261011.md)、[ADR_44](ADR/ADR_44.md)、[失败指纹](tools/pose-v1/evidence/producer-prepared-20261011-r1/on.fingerprint-review.json)、[完成](tools/pose-v1/evidence/producer-prepared-20261011-r1/completion-review.json)。首次DATA96与四正确晚源、原文件不修补，根因未修。

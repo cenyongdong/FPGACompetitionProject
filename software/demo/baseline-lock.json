@@ -1,68 +1,8 @@
 {
   "build_files": {
-    "software/pose_v1/include/mixed_bridge.hpp": {
-      "destination": "mixed_bridge.hpp",
-      "sha256": "9b8ce6004f98183ba59ef06db338415e31fc1adb55a8decb000747f26ab06c35"
-    },
-    "software/pose_v1/include/mixed_fusion_baseline.hpp": {
-      "destination": "mixed_fusion_baseline.hpp",
-      "sha256": "52dc965d2cc1b75ddee14ad53d270d76b41f4a473add103bf30c7bdfb487f33f"
-    },
-    "software/pose_v1/include/content_diagnostic.hpp": {
-      "destination": "content_diagnostic.hpp",
-      "sha256": "6863bf5501cdfbbd39b3fb908ed31945a6d56b870fb7e4d4f0f5befa6760e187"
-    },
     "software/pose_v1/src/mixed_host_check.cpp": {
       "destination": "mixed_host_check.cpp",
       "sha256": "f836a0a2dd8c85bd696e3bc128eecbfbce88fbebbb0b443564a3ebe3cf4b0d57"
-    },
-    "software/pose_v1/include/host_cpu_adapter.hpp": {
-      "destination": "host_cpu_adapter.hpp",
-      "sha256": "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4"
-    },
-    "software/pose_v1/include/preprocess.hpp": {
-      "destination": "preprocess.hpp",
-      "sha256": "ae70ba3f79722431d282bf5f610d6356b29072b4492f23dcc2adde29958f8118"
-    },
-    "software/pose_v1/src/preprocess.cpp": {
-      "destination": "preprocess.cpp",
-      "sha256": "e13a6bde842ae4d2531d2d0a455313f912d33942e6ee2681eacbd5c44df0b8b0"
-    },
-    "software/pose_v1/src/lazy_host_cpu_adapter.cpp": {
-      "destination": "host_cpu_adapter.cpp",
-      "sha256": "672e2c775fbb8703f31b809554a8db2416c414fc9c156b4f4c0ce9761db403b8"
-    },
-    "software/pose_v1/include/lazy_runtime_validation.hpp": {
-      "destination": "lazy_runtime_validation.hpp",
-      "sha256": "dc8fabe92f494db7a58394c096131ca0b71f14006b9c10af209cd0fbba86b544"
-    },
-    "software/pose_v1/include/application_clock.hpp": {
-      "destination": "application_clock.hpp",
-      "sha256": "0b96ef291023937b5b76c3311177c28e2b92ff20b779419c622cf9f8f493c046"
-    },
-    "software/pose_v1/include/skeleton_render.hpp": {
-      "destination": "skeleton_render.hpp",
-      "sha256": "ab5be587e8f6354f81ccd84860a5073657c040587a6ae19e4953a1a4c8522bac"
-    },
-    "software/pose_v1/src/skeleton_render.cpp": {
-      "destination": "skeleton_render.cpp",
-      "sha256": "701dc1546b4b4134f0b00addfecda09a745c80ee48dc908c610770cc0c306006"
-    },
-    "software/pose_v1/include/vpu_encoder.hpp": {
-      "destination": "vpu_encoder.hpp",
-      "sha256": "f85001ab0ea5725d3e59d479a64f999f2381bc76f9cc7321d7f5c332134e729f"
-    },
-    "software/pose_v1/include/vpu_pipeline_encoder.hpp": {
-      "destination": "vpu_pipeline_encoder.hpp",
-      "sha256": "badd90d3ef797b57f04e1f26f27d419fe8b0a1c2b7487bc34ffc248416dc03e2"
-    },
-    "software/pose_v1/include/vpu_resident_encoder.hpp": {
-      "destination": "vpu_resident_encoder.hpp",
-      "sha256": "13b7e746e1715dd03043970bc0729ca23fb821da1f018fa43c46b0f266d0f83e"
-    },
-    "software/pose_v1/include/resident_frame_queue.hpp": {
-      "destination": "resident_frame_queue.hpp",
-      "sha256": "1cbf7fc6f4baf297a4a1e375983a85a72c63fad940df7f5820837b70c32e9ec7"
     },
     "software/pose_v1/include/pipeline_fixture_source.hpp": {
       "destination": "pipeline_fixture_source.hpp",
@@ -72,41 +12,13 @@
       "destination": "pipeline_fixture_source.cpp",
       "sha256": "51eaf5fc2a52a9a7865e5da7a3edcc0d9ee8fc178f8b63b068597820becff201"
     },
-    "software/pose_v1/include/video_frame_marker.hpp": {
-      "destination": "video_frame_marker.hpp",
-      "sha256": "3dba5cd91f4f22df75fbbfac847772085553d40e2a28e913299048056796dec7"
-    },
     "software/pose_v1/src/live_host_gate.cpp": {
       "destination": "live_host_gate.cpp",
       "sha256": "8650b6853708cab633a6a1b561e746f821638176174fd88818786c1c7cfd9687"
     },
-    "software/pose_v1/include/h264_access_unit.hpp": {
-      "destination": "h264_access_unit.hpp",
-      "sha256": "21b6c6cb3d773c3a20654b5187f7910fc30c0c0876a4e67950da15999c4a3e44"
-    },
-    "software/pose_v1/src/h264_access_unit.cpp": {
-      "destination": "h264_access_unit.cpp",
-      "sha256": "99300c455ef05290679df3c63945144e4185e99393f9dabf3bf47569d7f09214"
-    },
-    "software/pose_v1/include/access_unit_channel.hpp": {
-      "destination": "access_unit_channel.hpp",
-      "sha256": "0b5a3e0618deb8d7d979c0dfad745ba5b8e9d6769b1dcc80fa356934f8e08b99"
-    },
-    "software/pose_v1/src/access_unit_channel.cpp": {
-      "destination": "access_unit_channel.cpp",
-      "sha256": "35efb8d2f10440c0f9b9724b60d0930a482a7e5d9cbdd5a1e36a98f052f35ac2"
-    },
-    "software/pose_v1/include/online_rtsp.hpp": {
-      "destination": "online_rtsp.hpp",
-      "sha256": "7d35fd44a34de4f2989645aca82534e3719794ada0412b05622de84376ae6e27"
-    },
     "software/pose_v1/src/access_unit_selftest.cpp": {
       "destination": "access_unit_selftest.cpp",
       "sha256": "ec21d1364d9af53fc42e48fcb0dc98d003841639ea638c088500922f4fbefb9b"
-    },
-    "software/pose_v1/include/guarded_rtsp.hpp": {
-      "destination": "guarded_rtsp.hpp",
-      "sha256": "3b265d9f87d85d7f02b2ca6c29be1502c5bb6462c4babeee03588c1b1aedfb09"
     },
     "software/pose_v1/src/guarded_network_adapter.cpp": {
       "destination": "guarded_network_adapter.cpp",
@@ -136,14 +48,6 @@
       "destination": "system_timing.cpp",
       "sha256": "3989a39d6ddce4280f5be94fd00b2077b1bce23f8d72b6c4cb93436f82dd3eab"
     },
-    "software/pose_v1/src/timed_resident_encoder.cpp": {
-      "destination": "timed_resident_encoder.cpp",
-      "sha256": "aba355f8175a2f2fa608c0548b51a7b8c5923305c1de804bc4d31d8a12ed02fc"
-    },
-    "software/pose_v1/src/timed_guarded_rtsp.cpp": {
-      "destination": "timed_guarded_rtsp.cpp",
-      "sha256": "abb1864879e644796547be0c1b58c41d8a5babbf541aa923f9c9dae388899a65"
-    },
     "software/pose_v1/include/timed_window_input.hpp": {
       "destination": "timed_window_input.hpp",
       "sha256": "37abf90cdcc72060c2a8c427ce4e2f6dd9447524833087f835e59fbeea85fe89"
@@ -152,73 +56,21 @@
       "destination": "process_system_timing.cpp",
       "sha256": "c59e692e0ef3445db8fb1b8ab5cfccece8f3aaa38ffed842c2a1b4107317a06c"
     },
-    "software/pose_v1/include/display_protocol.hpp": {
-      "destination": "display_protocol.hpp",
-      "sha256": "ec8134c6f40141b63689b1f51f7d27ff147f385cf314baf9ae241728a972ed93"
-    },
-    "software/pose_v1/src/display_protocol.cpp": {
-      "destination": "display_protocol.cpp",
-      "sha256": "77d9659c4d6b35ac24705208ea325a31049aab8a1d02baff316fce02596ac322"
-    },
-    "software/pose_v1/include/display_process.hpp": {
-      "destination": "display_process.hpp",
-      "sha256": "2acce7c49643bed3b03f1c7457c73773769424cdbed26c8e71195678bce2a3da"
-    },
-    "software/pose_v1/src/display_process.cpp": {
-      "destination": "display_process.cpp",
-      "sha256": "6b9f447eda29337ba314ca3dd1a9912acfc2f02ba5ca7f4debd14a30ef3a768b"
-    },
-    "software/pose_v1/include/display_queue.hpp": {
-      "destination": "display_queue.hpp",
-      "sha256": "6332c0abb27a3bd02d4da2823820f43a8d6054d90f9c36075088c9d1d685cb4d"
-    },
     "software/pose_v1/src/display_process_selftest.cpp": {
       "destination": "display_process_selftest.cpp",
       "sha256": "809a2609687903f5285735662c64668c02e75df4d0b6757ed6005b1555d370fa"
-    },
-    "software/pose_v1/include/trace_application_core_r2.hpp": {
-      "destination": "application_core.hpp",
-      "sha256": "8ed59c7b5777813093699677e1eef5bc9ba375d1bd89e37446acfc1f14d4477c"
-    },
-    "software/pose_v1/src/trace_application_core_r2.cpp": {
-      "destination": "application_core.cpp",
-      "sha256": "b8c03634c69f4e83f1282baa51a5dc56a8820317336664cfcf370a09304aa889"
-    },
-    "software/pose_v1/include/host_failure_evidence.hpp": {
-      "destination": "host_failure_evidence.hpp",
-      "sha256": "d5e1d311a2c319e655a98de9613b132459c1f20b691f76c2261ea4035b9d1d74"
-    },
-    "software/pose_v1/src/host_failure_evidence.cpp": {
-      "destination": "host_failure_evidence.cpp",
-      "sha256": "3e00a84398b9cbba408dff0863499804a87d8139d2e5b2f7932bf10f779afc29"
     },
     "software/pose_v1/src/host_failure_evidence_selftest.cpp": {
       "destination": "host_failure_evidence_selftest.cpp",
       "sha256": "dcd34bc0be10d7d4cd5f89d0218b74ada758968a1bf5450c561fdc8a1a6752e1"
     },
-    "software/pose_v1/include/failure_source_readback.hpp": {
-      "destination": "failure_source_readback.hpp",
-      "sha256": "5e728fd22436768da94f85361cd2ae455681b4bd4ed6ae5ab62fcd6e5c07e088"
-    },
-    "software/pose_v1/src/failure_source_readback.cpp": {
-      "destination": "failure_source_readback.cpp",
-      "sha256": "771e715d3a1ac9baf202d4adb8627b379458ab10ecbd51b3cbac0deed34ed7b8"
-    },
     "software/pose_v1/include/bounded_system_timing.hpp": {
       "destination": "system_timing.hpp",
       "sha256": "f6ea4a492f145413cb01212547b8496911db9ae59a04008d956654e91db58abd"
     },
-    "software/pose_v1/src/bounded_display_worker.cpp": {
-      "destination": "display_worker.cpp",
-      "sha256": "a809e28cdcf9b5695540dd3fe26575b6bf0ba537b316430eebc19b8719d1287b"
-    },
     "software/pose_v1/src/bounded_system_timing_selftest.cpp": {
       "destination": "system_timing_selftest.cpp",
       "sha256": "1e487fb7735f2daa52a461d4b06480e2df202a3d522d8bb24974c66925222995"
-    },
-    "software/pose_v1/include/bounded_load_contract.hpp": {
-      "destination": "bounded_load_contract.hpp",
-      "sha256": "8053a83faf039bc2738f7115f8c57a324a44380cca36eb6b462259d3b928d705"
     },
     "software/pose_v1/include/bounded_frame_reference.hpp": {
       "destination": "bounded_frame_reference.hpp",
@@ -236,14 +88,6 @@
       "destination": "bounded_reference_export.cpp",
       "sha256": "a2d290a036bdbfd2854446ecb676285597fc074b911af0b41bb526d3f2e753c6"
     },
-    "software/pose_v1/include/stage_guard_tcp_receiver.hpp": {
-      "destination": "tcp_receiver.hpp",
-      "sha256": "acd4175346d25e4f25e33faa854ed9501a673315d9d806d2b20011f804b4b345"
-    },
-    "software/pose_v1/src/stage_guard_tcp_receiver.cpp": {
-      "destination": "tcp_receiver.cpp",
-      "sha256": "afa8efc9e1272244286cb637e4e2c66f14737c48ea772924a2f63858d3716bc8"
-    },
     "software/pose_v1/include/stage_guard_window_input.hpp": {
       "destination": "process_window_input.hpp",
       "sha256": "8b559e5b6c0a02c44421cec718317c63780cd15ccbdbcc49f3d3dc7f38c2d9a5"
@@ -260,33 +104,9 @@
       "destination": "host_failure_adapter_test.cpp",
       "sha256": "c4f110ad838d2b769b7f89f5b2c9af2a7271d58cd9d1b24ac70299770d1f0c26"
     },
-    "software/pose_v1/include/invocation_stage_observation.hpp": {
-      "destination": "host_stage_observation.hpp",
-      "sha256": "2a7d4acb66442f49cf9123393b21e9b373c8072363c04a7921c44fb66f5ee428"
-    },
-    "software/pose_v1/src/invocation_stage_observation.cpp": {
-      "destination": "host_stage_observation.cpp",
-      "sha256": "c7b260bcd3c10a7ced6be2c6898a5a45eb4d71c9eea6e4dbf4e9112a9d396706"
-    },
-    "software/pose_v1/include/invocation_evidence.hpp": {
-      "destination": "invocation_evidence.hpp",
-      "sha256": "2b97b27a0fc21b6e3bdc6855bac5db42065c420d85693aae0478785d4881f88b"
-    },
-    "software/pose_v1/src/invocation_evidence.cpp": {
-      "destination": "invocation_evidence.cpp",
-      "sha256": "51a3e605f6ed0433e2e9079752d068b6a8e0e94dc99ae0dc911cd6d66e007255"
-    },
     "software/pose_v1/src/invocation_evidence_selftest.cpp": {
       "destination": "invocation_evidence_selftest.cpp",
       "sha256": "c8aa6ad18629310e47e973a18f056112ed9db3fb9045394667180795e7a7deeb"
-    },
-    "software/pose_v1/include/producer_count_observation.hpp": {
-      "destination": "producer_count_observation.hpp",
-      "sha256": "a62221997df01a7e6c1fae4167ebf77d92d7914192a0be315b108357dece2f2f"
-    },
-    "software/pose_v1/src/producer_count_observation.cpp": {
-      "destination": "producer_count_observation.cpp",
-      "sha256": "e9e7dbb4eee21503ff2fbc207127fed5b19d45ad23a664c974fef113a6e03f97"
     },
     "software/pose_v1/src/producer_count_observation_selftest.cpp": {
       "destination": "producer_count_observation_selftest.cpp",
@@ -295,14 +115,6 @@
     "software/pose_v1/src/tensor_identity_check_r1.cpp": {
       "destination": "forward_trace_check.cpp",
       "sha256": "fd01e698898249520ed9c666ddad64ecb38f4d3486be67e399ba11c68dbfac4a"
-    },
-    "software/pose_v1/include/tensor_identity_observation.hpp": {
-      "destination": "tensor_identity_observation.hpp",
-      "sha256": "2d7ce78f9787118639e4dd319bb9299fed7195804f9354ccc400384c8e19109b"
-    },
-    "software/pose_v1/src/tensor_identity_observation.cpp": {
-      "destination": "tensor_identity_observation.cpp",
-      "sha256": "1896a9964299888e46710c9a5c97bb92767ebe0a7a4786ec484939f7245c6258"
     },
     "software/pose_v1/src/tensor_identity_bridge_r2.cpp": {
       "destination": "application_bridge.cpp",
@@ -464,22 +276,6 @@
       "destination": "picture_reference_export.cpp",
       "sha256": "2a391ecdf5a256ee0f1bba1a5a2aa4d902542da7be047c39b430e7314819f9b9"
     },
-    "software/pose_v1/include/input_read_contract.hpp": {
-      "destination": "input_read_contract.hpp",
-      "sha256": "fdc404521736b3d8c2c08fa5a5ef48e2ebeb1c8901ffb33ae97b675bb2b2a137"
-    },
-    "software/pose_v1/include/input_read_sdk.hpp": {
-      "destination": "input_read_sdk.hpp",
-      "sha256": "86bdf0ca883146830461afafce3ed490bbdd2a167b00a8b438090bfc3613be1a"
-    },
-    "software/pose_v1/src/input_read_contract.cpp": {
-      "destination": "input_read_contract.cpp",
-      "sha256": "5615292a1de13cd96bd1bff6b35d53ff54b66c0513ae78523325bc456766e694"
-    },
-    "software/pose_v1/src/input_read_sdk.cpp": {
-      "destination": "input_read_sdk.cpp",
-      "sha256": "c1cd34bc6dcb6829b4f9c74a23c080dd32e4f1d2c0772df0308783bae1253251"
-    },
     "software/pose_v1/src/input_read_selftest.cpp": {
       "destination": "input_read_selftest.cpp",
       "sha256": "4338e4fc94bc398a061c677f522e25f9bced9ca46a97709a9b286ea2e4261a64"
@@ -492,10 +288,6 @@
       "destination": "input_read_host_check.cpp",
       "sha256": "cd09122956f067855adbc3f0878fd08d0970a8fb4b4a5c587c07163a23431b46"
     },
-    "software/pose_v1/src/read_input_bridge.cpp": {
-      "destination": "read_input_bridge.cpp",
-      "sha256": "ff13c5befd0b474fc7aee127fec683f02c36754a8b3f6d6ff1f03f654e3d5fa1"
-    },
     "software/pose_v1/include/combined_read_contract.hpp": {
       "destination": "combined_read_contract.hpp",
       "sha256": "9da6f199ed8140c20d5e966ebd71ec3a0e192619f370de76aa9120031e3aabca"
@@ -503,6 +295,226 @@
     "software/pose_v1/src/combined_read_check.cpp": {
       "destination": "combined_read_check.cpp",
       "sha256": "ea0464bdd6cc8f6f97494ca1b195d7618a088b3a7a381718c754a675a6362669"
+    },
+    "software/core/inference/application_core.cpp": {
+      "destination": "application_core.cpp",
+      "sha256": "8b09758b8aa6d0dac5ff0d2c7a6a4b17ac0bf725c0c081b634d26e4271abc57e"
+    },
+    "software/core/inference/read_input_bridge.cpp": {
+      "destination": "read_input_bridge.cpp",
+      "sha256": "b2237a0345fb5dab88528fa7f262e239c78077ee666bd2bffaabee25b73806ab"
+    },
+    "software/core/inference/input_read_sdk.cpp": {
+      "destination": "input_read_sdk.cpp",
+      "sha256": "03d8748b391d83c1b4fe2597e5254b2baffc0947a3189cebb6a2b6812a6b97e8"
+    },
+    "software/core/inference/input_read_contract.cpp": {
+      "destination": "input_read_contract.cpp",
+      "sha256": "33a789ae349fb3813f2868885905434ed659f484fd13ac0b3b0eae5637043740"
+    },
+    "software/core/inference/host_cpu_adapter.cpp": {
+      "destination": "host_cpu_adapter.cpp",
+      "sha256": "37f519ee1bb7c56a0ef6fde22513c8ef7165f901574054ee0d7d550c09b53194"
+    },
+    "software/core/input/preprocess.cpp": {
+      "destination": "preprocess.cpp",
+      "sha256": "448512368f8fd3a8c7d65eb950e5c29b4aec6c57faf9653cfb8368b14a123c8e"
+    },
+    "software/core/diagnostics/host_failure_evidence.cpp": {
+      "destination": "host_failure_evidence.cpp",
+      "sha256": "9401351cb5e2d192067a170dae19985b4560a9436a40e998ddac4d0cad0a4a4f"
+    },
+    "software/core/diagnostics/failure_source_readback.cpp": {
+      "destination": "failure_source_readback.cpp",
+      "sha256": "ad534f63eb41af3163367780ca81705942276e201990bfd227d6f534e3a686e7"
+    },
+    "software/core/diagnostics/host_stage_observation.cpp": {
+      "destination": "host_stage_observation.cpp",
+      "sha256": "848bd5bb4802f86e99aca8d6c9d21c7d2adc3966605085f9dcada196efbbbcfe"
+    },
+    "software/core/diagnostics/invocation_evidence.cpp": {
+      "destination": "invocation_evidence.cpp",
+      "sha256": "de5f71824ea59a5f913e50c279b7357ec772252521a93a0da622013a434986ae"
+    },
+    "software/core/diagnostics/producer_count_observation.cpp": {
+      "destination": "producer_count_observation.cpp",
+      "sha256": "fff9dfa60f05c5710e9cd2b189e6ae6e058b759281b0331f4eaf94fd2a1e9004"
+    },
+    "software/core/diagnostics/tensor_identity_observation.cpp": {
+      "destination": "tensor_identity_observation.cpp",
+      "sha256": "0aec7f4ad7baf7572ac04859fbc3dd9d294bbf1a07f87baa5500c3abb17eb317"
+    },
+    "software/core/input/tcp_receiver.cpp": {
+      "destination": "tcp_receiver.cpp",
+      "sha256": "d874601cf1d47b86d18888885744063459a34460f3e6a46c41bf634323e88459"
+    },
+    "software/core/display/display_process.cpp": {
+      "destination": "display_process.cpp",
+      "sha256": "dade9eba2501929cf878e754c269fd4753f9edb54a2c54b3991f230fcb0dc8b9"
+    },
+    "software/core/display/display_protocol.cpp": {
+      "destination": "display_protocol.cpp",
+      "sha256": "18de8ec60682d1be3e7d28d42c70e4d171b1f528557174f64c95498f02cd0148"
+    },
+    "software/core/display/skeleton_render.cpp": {
+      "destination": "skeleton_render.cpp",
+      "sha256": "f290c8e2648926bb9899e46c4ed75f88e9d601cbd087c791384775a401582176"
+    },
+    "software/core/video/timed_resident_encoder.cpp": {
+      "destination": "timed_resident_encoder.cpp",
+      "sha256": "e7a8c3712004073ae81fa365d1edc12e8b86c74ebd00810dac52349a005fde67"
+    },
+    "software/core/stream/h264_access_unit.cpp": {
+      "destination": "h264_access_unit.cpp",
+      "sha256": "8f07b8c01cdcab185b04d3618428a255432bcb7fd2261a0c256b1851d94aaedf"
+    },
+    "software/core/stream/access_unit_channel.cpp": {
+      "destination": "access_unit_channel.cpp",
+      "sha256": "9891b0cbe1fd838eff5c47c16be914b90e9a910d61ffd1a5e6b5390615845e51"
+    },
+    "software/core/stream/timed_guarded_rtsp.cpp": {
+      "destination": "timed_guarded_rtsp.cpp",
+      "sha256": "ec3fe811af777211a5ac47503f6b835ab7e0c89ad3fed7bfe4479aa70e84cafb"
+    },
+    "software/core/display/display_worker.cpp": {
+      "destination": "display_worker.cpp",
+      "sha256": "044d8c6bb96c1a9497c531d263045562934bf2aa1a99d21d8a5367d378282e6c"
+    },
+    "software/core/diagnostics/host_failure_evidence.hpp": {
+      "destination": "host_failure_evidence.hpp",
+      "sha256": "d118882873c96563690e91e54bc6371e2bd01fb23bcd13d5b815b55e05017a5e"
+    },
+    "software/core/diagnostics/failure_source_readback.hpp": {
+      "destination": "failure_source_readback.hpp",
+      "sha256": "8ed91847643ba0109326cb869b61c9c1a0999bc4943104fd200bd1e0d4019d10"
+    },
+    "software/core/diagnostics/host_stage_observation.hpp": {
+      "destination": "host_stage_observation.hpp",
+      "sha256": "6cfca87b74d9238df924b7634fdd3e1aa30708934b1b77fbef20219ff91e2f60"
+    },
+    "software/core/diagnostics/producer_count_observation.hpp": {
+      "destination": "producer_count_observation.hpp",
+      "sha256": "9d5cc8aa7125a523829cd7bbe45bc5f5cd13bfa36f3f9b4b854c94a056682792"
+    },
+    "software/core/diagnostics/tensor_identity_observation.hpp": {
+      "destination": "tensor_identity_observation.hpp",
+      "sha256": "9867d57c7b2a51e9254d5e4264e7e7c44bf90d7ebc8baf8c9a09661175659262"
+    },
+    "software/core/inference/application_core.hpp": {
+      "destination": "application_core.hpp",
+      "sha256": "4f47717ca6d37c31efc75ce759af612c55fcee56fe1036122134a0f9a8275003"
+    },
+    "software/core/display/display_queue.hpp": {
+      "destination": "display_queue.hpp",
+      "sha256": "22644eb1c38512d821b26b6c72b8df4df85d97b71baeefbbcdbf8809b6a6e698"
+    },
+    "software/core/video/resident_frame_queue.hpp": {
+      "destination": "resident_frame_queue.hpp",
+      "sha256": "480798f85ae992e86e2dba68094412e4fc46ac8ea98bcc2f26b86e74c6ace2d9"
+    },
+    "software/core/display/skeleton_render.hpp": {
+      "destination": "skeleton_render.hpp",
+      "sha256": "fd1f358cdc514478c3e6826e28078ba4dae2161a045f776a02447841c6ac16c4"
+    },
+    "software/core/video/vpu_resident_encoder.hpp": {
+      "destination": "vpu_resident_encoder.hpp",
+      "sha256": "f1f18b482d2ddb65c7a018cf0fa85c2d9ad119f2192ef05984b7d1a45858c35c"
+    },
+    "software/core/stream/guarded_rtsp.hpp": {
+      "destination": "guarded_rtsp.hpp",
+      "sha256": "6e3602d09c233412932aa1c15fcf691ae1ba994bf279fabaf5de3d8fafe891ff"
+    },
+    "software/core/video/video_frame_marker.hpp": {
+      "destination": "video_frame_marker.hpp",
+      "sha256": "7ae068861b06ee2432e8d722ceee0127ba7a68fadb71d7b1de825edf891d0712"
+    },
+    "software/core/display/display_process.hpp": {
+      "destination": "display_process.hpp",
+      "sha256": "283f6d9efb857b17be403ff5bee7b463a5457255df3ad8ef92e0d2a3c4abe82a"
+    },
+    "software/core/input/tcp_receiver.hpp": {
+      "destination": "tcp_receiver.hpp",
+      "sha256": "ee496b3150f54bb613643b8bb96c5ffbdc244c040ffea6d68f8946e2fbfeb91f"
+    },
+    "software/core/inference/lazy_runtime_validation.hpp": {
+      "destination": "lazy_runtime_validation.hpp",
+      "sha256": "d2f38cb42ec8f0ab11ee8a48efd3b3d177bbdb0786f8792ba652aa22444cd9d4"
+    },
+    "software/core/diagnostics/application_clock.hpp": {
+      "destination": "application_clock.hpp",
+      "sha256": "f2daff35793b1668506e8b54ab69e308ccaf7d5ea447ce93c144ca6b69d87069"
+    },
+    "software/core/inference/mixed_bridge.hpp": {
+      "destination": "mixed_bridge.hpp",
+      "sha256": "b749d08bc621c2cd64044f929119a653a349bb72ca46b76307db21cd3ed21e51"
+    },
+    "software/core/inference/input_read_sdk.hpp": {
+      "destination": "input_read_sdk.hpp",
+      "sha256": "6889e9650ab74ccefd85bee7a2fa6762d99580ecacee5da2753269972f376acb"
+    },
+    "software/core/inference/mixed_fusion_baseline.hpp": {
+      "destination": "mixed_fusion_baseline.hpp",
+      "sha256": "74389a3d7ee14dd2e199cb137ecd6530d31705807933814068a9b222dedce0c4"
+    },
+    "software/core/diagnostics/content_diagnostic.hpp": {
+      "destination": "content_diagnostic.hpp",
+      "sha256": "3733e5d534b3aa4b505be0965f55c4e5f4ec62408ece627febfab2e9da13e9bd"
+    },
+    "software/core/inference/input_read_contract.hpp": {
+      "destination": "input_read_contract.hpp",
+      "sha256": "996122e237ba10ead28b5a072e6765cae2574ad064f03b776c87fb3d95693b5e"
+    },
+    "software/core/inference/host_cpu_adapter.hpp": {
+      "destination": "host_cpu_adapter.hpp",
+      "sha256": "fc3c92f75fe4e7ee7e6b8bfae109edb0174d4f3ab4558f410b1594ffd49d7dd3"
+    },
+    "software/core/input/preprocess.hpp": {
+      "destination": "preprocess.hpp",
+      "sha256": "87cca2fa5f540d08061bae70758b1ec9c2aaa0f42cbada28831d7254ec7901de"
+    },
+    "software/core/diagnostics/invocation_evidence.hpp": {
+      "destination": "invocation_evidence.hpp",
+      "sha256": "84f902fd61b05ad4ca493edeceb81bf34d105473ea27e2d6c6e898e33fc2a944"
+    },
+    "software/core/display/display_protocol.hpp": {
+      "destination": "display_protocol.hpp",
+      "sha256": "9d6885e7072d0f33c0d292463c19547e95a4aff639157b4ba91031f15e02f39c"
+    },
+    "software/core/stream/h264_access_unit.hpp": {
+      "destination": "h264_access_unit.hpp",
+      "sha256": "c3b79e9b0f8968e5eb592741b620d3d9978dc068563dd4f5a6d8d06efa9cf820"
+    },
+    "software/core/stream/access_unit_channel.hpp": {
+      "destination": "access_unit_channel.hpp",
+      "sha256": "6a3a82be55fa73636769736b4a93673db256a04bcdceb1f63dc4112575821bb0"
+    },
+    "software/core/diagnostics/bounded_load_contract.hpp": {
+      "destination": "bounded_load_contract.hpp",
+      "sha256": "7ffc769c1af4db250e4654e5a559df34b5dcb6e67704c84ec4dd6e9c81dafe26"
+    },
+    "software/core/video/vpu_pipeline_encoder.hpp": {
+      "destination": "vpu_pipeline_encoder.hpp",
+      "sha256": "c51a0bf216cb0e953c8aadf0e83752922020ea7b20abf7ef63366384b4e10336"
+    },
+    "software/core/stream/online_rtsp.hpp": {
+      "destination": "online_rtsp.hpp",
+      "sha256": "f28f80c8713709212a050acd8f388957848b2bf23a51775a959678689950b614"
+    },
+    "software/core/video/vpu_encoder.hpp": {
+      "destination": "vpu_encoder.hpp",
+      "sha256": "6224b1b4876b1f66dcb435275899e8bce6973640f9a743d95edd8d882d1b44bf"
+    },
+    "software/pose_v1/src/preprocess_check.cpp": {
+      "destination": "preprocess_check.cpp",
+      "sha256": "bd27896354c0af2506e09c173926121d71fa34c6d78bcaec6ce938f626956d3d"
+    },
+    "software/pose_v1/src/skeleton_render_check.cpp": {
+      "destination": "skeleton_render_check.cpp",
+      "sha256": "785222a178a03b7d4446038ca372e6cb9c46d90036842f4dd7fecaddf43e9bc3"
+    },
+    "software/pose_v1/src/host_cpu_adapter_check.cpp": {
+      "destination": "host_cpu_adapter_check.cpp",
+      "sha256": "8240ff074ce8995d27f073a553b936a673a69a5591ac7aa9268dcbd78e22dec9"
     }
   },
   "sdk_headers_normalized_sha256": {
@@ -715,7 +727,8 @@
   },
   "host_library_sha256": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
   "zg_library_sha256": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
-  "prior_baseline": "combined-read-20261010-r1 public read / Host107 / 2Hz103",
+  "prior_baseline": "combined-read-20261010-r1 public read / Host107 / 2Hz103; explicit formal-core migration 2026-10-13",
   "graph_sha256": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
-  "raw_sha256": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3"
+  "raw_sha256": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3",
+  "source_migration": "tools/pose-v1/evidence/core-refactor-20261013-r1/source-migration.json"
 }

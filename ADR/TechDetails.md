@@ -1,6 +1,12 @@
 # Wi-Fi 人体三维姿态项目技术实现汇报
 
-更新日期：2026-10-11。本文以实际源码、模型、板测与归档为依据，区分已验证框架、最新演示实现及未解决问题。演示源码位于[software/demo](../software/demo/README.md)；三窗口与60窗口演示已完成板端推理、VPU编码和主机GUI实时显示核验；首次启动历史与高负载未解决问题保留，详见[ADR_45](ADR_45.md)。
+更新日期：2026-10-13。本文以实际源码、模型、板测与归档为依据，区分已验证框架、最新演示实现及未解决问题。演示源码位于[software/demo](../software/demo/README.md)；三窗口与60窗口演示已完成板端推理、VPU编码和主机GUI实时显示核验；首次启动历史与高负载未解决问题保留，详见[ADR_45](ADR_45.md)。
+
+## 当前源码入口及重构回归
+
+当前演示只使用[正式核心](../software/core/README.md)中的input/inference/diagnostics/display/video/stream，应用编排仍在software/demo。原pose_v1文件及测试保留作历史依据；新旧文件/导出别名/哈希见[迁移映射](../tools/pose-v1/evidence/core-refactor-20261013-r1/source-migration.json)。公共接口、数学、协议、SDK与固定模型保持。
+
+2026-10-13实际完成11组本机检查、旧实现/原参考字节对照及ARM构建；Lite CPU107的22输出/59600 FP32逐位通过。新三窗口308/309/310全CSI/预处理/分数/姿态逐位旧参考，354编码、294主机GUI解码，全3来源及42关节核验；正常drain/LAST、两STREAMOFF和所有权回收通过，规整0、BOOT/SDK/内核相同。具体范围见[ADR_47](ADR_47.md)。下文2026-10-11三/60窗口数据仍是原独立演示证据，不累加成新的样本精度或吞吐验收。
 
 ## 1. 系统组成与数据流
 
@@ -38,7 +44,7 @@ Lite使用ARM64 Linux/Icraft3.39.0、ZG330架构NPU与MVX VPU。FPAI是已存在
 
 覆盖计数、收到/消费/返回、会话与拒绝分开记录。本版演示只建立一个输入会话，不自动重连或重发已接受的数据。完整记录到达时间取板端steady_clock；主机与板端时钟未同步，不能直接相减宣称端到端延迟。
 
-依据：[原始协议](../software/pose_v1/PROTOCOL.md)、[接收源码](../software/pose_v1/src/tcp_receiver.cpp)。
+依据：[原始协议](../software/pose_v1/PROTOCOL.md)、[接收源码](../software/core/input/tcp_receiver.cpp)。
 
 ## 4. PS端CSI预处理
 
@@ -48,7 +54,7 @@ Lite使用ARM64 Linux/Icraft3.39.0、ZG330架构NPU与MVX VPU。FPAI是已存在
 
 相位分支对首天线沿子载波unwrap；其他天线利用`arg(current × conj(previous))`及前一天线相位重建后unwrap，再按训练常数`2π×625`作线性校正。以训练等价的复指数重建并取arg回到包裹相位，保留零幅值和signed-zero行为，不能用表面等价的`atan2(m*sin,m*cos)`替换。
 
-300个真实CSI窗口与训练方法逐位对照已通过；人工±π诊断的边界失败历史保留，不宣称所有人工输入的相位语义均已证明。源码与实测见[预处理](../software/pose_v1/src/preprocess.cpp)、[ADR_03](ADR_03.md)。
+300个真实CSI窗口与训练方法逐位对照已通过；人工±π诊断的边界失败历史保留，不宣称所有人工输入的相位语义均已证明。源码与实测见[预处理](../software/core/input/preprocess.cpp)、[ADR_03](ADR_03.md)。
 
 ## 5. 模型转换、参数及输出接口
 
@@ -80,7 +86,7 @@ Session创建前核对注册基线，发现已有或部分注册就停止，禁�
 
 CPU内核只支持当前图实际需要的FP32、轴、形状、K及索引形式。FP32表示的索引必须有限、精确整数、在边界内；不截断、取整、钳位或用晚值替换坏索引。原CPU107用例、12条注册记录、22输出/59600个FP32值独立参考通过，当前演示复用原数学实现，不把协议测试写成新Host107执行。
 
-依据：[CPU适配](../software/pose_v1/src/lazy_host_cpu_adapter.cpp)、[注册/桥](../software/pose_v1/src/read_input_bridge.cpp)、[ADR_01](ADR_01.md)。
+依据：[CPU适配](../software/core/inference/host_cpu_adapter.cpp)、[注册/桥](../software/core/inference/read_input_bridge.cpp)、[ADR_01](ADR_01.md)。
 
 ## 7. 布局和merged distribution适配
 
@@ -106,7 +112,7 @@ CPU计算后，SDK提供目的输出时使用原`copyFrom`写回并setReady；�
 
 AU通道容量8，以非阻塞self-pipe唤醒事件循环。满队列属于错误，不能任意丢P帧继续发送而破坏解码参考。发布前取得字节所有权，队列只表达数据契约，不暴露功能模块私有状态。
 
-依据：[显示协议](../software/pose_v1/include/display_protocol.hpp)、[AU通道](../software/pose_v1/src/access_unit_channel.cpp)、[ADR_09](ADR_09.md)、[ADR_15](ADR_15.md)。
+依据：[显示协议](../software/core/display/display_protocol.hpp)、[AU通道](../software/core/stream/access_unit_channel.cpp)、[ADR_09](ADR_09.md)、[ADR_15](ADR_15.md)。
 
 ## 10. 3D骨架如何变为可编码画面
 
@@ -116,7 +122,7 @@ RGB以CPU线段/点/文字光栅化生成，再用BT.601 limited-range整数矩�
 
 渲染、RGB565/NV12/NV21已通过Native/ARM/NumPy位级核验。H264有损解码不要求RGB逐位相等；通过投影关节可见性、来源/ID、PTS和图像差异评估内容映射。SPS色彩信号未完整显式标定，不能把输入矩阵等同码流已声明BT.601。
 
-依据：[渲染源码](../software/pose_v1/src/skeleton_render.cpp)、[ADR_06](ADR_06.md)。
+依据：[渲染源码](../software/core/display/skeleton_render.cpp)、[ADR_06](ADR_06.md)。
 
 ## 11. 板端VPU H.264编码
 
@@ -128,7 +134,7 @@ QUERYBUF返回的opaque cookie须按已验兼容方式用于QBUF，不能将看�
 
 正常结束执行STOP/drain/LAST、归还全部raw缓冲和两STREAMOFF，再解除映射与close。异常执行abort STREAMOFF，不能将异常默认summary中的0计数当实际无编码，不能把前缀解码当正常drain通过。
 
-依据：[VPU实现](../software/pose_v1/src/timed_resident_encoder.cpp)、[ADR_02](ADR_02.md)、[ADR_07](ADR_07.md)。
+依据：[VPU实现](../software/core/video/timed_resident_encoder.cpp)、[ADR_02](ADR_02.md)、[ADR_07](ADR_07.md)。
 
 ## 12. 渲染视频怎样推回主机
 
@@ -140,7 +146,7 @@ live555提供`rtsp://192.168.126.49:8554/pose`。DESCRIBE返回实际参数集�
 
 主机OpenCV调用已有FFmpeg后端，用TCP拉取板端RTSP，显示实际解码画面；不把保存好的本机视频冒充实时回传。编码目标10fps与真实新姿态2Hz分别报告，重复画面不是更高推理吞吐。
 
-依据：[网络实现](../software/pose_v1/src/timed_guarded_rtsp.cpp)、[AU解析](../software/pose_v1/src/h264_access_unit.cpp)、[ADR_08](ADR_08.md)、[ADR_10](ADR_10.md)。
+依据：[网络实现](../software/core/stream/timed_guarded_rtsp.cpp)、[AU解析](../software/core/stream/h264_access_unit.cpp)、[ADR_08](ADR_08.md)、[ADR_10](ADR_10.md)。
 
 ## 13. 常驻与启动顺序
 

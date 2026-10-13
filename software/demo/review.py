@@ -7,7 +7,7 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def load(p):return json.loads(p.read_text(encoding='utf-8'))
 def lines(p):return [json.loads(s) for s in p.read_text(encoding='utf-8').splitlines()]
 def main():
-    p=argparse.ArgumentParser();p.add_argument('stage',choices=['short','demo']);p.add_argument('--evidence',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('stage',choices=['short','demo']);p.add_argument('--evidence',type=Path,required=True);p.add_argument('--reference',type=Path,default=ROOT/'.local/pose-v1-combined-read/package-20261010-r1');a=p.parse_args()
     E=a.evidence;D=E/(a.stage+'-return/run-'+a.stage);P=D/'results';H=E/(a.stage+'-host');count=3 if a.stage=='short' else 60
     assert (D/'exit.txt').read_text().strip()=='0' and (D/'before.dmesg.txt').read_bytes()==(D/'after.dmesg.txt').read_bytes()
     assert not (P/'failure.txt').exists()
@@ -16,7 +16,7 @@ def main():
     assert video['pose_published']==video['pose_adopted']==video['frame_adopted']==count and video['drained'] and video['encoded']==video['returned']
     assert all(video[k]==0 for k in ('pose_overwritten','pose_coalesced','frame_overwritten','frame_coalesced'))
     sent=load(H/'sent.json')['records'];rows=lines(P/'results/frames.jsonl');assert len(rows)==len(sent)==count
-    refs=ROOT/'.local/pose-v1-combined-read/package-20261010-r1';checked=[];poses=[]
+    refs=a.reference;checked=[];poses=[]
     rendered=E/(a.stage+'-render-input');assert not rendered.exists();rendered.mkdir();catalog=[]
     for i,(record,row) in enumerate(zip(sent,rows)):
         assert row['frame_id']==record['frame_id'] and row['invocation']==i and row['source_time_ns']==record['source_time_ns']

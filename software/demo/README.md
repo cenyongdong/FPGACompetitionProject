@@ -1,5 +1,21 @@
 # Wi-Fi 人体三维姿态端到端演示
 
+## 2026-10-13正式核心重构版本
+
+当前入口使用[software/core](../core/README.md)六个功能目录，旧pose_v1和历史检查器保留。参数解析独立为demo_options，视频网络/绘图/编码线程入口分别封装；公开接口和原运行行为保持。构建仍导出锁定别名，但当前锁显式引用新核心；原锁和路径/哈希映射见[ADR_47](../../ADR/ADR_47.md)。
+
+实际完成：11组本机、ARM构建、Lite CPU107/22输出/59600 FP32逐位，以及三窗口全部原始输入/预处理/分数/姿态逐位旧参考。354编码/294 GUI解码、全3来源/42关节、drain/LAST和回收通过，规整0，身份与内核同。[完整证据](../../tools/pose-v1/evidence/core-refactor-20261013-r1/README.md)。本轮没有60窗口执行；下方2026-10-11旧命令和结果保留为历史。
+
+当前已验证构建为`.local/pose-v1-build/demo-refactor-20261013-r1`，板端为`/tmp/wifi-pose-demo-refactor-20261013-r1`；已完成的运行目录不得再次使用。默认模型来源重新核验为`D:/Person-in-WIFI-3D/Person-in-WiFi-3D-repo/result/icraft_2024`，配对SHA保持原固定值。
+
+本机执行位置是当前仓库根目录`D:/FPGACompetitionProject`。本轮实际核验的回放环境位于旧受管工作区`C:/Users/cenyongdong/.codex/worktrees/dea3/FPGACompetitionProject/.local/pose-v1-conda/python.exe`，Python3.10.21/NumPy2.2.5/h5py3.16.0；仅使用该既有环境，旧工作区不写入。播放器仍用既有WIFI-densepose。Docker/FPAI及原SDK必须可用，不安装替代版本。
+
+可复核静态身份：`python software/demo/verify_core.py static`。`verify_core.py native --tag`和`build.py --tag`的tag必须是新的唯一值，分别生成本机字节对照与ARM构建，成功退出才通过，任何错误停止并保留日志。
+
+`validate_board.py`用于本轮已批准的一次CPU107→三窗口顺序验证：参数`--build`指定核验通过的构建，`--evidence`指定不存在的证据目录，`--cpu-package/--reference`指定原身份输入和数值参考，`--model-dir`指定同SHA模型，`--viewer-python`指定现有播放器。此入口在身份/Host协议/CPU完整输出门检后才放行三窗口，密码由遮罩窗口在内存中输入，预期CPU及short报告、完整tar/值/日志和清理证据。失败/超时/身份变化立即停止，不自动重试；再次实板运行须先按项目约束确认新阶段与新远端目录，不能重复本轮已完成路径。
+
+## 2026-10-11原演示说明（历史范围）
+
 演示入口整合既有框架：主机读取预采 CSI → TCP → Lite 的 PS 预处理和 PS/NPU 混合推理 → SDK 无关显示子进程绘制骨架 → 板端 VPU 编码 H.264 → RTSP/TCP → 主机 OpenCV 窗口。
 
 默认每秒发送两个**完整 CSI 窗口**，编码预览为10fps。推理期间重复最新画面，启动画面标记 NoInput；重复画面不计新姿态吞吐。最高分候选的14关节坐标来自真实板端模型输出，无 GT 注入、主机推理、平滑或候选修补。HDMI不接入。

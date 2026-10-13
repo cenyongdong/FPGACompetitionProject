@@ -1,0 +1,26 @@
+# 原测试源码只作为检查器编译，不进入生产目标。
+function(add_core_regression name)
+    set(sources)
+    foreach(source IN LISTS ARGN)
+        list(APPEND sources "${BASELINE_DIR}/${source}")
+    endforeach()
+    add_executable(${name} ${sources})
+    target_include_directories(${name} PRIVATE "${BASELINE_DIR}")
+    target_link_libraries(${name} PRIVATE Threads::Threads)
+    target_compile_options(${name} PRIVATE -Wall -Wextra -Wpedantic -ffp-contract=off)
+endfunction()
+
+add_core_regression(pose_core_preprocess_check preprocess_check.cpp preprocess.cpp)
+add_core_regression(pose_core_render_check skeleton_render_check.cpp skeleton_render.cpp)
+add_core_regression(pose_core_access_unit_selftest access_unit_selftest.cpp h264_access_unit.cpp access_unit_channel.cpp)
+add_core_regression(pose_core_display_selftest display_process_selftest.cpp display_process.cpp display_protocol.cpp skeleton_render.cpp)
+add_core_regression(pose_core_failure_selftest host_failure_evidence_selftest.cpp host_failure_evidence.cpp)
+add_core_regression(pose_core_stage_selftest host_stage_observation_selftest.cpp host_stage_observation.cpp)
+add_core_regression(pose_core_invocation_selftest invocation_evidence_selftest.cpp invocation_evidence.cpp)
+add_core_regression(pose_core_producer_selftest producer_count_observation_selftest.cpp producer_count_observation.cpp)
+add_core_regression(pose_core_identity_selftest tensor_identity_selftest.cpp tensor_identity_observation.cpp)
+add_core_regression(pose_core_read_selftest input_read_selftest.cpp input_read_contract.cpp)
+
+# CPU107只链接Host SDK；不创建Device或Session，不链接ZG330后端。
+add_core_regression(pose_core_cpu_check host_cpu_adapter_check.cpp host_cpu_adapter.cpp)
+target_link_libraries(pose_core_cpu_check PRIVATE Icraft::HostBackend)

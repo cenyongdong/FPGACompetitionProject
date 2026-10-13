@@ -1,0 +1,27 @@
+{
+  "status": "end_to_end_demo_passed",
+  "stage": "short",
+  "input_windows": 3,
+  "CSI_payloads_bitwise": 3,
+  "fixed_reference_bitwise_cases": [
+    "S11_01_308",
+    "S11_01_309",
+    "S11_01_310"
+  ],
+  "other_cases_checked_for_shape_finite_selection_only": 0,
+  "all_sources_rendered_encoded_and_host_decoded": 3,
+  "different_pose_outputs": 3,
+  "encoded_frames": 354,
+  "host_decoded_frames": 294,
+  "GUI": true,
+  "actual_H264_sha256": "8275248f3bfaf6acc6877d36aad8f796908c21ac66dfc4491869b0fb9320f439",
+  "normal_drain_LAST": true,
+  "kernel_unchanged": true,
+  "project_processes_ports_released": true,
+  "workers_joined_before_Engine_destroyed": true,
+  "compactions": 0,
+  "HDMI": false,
+  "root_cause_fixed": false,
+  "strict_5Hz_or_long_term_acceptance": false,
+  "board_archive_sha256": "6ebd662ea14ebcd5c2e00d27e10d8ee0bf05665be0a4d6366db1490f52a6b4b5"
+}

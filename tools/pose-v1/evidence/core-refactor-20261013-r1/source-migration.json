@@ -1,0 +1,430 @@
+{
+  "status": "migrated_and_validated",
+  "files": [
+    {
+      "original": "software/pose_v1/src/trace_application_core_r2.cpp",
+      "destination": "software/core/inference/application_core.cpp",
+      "build_alias": "application_core.cpp",
+      "original_sha256": "b8c03634c69f4e83f1282baa51a5dc56a8820317336664cfcf370a09304aa889",
+      "new_sha256": "8b09758b8aa6d0dac5ff0d2c7a6a4b17ac0bf725c0c081b634d26e4271abc57e",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/read_input_bridge.cpp",
+      "destination": "software/core/inference/read_input_bridge.cpp",
+      "build_alias": "read_input_bridge.cpp",
+      "original_sha256": "ff13c5befd0b474fc7aee127fec683f02c36754a8b3f6d6ff1f03f654e3d5fa1",
+      "new_sha256": "b2237a0345fb5dab88528fa7f262e239c78077ee666bd2bffaabee25b73806ab",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/input_read_sdk.cpp",
+      "destination": "software/core/inference/input_read_sdk.cpp",
+      "build_alias": "input_read_sdk.cpp",
+      "original_sha256": "c1cd34bc6dcb6829b4f9c74a23c080dd32e4f1d2c0772df0308783bae1253251",
+      "new_sha256": "03d8748b391d83c1b4fe2597e5254b2baffc0947a3189cebb6a2b6812a6b97e8",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/input_read_contract.cpp",
+      "destination": "software/core/inference/input_read_contract.cpp",
+      "build_alias": "input_read_contract.cpp",
+      "original_sha256": "5615292a1de13cd96bd1bff6b35d53ff54b66c0513ae78523325bc456766e694",
+      "new_sha256": "33a789ae349fb3813f2868885905434ed659f484fd13ac0b3b0eae5637043740",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/lazy_host_cpu_adapter.cpp",
+      "destination": "software/core/inference/host_cpu_adapter.cpp",
+      "build_alias": "host_cpu_adapter.cpp",
+      "original_sha256": "672e2c775fbb8703f31b809554a8db2416c414fc9c156b4f4c0ce9761db403b8",
+      "new_sha256": "37f519ee1bb7c56a0ef6fde22513c8ef7165f901574054ee0d7d550c09b53194",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/preprocess.cpp",
+      "destination": "software/core/input/preprocess.cpp",
+      "build_alias": "preprocess.cpp",
+      "original_sha256": "e13a6bde842ae4d2531d2d0a455313f912d33942e6ee2681eacbd5c44df0b8b0",
+      "new_sha256": "448512368f8fd3a8c7d65eb950e5c29b4aec6c57faf9653cfb8368b14a123c8e",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/host_failure_evidence.cpp",
+      "destination": "software/core/diagnostics/host_failure_evidence.cpp",
+      "build_alias": "host_failure_evidence.cpp",
+      "original_sha256": "3e00a84398b9cbba408dff0863499804a87d8139d2e5b2f7932bf10f779afc29",
+      "new_sha256": "9401351cb5e2d192067a170dae19985b4560a9436a40e998ddac4d0cad0a4a4f",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/failure_source_readback.cpp",
+      "destination": "software/core/diagnostics/failure_source_readback.cpp",
+      "build_alias": "failure_source_readback.cpp",
+      "original_sha256": "771e715d3a1ac9baf202d4adb8627b379458ab10ecbd51b3cbac0deed34ed7b8",
+      "new_sha256": "ad534f63eb41af3163367780ca81705942276e201990bfd227d6f534e3a686e7",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/invocation_stage_observation.cpp",
+      "destination": "software/core/diagnostics/host_stage_observation.cpp",
+      "build_alias": "host_stage_observation.cpp",
+      "original_sha256": "c7b260bcd3c10a7ced6be2c6898a5a45eb4d71c9eea6e4dbf4e9112a9d396706",
+      "new_sha256": "848bd5bb4802f86e99aca8d6c9d21c7d2adc3966605085f9dcada196efbbbcfe",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/invocation_evidence.cpp",
+      "destination": "software/core/diagnostics/invocation_evidence.cpp",
+      "build_alias": "invocation_evidence.cpp",
+      "original_sha256": "51a3e605f6ed0433e2e9079752d068b6a8e0e94dc99ae0dc911cd6d66e007255",
+      "new_sha256": "de5f71824ea59a5f913e50c279b7357ec772252521a93a0da622013a434986ae",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/producer_count_observation.cpp",
+      "destination": "software/core/diagnostics/producer_count_observation.cpp",
+      "build_alias": "producer_count_observation.cpp",
+      "original_sha256": "e9e7dbb4eee21503ff2fbc207127fed5b19d45ad23a664c974fef113a6e03f97",
+      "new_sha256": "fff9dfa60f05c5710e9cd2b189e6ae6e058b759281b0331f4eaf94fd2a1e9004",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/tensor_identity_observation.cpp",
+      "destination": "software/core/diagnostics/tensor_identity_observation.cpp",
+      "build_alias": "tensor_identity_observation.cpp",
+      "original_sha256": "1896a9964299888e46710c9a5c97bb92767ebe0a7a4786ec484939f7245c6258",
+      "new_sha256": "0aec7f4ad7baf7572ac04859fbc3dd9d294bbf1a07f87baa5500c3abb17eb317",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/stage_guard_tcp_receiver.cpp",
+      "destination": "software/core/input/tcp_receiver.cpp",
+      "build_alias": "tcp_receiver.cpp",
+      "original_sha256": "afa8efc9e1272244286cb637e4e2c66f14737c48ea772924a2f63858d3716bc8",
+      "new_sha256": "d874601cf1d47b86d18888885744063459a34460f3e6a46c41bf634323e88459",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/display_process.cpp",
+      "destination": "software/core/display/display_process.cpp",
+      "build_alias": "display_process.cpp",
+      "original_sha256": "6b9f447eda29337ba314ca3dd1a9912acfc2f02ba5ca7f4debd14a30ef3a768b",
+      "new_sha256": "dade9eba2501929cf878e754c269fd4753f9edb54a2c54b3991f230fcb0dc8b9",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/display_protocol.cpp",
+      "destination": "software/core/display/display_protocol.cpp",
+      "build_alias": "display_protocol.cpp",
+      "original_sha256": "77d9659c4d6b35ac24705208ea325a31049aab8a1d02baff316fce02596ac322",
+      "new_sha256": "18de8ec60682d1be3e7d28d42c70e4d171b1f528557174f64c95498f02cd0148",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/skeleton_render.cpp",
+      "destination": "software/core/display/skeleton_render.cpp",
+      "build_alias": "skeleton_render.cpp",
+      "original_sha256": "701dc1546b4b4134f0b00addfecda09a745c80ee48dc908c610770cc0c306006",
+      "new_sha256": "f290c8e2648926bb9899e46c4ed75f88e9d601cbd087c791384775a401582176",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/timed_resident_encoder.cpp",
+      "destination": "software/core/video/timed_resident_encoder.cpp",
+      "build_alias": "timed_resident_encoder.cpp",
+      "original_sha256": "aba355f8175a2f2fa608c0548b51a7b8c5923305c1de804bc4d31d8a12ed02fc",
+      "new_sha256": "e7a8c3712004073ae81fa365d1edc12e8b86c74ebd00810dac52349a005fde67",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/h264_access_unit.cpp",
+      "destination": "software/core/stream/h264_access_unit.cpp",
+      "build_alias": "h264_access_unit.cpp",
+      "original_sha256": "99300c455ef05290679df3c63945144e4185e99393f9dabf3bf47569d7f09214",
+      "new_sha256": "8f07b8c01cdcab185b04d3618428a255432bcb7fd2261a0c256b1851d94aaedf",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/access_unit_channel.cpp",
+      "destination": "software/core/stream/access_unit_channel.cpp",
+      "build_alias": "access_unit_channel.cpp",
+      "original_sha256": "35efb8d2f10440c0f9b9724b60d0930a482a7e5d9cbdd5a1e36a98f052f35ac2",
+      "new_sha256": "9891b0cbe1fd838eff5c47c16be914b90e9a910d61ffd1a5e6b5390615845e51",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/timed_guarded_rtsp.cpp",
+      "destination": "software/core/stream/timed_guarded_rtsp.cpp",
+      "build_alias": "timed_guarded_rtsp.cpp",
+      "original_sha256": "abb1864879e644796547be0c1b58c41d8a5babbf541aa923f9c9dae388899a65",
+      "new_sha256": "ec3fe811af777211a5ac47503f6b835ab7e0c89ad3fed7bfe4479aa70e84cafb",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/src/bounded_display_worker.cpp",
+      "destination": "software/core/display/display_worker.cpp",
+      "build_alias": "display_worker.cpp",
+      "original_sha256": "a809e28cdcf9b5695540dd3fe26575b6bf0ba537b316430eebc19b8719d1287b",
+      "new_sha256": "044d8c6bb96c1a9497c531d263045562934bf2aa1a99d21d8a5367d378282e6c",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/host_failure_evidence.hpp",
+      "destination": "software/core/diagnostics/host_failure_evidence.hpp",
+      "build_alias": "host_failure_evidence.hpp",
+      "original_sha256": "d5e1d311a2c319e655a98de9613b132459c1f20b691f76c2261ea4035b9d1d74",
+      "new_sha256": "d118882873c96563690e91e54bc6371e2bd01fb23bcd13d5b815b55e05017a5e",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/failure_source_readback.hpp",
+      "destination": "software/core/diagnostics/failure_source_readback.hpp",
+      "build_alias": "failure_source_readback.hpp",
+      "original_sha256": "5e728fd22436768da94f85361cd2ae455681b4bd4ed6ae5ab62fcd6e5c07e088",
+      "new_sha256": "8ed91847643ba0109326cb869b61c9c1a0999bc4943104fd200bd1e0d4019d10",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/invocation_stage_observation.hpp",
+      "destination": "software/core/diagnostics/host_stage_observation.hpp",
+      "build_alias": "host_stage_observation.hpp",
+      "original_sha256": "2a7d4acb66442f49cf9123393b21e9b373c8072363c04a7921c44fb66f5ee428",
+      "new_sha256": "6cfca87b74d9238df924b7634fdd3e1aa30708934b1b77fbef20219ff91e2f60",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/producer_count_observation.hpp",
+      "destination": "software/core/diagnostics/producer_count_observation.hpp",
+      "build_alias": "producer_count_observation.hpp",
+      "original_sha256": "a62221997df01a7e6c1fae4167ebf77d92d7914192a0be315b108357dece2f2f",
+      "new_sha256": "9d5cc8aa7125a523829cd7bbe45bc5f5cd13bfa36f3f9b4b854c94a056682792",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/tensor_identity_observation.hpp",
+      "destination": "software/core/diagnostics/tensor_identity_observation.hpp",
+      "build_alias": "tensor_identity_observation.hpp",
+      "original_sha256": "2d7ce78f9787118639e4dd319bb9299fed7195804f9354ccc400384c8e19109b",
+      "new_sha256": "9867d57c7b2a51e9254d5e4264e7e7c44bf90d7ebc8baf8c9a09661175659262",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/trace_application_core_r2.hpp",
+      "destination": "software/core/inference/application_core.hpp",
+      "build_alias": "application_core.hpp",
+      "original_sha256": "8ed59c7b5777813093699677e1eef5bc9ba375d1bd89e37446acfc1f14d4477c",
+      "new_sha256": "4f47717ca6d37c31efc75ce759af612c55fcee56fe1036122134a0f9a8275003",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/display_queue.hpp",
+      "destination": "software/core/display/display_queue.hpp",
+      "build_alias": "display_queue.hpp",
+      "original_sha256": "6332c0abb27a3bd02d4da2823820f43a8d6054d90f9c36075088c9d1d685cb4d",
+      "new_sha256": "22644eb1c38512d821b26b6c72b8df4df85d97b71baeefbbcdbf8809b6a6e698",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/resident_frame_queue.hpp",
+      "destination": "software/core/video/resident_frame_queue.hpp",
+      "build_alias": "resident_frame_queue.hpp",
+      "original_sha256": "1cbf7fc6f4baf297a4a1e375983a85a72c63fad940df7f5820837b70c32e9ec7",
+      "new_sha256": "480798f85ae992e86e2dba68094412e4fc46ac8ea98bcc2f26b86e74c6ace2d9",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/skeleton_render.hpp",
+      "destination": "software/core/display/skeleton_render.hpp",
+      "build_alias": "skeleton_render.hpp",
+      "original_sha256": "ab5be587e8f6354f81ccd84860a5073657c040587a6ae19e4953a1a4c8522bac",
+      "new_sha256": "fd1f358cdc514478c3e6826e28078ba4dae2161a045f776a02447841c6ac16c4",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/vpu_resident_encoder.hpp",
+      "destination": "software/core/video/vpu_resident_encoder.hpp",
+      "build_alias": "vpu_resident_encoder.hpp",
+      "original_sha256": "13b7e746e1715dd03043970bc0729ca23fb821da1f018fa43c46b0f266d0f83e",
+      "new_sha256": "f1f18b482d2ddb65c7a018cf0fa85c2d9ad119f2192ef05984b7d1a45858c35c",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/guarded_rtsp.hpp",
+      "destination": "software/core/stream/guarded_rtsp.hpp",
+      "build_alias": "guarded_rtsp.hpp",
+      "original_sha256": "3b265d9f87d85d7f02b2ca6c29be1502c5bb6462c4babeee03588c1b1aedfb09",
+      "new_sha256": "6e3602d09c233412932aa1c15fcf691ae1ba994bf279fabaf5de3d8fafe891ff",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/video_frame_marker.hpp",
+      "destination": "software/core/video/video_frame_marker.hpp",
+      "build_alias": "video_frame_marker.hpp",
+      "original_sha256": "3dba5cd91f4f22df75fbbfac847772085553d40e2a28e913299048056796dec7",
+      "new_sha256": "7ae068861b06ee2432e8d722ceee0127ba7a68fadb71d7b1de825edf891d0712",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/display_process.hpp",
+      "destination": "software/core/display/display_process.hpp",
+      "build_alias": "display_process.hpp",
+      "original_sha256": "2acce7c49643bed3b03f1c7457c73773769424cdbed26c8e71195678bce2a3da",
+      "new_sha256": "283f6d9efb857b17be403ff5bee7b463a5457255df3ad8ef92e0d2a3c4abe82a",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/stage_guard_tcp_receiver.hpp",
+      "destination": "software/core/input/tcp_receiver.hpp",
+      "build_alias": "tcp_receiver.hpp",
+      "original_sha256": "acd4175346d25e4f25e33faa854ed9501a673315d9d806d2b20011f804b4b345",
+      "new_sha256": "ee496b3150f54bb613643b8bb96c5ffbdc244c040ffea6d68f8946e2fbfeb91f",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/lazy_runtime_validation.hpp",
+      "destination": "software/core/inference/lazy_runtime_validation.hpp",
+      "build_alias": "lazy_runtime_validation.hpp",
+      "original_sha256": "dc8fabe92f494db7a58394c096131ca0b71f14006b9c10af209cd0fbba86b544",
+      "new_sha256": "d2f38cb42ec8f0ab11ee8a48efd3b3d177bbdb0786f8792ba652aa22444cd9d4",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/application_clock.hpp",
+      "destination": "software/core/diagnostics/application_clock.hpp",
+      "build_alias": "application_clock.hpp",
+      "original_sha256": "0b96ef291023937b5b76c3311177c28e2b92ff20b779419c622cf9f8f493c046",
+      "new_sha256": "f2daff35793b1668506e8b54ab69e308ccaf7d5ea447ce93c144ca6b69d87069",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/mixed_bridge.hpp",
+      "destination": "software/core/inference/mixed_bridge.hpp",
+      "build_alias": "mixed_bridge.hpp",
+      "original_sha256": "9b8ce6004f98183ba59ef06db338415e31fc1adb55a8decb000747f26ab06c35",
+      "new_sha256": "b749d08bc621c2cd64044f929119a653a349bb72ca46b76307db21cd3ed21e51",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/input_read_sdk.hpp",
+      "destination": "software/core/inference/input_read_sdk.hpp",
+      "build_alias": "input_read_sdk.hpp",
+      "original_sha256": "86bdf0ca883146830461afafce3ed490bbdd2a167b00a8b438090bfc3613be1a",
+      "new_sha256": "6889e9650ab74ccefd85bee7a2fa6762d99580ecacee5da2753269972f376acb",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/mixed_fusion_baseline.hpp",
+      "destination": "software/core/inference/mixed_fusion_baseline.hpp",
+      "build_alias": "mixed_fusion_baseline.hpp",
+      "original_sha256": "52dc965d2cc1b75ddee14ad53d270d76b41f4a473add103bf30c7bdfb487f33f",
+      "new_sha256": "74389a3d7ee14dd2e199cb137ecd6530d31705807933814068a9b222dedce0c4",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/content_diagnostic.hpp",
+      "destination": "software/core/diagnostics/content_diagnostic.hpp",
+      "build_alias": "content_diagnostic.hpp",
+      "original_sha256": "6863bf5501cdfbbd39b3fb908ed31945a6d56b870fb7e4d4f0f5befa6760e187",
+      "new_sha256": "3733e5d534b3aa4b505be0965f55c4e5f4ec62408ece627febfab2e9da13e9bd",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/input_read_contract.hpp",
+      "destination": "software/core/inference/input_read_contract.hpp",
+      "build_alias": "input_read_contract.hpp",
+      "original_sha256": "fdc404521736b3d8c2c08fa5a5ef48e2ebeb1c8901ffb33ae97b675bb2b2a137",
+      "new_sha256": "996122e237ba10ead28b5a072e6765cae2574ad064f03b776c87fb3d95693b5e",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/host_cpu_adapter.hpp",
+      "destination": "software/core/inference/host_cpu_adapter.hpp",
+      "build_alias": "host_cpu_adapter.hpp",
+      "original_sha256": "cd63e8c3d1902bfa386f0bb2642626d7bdc4a87ecf760a6014e4671351de05d4",
+      "new_sha256": "fc3c92f75fe4e7ee7e6b8bfae109edb0174d4f3ab4558f410b1594ffd49d7dd3",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/preprocess.hpp",
+      "destination": "software/core/input/preprocess.hpp",
+      "build_alias": "preprocess.hpp",
+      "original_sha256": "ae70ba3f79722431d282bf5f610d6356b29072b4492f23dcc2adde29958f8118",
+      "new_sha256": "87cca2fa5f540d08061bae70758b1ec9c2aaa0f42cbada28831d7254ec7901de",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/invocation_evidence.hpp",
+      "destination": "software/core/diagnostics/invocation_evidence.hpp",
+      "build_alias": "invocation_evidence.hpp",
+      "original_sha256": "2b97b27a0fc21b6e3bdc6855bac5db42065c420d85693aae0478785d4881f88b",
+      "new_sha256": "84f902fd61b05ad4ca493edeceb81bf34d105473ea27e2d6c6e898e33fc2a944",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/display_protocol.hpp",
+      "destination": "software/core/display/display_protocol.hpp",
+      "build_alias": "display_protocol.hpp",
+      "original_sha256": "ec8134c6f40141b63689b1f51f7d27ff147f385cf314baf9ae241728a972ed93",
+      "new_sha256": "9d6885e7072d0f33c0d292463c19547e95a4aff639157b4ba91031f15e02f39c",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/h264_access_unit.hpp",
+      "destination": "software/core/stream/h264_access_unit.hpp",
+      "build_alias": "h264_access_unit.hpp",
+      "original_sha256": "21b6c6cb3d773c3a20654b5187f7910fc30c0c0876a4e67950da15999c4a3e44",
+      "new_sha256": "c3b79e9b0f8968e5eb592741b620d3d9978dc068563dd4f5a6d8d06efa9cf820",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/access_unit_channel.hpp",
+      "destination": "software/core/stream/access_unit_channel.hpp",
+      "build_alias": "access_unit_channel.hpp",
+      "original_sha256": "0b5a3e0618deb8d7d979c0dfad745ba5b8e9d6769b1dcc80fa356934f8e08b99",
+      "new_sha256": "6a3a82be55fa73636769736b4a93673db256a04bcdceb1f63dc4112575821bb0",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/bounded_load_contract.hpp",
+      "destination": "software/core/diagnostics/bounded_load_contract.hpp",
+      "build_alias": "bounded_load_contract.hpp",
+      "original_sha256": "8053a83faf039bc2738f7115f8c57a324a44380cca36eb6b462259d3b928d705",
+      "new_sha256": "7ffc769c1af4db250e4654e5a559df34b5dcb6e67704c84ec4dd6e9c81dafe26",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/vpu_pipeline_encoder.hpp",
+      "destination": "software/core/video/vpu_pipeline_encoder.hpp",
+      "build_alias": "vpu_pipeline_encoder.hpp",
+      "original_sha256": "badd90d3ef797b57f04e1f26f27d419fe8b0a1c2b7487bc34ffc248416dc03e2",
+      "new_sha256": "c51a0bf216cb0e953c8aadf0e83752922020ea7b20abf7ef63366384b4e10336",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/online_rtsp.hpp",
+      "destination": "software/core/stream/online_rtsp.hpp",
+      "build_alias": "online_rtsp.hpp",
+      "original_sha256": "7d35fd44a34de4f2989645aca82534e3719794ada0412b05622de84376ae6e27",
+      "new_sha256": "f28f80c8713709212a050acd8f388957848b2bf23a51775a959678689950b614",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "software/pose_v1/include/vpu_encoder.hpp",
+      "destination": "software/core/video/vpu_encoder.hpp",
+      "build_alias": "vpu_encoder.hpp",
+      "original_sha256": "f85001ab0ea5725d3e59d479a64f999f2381bc76f9cc7321d7f5c332134e729f",
+      "new_sha256": "6224b1b4876b1f66dcb435275899e8bce6973640f9a743d95edd8d882d1b44bf",
+      "cpp_tokens_identical": true
+    },
+    {
+      "original": "tools/pose-v1/csi_io.py",
+      "destination": "software/core/input/csi_io.py",
+      "original_sha256": "3624d9e9c58399301aa5dcf27e23b44c31cb2488a1cb406f7a79f433694f7855",
+      "new_sha256": "657387d7aff0fe02adae4ac8e96f7cf61da499a80dff8bfd0f171cbec47e6730",
+      "python_ast_identical": true
+    }
+  ],
+  "initial_status": "source_migrated_not_yet_compiled",
+  "verification": "tools/pose-v1/evidence/core-refactor-20261013-r1/completion-review.json"
+}

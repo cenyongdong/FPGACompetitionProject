@@ -272,3 +272,9 @@ venv/
 /tools/pose-v1/evidence/demo-20261011-r*/demo-native-render/
 /tools/pose-v1/evidence/**/pose_demo
 /tools/pose-v1/evidence/**/pose_demo_transport_test
+
+# 正式核心重构：完整部署包、回传tar和可重建像素保留本机，报告与身份提交。
+/tools/pose-v1/evidence/core-refactor-20261013-r*/board/transfer/
+/tools/pose-v1/evidence/core-refactor-20261013-r*/board/*.tar
+/tools/pose-v1/evidence/core-refactor-20261013-r*/board/short-render-input/
+/tools/pose-v1/evidence/core-refactor-20261013-r*/board/short-native-render/

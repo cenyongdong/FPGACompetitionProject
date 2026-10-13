@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse,hashlib,json,subprocess
 ROOT=Path(__file__).resolve().parents[2];DOCKER=r'C:\Program Files\Docker\Docker\resources\bin\docker.exe'
 def main():
-    p=argparse.ArgumentParser();p.add_argument('stage',choices=['short','demo']);p.add_argument('--evidence',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('stage',choices=['short','demo']);p.add_argument('--evidence',type=Path,required=True);p.add_argument('--build',type=Path,default=ROOT/'.local/pose-v1-build/demo-refactor-20261013-r1');a=p.parse_args()
     E=a.evidence.resolve();assert json.loads((E/(a.stage+'.review.json')).read_text())['status']=='end_to_end_demo_passed'
     remote='/tmp/wifi-demo-native-'+E.name+'-'+a.stage;out=E/(a.stage+'-native-render');assert not out.exists()
     def run(*args):
@@ -11,7 +11,7 @@ def main():
         with (E/(a.stage+'-render-build.txt')).open('ab') as f:f.write((repr(args)+'\n').encode()+r.stdout+r.stderr)
         assert r.returncode==0,r.stderr[-2000:]
     run('exec','FPAI','test','!','-e',remote);run('exec','FPAI','mkdir',remote)
-    source=ROOT/'.local/pose-v1-build/demo-20261011-r5/baseline'
+    source=a.build/'baseline'
     for name in ('skeleton_render.cpp','skeleton_render.hpp'):run('cp',str(source/name),'FPAI:'+remote+'/'+name)
     check=ROOT/'software/pose_v1/src/skeleton_render_check.cpp';run('cp',str(check),'FPAI:'+remote+'/render_check.cpp')
     run('cp',str(E/(a.stage+'-render-input')),'FPAI:'+remote+'/inputs');run('cp',str(E/(a.stage+'-render-catalog.tsv')),'FPAI:'+remote+'/catalog.tsv')

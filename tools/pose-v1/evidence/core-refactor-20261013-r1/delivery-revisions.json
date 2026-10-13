@@ -1,0 +1,47 @@
+{
+  "compiled_cpp_CMake_and_lock_changed_after_delivery": false,
+  "current_revisions": [
+    {
+      "path": "software/demo/deploy.py",
+      "delivered_sha256": "2527f4c65b5efea07039f7ba1e37efde967ebd361249e438ba06bb649273e66e",
+      "current_sha256": "d783adf159844db8f4aca9d6a15d1efc46901edbc94892831380b9680be1333a",
+      "note": "current control/comment/document revision; immutable delivery preserved"
+    },
+    {
+      "path": "software/demo/README.md",
+      "delivered_sha256": "3e3abc66535e42ffff71aac81b6e6c3a564d4667992c86024e517c1d145bb30b",
+      "current_sha256": "15f43e370b86d0d8b19aaa50a94deddab19c1a725fa68f94b3e5b049400ddbf0",
+      "note": "current control/comment/document revision; immutable delivery preserved"
+    },
+    {
+      "path": "software/demo/board/final_audit.py",
+      "delivered_sha256": "bf0dcb5aee46e58281acf835db15135a7e6f00cefce52f2289eb1e9ff9ec7887",
+      "current_sha256": "8bc922580ed632d6451f5b274a093f8bb9d83c12c92def94d4dd573bd6aa1096",
+      "note": "current control/comment/document revision; immutable delivery preserved"
+    },
+    {
+      "path": "software/demo/board/runner.py",
+      "delivered_sha256": "66e809386254749a1c6831173aadc07fddd06f2acc8129daed8da651673be5da",
+      "current_sha256": "f5cbe5e88ed189943b9829f5c8276d7353ce439cace63d9746b41212e948e775",
+      "note": "current control/comment/document revision; immutable delivery preserved"
+    },
+    {
+      "path": "software/demo/host/replay.py",
+      "delivered_sha256": "3e3ece4bad16519b19848ddeb4b219560ceaf83c507b2f75c4465f7595245a26",
+      "current_sha256": "b24e0597d021d7ef114a3c442ee919897012db0df1ccafc5557aa66a98190ca5",
+      "note": "current control/comment/document revision; immutable delivery preserved"
+    },
+    {
+      "path": "software/demo/host/run.py",
+      "delivered_sha256": "f061bbd4f3ee661f2476fff03faf0f7fa8332dc3524b6d0a4975cd276cd9c318",
+      "current_sha256": "cb8b44449fce9e4ca478aed20ea72864968bc6a40151cbfe5ab4e6b1b7c26256",
+      "note": "current control/comment/document revision; immutable delivery preserved"
+    },
+    {
+      "path": "software/demo/host/viewer.py",
+      "delivered_sha256": "d909904a5530ed90ccbd933d135e829014590e58ce71c7856d4af747ac8e9b62",
+      "current_sha256": "e533a1e010ca20dd018428513e3dcc240a889057b5a8e54c1cd4d279570e6671",
+      "note": "current control/comment/document revision; immutable delivery preserved"
+    }
+  ]
+}

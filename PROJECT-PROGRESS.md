@@ -1,12 +1,12 @@
 # 项目进度总览
 
-文档整理日期：2026-10-13。最近一次实际板端验证：2026-10-11；本次仅整理文档，未构建、连接或运行板子。历史快照见[归档索引](ADR/history/20261013/README.md)，不要用其中的“当前”覆盖本页。
+更新日期：2026-10-13。最近一次实际板端验证：2026-10-13；当前正式核心重构、本机/FPAI、Lite CPU107和三窗口回归已完成。历史快照见[归档索引](ADR/history/20261013/README.md)，不要用其中的“当前”覆盖本页。
 
 ## 当前阶段与任务状态
 
 项目处于**预采CSI回放首版已具备端到端演示，性能和长期可靠性待收敛**阶段。主链为PC原始CSI→TCP→Lite PS预处理→PS/NPU混合推理→独立显示子进程→VPU H264→RTSP/TCP→PC实时GUI。HDMI没有进入当前演示。
 
-- software/demo整合、板测、主机实际实时显示及ADR/TechDetails技术报告已完成，当前无后台工作。
+- 当前demo已切换software/core六个功能目录；旧pose_v1与历史测试保持。重构后的11组本机、ARM构建、CPU107/59600 FP32及3窗口全数值/354编码/294 GUI解码通过；规整0，资源回收完成，当前无后台项目工作。[ADR_47](ADR/ADR_47.md)／[证据](tools/pose-v1/evidence/core-refactor-20261013-r1/README.md)。
 - 高负载DATA96/800、192索引与582更新值的首次读取异常根因尚未解决，按用户要求**继续暂停排查**；没有实施首次Host目的租约/CPTR失败对照方案。
 - 一次获准可控重启已经使用；永久首启动、严格整机5Hz、30分钟、HDMI、真实采集与零拷贝未验收。
 - 本页汇总实际工程状态；阶段审批、分工与停止条件以[Agents.md](Agents.md)和最新用户指令为准，历史授权不自动变成新任务。
@@ -23,7 +23,7 @@
 | 显示/编码/网络 | 主线程Engine、SDK无关显示子进程、拥有NV12与AU、有界队列、常驻两缓冲VPU、受保护RTSP | 显示来源/PTS/回收分阶段验证；首启动连续页依赖未永久修复，NoInput/重复不计新姿态；[ADR_02](ADR/ADR_02.md)、[ADR_15](ADR/ADR_15.md) |
 | 有界正式演示 | software/demo，指定wifipose目录自然序2Hz回放、10fps预览，PC实际GUI | 三窗口＋60窗口通过，旧故障暂停、HDMI排除；[演示结果](tools/pose-v1/DEMO-RESULTS-20261011.md) |
 
-### 最近成功演示的数据
+### 2026-10-11完整演示的数据（历史范围）
 
 | 项目 | 三窗口short | 默认60窗口demo |
 |---|---:|---:|
@@ -54,7 +54,7 @@
 
 ## 工程就绪度估计
 
-沿用已批准回放首版的**83/100（约80%–85%）管理估计**，本次文档整理不增加份额。这不是功能通过率、实测工作量、工期或比赛评分；真实采集作品不在该百分比中。
+沿用已批准回放首版的**83/100（约80%–85%）管理估计**，本次重构回归不增加份额。这不是功能通过率、实测工作量、工期或比赛评分；真实采集作品不在该百分比中。
 
 | 工作包 | 规划权重 | 已具备份额（估计） |
 |---|---:|---:|
@@ -72,7 +72,7 @@
 
 ## 基线、连接资料与恢复入口
 
-以下为2026-10-11已核基线，不表示2026-10-13重新查询过设备。使用前应核验实际身份。
+2026-10-13本轮重新核对BOOT/SDK/模型/内核与FPGA operating；固定身份保持。后续使用前仍应核验实际身份。2026-10-11完整演示及重启记录保留各自范围。
 
 | 对象 | 配置/资料入口 |
 |---|---|
@@ -80,10 +80,10 @@
 | 工具链 | Windows Procise2025.1.1 temp/SVN32494、Vivado2019.1辅助；FPAI是本机交叉编译容器名，ARM64 GCC9.4/CMake3.24.2；Icraft3.39.0 |
 | 设备协议 | axi://zg330aiu?npu=0x40000000&dma=0x80000000；device25122301 / icore FMSHZGV3TECH-AID - 24160628 |
 | 模型/启动身份 | [TechDetails](ADR/TechDetails.md)及[演示完成清单](tools/pose-v1/evidence/demo-20261011-r4/completion-review.json)；固定JSON/RAW和BOOT哈希，不在本页重复维护 |
-| 已验证demo | 构建.local/pose-v1-build/demo-20261011-r5，成功板端目录/tmp/wifi-pose-demo-20261011-r4；[运行说明](software/demo/README.md) |
-| 演示恢复点 | [demo next-checkpoint](tools/pose-v1/evidence/demo-20261011-r4/next-checkpoint.json)；完成无后台，等待用户后续任务 |
+| 当前重构demo | 构建.local/pose-v1-build/demo-refactor-20261013-r1，板端/tmp/wifi-pose-demo-refactor-20261013-r1；3窗口回归通过。[运行说明](software/demo/README.md)、[核心导读](software/core/README.md) |
+| 当前恢复点 | [重构完成检查点](tools/pose-v1/evidence/core-refactor-20261013-r1/next-checkpoint.json)；CPU107/三窗口完成无后台项目工作，等待用户后续任务 |
 | 暂停故障恢复点 | [producer-prepared next-checkpoint](tools/pose-v1/evidence/producer-prepared-20261011-r1/next-checkpoint.json)及[原下一方案](tools/pose-v1/PRODUCER-PREPARED-NEXT-20261011.md)；未实施，不重跑旧Session |
 | 历史工具路径/调用示例 | [迁出的工具资料](ADR/history/20261013/toolchain-runbook.md)、[REFERENCES](REFERENCES.md)；旧D:/FPGACompetitionProject路径为历史来源，不直接替代当前工作区 |
 | 文档整理记录 | [ADR_46](ADR/ADR_46.md)、[难点索引](DIFFICULTIES.md)、[历史与迁移清单](ADR/history/20261013/README.md) |
 
-当前只交付整理结果，不自动板测或恢复暂停排查。原重启前/tmp已清空，原失败已本机归档；后续不能使用旧句柄或接续已失败Engine。
+当前重构及已批准CPU107/三窗口验证完成，不继续60窗口或恢复暂停排查。原重启前/tmp已清空，原失败已本机归档；后续不能使用旧句柄或接续已失败Engine。
