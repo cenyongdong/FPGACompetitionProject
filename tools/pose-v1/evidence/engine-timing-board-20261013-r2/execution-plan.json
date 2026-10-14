@@ -1,0 +1,16 @@
+{
+  "remote": "/tmp/wifi-pose-engine-timing-20261013-r2",
+  "package_sha256": "1c6deafea94695ccda7b7c9df68eb2a23d5ca14ea886c6dbd743fc38d0ab8219",
+  "transfer_sha256": "f5a691ba48f8521944298509f4e966b7953889fa76c930d15faa0d7b73c48e9c",
+  "modes": [
+    "baseline",
+    "wall",
+    "sdk"
+  ],
+  "frames_per_mode": 3,
+  "child_budget_seconds": 120,
+  "kill_grace_seconds": 5,
+  "VPU_TCP": false,
+  "old_DATA_investigation_resumed": false,
+  "automatic_retry": false
+}

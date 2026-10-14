@@ -1,0 +1,17 @@
+{
+  "before": {
+    "PROJECT-PROGRESS.md": "5e1e2e65d6e20845e96ec93873b2d7b2a1cba4cb69111b8a14c7675fba574a9e",
+    "DIFFICULTIES.md": "61e3fc062e49504765839249f2165d388d24bb30a65b3974854e675e259f0450",
+    "Done.md": "64d122fdc0f5616a223c4fac1ca26cd6c1ddd48ceec7ede1d171eecac36c053c",
+    "software/engine_timing/README.md": "6140dbbe33cadebf08fea18505d0fe5bc3a3d2a7eb78800d6bbe6b71b58a083f",
+    "software/engine_timing/board_run.py": "f29db31cbd659f2aed3efe75a71b82a3c81e485284b776728dec60ca60414cde"
+  },
+  "after": {
+    "PROJECT-PROGRESS.md": "4790fb8e709ba7d12a79a6382dad47d0ad8b1424f01497d5ce0ec3e17950602b",
+    "DIFFICULTIES.md": "2071faea72f06244126fea94e6250464c2e76fe7cf9ae006c1d24cf2fd04e48e",
+    "Done.md": "03a3bfb32a76e41adb52be15e4cf7954795a7c4a03327cbfbbd33d278d73439a",
+    "software/engine_timing/README.md": "56019656926351b2e2c640e5d3dadb11bd7a36340c48dad920c50e26460e9158",
+    "software/engine_timing/board_run.py": "0d0ccf77a5e45fb3188d4fe7fc0bc84b6c8388b11572eb079b9690ab58b4ec7f"
+  },
+  "reason": "Current timing status and same-source kernel comparator; historical source/build/delivery manifests not rewritten."
+}

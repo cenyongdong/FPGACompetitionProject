@@ -1,0 +1,17 @@
+[
+  {
+    "name": "analysis-tests",
+    "argv": [
+      "C:\\Users\\cenyongdong\\miniconda3\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "D:\\FPGACompetitionProject\\software\\engine_timing",
+      "-p",
+      "test_analyze.py",
+      "-v"
+    ],
+    "exit": 1
+  }
+]

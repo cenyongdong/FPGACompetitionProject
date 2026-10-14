@@ -1,12 +1,14 @@
 # 项目进度总览
 
-更新日期：2026-10-13。最近一次实际板端验证：2026-10-13；当前正式核心重构、本机/FPAI、Lite CPU107和三窗口回归已完成。历史快照见[归档索引](ADR/history/20261013/README.md)，不要用其中的“当前”覆盖本页。
+更新日期：2026-10-14。最近一次实际板端验证：2026-10-13；正式核心新本机/FPAI复核通过，2026-10-14新板测因SSH超时待连接恢复，开发基准规范待全部检查后落实。历史快照见[归档索引](ADR/history/20261013/README.md)，不要用其中的“当前”覆盖本页。
 
 ## 当前阶段与任务状态
 
 项目处于**预采CSI回放首版已具备端到端演示，性能和长期可靠性待收敛**阶段。主链为PC原始CSI→TCP→Lite PS预处理→PS/NPU混合推理→独立显示子进程→VPU H264→RTSP/TCP→PC实时GUI。HDMI没有进入当前演示。
 
 - 当前demo已切换software/core六个功能目录；旧pose_v1与历史测试保持。重构后的11组本机、ARM构建、CPU107/59600 FP32及3窗口全数值/354编码/294 GUI解码通过；规整0，资源回收完成，当前无后台项目工作。[ADR_47](ADR/ADR_47.md)／[证据](tools/pose-v1/evidence/core-refactor-20261013-r1/README.md)。
+- 2026-10-14正式核心复核：新11组本机/固定字节对照、主机prepare-only和ARM构建通过，14程序与已验证重构同SHA，原警告保持；新增[接口手册](software/core/INTERFACES.md)。本轮SSH只读连接超时，未部署/未运行新CPU107或三窗口，用户选择待板端恢复后完成；Agents.md规范尚未落实。[检查与恢复步骤](tools/pose-v1/evidence/core-check-20261014-r1/README.md)。
+- 独立Engine计时已完成有限板测：baseline/wall各3窗口完整输出逐位通过，wall均值Engine195.098ms、forward187.617ms、输入ready等待162.294ms、已观测CPU核14.121ms、搬运API0.771ms。SDK模式第1次输出正确，但745项硬件计时中215项负值，已保存停止、未重试；纯NPU算术、DDR停顿及精确SDK调度仍未知。预检内核版本比较修正为同一dmesg来源，正式模型/SDK/BOOT/核心保持；退出回收、FPGA operating。不恢复旧DATA排查。[实测表](tools/pose-v1/evidence/engine-timing-board-20261013-r2/timing-table.md)／[证据](tools/pose-v1/evidence/engine-timing-board-20261013-r2/README.md)。
 - 高负载DATA96/800、192索引与582更新值的首次读取异常根因尚未解决，按用户要求**继续暂停排查**；没有实施首次Host目的租约/CPTR失败对照方案。
 - 一次获准可控重启已经使用；永久首启动、严格整机5Hz、30分钟、HDMI、真实采集与零拷贝未验收。
 - 本页汇总实际工程状态；阶段审批、分工与停止条件以[Agents.md](Agents.md)和最新用户指令为准，历史授权不自动变成新任务。

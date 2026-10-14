@@ -1,0 +1,20 @@
+{
+  "scope": "identity_precheck_only_no_forward",
+  "archive_kernel_log_version_lines": [
+    "Linux version 5.4.52-fmsh-sdk-v2025.04 (fmsh@fmsh-virtual-machine) (gcc version 7.5.0 (Linaro GCC 7.5-2019.12)) #3 SMP Fri Mar 13 13:44:29 CST 2026"
+  ],
+  "current_kernel_log_version_lines": [
+    "Linux version 5.4.52-fmsh-sdk-v2025.04 (fmsh@fmsh-virtual-machine) (gcc version 7.5.0 (Linaro GCC 7.5-2019.12)) #3 SMP Fri Mar 13 13:44:29 CST 2026"
+  ],
+  "current_proc_version": "Linux version 5.4.52 (fmsh@fmsh-virtual-machine) (gcc version 7.5.0 (Linaro GCC 7.5-2019.12)) #3 SMP Fri Mar 13 13:44:29 CST 2026",
+  "same_log_version_lines": true,
+  "kernel_actually_changed_proven": false,
+  "failed_payload_retried": false,
+  "NPU_forwards": 0,
+  "wall_sdk_modes_started": false,
+  "authentication_rejected_pipe_created": false,
+  "safe_OpenSSH_connection_completed": true,
+  "credentials_logged": false,
+  "FPGA_final_state": "operating",
+  "final_pose_processes": []
+}

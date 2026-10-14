@@ -1,0 +1,17 @@
+test_bridge_outside_parent_rejected (test_analyze.AnalysisTests.test_bridge_outside_parent_rejected) ... ok
+test_failed_wrapper_keeps_partial_not_success (test_analyze.AnalysisTests.test_failed_wrapper_keeps_partial_not_success) ... ok
+test_forward_partition_not_double_counted (test_analyze.AnalysisTests.test_forward_partition_not_double_counted) ... ok
+test_inverted_and_cpu_negative_rejected (test_analyze.AnalysisTests.test_inverted_and_cpu_negative_rejected) ... ok
+test_missing_and_wrong_callbacks_rejected (test_analyze.AnalysisTests.test_missing_and_wrong_callbacks_rejected) ... ok
+test_output_mismatch_and_frame_count_rejected (test_analyze.AnalysisTests.test_output_mismatch_and_frame_count_rejected) ... ok
+test_overlapping_callbacks_rejected (test_analyze.AnalysisTests.test_overlapping_callbacks_rejected) ... ok
+test_patch_anchors_and_core_unchanged (test_analyze.AnalysisTests.test_patch_anchors_and_core_unchanged) ... ok
+test_report_does_not_overwrite (test_analyze.AnalysisTests.test_report_does_not_overwrite) ... ok
+test_report_units_unknown_and_effective_copy_rate (test_analyze.AnalysisTests.test_report_units_unknown_and_effective_copy_rate) ... ok
+test_sdk_raw_unit_never_converted (test_analyze.AnalysisTests.test_sdk_raw_unit_never_converted) ... ok
+test_union_nested_and_overlapping (test_analyze.AnalysisTests.test_union_nested_and_overlapping) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.082s
+
+OK

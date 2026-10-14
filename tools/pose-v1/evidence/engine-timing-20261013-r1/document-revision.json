@@ -1,0 +1,21 @@
+{
+  "scope": "development documentation update; HEAD blob retained as semantic baseline, original working-tree byte hash was not captured",
+  "historical_completion_manifests_modified": false,
+  "documents": {
+    "Done.md": {
+      "before_git_blob_sha256": "0dd7c927e071c216c82b83794e1d252b73c3761c199f2a9bc256d9a6b97dcd5f",
+      "after_worktree_sha256": "64d122fdc0f5616a223c4fac1ca26cd6c1ddd48ceec7ede1d171eecac36c053c",
+      "before_worktree_byte_hash_captured": false
+    },
+    "PROJECT-PROGRESS.md": {
+      "before_git_blob_sha256": "1dec6d7613a9f6f09ec515ef12a058d5f2835c7c5ea464883fe3219d225d69ba",
+      "after_worktree_sha256": "5e1e2e65d6e20845e96ec93873b2d7b2a1cba4cb69111b8a14c7675fba574a9e",
+      "before_worktree_byte_hash_captured": false
+    },
+    "DIFFICULTIES.md": {
+      "before_git_blob_sha256": "52edb102be02e3fc4c84039c95ca683c315e4c98e2ad4b1905cf131b06b47822",
+      "after_worktree_sha256": "61e3fc062e49504765839249f2165d388d24bb30a65b3974854e675e259f0450",
+      "before_worktree_byte_hash_captured": false
+    }
+  }
+}

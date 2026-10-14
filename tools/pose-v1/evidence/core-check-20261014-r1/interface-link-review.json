@@ -1,0 +1,15 @@
+{
+  "status": "current_target_declarations_reviewed",
+  "implemented": [
+    "encodeResident",
+    "serveGuardedAccessUnits"
+  ],
+  "retained_without_current_target_definition": [
+    "encodeNv12File",
+    "encodeNv12Producer",
+    "serveOwnedAccessUnits",
+    "mixed_host_check"
+  ],
+  "current_demo_calls_no_retained_undefined_entry": true,
+  "documentation": "software/core/INTERFACES.md"
+}

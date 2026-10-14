@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-14",
+  "files": [
+    {
+      "path": "software/core/README.md",
+      "before_sha256": "b7b80a195b440042696564299f24e3356ba6c093213afa067571771512c3d79e",
+      "after_sha256": "aaccc2d19ff5cbc357ac4773561b46c28743c0039100267cdbdfa1eb193aebe7",
+      "kind": "document edit"
+    },
+    {
+      "path": "software/core/INTERFACES.md",
+      "before_sha256": null,
+      "after_sha256": "869dabbb03e2a8b0ac5e6e3032ef7fb1803b1317fd546e44300c00fb4e8e9841",
+      "kind": "new interface guide"
+    },
+    {
+      "path": "Done.md",
+      "before_sha256": "03a3bfb32a76e41adb52be15e4cf7954795a7c4a03327cbfbbd33d278d73439a",
+      "after_sha256": "c9b7e77c9b2980f16222874ee38846478e17b811fa8c4cae3665270d14df227a",
+      "kind": "document edit"
+    },
+    {
+      "path": "PROJECT-PROGRESS.md",
+      "before_sha256": "4790fb8e709ba7d12a79a6382dad47d0ad8b1424f01497d5ce0ec3e17950602b",
+      "after_sha256": "b0548efca2d0fc7f247c72b23a2856aa83769375cad81fe626b11d30fef964ac",
+      "kind": "document edit"
+    },
+    {
+      "path": "DIFFICULTIES.md",
+      "before_sha256": "2071faea72f06244126fea94e6250464c2e76fe7cf9ae006c1d24cf2fd04e48e",
+      "after_sha256": "a5ffb423c455535b350357f5f7aac3106711b70228c355f2072f39fd379cadcf",
+      "kind": "document edit"
+    }
+  ],
+  "Agents.md_unchanged_pending_board_pass": true,
+  "preexisting_user_changes_preserved_in_before_snapshots": true,
+  "old_completion_manifests_not_rewritten": true
+}

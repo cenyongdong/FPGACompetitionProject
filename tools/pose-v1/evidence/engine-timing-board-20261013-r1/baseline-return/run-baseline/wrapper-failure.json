@@ -1,0 +1,5 @@
+{
+  "error": "Kernel identity changed",
+  "traceback": "Traceback (most recent call last):\n  File \"board_run.py\", line 70, in main\n    raise ValueError('Kernel identity changed')\nValueError: Kernel identity changed\n",
+  "retry": false
+}

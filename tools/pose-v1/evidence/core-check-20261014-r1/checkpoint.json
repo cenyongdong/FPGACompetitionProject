@@ -1,0 +1,17 @@
+{
+  "status": "local_and_compile_passed_board_pending_connection",
+  "new_native_suites": 11,
+  "new_ARM_programs": 14,
+  "all_programs_same_SHA_as_prior_board_test": true,
+  "host_prepare_actual_windows": 3,
+  "current_board_attempt": "port22_timeout_before_deployment",
+  "new_CPU107": "not_executed",
+  "new_three_window": "not_executed",
+  "Agents.md_policy": "prepared_pending_board_pass",
+  "old_DATA_investigation": "paused",
+  "code_or_test_changes": false,
+  "only_existing_warning": true,
+  "prior_board_evidence": "2026-10-13; not claimed as fresh verification",
+  "pending_user_signal": "board_connection_restored",
+  "evidence_directory": "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\core-check-20261014-r1"
+}

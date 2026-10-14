@@ -1,0 +1,349 @@
+{
+  "status": "development_delivery_verified_not_board_executed",
+  "formal_locked_files_unchanged": 129,
+  "baseline_lock_sha256": "b367ccbd99cc3fbc00f8420ad14c32490f88635eca26f4a68ca9a966f62e3e45",
+  "source_manifest_sha256": "5781c75d1354eac60d22bcd57c78ee2086e16ed600b148325a26daae0ddedb53",
+  "build_result_sha256": "061b3b3601e1f35192174a865936f15e6360b3853023970d29459842b37220a5",
+  "package_sha256": "987d0ea59ff60c2d231e125d8c74c2edecf9324fc7e41039c378a18ae92f749f",
+  "binary_sha256": "fba423d9416185c8343d1b805248cfe0aac59403e45abbba3b6d42ee11066213",
+  "delivery_files_verified": 20,
+  "Python_analysis_tests": 13,
+  "SDK_free_native_contract_cases": [
+    "basic",
+    "thread",
+    "capacity"
+  ],
+  "Windows_and_FPAI_Linux_contracts_passed": true,
+  "ARM64_compiled": true,
+  "board_or_model_executed": false,
+  "old_DATA_investigation_resumed": false,
+  "NPU_pure_compute_and_DDR_stalls_measured": false,
+  "SDK_tuple_unit_confirmed": false,
+  "hardware_ordinal_mapping_confirmed": false,
+  "tool_sources": {
+    "analyze.py": "1f9f9c54e082b7c023d0e1c540b921fb8b010f14391ccacdced0ffa1ef2a4e5a",
+    "application_clock.hpp": "8570848ff0822de857dd333c2643fa6206a801a49317728c6c516574408c6508",
+    "board_run.py": "f29db31cbd659f2aed3efe75a71b82a3c81e485284b776728dec60ca60414cde",
+    "build.py": "ddbd581b65bce3c2f328a8941face17e73a15641a37b72d96692ac1b96e42237",
+    "clock_selftest.cpp": "568bd6720c77021c94355adf3d5aaaef7ccc1e0de372f640c60ed4d69c147349",
+    "CMakeLists.txt": "68e99f1d949954422e86b1678ee8a4d73c65537d1168b1daa65fbbf4ccf40f30",
+    "main.cpp": "28c5d4c2215da1f82685ca7720fc3037ebe026b708c61f2775926ac189be104b",
+    "make_package.py": "a122ddc0d3961525255af1d27a5826321e9939b67525cbfb39558866f128470c",
+    "prepare.py": "d2d610d29d985b3e680dd40f3c6a26878064cb7ea769363f2f0aa38541085a71",
+    "README.md": "6140dbbe33cadebf08fea18505d0fe5bc3a3d2a7eb78800d6bbe6b71b58a083f",
+    "record_delivery.py": "b3aaa61538108342cee5e903fd656ad51ddd1b3349087a3ad23e893cfd9b6902",
+    "sdk_profile.hpp": "a6ac6b3dd34972a7c1991a1e9a35b68ddacc6e535787d4653e16fa06985b140f",
+    "test_analyze.py": "913132eef6b3f6ff0bc61569bd1a70cf9a1b51930d1001d29053bd79493dfc45",
+    "verify.py": "35841125834329c283ec1decad748be0c9a4973c852e4ad47fe26e73028f95c4",
+    "verify_linux.py": "98d31068afe778651ab559c986ad404153444099626b0f63c148370cb895e5e7"
+  },
+  "build_steps": [
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-backends/hostbackend/backend.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-backends\\hostbackend\\backend.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-000"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-backends/hostbackend/common/tensor_kernel.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-backends\\hostbackend\\common\\tensor_kernel.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-001"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-backends/hostbackend/port/common/tensor_ops.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-backends\\hostbackend\\port\\common\\tensor_ops.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-002"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xrt/core/backend.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xrt\\core\\backend.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-003"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xrt/core/tensor.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xrt\\core\\tensor.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-004"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xir/core/data_type_attr.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xir\\core\\data_type_attr.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-005"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xrt/core/device.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xrt\\core\\device.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-006"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xrt/core/session.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xrt\\core\\session.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-007"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xrt/dev/host_device.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xrt\\dev\\host_device.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-008"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xir/core/data.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xir\\core\\data.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-009"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xir/base/array.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xir\\base\\array.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-010"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xir/base/object.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xir\\base\\object.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-011"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-backends/zg330backend/zg330backend.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-backends\\zg330backend\\zg330backend.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-012"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-xrt/dev/zg330_device.h",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-xrt\\dev\\zg330_device.h"
+      ],
+      "exit": 0,
+      "stem": "build-step-013"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/include/icraft-utils/osal/cache.hpp",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\icraft-utils\\osal\\cache.hpp"
+      ],
+      "exit": 0,
+      "stem": "build-step-014"
+    },
+    {
+      "args": [
+        "exec",
+        "FPAI",
+        "dpkg-query",
+        "-W",
+        "-f=${Version}",
+        "icraft:arm64"
+      ],
+      "exit": 0,
+      "stem": "build-step-015"
+    },
+    {
+      "args": [
+        "exec",
+        "FPAI",
+        "dpkg-query",
+        "-W",
+        "-f=${Version}",
+        "customop:arm64"
+      ],
+      "exit": 0,
+      "stem": "build-step-016"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/lib/aarch64-linux-gnu/libicraft_hostbackend.so",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\libicraft_hostbackend.so"
+      ],
+      "exit": 0,
+      "stem": "build-step-017"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/lib/aarch64-linux-gnu/libicraft_zg330backend.so",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\libicraft_zg330backend.so"
+      ],
+      "exit": 0,
+      "stem": "build-step-018"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/lib/aarch64-linux-gnu/libicraft_xrt.so",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\libicraft_xrt.so"
+      ],
+      "exit": 0,
+      "stem": "build-step-019"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/lib/aarch64-linux-gnu/libicraft_xir.so",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\libicraft_xir.so"
+      ],
+      "exit": 0,
+      "stem": "build-step-020"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/lib/aarch64-linux-gnu/libicraft_utils.so",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\libicraft_utils.so"
+      ],
+      "exit": 0,
+      "stem": "build-step-021"
+    },
+    {
+      "args": [
+        "cp",
+        "-L",
+        "FPAI:/usr/lib/aarch64-linux-gnu/libaxizg330aiu.so",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\sdk\\libaxizg330aiu.so"
+      ],
+      "exit": 0,
+      "stem": "build-step-022"
+    },
+    {
+      "args": [
+        "exec",
+        "FPAI",
+        "test",
+        "!",
+        "-e",
+        "/tmp/engine-timing-20261013-r3"
+      ],
+      "exit": 0,
+      "stem": "build-step-023"
+    },
+    {
+      "args": [
+        "cp",
+        "D:\\FPGACompetitionProject\\.local\\engine-timing-source-20261013-r2",
+        "FPAI:/tmp/engine-timing-20261013-r3"
+      ],
+      "exit": 0,
+      "stem": "build-step-024"
+    },
+    {
+      "args": [
+        "exec",
+        "FPAI",
+        "cmake",
+        "-S",
+        "/tmp/engine-timing-20261013-r3",
+        "-B",
+        "/tmp/engine-timing-20261013-r3/build",
+        "-DCMAKE_SYSTEM_NAME=Linux",
+        "-DCMAKE_SYSTEM_PROCESSOR=aarch64",
+        "-DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_FLAGS_RELEASE=-O2 -DNDEBUG",
+        "-DCMAKE_PREFIX_PATH=/usr/cmake"
+      ],
+      "exit": 0,
+      "stem": "build-step-025"
+    },
+    {
+      "args": [
+        "exec",
+        "FPAI",
+        "cmake",
+        "--build",
+        "/tmp/engine-timing-20261013-r3/build",
+        "--parallel",
+        "2"
+      ],
+      "exit": 0,
+      "stem": "build-step-026"
+    },
+    {
+      "args": [
+        "cp",
+        "FPAI:/tmp/engine-timing-20261013-r3/build/pose_engine_timing",
+        "D:\\FPGACompetitionProject\\.local\\pose-v1-build\\engine-timing-20261013-r3\\pose_engine_timing"
+      ],
+      "exit": 0,
+      "stem": "build-step-027"
+    },
+    {
+      "args": [
+        "exec",
+        "FPAI",
+        "aarch64-linux-gnu-readelf",
+        "-d",
+        "/tmp/engine-timing-20261013-r3/build/pose_engine_timing"
+      ],
+      "exit": 0,
+      "stem": "build-step-028"
+    }
+  ]
+}

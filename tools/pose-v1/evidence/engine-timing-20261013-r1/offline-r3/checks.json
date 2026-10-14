@@ -1,0 +1,61 @@
+[
+  {
+    "name": "analysis-tests",
+    "argv": [
+      "C:\\Users\\cenyongdong\\miniconda3\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "D:\\FPGACompetitionProject\\software\\engine_timing",
+      "-p",
+      "test_analyze.py",
+      "-v"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "clock-native-compile",
+    "argv": [
+      "g++",
+      "-std=c++17",
+      "-O2",
+      "-pthread",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-ID:\\FPGACompetitionProject\\software\\engine_timing",
+      "D:\\FPGACompetitionProject\\software\\engine_timing\\clock_selftest.cpp",
+      "-o",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\engine-timing-20261013-r1\\offline-r3\\clock_selftest.exe"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "clock-basic",
+    "argv": [
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\engine-timing-20261013-r1\\offline-r3\\clock_selftest.exe",
+      "basic",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\engine-timing-20261013-r1\\offline-r3\\basic"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "clock-thread",
+    "argv": [
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\engine-timing-20261013-r1\\offline-r3\\clock_selftest.exe",
+      "thread",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\engine-timing-20261013-r1\\offline-r3\\thread"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "clock-capacity",
+    "argv": [
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\engine-timing-20261013-r1\\offline-r3\\clock_selftest.exe",
+      "capacity",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\engine-timing-20261013-r1\\offline-r3\\capacity"
+    ],
+    "exit": 0
+  }
+]

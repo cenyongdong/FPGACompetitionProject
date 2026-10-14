@@ -1,5 +1,43 @@
 # 已完成工作记录
 
+## 2026-10-14：正式核心编译、本机复核与接口手册（板测待恢复连接）
+
+### 工程内容总结
+
+目标为复查重构核心的编译/运行问题，并在全部检查通过后落实后续开发基准。D:/FPGACompetitionProject复用既有FPAI/GCC9.4/SDK3.39.0与原Python环境，在新构建与证据目录执行：126旧锁/926冻结文件保持、52 C++逐token等价、11组本机回归、固定三输入及20份像素字节对照、Python语法及主机prepare-only入口、56步ARM完整构建通过；14程序与原已验证重构版本同SHA。保留一个已复现于旧源码的unused助手警告。补充software/core/INTERFACES.md，明确各接口职责、输入输出、线程、所有权、错误和4个无当前目标定义的历史兼容声明；不改核心实现或历史测试。
+
+本轮SSH到192.168.126.49:22首次只读连接超时exit255，尚未部署或开启CPU107/三窗口负载，未重试。用户选择稍后恢复板端连接再完成检查；Agents.md规范仅准备候选、尚未落实，不能宣称本轮板测通过。[全部已执行结果和剩余步骤](tools/pose-v1/evidence/core-check-20261014-r1/README.md)。旧DATA排查保持暂停，无60窗口、重启或模型/SDK/BOOT变更。
+
+### 对后续开发的参考
+
+[接口手册](software/core/INTERFACES.md)以真实CMake来源和ARM符号为准，推荐Engine/Video适配层及encodeResident/serveGuardedAccessUnits；仅包含旧头文件不能证明历史声明可链接。连接恢复后新目录继续原CPU300秒/short180秒门检；通过后补全同条记录并落实[规范候选](tools/pose-v1/evidence/core-check-20261014-r1/agents-rule.proposed.md)。修订前后身份单独保存，不回写原重构完成清单。
+
+## 2026-10-13：Engine有限板端计时与实测表
+
+### 工程内容总结
+
+目标为计算当前工具可取得的Engine分段时间。Windows工作目录D:\FPGACompetitionProject，经既有FPAI ARM64二进制、专用OpenSSH内存认证连接Lite；新交付包.local/engine-timing-delivery-20261013-r3，板端/tmp/wifi-pose-engine-timing-20261013-r2。固定308/309/310，baseline→wall→sdk各计划3次、每模式120秒及5秒退出宽限；无VPU/TCP、无预热/压力、无规整/重启或模型/SDK/BOOT变更。前置独占NPU及完整身份审计，先保存实际输入/分数/姿态再逐位比较，异常保存停止、不重试。
+
+baseline/wall各3次完整通过；wall均值Engine195.098ms、forward187.617ms、桥ready等待162.294ms、已观测CPU核14.121ms、设备→Host API0.771ms。SDK模式第1次输出正确，但745个层时间中215项负值，停止未执行剩余2次；整体批次为失败停止，不能称SDK计时通过或纯NPU时间已取得。初始化baseline30.493s/wall31.235s另计，输出落盘/比较在process外。回收完成，无pose进程，FPGA operating。[实测表与结果证据](tools/pose-v1/evidence/engine-timing-board-20261013-r2/README.md)。
+
+原r1预检将历史dmesg与proc/version比较，前向0次停止；同源核验历史/当前dmesg完全相同后修正包装器，新包新目录执行，旧失败/清单保持。通用认证管道被自动审批拒绝，未建立；改用专门OpenSSH askpass子进程获准执行，密码未写命令、环境或日志。本机引号/GBK脚本错误单独保留，未重跑失败推理。完整原值、身份、资源前后快照、退出与文档前后副本/哈希在新证据目录；旧DATA调查保持暂停。
+
+### 对后续开发的参考
+
+逐帧先汇总同类桥区间再求均值，避免双输入搬运/分配被少算；forward回调并集用于剩余计算，嵌套阶段不相加。等待期间主线程CPU161.908ms，不能把162.294ms全归NPU或可消除的交接。逻辑搬运115360B/次，API有效吞吐149.643MB/s不是DDR带宽。精确SDK调度、DDR-stall与纯NPU算术继续未知；不删负值求和或取有效前缀，层序/计时数量契约尚待验证。三样本及模式差不能作为长期并发或探针精确扣除结论。
+
+## 2026-10-13：独立Engine计时诊断程序开发交付
+
+### 工程内容总结
+
+针对后续架构分析，新增software/engine_timing独立测试程序、锁定源码导出、ARM构建、旧三窗口打包、有限板端包装与时间线分析器。正式核心/CPU数学/Gather注册/JSONRAW/SDK/BOOT/reset(1)/745保持；诊断副本观测初始化、Engine阶段、原7Host/7ZG回调、桥等待/计数等待/分配/搬入/CPU/写回、线程CPU/缺页/切换和逻辑字节。公开SDK四项原值及getLayerTime在process外采样，SDK单位/累计及硬件层序未证，纯NPU算术/DDR-stall/精确SDK调度明确未知；区间并集避免重复相加。
+
+实际完成13项Python分析合同、Windows三种SDK无关采样合同、FPAI Linux线程CPU/rusage及异常/线程/容量合同、ARM64交叉编译和固定三窗口原归档/参考/模型打包。初始临时目录权限和Docker命名管道拒绝保留，新目录修订后通过；原unused私有助手警告保持。没有SSH、上传、Device/Session、模型前向、VPU/TCP或板测，不称各项模型耗时已测得，不恢复旧DATA定位。最终源码r2、构建r3、交付r2及全部身份见[开发证据](tools/pose-v1/evidence/engine-timing-20261013-r1/README.md)。
+
+### 对后续开发的参考
+
+[程序说明](software/engine_timing/README.md)给出测量契约、baseline/wall/sdk独立模式、位置/前置/参数/产物/通过与失败边界。默认每模式3次、最多24次、120秒及5秒退出宽限；先保存完整实际输出，再严格比较，失败不重试。SDK硬件时间、宿主等待及复制不是互斥加法项，逻辑API吞吐不当总线带宽；待明确的有限计时任务后才能形成模型性能结论。正式锁不变，本次文档前后哈希另存修订记录，不回写旧完成清单。
+
 ## 2026-10-13：实际执行统一交给代理
 
 ### 工程内容总结

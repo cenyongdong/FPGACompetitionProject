@@ -1,0 +1,110 @@
+{
+  "status": "delivery_prepared_not_deployed",
+  "binary_sha256": "fba423d9416185c8343d1b805248cfe0aac59403e45abbba3b6d42ee11066213",
+  "source_manifest_sha256": "5781c75d1354eac60d22bcd57c78ee2086e16ed600b148325a26daae0ddedb53",
+  "reference_archive_sha256": "6ebd662ea14ebcd5c2e00d27e10d8ee0bf05665be0a4d6366db1490f52a6b4b5",
+  "reference_review_sha256": "b08961a164cbad81e65c47c7768d84b0a1f120d7d0006428da32c01d8fbd1bb6",
+  "expected_linux_version": "Linux version 5.4.52-fmsh-sdk-v2025.04 (fmsh@fmsh-virtual-machine) (gcc version 7.5.0 (Linaro GCC 7.5-2019.12)) #3 SMP Fri Mar 13 13:44:29 CST 2026",
+  "expected_boot_files": [
+    {
+      "name": "AI7030~1.BIT",
+      "size": 5980604,
+      "sha256": "85fb81d09a0dcb51cb9d5d347c01de43eccec14c6eb9a87e1876105b3efc4b81"
+    },
+    {
+      "name": "BL31.ELF",
+      "size": 610824,
+      "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303"
+    },
+    {
+      "name": "BOOT.BIN",
+      "size": 7023552,
+      "sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef"
+    },
+    {
+      "name": "FMQLMP~1.DTB",
+      "size": 15996,
+      "sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038"
+    },
+    {
+      "name": "IMAGE",
+      "size": 13158408,
+      "sha256": "ee88eae627df17fdf615b44cb9fc5a7a7a37d2baaa3f21e90d613f48bedf0929"
+    },
+    {
+      "name": "U-BOOT",
+      "size": 6579840,
+      "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97"
+    },
+    {
+      "name": "UENV.TXT",
+      "size": 1499,
+      "sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560"
+    },
+    {
+      "name": "AI7030~2.BIT",
+      "size": 5980020,
+      "sha256": "1405d7f1cb992d8f9c78e7b4bbe756faa96eeecb2ff4bdd0d253e92b191e2575"
+    },
+    {
+      "name": "FSBL25~1.OUT",
+      "size": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f"
+    }
+  ],
+  "libraries": {
+    "libicraft_hostbackend.so": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+    "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+    "libicraft_xir.so": "377a2cac1a8834836503d9805451449d42d99a888b8f96b38d4c2ba8c585af3e",
+    "libicraft_utils.so": "99679371aa20e7955e14c39938225df24cdc763d75f26301970fba114f650109",
+    "libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178"
+  },
+  "sdk_headers_normalized_sha256": {
+    "icraft-backends/hostbackend/backend.h": "8cf82840f340ff4173d6d855f8a39b72225dc5d7681fc3d7b7ed9b3cac2da378",
+    "icraft-backends/hostbackend/common/tensor_kernel.h": "509d54a778dcbc25094be73dfc5250b0b84ba3681a3d0b9f49905779338e015d",
+    "icraft-backends/hostbackend/port/common/tensor_ops.h": "f339262a95a63ebe9e1834e56278e737312319a52413a1d749e1a63bf4e48e92",
+    "icraft-xrt/core/backend.h": "f6a8ee61524cff91b2a4bfa5409cf46633d101ffe0528ac0c7599c21dd8b2607",
+    "icraft-xrt/core/tensor.h": "4b2c4d0ad24db042f151a56afce2fba881ad8f2fe1c87c9d32d620caf89b365a",
+    "icraft-xir/core/data_type_attr.h": "a0461bf7f078443fb609d472e802aed9f86407a536c8aa2058bc60a7dab50cec",
+    "icraft-xrt/core/device.h": "7bd98080ea4b228242caa184682703cc2d8610db6a28015810b5d7d8af16ecff",
+    "icraft-xrt/core/session.h": "f26063b529cef9ba2cc48ae07aafe4a4498169240d243cd71a5972bc34e0ebc7",
+    "icraft-xrt/dev/host_device.h": "642a8aec2e3832e0ecd823efa665d32ed42fb08a177878a33945714e633c887f",
+    "icraft-xir/core/data.h": "92c9e344979748e4ff03f8d59de2f4de398b052e70a90411d41be976e6830ed6",
+    "icraft-xir/base/array.h": "4f01421c9fe63a29ed2c0f90482209257bb8d8cfe5508af09edb924eed88058d",
+    "icraft-xir/base/object.h": "37a6f69afd6eabb7aaec95e785903e816e772fc248d920031f54a50109ba2df3",
+    "icraft-backends/zg330backend/zg330backend.h": "9017d5808e00b30746d79f1380879a3056db64d27845fd033dc13513eef7bd8f",
+    "icraft-xrt/dev/zg330_device.h": "43f634de3dd253c1c1fa84c8b6298ca562747744c04721a1debb809ee3b22286",
+    "icraft-utils/osal/cache.hpp": "991eff53ec361874e07d93893580e2e0c68e6587e7e859648737c55b0ce88756"
+  },
+  "files": {
+    "analyze.py": "1f9f9c54e082b7c023d0e1c540b921fb8b010f14391ccacdced0ffa1ef2a4e5a",
+    "board_application_preflight.py": "4703a70d7b289275a5e9089043a0893cf01cebe79ed58fdb7917e7d739d43843",
+    "board_run.py": "3a4c4be970aac7a442935b5ed3f3edc877de51dda4323a4fd661fa7c58b9dec6",
+    "build-result.json": "061b3b3601e1f35192174a865936f15e6360b3853023970d29459842b37220a5",
+    "fixtures/S11_01_308.csi": "e9782949d702dc1078ad52ad19b57a39f1c15c7d8f8baf9dab1625f539e6ab7f",
+    "fixtures/S11_01_308.input.f32": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+    "fixtures/S11_01_308.poses.f32": "bbf3135cb79f2b77b17d8820f934217736f8c1c27e3f48dbd83544ac4e1f58bd",
+    "fixtures/S11_01_308.scores.f32": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+    "fixtures/S11_01_309.csi": "880b70a65dd653a26428a4bffcf38f8671b5d85190180fc725bdb1ea1fb5dffa",
+    "fixtures/S11_01_309.input.f32": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300",
+    "fixtures/S11_01_309.poses.f32": "1b8a781e160809711486dc18d82aa324ef099d3ba1cad95bc287d81bd4b16cf7",
+    "fixtures/S11_01_309.scores.f32": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f",
+    "fixtures/S11_01_310.csi": "290e14369aeeddc8becf0a9b714c0d7e2cc61dc4e75a85bc9c3966fdc598ca0c",
+    "fixtures/S11_01_310.input.f32": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187",
+    "fixtures/S11_01_310.poses.f32": "a7acb0e1d6224e6897b475c1a851420c8dc3fdfecb39c2dfad756cea09f75bb2",
+    "fixtures/S11_01_310.scores.f32": "6e4a7504161509f7ece781ab0471731b1d0fc75d40135eb0fd6c28f4bf321d35",
+    "models/piw24_ZG.json": "75ffdc37b93dcb4913678991d6e7cf5cd0ab09c59653224d07c7434345acb8a0",
+    "models/piw24_ZG.raw": "3991a679282a4c6b014aece59b717910bc53fd14e67c0fac5fb9f93d4ae054d3",
+    "pose_engine_timing": "fba423d9416185c8343d1b805248cfe0aac59403e45abbba3b6d42ee11066213",
+    "source-manifest.json": "5781c75d1354eac60d22bcd57c78ee2086e16ed600b148325a26daae0ddedb53"
+  },
+  "wrapper_revision": {
+    "before_sha256": "f29db31cbd659f2aed3efe75a71b82a3c81e485284b776728dec60ca60414cde",
+    "after_sha256": "3a4c4be970aac7a442935b5ed3f3edc877de51dda4323a4fd661fa7c58b9dec6",
+    "kernel_identity_source": "dmesg_version_line_against_accepted_archive",
+    "reason": "Previous wrapper compared different APIs; historical and current dmesg lines match",
+    "old_package_modified": false,
+    "previous_Engine_initialized": false
+  }
+}

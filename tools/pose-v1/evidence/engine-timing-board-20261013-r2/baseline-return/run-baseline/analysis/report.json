@@ -1,0 +1,174 @@
+{
+  "status": "finite_numeric_timing_evidence",
+  "summary": {
+    "status": "finite_numeric_run_completed",
+    "mode": "baseline",
+    "planned_frames": 3,
+    "completed_frames": 3,
+    "init_ms": 30492.87216,
+    "pure_NPU_compute_ns": null,
+    "DDR_stall_ns": null,
+    "exact_SDK_dispatch_ns": null,
+    "VPU_or_TCP_load": false,
+    "old_DATA_investigation_resumed": false,
+    "engine_destroyed": true
+  },
+  "frame_metric_ms": {
+    "process_ms": {
+      "samples": 3,
+      "mean": 195.92257999999998,
+      "median": 194.00372,
+      "p95_nearest_rank": 199.83075,
+      "max": 199.83075
+    },
+    "forward_ms": {
+      "samples": 3,
+      "mean": 186.71815666666666,
+      "median": 186.53459,
+      "p95_nearest_rank": 187.14994,
+      "max": 187.14994
+    },
+    "preprocess_ms": {
+      "samples": 3,
+      "mean": 7.355176666666667,
+      "median": 5.67719,
+      "p95_nearest_rank": 10.71329,
+      "max": 10.71329
+    },
+    "input_prepare_ms": {
+      "samples": 3,
+      "mean": 0.057363333333333336,
+      "median": 0.04824,
+      "p95_nearest_rank": 0.07957,
+      "max": 0.07957
+    },
+    "state_clear_ms": {
+      "samples": 3,
+      "mean": 0.008753333333333333,
+      "median": 0.00524,
+      "p95_nearest_rank": 0.01657,
+      "max": 0.01657
+    },
+    "final_wait_ms": {
+      "samples": 3,
+      "mean": 0.25076333333333334,
+      "median": 0.26106,
+      "p95_nearest_rank": 0.26713,
+      "max": 0.26713
+    },
+    "output_read_ms": {
+      "samples": 3,
+      "mean": 1.2393033333333334,
+      "median": 1.18911,
+      "p95_nearest_rank": 1.35505,
+      "max": 1.35505
+    },
+    "selection_ms": {
+      "samples": 3,
+      "mean": 0.0011,
+      "median": 0.00106,
+      "p95_nearest_rank": 0.00121,
+      "max": 0.00121
+    },
+    "actual_save_ms": {
+      "samples": 3,
+      "mean": 0.47076,
+      "median": 0.47012,
+      "p95_nearest_rank": 0.47329,
+      "max": 0.47329
+    },
+    "comparison_ms": {
+      "samples": 3,
+      "mean": 0.012776666666666667,
+      "median": 0.01247,
+      "p95_nearest_rank": 0.01342,
+      "max": 0.01342
+    }
+  },
+  "wall_ms": {},
+  "thread_cpu_ms": {},
+  "thread_events": {},
+  "initialization_spans": [],
+  "forward_partitions": [],
+  "transfers": [],
+  "hardware_samples": [],
+  "SDK_raw": [],
+  "unknown": {
+    "NPU_pure_arithmetic_ms": null,
+    "DDR_access_or_stall_ms": null,
+    "exact_SDK_dispatch_ms": null,
+    "OS_runqueue_delay_ms": null
+  },
+  "limitations": [
+    "bridge.wait为等待输入ready的宿主墙钟，不能全部归因NPU、DDR或SDK。",
+    "硬件层计时包含算术、内部访存及可能的停顿，缺少独立DDR-stall计数。",
+    "SDK四项tuple单位及跨forward累积语义未确认；保留raw，不与ms相减。",
+    "SDK调用残余包含调度、回调观测和未覆盖工作，不能视为精确SDK调度时间。",
+    "墙钟减线程CPU包括阻塞、抢占等；上下文切换计数不提供调度等待时长。",
+    "逻辑搬运字节不是PL DDR总通信量，有效API吞吐不是DDR总线带宽。",
+    "诊断采样、SDK profiling与输出落盘会扰动运行；baseline/wall/sdk须独立比较。",
+    "本入口无VPU/TCP并发负载，结果不外推整机稳定性、5Hz或长期验收。"
+  ],
+  "evidence_hashes_verified": true,
+  "run_identity": {
+    "package_sha256": "1c6deafea94695ccda7b7c9df68eb2a23d5ca14ea886c6dbd743fc38d0ab8219",
+    "binary_sha256": "fba423d9416185c8343d1b805248cfe0aac59403e45abbba3b6d42ee11066213",
+    "cycles": 1,
+    "mode": "baseline",
+    "board_preflight_identity": {
+      "boot_files": [
+        {
+          "name": "AI7030~1.BIT",
+          "size": 5980604,
+          "sha256": "85fb81d09a0dcb51cb9d5d347c01de43eccec14c6eb9a87e1876105b3efc4b81"
+        },
+        {
+          "name": "BL31.ELF",
+          "size": 610824,
+          "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303"
+        },
+        {
+          "name": "BOOT.BIN",
+          "size": 7023552,
+          "sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef"
+        },
+        {
+          "name": "FMQLMP~1.DTB",
+          "size": 15996,
+          "sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038"
+        },
+        {
+          "name": "IMAGE",
+          "size": 13158408,
+          "sha256": "ee88eae627df17fdf615b44cb9fc5a7a7a37d2baaa3f21e90d613f48bedf0929"
+        },
+        {
+          "name": "U-BOOT",
+          "size": 6579840,
+          "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97"
+        },
+        {
+          "name": "UENV.TXT",
+          "size": 1499,
+          "sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560"
+        },
+        {
+          "name": "AI7030~2.BIT",
+          "size": 5980020,
+          "sha256": "1405d7f1cb992d8f9c78e7b4bbe756faa96eeecb2ff4bdd0d253e92b191e2575"
+        },
+        {
+          "name": "FSBL25~1.OUT",
+          "size": 1385156,
+          "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f"
+        }
+      ],
+      "libraries": {
+        "libicraft_hostbackend.so": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+        "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+        "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96"
+      },
+      "kernel": "Linux version 5.4.52-fmsh-sdk-v2025.04 (fmsh@fmsh-virtual-machine) (gcc version 7.5.0 (Linaro GCC 7.5-2019.12)) #3 SMP Fri Mar 13 13:44:29 CST 2026"
+    }
+  }
+}

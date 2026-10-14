@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "files": [
+    "software/core/input/csi_io.py",
+    "software/demo/board/cpu_runner.py",
+    "software/demo/board/final_audit.py",
+    "software/demo/board/reboot_audit.py",
+    "software/demo/board/runner.py",
+    "software/demo/build.py",
+    "software/demo/build_support.py",
+    "software/demo/collect_final.py",
+    "software/demo/deploy.py",
+    "software/demo/finish_reboot_audit.py",
+    "software/demo/host/replay.py",
+    "software/demo/host/run.py",
+    "software/demo/host/viewer.py",
+    "software/demo/inspect_board.py",
+    "software/demo/native_render.py",
+    "software/demo/reboot_once.py",
+    "software/demo/review.py",
+    "software/demo/review_video.py",
+    "software/demo/ssh_transport.py",
+    "software/demo/validate_board.py",
+    "software/demo/verify_core.py"
+  ],
+  "python": "3.10.21 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:35:39) [MSC v.1942 64 bit (AMD64)]",
+  "imports_or_hardware_not_executed": true
+}

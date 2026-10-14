@@ -1,0 +1,132 @@
+{
+  "status": "native_regressions_passed",
+  "test_suites": 11,
+  "inputs": [
+    {
+      "source": "S11_01_308",
+      "MAT_sha256": "6a326467b2fabc2263dd18ea2761e4904ef7c3ce39423bbde71d1976008d58e5",
+      "record_sha256": "e9782949d702dc1078ad52ad19b57a39f1c15c7d8f8baf9dab1625f539e6ab7f",
+      "codec_bitwise": true,
+      "preprocess_fixed_reference_bitwise": true
+    },
+    {
+      "source": "S11_01_309",
+      "MAT_sha256": "4f43a6b1762913338b793004708f18407db5eadd67174ba4ed6ad0089edee46b",
+      "record_sha256": "880b70a65dd653a26428a4bffcf38f8671b5d85190180fc725bdb1ea1fb5dffa",
+      "codec_bitwise": true,
+      "preprocess_fixed_reference_bitwise": true
+    },
+    {
+      "source": "S11_01_310",
+      "MAT_sha256": "dcd6c8f16dad5d2204bc9e714df5b4439c6d0a835f088541136d9baa69c17dcf",
+      "record_sha256": "290e14369aeeddc8becf0a9b714c0d7e2cc61dc4e75a85bc9c3966fdc598ca0c",
+      "codec_bitwise": true,
+      "preprocess_fixed_reference_bitwise": true
+    }
+  ],
+  "renderer_bitwise_files": [
+    {
+      "file": "clipped.nv12",
+      "sha256": "672ad6ed56c9f6e9ade673bbd46b08dd816ef03b07f3abea2cc7bc2e7598b322",
+      "bytes": 1382400
+    },
+    {
+      "file": "clipped.nv21",
+      "sha256": "86a6107f7ab595384f537e31dcc4217e8f487d66a305a3fafa2eb10385a93d9f",
+      "bytes": 1382400
+    },
+    {
+      "file": "clipped.ppm",
+      "sha256": "d310157c20ad9ff714a477eeed18a695dc04e18b43fbba489887f3a89e62a915",
+      "bytes": 2764816
+    },
+    {
+      "file": "clipped.rgb565le",
+      "sha256": "c0682c592dba9acff41aa55cf3f1775ce265708980e92de009bfbbaa6548a213",
+      "bytes": 1843200
+    },
+    {
+      "file": "colors.nv12",
+      "sha256": "4d16fc2e7221cb030256afcd0116b1b4061b272bbf829f62b2b6cd902157b737",
+      "bytes": 6
+    },
+    {
+      "file": "colors.nv21",
+      "sha256": "4d16fc2e7221cb030256afcd0116b1b4061b272bbf829f62b2b6cd902157b737",
+      "bytes": 6
+    },
+    {
+      "file": "colors.rgb24",
+      "sha256": "6733cdd08e5c7ef0453e2759ef0d28fbd43ea2aa7883b55422a13dac38e23ecc",
+      "bytes": 12
+    },
+    {
+      "file": "colors.rgb565le",
+      "sha256": "c1aa0c589ca63fe0c3dc97c53905fedd7be3df7e487591d102fa55cf1cc6ffeb",
+      "bytes": 8
+    },
+    {
+      "file": "no-input.nv12",
+      "sha256": "bdaf76a2f003c1e90024f8c037dd958c96031847b7d10449006b086be9b7dda2",
+      "bytes": 1382400
+    },
+    {
+      "file": "no-input.nv21",
+      "sha256": "adfdf624ab52f23b71af97d30355cf0ea35f4b1a8ca86c22e9eb4a7afd5981db",
+      "bytes": 1382400
+    },
+    {
+      "file": "no-input.ppm",
+      "sha256": "7a86956baf6d38bd897a580736e217315e0ec58ab10e157d33d8b66f1c5cad36",
+      "bytes": 2764816
+    },
+    {
+      "file": "no-input.rgb565le",
+      "sha256": "80d387822f36afa392d3411363c8af92e934d458931ba015d78d48a7d4c4f338",
+      "bytes": 1843200
+    },
+    {
+      "file": "stopped.nv12",
+      "sha256": "10ba2cfbd9bef5784b8922a49667902833b274b6bb64e7305e8d5378f7e350fa",
+      "bytes": 1382400
+    },
+    {
+      "file": "stopped.nv21",
+      "sha256": "143baaed49c34a7d412a3a6684f83f399e888c8fda3126bca3a26a48c039b8a1",
+      "bytes": 1382400
+    },
+    {
+      "file": "stopped.ppm",
+      "sha256": "bda60b0732245e8baead8b9234d9c78dd1dfa95b599448332e586dd03ed1f34a",
+      "bytes": 2764816
+    },
+    {
+      "file": "stopped.rgb565le",
+      "sha256": "810941038b9cfd57ab8d01682d4ed7014172d63ab812d50f53a4d323f73d1dcd",
+      "bytes": 1843200
+    },
+    {
+      "file": "synthetic.nv12",
+      "sha256": "d9acb9aad0a0e4d49b506e0cf44515e8ab9de79850baa48d668e2c610473a33d",
+      "bytes": 1382400
+    },
+    {
+      "file": "synthetic.nv21",
+      "sha256": "12d83676bc0fe572a41623ec9478a1878d981b2d4a588bc63857cc1ac6e69bbc",
+      "bytes": 1382400
+    },
+    {
+      "file": "synthetic.ppm",
+      "sha256": "afcdb6de3fce3b8f15fca5c08be0da9b14789a750508bcdfbd43304eb4d042cd",
+      "bytes": 2764816
+    },
+    {
+      "file": "synthetic.rgb565le",
+      "sha256": "d0cea9fd988238098e2f96e74ac0a38d098e58b1aee66a60f912d0f12f3d794d",
+      "bytes": 1843200
+    }
+  ],
+  "full_output_directory": "D:\\FPGACompetitionProject\\.local\\core-refactor\\native-20261014-r1",
+  "steps_sha256": "694bef296bdc91f461cff77f431ccf3064250f8aa5c3925d153a0eda128230f3",
+  "NPU_or_VPU_executed": false
+}

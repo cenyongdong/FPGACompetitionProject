@@ -1,6 +1,6 @@
 # 项目难点索引
 
-整理日期：2026-10-13；状态依据截至2026-10-11的实际验证，本次未新增板测。稳定编号D01–D18沿用原索引，D19起补充基础及近期取证问题。每个条目关联决策和证据，完整过程放入ADR及[历史归档](ADR/history/20261013/README.md)，本页不再按批次重复堆叠“最新”。当前项目状态见[PROJECT-PROGRESS](PROJECT-PROGRESS.md)。
+整理日期：2026-10-13；状态依据截至2026-10-13的实际验证，包含核心回归和有限Engine计时。稳定编号D01–D18沿用原索引，D19起补充基础及近期取证问题。每个条目关联决策和证据，完整过程放入ADR及[历史归档](ADR/history/20261013/README.md)，本页不再按批次重复堆叠“最新”。当前项目状态见[PROJECT-PROGRESS](PROJECT-PROGRESS.md)。
 
 ## 当前优先问题
 
@@ -53,6 +53,11 @@
 | 编号 | 现象与影响 | 处理与证据 | 剩余边界 |
 |---|---|---|---|
 | D31 | 新工作区缺旧.local参考/环境，版本文件导出别名容易改错核心；FPAI起初停止 | 核验git worktree，恢复原NumPy2.2.5及原CPU107/三窗口参考；启动既有FPAI，不安装。新核心52份C++逐token、926冻结文件、11本机、CPU107和三窗口通过。[ADR_47](ADR/ADR_47.md) | 旧缓存不是永久来源保证；后续先核路径与身份，不能将默认Python版本或导出名当基线 |
+| D32 | CPU桥164ms等待被误解为纯NPU计算或可全消除的交接；缺少DDR-stall独立计数 | 独立副本墙钟/线程CPU/rusage及桥区间并集；13分析合同、Linux采样、ARM编译及baseline/wall各3窗口逐位通过。新等待162.294ms，期间线程CPU161.908ms。[实测表](tools/pose-v1/evidence/engine-timing-board-20261013-r2/timing-table.md) | 等待包含大量CPU活动；SDK tuple单位/累积、硬件层序映射仍待核实；纯算术/DDR停顿/精确SDK调度未知，不由残余推定；未换模型、旧DATA暂停 |
+| D33 | 计时预检用历史dmesg版本与当前proc/version比较，误报内核变化 | r1前向0次，保存停止；历史/当前dmesg版本完全相同。新r3包改同源比较，新r2板端目录执行。[来源审查](tools/pose-v1/evidence/engine-timing-board-20261013-r1/identity-source-review.json) | 比较来源问题已修；原失败和封存包不覆盖；未更改内核 |
+| D34 | SDK getLayerTime(745)返回含负值及巨大值，硬件总耗时无法可信计算 | SDK模式第1帧数值通过后采集745项，其中215项负值；原值完整保存，立即停止、未执行剩余2帧、未重试。[原值](tools/pose-v1/evidence/engine-timing-board-20261013-r2/sdk-return/run-sdk/results/hardware-layers.jsonl) | SDK计时数据/数量与层序语义根因未证，不删除负值、只取有效前缀或推定纯NPU时间；与旧DATA异常不可等同 |
+| D35 | 2026-10-14正式核心复核首次SSH到192.168.126.49:22连接超时，新板测无法启动 | 保存exit255和原连接日志，未部署/未运行CPU107或三窗口，未自动重试；新11组本机和ARM构建已过。用户选择稍后恢复板端连接。[本轮证据](tools/pose-v1/evidence/core-check-20261014-r1/README.md) | 供电/网络/IP状态未核实，不推定源码或SDK故障；新板测及Agents开发基准规范待连接恢复 |
+| D36 | 迁移保留encodeNv12File/encodeNv12Producer/serveOwnedAccessUnits/mixed_host_check声明，当前demo目标不提供定义 | 实际CMake与ARM符号表确认；当前链使用encodeResident/serveGuardedAccessUnits及Engine，无上述未定义调用；[接口手册](software/core/INTERFACES.md)明确保留声明的可链接范围 | 当前链编译通过；后续不能仅据声明新增调用或为补齐旧入口混编历史实现，扩展须按实际需求设计与验证 |
 
 ## 维护与追溯
 

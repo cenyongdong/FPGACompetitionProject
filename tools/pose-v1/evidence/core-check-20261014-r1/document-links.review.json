@@ -1,0 +1,24 @@
+{
+  "status": "all_new_links_passed",
+  "documents": [
+    "software/core/README.md",
+    "software/core/INTERFACES.md",
+    "Done.md",
+    "PROJECT-PROGRESS.md",
+    "tools/pose-v1/evidence/core-check-20261014-r1/README.md",
+    "tools/pose-v1/evidence/core-check-20261014-r1/agents-rule.proposed.md",
+    "DIFFICULTIES.md"
+  ],
+  "new_links": 79,
+  "missing_new_links": [],
+  "preexisting_missing_links_preserved": [
+    {
+      "source": "Done.md",
+      "target": ".local/pose-v1-runtime/onnx-27-20261006-r1/summary.json"
+    },
+    {
+      "source": "Done.md",
+      "target": "tools/pose-v1/evidence/board-host-library-audit-20261005.stdout.log"
+    }
+  ]
+}
