@@ -4,6 +4,8 @@
 
 ## 当前阶段与任务状态
 
+2026-10-14新增开发候选：主机Icraft3.39.0已实际完成去ScatterND完整ONNX的parse→optimize→quantize→adapt→generate，五阶段exit0、RAW配对MD5/身份/固定FP32端口通过。实际TOML与五对JSON/RAW保留 `model/piw24_noscatter-20261014-r3`；FP16据原130 Matmul精度明确配置，原量化TOML未留存。r1/r2输入参数失败保留，新r3总68.688秒通过。最终1158 HardOp/四计算Host/ScatterND0，736仅静态层数和；正式Engine/旧模型未换，新图量化数值/融合/板测/性能待验，旧DATA继续暂停。[完整产物与证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md)。
+
 项目处于**预采CSI回放首版已具备端到端演示，性能和长期可靠性待收敛**阶段。主链为PC原始CSI→TCP→Lite PS预处理→PS/NPU混合推理→独立显示子进程→VPU H264→RTSP/TCP→PC实时GUI。HDMI没有进入当前演示。
 
 - 当前demo已切换software/core六个功能目录；旧pose_v1与历史测试保持。重构后的11组本机、ARM构建、CPU107/59600 FP32及3窗口全数值/354编码/294 GUI解码通过；规整0，资源回收完成，当前无后台项目工作。[ADR_47](ADR/ADR_47.md)／[证据](tools/pose-v1/evidence/core-refactor-20261013-r1/README.md)。

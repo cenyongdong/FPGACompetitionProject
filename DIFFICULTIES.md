@@ -61,6 +61,10 @@
 
 ## 维护与追溯
 
+| 编号 | 现象与影响 | 处理与证据 | 剩余边界 |
+|---|---|---|---|
+| D38 | Icraft3.39.0显式输入要求NOP scale/mean/swap全填，XIR **C不接受为CLI layout；资料描述与当前签名有差异 | r1/r2网络加载前参数检查exit1，分别保留实际TOML/调用/失败；依文档NOP及实际CLI FD建立新r3。五阶段exit0、XIR **C、FP32端口、RAW MD5/SHA核验通过。[证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md) | 主机配置问题已解决，新FP16候选1158 HardOp/四Host/ScatterND0留model；原量化TOML未找到不能伪称全文复原。736非板测阈值，原Engine/融合/数值/性能未适配，旧DATA暂停 |
+
 新问题追加稳定编号；同一问题更新状态和对应ADR结果，不按每个实验重复造编号。新架构取舍新建ADR，原始失败保留，未证假设不写成根因。旧D01–D18的逐批原文及历史状态见[difficulties-before](ADR/history/20261013/difficulties-before.md)，从Agents迁出的实施过程见[主题归档](ADR/history/20261013/README.md)。
 
 2026-10-13重构回归有实际CPU107和三窗口设备验证；旧DATA问题未修且继续暂停，83/100管理估计保持。原文档整理阶段“无设备操作”只适用于其历史范围。

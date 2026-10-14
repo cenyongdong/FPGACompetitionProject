@@ -1,5 +1,17 @@
 # 已完成工作记录
 
+## 2026-10-14：主机Icraft去ScatterND五阶段转换与实际TOML交付
+
+### 工程内容总结
+
+用户授权主机Icraft转换新ONNX并保存model，后明确保留TOML。在Windows D:/FPGACompetitionProject/model/piw24_noscatter-20261014-r3复用Icraft3.39.0及三已验独立DLL，实际TOML传入parse→optimize→quantize→adapt→generate，各exit0，总68.688秒。五对JSON/RAW的大小/MD5/SHA、FP32端口/**C布局和62原文件独立复核通过。最终1158 HardOp/四计算Host188/192/437/442/ScatterND0，静态layer_count合736。实际TOML、完整源ONNX、五阶段与厂商完整日志、SDK配置留model。[完整交付](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md)。
+
+原量化TOML未留存，明确qdtypeFP16，依据原130个FP16 Matmul，不宣称恢复旧全部设置。r1缺NOP占位、r2误把XIR **C当CLI布局，均网络加载前参数校验exit1停止；依文档NOP和实际CLI FD修正为新r3，原失败不覆盖。控制台SetAnsiMode信息保留。没有改全局PATH/版本、旧部署/Engine/SDK/BOOT，没有新图数值或板测，旧DATA继续暂停。
+
+### 对后续开发的参考
+
+保存实际TOML及真实CLI展开、cwd、源模型哈希和逐阶段JSON/RAW；分清CLI FD与XIR **C，CSI须明确四个NOP字段。转换通过和RAW配对不等于量化数值或板端通过。旧Engine锁1173/六Host/七融合组/745并注册Scatter，接入新图需重核四Host注册、1158成员覆盖/同步/帧状态；736只作静态线索，不覆盖旧阈值或暂停证据。
+
 ## 2026-10-14：正式核心编译、本机复核与接口手册（板测待恢复连接）
 
 ### 工程内容总结

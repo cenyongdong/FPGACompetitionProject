@@ -1,0 +1,82 @@
+{
+  "status": "host_five_stages_and_artifacts_independently_verified",
+  "working_directory": "D:\\FPGACompetitionProject\\model\\piw24_noscatter-20261014-r3",
+  "actual_TOML_SHA256": "dcc4e37f7b9ec31767020cc4c47f5abc02aca2112f44a33b02883dde48c212e7",
+  "files_verified": 62,
+  "stages": [
+    {
+      "stage": "parse",
+      "exit_code": 0,
+      "json": "piw24_noscatter_parsed.json",
+      "json_sha256": "7a0cc40edb4c98a3e735fc1057cb3f656f5263581ba16f3c95b6b2fc6843837e",
+      "raw": "piw24_noscatter_parsed.raw",
+      "raw_sha256": "7636b479fdea9c9705b0fa8946523246a073d381d397b0baea80f6b7f780d51c",
+      "RAW_MD5_verified": true,
+      "InputLayout": "@layout(**C)",
+      "ScatterND": 0
+    },
+    {
+      "stage": "optimize",
+      "exit_code": 0,
+      "json": "piw24_noscatter_optimized.json",
+      "json_sha256": "39d62541e3eb76e8e6ce4b263983caa68f47b0557856a030659dc0e2eed71e74",
+      "raw": "piw24_noscatter_optimized.raw",
+      "raw_sha256": "0eb7c518432c24783cb9d49da574bb5da70d5ad89898599209a0d6ab1451d20d",
+      "RAW_MD5_verified": true,
+      "InputLayout": "@layout(**C)",
+      "ScatterND": 0
+    },
+    {
+      "stage": "quantize",
+      "exit_code": 0,
+      "json": "piw24_noscatter_quantized.json",
+      "json_sha256": "29db4b308cff842d258e5599247c478bfe75b0693716d04ccb59d2f4be92709d",
+      "raw": "piw24_noscatter_quantized.raw",
+      "raw_sha256": "f751febc540b538004614e23c5c7ac9801765d467d50e241891fa248e0c76490",
+      "RAW_MD5_verified": true,
+      "InputLayout": "@layout(**C)",
+      "ScatterND": 0
+    },
+    {
+      "stage": "adapt",
+      "exit_code": 0,
+      "json": "piw24_noscatter_adapted.json",
+      "json_sha256": "0f683982a198d17165ddddbabb76a7b802d833b6ad6257941afa3d7d1ea359f1",
+      "raw": "piw24_noscatter_adapted.raw",
+      "raw_sha256": "70e8fb6e23e50baf0b9b5c60d2e107f709b3a17dd3b3103e69cabc316ca1aa2c",
+      "RAW_MD5_verified": true,
+      "InputLayout": "@layout(**C)",
+      "ScatterND": 0
+    },
+    {
+      "stage": "generate",
+      "exit_code": 0,
+      "json": "piw24_noscatter_ZG.json",
+      "json_sha256": "0720b375edb7fddd7ee6f074be0e8fd0852592ae1fcbe600762525f276139ce5",
+      "raw": "piw24_noscatter_ZG.raw",
+      "raw_sha256": "29dce9c1bd1fc940cdd1364d148353227d01ec0cef82861f7d2c9045e12ee1ce",
+      "RAW_MD5_verified": true,
+      "InputLayout": "@layout(**C)",
+      "ScatterND": 0
+    }
+  ],
+  "elapsed_seconds": 68.68792989999929,
+  "final_HardOp_count": 1158,
+  "Host_compute_count": 4,
+  "Host_ids": [
+    188,
+    192,
+    437,
+    442
+  ],
+  "static_layer_count_sum": 736,
+  "static_sum_is_not_board_acceptance": true,
+  "board_tested": false,
+  "numerical_inference_tested": false,
+  "old_deployed_model_or_engine_changed": false,
+  "runtime": "Icraft3.39.0 with three verified standalone DLLs; no parent PATH change",
+  "preserved_pre_network_parameter_failures": [
+    "piw24_noscatter-20261014-r1",
+    "piw24_noscatter-20261014-r2"
+  ]
+}
