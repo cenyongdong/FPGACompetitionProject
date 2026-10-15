@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-15T18:39:48.201718+08:00",
+  "execution": {
+    "platform": "Windows; Python standard library",
+    "cwd": "D:\\FPGACompetitionProject",
+    "scope": "offline static analysis and file identity checks"
+  },
+  "source_boot": {
+    "path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\参考实现\\位流\\悟净LITE版_BOOT_25122301_单路PLIN+pHDMI(外置detpost)\\悟净LITE版_BOOT_25122301_单路PLIN+pHDMI(外置detpost)\\BOOT.bin",
+    "bytes": 7023552,
+    "sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef"
+  },
+  "matches_historical_board_boot": true,
+  "historical_board_record_is_not_new_live_read": true,
+  "paired_bit": {
+    "header": {
+      "a": "ai7030_edif_top;UserID=53180205;Version=2018.3;Patched=DISABLE_ICAP,VCCM;PatchID=32494",
+      "b": "7z030ffg676",
+      "c": "2026/09/14",
+      "d": "20:22:25"
+    },
+    "payload_bytes": 5980460,
+    "payload_sha256": "657da80bb5eff97c917cf3a6c8c5b40a331b814dd840b5ac6a0bda44fb8a935d",
+    "word_swapped_BOOT_prefix_equal": true,
+    "partition_offset_from_existing_log": 186816,
+    "partition_bytes": 5980464,
+    "padding_hex": "20000000"
+  },
+  "reference_software": {
+    "package": "26040701",
+    "declared_target": "ZG / AI Mate 25122301 / single PLIN+pHDMI",
+    "icraft": "3.36.0",
+    "current_project_sdk": "3.39.0",
+    "duplicated_headers": [
+      {
+        "relative_path": "deps/modelzoo_utils/include/et_device.hpp",
+        "byte_identical": true
+      },
+      {
+        "relative_path": "deps/modelzoo_utils/include/pipeline/io/input/sdicamera.hpp",
+        "byte_identical": true
+      },
+      {
+        "relative_path": "deps/modelzoo_utils/include/pipeline/io/output/hdmi_display.hpp",
+        "byte_identical": true
+      }
+    ]
+  },
+  "static_findings": [
+    "Example constructs SDICamera before HDMI display; camera config initializes resize/capture settings and input VTC selection.",
+    "Display fps YAML is not parsed by the no-AI example; display width/height do not program PLL or HDMI timing.",
+    "In reference RTL, programmable H/V registers feed input VTC; HDMI HS/VS/DE originate from color_bar, with VIDEO_1920_1080 selected.",
+    "Reference HDMI reader has fixed width 1920, height 1080 and read_len=518400 64-bit words, or 4147200 bytes.",
+    "Reference rx_sdi selects cam_clk=rx0_locked ? rx_usrclk : sys_clk_200m; top connects fallback input to hp_clk. Actual current bitstream clock topology/frequency is unverified.",
+    "Reference serializer PCLKX1 uses cam_clk directly; PLL clk_out1 is not its selected pixel clock. Input VTC enable cannot by itself establish correct HDMI clock.",
+    "Reference camera_rd_addr+0x54 matches software address/8 convention; reader latches address on request, but software-visible flip completion/stop-drain contract is not established.",
+    "Reference read_finish is unconnected at frame_to_ps instantiation; disable_hdmi gates timing but is not proven outstanding-DDR-read completion."
+  ],
+  "unproven": [
+    "Exact editable RTL/build correspondence to selected BOOT",
+    "Current board actual HDMI pixel/serial clock and monitor mode",
+    "No-SDI clock hypothesis as physical root cause",
+    "Safe register applicability and read-only register whitelist for current hardware",
+    "Safe scanout start, flip, stop and buffer-release protocol"
+  ],
+  "no_board_connection_or_MMIO": true,
+  "no_build_or_bitstream_download": true,
+  "no_BOOT_SDK_model_changes": true,
+  "current_hdmi_acceptance": "not verified",
+  "old_DATA_investigation": "remains paused"
+}

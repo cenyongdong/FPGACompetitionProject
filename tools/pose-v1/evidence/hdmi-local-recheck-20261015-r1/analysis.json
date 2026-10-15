@@ -1,0 +1,81 @@
+{
+  "scope": "local_only_no_board_or_build",
+  "sources": [
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\30TAI使用教程.pdf",
+      "bytes": 1877618,
+      "sha256": "38c5631a76a12a7a240dcf81ca85e4304bd0230e2db618dec005e8fe64b71d93"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\FPAI_DEMO说明.pdf",
+      "bytes": 301453,
+      "sha256": "8b508819095008215d21ba960443ce51e1aa9a1aa65372d43a6b2b1879e0561c"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\fpai_demo_fpga\\rtl\\ip\\mig_7series_0\\mig_7series_0.xci",
+      "bytes": 370771,
+      "sha256": "97392ed3e83b47956d182dcd163b1018a1969bb8ac8a58231d24c9bdfe9fb870"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\fpai_demo_fpga\\rtl\\ip\\mig_7series_0\\mig_b.prj",
+      "bytes": 14710,
+      "sha256": "7279eed8aecbf7f11407576654efb3952d8b7aaeebe611d55a77641852630644"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\fpai_demo_fpga\\rtl\\ps_ai_peripheral.sv",
+      "bytes": 91758,
+      "sha256": "f04ddbdf681cda2c893c9a1176cb2010c2bb847d806c2aa4815ba7b5081967f2"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\fpai_demo_fpga\\rtl\\utils\\demo_clkrst_wrapper.v",
+      "bytes": 2162,
+      "sha256": "b2a3c3e4814d1fcdb94d1f4811abe84c2dc2bc1da7cbca67242843d15e5f8eb8"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\fpai_demo_fpga\\rtl\\sdi\\rx_sdi.v",
+      "bytes": 12908,
+      "sha256": "ea397adf7575eb66ad34e58e6f69b8257d7651f203f681233fb7b284ead1f466"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\fpai_demo_fpga\\rtl\\display\\frame_to_ps_largebuf.v",
+      "bytes": 28150,
+      "sha256": "eb1a20b0de37a560f47c35496050338bc9bb8bcf35ce40285273e10bee22d1d1"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\fpai_demo_fpga\\rtl\\display\\frame_fifo_read.v",
+      "bytes": 9191,
+      "sha256": "5103d3afde1beeb61254a04824230d192cce03098d2001d3e1f80e0845f02ba3"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\fpai_demo_fpga\\vivado.log",
+      "bytes": 7001,
+      "sha256": "39ef3bac5b815b0254664a00f420a10e658e6fab1f858ea696624b9b5e88f673"
+    }
+  ],
+  "archives": [
+    {
+      "path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\参考实现\\位流\\悟净LITE版_BOOT_25122301_单路PLIN+pHDMI(外置detpost).zip",
+      "entries": 9,
+      "hardware_or_report_entries": []
+    },
+    {
+      "path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\参考实现\\单路PLIM+VPU\\fpai_demo_package_26040702.zip",
+      "entries": 3259,
+      "hardware_or_report_entries": []
+    },
+    {
+      "path": "D:\\Dowload from Chrome\\嵌赛资料\\Icraft\\参考实现\\单路PLIN+pHDMI\\fpai_demo_package_26040701.zip",
+      "entries": 3248,
+      "hardware_or_report_entries": []
+    }
+  ],
+  "MIG_selected_project": "mig_b.prj",
+  "memory_period_ps": 1250.0,
+  "PHYRatio": "4:1",
+  "reference_DDR_clock_MHz": 800.0,
+  "reference_UI_fallback_MHz": 200.0,
+  "conditional_1080p_refresh_Hz": 80.8080808080808,
+  "conditional_serial_clock_MHz": 1000.0,
+  "interpretation": "Source configuration inference only. Neither current BOOT build identity nor live pixel/PLL measurement is established.",
+  "documentation": "30TAI tutorial pages 10-11 explicitly describe no-SDI camera.vtc=true HDMI rolling grayscale; this is the complete camera-test pipeline, not proof of independent PS-only display or safe-stop API."
+}

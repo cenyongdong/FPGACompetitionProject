@@ -1,0 +1,82 @@
+{
+  "30TAI使用教程.pdf": [
+    {
+      "page": 1,
+      "text": "30TAI 使用教程\n一 . 安装时序库\n1.1 解压工具包\n解压 JFM_Kits.zip 到一个英文路径（路径中不要有中文、空格和特殊字符）。解压后的目录结构如\n下图所示。\n图 1\n1.2 设置用户环境变量\n关闭 Vivado ，新建下图所示的用户环境变量。变量名： JFM_PATH; 变量值：工具包的解压位置。\n以图 1 为例，变量值为 E:\\JFM_Kits ，即 IP_PATCH 文件夹的上一级目录。\n注：重启 Vivado ，在 TCL Console 中使用命令 puts $::env(JFM_PATH) ，可查看环境变量是否设置成\n功。\n1.3 关闭 IP cache\n打开 Vivado 工程的设置界面，将 Project Settings -> IP -> IP Cache -> Cache scope 选项设置为\nDisabled 。"
+    },
+    {
+      "page": 2,
+      "text": "1.4 综合所有 IP\n确保工程中的每个 IP 完成单独综合。即在生成 IP 时，将 IP 的综合选项设置为 Out of context per IP\n而非 Global ，点击 Generate 而非 Skip 。如下图所示："
+    },
+    {
+      "page": 3,
+      "text": "在 Design Runs 中，每个 IP 应如下图所示，显示为 Synth_design Complete!\n如果现有的 IP 没有综合结果，可以按以下步骤执行操作，完成 IP 的综合。"
+    },
+    {
+      "page": 4,
+      "text": "1.5 加载工具包\n在 Vivado 的 Tcl Console 中，输入以下命令，并按回车完成工具的加载。下图中，路径的红色部分\n为步骤 1.2 的用户环境变量。"
+    },
+    {
+      "page": 5,
+      "text": "若以图 1 为例，命令应为： source E:/JFM_Kits/ip_patch/run.tcl 。注意命令中不要出现反斜杠。\n1.6 加载脚本\n在 Vivado 的 Tcl Console 中，输入以下命令： add_hook_tcl_to_prj ，再按回车键，执行脚本加载。\n1.7 加载时序库\n首次使用 30TAI 时序库，需在 Vivado 的 Tcl Console 中，输入以下命令： replace_7z030ai_file ，再按\n回车键，执行时序库加载。\n注：使用非 30TAI 器件时，如果已经执行过步骤 1.7 ，需要通过命令 reset_database_to_default 恢复\n时序库。执行命令前，需完成步骤 1.5 ，否则找不到命令。恢复时序库后，若再次使用 30TAI 器\n件，需要重新加载时序库。\n二 . Vivado 开发\n2.1 安装时序库\n在使用 30TAI 器件前，确保已经完成时序库以及 Procise 的安装。\n2.2 新建 Vivado 工程\n（ 1 ） Vivado 版本： 2018.03\n（ 2 ）器件： xc7z030ffg676-2\n（ 3 ）执行步骤 1.3 ，关闭 IP cache 。\n2.3 添加源文件及约束"
+    },
+    {
+      "page": 6,
+      "text": "（ 1 ）点击 add sources ，选择 design sources ，将文件夹 fpai_demo_fpga\\rtl 下的所有文件加入工\n程。\n（ 2 ）点击 add sources ，选择 constraints ，将文件夹 fpai_demo_fpga\\constrs_1 下的所有文件加入\n工程。\n（ 3 ）导入 fpai_demo_vivado.srcs\\sources_1\\bd 文件夹中的 block design\n（ 4 ）新建 IP 时，确保每个 IP 完成单独综合。\n（ 5 ）如下图，设置 Project Settings -> IP -> Repository ，添加 fpai_demo_fpga\\PS_AI IP 文件夹所\n在路径。\n2.4 加载工具包和脚本\n在 Vivado 的 Tcl Console 中，按步骤 1.5 和步骤 1.6 依次执行：\nsource $::env(JFM_PATH)/ip_patch/run.tcl\nadd_hook_tcl_to_prj\n注： $::env(JFM_PATH) 即为环境变量 JFM_PATH 的值。\n2.5 生成位流\n点击 Vivado 的 Flow Navigator -> PROGRAM AND DEBUG -> Generate Bitstream ，等待位流生\n成。\n注：按流程依次点击 Run Synthesis, Run Implemention 和 Generate Bitstream 步骤可能存在问题。\n建议跳过前两个步骤，直接点击 Generate Bitstream 。\n三 . 生成 BOOT.bin"
+    },
+    {
+      "page": 7,
+      "text": "3.1 修改 bif 文件\n解压 BOOT_Gen.zip ，用文本程序（如 VS Code ）打开 BOOT_Gen/7030ai_psin.bif 。\n修改上图中的红框，将路径替换为解压目录。确保修改后的路径不要出现反斜杠，且能找到各个\n文件。\n3.2 Create BOOT Image\n将 Vivado 生成的位流文件（后缀为 bit ）拷贝到解压目录，并确保位流文件名与 bif 文件的位流文件\n名保持一致。\n打开 Procise ，按下图依次点击。"
+    },
+    {
+      "page": 8,
+      "text": "单击 Create Image ，可生成 bin 文件。生成的 bin 文件位于解压目录下。\n3.3 替换 BOOT.bin\n替换 BOOT.bin 有两种方法。\n（ 1 ）读卡器\n将 SD 卡插入读卡器，直接替换 FAT 分区中的 BOOT.bin 。注意不要格式化磁盘。\n（ 2 ） SSH 连接\n通过 SSH 远程连接开发板（登录账户需为 root ）。\n若 BOOT.bin 所在的磁盘分区已挂载至目录 /root/bits 下，可直接替换其中的 BOOT.bin 文件。完成\n替换后，执行 reboot 命令重启开发板。重启系统后位流生效。"
+    },
+    {
+      "page": 9,
+      "text": "若未挂载，需手动完成挂载。在 ubuntu 终端输入命令 fdisk -l ，确认系统已正确识别分区。\n输入以下命令： mount /dev/mmcblk0p1 /root/bits ，将分区挂载到目录下。挂载并刷新后，目\n录 /root/bits 下应有 BOOT.bin 等文件。注意：若未挂载分区，并直接将 BOOT.bin 等文件拷贝至目\n录 /root/bits 下，位流将不会生效。\n四 . 示例 PS 程序\n4.1 安装 Icraft\n交叉编译环境安装 Icraft_3.XX 及 CustomOp_3.XX 。\n4.2 编译 PS 程序\n示例 PS 程序存放在目录 fpai_demo_app\\examples\\1_single_input+ai\\PLin+SingleNet+HDMI 下。\n将整个 fpai_demo_app 文件夹（包含依赖库 deps ）拷贝至交叉编译环境中，按步骤编译 PS 程序。\n注意不要在 30TAI 板载系统上进行编译。\n编译步骤可参考：\nfpai_demo_app\\examples\\1_single_input+ai\\PLin+SingleNet+HDMI\\README.md ，编译 30TAI\n（ ZG ）版本。\n4.3 adder_demo\n将步骤 4.2 编译得到的可执行程序 adder_demo 拷贝至 30TAI 开发板的 ubuntu 系统中。\n确保文件 adder_demo 具有执行权限并执行。将得到以下输出结果："
+    },
+    {
+      "page": 10,
+      "text": "4.4 sdicamera+yolov5+hdmi\n将整个 fpai_demo_app\\examples\\1_single_input+ai\\PLin+SingleNet+HDMI 文件夹拷贝至 30TAI 开\n发板的 ubuntu 系统中。\n确保下图中的文件及文件夹存在。\n|—— configs                         \n    |—— ZG \n        |—— sdicamera+yolov5+hdmi.yaml   // 配置文件\n|—— imodel \n    |—— ZG \n        |—— yolov5s_352x640_ZG.json      // 网络模型 json ，文件名与 yaml 文件的配置保持一致 \n        |—— yolov5s_352x640_ZG.raw       // 网络模型 raw \n|—— names          \n    |—— coco.names                      // 数据集标签 \n|—— sdicamera+yolov5+hdmi               // 可执行程序\n4.4.1 无 SDI\n修改 configs/ZG/sdicamera+yolov5+hdmi.yaml ，将 pipeline -> camera -> vtc 修改为 true ，保\n存。"
+    },
+    {
+      "page": 11,
+      "text": "在断电状态下将 HDMI 接入开发板，上电启动。确保文件 sdicamera+yolov5+hdmi 具有执行权\n限，在文件所在目录下执行 ./sdicamera+yolov5+hdmi\n./configs/ZG/sdicamera+yolov5+hdmi.yaml 。在 HDMI 显示器中查看滚动的灰度图。\n4.4.1 接入 SDI\n修改 configs/ZG/sdicamera+yolov5+hdmi.yaml ，将 pipeline -> camera -> vtc 修改为 false ，保\n存。\n在断电状态下将 SDI 摄像头和 HDMI 接入开发板，上电启动。确保文件 sdicamera+yolov5+hdmi 具\n有执行权限，在文件所在目录下执行 ./sdicamera+yolov5+hdmi\n./configs/ZG/sdicamera+yolov5+hdmi.yaml 。在 HDMI 显示器中查看 yolov5 的运行结果。"
+    }
+  ],
+  "FPAI_DEMO说明.pdf": [
+    {
+      "page": 1,
+      "text": "FPAI DEMO 说明\n一 . 工具链\nFPGA 工程仅适用于 Vivado2018.03 。\n二 . FPGA 工程源文件\n—— constrs_1 \n  |—— ai7030.xdc                 // 约束文件 \n  |—— impl_constraints.xdc       // 约束文件 \n—— PS_AI IP \n  |—— processing_system7_v5_5    // PS IP \n—— rtl \n  |—— adder_op                   // 示例 custom op \n  |—— edif                       // AI_Mate 网表文件 \n  |—— ai7030_edif_top.v          // 顶层模块 \n  |—— AI_Mate_stub.v             // AI_Mate 模块 \n  |—— sdi                        // 包含 rx_sdi 模块 \n  |—— ....\nedif 文件夹中，默认使用的是带 DetPost 硬算子的网表，名为 AI_Mate.edif 。若不需要使用 DetPost\n硬算子，可以使用 AI_Mate_no_detpost.edif 替代 AI_Mate.edif ，降低 PL 逻辑资源的占用率。\n根据使用的开发板型号，修改 impl_constraints.xdc 文件的管脚约束。\n（ 1 ）悟净开发板\nset_property PACKAGE_PIN U6 [get_ports FMC_HPC_GBTCLK0_M2C_C_P]  ## WUJING BOARD \nset_property PACKAGE_PIN U5 [get_ports FMC_HPC_GBTCLK0_M2C_C_N]\n（ 2 ）悟净开发板 Lite\nset_property PACKAGE_PIN R6 [get_ports FMC_HPC_GBTCLK0_M2C_C_P] ## WUJING LITE BOARD \nset_property PACKAGE_PIN R5 [get_ports FMC_HPC_GBTCLK0_M2C_C_N]\n三 . 参考设计的系统方案"
+    },
+    {
+      "page": 2,
+      "text": "参考设计的数据流如上图所示：\n（ 1 ） SDI 摄像头输入视频流，帧率为 1080p@60Hz 。可编程逻辑（ PL ）端的 rx_sdi 模块将数据解\n析为 rgb888 格式，并复制成两路。其中一路经过预处理后，存入 PL DDR ，供 AI 使用；另一路经过\n预处理后，存入 PS DDR ，供 HDMI 显示使用。\n（ 2 ） PS 启动 AI ， AI 完成神经网络运算后，将输出结果写回 PL DDR 。\n（ 3 ） PS 从 PL DDR 取回输出结果，完成后处理计算，将输出结果写回 PS DDR 。\n（ 4 ）从 PS DDR 中读取缓存视频数据，通过 HDMI 输出到显示器。\n四 . 自定义算子\n在 FPGA 工程中，本参考设计向 PL 端的 custom op 提供了两路接口。其中一路为寄存器访问端口，\nPS 作为 master 端，可对 PL 端的 custom op 的寄存器进行读写访问；另一路为数据访问端口， PL 端\n的 custom op 作为 master 端，可对 PL DDR 进行读写访问。\n在示例工程中，自定义算子为一个简单的加法器，可对读取到的数据执行加一操作。自定义算子\n的使用方法可参考以下示例："
+    },
+    {
+      "page": 3,
+      "text": "（ 1 ） PS 通过寄存器访问端口，配置指定地址上的寄存器。例如，读访问的数据首地址寄存器，\n写访问的数据首地址寄存器，访问的数据量寄存器，启动寄存器等。\n（ 2 ）自定义算子启动运行后，从 PL DDR 读取输入数据，执行计算，并将输出数据写回 PL DDR 。\n自定义算子产生一个结束标志信号。\n（ 3 ） PS 通过寄存器访问端口，轮询结束标志信号寄存器，直至结束。\n五 . RTL 接口\n自定义算子的两路接口如下所示：\n（ 1 ）寄存器访问端口\n信号名 位宽 方向 说明\nUser_Reg_awwaddr 32 输入 写地址\nUser_Reg_awwdata 32 输入 写值\nUser_Reg_awwvalid 1 输入 写有效\nUser_Reg_awwready 1 输出 写就绪\nUser_Reg_araddr 32 输入 读地址\nUser_Reg_arvalid 1 输入 读地址有效\nUser_Reg_arready 1 输出 读地址就绪\nUser_Reg_rdata 32 输出 读返回数据\nUser_Reg_rvalid 1 输出 读数据有效\nUser_Reg_rready 1 输入 读数据就绪\n（ 2 ）数据访问端口"
+    },
+    {
+      "page": 4,
+      "text": "信号名 位宽 方向 说明\nUser_Ddr_awwaddr 32 输出 写地址\nUser_Ddr_awwdata 512 输出 写值\nUser_Ddr_awwinfo 72 输出 写辅助信息\nUser_Ddr_awwvalid 1 输出 写有效\nUser_Ddr_awwready 1 输入 写就绪\nUser_Ddr_araddr 32 输出 读地址\nUser_Ddr_arvalid 1 输出 读地址有效\nUser_Ddr_arinfo 32 输出 读辅助信息\nUser_Ddr_arready 1 输入 读地址就绪\nUser_Ddr_rdata 512 输入 读返回数据\nUser_Ddr_rvalid 1 输入 读数据有效\nUser_Ddr_rinfo 32 输入 读返回辅助信息\nUser_Ddr_rready 1 输出 读数据就绪\n上表中， User_Ddr_awwinfo[70:7] 为写操作的字节使能信号，每一比特对应 User_Ddr_awwdata 信\n号的一个字节。当 User_Ddr_awwinfo[70:7] 全为 0 时，写值全无效；当 User_Ddr_awwinfo[70:7] 为\n64'h1 时，仅有 User_Ddr_awwdata 的最低字节有效；当 User_Ddr_awwinfo[70:7] 全为 1 时，写值全\n有效。本 demo 可以不关心 User_Ddr_awwinfo 信号的其余比特位以及 User_Ddr_arinfo 信号的作\n用。\n（ 3 ）握手机制\nRTL 接口采用简单的 ready/valid 握手机制。 master 发送数据及 valid 信号， slave 发送 ready 信号，当\nvalid 和 ready 信号同时有效时，完成一次握手，即一次有效的数据传输。"
+    },
+    {
+      "page": 5,
+      "text": "数据握手时序图  (valid 信号先到达 )\n数据握手时序图  (ready 信号先到达 )\n六 . PS 程序\n6.1 软件工程源文件\n—— deps                                 // 依赖库 \n—— examples \n  |—— 1_single_input+ai \n     |—— configs                        // 存放配置文件 \n     |—— imodel                         // 存放网络模型 \n     |—— names                          // 数据集标签 \n     |—— src                      \n        |—— adder_demo.cpp              // 加法器 demo 的源代码 \n        |—— sdicamera+yolov5+hdmi.cpp   // 参考设计的源代码 \n     |—— README.md \n     |—— CMakeLists.txt \n     |—— adder_demo                     // 加法器 demo 的可执行文件 \n     |—— sdicamera+yolov5+hdmi          // 参考设计的可执行文件\n本 DEMO 提供加法器作为示例程序，具体可参考\nexamples/1_single_input+ai/PLin+SingleNet+HDMI/src/adder_demo.cpp 。"
+    },
+    {
+      "page": 6,
+      "text": "6.2 C 程序的 API 接口\n6.2.1 读寄存器\nint value = device.defaultRegRegion().read(uint32_t address, bool relative);\nread() 函数有两个输入参数：\n@param: address\n作用：寄存器的访问地址， 32 位。 custom op 的寄存器地址空间为 0x400C'0000~0x400F'FFFF 。\n@param: relative\n作用：访问地址是否为相对地址，默认 false 。\n@return: value\n作用：返回寄存器值， 32 位。\n6.2.2 写寄存器\ndevice.defaultRegRegion().write(uint32_t address, uint32_t value, bool relative);\nwrite() 函数有三个输入参数：\n@param: address\n作用：寄存器的写访问地址， 32 位。 custom op 的寄存器地址空间为 0x400C'0000~0x400F'FFFF 。\n@param: value\n作用：寄存器的写值， 32 位。将该值写入对应的寄存器。\n@param: relative\n作用：访问地址是否为相对地址，默认 false 。\n6.2.3 分配 PL DDR 地址空间\nauto mem_chunk = device.defaultMemRegion().malloc(uint64_t byte_size, bool auto_free, \nuint64_t alignment);"
+    },
+    {
+      "page": 7,
+      "text": "执行 malloc() 函数， device 将分配一段 PL DDR 空间供用户使用，通过 mem_chunk 对该段空间进行\n读写访问。\nmalloc() 函数有三个输入参数：\n@param: byte_size\n作用：分配内存的大小。\n@param: auto_free\n作用：指定分配的内存是否会被自动释放。默认 false 。\n@param: alignment\n作用：指定分配的内存地址对齐的字节数。默认 64 。\n6.2.4 写 PL DDR\nmem_chunk.write(uint64_t dest_offset, char* src, uint64_t byte_size)\nwrite() 函数有三个输入参数：\n@param: dest_offset\n作用：数据被写入的偏移位置（相对于 mem_chunk 的首地址而言）。\n@param: src\n作用： char* 表示的数据缓存。\n@param: byte_size\n作用：写入数据的字节大小。\n6.2.5 读 PL DDR\nmem_chunk.read(char* dest, uint64_t src_offset, uint64_t byte_size)\nread() 函数有三个输入参数：\n@param: dest\n作用：数据被读取到 char* 表示的缓存。"
+    },
+    {
+      "page": 8,
+      "text": "@param: src_offset\n作用：从该偏移位置开始读取数据（相对于 mem_chunk 的首地址而言）。\n@param: byte_size\n作用：读取数据的字节大小。"
+    }
+  ]
+}

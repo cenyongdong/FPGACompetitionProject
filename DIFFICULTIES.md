@@ -16,7 +16,7 @@
 | D02 | Host反复解析图导致预算不足，95例后超时 | 拆分Host总预算与硬件预算，外部420秒完成107例，不改拒绝规则 | Host门检修正通过，不扩大硬件预算；[历史超时](tools/pose-v1/evidence/pipeline-20261008-r8/host-timeout-review.json) |
 | D03 | Engine约29秒初始化被算入25秒文件编码deadline | 初始化、producer、codec/stall及总预算分开计量 | 有限生命周期通过，demo实际约31秒NoInput初始化；[ADR_02](ADR/ADR_02.md)、[ADR_45](ADR/ADR_45.md) |
 | D04 | MVX固件order7/512KiB普通连续页不足，即使总体内存/CMA空闲仍启动失败 | 原六缓冲改两缓冲、单上下文常驻，快照/规整分开；demo首失败规整无效，经一次获准重启成功 | **缓解，永久首启动未修**；无GFP_MOVABLE的普通申请不能直接使用空闲CMA，扩大CMA不是默认解；[ADR_02](ADR/ADR_02.md)、[ADR_27](ADR/ADR_27.md)、[ADR_45](ADR/ADR_45.md) |
-| D05 | HDMI输入时序不支持，scanout/安全停止映射未闭合 | 目标改1080p60，编码仍720p；配套未知不猜写 | **待验**，当前demo排除HDMI；[ADR_00](ADR/ADR_00.md)、[ADR_07](ADR/ADR_07.md) |
+| D05 | HDMI输入时序不支持，scanout/安全停止映射未闭合 | 本地教程已有无SDI VTC显示流程；MIG/连线可推断参考fallback200MHz、条件扫描约80.81Hz，非当前BOOT实测；[补查](tools/pose-v1/evidence/hdmi-local-recheck-20261015-r1/REPORT.md)。 指定BOOT/配对bit本机身份已核；15日新板端只读盘点BOOT/SDK同、FPGA operating，无DRM/fb/I²C适配器或已识别HDMI时钟节点；参考门控可能令FIFO读帧停滞；[静态资源](tools/pose-v1/evidence/hdmi-resource-audit-20261015-r1/REPORT.md)、[实板只读结果](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md) | **待验**：未证当前BOOT无SDI像素/PLL或RTL对应关系，无安全停止完成契约；色条未执行、demo排除HDMI。先补当前25122301配套，再按用户已同意顺序继续；不以关闭显示或固定延时释放DMA |
 | D06 | 在线编码、RTSP所有权和实际PTS交接 | owned NV12/packet/AU、有界队列、常驻VPU/独立网络owner | 有界真实来源全链已过，非长期验收；[ADR_08](ADR/ADR_08.md)、[ADR_45](ADR/ADR_45.md) |
 | D07 | FIFO积压会显示旧结果 | popLatest；coalesced和overwritten分别计，采样实际时刻产生PTS | Native/有限全链通过，重复不算新姿态；[ADR_02](ADR/ADR_02.md) |
 | D08 | PowerShell内嵌多语言引号/命令替换引发生成语法错误 | 独立源码/生成脚本，完整捕获输出并查实际退出码；保留旧构建原型 | 工具脚本修正，不将编译错误误归板端；[ADR_03](ADR/ADR_03.md) |

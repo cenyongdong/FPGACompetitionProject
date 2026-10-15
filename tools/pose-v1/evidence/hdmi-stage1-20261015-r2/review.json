@@ -1,0 +1,16 @@
+{
+  "boot_identity_matches": true,
+  "SDK_libraries_match": true,
+  "packages": [
+    "customop arm64 3.39.0",
+    "icraft arm64 3.39.0"
+  ],
+  "fpga_state": "operating\n",
+  "drm_count": 0,
+  "framebuffers": [],
+  "clock_summary_available": true,
+  "pixel_clock_measured": false,
+  "PLL_lock_measured": false,
+  "next_pattern_test_permitted": false,
+  "reason": "No verified current-bitstream pixel-clock/PLL observation or hardware read completion / safe-stop contract"
+}

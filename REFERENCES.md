@@ -1,5 +1,7 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-15 HDMI已按用户要求先归档[完整讨论](ARCHITECTURE-DISCUSSION-20261015.md)，再一次板端只读核验：BOOT/三份SDK核心库同、FPGA operating；无DRM/fb/I²C适配器，clk_summary不能观测HDMI像素/PLL。参考RTL显示门控可能令读FIFO不再消费，不能等一帧即释放；当前发布位流时钟与停止契约待补，色条未启动。[执行/原值/停止门槛](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md)。未改BOOT/SDK/模型，无MMIO、设备初始化或后台，旧DATA暂停。
+
 2026-10-15共享新包稳定性已完成：原编译包三窗、30秒/1131次及30分钟/62,945次实板串行推理的数值/内存观察通过，完整实际输入/输出回传后SHA及现行门禁独立复核通过。暖机后RSS75204→73628KiB、PSS73887→71779KiB，Private_Dirty/VmData不增，FD13/线程3/映射86保持；Engine均值23.278220ms，含保存/比较速率34.969次/秒。无崩溃/SDK异常/新增内核日志，但11次process超过1秒、最大4.158秒（forward4.151秒/进程CPU20.177ms），时延长尾原因未知，列D41，不称实时性通过。Engine正常销毁、本批进程和连接结束。r1可选/proc接口失败原样保留，r2兼容修复4项本机检查后经用户明确允许新Session继续；归档SSH超时只监测/取回原归档，未重跑推理。模型/RAW/数学/CPU注册/NPU分配/SDK/BOOT不改，常规诊断限前三帧，异常证据路径保留。仅三个冻结输入，无视频/网络叠加，不能扩展为整机或任意输入绝对无泄漏保证。[完整报告](tools/pose-v1/evidence/shared-stability-20261015-r2/REPORT.md)。正式演示不换，旧DATA继续暂停。
 
 2026-10-15现行共享图门禁v2：用户明确仅score>0.2候选检查3mm关节三维误差，背景保留误差诊断、完整分数/输入及所有候选有限性仍检。[ADR_48](ADR/ADR_48.md)记录新授权和阶段认可。21组自测/新ARM构建及原三份板端输出C++回放、独立NumPy复核通过，受检最大0.9765625mm；本次未新上板、不改旧exit1。[完整记录及证据](tools/pose-v1/evidence/shared-confidence-gate-20261015-r1/REPORT.md)。FP16步长特征是事实，物理偏置/低分槽训练漂移原因尚未验证；旧DATA暂停。以下全候选规则为历史v1。
@@ -544,6 +546,8 @@ XRT 用设备、后端和 Session 组织运行。ZG330Backend 文档明确：部
 来源：[参考包 README](<D:/Dowload from Chrome/嵌赛资料/Icraft/参考实现/单路PLIN+pHDMI/fpai_demo_package_26040701/fpai_demo_package_26040701/README.md>)、[BUILD_GUIDE](<D:/Dowload from Chrome/嵌赛资料/Icraft/参考实现/单路PLIN+pHDMI/fpai_demo_package_26040701/fpai_demo_package_26040701/docs/BUILD_GUIDE.md>)、[API_REFERENCE](<D:/Dowload from Chrome/嵌赛资料/Icraft/参考实现/单路PLIN+pHDMI/fpai_demo_package_26040701/fpai_demo_package_26040701/docs/API_REFERENCE.md>)。
 
 包头标注平台 ZG、AI Mate **25122301**、Icraft **3.36.0**，打包时间为 2026-04-07。包含无 AI 的 `0_datapath/PLin+HDMI` 与 `1_single_input+ai/PLin+SingleNet+HDMI`。先验证数据通路、再加入网络有助于缩小联调故障范围，但这仍是待讨论的开发路线，而非本次选定基线。
+
+2026-10-15按用户指定资源重新核验：Lite25122301 `BOOT.bin` SHA为`ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef`，与历史板端记录一致，配对.bit配置载荷对应；38份来源及三份重复头身份已保存。参考例的输入初始化藏在SDICamera构造；项目参考RTL中输入可编程VTC不等同HDMI扫描，后者固定1080p及读帧长度，无SDI未锁定时cam_clk fallback值得优先核实。参考RTL与该BOOT的构建对应、实际像素/串行时钟及安全换帧/停止仍未证。本轮只做本机离线分析，无板端操作；详见[资源分析报告](tools/pose-v1/evidence/hdmi-resource-audit-20261015-r1/REPORT.md)，不将线索或历史哈希当新实屏通过。
 
 API 文档解释 Pipeline + Actor：输入、NPU、输出/后处理各阶段在线程和队列中协作，MessageMeta 的 buffer_index 用于定位缓存，BufferManager 管理内存流转。它有助于理解吞吐、缓存生命周期、时间戳和显示叠加，不能仅凭“零拷贝”描述认为所有阶段都无数据复制。
 

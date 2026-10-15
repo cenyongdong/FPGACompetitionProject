@@ -1,5 +1,35 @@
 # 已完成工作记录
 
+## 2026-10-15：HDMI本地原始资料补查与时钟配置推断
+
+### 工程内容总结
+
+针对用户追问，只读补查两份原始PDF全文、MIG/XCI与连线、项目log及三份参考ZIP目录。Python/pypdf实际exit0，确认教程已有无SDI的camera.vtc=true灰度图流程；MIG选mig_b.prj的1250ps/4:1与ui_clk连线支持参考fallback200MHz推断，条件下固定1080p约80.81Hz、串行支路理论1000MHz，均非现场测量。修正此前“需补齐资料”的笼统表述；[完整证据](tools/pose-v1/evidence/hdmi-local-recheck-20261015-r1/REPORT.md)。
+
+### 对后续开发的参考
+
+区分已有配套、当前BOOT构建对应、现场测量和生命周期接口。无SDI教程确实存在，但完整相机测试链路不等于独立PS sink；尚无软件可见stop/drain/flip完成契约。没有新板测、构建、重启或BOOT/SDK/模型变更。文档修订另存before及SHA，不回写原证据清单。
+
+## 2026-10-15：架构讨论归档与 HDMI 板端只读核验
+
+### 工程内容总结
+
+按用户要求先创建根目录 [架构讨论记录](ARCHITECTURE-DISCUSSION-20261015.md)，汇总共享模型、模块所有权、PS/NPU/PL候选、CSI心率及HDMI讨论，区分决策、建议、验证与范围。随后在Windows工作目录D:/FPGACompetitionProject，以既有Python/OpenSSH和固定主机密钥执行一次Lite只读盘点，r2退出0、3.124318秒：BOOT与原记录相同、三份SDK核心库相同、icraft/customop3.39.0、FPGA operating。未见DRM/fb/I²C适配器，Linux时钟树不提供已识别HDMI像素/PLL节点。[完整返回、边界与报告](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md)。r1本机signal pipe权限失败尚未连接板端，完整保留；限制外ssh -V通过后才以新r2执行，无硬件负载失败重试。
+
+### 对后续开发的参考
+
+参考RTL关闭display_en会停止DE/FIFO消费，读帧可能停留等FIFO空间，且关闭VS可能形成读请求，故不能凭“等待一帧”证明扫描结束。read_finish未接出，当前位流时钟/PLL及安全停止契约仍缺；本轮未读写MMIO、初始化SDK、分配DMA或运行显示/推理/编码，未改BOOT、SDK、模型或重启。色条、翻帧、安全停止和骨架均待验，先补当前25122301发布版本配套。全部连接结束，无本批后台；旧DATA继续暂停。文档前后快照/身份和11份源码快照保存在本批，不改历史完成清单。
+
+## 2026-10-15：HDMI指定BOOT与参考实现资源复核
+
+### 工程内容总结
+
+按用户给定下载区参考实现与Lite25122301 BOOT，完成Windows本机静态源码/身份分析。指定BOOT的SHA与历史板端记录一致；配对.bit完整配置载荷经BOOT分区32位字序转换后相同，额外4字节单列；下载区/项目内三份显示辅助头同SHA。实际Python标准库离线核验exit0，38份来源清单保留。[报告、脚本及身份](tools/pose-v1/evidence/hdmi-resource-audit-20261015-r1/REPORT.md)。本轮未连接板端、未读写寄存器、未构建/下载/修改BOOT、SDK或模型；HDMI仍未验收，旧DATA暂停。
+
+### 对后续开发的参考
+
+参考软件明确ZG/25122301/pHDMI，不能笼统称无配套；但示例依赖SDICamera构造中的输入初始化。参考RTL的可编程VTC作用于输入测试图，HDMI扫描另用color_bar固定1080p/固定读帧长度；无SDI未锁定时cam_clk切到fallback、HDMI直接使用cam_clk，是优先核实线索，尚非当前BOOT或实板根因。先核无SDI实际像素/串行时钟、PLL与安全扫描协议，再决定软件适配或硬件变更；不能凭VTC使能、YAML宽高/60fps或disable_hdmi门控宣称模式/安全停机成立。文档原值及修订身份另存本批before/documentation-revision，不回写旧完成清单。
+
 ## 2026-10-15：共享新包实板验证与30分钟连续压力测试
 
 ### 工程内容总结
