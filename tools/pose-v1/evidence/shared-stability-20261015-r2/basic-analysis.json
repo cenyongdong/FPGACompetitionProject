@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "stage": "basic",
+  "exit": 0,
+  "inferences": 3,
+  "unique_input_sources": 3,
+  "all_input_and_scores_bitwise": true,
+  "all_outputs_finite": true,
+  "max_checked_joint_delta_mm": 0.9765625,
+  "max_all_joint_delta_mm": 5.524271728019903,
+  "excluded_background_overlimit_joints": 1,
+  "memory": {
+    "samples": 52,
+    "steady_samples": 0,
+    "peak_RSS_KiB": 78724,
+    "minimum_MemAvailable_KiB": 703640,
+    "children_optional_interface_missing": true
+  },
+  "memory_growth_screen_passed": null,
+  "timing_ms": {
+    "process_ms": {
+      "mean": 23.550186666666665,
+      "median": 23.26498,
+      "p95": 24.038691999999998,
+      "max": 24.12466
+    },
+    "preprocess_ms": {
+      "mean": 5.6486833333333335,
+      "median": 5.62799,
+      "p95": 5.686013,
+      "max": 5.69246
+    },
+    "forward_ms": {
+      "mean": 15.74857,
+      "median": 15.54264,
+      "p95": 16.138107,
+      "max": 16.20427
+    },
+    "final_wait_ms": {
+      "mean": 0.7050266666666668,
+      "median": 0.71541,
+      "p95": 0.736191,
+      "max": 0.7385
+    },
+    "output_read_ms": {
+      "mean": 1.0667933333333333,
+      "median": 1.01773,
+      "p95": 1.154935,
+      "max": 1.17018
+    }
+  },
+  "SDK_BOOT_kernel_unchanged": true,
+  "no_task_process_remains": true,
+  "complete_saved_actual_outputs": true,
+  "graceful_engine_cleanup": true,
+  "duration": null,
+  "leak_limit": "Finite observation cannot prove absence of leaks in all inputs, paths, or indefinitely"
+}

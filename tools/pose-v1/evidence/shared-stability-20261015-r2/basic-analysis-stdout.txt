@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "stage": "basic",
+  "inferences": 3,
+  "memory": {
+    "samples": 52,
+    "steady_samples": 0,
+    "peak_RSS_KiB": 78724,
+    "minimum_MemAvailable_KiB": 703640,
+    "children_optional_interface_missing": true
+  },
+  "Engine_ms": {
+    "mean": 23.550186666666665,
+    "median": 23.26498,
+    "p95": 24.038691999999998,
+    "max": 24.12466
+  }
+}

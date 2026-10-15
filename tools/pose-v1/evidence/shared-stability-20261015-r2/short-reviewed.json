@@ -1,0 +1,56 @@
+{
+  "approved_to_start_stress": true,
+  "source_report_sha256": "823c5f216ada37b7bacdf09cacc0d7baa50edb86e04a198ca6625bbbc8db7172",
+  "inferences": 1131,
+  "package_sha256": "c4f3fbd4ee9abd7bc5ac8cc7807d0022d4f58906a569b28fbc0c3f4aacde71c3",
+  "memory_screen": {
+    "samples": 111,
+    "steady_samples": 39,
+    "peak_RSS_KiB": 78580,
+    "minimum_MemAvailable_KiB": 704624,
+    "children_optional_interface_missing": true,
+    "RSS": {
+      "first_median_KiB": 69036.0,
+      "last_median_KiB": 69036.0,
+      "change_KiB": 0.0,
+      "min_KiB": 69036.0,
+      "max_KiB": 69036.0,
+      "linear_slope_KiB_per_minute": -2.4823706588079098e-11
+    },
+    "Pss": {
+      "first_median_KiB": 67873.0,
+      "last_median_KiB": 67873.0,
+      "change_KiB": 0.0,
+      "min_KiB": 67873.0,
+      "max_KiB": 67873.0,
+      "linear_slope_KiB_per_minute": -7.44711197642373e-11
+    },
+    "Private_Dirty": {
+      "first_median_KiB": 19532.0,
+      "last_median_KiB": 19532.0,
+      "change_KiB": 0.0,
+      "min_KiB": 19532.0,
+      "max_KiB": 19532.0,
+      "linear_slope_KiB_per_minute": -3.723555988211865e-11
+    },
+    "fd_count": {
+      "first_median": 13.0,
+      "last_median": 13.0,
+      "min": 13,
+      "max": 13
+    },
+    "Threads": {
+      "first_median": 3.0,
+      "last_median": 3.0,
+      "min": 3,
+      "max": 3
+    },
+    "map_count": {
+      "first_median": 86.0,
+      "last_median": 86.0,
+      "min": 86,
+      "max": 86
+    },
+    "regular_copy_metadata_rows": 12
+  }
+}

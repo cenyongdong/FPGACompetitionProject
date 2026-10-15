@@ -65,6 +65,7 @@
 |---|---|---|---|
 | D38 | Icraft3.39.0显式输入要求NOP scale/mean/swap全填，XIR **C不接受为CLI layout；资料描述与当前签名有差异 | r1/r2网络加载前参数检查exit1，分别保留实际TOML/调用/失败；依文档NOP及实际CLI FD建立新r3。五阶段exit0、XIR **C、FP32端口、RAW MD5/SHA核验通过。[证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md) | 主机配置问题已解决，新FP16候选1158 HardOp/四Host/ScatterND0留model；原量化TOML未找到不能伪称全文复原。736非板测阈值，原Engine/融合/数值/性能未适配，旧DATA暂停 |
 | D39 | 共享细化改变批形状后FP32/FP16非逐位；误差与置信度范围需明确区分 | 固定epoch442/两TopK，原FP32/导出/转换及旧失败保留。全候选v1第三窗5.524271728mm失败见[原复验](tools/pose-v1/evidence/shared-gate-policy-20261015-r1/REPORT.md)。用户后明确仅score>0.2检查3mm，按[ADR_48现行v2](ADR/ADR_48.md)实现21自测、新ARM构建；三份保存输出C++/NumPy复核3/3符合，受检最大0.9765625mm，原超限槽score0.001296997为位置排除对象，全部原值/分数/有限性仍检查。[最新证据](tools/pose-v1/evidence/shared-confidence-gate-20261015-r1/REPORT.md) | 用户已按新范围认可当前阶段；本轮无新板端成功进程或完整数据集/长期验收。FP16步长特征及本组三窗误差集中背景为观察事实；物理偏置/训练约束不足漂移仍未证，不证旧DATA复发或已修。旧失败不改、正式基线门禁和DATA暂停保持 |
+| D40 | 稳定性观测器假定/proc/PID/task/PID/children存在，Lite内核没有该可选接口，首次初始化被观测器中止 | r1原失败/强制终止与无完整帧保持；只读确认status/smaps_rollup可用、children缺失，r2只将该项标为不支持，RSS/PSS/FD/线程及进程组清理不变；4项本机兼容测试、经用户明确允许后的3窗与30秒/1131次实板通过。[失败](tools/pose-v1/evidence/shared-stability-20261015-r1/REPORT.md)、[修复与后续](tools/pose-v1/evidence/shared-stability-20261015-r2/REPORT.md) | 观测器兼容缺口已修，原中止不是模型崩溃/泄漏证据；30分钟压力阶段仍执行中，不能预先记为稳定性通过 |
 
 新问题追加稳定编号；同一问题更新状态和对应ADR结果，不按每个实验重复造编号。新架构取舍新建ADR，原始失败保留，未证假设不写成根因。旧D01–D18的逐批原文及历史状态见[difficulties-before](ADR/history/20261013/difficulties-before.md)，从Agents迁出的实施过程见[主题归档](ADR/history/20261013/README.md)。
 

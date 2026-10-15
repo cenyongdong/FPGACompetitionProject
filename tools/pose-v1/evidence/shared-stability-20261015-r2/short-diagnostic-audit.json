@@ -1,0 +1,26 @@
+{
+  "copy-observations/metadata.jsonl": {
+    "rows": 12,
+    "invocations": [
+      0,
+      1,
+      2
+    ]
+  },
+  "tensor-identities/objects.jsonl": {
+    "rows": 24,
+    "invocations": [
+      0,
+      1,
+      2
+    ]
+  },
+  "monotonic-spans.jsonl": {
+    "rows": 121,
+    "invocations": [
+      0,
+      1,
+      2
+    ]
+  }
+}

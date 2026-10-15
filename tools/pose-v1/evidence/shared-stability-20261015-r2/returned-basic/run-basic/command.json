@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/tmp/wifi-pose-shared-stability-20261015-r2/pose_shared_timing",
+    "--package",
+    "/tmp/wifi-pose-shared-stability-20261015-r2",
+    "--output",
+    "/tmp/wifi-pose-shared-stability-20261015-r2/run-basic/results",
+    "--mode",
+    "wall",
+    "--cycles",
+    "1",
+    "--allow-device-init"
+  ],
+  "plan": {
+    "seconds": 0,
+    "max_frames": 3,
+    "wall_timeout_seconds": 160,
+    "memory_warmup_seconds": 0
+  }
+}

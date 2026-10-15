@@ -1,0 +1,74 @@
+[
+  {
+    "stage": "docker-initial",
+    "argv": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{.State.Status}}",
+      "FPAI"
+    ],
+    "exit": 0
+  },
+  {
+    "stage": "docker-start",
+    "argv": [
+      "docker",
+      "start",
+      "FPAI"
+    ],
+    "exit": 0
+  },
+  {
+    "stage": "source-copy",
+    "argv": [
+      "docker",
+      "cp",
+      "D:\\FPGACompetitionProject\\.local\\shared-resident-source-20261015-r1",
+      "FPAI:/tmp/shared-resident-20261015-r1"
+    ],
+    "exit": 0
+  },
+  {
+    "stage": "configure",
+    "argv": [
+      "docker",
+      "exec",
+      "FPAI",
+      "cmake",
+      "-S",
+      "/tmp/shared-resident-20261015-r1",
+      "-B",
+      "/tmp/shared-resident-20261015-r1/build",
+      "-DCMAKE_SYSTEM_NAME=Linux",
+      "-DCMAKE_SYSTEM_PROCESSOR=aarch64",
+      "-DCMAKE_CXX_COMPILER=/usr/bin/aarch64-linux-gnu-g++",
+      "-DCMAKE_PREFIX_PATH=/usr/cmake",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "exit": 0
+  },
+  {
+    "stage": "build",
+    "argv": [
+      "docker",
+      "exec",
+      "FPAI",
+      "cmake",
+      "--build",
+      "/tmp/shared-resident-20261015-r1/build",
+      "-j2"
+    ],
+    "exit": 0
+  },
+  {
+    "stage": "binary-copy",
+    "argv": [
+      "docker",
+      "cp",
+      "FPAI:/tmp/shared-resident-20261015-r1/build/pose_shared_resident",
+      "D:\\FPGACompetitionProject\\.local\\shared-stability-delivery-20261015-r1\\pose_shared_resident"
+    ],
+    "exit": 0
+  }
+]

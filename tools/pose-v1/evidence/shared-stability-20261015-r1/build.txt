@@ -1,0 +1,18 @@
+[  7%] Building CXX object CMakeFiles/pose_shared_resident.dir/resident_validation.cpp.o
+[ 14%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/application_core.cpp.o
+[ 21%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/read_input_bridge.cpp.o
+[ 28%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/input_read_sdk.cpp.o
+[ 35%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/input_read_contract.cpp.o
+[ 42%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/host_cpu_adapter.cpp.o
+[ 50%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/preprocess.cpp.o
+[ 57%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/host_failure_evidence.cpp.o
+[ 64%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/failure_source_readback.cpp.o
+[ 71%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/host_stage_observation.cpp.o
+[ 78%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/invocation_evidence.cpp.o
+[ 85%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/producer_count_observation.cpp.o
+[ 92%] Building CXX object CMakeFiles/pose_shared_resident.dir/baseline/tensor_identity_observation.cpp.o
+[100%] Linking CXX executable pose_shared_resident
+[100%] Built target pose_shared_resident
+/tmp/shared-resident-20261015-r1/baseline/host_cpu_adapter.cpp:22:14: warning: 'void pose_v1::cpu_candidate::{anonymous}::need(bool, const char*, const string&)' defined but not used [-Wunused-function]
+   22 |         void need(bool condition, const char* code, const std::string& detail) {
+      |              ^~~~

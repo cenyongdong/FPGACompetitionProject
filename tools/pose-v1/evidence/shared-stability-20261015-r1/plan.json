@@ -1,0 +1,35 @@
+{
+  "basic": {
+    "seconds": 0,
+    "max_frames": 3,
+    "wall_timeout_seconds": 160,
+    "memory_warmup_seconds": 0
+  },
+  "short": {
+    "seconds": 30,
+    "max_frames": 3000,
+    "wall_timeout_seconds": 140,
+    "memory_warmup_seconds": 10
+  },
+  "stress": {
+    "seconds": 1800,
+    "max_frames": 90000,
+    "wall_timeout_seconds": 1940,
+    "memory_warmup_seconds": 30
+  },
+  "authorization": "User explicitly selected30minutes continuous full-speed inference, max90000, after short validation",
+  "data": "Repeat three frozen CSI windows; distinguish inference count from unique samples",
+  "resources": {
+    "RSS_limit_MiB": 512,
+    "RSS_growth_stop_MiB": 64,
+    "minimum_MemAvailable_MiB": 96,
+    "minimum_disk_free_GiB": 2,
+    "fd_growth_limit": 16,
+    "thread_growth_limit": 8
+  },
+  "no_video_or_TCP": true,
+  "no_reboot_or_drop_caches": true,
+  "no_auto_retry": true,
+  "saved_actual_bytes_per_inference": 60400,
+  "maximum_raw_bytes": 5436000000
+}

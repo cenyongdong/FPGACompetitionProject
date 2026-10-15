@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "stage": "short",
+  "exit": 0,
+  "inferences": 1131,
+  "unique_input_sources": 3,
+  "all_input_and_scores_bitwise": true,
+  "all_outputs_finite": true,
+  "max_checked_joint_delta_mm": 0.9765625,
+  "max_all_joint_delta_mm": 5.524271728019903,
+  "excluded_background_overlimit_joints": 377,
+  "memory": {
+    "samples": 111,
+    "steady_samples": 39,
+    "peak_RSS_KiB": 78580,
+    "minimum_MemAvailable_KiB": 704624,
+    "children_optional_interface_missing": true,
+    "RSS": {
+      "first_median_KiB": 69036.0,
+      "last_median_KiB": 69036.0,
+      "change_KiB": 0.0,
+      "min_KiB": 69036.0,
+      "max_KiB": 69036.0,
+      "linear_slope_KiB_per_minute": -2.4823706588079098e-11
+    },
+    "Pss": {
+      "first_median_KiB": 67873.0,
+      "last_median_KiB": 67873.0,
+      "change_KiB": 0.0,
+      "min_KiB": 67873.0,
+      "max_KiB": 67873.0,
+      "linear_slope_KiB_per_minute": -7.44711197642373e-11
+    },
+    "Private_Dirty": {
+      "first_median_KiB": 19532.0,
+      "last_median_KiB": 19532.0,
+      "change_KiB": 0.0,
+      "min_KiB": 19532.0,
+      "max_KiB": 19532.0,
+      "linear_slope_KiB_per_minute": -3.723555988211865e-11
+    },
+    "fd_count": {
+      "first_median": 13.0,
+      "last_median": 13.0,
+      "min": 13,
+      "max": 13
+    },
+    "Threads": {
+      "first_median": 3.0,
+      "last_median": 3.0,
+      "min": 3,
+      "max": 3
+    },
+    "map_count": {
+      "first_median": 86.0,
+      "last_median": 86.0,
+      "min": 86,
+      "max": 86
+    },
+    "regular_copy_metadata_rows": 12
+  },
+  "memory_growth_screen_passed": true,
+  "timing_ms": {
+    "process_ms": {
+      "mean": 22.97453341290893,
+      "median": 22.85371,
+      "p95": 23.46747,
+      "max": 29.31241
+    },
+    "preprocess_ms": {
+      "mean": 5.692009743589743,
+      "median": 5.68371,
+      "p95": 5.7337050000000005,
+      "max": 7.5502
+    },
+    "forward_ms": {
+      "mean": 15.171718770999117,
+      "median": 15.05999,
+      "p95": 15.65681,
+      "max": 21.45033
+    },
+    "final_wait_ms": {
+      "mean": 0.7699437400530504,
+      "median": 0.78785,
+      "p95": 0.796145,
+      "max": 0.83897
+    },
+    "output_read_ms": {
+      "mean": 1.0069499911582669,
+      "median": 0.99243,
+      "p95": 1.046465,
+      "max": 1.96381
+    }
+  },
+  "SDK_BOOT_kernel_unchanged": true,
+  "no_task_process_remains": true,
+  "complete_saved_actual_outputs": true,
+  "graceful_engine_cleanup": true,
+  "duration": {
+    "status": "resident_duration_completed",
+    "completed": 1131,
+    "saved": 1131,
+    "seconds_budget": 30,
+    "max_frames": 3000,
+    "actual_duration_ms": 30009.0717,
+    "unique_input_sources": 3,
+    "engine_destroyed": true,
+    "diagnostic_sample_frames": 3
+  },
+  "leak_limit": "Finite observation cannot prove absence of leaks in all inputs, paths, or indefinitely"
+}
