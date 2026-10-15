@@ -1,0 +1,162 @@
+{
+  "status": "three_frame_bitwise_and_timing_verified",
+  "frames": 3,
+  "output_FP32": 12900,
+  "inputs_FP32": 32400,
+  "all_outputs_bitwise": true,
+  "max_output_abs": 0.0,
+  "binding": {
+    "original_ops": 1164,
+    "original_hardops": 1158,
+    "direct_host_ops": 6,
+    "effective_zg_groups": 5,
+    "coverage_complete": true,
+    "validated_runtime_final_count": 736,
+    "static_count_used_as_gate": false
+  },
+  "fused_groups": [
+    {
+      "op_id": 9052,
+      "sync_start": 0,
+      "layer_count": 223,
+      "members": 366
+    },
+    {
+      "op_id": 9053,
+      "sync_start": 223,
+      "layer_count": 11,
+      "members": 19
+    },
+    {
+      "op_id": 9054,
+      "sync_start": 234,
+      "layer_count": 243,
+      "members": 412
+    },
+    {
+      "op_id": 9055,
+      "sync_start": 477,
+      "layer_count": 4,
+      "members": 7
+    },
+    {
+      "op_id": 9056,
+      "sync_start": 481,
+      "layer_count": 255,
+      "members": 354
+    }
+  ],
+  "initialized_ms": 29206.25816,
+  "frame_means_ms": {
+    "process_ms": 184.16290666666666,
+    "preprocess_ms": 8.588303333333332,
+    "input_prepare_ms": 0.05972,
+    "state_clear_ms": 0.004426666666666667,
+    "forward_ms": 16.010466666666666,
+    "final_wait_ms": 157.97454333333334,
+    "output_read_ms": 1.1916066666666667,
+    "selection_ms": 0.0011766666666666666,
+    "process_cpu_ms": 181.251,
+    "actual_save_ms": 0.47481,
+    "comparison_ms": 0.012473333333333333
+  },
+  "forward_partition_ms": {
+    "forward_ns": 16.01073,
+    "final_wait_ns": 157.97476,
+    "inference_to_ready_ns": 173.99005333333335,
+    "inference_thread_cpu_ns": null,
+    "input_ready_wait_ns": 6.941223333333333,
+    "cpu_kernel_ns": 3.06354,
+    "copy_api_ns": 0.37577,
+    "allocation_ns": 0.08140666666666667,
+    "spec_ns": 0.08921333333333333,
+    "writeback_ns": 0.0,
+    "callback_remainder_ns": 3.1875033333333334,
+    "zg_submit_callback_ns": 0.6524866666666667,
+    "forward_outside_callback_ns": 1.6195866666666667
+  },
+  "MPJPE": [
+    {
+      "case": "S11_01_308",
+      "persons": 1,
+      "gt_sha256": "3b2cbcd55f90c3cd0b23e8670cbff2ea73eb2549f01786756374058160d871cf",
+      "metric_mm": {
+        "before": [
+          131.3748321533203,
+          50.12224197387695,
+          52.46197509765625,
+          80.87800598144531
+        ],
+        "after": [
+          131.3748321533203,
+          50.12224197387695,
+          52.46197509765625,
+          80.87800598144531
+        ]
+      }
+    },
+    {
+      "case": "S11_01_309",
+      "persons": 1,
+      "gt_sha256": "5096a8224f3d69acb716036a6f6d88a2df4cde6cbd8d874bdb954b3e60092315",
+      "metric_mm": {
+        "before": [
+          116.48749542236328,
+          66.44953918457031,
+          53.7061882019043,
+          48.18875503540039
+        ],
+        "after": [
+          116.48749542236328,
+          66.44953918457031,
+          53.7061882019043,
+          48.18875503540039
+        ]
+      }
+    },
+    {
+      "case": "S11_01_310",
+      "persons": 1,
+      "gt_sha256": "36ce7119379a861758b5b72be1ee91727c02765877a64edfe090d415282a2d55",
+      "metric_mm": {
+        "before": [
+          141.0214080810547,
+          50.15639114379883,
+          65.11129760742188,
+          79.46198272705078
+        ],
+        "after": [
+          141.0214080810547,
+          50.15639114379883,
+          65.11129760742188,
+          79.46198272705078
+        ]
+      }
+    }
+  ],
+  "mean_three_frame_mpjpe_mm": 129.62791188557944,
+  "reference_comparison": {
+    "historical_date": "2026-10-13",
+    "historical_engine_ms": 195.09835666666666,
+    "current_engine_ms": 184.16290666666666,
+    "difference_ms": -10.935450000000003,
+    "reduction_percent": 5.605095904874102,
+    "same_windows_sdk_boot_kernel": true,
+    "controlled_same_session_AB": false
+  },
+  "transfers_per_frame": 4,
+  "transfer_bytes_per_frame": 48160,
+  "ScatterND_callbacks": 0,
+  "ScatterND_counter_waits": 0,
+  "pure_NPU_compute_ms": null,
+  "DDR_stall_ms": null,
+  "exact_SDK_dispatch_ms": null,
+  "lifetime": "single Engine; three frames; no retry/reset0/VPU/TCP/compaction/reboot",
+  "limits": [
+    "3 samples only, first frame cold preprocessing differs; historical comparison is not controlled same-run AB",
+    "158ms final ready wait replaces much former Scatter callback waiting; Session.forward alone is not inference latency",
+    "ready wait and thread CPU are host observations, not pure NPU/DDR time",
+    "MPJPE uses unchanged GT-assisted all100 greedy matching, not confidence detection accuracy",
+    "No shared refinement graph, full-dataset board MPJPE, long run or GUI/video validation"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "syntax_all_passed": true,
+  "topk_methods_AST_unchanged": {
+    "transformer.forward": true,
+    "petr_head._get_bboxes_single": true
+  },
+  "sha256": {
+    "deploy_remote.py": "166df613b95809b9652d4d161aa82b1c7c783b2e9c340b3524e4938ca0fba0d9",
+    "paired_eval.py": "b1c3954890c33a46f87bf79d65380ea88d4f9b2e4a9b2bfc3facbb5cb6b6062e",
+    "petr_head.after.py": "5758dc05c7c8e07370b8178f2782d5828b0a9e19b94de363c3a9c9669b57fdad",
+    "petr_head.before.py": "75bc37c0cc402837cb9638d42df6067c5e4dd29c9a1647130ccacb51ce704ad7",
+    "transformer.after.py": "74ffb67cda14faf475ae1b73f8b0496beac67a7bd6aeab61cc9eb37cfdd5ae20",
+    "transformer.before.py": "8952d85edee1470c669943ddeec3655b71cb868ca834ea9ab8fe75183ff478e2"
+  }
+}

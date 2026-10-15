@@ -1,10 +1,14 @@
 # 项目进度总览
 
-更新日期：2026-10-14。最近一次实际板端验证：2026-10-13；正式核心新本机/FPAI复核通过，2026-10-14新板测因SSH超时待连接恢复，开发基准规范待全部检查后落实。历史快照见[归档索引](ADR/history/20261013/README.md)，不要用其中的“当前”覆盖本页。
+更新日期：2026-10-15。最近一次实际板端验证：2026-10-15去ScatterND独立引擎三窗口；正式核心14日本机/FPAI复核通过，原CPU107/整机复核仍待按原范围另验，本轮未代替该检查。历史快照见[归档索引](ADR/history/20261013/README.md)，不要用其中的“当前”覆盖本页。
 
 ## 当前阶段与任务状态
 
-2026-10-14新增开发候选：主机Icraft3.39.0已实际完成去ScatterND完整ONNX的parse→optimize→quantize→adapt→generate，五阶段exit0、RAW配对MD5/身份/固定FP32端口通过。实际TOML与五对JSON/RAW保留 `model/piw24_noscatter-20261014-r3`；FP16据原130 Matmul精度明确配置，原量化TOML未留存。r1/r2输入参数失败保留，新r3总68.688秒通过。最终1158 HardOp/四计算Host/ScatterND0，736仅静态层数和；正式Engine/旧模型未换，新图量化数值/融合/板测/性能待验，旧DATA继续暂停。[完整产物与证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md)。
+2026-10-15去ScatterND图板测完成：model/piw24_noscatter-20261014-r3最终JSON/RAW哈希一致部署至Lite /tmp/wifi-pose-noscatter-20261015-r1，独立ARM引擎移除Scatter注册/CPU分支/暂存和582专用计数轮询，TopK/Gather必要桥及异常证据保留。SDK实际融合1158 HardOp→5组9052–9056、区间连续0→736，三次实际完成736；308/309/310共12900输出FP32逐位原板端参考，三帧MPJPE129.627911886mm不变。Engine184.163ms，forward16.010ms后仍末端等157.975ms，不能当16ms完整推理；自定义CPU核3.064ms、桥读4次/48160B。相较历史同三窗195.098ms少5.61%，非同轮受控A/B/长期结论。完整日志/实际输出/源码已回传，进程和设备回收，内核/BOOT/SDK同；无重启/规整/VPU/TCP。此图尚未共享细化，正式演示不覆盖、旧DATA暂停。[完整报告](tools/pose-v1/evidence/noscatter-board-20261015-r1/REPORT.md)。
+
+2026-10-14算法源码候选：用户批准单帧推理共享细化并保留两处TopK，本机两份Python源码已修改、哈希一致部署至训练服务器。固定2024 epoch442、GPU0 FP32、完整7824帧/100候选对照exit0，总MPJPE123.085352129→123.085352227mm（+9.78e-8mm），最大关节差0.000533mm；分数逐位一致，姿态存在舍入差异，不称逐位通过。训练细化损失/2424838梯度及回退路径逐位通过，实际注意力/回归batch100→1。服务器含探针整模型12.212→11.081ms，不代表Lite性能。完整原始输入/两版输出/指标约1.17GB已回传并独立核验，资源回收。[源码、结果与证据](tools/pose-v1/evidence/shared-refine-20261014-r1/README.md)。本轮未新导出共享ONNX或Icraft图，下面model内产物仍为共享改造前的去ScatterND图；正式板端基线保持，旧DATA暂停。
+
+2026-10-14主机转换产物：Icraft3.39.0完成去ScatterND完整ONNX的parse→optimize→quantize→adapt→generate，五阶段exit0、RAW配对MD5/身份/固定FP32端口通过。实际TOML与五对JSON/RAW保留 `model/piw24_noscatter-20261014-r3`；FP16据原130 Matmul精度明确配置，原量化TOML未留存。r1/r2输入参数失败保留，新r3总68.688秒通过。最终1158 HardOp/四计算Host/ScatterND0；14日736仅静态层数和，15日另有上述实际融合与三窗验证。正式Engine/旧模型未替换，共享图、完整数据集量化数值和长期性能仍待验，旧DATA暂停。[原转换产物与证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md)。
 
 项目处于**预采CSI回放首版已具备端到端演示，性能和长期可靠性待收敛**阶段。主链为PC原始CSI→TCP→Lite PS预处理→PS/NPU混合推理→独立显示子进程→VPU H264→RTSP/TCP→PC实时GUI。HDMI没有进入当前演示。
 

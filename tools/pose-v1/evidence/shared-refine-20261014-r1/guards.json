@@ -1,0 +1,19 @@
+{
+  "training_loss_bitwise": true,
+  "training_gradients_bitwise": true,
+  "gradient_FP32": 2424838,
+  "fallback": {
+    "multi_image": {
+      "bitwise_equal": true,
+      "candidate_count": 6,
+      "image_batch": 2
+    },
+    "extra_kwargs": {
+      "bitwise_equal": true,
+      "candidate_count": 6,
+      "image_batch": 1
+    }
+  },
+  "state_dict_sha256": "5ad944b6552dd88172d4e833a80795c355107462ae762b36f3899639c94fa233",
+  "topk_methods_AST_unchanged": true
+}

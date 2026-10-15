@@ -1,0 +1,88 @@
+[
+  {
+    "stage": "03-transfer",
+    "exit": 0,
+    "argv": [
+      "C:\\Users\\cenyongdong\\miniconda3\\python.exe",
+      "D:\\FPGACompetitionProject\\.local\\noscatter-transport-20261015-r1\\secure_transport.py",
+      "put",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\noscatter-board-20261015-r1\\transfer.tar",
+      "/tmp/wifi-pose-noscatter-20261015-r1/transfer.tar",
+      "--timeout",
+      "120",
+      "--log",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\noscatter-board-20261015-r1\\03-transfer.txt"
+    ]
+  },
+  {
+    "stage": "04-install",
+    "exit": 1,
+    "argv": [
+      "C:\\Users\\cenyongdong\\miniconda3\\python.exe",
+      "D:\\FPGACompetitionProject\\.local\\noscatter-transport-20261015-r1\\secure_transport.py",
+      "ssh",
+      "python3 -c 'from pathlib import Path\nimport hashlib,tarfile\nr=Path('\"'\"'/tmp/wifi-pose-noscatter-20261015-r1'\"'\"');p=r/'\"'\"'transfer.tar'\"'\"'\nassert hashlib.sha256(p.read_bytes()).hexdigest()=='\"'\"'d9eadf3da5d4d695e3323c6847ec84c4e88a44fc0edf5ad798809984c2671336'\"'\"'\nwith tarfile.open(p) as t:\n assert all(m.isfile() and not Path(m.name).is_absolute() and '\"'\"'..'\"'\"' not in Path(m.name).parts for m in t)\n t.extractall(r)+b=r/'\"'\"'pose_noscatter_timing'\"'\"';b.chmod(b.stat().st_mode|0o100)\n'",
+      "--timeout",
+      "30",
+      "--log",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\noscatter-board-20261015-r1\\04-install.txt"
+    ]
+  },
+  {
+    "stage": "04-install-r2",
+    "exit": 0,
+    "argv": [
+      "C:\\Users\\cenyongdong\\miniconda3\\python.exe",
+      "D:\\FPGACompetitionProject\\.local\\noscatter-transport-20261015-r1\\secure_transport.py",
+      "ssh",
+      "python3 -c 'from pathlib import Path\nimport hashlib,tarfile\nr=Path('\"'\"'/tmp/wifi-pose-noscatter-20261015-r1'\"'\"');p=r/'\"'\"'transfer.tar'\"'\"'\nassert hashlib.sha256(p.read_bytes()).hexdigest()=='\"'\"'d9eadf3da5d4d695e3323c6847ec84c4e88a44fc0edf5ad798809984c2671336'\"'\"'\nwith tarfile.open(p) as t:\n assert all(m.isfile() and not Path(m.name).is_absolute() and '\"'\"'..'\"'\"' not in Path(m.name).parts for m in t)\n t.extractall(r)\nb=r/'\"'\"'pose_noscatter_timing'\"'\"';b.chmod(b.stat().st_mode|0o100)\n'",
+      "--timeout",
+      "30",
+      "--log",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\noscatter-board-20261015-r1\\04-install-r2.txt"
+    ]
+  },
+  {
+    "stage": "05-execute",
+    "exit": 0,
+    "argv": [
+      "C:\\Users\\cenyongdong\\miniconda3\\python.exe",
+      "D:\\FPGACompetitionProject\\.local\\noscatter-transport-20261015-r1\\secure_transport.py",
+      "ssh",
+      "cd /tmp/wifi-pose-noscatter-20261015-r1 && python3 board_run.py --mode wall --cycles 1",
+      "--timeout",
+      "160",
+      "--log",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\noscatter-board-20261015-r1\\05-execute.txt"
+    ]
+  },
+  {
+    "stage": "06-archive",
+    "exit": 0,
+    "argv": [
+      "C:\\Users\\cenyongdong\\miniconda3\\python.exe",
+      "D:\\FPGACompetitionProject\\.local\\noscatter-transport-20261015-r1\\secure_transport.py",
+      "ssh",
+      "python3 -c 'from pathlib import Path\nimport tarfile\nr=Path('\"'\"'/tmp/wifi-pose-noscatter-20261015-r1'\"'\"');a=r/'\"'\"'return.tar'\"'\"';assert not a.exists()\nwith tarfile.open(a,'\"'\"'x'\"'\"') as t:\n for name in ('\"'\"'run-wall'\"'\"','\"'\"'package.json'\"'\"'):\n  t.add(r/name,arcname=name)\n'",
+      "--timeout",
+      "30",
+      "--log",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\noscatter-board-20261015-r1\\06-archive.txt"
+    ]
+  },
+  {
+    "stage": "07-return",
+    "exit": 0,
+    "argv": [
+      "C:\\Users\\cenyongdong\\miniconda3\\python.exe",
+      "D:\\FPGACompetitionProject\\.local\\noscatter-transport-20261015-r1\\secure_transport.py",
+      "get",
+      "/tmp/wifi-pose-noscatter-20261015-r1/return.tar",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\noscatter-board-20261015-r1\\return.tar",
+      "--timeout",
+      "90",
+      "--log",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\noscatter-board-20261015-r1\\07-return.txt"
+    ]
+  }
+]

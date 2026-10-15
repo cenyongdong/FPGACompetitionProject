@@ -1,0 +1,15 @@
+{
+  "status": "deployed",
+  "cwd": "/public/cyd/Person-in-WiFi-3D-repo",
+  "result_dir": "/public/cyd/Person-in-WiFi-3D-repo/result/shared_refine_20261014_r1",
+  "source_sha256": {
+    "opera/models/utils/transformer.py": "74ffb67cda14faf475ae1b73f8b0496beac67a7bd6aeab61cc9eb37cfdd5ae20",
+    "opera/models/dense_heads/petr_head.py": "5758dc05c7c8e07370b8178f2782d5828b0a9e19b94de363c3a9c9669b57fdad"
+  },
+  "original_sha256": {
+    "transformer": "8952d85edee1470c669943ddeec3655b71cb868ca834ea9ab8fe75183ff478e2",
+    "petr_head": "75bc37c0cc402837cb9638d42df6067c5e4dd29c9a1647130ccacb51ce704ad7"
+  },
+  "weights_changed": false,
+  "topk_removed": false
+}

@@ -1,0 +1,123 @@
+{
+  "status": "full7824_paired_inference_completed",
+  "frames": 7824,
+  "compared_FP32": 102494400,
+  "maximum_absolute_difference": 4.76837158203125e-07,
+  "mismatch_values": 3393277,
+  "all_outputs_bitwise": false,
+  "all_scores_bitwise": true,
+  "topk_retained": 2,
+  "candidates": 100,
+  "metric_protocol": "unchanged WifiPoseDataset.calc_mpjpe; greedy all100 candidates, frame mean",
+  "metrics": {
+    "before": {
+      "mpjpe": 123.0853521290001,
+      "mpjpeh": 54.84258868924679,
+      "mpjpev": 67.44976629953686,
+      "mpjped": 57.495400124958934
+    },
+    "after": {
+      "mpjpe": 123.08535222675658,
+      "mpjpeh": 54.84258880315383,
+      "mpjpev": 67.44976633939518,
+      "mpjped": 57.49540029621563
+    }
+  },
+  "by_person_count": {
+    "before": {
+      "1": {
+        "frames": 2586,
+        "mpjpe": 99.66472365887518
+      },
+      "2": {
+        "frames": 3184,
+        "mpjpe": 123.11500986377199
+      },
+      "3": {
+        "frames": 2054,
+        "mpjpe": 152.52610918656063
+      }
+    },
+    "after": {
+      "1": {
+        "frames": 2586,
+        "mpjpe": 99.66472387793262
+      },
+      "2": {
+        "frames": 3184,
+        "mpjpe": 123.11500993326082
+      },
+      "3": {
+        "frames": 2054,
+        "mpjpe": 152.52610917541742
+      }
+    }
+  },
+  "frame_mpjpe_delta_mm": {
+    "maximum": 6.103515625e-05,
+    "minimum": -0.0001220703125,
+    "maximum_absolute": 0.0001220703125
+  },
+  "timing": {
+    "model_wall": {
+      "before": {
+        "first_ms": 51.15790688432753,
+        "excluded_first_frames": 10,
+        "measured_frames": 7814,
+        "mean_ms": 12.211762328721804,
+        "median_ms": 12.141140992753208,
+        "p95_ms": 12.493561068549752
+      },
+      "after": {
+        "first_ms": 15.3959218878299,
+        "excluded_first_frames": 10,
+        "measured_frames": 7814,
+        "mean_ms": 11.081056085490033,
+        "median_ms": 10.976094985380769,
+        "p95_ms": 11.345640057697892
+      }
+    },
+    "refine_decoder_cuda": {
+      "before": {
+        "first_ms": 4.876287937164307,
+        "excluded_first_frames": 10,
+        "measured_frames": 7814,
+        "mean_ms": 2.9581722493424327,
+        "median_ms": 2.9962239265441895,
+        "p95_ms": 3.029867148399353
+      },
+      "after": {
+        "first_ms": 3.6505279541015625,
+        "excluded_first_frames": 10,
+        "measured_frames": 7814,
+        "mean_ms": 1.8185518177720572,
+        "median_ms": 1.80348801612854,
+        "p95_ms": 1.9072352051734924
+      }
+    },
+    "caveat": "CUDA synchronized whole-model wall time and decoder CUDA events; includes probes; no board timing"
+  },
+  "seconds": 447.1506743510254,
+  "weights_changed": false,
+  "retrained": false,
+  "board_deployment_changed": false,
+  "source_before_sha256": {
+    "transformer.before.py": "8952d85edee1470c669943ddeec3655b71cb868ca834ea9ab8fe75183ff478e2",
+    "petr_head.before.py": "75bc37c0cc402837cb9638d42df6067c5e4dd29c9a1647130ccacb51ce704ad7"
+  },
+  "source_after_sha256": {
+    "petr_head.after.py": "5758dc05c7c8e07370b8178f2782d5828b0a9e19b94de363c3a9c9669b57fdad",
+    "transformer.after.py": "74ffb67cda14faf475ae1b73f8b0496beac67a7bd6aeab61cc9eb37cfdd5ae20"
+  },
+  "mpjpe_delta_mm": 9.77564837967293e-08,
+  "numerical_gate_passed": true,
+  "output_sha256": {
+    "after.boxes.npy": "a346f39c693b070d5228e624c1c5dfadc473966d3d808617a2292e73e6968616",
+    "after.poses.npy": "f4e635a7ac77b5760e371e53b35d2891473e73b0f4039173a028e3e336968457",
+    "after.references.npy": "865085a26901744e1b231e6dd03f56022358fff920317bbeef9f6810c37bc690",
+    "before.boxes.npy": "7232fb8031107e175e7048f63f9c7f13c9d0242a4b8c00345845602dceed69cb",
+    "before.poses.npy": "bdee31f39a8d8af3788e3679c65ec43093f578627e0ee6135527f113507030e6",
+    "before.references.npy": "bbd994a1972e214b195b73853bbb30e6450d7938eb5c88c3cc590fa74b3e90ae",
+    "inputs.npy": "2cb53a23c6b2b53c5e30ac614d6742eded9d7b36bb6de9c0d67fbc7b0b2781f7"
+  }
+}

@@ -39,7 +39,7 @@
 | D20 | CSI相位校正、unwrap、signed-zero与训练不一致 | 复现训练复指数重建/相位步骤，300真实CSI逐位核验 | 固定真实规格过；人工±π诊断仍有误差，非任意边界等价；[ADR_04](ADR/ADR_04.md)、[300结果](tools/pose-v1/RESULTS-300.md) |
 | D21 | SD启动头/文件损坏、镜像校验失败 | 分离imageUSB512字节头、FAT文件哈希；换读卡器仍异常，换SD后启动及扩容通过 | 旧卡链路失败记录保留，未确诊假容量/单一硬件原因；[ADR_03](ADR/ADR_03.md) |
 | D22 | Windows缺SDK/CUDA依赖、开发终端不继承；容器无python、签名/stderr处理不符 | 独立Icraft运行依赖、跨窗口核验、主机SDK审计、实际头签名及完整退出码 | 构建路径修正，不将koala设置当项目基线；[ADR_03](ADR/ADR_03.md) |
-| D23 | apply融合后原HardOp看似未绑定；次帧旧完成计数提前满足导致同输出 | merge_from唯一追溯1173→七ZG组，安全帧reset(1)，确认0/最终745 | 正式三帧/重复及后续有限链通过，不能推广其他图计数；[ADR_05](ADR/ADR_05.md) |
+| D23 | apply融合后原HardOp看似未绑定；次帧旧完成计数提前满足导致同输出 | merge_from唯一追溯1173→七ZG组，安全帧reset(1)，确认0/最终745 | 正式三帧/重复及后续有限链通过，不能推广其他图计数；[ADR_05](ADR/ADR_05.md) 15日新去Scatter图独立引擎以公开metadata完整追溯1158→五组/736且三次完成736，未套旧表；[报告](tools/pose-v1/evidence/noscatter-board-20261015-r1/REPORT.md)。 |
 | D24 | CPU Matmul参考阻塞、候选排名交换及训练分支衰退 | 独立ORT1.23.2 CPU固定环境直接比较；完整同槽/最佳候选误差分别报告，固定2024部署；训练旁支隔离 | 27样本获用户部署阶段验收，query身份/定点原因未完全证明；训练500轮未完成；[ADR_04](ADR/ADR_04.md) |
 | D25 | 192索引/582更新与独立ZG DATA出现前输入片段，晚源可正确 | 保留首次Host值、元数据、计数、上游、两轮晚read；独立双源/较高地址/真实生产组/租约对照 | **未解决且暂停**。最新inv94 DATA96同上一B、INDEX对、四晚源对；首次指纹在保存后记录，非早期即时采样。不能唯一归因CPU ScatterND/NPU/DMA/cache；[ADR_34–44入口](ADR/README.md)、[最新原结果](tools/pose-v1/PRODUCER-PREPARED-RESULTS-20261011.md) |
 | D26 | reset前目录创建915ms及I/O等待使绝对时隙超限 | 分段单钟/CPU/缺页观测、准备后二次截止，放行前预建唯一目录及一次令牌 | 目录热领取改正；输入保存仍max166.999ms，FS/存储/调度责任未证；[ADR_41](ADR/ADR_41.md)、[ADR_43](ADR/ADR_43.md)、[ADR_44](ADR/ADR_44.md) |
@@ -53,10 +53,10 @@
 | 编号 | 现象与影响 | 处理与证据 | 剩余边界 |
 |---|---|---|---|
 | D31 | 新工作区缺旧.local参考/环境，版本文件导出别名容易改错核心；FPAI起初停止 | 核验git worktree，恢复原NumPy2.2.5及原CPU107/三窗口参考；启动既有FPAI，不安装。新核心52份C++逐token、926冻结文件、11本机、CPU107和三窗口通过。[ADR_47](ADR/ADR_47.md) | 旧缓存不是永久来源保证；后续先核路径与身份，不能将默认Python版本或导出名当基线 |
-| D32 | CPU桥164ms等待被误解为纯NPU计算或可全消除的交接；缺少DDR-stall独立计数 | 独立副本墙钟/线程CPU/rusage及桥区间并集；13分析合同、Linux采样、ARM编译及baseline/wall各3窗口逐位通过。新等待162.294ms，期间线程CPU161.908ms。[实测表](tools/pose-v1/evidence/engine-timing-board-20261013-r2/timing-table.md) | 等待包含大量CPU活动；SDK tuple单位/累积、硬件层序映射仍待核实；纯算术/DDR停顿/精确SDK调度未知，不由残余推定；未换模型、旧DATA暂停 |
+| D32 | CPU桥164ms等待被误解为纯NPU计算或可全消除的交接；缺少DDR-stall独立计数 | 独立副本墙钟/线程CPU/rusage及桥区间并集；13分析合同、Linux采样、ARM编译及baseline/wall各3窗口逐位通过。新等待162.294ms，期间线程CPU161.908ms。[实测表](tools/pose-v1/evidence/engine-timing-board-20261013-r2/timing-table.md) | 等待包含大量CPU活动；SDK tuple单位/累积、硬件层序映射仍待核实；纯算术/DDR停顿/精确SDK调度未知，不由残余推定；未换模型、旧DATA暂停 15日去Scatter实测forward16.010ms后末端仍等157.975ms，Engine184.163ms；等待移位而非消失，纯NPU/DDR仍未知；[报告](tools/pose-v1/evidence/noscatter-board-20261015-r1/REPORT.md)。 |
 | D33 | 计时预检用历史dmesg版本与当前proc/version比较，误报内核变化 | r1前向0次，保存停止；历史/当前dmesg版本完全相同。新r3包改同源比较，新r2板端目录执行。[来源审查](tools/pose-v1/evidence/engine-timing-board-20261013-r1/identity-source-review.json) | 比较来源问题已修；原失败和封存包不覆盖；未更改内核 |
 | D34 | SDK getLayerTime(745)返回含负值及巨大值，硬件总耗时无法可信计算 | SDK模式第1帧数值通过后采集745项，其中215项负值；原值完整保存，立即停止、未执行剩余2帧、未重试。[原值](tools/pose-v1/evidence/engine-timing-board-20261013-r2/sdk-return/run-sdk/results/hardware-layers.jsonl) | SDK计时数据/数量与层序语义根因未证，不删除负值、只取有效前缀或推定纯NPU时间；与旧DATA异常不可等同 |
-| D35 | 2026-10-14正式核心复核首次SSH到192.168.126.49:22连接超时，新板测无法启动 | 保存exit255和原连接日志，未部署/未运行CPU107或三窗口，未自动重试；新11组本机和ARM构建已过。用户选择稍后恢复板端连接。[本轮证据](tools/pose-v1/evidence/core-check-20261014-r1/README.md) | 供电/网络/IP状态未核实，不推定源码或SDK故障；新板测及Agents开发基准规范待连接恢复 |
+| D35 | 2026-10-14正式核心复核首次SSH到192.168.126.49:22连接超时，新板测无法启动 | 保存exit255和原连接日志，未部署/未运行CPU107或三窗口，未自动重试；新11组本机和ARM构建已过。用户选择稍后恢复板端连接。[本轮证据](tools/pose-v1/evidence/core-check-20261014-r1/README.md) | 供电/网络/IP状态未核实，不推定源码或SDK故障；新板测及Agents开发基准规范待连接恢复 15日连接恢复并完成独立去Scatter三窗，不替代原正式核心CPU107/整机复核；[报告](tools/pose-v1/evidence/noscatter-board-20261015-r1/REPORT.md)。 |
 | D36 | 迁移保留encodeNv12File/encodeNv12Producer/serveOwnedAccessUnits/mixed_host_check声明，当前demo目标不提供定义 | 实际CMake与ARM符号表确认；当前链使用encodeResident/serveGuardedAccessUnits及Engine，无上述未定义调用；[接口手册](software/core/INTERFACES.md)明确保留声明的可链接范围 | 当前链编译通过；后续不能仅据声明新增调用或为补齐旧入口混编历史实现，扩展须按实际需求设计与验证 |
 
 ## 维护与追溯
@@ -64,6 +64,7 @@
 | 编号 | 现象与影响 | 处理与证据 | 剩余边界 |
 |---|---|---|---|
 | D38 | Icraft3.39.0显式输入要求NOP scale/mean/swap全填，XIR **C不接受为CLI layout；资料描述与当前签名有差异 | r1/r2网络加载前参数检查exit1，分别保留实际TOML/调用/失败；依文档NOP及实际CLI FD建立新r3。五阶段exit0、XIR **C、FP32端口、RAW MD5/SHA核验通过。[证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md) | 主机配置问题已解决，新FP16候选1158 HardOp/四Host/ScatterND0留model；原量化TOML未找到不能伪称全文复原。736非板测阈值，原Engine/融合/数值/性能未适配，旧DATA暂停 |
+| D39 | 共享细化把同帧重复特征batch100→1，改变矩阵批形状后出现FP32舍入量级差异，不能沿用Scatter改写的逐位等价结论 | 两TopK/100候选/epoch442固定，训练损失/2424838梯度与回退逐位；完整7824帧102494400 FP32保存优先对照exit0，分数逐位、总MPJPE差+9.78e-8mm，最大关节差0.000533mm。全原值回传与独立核验通过。[证据](tools/pose-v1/evidence/shared-refine-20261014-r1/README.md) | 当前FP32完整测试未见实际精度损失，但姿态不是逐位一致；GT辅助MPJPE非置信度检测精度。服务器整模型少9.259%含探针，共享ONNX/量化/Lite效果待验，原板端门禁不放宽 |
 
 新问题追加稳定编号；同一问题更新状态和对应ADR结果，不按每个实验重复造编号。新架构取舍新建ADR，原始失败保留，未证假设不写成根因。旧D01–D18的逐批原文及历史状态见[difficulties-before](ADR/history/20261013/difficulties-before.md)，从Agents迁出的实施过程见[主题归档](ADR/history/20261013/README.md)。
 

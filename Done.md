@@ -1,5 +1,33 @@
 # 已完成工作记录
 
+## 2026-10-15：去ScatterND模型的独立Lite引擎、数值与分段耗时
+
+### 工程内容总结
+
+用户批准将去ScatterND JSON/RAW推送Lite、重排引擎并去掉其专用桥/回调，返回分段计时。使用model/piw24_noscatter-20261014-r3最终产物（尚无共享细化），Windows/FPAI GCC9.4构建独立ARM候选，沿用3.39.0数学核和原预处理；删除Scatter注册/参数与核分支/Host暂存/582计数轮询，保留TopK188/437、GatherElements192和原生Gather442。新Session公开merge_from/idx_map完整唯一追溯1158 HardOp到9052–9056五组，连续0→736；不套旧1173/七组/745，也不只看静态层数。源码/二进制符号确认无ScatterND路径，正式核心和演示锁不改。
+
+实际部署/tmp/wifi-pose-noscatter-20261015-r1，120秒预算、一次Session、308/309/310三窗无预热/VPU/TCP。三次实际完成736、5 Host/5 ZG回调；输入32400 FP32和输出12900 FP32完整保存后逐位原板端参考，误差0。原GT辅助greedy MPJPE三帧平均129.627911886mm前后相同，仅三单人窗口非全量验收。独立核对完整返回哈希、参数/身份/覆盖/嵌套时间线。Engine184.163ms（历史同三窗195.098ms，观察少5.61%）；forward16.010ms后输出ready仍等157.975ms，实际forward起至ready173.990ms。自定义CPU核3.064ms、桥搬运API0.376ms、四次48160B，原8次115360B；初始化29.206秒不计帧时。原始日志、GT、指标、源码归档和详细分解见[报告](tools/pose-v1/evidence/noscatter-board-20261015-r1/REPORT.md)。
+
+编译shim签名、安装前Python语法、本机未采样CPU字段及本地完整metric文件身份差异分别保存并核实；前三类修正不涉及失败推理重跑，metric取固定SHA服务器快照且calc_mpjpe AST一致、GT哈希沿用全7824评估来源。实际唯一新Session退出0，无放宽逐位门禁、异常SDK计时重试、规整/重启/内核或SDK变更。所有本批推理/传输进程结束、FPGA operating、内核日志不变，旧DATA调查保持暂停。
+
+### 对后续开发的参考
+
+删除中间Host算子会移动异步等待位置，不能用Session.forward单项差值声称十倍加速；应报告至输出ready的区间及Engine全流程。新模型的实际融合成员、直接Host绑定、同步区间、帧清零和完整数值须重新核对，不复用旧节点号或745。已观测CPU核下降约11ms，但纯NPU算术/DDR停顿/精确SDK调度仍未知。历史对照和首帧预处理波动不等同受控A/B；三个窗口不代表长期、视频并发或DATA根因修复。原TOML、正式演示、旧模型和共享细化源码均保持；新包独立留板供后续开发，启动配置未切换。
+
+## 2026-10-14：单帧共享细化源码、远程部署与完整7824帧精度验证
+
+### 工程内容总结
+
+用户批准共享细化并明确保留两处TopK；校园网问题时暂停，明确恢复后执行。在D:/Person-in-WIFI-3D/Person-in-WiFi-3D-repo修改transformer.py与petr_head.py，仅单图像eval无额外注意力参数时共享关节query/encoder memory，注意力和回归batch100→1，按原层序广播偏移至全部100候选。训练、多图像与额外参数回退；两个TopK所在函数AST不变。完整旧/新源码、差异、身份、配置及脚本留证，哈希一致传至/public/cyd/Person-in-WiFi-3D-repo；没有重新训练或修改epoch442权重。
+
+服务器PersonInWIFI/PyTorch1.13.1+cu117/MMCV1.5.3、RTX A5500 GPU0，FP32/batch1/worker2，固定1800秒上限。同一预处理输入、交替配对顺序，完整7824帧/100候选实际比较102494400 FP32，wrapper452.797秒exit0。总MPJPE123.0853521290001→123.08535222675658mm，差+9.77564838e-8mm；一/两/三人分组差均在舍入量级。分数逐位一致，姿态不是逐位一致：最大坐标差4.768371582e-7模型单位、最大关节差0.00053312015mm、单帧MPJPE最大变化0.0001220703125mm。训练细化损失及2424838梯度逐位、多图像/额外参数回退逐位、完整state_dict同通过。
+
+服务器含诊断探针计时，排除前10帧后整模型均值12.211762→11.081056ms（少9.259%），decoder CUDA区间2.958172→1.818552ms（少38.524%），嵌套不相加、不外推板端。完整输入、两版boxes/poses/references及逐帧指标约1.17GB回传.local/shared-refine-20261014-r1；归档SHA、30成员和独立数组/指标核验通过。测试进程组、wrapper及worker退出，传输结束。[完整工程与证据](tools/pose-v1/evidence/shared-refine-20261014-r1/README.md)。
+
+### 对后续开发的参考
+
+共享成立依赖同帧query/位置/memory相同且坐标未进入注意力；后续加入候选条件注意力必须重审。保留每层加法顺序、完整候选/分数对应和旧源码；批量尺寸变化的舍入差异不得改写为逐位通过。原MPJPE为GT辅助匹配全部候选，不是置信度检测精度。此轮数字是新源码候选验证，不放宽正式部署门禁；共享ONNX、Icraft量化与Lite性能未验证，exportONNX/scatter-add-20261014-r1和model/piw24_noscatter-20261014-r3仍为共享前去ScatterND图，TOML保留，正式Engine/模型/RAW/SDK/BOOT不变、旧DATA保持暂停。
+
 ## 2026-10-14：主机Icraft去ScatterND五阶段转换与实际TOML交付
 
 ### 工程内容总结

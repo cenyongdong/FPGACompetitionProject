@@ -1,5 +1,7 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-15去ScatterND图实际Lite验证：独立引擎1158 HardOp完整融合五组/最终736，三窗全部输出逐位原板端参考。Engine184.163ms；forward16.010ms后末端仍等待157.975ms，不是16ms完整推理。新JSON/RAW/ARM包、源码、原始时间线、GT指标和回收证据见[板测报告](tools/pose-v1/evidence/noscatter-board-20261015-r1/REPORT.md)。正式演示未替换、尚无共享细化板图，旧DATA保持暂停。以下14日“待板测”为当日历史范围。
+
 2026-10-14主机Icraft3.39.0新完整去ScatterND图五阶段转换完成，实际TOML/五对JSON-RAW留model/piw24_noscatter-20261014-r3；1158 HardOp/四Host/ScatterND0，736仅静态计数，旧Engine/模型未换、新图板测及量化数值待验：[配置、原失败与产物](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md)。
 
 2026-10-13当前源码：[正式核心导读](software/core/README.md)、[重构ADR_47](ADR/ADR_47.md)、[本机/CPU107/三窗口实际证据](tools/pose-v1/evidence/core-refactor-20261013-r1/README.md)。旧源码、协议、SDK及模型保持；以下历史阶段结果保留各自范围，旧DATA排查仍暂停。

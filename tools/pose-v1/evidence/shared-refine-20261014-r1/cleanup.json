@@ -1,0 +1,25 @@
+{
+  "status": "run_process_group_and_wrapper_absent",
+  "execution": {
+    "status": "complete",
+    "wrapper_pid": 243039,
+    "command": [
+      "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+      "-u",
+      "/public/cyd/Person-in-WiFi-3D-repo/result/shared_refine_20261014_r1/paired_eval.py",
+      "--output",
+      "/public/cyd/Person-in-WiFi-3D-repo/result/shared_refine_20261014_r1"
+    ],
+    "cwd": "/public/cyd/Person-in-WiFi-3D-repo",
+    "GPU": 0,
+    "timeout_seconds": 1800,
+    "child_pid": 243040,
+    "process_group": 243040,
+    "exit_code": 0,
+    "seconds": 452.796695826808
+  },
+  "matching_processes": [],
+  "nvidia_compute_snapshot": "GPU-e882fdbe-1f68-fce3-ad38-6ad3bc6b845e, 1658095, [Not Found], 254 MiB\nGPU-cb01d43e-29fc-888d-b6ed-399005396572, 1658096, [Not Found], 254 MiB\n",
+  "only_owned_processes_checked": true,
+  "other_users_untouched": true
+}

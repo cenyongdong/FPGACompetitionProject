@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\FPGACompetitionProject\tools\pose-v1\evidence\noscatter-board-20261015-r1\analyze.py", line 105, in <module>
+    assert sha(metric_source)=='52b603525b351b25e16f00237c787ea65d6957dbed0535899007d3fcfaafdb31'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

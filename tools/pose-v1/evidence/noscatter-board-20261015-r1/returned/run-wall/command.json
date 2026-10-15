@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/tmp/wifi-pose-noscatter-20261015-r1/pose_noscatter_timing",
+    "--package",
+    "/tmp/wifi-pose-noscatter-20261015-r1",
+    "--output",
+    "/tmp/wifi-pose-noscatter-20261015-r1/run-wall/results",
+    "--mode",
+    "wall",
+    "--cycles",
+    "1",
+    "--allow-device-init"
+  ],
+  "timeout_seconds": 120,
+  "kill_grace_seconds": 5
+}

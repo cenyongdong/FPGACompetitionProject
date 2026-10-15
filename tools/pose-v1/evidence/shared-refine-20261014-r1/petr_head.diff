@@ -1,0 +1,27 @@
+--- petr_head.before.py
++++ petr_head.after.py
+@@ -322,15 +322,22 @@
+         )
+         hs = hs.permute(0, 2, 1, 3)
+         outputs_kpts = []
++        share_refine = not self.training and memory.size(1) == 1
+ 
+         for lvl in range(hs.shape[0]):
+             if lvl == 0:
+                 reference = init_reference
+             else:
+                 reference = inter_references[lvl - 1]
+-            tmp_kpt = self.refine_kpt_branches[lvl](hs[lvl])
++            features = hs[lvl, :1] if share_refine else hs[lvl]
++            tmp_kpt = self.refine_kpt_branches[lvl](features)
+             assert reference.shape[-1] == 3
+-            tmp_kpt += reference
++            if self.training:
++                tmp_kpt += reference
++            else:
++                # A shared offset has batch size one; use out-of-place addition
++                # to broadcast it without modifying the reference or the view.
++                tmp_kpt = tmp_kpt + reference
+             outputs_kpt = tmp_kpt
+             outputs_kpts.append(outputs_kpt)
+         outputs_kpts = torch.stack(outputs_kpts)

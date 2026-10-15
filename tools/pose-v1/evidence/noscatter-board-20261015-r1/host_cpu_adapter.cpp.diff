@@ -1,0 +1,60 @@
+--- frozen/host_cpu_adapter.cpp
++++ noscatter/host_cpu_adapter.cpp
+@@ -33,7 +33,7 @@
+ 
+         void layout(const xir::TensorType& type) {
+             need(type->layout.numAxis() == type->shape.size(), "layout", "Layout rank mismatch");
+-            // Current model layouts are *, *C or **C (Scatter indices: ***C),
++            // Current model layouts are *, *C or **C ,
+             // with C last. No packed/split/channel permutations are supported.
+             for (size_t axis = 0; axis < type->shape.size(); ++axis) {
+                 const char expected = axis + 1 == type->shape.size() ? 'C' : '*';
+@@ -166,26 +166,14 @@
+             }) && shape(op->outputs[0].tensorType(), {
+                 1, 100, 42
+             }) && !op->inputs[1].isParams(), "shape", "Unapproved GatherElements input/output shape or parameter form");
+-        } else if (op.is < xir::ScatterND>()) {
+-            need(op.cast < xir::ScatterND>()->reduction == xir::Reduction::NONE, "reduction", "Only ScatterND NONE is approved");
+-            need(op->inputs.size() == 3 && op->outputs.size() == 1, "arity", "ScatterND arity");
+-            need(shape(op->inputs[0].tensorType(), {
+-                100, 14, 3
+-            }) && shape(op->inputs[1].tensorType(), {
+-                100, 14, 3, 3
+-            }) && op->inputs[1].isParams() && shape(op->inputs[2].tensorType(), {
+-                100, 14, 3
+-            }) && shape(op->outputs[0].tensorType(), {
+-                100, 14, 3
+-            }), "shape", "Unapproved ScatterND shape or parameter form");
+-        } else throw Rejection("type", "Only TopK/GatherElements/ScatterND are registered");
++        } else throw Rejection("type", "Only TopK/GatherElements are registered");
+         for (const auto & v : op->inputs) check_distribution(v.tensorType());
+         for (const auto & v : op->outputs) check_distribution(v.tensorType());
+     }
+ 
+     // 2. 显式注册缺失CPU算子；不覆盖已有或部分注册。
+     void register_missing(const xir::Network& graph, xrt::HostBackend backend) {
+-        for (int64_t id : { 188, 192, 437, 582, 649 }) {
++        for (int64_t id : { 188, 192, 437 }) {
+             auto op = graph.getOpById(id);
+             validate_spec(op);
+             need(!backend.isOpSupported(op) && !backend.getInitFunc(op) && !backend.getForwardFunc(op), "registry", "Baseline changed or partial registration exists; never override");
+@@ -197,9 +185,8 @@
+         auto gather_forward = backend.getForwardFunc(gather).value().target_type().hash_code();
+         add<xir::TopK>();
+         add<xir::GatherElements>();
+-        add<xir::ScatterND>();
+         need(backend.getInitFunc(gather).value().target_type().hash_code() == gather_init && backend.getForwardFunc(gather).value().target_type().hash_code() == gather_forward, "registry", "Gather callback types changed unexpectedly");
+-        for (int64_t id : { 188, 192, 437, 582, 649 }) {
++        for (int64_t id : { 188, 192, 437 }) {
+             auto op = graph.getOpById(id);
+             need(backend.isOpSupported(op) && backend.getInitFunc(op) && backend.getForwardFunc(op), "registry", "Registration did not become visible to HostBackend");
+         }
+@@ -236,7 +223,7 @@
+         } else if (op.is < xir::GatherElements>()) {
+             status = kernel::gatherElements(in[0], in[1], out[0], 1);
+         } else {
+-            status = kernel::scatterND(in[0], in[1], in[2], out[0], kernel::ScatterReduction::kNone);
++            throw Rejection("type", "Unsupported CPU operation");
+         }
+ 
+         need(status.ok(), "kernel", status.message);

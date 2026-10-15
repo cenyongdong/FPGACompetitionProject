@@ -1,0 +1,41 @@
+--- frozen/application_core.cpp
++++ noscatter/application_core.cpp
+@@ -177,16 +177,16 @@
+                 r.forward_ms = ms(begin);
+                 fc::record("runtime.forward", 0, 0, begin, Clock::now());
+                 need(pending_op == - 1, "Missing post callback");
+-                state("after_forward", 672, out);
++                state("after_forward", 664, out);
+                 begin = Clock::now();
+                 for (const auto & t : out) need(t.waitForReady(std::chrono::milliseconds(10000)), "Final output wait timed out");
+-                const auto last = fusion_baseline::sync.at(9191);
++                const auto final_count = fusion_baseline::final_count;
+                 r.completed_layers = device.cast < ZG330Device>().layerCount();
+-                need(r.completed_layers == uint32_t(last.first + last.second), "Final layer count differs from fixed baseline");
++                need(r.completed_layers == final_count, "Final layer count differs from fixed baseline");
+                 completed = true;
+                 r.final_wait_ms = ms(begin);
+                 fc::record("runtime.final_wait", 0, 0, begin, Clock::now());
+-                state("outputs_completed", 672, out);
++                state("outputs_completed", 664, out);
+                 caller_input = Tensor {};
+                 caller_bytes.clear();
+                 need(out.size() == 2 && shape(out[0].dtype(), {
+@@ -195,7 +195,7 @@
+                     1, 100, 14, 3
+                 }), "Runtime output contract differs");
+                 for (auto id : host_ids) need(observed.count(id) == 1, "Missing actual Host execution");
+-                need(zg_count == 7 && observed.size() == 7 && observed.count(0) == 1, "Actual callback coverage differs");
++                need(zg_count == fusion_baseline::members.size() && observed.size() == 5 && observed.count(0) == 1, "Actual callback coverage differs");
+                 r.host_callbacks = observed.size();
+                 r.zg_callbacks = zg_count;
+                 begin = Clock::now();
+@@ -204,7 +204,7 @@
+                 std::memcpy(r.poses.data(), pose_bytes.data(), sizeof(r.poses));
+                 r.output_ms = ms(begin);
+                 fc::record("runtime.output_read", 0, 0, begin, Clock::now());
+-                state("after_dump", 672, out);
++                state("after_dump", 664, out);
+                 begin = Clock::now();
+                 r.best_index = std::max_element(r.scores.begin(), r.scores.end()) - r.scores.begin();
+                 std::copy_n(r.poses.begin() + r.best_index * 42, 42, r.selected_pose.begin());

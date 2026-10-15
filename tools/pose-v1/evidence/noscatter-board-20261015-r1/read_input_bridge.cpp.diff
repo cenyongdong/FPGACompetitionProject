@@ -1,0 +1,94 @@
+--- frozen/read_input_bridge.cpp
++++ noscatter/read_input_bridge.cpp
+@@ -63,23 +63,7 @@
+             trace->flush();
+         }
+ 
+-        void observe192(const xir::Operation& op, size_t slot, const xrt::Tensor& src, pose::producer_count::Point point) {
+-            if (!permit_hardware || op->op_id != 192) return;
+-            const auto range = fusion_baseline::sync.at(9186);
+-            need(range.first + range.second == 234, "producer", "192 fusion end differs");
+-            const auto kind = src.data().ptype();
+-            pose::producer_count::Source source;
+-            source.producer = slot ? 8631 : 8629;
+-            source.bytes = src.dtype().bytes();
+-            source.offset = src.offset();
+-            source.capacity = src.chunk()->byte_size;
+-            source.kind = kind == xrt::PtrType::CPTR ? "CPTR" : kind == xrt::PtrType::ADDR ? "ADDR" : "BOTH";
+-            source.region = std::string(src.memRegion()->typeKey());
+-            if (kind != xrt::PtrType::CPTR) source.address = src.data().addr();
+-            pose::producer_count::sample(frame_id, invocation_id, slot, point, source, [&] {
+-                return allowed_device.cast < xrt::ZG330Device>().layerCount();
+-            });
+-        }
++
+ 
+         std::string identityType(const xir::TensorType& type) {
+             std::ostringstream f;
+@@ -182,7 +166,7 @@
+ 
+     // 1. 仅注册当前图缺失的算子；原Gather注册必须保持。
+     void register_ops(const xir::Network& graph, xrt::HostBackend backend) {
+-        for (int64_t id : { 188, 192, 437, 582, 649 }) {
++        for (int64_t id : { 188, 192, 437 }) {
+             auto op = graph.getOpById(id);
+             cpu::validate_spec(op);
+             need(!backend.isOpSupported(op) && !backend.getInitFunc(op) && !backend.getForwardFunc(op), "registry", "Existing or partial registration; never override");
+@@ -194,9 +178,8 @@
+         auto gf = backend.getForwardFunc(gather).value().target_type().hash_code();
+         add<xir::TopK>();
+         add<xir::GatherElements>();
+-        add<xir::ScatterND>();
+         need(backend.getInitFunc(gather).value().target_type().hash_code() == gi && backend.getForwardFunc(gather).value().target_type().hash_code() == gf, "registry", "Gather callback type changed");
+-        for (int64_t id : { 188, 192, 437, 582, 649 }) {
++        for (int64_t id : { 188, 192, 437 }) {
+             auto op = graph.getOpById(id);
+             need(backend.isOpSupported(op) && backend.getInitFunc(op) && backend.getForwardFunc(op), "registry", "Mixed registration not visible");
+         }
+@@ -221,33 +204,20 @@
+             // Real/synthetic parameters remain in the original op.
+             const auto& src = inputs[index];
+             bounds(src, value.tensorType(), "storage");
+-            observe192(op, index, src, pose::producer_count::Point::BeforeWait);
++
+             auto begin = Clock::now();
+             {
+                 forward_clock::Span t("bridge.wait", op->op_id, index);
+                 need(src.waitForReady(std::chrono::milliseconds(10000)), "ready", "SDK input wait timed out");
+             }
+             const auto waitEnd = pose::stage_observation::now();
+-            observe192(op, index, src, pose::producer_count::Point::AfterWait);
+-            if (permit_hardware && op->op_id == 582 && index == 0) {
+-                // A fresh SDK execution-counter poll, not a DMA/cache fence.
+-                const auto range = fusion_baseline::sync.at(9189), last = fusion_baseline::sync.at(9191);
+-                try {
+-                    forward_clock::Span counter_span("bridge.counter_wait", op->op_id, index);
+-                    auto result = pose::stage_observation::waitFresh(uint32_t(range.first + range.second), uint32_t(last.first + last.second), [&] {
+-                        return allowed_device.cast < xrt::ZG330Device>().layerCount();
+-                    }, std::chrono::milliseconds(10000));
+-                    pose::stage_observation::recordCompletion(frame_id, invocation_id, op->op_id, result);
+-                } catch (const std::exception& e) {
+-                    pose::stage_observation::recordSyncFailure(frame_id, invocation_id, op->op_id, e.what());
+-                    throw;
+-                }
+-            }
++
++
+             const auto allocation_sample = forward_clock::sample();
+             auto dst = xrt::Tensor(value.tensorType()).mallocOn(xrt::HostDevice::MemRegion());
+             forward_clock::record("bridge.allocate", op->op_id, index, allocation_sample, forward_clock::sample());
+             // SDK owns reads and cross-region copy semantics. Never dereference ADDR/BOTH.
+-            observe192(op, index, src, pose::producer_count::Point::BeforeCopy);
++
+             observeIdentity(op, index, false, src, dst, value.tensorType());
+             const auto copyBegin = pose::stage_observation::now();
+             {
+@@ -260,7 +230,7 @@
+                 }
+             }
+             const auto copyEnd = pose::stage_observation::now();
+-            observe192(op, index, src, pose::producer_count::Point::AfterCopy);
++
+             pose::stage_observation::Info metadata;
+             metadata.slot = index;
+             metadata.bytes = size_t(value.tensorType().bytes());
