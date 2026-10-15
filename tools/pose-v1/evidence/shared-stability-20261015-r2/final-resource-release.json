@@ -1,0 +1,9 @@
+{
+  "before_CmaFree_KiB": 144,
+  "after_CmaFree_KiB": 117968,
+  "before_MemAvailable_KiB": 735756,
+  "after_MemAvailable_KiB": 745324,
+  "note": "CMA includes reclaimable file pages; free count alone is not device allocation ownership proof",
+  "engine_destroyed": true,
+  "no_task_process_remains": true
+}

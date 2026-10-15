@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "stage": "stress",
+  "inferences": 62945,
+  "memory": {
+    "samples": 3367,
+    "steady_samples": 3257,
+    "peak_RSS_KiB": 79088,
+    "minimum_MemAvailable_KiB": 703732,
+    "children_optional_interface_missing": true,
+    "RSS": {
+      "first_median_KiB": 75204.0,
+      "last_median_KiB": 73628.0,
+      "change_KiB": -1576.0,
+      "min_KiB": 73628.0,
+      "max_KiB": 75736.0,
+      "linear_slope_KiB_per_minute": -15.006207155490278
+    },
+    "Pss": {
+      "first_median_KiB": 73887.0,
+      "last_median_KiB": 71779.0,
+      "change_KiB": -2108.0,
+      "min_KiB": 71776.0,
+      "max_KiB": 73890.0,
+      "linear_slope_KiB_per_minute": -17.6045841500206
+    },
+    "Private_Dirty": {
+      "first_median_KiB": 25480.0,
+      "last_median_KiB": 25480.0,
+      "change_KiB": 0.0,
+      "min_KiB": 25480.0,
+      "max_KiB": 25480.0,
+      "linear_slope_KiB_per_minute": -1.193215142073365e-13
+    },
+    "VmSize": {
+      "first_median_KiB": 467816.0,
+      "last_median_KiB": 467816.0,
+      "change_KiB": 0.0,
+      "min_KiB": 467816.0,
+      "max_KiB": 467816.0,
+      "linear_slope_KiB_per_minute": 0.0
+    },
+    "VmData": {
+      "first_median_KiB": 51160.0,
+      "last_median_KiB": 51160.0,
+      "change_KiB": 0.0,
+      "min_KiB": 51160.0,
+      "max_KiB": 51160.0,
+      "linear_slope_KiB_per_minute": 0.0
+    },
+    "fd_count": {
+      "first_median": 13.0,
+      "last_median": 13.0,
+      "min": 13,
+      "max": 13
+    },
+    "Threads": {
+      "first_median": 3.0,
+      "last_median": 3.0,
+      "min": 3,
+      "max": 3
+    },
+    "map_count": {
+      "first_median": 86.0,
+      "last_median": 86.0,
+      "min": 86,
+      "max": 86
+    },
+    "regular_copy_metadata_rows": 12,
+    "regular_identity_rows": 24,
+    "timing_record_rows": 121,
+    "CmaFree_KiB_range": [
+      0,
+      117968
+    ]
+  },
+  "Engine_ms": {
+    "mean": 23.278220439907855,
+    "median": 22.7425,
+    "p95": 23.451264,
+    "max": 4158.13099
+  }
+}

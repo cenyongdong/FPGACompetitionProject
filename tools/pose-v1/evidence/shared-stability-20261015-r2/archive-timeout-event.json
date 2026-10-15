@@ -1,0 +1,13 @@
+{
+  "event": "evidence_archiving_SSH_timeout_after_inference_completed",
+  "observation_source": "Unified exec session 88248 returned exit 1; full traceback remains in tool transcript",
+  "exception": "subprocess.TimeoutExpired",
+  "timeout_seconds": 180,
+  "outer_exception": "RuntimeError: Transport stopped: archive-stress exit 1",
+  "inference_completed_before_event": 62945,
+  "inference_and_controller_exit": 0,
+  "archive_path": "/tmp/wifi-pose-shared-stability-20261015-r2/stress.tar.xz",
+  "subsequent_observation": "The original tarfile archiver PID 95662 remained alive after SSH timeout; start ticks 2292949",
+  "response": "Read-only monitor of existing process, then transfer existing completed archive; no overwrite or inference retry",
+  "is_reconstructed_event_summary_not_full_traceback": true
+}

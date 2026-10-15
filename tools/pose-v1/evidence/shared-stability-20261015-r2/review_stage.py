@@ -22,6 +22,20 @@ assert (run/'before.dmesg.txt').read_bytes()==(run/'after.dmesg.txt').read_bytes
 pre,post=load(run/'preflight.json'),load(run/'post-preflight.json')
 for k in ('boot_files','libraries','SDK_packages','fpga_state'):assert pre[k]==post[k],k
 assert post['fpga_state']=='operating' and 'pose_shared_' not in post['processes']
+binding=load(out/'engine/binding-summary.json')
+assert binding['coverage_complete'] and binding['original_hardops']==1021 and binding['validated_runtime_final_count']==612
+graph=load(D/'models/piw24_shared_ZG.json');hard={o['op_id'] for o in graph['ops'] if o['_type_key']=='icraft::xir::HardOp'}
+bound=lines(out/'engine/after-apply.all-bindings.jsonl')
+hosts={r['binding_key'] for r in bound if r['backend']=='icraft::xrt::HostBackendNode'}
+zg={r['binding_key'] for r in bound if 'ZG330BackendNode' in r['backend']}
+assert hosts=={0,188,192,437,442,565} and len(zg)==5
+metadata={r['op_id']:r for r in lines(out/'engine/after-apply.zg-hardop-map.jsonl')}
+members=[i for g in zg for i in metadata[g]['merge_from']]
+assert len(members)==len(set(members))==1021 and set(members)==hard
+end=0
+for start,count in sorted((metadata[g]['sync_index'],metadata[g]['layer_count']) for g in zg):
+    assert start==end;end+=count
+assert end==612
 f=lines(out/'frames.jsonl');n=len(f);assert n>0 and all(x['matched'] for x in f)
 assert all(x['completed_layers']==612 and x['host_callbacks']==5 and x['zg_callbacks']==5 for x in f)
 names=['S11_01_308','S11_01_309','S11_01_310']
@@ -42,12 +56,16 @@ else:
         # Input stream is inputs.f32; scores and poses names already plural.
         assert path.stat().st_size==n*counts[key]*4,(path,path.stat().st_size,n)
         actual[key]=np.memmap(path,dtype='<f4',mode='r',shape=(n,counts[key]))
-max_checked=0.;max_all=0.;excluded_above=0
+max_checked=0.;max_all=0.;excluded_above=0;repeat_changed_frames=0;repeat_max_coordinate_mm=0
+first_shared_poses=np.array(actual['poses'][:3],copy=True)
 for start in range(0,n,128):
     stop=min(n,start+128);indices=np.arange(start,stop)%3
     for key in keys:assert np.isfinite(actual[key][start:stop]).all(),(key,start)
     for key in ('input','scores'):
         assert np.array_equal(actual[key][start:stop].view('u4'),refs[key][indices].view('u4')),(key,start)
+    repeated=first_shared_poses[indices]
+    repeat_changed_frames+=int(np.count_nonzero(np.any(actual['poses'][start:stop].view('u4')!=repeated.view('u4'),axis=1)))
+    repeat_max_coordinate_mm=max(repeat_max_coordinate_mm,float(np.abs(actual['poses'][start:stop].astype('f8')-repeated).max()*1000))
     delta=(actual['poses'][start:stop].astype('f8')-refs['poses'][indices].astype('f8')).reshape(-1,100,14,3)*1000
     norms=np.linalg.norm(delta,axis=-1);mask=refs['scores'][indices]>np.float32(.2)
     fore=norms[mask];back=norms[~mask]
@@ -103,6 +121,8 @@ report=dict(status='passed' if leak_screen is not False else 'memory_growth_scre
     max_checked_joint_delta_mm=max_checked,max_all_joint_delta_mm=max_all,
     excluded_background_overlimit_joints=excluded_above,memory=memory,memory_growth_screen_passed=leak_screen,
     timing_ms=stats,SDK_BOOT_kernel_unchanged=True,no_task_process_remains=True,
+    binding=binding,complete_HardOp_union_verified=True,
+    same_graph_repeat_pose_changed_frames=repeat_changed_frames,same_graph_repeat_max_coordinate_mm=repeat_max_coordinate_mm,
     complete_saved_actual_outputs=True,graceful_engine_cleanup=True,
     duration=load(out/'summary.json') if stage!='basic' else None,
     leak_limit='Finite observation cannot prove absence of leaks in all inputs, paths, or indefinitely')

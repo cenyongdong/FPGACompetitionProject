@@ -1,11 +1,13 @@
 """Standalone scientific evidence plots, generated only after complete return."""
 from pathlib import Path
-import json
+import json,os
+E=Path(__file__).resolve().parent
+os.environ['MPLCONFIGDIR']=str(E/'mpl-config')
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-E=Path(__file__).resolve().parent;run=E/'returned-stress/run-stress'
+run=E/'returned-stress/run-stress'
 def load(p):return json.loads(p.read_text(encoding='utf-8'))
 assert load(E/'stress-analysis.json')['exit']==0
 r=[json.loads(s) for s in (run/'resources.jsonl').read_text().splitlines() if s]

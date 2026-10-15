@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "no_inference_controller_or_archive_process_remains": true,
+  "SDK_BOOT_unchanged": true,
+  "kernel_unchanged": true,
+  "kernel_comparison": "Complete bytes equal; exact original subprocess.check_output capture",
+  "prior_audit_assertion": "Direct SSH shell dmesg escaped the existing copyright UTF-8 bytes as literal \\xc2\\xa9; original Python capture did not. First assertion preserved; no new kernel message.",
+  "fpga_state": "operating",
+  "inference_restarted": false,
+  "connections": "Finite SSH/scp calls completed; no polling service or listener remains",
+  "unrelated_user_sessions": "Existing user SSH/Moba monitoring left untouched"
+}

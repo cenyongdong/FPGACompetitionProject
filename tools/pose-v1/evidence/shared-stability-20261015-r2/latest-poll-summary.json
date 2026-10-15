@@ -1,14 +1,14 @@
 {
-  "sequence": 13,
-  "running": true,
-  "elapsed_seconds": 651.3,
-  "completed": 22880,
-  "RSS_KiB": 75736,
-  "PSS_KiB": 73884,
+  "sequence": 43,
+  "running": false,
+  "elapsed_seconds": 1800.0,
+  "completed": 62945,
+  "RSS_KiB": 73628,
+  "PSS_KiB": 71779,
   "fd": 13,
   "threads": 3,
-  "MemAvailable_KiB": 721240,
-  "exit": null,
-  "evidence_complete": false,
+  "MemAvailable_KiB": 719904,
+  "exit": 0,
+  "evidence_complete": true,
   "error": null
 }

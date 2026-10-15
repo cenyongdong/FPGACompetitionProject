@@ -1,0 +1,96 @@
+    PID    PPID    PGID     ELAPSED COMMAND
+      1       0       1    06:27:45 /sbin/init
+      2       0       0    06:27:45 [kthreadd]
+      3       2       0    06:27:45 [rcu_gp]
+      4       2       0    06:27:45 [rcu_par_gp]
+      8       2       0    06:27:45 [mm_percpu_wq]
+      9       2       0    06:27:45 [ksoftirqd/0]
+     10       2       0    06:27:45 [rcu_sched]
+     11       2       0    06:27:45 [migration/0]
+     12       2       0    06:27:45 [cpuhp/0]
+     13       2       0    06:27:45 [cpuhp/1]
+     14       2       0    06:27:45 [migration/1]
+     15       2       0    06:27:45 [ksoftirqd/1]
+     18       2       0    06:27:45 [cpuhp/2]
+     19       2       0    06:27:45 [migration/2]
+     20       2       0    06:27:45 [ksoftirqd/2]
+     23       2       0    06:27:45 [cpuhp/3]
+     24       2       0    06:27:45 [migration/3]
+     25       2       0    06:27:45 [ksoftirqd/3]
+     28       2       0    06:27:45 [kdevtmpfs]
+     29       2       0    06:27:45 [kworker/0:1-events]
+     32       2       0    06:27:45 [kauditd]
+     33       2       0    06:27:45 [oom_reaper]
+     34       2       0    06:27:45 [writeback]
+     35       2       0    06:27:45 [kcompactd0]
+     36       2       0    06:27:45 [khugepaged]
+     54       2       0    06:27:44 [kblockd]
+     55       2       0    06:27:44 [edac-poller]
+     56       2       0    06:27:44 [watchdogd]
+     57       2       0    06:27:44 [rpciod]
+     58       2       0    06:27:44 [kworker/u9:0-kbase_pm_poweroff_wait]
+     59       2       0    06:27:44 [xprtiod]
+     60       2       0    06:27:44 [kswapd0]
+     61       2       0    06:27:44 [ecryptfs-kthrea]
+     62       2       0    06:27:44 [nfsiod]
+     63       2       0    06:27:44 [spi3]
+     64       2       0    06:27:44 [stmmac_wq]
+     65       2       0    06:27:43 [kworker/u8:1-events_unbound]
+     68       2       0    06:27:43 [kworker/u8:2-flush-179:0]
+     69       2       0    06:27:43 [kpktgend_0]
+     71       2       0    06:27:43 [kpktgend_1]
+     72       2       0    06:27:43 [kpktgend_2]
+     73       2       0    06:27:43 [kpktgend_3]
+     74       2       0    06:27:43 [ipv6_addrconf]
+     75       2       0    06:27:43 [mmc_complete]
+     77       2       0    06:27:43 [kworker/1:1H-kblockd]
+     80       2       0    06:27:43 [jbd2/mmcblk0p2-]
+     81       2       0    06:27:43 [ext4-rsv-conver]
+     82       2       0    06:27:43 [kworker/3:1H-kblockd]
+    101       1     101    06:27:41 /lib/systemd/systemd-journald
+    114       2       0    06:27:40 [kbase_job_fault]
+    115       2       0    06:27:40 [kworker/u9:1]
+    119       2       0    06:27:39 [mvx_securevideo]
+    120       2       0    06:27:39 [fw_cache]
+    121       2       0    06:27:39 [mvx_sched]
+    124       2       0    06:27:39 [kworker/2:2-events]
+    126       1     126    06:27:39 /lib/systemd/systemd-timesyncd
+    131       1     131    06:27:38 /usr/sbin/cron -f
+    132       1     132    06:27:38 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    137       1     137    06:27:38 /usr/sbin/rsyslogd -n -iNONE
+    138       1     138    06:27:38 /lib/systemd/systemd-logind
+    151       1     151    06:27:38 /lib/systemd/systemd-resolved
+    152       1     152    06:27:38 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    187       1     187    06:27:32 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+    188       1     188    06:27:32 /sbin/agetty -o -p -- \u --noclear tty1 linux
+    189       1     189    06:27:32 /sbin/agetty -o -p -- \u --noclear ttyPS0 vt220
+    469     187     469    04:28:10 sshd: root@pts/0
+    471     187     471    04:28:08 sshd: root@notty
+    473       1     473    04:28:08 /lib/systemd/systemd --user
+    475     473     473    04:28:08 (sd-pam)
+    491     469     491    04:28:07 -bash
+    494     469     494    04:28:07 bash -c while true; do sleep 1;head -v -n 8 /proc/meminfo; head -v -n 2 /proc/stat /proc/version /proc/uptime /proc/loadavg /proc/sys/fs/file-nr /proc/sys/kernel/hostname; tail -v -n 32 /proc/net/dev;echo '==> /proc/df <==';df -l;echo '==> /proc/who <==';who;echo '==> /proc/end <==';echo '##Moba##'; done
+    509     471     509    04:28:07 /usr/lib/openssh/sftp-server
+  81134       2       0       43:28 [kworker/1:0-events]
+  81537       2       0       42:26 [kworker/0:0H-mmc_complete]
+  86390       2       0       29:45 [kworker/2:2H-kblockd]
+  91846       2       0       15:36 [kworker/3:0-events]
+  94031       2       0       09:55 [kworker/3:2-mm_percpu_wq]
+  94351       2       0       09:05 [kworker/1:2-mm_percpu_wq]
+  94397       2       0       09:00 [kworker/0:2H]
+  94506       2       0       08:41 [kworker/2:0H-kblockd]
+  94676       2       0       08:13 [kworker/2:0]
+  94761       2       0       07:59 [kworker/3:0H-kblockd]
+  94938       2       0       07:30 [kworker/1:2H-kblockd]
+  95251       2       0       06:41 [kworker/0:2]
+  95662       1   95662       05:36 python3 -c from pathlib import Path import tarfile r=Path('/tmp/wifi-pose-shared-stability-20261015-r2');p=r/('stress'+'.tar.xz');assert not p.exists() with tarfile.open(p,'x:xz',preset=1) as t:  t.add(r/('run-'+'stress'),arcname='run-'+'stress') 
+  96155       2       0       04:13 [kworker/3:1-mm_percpu_wq]
+  96228       2       0       04:01 [kworker/1:1-events]
+  96523       2       0       03:11 [kworker/2:1H]
+  96656       2       0       02:48 [kworker/3:2H]
+  97017       2       0       01:47 [kworker/1:0H]
+  97648     494     494       00:00 sleep 1
+  97649     187   97649       00:00 sshd: root@notty
+  97661   97649   97661       00:00 bash -c ps -eo pid,ppid,pgid,etime,args; ls -l /tmp/wifi-pose-shared-stability-20261015-r2/stress.tar.xz
+  97662   97661   97661       00:00 ps -eo pid,ppid,pgid,etime,args
+-rw-r--r-- 1 root root 3138148 Mar 13 09:55 /tmp/wifi-pose-shared-stability-20261015-r2/stress.tar.xz
