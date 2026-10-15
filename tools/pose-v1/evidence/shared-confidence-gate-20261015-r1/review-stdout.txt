@@ -1,0 +1,33 @@
+{
+  "status": "three_saved_frames_pass_confidence_scoped_gate_offline",
+  "max_checked_joint_delta_mm": 0.9765625,
+  "cases": [
+    {
+      "case": "S11_01_308",
+      "checked_ids": [
+        0
+      ],
+      "max_checked_mm": 0.9765625,
+      "changed_checked": 2,
+      "changed_background": 76
+    },
+    {
+      "case": "S11_01_309",
+      "checked_ids": [
+        0
+      ],
+      "max_checked_mm": 0.9765625,
+      "changed_checked": 2,
+      "changed_background": 203
+    },
+    {
+      "case": "S11_01_310",
+      "checked_ids": [
+        0
+      ],
+      "max_checked_mm": 0.48828125,
+      "changed_checked": 2,
+      "changed_background": 21
+    }
+  ]
+}

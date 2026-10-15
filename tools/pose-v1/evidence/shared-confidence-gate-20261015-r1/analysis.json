@@ -1,0 +1,206 @@
+{
+  "status": "three_saved_frames_pass_confidence_scoped_gate_offline",
+  "policy": {
+    "id": "shared-fp16-score-gt02-joint-3mm-v2",
+    "user_instruction": "仅对score>0.2的候选进行3mm关节误差检查，低分背景候选不参与位置硬门限比较；用户认为当前阶段基本通过",
+    "scope": "Same fixed shared FP16 graph and same-slot joint comparison, restricted to reference score>FP32(0.2)",
+    "max_joint_euclidean_delta_mm": 3.0,
+    "inclusive": true,
+    "model_units_to_mm": 1000.0,
+    "scores": "all100 bitwise equal",
+    "input": "all10800 bitwise equal",
+    "finite": "all inputs/outputs/references finite; nonfinite stops",
+    "MPJPE": "Report measured changes; no new hard MPJPE threshold was specified by user",
+    "graph_json_sha256": "a1395205eed11112ac0e23dacf8eec4c09d7dfec120e99b060a9361cb9c812cc",
+    "graph_raw_sha256": "d235ec300f2872f1b78ce6101bc98fd2cc13c47a53fe99f76e045587148279dd",
+    "no_candidate_rematching": true,
+    "no_output_repair": true,
+    "save_before_compare": true,
+    "SDK_index_identity_timeout_stops_unchanged": true,
+    "cause": "FP16 step-sized differences observed; exact source and low-score training-drift hypothesis unproven",
+    "historical_failure_rewritten": false,
+    "original_formal_core_gate_changed": false,
+    "minimum_checked_score": 0.2,
+    "score_operator": "strictly greater than",
+    "score_threshold_storage": "FP32 literal 0.2f",
+    "zero_selected": "position gate inapplicable; finite values and complete score identity still checked",
+    "background": "all raw values and errors retained; no position hard limit; finite checks retained"
+  },
+  "verification_platform": "Windows CPU; actual C++ gate replay plus independent NumPy calculation",
+  "new_board_inferences": 0,
+  "original_board_run_exit": 1,
+  "original_failures_preserved": true,
+  "frames": [
+    {
+      "case": "S11_01_308",
+      "cpp_exit": 0,
+      "cpp": {
+        "accepted": true,
+        "finite": true,
+        "scores_bitwise_equal": true,
+        "poses_bitwise_equal": false,
+        "checked_candidates": 1,
+        "excluded_candidates": 99,
+        "max_joint_delta_mm": 1.953125,
+        "max_checked_joint_delta_mm": 0.9765625,
+        "max_excluded_joint_delta_mm": 1.953125,
+        "excluded_over_limit_joints": 0
+      },
+      "checked_candidate_ids": [
+        0
+      ],
+      "checked_scores": [
+        0.9482421875
+      ],
+      "max_checked_joint_delta_mm": 0.9765625,
+      "max_excluded_joint_delta_mm": 1.953125,
+      "changed_checked_coordinates": 2,
+      "changed_excluded_coordinates": 76,
+      "all_candidate_over_limit_diagnostics": [],
+      "position_gate_applicable": true,
+      "actual_files": {
+        "input": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49",
+        "scores": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+        "poses": "155a17a73bc56352c8ea06697958e978f0ee9cdce364e24c842f4473d869d824"
+      },
+      "saved_original_timing_ms": {
+        "process_ms": 32.90414,
+        "preprocess_ms": 8.55187,
+        "input_prepare_ms": 0.1377,
+        "state_clear_ms": 0.00511,
+        "forward_ms": 21.48802,
+        "final_wait_ms": 0.39058,
+        "output_read_ms": 1.89805,
+        "selection_ms": 0.00109,
+        "process_cpu_ms": 32.855,
+        "actual_save_ms": 0.77705,
+        "comparison_ms": 0.27604
+      }
+    },
+    {
+      "case": "S11_01_309",
+      "cpp_exit": 0,
+      "cpp": {
+        "accepted": true,
+        "finite": true,
+        "scores_bitwise_equal": true,
+        "poses_bitwise_equal": false,
+        "checked_candidates": 1,
+        "excluded_candidates": 99,
+        "max_joint_delta_mm": 1.953125,
+        "max_checked_joint_delta_mm": 0.9765625,
+        "max_excluded_joint_delta_mm": 1.953125,
+        "excluded_over_limit_joints": 0
+      },
+      "checked_candidate_ids": [
+        0
+      ],
+      "checked_scores": [
+        0.97900390625
+      ],
+      "max_checked_joint_delta_mm": 0.9765625,
+      "max_excluded_joint_delta_mm": 1.953125,
+      "changed_checked_coordinates": 2,
+      "changed_excluded_coordinates": 203,
+      "all_candidate_over_limit_diagnostics": [],
+      "position_gate_applicable": true,
+      "actual_files": {
+        "input": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300",
+        "scores": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f",
+        "poses": "c347ae3bb5e56bc99c17428fa27b7f8834d2492352d2b6e9a6693a6ea20672f6"
+      },
+      "saved_original_timing_ms": {
+        "process_ms": 27.31461,
+        "preprocess_ms": 8.86688,
+        "input_prepare_ms": 0.08307,
+        "state_clear_ms": 0.00455,
+        "forward_ms": 16.12437,
+        "final_wait_ms": 0.71611,
+        "output_read_ms": 1.03509,
+        "selection_ms": 0.00107,
+        "process_cpu_ms": 27.305,
+        "actual_save_ms": 0.48015,
+        "comparison_ms": 0.17913
+      }
+    },
+    {
+      "case": "S11_01_310",
+      "cpp_exit": 0,
+      "cpp": {
+        "accepted": true,
+        "finite": true,
+        "scores_bitwise_equal": true,
+        "poses_bitwise_equal": false,
+        "checked_candidates": 1,
+        "excluded_candidates": 99,
+        "max_joint_delta_mm": 5.524271728019903,
+        "max_checked_joint_delta_mm": 0.48828125,
+        "max_excluded_joint_delta_mm": 5.524271728019903,
+        "excluded_over_limit_joints": 1
+      },
+      "checked_candidate_ids": [
+        0
+      ],
+      "checked_scores": [
+        0.96826171875
+      ],
+      "max_checked_joint_delta_mm": 0.48828125,
+      "max_excluded_joint_delta_mm": 5.524271728019903,
+      "changed_checked_coordinates": 2,
+      "changed_excluded_coordinates": 21,
+      "all_candidate_over_limit_diagnostics": [
+        {
+          "candidate": 24,
+          "joint": 4,
+          "score": 0.0012969970703125,
+          "delta_mm": [
+            -3.90625,
+            0.0,
+            -3.90625
+          ],
+          "joint_delta_mm": 5.524271728019903,
+          "position_checked": false
+        }
+      ],
+      "position_gate_applicable": true,
+      "actual_files": {
+        "input": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187",
+        "scores": "6e4a7504161509f7ece781ab0471731b1d0fc75d40135eb0fd6c28f4bf321d35",
+        "poses": "bf019df666ce099d2cee726f8f440e4381f554f1808906a384605c26a25f261a"
+      },
+      "saved_original_timing_ms": {
+        "process_ms": 23.29739,
+        "preprocess_ms": 5.64195,
+        "input_prepare_ms": 0.04667,
+        "state_clear_ms": 0.00419,
+        "forward_ms": 15.53681,
+        "final_wait_ms": 0.72876,
+        "output_read_ms": 1.03253,
+        "selection_ms": 0.00114,
+        "process_cpu_ms": 23.292,
+        "actual_save_ms": 0.47666,
+        "comparison_ms": 0.17898
+      }
+    }
+  ],
+  "accepted_under_new_policy": 3,
+  "rejected_under_new_policy": 0,
+  "total_checked_candidates": 3,
+  "total_excluded_candidates": 297,
+  "max_checked_joint_delta_mm": 0.9765625,
+  "max_all_candidate_joint_delta_mm": 5.524271728019903,
+  "changed_checked_coordinates": 6,
+  "changed_excluded_coordinates": 300,
+  "MPJPE_reused_unchanged": {
+    "noscatter": 129.62791188557944,
+    "shared": 129.62259674072266
+  },
+  "saved_board_Engine_ms_mean": 27.83871333333333,
+  "user_stage_acceptance": "User regards current shared-refinement stage as basically passed; recorded within current three-frame scope",
+  "physical_bias_and_training_drift_proven": false,
+  "limits": [
+    "Offline policy re-evaluation, not a new successful board process exit",
+    "Only one confident candidate per saved frame; no full-dataset confidence gate or long-run acceptance",
+    "All background bytes and errors retained; all finite/score checks remain"
+  ]
+}
