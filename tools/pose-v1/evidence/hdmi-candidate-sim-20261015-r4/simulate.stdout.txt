@@ -1,0 +1,22 @@
+
+****** xsim v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/candidate/xsim_script.tcl
+# xsim {candidate} -autoloadwcfg -tclbatch {run.tcl}
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source run.tcl
+## run all
+CANDIDATE_CSR_PASS byte_strobes=1 stable_mailbox=1 atomic_snapshot=1 rejected_partial_command=1
+CANDIDATE_AXI_PASS cases=10
+CANDIDATE_CONTROL_PASS cases=7 csr_period_ns=14 mem_period_ns=5
+CANDIDATE_FULL_FRAME_PASS base_offset=0 bursts=32400 partial_bursts=0 words=518400 bytes=4147200 deterministic_backpressure=1
+CANDIDATE_FULL_FRAME_PASS base_offset=64 bursts=32401 partial_bursts=2 words=518400 bytes=4147200 deterministic_backpressure=1
+CANDIDATE_FULL_FRAME_PASS base_offset=4032 bursts=32401 partial_bursts=2 words=518400 bytes=4147200 deterministic_backpressure=1
+HDMI_CANDIDATE_TEST_PASS
+$finish called at time : 3961782500 ps : File "D:/FPGACompetitionProject/.local/hdmi-candidate-sim-20261015-r4/tb_candidate.sv" Line 12
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 15 20:30:41 2026...

@@ -1,5 +1,13 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-15 HDMI已获实板、隔离同配置重建、16根IP修订白名单及有限衍生字段例外授权。实板只读身份/12寄存器核验通过，BOOT/六份SDK/内核同；新r3有限契约门检、97.600秒IP生成及28项原有HDL参数/生成端口后检通过。实际生成AXI3互联两入口全32个ID、64读/64写完整16拍burst及背压通过，Procise原生互联综合16.417秒exit0；纯输出OBUFDS→ODU_DS真实引脚布线兼容探针通过。完整系统当前受阻于自定义PS7扩展端口与Procise PCPU7声明不匹配，PS门检8.418秒exit1，已停止。尚无完整候选位流，未下载、未改BOOT或重启，实屏仍待验；旧DATA继续暂停。 [本批总报告](tools/pose-v1/evidence/hdmi-bringup-20261015-r1/REPORT.md)、[生成/后检](tools/pose-v1/evidence/hdmi-ip-generation-20261015-r3/REPORT.md)、[PS阻塞与恢复入口](FPGA/hdmi_candidate/PS-ADAPTATION-STATUS.md)。
+
+以下各日期/批次保留原执行范围，旧“暂不上板”不覆盖最新实板授权。
+
+2026-10-15 HDMI：用户已认可r5像素内核结果及4KiB/FIFO成果；新r6 core/r7 pixel全阶段exit0，仿真分别11.540/30.102秒，均未超90秒。隔离uihdmitx.v两处时钟输入已改10'b1111100000，Lite 7FAMILY新旧模型各128周期验证20%→50%占空比通过。原r5超时及非目标UFAMILY精确边沿诊断失败保留。PS/DDR/TMDS原生物理集成、CDC/实现时序及实屏待验，暂不上板、不换BOOT。 [本批报告](tools/pose-v1/evidence/hdmi-split-20261015-r1/REPORT.md)、[候选状态](FPGA/hdmi_candidate/RESUME.md)。旧DATA继续暂停。
+
+2026-10-15 HDMI新核验：本地Lite BOOT/bit与选用版相同；实板显示控制0x20230218及12寄存器读取过，BOOT/六份SDK库/内核前后一致。参考RTL行为仿真确认200MHz扫描80.81Hz、停消费可卡读帧及AXI在RREADY=0时提前完成缺陷；后者不代表当前BOOT故障已证。显示器已接仍报时序不支持，误点稳定画面作废。用户已批准隔离候选修正独立时钟/AXI/停止换帧，先仿真和Procise构建，暂不上板。 [执行、原值和限制](tools/pose-v1/evidence/hdmi-contract-validation-20261015-r1/REPORT.md)。
+
 2026-10-15 HDMI已按用户要求先归档[完整讨论](ARCHITECTURE-DISCUSSION-20261015.md)，再一次板端只读核验：BOOT/三份SDK核心库同、FPGA operating；无DRM/fb/I²C适配器，clk_summary不能观测HDMI像素/PLL。参考RTL显示门控可能令读FIFO不再消费，不能等一帧即释放；当前发布位流时钟与停止契约待补，色条未启动。[执行/原值/停止门槛](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md)。未改BOOT/SDK/模型，无MMIO、设备初始化或后台，旧DATA暂停。
 
 2026-10-15共享新包稳定性已完成：原编译包三窗、30秒/1131次及30分钟/62,945次实板串行推理的数值/内存观察通过，完整实际输入/输出回传后SHA及现行门禁独立复核通过。暖机后RSS75204→73628KiB、PSS73887→71779KiB，Private_Dirty/VmData不增，FD13/线程3/映射86保持；Engine均值23.278220ms，含保存/比较速率34.969次/秒。无崩溃/SDK异常/新增内核日志，但11次process超过1秒、最大4.158秒（forward4.151秒/进程CPU20.177ms），时延长尾原因未知，列D41，不称实时性通过。Engine正常销毁、本批进程和连接结束。r1可选/proc接口失败原样保留，r2兼容修复4项本机检查后经用户明确允许新Session继续；归档SSH超时只监测/取回原归档，未重跑推理。模型/RAW/数学/CPU注册/NPU分配/SDK/BOOT不改，常规诊断限前三帧，异常证据路径保留。仅三个冻结输入，无视频/网络叠加，不能扩展为整机或任意输入绝对无泄漏保证。[完整报告](tools/pose-v1/evidence/shared-stability-20261015-r2/REPORT.md)。正式演示不换，旧DATA继续暂停。

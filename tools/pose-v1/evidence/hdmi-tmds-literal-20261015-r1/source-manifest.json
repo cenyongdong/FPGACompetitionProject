@@ -1,0 +1,32 @@
+{
+  "uihdmitx.v": {
+    "path": "D:\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\rtl\\display\\uihdmitx.v",
+    "sha256": "35491ba160c789e8d079e962f520e6f37496dd0ffefdf8106bc0bf05d55ebf15"
+  },
+  "tb_tmds_clock.sv": {
+    "path": "D:\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\sim\\tb_tmds_clock.sv",
+    "sha256": "f69c1b547e6b2235ff20af9ace433177e0b5bea6fd3c1825581632cab20f2d06"
+  },
+  "oserdese2_10to1.v": {
+    "path": "D:\\FPGACompetitionProject\\Docs\\26\u5d4c\u8d5b\u5f00\u53d1\\fpai_demo_fpga\\rtl\\display\\oserdese2_10to1.v",
+    "sha256": "2cc14bb6a8f96b5b726cba279f632fee772d77cc284744481491f23aa57e16f3"
+  },
+  "oserdese3_10to1.v": {
+    "path": "D:\\FPGACompetitionProject\\Docs\\26\u5d4c\u8d5b\u5f00\u53d1\\fpai_demo_fpga\\rtl\\display\\oserdese3_10to1.v",
+    "sha256": "8e44111ad38fc5e4e79875973e5f0730128abcac253bf52ca20c0f33e3dfc1b2"
+  },
+  "TMDSEncoder.vhd": {
+    "path": "D:\\FPGACompetitionProject\\Docs\\26\u5d4c\u8d5b\u5f00\u53d1\\fpai_demo_fpga\\rtl\\display\\TMDSEncoder.vhd",
+    "sha256": "d847c1f9fac360e400089ab7a8b8d3f52d73fa4fa5923690e73151470ee2bbb1"
+  },
+  "glbl.v": {
+    "path": "D:\\Xilinx\\Vivado\\2019.1\\data\\verilog\\src\\glbl.v",
+    "sha256": "c48753ff3481f46872a09160eee14b5596b37444c1bf2b84bf2acd922e7c982d"
+  },
+  "uihdmitx_legacy.v": {
+    "path": "D:\\FPGACompetitionProject\\Docs\\26\u5d4c\u8d5b\u5f00\u53d1\\fpai_demo_fpga\\rtl\\display\\uihdmitx.v",
+    "original_sha256": "a79310dc482010c4a8c4905d93c518d9fc81dd2e0608f7f4ea2e92b6943e94b6",
+    "simulated_sha256": "dbfc9755659bb7a153bc22fadd24f80740054421630455f23f3d43d31c414f33",
+    "change": "module name only; logic unchanged"
+  }
+}

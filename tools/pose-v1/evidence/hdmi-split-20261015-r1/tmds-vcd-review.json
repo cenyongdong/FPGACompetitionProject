@@ -1,0 +1,94 @@
+{
+  "source": "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\hdmi-tmds-literal-20261015-r3\\simulation-copy\\tmds_clock.vcd",
+  "sha256": "feac68b235f9de8caf7138c82df62e88a2ce0db2e1fa341531b8e5050bfa530d",
+  "review_window_ps": [
+    2500000,
+    3780000
+  ],
+  "time_unit": "1ps",
+  "kernel_reexecuted": false,
+  "constant_inputs": {
+    "tb_tmds_clock.fixed7.family_7.Inst_clk_oserdese2_10to1.txdata": "1111100000",
+    "tb_tmds_clock.fixedu.ULTRASCALE_FAMILY.Inst_clk_oserdese3_10to1.txdata": "1111100000",
+    "tb_tmds_clock.legacy7.family_7.Inst_clk_oserdese2_10to1.txdata": "0000110000",
+    "tb_tmds_clock.legacyu.ULTRASCALE_FAMILY.Inst_clk_oserdese3_10to1.txdata": "0000110000"
+  },
+  "channels": {
+    "p7": {
+      "periods_checked": 128,
+      "bit_center_samples": 1280,
+      "repeated_word": "1110000011",
+      "high_bits_per_character": 5,
+      "duty_at_bit_centers_percent": 50,
+      "edge_widths_ps": {
+        "low": {
+          "5000": 128
+        },
+        "high": {
+          "5000": 127
+        }
+      },
+      "complement_checked": true,
+      "target_Lite_branch": true
+    },
+    "pu": {
+      "periods_checked": 128,
+      "bit_center_samples": 1280,
+      "repeated_word": "1000001111",
+      "high_bits_per_character": 5,
+      "duty_at_bit_centers_percent": 50,
+      "edge_widths_ps": {
+        "low": {
+          "4901": 64,
+          "5000": 64
+        },
+        "high": {
+          "5099": 64,
+          "5000": 63
+        }
+      },
+      "complement_checked": true,
+      "target_Lite_branch": false
+    },
+    "b7": {
+      "periods_checked": 128,
+      "bit_center_samples": 1280,
+      "repeated_word": "0000000110",
+      "high_bits_per_character": 2,
+      "duty_at_bit_centers_percent": 20,
+      "edge_widths_ps": {
+        "high": {
+          "2000": 128
+        },
+        "low": {
+          "8000": 127
+        }
+      },
+      "complement_checked": true,
+      "target_Lite_branch": true
+    },
+    "bu": {
+      "periods_checked": 128,
+      "bit_center_samples": 1280,
+      "repeated_word": "0000011000",
+      "high_bits_per_character": 2,
+      "duty_at_bit_centers_percent": 20,
+      "edge_widths_ps": {
+        "high": {
+          "2000": 128
+        },
+        "low": {
+          "8000": 127
+        }
+      },
+      "complement_checked": true,
+      "target_Lite_branch": false
+    }
+  },
+  "independent_VCD_bitstream_review_passed": true,
+  "target_7FAMILY_exact_edge_width_check_passed": true,
+  "UFAMILY_exact_edge_width_test_r3_passed": false,
+  "UFAMILY_observation": "Vendor behavioral/gearbox simulation shows 99ps-scale edge variation; bit-center words correct. No claim of root cause or native device behavior.",
+  "r3_historical_gate_exit": 1,
+  "physical_Procise_or_silicon_signoff": false
+}

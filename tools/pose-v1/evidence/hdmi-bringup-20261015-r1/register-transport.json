@@ -1,0 +1,20 @@
+[
+  {
+    "stage": "01-fresh-directory",
+    "exit": 0,
+    "seconds": 0.5551555000056396,
+    "transport_budget": 20
+  },
+  {
+    "stage": "02-probe-transfer",
+    "exit": 0,
+    "seconds": 0.5618952000004356,
+    "transport_budget": 20
+  },
+  {
+    "stage": "03-sdk-read-once",
+    "exit": 0,
+    "seconds": 6.073172700002033,
+    "transport_budget": 20
+  }
+]

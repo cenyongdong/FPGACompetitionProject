@@ -1,0 +1,46 @@
+{
+  "axi_infrastructure_v1_1_0.vh": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ipshared\\ec67\\hdl\\axi_infrastructure_v1_1_0.vh",
+    "sha256": "6f75042bd294dd05d9e4d326fe845e6bd44ec51637b1ad8ce66fbc295f16cc52"
+  },
+  "axi_infrastructure_v1_1_vl_rfs.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ipshared\\ec67\\hdl\\axi_infrastructure_v1_1_vl_rfs.v",
+    "sha256": "64a5966a7f6c9f296102fb2816e0f4ac4808888b2b64bc0bdafae9ea019a72c4"
+  },
+  "generic_baseblocks_v2_1_vl_rfs.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ipshared\\b752\\hdl\\generic_baseblocks_v2_1_vl_rfs.v",
+    "sha256": "2017d9b1e1cfc182c43c0aea2d7bedb26e7052726b7e46b538373a1a0e1e3071"
+  },
+  "axi_crossbar_v2_1_vl_rfs.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ipshared\\ace7\\hdl\\axi_crossbar_v2_1_vl_rfs.v",
+    "sha256": "dff8fd53321a54271969af95806e21871fd1ef69ac71d41aa051b94fcc27aa91"
+  },
+  "axi_register_slice_v2_1_vl_rfs.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ipshared\\4d88\\hdl\\axi_register_slice_v2_1_vl_rfs.v",
+    "sha256": "f35da2f114950c16bdd94704fbfa9509214864ee7d06cb8d45d92707866027df"
+  },
+  "axi_data_fifo_v2_1_vl_rfs.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ipshared\\5b9c\\hdl\\axi_data_fifo_v2_1_vl_rfs.v",
+    "sha256": "f1dc2dac8110c57e8d7cb476cd7506b4317219cba0c3db74001544368783859b"
+  },
+  "ps_ai_xbar_7.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ip\\ps_ai_xbar_7\\synth\\ps_ai_xbar_7.v",
+    "sha256": "5d67520aa443edd044afac2f9c68e15650f390cb464f7721b0e73ab2ad0fb46f"
+  },
+  "ps_ai_s00_regslice_7.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ip\\ps_ai_s00_regslice_7\\synth\\ps_ai_s00_regslice_7.v",
+    "sha256": "36db5df7c8f725d796e0826cbb63ba959fd8c755462bc79eff03a35324515997"
+  },
+  "ps_ai_s01_regslice_0.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ip\\ps_ai_s01_regslice_0\\synth\\ps_ai_s01_regslice_0.v",
+    "sha256": "1d6430746e80a9459c513cc2512084827894622f139427b52513bc3d8b9e19b1"
+  },
+  "ps_ai_m00_regslice_0.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\ip\\ps_ai_m00_regslice_0\\synth\\ps_ai_m00_regslice_0.v",
+    "sha256": "8d12273a6de244e84d32a97241729ebbefd2d856162890bdaa5bd72fb1c43b93"
+  },
+  "ps_ai.v": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-ip-generation-20261015-r3\\reference\\fpai_demo_vivado.srcs\\sources_1\\bd\\ps_ai\\synth\\ps_ai.v",
+    "sha256": "a38db12424d0f9bba6a621f3169e10df6879d263ed6a338158d42ab399673ab9"
+  }
+}

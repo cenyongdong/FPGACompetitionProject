@@ -1,0 +1,26 @@
+[
+  {
+    "stage": "compile",
+    "exit": 0,
+    "seconds": 1.256055700003344,
+    "budget": 90,
+    "timed_out": false,
+    "group": "core"
+  },
+  {
+    "stage": "elaborate",
+    "exit": 0,
+    "seconds": 5.820201399998041,
+    "budget": 90,
+    "timed_out": false,
+    "group": "core"
+  },
+  {
+    "stage": "simulate",
+    "exit": 0,
+    "seconds": 11.540082999999868,
+    "budget": 90,
+    "timed_out": false,
+    "group": "core"
+  }
+]

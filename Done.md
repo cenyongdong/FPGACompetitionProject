@@ -1,5 +1,44 @@
 # 已完成工作记录
 
+## 2026-10-15：HDMI隔离候选开发、暂停与恢复验证
+
+### 工程内容总结
+
+本次实机阶段配套推进：2026-10-15 HDMI已获实板、隔离同配置重建、16根IP修订白名单及有限衍生字段例外授权。实板只读身份/12寄存器核验通过，BOOT/六份SDK/内核同；新r3有限契约门检、97.600秒IP生成及28项原有HDL参数/生成端口后检通过。实际生成AXI3互联两入口全32个ID、64读/64写完整16拍burst及背压通过，Procise原生互联综合16.417秒exit0；纯输出OBUFDS→ODU_DS真实引脚布线兼容探针通过。完整系统当前受阻于自定义PS7扩展端口与Procise PCPU7声明不匹配，PS门检8.418秒exit1，已停止。尚无完整候选位流，未下载、未改BOOT或重启，实屏仍待验；旧DATA继续暂停。 [本批总报告](tools/pose-v1/evidence/hdmi-bringup-20261015-r1/REPORT.md)、[生成/后检](tools/pose-v1/evidence/hdmi-ip-generation-20261015-r3/REPORT.md)、[PS阻塞与恢复入口](FPGA/hdmi_candidate/PS-ADAPTATION-STATUS.md)。 Windows/Vivado2019.1、XSim每阶段90秒；原生Procise2025.1.1temp/SVN32494、JFMQL30TAI676H。IP校验180秒/生成300秒、原生门检180秒。实际生成624文件树已ZIP归档并逐条SHA/CRC核验，297项原参考SHA保持；旧字面门检、驱动阶段误判与所有失败保留。当前无后台构建。
+
+以下为此前离线批次及其当时边界：
+
+新授权批次完成：用户已认可r5像素内核结果及4KiB/FIFO成果；新r6 core/r7 pixel全阶段exit0，仿真分别11.540/30.102秒，均未超90秒。隔离uihdmitx.v两处时钟输入已改10'b1111100000，Lite 7FAMILY新旧模型各128周期验证20%→50%占空比通过。原r5超时及非目标UFAMILY精确边沿诊断失败保留。PS/DDR/TMDS原生物理集成、CDC/实现时序及实屏待验，暂不上板、不换BOOT。 Windows/XSim2019.1在D:/FPGACompetitionProject，r6/r7与TMDS各阶段90秒。分组保留完整帧/像素/停止门检，未改9份生产扫描RTL；TMDS目标r4仿真6.419秒、五阶段exit0，真实参考包装与UNISIM/secureip行为模型、VCD保留。两处分支仅修正常量和说明注释，原参考字节不改；100MHz模型验证数字图案，非实板频率测量。所有授权任务均由代理实际执行，进程盘点/完整日志/源码/38项基线与文档修订SHA见[本批报告](tools/pose-v1/evidence/hdmi-split-20261015-r1/REPORT.md)、[候选状态](FPGA/hdmi_candidate/RESUME.md)。
+
+以下为此前恢复阶段及当时停止状态：
+
+恢复后实际结果：HDMI候选已由用户明确唤醒，4KiB按页拆分修正经r4三基址完整帧验证通过；新增FIFO/连续1080p扫描的Procise原生综合exit0。r5全部断言完成，但外层90秒超时、驱动exit1，整体不验收；已停止且未重跑，新分组入口待确认。PS/DDR/TMDS、CDC及系统实现未完成，暂不上板、不换BOOT。 Windows工作目录D:/FPGACompetitionProject，XSim2019.1每阶段90秒、Procise2025.1.1temp/SVN32494对JFMQL30TAI676H展开/综合预算180秒。新综合10.620秒exit0；r4每基址4147200字节完整地址/数据通过。r5原始日志完成2073600像素逐点比对、欠载排空、停像素时钟后STOP及全部旧用例，外层TimeoutExpired仍保留为失败。脚本已准备分组与失败证据/进程树清理修正，仅静态语法检查，无自动重跑。原参考/BOOT身份复核、本轮源码/日志与文档前后身份见[本轮证据](tools/pose-v1/evidence/hdmi-resume-20261015-r1/REPORT.md)、[继续入口](FPGA/hdmi_candidate/RESUME.md)。本次无板端连接。
+
+以下保留暂停时成果与当时状态：
+
+HDMI候选已按用户明确要求暂停，等待唤醒。隔离候选AXI10类/控制7类/CSR检查及完整1080p帧4,147,200字节背压验证通过，时钟与控制模块Procise原生展开/综合exit0；尚未原工程集成、布局布线/CDC时序或上板，不称整条HDMI通过。 用户批准保持1080p60的独立时钟/AXI/停止换帧候选后，已实现7个独立RTL模块与有限测试/构建入口，原参考源码、BOOT、模型和SDK保持。候选r2行为门检exit0，整帧32,400 burst/518,400字逐地址与数据比较；Procise2025.1.1temp/SVN32494在JFMQL30TAI676H原生时钟/控制展开综合分别6.752/8.677秒exit0，真实EDIF保留。用户随后要求暂停，未再启动构建；所有已发工具返回，工具进程名盘点为空，较早板端/FPAI已回收。[暂停证据](tools/pose-v1/evidence/hdmi-candidate-pause-20261015-r1/CHECKPOINT.md)。
+
+### 对后续开发的参考
+
+本次补充：受管理IP按BD角色匹配，工具编号不作契约；CONFIG/实际MODELPARAM、生成端口、AXI路由及原生工具适配分别门检。校验前旧警告与修正后阶段区分；有限例外另立门检，旧false不回写。5位thread/6位来源ID需实际返回路由验证，不能把位宽WARN一律忽略。PS7扩展AI端口不能删掉或用普通PS/黑盒绕过；纯输出OBUFDS可映射ODU_DS，但双向IODU的TMDS物理失败保留；兼容探针布线无STA签核意义。
+
+
+新批次参考：数据字符常量应显式指定10位二进制；80位ASCII到10位截断可产生20%占空比，即使语法合法。模块/PASS与外层预算分别记录，前端编译模式/secureip依赖明确分开。附加非目标UFAMILY精确边沿差不能套到Lite，保留原失败；Lite目标门检不放宽。已有通过后不重复无变更的扫描综合/负载，后续集中原生物理适配与系统集成门槛。
+
+恢复后补充：页拆分保留64字节帧址契约；原语综合不等于系统实现。保持像素扫描与内存停止两个责任边界，欠载停止不得伪造AXI完成。全像素断言PASS不能盖过外层超时；拆分独立展开根以降低无关测试事件，需新批次确认后实际验证。原工程hook/IP配套、HP2/GP映射和物理TMDS/CDC尚未闭合，详见[集成契约](FPGA/hdmi_candidate/INTEGRATION.md)。
+
+暂停时参考（页拆分已在本次r4解决）：候选分层保持SDK、PS/NPU边界；命令接收与地址采用/停止完成分开，缺失RLAST不得提前释放。原生综合和RTL验证不能替代FIFO/PHY/总线集成、PLL物理频率、CDC及布局布线。读[恢复入口](FPGA/hdmi_candidate/RESUME.md)核对源码SHA及最新指令，保持当前BOOT、不上板；旧DATA单独暂停。文档前值及修订SHA另存，不覆盖原失败或历史完成清单。
+
+## 2026-10-15：HDMI寄存器实板核验与读握手／停止行为验证
+
+### 工程内容总结
+
+HDMI新核验：本地Lite BOOT/bit与选用版相同；实板显示控制0x20230218及12寄存器读取过，BOOT/六份SDK库/内核前后一致。参考RTL行为仿真确认200MHz扫描80.81Hz、停消费可卡读帧及AXI在RREADY=0时提前完成缺陷；后者不代表当前BOOT故障已证。显示器已接仍报时序不支持，误点稳定画面作废。用户已批准隔离候选修正独立时钟/AXI/停止换帧，先仿真和Procise构建，暂不上板。 [完整阶段证据](tools/pose-v1/evidence/hdmi-contract-validation-20261015-r1/REPORT.md)。Windows本机XSim2019.1行为验证r6通过，参考AXI仅仿真副本去10项重复端口声明，逻辑不改；原RTL/BOOT不写。FPAI/ARM探针新r3实际SDK生命周期+12读取exit0、0.083909秒；十秒预算，原值/前后日志完整，未启动DMA/推理/编码。所有进程连接结束，FPAI恢复停止。主机权限失败、链接剔除、仿真语法/timescale/watchdog失败分别保留；不把缺陷复现当DUT正确或实屏通过。
+
+### 对后续开发的参考
+
+完成标志必须绑定真实RVALID&&RREADY、在途读和请求停止；不能先关DE再固定延时释放。相同BOOT和寄存器特征提升对应证据，不能证明完整源码构建或现场像素频率。无设备FD不证明PL停止；板端时钟日期不作为主机执行日期。候选另目录实施，保持1080p60和模型/SDK/协议，下载与BOOT变更仍须另议；旧DATA暂停。文档修订另存SHA，不覆盖失败或旧完成清单。
+
 ## 2026-10-15：HDMI本地原始资料补查与时钟配置推断
 
 ### 工程内容总结

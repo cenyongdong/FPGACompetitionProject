@@ -1,0 +1,15 @@
+[
+  {
+    "name": "container-initial",
+    "argv": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{.State.Status}}",
+      "FPAI"
+    ],
+    "exit": 1,
+    "seconds": 0.16600949999701697,
+    "timeout": 90
+  }
+]

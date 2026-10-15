@@ -1,0 +1,128 @@
+[
+  {
+    "name": "container-initial",
+    "argv": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{.State.Status}}",
+      "FPAI"
+    ],
+    "exit": 0,
+    "seconds": 0.04010120000020834,
+    "timeout": 90
+  },
+  {
+    "name": "container-start",
+    "argv": [
+      "docker",
+      "start",
+      "FPAI"
+    ],
+    "exit": 0,
+    "seconds": 4.913744799996493,
+    "timeout": 90
+  },
+  {
+    "name": "fresh-directory",
+    "argv": [
+      "docker",
+      "exec",
+      "FPAI",
+      "test",
+      "!",
+      "-e",
+      "/tmp/hdmi-register-probe-20261015-r2"
+    ],
+    "exit": 0,
+    "seconds": 0.07818539999425411,
+    "timeout": 90
+  },
+  {
+    "name": "copy",
+    "argv": [
+      "docker",
+      "cp",
+      "D:\\FPGACompetitionProject\\.local\\hdmi-register-probe-20261015-r2",
+      "FPAI:/tmp/hdmi-register-probe-20261015-r2"
+    ],
+    "exit": 0,
+    "seconds": 0.05170609999913722,
+    "timeout": 90
+  },
+  {
+    "name": "configure",
+    "argv": [
+      "docker",
+      "exec",
+      "FPAI",
+      "cmake",
+      "-S",
+      "/tmp/hdmi-register-probe-20261015-r2",
+      "-B",
+      "/tmp/hdmi-register-probe-20261015-r2/build",
+      "-DCMAKE_SYSTEM_NAME=Linux",
+      "-DCMAKE_SYSTEM_PROCESSOR=aarch64",
+      "-DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++",
+      "-DCMAKE_PREFIX_PATH=/usr/cmake",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "exit": 0,
+    "seconds": 0.3122793000002275,
+    "timeout": 90
+  },
+  {
+    "name": "build",
+    "argv": [
+      "docker",
+      "exec",
+      "FPAI",
+      "cmake",
+      "--build",
+      "/tmp/hdmi-register-probe-20261015-r2/build",
+      "--parallel",
+      "2"
+    ],
+    "exit": 0,
+    "seconds": 1.5186261999988346,
+    "timeout": 90
+  },
+  {
+    "name": "return-binary",
+    "argv": [
+      "docker",
+      "cp",
+      "FPAI:/tmp/hdmi-register-probe-20261015-r2/build/hdmi_readonly_probe",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\hdmi-register-probe-20261015-r2\\hdmi_readonly_probe"
+    ],
+    "exit": 0,
+    "seconds": 0.048502599995117635,
+    "timeout": 90
+  },
+  {
+    "name": "readelf",
+    "argv": [
+      "docker",
+      "exec",
+      "FPAI",
+      "aarch64-linux-gnu-readelf",
+      "-h",
+      "-d",
+      "/tmp/hdmi-register-probe-20261015-r2/build/hdmi_readonly_probe"
+    ],
+    "exit": 0,
+    "seconds": 0.0759436000007554,
+    "timeout": 90
+  },
+  {
+    "name": "container-stop",
+    "argv": [
+      "docker",
+      "stop",
+      "FPAI"
+    ],
+    "exit": 0,
+    "seconds": 0.23564700000133598,
+    "timeout": 30
+  }
+]

@@ -1,0 +1,45 @@
+[
+  {
+    "stage": "compile",
+    "argv": [
+      "D:\\Xilinx\\Vivado\\2019.1\\bin\\xvlog.bat",
+      "--sv",
+      "color_bar.v",
+      "frame_fifo_read.v",
+      "video_rect_read_data.v",
+      "timing_gen_xy.v",
+      "tb_hdmi_contract.sv"
+    ],
+    "exit": 0,
+    "seconds": 1.0074978999982704,
+    "timeout_seconds": 120
+  },
+  {
+    "stage": "elaborate",
+    "argv": [
+      "D:\\Xilinx\\Vivado\\2019.1\\bin\\xelab.bat",
+      "tb_hdmi_contract",
+      "--timescale",
+      "1ns/1ps",
+      "--debug",
+      "typical",
+      "--snapshot",
+      "hdmi_contract"
+    ],
+    "exit": 0,
+    "seconds": 8.046927899995353,
+    "timeout_seconds": 120
+  },
+  {
+    "stage": "simulate",
+    "argv": [
+      "D:\\Xilinx\\Vivado\\2019.1\\bin\\xsim.bat",
+      "hdmi_contract",
+      "--tclbatch",
+      "run.tcl"
+    ],
+    "exit": 0,
+    "seconds": 20.2210655999952,
+    "timeout_seconds": 120
+  }
+]

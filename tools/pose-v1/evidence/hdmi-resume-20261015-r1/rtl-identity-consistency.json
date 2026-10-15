@@ -1,0 +1,65 @@
+[
+  {
+    "source": "hdmi_axi_read.v",
+    "native_sha": "4608af5a4701aa18cdd1513966aae3301909883dc94ea43454bcbc0421f00e17",
+    "r5_sha": "4608af5a4701aa18cdd1513966aae3301909883dc94ea43454bcbc0421f00e17",
+    "current_sha": "4608af5a4701aa18cdd1513966aae3301909883dc94ea43454bcbc0421f00e17",
+    "equal": true
+  },
+  {
+    "source": "hdmi_command_mailbox.v",
+    "native_sha": "50df98daa299c385a0bd28c3bb0b31ac9294a432cfca66815dfb7eaeb7793c7c",
+    "r5_sha": "50df98daa299c385a0bd28c3bb0b31ac9294a432cfca66815dfb7eaeb7793c7c",
+    "current_sha": "50df98daa299c385a0bd28c3bb0b31ac9294a432cfca66815dfb7eaeb7793c7c",
+    "equal": true
+  },
+  {
+    "source": "hdmi_scan_control.v",
+    "native_sha": "953e8b9c9c4233a9154e299f1507cedd53089d19987d099a0e12c631aed37f94",
+    "r5_sha": "953e8b9c9c4233a9154e299f1507cedd53089d19987d099a0e12c631aed37f94",
+    "current_sha": "953e8b9c9c4233a9154e299f1507cedd53089d19987d099a0e12c631aed37f94",
+    "equal": true
+  },
+  {
+    "source": "hdmi_candidate_core.v",
+    "native_sha": "07744a1779fa6629b666d52473f4a93c0b9976b73949ff954cca35b770ef82fb",
+    "r5_sha": "07744a1779fa6629b666d52473f4a93c0b9976b73949ff954cca35b770ef82fb",
+    "current_sha": "07744a1779fa6629b666d52473f4a93c0b9976b73949ff954cca35b770ef82fb",
+    "equal": true
+  },
+  {
+    "source": "hdmi_register_bank.v",
+    "native_sha": "b60c82421102e1abeb57f8648e050fa8ff064e0dfdec54d1be8bacc484ce8aa9",
+    "r5_sha": "b60c82421102e1abeb57f8648e050fa8ff064e0dfdec54d1be8bacc484ce8aa9",
+    "current_sha": "b60c82421102e1abeb57f8648e050fa8ff064e0dfdec54d1be8bacc484ce8aa9",
+    "equal": true
+  },
+  {
+    "source": "hdmi_candidate_register_core.v",
+    "native_sha": "72a8f075799f7f7a72e0af050b1012824b3a6ab1ee4fb807fb6aee763f9fa662",
+    "r5_sha": "72a8f075799f7f7a72e0af050b1012824b3a6ab1ee4fb807fb6aee763f9fa662",
+    "current_sha": "72a8f075799f7f7a72e0af050b1012824b3a6ab1ee4fb807fb6aee763f9fa662",
+    "equal": true
+  },
+  {
+    "source": "hdmi_stream_fifo.v",
+    "native_sha": "394c1ab25bae1b955a846166b34f508c8475e6a87e40c193dc0cb02dfd24e783",
+    "r5_sha": "394c1ab25bae1b955a846166b34f508c8475e6a87e40c193dc0cb02dfd24e783",
+    "current_sha": "394c1ab25bae1b955a846166b34f508c8475e6a87e40c193dc0cb02dfd24e783",
+    "equal": true
+  },
+  {
+    "source": "hdmi_pixel_scan.v",
+    "native_sha": "2b0683b95a953a304ed7c88d2edecea7d5e5449d0d959440f5495c71a0aedbf5",
+    "r5_sha": "2b0683b95a953a304ed7c88d2edecea7d5e5449d0d959440f5495c71a0aedbf5",
+    "current_sha": "2b0683b95a953a304ed7c88d2edecea7d5e5449d0d959440f5495c71a0aedbf5",
+    "equal": true
+  },
+  {
+    "source": "hdmi_scanout.v",
+    "native_sha": "f730135b5ed7f77fdbd824da402954e7121e5afba8acc3c0bedc33343662c846",
+    "r5_sha": "f730135b5ed7f77fdbd824da402954e7121e5afba8acc3c0bedc33343662c846",
+    "current_sha": "f730135b5ed7f77fdbd824da402954e7121e5afba8acc3c0bedc33343662c846",
+    "equal": true
+  }
+]

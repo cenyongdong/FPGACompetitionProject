@@ -1,0 +1,10 @@
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe tb_tmds_clock glbl -L unisims_ver --timescale 1ps/1ps --debug typical --snapshot tmds_clock 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-2063] Module <B_OSERDESE2> not found while processing module instance <B_OSERDESE2_INST> [/wrk/2019.1/continuous/2019_05_24_2552052/data/verilog/src/unisims/OSERDESE2.v:369]
+ERROR: [VRFC 10-2865] module 'uihdmitx_default' ignored due to previous errors [D:/FPGACompetitionProject/.local/hdmi-tmds-literal-20261015-r2/uihdmitx.v:25]
+ERROR: [VRFC 10-2865] module 'uihdmitx_legacy(FAMILY="7FAMILY")' ignored due to previous errors [D:/FPGACompetitionProject/.local/hdmi-tmds-literal-20261015-r2/uihdmitx_legacy.v:25]
+ERROR: [VRFC 10-2865] module 'clock_wave_check(HIGH_PS=2000,LOW_PS=8000)' ignored due to previous errors [D:/FPGACompetitionProject/.local/hdmi-tmds-literal-20261015-r2/tb_tmds_clock.sv:4]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

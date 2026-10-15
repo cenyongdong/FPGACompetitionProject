@@ -1,0 +1,17 @@
+
+****** xsim v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/candidate/xsim_script.tcl
+# xsim {candidate} -autoloadwcfg -tclbatch {run.tcl}
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source run.tcl
+## run all
+Fatal: Full-frame hardware fault base_offset=4032 faults=00000002
+Time: 167500 ps  Iteration: 0  Process: /tb_candidate/f_page/Always20_46  File: D:/FPGACompetitionProject/.local/hdmi-candidate-sim-20261015-r3/tb_fullframe.sv
+$finish called at time : 167500 ps : File "D:/FPGACompetitionProject/.local/hdmi-candidate-sim-20261015-r3/tb_fullframe.sv" Line 21
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 15 20:29:49 2026...

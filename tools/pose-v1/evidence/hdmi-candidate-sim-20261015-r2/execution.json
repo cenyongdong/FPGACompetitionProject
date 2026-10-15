@@ -1,0 +1,20 @@
+[
+  {
+    "stage": "compile",
+    "exit": 0,
+    "seconds": 1.0378740999949514,
+    "budget": 90
+  },
+  {
+    "stage": "elaborate",
+    "exit": 0,
+    "seconds": 4.01565689999552,
+    "budget": 90
+  },
+  {
+    "stage": "simulate",
+    "exit": 0,
+    "seconds": 6.9877756999994745,
+    "budget": 90
+  }
+]

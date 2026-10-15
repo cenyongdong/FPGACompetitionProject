@@ -1,0 +1,12 @@
+{
+  "user_reply": "批准有限例外并继续生成验证",
+  "plan": "FPGA/hdmi_candidate/IP-CONTRACT-REVIEW.md",
+  "plan_sha256": "f603186440d810281216c3ed660fb4a3316299011d2df4c75e40c94d90d69842",
+  "old_rejected_gates_preserved": true,
+  "no_board_operation": true,
+  "no_global_patch_hooks": true,
+  "no_synthesis": true,
+  "validation_budget_seconds": 180,
+  "generation_budget_seconds": 300,
+  "generation_stop": "first error, timeout, locked IP or unknown contract difference"
+}

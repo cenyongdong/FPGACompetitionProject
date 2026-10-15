@@ -1,0 +1,50 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-15 19:39:54
+create project
+>>create_project -name candidate_clock -device JFMQL30TAI676H
+  >>set_device JFMQL30TAI676H
+  set_device elapsed_time 3.06 seconds, cpu_time 2.91 seconds
+  set_device used memory 659MB, procise used peak memory 696MB, current used memory 532MB
+>>add_design_file -file hdmi_clock_fmsh.v
+  add_design_file used memory 164MB, procise used peak memory 696MB, current used memory 532MB
+>>set_top -top hdmi_clock_fmsh
+  set_top elapsed_time 0.92 seconds, cpu_time 0.66 seconds
+  set_top used memory 164MB, procise used peak memory 696MB, current used memory 581MB
+logfiels move to rundir/logfiles_bk_2026_10_15_19_39_58 failed, please check.
+save project, time: 2026-10-15 19:39:58 
+>>load_design -stage_elaborate -no_hier
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-clock-20261015-r1/hdmi_clock_fmsh.v' (VERI-1482)
+  load_design elapsed_time 1.21 seconds, cpu_time 1.22 seconds
+  load_design used memory 3MB, procise used peak memory 696MB, current used memory 593MB
+>>launch_run -stage synthesis
+  >>rtl_analyze
+  rtl_analyze -> elaborate
+D:/FPGACompetitionProject/.local/hdmi-candidate-procise-clock-20261015-r1/hdmi_clock_fmsh.v(6): INFO: compiling module 'hdmi_clock_fmsh_default' (VERI-1018)
+  WARN(ELAB-W-0): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-clock-20261015-r1/hdmi_clock_fmsh.v(11), Module call "clock_generator" has less terminals than module declaration "PLL_MM_SIMPLE".  
+  WARN(ELAB-W-2): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-clock-20261015-r1/hdmi_clock_fmsh.v(11), Module instance clock_generator's port "CLKFBOUTB" is left unconnected.  
+  WARN(ELAB-W-2): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-clock-20261015-r1/hdmi_clock_fmsh.v(11), Module instance clock_generator's port "CLKOUT0B" is left unconnected.  
+  WARN(ELAB-W-2): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-clock-20261015-r1/hdmi_clock_fmsh.v(11), Module instance clock_generator's port "CLKOUT1B" is left unconnected.  
+  WARN(ELAB-W-2): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-clock-20261015-r1/hdmi_clock_fmsh.v(11), Module instance clock_generator's port "CLKOUT2" is left unconnected.  
+  WARN(ELAB-W-2): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-clock-20261015-r1/hdmi_clock_fmsh.v(11), Module instance clock_generator's port "CLKOUT2B" is left unconnected.  
+  Info: D:/FPGACompetitionProject/.local/hdmi-candidate-procise-clock-20261015-r1/hdmi_clock_fmsh.v: message ELAB-W-2 has occurred for too many times, the later same message would be ignored.  
+  Info: SDB transformed into DM successfully.  
+  write out edif file hdmi_clock_fmsh_elaborate.edif
+  rtl_analyze -> read edif source files
+  rtl_analyze -> read ip edif files
+  rtl_analyze -> bind_design -verbose 0
+  rtl_analyze -> uniquify
+  rtl_analyze elapsed_time 0.05 seconds, cpu_time 0.06 seconds
+  rtl_analyze used memory 0MB, procise used peak memory 696MB, current used memory 585MB
+>>synthesize
+  synthesize -> flatten
+  synthesize -> sweep -sequential -verbose 0
+  synthesize -> logic opt and lut mapping
+  synthesize -> insert_io -bufg_limit_cnt 16
+  write out edif file hdmi_clock_fmsh.edif
+  FDC_INFO! export constraints to file hdmi_clock_fmsh_synthesized.fdc!
+  synthesize used memory 8MB, procise used peak memory 696MB, current used memory 585MB
+CANDIDATE_NATIVE_SYNTHESIS_RETURNED
+
+Thank you for using procise!

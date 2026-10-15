@@ -1,0 +1,21 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-15 19:33:39
+Can not get UUID of your computer!
+PROC_API_BEGIN
+COMMANDS run_test_jtag launch_run run_svf run_state_jtag run_jtag_axi
+HELP_RESULT launch_run 
+  HelpInfo::
+  Command name : launch_run
+  Option:  -stage <string> -help -h
+OPTION_RESULT launch_run 
+HELP_RESULT load_design 
+  HelpInfo::
+  Command name : load_design
+  Option:  -stage_elaborate -stage_post_elaborate -stage_post_synthesis -stage_post_map -no_hier 
+          -transform_carry -help -h
+OPTION_HELP load_design 
+PROC_API_END
+
+Thank you for using procise!

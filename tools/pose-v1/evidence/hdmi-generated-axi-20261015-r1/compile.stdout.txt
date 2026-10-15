@@ -1,0 +1,22 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v" into library work
+INFO: [VRFC 10-311] analyzing module axi_infrastructure_v1_1_0_axi2vector
+ERROR: [VRFC 10-3195] cannot open include file 'axi_infrastructure_v1_1_0.vh' [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:142]
+ERROR: [VRFC 10-2989] 'G_AXI_AWADDR_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:157]
+ERROR: [VRFC 10-2989] 'G_AXI_AWPROT_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:158]
+ERROR: [VRFC 10-2989] 'G_AXI_WDATA_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:160]
+ERROR: [VRFC 10-2989] 'G_AXI_WSTRB_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:161]
+ERROR: [VRFC 10-2989] 'G_AXI_BRESP_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:163]
+ERROR: [VRFC 10-2989] 'G_AXI_ARADDR_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:165]
+ERROR: [VRFC 10-2989] 'G_AXI_ARPROT_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:166]
+ERROR: [VRFC 10-2989] 'G_AXI_RDATA_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:168]
+ERROR: [VRFC 10-2989] 'G_AXI_RRESP_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:169]
+ERROR: [VRFC 10-2989] 'G_AXI_AWSIZE_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:173]
+ERROR: [VRFC 10-2989] 'G_AXI_AWBURST_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:174]
+ERROR: [VRFC 10-2989] 'G_AXI_AWCACHE_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:175]
+ERROR: [VRFC 10-2989] 'G_AXI_AWLEN_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:176]
+ERROR: [VRFC 10-2989] 'G_AXI_AWLOCK_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:177]
+ERROR: [VRFC 10-2989] 'G_AXI_AWID_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:178]
+ERROR: [VRFC 10-2989] 'G_AXI_AWQOS_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:179]
+ERROR: [VRFC 10-2989] 'G_AXI_WLAST_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:181]
+ERROR: [VRFC 10-2989] 'G_AXI_WID_INDEX' is not declared [D:/FPGACompetitionProject/.local/hdmi-generated-axi-20261015-r1/axi_infrastructure_v1_1_vl_rfs.v:183]
+INFO: [#UNDEF] Sorry, too many errors..

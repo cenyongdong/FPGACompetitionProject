@@ -1,0 +1,17 @@
+{
+  "profile": "output_route",
+  "exit": 0,
+  "timed_out": false,
+  "seconds": 36.354813199999626,
+  "budget": 180,
+  "device": "JFMQL30TAI676H",
+  "tool": "Procise2025.1.1temp/SVN32494",
+  "stage_requested": "route",
+  "implementation_timing_signoff": false,
+  "bitgen": false,
+  "download": false,
+  "sources": {
+    "hdmi_diff_output_reference.v": "a4a9957fa242660f98cd6b27b3eb546874797260e1d69b33f4e61399b7b9c78f",
+    "diff_output_compatibility.fdc": "535ef2f3af23a72194658759a52743254d27b3e22732211394a1c48c795d0035"
+  }
+}

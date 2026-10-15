@@ -1,0 +1,118 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-15 21:22:45
+Can not get UUID of your computer!
+create project
+>>create_project -name candidate_diff_route -device JFMQL30TAI676H
+  >>set_device JFMQL30TAI676H
+  set_device elapsed_time 3.09 seconds, cpu_time 3.08 seconds
+  set_device used memory 660MB, procise used peak memory 694MB, current used memory 509MB
+>>add_design_file -file hdmi_diff_output_fmsh.v diff_output_compatibility.fdc
+  add_design_file used memory 185MB, procise used peak memory 694MB, current used memory 509MB
+>>set_top -top hdmi_diff_output_fmsh
+  set_top elapsed_time 0.68 seconds, cpu_time 0.67 seconds
+  set_top used memory 185MB, procise used peak memory 694MB, current used memory 579MB
+logfiels move to rundir/logfiles_bk_2026_10_15_21_22_50 failed, please check.
+save project, time: 2026-10-15 21:22:50 
+>>load_design -stage_elaborate -no_hier
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-diff_route-20261015-r2/hdmi_diff_output_fmsh.v' (VERI-1482)
+  load_design elapsed_time 1.27 seconds, cpu_time 1.28 seconds
+  load_design used memory 3MB, procise used peak memory 694MB, current used memory 591MB
+>>launch_run -stage route
+  >>rtl_analyze
+  rtl_analyze -> elaborate
+D:/FPGACompetitionProject/.local/hdmi-candidate-procise-diff_route-20261015-r2/hdmi_diff_output_fmsh.v(5): INFO: compiling module 'hdmi_diff_output_fmsh_default' (VERI-1018)
+  Info: SDB transformed into DM successfully.  
+  write out edif file hdmi_diff_output_fmsh_elaborate.edif
+  rtl_analyze -> read edif source files
+  rtl_analyze -> read ip edif files
+  rtl_analyze -> bind_design -verbose 0
+  rtl_analyze -> uniquify
+  rtl_analyze -> read_fdc D:/FPGACompetitionProject/.local/hdmi-candidate-procise-diff_route-20261015-r2/diff_output_compatibility.fdc
+  rtl_analyze elapsed_time 0.10 seconds, cpu_time 0.08 seconds
+  rtl_analyze used memory 0MB, procise used peak memory 694MB, current used memory 583MB
+>>synthesize
+  synthesize -> flatten
+  synthesize -> sweep -sequential -verbose 0
+  synthesize -> logic opt and lut mapping
+  synthesize -> insert_io -bufg_limit_cnt 16
+  write out edif file hdmi_diff_output_fmsh.edif
+  Generate timing summary report with max_paths=10 nworst=3
+  ==========================================================================
+  INFO static timing analysis results.
+  ==========================================================================
+  PathType  Requirement(setup)  Slack(setup)  Requirement(hold)  Slack(hold)
+  ==========================================================================
+  Trr                      N/A           N/A                N/A          N/A  
+  Tir                      N/A           N/A                N/A          N/A  
+  Tro                      N/A           N/A                N/A          N/A  
+  Tio                      N/A           N/A                N/A          N/A  
+  ==========================================================================
+  FDC_INFO! export constraints to file hdmi_diff_output_fmsh_synthesized.fdc!
+  synthesize used memory 8MB, procise used peak memory 694MB, current used memory 522MB
+>>opt_design
+    DffDupPass : total create 0 insts for model 'hdmi_diff_output_fmsh'
+    HfsPass : total split 0 nets for model 'hdmi_diff_output_fmsh'
+    DffDupPass : total create 0 insts for model 'hdmi_diff_output_fmsh'
+    PostSweepPass : finish post sweep for model 'hdmi_diff_output_fmsh'
+  opt_design used memory 69MB, procise used peak memory 694MB, current used memory 522MB
+>>place -thread 4
+  Phase 1 Placer Initialization
+  Phase 1.1 Placer Initialization Core
+  Phase 1.1.6 Build Placer Netlist Model
+  Building SiteChkr ...
+    Done.
+  Phase 1.1.6 Build Placer Netlist Model | Time: 0.392s
+  Phase 1.1.5.2 Implementation Feasibility check
+  IO Utilization:
+    Number of bonded IOBs:                          3 out of     250    1%
+  
+  IOPAD Utilization:
+    Number of bonded IOPADs:                        0 out of     152    0%
+  
+  Specific Feature Utilization:
+    Number of RAMH18E1/FIFO18E1s:                   0 out of     530    0%
+    Number of RAMHFIFO36E1/FIFO36E1/RAMH36E1s:        0 out of     265    0%
+    Number of GCDU/GCDU_CTRLs:                      0 out of      32    0%
+    Number of ISTCE2/ISTCE2_FINESTCs:               0 out of     250    0%
+    Number of ILGKE2/ILGKE3/ISSE2s:                 0 out of     250    0%
+    Number of OSTC_E2/OSTC_E2_FINESTCs:             0 out of     150    0%
+    Number of OLGKE2/OLGKE3/OSSE2s:                 0 out of     250    0%
+    Number of PSU_IN/PSU_IN_PHY/PSU_IN_ADVs:        0 out of      20    0%
+    Number of PSU_OUT/PSU_OUT_PHY/PSU_OUT_ADVs:        0 out of      20    0%
+    Number of JTBSs:                                0 out of       4    0%
+    Number of HCDU_CEs:                             0 out of      96    0%
+    Number of RCDUs:                                0 out of      20    0%
+    Number of CAPs:                                 0 out of       1    0%
+    Number of DNA_PORTs:                            0 out of       1    0%
+    Number of CU48E1s:                              0 out of     400    0%
+    Number of UNRECOVER_USRs:                       0 out of       1    0%
+    Number of SECTOR_ECCs:                          0 out of       1    0%
+    Number of UHST2E2_CHs:                          0 out of       4    0%
+    Number of UHST2E2_COMs:                         0 out of       1    0%
+    Number of IDU_DS_UHSTE2s:                       0 out of       2    0%
+    Number of UACs:                                 0 out of       2    0%
+    Number of ISTC_CTRLs:                           0 out of       5    0%
+    Number of IFIFOs:                               0 out of      20    0%
+    Number of DCCUE2_ADVs:                          0 out of       5    0%
+    Number of OFIFOs:                               0 out of      20    0%
+    Number of PCIE_2_1s:                            0 out of       1    0%
+    Number of PSU_REFs:                             0 out of       5    0%
+    Number of PHY_CTRLs:                            0 out of       5    0%
+    Number of PLLE2_ADVs:                           0 out of       5    0%
+    Number of BOOTUPs:                              0 out of       1    0%
+    Number of FADCs:                                0 out of       1    0%
+  
+  Phase 1.1.5.2 Implementation Feasibility check | Time: 0.396s
+  Phase 1.1.7 Constrain Clocks/Macros
+  Phase 1.1.7 Constrain Clocks/Macros | Time: 21.305s
+  Phase 1.1.5 IO Placement/ Clock Placement/ Build Placer Device
+    ERROR: PLACE-0854: Bidirectional I/O port 'tmds_p' is not compatible with IOSTANDARD 'TMDS_33' which can only support inputs and outputs.
+    ERROR: PLACE-0529: mark fixed and moveable blk failed.
+    ERROR: PLACE-0644: IO init failed
+    ERROR: PLACE-0021: place error: Global Placement failed.
+
+CANDIDATE_NATIVE_FAIL 
+
+Thank you for using procise!

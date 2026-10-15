@@ -1,0 +1,45 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-15 22:03:15
+Can not get UUID of your computer!
+create project
+>>create_project -name generated_axi -device JFMQL30TAI676H
+  >>set_device JFMQL30TAI676H
+  set_device elapsed_time 3.16 seconds, cpu_time 3.06 seconds
+  set_device used memory 663MB, procise used peak memory 697MB, current used memory 697MB
+>>add_design_file -file ps_ai_processing_system7_0_0.v processing_system7_v5_5_processing_system7.v processing_system7_v5_5_atc.v processing_system7_v5_5_aw_atc.v processing_system7_v5_5_b_atc.v processing_system7_v5_5_trace_buffer.v processing_system7_v5_5_w_atc.v
+  add_design_file used memory 0MB, procise used peak memory 697MB, current used memory 697MB
+>>set_top -top ps_ai_processing_system7_0_0
+  set_top elapsed_time 0.99 seconds, cpu_time 0.89 seconds
+  set_top used memory 0MB, procise used peak memory 697MB, current used memory 587MB
+logfiels move to rundir/logfiles_bk_2026_10_15_22_03_20 failed, please check.
+save project, time: 2026-10-15 22:03:20 
+>>load_design -stage_elaborate -no_hier
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/ps_ai_processing_system7_0_0.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_processing_system7.v' (VERI-1482)
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_processing_system7.v(6539): WARNING: block identifier is required on this block (VERI-1212)
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_processing_system7.v(6545): WARNING: block identifier is required on this block (VERI-1212)
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_processing_system7.v(6551): WARNING: block identifier is required on this block (VERI-1212)
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_processing_system7.v(6557): WARNING: block identifier is required on this block (VERI-1212)
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_processing_system7.v(6563): WARNING: block identifier is required on this block (VERI-1212)
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_processing_system7.v(6569): WARNING: block identifier is required on this block (VERI-1212)
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_processing_system7.v(6575): WARNING: block identifier is required on this block (VERI-1212)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_atc.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_aw_atc.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_b_atc.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_trace_buffer.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_w_atc.v' (VERI-1482)
+  load_design elapsed_time 1.52 seconds, cpu_time 1.53 seconds
+  load_design used memory 3MB, procise used peak memory 697MB, current used memory 587MB
+>>launch_run -stage synthesis
+  >>rtl_analyze
+  rtl_analyze -> elaborate
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/ps_ai_processing_system7_0_0.v(60): INFO: compiling module 'ps_ai_processing_system7_0_0_default' (VERI-1018)
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_atc.v(5420): WARNING: instantiating unknown module 'PS7' (VERI-1063)
+D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/ps_ai_processing_system7_0_0.v(1195): WARNING: port 'pl_in_unused' remains unconnected for this instance (VERI-1927)
+  ERROR(ELAB-E-6): D:/FPGACompetitionProject/.local/hdmi-native-ps-20261015-r1/processing_system7_v5_5_atc.v(5420), Module call "PS7_inst" has more terminals than its module declaration "PCPU7".  
+    ERROR: RTL-0902: ERROR: GenSdb in Elaborate! 
+NATIVE_AXI_FAIL 
+
+Thank you for using procise!

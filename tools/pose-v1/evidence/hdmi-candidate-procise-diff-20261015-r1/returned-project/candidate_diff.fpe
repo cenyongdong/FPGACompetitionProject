@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Version="1.04" Minor="0" Name="candidate_diff" Create="Procise 2025.1.1 temp 32494 at 2026-10-15 21:18:21" SupportSvn="30016">
+    <Configuration>
+        <Option Name="Stage" Value="Post-Syn"/>
+        <Option Name="Description" Value=""/>
+        <Option Name="Family" Value="jfmql"/>
+        <Option Name="Device" Value="JFMQL30TAI676H"/>
+        <Option Name="Package" Value="fcbga676"/>
+        <Option Name="Speed" Value="-2"/>
+    </Configuration>
+    <FileSets Version="1" Minor="0">
+        <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="sources">
+            <File Path="rundir/hdmi_diff_output_fmsh_elaborate.edif">
+                <FileInfo Type="EDIF_ELABORATE"/>
+            </File>
+            <File Path="rundir/hdmi_diff_output_fmsh.edif">
+                <FileInfo Type="EDIF_SYN"/>
+            </File>
+            <File Path="hdmi_diff_output_fmsh.v">
+                <FileInfo Type="Verilog" Library="work"/>
+            </File>
+            <Config>
+                <Option Name="TopModule" Value="hdmi_diff_output_fmsh"/>
+                <Option Name="TopInstPath" Value="hdmi_diff_output_fmsh"/>
+                <Option Name="TopRTLFile" Value=""/>
+            </Config>
+        </FileSet>
+        <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="constraints/constrs_1">
+            <File Path="rundir/hdmi_diff_output_fmsh_synthesized.fdc">
+                <FileInfo Type="kFDC_PLACED"/>
+            </File>
+            <Config>
+                <Option Name="ActiveConstraint" Value=""/>
+            </Config>
+        </FileSet>
+    </FileSets>
+    <DesignHierarchy>
+        <Module Name="hdmi_diff_output_fmsh" File="hdmi_diff_output_fmsh.v" LineNum="5"/>
+        <Automatic_includes/>
+    </DesignHierarchy>
+    <BspRepositories BspCover="false">
+        <Local folder="C:/FudanMicro/Procise/data/devicetree_rep"/>
+    </BspRepositories>
+</Project>

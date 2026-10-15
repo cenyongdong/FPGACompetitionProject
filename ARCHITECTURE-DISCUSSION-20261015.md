@@ -119,3 +119,35 @@ HDMIDisplay 包装仅支持 RGB565，按 width×height×2 分配 UDMA 帧，写�
 本地并非没有无SDI显示依据：《30TAI使用教程》第10–11页明确给出camera.vtc=true、运行完整示例观察HDMI滚动灰度图。该说明不等于独立PS图像sink或安全停止验收。MIG XCI选mig_b.prj，1250ps/4:1结合ui_clk→ddr_clk→hp_clk→无SDI fallback连线，可推算参考配置200MHz；若当前BOOT同配置，固定1080p扫描约80.81Hz、MMCM×5串行支路理论1000MHz。这是源码配置推断，当前BOOT对应与实测仍未证。安全stop/drain/flip完成契约在已审查接口中仍未找到。上节“资料待补”应按这些具体缺口理解，不能泛指缺少整套HDMI资料。
 
 [本地复核与原文证据](tools/pose-v1/evidence/hdmi-local-recheck-20261015-r1/REPORT.md)。本次无新板端操作或硬件修改，前述未验收状态保持。
+
+## 九、实板寄存器、行为验证与新候选授权
+
+HDMI新核验：本地Lite BOOT/bit与选用版相同；实板显示控制0x20230218及12寄存器读取过，BOOT/六份SDK库/内核前后一致。参考RTL行为仿真确认200MHz扫描80.81Hz、停消费可卡读帧及AXI在RREADY=0时提前完成缺陷；后者不代表当前BOOT故障已证。显示器已接仍报时序不支持，误点稳定画面作废。用户已批准隔离候选修正独立时钟/AXI/停止换帧，先仿真和Procise构建，暂不上板。 不将现场80.81Hz或当前BOOT内部缺陷写成已证明，参考RTL缺陷与当前实板区分。新候选只在独立副本进行，当前BOOT/SDK/模型保持，不含新重启许可。
+
+[实际原值、失败与新授权范围](tools/pose-v1/evidence/hdmi-contract-validation-20261015-r1/REPORT.md)。
+
+## 十、候选实现的实际进展与用户暂停
+
+HDMI候选已按用户明确要求暂停，等待唤醒。隔离候选AXI10类/控制7类/CSR检查及完整1080p帧4,147,200字节背压验证通过，时钟与控制模块Procise原生展开/综合exit0；尚未原工程集成、布局布线/CDC时序或上板，不称整条HDMI通过。 已获授权为隔离副本候选修正与验证、暂不上板；最新暂停优先，只有用户明确唤醒后继续。原先误点稳定画面已由用户更正，当前显示器已接仍不支持时序。
+
+[停点、源码身份和后续边界](tools/pose-v1/evidence/hdmi-candidate-pause-20261015-r1/CHECKPOINT.md)、[恢复入口](FPGA/hdmi_candidate/RESUME.md)。
+
+
+## 十一、明确唤醒后的实际进展
+
+HDMI候选已由用户明确唤醒，4KiB按页拆分修正经r4三基址完整帧验证通过；新增FIFO/连续1080p扫描的Procise原生综合exit0。r5全部断言完成，但外层90秒超时、驱动exit1，整体不验收；已停止且未重跑，新分组入口待确认。PS/DDR/TMDS、CDC及系统实现未完成，暂不上板、不换BOOT。 [本轮证据](tools/pose-v1/evidence/hdmi-resume-20261015-r1/REPORT.md)、[继续入口](FPGA/hdmi_candidate/RESUME.md)。
+
+本次未连接板端。候选新分组验证方案已准备，每组每阶段仍90秒；按Agents.md失败停止与禁止自动重试规则，须明确确认新批次后执行。JFM hook/IP迁移和物理TMDS仍需闭合配套，不将模块综合推广为整机成功。原暂停记录保留历史，旧DATA暂停不解除。
+
+
+## 十二、分组新批次授权与TMDS时钟常量修正
+
+用户明确认可r5内核全部像素PASS以及4KiB/FIFO成果，将该轮超时归为外层监控限制；明确批准r6 core/r7 pixel新目录、90秒安全预算，并要求修正字符串时钟输入。
+
+用户已认可r5像素内核结果及4KiB/FIFO成果；新r6 core/r7 pixel全阶段exit0，仿真分别11.540/30.102秒，均未超90秒。隔离uihdmitx.v两处时钟输入已改10'b1111100000，Lite 7FAMILY新旧模型各128周期验证20%→50%占空比通过。原r5超时及非目标UFAMILY精确边沿诊断失败保留。PS/DDR/TMDS原生物理集成、CDC/实现时序及实屏待验，暂不上板、不换BOOT。 [本批报告](tools/pose-v1/evidence/hdmi-split-20261015-r1/REPORT.md)、[候选状态](FPGA/hdmi_candidate/RESUME.md)。常量修正在隔离候选，原参考/BOOT保持，旧DATA仍暂停。未安装/迁移IP或更换工具；Lite分支数字波形通过不等于物理层整体风险清零。
+
+## 十三、实机授权、IP有限例外与当前PS适配阻塞
+
+2026-10-15 HDMI已获实板、隔离同配置重建、16根IP修订白名单及有限衍生字段例外授权。实板只读身份/12寄存器核验通过，BOOT/六份SDK/内核同；新r3有限契约门检、97.600秒IP生成及28项原有HDL参数/生成端口后检通过。实际生成AXI3互联两入口全32个ID、64读/64写完整16拍burst及背压通过，Procise原生互联综合16.417秒exit0；纯输出OBUFDS→ODU_DS真实引脚布线兼容探针通过。完整系统当前受阻于自定义PS7扩展端口与Procise PCPU7声明不匹配，PS门检8.418秒exit1，已停止。尚无完整候选位流，未下载、未改BOOT或重启，实屏仍待验；旧DATA继续暂停。 [本批总报告](tools/pose-v1/evidence/hdmi-bringup-20261015-r1/REPORT.md)、[生成/后检](tools/pose-v1/evidence/hdmi-ip-generation-20261015-r3/REPORT.md)、[PS阻塞与恢复入口](FPGA/hdmi_candidate/PS-ADAPTATION-STATUS.md)。
+
+用户先后明确批准隔离同配置重建、16个锁定根IP及子核修订升级，随后批准IP-CONTRACT-REVIEW.md所列有限衍生字段例外。两次原字面门检拒绝、只读标注恢复失败继续保留；新建契约门检通过后才实际生成。新增ID路由仿真和原生互联综合未提高在途负载，不能扩展为整机通过。PS包、AI_Mate及系统基线均保持；JFM全局时序库替换/工具安装仍不在范围内。

@@ -1,0 +1,16 @@
+{
+  "profile": "clock",
+  "exit": 0,
+  "timed_out": false,
+  "seconds": 6.751657799999521,
+  "budget": 180,
+  "device": "JFMQL30TAI676H",
+  "tool": "Procise2025.1.1temp/SVN32494",
+  "stage_requested": "synthesis",
+  "implementation_timing_signoff": false,
+  "bitgen": false,
+  "download": false,
+  "sources": {
+    "hdmi_clock_fmsh.v": "0d18178c8c45762aa81175d2a0645622fcf46d6f41d32d8b20924e48c727edc4"
+  }
+}

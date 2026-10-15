@@ -1,0 +1,41 @@
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe tb_tmds_clock glbl -L unisims_ver -L secureip --timescale 1ps/1ps --debug typical --snapshot tmds_clock 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3091] actual bit length 80 differs from formal bit length 10 for port 'txdata' [D:/FPGACompetitionProject/.local/hdmi-tmds-literal-20261015-r3/uihdmitx_legacy.v:136]
+WARNING: [VRFC 10-3091] actual bit length 80 differs from formal bit length 10 for port 'txdata' [D:/FPGACompetitionProject/.local/hdmi-tmds-literal-20261015-r3/uihdmitx_legacy.v:92]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling architecture behavioral of entity work.TMDSEncoder [tmdsencoder_default]
+Compiling module unisims_ver.OBUFDS
+Compiling module unisims_ver.OSERDESE2(DATA_RATE_TQ="SDR",DAT...
+Compiling module unisims_ver.OSERDESE2(DATA_RATE_TQ="SDR",DAT...
+Compiling module work.oserdese2_10to1
+Compiling module work.uihdmitx(FAMILY="7FAMILY")
+Compiling module unisims_ver.RAM32X1D
+Compiling module unisims_ver.OSERDESE3(DATA_WIDTH=4)
+Compiling module work.oserdese3_10to1_default
+Compiling module work.uihdmitx_default
+Compiling module work.uihdmitx_legacy(FAMILY="7FAMILY"...
+Compiling module work.uihdmitx_legacy_default
+Compiling module work.clock_wave_check
+Compiling module work.clock_wave_check(HIGH_PS=2000,LO...
+Compiling module work.tb_tmds_clock
+Compiling module work.glbl
+Built simulation snapshot tmds_clock
+
+****** Webtalk v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source D:/FPGACompetitionProject/.local/hdmi-tmds-literal-20261015-r3/xsim.dir/tmds_clock/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Oct 15 20:59:37 2026...

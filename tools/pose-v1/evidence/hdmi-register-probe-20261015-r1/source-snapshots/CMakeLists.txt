@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.24)
+project(hdmi_readonly_probe LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(icraft-zg330backend 3.39.0.0 EXACT REQUIRED)
+add_executable(hdmi_readonly_probe readonly_probe.cpp)
+target_compile_options(hdmi_readonly_probe PRIVATE -Wall -Wextra -Werror)
+target_link_libraries(hdmi_readonly_probe PRIVATE Icraft::ZG330Backend)

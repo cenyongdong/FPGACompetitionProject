@@ -1,0 +1,23 @@
+
+****** xsim v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/hdmi_contract/xsim_script.tcl
+# xsim {hdmi_contract} -autoloadwcfg -tclbatch {run.tcl}
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source run.tcl
+## run all
+CONTROL normal_full_frame_completed bursts=32400 words=518400
+CONTROL stopped_consumer_stalls cycles=4096 state=2 read_finish=0
+CONTROL resumed_consumer_completes
+CONTROL disabling_during_vs_high_creates_read_request
+FRAME_CASE id=200 period_ns=12375000.000 refresh_hz=80.808081 active=2073600
+FRAME_CASE id=148 period_ns=16666650.000 refresh_hz=60.000060 active=2073600
+HDMI_CONTRACT_TEST_PASS
+$finish called at time : 16711744231 ps : File "D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r2/tb_hdmi_contract.sv" Line 124
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:15 . Memory (MB): peak = 220.672 ; gain = 0.000
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 15 19:14:12 2026...

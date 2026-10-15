@@ -1,0 +1,214 @@
+[
+  {
+    "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\30TAI使用教程.pdf",
+    "sha256": "38c5631a76a12a7a240dcf81ca85e4304bd0230e2db618dec005e8fe64b71d93",
+    "pages": [
+      {
+        "page": 1,
+        "text": "30TAI 使用教程\n一 . 安装时序库\n1.1 解压工具包\n解压 JFM_Kits.zip 到一个英文路径（路径中不要有中文、空格和特殊字符）。解压后的目录结构如\n下图所示。\n图 1\n1.2 设置用户环境变量\n关闭 Vivado ，新建下图所示的用户环境变量。变量名： JFM_PATH; 变量值：工具包的解压位置。\n以图 1 为例，变量值为 E:\\JFM_Kits ，即 IP_PATCH 文件夹的上一级目录。\n注：重启 Vivado ，在 TCL Console 中使用命令 puts $::env(JFM_PATH) ，可查看环境变量是否设置成\n功。\n1.3 关闭 IP cache\n打开 Vivado 工程的设置界面，将 Project Settings -> IP -> IP Cache -> Cache scope 选项设置为\nDisabled 。"
+      },
+      {
+        "page": 2,
+        "text": "1.4 综合所有 IP\n确保工程中的每个 IP 完成单独综合。即在生成 IP 时，将 IP 的综合选项设置为 Out of context per IP\n而非 Global ，点击 Generate 而非 Skip 。如下图所示："
+      },
+      {
+        "page": 3,
+        "text": "在 Design Runs 中，每个 IP 应如下图所示，显示为 Synth_design Complete!\n如果现有的 IP 没有综合结果，可以按以下步骤执行操作，完成 IP 的综合。"
+      },
+      {
+        "page": 4,
+        "text": "1.5 加载工具包\n在 Vivado 的 Tcl Console 中，输入以下命令，并按回车完成工具的加载。下图中，路径的红色部分\n为步骤 1.2 的用户环境变量。"
+      },
+      {
+        "page": 5,
+        "text": "若以图 1 为例，命令应为： source E:/JFM_Kits/ip_patch/run.tcl 。注意命令中不要出现反斜杠。\n1.6 加载脚本\n在 Vivado 的 Tcl Console 中，输入以下命令： add_hook_tcl_to_prj ，再按回车键，执行脚本加载。\n1.7 加载时序库\n首次使用 30TAI 时序库，需在 Vivado 的 Tcl Console 中，输入以下命令： replace_7z030ai_file ，再按\n回车键，执行时序库加载。\n注：使用非 30TAI 器件时，如果已经执行过步骤 1.7 ，需要通过命令 reset_database_to_default 恢复\n时序库。执行命令前，需完成步骤 1.5 ，否则找不到命令。恢复时序库后，若再次使用 30TAI 器\n件，需要重新加载时序库。\n二 . Vivado 开发\n2.1 安装时序库\n在使用 30TAI 器件前，确保已经完成时序库以及 Procise 的安装。\n2.2 新建 Vivado 工程\n（ 1 ） Vivado 版本： 2018.03\n（ 2 ）器件： xc7z030ffg676-2\n（ 3 ）执行步骤 1.3 ，关闭 IP cache 。\n2.3 添加源文件及约束"
+      },
+      {
+        "page": 6,
+        "text": "（ 1 ）点击 add sources ，选择 design sources ，将文件夹 fpai_demo_fpga\\rtl 下的所有文件加入工\n程。\n（ 2 ）点击 add sources ，选择 constraints ，将文件夹 fpai_demo_fpga\\constrs_1 下的所有文件加入\n工程。\n（ 3 ）导入 fpai_demo_vivado.srcs\\sources_1\\bd 文件夹中的 block design\n（ 4 ）新建 IP 时，确保每个 IP 完成单独综合。\n（ 5 ）如下图，设置 Project Settings -> IP -> Repository ，添加 fpai_demo_fpga\\PS_AI IP 文件夹所\n在路径。\n2.4 加载工具包和脚本\n在 Vivado 的 Tcl Console 中，按步骤 1.5 和步骤 1.6 依次执行：\nsource $::env(JFM_PATH)/ip_patch/run.tcl\nadd_hook_tcl_to_prj\n注： $::env(JFM_PATH) 即为环境变量 JFM_PATH 的值。\n2.5 生成位流\n点击 Vivado 的 Flow Navigator -> PROGRAM AND DEBUG -> Generate Bitstream ，等待位流生\n成。\n注：按流程依次点击 Run Synthesis, Run Implemention 和 Generate Bitstream 步骤可能存在问题。\n建议跳过前两个步骤，直接点击 Generate Bitstream 。\n三 . 生成 BOOT.bin"
+      },
+      {
+        "page": 7,
+        "text": "3.1 修改 bif 文件\n解压 BOOT_Gen.zip ，用文本程序（如 VS Code ）打开 BOOT_Gen/7030ai_psin.bif 。\n修改上图中的红框，将路径替换为解压目录。确保修改后的路径不要出现反斜杠，且能找到各个\n文件。\n3.2 Create BOOT Image\n将 Vivado 生成的位流文件（后缀为 bit ）拷贝到解压目录，并确保位流文件名与 bif 文件的位流文件\n名保持一致。\n打开 Procise ，按下图依次点击。"
+      },
+      {
+        "page": 8,
+        "text": "单击 Create Image ，可生成 bin 文件。生成的 bin 文件位于解压目录下。\n3.3 替换 BOOT.bin\n替换 BOOT.bin 有两种方法。\n（ 1 ）读卡器\n将 SD 卡插入读卡器，直接替换 FAT 分区中的 BOOT.bin 。注意不要格式化磁盘。\n（ 2 ） SSH 连接\n通过 SSH 远程连接开发板（登录账户需为 root ）。\n若 BOOT.bin 所在的磁盘分区已挂载至目录 /root/bits 下，可直接替换其中的 BOOT.bin 文件。完成\n替换后，执行 reboot 命令重启开发板。重启系统后位流生效。"
+      },
+      {
+        "page": 9,
+        "text": "若未挂载，需手动完成挂载。在 ubuntu 终端输入命令 fdisk -l ，确认系统已正确识别分区。\n输入以下命令： mount /dev/mmcblk0p1 /root/bits ，将分区挂载到目录下。挂载并刷新后，目\n录 /root/bits 下应有 BOOT.bin 等文件。注意：若未挂载分区，并直接将 BOOT.bin 等文件拷贝至目\n录 /root/bits 下，位流将不会生效。\n四 . 示例 PS 程序\n4.1 安装 Icraft\n交叉编译环境安装 Icraft_3.XX 及 CustomOp_3.XX 。\n4.2 编译 PS 程序\n示例 PS 程序存放在目录 fpai_demo_app\\examples\\1_single_input+ai\\PLin+SingleNet+HDMI 下。\n将整个 fpai_demo_app 文件夹（包含依赖库 deps ）拷贝至交叉编译环境中，按步骤编译 PS 程序。\n注意不要在 30TAI 板载系统上进行编译。\n编译步骤可参考：\nfpai_demo_app\\examples\\1_single_input+ai\\PLin+SingleNet+HDMI\\README.md ，编译 30TAI\n（ ZG ）版本。\n4.3 adder_demo\n将步骤 4.2 编译得到的可执行程序 adder_demo 拷贝至 30TAI 开发板的 ubuntu 系统中。\n确保文件 adder_demo 具有执行权限并执行。将得到以下输出结果："
+      },
+      {
+        "page": 10,
+        "text": "4.4 sdicamera+yolov5+hdmi\n将整个 fpai_demo_app\\examples\\1_single_input+ai\\PLin+SingleNet+HDMI 文件夹拷贝至 30TAI 开\n发板的 ubuntu 系统中。\n确保下图中的文件及文件夹存在。\n|—— configs                         \n    |—— ZG \n        |—— sdicamera+yolov5+hdmi.yaml   // 配置文件\n|—— imodel \n    |—— ZG \n        |—— yolov5s_352x640_ZG.json      // 网络模型 json ，文件名与 yaml 文件的配置保持一致 \n        |—— yolov5s_352x640_ZG.raw       // 网络模型 raw \n|—— names          \n    |—— coco.names                      // 数据集标签 \n|—— sdicamera+yolov5+hdmi               // 可执行程序\n4.4.1 无 SDI\n修改 configs/ZG/sdicamera+yolov5+hdmi.yaml ，将 pipeline -> camera -> vtc 修改为 true ，保\n存。"
+      },
+      {
+        "page": 11,
+        "text": "在断电状态下将 HDMI 接入开发板，上电启动。确保文件 sdicamera+yolov5+hdmi 具有执行权\n限，在文件所在目录下执行 ./sdicamera+yolov5+hdmi\n./configs/ZG/sdicamera+yolov5+hdmi.yaml 。在 HDMI 显示器中查看滚动的灰度图。\n4.4.1 接入 SDI\n修改 configs/ZG/sdicamera+yolov5+hdmi.yaml ，将 pipeline -> camera -> vtc 修改为 false ，保\n存。\n在断电状态下将 SDI 摄像头和 HDMI 接入开发板，上电启动。确保文件 sdicamera+yolov5+hdmi 具\n有执行权限，在文件所在目录下执行 ./sdicamera+yolov5+hdmi\n./configs/ZG/sdicamera+yolov5+hdmi.yaml 。在 HDMI 显示器中查看 yolov5 的运行结果。"
+      }
+    ]
+  },
+  {
+    "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\fmsh_migration_process\\基于FMP100T4开发板的Vivado to Procise迁移流程.pdf",
+    "sha256": "236ac9d4bdd996ec1c6dbeb75502a40893f8ba94b8c35396af9aacbc8f7afd8f",
+    "pages": [
+      {
+        "page": 1,
+        "text": "基于 FMP100T4 开发板的 Vivado to Procise 迁移流程 \n迁移流程简介： \n复旦微 FMP100 系列 FPGA 原则上开发全流程都是基于复旦微自主 EDA 工\n具 Procise 上完成， 早期的开发流程是在Procise 中添加用户的 RTL、IP 等源代码，\n综合、布局、布线和位流生成都是在 Procise 中开发。 \n很多客户基于上述流程开发最大的痛苦来自于 IP，Procise 的 IP 库不够健全，\n所以研发大佬们研究出了一条新的道路，就是在 Vivado 中添加 RTL、IP 等源代\n码，然后通过一键式迁移流程，完成整个工程迁移到 Procise 中，进行布局、布\n线和位流生成。最终的调试和 MCS 固化都需要在 Procise 中完成。 \n现针对该迁移流程， 做了一些简单的Case，作以简单的说明，来帮助客户快\n速完成产品研发。 \n注：以下流程的开发环境都是基于 Vivado2018.3 的版本。 \n  "
+      },
+      {
+        "page": 2,
+        "text": "第一章：基于简单工程的迁移流程（无 DSP、无 GTX、无加密 IP、无 MB） \n \n 新建工程，器件选择 xc7k325tffg900-2，添加 rtl 代码，普通 ip 和调试 ila/vio，如下\n图所示： \n \n 工程中例化了一个 mmcm module +led module + block ram module + ila； 主要实现的\n功能为预先在 block ram module（例化成 ROM）预存了一个正弦波形，系统上电后，从\nROM 中把波形取出，显示在 ILA 里面； \n \n 从复旦微 FAE或者销售那获取一键式迁移流程的压缩包 （一个迁移流程教程Word + \n迁移包） ，如下图所示： \n \n 打开压缩包中的 Word， 按照Word 内容操作设置好环境变量和复旦微补丁环境变量\n（用户自行设置路径） ，如下图所示（仅作参考） ： \n \n"
+      },
+      {
+        "page": 3,
+        "text": " \n 回到 Vivado 工程，在 Console 中输入补丁文件步骤： \n1) 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/run.tcl (路径是根据用户设置的环境变量输入) \n2) 在 console 栏输入： \nadd_hook_tcl_to_prj \n3) 再 reset 工程中所有的 ip，然后重新 generate \n4) 对工程进行 Synthesis，直到综合完成；如果有 ILA/VIO，一定要确保 opt 阶段完成；由于这里工程中\n加了 ILA，我们直接跑 Implementation，等待 opt 完成。 \n5) 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/fmsh_migration_process/fmsh_migration_process.tcl (路径是根\n据用户设置的环境变量输入) \n6) 在 console 栏输入： \nfmsh_migration_process -xdc on –prj on –mmi off –step opt –procise_device fmp100t4（该处的配置选项如\n果不会，可以查询上述压缩包中的 word 说明或者咨询 FAE） \n 完成上述操作后，Vivado 会启动一键式迁移流程， 静静等待迁移完成， 如下图所示： \n \n \n \n \n \n"
+      },
+      {
+        "page": 4,
+        "text": " 打开工程路径下自动创建的 procise 工程，如下图所示： \n \n \n \n \nProcise 工程的结构树和 Vivado 的结构树基本保持一致，并且工程中相关的 xdc 约\n束都过来了，如果有 xdc 约束报错的话，需要修改 xdc 约束，如果遇到困难可以咨\n询复旦微 FAE 寻求帮助。 \n 对迁移过来的 Procise 工程进行布局布线和生成 bit 位流信息，下载调试。 \n \n \n"
+      },
+      {
+        "page": 5,
+        "text": " 板子上电，进行位流测试，如图所示，led 是明灭闪烁，ila 读出的数据和存储的数\n据一致。 \n \n \n \n \n \n \n"
+      },
+      {
+        "page": 6,
+        "text": " 将 ILA 的数据导出，然后导入到 Matlab 中分析波形，在菜单栏中 file->export，如\n下图设置，导出 data.txt。 \n \n \n \n \n"
+      },
+      {
+        "page": 7,
+        "text": " MATLAB 导入数据， 进行绘图， 至此， 功能验证完成， 迁移流程，FPGA 功能正常，\n数据也正常。 \n \n \n \n \n  \n"
+      },
+      {
+        "page": 8,
+        "text": "第二章：基于简单工程的迁移流程（含 DSP） \n \n上一章我们创建了一个非常简单的工程， 只包含LUT+BRAM+ILA 的工程， 从移植\n效果上来看，还是非常不错的，整个流程一气呵成，接下来主要针对含 DSP 的工程进\n行移植， 为什么要把DSP 单独拿出来说明， 是因为复旦微FMP 系列的 FPGA 内部 DSP48\n架构和 Xilinx DSP48E 不一样，在 Vivado 中很多使用 DSP48E 实现的 IP 是等价转不过\n去的，或者转过去结果也是不对的，所以需要单独拿出来分享奥义。 \n \n 新建工程，器件选择 xc7k325tffg900-2，添加 rtl 代码，普通 ip 和调试 ila/vio，如下\n图所示： \n \n工程中例化了一个 mmcm module +led module + block ram module + fir module + ila；\n主要实现的功能为预先在 block ram module（例化成 ROM） 预存了两个不同频率叠加的\n正弦波形，系统上电后，从ROM 中把波形取出，然后经过 FIR 滤波器，显示在 ILA 里\n面； 因为这两个正弦信号有一个是在FIR 滤波器的带内， 有一个是在滤波器的带外， 所\n以 FIR 滤完的信号应该只剩一个带内的正弦信号。 \n整个工程的效果图如下图所示，紫色的信号就是两个正弦信号叠加的混合信号，黄\n色的就是滤波完的信号， 很明显的高频信号被滤除了， 只保留了一个低频的正弦信号 （处\n于截止频率带内） \n \n"
+      },
+      {
+        "page": 9,
+        "text": " \n \n \n 从复旦微 FAE或者销售那获取一键式迁移流程的压缩包 （一个迁移流程教程Word + \n迁移包） ，如下图所示： \n \n \n \n  \n"
+      },
+      {
+        "page": 10,
+        "text": " 从复旦微 FAE 或者销售那 V5.2.0 版本的 ip_patch（一定要确认好版本），设置好环\n境变量后，需要在 Vivado 中，确认一些版本，如下图所示： \n \n1. 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/run.tcl (路径是根据用户设置的环境变量输入) \n2. 在 console 栏输入： \nshow_ip_patch_version \n \n \n 针对 Vivado工程进行补丁操作， 这一步必不可少，在 Console 中输入补丁文件步骤： \n1) 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/run.tcl (路径是根据用户设置的环境变量输入) \n2) 在 console 栏输入： \nadd_hook_tcl_to_prj \n \n注意 V5.2.0 的补丁会替换底层的 fft、dds、fir 等 ip 的底层库 \n3) 再 reset 工程中所有的 ip，然后重新 generate \n4) 对工程进行 Synthesis，直到综合完成；如果有 ILA/VIO，一定要确保 opt 阶段完成；由于这里工程中\n加了 ILA，我们直接跑 Implementation，等待 opt 完成。 \n5) 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/fmsh_migration_process/fmsh_migration_process.tcl (路径是根\n据用户设置的环境变量输入) \n6) 在 console 栏输入： \nfmsh_migration_process -xdc on –prj on –mmi off –step opt –procise_device fmp100t4（该处的配置选项如\n果不会，可以查询上述压缩包中的 word 说明或者咨询 FAE） \n  \n"
+      },
+      {
+        "page": 11,
+        "text": " 完成上述操作后，Vivado 会启动一键式迁移流程， 静静等待迁移完成， 如下图所示： \n \n 打开工程路径下自动创建的 procise 工程，如下图所示： \n \n \nProcise 工程的结构树和 Vivado 的结构树基本保持一致，并且工程中相关的 xdc 约\n束都过来了，如果有 xdc 约束报错的话，需要修改 xdc 约束，如果遇到困难可以咨询复\n"
+      },
+      {
+        "page": 12,
+        "text": "旦微 FAE 寻求帮助。 \n 对迁移过来的 Procise 工程进行布局布线和生成 bit 位流信息，下载调试。 \n \n 板子上电，进行位流测试，如图所示，led 是明灭闪烁，ila 抓取信号也正常，FIR\n功能还需要继续分析数据。 \n \n"
+      },
+      {
+        "page": 13,
+        "text": " \n 将 ILA 的数据导出，然后导入到 Matlab 中分析波形，在菜单栏中 file->export，如\n下图设置，导出 data.txt。 \n \n \n  \n"
+      },
+      {
+        "page": 14,
+        "text": " MATLAB 导入数据， 进行绘图， 至此， 功能验证完成， 迁移流程，FPGA 功能正常，\nFIR 滤波器数据也正常。 \n \n 对比 FIR 滤波器使用的 DSP 资源数，Vivado 使用了 32 个 DSP48E，Procise 也使用\n了 32 个，功能完美替换，打完收工。 \n \n \n"
+      },
+      {
+        "page": 15,
+        "text": "第三章：基于简单工程的迁移流程（含 SERDES） \n 上一章我们在一个 FIR IP 的 Vivado 工程上做的迁移工作，整个流程实现相对比较\n简单，从结果对比来看，Procise DSP 消耗的数量与 Vivado 一致，FIR 功能也与设计保\n持一致。对于 FMP100T4/ FMP100T8 等芯片，另外一个特别重要的资源就是 SERDES。 \n 为什么要把 SERDES 的设计单独拎出来讲呢，是因为复旦微的 FMK50 和 FMP100\n系列 FPGA 内部的 SERDES 设计和 Xilinx 的 Artix-7 系列不一样，Xilinx 的内部的\nSERDES 设计内部名称是 GTP，而复旦微 FMK50 和 FMP100 系列 FPGA 内部集成的是\nGTX，复旦微的 GTX 性能是要秒杀 Xilinx 的 GTP，接口速率最高可以跑到 12.5Gbps。\n所以在功能实现上， 必然是不能在Vivado 里面选择 Artix-7 器件来创建工程直接开发的。 \n 但是为了感谢客户这么长时间的支持与信任， 复旦微研发也是专门研究了一套直接\n在 Vivado 设计开发（减轻客户移植带来的工作量） ，之后再一键迁移到Procise 综合、\n布局布线的方法。 今天我就带着大家， 揭开复旦微FMP100 系列 FPGA SERDES 使用方\n面的神秘面纱。 \n  \n \n 验证 SERDES 的功能，我们选择了最基本的 gt wizard 的 ip 来说明流程。首先新建\n工程， 器件选择xc7k325tffg900-2， 例化一个gt wizard 的 ip 做光纤回环测试（有关\ngt wizard ip 的 gui 配置， 我就不详细介绍了， 如果想要原工程， 可以联系复旦微FAE\n或者 Sales） ，然后右键导出一个example，如下图所示： "
+      },
+      {
+        "page": 16,
+        "text": " \n 工程是 gt wizard 导出的 example 工程， 例程的功能其实很简单， 就是有3 个 module\n组成：gt_wizard_support、gt_frame_gen、gt_frame_check。 \ngt_wizard_support： 主要是 serdes 的一个接口例化，有关 serdes 接口的一些配置端\n口、gt_common 的例化集成在这个 module 里面，这里不多做描述，如果想更详细的了\n解 serdes 底层原理，建议对照 ug476.pdf 直接撸代码看，效果最佳，当然也可以直接咨\n询复旦微 FAE。 \ngt_frame_gen：主要是一个 gt tx 发送数据产生模块 ，数据来源于例子工程中的\ngt_rom_init_tx.dat 数据源，如果感兴趣可以打开数据看看数据是什么。 \n \n"
+      },
+      {
+        "page": 17,
+        "text": " \ngt_frame_check：主要是一个 gt rx 数据校验模块，具体功能是 gt rx 端接收 gt tx 端\n发送的数据后， 和本地预存的gt_rom_init_rx.dat 进行一一比对， 看看数据在传输工程中\n是否会产生误码，如果有误码，会统计出误码数据的数量。 \n为了简单验证， 我直接做的是外部光纤回环测试，在该例程上做了一些简单的修改，\n使用的发送数据就是例程自带的 gt_rom_init_tx.dat，额外添加了两个 ila，来分别抓取\ngt_tx_data 和 gt_rx_data 以及相关的指示信号，如下图所示： \n \n 从复旦微 FAE或者销售那获取一键式迁移流程的压缩包 （一个迁移流程教程Word + \n迁移包） ，如下图所示： \n"
+      },
+      {
+        "page": 18,
+        "text": " \n \n \n  \n"
+      },
+      {
+        "page": 19,
+        "text": " 从复旦微 FAE 或者销售那 V5.2.0 版本的 ip_patch（一定要确认好版本），设置好环\n境变量后，需要在 Vivado 中，确认一些版本，如下图所示： \n \n1. 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/run.tcl (路径是根据用户设置的环境变量输入) \n2. 在 console 栏输入： \nshow_ip_patch_version \n \n \n 针对 Vivado工程进行补丁操作， 这一步必不可少，在 Console 中输入补丁文件步骤： \n1) 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/run.tcl (路径是根据用户设置的环境变量输入) \n2) 在 console 栏输入： \nadd_hook_tcl_to_prj \n \n注意 V5.2.0 的补丁会替换底层的 fft、dds、fir 等 ip 的底层库 \n3) 再 reset 工程中所有的 ip，然后重新 generate \n4) 对工程进行 Synthesis，直到综合完成；如果有 ILA/VIO，一定要确保 opt 阶段完成；由于这里工程中\n加了 ILA，我们直接跑 Implementation，等待 opt 完成。 \n5) 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/fmsh_migration_process/fmsh_migration_process.tcl (路径是根\n据用户设置的环境变量输入) \n6) 在 console 栏输入： \nfmsh_migration_process -xdc on –prj on –mmi off –step opt –procise_device fmp100t4（该处的配置选项如\n果不会，可以查询上述压缩包中的 word 说明或者咨询 FAE） \n  \n"
+      },
+      {
+        "page": 20,
+        "text": " 完成上述操作后，Vivado 会启动一键式迁移流程，此时可以打开 Tiktok 或者打一段\n八段锦，静静等待迁移完成。 \n 打开工程路径下自动创建的 procise 工程，如下图所示： \n \n \n从工程 Hierarchy 来看，Procise 工程的结构树和 Vivado 的结构树基本保持一致， 并\n且工程中相关的 xdc 约束都迁移过来了，并且自动保存为 xxx.fdc，如果还有 xxx.fdc 约\n束报错的话，则需要根据 procise 支持的语法规则修改 fdc 文件约束， 如果此过程遇到困\n难的话，及时咨询复旦微 FAE，寻求帮助。 \n 本例程需要修改 fdc 文件约束，主要是修改 GTX 的 Refclk 和 TX_P/N、RX_P/N 等\n管脚的 Location，用户可根据自己实际的原理图设计进行约束，如下图所示：  \n \n"
+      },
+      {
+        "page": 21,
+        "text": " \n然后再对 Procise 工程进行布局、布线和生成 bit 位流，最后进行下载调试工作。 \n 板子上电，下载位流进行功能测试，双击 ChipXploar Analyzer，如下图所示： \n \n会弹出 ChipXplorer 的界面，如下图： \n"
+      },
+      {
+        "page": 22,
+        "text": " \n仿真器插好，光纤插好，板卡上电，如下图所示： \n \n点击 ChipXplorer 界面中的链接按钮，如下图所示： \n \n"
+      },
+      {
+        "page": 23,
+        "text": "在 MyDevice0 右键选择 configure，如下图所示： \n \n点击 select new file，选择刚刚编译生成的 bit 文件，如下图所示： \n \n再勾选 Import Design-level CDC file 选项框，选择与 bit 文件对应的 ltx 文件，如下图所\n示： \n \n完成上述配置后，再点击 ok，如下图所示： \n"
+      },
+      {
+        "page": 24,
+        "text": " \n点击 ok 后，procise 右下角有一个下载 bit 的进度条，静静等待下载完成，如下图所示： \n \n下载完成后，ILA list 会弹出来，如下图所示： \n \n 对比 TX 和 RX 的数据， 发现收发数据一致， 并且没有误码， 光纤自回环验证成功，\n迁移流程可靠。 \n \n \n至此，FMP100 系列 FPGA SERDES Vivado 移植 Procise 流程全部结束，效果非常 nice，\n你值得拥有。 \n  \n"
+      },
+      {
+        "page": 25,
+        "text": "第四章：基于简单工程的迁移流程（含 MicroBlaze） \n上一章介绍了 FMP100 系列 FPGA 的 GTX 工程使用迁移流程，书接上回，FPGA\n其实是一种特别适合大数据并行吞吐计算的芯片， 并不适合对于一些复杂的串行控制流\n程， 虽然有一些状态机的加持， 但是对于一些复杂的控制流程，稍微修改一下控制流程，\n就需要重新编译，就显得那么的力不从心。 \n老牌的 FPGA 厂家针对上述的应用短板，都开发了适配自家 FPGA 芯片的软核流程，\n不管是 Altera 的 NIOS II 还是 Xilinx 的 MicroBlaze，甚至是基于 FPGA 上开发的 RISC-V\n的方案都能很好的解决 FPGA 上述短板； \n复旦微的 FMP100 系列 FPGA 早期也是推出了自家的软核方案， 但是经过各方武林\n势力的联合围剿，希望我们也能做 MicroBlaze 的方案， 最终在光明顶， 复旦微研发团队\n研发了一套基于 Vivado+SDK 开发的软核方案； \n今天小编就给大家简单介绍一下基于复旦微的 FMP100 系列 FPGA 的 MicroBlaze\n的开发流程。 \n  "
+      },
+      {
+        "page": 26,
+        "text": " 新建 Vivado 工程， 这次我们器件选择为xc7a100t-fgg676-2，在Vivado 中创建 Block \nDesign，添加 Microblaze 最小系统，如下图所示： \n \n \n上图中我们搭建了一个最小的 MicroBlaze 工程， 简单加了一个AXI-UART，打印一\n个字符串。 \n 从复旦微 FAE或者销售那获取一键式迁移流程的压缩包 （一个迁移流程教程Word + \n迁移包） ，如下图所示： \n \n \n \n  \n"
+      },
+      {
+        "page": 27,
+        "text": " 从复旦微 FAE 或者销售那 V5.2.0 版本的 ip_patch（一定要确认好版本），设置好环\n境变量后，需要在 Vivado 中，确认一些版本，如下图所示： \n \n3. 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/run.tcl (路径是根据用户设置的环境变量输入) \n4. 在 console 栏输入： \nshow_ip_patch_version \n \n \n 针对 Vivado工程进行补丁操作， 这一步必不可少，在 Console 中输入补丁文件步骤： \n7) 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/run.tcl (路径是根据用户设置的环境变量输入) \n8) 在 console 栏输入： \nadd_hook_tcl_to_prj \n \n注意 V5.2.0 的补丁会替换底层的 fft、dds、fir 等 ip 的底层库 \n9) 再 reset 工程中所有的 ip，然后重新 generate \n10) 对工程进行 Synthesis、Implementation，直到 Implementation 完成；  \n11) 在 console 栏输入： \nsource C:/FM_IP_Patch/JFM_Kits/ip_patch/fmsh_migration_process/fmsh_migration_process.tcl (路径是根\n据用户设置的环境变量输入) \n12) 在 console 栏输入： \nfmsh_migration_process -xdc on –prj on –mmi on –step opt –procise_device jfmp100t8（该处的配置选项如\n果不会，可以查询上述压缩包中的 word 说明或者咨询 FAE） \n  \n"
+      },
+      {
+        "page": 28,
+        "text": " 完成上述操作后，Vivado 会启动一键式迁移流程， 此时可以打开Tiktok 或者跳一段\n极乐净土，静静等待迁移完成。 \n 打开工程路径下自动创建的 procise 工程，如下图所示： \n \n \n从工程 Hierarchy 来看，Procise 工程的结构树和 Vivado 的结构树基本保持一致， 并\n且工程中相关的 xdc 约束都迁移过来了，并且自动保存为 xxx.fdc，如果还有 xxx.fdc 约\n束报错的话，则需要根据 procise 支持的语法规则修改 fdc 文件约束， 如果此过程遇到困\n难的话，及时咨询复旦微 FAE，寻求帮助。 \n这里约束文件中会把 Vivado 工程中的 BRAM 的位置信息也会跟着迁移过来，并且\n自动存放到工程路径约束文件夹/xxx_bram.fdc，如下图所示，bram 位置约束主要针对\nmiroblaze 的 icache 和 dcache 的 bram 位置信息。 \n"
+      },
+      {
+        "page": 29,
+        "text": " \n \n确保 Procise 工程的约束文件都正确后，布局、布线生成 bit 位流。 \n 至此 bit 位流已经生成，仿真器接好，板子上电，接下来就要准备在 SDK 中开发\napp.elf，首先需要在 Procise 中下载 bit 位流，下载完成后，如下图所示： \n \n"
+      },
+      {
+        "page": 30,
+        "text": " 为了可以 在 SDK 中 debug 客 户 工 程 ， 需 要替换 Vivado18.3 安 装 路 径 下 的\nhw_server.exe（需要备份原先的 hw_server.exe），换成复旦微提供的 hw_server.exe，\n这个特殊的 hw_server.exe 可以寻求复旦微 FAE 或者 Sales 获取下载链接，如下图所\n示： \n \n 回到上述的原先的 Vivado 工程，一定要确保工程跑完实现了，然后在 Vivado 菜单\n栏 File/Export/Exprot Hardware， 然后导出microblaze 的 hardware（此处可以不勾选\ninclude bitstream），点击 OK，如下图所示： \n \n \n 然后在 Launch SDK，再点击 ok，如下图所示： \n"
+      },
+      {
+        "page": 31,
+        "text": " \n 在 SDK 中新建一个 hello_world 的工程，这个流程相信各位老铁兄弟也都轻车熟路\n了， 这里不多做赘述， 如下图所示， 串口打印字符串，“Fudan Mirco is So Niubility!!!” \n \n 在 SDK 中进入调试模式，如下图所示： \ns \n"
+      },
+      {
+        "page": 32,
+        "text": " 弹出界面如下图，因为 bit 之前已经在 Procise 中下载过了，所以这里就只要如下图\n所示设置就可以，这里有个重点要注意，就是必须把 Procise 关闭，不然会两个软\n件抢占 hw_server 的进程。 \n \n 点击 AutoDetect 的 Select，必须扫描出 xc7a50t 以后才能继续 debug 流程，如下图\n所示： \n  \n 上述工作确认好后，保存配置点击 apply 和点击 debug，如下图所示： \n"
+      },
+      {
+        "page": 33,
+        "text": " \n 点击 debug 后，会弹出一些提示框，全部点击 yes 后就会进入 debug 界面，如下图\n所示： \n \n 连接串口线，接到电脑上，运行 hello_world，点击绿色的开始键，如下图所示： \n"
+      },
+      {
+        "page": 34,
+        "text": " \n 打开串口助手，发现此时我们的 MicroBlaze 已经疯狂的输出 Fudan Mirco is So \nNiubility!!!，如下图所示： \n \n 从串口结果来看，microblaze 已经正常运行，打印功能也正常，此时我们拿到了需\n要的 hello_world.elf 文件，如下图所示： \n"
+      },
+      {
+        "page": 35,
+        "text": " \n 接下来， 需要把Procise 生成的 bit、sdk 生成的 elf、还有 vivado 生成的 mmi 文件在\nprocise 中合成最终的 bit 文件，三个文件的路径分别如下图所示： \n \n \n"
+      },
+      {
+        "page": 36,
+        "text": " \n建议把这三个文件拷贝到一个新建的文件夹里面，并命名为 BOOT。 \n \n 至此，MicroBlaze 所需的文件全部准备完毕， 接下来打开Procise， 打开Tools/Platform \nTools \n \n \n 切到 Bitstream 栏，往下翻到 data_to_mem，利用该工具可以合成最终 bit 位流，如\n下图所示： \n \n"
+      },
+      {
+        "page": 37,
+        "text": " \n 把刚刚找到的三个文件，xxx.bit、xxx.elf、xxx.mmi，并选择最终生成的 bit 存放的\n位置，如下图所示，然后点击 excute； \n \n \n \n \n \n \n"
+      },
+      {
+        "page": 38,
+        "text": " 最后我们把 final.bit 通过 Procise 下载到 FPGA 中，查看串口打印，确认最终的 bit\n功能是否正确，如下图所示，串口打印的信息和 SDK 中调试的移植，证明我们的\n迁移流程非常成功，至此我们的 Microblaze 迁移流程全部结束，各位老铁，咱们下\n期再回。 \n \n  \n"
+      },
+      {
+        "page": 39,
+        "text": "第五章：基于复杂工程的迁移流程（MicroBlaze + GT + DSP） \n \n \n \n \n \n \n "
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "stage": "compile-rtl",
+    "argv": [
+      "D:\\Xilinx\\Vivado\\2019.1\\bin\\xvlog.bat",
+      "color_bar.v",
+      "frame_fifo_read.v",
+      "video_rect_read_data.v",
+      "timing_gen_xy.v",
+      "aq_axi_master.v"
+    ],
+    "exit": 1,
+    "seconds": 0.9811888999975054,
+    "timeout_seconds": 120
+  }
+]

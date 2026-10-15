@@ -1,0 +1,31 @@
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe tb_pixel_suite --timescale 1ns/1ps --debug typical --snapshot candidate 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.hdmi_stream_fifo(AW=3)
+Compiling module work.stream_fifo_tests
+Compiling module work.hdmi_register_bank
+Compiling module work.hdmi_command_mailbox
+Compiling module work.hdmi_scan_control(DMA_BASE=32'b0...
+Compiling module work.hdmi_axi_read
+Compiling module work.hdmi_candidate_core(DMA_BASE=32'...
+Compiling module work.hdmi_candidate_register_core
+Compiling module work.hdmi_stream_fifo
+Compiling module work.hdmi_pixel_scan_default
+Compiling module work.hdmi_scanout
+Compiling module work.scanout_tests
+Compiling module work.tb_pixel_suite
+Built simulation snapshot candidate
+
+****** Webtalk v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source D:/FPGACompetitionProject/.local/hdmi-candidate-sim-20261015-r7/xsim.dir/candidate/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Oct 15 20:56:47 2026...

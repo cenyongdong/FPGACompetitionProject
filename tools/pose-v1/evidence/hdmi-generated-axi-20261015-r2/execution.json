@@ -1,0 +1,30 @@
+[
+  {
+    "stage": "compile",
+    "exit": 0,
+    "seconds": 1.4161039000027813,
+    "budget": 90,
+    "timeout": false
+  },
+  {
+    "stage": "compile_tb",
+    "exit": 0,
+    "seconds": 0.957925200003956,
+    "budget": 90,
+    "timeout": false
+  },
+  {
+    "stage": "elaborate",
+    "exit": 0,
+    "seconds": 10.09982210000453,
+    "budget": 90,
+    "timeout": false
+  },
+  {
+    "stage": "simulate",
+    "exit": 0,
+    "seconds": 5.941890599999169,
+    "budget": 90,
+    "timeout": false
+  }
+]

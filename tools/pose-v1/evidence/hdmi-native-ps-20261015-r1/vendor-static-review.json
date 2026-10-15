@@ -1,0 +1,12 @@
+{
+  "official_decoder_source": "D:\\FPGACompetitionProject\\Docs\\26\u5d4c\u8d5b\u5f00\u53d1\\JFM_Kits\\JFM_Kits\\ip_patch\\run.tcl",
+  "input_sha256": "eea0db9b68062a994f1bdf88baef90e63d16b66643a5e9fa8c9bf2090e530071",
+  "decoded_sha256": "644ce077e9f424a5f77ac875cc76c6e693fb94434083dccecf94d10e53222530",
+  "tcl_evaluated": false,
+  "line_count": 54,
+  "replacement_characters": 0,
+  "procedures": [
+    "decrypt",
+    "topRun"
+  ]
+}

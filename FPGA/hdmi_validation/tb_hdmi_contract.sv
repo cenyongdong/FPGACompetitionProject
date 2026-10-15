@@ -38,7 +38,8 @@ module tb_hdmi_contract;
   reg data_valid=0,burst_finish=0;
   integer bursts=0;
   reg memory_busy=0;
-  wire fast_done,nominal_done;
+  wire fast_done,nominal_done,axi_done;
+  axi_read_backpressure_case axi_case(axi_done);
   frame_period_case #(.ID(200),.HALF_NS(2.5)) fast(fast_done);
   // 1ps simulator resolution: 6.734ns is an approximation to 148.5MHz.
   frame_period_case #(.ID(148),.HALF_NS(3.367)) nominal(nominal_done);
@@ -119,7 +120,7 @@ module tb_hdmi_contract;
     if(!gated_req) $fatal(1,"Display gate did not cause falling-edge read request");
     $display("CONTROL disabling_during_vs_high_creates_read_request");
     $dumpoff;
-    wait(fast_done && nominal_done);
+    wait(fast_done && nominal_done && axi_done);
     $display("HDMI_CONTRACT_TEST_PASS");
     $finish;
   end

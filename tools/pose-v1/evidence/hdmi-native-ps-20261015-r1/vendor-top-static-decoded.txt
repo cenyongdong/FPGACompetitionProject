@@ -1,0 +1,54 @@
+###version info###
+##version:1.0
+##date:2020/03/12
+##version:1.1
+#date:2020/03/26
+#revision: fix some bugs
+proc decrypt {passphrase cleartext} {
+    set r {}
+    binary scan $passphrase c* l
+    binary scan $cleartext c* d
+    set pmax [llength $l]
+    set cn 0
+    foreach {c} $d {
+        set cp [lindex $l $cn]
+        append r [format %c [expr {($c & 0xff) ^ ($cp & 0xff)}]]
+        incr cn
+        if {$cn >= $pmax} { set cn 0 }
+    }
+    return $r
+}
+
+proc topRun {} {
+    set current_prj_path [get_property DIRECTORY [current_project]]
+	if {$current_prj_path != "."} {
+	} else {
+        set current_prj_path $::env(JFM_PATH)
+	}
+    set dir [file join $current_prj_path "ip_patch"]
+    
+    set scriptName "all_src_files"
+    set tclPath [format "%s/%s.tcl" $dir $scriptName]
+    set tclPPath [format "%s/..%s.tcl" $dir $scriptName]
+    set runPath [format "%s/%s.tcl" $dir "top"]
+    set runPPath [format "%s/..%s.tcl" $dir "top"]
+    file copy -force $tclPath $tclPPath
+    
+    set filein [open $tclPath r]
+    fconfigure $filein -encoding binary -translation binary
+    set filetxt [read $filein]
+    close $filein
+    set fileout [open $tclPath w]
+    fconfigure $fileout -encoding binary -translation binary
+    set decryptData [decrypt "yMb53guIzC7NqnY1" $filetxt]
+    puts -nonewline $fileout $decryptData
+    close $fileout
+    source $tclPath -notrace
+    puts "source $tclPath"
+    file copy -force $runPPath $runPath
+    file delete -force $runPPath
+    file copy -force $tclPPath $tclPath
+    file delete -force $tclPPath
+    puts "load $tclPath Successfully!"
+}
+topRun

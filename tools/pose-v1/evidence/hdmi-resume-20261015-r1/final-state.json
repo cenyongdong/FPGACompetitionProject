@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-15",
+  "user_resumed_HDMI": true,
+  "old_DATA_still_paused": true,
+  "r4_complete_frame_three_bases_passed": true,
+  "native_scanout_synthesis_exit": 0,
+  "r5_kernel_assertions_completed": true,
+  "r5_driver_exit": 1,
+  "r5_overall_accepted": false,
+  "r5_timeout_seconds": 90,
+  "simulation_retry_after_timeout": false,
+  "new_split_entry_prepared_not_run": true,
+  "current_RTL_matches_r5_and_native": true,
+  "PS_AI_system_integrated": false,
+  "TMDS_physical_integrated": false,
+  "implementation_timing_signoff": false,
+  "bitstream_generated": false,
+  "download": false,
+  "board_connection_this_turn": false,
+  "protected_reference_files_unchanged": 38,
+  "project_task_complete": false,
+  "awaiting": "explicit confirmation of new split simulation batch",
+  "tool_process_inventory": {
+    "names": [
+      "procise",
+      "xsim",
+      "xelab",
+      "xvlog"
+    ],
+    "scope": "tool process-name inventory; no processes terminated",
+    "checked_at": "2026-10-15T20:50:13.9737475+08:00",
+    "processes": []
+  }
+}

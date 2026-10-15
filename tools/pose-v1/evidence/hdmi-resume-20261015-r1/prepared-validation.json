@@ -1,0 +1,27 @@
+{
+  "executed": false,
+  "needs_new_batch_confirmation": true,
+  "location": "Windows; D:/FPGACompetitionProject",
+  "tools": "Vivado XSim 2019.1, existing installation",
+  "stage_budget_seconds": 90,
+  "new_batch_order": [
+    {
+      "command": "python FPGA/hdmi_candidate/scripts/simulate.py r6 core",
+      "condition": "explicit new-batch confirmation and fresh evidence/work paths"
+    },
+    {
+      "command": "python FPGA/hdmi_candidate/scripts/simulate.py r7 pixel",
+      "condition": "first batch all stages exit0, marker PASS and no Fatal"
+    }
+  ],
+  "stop_on": [
+    "timeout",
+    "nonzero exit",
+    "Fatal",
+    "missing PASS",
+    "source identity change"
+  ],
+  "hardware_activity": false,
+  "IP_migration": false,
+  "automatic_retry": false
+}

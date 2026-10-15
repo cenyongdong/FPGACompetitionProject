@@ -1,6 +1,8 @@
 # 项目进度总览
 
-更新日期：2026-10-15。最近实际验证另包括HDMI只读盘点：当前BOOT/三份SDK核心库身份相同、FPGA operating；未发现Linux显示或HDMI时钟观测接口，像素时钟/PLL与安全停止尚缺依据，色条未启动。用户已批准先核配套再静态图、翻帧/停止、骨架的有条件顺序；[讨论记录](ARCHITECTURE-DISCUSSION-20261015.md)、[本次证据](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md)。共享模型最近实际验证：共享新包三窗、30秒/1131次及30分钟/62,945次实板串行推理完成，数值/内存观察通过、未观察到崩溃，全部原值回传独立复核；11次>1秒、最长4.158秒的时延长尾待定位（D41）。仅三个冻结来源，无视频/网络叠加；现行score>0.2/3mm规则保持，旧失败原值保留。正式核心原CPU107/整机复核仍待另验，旧DATA暂停。历史快照见[归档索引](ADR/history/20261013/README.md)。
+更新日期：2026-10-15。最后实际验证日期同日。2026-10-15 HDMI已获实板、隔离同配置重建、16根IP修订白名单及有限衍生字段例外授权。实板只读身份/12寄存器核验通过，BOOT/六份SDK/内核同；新r3有限契约门检、97.600秒IP生成及28项原有HDL参数/生成端口后检通过。实际生成AXI3互联两入口全32个ID、64读/64写完整16拍burst及背压通过，Procise原生互联综合16.417秒exit0；纯输出OBUFDS→ODU_DS真实引脚布线兼容探针通过。完整系统当前受阻于自定义PS7扩展端口与Procise PCPU7声明不匹配，PS门检8.418秒exit1，已停止。尚无完整候选位流，未下载、未改BOOT或重启，实屏仍待验；旧DATA继续暂停。 [本批总报告](tools/pose-v1/evidence/hdmi-bringup-20261015-r1/REPORT.md)、[生成/后检](tools/pose-v1/evidence/hdmi-ip-generation-20261015-r3/REPORT.md)、[PS阻塞与恢复入口](FPGA/hdmi_candidate/PS-ADAPTATION-STATUS.md)。
+
+共享模型最近实际验证：共享新包三窗、30秒/1131次及30分钟/62,945次实板串行推理完成，数值/内存观察通过、未观察到崩溃，全部原值回传独立复核；11次>1秒、最长4.158秒的时延长尾待定位（D41）。仅三个冻结来源，无视频/网络叠加；现行score>0.2/3mm规则保持，旧失败原值保留。正式核心原CPU107/整机复核仍待另验，旧DATA暂停。历史快照见[归档索引](ADR/history/20261013/README.md)。
 
 ## 当前阶段与任务状态
 
@@ -60,7 +62,7 @@
 | 首Host读取残留前输入 | 独立生产者inv94 DATA96全同上一B，INDEX正确，四物理晚源94080字节正确；早期即时Host采样尚缺 | **暂停**，恢复须明确指令；保留原首次文件/晚源读，不能认定NPU/cache/DMA责任；[ADR_44](ADR/ADR_44.md) |
 | VPU连续普通页 | 固件512KiB普通连续页失败，CMA空闲不等同可分配；两缓冲/常驻与规整是缓解 | 永久首启动另验，不默认扩大CMA；[ADR_02](ADR/ADR_02.md) |
 | 性能和延迟 | 核心短期5.24655Hz，不代表整机；整机4.99165/4.998467Hz不能舍入成严格5Hz | 有界单钟计量证据保留，长期及真实全链待验；[ADR_06](ADR/ADR_06.md)、[ADR_32](ADR/ADR_32.md) |
-| HDMI | 目标1080p60；15日只读盘点BOOT/SDK同、FPGA operating，未找到Linux显示/HDMI时钟节点；当前demo未接入 | 保持BOOT，先补当前版本无SDI时钟/PLL及安全停止契约，再色条/换帧/骨架；[本轮报告](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md) |
+| HDMI | 分组扫描/TMDS常量、有限IP生成/端口后检、AXI3有界路由仿真及原生互联综合通过；纯输出引脚兼容探针通过 | 自定义PS7→PCPU7扩展端口不匹配，当前系统构建停止；原生PHY/CDC/完整实现与实屏仍待验。已允许板测但未下载候选，BOOT保持；[恢复入口](FPGA/hdmi_candidate/PS-ADAPTATION-STATUS.md) |
 | 扩展精度与真实采集 | 额外57演示样本无完整数值参考；预采回放不是实时无线设备 | 完整输出参考/实际采集接口与同步/新场景验证另立任务 |
 | 30分钟与零拷贝 | 没有长期整机结论，现用SDK Host拥有快照桥 | 保留首版先跑全流程决策，优化不得覆盖基线；[ADR_01](ADR/ADR_01.md) |
 
@@ -95,7 +97,7 @@
 | 设备协议 | axi://zg330aiu?npu=0x40000000&dma=0x80000000；device25122301 / icore FMSHZGV3TECH-AID - 24160628 |
 | 模型/启动身份 | [TechDetails](ADR/TechDetails.md)及[演示完成清单](tools/pose-v1/evidence/demo-20261011-r4/completion-review.json)；固定JSON/RAW和BOOT哈希，不在本页重复维护 |
 | 当前重构demo | 构建.local/pose-v1-build/demo-refactor-20261013-r1，板端/tmp/wifi-pose-demo-refactor-20261013-r1；3窗口回归通过。[运行说明](software/demo/README.md)、[核心导读](software/core/README.md) |
-| 当前恢复点 | HDMI按已同意顺序推进，第一阶段只读身份/接口盘点完成，时钟与安全停止资料待补；[门槛与证据](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md)。共享图稳定性及正式旧图重构分别保持原范围，无本批后台 |
+| 当前恢复点 | **本批HDMI离线分组验证及常量修正完成**；[结果/物理集成待办](FPGA/hdmi_candidate/RESUME.md)；无后台作业，旧DATA继续独立暂停 |
 | 暂停故障恢复点 | [producer-prepared next-checkpoint](tools/pose-v1/evidence/producer-prepared-20261011-r1/next-checkpoint.json)及[原下一方案](tools/pose-v1/PRODUCER-PREPARED-NEXT-20261011.md)；未实施，不重跑旧Session |
 | 历史工具路径/调用示例 | [迁出的工具资料](ADR/history/20261013/toolchain-runbook.md)、[REFERENCES](REFERENCES.md)；旧D:/FPGACompetitionProject路径为历史来源，不直接替代当前工作区 |
 | 文档整理记录 | [ADR_46](ADR/ADR_46.md)、[难点索引](DIFFICULTIES.md)、[历史与迁移清单](ADR/history/20261013/README.md) |

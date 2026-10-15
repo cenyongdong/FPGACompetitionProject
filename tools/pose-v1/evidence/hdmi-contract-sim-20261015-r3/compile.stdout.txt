@@ -1,0 +1,21 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/color_bar.v" into library work
+INFO: [VRFC 10-311] analyzing module color_bar
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/frame_fifo_read.v" into library work
+INFO: [VRFC 10-311] analyzing module frame_fifo_read
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/video_rect_read_data.v" into library work
+INFO: [VRFC 10-311] analyzing module video_rect_read_data
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/timing_gen_xy.v" into library work
+INFO: [VRFC 10-311] analyzing module timing_gen_xy
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v" into library work
+INFO: [VRFC 10-311] analyzing module aq_axi_master
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_AWREADY' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:111]
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_WREADY' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:112]
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_ARREADY' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:113]
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_AWVALID' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:114]
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_WVALID' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:115]
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_ARVALID' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:116]
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_BVALID' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:118]
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_BREADY' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:119]
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_RREADY' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:120]
+ERROR: [VRFC 10-3676] redeclaration of ansi port 'M_AXI_RVALID' is not allowed [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:121]
+ERROR: [VRFC 10-2865] module 'aq_axi_master' ignored due to previous errors [D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r3/aq_axi_master.v:20]

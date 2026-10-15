@@ -1,0 +1,75 @@
+Procise 2025.1.1 temp
+SVN Version : 32494
+Build  time : 2026/03/20 13:26:17
+Start  time : 2026-10-15 20:39:56
+Can not get UUID of your computer!
+create project
+>>create_project -name candidate_scanout -device JFMQL30TAI676H
+  >>set_device JFMQL30TAI676H
+  set_device elapsed_time 3.10 seconds, cpu_time 3.06 seconds
+  set_device used memory 660MB, procise used peak memory 694MB, current used memory 694MB
+>>add_design_file -file hdmi_axi_read.v hdmi_command_mailbox.v hdmi_scan_control.v hdmi_candidate_core.v hdmi_register_bank.v hdmi_candidate_register_core.v hdmi_stream_fifo.v hdmi_pixel_scan.v hdmi_scanout.v
+  add_design_file used memory 0MB, procise used peak memory 694MB, current used memory 694MB
+>>set_top -top hdmi_scanout
+  set_top elapsed_time 0.74 seconds, cpu_time 0.67 seconds
+  set_top used memory 0MB, procise used peak memory 694MB, current used memory 579MB
+logfiels move to rundir/logfiles_bk_2026_10_15_20_40_00 failed, please check.
+save project, time: 2026-10-15 20:40:00 
+>>load_design -stage_elaborate -no_hier
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_axi_read.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_command_mailbox.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_scan_control.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_candidate_core.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_register_bank.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_candidate_register_core.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_stream_fifo.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_pixel_scan.v' (VERI-1482)
+-- Analyzing Verilog file 'D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_scanout.v' (VERI-1482)
+  load_design elapsed_time 1.33 seconds, cpu_time 1.33 seconds
+  load_design used memory 6MB, procise used peak memory 694MB, current used memory 593MB
+>>launch_run -stage synthesis
+  >>rtl_analyze
+  rtl_analyze -> elaborate
+D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_scanout.v(3): INFO: compiling module 'hdmi_scanout_default' (VERI-1018)
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_register_bank.v(26), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_register_bank.v(26), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_register_bank.v(26), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_register_bank.v(26), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_register_bank.v(27), extract no sensitive signal from if-condition statement.  
+  Info: D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_register_bank.v: message ELAB-W-55 has occurred for too many times, the later same message would be ignored.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_command_mailbox.v(32), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_scan_control.v(108), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_scan_control.v(108), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_scan_control.v(111), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_scan_control.v(113), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_axi_read.v(45), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_axi_read.v(45), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_axi_read.v(45), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_pixel_scan.v(29), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_pixel_scan.v(30), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_pixel_scan.v(33), extract no sensitive signal from if-condition statement.  
+  WARN(ELAB-W-55): D:/FPGACompetitionProject/.local/hdmi-candidate-procise-scanout-20261015-r1/hdmi_pixel_scan.v(35), extract no sensitive signal from if-condition statement.  
+  Info: Found a RAM 'storage' in module 'hdmi_stream_fifo'.
+  one port: depth=512, width=64.
+  one port: depth=512, width=64.
+  
+  Info: SDB transformed into DM successfully.  
+  write out edif file hdmi_scanout_elaborate.edif
+  rtl_analyze -> read edif source files
+  rtl_analyze -> read ip edif files
+  rtl_analyze -> bind_design -verbose 0
+  rtl_analyze -> uniquify
+  rtl_analyze elapsed_time 0.28 seconds, cpu_time 0.22 seconds
+  rtl_analyze used memory 12MB, procise used peak memory 694MB, current used memory 604MB
+>>synthesize
+  synthesize -> flatten
+  synthesize -> sweep -sequential -verbose 0
+  synthesize -> logic opt and lut mapping
+  synthesize -> insert_io -bufg_limit_cnt 16
+  write out edif file hdmi_scanout.edif
+  FDC_INFO! export constraints to file hdmi_scanout_synthesized.fdc!
+  synthesize elapsed_time 3.48 seconds, cpu_time 3.48 seconds
+  synthesize used memory 2MB, procise used peak memory 694MB, current used memory 599MB
+CANDIDATE_NATIVE_SYNTHESIS_RETURNED
+
+Thank you for using procise!
