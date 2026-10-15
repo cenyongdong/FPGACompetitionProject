@@ -1,0 +1,12 @@
+{
+  "local_sha256": "9986559f1fd075790f4fe6aa4be132e860c44ca8cd92bf84ece2eb10d318de91",
+  "server_sha256": "9851f018164c56736c246246a199c4d5eba0d26c1bc0a98dcb40c6bf9059229c",
+  "differing_assignments": [
+    "data",
+    "gpu_ids",
+    "resume_from"
+  ],
+  "model_assignment_AST_equal": true,
+  "export_source": "Pinned server config; strict explicit epoch442 checkpoint loading, CPU eval",
+  "local_config_overwritten": false
+}

@@ -1,0 +1,15 @@
+{
+  "remote": "/tmp/wifi-pose-shared-gate-20261015-r1",
+  "transfer_sha256": "bb26c8865bcb31ce696aee14e827bc080468f71550d6d8dbada342bfe30389ae",
+  "package_sha256": "dc22433bc03f64cb02e094a8a65db3ba5b3d95fde1eaeb7e91f9c058349dc58b",
+  "transfer_bytes": 38113280,
+  "frames": 3,
+  "mode": "wall",
+  "child_budget_seconds": 120,
+  "kill_grace_seconds": 5,
+  "reference": "Same S11_01_308/309/310 original board inputs/scores/poses as 2026-10-13 timing",
+  "stop": "Any error, identity drift, nonfinite, illegal index, score byte discrepancy or joint Euclidean delta >3mm, timeout, kernel log change",
+  "VPU_TCP": false,
+  "reboot": false,
+  "automatic_retry": false
+}

@@ -1,0 +1,7 @@
+{
+  "scope": "offline reevaluation of saved failed first frame; no board rerun",
+  "max_joint_delta_mm": 1.953125,
+  "approved_limit_mm": 3.0,
+  "pose_gate_passed": true,
+  "original_strict_failure_preserved": true
+}

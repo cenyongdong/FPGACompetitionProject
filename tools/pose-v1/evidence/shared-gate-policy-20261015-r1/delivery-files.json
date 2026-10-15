@@ -1,0 +1,450 @@
+{
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\01-board-state.txt": {
+    "bytes": 4376,
+    "sha256": "308d67114820372acc735a643ea4582cb93f162d275ee5ba6d8647f47a335c69"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\02-create.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\03-transfer.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\04-install.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\05-execute.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\06-archive.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\07-return.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\98-final-preflight.txt": {
+    "bytes": 86,
+    "sha256": "5f84bae568493183da59f1da2af1de5d13c91c3b74aaf401268ca2e95c32358e"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\99-final-return.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\analysis-stdout.txt": {
+    "bytes": 778,
+    "sha256": "6588c6770c2755f8af9abe408e115d8ca073f15fa74f900e0e4e74b6a62b93cb"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\analysis.json": {
+    "bytes": 10309,
+    "sha256": "87d8b01138b092d783a0be9750e2f4dfd178cd2198f89daee46022ab2701f93d"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\analyze.py": {
+    "bytes": 9534,
+    "sha256": "f3b393e52760d4b6fa07133437ec3447e1b11c26802d8aaec372f79d31c5ec50"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\build-configure.txt": {
+    "bytes": 709,
+    "sha256": "744b3431d6f94d4a5007c64ed95bb23f211aa5e04787f977bc0eaaa0ac6489d3"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\build-exit.json": {
+    "bytes": 98,
+    "sha256": "3dc5d9662695302c1c2e1f736be03e6986547d156f329a794d3d7d3cf3b92c79"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\build.txt": {
+    "bytes": 1646,
+    "sha256": "5a4ed2afdf578f40367181e5eda6500af9888bc581e3705c087f94068058f0a8"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\close.py": {
+    "bytes": 3586,
+    "sha256": "ad2564ae7eabf801ad88d98edfcec80e6710fc9176e8cec762c045eed0c6efea"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\docker-final-state.txt": {
+    "bytes": 8,
+    "sha256": "0766cbbee949b04b8c8a9ea46537dc38ccf0b7aa7b60ecd4083c247388603095"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\docker-processes-before-stop.txt": {
+    "bytes": 296,
+    "sha256": "d13b20ae867bc47fa99f4844b4491daa72c10f2ecb7e0ca608a7029d9ca647b1"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\docker-sdk-sha256.txt": {
+    "bytes": 680,
+    "sha256": "82777234cd6a2ad4a413d15d43ce96b41cd1ce3376aac6dc58a5cd6a61483e7d"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\docker-stop.txt": {
+    "bytes": 62,
+    "sha256": "ba4e0f4e1748dfdfac820908dbcba508ebade5d623baf1aa70a8723f15e14473"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\documentation-before.json": {
+    "bytes": 898,
+    "sha256": "9e9ddc3ed361a7551b19f9dcf5c4c9bf8509e3506f02ed3e3ecc27c5cab83946"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\documentation-revision.json": {
+    "bytes": 2169,
+    "sha256": "f9b5767ae96e08ef126117953c9e4a2f7ee23963e6d48cb0ea8fe3be285065b4"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\execute.py": {
+    "bytes": 3087,
+    "sha256": "9650823ff1e5f11d8323f88ae33d8168444b5239c89b9c548d043db87ca2cc21"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\execution-plan.json": {
+    "bytes": 667,
+    "sha256": "b196fd93e878fc70be8f6c0954905f9232778f50e3a7f79b7493c8101cf9e974"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\final-preflight.json": {
+    "bytes": 8215,
+    "sha256": "2fa453226e94941a4d1f92bcd63483f443428f31731d21773bcef9986999520c"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\gate-selftest.txt": {
+    "bytes": 56,
+    "sha256": "cdd65364074c5306c5dc125bca47e1f54ba300b3b7a7591673a1092a8cb7c1a4"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\git-diff-check.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\ground-truth\\S11_01_308.npy": {
+    "bytes": 464,
+    "sha256": "3b2cbcd55f90c3cd0b23e8670cbff2ea73eb2549f01786756374058160d871cf"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\ground-truth\\S11_01_309.npy": {
+    "bytes": 464,
+    "sha256": "5096a8224f3d69acb716036a6f6d88a2df4cde6cbd8d874bdb954b3e60092315"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\ground-truth\\S11_01_310.npy": {
+    "bytes": 464,
+    "sha256": "36ce7119379a861758b5b72be1ee91727c02765877a64edfe090d415282a2d55"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\metric-source.verified-server.py": {
+    "bytes": 13212,
+    "sha256": "52b603525b351b25e16f00237c787ea65d6957dbed0535899007d3fcfaafdb31"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\package.json": {
+    "bytes": 7065,
+    "sha256": "dc22433bc03f64cb02e094a8a65db3ba5b3d95fde1eaeb7e91f9c058349dc58b"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\package.py": {
+    "bytes": 2948,
+    "sha256": "f411e9f6c9a301ac573f6d62a2b7d46fa1a438e6a4084683197e00914e09393d"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\policy.json": {
+    "bytes": 1061,
+    "sha256": "169fc07c6485d662283c799d8e94c001a0aa5e0de6b50996842a14316ddd2c86"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\prepare.py": {
+    "bytes": 6079,
+    "sha256": "c69097da58262a5bd16252b4f218500f63ab8de0dbeeeb6b8ed5af23fca10cce"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\REPORT.md": {
+    "bytes": 7676,
+    "sha256": "9a3cac0116df9149598557570099fc033ee7791c376313a2b84260d3d9430169"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\return-status.json": {
+    "bytes": 260,
+    "sha256": "fcc6092704e2d6e89e8398b468926ab24236480ce8263e368af7bb146f200bcb"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\return.tar": {
+    "bytes": 1587200,
+    "sha256": "82d7e8701985bb7fd17152880cf933f8aff6a2d6fcaa1c8aec5bb04b8e6a2c8d"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\package.json": {
+    "bytes": 7065,
+    "sha256": "dc22433bc03f64cb02e094a8a65db3ba5b3d95fde1eaeb7e91f9c058349dc58b"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\after.buddyinfo": {
+    "bytes": 100,
+    "sha256": "9944d824e7f56a451fad09767bdaf071ac50fa1809950552d7caa82e020b7017"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\after.dmesg.txt": {
+    "bytes": 20556,
+    "sha256": "1c1624e50174e8589be56f638f521d98108098ea0b8acfa628afa2b6f50ccb64"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\after.meminfo": {
+    "bytes": 1361,
+    "sha256": "04e3ce180ecf8e8b466a27562dc155935d49b8b7c42174b6ccb9bd40f7aad616"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\after.pagetypeinfo": {
+    "bytes": 1101,
+    "sha256": "482432cafb5b8faae50023ffed0d03fe0a18d53cb83aa4f11ec3816166591b68"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\after.processes.txt": {
+    "bytes": 4641,
+    "sha256": "f0f6d3a0f5fca0b644d6f6185a80f30a43864529b6cb96d604b370333a6d45b2"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\after.version": {
+    "bytes": 130,
+    "sha256": "367e99b257ee6ad977024fc5df03e84944560593037f696e71b4a7d8fb60efc7"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\after.vmstat": {
+    "bytes": 2435,
+    "sha256": "096e323ca498c7f69165ea98e23053414c36f1b48e40514679ec1e2a82064b8d"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\before.buddyinfo": {
+    "bytes": 100,
+    "sha256": "4090e8f9f7c6dae90f093078212567f7a68921c71da4674f73c50f62719c51f0"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\before.dmesg.txt": {
+    "bytes": 20556,
+    "sha256": "1c1624e50174e8589be56f638f521d98108098ea0b8acfa628afa2b6f50ccb64"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\before.meminfo": {
+    "bytes": 1361,
+    "sha256": "06b5ea236815a8e7fba5723cb898d357277b545dfebd11a2b7108ad29b53beb2"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\before.pagetypeinfo": {
+    "bytes": 1101,
+    "sha256": "f945e48441f6bc13f9d22121468bfe030c4da2f7fa834819b412a9587d4c09df"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\before.processes.txt": {
+    "bytes": 4624,
+    "sha256": "c16d90da5ed0f52fe723f425d62502897104b5c44620fcd3ec84b2d00c6d1956"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\before.version": {
+    "bytes": 130,
+    "sha256": "367e99b257ee6ad977024fc5df03e84944560593037f696e71b4a7d8fb60efc7"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\before.vmstat": {
+    "bytes": 2414,
+    "sha256": "3c65e93e21b3f1fb2e732ffa481aa3cd7be44820807999e3618cda07d4654fb7"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\child.pid": {
+    "bytes": 5,
+    "sha256": "b88b00b7ba438921f2386cf32caa3e86dae4902f22a40a846abda14283c01e50"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\command.json": {
+    "bytes": 357,
+    "sha256": "5977c3ae58f45575beec234e3a384db7f4bbd63c5d8b16a62c3f901c9b2be78a"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\evidence-files.json": {
+    "bytes": 6307,
+    "sha256": "3e35862e906996154f2f71f413eff21299988aae8711edd55e361270f646120d"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\exit.txt": {
+    "bytes": 2,
+    "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\ldd.txt": {
+    "bytes": 1049,
+    "sha256": "13c5fbbe66dba26a8dc0dd690e8d60259050ab6365498b45dc7c37be837739c3"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\preflight.json": {
+    "bytes": 8178,
+    "sha256": "1368649f65d7a02e1ed3de023a7318bb01b15d0fd45ab1696836e53563557fa0"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\preflight.stdout.txt": {
+    "bytes": 89,
+    "sha256": "2f93efb51f4dfd82738b2aa0e73107027d96b010cd6bacf3759131751480a9b3"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\copy-observations\\metadata.jsonl": {
+    "bytes": 7080,
+    "sha256": "bc6ef403117af2235f14a614bb9a21997059b6676ed30a90b63f4732fcfca403"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-apply.all-bindings.jsonl": {
+    "bytes": 714,
+    "sha256": "1c90a4c624a5e5970b3de313b731cb0d80decbb387cb680a2ef393f1bc7be25a"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-apply.backends.jsonl": {
+    "bytes": 130,
+    "sha256": "f2b8b3531a75096d295ed029686c0a80c0e49f2981e09aad3b85457611c4045e"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-apply.views.jsonl": {
+    "bytes": 319133,
+    "sha256": "0c95c83e51023f2b253ce83a3fd4617afe4126e3cf2b666ddc82b1d5a49538d9"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-apply.zg-hardop-map.jsonl": {
+    "bytes": 132149,
+    "sha256": "e39a50bbbf8b91cde0c2e198377ca47dc556e75f304e47260082bb5a3f7e1085"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-apply.zg-sync-map.jsonl": {
+    "bytes": 69593,
+    "sha256": "1f62c73e209e0667799d66f30fc997b206dec15ce6b4454c95a854b965e9283d"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-create.all-bindings.jsonl": {
+    "bytes": 71834,
+    "sha256": "a7d192782f81f16dd4581a6fbdd022f96118c1240b0a56ff15acde4e680dfb57"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-create.backends.jsonl": {
+    "bytes": 130,
+    "sha256": "f2b8b3531a75096d295ed029686c0a80c0e49f2981e09aad3b85457611c4045e"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-create.views.jsonl": {
+    "bytes": 319133,
+    "sha256": "0c95c83e51023f2b253ce83a3fd4617afe4126e3cf2b666ddc82b1d5a49538d9"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-create.zg-hardop-map.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\after-create.zg-sync-map.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\binding-summary.json": {
+    "bytes": 185,
+    "sha256": "bad0ba1e7eddfbf24ff98de4b5b02a74ad18649da758f98d765470c31ea1bbfe"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\bindings.jsonl": {
+    "bytes": 144752,
+    "sha256": "449b5710f93720860a5514bb8b6fe22e3f0b4a5b5b22bbb4e310f18d7e8fb167"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\bridge.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\device-version.json": {
+    "bytes": 153,
+    "sha256": "09304ec629ec820ac959419198feaa417791c5c9211c08d1a469ec5588344c09"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\host-parameters.jsonl": {
+    "bytes": 155,
+    "sha256": "89d18dbf1a73dbe0d876bfad5e20669a049cd4c87475be2a48eeb2dca2a6f373"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\monotonic-spans.jsonl": {
+    "bytes": 34918,
+    "sha256": "3ff54bcb2d159942019107970ae072ac2736e0555b3e2a3a49338f44abe63eb3"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\op188.param1.f32": {
+    "bytes": 4,
+    "sha256": "2238f30df488055daf5e8f362cf904e370011a172d20df193c1b7ae8e5db8e01"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\op437.param1.f32": {
+    "bytes": 4,
+    "sha256": "2238f30df488055daf5e8f362cf904e370011a172d20df193c1b7ae8e5db8e01"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\operator-execution.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\readiness.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\registry.jsonl": {
+    "bytes": 605,
+    "sha256": "4d8c44c2498a374017e1ff4d60c92eaa043fd79dc787b7faee2f905745e47881"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\engine\\sdk-profile-setting.json": {
+    "bytes": 71,
+    "sha256": "9722d03f1afd8f5e40dcd91f5bd5094acf4895ce7cb82c151edba46f788036ac"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\failure.json": {
+    "bytes": 176,
+    "sha256": "5a4c218882fb3c461faa334567cb9fdab54778c38b037f071bd124b929ddca69"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frame-0\\input.f32": {
+    "bytes": 43200,
+    "sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frame-0\\poses.f32": {
+    "bytes": 16800,
+    "sha256": "155a17a73bc56352c8ea06697958e978f0ee9cdce364e24c842f4473d869d824"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frame-0\\scores.f32": {
+    "bytes": 400,
+    "sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frame-1\\input.f32": {
+    "bytes": 43200,
+    "sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frame-1\\poses.f32": {
+    "bytes": 16800,
+    "sha256": "c347ae3bb5e56bc99c17428fa27b7f8834d2492352d2b6e9a6693a6ea20672f6"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frame-1\\scores.f32": {
+    "bytes": 400,
+    "sha256": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frame-2\\input.f32": {
+    "bytes": 43200,
+    "sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frame-2\\poses.f32": {
+    "bytes": 16800,
+    "sha256": "bf019df666ce099d2cee726f8f440e4381f554f1808906a384605c26a25f261a"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frame-2\\scores.f32": {
+    "bytes": 400,
+    "sha256": "6e4a7504161509f7ece781ab0471731b1d0fc75d40135eb0fd6c28f4bf321d35"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\frames.jsonl": {
+    "bytes": 2162,
+    "sha256": "a3e577e925a7b8b1ffa6b16fc6fa83e770b33637d4ea3c2ca0c2e10e0cd2081d"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\hardware-layers.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\monotonic-spans.jsonl": {
+    "bytes": 34918,
+    "sha256": "3ff54bcb2d159942019107970ae072ac2736e0555b3e2a3a49338f44abe63eb3"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\producer-counts\\counts.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\sdk-profile.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\tensor-identities\\objects.jsonl": {
+    "bytes": 40452,
+    "sha256": "74e28e5e1c9fc490f47d824069e604022e619de87d605549de0704d041342aee"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\results\\transfers.jsonl": {
+    "bytes": 1536,
+    "sha256": "42bf06e5569629453a60f4a6e46db17900f72cb7bd5dbfd25343b32effba6988"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\run-identity.json": {
+    "bytes": 2163,
+    "sha256": "0761969ec134db72c7ebdc2896ef0a911e44f2d78c02dc872c46a62fda6213f1"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\stderr.txt": {
+    "bytes": 89,
+    "sha256": "78c22e12e455808f448ed0144063b4c13753318315b502bb97d92f9b78b5ce81"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\returned\\run-wall\\stdout.txt": {
+    "bytes": 5755,
+    "sha256": "aa08f7bc3a72634bc8b132860dfd49e77157642a1673d7c8a77f40d9b2eb804e"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\saved-first-frame-review.json": {
+    "bytes": 222,
+    "sha256": "2bb372b40a758dd45aa5ca3376bbcece7ec47ab8146d12c0e508f022a759477e"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\source-manifest.json": {
+    "bytes": 16167,
+    "sha256": "30cd44c9335b8d10ee7f6a656350e446d85693ddf7290edc4371f7c0b2419cf8"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\source.tar.gz": {
+    "bytes": 164643,
+    "sha256": "8e45eda8034efcb2cf0a464b711b38d348aea0a0ff3c430b4926ae1ef1e2ebf0"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\steps.json": {
+    "bytes": 3262,
+    "sha256": "76ffddf9cd3de66f9cdfc7c89c2ec56bbefb7c33f1ac4a3f0e31b7e23281cfc7"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\shared-gate-policy-20261015-r1\\transfer.tar": {
+    "bytes": 38113280,
+    "sha256": "bb26c8865bcb31ce696aee14e827bc080468f71550d6d8dbada342bfe30389ae"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\shared-output-gate\\README.md": {
+    "bytes": 992,
+    "sha256": "7b52c953fbb0a0bf4354f9e910b5dba1ad0640d35b33febddd3b966a46dcf996"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\shared-output-gate\\selftest.cpp": {
+    "bytes": 2158,
+    "sha256": "ccc78bf7ac2bfe55c139f5449a8ae368dcebadfc809270e1d91609ad5d65a527"
+  },
+  "D:\\FPGACompetitionProject\\tools\\pose-v1\\shared-output-gate\\shared_output_gate.hpp": {
+    "bytes": 2602,
+    "sha256": "681f64c3ac5b31e226afc1fe089035137d83fecfbcec41842a0fab6cb46eebf4"
+  },
+  "D:\\FPGACompetitionProject\\ADR\\ADR_48.md": {
+    "bytes": 5365,
+    "sha256": "84be3d197e6cb6c5fb91453ccdebd80618052d13b6f131da6ba2443957a41135"
+  }
+}

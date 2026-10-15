@@ -1,5 +1,9 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-15用户明确批准固定共享FP16候选最大关节三维偏差≤3mm，输入/分数仍逐位；例外范围与“物理偏置未验证”记录于[ADR_48](ADR/ADR_48.md)。独立门检12组自测/ARM构建通过，新Session三窗实际复验前两窗1.953125mm过、第三窗5.524271728mm超限exit1停止，无重试；三次Engine实测均值27.83871ms包含拒绝样本，不能称整组通过。[政策、实际结果与完整原值](tools/pose-v1/evidence/shared-gate-policy-20261015-r1/REPORT.md)。旧逐位失败保留，正式演示未替换，旧DATA暂停。以下阶段描述保留当时范围。
+
+2026-10-15共享细化完整图已从服务器回传exportONNX/shared-refine-20261015-r1，Icraft3.39.0五阶段exit0，TOML/五对JSON-RAW保留model/piw24_shared-20261015-r1。29样本FP32导出通过；新1021 HardOp板图首帧Engine24.19628ms，但78/4200姿态坐标失配、最大关节差1.953125mm，严格停止，余两帧未跑，不能称板端数值或稳定性能通过。[完整报告、计时与失败证据](tools/pose-v1/evidence/shared-graph-board-20261015-r1/REPORT.md)。正式演示未替换、旧DATA暂停。以下“尚无共享图”仅属当时历史。
+
 2026-10-15去ScatterND图实际Lite验证：独立引擎1158 HardOp完整融合五组/最终736，三窗全部输出逐位原板端参考。Engine184.163ms；forward16.010ms后末端仍等待157.975ms，不是16ms完整推理。新JSON/RAW/ARM包、源码、原始时间线、GT指标和回收证据见[板测报告](tools/pose-v1/evidence/noscatter-board-20261015-r1/REPORT.md)。正式演示未替换、尚无共享细化板图，旧DATA保持暂停。以下14日“待板测”为当日历史范围。
 
 2026-10-14主机Icraft3.39.0新完整去ScatterND图五阶段转换完成，实际TOML/五对JSON-RAW留model/piw24_noscatter-20261014-r3；1158 HardOp/四Host/ScatterND0，736仅静态计数，旧Engine/模型未换、新图板测及量化数值待验：[配置、原失败与产物](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md)。

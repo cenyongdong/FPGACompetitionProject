@@ -1,6 +1,6 @@
 # 架构决策与难点归档
 
-整理日期：2026-10-13。最新工作为[ADR_46](ADR_46.md)文档职责整理；最新实际工程结果为[ADR_45](ADR_45.md)端到端演示。旧DATA异常定位暂停、根因未修。状态总览见[PROJECT-PROGRESS](../PROJECT-PROGRESS.md)，问题索引见[DIFFICULTIES](../DIFFICULTIES.md)，技术实现汇报见[TechDetails](TechDetails.md)。
+更新日期：2026-10-15。新增[ADR_48](ADR_48.md)记录用户批准共享细化FP16候选采用3mm有界姿态门检，物理偏置解释尚未验证；原逐位失败保留。旧DATA异常定位暂停、根因未修。状态总览见[PROJECT-PROGRESS](../PROJECT-PROGRESS.md)，问题索引见[DIFFICULTIES](../DIFFICULTIES.md)，技术实现汇报见[TechDetails](TechDetails.md)。
 
 编号表示决策建立顺序，不代表每项已通过。以对应ADR的证据、状态及限制判断结论；历史方案或阶段许可不构成现行执行授权。无关新决策使用下一个未使用编号，同一决策后续验证更新对应文件。
 
@@ -56,6 +56,7 @@
 | [ADR_45](ADR_45.md) | 暂停坏块定位，整合端到端演示 | 端到端演示 |
 | [ADR_46](ADR_46.md) | 执行规范、进度、难点与历史过程分开维护 | 文档职责 |
 | [ADR_47](ADR_47.md) | 正式核心目录、可读性重构与CPU107/三窗口回归 | 源码迁移与等价性 |
+| [ADR_48](ADR_48.md) | 共享细化FP16候选采用3mm有界数值门检 | 数值验收与适用范围 |
 
 ## 技术、待议与历史
 

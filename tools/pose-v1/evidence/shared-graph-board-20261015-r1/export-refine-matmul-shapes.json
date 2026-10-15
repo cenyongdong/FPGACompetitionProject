@@ -1,0 +1,279 @@
+[
+  {
+    "name": "/refine_decoder/layers.0/attentions.0/attn/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/attentions.0/attn/MatMul_1",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/attentions.0/attn/MatMul_2",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/attentions.0/attn/MatMul_3",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/attentions.0/attn/MatMul_4",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/attentions.1/attn/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/attentions.1/attn/MatMul_1",
+    "input_shapes": [
+      null,
+      [
+        256,
+        512
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/attentions.1/attn/MatMul_2",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/attentions.1/attn/MatMul_3",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/ffns.0/layers/layers.0/layers.0.0/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        1024
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.0/ffns.0/layers/layers.1/MatMul",
+    "input_shapes": [
+      null,
+      [
+        1024,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/refine_kpt_branches.0/refine_kpt_branches.0.0/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/refine_kpt_branches.0/refine_kpt_branches.0.2/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/refine_kpt_branches.0/refine_kpt_branches.0.4/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        3
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/attentions.0/attn/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/attentions.0/attn/MatMul_1",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/attentions.0/attn/MatMul_2",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/attentions.0/attn/MatMul_3",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/attentions.0/attn/MatMul_4",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/attentions.1/attn/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/attentions.1/attn/MatMul_1",
+    "input_shapes": [
+      null,
+      [
+        256,
+        512
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/attentions.1/attn/MatMul_2",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/attentions.1/attn/MatMul_3",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/ffns.0/layers/layers.0/layers.0.0/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        1024
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/layers.1/ffns.0/layers/layers.1/MatMul",
+    "input_shapes": [
+      null,
+      [
+        1024,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/refine_kpt_branches.1/refine_kpt_branches.1.0/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/refine_kpt_branches.1/refine_kpt_branches.1.2/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        256
+      ]
+    ]
+  },
+  {
+    "name": "/refine_decoder/refine_kpt_branches.1/refine_kpt_branches.1.4/MatMul",
+    "input_shapes": [
+      null,
+      [
+        256,
+        3
+      ]
+    ]
+  },
+  {
+    "name": "/refine_kpt_branches.1/refine_kpt_branches.1.0/MatMul",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_kpt_branches.1/refine_kpt_branches.1.2/MatMul",
+    "input_shapes": [
+      null,
+      null
+    ]
+  },
+  {
+    "name": "/refine_kpt_branches.1/refine_kpt_branches.1.4/MatMul",
+    "input_shapes": [
+      null,
+      null
+    ]
+  }
+]

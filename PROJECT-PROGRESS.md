@@ -1,14 +1,16 @@
 # 项目进度总览
 
-更新日期：2026-10-15。最近一次实际板端验证：2026-10-15去ScatterND独立引擎三窗口；正式核心14日本机/FPAI复核通过，原CPU107/整机复核仍待按原范围另验，本轮未代替该检查。历史快照见[归档索引](ADR/history/20261013/README.md)，不要用其中的“当前”覆盖本页。
+更新日期：2026-10-15。最近一次实际板端验证：用户批准共享候选3mm门检后的三窗复验，前两窗过、第三窗5.524mm超限停止；同日此前去ScatterND独立引擎三窗口逐位已通过。正式核心14日本机/FPAI复核通过，原CPU107/整机复核仍待按原范围另验，本轮未代替该检查。历史快照见[归档索引](ADR/history/20261013/README.md)，不要用其中的“当前”覆盖本页。
 
 ## 当前阶段与任务状态
 
+2026-10-15共享细化图已导出并回传至原算法仓库exportONNX/shared-refine-20261015-r1；固定epoch442、两TopK/100候选保留、ScatterND0。29真实样本FP32导出核验通过；本机Icraft五阶段exit0、37.987s，TOML/五对JSON-RAW保留model/piw24_shared-20261015-r1，最终1021 HardOp、RAW35,481,378字节（较去Scatter图少33.31%）。原首帧1.953125mm差异触发逐位门禁exit1，原失败完整保留：[首次报告](tools/pose-v1/evidence/shared-graph-board-20261015-r1/REPORT.md)。随后用户明确最大误差3mm，已按[ADR_48](ADR/ADR_48.md)实现仅该固定共享FP16图的全部候选最大关节三维差≤3mm、输入/分数逐位的门检，12组边界/拒绝自测与新ARM构建通过。新目录/新Session三窗复验：308/309均1.953125mm通过；310最大坐标3.90625mm、最大关节5.524271728mm超限，实际推理3/接受2/拒绝1，exit1停止、无重试。三窗MPJPE均值129.627911886→129.622596741mm，不能豁免单关节超限；Engine实测均值27.83871ms包含失败样本，不是通过基准。实际SDK融合1021成员完整覆盖五组/612，三次计数612；源码/原值/日志全部回传，前后BOOT/SDK身份一致、内核日志同，进程和连接回收、FPAI恢复停止。物理偏置未证、数值差异具体来源未知；正式演示未换、旧DATA暂停，未进一步提高门限。[最新门检与结果](tools/pose-v1/evidence/shared-gate-policy-20261015-r1/REPORT.md)。
+
 2026-10-15去ScatterND图板测完成：model/piw24_noscatter-20261014-r3最终JSON/RAW哈希一致部署至Lite /tmp/wifi-pose-noscatter-20261015-r1，独立ARM引擎移除Scatter注册/CPU分支/暂存和582专用计数轮询，TopK/Gather必要桥及异常证据保留。SDK实际融合1158 HardOp→5组9052–9056、区间连续0→736，三次实际完成736；308/309/310共12900输出FP32逐位原板端参考，三帧MPJPE129.627911886mm不变。Engine184.163ms，forward16.010ms后仍末端等157.975ms，不能当16ms完整推理；自定义CPU核3.064ms、桥读4次/48160B。相较历史同三窗195.098ms少5.61%，非同轮受控A/B/长期结论。完整日志/实际输出/源码已回传，进程和设备回收，内核/BOOT/SDK同；无重启/规整/VPU/TCP。此图尚未共享细化，正式演示不覆盖、旧DATA暂停。[完整报告](tools/pose-v1/evidence/noscatter-board-20261015-r1/REPORT.md)。
 
-2026-10-14算法源码候选：用户批准单帧推理共享细化并保留两处TopK，本机两份Python源码已修改、哈希一致部署至训练服务器。固定2024 epoch442、GPU0 FP32、完整7824帧/100候选对照exit0，总MPJPE123.085352129→123.085352227mm（+9.78e-8mm），最大关节差0.000533mm；分数逐位一致，姿态存在舍入差异，不称逐位通过。训练细化损失/2424838梯度及回退路径逐位通过，实际注意力/回归batch100→1。服务器含探针整模型12.212→11.081ms，不代表Lite性能。完整原始输入/两版输出/指标约1.17GB已回传并独立核验，资源回收。[源码、结果与证据](tools/pose-v1/evidence/shared-refine-20261014-r1/README.md)。本轮未新导出共享ONNX或Icraft图，下面model内产物仍为共享改造前的去ScatterND图；正式板端基线保持，旧DATA暂停。
+2026-10-14算法源码候选：用户批准单帧推理共享细化并保留两处TopK，本机两份Python源码已修改、哈希一致部署至训练服务器。固定2024 epoch442、GPU0 FP32、完整7824帧/100候选对照exit0，总MPJPE123.085352129→123.085352227mm（+9.78e-8mm），最大关节差0.000533mm；分数逐位一致，姿态存在舍入差异，不称逐位通过。训练细化损失/2424838梯度及回退路径逐位通过，实际注意力/回归batch100→1。服务器含探针整模型12.212→11.081ms，不代表Lite性能。完整原始输入/两版输出/指标约1.17GB已回传并独立核验，资源回收。[源码、结果与证据](tools/pose-v1/evidence/shared-refine-20261014-r1/README.md)。14日阶段没有共享ONNX/Icraft；15日新增产物与数值失败见本页首段，不将FP32全数据集通过替代FP16板端验收；正式板端基线保持，旧DATA暂停。
 
-2026-10-14主机转换产物：Icraft3.39.0完成去ScatterND完整ONNX的parse→optimize→quantize→adapt→generate，五阶段exit0、RAW配对MD5/身份/固定FP32端口通过。实际TOML与五对JSON/RAW保留 `model/piw24_noscatter-20261014-r3`；FP16据原130 Matmul精度明确配置，原量化TOML未留存。r1/r2输入参数失败保留，新r3总68.688秒通过。最终1158 HardOp/四计算Host/ScatterND0；14日736仅静态层数和，15日另有上述实际融合与三窗验证。正式Engine/旧模型未替换，共享图、完整数据集量化数值和长期性能仍待验，旧DATA暂停。[原转换产物与证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md)。
+2026-10-14主机转换产物：Icraft3.39.0完成去ScatterND完整ONNX的parse→optimize→quantize→adapt→generate，五阶段exit0、RAW配对MD5/身份/固定FP32端口通过。实际TOML与五对JSON/RAW保留 `model/piw24_noscatter-20261014-r3`；FP16据原130 Matmul精度明确配置，原量化TOML未留存。r1/r2输入参数失败保留，新r3总68.688秒通过。最终1158 HardOp/四计算Host/ScatterND0；14日736仅静态层数和，15日另有上述实际融合与三窗验证。正式Engine/旧模型未替换；共享图15日已另行转换并首帧失配停止，完整数据集量化数值和长期性能仍待验，旧DATA暂停。[原转换产物与证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md)。
 
 项目处于**预采CSI回放首版已具备端到端演示，性能和长期可靠性待收敛**阶段。主链为PC原始CSI→TCP→Lite PS预处理→PS/NPU混合推理→独立显示子进程→VPU H264→RTSP/TCP→PC实时GUI。HDMI没有进入当前演示。
 

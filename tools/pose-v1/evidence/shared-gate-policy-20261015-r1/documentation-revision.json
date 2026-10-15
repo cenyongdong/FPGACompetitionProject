@@ -1,0 +1,49 @@
+{
+  "reason": "Explicit user approval of 3mm shared FP16 pose gate; record hypothesis as unverified and actual third-frame failure",
+  "prior_delivery_entries_verified_unchanged": 402,
+  "historical_completion_ledgers_rewritten": false,
+  "changes": [
+    {
+      "path": "D:\\FPGACompetitionProject\\AGENTS.md",
+      "before_sha256": "fef18fb0b63cfb9fd550ac103ac2329df41fc85ee043f39f12413c675ba26fc5",
+      "after_sha256": "6a8b9339f2d9de8aaf303d7a0c1c74bfea9b505fb804f39fb0db0701828cc507",
+      "changed": true
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Done.md",
+      "before_sha256": "05a6afb77725d7ef24f30fa8c04d2cc9ae5dcc18ede375f6bc3f0ebe4641a999",
+      "after_sha256": "e18685346319f24cec3a1a0738556559a795b9c2b7d705a8ec2be32c9a8e99b1",
+      "changed": true
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\PROJECT-PROGRESS.md",
+      "before_sha256": "4d58f257055262805df1cf9dd238933af90a6efda4ab06b446590d3076462643",
+      "after_sha256": "adcd17b1500bc46d5c7bef37202b51cc9ee5873119ac99f2efd2cd328945a167",
+      "changed": true
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\DIFFICULTIES.md",
+      "before_sha256": "34dedb0ae6abbfc94e41a798da5b37199159b8145abba6a4e5363eabcc8c3f42",
+      "after_sha256": "fd056357a9dcdacc44b3c518bf45107b58a55d2d600b5eba308747085d552b27",
+      "changed": true
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\REFERENCES.md",
+      "before_sha256": "18819d56eeff1727f44409a5910f1b3fc80fbf5923508ecced1bdabf2fabe75b",
+      "after_sha256": "4f7622a56afbd725f0b9cea12e3e8d75085dbbf86fcb5921ecccd87ba07157f9",
+      "changed": true
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\ADR\\README.md",
+      "before_sha256": "2dde206573c152cc2714954fd1a01147a6a0c8ea39552c9f72140b74c067da26",
+      "after_sha256": "1fea7cde749a54970960723b8b2ef549bdf7d6d76f3cd9e602ec93f77ca3011a",
+      "changed": true
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\ADR\\ADR_48.md",
+      "before_sha256": null,
+      "after_sha256": "84be3d197e6cb6c5fb91453ccdebd80618052d13b6f131da6ba2443957a41135",
+      "changed": true
+    }
+  ]
+}

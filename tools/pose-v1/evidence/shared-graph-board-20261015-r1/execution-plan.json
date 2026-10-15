@@ -1,0 +1,15 @@
+{
+  "remote": "/tmp/wifi-pose-shared-20261015-r1",
+  "transfer_sha256": "abd66d29d0b1ce380beadb93a0b42f3559993b0b0d1b40eb41bbc245126c29d4",
+  "package_sha256": "7359a7b29063c1516d7740101586386134d7803f7e5eced0d41c9db2c082d6df",
+  "transfer_bytes": 38092800,
+  "frames": 3,
+  "mode": "wall",
+  "child_budget_seconds": 120,
+  "kill_grace_seconds": 5,
+  "reference": "Same S11_01_308/309/310 original board inputs/scores/poses as 2026-10-13 timing",
+  "stop": "Any error, identity drift, nonfinite, illegal index, output byte discrepancy, timeout, kernel log change",
+  "VPU_TCP": false,
+  "reboot": false,
+  "automatic_retry": false
+}

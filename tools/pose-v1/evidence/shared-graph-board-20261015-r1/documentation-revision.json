@@ -1,0 +1,36 @@
+{
+  "reason": "Record shared graph export, conversion and failed first board gate; preserve prior history",
+  "historical_completion_ledgers_modified": false,
+  "files": [
+    {
+      "path": "D:\\FPGACompetitionProject\\AGENTS.md",
+      "before_sha256": "fef18fb0b63cfb9fd550ac103ac2329df41fc85ee043f39f12413c675ba26fc5",
+      "after_sha256": "fef18fb0b63cfb9fd550ac103ac2329df41fc85ee043f39f12413c675ba26fc5",
+      "changed": false
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\REFERENCES.md",
+      "before_sha256": "916e7a9e33de2267706538d91c3015fd5f99aa8edeed96a0f34e874ad02a8fd8",
+      "after_sha256": "18819d56eeff1727f44409a5910f1b3fc80fbf5923508ecced1bdabf2fabe75b",
+      "changed": true
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\PROJECT-PROGRESS.md",
+      "before_sha256": "27046a8263bb5c34f0ae7f6367303e4f03fa910401a324563fcc429955bcb112",
+      "after_sha256": "4d58f257055262805df1cf9dd238933af90a6efda4ab06b446590d3076462643",
+      "changed": true
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\Done.md",
+      "before_sha256": "ddbd518a911feaceed0c634512e7c40fe0258110de657d00d69a2dfd277b5917",
+      "after_sha256": "05a6afb77725d7ef24f30fa8c04d2cc9ae5dcc18ede375f6bc3f0ebe4641a999",
+      "changed": true
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\DIFFICULTIES.md",
+      "before_sha256": "8165b3671531e56742543069c840a1823393186af6b5b5b8e7306a547b02156c",
+      "after_sha256": "34dedb0ae6abbfc94e41a798da5b37199159b8145abba6a4e5363eabcc8c3f42",
+      "changed": true
+    }
+  ]
+}

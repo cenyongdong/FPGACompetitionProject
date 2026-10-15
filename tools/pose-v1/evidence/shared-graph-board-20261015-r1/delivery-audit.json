@@ -1,0 +1,80 @@
+{
+  "status": "export_conversion_complete_board_numeric_gate_failed",
+  "planned": 3,
+  "actual_inferences": 1,
+  "accepted_frames": 0,
+  "unexecuted": 2,
+  "retry": false,
+  "stages": [
+    {
+      "stage": "parse",
+      "exit": 0,
+      "seconds": 6.737362699999721,
+      "logical_ops": 566,
+      "json": "piw24_shared_parsed.json",
+      "raw": "piw24_shared_parsed.raw",
+      "raw_bytes": 58713412,
+      "json_sha256": "9cdabd1ce5d210c20e3b3128dbede4c690ddedc8f76c909ff437aafee2a2f8d0",
+      "raw_sha256": "82625a16fc4a751966cc1305f9663d32fc9034e575fe4f31ca8cea0b19139b39"
+    },
+    {
+      "stage": "optimize",
+      "exit": 0,
+      "seconds": 3.838617900000827,
+      "logical_ops": 632,
+      "json": "piw24_shared_optimized.json",
+      "raw": "piw24_shared_optimized.raw",
+      "raw_bytes": 58715272,
+      "json_sha256": "5ad9034dcdad85d41bc75d7779a9dffc5ae86802b3486b4d98804b6b874085a0",
+      "raw_sha256": "582095bbe806fab03e0237fe5e98a2e1d7d19a0e459e2e83bef633fcd2773f56"
+    },
+    {
+      "stage": "quantize",
+      "exit": 0,
+      "seconds": 1.4696730000014213,
+      "logical_ops": 658,
+      "json": "piw24_shared_quantized.json",
+      "raw": "piw24_shared_quantized.raw",
+      "raw_bytes": 29366478,
+      "json_sha256": "6d589465550822061585fc3e99417df580557eec86e68b26c45296a1084372ec",
+      "raw_sha256": "ebd1876029a0a70ca94ecd506f222678d5cfc4870777624659ec01cf5b1c132d"
+    },
+    {
+      "stage": "adapt",
+      "exit": 0,
+      "seconds": 16.327768099999957,
+      "logical_ops": 1538,
+      "json": "piw24_shared_adapted.json",
+      "raw": "piw24_shared_adapted.raw",
+      "raw_bytes": 29594694,
+      "json_sha256": "a08d80c4fda996ae418e5aa3a06df8c5753a0e19ad5481c85467978084da79df",
+      "raw_sha256": "cc01d930fd95725ff8728d3bc71c0a10cfc5134bfd1970ba06f1e60bcead4264"
+    },
+    {
+      "stage": "generate",
+      "exit": 0,
+      "seconds": 8.531897400000162,
+      "logical_ops": 1027,
+      "json": "piw24_shared_ZG.json",
+      "raw": "piw24_shared_ZG.raw",
+      "raw_bytes": 35481378,
+      "json_sha256": "a1395205eed11112ac0e23dacf8eec4c09d7dfec120e99b060a9361cb9c812cc",
+      "raw_sha256": "d235ec300f2872f1b78ce6101bc98fd2cc13c47a53fe99f76e045587148279dd"
+    }
+  ],
+  "source_files_verified": 135,
+  "source_archive": {
+    "file": "source.tar.gz",
+    "bytes": 163429,
+    "sha256": "bc2dde886a7e33f81e1b8d53d4a49dbd7f4b8024bbd037d8ab7960db58c56476"
+  },
+  "onnx_sha256": "bd8b2d8665687ae8ffbcb9840e838a77effed33d0ffb323e5fdc60e95fcf7cbd",
+  "config_sha256": "16efc43f6e09c96c2209e2fdc1931b2f6033b8002eda52fab2b08c1470b73c22",
+  "RAW_reduction_percent": 33.3066607930688,
+  "board_cleanup": "No task process remains; FPGA operating; unrelated user monitor retained",
+  "container_cleanup": "FPAI restored to stopped after verifying bash was its only process",
+  "formal_demo_replaced": false,
+  "reboot": false,
+  "memory_compaction": false,
+  "old_DATA_investigation_resumed": false
+}

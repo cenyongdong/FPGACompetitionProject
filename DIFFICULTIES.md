@@ -64,7 +64,7 @@
 | 编号 | 现象与影响 | 处理与证据 | 剩余边界 |
 |---|---|---|---|
 | D38 | Icraft3.39.0显式输入要求NOP scale/mean/swap全填，XIR **C不接受为CLI layout；资料描述与当前签名有差异 | r1/r2网络加载前参数检查exit1，分别保留实际TOML/调用/失败；依文档NOP及实际CLI FD建立新r3。五阶段exit0、XIR **C、FP32端口、RAW MD5/SHA核验通过。[证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md) | 主机配置问题已解决，新FP16候选1158 HardOp/四Host/ScatterND0留model；原量化TOML未找到不能伪称全文复原。736非板测阈值，原Engine/融合/数值/性能未适配，旧DATA暂停 |
-| D39 | 共享细化把同帧重复特征batch100→1，改变矩阵批形状后出现FP32舍入量级差异，不能沿用Scatter改写的逐位等价结论 | 两TopK/100候选/epoch442固定，训练损失/2424838梯度与回退逐位；完整7824帧102494400 FP32保存优先对照exit0，分数逐位、总MPJPE差+9.78e-8mm，最大关节差0.000533mm。全原值回传与独立核验通过。[证据](tools/pose-v1/evidence/shared-refine-20261014-r1/README.md) | 当前FP32完整测试未见实际精度损失，但姿态不是逐位一致；GT辅助MPJPE非置信度检测精度。服务器整模型少9.259%含探针，共享ONNX/量化/Lite效果待验，原板端门禁不放宽 |
+| D39 | 共享细化把同帧重复特征batch100→1，改变矩阵批形状后FP32/FP16非逐位；不能沿用Scatter改写的逐位等价结论 | 两TopK/100候选/epoch442固定，训练与完整7824帧FP32指标已核验。[FP32证据](tools/pose-v1/evidence/shared-refine-20261014-r1/README.md)。完整ONNX/29样本及Icraft通过，Lite原首帧1.953125mm触发逐位停止，原失败保持。[原报告](tools/pose-v1/evidence/shared-graph-board-20261015-r1/REPORT.md)。随后用户明确3mm，[ADR_48](ADR/ADR_48.md)与独立有界门检/12自测落地，新三窗前二1.953125mm过、第三5.524271728mm超限exit1停止；全部分数逐位、有限，平均MPJPE−0.005315145mm，不豁免单关节超限。[新证据](tools/pose-v1/evidence/shared-gate-policy-20261015-r1/REPORT.md) | 用户接受≤3mm工程容差，但当前第三窗仍超限，未再放宽/重试。具体低精度产生步骤未知，“物理偏置”为未验证假设，不证旧DATA复发或已修。27.83871ms描述均值包含失败样本，无整组数值/稳定性能通过；原基线门禁与旧DATA暂停保持 |
 
 新问题追加稳定编号；同一问题更新状态和对应ADR结果，不按每个实验重复造编号。新架构取舍新建ADR，原始失败保留，未证假设不写成根因。旧D01–D18的逐批原文及历史状态见[difficulties-before](ADR/history/20261013/difficulties-before.md)，从Agents迁出的实施过程见[主题归档](ADR/history/20261013/README.md)。
 

@@ -1,0 +1,313 @@
+{
+  "status": "3mm_policy_implemented_third_frame_rejected",
+  "board_exit": 1,
+  "planned_frames": 3,
+  "actual_inferences": 3,
+  "accepted_frames": 2,
+  "rejected_frames": 1,
+  "policy": {
+    "id": "shared-fp16-joint-3mm-v1",
+    "user_instruction": "最大误差可以定在3mm以内",
+    "scope": "Only shared-refinement FP16 candidate, exact pinned graph/RAW; same-slot all100 candidates x14 joints",
+    "max_joint_euclidean_delta_mm": 3.0,
+    "inclusive": true,
+    "model_units_to_mm": 1000.0,
+    "scores": "all100 bitwise equal",
+    "input": "all10800 bitwise equal",
+    "finite": "all inputs/outputs/references finite; nonfinite stops",
+    "MPJPE": "Report measured changes; no new hard MPJPE threshold was specified by user",
+    "graph_json_sha256": "a1395205eed11112ac0e23dacf8eec4c09d7dfec120e99b060a9361cb9c812cc",
+    "graph_raw_sha256": "d235ec300f2872f1b78ce6101bc98fd2cc13c47a53fe99f76e045587148279dd",
+    "no_candidate_rematching": true,
+    "no_output_repair": true,
+    "save_before_compare": true,
+    "SDK_index_identity_timeout_stops_unchanged": true,
+    "cause": "Unknown; physical bias is user hypothesis, not experimentally established",
+    "historical_failure_rewritten": false,
+    "original_formal_core_gate_changed": false
+  },
+  "binding": {
+    "original_ops": 1027,
+    "original_hardops": 1021,
+    "direct_host_ops": 6,
+    "effective_zg_groups": 5,
+    "coverage_complete": true,
+    "validated_runtime_final_count": 612,
+    "static_count_used_as_gate": false
+  },
+  "failure": {
+    "status": "failed_stop_no_retry",
+    "completed_frames": 2,
+    "error": "Output exceeds approved shared 3mm gate or score/finite check failed; stop without retry",
+    "diagnostic_error": ""
+  },
+  "frames": [
+    {
+      "case": "S11_01_308",
+      "accepted": true,
+      "arrays": {
+        "input": {
+          "count": 10800,
+          "finite": true,
+          "bitwise_equal": true,
+          "changed_values": 0,
+          "actual_sha256": "22555a4a0773adb0c2f75bdc2217461431be278f322726e964e1f1ce6930ec49"
+        },
+        "scores": {
+          "count": 100,
+          "finite": true,
+          "bitwise_equal": true,
+          "changed_values": 0,
+          "actual_sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092"
+        },
+        "poses": {
+          "count": 4200,
+          "finite": true,
+          "bitwise_equal": false,
+          "changed_values": 78,
+          "actual_sha256": "155a17a73bc56352c8ea06697958e978f0ee9cdce364e24c842f4473d869d824",
+          "max_coordinate_delta_mm": 1.953125,
+          "max_joint_delta_mm": 1.953125,
+          "highest_score_candidate_max_joint_delta_mm": 0.9765625,
+          "over_limit_joints": 0,
+          "over_limit_candidate_ids": [],
+          "over_limit_positions": []
+        }
+      },
+      "timing_ms": {
+        "process_ms": 32.90414,
+        "preprocess_ms": 8.55187,
+        "input_prepare_ms": 0.1377,
+        "state_clear_ms": 0.00511,
+        "forward_ms": 21.48802,
+        "final_wait_ms": 0.39058,
+        "output_read_ms": 1.89805,
+        "selection_ms": 0.00109,
+        "process_cpu_ms": 32.855,
+        "actual_save_ms": 0.77705,
+        "comparison_ms": 0.27604
+      },
+      "bridge_phases_ms": {
+        "bridge.allocate": 0.13511,
+        "bridge.copy": 0.6202300000000001,
+        "bridge.cpu": 4.58701,
+        "bridge.spec": 0.14553,
+        "bridge.wait": 6.7264
+      },
+      "MPJPE_mm": {
+        "noscatter": [
+          131.3748321533203,
+          50.12224197387695,
+          52.46197509765625,
+          80.87800598144531
+        ],
+        "shared": [
+          131.37904357910156,
+          50.15712356567383,
+          52.39221954345703,
+          80.87800598144531
+        ]
+      },
+      "MPJPE_delta_mm": 0.00421142578125,
+      "matched_candidate_indices": {
+        "noscatter": 0,
+        "shared": 0
+      }
+    },
+    {
+      "case": "S11_01_309",
+      "accepted": true,
+      "arrays": {
+        "input": {
+          "count": 10800,
+          "finite": true,
+          "bitwise_equal": true,
+          "changed_values": 0,
+          "actual_sha256": "4d605ccbdafe703a07bdf0e1d3d97b1740936c62218e6150707dc901dfe38300"
+        },
+        "scores": {
+          "count": 100,
+          "finite": true,
+          "bitwise_equal": true,
+          "changed_values": 0,
+          "actual_sha256": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f"
+        },
+        "poses": {
+          "count": 4200,
+          "finite": true,
+          "bitwise_equal": false,
+          "changed_values": 205,
+          "actual_sha256": "c347ae3bb5e56bc99c17428fa27b7f8834d2492352d2b6e9a6693a6ea20672f6",
+          "max_coordinate_delta_mm": 1.953125,
+          "max_joint_delta_mm": 1.953125,
+          "highest_score_candidate_max_joint_delta_mm": 0.9765625,
+          "over_limit_joints": 0,
+          "over_limit_candidate_ids": [],
+          "over_limit_positions": []
+        }
+      },
+      "timing_ms": {
+        "process_ms": 27.31461,
+        "preprocess_ms": 8.86688,
+        "input_prepare_ms": 0.08307,
+        "state_clear_ms": 0.00455,
+        "forward_ms": 16.12437,
+        "final_wait_ms": 0.71611,
+        "output_read_ms": 1.03509,
+        "selection_ms": 0.00107,
+        "process_cpu_ms": 27.305,
+        "actual_save_ms": 0.48015,
+        "comparison_ms": 0.17913
+      },
+      "bridge_phases_ms": {
+        "bridge.allocate": 0.08029,
+        "bridge.copy": 0.37868,
+        "bridge.cpu": 3.02484,
+        "bridge.spec": 0.11213,
+        "bridge.wait": 6.8253200000000005
+      },
+      "MPJPE_mm": {
+        "noscatter": [
+          116.48749542236328,
+          66.44953918457031,
+          53.7061882019043,
+          48.18875503540039
+        ],
+        "shared": [
+          116.48065948486328,
+          66.41466522216797,
+          53.77593994140625,
+          48.18875503540039
+        ]
+      },
+      "MPJPE_delta_mm": -0.0068359375,
+      "matched_candidate_indices": {
+        "noscatter": 0,
+        "shared": 0
+      }
+    },
+    {
+      "case": "S11_01_310",
+      "accepted": false,
+      "arrays": {
+        "input": {
+          "count": 10800,
+          "finite": true,
+          "bitwise_equal": true,
+          "changed_values": 0,
+          "actual_sha256": "a7fc308cba52983f94f925550c465a3b2f88593ab1418f15192432a943d61187"
+        },
+        "scores": {
+          "count": 100,
+          "finite": true,
+          "bitwise_equal": true,
+          "changed_values": 0,
+          "actual_sha256": "6e4a7504161509f7ece781ab0471731b1d0fc75d40135eb0fd6c28f4bf321d35"
+        },
+        "poses": {
+          "count": 4200,
+          "finite": true,
+          "bitwise_equal": false,
+          "changed_values": 23,
+          "actual_sha256": "bf019df666ce099d2cee726f8f440e4381f554f1808906a384605c26a25f261a",
+          "max_coordinate_delta_mm": 3.90625,
+          "max_joint_delta_mm": 5.524271728019903,
+          "highest_score_candidate_max_joint_delta_mm": 0.48828125,
+          "over_limit_joints": 1,
+          "over_limit_candidate_ids": [
+            24
+          ],
+          "over_limit_positions": [
+            [
+              24,
+              4
+            ]
+          ]
+        }
+      },
+      "timing_ms": {
+        "process_ms": 23.29739,
+        "preprocess_ms": 5.64195,
+        "input_prepare_ms": 0.04667,
+        "state_clear_ms": 0.00419,
+        "forward_ms": 15.53681,
+        "final_wait_ms": 0.72876,
+        "output_read_ms": 1.03253,
+        "selection_ms": 0.00114,
+        "process_cpu_ms": 23.292,
+        "actual_save_ms": 0.47666,
+        "comparison_ms": 0.17898
+      },
+      "bridge_phases_ms": {
+        "bridge.allocate": 0.07827,
+        "bridge.copy": 0.38184,
+        "bridge.cpu": 3.0198899999999997,
+        "bridge.spec": 0.08807000000000001,
+        "bridge.wait": 6.94922
+      },
+      "MPJPE_mm": {
+        "noscatter": [
+          141.0214080810547,
+          50.15639114379883,
+          65.11129760742188,
+          79.46198272705078
+        ],
+        "shared": [
+          141.00808715820312,
+          50.10407638549805,
+          65.11129760742188,
+          79.46198272705078
+        ]
+      },
+      "MPJPE_delta_mm": -0.0133209228515625,
+      "matched_candidate_indices": {
+        "noscatter": 0,
+        "shared": 0
+      }
+    }
+  ],
+  "all_inputs_bitwise": true,
+  "all_scores_bitwise": true,
+  "all_outputs_finite": true,
+  "max_joint_delta_mm": 5.524271728019903,
+  "changed_pose_values": 306,
+  "mean_all_three_measured_frames_ms": {
+    "process_ms": 27.83871333333333,
+    "preprocess_ms": 7.6869,
+    "input_prepare_ms": 0.08914666666666667,
+    "state_clear_ms": 0.0046166666666666665,
+    "forward_ms": 17.7164,
+    "final_wait_ms": 0.6118166666666667,
+    "output_read_ms": 1.32189,
+    "selection_ms": 0.0011,
+    "process_cpu_ms": 27.817333333333334,
+    "actual_save_ms": 0.5779533333333333,
+    "comparison_ms": 0.21138333333333334
+  },
+  "accepted_three_frame_benchmark": false,
+  "mean_three_frame_MPJPE_mm": {
+    "noscatter": 129.62791188557944,
+    "shared": 129.62259674072266
+  },
+  "mean_MPJPE_delta_mm": -0.005315144856770833,
+  "first_frame_repeat_bitwise_same_as_previous_shared_run": true,
+  "initialization_phases_ms": {
+    "init.parse": 2057.63143,
+    "init.load_parameters": 664.04866,
+    "init.parameter_audit_io": 2.97877,
+    "init.open_device": 12.98291,
+    "init.session_create": 365.27819,
+    "init.session_apply": 23632.98988,
+    "init.total": 28075.68742
+  },
+  "source_archive_sha256": "8e45eda8034efcb2cf0a464b711b38d348aea0a0ff3c430b4926ae1ef1e2ebf0",
+  "original_failure_and_models_unchanged": true,
+  "kernel_logs_unchanged": true,
+  "SDK_BOOT_after_identity_unchanged": true,
+  "no_task_process_remains": true,
+  "FPGA_state": "operating",
+  "FPAI_final_status": "exited",
+  "physical_bias_cause_proven": false,
+  "automatic_retry": false,
+  "unrelated_background_load": "MobaXterm monitor and apt/unattended-upgrade observed; not modified; no controlled A/B"
+}
