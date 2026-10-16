@@ -1,0 +1,155 @@
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+CRITICAL WARNING: [Common 17-741] No write access right to the local Tcl store at 'C'. XilinxTclStore is reverted to the installation area. If you want to use local Tcl Store, please change the access right and relaunch Vivado.
+source {D:\FPGACompetitionProject\.local\hdmi-jfm-route2-20261016-r1\hook-preview\stage.tcl}
+# package require md5
+# if {[catch {
+#  open_project {D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/fpai_demo_vivado.xpr}
+#  set audit_root [file normalize {D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference}]
+#  set audit_harc [file normalize {D:/vivado18.3/Vivado/2018.3/data/parts/xilinx/common/HARC.cfg}]
+#  set audit_log [open {D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-jfm-route2-20261016-r1/hook-preview/preview-operations.txt} w]
+#  set out [open {D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-jfm-route2-20261016-r1/hook-preview/helper-definitions.txt} w]
+#  rename file audit_orig_file
+#  proc audit_inside p {
+#   set p [string tolower [audit_orig_file normalize $p]]
+#   set root [string tolower $::audit_root]
+#   return [expr {$p eq $root || [string first "$root/" $p]==0}]
+#  }
+#  proc file {sub args} {
+#   if {$sub eq "copy" || $sub eq "rename"} {
+#    set dst [lindex $args end]
+#    if {![audit_inside $dst]} {
+#     set src [lindex $args end-1]
+#     if {$sub eq "copy" && [string equal -nocase [audit_orig_file normalize $dst] $::audit_harc] && [md5::md5 -hex -file $src] eq [md5::md5 -hex -file $dst]} {
+#      puts $::audit_log [list SKIP_IDENTICAL_HARC $src $dst];flush $::audit_log;return
+#     }
+#     error "INSTALLATION_WRITE_BLOCKED $sub $args"
+#    }
+#    puts $::audit_log [list FILE $sub $args];flush $::audit_log
+#   } elseif {[lsearch -exact {delete mkdir attributes mtime atime link} $sub]>=0} {
+#    foreach p $args {if {[string index $p 0] ne "-" && ![audit_inside $p]} {error "OUTSIDE_PROJECT_FILE $sub $p"}}
+#   }
+#   return [eval [linsert $args 0 audit_orig_file $sub]]
+#  }
+#  rename open audit_orig_open
+#  proc open {path args} {
+#   set mode r
+#   if {[llength $args]>0} {set mode [lindex $args 0]}
+#   if {$mode ne "r" && $mode ne "rb" && ![audit_inside $path]} {error "OUTSIDE_PROJECT_OPEN $path $mode"}
+#   return [eval [linsert $args 0 audit_orig_open $path]]
+#  }
+#  rename set_property audit_orig_set_property
+#  proc set_property args {
+#   puts $::audit_log [list PROPERTY $args];flush $::audit_log
+#   if {[regexp -nocase {CONFIG\.|MODELPARAM_VALUE\.|IS_ENABLED} [lindex $args 0]]} {error "IP_OR_DRC_MUTATION_BLOCKED $args"}
+#   return [eval [linsert $args 0 audit_orig_set_property]]
+#  }
+#  foreach cmd {exec load upgrade_ip upgrade_bd_cells generate_target synth_design launch_runs launch_run write_bitstream} {
+#   if {[llength [info commands $cmd]]} {rename $cmd audit_original_$cmd;proc $cmd args {error "PREVIEW_NO_EXECUTION"}}
+#  }
+#  source {D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/all_src_files.tcl}
+#  foreach name {disable_icap get_finally_bit_location get_prj_path} {
+#   puts $out "PROCEDURE $name"
+#   puts $out "ARGS [info args $name]"
+#   puts $out [info body $name]
+#  }
+#  close $out
+#  # Remove only inactive references whose files do not exist; no empty substitutes.
+#  foreach n {implementation_place_pre.tcl implementation_place_post.tcl} {
+#   set p [get_files -quiet *$n]
+#   if {[llength $p]} {puts $audit_log "REMOVE_INACTIVE_MISSING_REFERENCE $p";remove_files $p}
+#  }
+#  add_hook_tcl_to_prj -xfft_modify FALSE -change_speed FALSE -disable_icap TRUE -device 0
+#  save_project
+#  set f [audit_orig_open {D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-jfm-route2-20261016-r1/hook-preview/registered-hooks.txt} w]
+#  foreach r {synth_1 impl_1} {
+#   foreach p [list_property [get_runs $r]] {
+#    if {[regexp {TCL\.(PRE|POST)$} $p]} {puts $f "$r|$p|[get_property $p [get_runs $r]]"}
+#   }
+#  }
+#  close $f
+#  close $audit_log
+#  close_project
+#  puts "ISOLATED_HOOK_CONFIGURATION_PREVIEW_COMPLETE"
+# } result]} {puts "ISOLATED_HOOK_PREVIEW_FAILED $result";exit 1}
+CRITICAL WARNING: [Project 1-19] Could not find the file 'D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/implementation_place_pre.tcl'.
+CRITICAL WARNING: [Project 1-19] Could not find the file 'D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/implementation_place_post.tcl'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/PS_AI IP'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/vivado18.3/Vivado/2018.3/data/ip'.
+WARNING: [IP_Flow 19-1663] Duplicate IP found for 'xilinx.com:ip:processing_system7:5.5'. The one found in IP location 'd:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/PS_AI IP/processing_system7_v5_5' will take precedence over the same IP in the Xilinx installed IP.
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'xilinx.com:display_processing_system7:fixedio:1.0'. The one found in location 'd:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/PS_AI IP/processing_system7_v5_5/fixedio.xml' will take precedence over the same Interface in location 'd:/vivado18.3/Vivado/2018.3/data/ip/xilinx/processing_system7_v5_5/fixedio.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'xilinx.com:display_processing_system7:hpstatusctrl:1.0'. The one found in location 'd:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/PS_AI IP/processing_system7_v5_5/hpstatusctrl.xml' will take precedence over the same Interface in location 'd:/vivado18.3/Vivado/2018.3/data/ip/xilinx/processing_system7_v5_5/hpstatusctrl.xml'
+WARNING: [IP_Flow 19-4830] Duplicate Interface found for 'xilinx.com:display_processing_system7:usbctrl:1.0'. The one found in location 'd:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/PS_AI IP/processing_system7_v5_5/usbctrl.xml' will take precedence over the same Interface in location 'd:/vivado18.3/Vivado/2018.3/data/ip/xilinx/processing_system7_v5_5/usbctrl.xml'
+open_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 407.832 ; gain = 157.090
+No subcore find in the project!
+Skip replace_ip_database successfully!
+Set -device to 0!
+Set PCIE -pcie_version  NEW!
+Set MIG -mig_version  NORMAL!
+Set MIG -mig_comp  FALSE!
+Set MIG -idel_dec_cnt  1!
+Set MIG -mig_ecc  OFF!
+Set MIG -precharge_check  FALSE!
+Set MIG -max_pc_cnt  100000!
+Set MIG -calib_fast  TRUE!
+Set MIG -adj_level  2!
+Set MIG -max_adj_flag  9!
+Set MIG -ocd_comp_inc  OFF!
+Set MIG -ocd_comp_value  2!
+Set MIG -ocd_comp_mode  OFF!
+Set MIG -ck_comp  OFF!
+Set MIG -ck_incdec  ON!
+Set MIG -final_bias_tap  18!
+Set MIG -phy_rdlvl  OFF!
+Set MIG -infifo_opt  FALSE!
+Set MIG -dqs_find_pattern  000!
+Set MIG -clkout0_phase  NONE!
+Set MIG -bh_use_ocal  OFF!
+Set MIG -double_freq  OFF!
+Set MIG -calib_opt  OFF!
+Set MIG -init_opt  OFF!
+Set MIG -ck_odelay  OFF!
+Set MIG -init_adj  2!
+Set MIG -ctl_po_comp  NONE!
+Set MICROBLAZE -microblaze  FALSE!
+Set PS_MASTER -gp_patch  FALSE!
+Set -fmsh_1553b  FALSE!
+Set -eth_40G  FALSE!
+Set XFFT -mem_type SKIP!
+Set AURORA_8B10B -rxlpmen  NONE!
+Set PCIe Gen3 -pma_mmcm_lock  OFF!
+Set AURORA_8B10B -cnt_max 0!
+Set database info -msg_serverity WARNING!
+Set XADC -xadc_filter TRUE!
+Set bit_patch -disable_icap TRUE!
+Set change_speed -change_speed FALSE!
+Set MIG -bh_mig FALSE!
+Set MIG -bh_mig_dfx FALSE!
+Set PCIe -rx_def_kl FALSE!
+Set -clock_source NONE!
+Set AURORA_64B66B -gt_5g_cpll FALSE!
+Set MIG -mig_timer 5e3!
+Set MIG -mig_det_dqs_cnt 2000!
+Set MIG -qdr_k_init 1!
+Set QPLL -buf  BUFG!
+Set QPLL -qpll  FALSE!
+Set BRAM/FIFO -bram_patch_check  TRUE!
+Set XADC -xadc_aux  FALSE!
+Set -startupe2  FALSE!
+Set BRAM/FIFO -BRAM_SDP  TRUE!
+Set BaiHu -bh_bram  SKIP!
+Set -time_check  TRUE!
+Set -multi_purpose_pin_check  TRUE!
+IP patch version information: 5.3.1.8
+Release date: 2026/02/05
+Add hook tcl to project finished!
+ISOLATED_HOOK_PREVIEW_FAILED ERROR: [Common 17-163] Missing value for option 'name', please type 'save_project_as -help' for usage info.
+
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 16 11:06:51 2026...

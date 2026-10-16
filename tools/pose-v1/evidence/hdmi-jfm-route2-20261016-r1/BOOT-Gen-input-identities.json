@@ -1,0 +1,41 @@
+{
+  "files": [
+    {
+      "name": "7030ai_psin.bif",
+      "bytes": 449,
+      "sha256": "2ac0ca602d2e1200cd92429880f7942aa52bd97007e678ef039f191393ab2389"
+    },
+    {
+      "name": "ai7030_edif_top.bit",
+      "bytes": 5980020,
+      "sha256": "1405d7f1cb992d8f9c78e7b4bbe756faa96eeecb2ff4bdd0d253e92b191e2575"
+    },
+    {
+      "name": "bl31.elf",
+      "bytes": 610824,
+      "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303",
+      "ELF_class": 2,
+      "endianness": 1,
+      "machine": 183
+    },
+    {
+      "name": "FSBL251210_ddr400_demo.out",
+      "bytes": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+      "ELF_class": 2,
+      "endianness": 1,
+      "machine": 183
+    },
+    {
+      "name": "u-boot",
+      "bytes": 6579840,
+      "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97",
+      "ELF_class": 2,
+      "endianness": 1,
+      "machine": 183
+    }
+  ],
+  "source_BIF_contains_original_packager_paths": true,
+  "not_proven_partition_equal_to_current_BOOT": true,
+  "BOOT_built_or_replaced": false
+}

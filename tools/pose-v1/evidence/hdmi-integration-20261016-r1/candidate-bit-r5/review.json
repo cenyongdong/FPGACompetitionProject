@@ -1,0 +1,41 @@
+{
+  "Procise_execution": {
+    "exit": 0,
+    "seconds": 3.7106601999985287,
+    "budget_seconds": 180,
+    "timeout": false,
+    "target": "JFMQL30TAI676H",
+    "input_sha256": "7941f79248f3744c58bcd958c6997dd4f056405768c5f72c7588f362e8c2180c",
+    "board_or_BOOT_operations": false
+  },
+  "products": {
+    "hdmi-integrated-r5.bit": {
+      "bytes": 5980025,
+      "sha256": "7941f79248f3744c58bcd958c6997dd4f056405768c5f72c7588f362e8c2180c",
+      "payload_bytes": 5979916,
+      "payload_sha256": "536aed9388d78b9ba083d36d9c939e11b2e613db7c98ad1a3761b3a0f76d1a04",
+      "header": {
+        "a": "ai7030_edif_top;UserID=53180205;Version=2018.3",
+        "b": "7z030ffg676",
+        "c": "2026/10/16",
+        "d": "19:05:54"
+      }
+    },
+    "hdmi-integrated-r5_disable_icap.bit": {
+      "bytes": 5980609,
+      "sha256": "42af16eb4c168f2f6475904a82e8a70230d18eb187bf81af353a3c2dfc46c685",
+      "payload_bytes": 5980460,
+      "payload_sha256": "d03d2e678ce1b692baa40ab973d266063d5436852a55c96af5bff29c166c42eb",
+      "header": {
+        "a": "ai7030_edif_top;UserID=53180205;Version=2018.3;Patched=DISABLE_ICAP,VCCM;PatchID=32494",
+        "b": "7z030ffg676",
+        "c": "2026/10/16",
+        "d": "19:05:54"
+      }
+    }
+  },
+  "payload_differs_from_original_BOOT": true,
+  "baseline_payload_sha256": "657da80bb5eff97c917cf3a6c8c5b40a331b814dd840b5ac6a0bda44fb8a935d",
+  "new_payload_sha256": "d03d2e678ce1b692baa40ab973d266063d5436852a55c96af5bff29c166c42eb",
+  "not_downloaded_or_physical_display_verified": true
+}

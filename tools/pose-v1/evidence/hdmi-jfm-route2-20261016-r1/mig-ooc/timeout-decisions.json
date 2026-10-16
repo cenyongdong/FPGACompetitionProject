@@ -1,0 +1,12 @@
+[
+  {
+    "elapsed_seconds": 180.0880424000061,
+    "previous_budget_seconds": 180,
+    "new_budget_seconds": 360,
+    "log_bytes": 616730,
+    "youngest_log_age_seconds": 52.87417387962341,
+    "error_seen": false,
+    "action": "continue original process",
+    "basis": "Recent progress in owned MIG synthesis log, no error; bounded to one job"
+  }
+]

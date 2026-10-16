@@ -1,0 +1,174 @@
+
+****** Vivado v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+CRITICAL WARNING: [Common 17-741] No write access right to the local Tcl store at 'C'. XilinxTclStore is reverted to the installation area. If you want to use local Tcl Store, please change the access right and relaunch Vivado.
+Sourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'
+vivado-mcp server ready on port 9999
+source {D:\FPGACompetitionProject\.local\hdmi-jfm-primitive-20261015-r1\read.tcl}
+# if {[catch {
+#  create_project -in_memory -part xc7z030ffg676-2
+#  puts "LOCAL_030AI_DECLARATION_READ_BEGIN"
+#  read_verilog -library fmsh030ai unisim_comp.v
+#  puts "LOCAL_030AI_DECLARATION_READ_COMPLETE"
+#  synth_design -rtl -top PS7 -part xc7z030ffg676-2
+#  set f [open {D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-jfm-primitive-20261015-r1/PS7-ports.txt} w]
+#  foreach port [get_ports] {puts $f "$port|[get_property DIRECTION $port]"}
+#  close $f
+#  close_design
+#  close_project
+#  puts "LOCAL_030AI_DECLARATION_PORTS_READ_COMPLETE"
+# } result]} {puts "LOCAL_030AI_DECLARATION_READ_FAIL $result";exit 1}
+LOCAL_030AI_DECLARATION_READ_BEGIN
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:]
+LOCAL_030AI_DECLARATION_READ_COMPLETE
+Command: synth_design -rtl -top PS7 -part xc7z030ffg676-2
+Starting synth_design
+INFO: [Device 21-403] Loading part xc7z030ffg676-2
+WARNING: [Synth 8-2490] overwriting previous definition of module AND2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:14]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND2B1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:26]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND2B1L [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:38]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND2B2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:51]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND3 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:62]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND3B1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:74]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND3B2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:86]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND3B3 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:98]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND4 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:110]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND4B1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:123]
+WARNING: [Synth 8-2490] overwriting previous definition of module BSCANE2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:136]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND4B2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:166]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND4B3 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:179]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND4B4 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:192]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND5 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:205]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND5B1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:219]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND5B2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:233]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND5B3 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:247]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND5B4 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:261]
+WARNING: [Synth 8-2490] overwriting previous definition of module AND5B5 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:275]
+WARNING: [Synth 8-2490] overwriting previous definition of module AUTOBUF [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:289]
+WARNING: [Synth 8-2490] overwriting previous definition of module BIBUF [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:300]
+WARNING: [Synth 8-2490] overwriting previous definition of module BITSLICE_CONTROL [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:310]
+WARNING: [Synth 8-2490] overwriting previous definition of module BSCAN_SPARTAN3 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:558]
+WARNING: [Synth 8-2490] overwriting previous definition of module BSCAN_SPARTAN3A [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:577]
+WARNING: [Synth 8-2490] overwriting previous definition of module BSCAN_SPARTAN6 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:598]
+WARNING: [Synth 8-2490] overwriting previous definition of module BSCAN_VIRTEX4 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:618]
+WARNING: [Synth 8-2490] overwriting previous definition of module BSCAN_VIRTEX5 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:635]
+WARNING: [Synth 8-2490] overwriting previous definition of module BSCAN_VIRTEX6 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:652]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUF [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:673]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFCE_LEAF [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:683]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFCE_ROW [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:698]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFG [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:713]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFGCE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:723]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFGCE_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:738]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFGCE_DIV [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:750]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFGCTRL [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:770]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFGMUX [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:807]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFGMUX_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:820]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFGMUX_CTRL [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:833]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFGMUX_VIRTEX4 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:847]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFGP [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:861]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFG_GT [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:871]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFG_GT_SYNC [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:891]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFG_PS [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:907]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFH [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:917]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFHCE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:927]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFIO [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:942]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFIO2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:952]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFMR [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:970]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFMRCE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:980]
+WARNING: [Synth 8-2490] overwriting previous definition of module BUFR [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:995]
+WARNING: [Synth 8-2490] overwriting previous definition of module CAPTUREE2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1011]
+WARNING: [Synth 8-2490] overwriting previous definition of module CAPTURE_SPARTAN3 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1022]
+WARNING: [Synth 8-2490] overwriting previous definition of module CAPTURE_SPARTAN3A [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1032]
+WARNING: [Synth 8-2490] overwriting previous definition of module CAPTURE_VIRTEX4 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1042]
+WARNING: [Synth 8-2490] overwriting previous definition of module CAPTURE_VIRTEX5 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1052]
+WARNING: [Synth 8-2490] overwriting previous definition of module CAPTURE_VIRTEX6 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1062]
+WARNING: [Synth 8-2490] overwriting previous definition of module CARRY4 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1072]
+WARNING: [Synth 8-2490] overwriting previous definition of module CARRY8 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1090]
+WARNING: [Synth 8-2490] overwriting previous definition of module CFGLUT5 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1109]
+WARNING: [Synth 8-2490] overwriting previous definition of module CMAC [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1139]
+WARNING: [Synth 8-2490] overwriting previous definition of module CMACE4 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:1949]
+WARNING: [Synth 8-2490] overwriting previous definition of module DCIRESET [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:2865]
+WARNING: [Synth 8-2490] overwriting previous definition of module DCM [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:2875]
+WARNING: [Synth 8-2490] overwriting previous definition of module DCM_ADV [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:2921]
+WARNING: [Synth 8-2490] overwriting previous definition of module DCM_BASE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:2992]
+WARNING: [Synth 8-2490] overwriting previous definition of module DCM_PS [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3040]
+WARNING: [Synth 8-2490] overwriting previous definition of module DCM_SP [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3098]
+WARNING: [Synth 8-2490] overwriting previous definition of module DNA_PORT [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3143]
+WARNING: [Synth 8-2490] overwriting previous definition of module DNA_PORTE2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3157]
+WARNING: [Synth 8-2490] overwriting previous definition of module DPHY_DIFFINBUF [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3174]
+WARNING: [Synth 8-2490] overwriting previous definition of module DSP48 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3196]
+WARNING: [Synth 8-2490] overwriting previous definition of module DSP48A [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3269]
+WARNING: [Synth 8-2490] overwriting previous definition of module DSP48A1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3343]
+WARNING: [Synth 8-2490] overwriting previous definition of module DSP48E [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3422]
+WARNING: [Synth 8-2490] overwriting previous definition of module DSP48E1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3539]
+WARNING: [Synth 8-2490] overwriting previous definition of module DSP48E2 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3673]
+WARNING: [Synth 8-2490] overwriting previous definition of module EFUSE_USR [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3825]
+WARNING: [Synth 8-2490] overwriting previous definition of module FD [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3834]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDC [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3846]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDCE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3859]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDCE_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3879]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDCP [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3893]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDCPE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3910]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDCPE_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3928]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDCP_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3946]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDC_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3963]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3976]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDE_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:3989]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDP [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4002]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDPE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4015]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDPE_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4035]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDP_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4049]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDR [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4062]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDRE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4075]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDRE_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4095]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDRS [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4109]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDRSE [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4127]
+WARNING: [Synth 8-2490] overwriting previous definition of module FDRSE_1 [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:4147]
+INFO: [Common 17-14] Message 'Synth 8-2490' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 859.289 ; gain = 197.879
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'PS7' [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:41657]
+INFO: [Synth 8-6155] done synthesizing module 'PS7' (1#1) [D:/FPGACompetitionProject/.local/hdmi-jfm-primitive-20261015-r1/unisim_comp.v:41657]
+WARNING: [Synth 8-3330] design PS7 has an empty top module
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 902.008 ; gain = 240.598
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 902.008 ; gain = 240.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 902.008 ; gain = 240.598
+---------------------------------------------------------------------------------
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 934.184 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 934.184 ; gain = 272.773
+7 Infos, 102 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 934.184 ; gain = 555.512
+WARNING: [Vivado 12-584] No ports matched '*'.
+LOCAL_030AI_DECLARATION_PORTS_READ_COMPLETE
+# exit
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 15 22:32:32 2026...

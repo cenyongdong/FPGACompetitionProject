@@ -1,0 +1,10 @@
+{
+  "original_BOOT_restored_and_matches": true,
+  "six_SDK_unchanged": true,
+  "boot_id_unchanged_since_candidate_start": true,
+  "kernel_log_unchanged_during_probe": false,
+  "device_owners": [],
+  "fpga_state": "operating",
+  "comparison_covers_restore_mount_and_static_probes": true,
+  "actual_kernel_delta": "One FAT unclean-volume warning; no added SDK or DMA fault attributed; FAT investigation recorded separately"
+}

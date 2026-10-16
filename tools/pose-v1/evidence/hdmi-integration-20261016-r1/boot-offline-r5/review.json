@@ -1,0 +1,14 @@
+{
+  "bytes": 7023552,
+  "sha256": "22035d99f2dacdcb1817a0c08ae8b04c3b024e51bf2f1b522f0fcb9baf252135",
+  "original_BOOT_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "PL_offset": 186816,
+  "PL_bytes": 5980464,
+  "all_bytes_outside_PL_identical": true,
+  "PL_payload_matches_candidate_after_word_swap": true,
+  "padding_identical": true,
+  "candidate_bit_sha256": "42af16eb4c168f2f6475904a82e8a70230d18eb187bf81af353a3c2dfc46c685",
+  "candidate_payload_sha256": "d03d2e678ce1b692baa40ab973d266063d5436852a55c96af5bff29c166c42eb",
+  "differing_PL_bytes": 2007499,
+  "scope": "offline candidate only; no deployment, boot configuration change, reboot or board acceptance"
+}

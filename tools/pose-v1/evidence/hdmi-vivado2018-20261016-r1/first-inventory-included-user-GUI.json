@@ -1,0 +1,11 @@
+{
+  "count": 1,
+  "processes": [
+    {
+      "Id": 22756,
+      "ProcessName": "vivado"
+    }
+  ],
+  "task_read_inventory_also_finished": true,
+  "method": "Get-Process exact EDA names after natural tool exit"
+}

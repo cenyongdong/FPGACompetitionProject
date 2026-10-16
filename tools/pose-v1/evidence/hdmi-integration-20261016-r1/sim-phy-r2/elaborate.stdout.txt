@@ -1,0 +1,50 @@
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/vivado18.3/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe tb_hdmi_board_phy glbl --timescale 1ns/1ps -L unisims_ver -L secureip --snapshot tb_hdmi_board_phy 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3645] port 'CLKFBOUTB' remains unconnected for this instance [D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/sim-phy-r2/hdmi_clock_jfm.v:8]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling module work.mna_gp_ww_itf
+Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=37.12...
+Compiling module unisims_ver.MMCME2_BASE(CLKFBOUT_MULT_F=37.1...
+Compiling module unisims_ver.BUFG
+Compiling module unisims_ver.BUFIO
+Compiling module work.hdmi_clock_jfm
+Compiling module work.hdmi_register_bank
+Compiling module work.hdmi_command_mailbox
+Compiling module work.hdmi_scan_control(DMA_BASE=32'b0...
+Compiling module work.hdmi_axi_read
+Compiling module work.hdmi_candidate_core(DMA_BASE=32'...
+Compiling module work.hdmi_candidate_register_core
+Compiling module work.hdmi_stream_fifo
+Compiling module work.hdmi_pixel_scan_default
+Compiling module work.hdmi_scanout
+Compiling architecture behavioral of entity work.TMDSEncoder [tmdsencoder_default]
+Compiling module unisims_ver.OBUFDS
+Compiling secureip modules ...
+Compiling module unisims_ver.OSERDESE2(DATA_RATE_TQ="SDR",DAT...
+Compiling secureip modules ...
+Compiling module unisims_ver.OSERDESE2(DATA_RATE_TQ="SDR",DAT...
+Compiling module work.oserdese2_10to1
+Compiling module work.uihdmitx(FAMILY="7FAMILY")
+Compiling module work.hdmi_board
+Compiling module work.tb_hdmi_board_phy
+Compiling module work.glbl
+Built simulation snapshot tb_hdmi_board_phy
+
+****** Webtalk v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/sim-phy-r2/xsim.dir/tb_hdmi_board_phy/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Fri Oct 16 14:09:25 2026...

@@ -1,0 +1,315 @@
+{
+  "exit": 1,
+  "seconds": 759.7338700999971,
+  "initial_budget_seconds": 180,
+  "final_budget_seconds": 900,
+  "ceiling_seconds": 1800,
+  "stopped_by_monitor": false,
+  "decisions": [
+    {
+      "elapsed": 180.12589599999774,
+      "previous_budget": 180,
+      "new_budget": 360,
+      "log_bytes": 327150,
+      "youngest_log_age_seconds": 1.7348673343658447,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 2874,
+        "load_percent": 82,
+        "available_commit_MB": 7547
+      },
+      "owned_cpu": {
+        "available": true,
+        "cpu_seconds": 188.125,
+        "processes": [
+          {
+            "ProcessId": 29216,
+            "ParentProcessId": 32052,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.5
+          },
+          {
+            "ProcessId": 30128,
+            "ParentProcessId": 29216,
+            "Name": "conhost.exe",
+            "cpu_seconds": 0.140625
+          },
+          {
+            "ProcessId": 22600,
+            "ParentProcessId": 29216,
+            "Name": "vivado.exe",
+            "cpu_seconds": 13.921875
+          },
+          {
+            "ProcessId": 8356,
+            "ParentProcessId": 22600,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.4375
+          },
+          {
+            "ProcessId": 31176,
+            "ParentProcessId": 8356,
+            "Name": "vrs.exe",
+            "cpu_seconds": 0.21875
+          },
+          {
+            "ProcessId": 32100,
+            "ParentProcessId": 31176,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.015625
+          },
+          {
+            "ProcessId": 27336,
+            "ParentProcessId": 32100,
+            "Name": "cscript.exe",
+            "cpu_seconds": 0.078125
+          },
+          {
+            "ProcessId": 452,
+            "ParentProcessId": 27336,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.46875
+          },
+          {
+            "ProcessId": 18252,
+            "ParentProcessId": 452,
+            "Name": "vivado.exe",
+            "cpu_seconds": 172.34375
+          }
+        ]
+      },
+      "owned_cpu_delta_seconds": 188.125,
+      "action": "continue original owned process"
+    },
+    {
+      "elapsed": 360.1566981000069,
+      "previous_budget": 360,
+      "new_budget": 540,
+      "log_bytes": 589000,
+      "youngest_log_age_seconds": 3.3078598976135254,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 2515,
+        "load_percent": 84,
+        "available_commit_MB": 7301
+      },
+      "owned_cpu": {
+        "available": true,
+        "cpu_seconds": 446.984375,
+        "processes": [
+          {
+            "ProcessId": 29216,
+            "ParentProcessId": 32052,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.5
+          },
+          {
+            "ProcessId": 30128,
+            "ParentProcessId": 29216,
+            "Name": "conhost.exe",
+            "cpu_seconds": 0.140625
+          },
+          {
+            "ProcessId": 22600,
+            "ParentProcessId": 29216,
+            "Name": "vivado.exe",
+            "cpu_seconds": 15.796875
+          },
+          {
+            "ProcessId": 8356,
+            "ParentProcessId": 22600,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.4375
+          },
+          {
+            "ProcessId": 31176,
+            "ParentProcessId": 8356,
+            "Name": "vrs.exe",
+            "cpu_seconds": 0.21875
+          },
+          {
+            "ProcessId": 32100,
+            "ParentProcessId": 31176,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.015625
+          },
+          {
+            "ProcessId": 27336,
+            "ParentProcessId": 32100,
+            "Name": "cscript.exe",
+            "cpu_seconds": 0.125
+          },
+          {
+            "ProcessId": 452,
+            "ParentProcessId": 27336,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.46875
+          },
+          {
+            "ProcessId": 18252,
+            "ParentProcessId": 452,
+            "Name": "vivado.exe",
+            "cpu_seconds": 429.28125
+          }
+        ]
+      },
+      "owned_cpu_delta_seconds": 258.859375,
+      "action": "continue original owned process"
+    },
+    {
+      "elapsed": 540.7298163000087,
+      "previous_budget": 540,
+      "new_budget": 720,
+      "log_bytes": 612581,
+      "youngest_log_age_seconds": 94.06372213363647,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 1885,
+        "load_percent": 88,
+        "available_commit_MB": 6999
+      },
+      "owned_cpu": {
+        "available": true,
+        "cpu_seconds": 661.359375,
+        "processes": [
+          {
+            "ProcessId": 29216,
+            "ParentProcessId": 32052,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.5
+          },
+          {
+            "ProcessId": 30128,
+            "ParentProcessId": 29216,
+            "Name": "conhost.exe",
+            "cpu_seconds": 0.15625
+          },
+          {
+            "ProcessId": 22600,
+            "ParentProcessId": 29216,
+            "Name": "vivado.exe",
+            "cpu_seconds": 17.671875
+          },
+          {
+            "ProcessId": 8356,
+            "ParentProcessId": 22600,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.4375
+          },
+          {
+            "ProcessId": 31176,
+            "ParentProcessId": 8356,
+            "Name": "vrs.exe",
+            "cpu_seconds": 0.234375
+          },
+          {
+            "ProcessId": 32100,
+            "ParentProcessId": 31176,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.015625
+          },
+          {
+            "ProcessId": 27336,
+            "ParentProcessId": 32100,
+            "Name": "cscript.exe",
+            "cpu_seconds": 0.125
+          },
+          {
+            "ProcessId": 452,
+            "ParentProcessId": 27336,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.46875
+          },
+          {
+            "ProcessId": 18252,
+            "ParentProcessId": 452,
+            "Name": "vivado.exe",
+            "cpu_seconds": 641.75
+          }
+        ]
+      },
+      "owned_cpu_delta_seconds": 214.375,
+      "action": "continue original owned process"
+    },
+    {
+      "elapsed": 720.2735370000009,
+      "previous_budget": 720,
+      "new_budget": 900,
+      "log_bytes": 612581,
+      "youngest_log_age_seconds": 273.6072428226471,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 2203,
+        "load_percent": 86,
+        "available_commit_MB": 7293
+      },
+      "owned_cpu": {
+        "available": true,
+        "cpu_seconds": 841.921875,
+        "processes": [
+          {
+            "ProcessId": 29216,
+            "ParentProcessId": 32052,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.5
+          },
+          {
+            "ProcessId": 30128,
+            "ParentProcessId": 29216,
+            "Name": "conhost.exe",
+            "cpu_seconds": 0.15625
+          },
+          {
+            "ProcessId": 22600,
+            "ParentProcessId": 29216,
+            "Name": "vivado.exe",
+            "cpu_seconds": 19.5625
+          },
+          {
+            "ProcessId": 8356,
+            "ParentProcessId": 22600,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.4375
+          },
+          {
+            "ProcessId": 31176,
+            "ParentProcessId": 8356,
+            "Name": "vrs.exe",
+            "cpu_seconds": 0.25
+          },
+          {
+            "ProcessId": 32100,
+            "ParentProcessId": 31176,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.015625
+          },
+          {
+            "ProcessId": 27336,
+            "ParentProcessId": 32100,
+            "Name": "cscript.exe",
+            "cpu_seconds": 0.125
+          },
+          {
+            "ProcessId": 452,
+            "ParentProcessId": 27336,
+            "Name": "cmd.exe",
+            "cpu_seconds": 0.46875
+          },
+          {
+            "ProcessId": 18252,
+            "ParentProcessId": 452,
+            "Name": "vivado.exe",
+            "cpu_seconds": 820.40625
+          }
+        ]
+      },
+      "owned_cpu_delta_seconds": 180.5625,
+      "action": "continue original owned process"
+    }
+  ],
+  "final_memory": {
+    "available_MB": 5268,
+    "load_percent": 67,
+    "available_commit_MB": 10589
+  }
+}

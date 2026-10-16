@@ -1,0 +1,34 @@
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+CRITICAL WARNING: [Common 17-741] No write access right to the local Tcl store at 'C'. XilinxTclStore is reverted to the installation area. If you want to use local Tcl Store, please change the access right and relaunch Vivado.
+source {D:\FPGACompetitionProject\.local\hdmi-jfm-build-20261016-r1\build-controls\stage.tcl}
+# if {[catch {
+#  package require md5
+#  set f [open {D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-jfm-build-20261016-r1/build-controls/build-control-procedures.txt} w]
+#  rename exec audit_exec
+#  proc exec args {error "READ_ONLY"}
+#  rename open audit_open
+#  proc open {p args} {
+#   if {[llength $args]>0 && [lindex $args 0] ni {r rb}} {error "READ_ONLY_OPEN"}
+#   return [eval [linsert $args 0 audit_open $p]]
+#  }
+#  rename file audit_file
+#  proc file {sub args} {
+#   if {$sub in {copy delete rename mkdir attributes mtime atime link}} {error "READ_ONLY_FILE"}
+#   return [eval [linsert $args 0 audit_file $sub]]
+#  }
+#  source {D:/FPGACompetitionProject/Docs/26嵌赛开�?/JFM_Kits/JFM_Kits/ip_patch/all_src_files.tcl}
+#  foreach n [lsort [info procs]] {
+#   if {[regexp -nocase {^(runEco.*|pre_synthesis_patch|source_file_backup|.*speed.*|.*database.*|.*synthesis.*patch.*|.*files.*|post_.*patch)$} $n]} {
+#    puts $f "PROCEDURE $n";puts $f "ARGS [info args $n]";puts $f [info body $n]
+#   }
+#  }
+#  close $f
+#  puts "READ_ONLY_BUILD_CONTROLS_COMPLETE"
+# } result]} {puts "READ_ONLY_BUILD_CONTROLS_FAILED $result";exit 1}
+READ_ONLY_BUILD_CONTROLS_FAILED couldn't read file "D:/FPGACompetitionProject/Docs/26嵌赛开�?/JFM_Kits/JFM_Kits/ip_patch/all_src_files.tcl": no such file or directory
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 16 12:03:08 2026...

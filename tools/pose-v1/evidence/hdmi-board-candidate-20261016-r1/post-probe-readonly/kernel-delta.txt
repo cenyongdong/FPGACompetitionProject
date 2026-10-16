@@ -1,0 +1,7 @@
+--- pre-probe
++++ post-probe
+@@ -303,3 +303,4 @@
+ [    7.951457] fmql-dwmac e0047000.ethernet eth0: configuring for phy/rgmii link mode
+ [   12.045214] fmql-dwmac e0047000.ethernet eth0: Link is Up - 1Gbps/Full - flow control rx/tx
+ [   12.045241] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
++[  200.833880] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.

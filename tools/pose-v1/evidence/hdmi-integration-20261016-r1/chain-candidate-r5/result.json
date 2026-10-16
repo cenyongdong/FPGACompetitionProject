@@ -1,0 +1,11 @@
+{
+  "exit": 0,
+  "seconds": 4.084644600006868,
+  "read_only_scan": true,
+  "programmed": false,
+  "scan_completed": true,
+  "expected_cable_present": true,
+  "expected_FPGA_ID_present": true,
+  "expected_PS_DAP_ID_present": true,
+  "note": "Read actual part index from full stdout before any subsequent programming"
+}

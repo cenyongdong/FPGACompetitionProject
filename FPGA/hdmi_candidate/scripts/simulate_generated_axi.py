@@ -4,12 +4,21 @@ One transaction outstanding; 2 sources x 32 IDs x full 16-beat read/write bursts
 from pathlib import Path
 import hashlib,json,re,shutil,subprocess,sys,time
 R=Path(__file__).resolve().parents[3]
-S=R/'.local/hdmi-ip-generation-20261015-r3/reference/fpai_demo_vivado.srcs/sources_1/bd/ps_ai'
-revision=sys.argv[1] if len(sys.argv)>1 else 'r1'
-assert revision in ('r1','r2','r3')
-E=R/('tools/pose-v1/evidence/hdmi-generated-axi-20261015-'+revision)
-W=R/('.local/hdmi-generated-axi-20261015-'+revision)
-assert json.loads((R/'tools/pose-v1/evidence/hdmi-ip-generation-20261015-r3/post-generation-contract.json').read_text())['parameter_and_port_gate_passed']
+factory2018=len(sys.argv)>1 and sys.argv[1]=='--factory2018'
+if factory2018:
+    S=R/'.local/hdmi-jfm-build-20261016-r1/reference/fpai_demo_vivado.srcs/sources_1/bd/ps_ai'
+    E=R/'tools/pose-v1/evidence/hdmi-jfm-build-20261016-r1/generated-axi2018'
+    W=R/'.local/hdmi-jfm-build-20261016-r1/generated-axi2018'
+    V=Path('D:/vivado18.3/Vivado/2018.3/bin')
+    assert json.loads((E.parent/'generated-contract-reviewed.json').read_text())['gate_pass']
+else:
+    S=R/'.local/hdmi-ip-generation-20261015-r3/reference/fpai_demo_vivado.srcs/sources_1/bd/ps_ai'
+    revision=sys.argv[1] if len(sys.argv)>1 else 'r1'
+    assert revision in ('r1','r2','r3')
+    E=R/('tools/pose-v1/evidence/hdmi-generated-axi-20261015-'+revision)
+    W=R/('.local/hdmi-generated-axi-20261015-'+revision)
+    V=Path('D:/Xilinx/Vivado/2019.1/bin')
+    assert json.loads((R/'tools/pose-v1/evidence/hdmi-ip-generation-20261015-r3/post-generation-contract.json').read_text())['parameter_and_port_gate_passed']
 E.mkdir(exist_ok=False);W.mkdir(exist_ok=False)
 bd=(S/'synth/ps_ai.v').read_text()
 match=re.search(r'\bmodule ps_ai_axi_interconnect_3_0\b(.*?)endmodule',bd,re.S)
@@ -33,7 +42,21 @@ files=[]
 for stem in ('axi_infrastructure_v1_1_vl_rfs','generic_baseblocks_v2_1_vl_rfs','axi_crossbar_v2_1_vl_rfs','axi_register_slice_v2_1_vl_rfs','axi_data_fifo_v2_1_vl_rfs'):
     found=list((S/'ipshared').rglob(stem+'.v'));assert len(found)==1
     files+=found
-for name in ('ps_ai_xbar_7','ps_ai_s00_regslice_7','ps_ai_s01_regslice_0','ps_ai_m00_regslice_0'):
+if factory2018:
+    modules=dict(re.findall(r'\bmodule\s+(\w+)\b(.*?)\bendmodule\b',bd,re.S))
+    pending=['ps_ai_axi_interconnect_3_0'];seen=set();leaves=set()
+    while pending:
+        name=pending.pop()
+        if name in seen:continue
+        seen.add(name)
+        for dep in set(re.findall(r'\b\w+\b',modules[name])):
+            if dep in modules and dep not in seen:pending.append(dep)
+            elif dep.startswith('ps_ai_') and (S/'ip'/dep/'synth'/(dep+'.v')).is_file():leaves.add(dep)
+    assert len(leaves)==4,leaves
+    dependencies=sorted(leaves)
+    (E/'roles.json').write_text(json.dumps({'reachable_modules':sorted(seen),'actual_generated_wrappers':dependencies},indent=2)+'\n')
+else:dependencies=('ps_ai_xbar_7','ps_ai_s00_regslice_7','ps_ai_s01_regslice_0','ps_ai_m00_regslice_0')
+for name in dependencies:
     files.append(S/'ip'/name/'synth'/(name+'.v'))
 files.append(S/'synth/ps_ai.v')
 manifest={}
@@ -47,7 +70,7 @@ for p in files:
 (E/'sources.json').write_text(json.dumps(manifest,indent=2)+'\n')
 (E/'scope.json').write_text(json.dumps({'budget_per_stage':90,'outstanding_global':1,'actual_generated_model':True,'physical_board':False,'candidate_STOP_integrated':False},indent=2)+'\n')
 (W/'run.tcl').write_text('run all\nquit\n')
-V=Path('D:/Xilinx/Vivado/2019.1/bin');steps=[]
+steps=[]
 for stage,args in (
  ('compile',[str(V/'xvlog.bat'),*[p.name for p in files]]),
  ('compile_tb',[str(V/'xvlog.bat'),'--sv','tb.sv']),

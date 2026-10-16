@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project Version="1.04" Minor="0" Name="imported_ps" Create="Procise 2025.1.1 temp 32494 at 2026-10-16 10:41:32" SupportSvn="30016">
+    <Configuration>
+        <Option Name="Stage" Value="Device Set"/>
+        <Option Name="Description" Value=""/>
+        <Option Name="Family" Value="jfmql"/>
+        <Option Name="Device" Value="JFMQL30TAI676H"/>
+        <Option Name="Package" Value="fcbga676"/>
+        <Option Name="Speed" Value="-2"/>
+    </Configuration>
+    <FileSets Version="1" Minor="0">
+        <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="sources">
+            <File Path="actual_ps.edf">
+                <FileInfo Type="EDIF" Library="work"/>
+            </File>
+            <Config>
+                <Option Name="TopModule" Value="ps_ai_processing_system7_0_0"/>
+                <Option Name="TopInstPath" Value="ps_ai_processing_system7_0_0"/>
+                <Option Name="TopRTLFile" Value=""/>
+            </Config>
+        </FileSet>
+    </FileSets>
+    <DesignHierarchy>
+        <Module Name="ps_ai_processing_system7_0_0" File="actual_ps.edf" LineNum="0"/>
+        <Automatic_includes/>
+    </DesignHierarchy>
+    <BspRepositories BspCover="false">
+        <Local folder="C:/FudanMicro/Procise/data/devicetree_rep"/>
+    </BspRepositories>
+</Project>

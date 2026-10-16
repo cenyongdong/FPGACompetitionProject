@@ -1,0 +1,16 @@
+{
+  "result_origin": "recovered from outer exec result because v1 driver raised before saving execution.json",
+  "driver_exit": 1,
+  "tool_exit": null,
+  "timeout": true,
+  "budget_seconds": 60,
+  "cleanup_command_return": "Access denied",
+  "cleanup_wait_timeout_seconds": 15,
+  "kernel_synth_design_elapsed_seconds_reported": 61,
+  "kernel_completion_marker_present": true,
+  "runtime_PS7_pins_written": 3305,
+  "overall_pass": false,
+  "failed_load_rerun": false,
+  "natural_tool_exit_logged": true,
+  "final_process_inventory_required": true
+}

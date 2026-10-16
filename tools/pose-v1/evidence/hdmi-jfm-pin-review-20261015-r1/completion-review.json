@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-15",
+  "workspace": "D:\\FPGACompetitionProject",
+  "user_resource_hints_reviewed": true,
+  "PDF_pages_visually_reviewed": [
+    9,
+    10,
+    19,
+    21,
+    22
+  ],
+  "F8_key2_polarity_closed_from_schematic": true,
+  "real_replace_body_read": true,
+  "full_replace_requires_Vivado_2018_3": true,
+  "all_9_installed_targets_before_after_equal": true,
+  "all_297_reference_files_equal": true,
+  "PS_primitive_standalone_exit0_was_empty_and_not_accepted": true,
+  "actual_PS_RTL_metadata_probe_passed": false,
+  "actual_PS_failure": "Synth 8-4456 named AI_IN ports mismatch",
+  "global_replace_or_reset_or_hook_invoked": false,
+  "tools_installed_or_upgraded": false,
+  "PS_or_AI_Mate_changed": false,
+  "board_operation": false,
+  "candidate_downloaded": false,
+  "BOOT_changed": false,
+  "old_DATA_resumed": false,
+  "full_HDMI_accepted": false,
+  "failed_logs_preserved": true,
+  "EDA_process_inventory": {
+    "method": "Get-Process by exact EDA names",
+    "count": 0,
+    "processes": []
+  },
+  "recovery": "FPGA/hdmi_candidate/JFM-COMPATIBILITY-REVIEW.md"
+}

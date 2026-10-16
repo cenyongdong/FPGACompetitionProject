@@ -1,0 +1,10 @@
+FLOW|Vivado Implementation 2018|Vivado Implementation 2018
+STRATEGY|Performance_NetDelay_high|Performance_NetDelay_high
+CONSTRSET|constrs_1|constrs_1
+PART|xc7z030ffg676-2|xc7z030ffg676-2
+STEPS.OPT_DESIGN.TCL.PRE|D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/reference/ip_patch/process_control/implementation_opt_pre.tcl
+STEPS.OPT_DESIGN.TCL.POST|D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/reference/ip_patch/process_control/implementation_opt_post.tcl
+STEPS.ROUTE_DESIGN.TCL.POST|D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/reference/ip_patch/process_control/implementation_route_post.tcl
+STEPS.WRITE_BITSTREAM.TCL.PRE|D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/reference/ip_patch/process_control/write_bitstream_pre.tcl
+STEPS.WRITE_BITSTREAM.TCL.POST|D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/reference/ip_patch/process_control/write_bitstream_post.tcl
+HDMI_WRAPPER|D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/reference/ip_patch/process_control/implementation_opt_pre_hdmi.tcl

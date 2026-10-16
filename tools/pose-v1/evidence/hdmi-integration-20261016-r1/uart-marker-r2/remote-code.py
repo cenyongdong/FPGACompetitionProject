@@ -1,0 +1,1 @@
+import os,pathlib;assert pathlib.Path('/proc/sys/kernel/random/boot_id').read_text().strip()=='8974fbf7-cbe9-4fc9-954d-4682c45b045f';fd=os.open('/dev/ttyPS0',os.O_WRONLY|os.O_NOCTTY|os.O_NONBLOCK);n=os.write(fd,b'\r\nHDMI_PS_UART_RX_20261016_R2\r\n');os.close(fd);print('PS_CONSOLE_MARKER_BYTES',n)

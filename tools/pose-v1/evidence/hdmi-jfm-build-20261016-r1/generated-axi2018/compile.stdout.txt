@@ -1,0 +1,80 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/axi_infrastructure_v1_1_vl_rfs.v" into library work
+INFO: [VRFC 10-311] analyzing module axi_infrastructure_v1_1_0_axi2vector
+INFO: [VRFC 10-311] analyzing module axi_infrastructure_v1_1_0_axic_srl_fifo
+INFO: [VRFC 10-311] analyzing module axi_infrastructure_v1_1_0_vector2axi
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/generic_baseblocks_v2_1_vl_rfs.v" into library work
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_carry_and
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_carry_latch_and
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_carry_latch_or
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_carry_or
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_carry
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_command_fifo
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_comparator_mask_static
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_comparator_mask
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_comparator_sel_mask_static
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_comparator_sel_mask
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_comparator_sel_static
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_comparator_sel
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_comparator_static
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_comparator
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_mux_enc
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_mux
+INFO: [VRFC 10-311] analyzing module generic_baseblocks_v2_1_0_nto1_mux
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/axi_crossbar_v2_1_vl_rfs.v" into library work
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_addr_arbiter_sasd
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_addr_arbiter
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_addr_decoder
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_arbiter_resp
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_crossbar_sasd
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_crossbar
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_decerr_slave
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_si_transactor
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_splitter
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_wdata_mux
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_wdata_router
+INFO: [VRFC 10-311] analyzing module axi_crossbar_v2_1_19_axi_crossbar
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/axi_register_slice_v2_1_vl_rfs.v" into library work
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_tdm_sample
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_auto_slr
+INFO: [VRFC 10-2458] undeclared symbol s_handshake_d, assumed default net type wire [D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/axi_register_slice_v2_1_vl_rfs.v:181]
+INFO: [VRFC 10-2458] undeclared symbol m_ready_d, assumed default net type wire [D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/axi_register_slice_v2_1_vl_rfs.v:191]
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_auto_src
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_auto_dest
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_srl_rtl
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_axic_register_slice
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_multi_slr
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_middle_region_slr
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_source_region_slr
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_dest_region_slr
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_single_slr
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_axic_reg_srl_fifo
+INFO: [VRFC 10-311] analyzing module axi_register_slice_v2_1_18_axi_register_slice
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/axi_data_fifo_v2_1_vl_rfs.v" into library work
+INFO: [VRFC 10-311] analyzing module axi_data_fifo_v2_1_17_axic_fifo
+INFO: [VRFC 10-311] analyzing module axi_data_fifo_v2_1_17_fifo_gen
+INFO: [VRFC 10-311] analyzing module axi_data_fifo_v2_1_17_axic_srl_fifo
+INFO: [VRFC 10-311] analyzing module axi_data_fifo_v2_1_17_axic_reg_srl_fifo
+INFO: [VRFC 10-311] analyzing module axi_data_fifo_v2_1_17_ndeep_srl
+INFO: [VRFC 10-311] analyzing module axi_data_fifo_v2_1_17_axi_data_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/ps_ai_m00_regslice_0.v" into library work
+INFO: [VRFC 10-311] analyzing module ps_ai_m00_regslice_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/ps_ai_s00_regslice_1.v" into library work
+INFO: [VRFC 10-311] analyzing module ps_ai_s00_regslice_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/ps_ai_s01_regslice_0.v" into library work
+INFO: [VRFC 10-311] analyzing module ps_ai_s01_regslice_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/ps_ai_xbar_4.v" into library work
+INFO: [VRFC 10-311] analyzing module ps_ai_xbar_4
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGACompetitionProject/.local/hdmi-jfm-build-20261016-r1/generated-axi2018/ps_ai.v" into library work
+INFO: [VRFC 10-311] analyzing module m00_couplers_imp_1D6FAED
+INFO: [VRFC 10-311] analyzing module m00_couplers_imp_OID2TJ
+INFO: [VRFC 10-311] analyzing module m00_couplers_imp_SJGDOD
+INFO: [VRFC 10-311] analyzing module m01_couplers_imp_1PX0PUD
+INFO: [VRFC 10-311] analyzing module m01_couplers_imp_2FMNIL
+INFO: [VRFC 10-311] analyzing module ps_ai
+INFO: [VRFC 10-311] analyzing module ps_ai_axi_interconnect_0_0
+INFO: [VRFC 10-311] analyzing module ps_ai_axi_interconnect_1_0
+INFO: [VRFC 10-311] analyzing module ps_ai_axi_interconnect_3_0
+INFO: [VRFC 10-311] analyzing module s00_couplers_imp_1S6C5N2
+INFO: [VRFC 10-311] analyzing module s00_couplers_imp_3X80A4
+INFO: [VRFC 10-311] analyzing module s00_couplers_imp_DI37BQ
+INFO: [VRFC 10-311] analyzing module s01_couplers_imp_1F0E4QS

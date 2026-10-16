@@ -1,0 +1,23 @@
+{
+  "previous_sealed_files_checked": 264,
+  "previous_seal_pass": true,
+  "current_docs": 11,
+  "Python_AST_files_checked": 75,
+  "new_broken_local_links": [],
+  "executed_program_bit_commands": 0,
+  "documentation_credential_snapshots_redacted": true,
+  "actual_scope": {
+    "status": "RELEASED_FOR_CONTROLLED_BOARD_TEST",
+    "two_min_period_checks_user_waived": true,
+    "raw_timing_pass": false,
+    "new_JTAG_chain_pass": true,
+    "reference_payload_identical_to_selected_BOOT": true,
+    "new_HDMI_candidate_integrated": false,
+    "programmed": false,
+    "BOOT_written": false,
+    "rebooted": false,
+    "live_HDMI_or_new_bitstream_realtime_acceptance": false,
+    "reason_not_reloading_reference": "Identical payload does not add the approved HDMI fixes; full candidate and safe switching contract still needed"
+  },
+  "resource_cleanup": "All this-batch subprocesses waited; unrelated SSH PID28848 preserved; see final-host-process-inventory.json"
+}

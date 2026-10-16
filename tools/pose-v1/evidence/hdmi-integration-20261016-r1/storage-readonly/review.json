@@ -1,0 +1,21 @@
+{
+  "boot_partition": "/dev/mmcblk0p1",
+  "filesystem": "FAT16",
+  "currently_mounted": false,
+  "free_FAT_bytes": 997064704,
+  "root_disk_usage": {
+    "total": 60372987904,
+    "used": 7266942976,
+    "free": 50352496640
+  },
+  "tools": {
+    "mount": "/usr/bin/mount",
+    "umount": "/usr/bin/umount",
+    "sync": "/usr/bin/sync",
+    "reboot": "/usr/sbin/reboot",
+    "sha256sum": "/usr/bin/sha256sum",
+    "cp": "/usr/bin/cp",
+    "mv": "/usr/bin/mv"
+  },
+  "changed_or_mounted": false
+}

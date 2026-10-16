@@ -1,0 +1,16 @@
+[
+  {
+    "elapsed": 180.0925397000101,
+    "previous_budget": 180,
+    "new_budget": 360,
+    "log_bytes": 1482179,
+    "youngest_log_age_seconds": 0.017688512802124023,
+    "error_seen": false,
+    "memory": {
+      "available_MB": 3840,
+      "load_percent": 76,
+      "available_commit_MB": 9747
+    },
+    "action": "continue original owned process"
+  }
+]

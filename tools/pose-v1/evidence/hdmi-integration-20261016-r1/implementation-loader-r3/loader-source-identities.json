@@ -1,0 +1,18 @@
+{
+  "route_hdmi_system.py": {
+    "source": "D:\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\scripts\\route_hdmi_system.py",
+    "sha256": "2098f07e52fbea212abceef4f1e1712b233c767c0bdfa64544adeaab0ad1e4a2"
+  },
+  "integration_support-r3.py": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-integration-20261016-r1\\integration_support.py",
+    "sha256": "a069d6c410f6db6f79217a508966aae506b90ec49bedbc206851893b71278ed0"
+  },
+  "hdmi_cdc.tcl": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-integration-20261016-r1\\reference\\constrs_1\\hdmi_cdc.tcl",
+    "sha256": "502319f8ae1e613665f264c88cff8b830fa0245d3578fd3b4724da1dd8b48c6f"
+  },
+  "implementation_opt_pre_hdmi.tcl": {
+    "source": "D:\\FPGACompetitionProject\\.local\\hdmi-integration-20261016-r1\\reference\\ip_patch\\process_control\\implementation_opt_pre_hdmi.tcl",
+    "sha256": "1121c301483f314d09ee95ea76da944cc333dd17a841a951cdd6b34b1223fc56"
+  }
+}

@@ -21,23 +21,31 @@ module hdmi_stream_fifo #(parameter integer AW=9)(
     wire advance=pop && !empty && lane==3;
     wire [AW:0] next_rd=rd_bin+advance;
     wire [AW:0] next_wr=wr_bin+1'b1;
+    // Only these release chains receive the cross-domain asynchronous reset.
+    // State registers assert asynchronously but release on their OWN clock.
+    // Gating ready/empty alone does not synchronize state reset deassertion.
+    always @(posedge wr_clk or negedge resetn)
+        if(!resetn) wr_release<=0;
+        else wr_release<={wr_release[1:0],1'b1};
+    always @(posedge rd_clk or negedge resetn)
+        if(!resetn) rd_release<=0;
+        else rd_release<={rd_release[1:0],1'b1};
+    wire wr_resetn=wr_release[2],rd_resetn=rd_release[2];
     // Reading the next word on the final lane makes it available for lane zero.
     always @(posedge rd_clk) word_data<=storage[next_rd[AW-1:0]];
     always @(posedge wr_clk) if(push && ready) storage[wr_bin[AW-1:0]]<=data;
-    always @(posedge wr_clk or negedge resetn) begin
-        if(!resetn) begin
-            wr_bin<=0;wr_gray<=0;rd_sync1<=0;rd_sync2<=0;wr_release<=0;
+    always @(posedge wr_clk or negedge wr_resetn) begin
+        if(!wr_resetn) begin
+            wr_bin<=0;wr_gray<=0;rd_sync1<=0;rd_sync2<=0;
         end else begin
-            wr_release<={wr_release[1:0],1'b1};
             rd_sync1<=rd_gray;rd_sync2<=rd_sync1;
             if(push && ready) begin wr_bin<=next_wr;wr_gray<=(next_wr>>1)^next_wr;end
         end
     end
-    always @(posedge rd_clk or negedge resetn) begin
-        if(!resetn) begin
-            rd_bin<=0;rd_gray<=0;wr_sync1<=0;wr_sync2<=0;lane<=0;rd_release<=0;
+    always @(posedge rd_clk or negedge rd_resetn) begin
+        if(!rd_resetn) begin
+            rd_bin<=0;rd_gray<=0;wr_sync1<=0;wr_sync2<=0;lane<=0;
         end else begin
-            rd_release<={rd_release[1:0],1'b1};
             wr_sync1<=wr_gray;wr_sync2<=wr_sync1;
             if(pop && !empty) begin
                 lane<=lane+1'b1;

@@ -1,0 +1,16 @@
+{
+  "exit": 0,
+  "seconds": 0.627481200004695,
+  "budget": 180,
+  "output_exists": true,
+  "deployed": false,
+  "rebooted": false,
+  "bytes": 7023552,
+  "sha256": "d2247412a794763ed6b7e77ef9b7ffe0768a4939af7b18bc192359b3bef785ce",
+  "BOOT_PL_offset": 186816,
+  "BOOT_PL_end": 6167280,
+  "all_bytes_outside_PL_partition_identical": false,
+  "differing_PL_bytes": 0,
+  "source_bit_sha256": "ab9af4b8679a8f4bbe958d4dadbc78b81156da4a3b5a67c6510c9d1269befb78",
+  "semantic_scope": "Only the PL partition changes; original FSBL/ATF/U-Boot, headers and parameters preserved"
+}

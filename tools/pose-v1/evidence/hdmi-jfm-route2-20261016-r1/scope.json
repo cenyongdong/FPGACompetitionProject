@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-16",
+  "host": "Windows",
+  "work": "D:\\FPGACompetitionProject\\.local\\hdmi-jfm-route2-20261016-r1",
+  "tool": "D:/vivado18.3/Vivado/2018.3",
+  "Procise": "C:/FudanMicro/Procise",
+  "authorized": "Route 2 audit plus existing same-configuration IP rebuild; autonomous bounded timeout decisions",
+  "initial_stage_seconds": 180,
+  "MIG_actual_adjustment_seconds": [
+    180,
+    360
+  ],
+  "no_tool_directory_clone": true,
+  "no_new_installation_write": true,
+  "not_executed": [
+    "top synthesis/implementation hooks",
+    "extra IP library patch",
+    "speed replacement",
+    "DRC waiver",
+    "real bit postprocess",
+    "BOOT build/change",
+    "download/reboot",
+    "old DATA investigation"
+  ]
+}

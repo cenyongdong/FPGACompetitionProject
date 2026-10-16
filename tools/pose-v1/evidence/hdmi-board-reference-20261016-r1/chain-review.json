@@ -1,0 +1,16 @@
+[
+  {
+    "directory": "chain-scan",
+    "cable_count": 0,
+    "actual_expected_serial_detected": false,
+    "FTDI_missing": true,
+    "raw_helper_flag_correction": "expected_cable_present merely matched echoed requested serial; this review uses enumeration output"
+  },
+  {
+    "directory": "chain-scan-host-permission-r2",
+    "cable_count": 0,
+    "actual_expected_serial_detected": false,
+    "FTDI_missing": true,
+    "raw_helper_flag_correction": "expected_cable_present merely matched echoed requested serial; this review uses enumeration output"
+  }
+]

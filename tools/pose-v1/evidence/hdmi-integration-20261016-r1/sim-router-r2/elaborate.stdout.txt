@@ -1,0 +1,22 @@
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/vivado18.3/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe tb_hdmi_router glbl --timescale 1ns/1ps -L unisims_ver -L secureip --snapshot tb_hdmi_router 
+Multi-threading is on. Using 10 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.mna_gp_ww_itf
+Compiling module work.hdmi_cam_router
+Compiling module work.tb_hdmi_router
+Compiling module work.glbl
+Built simulation snapshot tb_hdmi_router
+
+****** Webtalk v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/sim-router-r2/xsim.dir/tb_hdmi_router/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Fri Oct 16 14:00:59 2026...

@@ -1,0 +1,5 @@
+U0_ps_ai_peripheral/hdmi_display/clock_generator/mmcm|MMCME2_ADV
+U0_ps_ai_peripheral/mig_ddr3_u0/u_mig_7series_0_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i|MMCME2_ADV
+U0_ps_ai_peripheral/mig_ddr3_u0/u_mig_7series_0_mig/u_iodelay_ctrl/clk_ref_mmcm_gen.mmcm_i|MMCME2_ADV
+rx_sdi_inst/mgtclk_inst0/inst/mmcm_adv_inst|MMCME2_ADV
+rx_sdi_inst/sys_clk_inst0/inst/mmcm_adv_inst|MMCME2_ADV

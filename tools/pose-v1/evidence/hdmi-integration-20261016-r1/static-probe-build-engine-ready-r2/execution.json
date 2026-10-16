@@ -1,0 +1,136 @@
+[
+  {
+    "name": "01-container-state",
+    "args": [
+      "inspect",
+      "--format",
+      "{{.State.Status}}",
+      "FPAI"
+    ],
+    "exit": 0,
+    "seconds": 0.048997300007613376,
+    "budget": 90
+  },
+  {
+    "name": "02-container-start",
+    "args": [
+      "start",
+      "FPAI"
+    ],
+    "exit": 0,
+    "seconds": 0.19610159999865573,
+    "budget": 90
+  },
+  {
+    "name": "03-fresh-directory",
+    "args": [
+      "exec",
+      "FPAI",
+      "test",
+      "!",
+      "-e",
+      "/tmp/hdmi-integration-20261016-r1-static-probe-engine-ready-r2"
+    ],
+    "exit": 0,
+    "seconds": 0.0813384000066435,
+    "budget": 90
+  },
+  {
+    "name": "04-sdk-identities",
+    "args": [
+      "exec",
+      "FPAI",
+      "sha256sum",
+      "/usr/lib/aarch64-linux-gnu/libicraft_hostbackend.so",
+      "/usr/lib/aarch64-linux-gnu/libicraft_zg330backend.so",
+      "/usr/lib/aarch64-linux-gnu/libicraft_xrt.so",
+      "/usr/lib/aarch64-linux-gnu/libicraft_xir.so",
+      "/usr/lib/aarch64-linux-gnu/libicraft_utils.so",
+      "/usr/lib/aarch64-linux-gnu/libaxizg330aiu.so"
+    ],
+    "exit": 0,
+    "seconds": 0.18711569999868516,
+    "budget": 90
+  },
+  {
+    "name": "05-copy-source",
+    "args": [
+      "cp",
+      "D:\\FPGACompetitionProject\\.local\\hdmi-integration-20261016-r1\\static-probe-engine-ready-r2",
+      "FPAI:/tmp/hdmi-integration-20261016-r1-static-probe-engine-ready-r2"
+    ],
+    "exit": 0,
+    "seconds": 0.05493570001272019,
+    "budget": 90
+  },
+  {
+    "name": "06-configure",
+    "args": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "-S",
+      "/tmp/hdmi-integration-20261016-r1-static-probe-engine-ready-r2",
+      "-B",
+      "/tmp/hdmi-integration-20261016-r1-static-probe-engine-ready-r2/build",
+      "-DCMAKE_SYSTEM_NAME=Linux",
+      "-DCMAKE_SYSTEM_PROCESSOR=aarch64",
+      "-DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++",
+      "-DCMAKE_PREFIX_PATH=/usr/cmake",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "exit": 0,
+    "seconds": 0.3169496999908006,
+    "budget": 90
+  },
+  {
+    "name": "07-build",
+    "args": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "--build",
+      "/tmp/hdmi-integration-20261016-r1-static-probe-engine-ready-r2/build",
+      "--parallel",
+      "2"
+    ],
+    "exit": 0,
+    "seconds": 1.5409416000038618,
+    "budget": 90
+  },
+  {
+    "name": "08-copy-binary",
+    "args": [
+      "cp",
+      "FPAI:/tmp/hdmi-integration-20261016-r1-static-probe-engine-ready-r2/build/hdmi_static_probe",
+      "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\hdmi-integration-20261016-r1\\static-probe-build-engine-ready-r2\\hdmi_static_probe"
+    ],
+    "exit": 0,
+    "seconds": 0.04927499999757856,
+    "budget": 90
+  },
+  {
+    "name": "09-readelf",
+    "args": [
+      "exec",
+      "FPAI",
+      "aarch64-linux-gnu-readelf",
+      "-h",
+      "-d",
+      "/tmp/hdmi-integration-20261016-r1-static-probe-engine-ready-r2/build/hdmi_static_probe"
+    ],
+    "exit": 0,
+    "seconds": 0.08488569999462925,
+    "budget": 90
+  },
+  {
+    "name": "10-container-stop",
+    "args": [
+      "stop",
+      "FPAI"
+    ],
+    "exit": 0,
+    "seconds": 0.2527628999960143,
+    "budget": 30
+  }
+]

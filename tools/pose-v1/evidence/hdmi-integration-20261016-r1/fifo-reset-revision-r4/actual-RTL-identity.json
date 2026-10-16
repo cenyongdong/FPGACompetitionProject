@@ -1,0 +1,104 @@
+{
+  "rtl\\hdmi_candidate\\hdmi_axi_read.v": {
+    "previous_sha256": "4608af5a4701aa18cdd1513966aae3301909883dc94ea43454bcbc0421f00e17",
+    "expected_sha256": "4608af5a4701aa18cdd1513966aae3301909883dc94ea43454bcbc0421f00e17",
+    "actual_sha256": "4608af5a4701aa18cdd1513966aae3301909883dc94ea43454bcbc0421f00e17",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_board.sv": {
+    "previous_sha256": "1580c2c0ccb278f160208202f16b67b462676fb757ccfc21b6ef974a69530d2b",
+    "expected_sha256": "1580c2c0ccb278f160208202f16b67b462676fb757ccfc21b6ef974a69530d2b",
+    "actual_sha256": "1580c2c0ccb278f160208202f16b67b462676fb757ccfc21b6ef974a69530d2b",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_cam_router.sv": {
+    "previous_sha256": "b35b96a8623523ff5bddd79eeb2a7aaf50cd25fefa60ef7dd42455d7036d5812",
+    "expected_sha256": "b35b96a8623523ff5bddd79eeb2a7aaf50cd25fefa60ef7dd42455d7036d5812",
+    "actual_sha256": "b35b96a8623523ff5bddd79eeb2a7aaf50cd25fefa60ef7dd42455d7036d5812",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_candidate_core.v": {
+    "previous_sha256": "07744a1779fa6629b666d52473f4a93c0b9976b73949ff954cca35b770ef82fb",
+    "expected_sha256": "07744a1779fa6629b666d52473f4a93c0b9976b73949ff954cca35b770ef82fb",
+    "actual_sha256": "07744a1779fa6629b666d52473f4a93c0b9976b73949ff954cca35b770ef82fb",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_candidate_register_core.v": {
+    "previous_sha256": "72a8f075799f7f7a72e0af050b1012824b3a6ab1ee4fb807fb6aee763f9fa662",
+    "expected_sha256": "72a8f075799f7f7a72e0af050b1012824b3a6ab1ee4fb807fb6aee763f9fa662",
+    "actual_sha256": "72a8f075799f7f7a72e0af050b1012824b3a6ab1ee4fb807fb6aee763f9fa662",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_clock_jfm.v": {
+    "previous_sha256": "057c410349bdb085d9c790f0686b60dc5b7585c025a2318a538207236b49031e",
+    "expected_sha256": "057c410349bdb085d9c790f0686b60dc5b7585c025a2318a538207236b49031e",
+    "actual_sha256": "057c410349bdb085d9c790f0686b60dc5b7585c025a2318a538207236b49031e",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_command_mailbox.v": {
+    "previous_sha256": "50df98daa299c385a0bd28c3bb0b31ac9294a432cfca66815dfb7eaeb7793c7c",
+    "expected_sha256": "50df98daa299c385a0bd28c3bb0b31ac9294a432cfca66815dfb7eaeb7793c7c",
+    "actual_sha256": "50df98daa299c385a0bd28c3bb0b31ac9294a432cfca66815dfb7eaeb7793c7c",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_pixel_scan.v": {
+    "previous_sha256": "2b0683b95a953a304ed7c88d2edecea7d5e5449d0d959440f5495c71a0aedbf5",
+    "expected_sha256": "2b0683b95a953a304ed7c88d2edecea7d5e5449d0d959440f5495c71a0aedbf5",
+    "actual_sha256": "2b0683b95a953a304ed7c88d2edecea7d5e5449d0d959440f5495c71a0aedbf5",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_register_bank.v": {
+    "previous_sha256": "b60c82421102e1abeb57f8648e050fa8ff064e0dfdec54d1be8bacc484ce8aa9",
+    "expected_sha256": "b60c82421102e1abeb57f8648e050fa8ff064e0dfdec54d1be8bacc484ce8aa9",
+    "actual_sha256": "b60c82421102e1abeb57f8648e050fa8ff064e0dfdec54d1be8bacc484ce8aa9",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_scanout.v": {
+    "previous_sha256": "f730135b5ed7f77fdbd824da402954e7121e5afba8acc3c0bedc33343662c846",
+    "expected_sha256": "f730135b5ed7f77fdbd824da402954e7121e5afba8acc3c0bedc33343662c846",
+    "actual_sha256": "f730135b5ed7f77fdbd824da402954e7121e5afba8acc3c0bedc33343662c846",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_scan_control.v": {
+    "previous_sha256": "953e8b9c9c4233a9154e299f1507cedd53089d19987d099a0e12c631aed37f94",
+    "expected_sha256": "953e8b9c9c4233a9154e299f1507cedd53089d19987d099a0e12c631aed37f94",
+    "actual_sha256": "953e8b9c9c4233a9154e299f1507cedd53089d19987d099a0e12c631aed37f94",
+    "pass": true
+  },
+  "rtl\\hdmi_candidate\\hdmi_stream_fifo.v": {
+    "previous_sha256": "394c1ab25bae1b955a846166b34f508c8475e6a87e40c193dc0cb02dfd24e783",
+    "expected_sha256": "9c071e5c7c2ce50133c4412f8b23d09a037d54642ae611a407ccb8695fd1ec04",
+    "actual_sha256": "9c071e5c7c2ce50133c4412f8b23d09a037d54642ae611a407ccb8695fd1ec04",
+    "pass": true
+  },
+  "rtl\\display\\frame_to_ps_largebuf.v": {
+    "previous_sha256": "e856adaed00a4c5d4fd399ee68a16e0e8b258c9c537d15141650e032ca6ffaab",
+    "expected_sha256": "e856adaed00a4c5d4fd399ee68a16e0e8b258c9c537d15141650e032ca6ffaab",
+    "actual_sha256": "e856adaed00a4c5d4fd399ee68a16e0e8b258c9c537d15141650e032ca6ffaab",
+    "pass": true
+  },
+  "rtl\\ai7030_edif_top.v": {
+    "previous_sha256": "b3cd69a907a48a8e4993e0d6b77fec1a8049a8f28f6c7e0d7a41274da5fc3de5",
+    "expected_sha256": "b3cd69a907a48a8e4993e0d6b77fec1a8049a8f28f6c7e0d7a41274da5fc3de5",
+    "actual_sha256": "b3cd69a907a48a8e4993e0d6b77fec1a8049a8f28f6c7e0d7a41274da5fc3de5",
+    "pass": true
+  },
+  "rtl\\ps_ai_peripheral.sv": {
+    "previous_sha256": "d70896e227e7c6c66bf40b93617910bd664e72e040719901e1ad69417579d195",
+    "expected_sha256": "d70896e227e7c6c66bf40b93617910bd664e72e040719901e1ad69417579d195",
+    "actual_sha256": "d70896e227e7c6c66bf40b93617910bd664e72e040719901e1ad69417579d195",
+    "pass": true
+  },
+  "rtl\\display\\uihdmitx.v": {
+    "previous_sha256": "35491ba160c789e8d079e962f520e6f37496dd0ffefdf8106bc0bf05d55ebf15",
+    "expected_sha256": "35491ba160c789e8d079e962f520e6f37496dd0ffefdf8106bc0bf05d55ebf15",
+    "actual_sha256": "35491ba160c789e8d079e962f520e6f37496dd0ffefdf8106bc0bf05d55ebf15",
+    "pass": true
+  },
+  "rtl\\display\\oserdese2_10to1.v": {
+    "previous_sha256": "5c26a1b34099df659bb39bc50683b9dc7c64489e83dc2761d2fc3f88b034bfd1",
+    "expected_sha256": "5c26a1b34099df659bb39bc50683b9dc7c64489e83dc2761d2fc3f88b034bfd1",
+    "actual_sha256": "5c26a1b34099df659bb39bc50683b9dc7c64489e83dc2761d2fc3f88b034bfd1",
+    "pass": true
+  }
+}

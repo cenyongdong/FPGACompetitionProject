@@ -1,0 +1,89 @@
+
+****** Vivado v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+CRITICAL WARNING: [Common 17-741] No write access right to the local Tcl store at 'C'. XilinxTclStore is reverted to the installation area. If you want to use local Tcl Store, please change the access right and relaunch Vivado.
+Sourcing tcl script 'D:/Xilinx/Vivado/2019.1/scripts/Vivado_init.tcl'
+vivado-mcp server ready on port 9999
+source {D:\FPGACompetitionProject\.local\hdmi-vivado2019-library-20261015-r1\query.tcl}
+# if {[catch {
+#  create_project -in_memory -part xc7z030ffg676-2
+#  read_verilog anchor.v
+#  synth_design -rtl -top metadata_anchor -part xc7z030ffg676-2
+#  set cells [get_lib_cells -quiet *PS7*]
+#  puts "METADATA_PS7_LIBRARY_CELLS $cells"
+#  set f [open {D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-vivado2019-library-20261015-r1/builtin-PS7-pins.txt} w]
+#  foreach cell $cells {
+#   puts $f "CELL|$cell"
+#   report_property $cell
+#   foreach pin [get_lib_pins -of_objects $cell] {
+#    puts $f "$pin|[get_property DIRECTION $pin]"
+#   }
+#  }
+#  close $f
+#  close_design
+#  close_project
+#  puts "METADATA_QUERY_FINISHED"
+# } result]} {puts "METADATA_QUERY_FAILED $result";exit 1}
+Command: synth_design -rtl -top metadata_anchor -part xc7z030ffg676-2
+Starting synth_design
+INFO: [Device 21-403] Loading part xc7z030ffg676-2
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 838.578 ; gain = 178.461
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'metadata_anchor' [D:/FPGACompetitionProject/.local/hdmi-vivado2019-library-20261015-r1/anchor.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'metadata_anchor' (1#1) [D:/FPGACompetitionProject/.local/hdmi-vivado2019-library-20261015-r1/anchor.v:1]
+WARNING: [Synth 8-3330] design metadata_anchor has an empty top module
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 902.578 ; gain = 242.461
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 902.578 ; gain = 242.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 902.578 ; gain = 242.461
+---------------------------------------------------------------------------------
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 1 OBUFs to IO ports without IO buffers.
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 940.172 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 940.172 ; gain = 280.055
+8 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 940.172 ; gain = 586.848
+METADATA_PS7_LIBRARY_CELLS PS7
+Property             Type    Read-only  Value
+CLASS                string  true       lib_cell
+IS_RETARGET          bool    true       0
+LIBERTY_LIBRARY      string  true       xt_zynq
+NAME                 string  true       PS7
+NUM_PINS             int     true       3305
+PRIMITIVE_GROUP      string  true       HARD_IP
+PRIMITIVE_LEVEL      string  true       LEAF
+PRIMITIVE_SUBGROUP   string  true       ps7
+RETARGET_PRIMITIVES  string  true       
+XILINX_LIBRARY       string  true       UNISIM
+METADATA_QUERY_FINISHED
+# exit
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 15 22:56:30 2026...

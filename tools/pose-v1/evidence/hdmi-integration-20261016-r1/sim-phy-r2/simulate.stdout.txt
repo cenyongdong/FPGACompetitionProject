@@ -1,0 +1,17 @@
+
+****** xsim v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/tb_hdmi_board_phy/xsim_script.tcl
+# xsim {tb_hdmi_board_phy} -autoloadwcfg -tclbatch {run.tcl}
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source run.tcl
+## run all
+HDMI_BOARD_PHY_PASS pixel_MHz=148.5 serial_MHz=742.5 forwarded_clock_periods=256 duty=50percent CSR_backpressure counter_CDC pattern_active_pixels=1920 reset no_DMA
+$finish called at time : 636583215 ps : File "D:/FPGACompetitionProject/.local/hdmi-integration-20261016-r1/sim-phy-r2/tb_hdmi_integration.sv" Line 115
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:05 . Memory (MB): peak = 219.473 ; gain = 13.762
+## quit
+INFO: [Common 17-206] Exiting xsim at Fri Oct 16 14:10:37 2026...

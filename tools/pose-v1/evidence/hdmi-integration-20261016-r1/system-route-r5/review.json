@@ -1,0 +1,80 @@
+{
+  "bit_generation_prerequisite_pass": true,
+  "scope": "Generate local candidate for phased controlled board testing; not full-system CDC, electrical HDMI or live replacement acceptance",
+  "global_setup_WNS_ns": 0.03,
+  "global_hold_WHS_ns": 0.029,
+  "TNS_ns": 0.0,
+  "THS_ns": 0.0,
+  "raw_timing_pass": false,
+  "unchanged_user_exception_MinPeriod_rows": [
+    "Min Period        n/a     BUFG/I             n/a            1.409         1.000       -0.409     BUFGCTRL_X0Y20  U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/clkout1_buf/I",
+    "Min Period        n/a     PLLE2_ADV/CLKOUT0  n/a            1.071         1.000       -0.071     PLLE2_ADV_X1Y3  U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/plle2_adv_inst/CLKOUT0"
+  ],
+  "Gray_bus_skew": [
+    {
+      "source": "U0_ps_ai_peripheral/hdmi_display/scanout/fifo/wr_gray_reg[5]/C",
+      "actual_skew_ns": 1.18,
+      "bound_ns": 5.0,
+      "slack_ns": 3.82
+    },
+    {
+      "source": "U0_ps_ai_peripheral/hdmi_display/scanout/fifo/rd_gray_reg[9]/C",
+      "actual_skew_ns": 1.003,
+      "bound_ns": 6.734,
+      "slack_ns": 5.731
+    },
+    {
+      "source": "U0_ps_ai_peripheral/hdmi_display/pixel_gray_reg[9]/C",
+      "actual_skew_ns": 1.154,
+      "bound_ns": 6.734,
+      "slack_ns": 5.58
+    }
+  ],
+  "mailbox_data_response_actual": [
+    "command|requirement=5.000|slack=1.534|source_bits=68|destination_regs=490",
+    "response|requirement=10.000|slack=8.779|source_bits=110|destination_regs=110"
+  ],
+  "mailbox_enable_CE_paths": 96,
+  "mailbox_CE_min_slack_ns": 0.856,
+  "HDMI_CDC_row_counts_not_fault_counts": {
+    "CDC-10": 5,
+    "CDC-3": 5,
+    "CDC-15": 207,
+    "CDC-6": 3,
+    "CDC-1": 107,
+    "CDC-12": 2
+  },
+  "manual_CDC_review": "ROUTED-CDC-REVIEW.md",
+  "factory_DRC_profile_errors": 0,
+  "reopened_default_profile_errors_retained": [
+    "REQP-52#1",
+    "REQP-56#1"
+  ],
+  "remaining_warnings": [
+    "REQP-1577 feedback BUFG vs BUFIO/BUFR: all eight serializer CLK/CLKDIV use the same raw-output BUFIO/BUFR branch; routed setup/hold positive. No severity override. External eye and monitor remain unverified.",
+    "New placement PDRC-62 two/PDRC-63 one dangling O5 warnings retained; no severity override or claim of zero warnings.",
+    "Original MIG non-dedicated clock, SDI gated clock and pre-existing AI CDC/BRAM warnings retained; not independently signed off by this HDMI work."
+  ],
+  "source_sha256": {
+    "rtl/hdmi_candidate/hdmi_axi_read.v": "4608af5a4701aa18cdd1513966aae3301909883dc94ea43454bcbc0421f00e17",
+    "rtl/hdmi_candidate/hdmi_board.sv": "1580c2c0ccb278f160208202f16b67b462676fb757ccfc21b6ef974a69530d2b",
+    "rtl/hdmi_candidate/hdmi_cam_router.sv": "b35b96a8623523ff5bddd79eeb2a7aaf50cd25fefa60ef7dd42455d7036d5812",
+    "rtl/hdmi_candidate/hdmi_candidate_core.v": "07744a1779fa6629b666d52473f4a93c0b9976b73949ff954cca35b770ef82fb",
+    "rtl/hdmi_candidate/hdmi_candidate_register_core.v": "72a8f075799f7f7a72e0af050b1012824b3a6ab1ee4fb807fb6aee763f9fa662",
+    "rtl/hdmi_candidate/hdmi_clock_jfm.v": "057c410349bdb085d9c790f0686b60dc5b7585c025a2318a538207236b49031e",
+    "rtl/hdmi_candidate/hdmi_command_mailbox.v": "50df98daa299c385a0bd28c3bb0b31ac9294a432cfca66815dfb7eaeb7793c7c",
+    "rtl/hdmi_candidate/hdmi_pixel_scan.v": "2b0683b95a953a304ed7c88d2edecea7d5e5449d0d959440f5495c71a0aedbf5",
+    "rtl/hdmi_candidate/hdmi_register_bank.v": "b60c82421102e1abeb57f8648e050fa8ff064e0dfdec54d1be8bacc484ce8aa9",
+    "rtl/hdmi_candidate/hdmi_scanout.v": "f730135b5ed7f77fdbd824da402954e7121e5afba8acc3c0bedc33343662c846",
+    "rtl/hdmi_candidate/hdmi_scan_control.v": "953e8b9c9c4233a9154e299f1507cedd53089d19987d099a0e12c631aed37f94",
+    "rtl/hdmi_candidate/hdmi_stream_fifo.v": "9c071e5c7c2ce50133c4412f8b23d09a037d54642ae611a407ccb8695fd1ec04",
+    "rtl/ai7030_edif_top.v": "b3cd69a907a48a8e4993e0d6b77fec1a8049a8f28f6c7e0d7a41274da5fc3de5",
+    "rtl/ps_ai_peripheral.sv": "d70896e227e7c6c66bf40b93617910bd664e72e040719901e1ad69417579d195",
+    "rtl/display/frame_to_ps_largebuf.v": "e856adaed00a4c5d4fd399ee68a16e0e8b258c9c537d15141650e032ca6ffaab",
+    "rtl/display/uihdmitx.v": "35491ba160c789e8d079e962f520e6f37496dd0ffefdf8106bc0bf05d55ebf15",
+    "rtl/display/oserdese2_10to1.v": "5c26a1b34099df659bb39bc50683b9dc7c64489e83dc2761d2fc3f88b034bfd1",
+    "constrs_1/hdmi_cdc.xdc": "ac445a824ec31ffed70aa4d98500afe4dceb602deb02adf6a98452be0c0e505b",
+    "constrs_1/ai7030.xdc": "6fd7b68da8e4e9ae30ca9a868ad38ca43a1d1ab44e3b23435cdf072fbc4b29d9"
+  },
+  "board_download_or_reboot_authorized_by_this_review": false
+}

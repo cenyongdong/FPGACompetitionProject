@@ -1,0 +1,19 @@
+{
+  "r1_synthesis_and_constraints_preserved": true,
+  "new_findings": [
+    "Unused legacy PHY still existed in pre-opt synth netlist: six MMCMs for five sites",
+    "New BUFIO/BUFG mixed topology warned of phase alignment",
+    "Q-pin max-delay startpoints caused Constraints18-515 path segmentation"
+  ],
+  "corrections": [
+    "Generate out legacy clock and TMDS instances for candidate parameter only",
+    "Same MMCM serial output drives BUFIO and divide-by-five BUFR",
+    "Use launch C pins rather than Q forced startpoints"
+  ],
+  "inherited_preopt_NDRV_unchanged_nets": [
+    "S1_AXI_HP_HC_WID",
+    "pl_int_ready / PS7 outputs"
+  ],
+  "post_factory_opt_DRC_still_required": true,
+  "no_extra_DRC_or_timing_waiver": true
+}

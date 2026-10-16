@@ -1,0 +1,86 @@
+[
+  {
+    "head": 2,
+    "clusters": 1,
+    "root_name": "SYSTEM~1.",
+    "allocated_bytes": 16384
+  },
+  {
+    "head": 3,
+    "clusters": 1,
+    "root_name": null,
+    "allocated_bytes": 16384
+  },
+  {
+    "head": 4,
+    "clusters": 85,
+    "root_name": "FSBL25~1.OUT",
+    "allocated_bytes": 1392640
+  },
+  {
+    "head": 518,
+    "clusters": 429,
+    "root_name": "BOOT.BIN",
+    "allocated_bytes": 7028736
+  },
+  {
+    "head": 7535,
+    "clusters": 1064,
+    "root_name": null,
+    "allocated_bytes": 17432576
+  },
+  {
+    "head": 7545,
+    "clusters": 1104,
+    "root_name": null,
+    "allocated_bytes": 18087936
+  },
+  {
+    "head": 7658,
+    "clusters": 1,
+    "root_name": null,
+    "allocated_bytes": 16384
+  },
+  {
+    "head": 10000,
+    "clusters": 366,
+    "root_name": "AI7030~1.BIT",
+    "allocated_bytes": 5996544
+  },
+  {
+    "head": 10366,
+    "clusters": 38,
+    "root_name": "BL31.ELF",
+    "allocated_bytes": 622592
+  },
+  {
+    "head": 10833,
+    "clusters": 1,
+    "root_name": "FMQLMP~1.DTB",
+    "allocated_bytes": 16384
+  },
+  {
+    "head": 10919,
+    "clusters": 804,
+    "root_name": "IMAGE.",
+    "allocated_bytes": 13172736
+  },
+  {
+    "head": 11714,
+    "clusters": 402,
+    "root_name": "U-BOOT.",
+    "allocated_bytes": 6586368
+  },
+  {
+    "head": 12116,
+    "clusters": 1,
+    "root_name": "UENV.TXT",
+    "allocated_bytes": 16384
+  },
+  {
+    "head": 12883,
+    "clusters": 365,
+    "root_name": "AI7030~2.BIT",
+    "allocated_bytes": 5980160
+  }
+]

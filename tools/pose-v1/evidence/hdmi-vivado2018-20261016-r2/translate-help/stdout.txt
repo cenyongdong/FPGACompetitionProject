@@ -1,0 +1,12 @@
+Error: The parameter num is too little.
+Usage:
+  ./translate_file -to_procise|-to_ise -source|-src_dir (source files) -out_dir (directory)
+  -to_procise: rename cell name in source file to procise lib cell name
+  -to_ise: rename cell name to ise lib cell name
+  -source (source files): The files which need to process.
+  -src_dir (source dir): process all files in the src_dir.
+  -out_dir (directory): After rename source files, output file will be write in the directory.
+  example 1(translate files):
+  ./translate -to_procise -source /paths/alu2.edf -out_dir /path/out
+  example 2(translate dir):
+  ./translate_file -to_procise -src_dir /path/dir/ -out_dir /path/out

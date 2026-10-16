@@ -1,0 +1,12 @@
+﻿{
+    "port":  "COM7",
+    "baud":  115200,
+    "framing":  "8N1",
+    "dtr":  false,
+    "rts":  false,
+    "transmitted_bytes":  0,
+    "opened":  true,
+    "capture_seconds":  15.0340034,
+    "closed":  true,
+    "received_bytes":  33
+}

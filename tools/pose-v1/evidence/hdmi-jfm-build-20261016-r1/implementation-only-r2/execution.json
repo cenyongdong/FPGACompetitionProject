@@ -1,0 +1,99 @@
+{
+  "exit": 0,
+  "seconds": 1173.6472808000108,
+  "initial_budget_seconds": 180,
+  "final_budget_seconds": 1260,
+  "ceiling_seconds": 1800,
+  "stopped_by_monitor": false,
+  "decisions": [
+    {
+      "elapsed": 180.0734805000102,
+      "previous_budget": 180,
+      "new_budget": 360,
+      "log_bytes": 337333,
+      "youngest_log_age_seconds": 2.852450132369995,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 2121,
+        "load_percent": 86,
+        "available_commit_MB": 8972
+      },
+      "action": "continue original owned process"
+    },
+    {
+      "elapsed": 360.18621350001195,
+      "previous_budget": 360,
+      "new_budget": 540,
+      "log_bytes": 593162,
+      "youngest_log_age_seconds": 6.76620888710022,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 2013,
+        "load_percent": 87,
+        "available_commit_MB": 8751
+      },
+      "action": "continue original owned process"
+    },
+    {
+      "elapsed": 540.2841669000045,
+      "previous_budget": 540,
+      "new_budget": 720,
+      "log_bytes": 732019,
+      "youngest_log_age_seconds": 3.274244546890259,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 1944,
+        "load_percent": 87,
+        "available_commit_MB": 8571
+      },
+      "action": "continue original owned process"
+    },
+    {
+      "elapsed": 720.3857158000028,
+      "previous_budget": 720,
+      "new_budget": 900,
+      "log_bytes": 742994,
+      "youngest_log_age_seconds": 2.402951955795288,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 1754,
+        "load_percent": 89,
+        "available_commit_MB": 8180
+      },
+      "action": "continue original owned process"
+    },
+    {
+      "elapsed": 900.4781358000037,
+      "previous_budget": 900,
+      "new_budget": 1080,
+      "log_bytes": 777442,
+      "youngest_log_age_seconds": 4.060802221298218,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 1573,
+        "load_percent": 90,
+        "available_commit_MB": 8165
+      },
+      "action": "continue original owned process"
+    },
+    {
+      "elapsed": 1080.585466000004,
+      "previous_budget": 1080,
+      "new_budget": 1260,
+      "log_bytes": 1175113,
+      "youngest_log_age_seconds": 0.13200116157531738,
+      "error_seen": false,
+      "memory": {
+        "available_MB": 4494,
+        "load_percent": 72,
+        "available_commit_MB": 10775
+      },
+      "action": "continue original owned process"
+    }
+  ],
+  "final_memory": {
+    "available_MB": 5710,
+    "load_percent": 64,
+    "available_commit_MB": 12031
+  }
+}

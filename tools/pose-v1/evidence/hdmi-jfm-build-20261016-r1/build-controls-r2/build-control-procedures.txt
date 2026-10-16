@@ -1,0 +1,1519 @@
+PROCEDURE add_fmk50rh_fmbh45_database
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	if {$vvd_version != "2018.3" && $vvd_version != "2022.1"} {
+        error "An error occurs!\nInfo:Current vvd_version:$vvd_version,not support add_fmk50t_database!(please use Vivado2022.1)"
+    }
+	fmsh_uninstall_device
+	remove_fmk50rh_fmbh45_database
+	recover_fmk230t_database
+	set vvd_path [get_vvd_path]
+	set current_prj_path [file join $::env(JFM_PATH)]
+	set patch_data_path [file join $current_prj_path "ip_patch" "device_database" "fmk50rh_fmbh45" "fmsh" "$vvd_version" "data"]
+	set vvd_data_path 	[file join $vvd_path "data"]
+	set rd_path [findFiles $patch_data_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_data_path" $rd_file $vvd_data_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			file copy -force $rd_file [file dir $wr_file]
+		} else {
+			file copy -force $rd_file $wr_file
+		}
+	}
+	file copy -force [file join $current_prj_path "ip_patch" "device_database" "fmk50rh_fmbh45" "fmsh" "$vvd_version" "xc7k325t_fmk50t"] [file join $vvd_path "data" "parts" "xilinx" "artix7" "devint" "artix7"]
+	file copy -force [file join $current_prj_path "ip_patch" "device_database" "fmk50rh_fmbh45" "fmsh" "$vvd_version" "xc7z045_fmbh45"] [file join $vvd_path "data" "parts" "xilinx" "zynq" "devint" "zynq"]
+	####
+	add_ip_database
+	puts "FMSH->add_fmk50rh_fmbh45_database excuted successfully!(fmbh45 fmk50rh)"
+	fmsh_send_msg_critical_warning "The first time you use the replace database command, you need to restart the current vivado!"
+	
+
+PROCEDURE add_ip_database
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	set vvd_path [get_vvd_path]
+	if {$vvd_version != "2018.3" && $vvd_version != "2022.1" && $vvd_version != "2019.2"} {
+        return
+    }
+	set current_prj_path [file join $::env(JFM_PATH)]
+	replace_vv_index
+	file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/fm7_device.lic                 $vvd_path/data/ip/core_licenses
+	file delete -force $vvd_path/scripts/ip
+	file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/scripts/$vvd_version/ip  $vvd_path/scripts
+	#
+	if {$vvd_version == "2018.3"} {
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl 	$vvd_path/data/ip/xilinx/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/aurora_64b66b_v11_2/xgui/aurora_64b66b_v11_2.tcl 	$vvd_path/data/ip/xilinx/aurora_64b66b_v11_2/xgui/aurora_64b66b_v11_2.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/xdma_v4_1/xgui/xdma_v4_1.tcl	 					$vvd_path/data/ip/xilinx/xdma_v4_1/xgui/xdma_v4_1.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/cpri_v8_9/xgui/cpri_v8_9.tcl	 							$vvd_path/data/ip/xilinx/cpri_v8_9/xgui/cpri_v8_9.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl	 				$vvd_path/data/ip/xilinx/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/jesd204_v7_2/xgui/jesd204_v7_2.tcl	 						$vvd_path/data/ip/xilinx/jesd204_v7_2/xgui/jesd204_v7_2.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/vid_phy_controller_v2_2/xgui/vid_phy_controller_v2_2.tcl	$vvd_path/data/ip/xilinx/vid_phy_controller_v2_2/xgui/vid_phy_controller_v2_2.tcl
+		
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/$vvd_version/xc7z045_fmql15.xng $vvd_path/data/parts/xilinx/zynq/devint/zynq/xc7z015/xc7z015.xng
+		
+	} elseif {$vvd_version == "2022.1"} {
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl 	$vvd_path/data/ip/xilinx/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/aurora_64b66b_v12_0/xgui/aurora_64b66b_v12_0.tcl 	$vvd_path/data/ip/xilinx/aurora_64b66b_v12_0/xgui/aurora_64b66b_v12_0.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/xdma_v4_1/xgui/xdma_v4_1.tcl	 					$vvd_path/data/ip/xilinx/xdma_v4_1/xgui/xdma_v4_1.tcl	
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl	 		$vvd_path/data/ip/xilinx/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl	
+		
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/$vvd_version/xc7z045_fmql15.xng $vvd_path/data/parts/xilinx/zynq/devint/zynq/xc7z015/xc7z015.xng
+			
+	} elseif {$vvd_version == "2019.2"} {
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl 	$vvd_path/data/ip/xilinx/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/aurora_64b66b_v12_0/xgui/aurora_64b66b_v12_0.tcl 	$vvd_path/data/ip/xilinx/aurora_64b66b_v12_0/xgui/aurora_64b66b_v12_0.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/xdma_v4_1/xgui/xdma_v4_1.tcl	 					$vvd_path/data/ip/xilinx/xdma_v4_1/xgui/xdma_v4_1.tcl	
+		file copy -force $current_prj_path/ip_patch/device_database/common/fmsh/ips/$vvd_version/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl	 		$vvd_path/data/ip/xilinx/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl	
+	
+	}
+	
+	set patch_mig_path 	[file join $current_prj_path "ip_patch" "device_database" "common" "fmsh" "$vvd_version" "mig_7series_v4_2"]
+	set vvd_mig_path 	[file join $vvd_path "data" "ip" "xilinx" "mig_7series_v4_2"]
+	set rd_path [findFiles $patch_mig_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_mig_path" $rd_file $vvd_mig_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		file copy -force $rd_file $wr_file
+	}
+
+PROCEDURE add_jfmql70tai_jfmql100t_jfmql100tai_database
+ARGS 
+
+	remove_jfmql70tai_jfmql100t_jfmql100tai_database
+	set vvd_version [string range [version -short] 0 5]
+	puts "Current Vivado version:$vvd_version"
+	if {$vvd_version != "2018.3" &&  $vvd_version != "2019.2"} {
+	     error "FMSH->This command only support in Vivado2018.3 or Vivado2019.2!"
+	}
+	add_ip_database
+	
+	set vvd_path [get_vvd_path]
+	set current_prj_path [file join $::env(JFM_PATH)]
+	
+	if {[check_current_platform] == "windows"} {
+		file rename -force [file join $vvd_path "lib" "win64.o" "librdi_common.dll"] [file join $vvd_path "lib" "win64.o" "librdi_common.dll_bak"]
+		file copy -force [file join $current_prj_path "ip_patch" "device_database"  "7z100t_7z100tai_7z70tai" "dll" $vvd_version "librdi_common.dll"] [file join $vvd_path "lib" "win64.o" "librdi_common.dll"]
+	} else {
+		if {$vvd_version == "2019.2"} {
+			error "FMSH->This command is not support in Vivado2019.2(linux)!"
+		}
+		file rename -force [file join $vvd_path "lib" "lnx64.o" "librdi_common.so"] [file join $vvd_path "lib" "lnx64.o" "librdi_common.so_bak"]
+		file copy -force [file join $current_prj_path "ip_patch" "device_database"  "7z100t_7z100tai_7z70tai" "dll" $vvd_version "librdi_common.so"] [file join $vvd_path "lib" "lnx64.o" "librdi_common.so"]
+	}
+	set patch_data_path  [file join $current_prj_path "ip_patch" "device_database"  "7z100t_7z100tai_7z70tai" "fmsh"]
+	set vivado_data_path [file join $vvd_path]
+	set rd_path [findFiles $patch_data_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_data_path" $rd_file $vivado_data_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			file copy -force $rd_file [file dir $wr_file]
+		} else {
+			file copy -force $rd_file $wr_file
+		}
+	}
+	file copy -force [file join $current_prj_path "ip_patch" "device_database"  "7z100t_7z100tai_7z70tai"  "xc7z100_jfmql70tai"] [file join $vvd_path "data" "parts" "xilinx" "zynq" "devint" "zynq"]
+	file copy -force [file join $current_prj_path "ip_patch" "device_database"  "7z100t_7z100tai_7z70tai"  "xc7z100_jfmql100t"] [file join $vvd_path "data" "parts" "xilinx" "zynq" "devint" "zynq"]
+	file copy -force [file join $current_prj_path "ip_patch" "device_database"  "7z100t_7z100tai_7z70tai"  "xc7z100_jfmql100tai"] 	[file join $vvd_path "data" "parts" "xilinx" "zynq" "devint" "zynq"]
+	puts "FMSH->add_jfmql70tai_jfmql100t_jfmql100tai_database excuted successfully(jfmql70tai/jfmql100t/jfmql100tai)!"	
+	fmsh_send_msg_critical_warning "The first time you use the replace database command, you need to restart the current vivado!"
+
+PROCEDURE change_device_speed
+ARGS 
+
+  set device_part [get_property part [current_run -implementation]]
+  if {[regexp {\-3$} $device_part]} {
+    regsub {\-3$} $device_part "-2" device_part_new   
+    puts $device_part_new
+    set_property part $device_part_new [current_run -synthesis] -quiet
+    set_property part $device_part_new [current_run -implementation] -quiet
+    set_property needs_refresh false [current_run -synthesis] -quiet
+	puts "FMSH->change_device_speed excuted successfully!(-3 to -2)"
+  } elseif {[regexp {\-1$} $device_part]} {
+	if {[regexp {jfmql70tai} $device_part]} {
+		return 0
+	}
+    regsub {\-1$} $device_part "-2" device_part_new   
+    puts $device_part_new
+    set_property part $device_part_new [current_run -synthesis] -quiet
+    set_property part $device_part_new [current_run -implementation] -quiet
+    set_property needs_refresh false [current_run -synthesis] -quiet
+	fmsh_send_msg_critical_warning "FMSH->change_device_speed excuted successfully!(-1 to -2)"
+  }
+
+PROCEDURE copy_vvd_files
+ARGS dirA dirB dirC
+
+    set filesA [getfiles $dirA $dirA]
+#	set out_file "C:/Users/maotongbao/Desktop/file.txt"
+#	set file [open $out_file "w+"]
+    foreach relativePath $filesA {
+		set fileA [file join $dirA $relativePath]
+		set fileB [file join $dirB $relativePath]
+		set targetDir [file join $dirC [file dirname $relativePath]]
+		file mkdir $targetDir
+        if {[file exists $fileB]} {
+            set destFile [file join $targetDir [file tail $fileA]]
+            file copy -force $fileB $destFile
+#            puts $file "$fileB"
+        } else {
+			puts "create $targetDir but no copy file"
+		}
+    }
+
+PROCEDURE database_check
+ARGS str_list
+
+	set msg_serverity [get_msg_serverity_value $str_list]
+	if {$msg_serverity == "CRITICAL"} {
+		set msg_serverity "CRITICAL WARNING"
+	}
+	set vvd_path [get_vvd_path]
+	set vvd_version [string range [version -short] 0 5]
+	set project_path [get_property DIRECTORY [current_project]]
+	set device_part  [get_property PART [current_project]]
+    set out_file_path [file join $project_path "database_check.log"]
+	set f [open $out_file_path "w"]
+	puts $f "#This file records which devices have replaced the database!#"
+	puts $f "#Vivado Path:$vvd_path#"
+	puts $f "#IP Patch version in project root directory:$::ip_patch::version#"
+	#7z045ai GTX
+	set fmql45_aix_flag 0
+	set fmql45_aih_flag 0
+	set jfmql30ai_flag  0
+	set jfmql100_flag   0
+	set jfmql100ai_flag 0
+	set fmk50_flag      0
+	set fmk230t_flag    0
+	set fmql15_flag     0
+	set fmbh45_flag     0
+	set jfmql70ai_flag  0
+	
+	set xc7z045_rtd_vvd [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z045/xc7z045.rtd" $vvd_path]
+	if {[file exist $xc7z045_rtd_vvd]} {
+		set md5_vvd  [md5::md5 -hex -file $xc7z045_rtd_vvd]
+		if {$md5_vvd == "0963501876F62484AB5DE30A55B2F26D"} {
+			send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced xc7z045 AI GTX database!([clock format [clock seconds]])"
+			puts $f "FMQL45T900-AIX"
+		}
+	}
+	#7z045ai GTH
+	set PartStats_xml_vvd [format "%s/data/parts/xilinx/zynq/devint/zynq/PartStats.xml" $vvd_path]
+	if {[file exist $PartStats_xml_vvd]} {
+		set md5_vvd  [md5::md5 -hex -file  $PartStats_xml_vvd]
+		if {$md5_vvd == "962B8423427B5443831B20E8561842BF"} {
+			send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced xc7z045 AI GTH database!([clock format [clock seconds]])"
+			puts $f "FMQL45T900-AIH"
+		}
+	}
+	
+	#7z030ai
+	set Sitemap2_xml_vvd    [format "%s/data/parts/xilinx/zynq/devint/Sitemap2.xml" $vvd_path]
+	set zynq_padr_vvd 		[format "%s/data/parts/xilinx/zynq/devint/zynq.padr" $vvd_path]
+	if {[file exist $Sitemap2_xml_vvd]} {
+		set md5_vvd   [md5::md5 -hex -file $Sitemap2_xml_vvd]
+		set md5_vvd1   [md5::md5 -hex -file $zynq_padr_vvd]
+		if {$md5_vvd == "0A5A0A3AC5757CB770D68AF1A13D5FCE" && $md5_vvd1 == "0C37BD43ED4E544A36A79E3018A975F1"} {
+			send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced xc7z030 AI database!([clock format [clock seconds]])"
+			puts $f "JFMQL30T-AI"
+		}
+	}
+	
+
+	#7z100ai
+	set Sitemap2_xml_vvd    [format "%s/data/parts/xilinx/zynq/devint/Sitemap2.xml" $vvd_path]
+	if {[file exist $Sitemap2_xml_vvd]} {
+		set md5_vvd  [md5::md5 -hex -file $Sitemap2_xml_vvd]
+		if {$md5_vvd == "E24F9113DC62D503E9C4DCD90A50C91B"} {
+			send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced xc7z100 AI database!([clock format [clock seconds]])"
+			puts $f "JFMQL100TAI900"
+		}
+	}
+
+	#7z100
+	set zynq_pspd_vvd       [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z100/xc7z100.paspd" $vvd_path]
+	if {[file exist $zynq_pspd_vvd]} {
+		set md5_vvd  [md5::md5 -hex -file $zynq_pspd_vvd]
+		if {$md5_vvd == "0EB734E958E1CF1FDAF2937F66338D95" || $md5_vvd == "2707B9F11B48B71AAD5CFFCDB8D98FFF" || $md5_vvd == "940A60C71B3504089FBAD2A41710DA60"} {
+			send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced xc7z100 database!([clock format [clock seconds]])"
+			puts $f "JFMQL100T900"
+		}
+	}
+	#50t
+	set ClockRegion_xml_vvd [format "%s/data/parts/xilinx/artix7/devint/artix7/xc7a50t/ClockRegion.xml" $vvd_path]	
+	if {[file exist $ClockRegion_xml_vvd]} {
+		set md5_vvd  [md5::md5 -hex -file $ClockRegion_xml_vvd]
+		if {$md5_vvd == "9967BA8D16ABCD202564293F35307D6A"} {
+			send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced 50T database!([clock format [clock seconds]])"
+			puts $f "JFMK50T/FMK50T"
+		}
+	}
+	
+	#fmk230t
+	set fmk230t [format "%s/data/parts/xilinx/kintex7/devint/tileCategory.cfg" $vvd_path]	
+	if {[file exist $fmk230t]} {
+		set md5_vvd  [md5::md5 -hex -file $fmk230t]
+		if {$md5_vvd == "7FB2A859C7855CD2DDB8D0B3FED0E9F0"} {
+			send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced FMK230T database!([clock format [clock seconds]])"
+			puts $f "FMK230T(replace database flow)"
+		}
+	}
+	
+	#jfmql70tai jfmql100t jfmql100tai 
+	set jfmql70tai [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z100_jfmql70tai" $vvd_path]
+	set zynq_padr_vvd 		[format "%s/data/parts/xilinx/zynq/devint/zynq.padr" $vvd_path]
+	if {[file exist $jfmql70tai]} {
+		set md5_vvd1   [md5::md5 -hex -file $zynq_padr_vvd]
+		if {$md5_vvd1 == "0524377A5794FFB79750C19EEDDF072F"} {	
+		}
+		send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced jfmql70tai/jfmql100t/jfmql100tai database!([clock format [clock seconds]])"
+		puts $f "jfmql70tai/jfmql100t/jfmql100tai"
+	}
+	
+	
+	#fmk230t fmk300t fmql15
+	set fmql15 [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z045_fmql15" $vvd_path]
+	if {[file exist $fmql15]} {
+		send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced FMK230T/FMK300T/FMQL15 database!([clock format [clock seconds]])"
+		puts $f "FMK230T/FMK300T/FMQL15"
+	}
+	#fmk50rh fmbh45
+	set fmk50rh [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z045_fmbh45" $vvd_path]
+	if {[file exist $fmk50rh]} {
+		send_msg_id {fmsh-2024} "$msg_serverity" "FMSH-->Current Project replaced FMK50RH/FMBH45 database!([clock format [clock seconds]])"
+		puts $f "FMK50RH/FMBH45"
+	}
+	close $f
+	puts "FMSH->$out_file_path is generated successfully!"
+ 
+PROCEDURE findFiles
+ARGS basedir pattern
+
+
+    # Fix the directory name, this ensures the directory name is in the
+    # native format for the platform and contains a final directory seperator
+    set basedir [string trimright [file join [file normalize $basedir] { }]]
+    set fileList {}
+    # Look in the current directory for matching files, -type {f r}
+    # means ony readable normal files are looked at, -nocomplain stops
+    # an error being thrown if the returned list is empty
+    foreach fileName [glob -nocomplain -type {f r} -path $basedir $pattern] {
+        lappend fileList $fileName
+    }
+
+    # Now look for any sub direcories in the current directory
+    foreach dirName [glob -nocomplain -type {d  r} -path $basedir *] {
+        # Recusively call the routine on the sub directory and append any
+        # new files to the results
+        set subDirList [findFiles $dirName $pattern]
+        if { [llength $subDirList] > 0 } {
+            foreach subDirFile $subDirList {
+                lappend fileList $subDirFile
+            }
+        }
+    }
+    return $fileList
+
+PROCEDURE fmsh_psoc_database_check
+ARGS 
+
+	puts "Start fmsh_psoc_database_check now!"
+	set device_part [get_property PART [current_project]]
+	set vvd_path [get_vvd_path]
+	if {[regexp {^xc7z010} $device_part]} {
+		if {[get_pins -hierarchical  *AI_CLK21] != "" && [get_pins -hierarchical  *AI_IN2023] != ""} {
+			error "FMSH-->Current project device part is $device_part,but find AI pins in netlist,please check your vivado database!"
+		}
+	} elseif {[regexp {xc7z015} $device_part]} {
+		if {[get_pins -hierarchical  *AI_CLK21] != "" && [get_pins -hierarchical  *AI_IN2023] != ""} {
+			error "FMSH-->Current project device part is $device_part,but find AI pins in netlist,please check your vivado database!"
+		}
+	} elseif {[regexp {^xc7z020} $device_part]} {
+		if {[get_pins -hierarchical  *AI_CLK21] != "" && [get_pins -hierarchical  *AI_IN2023] != ""} {
+			error "FMSH-->Current project device part is $device_part,but find AI pins in netlist,please check your vivado database!"
+		}
+	} elseif {[regexp {xc7z030} $device_part]} {
+		set Sitemap2_xml_vvd    [format "%s/data/parts/xilinx/zynq/devint/Sitemap2.xml" $vvd_path]
+		set zynq_padr_vvd 		[format "%s/data/parts/xilinx/zynq/devint/zynq.padr" $vvd_path]
+		if {[file exist $Sitemap2_xml_vvd]} {
+			set md5_vvd  	[md5::md5 -hex -file $Sitemap2_xml_vvd]
+			set md5_vvd1   	[md5::md5 -hex -file $zynq_padr_vvd]
+			if {$md5_vvd == "0A5A0A3AC5757CB770D68AF1A13D5FCE" && $md5_vvd1 == "0C37BD43ED4E544A36A79E3018A975F1"} {
+			} else {
+				error "FMSH-->Current project device part is $device_part,but database check is not right,please check your vivado database!"
+			}
+		}
+	} elseif {[regexp {^xc7z045f} $device_part]} {
+		set flag_045ai [format "%s/data/parts/xilinx/zynq/devint/zynq.rtd.bak" $vvd_path]
+		if {[file exist $flag_045ai]} {
+		} else {
+			if {[get_pins -hierarchical  *AI_CLK21] != "" && [get_pins -hierarchical  *AI_IN2023] != ""} {
+				error "FMSH-->Current project device part is $device_part,but find AI pins in netlist,please check your vivado database!"
+			}
+		}
+	} else {
+		return
+	}
+	
+
+PROCEDURE get_change_speed_value
+ARGS str_list
+
+	set dst_index [lsearch $str_list -change_speed]
+    if {$dst_index >= 0} {
+        set change_speed_value [lindex $str_list [expr $dst_index+1]]
+        if {$change_speed_value == "TRUE" || $change_speed_value == "true"} {
+		    set change_speed_value "TRUE" 
+        } elseif {$change_speed_value == "FALSE" || $change_speed_value == "false" } {
+		    set change_speed_value "FALSE" 
+        } elseif {$change_speed_value  == "FAST" || $change_speed_value  == "fast"} {
+		    set change_speed_value "FAST"
+        }  else {
+            error "Error occurs!\nThe value range of change_speed expected is (TRUE, FALSE,FAST)."
+        }
+    } else {
+        set change_speed_value "TRUE" 
+    }
+	
+
+PROCEDURE get_modify_time_of_files
+ARGS input_file_list
+
+   set modify_time_list [list]
+   foreach cell $input_file_list {
+      set modify_time [file mtime $cell]
+      lappend modify_time_list $modify_time
+   }
+   return $modify_time_list
+
+PROCEDURE getfiles
+ARGS dir baseDir
+
+    set allFiles [list]
+    foreach item [glob -nocomplain -directory $dir *] {
+        if {[file isdirectory $item]} {
+            lappend allFiles {*}[getfiles $item $baseDir]
+        } else {
+			set relativePath [string range $item [string length $baseDir] end]
+            lappend allFiles $relativePath
+        }
+    }
+    return $allFiles
+
+PROCEDURE post_opt_design_patch
+ARGS args
+
+    puts "\nThe post-optimized netlist starts patching!\n"
+	
+	fmsh_psoc_database_check
+	
+    set str_list $args
+	set device_part [get_property PART [current_project]]
+	
+	set buf_value [get_buf_value $str_list]
+    set startupe2_value [get_startupe2_value $str_list]
+    set runEco3_value [get_runEco_value $str_list]
+    set qpll_value [get_qpll_value $str_list]
+	set xadc_value [get_xadc_value $str_list]
+    set bram_patch_check_value [get_bram_patch_check_value $str_list]
+	set bh_bram_value [get_bh_bram_value $str_list]
+	set xadc_filter_value [get_xadc_filter_value $str_list]
+	set bh_mig_value  [get_bh_mig_value $str_list]
+	set device_value [get_device_value $str_list]
+	
+	set rx_def_kl_value  [get_rx_def_kl_value $str_list]
+	set clock_source_value [get_clock_source_value $str_list]
+	
+	puts "buf_value : $buf_value"
+	puts "startupe2_value : $startupe2_value"
+	puts "runEco3_value : $runEco3_value"
+	puts "qpll_value : $qpll_value"
+	puts "xadc_value : $xadc_value"
+	puts "bram_patch_check_value : $bram_patch_check_value"
+	puts "bh_bram_value : $bh_bram_value"
+	puts "xadc_filter_value:$xadc_filter_value"
+	puts "device_value:$device_value"
+	puts "bh_mig_value:$bh_mig_value"
+	puts "rx_def_kl_value:$rx_def_kl_value"
+	############FMSH DRC#################
+	# catch {design_ot_check}
+	# catch {psoc_icap_check}
+	#####################################
+	if {$rx_def_kl_value == "TRUE"} {
+		puts "Start fmsh_pcie_drp_eco:"
+		fmsh_pcie_drp_eco $clock_source_value
+	}
+	
+	
+	
+	if {$bh_mig_value == "TRUE" || [regexp {xc7z045_fmbh45} $device_part]} {
+		bh_mig_eco
+	} else {
+		puts "Skip BaiHu MIG eco patch successfully!"
+	}
+	
+	if {$xadc_filter_value == "TRUE"} {
+		xadc_filter
+	} else {
+		puts "Skip xadc_filter patch successfully!"
+	}
+	
+	if {[lindex $bh_bram_value 0] == "SKIP"} {
+		puts "SKIP bh_bram patch successfully!"
+	} else {
+		set mode [lindex $bh_bram_value 0] 
+		set path [lindex $bh_bram_value 1]
+		fmsh_bh_bram_eco $mode $path
+	}
+   
+    if {$startupe2_value == "FALSE"} {
+   
+        puts "Skip startupe2 patch successfully! "
+   
+    } else  {
+	    puts "Start startupe2 patch:"
+        ecostartupe2
+		puts "Finished startupe2 patch."
+    }
+   
+   
+    if {$runEco3_value == "FALSE"} {
+        puts "Skip runEco3 successfully! "
+    } elseif {$runEco3_value == "TRUE"} {
+	    puts "Start BRAM SDP patch NORMAL mode:"
+        runEco 3 0
+		puts "Finished BRAM SDP patch."
+    } elseif {$runEco3_value == "FINE"} {
+	    puts "Start BRAM SDP patch FINE mode:"
+	    runEco 3 1 
+		puts "Finished BRAM SDP patch."
+	}
+   
+    if {$qpll_value == "FALSE"} {
+   
+        puts "Skip qpll successfully! "
+   
+    } else {
+	    puts "Start qpll patch:"
+        # qpll_xadc_eco $device_part $buf_value
+		puts "Finished qpll patch."
+    }
+	
+
+	
+	if {$xadc_value == "UPGRADE"} {
+        xadc_aux_patch $xadc_value
+    } elseif {$xadc_value == "DEGRADE"} {     
+        xadc_aux_patch $xadc_value
+    } elseif {$xadc_value == "FALSE"} {
+	    if {[regexp {690t} $device_part] || [regexp {045} $device_part]} {	
+            xadc_channel_check
+		}
+    } elseif {$xadc_value == "SKIP"} {
+	    puts "Skip xadc patch successfully!"
+	}
+	
+	if {$bram_patch_check_value == "FALSE"} {
+        puts "Skip bram_patch_check successfully! "
+    } else {
+	    if {[regexp {325t} $device_part] || [regexp {690t} $device_part]} {
+		    bram_patch_check
+		}  
+    }
+	
+	if {$device_value == "fmk230t" || [regexp {xc7k325t_fmk230t} $device_part]} {
+		if {[get_pblocks pblock_1] == ""} {
+			fmsh_send_msg_warning "FMSH->Current device is fmk230t,add pblock constrains to project!"
+			create_pblock pblock_1
+			add_cells_to_pblock [get_pblocks pblock_1] -top
+			resize_pblock [get_pblocks pblock_1] -add {CLOCKREGION_X0Y0:CLOCKREGION_X1Y4}
+			set_property CONTAIN_ROUTING 1 [get_pblocks pblock_1]
+		} else {
+			puts "FMSH->find pblock1 in current netlist!"
+		}
+	}
+    puts "\nThe post-optimized netlist patches successfully!\n" 
+
+PROCEDURE post_synthesis_patch
+ARGS args
+
+   
+    set str_list $args
+   
+    set buf_value [get_buf_value $str_list]
+    set startupe2_value [get_startupe2_value $str_list]
+    set runEco3_value [get_runEco_value $str_list]
+    set qpll_value [get_qpll_value $str_list]
+	set xadc_value [get_xadc_value $str_list]
+	set bram_patch_check_value [get_bram_patch_check_value $str_list]
+   
+   
+    set device_part [get_property PART [current_project]]
+   
+    synth_netlist_open_check
+   
+    if {$startupe2_value == "TRUE"} {
+        puts "Start startupe2 patch:"
+        ecostartupe2
+		puts "Finished startupe2 patch."
+	
+    } elseif {$startupe2_value == "FALSE"} {
+   
+        puts "Skip startupe2 patch successfully!"
+   
+    }
+   
+   
+    if {$runEco3_value == "TRUE"} {
+        puts "Start BRAM SDP patch NORMAL mode:"
+		
+        runEco 3 0
+		
+		puts "Finished BRAM SDP patch."
+   
+    } elseif {$runEco3_value == "FALSE"} {
+  
+        puts "Skip runEco3 patch successfully!"
+  
+    } elseif {$runEco3_value == "FINE"}  {
+	    puts "Start BRAM SDP patch FINE mode:"
+		
+        runEco 3 1
+		
+		puts "Finished BRAM SDP patch."
+    }
+  
+  
+   
+    if {$qpll_value == "TRUE"} {
+   
+        qpll_xadc_eco $device_part $buf_value
+   
+    } elseif {$qpll_value == "FALSE"} {
+   
+        puts "Skip qpll patch successfully!"
+   
+    }
+	   
+
+	if {[regexp {690t} $device_part] || [regexp {045} $device_part]} {		
+		if {$xadc_value == "UPGRADE"} {
+            xadc_aux_patch $xadc_value
+        } elseif {$xadc_value == "DEGRADE"} {
+            xadc_aux_patch $xadc_value
+        } elseif {$xadc_value == "FALSE"} {
+            xadc_channel_check
+        } elseif {$xadc_value == "SKIP"} {
+	        puts "Skip xadc patch successfully!"
+	    }
+	}
+	
+	
+
+	if {$bram_patch_check_value == "FALSE"} {
+        puts "Skip bram_patch_check successfully! "
+     } else {
+	    if {[regexp {325t} $device_part] || [regexp {690t} $device_part]} {
+		     bram_patch_check
+	    }
+    }
+    write_prj_synthesized_dcp
+    close_design -quiet
+    puts "IP patched finished after synthesis!"
+
+PROCEDURE post_write_bitstream_patch
+ARGS args
+
+	set str_list $args
+	if {[check_current_platform] == "windows"} {
+		puts "write_bitstream post hook tcl begins to run."
+		
+		set default_path [pwd]
+		
+		regsub {/\w+\.runs/\w+$} $default_path "" prj_directory
+		set procise_incr_cfg_path [file join $prj_directory "procise_incr_cfg.txt"]
+		
+		if {[file exists $procise_incr_cfg_path]} {
+			set procise_run_tcl_path [file join $prj_directory "procise_run.tcl"]
+			
+			if {[catch {set procise_path [file join $::env(FMSH_PROCISE_PATH)]}]} {
+					error "An error occurs:\nFind procise_incr_cfg.txt in current project,but FMSH_PROCISE_PATH doesn't exist.\nPlease set the FMSH_PROCISE_PATH environment variable correctly!"
+			}
+			
+			set call_procise_bat_path [file join $prj_directory "call_procise.bat"]
+			
+			set procise_patch_enable [procise_incr_cfg_file_check $procise_incr_cfg_path] 
+			if {$procise_patch_enable == 1} {
+				generate_call_procise_bat $procise_path $procise_run_tcl_path $call_procise_bat_path
+				generate_procise_run_tcl $procise_incr_cfg_path $procise_run_tcl_path
+				exec cmd /c $call_procise_bat_path
+				puts "write_bitstream post hook tcl runs successfully."
+			} else {
+				puts "write_bitstream post hook tcl runs completely, but it does nothing because the Procise increment configuration is disabled." 
+			}
+		}
+	} elseif {[check_current_platform] == "linux"} {
+		puts "write_bitstream post hook tcl begins to run."
+		
+		set default_path [pwd]
+		
+		regsub {/\w+\.runs/\w+$} $default_path "" prj_directory
+		set procise_incr_cfg_path [file join $prj_directory "procise_incr_cfg.txt"]
+		
+		if {[file exists $procise_incr_cfg_path]} {
+			set procise_run_tcl_path [file join $prj_directory "procise_run.tcl"]
+			set call_procise_sh_path [file join $prj_directory "call_procise.sh"]
+			
+			if {[catch {set procise_path [file join $::env(FMSH_PROCISE_PATH)]}]} {
+				error "An error occurs:\nFind procise_incr_cfg.txt in current project,but FMSH_PROCISE_PATH doesn't exist.\nPlease set the FMSH_PROCISE_PATH environment variable correctly!"
+			}
+			
+			set procise_patch_enable [procise_incr_cfg_file_check $procise_incr_cfg_path] 
+			if {$procise_patch_enable == 1} {
+				generate_call_procise_sh $procise_path $procise_run_tcl_path $call_procise_sh_path
+				generate_procise_run_tcl $procise_incr_cfg_path $procise_run_tcl_path
+				exec bash $call_procise_sh_path
+				puts "write_bitstream post hook tcl runs successfully."
+			} else {
+				puts "write_bitstream post hook tcl runs completely, but it does nothing because the Procise increment configuration is disabled." 
+			}
+		}
+	}
+	set device_value [get_device_value $str_list]
+	set device_part [get_property PART [current_project]]
+	set disable_icap_value [get_disable_icap_value $str_list]
+	if {$disable_icap_value == "TRUE" && [regexp {xc7z} $device_part] || $disable_icap_value == "TRUE" && [regexp {fmql} $device_part]} {
+		if {[catch {set procise_path [file join $::env(FMSH_PROCISE_PATH)]}]} {
+			fmsh_send_msg_critical_warning "FMSH-->An error occurs:\nPart:$device_part need -disable_icap bit patch!\nEnvironment FMSH_PROCISE_PATH doesn't exist.\nPlease set the FMSH_PROCISE_PATH environment variable correctly!"
+		} else {
+			disable_icap_for_psoc $device_value
+		}
+	}
+	if {$device_value != "0"} {
+		if {[catch {set procise_path [file join $::env(FMSH_PROCISE_PATH)]}] && [catch {set hwdt_path [file join $::env(FMSH_HWDT_PATH)]}]} {
+			if {[string match -nocase FMK230T $device_value]} {
+				error "FMSH--> An error occurs:\ndevice_value:$device_value.Environment FMSH_PROCISE_PATH doesn't exist.\nPlease set the FMSH_PROCISE_PATH environment variable correctly!"
+			}
+		}
+		if {[catch {set hwdt_path [file join $::env(FMSH_HWDT_PATH)]}]} {
+			if {[string match -nocase FMK300T8 $device_value] || [string match -nocase FMK300T16 $device_value] || [string match -nocase FMK400T16 $device_value] || [string match -nocase FMK700T36 $device_value] || [string match -nocase FMK700T80 $device_value]} {
+				error "FMSH--> An error occurs:\ndevice_value:$device_value.Environment FMSH_HWDT_PATH doesn't exist.\nPlease set the FMSH_HWDT_PATH environment variable correctly!"
+			}
+		}
+		generate_final_bit $device_value
+	}
+
+PROCEDURE pre_synthesis_patch
+ARGS args
+
+#pre-patch check 
+    pre_patch_check
+    puts "Start pre synthesis patch now!\n"
+    
+    set t_start [clock seconds]
+	fmsh_send_msg_warning "IP patch version information: $::ip_patch::version"
+	fmsh_send_msg_warning "Release date: $::ip_patch::release_date" 
+	
+	set vvd_path [get_vvd_path]
+	puts "Find VIVADO path: $vvd_path"
+	
+	#show current project device.
+    show_device
+	
+    set str_list $args
+	puts_ip_patch_version_to_a_file $str_list
+    set adj_level_value [get_adj_level_value $str_list]
+    set precharge_check_value [get_precharge_check_value $str_list] 
+    set max_pc_cnt_value [get_max_pc_cnt_value $str_list]
+    set calib_fast_value [get_calib_fast_value $str_list]
+	set mig_comp_value [get_mig_comp_value $str_list] 
+	set mig_version_value [get_mig_version_value $str_list]
+	set idel_dec_cnt_value [get_idel_dec_cnt_value $str_list]
+	set microblaze_value [get_microblaze_value $str_list]
+	set gp_patch_value [get_gp_patch_value $str_list]
+	set device_part [get_property PART [current_project]]
+    set cv_pcie_value [get_cv_pcie_value $str_list]
+	set mem_type_value [get_mem_type_value $str_list]
+	set mig_ecc_value [get_mig_ecc_value $str_list]
+	set rxlpmen_value [get_rxlpmen_value $str_list]
+	set cnt_max_value [get_cnt_max_value $str_list]
+	set bh_mig_value  [get_bh_mig_value $str_list]
+	set rxlpmen_value [get_rxlpmen_value $str_list]
+	set cnt_max_value [get_cnt_max_value $str_list]
+	set max_adj_flag_value [get_max_adj_flag_value $str_list]
+	set infifo_opt_value [get_infifo_opt_value $str_list]
+	set dqs_find_pattern_value [get_dqs_find_pattern_value $str_list]
+	
+	set double_freq_value		[get_double_freq_value $str_list]
+	set calib_opt_value 		[get_calib_opt_value $str_list]
+	set init_opt_value  		[get_init_opt_value $str_list]
+	set ck_odelay_value  		[get_ck_odelay_value $str_list]
+	set init_adj_value  		[get_init_adj_value $str_list]
+	set ctl_po_comp_value  		[get_ctl_po_comp_value $str_list]
+	
+	set mig_timer_value        	[get_mig_timer_value $str_list]
+	set mig_det_dqs_cnt_value  	[get_mig_det_dqs_cnt_value $str_list]
+	set qdr_k_init_value  		[get_qdr_k_init_value $str_list]
+	
+	set rx_def_kl_value        	[get_rx_def_kl_value $str_list]
+	
+	set clkout0_phase_value    	[get_clkout0_phase_value $str_list]
+	set bh_use_ocal_value      	[get_bh_use_ocal_value $str_list]
+	
+	set gt_5g_cpll_value       	[get_gt_5g_cpll_value $str_list]
+	
+	
+	if {$clkout0_phase_value != "NONE" && $bh_use_ocal_value == "ON"} {
+		error "FMSH-->clkout0_phase and bh_use_ocal cannot be enabled at the same time! "
+	}
+	
+	set ocd_comp_mode_value     [get_ocd_comp_mode_value $str_list]
+	set ocd_comp_inc_value  	[get_ocd_comp_inc_value $str_list]
+	set ocd_comp_value_value    [get_ocd_comp_value_value $str_list]
+	set ck_comp_value     		[get_ck_comp_value $str_list]
+	set ck_incdec_value  		[get_ck_incdec_value  $str_list]
+	set final_bias_tap_value    [get_final_bias_tap_value $str_list]	
+	
+	set phy_rdlvl_value         [get_phy_rdlvl_value $str_list]
+    set mig_list [get_ip_cfg_file]
+	
+	#############BH45 PS ip drc check##########
+	if {[regexp {xc7z045_fmbh45} $device_part] || $bh_mig_value == "TRUE"} {
+		puts "Current project device is FMBH45!"
+		fmbh_ps_drc_check
+	}
+	###################fmsh pcie IP synthesis settings##############
+	catch {
+		set fmsh_axi_pcie [get_ips -filter {IPDEF =~ "xilinx.com:ip:fmsh_axi_pcie:*"}]
+		set fmsh_pcie     [get_ips -filter {IPDEF =~ "xilinx.com:ip:fmsh_pcie_7x:*"}]
+		set fmsh_xdma     [get_ips -filter {IPDEF =~ "xilinx.com:ip:fmsh_xdma:*"}]
+		if {[llength $fmsh_axi_pcie] || [llength $fmsh_pcie] || [llength $fmsh_xdma]} {
+			set_property strategy Flow_PerfOptimized_high [current_run -synthesis]
+			set_property STEPS.SYNTH_DESIGN.ARGS.GATED_CLOCK_CONVERSION on [current_run -synthesis]
+			set_property STEPS.SYNTH_DESIGN.ARGS.RETIMING true [current_run -synthesis]
+			set_property strategy Performance_Retiming [current_run -implementation]
+		}
+	}
+		
+#get mig re-patch enable flag
+    set mig_re_patch_enable_flag [get_mig_re_patch_enable_flag $str_list]
+#IP cache handle
+    ip_cache_handle
+#disable IP core container.
+    disable_ip_core_container
+#clear ip need patch list
+    clear_ip_need_patch_list
+#get IP PATCH global control enable flag. 
+    set global_ctrl_enable_flag [get_global_ctrl_enable_flag] 
+#read ip need patch list from a file
+    create_ip_need_patch_list $global_ctrl_enable_flag
+#change_device_speed
+#in order to support K7 and V7 12.5G serdes solutions. 
+    change_device_speed
+#clear the ip_synthesis_run_list
+    clear_ip_synthesis_run_list
+	
+#xfft
+	if {$mem_type_value == "BRAM" || $mem_type_value == "DRAM"} {
+		xfft_patch $global_ctrl_enable_flag $mem_type_value
+	} else {
+		puts "xfft IP mem_type_value is neither BRAM nor DRAM!"
+	}
+#jesd
+	
+    jesd_phy_gt_patch $global_ctrl_enable_flag 
+	
+	jesd_gt_patch $global_ctrl_enable_flag 
+
+#7z045 PS Master
+    if {$gp_patch_value == "TRUE"} {
+	    ZYNQ_PS_Master $global_ctrl_enable_flag 
+	} else {
+	    puts "Skip ZYNQ_PS_Master patch successfully!"
+	}
+    
+#microblaze 
+    if {$microblaze_value == "FALSE"} {
+	    puts "Current microblaze_patch is FALSE!"   
+	} else {
+	    microblaze_patch $global_ctrl_enable_flag $microblaze_value
+	}
+    
+#MIG
+	mig_patch $adj_level_value $precharge_check_value $calib_fast_value $max_pc_cnt_value $mig_re_patch_enable_flag $global_ctrl_enable_flag $mig_list $mig_version_value $mig_comp_value $idel_dec_cnt_value $mig_ecc_value $ocd_comp_mode_value $ocd_comp_inc_value $ocd_comp_value_value $bh_mig_value $ck_comp_value $ck_incdec_value $final_bias_tap_value $phy_rdlvl_value $max_adj_flag_value $infifo_opt_value $dqs_find_pattern_value $clkout0_phase_value $bh_use_ocal_value $double_freq_value $calib_opt_value $init_opt_value $ck_odelay_value $init_adj_value $ctl_po_comp_value $mig_timer_value $mig_det_dqs_cnt_value $qdr_k_init_value
+	
+	set fmsh_1553b_value [get_fmsh_1553b_value $str_list]
+	set eth_40G_value [get_eth_40G_value $str_list]
+	
+    if {$fmsh_1553b_value == "TRUE"} {
+	     fmsh_1553b_modify  
+	}
+	
+	if {$eth_40G_value == "TRUE"} {
+	    ethernet_40G_modify
+	}
+	set pma_mmcm_lock_value [get_pma_mmcm_lock_value $str_list]
+
+    if {$cv_pcie_value == "OLD"} {
+        puts "pcie_version is OLD."
+        if {[regexp {xc7vx690t} $device_part]} {
+	 
+        #PCIe Gen3 integrated block patch
+            pcie_integrated_block_pcie_gen3_patch $global_ctrl_enable_flag $pma_mmcm_lock_value
+        #PCIe Gen3 XDMA patch
+            xdma_pcie_gen3_patch $global_ctrl_enable_flag 
+        #PCIe Gen3 AXI_PCIe general patch.
+            axi_pcie_pcie_gen3_patch $global_ctrl_enable_flag
+ 
+        } else {
+ 
+        #PCIe Gen2 integrated_block patch 
+            pcie_integrated_block_pcie_gen2_patch $global_ctrl_enable_flag 
+        #XDMA Gen2 patch
+        #Because the name of the IPDEF attribute of IP XDMA is the same in PCIe gen2 and gen3,
+        #the device part is added to distinguish XDMA IP between PCIe gen2 and PCIe gen3.   
+            xdma_pcie_gen2_patch $global_ctrl_enable_flag 
+        #AXI_PCIe Gen2 general
+            axi_pcie_pcie_gen2_patch $global_ctrl_enable_flag
+        }
+
+    }  else {
+        puts "pcie_version is NEW."
+        if {[regexp {xc7vx690t} $device_part]} {
+
+
+            pcie_gen3_integrated_block_patch_cv $global_ctrl_enable_flag $pma_mmcm_lock_value
+
+            xdma_pcie_gen3_patch_cv $global_ctrl_enable_flag 
+
+            axi_pcie_pcie_gen3_patch_cv $global_ctrl_enable_flag
+			
+        } else {
+		
+		#no tandem
+        #PCIe Gen2 integrated_block patch 
+            pcie_integrated_block_pcie_gen2_patch_not_change_tandem $global_ctrl_enable_flag $rx_def_kl_value
+        #XDMA Gen2 patch
+        #Because the name of the IPDEF attribute of IP XDMA is the same in PCIe gen2 and gen3,
+        #the device part is added to distinguish XDMA IP between PCIe gen2 and PCIe gen3.   
+            xdma_pcie_gen2_patch $global_ctrl_enable_flag $rx_def_kl_value
+        #AXI_PCIe Gen2 general
+            axi_pcie_pcie_gen2_patch $global_ctrl_enable_flag $rx_def_kl_value
+
+        }
+  
+    }
+  
+
+
+#XADC patch
+    xadc_patch $global_ctrl_enable_flag
+
+#gt_wizard patch
+    gt_wizard_patch $global_ctrl_enable_flag
+
+#aurora_64b66b patch
+    aurora_64b66b_patch $global_ctrl_enable_flag $gt_5g_cpll_value
+
+#aurora_8b10b patch 
+    aurora_8b10b_patch $global_ctrl_enable_flag $rxlpmen_value $cnt_max_value
+
+#srio gtx patch
+    serial_rapid_io_gtx_patch $global_ctrl_enable_flag
+
+#srio gth patch
+    serial_rapid_io_gth_patch $global_ctrl_enable_flag
+	
+#10G eth
+	eth_10G_patch $global_ctrl_enable_flag
+#spd_replace
+	set change_speed_value [get_change_speed_value $str_list]
+
+    spd_replace $change_speed_value $bh_mig_value
+	
+#bd_325t_to_50t
+  catch {bd_325t_to_50t}
+
+#synthesis every IP, and wait for the completion of synthesis of each ip.
+    ip_synthesis_run_parallel
+
+#delete ip patch in runs path
+   # catch {delete_ip_patch_runs}
+
+
+	catch {database_check $str_list}
+	send_msg_id {fmsh-2024} "WARNING" "FMSH-->Config Command:add_hook_tcl_to_prj $str_list  ([clock format [clock seconds]])"	
+    puts "IP patch stage 1 finished before synthesis!\n"
+    set t_end [clock seconds]
+    puts [format "Time consume: %s seconds." [expr $t_end - $t_start]] 
+
+PROCEDURE recover_fmk230t_database
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	if {$vvd_version != "2018.3" && $vvd_version != "2022.1"} {
+	     error "FMSH->This command may not right,current vivado version is $vvd_version!"
+	}
+	set vvd_path [get_vvd_path]
+	set current_prj_path [file join $::env(JFM_PATH)]
+	set patch_k7_path  [file join $current_prj_path "ip_patch" "device_database" "fmk230t" "xilinx" "$vvd_version" "kintex7"]
+	set vivado_k7_path [file join $vvd_path "data" "parts" "xilinx" "kintex7"]
+	set rd_path [findFiles $patch_k7_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_k7_path" $rd_file $vivado_k7_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $wr_file no such file! "
+		}
+		file copy -force $rd_file $wr_file
+	}
+	file copy -force [file join $current_prj_path "ip_patch" "device_database" "fmk230t" "xilinx" "$vvd_version"  "xc7k325t.connOfflineFile.pb"]     [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t.connOfflineFile.pb"]
+	file copy -force [file join $current_prj_path "ip_patch" "device_database" "fmk230t" "xilinx" "$vvd_version"  "xc7k325t-1.dlyOfflineFile.pb"]    [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t-1.dlyOfflineFile.pb"]
+	file copy -force [file join $current_prj_path "ip_patch" "device_database" "fmk230t" "xilinx" "$vvd_version"  "xc7k325t-2.dlyOfflineFile.pb"]    [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t-2.dlyOfflineFile.pb"]
+	file copy -force [file join $current_prj_path "ip_patch" "device_database" "fmk230t" "xilinx" "$vvd_version"  "xc7k325t-2L.dlyOfflineFile.pb"]   [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t-2L.dlyOfflineFile.pb"]
+	file copy -force [file join $current_prj_path "ip_patch" "device_database" "fmk230t" "xilinx" "$vvd_version"  "xc7k325t-3.dlyOfflineFile.pb"]    [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t-3.dlyOfflineFile.pb"]
+	puts "FMSH->Recover fmk230t database files successfully!"
+
+PROCEDURE recover_ip_database
+ARGS 
+
+    set vvd_path [get_vvd_path]
+	set vvd_version [string range [version -short] 0 5]
+	if {$vvd_version != "2018.3"} {
+        error "An error occurs!\nInfo:Current vvd_version is $vvd_version, not support xfft modifies!(please use Vivado2018.3)"
+    }
+	set xfft_v9_1_vh_rfs               [format "%s/data/ip/xilinx/xfft_v9_1/hdl/xfft_v9_1_vh_rfs.vhd" $vvd_path]
+	set xbip_utils_v3_0_vh_rfs         [format "%s/data/ip/xilinx/xbip_utils_v3_0/hdl/xbip_utils_v3_0_vh_rfs.vhd" $vvd_path]
+	set xbip_pipe_v3_0_vh_rfs          [format "%s/data/ip/xilinx/xbip_pipe_v3_0/hdl/xbip_pipe_v3_0_vh_rfs.vhd" $vvd_path]
+    set xbip_dsp48_wrapper_v3_0_vh_rfs [format "%s/data/ip/xilinx/xbip_dsp48_wrapper_v3_0/hdl/xbip_dsp48_wrapper_v3_0_vh_rfs.vhd" $vvd_path]
+	set xbip_dsp48_addsub_v3_0_vh_rfs  [format "%s/data/ip/xilinx/xbip_dsp48_addsub_v3_0/hdl/xbip_dsp48_addsub_v3_0_vh_rfs.vhd" $vvd_path]
+	set xbip_bram18k_v3_0_vh_rfs       [format "%s/data/ip/xilinx/xbip_bram18k_v3_0/hdl/xbip_bram18k_v3_0_vh_rfs.vhd" $vvd_path]
+	set xbip_addsub_v3_0_vh_rfs        [format "%s/data/ip/xilinx/xbip_addsub_v3_0/hdl/xbip_addsub_v3_0_vh_rfs.vhd" $vvd_path]
+	set mult_gen_v12_0_vh_rfs          [format "%s/data/ip/xilinx/mult_gen_v12_0/hdl/mult_gen_v12_0_vh_rfs.vhd" $vvd_path]
+	set floating_point_v7_0_vh_rfs     [format "%s/data/ip/xilinx/floating_point_v7_0/hdl/floating_point_v7_0_vh_rfs.vhd" $vvd_path]
+	set cmpy_v6_0_vh_rfs               [format "%s/data/ip/xilinx/cmpy_v6_0/hdl/cmpy_v6_0_vh_rfs.vhd" $vvd_path]
+	set c_shift_ram_v12_0_vh_rfs       [format "%s/data/ip/xilinx/c_shift_ram_v12_0/hdl/c_shift_ram_v12_0_vh_rfs.vhd" $vvd_path]
+	set c_reg_fd_v12_0_vh_rfs          [format "%s/data/ip/xilinx/c_reg_fd_v12_0/hdl/c_reg_fd_v12_0_vh_rfs.vhd" $vvd_path]
+	set c_mux_bit_v12_0_vh_rfs         [format "%s/data/ip/xilinx/c_mux_bit_v12_0/hdl/c_mux_bit_v12_0_vh_rfs.vhd" $vvd_path]
+	set c_addsub_v12_0_vh_rfs          [format "%s/data/ip/xilinx/c_addsub_v12_0/hdl/c_addsub_v12_0_vh_rfs.vhd" $vvd_path]
+	set axi_utils_v2_0_vh_rfs          [format "%s/data/ip/xilinx/axi_utils_v2_0/hdl/axi_utils_v2_0_vh_rfs.vhd" $vvd_path]
+	#fir_compiler_v7_2
+	set fir_compiler_v7_2_vh_rfs 	   [format "%s/data/ip/xilinx/fir_compiler_v7_2/hdl/fir_compiler_v7_2_vh_rfs.vhd" $vvd_path]
+	##dds_compiler_v6_0 
+	set dds_compiler_v6_0_vh_rfs 	   [format "%s/data/ip/xilinx/dds_compiler_v6_0/hdl/dds_compiler_v6_0_vh_rfs.vhd" $vvd_path]
+	##cpri
+	set cpri_v8_9_rfs				   [format "%s/data/ip/xilinx/cpri_v8_9/hdl/cpri_v8_9_rfs.vhd" $vvd_path]
+	set fc32_rs_fec_v1_0_vl_rfs        [format "%s/data/ip/xilinx/fc32_rs_fec_v1_0/hdl/fc32_rs_fec_v1_0_vl_rfs.v " $vvd_path]
+	set cmac_usplus_v2_5_vl_rfs 	   [format "%s/data/ip/xilinx/cmac_usplus_v2_5/hdl/cmac_usplus_v2_5_vl_rfs.v" $vvd_path]
+	##jesd
+	set jesd204_v7_2_rfs 			   [format "%s/data/ip/xilinx/jesd204_v7_2/hdl/jesd204_v7_2_rfs.v" $vvd_path]
+	set jesd204c_v4_0_rfs 			   [format "%s/data/ip/xilinx/jesd204c_v4_0/hdl/jesd204c_v4_0_rfs.v" $vvd_path]
+	set jesd204c_v4_0_syn_rfs 		   [format "%s/data/ip/xilinx/jesd204c_v4_0/hdl/jesd204c_v4_0_syn_rfs.v" $vvd_path]
+	##cordic
+	set cordic_v6_0_vh_rfs 		   	   [format "%s/data/ip/xilinx/cordic_v6_0/hdl/cordic_v6_0_vh_rfs.vhd" $vvd_path]
+	##divgen
+	set div_gen_v5_1_vh_rfs 		   [format "%s/data/ip/xilinx/div_gen_v5_1/hdl/div_gen_v5_1_vh_rfs.vhd" $vvd_path]
+	##floating_point_v7_1
+	set floating_point_v7_1_vh_rfs	   [format "%s/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd" $vvd_path]
+	#binary counter
+	set c_counter_binary_v12_0_vh_rfs	   [format "%s/data/ip/xilinx/c_counter_binary_v12_0/hdl/c_counter_binary_v12_0_vh_rfs.vhd" $vvd_path]
+	set tri_mode_ethernet_mac_v9_0_rfs [format "%s/data/ip/xilinx/tri_mode_ethernet_mac_v9_0/hdl/tri_mode_ethernet_mac_v9_0_rfs.v" $vvd_path]
+	set tri_mode_ethernet_mac_v9_0_rfs_vhd [format "%s/data/ip/xilinx/tri_mode_ethernet_mac_v9_0/hdl/tri_mode_ethernet_mac_v9_0_rfs.vhd" $vvd_path]
+	
+	set timer_sync_1588_v1_2_rfs [format "%s/data/ip/xilinx/timer_sync_1588_v1_2/hdl/timer_sync_1588_v1_2_rfs.v" $vvd_path]
+	set timer_sync_1588_v1_2_rfs_vhd [format "%s/data/ip/xilinx/timer_sync_1588_v1_2/hdl/timer_sync_1588_v1_2_rfs.vhd" $vvd_path]
+	
+	
+	
+	set xfft_file_list [concat $xfft_v9_1_vh_rfs $xbip_utils_v3_0_vh_rfs $xbip_pipe_v3_0_vh_rfs $xbip_dsp48_wrapper_v3_0_vh_rfs $xbip_dsp48_addsub_v3_0_vh_rfs $xbip_bram18k_v3_0_vh_rfs $xbip_addsub_v3_0_vh_rfs $mult_gen_v12_0_vh_rfs $floating_point_v7_0_vh_rfs $cmpy_v6_0_vh_rfs $c_shift_ram_v12_0_vh_rfs $c_reg_fd_v12_0_vh_rfs $c_mux_bit_v12_0_vh_rfs $c_addsub_v12_0_vh_rfs $axi_utils_v2_0_vh_rfs $fir_compiler_v7_2_vh_rfs $dds_compiler_v6_0_vh_rfs $cpri_v8_9_rfs $fc32_rs_fec_v1_0_vl_rfs $cmac_usplus_v2_5_vl_rfs $jesd204_v7_2_rfs $jesd204c_v4_0_rfs $jesd204c_v4_0_syn_rfs $cordic_v6_0_vh_rfs $div_gen_v5_1_vh_rfs $floating_point_v7_1_vh_rfs $c_counter_binary_v12_0_vh_rfs $tri_mode_ethernet_mac_v9_0_rfs $tri_mode_ethernet_mac_v9_0_rfs_vhd $timer_sync_1588_v1_2_rfs $timer_sync_1588_v1_2_rfs_vhd]	
+    foreach xfft_file $xfft_file_list {
+	    incr i 
+	    if {[file exists $xfft_file] == 1} {
+            set xfft_file_bak [format "%s.bak" $xfft_file]
+     	    if {[file exists $xfft_file_bak] == 1} {
+     		    file copy -force $xfft_file_bak $xfft_file
+     		    file delete $xfft_file_bak -force
+     	    } else {
+     		    continue 
+     	    }
+	    } else {
+		    error "Error occurs:\n$xfft_file is not existing."
+		}
+	}
+	puts "xfft,fir_compiler,dds_compiler,cpri,jesd,cordic,divgen,floating point,binary counter,eth IPs files recovered successfully!(Total $i files)"
+
+PROCEDURE recover_xc7a100t_database
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	# if {$vvd_version != "2018.3"} {
+        # error "An error occurs!\nInfo:Current vvd_version:$vvd_version,not support recover_xc7a100t_database!(please use Vivado2018.3)"
+    # }
+	set vvd_path [get_vvd_path]
+	set current_prj_path [file join $::env(JFM_PATH)]
+	set patch_data_path [file join $current_prj_path "ip_patch" "xc7a100t" "xilinx" "data"]
+	set vvd_data_path 	[file join $vvd_path "data"]
+	set rd_path [findFiles $patch_data_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_data_path" $rd_file $vvd_data_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			file copy -force $rd_file [file dir $wr_file]
+		} else {
+			file copy -force $rd_file $wr_file
+		}
+	}
+	add_ip_database
+	puts "FMSH->recover_xc7a100t_database excuted successfully!"
+
+PROCEDURE remove_fmk50rh_fmbh45_database
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	if {$vvd_version != "2018.3" && $vvd_version != "2022.1"} {
+        puts "Info:Current vvd_version:$vvd_version,not support remove_fmk50rh_fmbh45_database!"
+		return
+    }
+	set vvd_path [get_vvd_path]
+	set current_prj_path [file join $::env(JFM_PATH)]
+	set patch_data_path [file join $current_prj_path "ip_patch" "device_database" "fmk50rh_fmbh45" "xilinx" "$vvd_version" "data"]
+	set vvd_data_path 	[file join $vvd_path "data"]
+	set rd_path [findFiles $patch_data_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_data_path" $rd_file $vvd_data_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $wr_file no such file! "
+		} 
+		file copy -force $rd_file $wr_file
+	}
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "artix7" "devint" "artix7" "xc7k325t_fmk50t"]
+	set file_list [glob -nocomplain $vvd_path/data/parts/xilinx/artix7/public/bsdl/xc7k325t_fmk50t_*]
+	foreach file $file_list {file delete -force $file}
+	
+	set file_list [glob -nocomplain $vvd_path/data/parts/xilinx/artix7/public/ibis/pkg/xc7k325t_fmk50t_*]
+	foreach file $file_list {file delete -force $file}
+	
+	
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "zynq" "devint" "zynq" "xc7z045_fmbh45"]
+	set file_list [glob -nocomplain $vvd_path/data/parts/xilinx/zynq/public/bsdl/xc7z045_fmbh45_*]
+	foreach file $file_list {file delete -force $file}
+	
+	set file_list [glob -nocomplain $vvd_path/data/parts/xilinx/zynq/public/ibis/pkg/xc7z045_fmbh45_*]
+	foreach file $file_list {file delete -force $file}
+	remove_ip_database
+	puts "FMSH->remove_fmk50rh_fmbh45_database excuted successfully!"	
+
+PROCEDURE remove_ip_database
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	set vvd_path [get_vvd_path]
+	set current_prj_path [file join $::env(JFM_PATH)]
+	if {$vvd_version != "2018.3" && $vvd_version != "2022.1"} {
+        return
+    }
+	recover_vv_index
+	file delete -force $vvd_path/data/ip/core_licenses/fm7_device.lic 
+	file delete -force  $vvd_path/scripts/ip
+	file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/scripts/$vvd_version/ip  $vvd_path/scripts
+	if {$vvd_version == "2018.3"} {
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl 	$vvd_path/data/ip/xilinx/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/aurora_64b66b_v11_2/xgui/aurora_64b66b_v11_2.tcl $vvd_path/data/ip/xilinx/aurora_64b66b_v11_2/xgui/aurora_64b66b_v11_2.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/xdma_v4_1/xgui/xdma_v4_1.tcl	 					$vvd_path/data/ip/xilinx/xdma_v4_1/xgui/xdma_v4_1.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/cpri_v8_9/xgui/cpri_v8_9.tcl	 							$vvd_path/data/ip/xilinx/cpri_v8_9/xgui/cpri_v8_9.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl	 			$vvd_path/data/ip/xilinx/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/jesd204_v7_2/xgui/jesd204_v7_2.tcl	 					$vvd_path/data/ip/xilinx/jesd204_v7_2/xgui/jesd204_v7_2.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/vid_phy_controller_v2_2/xgui/vid_phy_controller_v2_2.tcl	$vvd_path/data/ip/xilinx/vid_phy_controller_v2_2/xgui/vid_phy_controller_v2_2.tcl
+		
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/$vvd_version/xc7z015.xng $vvd_path/data/parts/xilinx/zynq/devint/zynq/xc7z015/xc7z015.xng
+		
+	} elseif {$vvd_version == "2022.1"} {
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl 	$vvd_path/data/ip/xilinx/aurora_8b10b_v11_1/xgui/aurora_8b10b_v11_1.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/aurora_64b66b_v12_0/xgui/aurora_64b66b_v12_0.tcl $vvd_path/data/ip/xilinx/aurora_64b66b_v12_0/xgui/aurora_64b66b_v12_0.tcl
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/xdma_v4_1/xgui/xdma_v4_1.tcl	 					$vvd_path/data/ip/xilinx/xdma_v4_1/xgui/xdma_v4_1.tcl	
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/ips/$vvd_version/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl	 	$vvd_path/data/ip/xilinx/jesd204_phy_v4_0/xgui/jesd204_phy_v4_0.tcl		
+
+		file copy -force $current_prj_path/ip_patch/device_database/common/xilinx/$vvd_version/xc7z015.xng $vvd_path/data/parts/xilinx/zynq/devint/zynq/xc7z015/xc7z015.xng
+	}
+	set patch_mig_path 	[file join $current_prj_path "ip_patch" "device_database" "common" "xilinx" "$vvd_version" "mig_7series_v4_2"]
+	set vvd_mig_path 	[file join $vvd_path "data" "ip" "xilinx" "mig_7series_v4_2"]
+	set rd_path [findFiles $patch_mig_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_mig_path" $rd_file $vvd_mig_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		file copy -force $rd_file $wr_file
+	}
+
+PROCEDURE remove_jfmql70tai_jfmql100t_jfmql100tai_database
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	set vvd_version [string range [version -short] 0 5]
+	if {$vvd_version != "2018.3" &&  $vvd_version != "2019.2"} {
+	     error "FMSH->This command only support in Vivado2018.3 or Vivado2019.2!"
+	}
+	set vvd_path [get_vvd_path]
+	set current_prj_path [file join $::env(JFM_PATH)]
+	set patch_data_path  [file join $current_prj_path "ip_patch" "device_database"  "7z100t_7z100tai_7z70tai" "xilinx" $vvd_version]
+	set vivado_data_path [file join $vvd_path]
+	set rd_path [findFiles $patch_data_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_data_path" $rd_file $vivado_data_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			file copy -force $rd_file [file dir $wr_file]
+		} else {
+			file copy -force $rd_file $wr_file
+		}
+	}
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "zynq" "devint" "zynq" "xc7z100_jfmql70tai"]
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "zynq" "devint" "zynq" "xc7z100_jfmql100t"]
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "zynq" "devint" "zynq" "xc7z100_jfmql100tai"]
+	puts "FMSH->remove_jfmql70tai_jfmql100t_jfmql100tai_database excuted successfully(jfmql70tai/jfmql100t/jfmql100tai)!"
+
+PROCEDURE replace_fmk230t_database
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	if {$vvd_version != "2018.3" && $vvd_version != "2022.1"} {
+	     error "FMSH->This command may not right,current vivado version is $vvd_version!"
+	}
+	if {$vvd_version == 2018.3} {
+		set vvd_path  [get_vvd_path]
+		set current_prj_path [file join $::env(JFM_PATH)]
+		file copy -force [format "%s/ip_patch/device_database/fmk230t/xilinx/HARC.cfg" $current_prj_path] [format "%s/data/parts/xilinx/common/HARC.cfg" $vvd_path] 
+	}
+	set vvd_path [get_vvd_path]
+	set current_prj_path [file join $::env(JFM_PATH)]
+	reset_database_to_default
+	set patch_k7_path  [file join $current_prj_path "ip_patch" "device_database" "fmk230t" "fmsh" "kintex7"]
+	set vivado_k7_path [file join $vvd_path "data" "parts" "xilinx" "kintex7"]
+	set rd_path [findFiles $patch_k7_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_k7_path" $rd_file $vivado_k7_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		file copy -force $rd_file $wr_file
+	}
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t.connOfflineFile.pb"]
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t-1.dlyOfflineFile.pb"]
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t-2.dlyOfflineFile.pb"]
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t-2L.dlyOfflineFile.pb"]
+	file delete -force [file join $vvd_path "data" "parts" "xilinx" "kintex7" "devint" "kintex7" "xc7k325t" "xc7k325t-3.dlyOfflineFile.pb"]
+	puts "FMSH->Replace fmk230t database files successfully!"
+
+PROCEDURE replace_ip_database
+ARGS mem_type_value
+
+    set vvd_path [get_vvd_path]
+	set vvd_version [string range [version -short] 0 5]
+	if {$vvd_version != "2018.3"} {
+        error "An error occurs!\nInfo:Current vvd_version is $vvd_version, not support xfft modifies!(please use 2018.3)"
+    }
+
+	set current_prj_path [file join $::env(JFM_PATH)]
+	#xfft_v9_1
+	set xfft_v9_1_vh_rfs               [format "%s/data/ip/xilinx/xfft_v9_1/hdl/xfft_v9_1_vh_rfs.vhd" $vvd_path]
+	set xbip_utils_v3_0_vh_rfs         [format "%s/data/ip/xilinx/xbip_utils_v3_0/hdl/xbip_utils_v3_0_vh_rfs.vhd" $vvd_path]
+	set xbip_pipe_v3_0_vh_rfs          [format "%s/data/ip/xilinx/xbip_pipe_v3_0/hdl/xbip_pipe_v3_0_vh_rfs.vhd" $vvd_path]
+    set xbip_dsp48_wrapper_v3_0_vh_rfs [format "%s/data/ip/xilinx/xbip_dsp48_wrapper_v3_0/hdl/xbip_dsp48_wrapper_v3_0_vh_rfs.vhd" $vvd_path]
+	set xbip_dsp48_addsub_v3_0_vh_rfs  [format "%s/data/ip/xilinx/xbip_dsp48_addsub_v3_0/hdl/xbip_dsp48_addsub_v3_0_vh_rfs.vhd" $vvd_path]
+	set xbip_bram18k_v3_0_vh_rfs       [format "%s/data/ip/xilinx/xbip_bram18k_v3_0/hdl/xbip_bram18k_v3_0_vh_rfs.vhd" $vvd_path]
+	set xbip_addsub_v3_0_vh_rfs        [format "%s/data/ip/xilinx/xbip_addsub_v3_0/hdl/xbip_addsub_v3_0_vh_rfs.vhd" $vvd_path]
+	set mult_gen_v12_0_vh_rfs          [format "%s/data/ip/xilinx/mult_gen_v12_0/hdl/mult_gen_v12_0_vh_rfs.vhd" $vvd_path]
+	set floating_point_v7_0_vh_rfs     [format "%s/data/ip/xilinx/floating_point_v7_0/hdl/floating_point_v7_0_vh_rfs.vhd" $vvd_path]
+	set cmpy_v6_0_vh_rfs               [format "%s/data/ip/xilinx/cmpy_v6_0/hdl/cmpy_v6_0_vh_rfs.vhd" $vvd_path]
+	set c_shift_ram_v12_0_vh_rfs       [format "%s/data/ip/xilinx/c_shift_ram_v12_0/hdl/c_shift_ram_v12_0_vh_rfs.vhd" $vvd_path]
+	set c_reg_fd_v12_0_vh_rfs          [format "%s/data/ip/xilinx/c_reg_fd_v12_0/hdl/c_reg_fd_v12_0_vh_rfs.vhd" $vvd_path]
+	set c_mux_bit_v12_0_vh_rfs         [format "%s/data/ip/xilinx/c_mux_bit_v12_0/hdl/c_mux_bit_v12_0_vh_rfs.vhd" $vvd_path]
+	set c_addsub_v12_0_vh_rfs          [format "%s/data/ip/xilinx/c_addsub_v12_0/hdl/c_addsub_v12_0_vh_rfs.vhd" $vvd_path]
+	set axi_utils_v2_0_vh_rfs          [format "%s/data/ip/xilinx/axi_utils_v2_0/hdl/axi_utils_v2_0_vh_rfs.vhd" $vvd_path]
+	#fir_compiler_v7_2
+	set fir_compiler_v7_2_vh_rfs 	   [format "%s/data/ip/xilinx/fir_compiler_v7_2/hdl/fir_compiler_v7_2_vh_rfs.vhd" $vvd_path]
+	##dds_compiler_v6_0 
+	set dds_compiler_v6_0_vh_rfs 	   [format "%s/data/ip/xilinx/dds_compiler_v6_0/hdl/dds_compiler_v6_0_vh_rfs.vhd" $vvd_path]
+	##cpri
+	set cpri_v8_9_rfs				   [format "%s/data/ip/xilinx/cpri_v8_9/hdl/cpri_v8_9_rfs.vhd" $vvd_path]
+	set fc32_rs_fec_v1_0_vl_rfs        [format "%s/data/ip/xilinx/fc32_rs_fec_v1_0/hdl/fc32_rs_fec_v1_0_vl_rfs.v " $vvd_path]
+	set cmac_usplus_v2_5_vl_rfs 	   [format "%s/data/ip/xilinx/cmac_usplus_v2_5/hdl/cmac_usplus_v2_5_vl_rfs.v" $vvd_path]
+	##jesd
+	set jesd204_v7_2_rfs 			   [format "%s/data/ip/xilinx/jesd204_v7_2/hdl/jesd204_v7_2_rfs.v" $vvd_path]
+	set jesd204c_v4_0_rfs 			   [format "%s/data/ip/xilinx/jesd204c_v4_0/hdl/jesd204c_v4_0_rfs.v" $vvd_path]
+	set jesd204c_v4_0_syn_rfs 		   [format "%s/data/ip/xilinx/jesd204c_v4_0/hdl/jesd204c_v4_0_syn_rfs.v" $vvd_path]
+	##cordic
+	set cordic_v6_0_vh_rfs 		   	   [format "%s/data/ip/xilinx/cordic_v6_0/hdl/cordic_v6_0_vh_rfs.vhd" $vvd_path]
+	##divgen
+	set div_gen_v5_1_vh_rfs 		   [format "%s/data/ip/xilinx/div_gen_v5_1/hdl/div_gen_v5_1_vh_rfs.vhd" $vvd_path]
+	##floating_point_v7_1
+	set floating_point_v7_1_vh_rfs	   [format "%s/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd" $vvd_path]
+	
+	set c_counter_binary_v12_0_vh_rfs  [format "%s/data/ip/xilinx/c_counter_binary_v12_0/hdl/c_counter_binary_v12_0_vh_rfs.vhd" $vvd_path]
+	
+	set tri_mode_ethernet_mac_v9_0_rfs [format "%s/data/ip/xilinx/tri_mode_ethernet_mac_v9_0/hdl/tri_mode_ethernet_mac_v9_0_rfs.v" $vvd_path]
+	set tri_mode_ethernet_mac_v9_0_rfs_vhd [format "%s/data/ip/xilinx/tri_mode_ethernet_mac_v9_0/hdl/tri_mode_ethernet_mac_v9_0_rfs.vhd" $vvd_path]
+	
+	
+	set timer_sync_1588_v1_2_rfs [format "%s/data/ip/xilinx/timer_sync_1588_v1_2/hdl/timer_sync_1588_v1_2_rfs.v" $vvd_path]
+	set timer_sync_1588_v1_2_rfs_vhd [format "%s/data/ip/xilinx/timer_sync_1588_v1_2/hdl/timer_sync_1588_v1_2_rfs.vhd" $vvd_path]
+	
+	
+	
+	file copy -force [file join $current_prj_path "ip_patch" "xilinx" "xgmac_top_v.ttcl"] [format "%s/data/ip/xilinx/ten_gig_eth_mac_v15_1/ttcl/xgmac_top_v.ttcl" $vvd_path]
+
+	set xfft_file_list [concat $xfft_v9_1_vh_rfs $xbip_utils_v3_0_vh_rfs $xbip_pipe_v3_0_vh_rfs $xbip_dsp48_wrapper_v3_0_vh_rfs $xbip_dsp48_addsub_v3_0_vh_rfs $xbip_bram18k_v3_0_vh_rfs $xbip_addsub_v3_0_vh_rfs $mult_gen_v12_0_vh_rfs $floating_point_v7_0_vh_rfs $cmpy_v6_0_vh_rfs $c_shift_ram_v12_0_vh_rfs $c_reg_fd_v12_0_vh_rfs $c_mux_bit_v12_0_vh_rfs $c_addsub_v12_0_vh_rfs $axi_utils_v2_0_vh_rfs $fir_compiler_v7_2_vh_rfs $dds_compiler_v6_0_vh_rfs $cpri_v8_9_rfs $fc32_rs_fec_v1_0_vl_rfs $cmac_usplus_v2_5_vl_rfs $jesd204_v7_2_rfs $jesd204c_v4_0_rfs $jesd204c_v4_0_syn_rfs $cordic_v6_0_vh_rfs $div_gen_v5_1_vh_rfs $floating_point_v7_1_vh_rfs $c_counter_binary_v12_0_vh_rfs $tri_mode_ethernet_mac_v9_0_rfs $tri_mode_ethernet_mac_v9_0_rfs_vhd $timer_sync_1588_v1_2_rfs $timer_sync_1588_v1_2_rfs_vhd]	
+
+	foreach xfft_file $xfft_file_list {
+	    incr i
+	    if {[file exists $xfft_file] == 1} {
+	        set xfft_file_bak [format "%s.bak" $xfft_file]
+		    regexp {hdl\/(.*)$} $xfft_file match ori_file
+	        if {[file exists $xfft_file_bak]} {		
+	        } else {
+	            source_file_backup $xfft_file
+	        }
+			if {$ori_file == "xfft_v9_1_vh_rfs.vhd" && $mem_type_value == "LOGIC"} {
+				set ori_file "xfft_v9_1_vh_rfs_mem_type.vhd"
+				puts "XFFT mem_type_value is LOGIC"
+			}
+            set ori_path [file join $current_prj_path "ip_patch" "xilinx" "$ori_file"]
+            file copy -force $ori_path $xfft_file
+			
+		} else {
+		   error "$xfft_file is not existing."
+		}
+	}
+	
+	puts "xfft,fir_compiler,dds_compiler,cpri,jesd,cordic,divgen,floating point,binary counter ,eth IPs files modified successfully!(Total $i files)"
+
+PROCEDURE replace_xc7a100t_database
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	# if {$vvd_version != "2018.3"} {
+        # error "An error occurs!\nInfo:Current vvd_version:$vvd_version,not support replace_xc7a100t_database!(please use Vivado2018.3)"
+    # }
+	set vvd_path [get_vvd_path]
+	set current_prj_path [file join $::env(JFM_PATH)]
+	set patch_data_path [file join $current_prj_path "ip_patch" "xc7a100t" "fmsh" "data"]
+	set vvd_data_path 	[file join $vvd_path "data"]
+	set rd_path [findFiles $patch_data_path *]
+	foreach rd_file $rd_path {
+		set wr_file [regsub "$patch_data_path" $rd_file $vvd_data_path]
+		if {[file exists $rd_file] == 0} {
+			error "FMSH->An error occurs:\nCan't find $rd_file no such file! "
+		}
+		if {[file exists $wr_file] == 0} {
+			file copy -force $rd_file [file dir $wr_file]
+		} else {
+			file copy -force $rd_file $wr_file
+		}
+	}
+	add_ip_database
+	puts "FMSH->replace_xc7a100t_database excuted successfully!"
+
+PROCEDURE reset_database_to_default
+ARGS 
+
+	set vvd_version [string range [version -short] 0 5]
+	set vvd_path  [get_vvd_path]
+	set vivado_flag [format "%s/data/parts/xilinx/common/unisim.btl" $vvd_path]
+	if {[file exist $vivado_flag]} {
+		set vvd_version "2018.3"
+	} else {
+		set vvd_version "2022.1"
+	}
+	if {$vvd_version != "2018.3" && $vvd_version != "2022.1"} {
+	     error "FMSH->This command may not right,current vivado version is $vvd_version!(Please use 2018.3 or 2022.1)"
+		 return
+	}	
+	set vvd_list  [list]
+	set fmsh_list [list]
+	#delete 045ai flag 
+	set flag_045ai	[format "%s/data/parts/xilinx/zynq/devint/zynq.rtd.bak" $vvd_path]
+	file delete -force $flag_045ai
+	#vvd path
+	#045ai 9
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq.rtd" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq.xng" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq/PartStats.xml" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z045/ClockRegion.xml" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z045/xc7z045.rtd" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z045/xc7z045.tile2bfd" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z045/xc7z045.tld" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z045/xc7z045.xng" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z045/xc7z045_tiles.xml" $vvd_path]
+	#50t 11
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/artix7/devint/artix7/xc7a50t/csg324/Package.xml" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/ip/xilinx/mig_7series_v4_2/data/fpga_tlib/artix7/7a/xc7a50tcsg324_pkg.xml" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/artix7/devint/artix7/xc7a50t/fgg484/Package.xml" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/ip/xilinx/mig_7series_v4_2/data/fpga_tlib/artix7/7a/xc7a50tfgg484_pkg.xml" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/artix7/devint/artix7.xng" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/artix7/devint/artix7.rtd" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/artix7/devint/artix7/PartStats.xml" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/artix7/devint/artix7/xc7a50t/xc7a50t_tiles.xml" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/artix7/devint/artix7/xc7a50t/xc7a50t.tile2bfd" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/artix7/devint/artix7/xc7a50t/xc7a50t.xng" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/artix7/devint/artix7/xc7a50t/ClockRegion.xml" $vvd_path]
+	#100ai 9
+    lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/Sitemap2.xml" $vvd_path]
+	# lappend	    vvd_list     [format "%s/data/parts/xilinx/common/unisim.btl" $vvd_path]
+	lappend	    vvd_list     [format "%s/scripts/rt/data/unisim_comp.lib" $vvd_path]
+	lappend	    vvd_list     [format "%s/scripts/rt/data/unisim_comp.v" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq.lib" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq.rtd" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq.xng" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq.padr" $vvd_path]
+	lappend	    vvd_list     [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z100/xc7z100.paspd" $vvd_path]
+	#7015 7
+	lappend	    vvd_list [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z015/ClockRegion.xml" $vvd_path]
+	lappend	    vvd_list [format "%s/data/parts/xilinx/zynq/devint/zynq/PartStats.xml" $vvd_path]
+	lappend	    vvd_list [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z015/xc7z015.rtd" $vvd_path]
+	lappend	    vvd_list [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z015/xc7z015.xng" $vvd_path]
+	lappend	    vvd_list [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z015/xc7z015_tiles.xml" $vvd_path]
+	lappend	    vvd_list [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z015/xc7z015.tile2bfd" $vvd_path]
+	lappend	    vvd_list [format "%s/data/parts/xilinx/zynq/devint/zynq.rtd" $vvd_path]
+	lappend	    vvd_list [format "%s/data/parts/xilinx/zynq/devint/zynq/xc7z015/xc7z015.paspd" $vvd_path]
+	#patch path
+	#045ai
+	set current_prj_path [file join $::env(JFM_PATH)]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/045ai/zynq.rtd" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/045ai/zynq.xng" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/045ai/PartStats.xml" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/045ai/ClockRegion.xml" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/045ai/xc7z045.rtd" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/045ai/xc7z045.tile2bfd" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/045ai/xc7z045.tld" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/045ai/xc7z045.xng" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/045ai/xc7z045_tiles.xml" $current_prj_path]
+	#50t
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/Package_324.xml" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/xc7a50tcsg324_pkg.xml" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/Package_484.xml" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/xc7a50tfgg484_pkg.xml" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/artix7.xng" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/artix7.rtd" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/PartStats.xml" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/xc7a50t_tiles.xml" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/xc7a50t.tile2bfd" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/xc7a50t.xng" $current_prj_path]
+	lappend	    fmsh_list     [format "%s/ip_patch/database_ori/$vvd_version/50t/ClockRegion.xml" $current_prj_path]
+	#100ai
+	lappend	    fmsh_list      [format "%s/ip_patch/database_ori/$vvd_version/100ai/Sitemap2.xml" $current_prj_path]
+	# lappend	    fmsh_list      [format "%s/ip_patch/database_ori/$vvd_version/100ai/unisim.btl" $current_prj_path]
+	lappend	    fmsh_list      [format "%s/ip_patch/database_ori/$vvd_version/100ai/unisim_comp.lib" $current_prj_path]
+	lappend	    fmsh_list      [format "%s/ip_patch/database_ori/$vvd_version/100ai/unisim_comp.v" $current_prj_path]
+	lappend	    fmsh_list      [format "%s/ip_patch/database_ori/$vvd_version/100ai/zynq.lib" $current_prj_path]
+	lappend	    fmsh_list      [format "%s/ip_patch/database_ori/$vvd_version/100ai/zynq.rtd" $current_prj_path]
+	lappend	    fmsh_list      [format "%s/ip_patch/database_ori/$vvd_version/100ai/zynq.xng" $current_prj_path]
+	lappend	    fmsh_list      [format "%s/ip_patch/database_ori/$vvd_version/100ai/zynq.padr" $current_prj_path]
+	lappend	    fmsh_list      [format "%s/ip_patch/database_ori/$vvd_version/100ai/xc7z100.paspd" $current_prj_path]
+	#7015 7
+	lappend	    fmsh_list  [format "%s/ip_patch/database_ori/$vvd_version/7015/ClockRegion.xml" $current_prj_path]
+	lappend	    fmsh_list  [format "%s/ip_patch/database_ori/$vvd_version/7015/PartStats.xml" $current_prj_path]
+	lappend	    fmsh_list  [format "%s/ip_patch/database_ori/$vvd_version/7015/xc7z015.rtd" $current_prj_path]
+	lappend	    fmsh_list  [format "%s/ip_patch/database_ori/$vvd_version/7015/xc7z015.xng" $current_prj_path]
+	lappend	    fmsh_list  [format "%s/ip_patch/database_ori/$vvd_version/7015/xc7z015_tiles.xml" $current_prj_path]
+	lappend	    fmsh_list  [format "%s/ip_patch/database_ori/$vvd_version/7015/xc7z015.tile2bfd" $current_prj_path]
+	lappend	    fmsh_list  [format "%s/ip_patch/database_ori/$vvd_version/7015/zynq.rtd" $current_prj_path]
+	lappend	    fmsh_list  [format "%s/ip_patch/database_ori/$vvd_version/7015/xc7z015.paspd" $current_prj_path]
+	set i 0
+	foreach vvd_file $vvd_list {
+		if {[file exists $vvd_file] == 0 || [file exists [lindex $fmsh_list $i]] == 0 } {
+			puts "Critical Warning:\nPlease check whether $vvd_file , [lindex $fmsh_list $i] is existing!"
+			incr i
+			continue
+		}
+		file copy -force [lindex $fmsh_list $i] $vvd_file
+		incr i
+	}
+	###100AI unisim.btl
+	if {$vvd_version == "2018.3"} {
+		set unisim_btl_wr      [format "%s/data/parts/xilinx/common/unisim.btl" $vvd_path]
+		set unisim_btl_rd      [format "%s/ip_patch/database_ori/2018.3/100ai/unisim.btl" $current_prj_path]
+		file copy -force $unisim_btl_rd $unisim_btl_wr
+	} elseif {$vvd_version == "2022.1"} {
+		file delete -force [format "%s/data/parts/xilinx/common/unisims" $vvd_path]
+		file copy -force [format "%s/ip_patch/database_ori/2022.1/100ai/unisims" $current_prj_path] [format "%s/data/parts/xilinx/common" $vvd_path]
+	}
+	# recover_fmk230t_database
+	fmsh_send_msg_critical_warning "Reset replaced device database(FMK50T/FMQL45T-AI/JFMQL100TAI/JFMQL100T/JFMQL15T/JFMQL30TAI676H) to default successfully!(if you want to reset paspd to default,please use spd_recover_force command)"
+
+PROCEDURE runEco
+ARGS type mode force
+
+    set device_part [get_property PART [current_project]]
+    if {$type==2} {
+#eco user design
+        set result [ecoBramSDP $mode]
+        if {$result} {
+            writeDCP
+            puts "complete!"
+        }
+    } elseif {$type==0} {
+#eco ip 
+		if {[regexp {325t} $device_part] || [regexp {690t} $device_part]} {
+		    ecoIP $mode $force
+		    
+		} else {
+		    puts "The $device_part device don't need BRAM patch!"
+		}
+    } elseif {$type==1} {  
+		if {[regexp {325t} $device_part] || [regexp {690t} $device_part]} {
+		   checkSDP
+		} else {
+		    puts "The $device_part device don't need BRAM patch!"
+		}
+    } elseif {$type==3} {
+	    if {[regexp {325t} $device_part] || [regexp {690t} $device_part]} {
+		    ecoBramSDP $mode
+		} else {
+		    puts "The  $device_part device don't need BRAM patch!"  
+		}
+#       write_checkpoint -force ./test.dcp
+#       incrPR
+    } else {
+        puts "Unsopported usage!"
+        puts "###usage:###"
+        puts "eco IP: runEco 0"
+        puts "check whole design: runEco 1"
+        puts "eco user design: runEco 2"
+        puts "############"
+    }
+
+PROCEDURE source_file_backup
+ARGS source_file_path
+
+    set dst_file_path [format "%s.bak" $source_file_path]
+    file copy -force $source_file_path $dst_file_path
+

@@ -1,0 +1,7 @@
+{
+  "script": "finish.py",
+  "exit": 1,
+  "stage": "after all 9 document updates and revision snapshots; reading previous JSON with Windows default GBK",
+  "documents_updated_and_not_repeated": true,
+  "repair": "Continue only baseline/report stage with explicit UTF-8, no rerun of document edits or EDA"
+}

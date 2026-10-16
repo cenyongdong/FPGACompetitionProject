@@ -1,0 +1,100 @@
+{
+  "source": {
+    "path": "D:\\FPGACompetitionProject\\Docs\\开发板手册\\JFMQL30TAI_LITE.pdf",
+    "exists": true,
+    "bytes": 893867,
+    "sha256": "cdec19cef2b65fb09340c89bcc0fd8d98fdaaa79421b210112940de488b5e1b6"
+  },
+  "visually_reviewed_PDF_pages": [
+    9,
+    10,
+    19,
+    21,
+    22
+  ],
+  "schematic_sheet_labels": [
+    9,
+    10,
+    23,
+    25,
+    26
+  ],
+  "device_symbol": "U1 JFMQL30TAI",
+  "title_block_reuses_JFMQL100TAI_label": true,
+  "rows": [
+    {
+      "signal": "ref_100m",
+      "schematic_net": "PL_100MHz",
+      "pin": "AC14",
+      "bank": 12,
+      "VCCO": 3.3,
+      "role": "100MHz oscillator G1; MRCC input"
+    },
+    {
+      "signal": "HDMI_CLK",
+      "P": "AC17",
+      "N": "AC16",
+      "bank": 12,
+      "VCCO": 3.3
+    },
+    {
+      "signal": "HDMI_D0",
+      "P": "AA15",
+      "N": "AA14",
+      "bank": 12,
+      "VCCO": 3.3
+    },
+    {
+      "signal": "HDMI_D1",
+      "P": "Y16",
+      "N": "Y15",
+      "bank": 12,
+      "VCCO": 3.3
+    },
+    {
+      "signal": "HDMI_D2",
+      "P": "W16",
+      "N": "W15",
+      "bank": 12,
+      "VCCO": 3.3
+    },
+    {
+      "signal": "HDMI_HPD",
+      "pin": "AE16",
+      "bank": 12,
+      "VCCO": 3.3,
+      "role": "input after R353/R354 divider"
+    },
+    {
+      "signal": "HDMI_DDC_SCL",
+      "pin": "AA17",
+      "bank": 12,
+      "VCCO": 3.3,
+      "role": "HDMIO_FSCL; MOS level translator, open-drain required"
+    },
+    {
+      "signal": "HDMI_DDC_SDA",
+      "pin": "AB17",
+      "bank": 12,
+      "VCCO": 3.3,
+      "role": "HDMIO_FSDA; MOS level translator, open-drain required"
+    },
+    {
+      "signal": "HDMI_CEC",
+      "pin": "AB16",
+      "bank": 12,
+      "VCCO": 3.3,
+      "role": "separate optional CEC net"
+    },
+    {
+      "signal": "sys_rst / PL_KEY2",
+      "pin": "F8",
+      "bank": 34,
+      "VCCO": 1.5,
+      "role": "SW7: released low, pressed high; not PS power-on reset"
+    }
+  ],
+  "live_measurement": false,
+  "1080p60_warning_on_PDF_page_19": true,
+  "not_automatically_switching_target_to_720p": true
+}

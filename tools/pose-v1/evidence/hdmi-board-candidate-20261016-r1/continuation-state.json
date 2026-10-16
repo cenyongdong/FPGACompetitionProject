@@ -1,0 +1,31 @@
+{
+  "updated_local": "2026-10-16T19:32:46.213578",
+  "phase": "Static screen confirmed by user; remaining DDR/STOP validation and FAT issue recorded",
+  "candidate_startup_reboots_used": 1,
+  "original_fallback_reboots_used": 0,
+  "BOOT_changed": false,
+  "runtime_candidate_loaded": true,
+  "UART_port": "COM7",
+  "old_DATA": "paused",
+  "offline_evidence": "hdmi-integration-20261016-r1/files.sha256.json",
+  "next": "No background load. Preserve current static output; next DDR/flip/STOP phase must resolve verified SDK buffer ownership/write-completion/failed-stop containment before hardware DMA. No startup-volume writes until FAT issue reviewed.",
+  "candidate_startup_reboot_command_attempts": 1,
+  "candidate_startup_reboot_confirmed": true,
+  "new_boot_id": "ab6d59c6-4921-4733-b04b-a0c4154069ae",
+  "remote_staging": "/root/hdmi-board-candidate-20261016-r1",
+  "UART_capture_closed": true,
+  "original_BOOT_file_restored_and_read_back": true,
+  "boot_partition_mounted": false,
+  "mode": "static eight bars enabled; no display DMA or inference",
+  "serial_capture_closed": true,
+  "user_screen_observation": "显示稳定的八条色条",
+  "OSD_resolution_refresh": "not provided",
+  "FAT_issue": {
+    "dirty_BPB_byte": 1,
+    "unreferenced_clusters": 2168,
+    "source": "unknown; no pre-operation FAT snapshot",
+    "repair": false,
+    "startup_volume_write_stop": true
+  },
+  "background_work": "none; UART and probe/SSH processes ended; intentional hardware static output retained"
+}

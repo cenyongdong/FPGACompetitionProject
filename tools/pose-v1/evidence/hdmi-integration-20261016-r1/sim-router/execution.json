@@ -1,0 +1,16 @@
+[
+  {
+    "stage": "vhdl",
+    "exit": 0,
+    "seconds": 5.070862900000066,
+    "budget": 90,
+    "timeout": false
+  },
+  {
+    "stage": "compile",
+    "exit": 1,
+    "seconds": 1.6810391999897547,
+    "budget": 90,
+    "timeout": false
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "same_constraint_before_and_after_factory_hook": true,
+  "not_new_JFM_or_HDMI_waiver": true,
+  "scope": "Existing MIG 200MHz CLK_REF path to clk_ref_mmcm_gen.mmcm_i/CLKIN1 only",
+  "decision": "Preserve existing MIG generated contract; keep setup/hold and HDMI/CDC gates",
+  "old_sha": "1660c67ef1ffe11242349b712742b06e734c639938f19b1dae7864b5113a9fc9",
+  "current_sha": "ba62e8207810b45ee651e90df53535cf00ee1127fc086cf74b30a5575ec8678d"
+}

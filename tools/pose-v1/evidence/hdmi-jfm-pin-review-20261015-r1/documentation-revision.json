@@ -1,0 +1,57 @@
+{
+  "changes": [
+    {
+      "path": "PROJECT-PROGRESS.md",
+      "before_sha256": "64ab9a3fd0781d8a5adb4a3a388994fe0094258b48c06154d5a28bb982ca134f",
+      "after_sha256": "153fdca2c336e48eaea737a4cedcafc25a4ff05a344a8c06eda4f7a1af01e99d"
+    },
+    {
+      "path": "REFERENCES.md",
+      "before_sha256": "61f5a146690b286d80f3e182bbe56110f22c87f1811fb893f62e2659b24c0f2b",
+      "after_sha256": "cd2660a5f98b5c3a569646bc25d18216048c92e322eb30f014de5b3c39e5d890"
+    },
+    {
+      "path": "DIFFICULTIES.md",
+      "before_sha256": "f0658ed35e3577621240a414d8e53e4cdc77203f2f47fb7a2106106e512173e3",
+      "after_sha256": "49480cc311b9076a06af3384faffacdd3e0dea678ab040ce7fe30761313079b7"
+    },
+    {
+      "path": "Done.md",
+      "before_sha256": "b6b539f76e8539067733349f958fccec43466abfdf225fbd61d3ee2444446fbe",
+      "after_sha256": "9c5c2a34e7faeba1d01f9f800ef4a9fe12526ec7ed0e58a4545a5f23166488c0"
+    },
+    {
+      "path": "ARCHITECTURE-DISCUSSION-20261015.md",
+      "before_sha256": "06038252672bdea11b8c12a95d8ac27113cf8ee5f066c5ee5694bcf7eeda09b6",
+      "after_sha256": "83f46db01067c61a2bd992a3309255ba5f8fd8872b6bcda9a67ff09f1b9fca8b"
+    },
+    {
+      "path": "FPGA/hdmi_candidate/PS-ADAPTATION-STATUS.md",
+      "before_sha256": "75ab0c4c9b319b1ac8b51dbe16cb10e63416e5ea9bf7e632f82515368832005f",
+      "after_sha256": "817a51fb1a13d49004705ed81fea4650fb7f9af2384690b9de1e67983d94ce6c"
+    },
+    {
+      "path": "FPGA/hdmi_candidate/RESUME.md",
+      "before_sha256": "1a0c8b6e8b52a5c8d25c4b042b0c991f00aedf106e8c6e8f8f88aa96b36edca5",
+      "after_sha256": "26d09b62fc8384fafd16f08765dd5c0810dbc28a26083980255b4955422cef9f"
+    },
+    {
+      "path": "FPGA/hdmi_candidate/INTEGRATION.md",
+      "before_sha256": "71a5e3039925ca4f15f96873d1f1de37819976bb6275d63bda94f69e6cc19de4",
+      "after_sha256": "101508b3b59b6bb07e18ae23b37f56c8ba2a32109cfdcfb4238dad75a3d8cb31"
+    },
+    {
+      "path": "FPGA/hdmi_candidate/PIN-CONTRACT.md",
+      "before_sha256": null,
+      "after_sha256": "00ed1e1179d47e994c38230250a853a1e6c3b7c2cd32f8a9bebaa655958cd8ff",
+      "new_document": true
+    },
+    {
+      "path": "FPGA/hdmi_candidate/JFM-COMPATIBILITY-REVIEW.md",
+      "before_sha256": null,
+      "after_sha256": "ff7074eba49926fafa7f8284f595b279766ffc74e639a507c280009aec247d20",
+      "new_document": true
+    }
+  ],
+  "historical_manifests_not_rewritten": true
+}

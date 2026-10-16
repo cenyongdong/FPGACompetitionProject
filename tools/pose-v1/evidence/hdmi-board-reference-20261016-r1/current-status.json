@@ -1,0 +1,13 @@
+{
+  "status": "RELEASED_FOR_CONTROLLED_BOARD_TEST",
+  "two_min_period_checks_user_waived": true,
+  "raw_timing_pass": false,
+  "new_JTAG_chain_pass": true,
+  "reference_payload_identical_to_selected_BOOT": true,
+  "new_HDMI_candidate_integrated": false,
+  "programmed": false,
+  "BOOT_written": false,
+  "rebooted": false,
+  "live_HDMI_or_new_bitstream_realtime_acceptance": false,
+  "reason_not_reloading_reference": "Identical payload does not add the approved HDMI fixes; full candidate and safe switching contract still needed"
+}

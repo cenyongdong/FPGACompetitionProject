@@ -1,0 +1,14 @@
+[
+  {
+    "name": "01-container-state",
+    "args": [
+      "inspect",
+      "--format",
+      "{{.State.Status}}",
+      "FPAI"
+    ],
+    "exit": 1,
+    "seconds": 0.152534500011825,
+    "budget": 90
+  }
+]

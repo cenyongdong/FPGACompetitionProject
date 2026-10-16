@@ -1,0 +1,544 @@
+{
+  "scope": "Read-only boot block hashes, libraries, proc/sysfs/device-tree; no MMIO/SDK/configuration writes",
+  "BOOT": {
+    "name": "BOOT.BIN",
+    "size": 7023552,
+    "sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef"
+  },
+  "libraries": {
+    "libicraft_hostbackend.so": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+    "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+    "libicraft_xir.so": "377a2cac1a8834836503d9805451449d42d99a888b8f96b38d4c2ba8c585af3e",
+    "libicraft_utils.so": "99679371aa20e7955e14c39938225df24cdc763d75f26301970fba114f650109",
+    "libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178"
+  },
+  "boot_id": "8974fbf7-cbe9-4fc9-954d-4682c45b045f",
+  "uname": "Linux U.FMSH 5.4.52 #3 SMP Fri Mar 13 13:44:29 CST 2026 aarch64 aarch64 aarch64 GNU/Linux",
+  "fpga_state": "operating",
+  "processes": [
+    {
+      "pid": 1,
+      "comm": "systemd",
+      "device_fds": []
+    },
+    {
+      "pid": 2,
+      "comm": "kthreadd",
+      "device_fds": []
+    },
+    {
+      "pid": 3,
+      "comm": "rcu_gp",
+      "device_fds": []
+    },
+    {
+      "pid": 4,
+      "comm": "rcu_par_gp",
+      "device_fds": []
+    },
+    {
+      "pid": 8,
+      "comm": "mm_percpu_wq",
+      "device_fds": []
+    },
+    {
+      "pid": 9,
+      "comm": "ksoftirqd/0",
+      "device_fds": []
+    },
+    {
+      "pid": 10,
+      "comm": "rcu_sched",
+      "device_fds": []
+    },
+    {
+      "pid": 11,
+      "comm": "migration/0",
+      "device_fds": []
+    },
+    {
+      "pid": 12,
+      "comm": "cpuhp/0",
+      "device_fds": []
+    },
+    {
+      "pid": 13,
+      "comm": "cpuhp/1",
+      "device_fds": []
+    },
+    {
+      "pid": 14,
+      "comm": "migration/1",
+      "device_fds": []
+    },
+    {
+      "pid": 15,
+      "comm": "ksoftirqd/1",
+      "device_fds": []
+    },
+    {
+      "pid": 18,
+      "comm": "cpuhp/2",
+      "device_fds": []
+    },
+    {
+      "pid": 19,
+      "comm": "migration/2",
+      "device_fds": []
+    },
+    {
+      "pid": 20,
+      "comm": "ksoftirqd/2",
+      "device_fds": []
+    },
+    {
+      "pid": 23,
+      "comm": "cpuhp/3",
+      "device_fds": []
+    },
+    {
+      "pid": 24,
+      "comm": "migration/3",
+      "device_fds": []
+    },
+    {
+      "pid": 25,
+      "comm": "ksoftirqd/3",
+      "device_fds": []
+    },
+    {
+      "pid": 28,
+      "comm": "kdevtmpfs",
+      "device_fds": []
+    },
+    {
+      "pid": 29,
+      "comm": "kworker/0:1-mm_percpu_wq",
+      "device_fds": []
+    },
+    {
+      "pid": 31,
+      "comm": "kworker/2:1-events",
+      "device_fds": []
+    },
+    {
+      "pid": 32,
+      "comm": "kauditd",
+      "device_fds": []
+    },
+    {
+      "pid": 33,
+      "comm": "oom_reaper",
+      "device_fds": []
+    },
+    {
+      "pid": 34,
+      "comm": "writeback",
+      "device_fds": []
+    },
+    {
+      "pid": 35,
+      "comm": "kcompactd0",
+      "device_fds": []
+    },
+    {
+      "pid": 36,
+      "comm": "khugepaged",
+      "device_fds": []
+    },
+    {
+      "pid": 53,
+      "comm": "kblockd",
+      "device_fds": []
+    },
+    {
+      "pid": 54,
+      "comm": "edac-poller",
+      "device_fds": []
+    },
+    {
+      "pid": 55,
+      "comm": "watchdogd",
+      "device_fds": []
+    },
+    {
+      "pid": 56,
+      "comm": "rpciod",
+      "device_fds": []
+    },
+    {
+      "pid": 57,
+      "comm": "kworker/u9:0-kbase_pm_poweroff_wait",
+      "device_fds": []
+    },
+    {
+      "pid": 58,
+      "comm": "xprtiod",
+      "device_fds": []
+    },
+    {
+      "pid": 59,
+      "comm": "kswapd0",
+      "device_fds": []
+    },
+    {
+      "pid": 60,
+      "comm": "ecryptfs-kthrea",
+      "device_fds": []
+    },
+    {
+      "pid": 61,
+      "comm": "nfsiod",
+      "device_fds": []
+    },
+    {
+      "pid": 62,
+      "comm": "spi3",
+      "device_fds": []
+    },
+    {
+      "pid": 63,
+      "comm": "kworker/3:1-events",
+      "device_fds": []
+    },
+    {
+      "pid": 64,
+      "comm": "stmmac_wq",
+      "device_fds": []
+    },
+    {
+      "pid": 65,
+      "comm": "kworker/u8:1-events_unbound",
+      "device_fds": []
+    },
+    {
+      "pid": 68,
+      "comm": "kworker/u8:2-flush-179:0",
+      "device_fds": []
+    },
+    {
+      "pid": 69,
+      "comm": "kpktgend_0",
+      "device_fds": []
+    },
+    {
+      "pid": 71,
+      "comm": "kpktgend_1",
+      "device_fds": []
+    },
+    {
+      "pid": 72,
+      "comm": "kpktgend_2",
+      "device_fds": []
+    },
+    {
+      "pid": 73,
+      "comm": "kpktgend_3",
+      "device_fds": []
+    },
+    {
+      "pid": 74,
+      "comm": "ipv6_addrconf",
+      "device_fds": []
+    },
+    {
+      "pid": 75,
+      "comm": "mmc_complete",
+      "device_fds": []
+    },
+    {
+      "pid": 77,
+      "comm": "kworker/1:1H-kblockd",
+      "device_fds": []
+    },
+    {
+      "pid": 78,
+      "comm": "kworker/0:1H-mmc_complete",
+      "device_fds": []
+    },
+    {
+      "pid": 79,
+      "comm": "kworker/3:1H-kblockd",
+      "device_fds": []
+    },
+    {
+      "pid": 81,
+      "comm": "jbd2/mmcblk0p2-",
+      "device_fds": []
+    },
+    {
+      "pid": 82,
+      "comm": "ext4-rsv-conver",
+      "device_fds": []
+    },
+    {
+      "pid": 83,
+      "comm": "kworker/2:1H-kblockd",
+      "device_fds": []
+    },
+    {
+      "pid": 101,
+      "comm": "systemd-journal",
+      "device_fds": []
+    },
+    {
+      "pid": 110,
+      "comm": "kworker/3:2-events",
+      "device_fds": []
+    },
+    {
+      "pid": 115,
+      "comm": "kworker/u9:1",
+      "device_fds": []
+    },
+    {
+      "pid": 116,
+      "comm": "kbase_job_fault",
+      "device_fds": []
+    },
+    {
+      "pid": 119,
+      "comm": "kworker/0:2-cgroup_destroy",
+      "device_fds": []
+    },
+    {
+      "pid": 120,
+      "comm": "mvx_securevideo",
+      "device_fds": []
+    },
+    {
+      "pid": 121,
+      "comm": "fw_cache",
+      "device_fds": []
+    },
+    {
+      "pid": 122,
+      "comm": "mvx_sched",
+      "device_fds": []
+    },
+    {
+      "pid": 126,
+      "comm": "systemd-timesyn",
+      "device_fds": []
+    },
+    {
+      "pid": 130,
+      "comm": "cron",
+      "device_fds": []
+    },
+    {
+      "pid": 131,
+      "comm": "dbus-daemon",
+      "device_fds": []
+    },
+    {
+      "pid": 136,
+      "comm": "rsyslogd",
+      "device_fds": []
+    },
+    {
+      "pid": 137,
+      "comm": "systemd-logind",
+      "device_fds": []
+    },
+    {
+      "pid": 150,
+      "comm": "systemd-resolve",
+      "device_fds": []
+    },
+    {
+      "pid": 151,
+      "comm": "unattended-upgr",
+      "device_fds": []
+    },
+    {
+      "pid": 186,
+      "comm": "sshd",
+      "device_fds": []
+    },
+    {
+      "pid": 187,
+      "comm": "agetty",
+      "device_fds": []
+    },
+    {
+      "pid": 188,
+      "comm": "login",
+      "device_fds": []
+    },
+    {
+      "pid": 214,
+      "comm": "sshd",
+      "device_fds": []
+    },
+    {
+      "pid": 216,
+      "comm": "sshd",
+      "device_fds": []
+    },
+    {
+      "pid": 219,
+      "comm": "systemd",
+      "device_fds": []
+    },
+    {
+      "pid": 220,
+      "comm": "kworker/0:2H",
+      "device_fds": []
+    },
+    {
+      "pid": 221,
+      "comm": "(sd-pam)",
+      "device_fds": []
+    },
+    {
+      "pid": 247,
+      "comm": "bash",
+      "device_fds": []
+    },
+    {
+      "pid": 251,
+      "comm": "sftp-server",
+      "device_fds": []
+    },
+    {
+      "pid": 356,
+      "comm": "kworker/3:0H",
+      "device_fds": []
+    },
+    {
+      "pid": 472,
+      "comm": "apt.systemd.dai",
+      "device_fds": []
+    },
+    {
+      "pid": 476,
+      "comm": "apt.systemd.dai",
+      "device_fds": []
+    },
+    {
+      "pid": 507,
+      "comm": "unattended-upgr",
+      "device_fds": []
+    },
+    {
+      "pid": 519,
+      "comm": "kworker/2:0H",
+      "device_fds": []
+    },
+    {
+      "pid": 524,
+      "comm": "http",
+      "device_fds": []
+    },
+    {
+      "pid": 621,
+      "comm": "bash",
+      "device_fds": []
+    },
+    {
+      "pid": 628,
+      "comm": "bash",
+      "device_fds": []
+    },
+    {
+      "pid": 3137,
+      "comm": "kworker/2:2",
+      "device_fds": []
+    },
+    {
+      "pid": 6774,
+      "comm": "kworker/1:1-events",
+      "device_fds": []
+    },
+    {
+      "pid": 8047,
+      "comm": "kworker/1:0H",
+      "device_fds": []
+    },
+    {
+      "pid": 8703,
+      "comm": "kworker/1:0-events",
+      "device_fds": []
+    },
+    {
+      "pid": 10181,
+      "comm": "kworker/1:2H",
+      "device_fds": []
+    },
+    {
+      "pid": 10668,
+      "comm": "sshd",
+      "device_fds": []
+    },
+    {
+      "pid": 10680,
+      "comm": "python3",
+      "device_fds": []
+    },
+    {
+      "pid": 10681,
+      "comm": "kworker/1:2-events",
+      "device_fds": []
+    },
+    {
+      "pid": 10689,
+      "comm": "kworker/0:0H",
+      "device_fds": []
+    },
+    {
+      "pid": 10700,
+      "comm": "sleep",
+      "device_fds": []
+    }
+  ],
+  "device_owners": [],
+  "fpga_sysfs": {
+    "/sys/class/fpga_manager": [
+      {
+        "name": "fpga0",
+        "path": "/sys/devices/platform/amba-apu@0/e0040000.devcfg/fpga_manager/fpga0",
+        "attrs": {
+          "name": "FMSH FMQL FPGA Manager",
+          "state": "operating",
+          "status": null,
+          "flags": "0",
+          "firmware": null,
+          "enable": null
+        },
+        "entries": [
+          "uevent",
+          "of_node",
+          "power",
+          "device",
+          "key",
+          "subsystem",
+          "status",
+          "firmware",
+          "state",
+          "name",
+          "flags"
+        ]
+      }
+    ],
+    "/sys/class/fpga_bridge": [],
+    "/sys/class/fpga_region": []
+  },
+  "device_tree": [
+    {
+      "path": "/sys/firmware/devicetree/base/amba-apu@0/devcfg@e0040000",
+      "compatible": [
+        "fmsh,fmql-devcfg-1.0",
+        ""
+      ],
+      "status": "okay\u0000"
+    }
+  ],
+  "kernel_log": "[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]\n[    0.000000] Linux version 5.4.52-fmsh-sdk-v2025.04 (fmsh@fmsh-virtual-machine) (gcc version 7.5.0 (Linaro GCC 7.5-2019.12)) #3 SMP Fri Mar 13 13:44:29 CST 2026\n[    0.000000] Machine model: FMQLMP FMQL100TAI\n[    0.000000] earlycon: uart8250 at MMIO32 0x00000000e0004000 (options '')\n[    0.000000] printk: bootconsole [uart8250] enabled\n[    0.000000] Memory limited to 1024MB\n[    0.000000] cma: Reserved 256 MiB at 0x0000000030000000\n[    0.000000] On node 0 totalpages: 262144\n[    0.000000]   DMA32 zone: 3584 pages used for memmap\n[    0.000000]   DMA32 zone: 0 pages reserved\n[    0.000000]   DMA32 zone: 262144 pages, LIFO batch:63\n[    0.000000] psci: probing for conduit method from DT.\n[    0.000000] psci: PSCIv1.1 detected in firmware.\n[    0.000000] psci: Using standard PSCI v0.2 function IDs\n[    0.000000] psci: MIGRATE_INFO_TYPE not supported.\n[    0.000000] psci: SMC Calling Convention v1.0\n[    0.000000] percpu: Embedded 21 pages/cpu s48088 r8192 d29736 u86016\n[    0.000000] pcpu-alloc: s48088 r8192 d29736 u86016 alloc=21*4096\n[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 \n[    0.000000] Detected VIPT I-cache on CPU0\n[    0.000000] CPU features: detected: ARM erratum 845719\n[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 258560\n[    0.000000] Kernel command line: console=ttyPS0,115200n8 earlycon=uart8250,mmio32,0xe0004000 loglevel=8 root=/dev/mmcblk0p2 rootwait rw clk_ignore_unused mem=1024M\n[    0.000000] Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)\n[    0.000000] Inode-cache hash table entries: 65536 (order: 7, 524288 bytes, linear)\n[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off\n[    0.000000] Memory: 754924K/1048576K available (9022K kernel code, 498K rwdata, 2596K rodata, 640K init, 285K bss, 31508K reserved, 262144K cma-reserved)\n[    0.000000] rcu: Hierarchical RCU implementation.\n[    0.000000] rcu: \tRCU event tracing is enabled.\n[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.\n[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0\n[    0.000000] GIC: Adjusting CPU interface base to 0x00000000f892f000\n[    0.000000] GIC: Using split EOI/Deactivate mode\n[    0.000000] random: get_random_bytes called from start_kernel+0x2ac/0x454 with crng_init=0\n[    0.000000] FMQLMP clock init\n[    0.000000] fmqlmp_clk_setup: clkc starts at ffffffc010005100\n[    0.000000] arch_timer: cp15 timer(s) running at 100.00MHz (phys).\n[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x171024e7e0, max_idle_ns: 440795205315 ns\n[    0.000004] sched_clock: 56 bits at 100MHz, resolution 10ns, wraps every 4398046511100ns\n[    0.008470] Console: colour dummy device 80x25\n[    0.012957] Calibrating delay loop (skipped), value calculated using timer frequency.. 200.00 BogoMIPS (lpj=400000)\n[    0.023444] pid_max: default: 32768 minimum: 301\n[    0.028213] Mount-cache hash table entries: 2048 (order: 2, 16384 bytes, linear)\n[    0.035651] Mountpoint-cache hash table entries: 2048 (order: 2, 16384 bytes, linear)\n[    0.044437] ASID allocator initialised with 32768 entries\n[    0.049921] rcu: Hierarchical SRCU implementation.\n[    0.055026] smp: Bringing up secondary CPUs ...\n[    0.059929] Detected VIPT I-cache on CPU1\n[    0.059965] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]\n[    0.060326] Detected VIPT I-cache on CPU2\n[    0.060349] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]\n[    0.060683] Detected VIPT I-cache on CPU3\n[    0.060706] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]\n[    0.060755] smp: Brought up 1 node, 4 CPUs\n[    0.096624] SMP: Total of 4 processors activated.\n[    0.101352] CPU features: detected: 32-bit EL0 Support\n[    0.106516] CPU features: detected: CRC32 instructions\n[    0.111716] CPU: All CPU(s) started at EL2\n[    0.115847] alternatives: patching kernel code\n[    0.121200] devtmpfs: initialized\n[    0.127087] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns\n[    0.136884] futex hash table entries: 1024 (order: 4, 65536 bytes, linear)\n[    0.151085] NET: Registered protocol family 16\n[    0.156997] DMA: preallocated 256 KiB pool for atomic allocations\n[    0.163150] audit: initializing netlink subsys (disabled)\n[    0.168657] audit: type=2000 audit(0.112:1): state=initialized audit_enabled=0 res=1\n[    0.176457] cpuidle: using governor menu\n[    0.180625] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.\n[    0.196260] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages\n[    0.203002] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages\n[    0.209741] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages\n[    0.216476] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages\n[    1.515605] dw_dmac e004b000.dma: DesignWare DMA Controller, 8 channels\n[    1.522418] iommu: Default domain type: Translated \n[    1.527545] SCSI subsystem initialized\n[    1.531451] usbcore: registered new interface driver usbfs\n[    1.536992] usbcore: registered new interface driver hub\n[    1.542359] usbcore: registered new device driver usb\n[    1.547531] usb_phy_generic amba-apu@0:usbphy0: amba-apu@0:usbphy0 supply vcc not found, using dummy regulator\n[    1.557727] mc: Linux media interface: v0.10\n[    1.562040] videodev: Linux video capture interface: v2.00\n[    1.567574] pps_core: LinuxPPS API ver. 1 registered\n[    1.572563] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>\n[    1.581747] PTP clock support registered\n[    1.585699] EDAC MC: Ver: 3.0.0\n[    1.589104] FPGA manager framework\n[    1.592603] Advanced Linux Sound Architecture Driver Initialized.\n[    1.599297] clocksource: Switched to clocksource arch_sys_counter\n[    1.605516] VFS: Disk quotas dquot_6.6.0\n[    1.609503] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)\n[    1.620864] NET: Registered protocol family 2\n[    1.625612] tcp_listen_portaddr_hash hash table entries: 512 (order: 1, 8192 bytes, linear)\n[    1.634025] TCP established hash table entries: 8192 (order: 4, 65536 bytes, linear)\n[    1.641874] TCP bind hash table entries: 8192 (order: 5, 131072 bytes, linear)\n[    1.649246] TCP: Hash tables configured (established 8192 bind 8192)\n[    1.655710] UDP hash table entries: 512 (order: 2, 16384 bytes, linear)\n[    1.662390] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes, linear)\n[    1.669579] NET: Registered protocol family 1\n[    1.674221] RPC: Registered named UNIX socket transport module.\n[    1.680176] RPC: Registered udp transport module.\n[    1.684905] RPC: Registered tcp transport module.\n[    1.689634] RPC: Registered tcp NFSv4.1 backchannel transport module.\n[    1.697087] Initialise system trusted keyrings\n[    1.701641] workingset: timestamp_bits=62 max_order=18 bucket_order=0\n[    1.708874] NFS: Registering the id_resolver key type\n[    1.713965] Key type id_resolver registered\n[    1.718170] Key type id_legacy registered\n[    1.722208] nfs4filelayout_init: NFSv4 File Layout Driver Registering...\n[    1.728958] jffs2: version 2.2. (NAND) \u00a9 2001-2006 Red Hat, Inc.\n[    1.735345] Key type asymmetric registered\n[    1.739468] Asymmetric key parser 'x509' registered\n[    1.744390] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 247)\n[    1.751823] io scheduler mq-deadline registered\n[    1.756378] io scheduler kyber registered\n[    1.764541] dw_axi_dmac_platform f0010000.dma: Every channel has independent irq number\n[    1.773119] dw_axi_dmac_platform f0010000.dma: DesignWare AXI DMA Controller, 8 channels\n[    1.809864] Serial: 8250/16550 driver, 10 ports, IRQ sharing disabled\n[    1.818465] printk: console [ttyPS0] disabled\n[    1.822886] e0004000.serial: ttyPS0 at MMIO 0xe0004000 (irq = 26, base_baud = 12500000) is a 16550A\n[    1.832009] printk: console [ttyPS0] enabled\n[    1.840548] printk: bootconsole [uart8250] disabled\n[    1.851465] misc dma_buf_te: dma_buf_te ready\n[    1.856166] physical-memory-group-manager amba-apu@0:mali_mgm: Memory group manager probed successfully\n[    1.870113] brd: module loaded\n[    1.878187] loop: module loaded\n[    1.881617] mtdoops: mtd device (mtddev=name/number) must be supplied\n[    1.888523] cadence-qspi e0000000.spi: n25q256a (32768 Kbytes)\n[    1.894394] 3 fixed-partitions partitions found on MTD device e0000000.spi.0\n[    1.901448] Creating 3 MTD partitions on \"e0000000.spi.0\":\n[    1.906940] 0x000000000000-0x000000400000 : \"bootloader\"\n[    1.913018] 0x000001000000-0x000002000000 : \"kernel\"\n[    1.918709] 0x000002000000-0x000004000000 : \"rootfs\"\n[    1.923681] mtd: partition \"rootfs\" is out of reach -- disabled\n[    1.930509] dw_spi_fmsh e0021000.spi: SPI is master mode.\n[    1.936694] libphy: Fixed MDIO Bus: probed\n[    1.941483] tun: Universal TUN/TAP device driver, 1.6\n[    1.946625] CAN device driver interface\n[    1.950470] sja1000 CAN netdevice driver\n[    1.954774] sja1000_platform e0005000.can: sja1000_platform device registered (reg_base=(____ptrval____), irq=6)\n[    1.965066] fmql-dwmac e0047000.ethernet: IRQ eth_wake_irq not found\n[    1.971429] fmql-dwmac e0047000.ethernet: IRQ eth_lpi not found\n[    1.977426] fmql-dwmac e0047000.ethernet: no reset control found\n[    1.983547] fmql-dwmac e0047000.ethernet: User ID: 0x10, Synopsys ID: 0x37\n[    1.990436] fmql-dwmac e0047000.ethernet: \tDWMAC1000\n[    1.995410] fmql-dwmac e0047000.ethernet: DMA HW capability register supported\n[    2.002638] fmql-dwmac e0047000.ethernet: RX Checksum Offload Engine supported\n[    2.009866] fmql-dwmac e0047000.ethernet: COE Type 2\n[    2.014834] fmql-dwmac e0047000.ethernet: Enhanced/Alternate descriptors\n[    2.021539] fmql-dwmac e0047000.ethernet: Enabled extended descriptors\n[    2.028070] fmql-dwmac e0047000.ethernet: Ring mode enabled\n[    2.033648] fmql-dwmac e0047000.ethernet: Enable RX Mitigation via HW Watchdog Timer\n[    2.174478] libphy: stmmac: probed\n[    2.177894] mdio_bus stmmac-0:00: attached PHY driver [unbound] (mii_bus:phy_addr=stmmac-0:00, irq=POLL)\n[    2.187381] mdio_bus stmmac-0:01: attached PHY driver [unbound] (mii_bus:phy_addr=stmmac-0:01, irq=POLL)\n[    2.197422] dwc2 e0045000.usb: e0045000.usb supply vusb_d not found, using dummy regulator\n[    2.205740] dwc2 e0045000.usb: e0045000.usb supply vusb_a not found, using dummy regulator\n[    2.214105] dwc2 e0045000.usb: Configuration mismatch. dr_mode forced to host\n[    2.271442] dwc2 e0045000.usb: host_dma is enable.\n[    2.276244] dwc2 e0045000.usb: g_dma is enable.\n[    2.280782] dwc2 e0045000.usb: g_dma_desc is enable.\n[    2.285823] dwc2 e0045000.usb: DWC OTG Controller\n[    2.290547] dwc2 e0045000.usb: new USB bus registered, assigned bus number 1\n[    2.297618] dwc2 e0045000.usb: irq 27, io mem 0xe0045000\n[    2.303069] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.04\n[    2.311342] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1\n[    2.318571] usb usb1: Product: DWC OTG Controller\n[    2.323281] usb usb1: Manufacturer: Linux 5.4.52 dwc2_hsotg\n[    2.328865] usb usb1: SerialNumber: e0045000.usb\n[    2.333795] hub 1-0:1.0: USB hub found\n[    2.337574] hub 1-0:1.0: 1 port detected\n[    2.342012] usbcore: registered new interface driver cdc_acm\n[    2.347681] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters\n[    2.355732] usbcore: registered new interface driver usb-storage\n[    2.361851] i2c /dev entries driver\n[    2.365715] usbcore: registered new interface driver uvcvideo\n[    2.371466] USB Video Class driver (1.1.1)\n[    2.375871] cpu cpu0: failed to get clock: -2\n[    2.380245] cpufreq-dt: probe of cpufreq-dt failed with error -2\n[    2.386386] Synopsys Designware Multimedia Card Interface Driver\n[    2.392556] dw_mmc e0043000.dwmmc: Using external DMA controller.\n[    2.398672] dw_mmc e0043000.dwmmc: Version ID is 220a\n[    2.403751] dw_mmc e0043000.dwmmc: DW MMC controller at irq 23,32 bit host data width,32 deep fifo\n[    2.412797] mmc_host mmc0: card is polling.\n[    2.429574] mmc_host mmc0: Bus speed (slot 0) = 100000000Hz (slot req 400000Hz, actual 400000HZ div = 125)\n[    2.451947] ledtrig-cpu: registered to indicate activity on CPUs\n[    2.458050] usbcore: registered new interface driver usbhid\n[    2.463628] usbhid: USB HID core driver\n[    2.467810] ARM CCI_500 PMU driver probed\n[    2.468159] fpga_manager fpga0: FMSH FMQL FPGA Manager registered\n[    2.478458] usbcore: registered new interface driver snd-usb-audio\n[    2.484684] usbcore: registered new interface driver snd-ua101\n[    2.490555] usbcore: registered new interface driver snd-usb-caiaq\n[    2.496771] usbcore: registered new interface driver snd-usb-6fire\n[    2.502992] usbcore: registered new interface driver snd-usb-hiface\n[    2.509285] usbcore: registered new interface driver snd-bcd2000\n[    2.515317] usbcore: registered new interface driver snd_usb_pod\n[    2.521351] usbcore: registered new interface driver snd_usb_podhd\n[    2.527559] usbcore: registered new interface driver snd_usb_toneport\n[    2.534027] usbcore: registered new interface driver snd_usb_variax\n[    2.540333] pktgen: Packet Generator for packet performance testing. Version: 2.75\n[    2.548293] Initializing XFRM netlink socket\n[    2.552663] NET: Registered protocol family 10\n[    2.557608] Segment Routing with IPv6\n[    2.561321] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver\n[    2.567617] NET: Registered protocol family 17\n[    2.572075] NET: Registered protocol family 15\n[    2.576537] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.\n[    2.580456] mmc_host mmc0: Bus speed (slot 0) = 100000000Hz (slot req 50000000Hz, actual 50000000HZ div = 1)\n[    2.589495] can: controller area network core (rev 20170425 abi 9)\n[    2.599365] mmc0: new high speed SDXC card at address 0001\n[    2.605530] NET: Registered protocol family 29\n[    2.611344] mmcblk0: mmc0:0001 SD64G 58.3 GiB \n[    2.615438] can: raw protocol (rev 20170425)\n[    2.621143]  mmcblk0: p1 p2\n[    2.624152] can: broadcast manager protocol (rev 20170425 t)\n[    2.624158] can: netlink gateway (rev 20190810) max_hops=1\n[    2.638164] Key type dns_resolver registered\n[    2.642738] registered taskstats version 1\n[    2.646841] Loading compiled-in X.509 certificates\n[    2.658995] hctosys: unable to open rtc device (rtc0)\n[    2.664063] of_cfs_init\n[    2.666581] of_cfs_init: OK\n[    2.669463] clk: Not disabling unused clocks\n[    2.673742] ALSA device list:\n[    2.676716]   No soundcards found.\n[    2.680566] ttyPS0 - failed to request DMA\n[    2.739310] usb 1-1: new high-speed USB device number 2 using dwc2\n[    2.951419] random: fast init done\n[    2.954889] usb 1-1: New USB device found, idVendor=0424, idProduct=2514, bcdDevice= b.b3\n[    2.963100] usb 1-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0\n[    2.970566] hub 1-1:1.0: USB hub found\n[    2.974371] hub 1-1:1.0: 4 ports detected\n[    3.052113] EXT4-fs (mmcblk0p2): 1 orphan inode deleted\n[    3.057365] EXT4-fs (mmcblk0p2): recovery complete\n[    3.076744] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)\n[    3.084892] VFS: Mounted root (ext4 filesystem) on device 179:2.\n[    3.098277] devtmpfs: mounted\n[    3.101431] Freeing unused kernel memory: 640K\n[    3.105945] Run /sbin/init as init process\n[    3.696567] systemd[1]: System time before build time, advancing clock.\n[    3.764652] systemd[1]: systemd 245.4-4ubuntu3.20 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=hybrid)\n[    3.787544] systemd[1]: Detected architecture arm64.\n[    3.812172] systemd[1]: Set hostname to <U.FMSH>.\n[    4.254643] random: systemd: uninitialized urandom read (16 bytes read)\n[    4.261431] systemd[1]: system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.\n[    4.273816] systemd[1]: (This warning is only shown for the first unit using IP firewalling.)\n[    4.282858] systemd[1]: Created slice system-getty.slice.\n[    4.299387] random: systemd: uninitialized urandom read (16 bytes read)\n[    4.306254] systemd[1]: Created slice system-modprobe.slice.\n[    4.323350] random: systemd: uninitialized urandom read (16 bytes read)\n[    4.330212] systemd[1]: Created slice system-serial\\x2dgetty.slice.\n[    4.347549] systemd[1]: Created slice User and Session Slice.\n[    4.363500] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.\n[    4.387462] systemd[1]: Started Forward Password Requests to Wall Directory Watch.\n[    4.411447] systemd[1]: Condition check resulted in Arbitrary Executable File Formats File System Automount Point being skipped.\n[    4.423131] systemd[1]: Reached target Local Encrypted Volumes.\n[    4.439421] systemd[1]: Reached target Paths.\n[    4.455375] systemd[1]: Reached target Remote File Systems.\n[    4.471371] systemd[1]: Reached target Slices.\n[    4.487386] systemd[1]: Reached target Swap.\n[    4.503724] systemd[1]: Listening on Syslog Socket.\n[    4.519516] systemd[1]: Listening on initctl Compatibility Named Pipe.\n[    4.539875] systemd[1]: Listening on Journal Audit Socket.\n[    4.555600] systemd[1]: Listening on Journal Socket (/dev/log).\n[    4.571651] systemd[1]: Listening on Journal Socket.\n[    4.589033] systemd[1]: Mounting Huge Pages File System...\n[    4.609275] systemd[1]: Mounting POSIX Message Queue File System...\n[    4.629328] systemd[1]: Mounting Kernel Debug File System...\n[    4.647719] systemd[1]: Condition check resulted in Kernel Trace File System being skipped.\n[    4.657869] systemd[1]: Starting Journal Service...\n[    4.675672] systemd[1]: Condition check resulted in Create list of static device nodes for the current kernel being skipped.\n[    4.688937] systemd[1]: Starting Load Kernel Module chromeos_pstore...\n[    4.707456] systemd[1]: Condition check resulted in Load Kernel Module drm being skipped.\n[    4.717626] systemd[1]: Starting Load Kernel Module efi_pstore...\n[    4.737327] systemd[1]: Starting Load Kernel Module pstore_blk...\n[    4.757336] systemd[1]: Starting Load Kernel Module pstore_zone...\n[    4.777372] systemd[1]: Starting Load Kernel Module ramoops...\n[    4.797148] systemd[1]: Condition check resulted in Set Up Additional Binary Formats being skipped.\n[    4.809491] systemd[1]: Starting Load Kernel Modules...\n[    4.833147] systemd[1]: Starting Remount Root and Kernel File Systems...\n[    4.854770] u_dma_buf: loading out-of-tree module taints kernel.\n[    4.855176] systemd[1]: Started Journal Service.\n[    4.915099] u-dma-buf udmabuf0: driver version = 3.2.5\n[    4.920254] u-dma-buf udmabuf0: major number   = 242\n[    4.925232] u-dma-buf udmabuf0: minor number   = 0\n[    4.925245] u-dma-buf udmabuf0: phys address   = 0x0000000030100000\n[    4.936303] u-dma-buf udmabuf0: buffer size    = 134217728\n[    4.941796] u-dma-buf udmabuf@0: driver installed.\n[    5.218363] systemd-journald[101]: Received client request to flush runtime journal.\n[    5.953397] systemd-journald[101]: File /var/log/journal/c18338d14c3049b3ab6cdaed8c0ee749/system.journal corrupted or uncleanly shut down, renaming and replacing.\n[    5.957733] mali f0000000.mali_gpu: Kernel DDK version r31p0-01eac0\n[    5.974462] mali f0000000.mali_gpu: GPU identified as 0x2 arch 7.4.0 r1p0 status 0\n[    5.982165] mali f0000000.mali_gpu: No priority control manager is configured\n[    5.989329] mali f0000000.mali_gpu: Memory group manager successfully loaded\n[    5.996481] mali f0000000.mali_gpu: Using coherency mode 31 set from dtb\n[    6.005339] mali f0000000.mali_gpu: Probed as mali0\n[    6.295622] MVX dev: Linlon v5276 identified. cores=2, nlsid=4, id=0. (mvx_dev.c:427)\n[    7.141076] random: crng init done\n[    7.141082] random: 7 urandom warning(s) missed due to ratelimiting\n[    7.461847] fmql-dwmac e0047000.ethernet eth0: PHY [stmmac-0:00] driver [Generic PHY]\n[    7.475321] fmql-dwmac e0047000.ethernet eth0: No Safety Features support found\n[    7.475333] fmql-dwmac e0047000.ethernet eth0: No MAC Management Counters available\n[    7.475346] fmql-dwmac e0047000.ethernet eth0: IEEE 1588-2008 Advanced Timestamp supported\n[    7.475469] fmql-dwmac e0047000.ethernet eth0: registered PTP clock\n[    7.475479] fmql-dwmac e0047000.ethernet eth0: configuring for phy/rgmii link mode\n[   11.565297] fmql-dwmac e0047000.ethernet eth0: Link is Up - 1Gbps/Full - flow control rx/tx\n[   11.565323] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready\n",
+  "kernel_sha256": "a00d30b7a69a6d91d713293f67eec3d086a8e1ec04689e3ebe03c58ab52f7ae3",
+  "memory": "MemTotal:        1017708 kB\nMemFree:          207228 kB\nMemAvailable:     695596 kB\nBuffers:          132344 kB\nCached:           183584 kB\nSwapCached:            0 kB\nActive:           263064 kB\nInactive:         124332 kB\nActive(anon):      71480 kB\nInactive(anon):       96 kB\nActive(file):     191584 kB\nInactive(file):   124236 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:             0 kB\nSwapFree:              0 kB\nDirty:               524 kB\nWriteback:             0 kB\nAnonPages:         71584 kB\nMapped:            81720 kB\nShmem:               112 kB\nKReclaimable:     262660 kB\nSlab:             274424 kB\nSReclaimable:     262660 kB\nSUnreclaim:        11764 kB\nKernelStack:        1708 kB\nPageTables:         1392 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:      508852 kB\nCommitted_AS:     231380 kB\nVmallocTotal:   262930368 kB\nVmallocUsed:        5192 kB\nVmallocChunk:          0 kB\nPercpu:              688 kB\nAnonHugePages:         0 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:         262144 kB\nCmaFree:          127368 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB",
+  "mounts": "/dev/root / ext4 rw,relatime 0 0\ndevtmpfs /dev devtmpfs rw,relatime,size=377460k,nr_inodes=94365,mode=755 0 0\nsysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0\nproc /proc proc rw,nosuid,nodev,noexec,relatime 0 0\ntmpfs /dev/shm tmpfs rw,nosuid,nodev 0 0\ndevpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0\ntmpfs /run tmpfs rw,nosuid,nodev,size=101772k,mode=755 0 0\ntmpfs /run/lock tmpfs rw,nosuid,nodev,noexec,relatime,size=5120k 0 0\ntmpfs /sys/fs/cgroup tmpfs ro,nosuid,nodev,noexec,mode=755 0 0\ncgroup2 /sys/fs/cgroup/unified cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate 0 0\ncgroup /sys/fs/cgroup/systemd cgroup rw,nosuid,nodev,noexec,relatime,xattr,name=systemd 0 0\nmqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0\ndebugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0\nhugetlbfs /dev/hugepages hugetlbfs rw,relatime,pagesize=2M 0 0\nconfigfs /sys/kernel/config configfs rw,nosuid,nodev,noexec,relatime 0 0\ntmpfs /run/user/0 tmpfs rw,nosuid,nodev,relatime,size=101768k,mode=700 0 0",
+  "devcfg_devices": [],
+  "note": "No FD owner does not prove AXI drain."
+}

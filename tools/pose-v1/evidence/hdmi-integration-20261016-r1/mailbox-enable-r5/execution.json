@@ -1,0 +1,14 @@
+{
+  "exit": 0,
+  "seconds": 67.04101849999279,
+  "initial_budget_seconds": 180,
+  "final_budget_seconds": 180,
+  "ceiling_seconds": 360,
+  "stopped_by_monitor": false,
+  "decisions": [],
+  "final_memory": {
+    "available_MB": 6129,
+    "load_percent": 62,
+    "available_commit_MB": 11546
+  }
+}

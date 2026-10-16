@@ -1,0 +1,93 @@
+{
+  "not_executed": true,
+  "root": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3",
+  "replacement_pairs": [
+    {
+      "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\030ai\\Sitemap2.xml",
+      "source_sha256": "b2f4a658c1f6395b3614985fa43de5fcb5b20fdd7ed55a08f92bff3d173abce9",
+      "target": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\Sitemap2.xml"
+    },
+    {
+      "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\030ai\\unisim_comp.lib",
+      "source_sha256": "39d46b06cbd02399192398a3815e7c941a7465e1acb6596f0703b69eef5cd958",
+      "target": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\scripts\\rt\\data\\unisim_comp.lib"
+    },
+    {
+      "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\030ai\\unisim_comp.v",
+      "source_sha256": "5a5a828d9f5141a774579d7db8aad773ccf439b34cf5e045f8963ad3d0833075",
+      "target": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\scripts\\rt\\data\\unisim_comp.v"
+    },
+    {
+      "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\030ai\\zynq.lib",
+      "source_sha256": "e02b87e01e6af750992355281112cd98f68f4bf255f9a00ba0b718dda638c008",
+      "target": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq.lib"
+    },
+    {
+      "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\030ai\\zynq.rtd",
+      "source_sha256": "172ebccdbbf5f8f038164fcbcb6e2c61a7cb52eb8ca9c36f688742add54da812",
+      "target": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq.rtd"
+    },
+    {
+      "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\030ai\\zynq.xng",
+      "source_sha256": "791cffb93714174fb0524255a3afafd7045f9920822633ed3d655dc794e91cec",
+      "target": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq.xng"
+    },
+    {
+      "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\030ai\\zynq.padr",
+      "source_sha256": "8538c1728c2bf6c25e974df76802263b1d50da26234a46ec8ae9678b9b91c976",
+      "target": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq.padr"
+    },
+    {
+      "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\030ai\\xc7z030ai.paspd",
+      "source_sha256": "71e30a2e40fab8ef620249acbc94711444698cc384f2a05b5385d4a235c81cca",
+      "target": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z030\\xc7z030.paspd"
+    },
+    {
+      "source": "D:\\FPGACompetitionProject\\Docs\\26嵌赛开发\\JFM_Kits\\JFM_Kits\\ip_patch\\030ai\\unisim.btl",
+      "source_sha256": "885258dded77b487703ca99868cb85270a39407e7ec35a4ebd625c53c678f203",
+      "target": "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\common\\unisim.btl"
+    }
+  ],
+  "reset_static_targets": [
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\ip\\xilinx\\mig_7series_v4_2\\data\\fpga_tlib\\artix7\\7a\\xc7a50tcsg324_pkg.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\ip\\xilinx\\mig_7series_v4_2\\data\\fpga_tlib\\artix7\\7a\\xc7a50tfgg484_pkg.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\artix7\\devint\\artix7.rtd",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\artix7\\devint\\artix7.xng",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\artix7\\devint\\artix7\\PartStats.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\artix7\\devint\\artix7\\xc7a50t\\ClockRegion.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\artix7\\devint\\artix7\\xc7a50t\\csg324\\Package.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\artix7\\devint\\artix7\\xc7a50t\\fgg484\\Package.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\artix7\\devint\\artix7\\xc7a50t\\xc7a50t.tile2bfd",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\artix7\\devint\\artix7\\xc7a50t\\xc7a50t.xng",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\artix7\\devint\\artix7\\xc7a50t\\xc7a50t_tiles.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\common",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\common\\unisim.btl",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\common\\unisims",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\Sitemap2.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq.lib",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq.padr",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq.rtd",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq.rtd.bak",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq.xng",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\PartStats.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z015\\ClockRegion.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z015\\xc7z015.paspd",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z015\\xc7z015.rtd",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z015\\xc7z015.tile2bfd",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z015\\xc7z015.xng",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z015\\xc7z015_tiles.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z045\\ClockRegion.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z045\\xc7z045.rtd",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z045\\xc7z045.tile2bfd",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z045\\xc7z045.tld",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z045\\xc7z045.xng",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z045\\xc7z045_tiles.xml",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\data\\parts\\xilinx\\zynq\\devint\\zynq\\xc7z100\\xc7z100.paspd",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\scripts\\rt\\data\\unisim_comp.lib",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-vivado2018-20261016-r2\\tool\\Vivado\\2018.3\\scripts\\rt\\data\\unisim_comp.v"
+  ],
+  "reset_target_count": 36,
+  "write_guard_allow_root": "D:/FPGACompetitionProject/.local/hdmi-vivado2018-20261016-r2",
+  "user_installation_write_forbidden": true,
+  "full_backup_before_patch_required": true
+}

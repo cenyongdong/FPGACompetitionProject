@@ -1,5 +1,15 @@
 # 比赛开发资料索引与理解记录
 
+2026-10-16：HDMI修复已完成整机接入、实际候选启动和静态实屏验证。用户现场确认“显示稳定的八条色条”；双ABI、PLL/idle/错误门检及约148.5MHz像素计数通过，OSD分辨率/刷新率尚未提供。目标仍为1920×1080@60；r5布线WNS+0.030ns/WHS+0.029ns，原两个AI Min Period例外及其余告警保留。已使用新授权的一次候选重启，SSH约53.6秒恢复；原BOOT随后完整还原并读回原SHA，其余启动文件/六SDK不变。运行中仍为候选静态色条，不是运行中已回退；下一次启动选原BOOT。未进行显示DDR DMA、帧切换/在途STOP、NPU推理或整机实时验收，旧DATA继续暂停。跨重启/tmp清理导致的恢复源丢失已通过主机原始回传及/root持久暂存解决；另查到FAT脏标志与两条合计2168簇的未引用链，来源未知，未修复，启动区停止新增写入。 [实际板测与恢复](tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/REPORT.md)。
+
+## 此前阶段资料（保留当时结果，当前入口见上）
+
+2026-10-16当前结果：用户安装的D:/vivado18.3/Vivado/2018.3已按新授权就地打原版030ai补丁；未复制完整工具。34文件/63,130,403字节备份SHA通过，九项最终目标匹配厂商源，其余备份文件未变。真实扩展PS的RTL展开29.826517秒、综合22.396529秒，工具均exit0；全部4527个命名连接/3868个AI连接可绑定，实际EDIF/DCP已生成。Liberty总数断言失败保留，独立核对证实运行库/实例7212位引脚一致，仅调试元数据表示差异及未调用DEBUGDATA160。通用转换后Procise导入3.833887秒exit1，PCPU7端口不匹配，已停止未重跑。本地JFM确有Vivado实现hook＋可选Procise位流后处理，尚未采用；其HARC、速度和DRC影响需讨论。 [本批证据](tools/pose-v1/evidence/hdmi-vivado2018-20261016-r2/REPORT.md)、[后续实现路径](FPGA/hdmi_candidate/JFM-FLOW-REVIEW.md)。当前180秒阶段授权已实际执行，取消完整工具副本方案；原生导入失败后停止实现。以下较早状态保留当时范围。
+
+2026-10-15历史版本路线：用户确认官方资料已全部本地保存且无2019.1配套，要求先评估迁移、不可行再下载2018.3。实际2019.1运行库PS7的3305个位引脚与安装Liberty一致；030ai配套有7213个位引脚，工程使用的3868个AI_端口在现运行库全部缺失、在配套Liberty全部存在。九项替换源有八项受保护，现有资料不能形成可验证的完整2019.1迁移；普通RTL/IP成果保持。2018.3官方下载入口已打开但网页返回会话未建立，尚未取得安装包；未安装或替换库，原生PCPU7适配仍需独立门检。 [本批证据](tools/pose-v1/evidence/hdmi-jfm-compatibility-20261015-r1/REPORT.md)、[具体方案](FPGA/hdmi_candidate/VIVADO-VERSION-PLAN.md)。下述较早建议保留其当时范围，不再以继续寻找2019.1包为当前恢复任务。
+
+2026-10-15本机资料补查：进一步按用户提示核对真实replace_7z030ai_file：严格限2018.3，先恢复多器件库再替换9项Vivado原语/器件文件；当前2019.1工程内只读入单文件仍报AI_IN端口不匹配，未改全局库或绕过版本检查。原理图确认AC14/100MHz、TMDS差分对，以及F8=1.5V/高有效PL_KEY2；IO直驱1080p60不可保证的限制保持。PS构建仍阻塞，未下载候选。 [JFM与引脚补查](tools/pose-v1/evidence/hdmi-jfm-pin-review-20261015-r1/REPORT.md)、[Lite引脚契约](FPGA/hdmi_candidate/PIN-CONTRACT.md)、[真实JFM过程与版本边界](FPGA/hdmi_candidate/JFM-COMPATIBILITY-REVIEW.md)。原PDF第9/10/19/21/22页已渲染目视核验，图纸Sheet号与PDF页码分开记录。
+
 2026-10-15 HDMI已获实板、隔离同配置重建、16根IP修订白名单及有限衍生字段例外授权。实板只读身份/12寄存器核验通过，BOOT/六份SDK/内核同；新r3有限契约门检、97.600秒IP生成及28项原有HDL参数/生成端口后检通过。实际生成AXI3互联两入口全32个ID、64读/64写完整16拍burst及背压通过，Procise原生互联综合16.417秒exit0；纯输出OBUFDS→ODU_DS真实引脚布线兼容探针通过。完整系统当前受阻于自定义PS7扩展端口与Procise PCPU7声明不匹配，PS门检8.418秒exit1，已停止。尚无完整候选位流，未下载、未改BOOT或重启，实屏仍待验；旧DATA继续暂停。 [本批总报告](tools/pose-v1/evidence/hdmi-bringup-20261015-r1/REPORT.md)、[生成/后检](tools/pose-v1/evidence/hdmi-ip-generation-20261015-r3/REPORT.md)、[PS阻塞与恢复入口](FPGA/hdmi_candidate/PS-ADAPTATION-STATUS.md)。
 
 以下各日期/批次保留原执行范围，旧“暂不上板”不覆盖最新实板授权。
@@ -128,7 +138,7 @@
 | 下载链/上电 | Alinx 黑金下载器；无 SD 卡开机和连线上板测试已完成 | 用户报告 Procise/Vivado 均可识别芯片；具体算法、Linux、DDR/AI 的成功不能由器件识别推导 |
 | SD 启动/串口登录（最新） | 用户已更换 SD 卡并完成启动卡制作、上板验证；串口正常输出，可登录板载系统 | 用户现场确认，2026-10-02，见第15节；根分区/ext4扩容已于2026-10-03由用户执行并以截图验收，见15.3；旧卡故障记录保留为历史；runtime/AI另行核验 |
 | FPGA 工具 | `FMSH_Procise_2025.1.1_temp_202603201420_32494.exe` 安装的 Procise | 用户确认；安装目录 `C:\FudanMicro\Procise`；主程序 ProductVersion 为 `2025.1.1 temp` |
-| Vivado 辅助工具/MCP | 现有 Vivado 2019.1；用户已自行接入 `vivado-mcp` | 用户明确 2018 版工程仅作思路参考；本会话工具已可调用，`list_sessions` 返回无活跃会话；MCP 启动/仿真与 Procise 适配尚未实测，见 13.5 |
+| Vivado 辅助工具/MCP | D:/vivado18.3/Vivado/2018.3/bin/vivado.bat，64-bit Build2405991；2019.1保留 | 当前030ai九项＋32项原厂IP库补丁；参考位流/Procise ICAP已生成，完整时序未通过；[实际结果](tools/pose-v1/evidence/hdmi-jfm-build-20261016-r1/REPORT.md) |
 | AI 工具 | Icraft 3.39.0 | 用户确认；`C:\Icraft\CLI` 是指向 `C:\Icraft\CLI v3.39.0` 的符号链接；另有 `CustomOp_v3.39.0` |
 | 主机↔Lite板端通信 | 网线直连，MobaXterm SSH开发/通信 | 用户确认已使用，2026-10-03；地址/账号未提供，未由代理连接测试，见第16节 |
 | 板端 Icraft/CustomOp | 用户已从指定3.39.0安装包目录传输板端包并完成两者安装 | 本地onchip包control为arm64/3.39.0；实际板端已安装版本/路径尚无查询输出，见第16节 |

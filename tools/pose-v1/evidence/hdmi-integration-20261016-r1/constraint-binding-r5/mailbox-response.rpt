@@ -1,0 +1,576 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Fri Oct 16 18:16:41 2026
+| Host         : DESKTOP-RDG8FOI running 64-bit major release  (build 9200)
+| Command      : report_timing -from [get_pins -of_objects [get_cells -quiet -hier -regexp {^U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg\[[0-9]+\]$}] -filter {REF_PIN_NAME == C}] -to [get_pins -of_objects [get_cells -quiet -hier -regexp {^U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg\[[0-9]+\]$}] -filter {REF_PIN_NAME == D}] -max_paths 20 -file D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-integration-20261016-r1/constraint-binding-r5/mailbox-response.rpt
+| Design       : ai7030_edif_top
+| Device       : 7z030-ffg676
+| Speed File   : -2  PRODUCTION 1.11 2025-11-03
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[0]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[0]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[0]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[0]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[0]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[100]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[100]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[100]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[100]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[100]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[100]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[100]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[101]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[101]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[101]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[101]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[101]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[101]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[101]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[102]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[102]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[102]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[102]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[102]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[102]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[102]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[103]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[103]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[103]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[103]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[103]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[103]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[103]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[104]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[104]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[104]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[104]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[104]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[104]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[104]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[105]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[105]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[105]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[105]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[105]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[105]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[105]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[106]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[106]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[106]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[106]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[106]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[106]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[106]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[107]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[107]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[107]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[107]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[107]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[107]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[107]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[108]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[108]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[108]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[108]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[108]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[108]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[108]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[109]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[109]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[109]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[109]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[109]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[109]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[109]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[110]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[110]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[110]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[110]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[110]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[110]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[110]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[111]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[111]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[111]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[111]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[111]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[111]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[111]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[112]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[112]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[112]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[112]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[112]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[112]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[112]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[113]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[113]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[113]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[113]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[113]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[113]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[113]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[114]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[114]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[114]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[114]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[114]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[114]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[114]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[115]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[115]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[115]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[115]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[115]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[115]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[115]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[116]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[116]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[116]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[116]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[116]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[116]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[116]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[117]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[117]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[117]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[117]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[117]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[117]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[117]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+Slack (MET) :             9.485ns  (required time - arrival time)
+  Source:                 U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[118]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[118]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        0.422ns  (logic 0.233ns (55.213%)  route 0.189ns (44.787%))
+  Logic Levels:           0  
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[118]/C
+                         FDCE (Prop_fdce_C_Q)         0.233     0.233 r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold_reg[118]/Q
+                         net (fo=1, unplaced)         0.189     0.422    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/response_hold[118]
+                         FDCE                                         r  U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[118]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+                         FDCE (Setup_fdce_C_D)       -0.093     9.907    U0_ps_ai_peripheral/hdmi_display/scanout/core/core/mailbox/source_response_reg[118]
+  -------------------------------------------------------------------
+                         required time                          9.907    
+                         arrival time                          -0.422    
+  -------------------------------------------------------------------
+                         slack                                  9.485    
+
+
+
+

@@ -1,0 +1,7 @@
+CLOCK|clk_out1_AI_CORE_CLK_ST|PERIOD=1.000|WAVEFORM=0.000 0.500
+DRIVER U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/plle2_adv_inst/CLKOUT0
+PIN|U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/plle2_adv_inst/CLKOUT0|OUT
+PIN|U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/clkout1_buf/I|IN
+DRIVER U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/clkout1_buf/O
+PIN|U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/ai_core_clk_locked_reg/C|IN
+PIN|U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/clkout1_buf/O|OUT

@@ -1,0 +1,64 @@
+DRC REQP-44
+ARCHITECTURES|
+CHECKER|Checking Logical netlist
+CLASS|rule_check
+DESCRIPTION|connects_GTGREFCLK_ACTIVE
+FEATURES|DRCHARC.GTHE2_CHANNEL=
+GROUP|REQP
+HIERNAME|Netlist.Instance.Required Pin.GTHE2_CHANNEL
+IS_ENABLED|1
+IS_READ_ONLY|0
+IS_USER_DEFINED|0
+MESSAGE|GTHE2_CHANNEL cell <NETLIST_ELEMENT>: Use of the GTGREFCLK is reserved for test purposes only. This has the lowest performance of the available clocking methods and can degrade transceiver performance. Note that GTGREFCLK use may be caused by driving a REFCLK with a BUFG.
+MSG_ID|44
+NAME|REQP-44
+OWNER|sshafer
+SEVERITY|Error
+DRC REQP-46
+ARCHITECTURES|
+CHECKER|Checking Logical netlist
+CLASS|rule_check
+DESCRIPTION|connects_GTGREFCLK_ACTIVE
+FEATURES|DRCHARC.GTHE2_COMMON=
+GROUP|REQP
+HIERNAME|Netlist.Instance.Required Pin.GTHE2_COMMON
+IS_ENABLED|1
+IS_READ_ONLY|0
+IS_USER_DEFINED|0
+MESSAGE|GTHE2_COMMON cell <NETLIST_ELEMENT>: Use of the GTGREFCLK is reserved for test purposes only. This has the lowest performance of the available clocking methods and can degrade transceiver performance. Note that GTGREFCLK use may be caused by driving a REFCLK with a BUFG.
+MSG_ID|46
+NAME|REQP-46
+OWNER|sshafer
+SEVERITY|Error
+DRC REQP-52
+ARCHITECTURES|
+CHECKER|Checking Logical netlist
+CLASS|rule_check
+DESCRIPTION|connects_GTGREFCLK_ACTIVE
+FEATURES|DRCHARC.GTXE2_CHANNEL=
+GROUP|REQP
+HIERNAME|Netlist.Instance.Required Pin.GTXE2_CHANNEL
+IS_ENABLED|1
+IS_READ_ONLY|0
+IS_USER_DEFINED|0
+MESSAGE|GTXE2_CHANNEL cell <NETLIST_ELEMENT>: Use of the GTGREFCLK is reserved for test purposes only. This has the lowest performance of the available clocking methods and can degrade transceiver performance. Note that GTGREFCLK use may be caused by driving a REFCLK with a BUFG.
+MSG_ID|52
+NAME|REQP-52
+OWNER|sshafer
+SEVERITY|Error
+DRC REQP-56
+ARCHITECTURES|
+CHECKER|Checking Logical netlist
+CLASS|rule_check
+DESCRIPTION|connects_GTGREFCLK_ACTIVE
+FEATURES|DRCHARC.GTXE2_COMMON=
+GROUP|REQP
+HIERNAME|Netlist.Instance.Required Pin.GTXE2_COMMON
+IS_ENABLED|1
+IS_READ_ONLY|0
+IS_USER_DEFINED|0
+MESSAGE|GTXE2_COMMON cell <NETLIST_ELEMENT>: Use of the GTGREFCLK is reserved for test purposes only. This has the lowest performance of the available clocking methods and can degrade transceiver performance. Note that GTGREFCLK use may be caused by driving a REFCLK with a BUFG.
+MSG_ID|56
+NAME|REQP-56
+OWNER|sshafer
+SEVERITY|Error

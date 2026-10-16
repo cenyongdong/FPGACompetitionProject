@@ -1,0 +1,5 @@
+{
+  "first_attempt": "Before any EDA process/stage, source guard attempted to hash unused standalone hdmi_clock_fmsh.v inside full system; absent by design, FileNotFoundError.",
+  "correction": "Retain root frozen SHA check; assert standalone clock absent in full system. Check copied functional modules only. Full-system hdmi_clock_jfm.v is unchanged and remains covered by prior source identity.",
+  "no_synthesis_run_started_on_failed_preflight": true
+}

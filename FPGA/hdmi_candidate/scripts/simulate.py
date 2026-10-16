@@ -2,7 +2,7 @@ from pathlib import Path
 import hashlib,json,shutil,subprocess,sys,time
 R=Path(__file__).resolve().parents[3]
 REV=sys.argv[1] if len(sys.argv)>1 else 'r1'
-assert REV in ('r1','r2','r3','r4','r5','r6','r7','r8')
+assert REV in ('r1','r2','r3','r4','r5','r6','r7','r8','r9')
 GROUP=sys.argv[2] if len(sys.argv)>2 else 'all'
 assert GROUP in ('all','core','pixel')
 E=R/('tools/pose-v1/evidence/hdmi-candidate-sim-20261015-'+REV)

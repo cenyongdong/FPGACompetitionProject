@@ -1,0 +1,15 @@
+{
+  "time": "2026-10-16T18:40:43.6022487+08:00",
+  "ports": [
+    {
+      "DeviceID": "COM1",
+      "Name": "通信端口 (COM1)",
+      "PNPDeviceID": "ACPI\\PNP0501\\0"
+    },
+    {
+      "DeviceID": "COM7",
+      "Name": "Silicon Labs CP210x USB to UART Bridge (COM7)",
+      "PNPDeviceID": "USB\\VID_10C4&PID_EA60\\0001"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+//arch = fmql; split = false; format = BIN
+the_ROM_image:
+{
+ [bootloader, destination_device = ps]D:/FPGACompetitionProject/.local/hdmi-board-reference-20261016-r1/boot-control-utf8-r2/FSBL251210_ddr400_demo.out
+ [destination_device = pl]D:/FPGACompetitionProject/.local/hdmi-board-reference-20261016-r1/boot-control-utf8-r2/ai7030_top_disable_icap.bit
+ [destination_cpu = apu_0, destination_device = ps]D:/FPGACompetitionProject/.local/hdmi-board-reference-20261016-r1/boot-control-utf8-r2/bl31.elf
+ [destination_cpu = apu_0, destination_device = ps]D:/FPGACompetitionProject/.local/hdmi-board-reference-20261016-r1/boot-control-utf8-r2/u-boot
+ [fsbl_config]apu_x32
+}

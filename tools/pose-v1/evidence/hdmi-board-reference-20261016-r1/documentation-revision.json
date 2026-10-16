@@ -1,0 +1,98 @@
+{
+  "Agents.md": {
+    "before": {
+      "original_sha256": "eb0213d24f77930bf8df8ea913bb303354086f3a5761b8523f26014bbe103da4",
+      "snapshot_sha256": "1a43dbfc4275bf2e5e9fd7045af4dfde66a1e425961215f9dfce2fd409724137",
+      "credential_redacted": true
+    },
+    "after_original_sha256": "77af2ae39f676120166e2ca415bf28e6dea2785d48a4fc3c5f5753e6f4bed6a4",
+    "after_snapshot_sha256": "685aa6b185870db1cc391b112c0d12159a9327ad29b91e8214c92f324311967c"
+  },
+  "PROJECT-PROGRESS.md": {
+    "before": {
+      "original_sha256": "65dc724d2977e413a655115e075d0e135fa20d0a5e19e2a5c2e81f934d4eacf1",
+      "snapshot_sha256": "65dc724d2977e413a655115e075d0e135fa20d0a5e19e2a5c2e81f934d4eacf1",
+      "credential_redacted": false
+    },
+    "after_original_sha256": "5e0f5e300d11ef723610408e9ea3ae30324a9ccc83faa725baf35f8b964effd8",
+    "after_snapshot_sha256": "5e0f5e300d11ef723610408e9ea3ae30324a9ccc83faa725baf35f8b964effd8"
+  },
+  "REFERENCES.md": {
+    "before": {
+      "original_sha256": "1a084ff3d7c085fef6a3b1effa00cb906a6a4a2f0a148ffb4270494bc313ca1a",
+      "snapshot_sha256": "1a084ff3d7c085fef6a3b1effa00cb906a6a4a2f0a148ffb4270494bc313ca1a",
+      "credential_redacted": false
+    },
+    "after_original_sha256": "20b58773a9cd8e1a2248877f0bdb16b8f632b4a18615ee71c155c8f133248eb6",
+    "after_snapshot_sha256": "20b58773a9cd8e1a2248877f0bdb16b8f632b4a18615ee71c155c8f133248eb6"
+  },
+  "DIFFICULTIES.md": {
+    "before": {
+      "original_sha256": "86a3e476eb58527e9a0641c75e7d606d697aa0271c2f4230dc5bfc0067b780b1",
+      "snapshot_sha256": "86a3e476eb58527e9a0641c75e7d606d697aa0271c2f4230dc5bfc0067b780b1",
+      "credential_redacted": false
+    },
+    "after_original_sha256": "cefa5dd1e6c2237e4bbb9b4a8c3e71faf69c247dc13b3385fe9b2ca29cc4395c",
+    "after_snapshot_sha256": "cefa5dd1e6c2237e4bbb9b4a8c3e71faf69c247dc13b3385fe9b2ca29cc4395c"
+  },
+  "Done.md": {
+    "before": {
+      "original_sha256": "cce308667be26f5f9b457c64f33ff963e0dfab3e2783e267cd677ae9c7679af5",
+      "snapshot_sha256": "cce308667be26f5f9b457c64f33ff963e0dfab3e2783e267cd677ae9c7679af5",
+      "credential_redacted": false
+    },
+    "after_original_sha256": "71c14203a72f6482517f596c77d6d3587ab80065977b509c32032bdc19f0a3e2",
+    "after_snapshot_sha256": "71c14203a72f6482517f596c77d6d3587ab80065977b509c32032bdc19f0a3e2"
+  },
+  "FPGA/hdmi_candidate/AI-CLOCK-GATE.md": {
+    "before": {
+      "original_sha256": "f6baf8adb8f0565bd05c6a43afaff47feb440b3f7affb22a9f4d39839fb40cb3",
+      "snapshot_sha256": "f6baf8adb8f0565bd05c6a43afaff47feb440b3f7affb22a9f4d39839fb40cb3",
+      "credential_redacted": false
+    },
+    "after_original_sha256": "5c54cf2fa601df005c2fb6e6814f1f9dc680f1dcfd4c37d061e06a20904eccf2",
+    "after_snapshot_sha256": "5c54cf2fa601df005c2fb6e6814f1f9dc680f1dcfd4c37d061e06a20904eccf2"
+  },
+  "FPGA/hdmi_candidate/BOARD-PLAN.md": {
+    "before": {
+      "original_sha256": "593773561b8d21f69b03ea334630862e704237672fa16597d4936508e978750e",
+      "snapshot_sha256": "4adf950dda3dbb0b7628222a3e3b5487552172575b9ea15b490c5ccdd50ed23f",
+      "credential_redacted": false
+    },
+    "after_original_sha256": "9e6438af122d1f5d31183ccde78f276c5cf2619772f51f81b223429f4829d1c1",
+    "after_snapshot_sha256": "9e6438af122d1f5d31183ccde78f276c5cf2619772f51f81b223429f4829d1c1"
+  },
+  "FPGA/hdmi_candidate/RESUME.md": {
+    "before": {
+      "original_sha256": "ce2cf250842718be13a97c59ef7fae48fdffeaf6959f410ab87976b850e9738a",
+      "snapshot_sha256": "ce2cf250842718be13a97c59ef7fae48fdffeaf6959f410ab87976b850e9738a",
+      "credential_redacted": false
+    },
+    "after_original_sha256": "aa8bc8639665f465bcf9243873580a48bdbbcc693c3192d05ccca34611e81d3c",
+    "after_snapshot_sha256": "aa8bc8639665f465bcf9243873580a48bdbbcc693c3192d05ccca34611e81d3c"
+  },
+  "FPGA/hdmi_candidate/INTEGRATION.md": {
+    "before": {
+      "original_sha256": "0194119e9e9e08ca793ca4d75ace5d4ae2b0ab7d9614dcc5595169209c395e2f",
+      "snapshot_sha256": "0194119e9e9e08ca793ca4d75ace5d4ae2b0ab7d9614dcc5595169209c395e2f",
+      "credential_redacted": false
+    },
+    "after_original_sha256": "56312de1c0baff90c43e1150c308b2dc8a0918067465b4d2156ec1516f47afba",
+    "after_snapshot_sha256": "56312de1c0baff90c43e1150c308b2dc8a0918067465b4d2156ec1516f47afba"
+  },
+  "ARCHITECTURE-DISCUSSION-20261015.md": {
+    "before": {
+      "original_sha256": "3350cf73695f307ec703939246c79f12db21eb6b79d5824d7a3d1e73ef3aaa9a",
+      "snapshot_sha256": "3350cf73695f307ec703939246c79f12db21eb6b79d5824d7a3d1e73ef3aaa9a",
+      "credential_redacted": false,
+      "snapshot_timing": "Late capture, immediately before first mutation in this batch"
+    },
+    "after_original_sha256": "4e2d113dc2474be551bdcb56cd0bab814dd4afb1b60005dedf578658c3b6ceb8",
+    "after_snapshot_sha256": "4e2d113dc2474be551bdcb56cd0bab814dd4afb1b60005dedf578658c3b6ceb8"
+  },
+  "FPGA/hdmi_candidate/BOARD-RELEASE-20261016.md": {
+    "before": null,
+    "after_original_sha256": "0817ce24f896e6600c105944dc5d5237247c23fde4e45f80d2d7ab217f7bbda7",
+    "after_snapshot_sha256": "0817ce24f896e6600c105944dc5d5237247c23fde4e45f80d2d7ab217f7bbda7"
+  }
+}

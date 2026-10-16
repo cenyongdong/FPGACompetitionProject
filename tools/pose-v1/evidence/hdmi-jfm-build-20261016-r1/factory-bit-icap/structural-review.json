@@ -1,0 +1,30 @@
+{
+  "input_header": {
+    "a": "ai7030_top;UserID=53210711;Version=2018.3",
+    "b": "7z030ffg676",
+    "c": "2025/12/24",
+    "d": "14:16:39"
+  },
+  "output_header": {
+    "a": "ai7030_top;UserID=53210711;Version=2018.3;Patched=DISABLE_ICAP,VCCM;PatchID=32494",
+    "b": "7z030ffg676",
+    "c": "2025/12/24",
+    "d": "14:16:39"
+  },
+  "input_payload_bytes": 5979916,
+  "output_payload_bytes": 5980460,
+  "input_payload_offset": 104,
+  "output_payload_offset": 144,
+  "common_payload_prefix_bytes": 144,
+  "common_payload_suffix_bytes": 2080,
+  "same_offset_changed_payload_bytes": 2599767,
+  "tool_exit_zero_and_output_created": true,
+  "warnings": [
+    "Missing Bit Patch Info",
+    "Missing Patch Version Info",
+    "VCCM Absent, Bitstream Patch Inactive"
+  ],
+  "ICAP_silicon_semantics_independently_proven": false,
+  "BOOT_or_hardware_acceptance": false,
+  "note": "Command success and structural output are actual; do not interpret VCCM inactivity as ICAP result without separate evidence"
+}

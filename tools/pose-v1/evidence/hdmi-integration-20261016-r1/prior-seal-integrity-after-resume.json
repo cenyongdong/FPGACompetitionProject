@@ -1,0 +1,15 @@
+{
+  "seconds": 25.23652329998731,
+  "sealed_batches": {
+    "hdmi-jfm-build-20261016-r1": {
+      "files": 264,
+      "failures": [],
+      "pass": true
+    },
+    "hdmi-board-reference-20261016-r1": {
+      "files": 104,
+      "failures": [],
+      "pass": true
+    }
+  }
+}

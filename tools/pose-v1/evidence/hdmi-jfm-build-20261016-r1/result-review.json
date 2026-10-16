@@ -1,0 +1,133 @@
+{
+  "original_factory_chain_execution_exit": 0,
+  "implementation_only_seconds": 1173.6472808000108,
+  "factory_reference_not_corrected_HDMI_candidate": true,
+  "actual_raw_and_Procise_ICAP_bits_generated": true,
+  "setup": {
+    "WNS_ns": 0.03,
+    "TNS_ns": 0.0,
+    "failing_endpoints": 0
+  },
+  "hold": {
+    "WHS_ns": 0.021,
+    "THS_ns": 0.0,
+    "failing_endpoints": 0
+  },
+  "minimum_period_gate": {
+    "WPWS_ns": -0.409,
+    "TPWS_ns": -0.479,
+    "failing_endpoints": 2,
+    "passed": false,
+    "clock_model": "clk_out1_AI_CORE_CLK_ST",
+    "period_ns": 1.0,
+    "required_period_ns": {
+      "BUFG/I": 1.409,
+      "PLLE2_ADV/CLKOUT0": 1.071
+    }
+  },
+  "source_AI_Mate_SHA": "38f14b4427244f49a1ff0edf9dcdfe4438d033807d76018c688aa218c491d49c",
+  "source_AI_Mate_changed": false,
+  "actual_visible_BUFG_clock_load": "ai_core_clk_locked_reg/C only; physical hard-AI clock meaning not independently proven",
+  "no_clock_register_pins": 0,
+  "unconstrained_internal_max_delay_pins": 0,
+  "input_no_delay_HIGH": 11,
+  "output_no_delay_HIGH": 6,
+  "CDC_summary": [
+    {
+      "rule": "CDC-1",
+      "severity": "Critical",
+      "report_count": 10207,
+      "description": "1-bit unknown CDC circuitry"
+    },
+    {
+      "rule": "CDC-2",
+      "severity": "Warning",
+      "report_count": 118,
+      "description": "1-bit synchronized with missing ASYNC_REG property"
+    },
+    {
+      "rule": "CDC-3",
+      "severity": "Info",
+      "report_count": 70,
+      "description": "1-bit synchronized with ASYNC_REG property"
+    },
+    {
+      "rule": "CDC-4",
+      "severity": "Critical",
+      "report_count": 41,
+      "description": "Multi-bit unknown CDC circuitry"
+    },
+    {
+      "rule": "CDC-5",
+      "severity": "Warning",
+      "report_count": 2,
+      "description": "Multi-bit synchronized with missing ASYNC_REG property"
+    },
+    {
+      "rule": "CDC-7",
+      "severity": "Critical",
+      "report_count": 162,
+      "description": "Asynchronous reset unknown CDC circuitry"
+    },
+    {
+      "rule": "CDC-8",
+      "severity": "Warning",
+      "report_count": 8,
+      "description": "Asynchronous reset synchronized with missing ASYNC_REG property"
+    },
+    {
+      "rule": "CDC-9",
+      "severity": "Info",
+      "report_count": 1,
+      "description": "Asynchronous reset synchronized with ASYNC_REG property"
+    },
+    {
+      "rule": "CDC-10",
+      "severity": "Critical",
+      "report_count": 121,
+      "description": "Combinational logic detected before a synchronizer"
+    },
+    {
+      "rule": "CDC-11",
+      "severity": "Critical",
+      "report_count": 137,
+      "description": "Fan-out from launch flop to destination clock"
+    },
+    {
+      "rule": "CDC-13",
+      "severity": "Critical",
+      "report_count": 2103,
+      "description": "1-bit CDC path on a non-FD primitive"
+    },
+    {
+      "rule": "CDC-14",
+      "severity": "Critical",
+      "report_count": 51,
+      "description": "Multi-bit CDC path on a non-FD primitive"
+    },
+    {
+      "rule": "CDC-15",
+      "severity": "Warning",
+      "report_count": 7506,
+      "description": "Clock enable controlled CDC structure detected"
+    },
+    {
+      "rule": "CDC-17",
+      "severity": "Warning",
+      "report_count": 19,
+      "description": "MUX hold controlled CDC structure detected"
+    }
+  ],
+  "CDC_critical_report_entries": 12822,
+  "CDC_counts_not_independent_silicon_fault_counts": true,
+  "CDC_not_signed_off": true,
+  "DRC_implementation_profile": "99 listed violations incl warnings/advisories, zero Error; only four GT checks disabled; two rule limits reached",
+  "DRC_reopened_checkpoint_default_profile": "REQP-52/56 reappear as Error; DRC enable state is session context, not preserved in DCP",
+  "MIG_CLK_REF_exception_preexists": true,
+  "AI_clock_period_waiver_added": false,
+  "AI_clock_frequency_changed": false,
+  "full_system_signoff": false,
+  "board_download": false,
+  "BOOT_changed": false,
+  "old_DATA_resumed": false
+}

@@ -1,0 +1,8 @@
+{
+  "cause": "Optimized actual recovery -6.337ns: memory waiting_reg/C to pixel lane/pointer CLR, required0.017ns; removal -3.367ns pixel_release/C to memory Gray sync CLR. These are NEW paths, not AI exception.",
+  "fix": "Three-stage per-domain reset-release chains asynchronously assert and locally release state resets. Cut only9 asynchronous CLR inputs of3 real release chains, keep all state reset recovery/removal timed. No capacity/AXI/frame/clock/interface change.",
+  "new_fifo_sha256": "9c071e5c7c2ce50133c4412f8b23d09a037d54642ae611a407ccb8695fd1ec04",
+  "old_fifo_sha256": "394c1ab25bae1b955a846166b34f508c8475e6a87e40c193dc0cb02dfd24e783",
+  "only_one_of_nine_functional_modules_modified": true,
+  "validation": "New pixel suite: random FIFO wrap/partial flush, complete1920x1080 RGB565 comparison, underflow drain and pixel clock stopped STOP. Unchanged core/PHY baseline tests are not reclassified as new tests."
+}
