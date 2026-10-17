@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "platform": "Windows local documentation only",
+  "cwd": "D:/FPGACompetitionProject",
+  "date": "2026-10-17",
+  "revised_existing_documents": 7,
+  "new_ADR": "ADR/ADR_49.md",
+  "protected_files_checked": 153,
+  "changed_local_links_checked": 28,
+  "state_assertions": {
+    "user_confirmation_quoted": true,
+    "approved_architecture_not_implemented": true,
+    "hdmi_retained": true,
+    "no_source_switch_claim": true,
+    "old_DATA_independently_paused": true,
+    "optional_PL_work_not_authorized": true,
+    "numeric_gate_preserved": true,
+    "last_actual_board_date_preserved": true,
+    "agents_execution_pause_preserved": true,
+    "new_schema_and_transport_not_fixed": true
+  },
+  "errors": [],
+  "CRLF_aware_whitespace_check_exit_code": 0,
+  "runtime_tests_performed": false
+}
