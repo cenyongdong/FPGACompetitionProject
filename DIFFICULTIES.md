@@ -1,12 +1,12 @@
 # 项目难点索引
 
-整理日期：2026-10-13；状态依据截至2026-10-13的实际验证，包含核心回归和有限Engine计时。稳定编号D01–D18沿用原索引，D19起补充基础及近期取证问题。每个条目关联决策和证据，完整过程放入ADR及[历史归档](ADR/history/20261013/README.md)，本页不再按批次重复堆叠“最新”。当前项目状态见[PROJECT-PROGRESS](PROJECT-PROGRESS.md)。
+2026-10-16交接更新：D05静态色条已通过，D42暂存恢复路径已修正，D43文件系统来源问题未解。下一阶段实施按用户要求暂停，待架构确定及明确恢复；[FPGA工作总结](FPGA/FPGA-WORK-SUMMARY-20261016.md)。原D01–D43稳定编号和失败证据保留。
 
 ## 当前优先问题
 
 - **D25首次读旧数据：未解决，用户要求暂停排查。** 后续方案仅准备，原坏值与两轮晚源保持，不用正确晚值修补首文件。
 - **D04 VPU普通连续页：有界演示可运行，永久首启动未证。** 一次重启许可已使用；规整授权仍适用，CMA/内核/BOOT未改。
-- **D05 HDMI及D29严格性能/长期：待验。** 编码和主机GUI通过不等于HDMI、严格5Hz或30分钟通过。
+- **D05 HDMI静态色条通过；动态帧及D29整机实时性／长期待验。** DDR读帧、翻帧和在途STOP尚未执行；下一阶段暂停待架构确定。共享图独立串行30分钟与整机并发长期验收分别报告。
 
 ## 接入、编排和视频难点（原编号）
 
@@ -16,7 +16,7 @@
 | D02 | Host反复解析图导致预算不足，95例后超时 | 拆分Host总预算与硬件预算，外部420秒完成107例，不改拒绝规则 | Host门检修正通过，不扩大硬件预算；[历史超时](tools/pose-v1/evidence/pipeline-20261008-r8/host-timeout-review.json) |
 | D03 | Engine约29秒初始化被算入25秒文件编码deadline | 初始化、producer、codec/stall及总预算分开计量 | 有限生命周期通过，demo实际约31秒NoInput初始化；[ADR_02](ADR/ADR_02.md)、[ADR_45](ADR/ADR_45.md) |
 | D04 | MVX固件order7/512KiB普通连续页不足，即使总体内存/CMA空闲仍启动失败 | 原六缓冲改两缓冲、单上下文常驻，快照/规整分开；demo首失败规整无效，经一次获准重启成功 | **缓解，永久首启动未修**；无GFP_MOVABLE的普通申请不能直接使用空闲CMA，扩大CMA不是默认解；[ADR_02](ADR/ADR_02.md)、[ADR_27](ADR/ADR_27.md)、[ADR_45](ADR/ADR_45.md) |
-| D05 | HDMI静态输出原时序问题已实屏验证修正；帧扫描尚未验收 | r5整机时序/CDC门检、候选双ABI/PLL/像素计数通过，用户确认稳定八色条 | 原BOOT已完整恢复，OSD数值未提供；DDR帧、换帧/STOP与整机实时仍待验；[证据](tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/REPORT.md) |
+| D05 | HDMI静态输出原时序问题已实屏验证修正；帧扫描尚未验收 | r5整机时序/CDC门检、候选双ABI/PLL/像素计数通过，用户确认稳定八色条 | 原BOOT已完整恢复，OSD数值未提供；DDR帧、换帧/STOP与整机实时仍待验；下一阶段暂停待架构确定及明确恢复；[证据](tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/REPORT.md) |
 | D06 | 在线编码、RTSP所有权和实际PTS交接 | owned NV12/packet/AU、有界队列、常驻VPU/独立网络owner | 有界真实来源全链已过，非长期验收；[ADR_08](ADR/ADR_08.md)、[ADR_45](ADR/ADR_45.md) |
 | D07 | FIFO积压会显示旧结果 | popLatest；coalesced和overwritten分别计，采样实际时刻产生PTS | Native/有限全链通过，重复不算新姿态；[ADR_02](ADR/ADR_02.md) |
 | D08 | PowerShell内嵌多语言引号/命令替换引发生成语法错误 | 独立源码/生成脚本，完整捕获输出并查实际退出码；保留旧构建原型 | 工具脚本修正，不将编译错误误归板端；[ADR_03](ADR/ADR_03.md) |

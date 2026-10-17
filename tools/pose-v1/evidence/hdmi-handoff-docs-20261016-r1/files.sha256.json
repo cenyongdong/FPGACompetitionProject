@@ -1,0 +1,85 @@
+{
+  "scope": "documentation only; explicit user pause pending architecture and resume instruction",
+  "files": {
+    "Agents-replaced-fragments.json": {
+      "bytes": 835,
+      "sha256": "d45c0905676481d91ed1044abbd206026c03d41131c53ad66c68a3a84832f634"
+    },
+    "artifact-identity-recheck.json": {
+      "bytes": 1522,
+      "sha256": "b81b173fefaa3e544915f622aa1e66c26d0ab589effe33ded7dead536fb9d6b9"
+    },
+    "before-document-edit/ARCHITECTURE-DISCUSSION-20261015.md": {
+      "bytes": 31702,
+      "sha256": "49fed38ad25ab8ff1c5f0027420ce7e2384bba4c53406d114f8e3ac4292d145a"
+    },
+    "before-document-edit/DIFFICULTIES.md": {
+      "bytes": 18183,
+      "sha256": "548d687e6883d6ee013ebc0177a4bbf3248e2708189d0eb655183dc22043ce87"
+    },
+    "before-document-edit/Done.md": {
+      "bytes": 301810,
+      "sha256": "6ec9590ee4bb22ccd449fe3d6df9691750b874419baf16d716759accb58c5022"
+    },
+    "before-document-edit/FPGA/hdmi_candidate/BOARD-PLAN.md": {
+      "bytes": 5318,
+      "sha256": "3e8da4b2c36058e92f5e4d35d50eafe9834249e6f55aa1f8e7379811188103f2"
+    },
+    "before-document-edit/FPGA/hdmi_candidate/CANDIDATE-BOARD-TEST-R5.md": {
+      "bytes": 6616,
+      "sha256": "b4a038701ae2235828c1631270a68699dda5dc618a3b2fb0ed2164532b9c2fc4"
+    },
+    "before-document-edit/FPGA/hdmi_candidate/INTEGRATION.md": {
+      "bytes": 8870,
+      "sha256": "23f5db217d4dadd20b0531be6b57a2f4ac0c74f96c73ceb1a2a2ab29b9ed5c2c"
+    },
+    "before-document-edit/FPGA/hdmi_candidate/RESUME.md": {
+      "bytes": 6166,
+      "sha256": "98d2ef684396f37ba6fb9e29ba9ccd178f9fb96df622cf7324472debf8cb3ee7"
+    },
+    "before-document-edit/FPGA/hdmi_candidate/SYSTEM-INTEGRATION-PLAN.md": {
+      "bytes": 12822,
+      "sha256": "8ca4b2badd679529be36d38bbe8de996db1fee5a0435a19cecba73d40f814277"
+    },
+    "before-document-edit/PROJECT-PROGRESS.md": {
+      "bytes": 18078,
+      "sha256": "d5c863c05d532e7bfbe49cd19edca9fc2460933cd2fccb3a18a6d961200adc0f"
+    },
+    "before-document-edit/REFERENCES.md": {
+      "bytes": 222888,
+      "sha256": "b820086fafce9efc88d4d0e6a37a56b7bb900e9d4de46a84948d6f04030caa70"
+    },
+    "continuation-state.json": {
+      "bytes": 1090,
+      "sha256": "9235ca933e1d3e838d093dc5c3efffb40033fd4b984176b2cfbfc3ced32f1159"
+    },
+    "document-revisions.json": {
+      "bytes": 2722,
+      "sha256": "722eb489f27b53df685608b7d25a3e6c206a94dc9a1134bdc3220a04174ed7d6"
+    },
+    "new-document-link-check.json": {
+      "bytes": 3629,
+      "sha256": "f917732bdd53247f4901ff8e81a92fad0f74880251fae5b285ab6c883b421eb7"
+    },
+    "new-documents/FPGA/FPGA-WORK-SUMMARY-20261016.md": {
+      "bytes": 16976,
+      "sha256": "22041814a5ebe7f04a5a04a2765a2259a8948e34f05922800ac4039b7009e6e8"
+    },
+    "new-documents/FPGA/README.md": {
+      "bytes": 689,
+      "sha256": "904240f32b0a0d932a460813506e3694c8a35769b92be8562db3ba0714639908"
+    },
+    "prior-sealed-evidence-integrity.json": {
+      "bytes": 379,
+      "sha256": "72b015312aa0b5cee9ec85894dc56345ce817b31f50fc78f9ae1600c3f0679d8"
+    },
+    "REPORT.md": {
+      "bytes": 1317,
+      "sha256": "be9728359069bd871ad106f4583adb9c65d7b6b4853ae243d123240e3b1c631f"
+    },
+    "update_documentation.py": {
+      "bytes": 13365,
+      "sha256": "5d0ce25e60c67f1aadf7c0285dd6caeca002ec721b0ce7885d4ce373c01e76c7"
+    }
+  }
+}

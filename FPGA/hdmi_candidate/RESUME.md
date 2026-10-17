@@ -1,6 +1,6 @@
 # HDMI候选当前状态
 
-2026-10-16：HDMI修复已完成整机接入、实际候选启动和静态实屏验证。用户现场确认“显示稳定的八条色条”；双ABI、PLL/idle/错误门检及约148.5MHz像素计数通过，OSD分辨率/刷新率尚未提供。目标仍为1920×1080@60；r5布线WNS+0.030ns/WHS+0.029ns，原两个AI Min Period例外及其余告警保留。已使用新授权的一次候选重启，SSH约53.6秒恢复；原BOOT随后完整还原并读回原SHA，其余启动文件/六SDK不变。运行中仍为候选静态色条，不是运行中已回退；下一次启动选原BOOT。未进行显示DDR DMA、帧切换/在途STOP、NPU推理或整机实时验收，旧DATA继续暂停。跨重启/tmp清理导致的恢复源丢失已通过主机原始回传及/root持久暂存解决；另查到FAT脏标志与两条合计2168簇的未引用链，来源未知，未修复，启动区停止新增写入。 [实际板测与恢复](../../tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/REPORT.md)。
+2026-10-16：**下一阶段实施按用户要求暂停，等待后续项目架构确定及明确恢复指令。** 本轮仅完成FPGA工作总结和文档交接，未连接板卡或执行构建。最近实际验证为同日HDMI双ABI／PLL／约148.5MHz像素计数及稳定八色条实屏通过。原BOOT已恢复、运行中候选为上次封存确认状态，本轮没有重新核验实板。DDR读帧／翻帧／在途STOP和整机实时性尚未验收；FAT脏标志及未引用链来源未明、未修复，旧DATA继续暂停。 [负责范围、原厂位流操作及交接](../FPGA-WORK-SUMMARY-20261016.md)。
 
 ## 此前阶段资料（保留当时结果，当前入口见上）
 
@@ -29,3 +29,8 @@
 PS/DDR/HP2/GP所有权、CSR解码、原生PHY/规范复位、CDC及完整实现/时序/实屏仍待验。无FD owner不证明在途DDR读停止。BOOT/SDK/模型/RAW/正式CPU注册/NPU分配保持，不增加重启许可。失败目录和原门检不回写，不自动复跑失败负载。
 
 [本批总报告](../../tools/pose-v1/evidence/hdmi-bringup-20261015-r1/REPORT.md)、[生成后检报告](../../tools/pose-v1/evidence/hdmi-ip-generation-20261015-r3/REPORT.md)、[已获批准的有限规则](IP-CONTRACT-REVIEW.md)、[集成契约](INTEGRATION.md)。历史分组结果见[前批报告](../../tools/pose-v1/evidence/hdmi-split-20261015-r1/REPORT.md)，原失败均保留。
+
+
+## 最新暂停与恢复门禁（2026-10-16）
+
+本轮只完成工作总结与文档同步，没有重新核验板端运行状态。后续先由用户确定项目架构，再明确指示恢复执行；恢复前先阅读[FPGA工作交接](../FPGA-WORK-SUMMARY-20261016.md)和[最新暂停记录](../../tools/pose-v1/evidence/hdmi-handoff-docs-20261016-r1/continuation-state.json)。旧封存continuation-state.json中的next及本文此前恢复步骤保留当时含义，均不能覆盖此次暂停。
