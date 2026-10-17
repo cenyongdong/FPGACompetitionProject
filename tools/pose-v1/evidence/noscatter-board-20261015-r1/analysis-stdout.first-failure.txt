@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "D:\FPGACompetitionProject\tools\pose-v1\evidence\noscatter-board-20261015-r1\analyze.py", line 81, in <module>
-    inference_thread_cpu_ns=forward['thread_cpu_ns']+final['thread_cpu_ns'],
-                            ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'NoneType'

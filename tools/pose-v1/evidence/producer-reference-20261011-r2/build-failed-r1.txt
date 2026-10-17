@@ -1,8 +1,0 @@
-['exec', 'FPAI', 'test', '!', '-e', '/tmp/pose-producer-raw-build-20261011-r1']
-['exec', 'FPAI', 'mkdir', '/tmp/pose-producer-raw-build-20261011-r1']
-['cp', 'C:\\Users\\cenyongdong\\.codex\\worktrees\\dea3\\FPGACompetitionProject\\.local\\pose-v1-build\\producer-raw-20261011-r1\\source', 'FPAI:/tmp/pose-producer-raw-build-20261011-r1/source']
-['exec', 'FPAI', 'aarch64-linux-gnu-g++', '-std=gnu++17', '-O2', '-DNDEBUG', '-Wall', '-Wextra', '-Wpedantic', '-Werror', '-I/tmp/pose-producer-raw-build-20261011-r1/source', '/tmp/pose-producer-raw-build-20261011-r1/source/producer_raw_audit.cpp', '-licraft_xir', '-licraft_utils', '-o', '/tmp/pose-producer-raw-build-20261011-r1/pose_producer_raw_audit']
-/tmp/pose-producer-raw-build-20261011-r1/source/producer_raw_audit.cpp: In function 'void {anonymous}::inspect(const std::filesystem::__cxx11::path&, const std::filesystem::__cxx11::path&, const char*)':
-/tmp/pose-producer-raw-build-20261011-r1/source/producer_raw_audit.cpp:43:76: error: invalid cast from type 'icraft::xir::HardOp' to type 'bool'
-   43 |             auto op=graph.getOpById(id).cast<xir::HardOp>();require(bool(op),"Non-HardOp in frozen group");
-      |                                                                            ^

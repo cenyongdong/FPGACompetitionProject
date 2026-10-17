@@ -1,6 +1,0 @@
-board_producer_vpu_final.py: OK
-Read-only preflight saved /tmp/pose-producer-vpu-20261011-r2/final/preflight.json
-Traceback (most recent call last):
-  File "board_producer_vpu_final.py", line 21, in <module>
-    assert value == m['libraries'][name]
-KeyError: 'libicraft_hostbackend.so'

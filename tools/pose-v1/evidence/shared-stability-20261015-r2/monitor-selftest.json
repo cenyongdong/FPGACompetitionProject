@@ -1,9 +1,0 @@
-{
-  "status": "4_compatibility_checks_passed",
-  "checks": [
-    "Unsupported optional children file preserves mandatory RSS/PSS/FD/maps/threads",
-    "Supported children observation retained",
-    "Missing mandatory smaps still fails",
-    "Vanished process is distinct from unsupported optional field"
-  ]
-}

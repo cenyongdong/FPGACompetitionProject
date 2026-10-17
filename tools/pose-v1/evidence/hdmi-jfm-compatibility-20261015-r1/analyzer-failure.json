@@ -1,6 +1,0 @@
-{
-  "script": "review_2019_migration.py",
-  "exit": 1,
-  "cause": "Initial analyzer asserted raw runtime direction strings equal Liberty direction strings; investigating normalization before using any result",
-  "no_EDA_or_board_failure": true
-}

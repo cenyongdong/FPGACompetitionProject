@@ -1,6 +1,0 @@
-{
-  "actual_failure": "restore source missing before mount/write; /tmp batch absent after reboot",
-  "evidence": "postboot-staging-diagnosis/result.json shows systemd D /tmp cleanup configuration",
-  "fix": "fresh explicitly owned /root staging; reupload host-returned original BOOT with original SHA; new restore-r2 stage only after actual candidate BOOT and six SDK identity verified",
-  "SDK_DMA_or_extra_reboot": false
-}

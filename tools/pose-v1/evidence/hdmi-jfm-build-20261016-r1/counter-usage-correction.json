@@ -1,7 +1,0 @@
-{
-  "correction": "rindex_buf/windex_buf are FIFO Generator IPs, not counter IPs",
-  "evidence": "Actual rindex synthesis hierarchy uses fifo_generator_v13_2_3; no c_counter_binary instance evidence in current XCI/RTL or completed synthesis logs",
-  "earlier_counter_usage_claim_proven": false,
-  "32_file_patch_decision_basis": "Preserve original factory library bundle coherency under current authorization; not proof that every patched core is instantiated",
-  "sealed_prior_evidence_not_rewritten": true
-}

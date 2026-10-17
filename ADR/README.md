@@ -1,6 +1,6 @@
 # 架构决策与难点归档
 
-更新日期：2026-10-15。[ADR_48](ADR_48.md)现行v2记录用户批准共享FP16图仅检查score>0.2候选的3mm位置误差，三份已保存板端输出离线复核均符合，当前阶段获用户认可；全候选旧规及失败保留。物理偏置／低分槽训练漂移解释尚未验证。旧DATA异常定位暂停、根因未修。状态总览见[PROJECT-PROGRESS](../PROJECT-PROGRESS.md)，问题索引见[DIFFICULTIES](../DIFFICULTIES.md)，技术实现汇报见[TechDetails](TechDetails.md)。
+更新日期：2026-10-17。[ADR_49](ADR_49.md)记录用户确认PS／NPU感知、PL HDMI本地输出、PC独立3D展示，未来正式主链停用VPU／RTSP；本轮仅归档，尚未切换代码或恢复实施。[ADR_48](ADR_48.md)现行v2的score>0.2／3mm数值契约保持，旧失败和待验证解释保留。旧DATA异常定位继续暂停。状态总览见[PROJECT-PROGRESS](../PROJECT-PROGRESS.md)，问题索引见[DIFFICULTIES](../DIFFICULTIES.md)，技术实现汇报见[TechDetails](TechDetails.md)。
 
 编号表示决策建立顺序，不代表每项已通过。以对应ADR的证据、状态及限制判断结论；历史方案或阶段许可不构成现行执行授权。无关新决策使用下一个未使用编号，同一决策后续验证更新对应文件。
 
@@ -57,6 +57,7 @@
 | [ADR_46](ADR_46.md) | 执行规范、进度、难点与历史过程分开维护 | 文档职责 |
 | [ADR_47](ADR_47.md) | 正式核心目录、可读性重构与CPU107/三窗口回归 | 源码迁移与等价性 |
 | [ADR_48](ADR_48.md) | 共享细化FP16候选的score>0.2／3mm门检与阶段认可 | 数值验收与适用范围 |
+| [ADR_49](ADR_49.md) | PS／NPU感知、PL HDMI与PC独立3D展示，主链停用VPU／RTSP | 已批准架构；仅归档、实施暂停 |
 
 ## 技术、待议与历史
 

@@ -1,7 +1,0 @@
-{
-  "restore_only": "original M_AXI outstanding=2; remove two associations to nonexistent monitor ports",
-  "no_wire_or_address_edits": true,
-  "no_board_activity": true,
-  "no_target_generation": true,
-  "budget": 180
-}

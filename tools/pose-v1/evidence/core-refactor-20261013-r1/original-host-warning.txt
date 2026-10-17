@@ -1,3 +1,0 @@
-/tmp/pose-demo-20261011-r5-build/baseline/host_cpu_adapter.cpp:18:6: warning: 'void pose_v1::cpu_candidate::{anonymous}::need(bool, const char*, const string&)' defined but not used [-Wunused-function]
-   18 | void need(bool condition, const char* code, const std::string& detail) {
-      |      ^~~~

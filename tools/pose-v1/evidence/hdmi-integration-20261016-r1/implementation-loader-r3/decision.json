@@ -1,8 +1,0 @@
-{
-  "r2_result": "Incomplete implementation; unsupported procedural XDC was skipped. Outer monitor stopped at720s after stale logs, attempted cleanup denied; root tree then verified and terminated under host permissions. Original result not rewritten.",
-  "r3_correction": "Disable only new procedural XDC in implementation file set. Source identical constraint content through dedicated Tcl pre-opt wrapper AFTER unchanged factory pre-opt hook; assert actual mailbox5ns/10ns paths inside child before opt. Other factory hooks, strategy, HDL and synthesis unchanged.",
-  "r2_files_preserved": 31,
-  "no_owned_EDA_left": true,
-  "new_run": "impl_hdmi_r3",
-  "budget": "180s initial, bounded1800s, same process progress monitored; no bitstream until report review"
-}

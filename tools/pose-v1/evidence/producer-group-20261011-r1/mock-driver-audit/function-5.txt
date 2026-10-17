@@ -1,8 +1,0 @@
-
-/usr/lib/aarch64-linux-gnu/libmockzg330.so:     file format elf64-littleaarch64
-
-
-Disassembly of section .text:
-
-000000000000cfc0 <MockZG330PLDDRMemRegionNode::read(char*, icraft::xrt::MemPtr const&, unsigned long) const>:
-    cfc0:	d65f03c0 	ret

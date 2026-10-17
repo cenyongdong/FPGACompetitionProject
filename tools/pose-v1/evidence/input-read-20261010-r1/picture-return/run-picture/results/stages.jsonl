@@ -1,4 +1,0 @@
-{"event":"stage_started","phase":0,"name":"three","offset":0,"count":4,"period_ns":500000000,"time_ns":117776961450980,"Engine_object":367842479392,"VPU_object":367842488944}
-{"event":"stage_completed","phase":0,"offset":0,"count":4,"time_ns":117778710205050}
-{"event":"stage_started","phase":1,"name":"load-103","offset":4,"count":103,"period_ns":500000000,"time_ns":117778710225410,"Engine_object":367842479392,"VPU_object":367842488944}
-{"event":"stage_completed","phase":1,"offset":4,"count":103,"time_ns":117832280148730}

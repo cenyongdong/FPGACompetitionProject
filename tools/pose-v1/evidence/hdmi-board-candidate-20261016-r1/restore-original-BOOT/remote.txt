@@ -1,9 +1,0 @@
-Traceback (most recent call last):
-  File "<string>", line 63, in <module>
-  File "<string>", line 38, in replace_boot
-  File "<string>", line 7, in digest
-  File "/usr/lib/python3.8/pathlib.py", line 1222, in open
-    return io.open(self, mode, buffering, encoding, errors, newline,
-  File "/usr/lib/python3.8/pathlib.py", line 1078, in _opener
-    return self._accessor.open(self, flags, mode)
-FileNotFoundError: [Errno 2] No such file or directory: '/tmp/hdmi-board-candidate-20261016-r1/package/BOOT-original.readback.bin'

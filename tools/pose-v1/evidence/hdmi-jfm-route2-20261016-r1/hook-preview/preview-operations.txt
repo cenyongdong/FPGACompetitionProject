@@ -1,9 +1,0 @@
-REMOVE_INACTIVE_MISSING_REFERENCE D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/implementation_place_pre.tcl
-REMOVE_INACTIVE_MISSING_REFERENCE D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/implementation_place_post.tcl
-SKIP_IDENTICAL_HARC D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/device_database/fmk230t/xilinx/HARC.cfg D:/vivado18.3/Vivado/2018.3/data/parts/xilinx/common/HARC.cfg
-PROPERTY {STEPS.SYNTH_DESIGN.TCL.PRE D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/synthesis_pre.tcl synth_1 -quiet}
-PROPERTY {STEPS.OPT_DESIGN.TCL.PRE D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/implementation_opt_pre.tcl impl_1 -quiet}
-PROPERTY {STEPS.OPT_DESIGN.TCL.POST D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/implementation_opt_post.tcl impl_1 -quiet}
-PROPERTY {STEPS.ROUTE_DESIGN.TCL.POST D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/implementation_route_post.tcl impl_1 -quiet}
-PROPERTY {STEPS.WRITE_BITSTREAM.TCL.PRE D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/write_bitstream_pre.tcl impl_1 -quiet}
-PROPERTY {STEPS.WRITE_BITSTREAM.TCL.POST D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/reference/ip_patch/process_control/write_bitstream_post.tcl impl_1 -quiet}

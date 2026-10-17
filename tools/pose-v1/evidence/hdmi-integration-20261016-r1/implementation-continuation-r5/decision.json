@@ -1,7 +1,0 @@
-{
-  "r4_result": "Operator stopped too early after place_design had just completed. Tool place completed557s/0errors/WNS-0.075ns, but placed DCP was not produced before kill. Parent stage789.263s exit1. No valid placed checkpoint exists to reuse.",
-  "performance_cause": "Unknown. Explicit-pin cost remains a hypothesis; no constraint representation or strategy change adopted.",
-  "r5_action": "New run SAME qualified synthesis/source/constraints/strategy/hooks. Wait full bounded1800s with CPU/log/resource monitoring. Separate report collection540s so no implementation budget is spent reopening the design. No manual quiet-log stop while owned CPU advances and no error/resource fault.",
-  "r4_files_archived": 42,
-  "r5_not_logic_failure_retry": true
-}

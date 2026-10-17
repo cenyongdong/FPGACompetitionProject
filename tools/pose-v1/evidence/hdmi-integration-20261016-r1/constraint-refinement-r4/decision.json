@@ -1,8 +1,0 @@
-{
-  "r3_failure": "Vivado 2018.3 has no standalone reset_path command. Driver/API error, not hardware logic fault.",
-  "r3_exit": 1,
-  "seconds": 68.11819609999657,
-  "correction": "Use set_max_delay -reset_path -datapath_only PERIOD -from identical original launch clock -to identical original capture clock, then restore false paths from all non-HDMI original clock pins. Thus old paths retain their original cuts, only new paths receive finite bounds.",
-  "local_manual": "D:/vivado18.3/Vivado/2018.3/doc/eng/man/set_max_delay",
-  "no_synthesis_or_route_repeated": true
-}

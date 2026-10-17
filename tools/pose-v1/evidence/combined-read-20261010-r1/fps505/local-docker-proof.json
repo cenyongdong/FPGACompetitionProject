@@ -1,9 +1,0 @@
-{
-  "endpoint": "npipe:////./pipe/dockerDesktopLinuxEngine",
-  "container": "/FPAI",
-  "container_hostname": "9226ba7b8a81",
-  "state": "running",
-  "verified_method": "docker context inspect and docker inspect",
-  "destination_is_local_named_pipe_container": true,
-  "remote_data_destination": false
-}

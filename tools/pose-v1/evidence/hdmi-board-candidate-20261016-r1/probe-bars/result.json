@@ -1,7 +1,0 @@
-{
-  "exit": 0,
-  "stdout": "[2026-03-13 03:32:07.926] [info] Device initialization successful, version information:\n[2026-03-13 03:32:07.927] [info] \ticore: FMSHZGV3TECH-AID - 24160628\n[2026-03-13 03:32:07.927] [info] \tdevice: 25122301\n[2026-03-13 03:32:07.927] [info] Device Protocol: axi\n[2026-03-13 03:32:07.927] [info] Device Name: zg330aiu\n[2026-03-13 03:32:07.927] [info] Device Parameters: \n[2026-03-13 03:32:07.927] [info] \tdma: 0x80000000\n[2026-03-13 03:32:07.927] [info] \tnpu: 0x40000000\nREG 0x400b0000 0x48444d01\nREG 0x400b0040 0x48445301\nREG 0x400b0044 0x8d9ee20\nREG 0x400b0048 0x2c41a6a0\nREG 0x400b0030 0x3\nREG 0x400b0034 0x1\nREG 0x400b0030 0x7\nREG 0x400b0038 0x82363de0\nREG 0x400b003c 0xbace1069\nREG 0x400b0038 0x8318ff23\nREG 0x400b003c 0xbb66c52b\nFREQUENCY pixels=14860611 csr_ticks=10007746 min_seconds=0.100066 max_seconds=0.100082 pixel_hz_lower=1.48485e+08 pixel_hz_upper=1.48508e+08\nREG 0x400b0030 0x7\nHDMI_STATIC_PROBE_PASS mode=--bars DMA_started=0 display_memory_allocations=0\n",
-  "stderr": "",
-  "mode": "bars",
-  "display_DMA_started": false
-}

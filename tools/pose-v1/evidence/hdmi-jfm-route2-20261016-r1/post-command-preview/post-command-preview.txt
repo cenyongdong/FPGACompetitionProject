@@ -1,6 +1,0 @@
-PRECHECK_STATUS 1
-PRECHECK_RESULT Error occurs! 
-Info: The IPs have not been synthesised by OOC mode or the cache option in the Project Settings is not disabled! Please make sure the cache scope in IP cache is disabled, and then reset the this ip, and finally synthesis this IP by OOC mode. 
-Not OOC IPs: mig_7series_0
-SUPPRESSED_EXEC {cmd /c D:/FPGACompetitionProject/.local/hdmi-jfm-route2-20261016-r1/post-command-preview/call_procise_disable_icap.bat}
-POST_BRANCH_PREVIEW_COMPLETE_NOT_EXECUTED

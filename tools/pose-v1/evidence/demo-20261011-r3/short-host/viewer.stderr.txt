@@ -1,7 +1,0 @@
-[ WARN:0@10.008] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 10007.414000 ms
-Traceback (most recent call last):
-  File "C:\Users\cenyongdong\.codex\worktrees\dea3\FPGACompetitionProject\software\demo\host\viewer.py", line 48, in <module>
-    if __name__=='__main__':main()
-  File "C:\Users\cenyongdong\.codex\worktrees\dea3\FPGACompetitionProject\software\demo\host\viewer.py", line 47, in main
-    if error:raise RuntimeError(error)
-RuntimeError: RTSP decode interrupted before input finished

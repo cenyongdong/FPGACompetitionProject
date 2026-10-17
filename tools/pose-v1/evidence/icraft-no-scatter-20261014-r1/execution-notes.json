@@ -1,9 +1,0 @@
-{
-  "r1": "CLI refused incomplete explicit input parameter block, before network load; no generated pair.",
-  "r2": "CLI accepts FD/NHWC/NDHWC, not XIR **C. Validation failure before load; artifacts preserved.",
-  "r3": "New package/config adds three nop placeholders and uses FD, with all graph ports/layout checked after each stage; no failed inference payload repeated.",
-  "launcher": "Initial default RuntimeRoot expression saw empty PSScriptRoot before CLI started. Explicit RuntimeRoot version/help succeeded; pipeline reproduces exactly three verified dependency bins in child env.",
-  "parameters": "Original TOML not found, so FP16 explicitly chosen from original130FP16 Matmul graph, not represented as old config recovery.",
-  "warning": "SetAnsiMode errorcode6 emitted when CLI stdio redirected. All exit0 and MD5/shape checks passed; original stderr retained.",
-  "scope": "Host five-stage conversion and retained real TOML. No runtime Session/board/SSH/inference or old source/model replacement."
-}

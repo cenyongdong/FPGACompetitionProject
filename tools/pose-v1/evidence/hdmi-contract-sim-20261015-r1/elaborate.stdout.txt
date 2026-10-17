@@ -1,8 +1,0 @@
-Vivado Simulator 2019.1
-Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
-Running: D:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe tb_hdmi_contract --debug typical --snapshot hdmi_contract 
-Multi-threading is on. Using 10 slave threads.
-Starting static elaboration
-Completed static elaboration
-Starting simulation data flow analysis
-ERROR: [XSIM 43-4099] "D:/FPGACompetitionProject/.local/hdmi-contract-sim-20261015-r1/color_bar.v" Line 23. Module color_bar_default doesn't have a timescale but at least one module in design has a timescale.

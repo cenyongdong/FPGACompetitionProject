@@ -1,6 +1,6 @@
 # 项目进度总览
 
-2026-10-16：**下一阶段实施按用户要求暂停，等待后续项目架构确定及明确恢复指令。** 本轮仅完成FPGA工作总结和文档交接，未连接板卡或执行构建。最近实际验证为同日HDMI双ABI／PLL／约148.5MHz像素计数及稳定八色条实屏通过。原BOOT已恢复、运行中候选为上次封存确认状态，本轮没有重新核验实板。DDR读帧／翻帧／在途STOP和整机实时性尚未验收；FAT脏标志及未引用链来源未明、未修复，旧DATA继续暂停。 [负责范围、原厂位流操作及交接](FPGA/FPGA-WORK-SUMMARY-20261016.md)。
+2026-10-17：**用户已确认新架构：PS＋NPU感知、PL HDMI本地实时输出、PC接收骨架数据并独立高质量3D展示，未来正式主链停用VPU编码与RTSP。** 本轮仅记录讨论并同步文档，尚未切换源码、部署或恢复实施；下一阶段仍暂停，待用户明确执行指令。[新决策与讨论](ADR/ADR_49.md)。最后实际板测为2026-10-16的HDMI双ABI／PLL／约148.5MHz像素计数及稳定八色条；原BOOT恢复、运行PL候选均为上次封存状态，本轮没有重新核验实板。DDR读帧／翻帧／在途STOP和整机实时性未验收；FAT问题未修，旧DATA继续暂停。[FPGA既有成果交接](FPGA/FPGA-WORK-SUMMARY-20261016.md)。
 
 共享模型最近实际验证：共享新包三窗、30秒/1131次及30分钟/62,945次实板串行推理完成，数值/内存观察通过、未观察到崩溃，全部原值回传独立复核；11次>1秒、最长4.158秒的时延长尾待定位（D41）。仅三个冻结来源，无视频/网络叠加；现行score>0.2/3mm规则保持，旧失败原值保留。正式核心原CPU107/整机复核仍待另验，旧DATA暂停。历史快照见[归档索引](ADR/history/20261013/README.md)。
 
@@ -18,7 +18,7 @@
 
 2026-10-14主机转换产物：Icraft3.39.0完成去ScatterND完整ONNX的parse→optimize→quantize→adapt→generate，五阶段exit0、RAW配对MD5/身份/固定FP32端口通过。实际TOML与五对JSON/RAW保留 `model/piw24_noscatter-20261014-r3`；FP16据原130 Matmul精度明确配置，原量化TOML未留存。r1/r2输入参数失败保留，新r3总68.688秒通过。最终1158 HardOp/四计算Host/ScatterND0；14日736仅静态层数和，15日另有上述实际融合与三窗验证。正式Engine/旧模型未替换；共享图15日已另行转换并首帧失配停止，完整数据集量化数值和长期性能仍待验，旧DATA暂停。[原转换产物与证据](tools/pose-v1/evidence/icraft-no-scatter-20261014-r1/README.md)。
 
-项目处于**预采CSI回放首版已具备端到端演示，性能和长期可靠性待收敛**阶段。主链为PC原始CSI→TCP→Lite PS预处理→PS/NPU混合推理→独立显示子进程→VPU H264→RTSP/TCP→PC实时GUI。HDMI没有进入当前演示。
+项目处于**旧回放演示已跑通、新双路展示架构已确认但未实施**阶段。已验证且源码仍保留的旧链为PC原始CSI→TCP→Lite PS预处理→PS/NPU混合推理→独立显示子进程→VPU H264→RTSP/TCP→PC实时GUI，HDMI未接入该演示。新目标是同一份板端推理结果分别驱动本地PL HDMI与网络骨架／PC独立3D展示；VPU／RTSP正式主链停用尚待工程切换，历史成果保留。[ADR_49](ADR/ADR_49.md)。
 
 - 当前demo已切换software/core六个功能目录；旧pose_v1与历史测试保持。重构后的11组本机、ARM构建、CPU107/59600 FP32及3窗口全数值/354编码/294 GUI解码通过；规整0，资源回收完成，当前无后台项目工作。[ADR_47](ADR/ADR_47.md)／[证据](tools/pose-v1/evidence/core-refactor-20261013-r1/README.md)。
 - 2026-10-14正式核心复核：新11组本机/固定字节对照、主机prepare-only和ARM构建通过，14程序与已验证重构同SHA，原警告保持；新增[接口手册](software/core/INTERFACES.md)。本轮SSH只读连接超时，未部署/未运行新CPU107或三窗口，用户选择待板端恢复后完成；Agents.md规范尚未落实。[检查与恢复步骤](tools/pose-v1/evidence/core-check-20261014-r1/README.md)。
@@ -62,7 +62,7 @@
 | 首Host读取残留前输入 | 独立生产者inv94 DATA96全同上一B，INDEX正确，四物理晚源94080字节正确；早期即时Host采样尚缺 | **暂停**，恢复须明确指令；保留原首次文件/晚源读，不能认定NPU/cache/DMA责任；[ADR_44](ADR/ADR_44.md) |
 | VPU连续普通页 | 固件512KiB普通连续页失败，CMA空闲不等同可分配；两缓冲/常驻与规整是缓解 | 永久首启动另验，不默认扩大CMA；[ADR_02](ADR/ADR_02.md) |
 | 性能和延迟 | 核心短期5.24655Hz，不代表整机；整机4.99165/4.998467Hz不能舍入成严格5Hz | 有界单钟计量证据保留，长期及真实全链待验；[ADR_06](ADR/ADR_06.md)、[ADR_32](ADR/ADR_32.md) |
-| HDMI | 整机候选构建与静态八色条实屏通过；原BOOT已恢复 | **下一阶段暂停待架构确定及明确恢复**；DDR读帧／翻帧／STOP和推理双路未验，FAT另列D43；[交接](FPGA/FPGA-WORK-SUMMARY-20261016.md) |
+| HDMI与新网络展示 | HDMI整机候选构建与静态八色条实屏通过；新架构保留HDMI、网络改传骨架由PC渲染 | **架构已确认、实施仍暂停待明确恢复**；DDR帧／翻帧／STOP、骨架传输与PC展示及双路并发未验，FAT另列D43；[ADR_49](ADR/ADR_49.md)、[交接](FPGA/FPGA-WORK-SUMMARY-20261016.md) |
 | 扩展精度与真实采集 | 额外57演示样本无完整数值参考；预采回放不是实时无线设备 | 完整输出参考/实际采集接口与同步/新场景验证另立任务 |
 | 30分钟与零拷贝 | 没有长期整机结论，现用SDK Host拥有快照桥 | 保留首版先跑全流程决策，优化不得覆盖基线；[ADR_01](ADR/ADR_01.md) |
 
@@ -70,7 +70,7 @@
 
 ## 工程就绪度估计
 
-沿用已批准回放首版的**83/100（约80%–85%）管理估计**，本次重构回归不增加份额。这不是功能通过率、实测工作量、工期或比赛评分；真实采集作品不在该百分比中。
+以下**83/100（约80%–85%）管理估计**仅保留原回放首版口径；10月17日新架构尚未实施或重新估算，不将旧比例直接解释为新架构完成度。这不是功能通过率、实测工作量、工期或比赛评分；真实采集作品不在该百分比中。
 
 | 工作包 | 规划权重 | 已具备份额（估计） |
 |---|---:|---:|
@@ -97,7 +97,7 @@
 | 设备协议 | axi://zg330aiu?npu=0x40000000&dma=0x80000000；device25122301 / icore FMSHZGV3TECH-AID - 24160628 |
 | 模型/启动身份 | [TechDetails](ADR/TechDetails.md)及[演示完成清单](tools/pose-v1/evidence/demo-20261011-r4/completion-review.json)；固定JSON/RAW和BOOT哈希，不在本页重复维护 |
 | 当前重构demo | 构建.local/pose-v1-build/demo-refactor-20261013-r1，板端/tmp/wifi-pose-demo-refactor-20261013-r1；3窗口回归通过。[运行说明](software/demo/README.md)、[核心导读](software/core/README.md) |
-| 当前恢复点 | **文档交接完成，下一阶段暂停待用户确定架构**；上次实际状态为运行中候选色条、启动BOOT原版。无新板端核验，旧DATA暂停；[交接与边界](FPGA/FPGA-WORK-SUMMARY-20261016.md)、[最新暂停记录](tools/pose-v1/evidence/hdmi-handoff-docs-20261016-r1/continuation-state.json) |
+| 当前恢复点 | **ADR_49架构已确认并归档，实施暂停待明确指令**；源码仍为旧VPU／RTSP演示，本轮无切换或新板端核验；上次实板为运行候选色条、启动BOOT原版，旧DATA暂停；[新架构](ADR/ADR_49.md)、[最新暂停记录](tools/pose-v1/evidence/architecture-output-20261017-r1/continuation-state.json) |
 | 暂停故障恢复点 | [producer-prepared next-checkpoint](tools/pose-v1/evidence/producer-prepared-20261011-r1/next-checkpoint.json)及[原下一方案](tools/pose-v1/PRODUCER-PREPARED-NEXT-20261011.md)；未实施，不重跑旧Session |
 | 历史工具路径/调用示例 | [迁出的工具资料](ADR/history/20261013/toolchain-runbook.md)、[REFERENCES](REFERENCES.md)；旧D:/FPGACompetitionProject路径为历史来源，不直接替代当前工作区 |
 | 文档整理记录 | [ADR_46](ADR/ADR_46.md)、[难点索引](DIFFICULTIES.md)、[历史与迁移清单](ADR/history/20261013/README.md) |
