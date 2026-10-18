@@ -4,11 +4,17 @@ import http from 'node:http';
 import net from 'node:net';
 import { createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
-import { WebSocketServer, WebSocket } from 'ws';
+import { createRequire } from 'node:module';
 import { RecordStream } from './protocol.mjs';
-import { HERE, WORK, EXE } from './paths.mjs';
+import { HERE, WORK, EXE, MANIFEST, DEPENDENCIES } from './paths.mjs';
 
-const manifest = JSON.parse(fs.readFileSync(path.join(HERE, 'data/archive.json')));
+// Worktree可只读复用已安装的固定运行依赖，不改原工程。
+const required = JSON.parse(fs.readFileSync(path.join(HERE, 'package.json'))).dependencies;
+for (const [name, version] of Object.entries(required)) {
+    if (JSON.parse(fs.readFileSync(path.join(DEPENDENCIES, name, 'package.json'))).version !== version) throw new Error('Dependency version differs: ' + name);
+}
+const { WebSocketServer, WebSocket } = createRequire(import.meta.url)(path.join(DEPENDENCIES, 'ws'));
+const manifest = JSON.parse(fs.readFileSync(MANIFEST));
 const httpPort = Number(process.env.POSE_HTTP_PORT || 39380), tcpPort = Number(process.env.POSE_TCP_PORT || 39381);
 const duration = Number(process.env.POSE_PREVIEW_MINUTES || 30);
 if (![httpPort, tcpPort].every(p => Number.isInteger(p) && p > 0 && p <= 65535) || !(duration > 0 && duration <= 120)) throw new Error('Invalid preview options');
@@ -28,7 +34,7 @@ const broadcast = data => {
 const recordError = error => { errors.push(String(error.message || error)); broadcast(status()); console.error(error); };
 const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8' };
 const files = new Map([
-    ['/', 'public/index.html'], ['/app.js', 'public/app.js'], ['/scene.js', 'public/scene.js'], ['/style.css', 'public/style.css'],
+    ['/', 'public/index.html'], ['/app.js', 'public/app.js'], ['/playback.js', 'public/playback.js'], ['/scene.js', 'public/scene.js'], ['/style.css', 'public/style.css'],
     ['/vendor/three.module.js', 'node_modules/three/build/three.module.js'], ['/vendor/three.core.js', 'node_modules/three/build/three.core.js'],
     ['/vendor/OrbitControls.js', 'node_modules/three/examples/jsm/controls/OrbitControls.js']
 ]);
@@ -45,7 +51,7 @@ const server = http.createServer((req, res) => {
     const file = files.get(url.pathname);
     if (!file) { res.writeHead(404).end('Not found'); return; }
     try {
-        const bytes = fs.readFileSync(path.join(HERE, file));
+        const bytes = fs.readFileSync(file.startsWith('node_modules/') ? path.join(DEPENDENCIES, file.slice(13)) : path.join(HERE, file));
         res.setHeader('Content-Type', mime[path.extname(file)] || 'application/octet-stream'); res.end(bytes);
     } catch (e) { res.writeHead(500).end('Asset missing'); recordError(e); }
 });
@@ -70,6 +76,8 @@ const tcp = net.createServer(socket => {
                 if (!expected || createHash('sha256').update(bytes).digest('hex') !== expected.record_sha256) throw new Error('Received bytes differ from archived real board result');
                 frame.received_pc_ns = process.hrtime.bigint().toString();
                 frame.case = expected.case;
+                frame.playback_ms = expected.playback_ms;
+                frame.segment_id = expected.segment_id;
                 frames.push(frame); records.push(bytes);
                 broadcast({ type: 'frame', frame });
             }

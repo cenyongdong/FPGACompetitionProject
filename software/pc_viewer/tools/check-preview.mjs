@@ -2,11 +2,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { once } from 'node:events';
-import { WebSocket } from 'ws';
-import { WORK } from '../paths.mjs';
+import { createRequire } from 'node:module';
+import { WORK, MANIFEST, DEPENDENCIES } from '../paths.mjs';
 import { encodeFrame } from '../protocol.mjs';
 
+const { WebSocket } = createRequire(import.meta.url)(path.join(DEPENDENCIES, 'ws'));
 const base = process.env.POSE_PREVIEW_URL || 'http://127.0.0.1:39380';
+const manifest = JSON.parse(fs.readFileSync(MANIFEST));
 const original = fs.readFileSync(path.join(WORK, 'records.piwpose'));
 const status = await (await fetch(base + '/api/status')).json();
 assert.equal(status.complete, true);
@@ -18,9 +20,9 @@ let message;
 try { [message] = await once(ws, 'message'); } finally { clearTimeout(deadline); ws.close(); }
 const clip = JSON.parse(message);
 assert.equal(clip.type, 'clip');
-assert.equal(clip.frames.length, 3);
+assert.equal(clip.frames.length, manifest.frames.length);
 assert.deepEqual(Buffer.concat(clip.frames.map(encodeFrame)), original);
-const assets = ['/', '/app.js', '/scene.js', '/style.css', '/vendor/three.module.js', '/vendor/three.core.js', '/vendor/OrbitControls.js'];
+const assets = ['/', '/app.js', '/scene.js', '/playback.js', '/style.css', '/vendor/three.module.js', '/vendor/three.core.js', '/vendor/OrbitControls.js'];
 for (const asset of assets) assert.equal((await fetch(base + asset)).status, 200, asset);
 const result = { checked_at: new Date().toISOString(), cpp_sender_exit: status.sender_exit,
     tcp_records: status.received, websocket_records: clip.frames.length, tcp_and_websocket_bytes_identical: true,

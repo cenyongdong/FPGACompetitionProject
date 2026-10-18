@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prepare-data": "node tools/prepare.mjs",
+    "prepare-data": "node tools/prepare-demo.mjs",
     "build-sender": "node tools/build-sender.mjs",
     "test": "node --test test/*.test.mjs",
     "start": "node server.mjs"

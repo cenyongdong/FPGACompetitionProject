@@ -27,7 +27,7 @@
       </dl>
       <div class="confidence-track"><span id="score-bar"></span></div>
       <div class="section-title separated">数据来源</div>
-      <div class="source-card"><span class="source-dot"></span><div><strong>悟净 Lite · PS＋NPU</strong><p>已保存的真实板端结果<br>共享FP16模型 / S11_01</p></div></div>
+      <div class="source-card"><span class="source-dot"></span><div><strong>悟净 Lite · PS＋NPU</strong><p>已保存的真实板端结果<br><span id="model-info">正在读取来源</span></p></div></div>
       <div class="integrity"><span id="integrity-mark">○</span><div><strong id="integrity">等待完整记录</strong><p>TCP接收与原始字节核对</p></div></div>
       <div class="sidebar-note"><span class="tiny-label">DISPLAY CONTRACT</span><p>原始坐标 · 无平滑 · 无身份跟踪<br>模型坐标空间，尚未进行房间标定。</p></div>
       <a class="detail-link" href="#details" id="detail-toggle">查看坐标与来源 <span>↗</span></a>
@@ -48,21 +48,26 @@
       <div class="viewport-caption"><span class="caption-dot"></span><span>C0 / −C2 / −C1</span><span class="caption-divider">|</span><span>MODEL SPACE</span></div>
       <div class="orbit-hint">拖动旋转<span>·</span>滚轮缩放<span>·</span>右键平移</div>
       <div class="stats-strip">
-        <div><span class="stat-label">TCP 已接收</span><strong id="received">0 / 3</strong><span class="stat-unit">帧</span></div>
+        <div><span class="stat-label">TCP 已接收</span><strong id="received">0 / —</strong><span class="stat-unit">帧</span></div>
         <div><span class="stat-label">接收状态</span><strong id="input-state">等待</strong></div>
         <div><span class="stat-label">回放速度</span><strong id="pose-hz">2.0</strong><span class="stat-unit">姿态/秒</span></div>
         <div><span class="stat-label">渲染</span><strong id="render-fps">—</strong><span class="stat-unit">FPS</span></div>
       </div>
       <section class="playback" aria-label="回放控制">
-        <div class="playback-head"><span>真实结果回放 <span class="subtle">/ 3个不同姿态</span></span><span id="play-state">载入中</span></div>
+        <div class="playback-head"><span>真实结果回放 <span class="subtle" id="clip-summary"></span></span><span id="play-state">载入中</span></div>
+        <div class="clip-tools">
+          <label for="segment">动作片段 <select id="segment" aria-label="动作片段"></select></label>
+          <span id="timecode">00:00.0 / 00:00.0</span>
+          <button id="loop" class="loop" aria-pressed="false">循环</button>
+        </div>
         <div class="transport-row">
           <button id="previous" class="step" aria-label="上一帧">|‹</button>
           <button id="play" class="play" aria-label="播放回放" disabled>▶</button>
           <button id="next" class="step" aria-label="下一帧">›|</button>
-          <div class="timeline"><input id="scrubber" type="range" min="0" max="2" value="0" step="1" aria-label="选择回放帧" disabled><div class="timeline-labels"><span>308</span><span>309</span><span>310</span></div></div>
+          <div class="timeline"><input id="scrubber" type="range" min="0" max="2" value="0" step="1" aria-label="选择回放帧" disabled><div class="timeline-labels"><span id="sample-first">—</span><span id="sample-middle">—</span><span id="sample-last">—</span></div></div>
           <label class="speed-label" for="speed">速度<select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
         </div>
-        <p class="playback-note">每次更新均来自已接收记录。循环播放和画面刷新不计作新推理。</p>
+        <p class="playback-note">按原演示发送间隔回放；片段独立切换。循环与画面刷新不增加真实帧数。</p>
       </section>
     </section>
   </main>

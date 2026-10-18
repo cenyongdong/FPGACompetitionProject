@@ -1,43 +1,56 @@
 # PC 三维姿态观察台
 
-独立本地应用：已保存的真实板端结果 → C++ TCP发送器 → Node接收校验 → WebSocket → Three.js三维回放。当前仅验收归档三帧，不创建Engine、不访问板子、不链接HDMI/VPU/SDK。实际结果见[本轮验证](../../tools/pose-output/evidence/pc-replay-20261018-r1/REPORT.md)。
+独立本地链路：已保存真实板端结果 → SDK无关C++发送器 → TCP → Node接收校验 → WebSocket → Three.js。现已接入60个不同的历史结果，默认循环预览可从[本地地址](http://127.0.0.1:39380/?play=1&loop=1)打开。实际验证与边界见[本轮记录](VALIDATION-20261018.md)。不创建Engine、不访问Lite、不链接HDMI／VPU／SDK。
+
+## 长动作素材
+
+来源是2026-10-11原演示成功运行保存的 `frames.jsonl` 中的完整精度 `selected_pose` 和 `best_score`，并与当时主机输入目录、实际发送清单、板端成功摘要关联。60份输入和60个选中姿态均不同，坐标均精确表示为FP32。原始完整100候选数组在当前可用目录中未找到，因此本轮不声称重新检验了全部候选或模型精度。
+
+| 片段 | 原始样本 | 原始帧号 | 数量 | 首末记录间隔 |
+|---|---|---|---:|---:|
+| S11_01 | 308–324 | 1000000–1000016 | 17 | 8.010秒 |
+| S11_02（默认） | 301–343 | 1000017–1000059 | 43 | 21.001秒 |
+
+两个源序列独立选择，播放／拖动／循环都不跨片段接续。播放节奏使用当时同一主机的实际发送时间差，默认约2姿态/秒；这不是原始RF采样率或实测模型吞吐。渲染FPS另行采样。循环和插看不会增加真实结果数。
+
+长素材来自原演示模型，界面单独标注；先前三帧共享FP16素材的来源信息继续保留在 `data/archive.json`，不与本批混为同一数值验收。原演示仅前三份有旧参考逐位检查，另外57份历史范围为形状／有限性／选择／映射；本轮不扩大该范围。
 
 ## 模块边界
 
-- `../pose_output/`：C++17拥有值记录、显式小端编解码、带截止时间的TCP发送器和文件回放入口；Windows Winsock／Linux POSIX，无SDK依赖。
-- `protocol.mjs`：Node端记录校验、分包重组、序列检查及版本化14关节拓扑。
-- `tools/prepare.mjs`：只读原始完整分数/姿态及已验收的候选选择记录。逐字节确认其与HDMI历史回放来源相同，再派生256字节网络记录。不重新推理、不更改旧证据。
-- `server.mjs`：仅监听127.0.0.1；启动一次C++发送器，核对每条实际TCP记录，再通过WebSocket发送拥有的骨架值。HTTP `/api/clip` 仅作只读检查。此入口是有界归档演示，尚非通用实板实时服务。
-- `public/scene.js`：独立相机、网格、14关节和骨连接。`public/app.js`：来源详情、回放控制与连接状态。不从HTML或静态元数据注入姿态。
+- `../pose_output/`：原有C++17拥有值协议与同步有界发送器未修改，复用相同来源的已验证本机可执行文件。
+- `tools/prepare-demo.mjs`：只读导入原始JSON选中结果、时间与来源；检查FP32精确性、唯一性和源片段，生成网络记录与 `data/demo60.json`。不重新选择候选或新增阈值，不修改旧证据。
+- `protocol.mjs`：PIWPOSE1版本1编解码／分包／顺序检查未修改。
+- `public/playback.js`：无DOM／渲染／网络依赖的片段边界和回放时序。
+- `public/app.js`：片段、逐帧、进度、原速／半速／倍速、循环、原值详情；默认一次播放，URL `?play=1&loop=1`明确请求自动循环。
+- `public/scene.js`：既有Three.js三维渲染保持。固定14关节拓扑和模型坐标变换，不auto-fit、不平滑、不增加身份跟踪或额外关节。
+- `server.mjs`：仅127.0.0.1监听；启动一次C++发送器，逐记录核对实际TCP字节，再经WebSocket交付。HTTP `/api/clip`供只读检查。
 
-现有核心、HDMI应用、RTL、约束、模型和构建入口均不修改。未来接入使用实际 `Result` 的帧号、调用号、`best_index`、分数和 `selected_pose` 拷贝为 `pose::output::Frame`。`TcpSender::send` 是同步有界接口，须由输出工作线程调用；本阶段不声称已有生产者异步队列或双路并发验收。
+HDMI源码／RTL／约束／构建、正式推理核心、模型／SDK／BOOT和CSI／显示IPC均不修改。未来实时接入仍只通过拥有值Result适配；发送器应在独立输出线程使用。本阶段未完成实时发布、双路并发或长期验收。
 
-## 本机运行
+## 运行与恢复
 
-从仓库根目录执行；沿用已有Node.js、g++和Windows tar，不安装或升级系统工具：
+在仓库根目录执行；已准备的本机环境直接启动即可：
 
 ```powershell
-powershell -NoProfile -File software/pc_viewer/setup.ps1
-node --test software/pc_viewer/test/transport.test.mjs
 node software/pc_viewer/server.mjs
 ```
 
-已有数据、可执行文件和依赖时只需最后一条。浏览器地址 `http://127.0.0.1:39380`，骨架TCP端口39381；仅本机可访问，不改防火墙。启动会打印URL和PID；Ctrl+C关闭，默认30分钟自动退出。`POSE_HTTP_PORT`、`POSE_TCP_PORT`、`POSE_PREVIEW_MINUTES`可在进程级配置，时限不超过120分钟。检查运行中的传输链：`node software/pc_viewer/tools/check-preview.mjs`。
+本机HTTP39380、骨架TCP39381，默认30分钟自动退出，可用Ctrl+C结束。环境变量 `POSE_HTTP_PORT`、`POSE_TCP_PORT`、`POSE_PREVIEW_MINUTES`仅作用当前进程；期限不超过120分钟。`POSE_DEPENDENCY_ROOT`可指向已有固定依赖目录，只读复用并校验版本，适用于独立worktree。
 
-运行产物集中在 `.local/pc-pose-replay-20261018-r1`：`records.piwpose`、`received.piwpose`、`pose_replay.exe`、发送日志、接收回执和预览验证。Node子进程可能被Codex沙箱拦截；本轮通过工具执行权限运行本项目自己的C++子进程，未放宽系统策略。
+新环境需要已保存的真实证据目录，当前找到的位置为 `D:/FPGACompetitionProjectB/tools/pose-v1/evidence/demo-20261011-r4`：
 
-## 真实数据与展示语义
+```powershell
+powershell -NoProfile -File software/pc_viewer/setup.ps1 -ArchiveEvidence D:/FPGACompetitionProjectB/tools/pose-v1/evidence/demo-20261011-r4
+node --test software/pc_viewer/test/transport.test.mjs
+node software/pc_viewer/tools/check-preview.mjs
+```
 
-`data/archive.json`保留三个来源及其完整原始文件身份；原值仍在旧证据目录维护。帧1000000/1/2对应S11_01_308/309/310，候选槽0，分数分别0.9482421875、0.97900390625、0.96826171875。它们是共享FP16图经ADR_48 v2验收的历史实际输出，不是GT、合成动作或新推理。
+`setup.ps1`沿用已有Node.js／g++／tar，下载核对两个固定运行包，不安装或升级系统工具；原始资料与当前worktree可以分开。只重新导入可用 `node software/pc_viewer/tools/prepare-demo.mjs <证据目录>`。首次导入路径保存在manifest，之后可不带路径复用。
 
-三帧均使用既有14关节/14条连接；最高分策略和相同分数取最前槽保持。`score>0.2`不作为发布/人数阈值。全部100分数和4200姿态的旧原始证据继续保留，网络仅发送选中姿态。
+一套运行产物集中在 `.local/pc-pose-replay-20261018-r2`：原始／接收记录、发送器、日志、回执、网络检查、运行PID／期限及实际接收快照。输入／包身份见 `data/demo60.json`；不维护源码全树哈希。
 
-展示变换集中在 `scene.js`：`x=C0−1.75, y=4.2−C2, z=−(C1−1.75)`，固定相机观察点，不逐帧居中、不auto-fit、不平滑。坐标详情显示原始C0/C1/C2；小数格式仅用于文字，TCP仍保持FP32位值。地面与圆环是模型空间参照，未作真实房间标定。
+## 预览与限制
 
-默认2姿态/秒是人工设定的回放速度，不是来源采样率或实测推理吞吐。渲染FPS独立采样，播放结束停止；重复播放不产生新推理。归档缺少可靠的采集时间，因此不计算跨主机端到端延迟。服务断开后暂停回放并明确标记断开，已接收原值保留在浏览器内。
+[43帧动作动画](previews/s11-02-motion.gif)由实际TCP接收快照独立绘制，使用相同原坐标和拓扑，用于直接观看动作变化，**不是Three.js浏览器录像或截图**。交互3D需打开本地预览。本轮浏览器自动化连接持续超时，未新增浏览器截图／交互复核；后端传输、前端语法及片段时序测试均已完成，渲染模块沿用此前已验证实现。
 
-## 依赖
-
-固定Three.js 0.186.1及ws 8.22.0，均MIT；版本、官方registry地址和SHA512见 `dependencies.lock.json`。`setup.ps1`下载并验证两个固定包后解压到本模块的 `node_modules/`，不运行安装脚本、不启用可选原生插件。许可证保留于各包的LICENSE文件。运行时所有资源均由本机服务提供，无CDN、云服务或外部字体请求。
-
-官方来源：[Three.js](https://github.com/mrdoob/three.js)、[ws](https://github.com/websockets/ws)。
+固定依赖Three.js0.186.1、ws8.22.0，均MIT；来源与SHA512见 `dependencies.lock.json`，许可证保留于包中。运行不请求云服务、CDN或外部字体。科学数据动画使用已存在的Pillow／NumPy；来源数据和回放都未平滑或修补。
