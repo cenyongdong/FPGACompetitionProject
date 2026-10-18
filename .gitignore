@@ -21,6 +21,9 @@ Record
 
 #本地配置文件
 .local
+*.edf
+*.dcp
+tools/**/evidence/
 
 #模型权重
 /model/
