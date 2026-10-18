@@ -1,5 +1,7 @@
 # 独立AI读路径观测适配与固定DMA探针
 
+2026-10-18状态说明：本页保留早期读观测探针的接口与mock范围。后续r9已用于板测，r13四档DMA及三窗新推理→HDMI通过；启动异常仍未解决，任务当前整体暂停。实际分段／无SDK探针及结果见[工程入口](../INTEGRATION.md)和[暂停汇报](../STARTUP-PAUSE-REPORT-20261018.md)。下述“尚未板测”等表述仅指该早期编写阶段，不能替代当前状态或授予重跑许可。
+
 本包仅用于D45隔离诊断，不接正常Engine、模型或数学路径。源码及纯本机mock验证已完成，mock不替代ARM真实SDK编译或板测；实际ARM探针构建另见build-read-probe证据目录。尚未执行新板测，不能把源码或mock通过写成DMA或全链通过。旧ai_dma_probe.cpp、ai_monitor_sdk.hpp保持原样。
 
 ## 执行位置与前置条件
@@ -58,8 +60,8 @@ malloc、transfer、读SDK状态、最终CSR取证或free的SDK异常均进入�
 
 可用不依赖真实SDK的mock记录CSR访问次序，覆盖：初始代数非0拒绝；ARM不完成／error／异常拒绝首DMA；FREEZE必须1/1→2/2；104字读取前后代数变化拒绝但保留原字；第k字SDK异常只保存前k字；重复ARM／FREEZE拒绝且不再次写CSR。另覆盖首次64字节读成功后两份文件完整保存先于比较、4KiB写失败后不生成4KiB actual、不启动65536档、诊断失败不改变exit71和原stderr，以及已有文件拒绝覆盖。
 
-2026-10-17已用本机现有Winlibs GCC16.2、-std=c++17/-Wall/-Wextra/-Werror编译并运行隔离mock：15项helper和12项完整probe场景通过，9.937秒。完整probe源码和两个helper按原字节复制，只有假SDK头及Windows文件API测试shim替换真实外部接口。输入、编译命令、各退出码、完整stdout/stderr、逐次假SDK事件、实际字节文件和89文件清单见[mock执行结果](../../../tools/pose-v1/evidence/hdmi-live-20261017-r3/mock-ai-read-monitor-r1/run-r1/result.json)。helper时钟停止、代数变化、七字部分读取、重复命令拒绝，以及probe的SDK原错先记录、读取失败不造actual、差异前保存、晚文件碰撞和预存在路径拒绝均已覆盖。
+2026-10-17已用本机现有Winlibs GCC16.2、-std=c++17/-Wall/-Wextra/-Werror编译并运行隔离mock：15项helper和12项完整probe场景通过，9.937秒。完整probe源码和两个helper按原字节复制，只有假SDK头及Windows文件API测试shim替换真实外部接口。输入、编译命令、各退出码、完整stdout/stderr、逐次假SDK事件、实际字节文件和89文件清单见历史run-r1结果（原独立result.json已不在当前树）。helper时钟停止、代数变化、七字部分读取、重复命令拒绝，以及probe的SDK原错先记录、读取失败不造actual、差异前保存、晚文件碰撞和预存在路径拒绝均已覆盖。
 
-后续包级审查发现成功probe会留下2/2，而原共享适配只收0/0；原r1编译和mock结果保留，不把编译通过当包级可连用。新增明确Epoch后，[run-r2](../../../tools/pose-v1/evidence/hdmi-live-20261017-r3/mock-ai-read-monitor-r1/run-r2/result.json)一次8.328秒通过48项helper和13项probe场景，含两个合法阶段、0～7全部错误初始值、req/resp不等、非法enum、同一生命周期不重试以及FreshBoot探针拒绝已有2/2。helper修改前后完整源码和SHA另存helper-epoch-revision-r2；r1实际产物不覆盖。新ARM探针与共享包必须用r2构建证据，最终离线包不采纳r1软件组合。
+后续包级审查发现成功probe会留下2/2，而原共享适配只收0/0；原r1编译和mock结果保留，不把编译通过当包级可连用。新增明确Epoch后，历史run-r2结果（原独立result.json已不在当前树）一次8.328秒通过48项helper和13项probe场景，含两个合法阶段、0～7全部错误初始值、req/resp不等、非法enum、同一生命周期不重试以及FreshBoot探针拒绝已有2/2。helper修改前后完整源码和SHA另存helper-epoch-revision-r2；r1实际产物不覆盖。新ARM探针与共享包必须用r2构建证据，最终离线包不采纳r1软件组合。
 
 该mock没有使用真实SDK、网络或板端；Windows shim用_commit代替fsync，并将O_NOFOLLOW/O_CLOEXEC置0，因此不验证Linux这两个flag的语义。实际板测通过须四档完整来源与回读字节一致、104字同代数保持、同Device旧快照成功、资源正常释放且无SDK异常；只编译成功、mock通过或只读到ABI不算板测通过。新推理和HDMI须在该门禁通过后按实际执行包继续。

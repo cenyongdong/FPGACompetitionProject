@@ -1,6 +1,6 @@
 # 项目执行规范
 
-本文件只保留现行执行规则与授权边界；替代此前重复的流程、暂停／唤醒叙述。实际状态与包使用次数见[PROJECT-PROGRESS.md](PROJECT-PROGRESS.md)及[恢复状态](tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)，问题见[DIFFICULTIES.md](DIFFICULTIES.md)，资料见[REFERENCES.md](REFERENCES.md)，决策见[ADR索引](ADR/README.md)。历史计划不构成新授权。
+本文件只保留现行执行规则与授权边界；替代此前重复的流程、暂停／唤醒叙述。实际状态与包使用次数见[PROJECT-PROGRESS.md](PROJECT-PROGRESS.md)及[恢复状态](tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/pause-state.json)，问题见[DIFFICULTIES.md](DIFFICULTIES.md)，资料见[REFERENCES.md](REFERENCES.md)，决策见[ADR索引](ADR/README.md)。历史计划不构成新授权。
 
 ## 核心目标与执行顺序
 
@@ -34,6 +34,9 @@
 - 必要证据不能省略：最终bit与源／约束／目标的对应关系、实测结果、关键失败原值及SDK／模型／BOOT身份。旧失败、已有归档与原验收清单保留，不删除、不覆盖、不回写旧哈希；不把脚本准备成功、局部仿真或位流生成成功写成实板通过。
 
 ## 架构、基线与现行授权
+
+- 当前先解决r9跨启动偶发故障，区分BOOT初始化与Device::Open的影响；启动稳定性未解决不自动推进连续推理到HDMI长期验证。开启HDMI长期验证必须取得用户单独明确批准。
+- 用户已允许在根因仍不明确时先暂停并返回汇报；本轮已在安全回退后整体暂停实时推理到HDMI及启动稳定性排查，包含离线实现／仿真／构建、部署、板测和后台续作，只完成汇报与交接。恢复须用户明确唤醒；仪器明日可用不视为自动恢复。旧DATA独立暂停及新执行包授权边界保持。
 
 - 架构按[ADR_49](ADR/ADR_49.md)：PS＋NPU负责感知，PL本地HDMI输出，PC负责高质量3D；未来正式主链停用VPU／RTSP。当前目标是新推理→HDMI闭环，允许必要的隔离诊断实现、构建与有限验证；不自行扩为PC展示、骨架网络协议或文件系统修复。本任务不接入Vivado MCP。
 - 原厂Vivado2018.3＋030ai／JFM及Procise适配路线按[路径二实施配置](FPGA/hdmi_candidate/ROUTE2-BUILD-PLAN.md)继续有效；已批准的IP库补丁与限定GT处理可复用，不新增速度库替换或其它豁免。使用前核对本机实际路径、版本和目标器件；不采用未经复旦微适配核实的Xilinx假设。下载前核对实际链目标与安全停止／隔离，历史器件编号不能直接复用。

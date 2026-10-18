@@ -1,56 +1,73 @@
-# HDMI候选的集成契约与剩余门槛
+# HDMI结构、接入过程与验证边界
 
-2026-10-16：**下一阶段实施按用户要求暂停，等待后续项目架构确定及明确恢复指令。** 本轮仅完成FPGA工作总结和文档交接，未连接板卡或执行构建。最近实际验证为同日HDMI双ABI／PLL／约148.5MHz像素计数及稳定八色条实屏通过。原BOOT已恢复、运行中候选为上次封存确认状态，本轮没有重新核验实板。DDR读帧／翻帧／在途STOP和整机实时性尚未验收；FAT脏标志及未引用链来源未明、未修复，旧DATA继续暂停。 [负责范围、原厂位流操作及交接](../FPGA-WORK-SUMMARY-20261016.md)。
+更新：2026-10-18。**已完成r13三窗新推理→HDMI有界闭环，尚未解决跨启动偶发故障。** 当前开发、仿真、构建、部署及板测整体暂停，仅整理文档。[暂停汇报](STARTUP-PAUSE-REPORT-20261018.md)保存近期实验与最后实板状态；本页维护工程结构和可复用方法。
 
-此前原生工具阶段结果保留：最新配套：隔离IP修订与有限例外已批准，生成/后检及AXI3有界路由仿真、原生互联综合通过；自定义PS7扩展端口与PCPU7声明不匹配，当前停止完整系统构建。纯输出OBUFDS→ODU_DS实际引脚布线兼容探针通过，无时序签核；双向IODU路径已拒绝。详见[PS适配状态](PS-ADAPTATION-STATUS.md)、[恢复入口](RESUME.md)。下文仍是尚未完成的系统契约，不能把局部门检当成集成完成。
+## 分工与数据流
 
-2026-10-15实际范围：`hdmi_scanout`已连接CSR→邮箱→地址控制→AXI只读→双时钟FIFO→RGB565扫描。当前为离线逻辑边界，输出并行RGB/HS/VS/DE；尚无PS顶层映射、TMDS物理输出、完整系统构建或实屏验收。
+按[ADR_49](../../ADR/ADR_49.md)，PS＋NPU感知，PL本地HDMI，PC独立3D展示；新HDMI应用未启动VPU／RTSP，旧演示源码保留。
 
-引脚和物理复位的新增核验见[PIN-CONTRACT.md](PIN-CONTRACT.md)：AC14独立100MHz，HDMI对/BANK12/3.3V；F8是BANK34/1.5V的PL_KEY2，松开低、按下高。规范复位同步与AXI协调仍待验证。JFM替换严格限2018.3、工程内单文件方案失败，详见[JFM兼容核对](JFM-COMPATIBILITY-REVIEW.md)。
+```mermaid
+flowchart LR
+    A[固定CSI窗口] --> B[PS预处理与NPU共享推理]
+    B --> C[完整输出保存与数值门检]
+    C --> D[PS候选选择、投影与720p RGB骨架]
+    D --> E[PS转1080p RGB565双缓冲]
+    E --> F[PL AXI读帧与跨域FIFO]
+    F --> G[PL扫描、TMDS与HDMI]
+```
 
-## 模块、时钟和所有权
+这是已验证的三窗路径，不是连续CSI长期演示。骨架绘制与格式转换目前在PS；PL负责读帧、显示时序与安全换帧／停止。PC分支已完成历史真实结果的本机TCP／3D回放，尚未与板端新推理双路联合验收，见[PC入口](../../software/pc_viewer/README.md)。
 
-| 模块 | 时钟/资源 | 外部契约 |
+## 源码与最小接口
+
+| 层 | 源码入口 | 职责及所有权 |
 |---|---|---|
-| register_bank/mailbox | csr_clk；PS单线程命令owner | 命令响应只表示排队/拒绝；用新响应代数和SNAPSHOT核对地址采用ID或stopped ID |
-| scan_control/axi_read | mem_clk；独占一条AXI读通道 | 一次在途，AR已发布就不能撤回；仅RVALID&&RREADY提交/结束；停止可丢弃返回数据排空 |
-| stream_fifo | mem_clk写64位，pixel_clk读16位 | 先低16位，四像素后释放整字；两个Gray指针各两级同步；同步读RAM提前读取下一字，无字间空拍 |
-| pixel_scan | pixel_clk；扫描状态与欠载 | 2200×1125、正极性HS44/VS5，1920×1080活动区；START只在新帧边界启用；STOP保持同步/DE并输出黑色 |
-| clock_fmsh | 独立100MHz参考，native PLL/GLCLK/IOCLK | 数学目标148.5/742.5MHz，尚未与物理序列器/引脚组合验证 |
+| 推理应用 | [software/hdmi_demo/main.cpp](../../software/hdmi_demo/main.cpp) | 有界三窗；保存实际输出并门检后显示；Engine主线程提供同一Device |
+| PS绘图与格式 | [skeleton_render.cpp](../../software/core/display/skeleton_render.cpp)、[hdmi_canvas.cpp](../../software/core/display/hdmi_canvas.cpp) | 复用原候选选择、投影与文字绘制；1280×720 RGB24双线性转换为1920×1080 RGB565LE |
+| SDK显示适配 | [hdmi_output.cpp](../../software/core/display/hdmi_output.cpp) | 公开SDK分配／写帧／CSR；拥有两个帧块，负责采纳、换帧、STOP和释放 |
+| CSR与板级集成 | [hdmi_cam_router.sv](rtl/integration/hdmi_cam_router.sv)、[hdmi_board.sv](rtl/integration/hdmi_board.sv) | 保留原SDK低地址，显式译码HDMI窗口；静态图案、PLL与像素计数辅助观测 |
+| 命令与控制 | [hdmi_register_bank.v](rtl/hdmi_register_bank.v)、[hdmi_command_mailbox.v](rtl/hdmi_command_mailbox.v)、[hdmi_scan_control.v](rtl/hdmi_scan_control.v) | CSR／mem域握手、帧边界采纳和停止；命令入队不等于地址已采用 |
+| 读帧与扫描 | [hdmi_axi_read.v](rtl/hdmi_axi_read.v)、[hdmi_stream_fifo.v](rtl/hdmi_stream_fifo.v)、[hdmi_pixel_scan.v](rtl/hdmi_pixel_scan.v) | 单笔在途只读、按4KiB边界拆分、64位到16位FIFO、同步扫描；顶层[hdmi_scanout.v](rtl/hdmi_scanout.v) |
+| 时钟与TMDS | [hdmi_clock_jfm.v](rtl/integration/hdmi_clock_jfm.v)、[uihdmitx.v](rtl/display/uihdmitx.v) | 100MHz参考经适配PLL生成148.5／742.5MHz，使用原厂适配物理输出路径 |
+| 隔离诊断 | [software](software)、[diagnostics](diagnostics)、[sim](sim) | CSR／AXI被动观测、无SDK父进程、SDK加载／Open子进程和定向仿真，不替换正式推理算法 |
 
-FIFO深512×64位，即4096字节；本次Procise综合实际产生1个RAMH36E1。按148.5MHz连续活动像素计算，满FIFO约提供13.79µs消费余量；这不是DDR仲裁延迟保证。1080p60 RGB565每秒读取248,832,000字节，真实PS/NPU/VPU并发下的DDR服务能力尚未测。
+上表给出可维护模块入口；r9对reader边界谓词的时序优化在隔离发布副本中完成。复用实际r9必须核对其原始包和发布来源，不能仅按仓库同名文件重建并宣称逐位相同。工具与产物边界见下节。
 
-内存仅在safe_idle及相应stopped ID由新快照确认后释放。safe_idle保证候选不再发请求且所有已接受AXI读已排空，不证明显示器已经显示了最后一像素，也不允许重用仍作为下一帧地址的缓冲。默认DMA窗口只是已知udmabuf总范围，应用还必须分配/持有实际帧块，拒绝与模型等资源重叠。原公开SDK分配/映射接口不变。
+## 互联、寄存器与帧契约
 
-## 原PS/AI工程接入位置（已审查，未改动）
+r9实际HP2互联为S00接AI的HC2、S01接HDMI，返回PS RID为6位；来源识别与原ID必须一起经过返回流水线。AI桥实际ARID固定0，综合可能合法裁去未使用位，不能用脱离物理边界的网表仿真推断截断。旧相机写通道保留独立所有权，不把两个AR／R驱动直接并接，也不把旧display_en当作新显示START／STOP。静态核对与有限仿真未发现直接错线，但不能证明跨启动运行正确。
 
-原`ps_ai_peripheral.sv`的`frame_to_ps_largebuf`持有HP2读写；新显示读主机应单独接HP2读通道，原相机写通道保留独立所有权。不能把两个AR/R驱动直接并接；候选应停用旧扫描读请求，再替换对应读主机。旧`display_en`还改变相机输入格式，不能当作新显示START/STOP。
+- HDMI CSR为`0x400b0000–0x400b00ff`，先验证`0x48444d01`／`0x48445301`双ABI及时钟契约。该地址只适用于已核验候选，不向原BOOT假定寄存器存在。r9被动读观测窗另在`0x400b0400`，ABI为`0x41495201`、快照104字，详见[观测协议](software/AI-READ-MONITOR.md)。
+- GP0原cam窗口存在高地址别名，候选用独立router显式译码并保留低地址功能。mna_gp_ww无WSTRB，按对齐完整32位写及write_ready握手处理；AXI-Lite的AW／W不得假定同周期到达。
+- 每帧4,147,200字节；双帧共8,294,400字节，由同一SDK设备实际分配、64字节对齐并核对范围。地址不硬编码，不与模型资源重叠，也不跨进程借用分配器。
+- `show`使用新命令响应及匹配帧ID／地址的快照确认采纳，预算200ms；旧帧需确认不再被当前或待采纳地址引用才可复用。
+- `close`预算500ms，必须取得新响应、匹配停止ID、safe_idle且在途位清零后释放。已发布ARVALID不能撤回；读完成仅按RVALID&&RREADY，STOP可丢弃返回数据以排空，像素时钟停止也不能阻止排空。ready、零计数或缓存同步均不能代替该证明。
+- mem／pixel域间FIFO为512×64位，即4096字节；1920×1080、2200×1125总时序，正极性HS44／VS5。STOP后保持同步输出黑色。1080p60 RGB565有效像素读带宽为248,832,000字节／秒，满FIFO消费余量约13.79µs；两者都是配置计算，不是DDR最坏服务延迟保证。
+- CSR／mem／pixel复位须与AXI子系统协调，异步置位、各域同步释放；局部复位不能伪造读完成。FIFO flush仅在safe_idle后发生；STOP不复位扫描计数器。PLL失锁不能维持有效TMDS，不宣称失锁时画面仍稳定。F8按键复位的实际有效性仍属D45待验证项。
+- Gray指针采用两级同步，还须按实际源时钟周期限制到第一级的最大延时及位间偏斜；72位命令／160位响应邮箱依赖稳定保持与toggle握手，数据路径分别以mem／CSR采样窗口约束。不能只设全域false_path就宣称CDC通过；同步链、跨域CE和复位恢复／移除须结合布局后结果核对。
+- 静态PLL／像素计数与显示器可见画面，不替代TMDS完整电气合规、连续带宽或长期稳定性验收。
 
-GP0的cam窗口为0x40080000–0x400bffff，`frame_trans`内部仅接低9位地址。当前接口对高位存在别名，新增CSR应经显式地址解码和独立适配器接入，保留原低地址功能。**本轮整机接入授权内，隔离候选已明确解码0x400b0000–0x400b00ff；原SDK低地址保留。该新地址仅在候选ABI实际确认后使用，不能向旧BOOT假定候选寄存器存在。** 原mna_gp_ww接口无WSTRB，要明确完整32位写契约并遵守write_ready；AXI-Lite的AW/W收集不能靠同周期假设。
+## 开发过程与实际结果
 
-原XPR为2018.3参考工程，本机2019.1用于RTL辅助仿真；现行REFERENCES第13.5节明确2018只作参考，不能反过来要求用户安装2018，也不能自行迁移IP。此次101项引用复核为93存在、8项process_control Tcl缺失；本地JFM_Kits中有6项同名文件，place_pre/post缺失，与旧索引一致。不能由这8项缺失推断核心RTL全部缺失。不得直接复制hook或替换时序数据库来掩盖配套尚未闭合。
+| 阶段 | 开发／处理 | 已取得结果与限制 |
+|---|---|---|
+| 原显示问题隔离 | 参考RTL仿真发现200MHz扫描、未按RREADY判读完成、停止消费可能卡读；建立独立时钟、AXI读帧、换帧／STOP模块 | 完整1080p地址／像素、背压、跨4KiB及停像素时钟后排空的有限仿真通过；参考源码风险不直接等于原BOOT现场根因 |
+| TMDS与原厂工具适配 | 时钟序列器字符串改为显式`10'b1111100000`；核对F8／AC14／差分引脚；从不匹配的通用PCPU7导入转到获准的Vivado2018.3＋030ai／JFM与Procise后处理 | Lite目标模型时钟占空比20%→50%；扩展PS前端、完整系统及原厂位流流程闭合。2019.1或通用Xilinx假设不能直接替代适配流程 |
+| 静态与DDR显示 | 静态色条、实际SDK双帧内存对照、两幅四色图案、三份真实历史骨架；建立采纳与STOP／释放证据 | 用户确认可见且切换正常，实际RGB565曾与本机重建逐位一致；首次START fault2仍按D44保留 |
+| 时序与r9发布 | reader边界谓词等价缩短，1,048,576组合及有限状态机比较；复用检查点并完成实际实现与复核 | r9 setup／hold余量+0.030／+0.023ns，TNS／THS=0；原AI两个Min Period例外仍在，**raw_timing_pass仍false**，不能称全部原始时序零例外通过 |
+| AI路径与新推理联动 | 同r9分段观测、Open前健康门、64B／4KiB／64KiB／1MiB完整DMA门检，随后固定共享模型三窗 | r13四档和3次新推理／3帧采纳、STOP与Engine销毁通过，用户确认FRAME 1000000→1000001→1000002；VPU／RTSP均未启动 |
+| 跨启动排查 | r14–r20复用同r9，分离纯CSR、库加载、显式Open、关闭与PL按键校准 | 可在Open前复现HP2／HDMI持续返回背压；健康样本也存在。r20按键后仍读0/2/2，尚未证明有效复位；D45未解决 |
 
-## 时钟/复位/CDC约束要求
+相关难点、处理是否奏效及剩余假设统一放在[DIFFICULTIES.md](../../DIFFICULTIES.md)，阶段交付放在[Done.md](../../Done.md)。不把故障后来未复现写成根因修复。
 
-- csr/mem/pixel复位必须与AXI子系统协调；局部复位不能伪造读完成。pixel_resetn须由PLL锁定/系统复位生成异步置位、像素域同步释放的复位。STOP不得复位扫描计数器。
-- FIFO flush仅在safe_idle后发生，两个域内部各三级同步释放。像素时钟停止不阻止mem域排空AXI。若参考时钟/PLL失锁，硬件不能维持有效TMDS时序；失锁控制只保证内存停止/排空，不宣称画面稳定。
-- Gray总线必须对源指针至目标第一级同步器限制最大路径延时及位间偏斜，保留第二级正常时序。应按源时钟周期上界：200MHz写指针5ns、148.5MHz读指针约6.734ns（仅本次仿真配置，集成时用真实时钟）。不能仅全域false_path后称CDC通过。
-- 邮箱72位命令/160位响应采用稳定保持总线，request/response toggle两级同步。为保持总线至目标采样寄存器设置可验证的最大延时窗口，命令可取≤一个mem周期、响应≤一个csr周期的保守上界；同步链和多位数据路径均应在布局后核对。
-- lock、run、idle、frame_toggle及underflow各自同步；safe_idle到FIFO异步复位的恢复/移除路径、锁定释放和FIFO跨域复位均须检查。
-- 物理顶层必须建立参考时钟/PLL派生时钟、IOCLK/GLCLK连通、像素与串行相位、SERDES级联、真实封装/BANK/电平、所有端口与AXI输入输出时序。未连接PS顶层时不能以无约束端口的模块布局布线代替系统时序验收。
+## 工具、产物与证据位置
 
-目前仅形成约束清单，未加载占位FDC、未做布局布线或setup/hold/未约束路径签核。
+执行位置为Windows `D:/FPGACompetitionProject`；当前实际系统构建使用Vivado2018.3＋原厂030ai／JFM适配及Procise2025.1.1 temp/SVN32494后处理，FPAI容器承担ARM64 GCC9.4／CMake3.24.2交叉编译，SDK／Icraft3.39.0。2019.1用于此前辅助仿真，不能据此迁移整机IP。固定模型、RAW、数学、Gather注册、NPU分配和帧协议保持。
 
-## TMDS边界
+- [r9候选与发布规格](CANDIDATE-BOARD-READ-R9.md)保留该包的时序、位流与BOOT身份；其中早期失败结果只代表r9首次执行，不覆盖后续r13通过。实际[离线发布文件](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/controlled-startup-read-v3-execution-r9)仍在位，旧包次数均不恢复。
+- [r13 verification.tar](../../tools/pose-v1/evidence/hdmi-preopen-20261018-r13/verification.tar)：`run/metadata/full-dma-review.json`为四档完整比较，`run/shared/inference/frames.jsonl`为每窗门检，`run/shared/inference/summary.json`为3次新推理、3帧采纳与释放；[closure.tar](../../tools/pose-v1/evidence/hdmi-preopen-20261018-r13/closure.tar)保存回退。
+- [近期暂停汇报](STARTUP-PAUSE-REPORT-20261018.md)链接r14–r20实际报告、按键原值与最终原BOOT审计。[耗时报告](TIME-REPORT-20261018.md)保留上一轮4小时38分41秒的统计口径。
 
-本机原语手册/模板支持PAR2SER的10位主从级联，但手册没有完整闭合本工程的TMDS电气与742.5MHz串行时钟能力。原参考使用OSERDESE2/OBUFDS和TMDS_33约束，不能用两路普通BUFOUT直接代替差分输出，也不能因原生综合接受名称就声称1080p60电气通过。
+部分早期独立REPORT.md已不在当前证据目录，不能继续当作可读报告或补造为原文；保留的源码、原始归档及本次整理前文档各自注明范围。[文档修订记录](../../tools/pose-v1/evidence/hdmi-documents-20261018-r1/revision.json)及同目录before.tar保留本次整理前原文。
 
-静态审查还发现原`uihdmitx.v`给时钟序列器传入字符串`"1111100000"`；它按ASCII截成10位后是10'b0000110000（2个1），并非预期10'b1111100000（5个1）。原`oserdese2_10to1.v`的复位释放为组合反馈形式。这是原源码风险，原文件未改；当前BOOT是否来自该源码未证，不能直接认定为现场故障根因。本批隔离`rtl/display/uihdmitx.v`两处均已改为显式10'b1111100000，Lite目标参考序列器模型连续128周期恢复50%占空比；规范复位、原生PHY、引脚/电气仍待适配。
-
-## 实际验证与停止状态
-
-4KiB红/绿r3/r4保留历史，用户已认可4KiB/FIFO成果和r5内核像素结果，原r5外层超时exit1不回写。新增r6 core/r7 pixel全阶段exit0，分别11.540/30.102秒，完整帧/像素门检保持。原scanout综合结果1个RAMH36E1保持，9份生产逻辑未改，本批没有无理由重复综合。
-
-发送层修正了UFAMILY/7FAMILY两个时钟txdata常量；本工程实际选择7FAMILY，独立Lite回归用真实参考包装和Xilinx UNISIM/secureip模型检查旧/新各128周期、20%→50%占空比通过。使用100MHz理想模型时钟，不是板端148.5MHz测量；当前Procise综合顶层仍是并行scanout，未集成该参考物理层。
-
-附加UFAMILY联合探索的精确等宽断言因99ps级边沿差而失败，原r3门检/完整VCD保留，原因未闭合；只读VCD复核两分支实际常量和每字符位图正确，不将其当作双分支严格波形或本板电气通过。[本批完整结果](../../tools/pose-v1/evidence/hdmi-split-20261015-r1/REPORT.md)。
+当前阻塞为D44／D45及未验证的复位有效性。严格实时、连续推理到HDMI长期、板端实时PC发布和双路并发均未验收；恢复须用户明确唤醒，长期HDMI须另行批准。旧DATA调查独立暂停，FAT问题未修，不从本页的技术方法推导执行授权。

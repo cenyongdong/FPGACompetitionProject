@@ -1,8 +1,12 @@
 # 项目进度总览
 
-最后实际验证：2026-10-18。**r13复用同一r9位流，三窗新推理→PS渲染→PL HDMI闭环已通过，用户现场确认三帧骨架及帧号切换正常。** Open前健康观察、四档至1MiB完整DMA、三次新推理数值门检、三帧硬件采纳、STOP排空及释放均有实际原值和独立复核。受检关节最大偏差0.9765625mm，全部输入／分数逐位一致。详见[r13唯一详细报告](tools/pose-v1/evidence/hdmi-preopen-20261018-r13/REPORT.md)。未重编FPGA，未启动VPU／RTSP。
+最后实际验证：2026-10-18；本次文档同步未重新连接板卡。**任务已整体暂停，等待用户明确唤醒。** 三窗新推理到HDMI已通过，D45跨启动故障仍未解决；r20无SDK健康基线按一次PL_KEY2后，初始五寄存器仍为ABI=0x41495201、长度104、status/request/response=0/2/2，未观察到归零。不能由此认定按键从未复位或已定位启动根因。[最新暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。
 
-本轮已按方案回退原BOOT运行，原文件／六SDK／九启动文件核验通过，FPGA operating、owner为空，串口关闭，r13包关闭、全部额度0。**D45跨启动偶发故障仍未修复，严格实时、持续RF输入和长期未验收。** r12首组20/20ms曾失败，另外三组未执行；本轮成功不证明等待修复，不能定位BOOT与SDK Open内部的唯一原因。[旧失败证据](tools/pose-v1/evidence/hdmi-timing-20261018-r12/REPORT.md)、[恢复状态](tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)。旧DATA保持暂停，FAT不修，本任务不接入Vivado MCP。
+截至r20最终审计，原BOOT运行与文件均恢复，boot_id=0078c99b-70f2-40d8-9445-0bb5002df570；六SDK／九启动文件符合、FPGA operating、owner为空，本批连接／串口／工具结束。r20关闭、剩余额度0。暂停包含离线见证实现、仿真、构建、部署与板测，无后台续作；独立复位见证尚未实现。暂停时现场无仪器；仪器后续到位不自动恢复。[机器恢复入口](tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/pause-state.json)。
+
+r13新三窗推理→HDMI及现场确认保持已通过；连续推理到HDMI长期验证尚未开始，须用户单独批准。旧DATA暂停，FAT不修，本任务不接入Vivado MCP。
+
+HDMI开发结构与处理过程集中在[INTEGRATION.md](FPGA/hdmi_candidate/INTEGRATION.md)，阶段成果见[Done.md](Done.md)，难点和解决方法见[DIFFICULTIES.md](DIFFICULTIES.md)。
 
 ## 当前阶段与验证边界
 
@@ -26,20 +30,20 @@ D44首次HDMI reader故障根因未明；D45偶发HP2返回异常仍待定位，
 ## 基线、连接资料与恢复入口
 
 
-2026-10-18最新运行状态见r13最终只读核验；已回原BOOT。历史r2／r3／r9启动记录只代表各自当时状态；后续操作前重新核验实际身份。
+2026-10-18最新运行状态见r20最终只读核验；已回原BOOT。历史r2／r3／r9启动记录只代表各自当时状态；后续操作前重新核验实际身份。
 
 | 对象 | 配置/资料入口 |
 |---|---|
 | 板子 | 悟净Lite/FMQL30TAI/ZG330；SSH root@192.168.126.49，用户已提供认证信息，运行时通过内存输入 |
 | 工具链 | Windows Procise2025.1.1 temp/SVN32494、Vivado2018.3（D:/vivado18.3/Vivado/2018.3）已就地030ai补丁、PS前端综合通过，Vivado2019.1保留；FPAI是本机交叉编译容器名，ARM64 GCC9.4/CMake3.24.2；Icraft3.39.0 |
 | 设备协议 | axi://zg330aiu?npu=0x40000000&dma=0x80000000；device25122301 / icore FMSHZGV3TECH-AID - 24160628 |
-| 模型/启动身份 | [TechDetails](ADR/TechDetails.md)及[演示完成清单](tools/pose-v1/evidence/demo-20261011-r4/completion-review.json)；固定JSON/RAW和BOOT哈希，不在本页重复维护 |
-| 当前重构demo | 构建.local/pose-v1-build/demo-refactor-20261013-r1，板端/tmp/wifi-pose-demo-refactor-20261013-r1；3窗口回归通过。[运行说明](software/demo/README.md)、[核心导读](software/core/README.md) |
-| 当前恢复点 | [r13报告](tools/pose-v1/evidence/hdmi-preopen-20261018-r13/REPORT.md)及[状态](tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)：r13新三窗数值、渲染、HDMI采纳、STOP与释放及现场确认通过；已回原BOOT，包关闭。跨启动偶发故障及严格实时／长期仍未验收。 |
-| 暂停故障恢复点 | [producer-prepared next-checkpoint](tools/pose-v1/evidence/producer-prepared-20261011-r1/next-checkpoint.json)及[原下一方案](tools/pose-v1/PRODUCER-PREPARED-NEXT-20261011.md)；未实施，不重跑旧Session |
+| 模型/启动身份 | [TechDetails](ADR/TechDetails.md)及[原演示结果](tools/pose-v1/DEMO-RESULTS-20261011.md)；固定JSON/RAW和BOOT哈希，不在本页重复维护 |
+| 历史VPU重构demo | 构建.local/pose-v1-build/demo-refactor-20261013-r1，板端/tmp/wifi-pose-demo-refactor-20261013-r1；3窗口回归通过。[运行说明](software/demo/README.md)、[核心导读](software/core/README.md) |
+| 当前恢复点 | [暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)、[pause-state.json](tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/pause-state.json)及[最终原BOOT审计](tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/final-audit.json)；待用户唤醒。 |
+| 暂停故障恢复点 | [原下一方案](tools/pose-v1/PRODUCER-PREPARED-NEXT-20261011.md)；旧next-checkpoint.json已不在当前树，该调查仍独立暂停，不重跑旧Session |
 | 历史工具路径/调用示例 | [迁出的工具资料](ADR/history/20261013/toolchain-runbook.md)、[REFERENCES](REFERENCES.md)；旧D:/FPGACompetitionProject路径为历史来源，不直接替代当前工作区 |
 | 文档整理记录 | [ADR_46](ADR/ADR_46.md)、[难点索引](DIFFICULTIES.md)、[历史与迁移清单](ADR/history/20261013/README.md) |
 
-当前重构及已批准CPU107/三窗口验证完成，不继续60窗口或恢复暂停排查。原重启前/tmp已清空，原失败已本机归档；后续不能使用旧句柄或接续已失败Engine。
+历史重构及其CPU107／三窗口回归完成，不从历史完成记录自动追加负载或恢复暂停排查。原重启前/tmp已清空，原失败已本机归档；后续不能使用旧句柄或接续已失败Engine。
 
-此前整体暂停交接及只读查询同步的前后原文／SHA见[本次交接修订](tools/pose-v1/evidence/hdmi-live-20261017-r7/documents-place-query-pause-r7-r2/revision.json)。
+本次HDMI文档整理前原文及修订说明见[文档迁移记录](tools/pose-v1/evidence/hdmi-documents-20261018-r1/revision.json)，不回写历史完成清单。

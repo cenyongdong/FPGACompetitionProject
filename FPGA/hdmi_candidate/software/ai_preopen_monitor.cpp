@@ -21,8 +21,15 @@ struct Snapshot {std::array<std::uint32_t,104> words{};std::uint32_t request=0,r
 template<class Read,class Write>
 Snapshot capture(Read read,Write write) {
     auto need=[](bool good,const char* message){if (!good) throw std::runtime_error(message);};
-    need(read(4)==abi && read(0x10)==104,"Not the r9 observer: no command issued");
-    need(read(0)==0 && read(8)==0 && read(12)==0,"Not a fresh observer: no command issued");
+    const auto observed_abi=read(4),count=read(0x10);
+    const auto initial_status=read(0),initial_request=read(8),initial_response=read(12);
+    // Preserve all initial values even when freshness fails; issue no command
+    // and do not reinterpret a retained generation as a successful reset.
+    std::cerr<<"PREOPEN_CSR_INITIAL {\"abi\":"<<observed_abi<<",\"count\":"<<count
+             <<",\"status\":"<<initial_status<<",\"request\":"<<initial_request
+             <<",\"response\":"<<initial_response<<"}"<<std::endl;
+    need(observed_abi==abi && count==104,"Not the r9 observer: no command issued");
+    need(initial_status==0 && initial_request==0 && initial_response==0,"Not a fresh observer: no command issued");
     auto command=[&](std::uint32_t op,std::uint32_t seq){
         write(0,op);
         const auto deadline=Clock::now()+std::chrono::milliseconds(100);
@@ -45,8 +52,8 @@ Snapshot capture(Read read,Write write) {
 }
 
 int self_test() {
-    for (unsigned mode=0;mode<4;++mode) {
-        unsigned writes=0;std::uint32_t seq=0;
+    for (unsigned mode=0;mode<5;++mode) {
+        unsigned writes=0;std::uint32_t seq=mode==4?2:0;
         auto read=[&](unsigned off)->std::uint32_t{
             if (off==4)return mode==1?0:abi;
             if (off==0x10)return 104;
@@ -63,7 +70,7 @@ int self_test() {
         catch(const std::exception&){failed=true;}
         if (failed!=(mode!=0) || writes!=(mode==0?2u:mode==3?1u:0u))return 1;
     }
-    std::cout<<"PREOPEN_CSR_SELF_TEST_PASS 4 cases"<<std::endl;return 0;
+    std::cout<<"PREOPEN_CSR_SELF_TEST_PASS 5 cases"<<std::endl;return 0;
 }
 }
 
