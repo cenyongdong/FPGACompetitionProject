@@ -1,0 +1,66 @@
+[
+  {
+    "path": "Agents.md",
+    "before_sha256": "559f3de87ac6929e0f97369444aaadfba88b2776722903aeb2138a1dd3d558cb",
+    "after_sha256": "08a1e067154e86763c82ec328103b16d78fdc95fbc6a8ae6038db261b885a696",
+    "after_bytes": 13706,
+    "kind": "revised",
+    "reason": "Record approved ADR_49 architecture; preserve paused implementation and actual validation boundaries"
+  },
+  {
+    "path": "ADR/README.md",
+    "before_sha256": "e4e3f838e4bc008b502bb00e071a5eec51d59e16e6313942fae97b0e67e2b125",
+    "after_sha256": "8b1be8f964d46eda5d50c03d21ef7ecad1792b7a33ec736eae5ea83025769f1c",
+    "after_bytes": 7087,
+    "kind": "revised",
+    "reason": "Record approved ADR_49 architecture; preserve paused implementation and actual validation boundaries"
+  },
+  {
+    "path": "PROJECT-PROGRESS.md",
+    "before_sha256": "698bfb1c50d4b2456f6a61c9692fbb1bbf91ac4eab6a8392497eee3b7b2ad41d",
+    "after_sha256": "fbb51be0406bf18f0e77d58d9c4b097fd43017dbef88e6d6eafd4e68a6279604",
+    "after_bytes": 18188,
+    "kind": "revised",
+    "reason": "Record approved ADR_49 architecture; preserve paused implementation and actual validation boundaries"
+  },
+  {
+    "path": "REFERENCES.md",
+    "before_sha256": "390936c0e317604daf0672e7ce312ad75dc9a410e02f8a2f610a08586cf6b2ad",
+    "after_sha256": "41718501470ac1b9248c3c2a22d6536a5c11846949e71f160d349f3e34141600",
+    "after_bytes": 222988,
+    "kind": "revised",
+    "reason": "Record approved ADR_49 architecture; preserve paused implementation and actual validation boundaries"
+  },
+  {
+    "path": "Done.md",
+    "before_sha256": "db70ee42ed2fa71b4853c4fff1fdfd635fade8fda9e2a36ee425f92fc159308a",
+    "after_sha256": "75df8fc4aed779711e30a7a1bad282cd7267227f086d7082dd86d10ac4e8770b",
+    "after_bytes": 305416,
+    "kind": "revised",
+    "reason": "Record approved ADR_49 architecture; preserve paused implementation and actual validation boundaries"
+  },
+  {
+    "path": "ARCHITECTURE-DISCUSSION-20261015.md",
+    "before_sha256": "13d60e6f7302a1c4038a39d182009559fbf462c161deeed93759d58bc9265213",
+    "after_sha256": "81557ef83648b8025713a8e9007b087091c0056daec68f0e35ca1821aa10c1c8",
+    "after_bytes": 32871,
+    "kind": "revised",
+    "reason": "Record approved ADR_49 architecture; preserve paused implementation and actual validation boundaries"
+  },
+  {
+    "path": "FPGA/README.md",
+    "before_sha256": "904240f32b0a0d932a460813506e3694c8a35769b92be8562db3ba0714639908",
+    "after_sha256": "0fbbe8429daae884247abf112f9dcc28b393bd32835eda35ca350351940bfef4",
+    "after_bytes": 877,
+    "kind": "revised",
+    "reason": "Record approved ADR_49 architecture; preserve paused implementation and actual validation boundaries"
+  },
+  {
+    "path": "ADR/ADR_49.md",
+    "before_sha256": null,
+    "after_sha256": "098470d5e8f4a88667997d77bed935ee21aac9a76a35ff3b17a5daacd96ffee2",
+    "after_bytes": 9709,
+    "kind": "added",
+    "reason": "Record approved ADR_49 architecture; preserve paused implementation and actual validation boundaries"
+  }
+]

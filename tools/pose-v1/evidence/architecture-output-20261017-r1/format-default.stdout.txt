@@ -1,0 +1,48 @@
+ARCHITECTURE-DISCUSSION-20261015.md:3: trailing whitespace.
++2026-10-17后续决定：[ADR_49](ADR/ADR_49.md)已获用户确认，PS／NPU负责感知、PL保留本地HDMI、PC接收骨架数据独立3D展示，未来正式主链停用VPU／RTSP。本次只归档，实施暂停保持。下文保留10月15日讨论及阶段结果；其中旧VPU分工和PL候选不作为新架构的现行决定。
+ARCHITECTURE-DISCUSSION-20261015.md:4: trailing whitespace.
++
+Agents.md:22: trailing whitespace.
++- 用户已明确确认[ADR_49架构方向](ADR/ADR_49.md)：PS＋NPU负责感知，PL负责本地HDMI实时输出，PC负责高质量3D展示，未来正式主链停用VPU编码与RTSP。本轮仅授权记录讨论及同步文档；架构确认不等于代码切换或实施恢复。FPGA/HDMI开发、仿真、综合实现、板测、部署、文件系统修复及后台续作继续暂停，待用户明确要求执行后恢复；旧DATA调查独立保持暂停，历史计划和既有执行授权不解除此约束。
+Done.md:3: trailing whitespace.
++## 2026-10-17：新双路展示架构确认与讨论归档
+Done.md:4: trailing whitespace.
++
+Done.md:5: trailing whitespace.
++### 工程内容总结
+Done.md:6: trailing whitespace.
++
+Done.md:7: trailing whitespace.
++用户明确同意PS＋NPU感知、PL本地HDMI实时输出、PC接收骨架数据并独立高质量3D展示，未来正式主链停用VPU编码与RTSP。本轮新增[ADR_49](ADR/ADR_49.md)，记录决定原话、比赛异构要求分析、分工及目标数据流、现有粗糙画面的渲染／编码归因限制、RuView展示参考、14关节与真实数据边界、候选PL扩展及尚未确定的接口。同步总览、ADR／资料／FPGA索引、旧讨论入口及Agents有效范围，区分“架构已批准”与“代码仍为旧演示、实施未恢复”。
+Done.md:8: trailing whitespace.
++
+Done.md:9: trailing whitespace.
++执行位置Windows，工作目录D:/FPGACompetitionProject；前置为既有项目记录与本轮用户明确架构确认，范围仅本地Markdown及修订证据，不启动工程负载。产物为新ADR和七份现行文档修订，以及[前后SHA／暂停状态／核验记录](tools/pose-v1/evidence/architecture-output-20261017-r1)。通过标准为新增／变更链接可解析、已批准与候选内容及实施状态一致、153份既有源码／旧ADR／封存入口身份不变；检查结果以该目录verification.json为准。若发现身份变化或状态矛盾则停止交付并核对，不回写旧清单。本轮无源码／模型／SDK／BOOT切换、EDA、板端连接、部署、推理或后台任务。
+Done.md:10: trailing whitespace.
++
+Done.md:11: trailing whitespace.
++### 对后续开发的参考
+Done.md:12: trailing whitespace.
++
+Done.md:13: trailing whitespace.
++恢复实施以ADR_49为已批准架构，不再重复询问相同分工，但仍需用户明确执行指令及具体接口／范围。保留HDMI应用闭环以体现PL实际贡献；动态DDR帧、翻帧／STOP／释放及新展示链仍待验收。网络骨架与HDMI结果绑定相同来源，原始输出与渲染平滑分开，渲染FPS不计新姿态率。RGB→NV12不再作为新主链必做任务；PL骨架绘制、CSI／TopK迁移和心率仍仅为候选，不随主架构一并获准实施。旧DATA、D41长尾和D43 FAT状态不因方案变化记为解决；旧VPU成果及失败证据保持。
+Done.md:14: trailing whitespace.
++
+PROJECT-PROGRESS.md:3: trailing whitespace.
++2026-10-17：**用户已确认新架构：PS＋NPU感知、PL HDMI本地实时输出、PC接收骨架数据并独立高质量3D展示，未来正式主链停用VPU编码与RTSP。** 本轮仅记录讨论并同步文档，尚未切换源码、部署或恢复实施；下一阶段仍暂停，待用户明确执行指令。[新决策与讨论](ADR/ADR_49.md)。最后实际板测为2026-10-16的HDMI双ABI／PLL／约148.5MHz像素计数及稳定八色条；原BOOT恢复、运行PL候选均为上次封存状态，本轮没有重新核验实板。DDR读帧／翻帧／在途STOP和整机实时性未验收；FAT问题未修，旧DATA继续暂停。[FPGA既有成果交接](FPGA/FPGA-WORK-SUMMARY-20261016.md)。
+PROJECT-PROGRESS.md:21: trailing whitespace.
++项目处于**旧回放演示已跑通、新双路展示架构已确认但未实施**阶段。已验证且源码仍保留的旧链为PC原始CSI→TCP→Lite PS预处理→PS/NPU混合推理→独立显示子进程→VPU H264→RTSP/TCP→PC实时GUI，HDMI未接入该演示。新目标是同一份板端推理结果分别驱动本地PL HDMI与网络骨架／PC独立3D展示；VPU／RTSP正式主链停用尚待工程切换，历史成果保留。[ADR_49](ADR/ADR_49.md)。
+PROJECT-PROGRESS.md:65: trailing whitespace.
++| HDMI与新网络展示 | HDMI整机候选构建与静态八色条实屏通过；新架构保留HDMI、网络改传骨架由PC渲染 | **架构已确认、实施仍暂停待明确恢复**；DDR帧／翻帧／STOP、骨架传输与PC展示及双路并发未验，FAT另列D43；[ADR_49](ADR/ADR_49.md)、[交接](FPGA/FPGA-WORK-SUMMARY-20261016.md) |
+PROJECT-PROGRESS.md:73: trailing whitespace.
++以下**83/100（约80%–85%）管理估计**仅保留原回放首版口径；10月17日新架构尚未实施或重新估算，不将旧比例直接解释为新架构完成度。这不是功能通过率、实测工作量、工期或比赛评分；真实采集作品不在该百分比中。
+PROJECT-PROGRESS.md:100: trailing whitespace.
++| 当前恢复点 | **ADR_49架构已确认并归档，实施暂停待明确指令**；源码仍为旧VPU／RTSP演示，本轮无切换或新板端核验；上次实板为运行候选色条、启动BOOT原版，旧DATA暂停；[新架构](ADR/ADR_49.md)、[最新暂停记录](tools/pose-v1/evidence/architecture-output-20261017-r1/continuation-state.json) |
+REFERENCES.md:3: trailing whitespace.
++2026-10-17：用户已确认[新架构与展示讨论ADR_49](ADR/ADR_49.md)：PS／NPU感知、PL HDMI本地输出、PC独立3D展示，未来正式主链停用VPU／RTSP。本轮仅归档、未切换源码或恢复实施；原模型数值门禁、旧DATA暂停和板端保护保持。比赛指南第5—7页及RuView展示／数据源的讨论依据在新ADR中列明；最后实际板测仍为2026-10-16。
+REFERENCES.md:4: trailing whitespace.
++
+REFERENCES.md:5: trailing whitespace.
++以下为10月16日交接快照，后续架构方向以ADR_49为准：
+REFERENCES.md:6: trailing whitespace.
++

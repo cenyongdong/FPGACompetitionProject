@@ -1,0 +1,767 @@
+[
+  {
+    "path": "software/core/diagnostics/application_clock.hpp",
+    "sha256": "f2daff35793b1668506e8b54ab69e308ccaf7d5ea447ce93c144ca6b69d87069",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/bounded_load_contract.hpp",
+    "sha256": "7ffc769c1af4db250e4654e5a559df34b5dcb6e67704c84ec4dd6e9c81dafe26",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/content_diagnostic.hpp",
+    "sha256": "3733e5d534b3aa4b505be0965f55c4e5f4ec62408ece627febfab2e9da13e9bd",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/failure_source_readback.cpp",
+    "sha256": "ad534f63eb41af3163367780ca81705942276e201990bfd227d6f534e3a686e7",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/failure_source_readback.hpp",
+    "sha256": "8ed91847643ba0109326cb869b61c9c1a0999bc4943104fd200bd1e0d4019d10",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/host_failure_evidence.cpp",
+    "sha256": "9401351cb5e2d192067a170dae19985b4560a9436a40e998ddac4d0cad0a4a4f",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/host_failure_evidence.hpp",
+    "sha256": "d118882873c96563690e91e54bc6371e2bd01fb23bcd13d5b815b55e05017a5e",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/host_stage_observation.cpp",
+    "sha256": "848bd5bb4802f86e99aca8d6c9d21c7d2adc3966605085f9dcada196efbbbcfe",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/host_stage_observation.hpp",
+    "sha256": "6cfca87b74d9238df924b7634fdd3e1aa30708934b1b77fbef20219ff91e2f60",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/invocation_evidence.cpp",
+    "sha256": "de5f71824ea59a5f913e50c279b7357ec772252521a93a0da622013a434986ae",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/invocation_evidence.hpp",
+    "sha256": "84f902fd61b05ad4ca493edeceb81bf34d105473ea27e2d6c6e898e33fc2a944",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/producer_count_observation.cpp",
+    "sha256": "fff9dfa60f05c5710e9cd2b189e6ae6e058b759281b0331f4eaf94fd2a1e9004",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/producer_count_observation.hpp",
+    "sha256": "9d5cc8aa7125a523829cd7bbe45bc5f5cd13bfa36f3f9b4b854c94a056682792",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/tensor_identity_observation.cpp",
+    "sha256": "0aec7f4ad7baf7572ac04859fbc3dd9d294bbf1a07f87baa5500c3abb17eb317",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/diagnostics/tensor_identity_observation.hpp",
+    "sha256": "9867d57c7b2a51e9254d5e4264e7e7c44bf90d7ebc8baf8c9a09661175659262",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/display/display_process.cpp",
+    "sha256": "dade9eba2501929cf878e754c269fd4753f9edb54a2c54b3991f230fcb0dc8b9",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/display/display_process.hpp",
+    "sha256": "283f6d9efb857b17be403ff5bee7b463a5457255df3ad8ef92e0d2a3c4abe82a",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/display/display_protocol.cpp",
+    "sha256": "18de8ec60682d1be3e7d28d42c70e4d171b1f528557174f64c95498f02cd0148",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/display/display_protocol.hpp",
+    "sha256": "9d6885e7072d0f33c0d292463c19547e95a4aff639157b4ba91031f15e02f39c",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/display/display_queue.hpp",
+    "sha256": "22644eb1c38512d821b26b6c72b8df4df85d97b71baeefbbcdbf8809b6a6e698",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/display/display_worker.cpp",
+    "sha256": "044d8c6bb96c1a9497c531d263045562934bf2aa1a99d21d8a5367d378282e6c",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/display/skeleton_render.cpp",
+    "sha256": "f290c8e2648926bb9899e46c4ed75f88e9d601cbd087c791384775a401582176",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/display/skeleton_render.hpp",
+    "sha256": "fd1f358cdc514478c3e6826e28078ba4dae2161a045f776a02447841c6ac16c4",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/application_core.cpp",
+    "sha256": "8b09758b8aa6d0dac5ff0d2c7a6a4b17ac0bf725c0c081b634d26e4271abc57e",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/application_core.hpp",
+    "sha256": "4f47717ca6d37c31efc75ce759af612c55fcee56fe1036122134a0f9a8275003",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/host_cpu_adapter.cpp",
+    "sha256": "37f519ee1bb7c56a0ef6fde22513c8ef7165f901574054ee0d7d550c09b53194",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/host_cpu_adapter.hpp",
+    "sha256": "fc3c92f75fe4e7ee7e6b8bfae109edb0174d4f3ab4558f410b1594ffd49d7dd3",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/input_read_contract.cpp",
+    "sha256": "33a789ae349fb3813f2868885905434ed659f484fd13ac0b3b0eae5637043740",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/input_read_contract.hpp",
+    "sha256": "996122e237ba10ead28b5a072e6765cae2574ad064f03b776c87fb3d95693b5e",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/input_read_sdk.cpp",
+    "sha256": "03d8748b391d83c1b4fe2597e5254b2baffc0947a3189cebb6a2b6812a6b97e8",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/input_read_sdk.hpp",
+    "sha256": "6889e9650ab74ccefd85bee7a2fa6762d99580ecacee5da2753269972f376acb",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/lazy_runtime_validation.hpp",
+    "sha256": "d2f38cb42ec8f0ab11ee8a48efd3b3d177bbdb0786f8792ba652aa22444cd9d4",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/mixed_bridge.hpp",
+    "sha256": "b749d08bc621c2cd64044f929119a653a349bb72ca46b76307db21cd3ed21e51",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/mixed_fusion_baseline.hpp",
+    "sha256": "74389a3d7ee14dd2e199cb137ecd6530d31705807933814068a9b222dedce0c4",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/inference/read_input_bridge.cpp",
+    "sha256": "b2237a0345fb5dab88528fa7f262e239c78077ee666bd2bffaabee25b73806ab",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/input/csi_io.py",
+    "sha256": "657387d7aff0fe02adae4ac8e96f7cf61da499a80dff8bfd0f171cbec47e6730",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/input/preprocess.cpp",
+    "sha256": "448512368f8fd3a8c7d65eb950e5c29b4aec6c57faf9653cfb8368b14a123c8e",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/input/preprocess.hpp",
+    "sha256": "87cca2fa5f540d08061bae70758b1ec9c2aaa0f42cbada28831d7254ec7901de",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/input/tcp_receiver.cpp",
+    "sha256": "d874601cf1d47b86d18888885744063459a34460f3e6a46c41bf634323e88459",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/input/tcp_receiver.hpp",
+    "sha256": "ee496b3150f54bb613643b8bb96c5ffbdc244c040ffea6d68f8946e2fbfeb91f",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/stream/access_unit_channel.cpp",
+    "sha256": "9891b0cbe1fd838eff5c47c16be914b90e9a910d61ffd1a5e6b5390615845e51",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/stream/access_unit_channel.hpp",
+    "sha256": "6a3a82be55fa73636769736b4a93673db256a04bcdceb1f63dc4112575821bb0",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/stream/guarded_rtsp.hpp",
+    "sha256": "6e3602d09c233412932aa1c15fcf691ae1ba994bf279fabaf5de3d8fafe891ff",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/stream/h264_access_unit.cpp",
+    "sha256": "8f07b8c01cdcab185b04d3618428a255432bcb7fd2261a0c256b1851d94aaedf",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/stream/h264_access_unit.hpp",
+    "sha256": "c3b79e9b0f8968e5eb592741b620d3d9978dc068563dd4f5a6d8d06efa9cf820",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/stream/online_rtsp.hpp",
+    "sha256": "f28f80c8713709212a050acd8f388957848b2bf23a51775a959678689950b614",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/stream/timed_guarded_rtsp.cpp",
+    "sha256": "ec3fe811af777211a5ac47503f6b835ab7e0c89ad3fed7bfe4479aa70e84cafb",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/video/resident_frame_queue.hpp",
+    "sha256": "480798f85ae992e86e2dba68094412e4fc46ac8ea98bcc2f26b86e74c6ace2d9",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/video/timed_resident_encoder.cpp",
+    "sha256": "e7a8c3712004073ae81fa365d1edc12e8b86c74ebd00810dac52349a005fde67",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/video/video_frame_marker.hpp",
+    "sha256": "7ae068861b06ee2432e8d722ceee0127ba7a68fadb71d7b1de825edf891d0712",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/video/vpu_encoder.hpp",
+    "sha256": "6224b1b4876b1f66dcb435275899e8bce6973640f9a743d95edd8d882d1b44bf",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/video/vpu_pipeline_encoder.hpp",
+    "sha256": "c51a0bf216cb0e953c8aadf0e83752922020ea7b20abf7ef63366384b4e10336",
+    "unchanged": true
+  },
+  {
+    "path": "software/core/video/vpu_resident_encoder.hpp",
+    "sha256": "f1f18b482d2ddb65c7a018cf0fa85c2d9ad119f2192ef05984b7d1a45858c35c",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/baseline-lock.json",
+    "sha256": "b367ccbd99cc3fbc00f8420ad14c32490f88635eca26f4a68ca9a966f62e3e45",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/cpu_runner.py",
+    "sha256": "af8c2996066db0a3ba80bf9c33462861e81878a925f907f11774add64ccfc961",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/demo_engine.cpp",
+    "sha256": "010349d9918949fa7f9280824deca542727b10d66a9195b88180bc61c090c0f0",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/demo_engine.hpp",
+    "sha256": "a0621d8ba145d7e7c171e9f59c481aa20873cda6279b4fc0c60712e7893cfcd4",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/demo_options.cpp",
+    "sha256": "b4d221f6951c14a9df1013713c244e82b9d47932808b9501019f5c3f725dfdd6",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/demo_options.hpp",
+    "sha256": "6991e989d3b3169900e7b09dc6b43e27b94221c6fd53bd0d9a0d6258d74538c4",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/demo_results.cpp",
+    "sha256": "97b019cb31accb08fb03744191a4a2e24113cfe002504c5dab74ed904038ce43",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/demo_results.hpp",
+    "sha256": "71ac7771b04525214a4711a4d6b6df751bf315e2e868c42207bfa804c14b2c06",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/demo_video.cpp",
+    "sha256": "a4d3e17fb1bbfc9f64518ee5c2aa7ec722deca66dde817f8ebfb4e02fdf29ecb",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/demo_video.hpp",
+    "sha256": "47d525b326412fe0a17b581a08a718c5a6d5d48d24aec7a85faa0df96994dea0",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/final_audit.py",
+    "sha256": "8bc922580ed632d6451f5b274a093f8bb9d83c12c92def94d4dd573bd6aa1096",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/main.cpp",
+    "sha256": "36a4dd2fce109bb1968ceee57f09ee88207f5da9e68b85ba120090c0c4cdcec5",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/reboot_audit.py",
+    "sha256": "b959c56cb1e971b9598512a5db54b2e01d82b5ebac10de7b833a0eaa82302c87",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/board/runner.py",
+    "sha256": "f5cbe5e88ed189943b9829f5c8276d7353ce439cace63d9746b41212e948e775",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/build.py",
+    "sha256": "0398ca067a30fcf5882859b23571d6cd3062bf61ee62ceb8ee34761bf28f0633",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/build_support.py",
+    "sha256": "3a97bb78b73adf3fd0e39f70312e2e2c4a606d89b53c70709ac91df3ad22d48b",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/CMakeLists.txt",
+    "sha256": "6c37590221e9c2bc3285dea923fd2b8a030b4522726411d635941ef557cfb6d7",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/collect_final.py",
+    "sha256": "12680cc468a1970269fcb5f7c5fa8f82050442ed10d78eea94e624051f285a01",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/deploy.py",
+    "sha256": "d783adf159844db8f4aca9d6a15d1efc46901edbc94892831380b9680be1333a",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/finish_reboot_audit.py",
+    "sha256": "210bd2aaef78a434f688d82e986a2c84ccf2178c50b831bf30b2bae8b5cef23f",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/host/replay.py",
+    "sha256": "b24e0597d021d7ef114a3c442ee919897012db0df1ccafc5557aa66a98190ca5",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/host/run.py",
+    "sha256": "cb8b44449fce9e4ca478aed20ea72864968bc6a40151cbfe5ab4e6b1b7c26256",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/host/viewer.py",
+    "sha256": "e533a1e010ca20dd018428513e3dcc240a889057b5a8e54c1cd4d279570e6671",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/inspect_board.py",
+    "sha256": "bec3ebaf5086ba32a01b27805d1f85f61961222ea7f06c833e2d70d7f6bc1dc5",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/native_render.py",
+    "sha256": "64b9ed9a07597f994a2339b0806f22a975846d49c544bd233d75448ba1f4379c",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/reboot_once.py",
+    "sha256": "f64f4bafcecb18a49eed305f3ba8a82a0aed45921776f63a9dcd31e072cf3893",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/Regression.cmake",
+    "sha256": "fe9912481b09d54551354e28721e934c54483b778220926fcbf46e7623a34a0b",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/review.py",
+    "sha256": "790f3a8ada40d56d2af4f6e9c76805dbb8f443e9237b829eab490ff58b9c2017",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/review_video.py",
+    "sha256": "9214091160f122284c000bf0fd5844f13f0a609714e2e81e30ea8c449fdb957d",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/ssh_transport.py",
+    "sha256": "73f20d877aa4bc5dd6b4b5d54756c5f4cf72dee37b3e08546b57c768503b2803",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/validate_board.py",
+    "sha256": "b7a315abf06e4ad2e445d1ac7e5e834916444639bf0952897b6b7f1c7a458e64",
+    "unchanged": true
+  },
+  {
+    "path": "software/demo/verify_core.py",
+    "sha256": "50c2a6d30825936d32f38a7525249756ca19efcec15fbd22649f301ba3e19098",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/display/uihdmitx.v",
+    "sha256": "35491ba160c789e8d079e962f520e6f37496dd0ffefdf8106bc0bf05d55ebf15",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_axi_read.v",
+    "sha256": "4608af5a4701aa18cdd1513966aae3301909883dc94ea43454bcbc0421f00e17",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_candidate_core.v",
+    "sha256": "07744a1779fa6629b666d52473f4a93c0b9976b73949ff954cca35b770ef82fb",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_candidate_register_core.v",
+    "sha256": "72a8f075799f7f7a72e0af050b1012824b3a6ab1ee4fb807fb6aee763f9fa662",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_clock_fmsh.v",
+    "sha256": "0d18178c8c45762aa81175d2a0645622fcf46d6f41d32d8b20924e48c727edc4",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_command_mailbox.v",
+    "sha256": "50df98daa299c385a0bd28c3bb0b31ac9294a432cfca66815dfb7eaeb7793c7c",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_diff_output_fmsh.v",
+    "sha256": "a6216b4c1d9f602575f00f4e0e93fe4f6c3a7da4fce24afac7e115af67ad664f",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_diff_output_reference.v",
+    "sha256": "a4a9957fa242660f98cd6b27b3eb546874797260e1d69b33f4e61399b7b9c78f",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_pixel_scan.v",
+    "sha256": "2b0683b95a953a304ed7c88d2edecea7d5e5449d0d959440f5495c71a0aedbf5",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_register_bank.v",
+    "sha256": "b60c82421102e1abeb57f8648e050fa8ff064e0dfdec54d1be8bacc484ce8aa9",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_scan_control.v",
+    "sha256": "953e8b9c9c4233a9154e299f1507cedd53089d19987d099a0e12c631aed37f94",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_scanout.v",
+    "sha256": "f730135b5ed7f77fdbd824da402954e7121e5afba8acc3c0bedc33343662c846",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/hdmi_stream_fifo.v",
+    "sha256": "9c071e5c7c2ce50133c4412f8b23d09a037d54642ae611a407ccb8695fd1ec04",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/integration/hdmi_board.sv",
+    "sha256": "1580c2c0ccb278f160208202f16b67b462676fb757ccfc21b6ef974a69530d2b",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/integration/hdmi_cam_router.sv",
+    "sha256": "b35b96a8623523ff5bddd79eeb2a7aaf50cd25fefa60ef7dd42455d7036d5812",
+    "unchanged": true
+  },
+  {
+    "path": "FPGA/hdmi_candidate/rtl/integration/hdmi_clock_jfm.v",
+    "sha256": "057c410349bdb085d9c790f0686b60dc5b7585c025a2318a538207236b49031e",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_00.md",
+    "sha256": "67b3db05d49ecd405241f4ee5992dc8a37ca71d7e718e2acc913df8204661a82",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_01.md",
+    "sha256": "42409059b59ccf4604a8edf7d8ea5d29840a322d969f1eea2080e9b56dfc6cb2",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_02.md",
+    "sha256": "9a20b8b5ed0639e5d01d275a52804c2aa7a31da6ba997caae4fa786420e82014",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_03.md",
+    "sha256": "474d44a55dfbebf58617d8c695980e83130e8f6b9f925337d2fc5b3060d1cf9d",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_04.md",
+    "sha256": "ffce1d6f7466c719421aaebca6525e4c990c21fa1b5218fd5e640c7b7f212d9d",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_05.md",
+    "sha256": "eae57f006ad808c8d75094a0126ff4d5f927b8bc85d6a754b6026673fd29051e",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_06.md",
+    "sha256": "b58642973aa8a181cece917c1baf5d60e29b4516398aac1eb8b425b18fba5c12",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_07.md",
+    "sha256": "815fe5ca57959589a0c36a834dd9913d08780670a6201ee928e95e8e1b393d6e",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_08.md",
+    "sha256": "10027a9e5d38d6abc7f58589ace3abe48f10a7418582b61af331543dbe51b3e7",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_09.md",
+    "sha256": "0894cdac56775ada5cbcb6c94afd4e4e84a51b0e6ad29990d35fdfdb0f8ef950",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_10.md",
+    "sha256": "7e90bdc0d62bac00be1c3f3a87c65bc637d6413533ad861e7c8d55cf6edd3d7a",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_11.md",
+    "sha256": "83bfcf406d24d7a33382cbe92c273c80559a311ac9e0721f006d69a51e4623d1",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_12.md",
+    "sha256": "01663c00388aed922cb9c60d4a94addea48cfc8b472ef5fc304ad590fbe8045f",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_13.md",
+    "sha256": "c32160f8d995d06cba51861f2d47e1dc4ace96ac92e140e385a50284e92db906",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_14.md",
+    "sha256": "90807969e84cf4aa930d1dbadbe8af69a6609d11c8e130fda07dfee2886ef451",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_15.md",
+    "sha256": "c8b42df4d94717a9990d8c72f8e26437a3358bf58e7edb45b366e5eed13850bb",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_16.md",
+    "sha256": "b3715e2aaa217f97295bb127dfb0a3cb22180f15c090099d73988e209a2b6ed4",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_17.md",
+    "sha256": "fd625371ac872e922d248ef0abec38473f30e62f9d8c0c8645018c6b763253b2",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_18.md",
+    "sha256": "76711c3bcad269b5156bbfa8d87f14b8e183a1ce0f485ef435bf9fe4a3f68289",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_19.md",
+    "sha256": "98cfa74c6c70bc67e846680015d4fc68dba894349fcb0293077802f47764f5cf",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_20.md",
+    "sha256": "4bb58134bca162d55a542780b20fdebb4af4c08bb9ea26c44416abfdb1433da2",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_21.md",
+    "sha256": "e9d73d9f7f552662a4f5d19ddf5a72b866aecb4aca31162579ac83e49c35db50",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_22.md",
+    "sha256": "9f44c02c7593e2cd9fa53d576129b5104fbd7d9bdb16373ad33adde0e4f7f827",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_23.md",
+    "sha256": "e88c4530e5ec4921a236dbdf9e3d163e015b0fd7d639e58e327574430f829b0b",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_24.md",
+    "sha256": "29ccbfc7bd27db938ac6450a19c1583ece9956ec9f9479f9ff8ed82f0da95056",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_25.md",
+    "sha256": "988cf54d6a0a9786d13a8a9b02acd10d71f5d73960c913f425caff696d96a8a5",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_26.md",
+    "sha256": "f879f322210ff525b3f54bd660deede5fb13d63e2cc7c8c5f20d98e6f7df014d",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_27.md",
+    "sha256": "6c486944f97603e73332723af8e1f1fb7d7a5cb6b9cf9fbf6c040f26290aa9df",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_28.md",
+    "sha256": "d19d7638d4170b687fa52f53de6f5dbd05eeb3fe6c60ff4ed132482464b1aa01",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_29.md",
+    "sha256": "9aecd112625a2fb70dd13b60520856b2d0536e742c0eee666ebedc315a94f294",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_30.md",
+    "sha256": "c2805c8ad243f71cefa1b1bb26776fb8103c4759ed7d55d22cf9d77b8eb35fa3",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_31.md",
+    "sha256": "791a754d5f3aee76af7ccbb734a15a1f3907035e851b62abf6f6b6b89827a859",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_32.md",
+    "sha256": "56f6ae50426221b8d1077109d146da1f734dd4bc2c205b2d11be63dbcbaa5a03",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_33.md",
+    "sha256": "f33e8ddfd7b0a6f194e8616ae9cbd6b8a80e8dc909213c7095e1821983a94945",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_34.md",
+    "sha256": "be2e74de7fa699360ec63749616cd50231c2caf902d5e6a9631095ce5bc5e1ab",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_35.md",
+    "sha256": "6a7d0fe8b15b4c30ded115fef656b49336692e9a0442500ee3e651bf99fe8359",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_36.md",
+    "sha256": "5420e8548090efcdd607125885985409c90e86e2b1ff513492dceed5b38a1a2e",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_37.md",
+    "sha256": "2d305cbb701401ec81612dc65403f948f370e702929f90d719b580993722050b",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_38.md",
+    "sha256": "600d18bfe4d738997b3f72b559a81df50f76e6efaf3884ce0ad47f9123a335f2",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_39.md",
+    "sha256": "9fd28d0fc03f5756285980860bf1ea20baf43d44040d77283e17ed569e28619e",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_40.md",
+    "sha256": "25b283aefa5ccc66d51fb3d5285a64d104e3183d5ac5ff7a150e324683b96146",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_41.md",
+    "sha256": "4125553645cc4f7efd49b5d6bdc8589a31119378ed4ac8d65bb4fad662c5e482",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_42.md",
+    "sha256": "f814f7241ebe74f8d4d542110b25026546b0d3d9c4b75af454a0801329a4ef4e",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_43.md",
+    "sha256": "7326396984fbf53b3b6d79b414ea7841e026bf1aff02c15fe459dc7ba2986cd6",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_44.md",
+    "sha256": "981422709c423df6726b0f1b776dd3f596817f41becfc689b7e58a9a52dd2a31",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_45.md",
+    "sha256": "7945c8929094ccad4110debb24a68d36355976451d4b6ed6b511e26fb642cc80",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_46.md",
+    "sha256": "70f8cf02c8cabda2df71d17c10c01791619039e828080c9666713765ec07e479",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_47.md",
+    "sha256": "044eed9645bbd35a5d03878890e0fc695329cd09ffe75f9b22ae3ab584b06d3f",
+    "unchanged": true
+  },
+  {
+    "path": "ADR/ADR_48.md",
+    "sha256": "1f3d60357fe2770ebe6623d8521c8405ae3895588744068a8ac3cea4883c630e",
+    "unchanged": true
+  },
+  {
+    "path": "tools/pose-v1/evidence/hdmi-integration-20261016-r1/files.sha256.json",
+    "sha256": "b284bcd9ec33716e74013b3a9cb72131e3e21bc8c5d2b5c79f0a7edf6381865f",
+    "unchanged": true
+  },
+  {
+    "path": "tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/files.sha256.json",
+    "sha256": "e4b0ea79e365c2a3ec53c5b03b29efb52e84cf5f0a12e2db1b66693ce67463a6",
+    "unchanged": true
+  },
+  {
+    "path": "tools/pose-v1/evidence/hdmi-handoff-docs-20261016-r1/continuation-state.json",
+    "sha256": "9235ca933e1d3e838d093dc5c3efffb40033fd4b984176b2cfbfc3ced32f1159",
+    "unchanged": true
+  }
+]

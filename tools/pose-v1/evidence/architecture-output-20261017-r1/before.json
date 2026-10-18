@@ -1,0 +1,44 @@
+[
+  {
+    "path": "Agents.md",
+    "bytes": 13628,
+    "sha256": "559f3de87ac6929e0f97369444aaadfba88b2776722903aeb2138a1dd3d558cb",
+    "previous_pause_rule": "- 用户最新明确要求：本轮仅整理FPGA模块负责范围、完成内容及原厂位流操作，并更新相关文档。文档完成后暂停下一阶段项目实施，包括FPGA/HDMI开发、仿真、综合实现、板测、部署、文件系统修复及后台续作；须待用户确定后续项目架构并明确要求执行后恢复。架构讨论可按用户要求进行，历史计划和既有执行授权不解除此暂停。"
+  },
+  {
+    "path": "ADR/README.md",
+    "bytes": 6942,
+    "sha256": "e4e3f838e4bc008b502bb00e071a5eec51d59e16e6313942fae97b0e67e2b125",
+    "snapshot": "before-document-edit/ADR/README.md"
+  },
+  {
+    "path": "PROJECT-PROGRESS.md",
+    "bytes": 17698,
+    "sha256": "698bfb1c50d4b2456f6a61c9692fbb1bbf91ac4eab6a8392497eee3b7b2ad41d",
+    "snapshot": "before-document-edit/PROJECT-PROGRESS.md"
+  },
+  {
+    "path": "REFERENCES.md",
+    "bytes": 222502,
+    "sha256": "390936c0e317604daf0672e7ce312ad75dc9a410e02f8a2f610a08586cf6b2ad",
+    "snapshot": "before-document-edit/REFERENCES.md"
+  },
+  {
+    "path": "Done.md",
+    "bytes": 303376,
+    "sha256": "db70ee42ed2fa71b4853c4fff1fdfd635fade8fda9e2a36ee425f92fc159308a",
+    "snapshot": "before-document-edit/Done.md"
+  },
+  {
+    "path": "ARCHITECTURE-DISCUSSION-20261015.md",
+    "bytes": 32530,
+    "sha256": "13d60e6f7302a1c4038a39d182009559fbf462c161deeed93759d58bc9265213",
+    "snapshot": "before-document-edit/ARCHITECTURE-DISCUSSION-20261015.md"
+  },
+  {
+    "path": "FPGA/README.md",
+    "bytes": 689,
+    "sha256": "904240f32b0a0d932a460813506e3694c8a35769b92be8562db3ba0714639908",
+    "snapshot": "before-document-edit/FPGA/README.md"
+  }
+]

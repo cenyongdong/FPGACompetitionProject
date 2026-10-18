@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-17",
+  "timezone": "Asia/Shanghai",
+  "architecture_decision": "ADR/ADR_49.md",
+  "architecture_approved": true,
+  "architecture": {
+    "PS_NPU": "perception",
+    "PL": "local HDMI real-time output",
+    "PC": "independent high-quality 3D visualization",
+    "future_formal_chain": "disable VPU encoding and RTSP; retain HDMI plus skeleton network output"
+  },
+  "authorized_this_turn": "record discussion and synchronize local documentation only",
+  "source_chain_switched_this_turn": false,
+  "next_stage_execution_allowed": false,
+  "background_continuation_allowed": false,
+  "resume_requires": "explicit user instruction to execute within specified scope; architecture already approved",
+  "old_DATA_investigation": "remains paused",
+  "last_actual_board_validation_date": "2026-10-16",
+  "board_rechecked_this_turn": false,
+  "no_new_EDA_SSH_UART_JTAG_boot_DMA_or_filesystem_repair": true,
+  "previous_state_preserved": "../hdmi-handoff-docs-20261016-r1/continuation-state.json"
+}

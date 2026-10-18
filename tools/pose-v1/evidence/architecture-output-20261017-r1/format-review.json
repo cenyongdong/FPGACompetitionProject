@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "label": "default",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 2
+    },
+    {
+      "label": "existing_CRLF",
+      "command": [
+        "git",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "interpretation": "Default Git flags existing CR line endings in changed Markdown as whitespace; CRLF-aware check preserves file conventions and still checks real trailing blanks. No Git configuration or line-ending migration performed."
+}
