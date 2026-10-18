@@ -1,0 +1,13 @@
+{
+  "name": "wifi-pose-observatory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare-data": "node tools/prepare.mjs",
+    "build-sender": "node tools/build-sender.mjs",
+    "test": "node --test test/*.test.mjs",
+    "start": "node server.mjs"
+  },
+  "dependencies": { "three": "0.186.1", "ws": "8.22.0" }
+}

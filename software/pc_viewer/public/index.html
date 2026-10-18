@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wi-Fi Pose · 三维姿态观察台</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="importmap">{"imports":{"three":"/vendor/three.module.js","three/addons/controls/OrbitControls.js":"/vendor/OrbitControls.js"}}</script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="姿态观察台首页"><span class="brand-mark">◌</span><span>WIFI<span class="brand-light"> / POSE LAB</span></span></a>
+    <div class="header-right"><span class="tag archive">历史板端回放</span><span id="connection" class="connection">连接中</span></div>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <div class="eyebrow">SPATIAL OBSERVATORY / 01</div>
+      <h1>三维姿态<br><span>观察台</span></h1>
+      <p class="intro">查看真实模型输出，<br>从任意视角观察姿态。</p>
+      <div class="section-title"><span>当前结果</span><span id="position">— / —</span></div>
+      <div class="source-name" id="case">等待TCP数据</div>
+      <dl class="metadata">
+        <div><dt>原始帧号</dt><dd id="frame-id">—</dd></div>
+        <div><dt>候选槽位</dt><dd id="candidate">—</dd></div>
+        <div><dt>候选分数</dt><dd id="score">—</dd></div>
+        <div><dt>关节数量</dt><dd>14<span class="unit"> / 原始拓扑</span></dd></div>
+      </dl>
+      <div class="confidence-track"><span id="score-bar"></span></div>
+      <div class="section-title separated">数据来源</div>
+      <div class="source-card"><span class="source-dot"></span><div><strong>悟净 Lite · PS＋NPU</strong><p>已保存的真实板端结果<br>共享FP16模型 / S11_01</p></div></div>
+      <div class="integrity"><span id="integrity-mark">○</span><div><strong id="integrity">等待完整记录</strong><p>TCP接收与原始字节核对</p></div></div>
+      <div class="sidebar-note"><span class="tiny-label">DISPLAY CONTRACT</span><p>原始坐标 · 无平滑 · 无身份跟踪<br>模型坐标空间，尚未进行房间标定。</p></div>
+      <a class="detail-link" href="#details" id="detail-toggle">查看坐标与来源 <span>↗</span></a>
+    </aside>
+    <section class="workspace" aria-label="三维姿态展示">
+      <div class="stage-header"><div><span class="eyebrow">3D VIEWPORT</span><h2>空间中的姿态</h2></div><span class="stage-badge"><span></span>原始结果</span></div>
+      <div class="view-tools" role="group" aria-label="观察视角">
+        <button data-view="perspective" class="selected" aria-pressed="true">透视</button>
+        <button data-view="front" aria-pressed="false">正面</button>
+        <button data-view="side" aria-pressed="false">侧面</button>
+        <button data-view="top" aria-pressed="false">俯视</button>
+        <span class="tool-separator"></span>
+        <button id="labels" aria-pressed="false">关节编号</button>
+        <button id="reset" title="恢复初始相机">复位 ↺</button>
+      </div>
+      <div id="viewport" role="img" aria-label="14关节真实板端姿态的可旋转三维视图"></div>
+      <div id="render-error" class="render-error" hidden></div>
+      <div class="viewport-caption"><span class="caption-dot"></span><span>C0 / −C2 / −C1</span><span class="caption-divider">|</span><span>MODEL SPACE</span></div>
+      <div class="orbit-hint">拖动旋转<span>·</span>滚轮缩放<span>·</span>右键平移</div>
+      <div class="stats-strip">
+        <div><span class="stat-label">TCP 已接收</span><strong id="received">0 / 3</strong><span class="stat-unit">帧</span></div>
+        <div><span class="stat-label">接收状态</span><strong id="input-state">等待</strong></div>
+        <div><span class="stat-label">回放速度</span><strong id="pose-hz">2.0</strong><span class="stat-unit">姿态/秒</span></div>
+        <div><span class="stat-label">渲染</span><strong id="render-fps">—</strong><span class="stat-unit">FPS</span></div>
+      </div>
+      <section class="playback" aria-label="回放控制">
+        <div class="playback-head"><span>真实结果回放 <span class="subtle">/ 3个不同姿态</span></span><span id="play-state">载入中</span></div>
+        <div class="transport-row">
+          <button id="previous" class="step" aria-label="上一帧">|‹</button>
+          <button id="play" class="play" aria-label="播放回放" disabled>▶</button>
+          <button id="next" class="step" aria-label="下一帧">›|</button>
+          <div class="timeline"><input id="scrubber" type="range" min="0" max="2" value="0" step="1" aria-label="选择回放帧" disabled><div class="timeline-labels"><span>308</span><span>309</span><span>310</span></div></div>
+          <label class="speed-label" for="speed">速度<select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+        </div>
+        <p class="playback-note">每次更新均来自已接收记录。循环播放和画面刷新不计作新推理。</p>
+      </section>
+    </section>
+  </main>
+  <footer><span><span class="footer-dot"></span>本地展示 · 无云端依赖</span><span id="footer-status">新推理 0 · HDMI未接入本展示</span></footer>
+  <dialog id="details">
+    <div class="dialog-head"><div><span class="eyebrow">RAW RESULT</span><h2>原始坐标与来源</h2></div><button id="close-details" aria-label="关闭详情">✕</button></div>
+    <p id="source-detail"></p><div class="table-scroll"><table><thead><tr><th>关节</th><th>C0</th><th>C1</th><th>C2</th></tr></thead><tbody id="coordinates"></tbody></table></div>
+    <p class="dialog-note">仅展示相机坐标变换：x=C0−1.75，y=4.2−C2，z=−(C1−1.75)。此变换不写回原始结果。</p>
+  </dialog>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

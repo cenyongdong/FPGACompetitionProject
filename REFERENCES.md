@@ -2,11 +2,9 @@
 
 独立采集准备（2026-10-17）：用户已决定先买一台原厂 RT-AC86U，代理完成[Nexmon 隔离环境与工具准备](tools/nexmon/README.md)、[到货部署／有界验证方案](tools/nexmon/DEPLOYMENT-PLAN.md)和[本地实际构建与离线验证证据](tools/nexmon/evidence/preparation-20261017-r1/REPORT.md)。芯片调查依据保留于[查证页](tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md)。设备尚未到货，实际无线芯片／ABI、RF CSI 和模型衔接待验证；不改变现有模型、SDK、BOOT、帧协议或旧 DATA 暂停。下文早期采集字段留空是历史范围，不能阻止本次明确授权的环境准备。
 
-2026-10-18最新：用户2026-10-18明确恢复离线诊断，本轮不接入Vivado MCP。r8从固定r7 native physopt检查点继续，bootstrap104.141秒、route709.532秒、reports301.297秒，工具及各阶段门通过；最终正式门因setup WNS−0.664ns／TNS−55.878ns／379失败端点拒绝，hold+0.029ns。最差抽样为原frame_to_ps视频路径，HDMI next_addr→araddr/CE另有−0.368ns／16逻辑级。原r7父exit1及本轮首bootstrap路径映射失败保留，均未改写为通过。
+2026-10-18，r9执行包已获用户明确批准并实际完成有界执行。候选安装／启动一次，SSH恢复34.344秒后先还原原BOOT并完整核验；64B DMA全字节往返通过，4KiB写在5.191秒触发SDK内部5000ms超时，child exit71。按失败停止规则，64KiB／1MiB、三窗新推理和HDMI START均未执行，没有重试失败负载。已用本包唯一原BOOT回退，SSH恢复28.688秒；运行中与启动文件均回到原BOOT，六SDK／九启动文件符合、FPGA operating、owner为空，串口均关闭。候选／回退额度均为0，本地及板端本包授权已关闭，旧DATA仍暂停。**D45与新推理→HDMI全链尚未解决。**
 
-r9缩短reader的4KiB边界谓词，1048576组合及24组状态机比较通过；完整新综合、约束、布局／物理优化、布线和独立报告已完成。正式55项复核通过，setup +0.030ns、hold +0.023ns、TNS／THS=0，HDMI命令CE最小+0.315ns；2768位观测约束与原厂DRC配置0 Error通过。原两项AI最小周期例外保持，raw_timing_pass仍false，无新增例外。实际bit、Procise ICAP、仅PL变化的BOOT及离线包已生成并验核；候选BOOT SHA256 a0fe608bb4890f941238b1557f2202987116d1e25669f220fcb4b84fec11fb00。原route父exit1、首次默认DRC拒绝和bit哈希超时均保留，补充消费／独立复核不改写原失败。尚未上板，D45未证修复。
-
-用户已回到板边，现场可用；本轮只读SSH核验原BOOT／六SDK／九启动文件符合、FPGA operating、无设备占用，未初始化SDK或执行DMA／推理／HDMI START／BOOT写入／重启。旧DATA仍暂停，旧包启动额度已用完；新的具体BOOT／重启执行包待确认。D45根因未证，全链未打通。 [r8完整结果](tools/pose-v1/evidence/hdmi-live-20261018-r8/REPORT.md)、[r9报告](tools/pose-v1/evidence/hdmi-live-20261018-r9/REPORT.md)、[实际恢复状态](tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)。
+104字真实快照已验证：观测窗口约5.064秒，HC2接受9笔AR而R握手0；共享HP2对PS出口接受8笔AR、R握手2后持续背压；HDMI入口AR握手0、RVALID且RREADY=0覆盖整个窗口。ARM后未记录复位异常。疑点收敛到HP2共享返回通道及其初始化／分发状态，但没有逐事务台账或ARM前历史，不能唯一断定错路由、ID丢失或复位原因。实际发布DCP只读检查确认S00接HC2、S01接HDMI、6位PS RID进入返回流水线，未发现直接错线或显然ID截断；这不证明互联运行正确。 [r9报告及原始证据](tools/pose-v1/evidence/hdmi-live-20261018-r9/REPORT.md)。本轮不接入Vivado MCP；原厂资料、固定保护及旧DATA边界保持。
 
 ## 此前阶段资料（保留当时结果，当前入口见上）
 
@@ -1557,4 +1555,3 @@ ADDR/BOTH只通过SDK复制，Host staging不能替代NPU同步证明；区域�
 
 最新：[r4源读回结果](tools/pose-v1/SOURCE-READBACK-R4-RESULTS-20261009.md)／[完成证据](tools/pose-v1/evidence/source-readback-20261009-r4/completion-review.json)。
 
-2026-10-18现场衔接：[r9具体执行包](FPGA/hdmi_candidate/CANDIDATE-BOARD-READ-R9.md)。实际候选、BOOT非PL门、Host计划与当前只读身份均有证据；用户在场不重置旧包已用启动额度。本轮新候选尚未安装／启动，SDK／DMA／新推理及HDMI START未执行。

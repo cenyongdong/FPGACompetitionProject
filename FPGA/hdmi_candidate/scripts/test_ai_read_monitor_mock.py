@@ -76,7 +76,7 @@ def main():
         production.mkdir()
         origin = ROOT / 'FPGA/hdmi_candidate/software'
         inputs = []
-        for name in ['ai_read_monitor_sdk.hpp', 'ai_read_dma_probe.cpp', 'ai_monitor_sdk.hpp']:
+        for name in ['ai_read_monitor_sdk.hpp', 'ai_read_dma_probe.cpp', 'ai_monitor_sdk.hpp', 'dma_probe_evidence.hpp']:
             path = origin / name
             shutil.copyfile(path, production / name)
             inputs.append({'path': str(path), 'bytes': path.stat().st_size, 'sha256': sha(path)})

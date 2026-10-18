@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-18",
+  "test_command": "node --test software/pc_viewer/test/transport.test.mjs",
+  "tests_passed": 8,
+  "tests_failed": 0,
+  "transport": {
+    "checked_at": "2026-10-18T07:44:12.378Z",
+    "cpp_sender_exit": 0,
+    "tcp_records": 3,
+    "websocket_records": 3,
+    "tcp_and_websocket_bytes_identical": true,
+    "served_assets": 7,
+    "errors": [],
+    "fresh_inferences": 0,
+    "board_operations": 0
+  },
+  "received_sha256": "2598dcb814202c4638a75cdb7093c887b56db2ca58a78fc40d4705c33f024320",
+  "expected_sha256": "2598dcb814202c4638a75cdb7093c887b56db2ca58a78fc40d4705c33f024320",
+  "browser": {
+    "frame": "1000001",
+    "raw_coordinates_matched": 42,
+    "canvas": {
+      "engine": "three.js r186",
+      "frame": "1000001",
+      "joints": "14"
+    },
+    "fps_snapshot": 60,
+    "interactions": [
+      "step",
+      "play",
+      "pause",
+      "end",
+      "speed",
+      "front",
+      "side",
+      "top",
+      "reset",
+      "joint labels",
+      "raw details"
+    ],
+    "page_errors": 0
+  },
+  "scope": {
+    "new_inferences": 0,
+    "board_operations": 0,
+    "HDMI_changes": 0
+  },
+  "screenshot": "preview.jpg"
+}

@@ -1,6 +1,6 @@
 # r9 AI读路径观测候选：现场有界执行包
 
-2026-10-18，状态：**实际产物与本机Host计划已验核，待本包新授权；未安装候选、未重启。** 用户已回到板边。本包不接入Vivado MCP。
+2026-10-18，状态：**用户已明确批准并执行；4KiB SDK失败停止，已完成唯一原BOOT回退，本包关闭。** r9已实际启动；64B通过、4KiB SDK异常71停止；后两档／三窗新推理／HDMI START未执行。已完成唯一原BOOT回退与只读身份复核，全部启动额度用完。D45未解。 本包不接入Vivado MCP。批准时原文独立保留于[approved-plan.md](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/r9-user-authorization/approved-plan.md)。
 
 ## 实际候选与范围
 
@@ -12,13 +12,13 @@
 - 原AI两个相同对象Min Period −0.409／−0.071ns例外保持，raw_timing_pass仍false，无新增豁免。完整旧失败、Warning、默认DRC和原route父exit1均保留。本包是新物理实现与诊断观测候选，**D45未证修复**。
 - 固定三窗软件、模型JSON／RAW、SDK、CPU数学／Gather注册、NPU分配及帧协议保持。只做有界新推理→HDMI验证，不代表连续CSI输入、严格5Hz、长期或PC 3D验收。
 
-## 当前现场身份与前置条件
+## 执行前现场身份与前置条件（历史原值）
 
 本轮只读SSH审查通过：原BOOT／六SDK／九启动根文件身份符合，内核IMAGE同原保护SHA，FPGA operating、设备owner为空。当前boot_id为`b2752700-4c7d-440f-b62a-c1f5d7f421b0`，与10月17日不同，未推断外部启动原因，执行包绑定本次实际会话。COM7为CP210x `USB\VID_10C4&PID_EA60\0001`；尚未打开串口。安装前重新核对实际启动会话、根分区余量、启动文件和设备占用，串口打开前再次核对USB身份。
 
 FAT已知2168个未引用簇问题不修复，不修改uEnv、DTB、内核、SDK、模型或频率；不做JTAG热重配，不清缓存。旧DATA独立暂停。旧v2候选启动和原BOOT回退额度均已用完，不从该旧许可推导本包许可。
 
-## 本包拟授权的唯一执行范围
+## 本包已批准的执行范围（执行已结束）
 
 1. Windows工作目录D:/FPGACompetitionProject。本机Host计划已实际复核，五份适配入口对完整原算法逆AST恢复通过；远端源在本机生成、编译并封存后才可执行。主机密钥pin、内存认证和有界传输沿用原流程。
 2. 使用新板端持久目录`/root/hdmi-live-20261018-r9/package-r1`，传输后逐项核对SHA；完整备份并回传原BOOT到主机，不覆盖旧失败证据。源、设备、SDK、内核或启动文件身份变化则停止核验。
@@ -33,4 +33,12 @@ FAT已知2168个未引用簇问题不修复，不修改uEnv、DTB、内核、SDK
 
 [本轮报告](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/REPORT.md)、[正式55项复核](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/read-v3r9-independent-reports-r1/review.json)、[实际位流](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/read-v3r9-native-bit-r3/bit-identity.json)、[BOOT非PL比较](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/read-v3-boot-r2/review.json)、[原始离线包](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/controlled-startup-read-v3-r2/manifest.json)、[实际执行manifest](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/controlled-startup-read-v3-execution-r9/manifest.json)、[Host实检](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/host-plan-review-r1/)、[板端只读身份](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/onsite-resume-readonly-r2/)。
 
-实际执行manifest SHA256：`3b5887ecece138973ee2ebef20b533211971674c0b33c7cbd9784159065cf085`；本机Host独立计划实检73.547秒exit0，local_review SHA256 `ccfc5ee31dc51f09493c64ce9d82102a279bc51bc312074eb0793404e79bd704`。生成源不构成批准，当前批准回执未创建。
+实际执行manifest SHA256：`3b5887ecece138973ee2ebef20b533211971674c0b33c7cbd9784159065cf085`；本机Host独立计划实检73.547秒exit0，local_review SHA256 `ccfc5ee31dc51f09493c64ce9d82102a279bc51bc312074eb0793404e79bd704`。生成源不构成批准；随后用户明确批准，原始回执见[r9-user-authorization](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/r9-user-authorization/actual-authorization.json)，当前包授权已关闭。
+
+## 实际执行结果
+
+2026-10-18，r9执行包已获用户明确批准并实际完成有界执行。候选安装／启动一次，SSH恢复34.344秒后先还原原BOOT并完整核验；64B DMA全字节往返通过，4KiB写在5.191秒触发SDK内部5000ms超时，child exit71。按失败停止规则，64KiB／1MiB、三窗新推理和HDMI START均未执行，没有重试失败负载。已用本包唯一原BOOT回退，SSH恢复28.688秒；运行中与启动文件均回到原BOOT，六SDK／九启动文件符合、FPGA operating、owner为空，串口均关闭。候选／回退额度均为0，本地及板端本包授权已关闭，旧DATA仍暂停。**D45与新推理→HDMI全链尚未解决。**
+
+104字真实快照已验证：观测窗口约5.064秒，HC2接受9笔AR而R握手0；共享HP2对PS出口接受8笔AR、R握手2后持续背压；HDMI入口AR握手0、RVALID且RREADY=0覆盖整个窗口。ARM后未记录复位异常。疑点收敛到HP2共享返回通道及其初始化／分发状态，但没有逐事务台账或ARM前历史，不能唯一断定错路由、ID丢失或复位原因。实际发布DCP只读检查确认S00接HC2、S01接HDMI、6位PS RID进入返回流水线，未发现直接错线或显然ID截断；这不证明互联运行正确。
+
+完整阶段、失败原文、观测、回退及清理见[r9报告](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/REPORT.md)。本页修订不回写批准时文档SHA。

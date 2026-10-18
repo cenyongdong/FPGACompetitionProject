@@ -94,7 +94,7 @@ def main():
         expected_path = ROOT / 'tools/pose-v1/evidence/hdmi-register-probe-20261015-r3/expected.json'
         if sha(expected_path) != EXPECTED_FILE_SHA or json.loads(expected_path.read_text())['libraries'] != EXPECTED:
             raise RuntimeError('Frozen six-SDK expected identity changed; no container start')
-        names = ['ai_read_dma_probe.cpp', 'ai_read_monitor_sdk.hpp', 'ai_monitor_sdk.hpp']
+        names = ['ai_read_dma_probe.cpp', 'ai_read_monitor_sdk.hpp', 'ai_monitor_sdk.hpp', 'dma_probe_evidence.hpp']
         sources = []
         for name in names:
             source = ROOT / 'FPGA/hdmi_candidate/software' / name

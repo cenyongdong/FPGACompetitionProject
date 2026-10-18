@@ -21,7 +21,9 @@ public:
 };
 
 // Fixed package stages, never inferred from the hardware's current sequence.
-enum class Epoch { FreshBoot, AfterSuccessfulProbe };
+enum class Epoch { FreshBoot, AfterSuccessfulProbe, AfterTwoSnapshots };
+// Selected by a bounded execution plan, never adopted from a register read.
+struct ExpectedSequence { std::uint32_t value; };
 
 struct Snapshot {
     std::array<std::uint32_t, kWords> words{};
@@ -46,6 +48,10 @@ class Capture final {
 public:
     Capture(const icraft::xrt::Device& device, std::ostream& log, Epoch epoch = Epoch::FreshBoot)
         : device_(device), log_(log), initial_sequence_(epoch_sequence(epoch)) {}
+    Capture(const icraft::xrt::Device& device, std::ostream& log, ExpectedSequence sequence)
+        : device_(device), log_(log), initial_sequence_(sequence.value) {
+        need(sequence.value <= 64 && sequence.value % 2 == 0, "Unsupported bounded read-monitor sequence");
+    }
     Capture(const Capture&) = delete;
     Capture& operator=(const Capture&) = delete;
     Capture(Capture&&) = delete;
@@ -175,6 +181,7 @@ private:
         switch (epoch) {
             case Epoch::FreshBoot: return 0;
             case Epoch::AfterSuccessfulProbe: return 2;
+            case Epoch::AfterTwoSnapshots: return 4;
         }
         throw MonitorError("Unsupported fixed read-monitor epoch");
     }

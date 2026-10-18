@@ -1,0 +1,114 @@
+{
+  "schema": "PIWPOSE1/1",
+  "source": "archived_real_board_output",
+  "fresh_inferences": 0,
+  "model": "fixed shared FP16 graph, ADR_48 v2",
+  "original_capture_time": "not supplied by archive",
+  "coordinate_space": "model C0/C1/C2; no room calibration",
+  "topology": "project-14-v1",
+  "bones": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      5,
+      9
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      7,
+      11
+    ],
+    [
+      9,
+      12
+    ],
+    [
+      11,
+      13
+    ]
+  ],
+  "default_playback_hz": 2,
+  "frames": [
+    {
+      "case": "S11_01_308",
+      "frame": "1000000",
+      "invocation": "0",
+      "sequence": "1",
+      "candidate": 0,
+      "score": 0.9482421875,
+      "process_ms": 24.12466,
+      "checked_joint_delta_mm": 0.9765625,
+      "source_directory": "tools/pose-v1/evidence/shared-stability-20261015-r2/returned-basic/run-basic/results/frame-0",
+      "scores_sha256": "0e12e7424bd8ff8b24df1006314d7d52c98572a5f4a22f3f496e9eff0cd32092",
+      "poses_sha256": "155a17a73bc56352c8ea06697958e978f0ee9cdce364e24c842f4473d869d824",
+      "record_sha256": "1f597512628c916577228f1fbdc458003d4850c3f291640c3916b36043659387"
+    },
+    {
+      "case": "S11_01_309",
+      "frame": "1000001",
+      "invocation": "1",
+      "sequence": "2",
+      "candidate": 0,
+      "score": 0.97900390625,
+      "process_ms": 23.26092,
+      "checked_joint_delta_mm": 0.9765625,
+      "source_directory": "tools/pose-v1/evidence/shared-stability-20261015-r2/returned-basic/run-basic/results/frame-1",
+      "scores_sha256": "f14dd38b459edee88357c92ee993afe10184c13a7cf1bce05eb99b6a1d39844f",
+      "poses_sha256": "c347ae3bb5e56bc99c17428fa27b7f8834d2492352d2b6e9a6693a6ea20672f6",
+      "record_sha256": "2400c9fb581a791dbac487325758034ae7ef69a85c16610a1a619068c19fa755"
+    },
+    {
+      "case": "S11_01_310",
+      "frame": "1000002",
+      "invocation": "2",
+      "sequence": "3",
+      "candidate": 0,
+      "score": 0.96826171875,
+      "process_ms": 23.26498,
+      "checked_joint_delta_mm": 0.48828125,
+      "source_directory": "tools/pose-v1/evidence/shared-stability-20261015-r2/returned-basic/run-basic/results/frame-2",
+      "scores_sha256": "6e4a7504161509f7ece781ab0471731b1d0fc75d40135eb0fd6c28f4bf321d35",
+      "poses_sha256": "bf019df666ce099d2cee726f8f440e4381f554f1808906a384605c26a25f261a",
+      "record_sha256": "25282f45422a1a057d5b0efd4c0c41785b98b42c27e321d917223c87c383e5aa"
+    }
+  ],
+  "records_sha256": "2598dcb814202c4638a75cdb7093c887b56db2ca58a78fc40d4705c33f024320",
+  "source_report": "tools/pose-v1/evidence/shared-stability-20261015-r2/REPORT.md"
+}

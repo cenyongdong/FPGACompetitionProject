@@ -1,15 +1,11 @@
 # 项目难点索引
 
-用户2026-10-18明确恢复离线诊断，本轮不接入Vivado MCP。r8从固定r7 native physopt检查点继续，bootstrap104.141秒、route709.532秒、reports301.297秒，工具及各阶段门通过；最终正式门因setup WNS−0.664ns／TNS−55.878ns／379失败端点拒绝，hold+0.029ns。最差抽样为原frame_to_ps视频路径，HDMI next_addr→araddr/CE另有−0.368ns／16逻辑级。原r7父exit1及本轮首bootstrap路径映射失败保留，均未改写为通过。
-
-r9缩短reader的4KiB边界谓词，1048576组合及24组状态机比较通过；完整新综合、约束、布局／物理优化、布线和独立报告已完成。正式55项复核通过，setup +0.030ns、hold +0.023ns、TNS／THS=0，HDMI命令CE最小+0.315ns；2768位观测约束与原厂DRC配置0 Error通过。原两项AI最小周期例外保持，raw_timing_pass仍false，无新增例外。实际bit、Procise ICAP、仅PL变化的BOOT及离线包已生成并验核；候选BOOT SHA256 a0fe608bb4890f941238b1557f2202987116d1e25669f220fcb4b84fec11fb00。原route父exit1、首次默认DRC拒绝和bit哈希超时均保留，补充消费／独立复核不改写原失败。尚未上板，D45未证修复。 用户已回到板边，现场可用；本轮只读SSH核验原BOOT／六SDK／九启动文件符合、FPGA operating、无设备占用，未初始化SDK或执行DMA／推理／HDMI START／BOOT写入／重启。旧DATA仍暂停，旧包启动额度已用完；新的具体BOOT／重启执行包待确认。D45根因未证，全链未打通。 [r8完整结果](tools/pose-v1/evidence/hdmi-live-20261018-r8/REPORT.md)、[r9报告](tools/pose-v1/evidence/hdmi-live-20261018-r9/REPORT.md)、[实际恢复状态](tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)。
-
-## 本轮新增问题（稳定编号）
+r13新三窗推理→HDMI及现场确认已通过，完整数值、STOP及回退验证见[r13报告](tools/pose-v1/evidence/hdmi-preopen-20261018-r13/REPORT.md)。D45跨启动偶发异常仍未修复，r12首组失败及其余未执行范围保留。已回原BOOT、包关闭、旧DATA暂停。
 
 | 编号 | 现象与影响 | 处理与结果 | 剩余假设与证据 |
 |---|---|---|---|
 | D44 | 首次HDMI START出现fault2，未采纳首帧 | 保留全值，STOP确认后释放；用户明确要求重测，针对已归档安全idle状态清错后新进程两图案及后续骨架回放通过 | reader把局部burst条件、RRESP、RID或RLAST/拍数异常汇总为同一fault，当前CSR不能区分；根因未明，不能称首启修复；[failure-review](tools/pose-v1/evidence/hdmi-display-20261017-r1/failure-review.json) |
-| D45 | 原HDMI候选4KiB写SDK异常，全链受阻；本轮未重试 | r9边界谓词等价验证、完整物理与55项正式复核、bit／ICAP／BOOT／离线包通过；setup +0.030ns／hold +0.023ns，原AI例外保持 | 新候选只完成离线验证，D45根因未证；现场可用，具体新BOOT／重启包待确认。原父exit1、默认DRC拒绝及辅助MD5超时保留。[r9报告](tools/pose-v1/evidence/hdmi-live-20261018-r9/REPORT.md) |
+| D45 | 同r9位流跨启动偶发HP2返回异常：r12失败、r13成功 | r13 Open前／后健康，四档至1MiB及三窗新推理→HDMI／STOP／现场确认通过；已回原BOOT | 有界闭环已打通，首启稳定性仍未证；未捕获失败启动的Open前状态，不能裁定BOOT或SDK Open根因，也不称20ms等待修复。[统一证据](tools/pose-v1/evidence/hdmi-preopen-20261018-r13/REPORT.md) |
 
 2026-10-16交接更新：D05静态色条已通过，D42暂存恢复路径已修正，D43文件系统来源问题未解。下一阶段实施按用户要求暂停，待架构确定及明确恢复；[FPGA工作总结](FPGA/FPGA-WORK-SUMMARY-20261016.md)。原D01–D43稳定编号和失败证据保留。
 
@@ -17,7 +13,7 @@ r9缩短reader的4KiB边界谓词，1048576组合及24组状态机比较通过�
 
 - **D25首次读旧数据：未解决，用户要求暂停排查。** 后续方案仅准备，原坏值与两轮晚源保持，不用正确晚值修补首文件。
 - **D04 VPU普通连续页：有界演示可运行，永久首启动未证。** 一次重启许可已使用；规整授权仍适用，CMA/内核/BOOT未改。
-- **D05 HDMI动态图案、骨架回放与在途STOP通过；D45阻塞新推理联动，D29整机实时性／长期待验。** 最新范围以本页2026-10-18检查点为准。共享图独立串行30分钟与整机并发长期验收分别报告。
+- **D05 新三窗推理→HDMI与STOP／现场确认通过；D45跨启动偶发故障、D29严格实时／长期待验。** 最新范围以本页2026-10-18检查点为准。共享图独立串行30分钟与整机并发长期验收分别报告。
 
 ## 接入、编排和视频难点（原编号）
 
@@ -27,7 +23,7 @@ r9缩短reader的4KiB边界谓词，1048576组合及24组状态机比较通过�
 | D02 | Host反复解析图导致预算不足，95例后超时 | 拆分Host总预算与硬件预算，外部420秒完成107例，不改拒绝规则 | Host门检修正通过，不扩大硬件预算；[历史超时](tools/pose-v1/evidence/pipeline-20261008-r8/host-timeout-review.json) |
 | D03 | Engine约29秒初始化被算入25秒文件编码deadline | 初始化、producer、codec/stall及总预算分开计量 | 有限生命周期通过，demo实际约31秒NoInput初始化；[ADR_02](ADR/ADR_02.md)、[ADR_45](ADR/ADR_45.md) |
 | D04 | MVX固件order7/512KiB普通连续页不足，即使总体内存/CMA空闲仍启动失败 | 原六缓冲改两缓冲、单上下文常驻，快照/规整分开；demo首失败规整无效，经一次获准重启成功 | **缓解，永久首启动未修**；无GFP_MOVABLE的普通申请不能直接使用空闲CMA，扩大CMA不是默认解；[ADR_02](ADR/ADR_02.md)、[ADR_27](ADR/ADR_27.md)、[ADR_45](ADR/ADR_45.md) |
-| D05 | HDMI静态时序及动态显示已实板验证；新推理联动仍未通过 | 原r5候选不变，SDK双缓冲、两图案、三份历史真实骨架和STOP／释放通过，用户确认可见 | D44首次reader故障与D45参数上传故障未解；新推理0，非整机实时验收；[报告](tools/pose-v1/evidence/hdmi-display-20261017-r1/REPORT.md) |
+| D05 | HDMI静态／动态及r13新三窗推理联动已实板验证 | 原r5候选不变，SDK双缓冲、两图案、三份历史真实骨架和STOP／释放通过，用户确认可见 | D44首次reader与D45跨启动故障未解；r13新推理3窗通过，非严格实时／长期验收；[报告](tools/pose-v1/evidence/hdmi-display-20261017-r1/REPORT.md) |
 | D06 | 在线编码、RTSP所有权和实际PTS交接 | owned NV12/packet/AU、有界队列、常驻VPU/独立网络owner | 有界真实来源全链已过，非长期验收；[ADR_08](ADR/ADR_08.md)、[ADR_45](ADR/ADR_45.md) |
 | D07 | FIFO积压会显示旧结果 | popLatest；coalesced和overwritten分别计，采样实际时刻产生PTS | Native/有限全链通过，重复不算新姿态；[ADR_02](ADR/ADR_02.md) |
 | D08 | PowerShell内嵌多语言引号/命令替换引发生成语法错误 | 独立源码/生成脚本，完整捕获输出并查实际退出码；保留旧构建原型 | 工具脚本修正，不将编译错误误归板端；[ADR_03](ADR/ADR_03.md) |
@@ -86,5 +82,3 @@ r9缩短reader的4KiB边界谓词，1048576组合及24组状态机比较通过�
 2026-10-13重构回归有实际CPU107和三窗口设备验证；旧DATA问题未修且继续暂停，83/100管理估计保持。原文档整理阶段“无设备操作”只适用于其历史范围。
 
 本次整体暂停交接及只读查询同步的前后原文／SHA见[本次交接修订](tools/pose-v1/evidence/hdmi-live-20261017-r7/documents-place-query-pause-r7-r2/revision.json)。
-
-2026-10-18现场衔接：[r9具体执行包](FPGA/hdmi_candidate/CANDIDATE-BOARD-READ-R9.md)。实际候选、BOOT非PL门、Host计划与当前只读身份均有证据；用户在场不重置旧包已用启动额度。本轮新候选尚未安装／启动，SDK／DMA／新推理及HDMI START未执行。
