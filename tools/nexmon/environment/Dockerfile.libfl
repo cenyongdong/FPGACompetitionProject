@@ -1,0 +1,4 @@
+FROM fpga-nexmon-rtac86u:20261017-r1
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends libfl-dev \
+ && rm -rf /var/lib/apt/lists/*

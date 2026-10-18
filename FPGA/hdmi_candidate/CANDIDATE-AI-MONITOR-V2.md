@@ -1,0 +1,55 @@
+# AI被动观测候选v2：受控启动与三窗HDMI执行包
+
+2026-10-17。最新执行状态：本包已获用户明确批准并执行，DMA门禁失败，已使用批准的原BOOT回退；两次重启额度均已用完。下文产物和拟执行流程保留原提案依据，实际结果见文末。旧DATA调查继续暂停。
+
+## 可审查的实际产物与门检
+
+- 候选BOOT：7,023,552字节，SHA256 `75e404f3ab56db9c67859b3a4ceb2eb0fd262be9254d57f97cdf15bfb757dad9`。
+- 原BOOT：同长度，SHA256 `ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef`。
+- Procise后处理位流：SHA256 `04572d4d7879727aa6882d1e359c0c14d5ff92466a2ffcd44d4b9a7664d9fe7b`。三窗整机ARM程序SHA256 `021c0cb27b57771370acb668d57b36482596e4852ef353b2190f68008c840a8b`。
+- 离线BOOT全部非PL字节逐位相同，PL偏移186816／长度5980464字节，差异2044397字节；字交换后载荷及填充核验通过。FSBL、ATF、U-Boot、镜像头及参数不变。
+- 新综合、CDC、布线及独立报告完成。全局WNS +0.030ns／WHS +0.020ns，TNS／THS为0。新增708位快照保持10ns，实际裕量+8.989ns；HDMI命令／响应为5ns／10ns，实际裕量+1.448／+9.095ns，96条命令采纳CE路径均满足约束。
+- 新观测器无未知CDC Critical。整体原始STA仍为Failed Timing：仅原AI相同对象的两处Min Period −0.409／−0.071ns，沿用用户原定点例外，不增加例外。原厂DRC配置0 Error；重新打开默认配置的REQP-52／56原始Error及其它Warning完整保留。
+- 41份已批准工具补丁、固定AI／DDR／HDMI原逻辑及SDK／模型来源身份核验通过。只增加独立观测CSR／扇出；此前诊断原始复位样本的CDC问题仅通过将保留位14:13置0解决，不改功能复位、不放宽约束。这不构成D45上传故障已修复。
+- 最新只读扫链4.109秒：JTAG-HS1／210512180081，实际jfmql30 0x9372c093（part0）、PS-DAP 0x6ba00477（part1）；无program。以后真正program仍需再扫，不从这里固定part编号。
+- COM7当前为CP210x `USB\VID_10C4&PID_EA60\0001`，仅枚举；正式启动观察前需重新核对、打开接收并确认ready。115200/8N1，DTR／RTS关闭、发送0字节。
+
+## 当前板端与实际未解问题
+
+最新只读BOOT／六SDK及全部启动根文件身份见approval-preflight，boot_id `39f33171-ff06-4491-8070-fe808a92e600`，FPGA operating，设备owner为空，根分区余量50,147,471,360字节。无本轮新SDK初始化、NPU负载、显示DMA、BOOT写入或重启。
+
+FAT两份表一致，未发现循环／交叉或文件链长错误；此前2168个未引用簇及BPB状态字节1仍在，来源未明。只读审查退出0不等于文件系统干净。本包不进行fsck、清脏标志、修复簇链或改变其它启动文件；临时BOOT写入仍需明确批准，不能由既有通用部署授权推导。
+
+r5下64字节通过、4KiB写失败；一次原BOOT对照后四档DMA及三窗推理通过，但该对照同时改变PL配置与重启状态，根因仍待验证。新候选也是观测工具和新物理实现，不能据通过推断某一根因已锁定。
+
+## 本次拟确认的操作范围
+
+仅临时安装本包候选BOOT、受控重启一次。候选启动且SSH恢复后，先恢复原BOOT文件、完整读回SHA并sync／卸载，确认其余启动文件不变，再进行以下有限诊断。运行中PL此时仍为候选；启动文件恢复不等于运行中已回原配置。
+
+必要时最多另执行一次原BOOT回退重启，限恢复原运行状态，不再加载其它候选。不永久替换BOOT，不改uEnv、DTB、内核、SDK、模型、CPU数学／注册、NPU分配、频率、帧协议或数值门禁。无JTAG热重配。该范围不开放更多重启或其它BOOT。
+
+## 批准后的有界流程
+
+1. Windows工作目录D:/FPGACompetitionProject；既有安全SSH主机密钥与内存认证不变。使用新板端/root/hdmi-live-20261017-r2，持久存放候选、原BOOT及从启动分区完整回读的原文件，主机保留独立原值。传输后核对每份实际SHA，拒绝覆盖旧失败目录；重启前再次核对身份、资源和启动介质。
+2. 原BOOT与回退读回一致、其它启动文件身份一致、串口ready和限定授权均满足后，才临时挂载已核验的/dev/mmcblk0p1，写候选临时文件、fsync／读回SHA，原子替换BOOT、sync／卸载；逐项保留实际元数据。任一不符停止，不猜设备、不修复文件系统。
+3. 用一次带独占标记的reboot命令启动候选。SSH观察180秒，串口最多300秒／4MiB、0 TX，保存完整原始字节。启动恢复后先还原原BOOT并从启动分区完整读回，核对其它启动文件／SDK；正式验证前必须证明此恢复完成。若SSH不可达，保留串口并停止，不能声称所有故障下可自动回退，必要时需人工恢复介质。
+4. 新进程运行`ai_dma_probe <新证据文件> --with-monitor`，子进程20秒／外层30秒；公共SDK Open后核对设备、状态及新ABI 0x41494401，再做64／4096／65536／1048576字节四档往返。无模型／NPU前向／HDMI START。每档实际字节逐位比较，任一SDK或数据异常立即保存停止，不重复负载；仅在原SDK异常已保存后，用同一Device抓一次24字快照（完成等待100ms），不重新Open／reset／清错。诊断失败不得覆盖原错。
+5. 四档全部通过后才在新进程运行`pose_hdmi_demo <固定共享包> <新输出目录> --allow-device-init`，子进程120秒／外层140秒。模型、三份冻结真实CSI及现行ADR_48 v2门禁固定；一Engine／同Device完成参数上传、PS渲染及双缓冲HDMI，三个新实际输出先完整保存再比较／显示，每份约5秒。Session.apply异常时同Device快照仅诊断，继续抛原错；该分支目前只编译、未触发验收。
+6. 数值有限性／完整输入／全部分数逐位，score>0.2受检候选最大关节三维误差≤3mm；低分误差仍保存，不能修补输出。显示采纳、画面现场确认、STOP在途排空及释放分别报告。当前三窗仅为有限闭环验证，重复扫描不计新姿态，不等同连续CSI采集、严格5Hz或长期验收。
+7. 任一SDK／数值／身份／显示故障保存即停，不自动重试、不擅自复位。若显示已START，只按已验证STOP快照及匹配停止ID／idle／在途清零释放；不能证明时保留帧。按获准的限定回退范围处理运行状态，结束回收本批进程、串口、连接及容器，不留后台续跑。旧DATA始终独立暂停。
+
+## 证据入口
+
+[本轮报告](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/REPORT.md)、[实际候选与回退清单](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/controlled-startup-monitor-v2/manifest.json)、[BOOT分区比较](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/monitor-v2-boot/review.json)、[路由门检](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/monitor-v2-reports/review.json)、[三窗包身份](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/build-shared-monitor-v2/package-files.json)。
+
+
+## 实际批准、执行与停止结果
+
+2026-10-17本轮实际结果：用户明确唤醒后完成观测候选v2的CDC、布局布线、时序／DRC及BOOT封装；经用户另行明确批准执行一次候选启动及一次原BOOT回退。候选启动后先还原原BOOT文件，SDK同Device快照有效；独立DMA仅64字节往返通过，4KiB写再次抛SDK异常exit71，后两档、三窗新推理及HDMI START全部未执行。已保存完整原错和24字快照、停止失败负载，使用本包回退恢复原BOOT运行。恢复后BOOT／六SDK符合、FPGA operating、设备owner为空、两段UART均关闭，当前boot_id 9ca535cd-5ea2-4bcc-9b58-1f3699a515e8。本包两次重启额度均已使用；旧DATA独立暂停。全链尚未打通，根因仍待证。
+
+用户答复原文“批准本包（含最多一次原BOOT回退）”及范围记录于[r2授权](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/startup-authorization.json)。候选BOOT完整读回后启动，SSH 34.750秒恢复，boot_id 726f8e0f-c68b-483e-b046-7f47e9587622；先完整还原原BOOT并核对其它启动文件，再执行独立DMA。4KiB写5.176秒内抛SDK异常71，非外层超时。原BOOT回退27.922秒恢复；回退后的只读身份审查没有Device::Open或负载。[完整结果](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/REPORT.md)。
+
+
+## 本包执行后的用户暂停
+
+用户最新明确要求暂停，等待唤醒。本轮已在原BOOT回退核验、失败取证和本地静态审查结束处停止，无后台续作；未启动更多候选构建、部署或板测。恢复须由用户明确唤醒；旧DATA继续独立暂停。 当前入口见[r2状态](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/continuation-state.json)；本包启动／回退次数没有因暂停而重置。

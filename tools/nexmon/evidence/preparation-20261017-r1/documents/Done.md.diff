@@ -1,0 +1,17 @@
+--- Done.md:before
++++ Done.md:after
+@@ -1,4 +1,14 @@
+ # 已完成工作记录
++
++## 2026-10-17：RT-AC86U Nexmon 环境准备与离线采集验证
++
++### 工程内容总结
++
++按用户购买一台原厂 RT-AC86U、到货后实测的要求，在 Windows `D:/FPGACompetitionProject` 通过既有 Docker Desktop 新建隔离 Ubuntu 20.04 环境，固定 Nexmon／CSI 两个提交，2 CPU／2 GiB、断网完成实际固件、dhd.ko 和 ARM64 静态工具编译。独立检查模块等长、仅目标固件区改变且嵌入字节完全一致；14 项 PC 解析验证、14,336 个安全范围上游 C 解码对照、60 包 Linux 回环录制及无输入／覆盖／预算边界通过。完整源码检查点、交付 SHA、失败原文、警告与资源回收见[证据报告](tools/nexmon/evidence/preparation-20261017-r1/REPORT.md)。本轮任务容器已清理，镜像／卷保留；无路由器／Lite 连接、无线发射、驱动加载、模型／SDK／BOOT 修改。无线采集和模型实时接入均待验证。
++
++### 对后续开发的参考
++
++从[环境入口](tools/nexmon/README.md)和[到货验证方案](tools/nexmon/DEPLOYMENT-PLAN.md)继续，先读取设备无线修订、内核／ABI并备份原驱动。本次模块 vermagic 为 `4.1.27 SMP preempt mod_unload aarch64`，不自动适配任意原厂版本；ABI 不符停止加载。参数工具错误时可能 exit 0，须校验 34 字节内容；nexutil 仅使用已约束的显式 Base64 路径。回环合成组率不能当 RF 速率，一台三链不能替代三个接收节点。保持现有模型结构及 `[3,3,30,20]` 契约，后续转换置于独立 PC 适配层，不恢复旧 DATA。所有原失败和历史验证范围保留。
+ 
+ ## 2026-10-17：实时链故障隔离与原BOOT对照验证
+ 

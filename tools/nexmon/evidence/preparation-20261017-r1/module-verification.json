@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "hardware_test": false,
+  "checks": {
+    "same_module_length": true,
+    "firmware_length": true,
+    "firmware_embedded_exactly": true,
+    "prefix_unchanged": true,
+    "suffix_unchanged": true,
+    "firmware_changed": true,
+    "elf64_aarch64": true,
+    "expected_vermagic": true
+  },
+  "offset": 321432,
+  "size": 1111247,
+  "original_sha256": "b9c2a12e72c5eacfd4be7ae2dfc703c64e56712fa8d139bad6ce013e8f0a02f2",
+  "patched_sha256": "872302e8611832ac285c3eda77ba28bfb10dd3fecbc5dd82177e816a256fa91b",
+  "firmware_sha256": "940785126e5d508cf9e35a50e0b33f4dbb5d38d677d89448fadd075964bc37d5",
+  "limitation": "Pinned repository module only; no compatibility claim for an arrived router"
+}

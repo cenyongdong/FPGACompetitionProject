@@ -1,0 +1,9 @@
+--- tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md:before
++++ tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md:after
+@@ -1,4 +1,6 @@
+ # RT-AC86U芯片版本与Nexmon部署查证
++
++2026-10-17 后续实际进展：用户已决定先买一台原厂 RT-AC86U，并授权设备到货前准备。[隔离环境、模块与 ARM64 工具已实际构建](../nexmon/README.md)，[离线验证证据](../nexmon/evidence/preparation-20261017-r1/REPORT.md)和[实机方案](../nexmon/DEPLOYMENT-PLAN.md)已保存。下文“没有已验证编译环境”保留为调查时状态；无线实机仍未验证，不能外推兼容任何原厂版本。
+ 
+ 查证日期：2026年10月17日。目标是决定能否购买原厂RT-AC86U作为保留现有模型结构的CSI采集样机，并明确由代理负责的部署与验证工作。
+ 

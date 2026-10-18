@@ -1,0 +1,9 @@
+--- REFERENCES.md:before
++++ REFERENCES.md:after
+@@ -1,4 +1,6 @@
+ # 比赛开发资料索引与理解记录
++
++独立采集准备（2026-10-17）：用户已决定先买一台原厂 RT-AC86U，代理完成[Nexmon 隔离环境与工具准备](tools/nexmon/README.md)、[到货部署／有界验证方案](tools/nexmon/DEPLOYMENT-PLAN.md)和[本地实际构建与离线验证证据](tools/nexmon/evidence/preparation-20261017-r1/REPORT.md)。芯片调查依据保留于[查证页](tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md)。设备尚未到货，实际无线芯片／ABI、RF CSI 和模型衔接待验证；不改变现有模型、SDK、BOOT、帧协议或旧 DATA 暂停。下文早期采集字段留空是历史范围，不能阻止本次明确授权的环境准备。
+ 
+ 2026-10-17晚间最新：[r3诊断报告](tools/pose-v1/evidence/hdmi-live-20261017-r3/REPORT.md)。最新完整constraints-r3通过，旧只读查询失败保留。旧read-v3r3-route在720.625秒被日志age193.137秒策略停止，error_seen=false，非已证Vivado逻辑错误；原PID树均退出、31份native及optDCP封存。现新read-v3r4-route／impl_read_v3r4同synth_read_v3r3、原策略／约束／hooks完整重跑，native全文除run名外相同且实际最大2CPU；新监控30秒采自有PID树CPU，以日志或CPU≥1秒增量及内存／错误门检受控180秒续期，上限1800秒。新r4进行中，route／报告／bit／BOOT尚未通过。原BOOT保持、新SDK／DMA／推理／HDMI／BOOT／重启0；启动监督器28项纯mock不替代真实串口／启动验证，generator门检仍收尾。旧包重启0、新具体包授权缺、D45未修、旧DATA暂停。[状态](tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)。下述r2及更早记录保持历史范围。
+ 

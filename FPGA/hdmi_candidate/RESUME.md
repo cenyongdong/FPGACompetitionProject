@@ -1,5 +1,21 @@
 # HDMI候选当前状态
 
+## 当前入口（2026-10-18，离线任务已恢复）
+
+用户2026-10-18明确恢复离线诊断，本轮不接入Vivado MCP。r8从固定r7 native physopt检查点继续，bootstrap104.141秒、route709.532秒、reports301.297秒，工具及各阶段门通过；最终正式门因setup WNS−0.664ns／TNS−55.878ns／379失败端点拒绝，hold+0.029ns。最差抽样为原frame_to_ps视频路径，HDMI next_addr→araddr/CE另有−0.368ns／16逻辑级。原r7父exit1及本轮首bootstrap路径映射失败保留，均未改写为通过。
+
+r9缩短reader的4KiB边界谓词，1048576组合及24组状态机比较通过；完整新综合、约束、布局／物理优化、布线和独立报告已完成。正式55项复核通过，setup +0.030ns、hold +0.023ns、TNS／THS=0，HDMI命令CE最小+0.315ns；2768位观测约束与原厂DRC配置0 Error通过。原两项AI最小周期例外保持，raw_timing_pass仍false，无新增例外。实际bit、Procise ICAP、仅PL变化的BOOT及离线包已生成并验核；候选BOOT SHA256 a0fe608bb4890f941238b1557f2202987116d1e25669f220fcb4b84fec11fb00。原route父exit1、首次默认DRC拒绝和bit哈希超时均保留，补充消费／独立复核不改写原失败。尚未上板，D45未证修复。
+
+用户已回到板边，现场可用；本轮只读SSH核验原BOOT／六SDK／九启动文件符合、FPGA operating、无设备占用，未初始化SDK或执行DMA／推理／HDMI START／BOOT写入／重启。旧DATA仍暂停，旧包启动额度已用完；新的具体BOOT／重启执行包待确认。D45根因未证，全链未打通。 [r8结果](../../tools/pose-v1/evidence/hdmi-live-20261018-r8/REPORT.md)、[r9报告](../../tools/pose-v1/evidence/hdmi-live-20261018-r9/REPORT.md)、[恢复状态](../../tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)。
+
+## r2历史暂停与随后恢复（不覆盖2026-10-18整体暂停）
+
+2026-10-17本轮实际结果：用户明确唤醒后完成观测候选v2的CDC、布局布线、时序／DRC及BOOT封装；经用户另行明确批准执行一次候选启动及一次原BOOT回退。候选启动后先还原原BOOT文件，SDK同Device快照有效；独立DMA仅64字节往返通过，4KiB写再次抛SDK异常exit71，后两档、三窗新推理及HDMI START全部未执行。已保存完整原错和24字快照、停止失败负载，使用本包回退恢复原BOOT运行。恢复后BOOT／六SDK符合、FPGA operating、设备owner为空、两段UART均关闭，当前boot_id 9ca535cd-5ea2-4bcc-9b58-1f3699a515e8。本包两次重启额度均已使用；旧DATA独立暂停。全链尚未打通，根因仍待证。用户最新明确要求暂停，等待唤醒。本轮已在原BOOT回退核验、失败取证和本地静态审查结束处停止，无后台续作；未启动更多候选构建、部署或板测。恢复须由用户明确唤醒；旧DATA继续独立暂停。
+
+继续入口：[r2报告](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/REPORT.md)及[状态](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/continuation-state.json)。该次暂停现已由本轮明确唤醒解除当前任务的暂停；旧DATA仍独立暂停。进一步候选启动须另有具体包及授权，不复用已用完的额度。以下资料为历史记录。
+
+2026-10-17最新：用户明确恢复HDMI接入验证和渲染。原r5候选下动态图案及历史真实骨架回放实屏通过，PL三个ID采纳、fault0、在途STOP与双缓冲释放通过。新推理联动停在Session.apply参数上传SDK DMA异常；新推理0，未启动HDMI hook，不自动重试。首次START reader fault2尚未查明。无新位流、重启或BOOT／SDK修改；旧DATA暂停。[报告](../../tools/pose-v1/evidence/hdmi-display-20261017-r1/REPORT.md)、[当前收尾状态](../../tools/pose-v1/evidence/hdmi-display-20261017-r1/continuation-state.json)。以下较早暂停／恢复门禁是历史范围，不能覆盖此次明确指令，也不能用于恢复其它任务。
+
 2026-10-16：**下一阶段实施按用户要求暂停，等待后续项目架构确定及明确恢复指令。** 本轮仅完成FPGA工作总结和文档交接，未连接板卡或执行构建。最近实际验证为同日HDMI双ABI／PLL／约148.5MHz像素计数及稳定八色条实屏通过。原BOOT已恢复、运行中候选为上次封存确认状态，本轮没有重新核验实板。DDR读帧／翻帧／在途STOP和整机实时性尚未验收；FAT脏标志及未引用链来源未明、未修复，旧DATA继续暂停。 [负责范围、原厂位流操作及交接](../FPGA-WORK-SUMMARY-20261016.md)。
 
 ## 此前阶段资料（保留当时结果，当前入口见上）
@@ -34,3 +50,7 @@ PS/DDR/HP2/GP所有权、CSR解码、原生PHY/规范复位、CDC及完整实现
 ## 最新暂停与恢复门禁（2026-10-16）
 
 本轮只完成工作总结与文档同步，没有重新核验板端运行状态。后续先由用户确定项目架构，再明确指示恢复执行；恢复前先阅读[FPGA工作交接](../FPGA-WORK-SUMMARY-20261016.md)和[最新暂停记录](../../tools/pose-v1/evidence/hdmi-handoff-docs-20261016-r1/continuation-state.json)。旧封存continuation-state.json中的next及本文此前恢复步骤保留当时含义，均不能覆盖此次暂停。
+
+本次实际源审查与首次setup失败完整原值：[独立源审查](../../tools/pose-v1/evidence/hdmi-live-20261017-r7/independent-source-review-r1/review.json)、[缓存失败保全](../../tools/pose-v1/evidence/hdmi-live-20261017-r7/setup-cache-failure-r1/review.json)。
+
+2026-10-18现场衔接：[r9具体执行包](CANDIDATE-BOARD-READ-R9.md)。实际候选、BOOT非PL门、Host计划与当前只读身份均有证据；用户在场不重置旧包已用启动额度。本轮新候选尚未安装／启动，SDK／DMA／新推理及HDMI START未执行。

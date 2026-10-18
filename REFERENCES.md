@@ -1,10 +1,12 @@
 # 比赛开发资料索引与理解记录
 
-2026-10-17：用户已确认[新架构与展示讨论ADR_49](ADR/ADR_49.md)：PS／NPU感知、PL HDMI本地输出、PC独立3D展示，未来正式主链停用VPU／RTSP。本轮仅归档、未切换源码或恢复实施；原模型数值门禁、旧DATA暂停和板端保护保持。比赛指南第5—7页及RuView展示／数据源的讨论依据在新ADR中列明；最后实际板测仍为2026-10-16。
+独立采集准备（2026-10-17）：用户已决定先买一台原厂 RT-AC86U，代理完成[Nexmon 隔离环境与工具准备](tools/nexmon/README.md)、[到货部署／有界验证方案](tools/nexmon/DEPLOYMENT-PLAN.md)和[本地实际构建与离线验证证据](tools/nexmon/evidence/preparation-20261017-r1/REPORT.md)。芯片调查依据保留于[查证页](tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md)。设备尚未到货，实际无线芯片／ABI、RF CSI 和模型衔接待验证；不改变现有模型、SDK、BOOT、帧协议或旧 DATA 暂停。下文早期采集字段留空是历史范围，不能阻止本次明确授权的环境准备。
 
-以下为10月16日交接快照，后续架构方向以ADR_49为准：
+2026-10-18最新：用户2026-10-18明确恢复离线诊断，本轮不接入Vivado MCP。r8从固定r7 native physopt检查点继续，bootstrap104.141秒、route709.532秒、reports301.297秒，工具及各阶段门通过；最终正式门因setup WNS−0.664ns／TNS−55.878ns／379失败端点拒绝，hold+0.029ns。最差抽样为原frame_to_ps视频路径，HDMI next_addr→araddr/CE另有−0.368ns／16逻辑级。原r7父exit1及本轮首bootstrap路径映射失败保留，均未改写为通过。
 
-2026-10-16：**下一阶段实施按用户要求暂停，等待后续项目架构确定及明确恢复指令。** 本轮仅完成FPGA工作总结和文档交接，未连接板卡或执行构建。最近实际验证为同日HDMI双ABI／PLL／约148.5MHz像素计数及稳定八色条实屏通过。原BOOT已恢复、运行中候选为上次封存确认状态，本轮没有重新核验实板。DDR读帧／翻帧／在途STOP和整机实时性尚未验收；FAT脏标志及未引用链来源未明、未修复，旧DATA继续暂停。 [负责范围、原厂位流操作及交接](FPGA/FPGA-WORK-SUMMARY-20261016.md)。
+r9缩短reader的4KiB边界谓词，1048576组合及24组状态机比较通过；完整新综合、约束、布局／物理优化、布线和独立报告已完成。正式55项复核通过，setup +0.030ns、hold +0.023ns、TNS／THS=0，HDMI命令CE最小+0.315ns；2768位观测约束与原厂DRC配置0 Error通过。原两项AI最小周期例外保持，raw_timing_pass仍false，无新增例外。实际bit、Procise ICAP、仅PL变化的BOOT及离线包已生成并验核；候选BOOT SHA256 a0fe608bb4890f941238b1557f2202987116d1e25669f220fcb4b84fec11fb00。原route父exit1、首次默认DRC拒绝和bit哈希超时均保留，补充消费／独立复核不改写原失败。尚未上板，D45未证修复。
+
+用户已回到板边，现场可用；本轮只读SSH核验原BOOT／六SDK／九启动文件符合、FPGA operating、无设备占用，未初始化SDK或执行DMA／推理／HDMI START／BOOT写入／重启。旧DATA仍暂停，旧包启动额度已用完；新的具体BOOT／重启执行包待确认。D45根因未证，全链未打通。 [r8完整结果](tools/pose-v1/evidence/hdmi-live-20261018-r8/REPORT.md)、[r9报告](tools/pose-v1/evidence/hdmi-live-20261018-r9/REPORT.md)、[实际恢复状态](tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)。
 
 ## 此前阶段资料（保留当时结果，当前入口见上）
 
@@ -1554,3 +1556,5 @@ ADDR/BOTH只通过SDK复制，Host staging不能替代NPU同步证明；区域�
 最新：[纯计时与异常字节结果](tools/pose-v1/FORWARD-TRACE-R3-RESULTS-20261009.md)、[源数据判别计划](tools/pose-v1/FORWARD-DATA-RECOVERY-NEXT-20261009.md)、[ADR_17](ADR/ADR_17.md)。
 
 最新：[r4源读回结果](tools/pose-v1/SOURCE-READBACK-R4-RESULTS-20261009.md)／[完成证据](tools/pose-v1/evidence/source-readback-20261009-r4/completion-review.json)。
+
+2026-10-18现场衔接：[r9具体执行包](FPGA/hdmi_candidate/CANDIDATE-BOARD-READ-R9.md)。实际候选、BOOT非PL门、Host计划与当前只读身份均有证据；用户在场不重置旧包已用启动额度。本轮新候选尚未安装／启动，SDK／DMA／新推理及HDMI START未执行。

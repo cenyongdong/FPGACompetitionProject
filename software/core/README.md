@@ -1,5 +1,7 @@
 # 正式运行核心
 
+2026-10-17新增可复用HDMI模块：`display/hdmi_canvas.*`负责SDK无关的RGB24→RGB565格式适配，`display/hdmi_output.*`在SDK主线程持有双UDMA帧并管理采纳／STOP／释放。独立构建与实屏结果见[HDMI应用](../hdmi_demo/README.md)。旧演示链接与推理核心未切换；共享Engine的设备hook仅在隔离导出副本中，模型实时联动因SDK上传失败尚未通过。以下描述仍对应旧演示实际链接。
+
 这里是当前演示主链唯一使用的核心源码。`software/pose_v1`及历史工具保留原路径和原内容，供旧验证包追溯；维护当前演示时从本目录进入。原始来源、构建别名及前后哈希见[迁移清单](../../tools/pose-v1/evidence/core-refactor-20261013-r1/source-migration.json)。
 
 后续接入请查[接口与开发指南](INTERFACES.md)：包括每个功能模块的接口、线程归属、资源所有权、异常传播，以及保留历史声明与当前实际链接实现的区别。

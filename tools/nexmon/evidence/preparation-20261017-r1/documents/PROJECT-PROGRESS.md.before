@@ -1,0 +1,39 @@
+# 项目进度总览
+
+最后实际验证：2026-10-17。**实时推理→HDMI诊断正在继续；D45未解决，全链未通过。** 原BOOT／六SDK只读身份与boot_id9ca535cd保持，新SDK Open、DMA、推理、HDMI START、BOOT写入及重启0。局部审查／仿真、双epoch软件r2／mock、综合265.235秒及最新完整constraints-r3 164.156秒通过，clock-only r3为98.047秒；2768位10ns最小+9.492ns、新CDC4／2／2768、旧708位和实际时钟／来源门检符合，旧失败／Critical Warning保留。旧read-v3r3-route在720.625秒被日志age193.137秒策略停止，error_seen=false，非已证Vivado逻辑错误；原PID树均退出、31份native及optDCP封存。现新read-v3r4-route／impl_read_v3r4同synth_read_v3r3、原策略／约束／hooks完整重跑，native全文除run名外相同且实际最大2CPU；新监控30秒采自有PID树CPU，以日志或CPU≥1秒增量及内存／错误门检受控180秒续期，上限1800秒。新r4进行中，route／报告／bit／BOOT尚未通过。启动监督脚本28项仅本机mock通过，远端generator新门检仍在收尾；新启动须具体包批准，旧包重启0、旧DATA独立暂停。[完整报告](tools/pose-v1/evidence/hdmi-live-20261017-r3/REPORT.md)、[状态](tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)。
+
+## 当前阶段与验证边界
+
+| 项目 | 当前结果与适用范围 |
+|---|---|
+| HDMI内存与图案 | 两块实际SDK UDMA帧各4,147,200字节全写全读一致。首次START出现reader fault=2而停止；原因未明。用户明确要求重测后，新进程两幅四色分区依次显示且稳定，错误0；首次失败保留，不称首次启动可靠性修复。 |
+| HDMI骨架与生命周期 | 三份此前已验收的真实板端输出，FRAME 1000000→1000001→1000002，各约8秒，全部PL采纳、错误0；用户确认画面可见。板端实际RGB565与本机渲染逐位一致。STOP时reader忙，取得新响应和匹配停止ID、idle且在途位清零后释放双帧。 |
+| 模型实时联动 | r5/v2的4KiB失败及同Device原值保持；r3新板负载／推理0。软件r2／mock、整机综合及最新完整constraints-r3通过，旧两轮只读查询失败保留；旧route被监控停止，新r4 route进行中，新候选实板及根因仍未通过；不重试失败负载。 |
+| 原共享模型能力 | 10月15日在当时配置下三窗及30分钟62,945次串行推理数值/内存观察通过；D41时延长尾仍未解。该历史结果不替代当前HDMI候选AI路径验证。 |
+| 软件与硬件分工 | PS沿用原骨架投影绘图并适配RGB565；PL完成读帧、扫描与HDMI输出。本轮没有把骨架绘图算法迁移到PL，也没有实现PC高质量3D或骨架网络协议。 |
+| 保护与运行状态 | 原BOOT文件及运行状态本轮只读复核符合；旧包候选／回退额度均用完。主执行器正在以CPU／日志联合监控运行新的单job／2CPU route-r4，尚无完成结果，未启动新板负载；模型／数学／SDK保护与旧DATA独立暂停保持。 |
+
+## 未完成与暂停项
+
+D44首次HDMI reader故障根因未明；D45当前候选模型参数上传失败阻塞新推理到HDMI闭环；严格实时、长期、双路并发均未验收。旧DATA首次坏读定位仍按用户要求暂停，D43 FAT来源问题未修。PC展示和骨架传输尚未实施，需按具体任务范围推进；不得从历史“下一步”自动恢复。
+
+新的HDMI入口见[software/hdmi_demo](software/hdmi_demo/README.md)；旧VPU／RTSP演示源码与验证保留。旧首版83/100只是历史管理估计，未据新架构重算，不以新增文件或回放次数累加。完整此前状态已原文保存在[实施前快照](PROJECT-PROGRESS-before-hdmi-20261017.md)，历史完成结果继续适用各自范围；[原FPGA交接](FPGA/FPGA-WORK-SUMMARY-20261016.md)不作为本轮最新状态。
+
+## 基线、连接资料与恢复入口
+
+
+2026-10-17晚间本轮只读复核见r3/resume-board-readonly，boot_id同原BOOT回退后的9ca535cd；未进行新SDK初始化或DMA／推理。历史回退收尾见r2/fallback-preflight；后续操作前仍须核验实际身份。
+
+| 对象 | 配置/资料入口 |
+|---|---|
+| 板子 | 悟净Lite/FMQL30TAI/ZG330；SSH root@192.168.126.49，用户已提供认证信息，运行时通过内存输入 |
+| 工具链 | Windows Procise2025.1.1 temp/SVN32494、Vivado2018.3（D:/vivado18.3/Vivado/2018.3）已就地030ai补丁、PS前端综合通过，Vivado2019.1保留；FPAI是本机交叉编译容器名，ARM64 GCC9.4/CMake3.24.2；Icraft3.39.0 |
+| 设备协议 | axi://zg330aiu?npu=0x40000000&dma=0x80000000；device25122301 / icore FMSHZGV3TECH-AID - 24160628 |
+| 模型/启动身份 | [TechDetails](ADR/TechDetails.md)及[演示完成清单](tools/pose-v1/evidence/demo-20261011-r4/completion-review.json)；固定JSON/RAW和BOOT哈希，不在本页重复维护 |
+| 当前重构demo | 构建.local/pose-v1-build/demo-refactor-20261013-r1，板端/tmp/wifi-pose-demo-refactor-20261013-r1；3窗口回归通过。[运行说明](software/demo/README.md)、[核心导读](software/core/README.md) |
+| 当前恢复点 | [r3继续状态](tools/pose-v1/evidence/hdmi-live-20261017-r3/continuation-state.json)：本机仿真、双epoch软件r2／mock、read-v3r3综合及完整constraints-r3通过，旧失败保留；旧route监控停止后新r4进行中，等待实际结果后再报告／bit；当前无新板负载或剩余旧包重启许可，不重试4KiB失败。 |
+| 暂停故障恢复点 | [producer-prepared next-checkpoint](tools/pose-v1/evidence/producer-prepared-20261011-r1/next-checkpoint.json)及[原下一方案](tools/pose-v1/PRODUCER-PREPARED-NEXT-20261011.md)；未实施，不重跑旧Session |
+| 历史工具路径/调用示例 | [迁出的工具资料](ADR/history/20261013/toolchain-runbook.md)、[REFERENCES](REFERENCES.md)；旧D:/FPGACompetitionProject路径为历史来源，不直接替代当前工作区 |
+| 文档整理记录 | [ADR_46](ADR/ADR_46.md)、[难点索引](DIFFICULTIES.md)、[历史与迁移清单](ADR/history/20261013/README.md) |
+
+当前重构及已批准CPU107/三窗口验证完成，不继续60窗口或恢复暂停排查。原重启前/tmp已清空，原失败已本机归档；后续不能使用旧句柄或接续已失败Engine。

@@ -1,0 +1,5 @@
+FROM fpga-nexmon-rtac86u:20261017-r2
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends python2 \
+ && rm -rf /var/lib/apt/lists/* \
+ && ln -s /usr/bin/python2 /usr/local/bin/python

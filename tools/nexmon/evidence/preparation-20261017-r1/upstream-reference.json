@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "compared_complex_values": 14336,
+  "upstream_c_sha256": "9191724efc98b4f6227f2018678968bdd0a3b0de5b59d8f4b00826bd89e33c79",
+  "upstream_pcap_sha256": "36a10b78e814b4e86468d58d3c5c8a1fe15768fb0cfaeea84a9aa9803d12acec",
+  "upstream_pcap_records": 4,
+  "upstream_pcap_chip": "BCM4358 reference, not RT-AC86U",
+  "limitation": "C comparison limited to defined int32-safe shifts; no radio test"
+}

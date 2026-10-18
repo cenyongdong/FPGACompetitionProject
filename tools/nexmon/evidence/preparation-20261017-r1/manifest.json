@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "date": "2026-10-17",
+  "hardware_test": false,
+  "image": "fpga-nexmon-rtac86u:20261017-r3",
+  "image_id": "sha256:101bab0d9b2f7a5b70133e6611aa5d8ca484046646871efbf78029d605f5be85",
+  "volume": "nexmon-rtac86u-20261017-r1",
+  "sources": {
+    "nexmon": "68720406f54ff16cad28fd3c51f2392aefad9fb7",
+    "nexmon_csi": "1232edf2cf1e7ae0561676c49e4dd4eb22c8a27e"
+  },
+  "artifacts": [
+    {
+      "path": ".local/nexmon-rtac86u-20261017-r1/delivery/capture-udp5500-aarch64",
+      "bytes": 620192,
+      "sha256": "08d8361af31b4e9a07b83ec5a0764fdb0817a338cff7d2f313daabe1bb4dcbd1"
+    },
+    {
+      "path": ".local/nexmon-rtac86u-20261017-r1/delivery/dhd.ko",
+      "bytes": 1724632,
+      "sha256": "872302e8611832ac285c3eda77ba28bfb10dd3fecbc5dd82177e816a256fa91b"
+    },
+    {
+      "path": ".local/nexmon-rtac86u-20261017-r1/delivery/dlarray_4366c0.bin",
+      "bytes": 1111247,
+      "sha256": "940785126e5d508cf9e35a50e0b33f4dbb5d38d677d89448fadd075964bc37d5"
+    },
+    {
+      "path": ".local/nexmon-rtac86u-20261017-r1/delivery/makecsiparams-aarch64",
+      "bytes": 613608,
+      "sha256": "23c429064db3b42101b163bb29360d286118b422b71421db128009d26514dccd"
+    },
+    {
+      "path": ".local/nexmon-rtac86u-20261017-r1/delivery/makecsiparams-x86_64",
+      "bytes": 22824,
+      "sha256": "b8e80567634070fe33a1b74e36769d85ec9ee9e5f84dcf35b2db7aef7ffb7c3f"
+    },
+    {
+      "path": ".local/nexmon-rtac86u-20261017-r1/delivery/nexutil-aarch64",
+      "bytes": 685472,
+      "sha256": "acce17a47e97a29c0f14081db0ba21d36ff2963385b1eb78fe7f21d79a5b64d9"
+    },
+    {
+      "path": ".local/nexmon-rtac86u-20261017-r1/delivery/preflight.sh",
+      "bytes": 1104,
+      "sha256": "6c09e1e834b59cfcd582c7c60d9c899e8990a9b800fb40ed66863bbf4032dc64"
+    },
+    {
+      "path": ".local/nexmon-rtac86u-20261017-r1/final-audit/linux-build-checkpoint.tar.gz",
+      "bytes": 79187869,
+      "sha256": "8e1c29e7da7e46f802f986504f30a9af8a7ce134204f3822fa6e3d7017970572"
+    },
+    {
+      "path": ".local/nexmon-rtac86u-20261017-r1/final-audit/dhd-original.ko",
+      "bytes": 1724632,
+      "sha256": "b9c2a12e72c5eacfd4be7ae2dfc703c64e56712fa8d139bad6ce013e8f0a02f2"
+    }
+  ],
+  "scripts": [
+    {
+      "path": "tools/nexmon/environment/build.sh",
+      "sha256": "a11519fada4667b25ae59132d4053206d691073bd8df2221d7630c9f28c350af"
+    },
+    {
+      "path": "tools/nexmon/environment/Dockerfile",
+      "sha256": "00c6af90f9d66c74648234305632d729732f976f4cec35b6186ddbc44c469244"
+    },
+    {
+      "path": "tools/nexmon/environment/Dockerfile.libfl",
+      "sha256": "4ab65c5832845ca6451686fc4b9d75350c357d7d4b8ae4b57e4bbaecf478601a"
+    },
+    {
+      "path": "tools/nexmon/environment/Dockerfile.python2",
+      "sha256": "5fb24a55c7ce5b390959f1186b13bc306c068009e47cec82b683c856f4148ab9"
+    },
+    {
+      "path": "tools/nexmon/environment/prepare-source.sh",
+      "sha256": "a67090e82341855eef87264b0144cfb27bac3b6b6db7ccbda312b4cf68eaa6df"
+    },
+    {
+      "path": "tools/nexmon/environment/sparse-paths.txt",
+      "sha256": "7c7bc5d0938dbcd28b95048f77f847e30f4809e2ef33bb80872d4cb86ae70657"
+    },
+    {
+      "path": "tools/nexmon/evidence/preparation-20261017-r1/collect_evidence.py",
+      "sha256": "cc3740cdfc65848280e8dd88a10ad06ceb9d39d24862c8304f13edadb3c300da"
+    },
+    {
+      "path": "tools/nexmon/host/check_upstream_reference.py",
+      "sha256": "d14aa5a79f5df1820b83f37cea2cfd7544d2aec2ae7d34b53d3b1159bd2f4e86"
+    },
+    {
+      "path": "tools/nexmon/host/csi_verify.py",
+      "sha256": "ed7d4892badfda37c3f36899418ba5ddd623950116758ea6b3ce5f06fbf9559e"
+    },
+    {
+      "path": "tools/nexmon/host/local_capture_smoke.py",
+      "sha256": "1fa19b64cc7e2c765cd870da4ea411203cb3476b5ad15d3973b573fcb0de68a2"
+    },
+    {
+      "path": "tools/nexmon/host/test_csi_verify.py",
+      "sha256": "220b2ca9e23a44b651efd47ec580450b6e74362bca1210765251d091cc21d280"
+    },
+    {
+      "path": "tools/nexmon/host/verify_build.py",
+      "sha256": "91c9ef52027735d2e3431b7213d0deef1bfdfeaf7a45b1dd990f3518056ceb46"
+    },
+    {
+      "path": "tools/nexmon/router/capture_udp5500.c",
+      "sha256": "9eda00b9f5a287f6d30b93573eede168d5ce23047dc16bf1b7ada13616b0352b"
+    },
+    {
+      "path": "tools/nexmon/router/preflight.sh",
+      "sha256": "6c09e1e834b59cfcd582c7c60d9c899e8990a9b800fb40ed66863bbf4032dc64"
+    }
+  ]
+}

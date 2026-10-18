@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "radio_test": false,
+  "recorder": {
+    "packets": 60,
+    "bytes": 19944,
+    "elapsed_s": 0.414988,
+    "kernel_drops": 0,
+    "interrupted": 0,
+    "error": 0
+  },
+  "offline_verifier": {
+    "schema": 1,
+    "acquisition_pass": true,
+    "hardware_test": false,
+    "input_sha256": "1f8184d03c8875e9f7ed883ced76baeecf2da5b67cb301d37dd8c74deaab2c62",
+    "profile": "current18",
+    "nfft": 64,
+    "selected_cores": [
+      0,
+      1,
+      2
+    ],
+    "stream": 0,
+    "expected_chip": 106,
+    "source_mac": "02:11:22:33:44:55",
+    "counts": {
+      "csi_records": 60,
+      "complete_groups": 20,
+      "incomplete_groups": 0
+    },
+    "group_gap_ms": 20.0,
+    "min_groups": 20,
+    "complete_group_arrival_rate_hz": 299.90770770846115,
+    "timestamp_basis": "PCAP arrival time, not radio sampling time",
+    "limitation": "No sequence continuity, cross-receiver sync or model accuracy claim"
+  },
+  "overwrite_rejected": true,
+  "no_input_stops": true,
+  "no_input_wall_s": 1.1770611939998616,
+  "excessive_budget_rejected": true
+}

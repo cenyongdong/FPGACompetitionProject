@@ -3,8 +3,8 @@ from pathlib import Path
 import json, os, subprocess, time, shutil, sys, re
 R=Path(__file__).resolve().parents[3];E=R/'tools/pose-v1/evidence/hdmi-board-reference-20261016-r1/chain-scan'
 if len(sys.argv)>1:
- assert sys.argv[1] in ('host-permission-r2','device-enumerated-r3')
- E=E.parent/('chain-scan-'+sys.argv[1])
+ assert sys.argv[1] in ('host-permission-r2','device-enumerated-r3','ai-monitor-v2')
+ E=(R/'tools/pose-v1/evidence/hdmi-live-20261017-r2/chain-scan') if sys.argv[1]=='ai-monitor-v2' else E.parent/('chain-scan-'+sys.argv[1])
 E.mkdir(exist_ok=False)
 proc=Path('C:/FudanMicro/Procise')
 code='''get_cable_info
