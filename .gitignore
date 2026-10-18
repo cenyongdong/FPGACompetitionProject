@@ -12,6 +12,12 @@ Record
 #压缩包
 *.zip
 *.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tgz
+*.7z
+*.rar
 
 #本地配置文件
 .local
@@ -25,6 +31,14 @@ Record
 **/runs/
 **/rundir/
 **/xsim.dir/
+.Xil/
+*.runs/
+*.cache/
+*.hw/
+*.sim/
+*.gen/
+ip_user_files/
+.ip_user_files/
 *.log
 *.jou
 *.pb
@@ -40,6 +54,8 @@ webtalk*
 *.drc
 *.phy
 *.edif
+*.dcp
+*.ltx
 
 # 仿真产生的临时文件
 *.sdb
@@ -47,6 +63,10 @@ webtalk*
 *.exe
 *.mem
 *.dbg
+*.wdb
+*.vcd
+*.fst
+*.vvp
 xsimk.exe
 
 # ==========================================
@@ -95,6 +115,33 @@ Testing/
 htmlcov/
 .venv/
 venv/
+.tox/
+.nox/
+.hypothesis/
+
+# Node.js 依赖及包管理器缓存；package.json 和依赖锁文件仍入库。
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+*.tsbuildinfo
+
+# 本地构建目录；源码、工具入口和证据报告不按目录整体排除。
+/build/
+/out/
+/software/**/build/
+/software/**/build-*/
+/software/**/cmake-build-*/
+
+# 本地环境与编辑器临时文件；示例配置仍可提交。
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.swp
+*.swo
+*~
 
 # ==========================================
 # 6. Pose 板端回传的生成物（原始文件仍保留在本机）
@@ -102,6 +149,11 @@ venv/
 # 仓库保留报告、验收 JSON、哈希清单、JSONL 轨迹及历史修正源码。
 # 完整数值复核需要本机原始回传数据；Git 中的摘要不能替代完整证据包。
 /tools/pose-v1/evidence/**/*.f32
+# 部署包内的模型副本留在本机；模型身份和验证 JSON 仍入库。
+/tools/pose-v1/evidence/**/package/models/*.raw
+/tools/pose-v1/evidence/**/package/models/*.onnx
+/tools/pose-v1/evidence/**/package/models/*.pt
+/tools/pose-v1/evidence/**/package/models/*.pth
 /tools/pose-v1/evidence/**/pose_cpu_adapter_check
 /tools/pose-v1/evidence/**/pose_mixed_check
 /tools/pose-v1/evidence/**/host_registry_probe
