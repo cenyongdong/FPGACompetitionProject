@@ -1,19 +1,33 @@
 # HDMI独立接入应用
 
-用户最新明确要求暂停，等待唤醒。本轮已在原BOOT回退核验、失败取证和本地静态审查结束处停止，无后台续作；未启动更多候选构建、部署或板测。恢复须由用户明确唤醒；旧DATA继续独立暂停。
+更新：2026-10-18。**r13已完成三窗新推理→HDMI有界闭环，用户确认三帧切换正常。** 跨启动偶发故障D45与首次reader故障D44未解决，严格实时及长期未验收。当前开发与上板整体暂停，原BOOT已回退；本次只整理文档。[结构与阶段结果](../../FPGA/hdmi_candidate/INTEGRATION.md)、[最新暂停汇报](../../FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。
 
-2026-10-17观测v2补充：`build_hdmi_shared.py monitor-v2`已交叉编译并完成固定来源／SDK／模型核验；导出Engine增加apply前公开Device ABI回调和apply原异常保存后的同Device快照回调，诊断失败不替换原错误。该包尚未执行三窗推理，因为独立DMA门禁在4KiB写失败，HDMI START未执行；不能把编译成功或独立探针快照成功记作Engine异常分支验证。当前已按批准包回退原BOOT。[r2证据](../../tools/pose-v1/evidence/hdmi-live-20261017-r2/REPORT.md)。
+## 结构与设备生命周期
 
-2026-10-17：动态DDR帧、翻帧、历史真实骨架及在途STOP／释放通过，用户确认画面成功。实时新模型闭环尚未通过，SDK在Session.apply上传参数时异常；不得把回放记为新推理。[完整报告](../../tools/pose-v1/evidence/hdmi-display-20261017-r1/REPORT.md)。
+[main.cpp](main.cpp)通过导出的共享Engine运行固定三窗。Engine主线程在Session.apply及绑定核验后，用显式`Config::on_device_ready(Device const&)`交付同一设备；HDMI适配不额外Open或使用另一个进程的分配器。hook由构建脚本加入隔离导出副本，不能把本目录CMake模板直接当作完整正式核心工程。
 
-PS使用原`skeleton_render`做候选选择、投影、骨架和文字绘制，`hdmi_canvas`仅做1280×720 RGB24→1920×1080 RGB565LE双线性转换。PL完成DDR读帧、FIFO、扫描和HDMI，不调用VPU／RTSP。原数学、CPU注册、模型和SDK不改。
+PS沿用[skeleton_render](../core/display/skeleton_render.cpp)完成候选选择、投影、骨架和文字绘制；[hdmi_canvas](../core/display/hdmi_canvas.cpp)只做1280×720 RGB24→1920×1080 RGB565LE双线性转换。[hdmi_output](../core/display/hdmi_output.cpp)通过公开SDK分配两帧、写入与操作候选CSR；PL完成AXI读帧、FIFO、扫描和TMDS。新应用不启动VPU／RTSP，未将骨架绘制迁到PL。
 
-`main.cpp`是有界三窗联动入口：导出的共享Engine在Session.apply及绑定验证后通过显式`Config::on_device_ready(Device const&)`交付同一设备，由主线程建立HDMI输出，避免两个独立分配器。每份实际输出先完整保存再按ADR_48门检，然后显示约5秒；显示先停止释放再销毁Engine。该hook仅存在于构建脚本生成的隔离副本，不改正式核心或旧演示。当前失败发生在hook之前。
+每份实际输出先保存input／scores／poses，再按[ADR_48 v2](../../ADR/ADR_48.md)比较：输入／全部分数逐位一致，输出有限，score>0.2候选最大关节三维偏差≤3mm；低分位置误差仍保存。三份新骨架各约5秒，重复扫描不计新姿态；先STOP确认和释放显示，再销毁Engine。
 
-`FPGA/hdmi_candidate/software/saved_skeleton.cpp`是已验收真实结果回放入口，无Session／新NPU推理或PL DDR参数上传。三个历史来源固定S11_01_308/309/310，原ID1000000/1/2，各8秒；重复扫描不计新姿态。程序结束正常STOP后黑屏。
+两帧共8,294,400字节，地址由SDK实际分配、64字节对齐并核对池范围；不硬编码、不与模型重叠。采纳预算200ms，close预算500ms。STOP须新响应、匹配停止ID、safe_idle和在途位清零；ready、计数或缓存同步不能代替。SDK／数据异常先保存原错并停止受影响负载，不自动重试。
 
-构建位置Windows D:/FPGACompetitionProject，交叉编译容器FPAI，ARM64 GCC9.4／CMake3.24.2，六份SDK身份须匹配证据；每步有界、失败保留、编译容器最终停止。`build_hdmi_display.py <新revision>`构建frame_probe，revision以`saved-`开头则构建saved_skeleton；`build_hdmi_shared.py <新revision>`构建三窗共享联动。脚本在证据树和.local创建新目录，拒绝覆盖；源码快照、依赖、ARM产物及每步退出码均保存。共享构建依赖已核验的`.local/shared-resident-source-20261015-r1`及共享模型交付包，完整复制来源也在本轮build-shared-r2/source和package中；当前目录CMake是导出构建模板，不能直接以此目录配置代替导出。
+## 入口与构建位置
 
-板端执行位置/root/hdmi-display-20261017-r1，实际参数与完整控制脚本见证据中的memory-code.py、repeat-code.py、shared-r3-code.py、saved-code.py。frame_probe参数`--memory`仅内存对照，`--patterns`两图案，`--user-requested-repeat`严格限定该次已归档错误和停止tag的清错重测，不是通用自动恢复。saved_skeleton参数为已核验回放包目录、新输出目录；pose_hdmi_demo参数为共享包、新输出目录、`--allow-device-init`。本页提供复现依据，不授权重跑故障负载。
+| 入口 | 用途／边界 |
+|---|---|
+| [frame_probe.cpp](../../FPGA/hdmi_candidate/software/frame_probe.cpp) | `--memory`实际帧内存对照，`--patterns`两图案；`--user-requested-repeat`仅为当时已授权、已归档安全状态的重测，不是通用自动恢复 |
+| [saved_skeleton.cpp](../../FPGA/hdmi_candidate/software/saved_skeleton.cpp) | 回放S11_01_308／309／310的历史真实结果，各约8秒，无新Session／NPU推理 |
+| [main.cpp](main.cpp) | 共享模型新推理三窗、完整保存与门检、显示与释放；参数为共享包、新输出目录、`--allow-device-init` |
+| [build_hdmi_display.py](../../FPGA/hdmi_candidate/scripts/build_hdmi_display.py) | 新revision构建frame_probe；`saved-`前缀选择回放应用 |
+| [build_hdmi_shared.py](../../FPGA/hdmi_candidate/scripts/build_hdmi_shared.py) | 构建共享Engine联动导出副本；r9观测适配另见[读观测共享构建说明](../../FPGA/hdmi_candidate/scripts/build_ai_read_shared.README.md) |
 
-Output只采用公开SDK分配、写入和寄存器接口；两帧共8,294,400字节，实际地址运行时分配、64字节对齐并核对池范围。show的采纳预算200ms、close预算500ms；不能以ready或缓存操作代替STOP。首次reader fault2仍待定位；新模型SDK异常必须停止，不从本页推导复位、重启、BOOT替换或放宽时序／数值门禁。旧DATA持续暂停。
+执行位置Windows `D:/FPGACompetitionProject`，交叉编译容器FPAI，ARM64 GCC9.4／CMake3.24.2／SDK3.39.0。构建依赖已核验的`.local/shared-resident-source-20261015-r1`与共享模型交付包；使用前核实实际存在及保护身份。脚本在证据树和.local创建新目录，保存来源、依赖、ARM产物与退出码，拒绝覆盖失败证据。板端旧`/root/hdmi-display-20261017-r1`仅是历史执行位置，不能假定仍有可复用进程、句柄或有效包。
+
+## 实际验证与未完成项
+
+2026-10-17在r5候选下完成实际SDK双帧内存、两图案、三份历史骨架及在途STOP／释放；首次图案fault2保留。同日新模型在Session.apply上传参数时失败，发生在设备hook之前。观测v2也在独立4KiB DMA失败；这些原失败不能由后续通过覆盖。
+
+2026-10-18复用r9，r13经Open前健康门和四档≤1MiB完整DMA门检，完成3次新推理、3帧PL采纳及STOP释放／Engine销毁；用户确认FRAME 1000000→1000001→1000002。每窗数值门和完整输出保存通过，受检最大偏差0.9765625mm。原始证据为[verification.tar](../../tools/pose-v1/evidence/hdmi-preopen-20261018-r13/verification.tar)内`run/shared/inference/frames.jsonl`、`summary.json`及完整输出；回退在[closure.tar](../../tools/pose-v1/evidence/hdmi-preopen-20261018-r13/closure.tar)。没有将回放计为新推理。
+
+随后r14–r20发现Open前亦可出现HP2／HDMI返回背压，r20无SDK按键后仍读0/2/2，尚未证明有效复位；诊断与假设见[D44／D45](../../DIFFICULTIES.md)。启动稳定性、严格实时、连续HDMI长期和PC双路并发尚未通过。旧DATA独立暂停、FAT未修；本页命令与历史包不授权恢复、重启、BOOT替换或重跑失败负载。

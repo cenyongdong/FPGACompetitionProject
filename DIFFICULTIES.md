@@ -1,19 +1,41 @@
 # 项目难点索引
 
-r13新三窗推理→HDMI及现场确认已通过，完整数值、STOP及回退验证见[r13报告](tools/pose-v1/evidence/hdmi-preopen-20261018-r13/REPORT.md)。D45跨启动偶发异常仍未修复，r12首组失败及其余未执行范围保留。已回原BOOT、包关闭、旧DATA暂停。
+更新：2026-10-18。r13三窗新推理→HDMI有界闭环已通过；D44首次START及D45跨启动问题未解决。开发与上板整体暂停，原BOOT已恢复。[工程结构与开发结果](FPGA/hdmi_candidate/INTEGRATION.md)、[近期实验与暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。
 
-| 编号 | 现象与影响 | 处理与结果 | 剩余假设与证据 |
+| 编号 | 现象与影响 | 已采取处理及效果 | 尚未解决／证据边界 |
 |---|---|---|---|
-| D44 | 首次HDMI START出现fault2，未采纳首帧 | 保留全值，STOP确认后释放；用户明确要求重测，针对已归档安全idle状态清错后新进程两图案及后续骨架回放通过 | reader把局部burst条件、RRESP、RID或RLAST/拍数异常汇总为同一fault，当前CSR不能区分；根因未明，不能称首启修复；[failure-review](tools/pose-v1/evidence/hdmi-display-20261017-r1/failure-review.json) |
-| D45 | 同r9位流跨启动偶发HP2返回异常：r12失败、r13成功 | r13 Open前／后健康，四档至1MiB及三窗新推理→HDMI／STOP／现场确认通过；已回原BOOT | 有界闭环已打通，首启稳定性仍未证；未捕获失败启动的Open前状态，不能裁定BOOT或SDK Open根因，也不称20ms等待修复。[统一证据](tools/pose-v1/evidence/hdmi-preopen-20261018-r13/REPORT.md) |
-
-2026-10-16交接更新：D05静态色条已通过，D42暂存恢复路径已修正，D43文件系统来源问题未解。下一阶段实施按用户要求暂停，待架构确定及明确恢复；[FPGA工作总结](FPGA/FPGA-WORK-SUMMARY-20261016.md)。原D01–D43稳定编号和失败证据保留。
+| D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
+| D45 | 同r9跨启动偶发HP2／HDMI持续RVALID背压，SDK参数上传或4KiB DMA可失败 | 已做分段观测、无SDK父进程／SDK子进程隔离、加载顺序与按键清零校准；r13健康启动时四档DMA和三窗新推理→HDMI通过 | Open前可复现但进程已加载SDK，不能唯一归因BOOT；r20无SDK按键后仍读0/2/2，未证明有效复位。根因未修，见[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)及[r20原值与结果](tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/REPORT.md) |
 
 ## 当前优先问题
 
-- **D25首次读旧数据：未解决，用户要求暂停排查。** 后续方案仅准备，原坏值与两轮晚源保持，不用正确晚值修补首文件。
-- **D04 VPU普通连续页：有界演示可运行，永久首启动未证。** 一次重启许可已使用；规整授权仍适用，CMA/内核/BOOT未改。
-- **D05 新三窗推理→HDMI与STOP／现场确认通过；D45跨启动偶发故障、D29严格实时／长期待验。** 最新范围以本页2026-10-18检查点为准。共享图独立串行30分钟与整机并发长期验收分别报告。
+- **D45启动稳定性：未解决，整体暂停。** 需区分外部按键电平、内部复位边沿和CSR读回，再判断BOOT初始化／库加载／Open的影响；独立复位见证尚未实现。健康样本不构成可靠性验收。
+- **D44首次reader故障：未定位。** 后续显示成功与原失败分别保留；不能按“未再出现”关闭问题。
+- **D29严格实时、D41长尾与HDMI长期：未验收或未解决。** 原共享图独立串行30分钟不替代HDMI并发长期，后者须用户单独批准。
+- **D25旧DATA：未解决，独立暂停。** D43 FAT来源问题也未修。D04 VPU连续页属于保留的旧演示分支，ADR_49新HDMI链不启动VPU。
+
+## HDMI接入中已处理的问题（D05）
+
+| 问题 | 采用的方法 | 结果及适用限制 |
+|---|---|---|
+| 扫描时钟与AXI／停止语义不完整 | 独立像素时钟；仅握手计读拍；按4KiB拆burst；STOP排空后给出匹配ID的safe_idle；双时钟FIFO与CDC约束 | 有限全帧／像素、背压、边界和停像素时钟后STOP仿真通过，动态实屏及释放通过；原RTL风险不直接证明原BOOT根因 |
+| TMDS时钟图案常量错误 | ASCII字符串改为显式10位二进制常量，使用Lite目标参考模型 | 128周期模型占空比20%→50%；后续真实色条／骨架可见。数字模型通过不等于完整电气合规 |
+| 工具库／扩展PS不匹配 | 核对原厂2018.3／030ai配套，按已批准范围备份补丁；用原厂JFM实现与Procise位流后处理 | 扩展PS及整机构建路径闭合；不继续用通用PCPU7导入失败作为当前阻塞，不将该路径推广到任意版本 |
+| HDMI reader路径时序不合格 | 在隔离r9来源中缩短4KiB边界谓词，组合及有限状态比较后再实际实现、STA复核 | r9 setup／hold +0.030／+0.023ns；原AI两个Min Period例外保留，raw_timing_pass仍false；先前r5／r6／r8失败不回写 |
+| 共享推理与显示设备／帧块所有权 | 导出副本显式传同一Device；PS复用原绘图、适配RGB565；新响应、采纳ID及STOP排空确认后释放 | r13三次新推理、三帧采纳、数值门与现场切换通过；不是严格实时／长期或跨启动修复 |
+| 诊断工具未覆盖真正的库加载阶段、拒绝前漏存原值 | 纯POSIX父进程独立映射CSR，SDK子进程分开加载／Open；五寄存器先保存，再做初始代次门检 | 9类观测／4类协议及后续5类原值自测、ARM构建完成；r20实际验证非零初始值零命令退出。修复了取证缺口，没有修复硬件异常 |
+
+源码、工具、完整输出与归档入口见[INTEGRATION.md](FPGA/hdmi_candidate/INTEGRATION.md)。D42／D43保留在后表，按原编号维护，不按每轮实验新增问题编号。
+
+## D45的事实、推断与未知
+
+已验证：64B成功只覆盖HC0，不能证明共享HP2正常；r12已在首笔DMA前看到HDMI异常；r14和r18在显式Open前复现，因此不能把Open或多笔DMA拥塞当作已确定的首次触发点。它们的进程已加载SDK，也不能据此证明纯BOOT初始化一定出错。
+
+已采取：同r9的返回ID／位宽／S00与S01连线审查及有限64笔连续读、并行读、背压仿真未发现直接错线或误发；高位截断、仲裁／缓冲区异常仍未取得实板逐事务证据。网表中跨层级反相优化不应当作错线，“最后25个差异门”也不等于25处错误。
+
+复位尚待证明：静态RTL／DCP已有F8 PL_KEY2／SW7高有效复位路径，并非完全没有复位电路。但连线存在、用户按键完成和内部有效复位是三种证据。r20按键后status/request/response仍0/2/2，不能区分电平未到达、瞬时复位后状态再生或读回问题，也不能直接认定D45由缺少复位造成。
+
+当前停止点：没有现场仪器；未执行新的复位见证、重编或长期负载。恢复条件与实验原值统一见[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)，不把待验证方向当成已批准修复。
 
 ## 接入、编排和视频难点（原编号）
 
@@ -23,7 +45,7 @@ r13新三窗推理→HDMI及现场确认已通过，完整数值、STOP及回退
 | D02 | Host反复解析图导致预算不足，95例后超时 | 拆分Host总预算与硬件预算，外部420秒完成107例，不改拒绝规则 | Host门检修正通过，不扩大硬件预算；[历史超时](tools/pose-v1/evidence/pipeline-20261008-r8/host-timeout-review.json) |
 | D03 | Engine约29秒初始化被算入25秒文件编码deadline | 初始化、producer、codec/stall及总预算分开计量 | 有限生命周期通过，demo实际约31秒NoInput初始化；[ADR_02](ADR/ADR_02.md)、[ADR_45](ADR/ADR_45.md) |
 | D04 | MVX固件order7/512KiB普通连续页不足，即使总体内存/CMA空闲仍启动失败 | 原六缓冲改两缓冲、单上下文常驻，快照/规整分开；demo首失败规整无效，经一次获准重启成功 | **缓解，永久首启动未修**；无GFP_MOVABLE的普通申请不能直接使用空闲CMA，扩大CMA不是默认解；[ADR_02](ADR/ADR_02.md)、[ADR_27](ADR/ADR_27.md)、[ADR_45](ADR/ADR_45.md) |
-| D05 | HDMI静态／动态及r13新三窗推理联动已实板验证 | 原r5候选不变，SDK双缓冲、两图案、三份历史真实骨架和STOP／释放通过，用户确认可见 | D44首次reader与D45跨启动故障未解；r13新推理3窗通过，非严格实时／长期验收；[报告](tools/pose-v1/evidence/hdmi-display-20261017-r1/REPORT.md) |
+| D05 | HDMI接入、读帧与资源生命周期 | r5下图案／历史骨架与STOP通过；后续r9下r13新三窗推理→HDMI及现场确认通过，处理方法见上表 | 有界闭环已完成；D44／D45、严格实时及长期分别保留；[工程与证据](FPGA/hdmi_candidate/INTEGRATION.md) |
 | D06 | 在线编码、RTSP所有权和实际PTS交接 | owned NV12/packet/AU、有界队列、常驻VPU/独立网络owner | 有界真实来源全链已过，非长期验收；[ADR_08](ADR/ADR_08.md)、[ADR_45](ADR/ADR_45.md) |
 | D07 | FIFO积压会显示旧结果 | popLatest；coalesced和overwritten分别计，采样实际时刻产生PTS | Native/有限全链通过，重复不算新姿态；[ADR_02](ADR/ADR_02.md) |
 | D08 | PowerShell内嵌多语言引号/命令替换引发生成语法错误 | 独立源码/生成脚本，完整捕获输出并查实际退出码；保留旧构建原型 | 工具脚本修正，不将编译错误误归板端；[ADR_03](ADR/ADR_03.md) |
@@ -74,11 +96,11 @@ r13新三窗推理→HDMI及现场确认已通过，完整数值、STOP及回退
 | D39 | 共享细化改变批形状后FP32/FP16非逐位；误差与置信度范围需明确区分 | 固定epoch442/两TopK，原FP32/导出/转换及旧失败保留。全候选v1第三窗5.524271728mm失败见[原复验](tools/pose-v1/evidence/shared-gate-policy-20261015-r1/REPORT.md)。用户后明确仅score>0.2检查3mm，按[ADR_48现行v2](ADR/ADR_48.md)实现21自测、新ARM构建；三份保存输出C++/NumPy复核3/3符合，受检最大0.9765625mm，原超限槽score0.001296997为位置排除对象，全部原值/分数/有限性仍检查。[最新证据](tools/pose-v1/evidence/shared-confidence-gate-20261015-r1/REPORT.md) | 用户已按新范围认可当前阶段；本轮无新板端成功进程或完整数据集/长期验收。FP16步长特征及本组三窗误差集中背景为观察事实；物理偏置/训练约束不足漂移仍未证，不证旧DATA复发或已修。旧失败不改、正式基线门禁和DATA暂停保持 |
 | D40 | 稳定性观测器假定/proc/PID/task/PID/children存在，Lite内核没有该可选接口，首次初始化被观测器中止 | r1原失败/强制终止与无完整帧保持；只读确认status/smaps_rollup可用、children缺失，r2只将该项标为不支持，RSS/PSS/FD/线程及进程组清理不变；4项本机兼容测试、经用户明确允许后的3窗与30秒/1131次实板通过。[失败](tools/pose-v1/evidence/shared-stability-20261015-r1/REPORT.md)、[修复与后续](tools/pose-v1/evidence/shared-stability-20261015-r2/REPORT.md) | 观测器兼容缺口已修，原中止不是模型崩溃/泄漏证据；后续30分钟/62945次独立实板及完整原值复核通过，未观察到持续内存/句柄增长；仅三冻结来源串行，无视频叠加。归档SSH超时监测原压缩进程并取回，不重跑推理 |
 | D41 | 共享图30分钟串行推理出现11次>1秒时延尖峰，最大process4158.13099ms，forward4150.52165ms、CPU20.177ms；全部数值仍过、无崩溃/内存增长 | 全62945次无裁剪：均值23.27822ms、P9523.45126ms、P9924.49497ms；保留逐帧、粗粒度资源与vmstat，movable分配停顿/回收存在但未能对应根因。[长尾证据](tools/pose-v1/evidence/shared-stability-20261015-r2/latency-tail-analysis.json)、[报告](tools/pose-v1/evidence/shared-stability-20261015-r2/REPORT.md) | 运行完成及内存观察通过不代表实时最坏时延通过；阻塞发生在forward区间，SDK/调度/页回收/设备责任未知；未追加定位负载或恢复旧DATA调查 |
-| D42 | 跨重启/tmp暂存被系统清理，首次BOOT恢复找不到源文件 | 在挂载/写入前失败；确认/usr/lib/tmpfiles.d/tmp.conf配置D /tmp，原回传BOOT主机SHA保持。新/root持久目录重新传入，r2恢复及全部启动文件身份通过 | 已修复本次恢复路径，不重写原失败；跨重启资产须用持久路径并保留主机完整回传，原一次候选启动未重复；[证据](tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/persistent-staging-revision/decision.json) |
-| D43 | FAT启动分区脏标志与两条未引用簇链，来源未明 | 内核报未正常卸载；两FAT相同、FAT16 clean/no-hard-error位均置位，但BPB状态字节1。只读全目录链遍历未见交叉/环/长度错误，另有2168个未引用簇约33.9MiB；现有启动文件SHA不变，板端无fsck.fat | 停止新增启动区写入，不自动修复/安装工具；无操作前FAT快照，不能归因或称完整fsck通过；元数据和原失败完整保存；[报告](tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/REPORT.md) |
+| D42 | 跨重启/tmp暂存被系统清理，首次BOOT恢复找不到源文件 | 在挂载/写入前失败；确认/usr/lib/tmpfiles.d/tmp.conf配置D /tmp，原回传BOOT主机SHA保持。新/root持久目录重新传入，r2恢复及全部启动文件身份通过 | 已修复本次恢复路径，不重写原失败；跨重启资产须用持久路径并保留主机完整回传，原一次候选启动未重复；[当时总结](FPGA/FPGA-WORK-SUMMARY-20261016.md) |
+| D43 | FAT启动分区脏标志与两条未引用簇链，来源未明 | 内核报未正常卸载；两FAT相同、FAT16 clean/no-hard-error位均置位，但BPB状态字节1。只读全目录链遍历未见交叉/环/长度错误，另有2168个未引用簇约33.9MiB；现有启动文件SHA不变，板端无fsck.fat | 原阶段停止写入，后续仅按逐包明确授权临时替换并还原BOOT，未修复FAT；无操作前快照，不能归因或称完整fsck通过；[原元数据](tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/FAT-metadata-snapshot) |
 
 新问题追加稳定编号；同一问题更新状态和对应ADR结果，不按每个实验重复造编号。新架构取舍新建ADR，原始失败保留，未证假设不写成根因。旧D01–D18的逐批原文及历史状态见[difficulties-before](ADR/history/20261013/difficulties-before.md)，从Agents迁出的实施过程见[主题归档](ADR/history/20261013/README.md)。
 
 2026-10-13重构回归有实际CPU107和三窗口设备验证；旧DATA问题未修且继续暂停，83/100管理估计保持。原文档整理阶段“无设备操作”只适用于其历史范围。
 
-本次整体暂停交接及只读查询同步的前后原文／SHA见[本次交接修订](tools/pose-v1/evidence/hdmi-live-20261017-r7/documents-place-query-pause-r7-r2/revision.json)。
+本次HDMI文档整理前原文及迁移说明见[修订记录](tools/pose-v1/evidence/hdmi-documents-20261018-r1/revision.json)。历史失败、原值和完成清单不回写。

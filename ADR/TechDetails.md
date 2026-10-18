@@ -1,10 +1,19 @@
 # Wi-Fi 人体三维姿态项目技术实现汇报
 
-更新日期：2026-10-13。本文以实际源码、模型、板测与归档为依据，区分已验证框架、最新演示实现及未解决问题。演示源码位于[software/demo](../software/demo/README.md)；三窗口与60窗口演示已完成板端推理、VPU编码和主机GUI实时显示核验；首次启动历史与高负载未解决问题保留，详见[ADR_45](ADR_45.md)。
+状态同步：2026-10-18。已批准架构为PS＋NPU感知、PL本地HDMI与PC独立3D；r13三窗新推理→HDMI已通过，新应用未启动VPU／RTSP。D44首次reader与D45跨启动异常未解决，开发与上板整体暂停；PC历史回放独立完成，实时双路未联合验收。
 
-## 当前源码入口及重构回归
+| 现行主题 | 维护位置 |
+|---|---|
+| HDMI模块、CSR、帧所有权、工具适配与开发结果 | [INTEGRATION.md](../FPGA/hdmi_candidate/INTEGRATION.md) |
+| 共享Engine、PS骨架渲染和RGB565显示应用 | [software/hdmi_demo](../software/hdmi_demo/README.md) |
+| 难点处理与未证假设、最近实板暂停状态 | [DIFFICULTIES](../DIFFICULTIES.md)、[暂停汇报](../FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md) |
+| PC骨架协议与本机3D回放 | [software/pc_viewer](../software/pc_viewer/README.md) |
 
-当前演示只使用[正式核心](../software/core/README.md)中的input/inference/diagnostics/display/video/stream，应用编排仍在software/demo。原pose_v1文件及测试保留作历史依据；新旧文件/导出别名/哈希见[迁移映射](../tools/pose-v1/evidence/core-refactor-20261013-r1/source-migration.json)。公共接口、数学、协议、SDK与固定模型保持。
+下文保留2026-10-13及此前VPU／RTSP演示的技术详录，旧流程中的“当前”“本轮”均指当时分支。其数学、输入和SDK资料仍按原范围使用；旧视频数据流与“HDMI未启用”不描述新HDMI应用。原演示源码位于[software/demo](../software/demo/README.md)，三／60窗口结果见[ADR_45](ADR_45.md)。
+
+## 历史演示源码入口及2026-10-13重构回归
+
+当前演示只使用[正式核心](../software/core/README.md)中的input/inference/diagnostics/display/video/stream，应用编排仍在software/demo。原pose_v1文件及测试保留作历史依据；新旧文件/导出别名/哈希见迁移映射原路径`tools/pose-v1/evidence/core-refactor-20261013-r1/source-migration.json`（当前文件缺失）。公共接口、数学、协议、SDK与固定模型保持。
 
 2026-10-13实际完成11组本机检查、旧实现/原参考字节对照及ARM构建；Lite CPU107的22输出/59600 FP32逐位通过。新三窗口308/309/310全CSI/预处理/分数/姿态逐位旧参考，354编码、294主机GUI解码，全3来源及42关节核验；正常drain/LAST、两STREAMOFF和所有权回收通过，规整0、BOOT/SDK/内核相同。具体范围见[ADR_47](ADR_47.md)。下文2026-10-11三/60窗口数据仍是原独立演示证据，不累加成新的样本精度或吞吐验收。
 
@@ -24,7 +33,7 @@ flowchart LR
   J -->|RTSP/RTP over TCP 8554| K[主机FFmpeg解码 / OpenCV实时显示]
 ```
 
-本机负责数据文件读取、原始数据回放和视频显示。CSI预处理、模型推理、候选选择、骨架投影和VPU编码均在Lite。没有使用主机推理替代板端，也没有将数据集GT叠加为预测。HDMI不进入本轮演示路径。
+本机负责数据文件读取、原始数据回放和视频显示。CSI预处理、模型推理、候选选择、骨架投影和VPU编码均在Lite。没有使用主机推理替代板端，也没有将数据集GT叠加为预测。HDMI不进入该历史VPU演示路径；后续独立HDMI应用见文首。
 
 Lite使用ARM64 Linux/Icraft3.39.0、ZG330架构NPU与MVX VPU。FPAI是已存在的交叉编译容器名；C++使用GNU++17，数学构建保留`-ffp-contract=off`。Docker负责构建，不在容器中模拟物理NPU成功。
 
@@ -207,6 +216,6 @@ SD镜像带imageUSB专用512字节头，先核镜像载荷和FAT启动文件。�
 
 ## 18. 显示与训练旁支的边界
 
-HDMI原目标为1920×1080/60Hz，720p编码画布与显示扫描时序是不同配置，不能用修改编码分辨率替代显示时序验收。现有显示资料与历史测试保留，本次源码未启动HDMI模块或宣布实屏通过，单独RTSP实时画面已核验。
+HDMI为1920×1080／60Hz扫描，720p绘图／编码画布与扫描时序是不同配置。该历史演示未启动HDMI；后续独立应用已完成PS绘图转RGB565、PL读帧／扫描及三窗新推理实屏，详见文首工程入口。扫描刷新率不等于AI新姿态率，长期和跨启动稳定性仍未验收。
 
 训练采用远程GPU环境，不与Lite部署混用。26版迁移/全新训练的残差分化、细化分支及梯度门检有独立实验；迁移收益不稳定，全新500轮试验因分支衰退在第6轮末停止。首版仍固定2024 epoch442，不用未验新模型覆盖已部署图。训练损失、MPJPE、ONNX部署误差和演示视频映射属于不同指标，不能互相替代，详见[ADR_04](ADR_04.md)。

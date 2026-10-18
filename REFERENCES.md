@@ -2,9 +2,17 @@
 
 独立采集准备（2026-10-17）：用户已决定先买一台原厂 RT-AC86U，代理完成[Nexmon 隔离环境与工具准备](tools/nexmon/README.md)、[到货部署／有界验证方案](tools/nexmon/DEPLOYMENT-PLAN.md)和[本地实际构建与离线验证证据](tools/nexmon/evidence/preparation-20261017-r1/REPORT.md)。芯片调查依据保留于[查证页](tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md)。设备尚未到货，实际无线芯片／ABI、RF CSI 和模型衔接待验证；不改变现有模型、SDK、BOOT、帧协议或旧 DATA 暂停。下文早期采集字段留空是历史范围，不能阻止本次明确授权的环境准备。
 
-2026-10-18，r9执行包已获用户明确批准并实际完成有界执行。候选安装／启动一次，SSH恢复34.344秒后先还原原BOOT并完整核验；64B DMA全字节往返通过，4KiB写在5.191秒触发SDK内部5000ms超时，child exit71。按失败停止规则，64KiB／1MiB、三窗新推理和HDMI START均未执行，没有重试失败负载。已用本包唯一原BOOT回退，SSH恢复28.688秒；运行中与启动文件均回到原BOOT，六SDK／九启动文件符合、FPGA operating、owner为空，串口均关闭。候选／回退额度均为0，本地及板端本包授权已关闭，旧DATA仍暂停。**D45与新推理→HDMI全链尚未解决。**
+## HDMI现行资料入口（2026-10-18）
 
-104字真实快照已验证：观测窗口约5.064秒，HC2接受9笔AR而R握手0；共享HP2对PS出口接受8笔AR、R握手2后持续背压；HDMI入口AR握手0、RVALID且RREADY=0覆盖整个窗口。ARM后未记录复位异常。疑点收敛到HP2共享返回通道及其初始化／分发状态，但没有逐事务台账或ARM前历史，不能唯一断定错路由、ID丢失或复位原因。实际发布DCP只读检查确认S00接HC2、S01接HDMI、6位PS RID进入返回流水线，未发现直接错线或显然ID截断；这不证明互联运行正确。 [r9报告及原始证据](tools/pose-v1/evidence/hdmi-live-20261018-r9/REPORT.md)。本轮不接入Vivado MCP；原厂资料、固定保护及旧DATA边界保持。
+[INTEGRATION.md](FPGA/hdmi_candidate/INTEGRATION.md)维护模块分工、CSR／帧契约、时钟／TMDS、工具适配及阶段结果；[显示应用](software/hdmi_demo/README.md)维护PS渲染与同Device生命周期。[难点索引](DIFFICULTIES.md)记录D05及D42–D45，近期原值与安全回退见[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。r13三窗新推理→HDMI已通过，D45启动稳定性未解决，开发与上板整体暂停；本任务不接入Vivado MCP。
+
+原厂引脚依据见[PIN-CONTRACT](FPGA/hdmi_candidate/PIN-CONTRACT.md)，2018.3／030ai与JFM职责见[路径二实施配置](FPGA/hdmi_candidate/ROUTE2-BUILD-PLAN.md)，r9身份与有限时序例外见[候选规格](FPGA/hdmi_candidate/CANDIDATE-BOARD-READ-R9.md)。它们分别是资料、历史计划或已关闭执行包，不能据其旧“下一步”自动启动任务。所有数值／时序及BOOT保护继续按Agents现行规则。
+
+## r9首次实板执行记录（历史，后续r13已通过）
+
+2026-10-18，r9执行包已获用户明确批准并实际完成有界执行。候选安装／启动一次，SSH恢复34.344秒后先还原原BOOT并完整核验；64B DMA全字节往返通过，4KiB写在5.191秒触发SDK内部5000ms超时，child exit71。按失败停止规则，64KiB／1MiB、三窗新推理和HDMI START均未执行，没有重试失败负载。已用本包唯一原BOOT回退，SSH恢复28.688秒；运行中与启动文件均回到原BOOT，六SDK／九启动文件符合、FPGA operating、owner为空，串口均关闭。候选／回退额度均为0，本地及板端本包授权已关闭，旧DATA仍暂停。当时D45与新推理→HDMI尚未解决；后续三窗闭环已在r13通过，D45仍未解决。
+
+104字真实快照已验证：观测窗口约5.064秒，HC2接受9笔AR而R握手0；共享HP2对PS出口接受8笔AR、R握手2后持续背压；HDMI入口AR握手0、RVALID且RREADY=0覆盖整个窗口。ARM后未记录复位异常。疑点收敛到HP2共享返回通道及其初始化／分发状态，但没有逐事务台账或ARM前历史，不能唯一断定错路由、ID丢失或复位原因。实际发布DCP只读检查确认S00接HC2、S01接HDMI、6位PS RID进入返回流水线，未发现直接错线或显然ID截断；这不证明互联运行正确。 [仍在位的r9证据目录](tools/pose-v1/evidence/hdmi-live-20261018-r9)。本轮不接入Vivado MCP；原厂资料、固定保护及旧DATA边界保持。
 
 ## 此前阶段资料（保留当时结果，当前入口见上）
 
@@ -1554,4 +1562,3 @@ ADDR/BOTH只通过SDK复制，Host staging不能替代NPU同步证明；区域�
 最新：[纯计时与异常字节结果](tools/pose-v1/FORWARD-TRACE-R3-RESULTS-20261009.md)、[源数据判别计划](tools/pose-v1/FORWARD-DATA-RECOVERY-NEXT-20261009.md)、[ADR_17](ADR/ADR_17.md)。
 
 最新：[r4源读回结果](tools/pose-v1/SOURCE-READBACK-R4-RESULTS-20261009.md)／[完成证据](tools/pose-v1/evidence/source-readback-20261009-r4/completion-review.json)。
-

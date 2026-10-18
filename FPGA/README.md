@@ -1,12 +1,13 @@
 # FPGA工程资料入口
 
-2026-10-17最新：用户明确恢复HDMI接入与渲染；DDR读帧、双缓冲翻帧、在途STOP及三份真实骨架回放已板测，现场确认画面。新推理联动因模型参数上传SDK DMA异常停止；首次reader故障根因未明。当前入口：[本轮报告](../tools/pose-v1/evidence/hdmi-display-20261017-r1/REPORT.md)、[显示软件](../software/hdmi_demo/README.md)。以下架构归档及交接文字保留当时范围。
+更新：2026-10-18。HDMI动态图案、历史骨架回放和r13三窗新推理→HDMI有界闭环已通过；D44首次reader故障和D45跨启动偶发异常未解决。开发与上板整体暂停，等待用户明确唤醒；本次仅整理文档。
 
-2026-10-17：[新架构ADR_49](../ADR/ADR_49.md)已确认PS／NPU感知、PL本地HDMI、PC独立3D展示，未来主链停用VPU／RTSP。本轮仅归档，下一阶段实施仍暂停待明确执行指令。历史计划与执行许可不触发自动续作。
+- [HDMI结构、接口、开发过程与验证边界](hdmi_candidate/INTEGRATION.md)：本模块的维护入口。
+- [显示应用与构建说明](../software/hdmi_demo/README.md)：PS渲染、共享Engine和帧生命周期。
+- [难点与处理结果](../DIFFICULTIES.md)：D05接入成果、D42暂存路径、D43 FAT、D44首次START、D45启动异常。
+- [当前暂停汇报](hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)与[恢复入口](hdmi_candidate/RESUME.md)：近期实验、安全状态及未解决项。
+- [阶段成果](../Done.md)、[ADR_49架构](../ADR/ADR_49.md)与[耗时复盘](hdmi_candidate/TIME-REPORT-20261018.md)。
 
-- [FPGA／HDMI负责范围、完成内容、原厂位流操作与交接总结](FPGA-WORK-SUMMARY-20261016.md)。
-- [HDMI当前恢复入口](hdmi_candidate/RESUME.md)。
-- [现有整机接口和实施记录](hdmi_candidate/SYSTEM-INTEGRATION-PLAN.md)。
-- [实际静态实屏结果与未验收边界](../tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/REPORT.md)。
+源码、约束和仿真位于[hdmi_candidate](hdmi_candidate)。r9实际发布来源与仓库通用RTL须区分，不能把任意当前工作副本当作已验收位流的源码。
 
-源码、约束、仿真和配套工具位于[hdmi_candidate](hdmi_candidate)；下一阶段职责以ADR_49为准，具体接口和执行范围仍待确定，不能把架构确认当作动态帧验证已经完成。
+[10月16日工作总结](FPGA-WORK-SUMMARY-20261016.md)、[原整机接入计划](hdmi_candidate/SYSTEM-INTEGRATION-PLAN.md)和各候选执行包保留其当时范围；其中的“下一步”、旧暂停状态及已用完次数均不作为当前执行授权。原BOOT已回退；HDMI长期验证须另获用户批准。
