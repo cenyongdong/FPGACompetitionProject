@@ -11,8 +11,9 @@ MAC = '02:11:22:33:44:55'
 
 
 def payload(core=0, seq=0, chip=101, nfft=64, word=0x00040000):
+    config = core << 8 if chip == 106 else core
     return HEADER.pack(0x1111, -40, 0, bytes.fromhex(MAC.replace(':', '')),
-                       seq, core, 0xd024, chip) + struct.pack('<I', word) * nfft
+                       seq, config, 0xd024, chip) + struct.pack('<I', word) * nfft
 
 
 def ethernet_udp(data, port=5500):
@@ -77,6 +78,34 @@ class VerifierTests(unittest.TestCase):
         for data in [b'', payload()[:-1], b'\x00\x00' + payload()[2:]]:
             with self.assertRaises(ValueError):
                 parse_payload(data, 64)
+
+    def test_bcm4366_measured_header_bits(self):
+        # Actual consecutive headers from the first RT-AC86U three-core capture.
+        headers = ['1111d200a070b7ee8d504080000095d06a00',
+                   '1111d200a070b7ee8d504080000195d06a00',
+                   '1111d200a070b7ee8d504080000295d06a00']
+        records = [parse_payload(bytes.fromhex(header) + struct.pack('<I', 0x40000) * 64, 64)
+                   for header in headers]
+        self.assertEqual([record['core'] for record in records], [0, 1, 2])
+        self.assertEqual([record['stream'] for record in records], [0, 0, 0])
+        header = bytes.fromhex('1111d200a070b7ee8d504080001995d06a00')
+        record = parse_payload(header + struct.pack('<I', 0x40000) * 64, 64)
+        self.assertEqual((record['core'], record['stream']), (1, 3))
+
+    def test_bcm4366_incorrect_low_byte_rejected(self):
+        bad = bytearray(payload(core=0, chip=106))
+        bad[12:14] = b'\x01\x00'
+        with self.assertRaisesRegex(ValueError, 'reserved bits'):
+            parse_payload(bad, 64)
+
+    def test_actual_bcm4366_three_core_fixture(self):
+        root = Path(__file__).resolve().parents[3]
+        fixture = root / 'tools/nexmon/evidence/device-20261019-r1/threecore-r1.pcap'
+        result = verify(fixture, 64, [0, 1, 2], 0, 106, 'a0:70:b7:ee:8d:50')
+        self.assertTrue(result['acquisition_pass'])
+        self.assertEqual(result['counts']['complete_groups'], 97)
+        self.assertEqual(result['counts']['incomplete_groups'], 0)
+        self.assertEqual(result['counts'].get('duplicate_core_records', 0), 0)
 
     def test_legacy_requires_explicit_profile(self):
         data = b'\x11' * 4 + payload()[4:]

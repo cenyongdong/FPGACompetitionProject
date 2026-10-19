@@ -45,9 +45,19 @@ def parse_payload(payload, nfft, profile='current18'):
         rssi, fc = None, None
     elif profile != 'current18':
         raise ValueError('Unknown explicit header profile')
+    # BCM4366's microcode stores ((stream << 3) | core) << 8 in
+    # SHM(0x1640); its extractor copies csiconf without shifting it back.
+    # Other supported headers use the low byte. Do not auto-guess per packet.
+    if chip == 106:
+        if config & 0xc0ff:
+            raise ValueError('Invalid BCM4366 core/stream reserved bits')
+        chain_config = config >> 8
+    else:
+        chain_config = config
     words = struct.unpack_from('<' + 'I' * nfft, payload, HEADER.size)
-    return dict(mac=mac.hex(':'), sequence_control=seq, core=config & 7,
-                stream=(config >> 3) & 7, chanspec=chanspec, chip=chip,
+    return dict(mac=mac.hex(':'), sequence_control=seq, core=chain_config & 7,
+                stream=(chain_config >> 3) & 7, core_config_raw=config,
+                chanspec=chanspec, chip=chip,
                 rssi=rssi, frame_control_low=fc, words=words)
 
 

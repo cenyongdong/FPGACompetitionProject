@@ -1,6 +1,6 @@
 # 比赛开发资料索引与理解记录
 
-独立采集准备（2026-10-17）：用户已决定先买一台原厂 RT-AC86U，代理完成[Nexmon 隔离环境与工具准备](tools/nexmon/README.md)、[到货部署／有界验证方案](tools/nexmon/DEPLOYMENT-PLAN.md)和[本地实际构建与离线验证证据](tools/nexmon/evidence/preparation-20261017-r1/REPORT.md)。芯片调查依据保留于[查证页](tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md)。设备尚未到货，实际无线芯片／ABI、RF CSI 和模型衔接待验证；不改变现有模型、SDK、BOOT、帧协议或旧 DATA 暂停。下文早期采集字段留空是历史范围，不能阻止本次明确授权的环境准备。
+独立采集入口：[Nexmon 当前状态与实机结果](tools/nexmon/README.md)、[部署／有界验证方案](tools/nexmon/DEPLOYMENT-PLAN.md)。10月17日[本地构建与离线证据](tools/nexmon/evidence/preparation-20261017-r1/REPORT.md)和[芯片调查](tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md)保留各自历史范围，最新实施结果从当前入口查看。该独立任务不改变现有模型、SDK、BOOT、帧协议或旧DATA暂停；下文早期采集字段留空是历史阶段。
 
 ## HDMI现行资料入口（2026-10-18）
 

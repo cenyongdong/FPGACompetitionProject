@@ -8,15 +8,16 @@ probe() {
     result=$?
     printf 'EXIT %s\n' "$result"
 }
-printf 'NEXMON_PREFLIGHT_VERSION=1\n'
+printf 'NEXMON_PREFLIGHT_VERSION=2\n'
 probe kernel uname -a
 for key in productid odmpid hardware_version bl_version firmver buildno extendno wl0_ifname wl1_ifname; do
     probe "nvram:$key" nvram get "$key"
 done
 probe filesystems df -k /tmp /jffs
 probe modules cat /proc/modules
-for name in wl sha256sum strings modinfo tcpdump timeout; do
-    probe "tool:$name" command -v "$name"
+for name in wl openssl md5sum sha256sum strings modinfo tcpdump timeout; do
+    # ASUS BusyBox sh may not provide the POSIX command builtin.
+    probe "tool:$name" which "$name"
 done
 for key in wl0_ifname wl1_ifname; do
     iface=$(nvram get "$key" 2>/dev/null)
