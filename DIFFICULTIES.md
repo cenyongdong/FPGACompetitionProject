@@ -1,15 +1,15 @@
 # 项目难点索引
 
-更新：2026-10-18。r13三窗新推理→HDMI有界闭环已通过；D44首次START及D45跨启动问题未解决。开发与上板整体暂停，原BOOT已恢复。[工程结构与开发结果](FPGA/hdmi_candidate/INTEGRATION.md)、[近期实验与暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。
+更新：2026-10-19。用户已唤醒复位／启动排查，暂不做HDMI长期。已查明此前按键指引错误：r9的F8 sys_rst实际对应PL_KEY1／SW6，SW7是E7，不能用其按后0/2/2认定F8复位未生效。r21正确SW6实测已使0/2/2→0/0/0，观测器CSR复位生效；该启动本来健康，D45根因仍未定。[引脚纠正](FPGA/hdmi_candidate/PIN-CONTRACT.md)、[当前方案](tools/pose-v1/evidence/hdmi-reset-meter-20261019-r21/PLAN.md)。r13三窗新推理→HDMI结果保持已通过。
 
 | 编号 | 现象与影响 | 已采取处理及效果 | 尚未解决／证据边界 |
 |---|---|---|---|
 | D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
-| D45 | 同r9跨启动偶发HP2／HDMI持续RVALID背压，SDK参数上传或4KiB DMA可失败 | 已做分段观测、无SDK父进程／SDK子进程隔离、加载顺序与按键清零校准；r13健康启动时四档DMA和三窗新推理→HDMI通过 | Open前可复现但进程已加载SDK，不能唯一归因BOOT；r20无SDK按键后仍读0/2/2，未证明有效复位。根因未修，见[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)及[r20原值与结果](tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/REPORT.md) |
+| D45 | 同r9跨启动偶发HP2／HDMI持续RVALID背压，SDK参数上传或4KiB DMA可失败 | 已做分段观测、无SDK父进程／SDK子进程隔离、加载顺序与按键清零校准；r13健康启动时四档DMA和三窗新推理→HDMI通过 | Open前可复现但进程已加载SDK，不能唯一归因BOOT；r20实际按SW7而r9 sys_rst在SW6，故该结果不能验证F8复位。r21已证SW6清零观测器，随后加载／Open五段健康；未捕获故障启动的复位恢复对照，根因未修，见[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)及[r20原值与结果](tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/REPORT.md) |
 
 ## 当前优先问题
 
-- **D45启动稳定性：未解决，整体暂停。** 需区分外部按键电平、内部复位边沿和CSR读回，再判断BOOT初始化／库加载／Open的影响；独立复位见证尚未实现。健康样本不构成可靠性验收。
+- **D45启动稳定性：未解决，已唤醒诊断。** 需区分外部按键电平、内部复位边沿和CSR读回，再判断BOOT初始化／库加载／Open的影响；独立复位见证尚未实现。健康样本不构成可靠性验收。
 - **D44首次reader故障：未定位。** 后续显示成功与原失败分别保留；不能按“未再出现”关闭问题。
 - **D29严格实时、D41长尾与HDMI长期：未验收或未解决。** 原共享图独立串行30分钟不替代HDMI并发长期，后者须用户单独批准。
 - **D25旧DATA：未解决，独立暂停。** D43 FAT来源问题也未修。D04 VPU连续页属于保留的旧演示分支，ADR_49新HDMI链不启动VPU。
@@ -33,9 +33,9 @@
 
 已采取：同r9的返回ID／位宽／S00与S01连线审查及有限64笔连续读、并行读、背压仿真未发现直接错线或误发；高位截断、仲裁／缓冲区异常仍未取得实板逐事务证据。网表中跨层级反相优化不应当作错线，“最后25个差异门”也不等于25处错误。
 
-复位尚待证明：静态RTL／DCP已有F8 PL_KEY2／SW7高有效复位路径，并非完全没有复位电路。但连线存在、用户按键完成和内部有效复位是三种证据。r20按键后status/request/response仍0/2/2，不能区分电平未到达、瞬时复位后状态再生或读回问题，也不能直接认定D45由缺少复位造成。
+复位尚待证明：静态RTL／DCP已有F8高有效sys_rst路径。2026-10-19直接复核原厂手册、原理图与r9约束后，发现F8实际为PL_KEY1／SW6，此前误称PL_KEY2／SW7；E7／SW7在r9连接rx_gtx_full_reset。因而r18／r20的按SW7后未归零不能证明F8复位失效。r21已验证正确SW6使观测器初始代次归零，随后纯CSR及加载／Open五段健康；这证明CSR域复位生效，不证明所有HP2／MIG复位与释放均正确，D45不能直接归因缺少复位。
 
-当前停止点：没有现场仪器；未执行新的复位见证、重编或长期负载。恢复条件与实验原值统一见[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)，不把待验证方向当成已批准修复。
+当前执行点：r21已关闭并回原BOOT，正确SW6功能验证通过；尚需故障启动下的正确按键对照。用户已拔网线，串口只读命令通道可用，未重编产品位流或开展长期负载。此前原值保留在[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。
 
 ## 接入、编排和视频难点（原编号）
 
