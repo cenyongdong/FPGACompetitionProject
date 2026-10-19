@@ -1,0 +1,675 @@
+{
+  "schema": 1,
+  "scope": "host_offline_algorithm_only",
+  "hardware_test": false,
+  "environment": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python": "3.14.6",
+    "numpy": "2.5.2",
+    "scipy": "1.18.1"
+  },
+  "cases": [
+    {
+      "name": "heart_48",
+      "passed": true,
+      "expected_bpm": 48.0,
+      "actual_heart": {
+        "bpm": 47.99982134156161,
+        "confidence": 0.904549811267914,
+        "agreeing_channels": 4
+      },
+      "status": "valid",
+      "reasons": [],
+      "absolute_error_bpm": 0.00017865843838649198
+    },
+    {
+      "name": "heart_60",
+      "passed": true,
+      "expected_bpm": 60.0,
+      "actual_heart": {
+        "bpm": 59.99982678809235,
+        "confidence": 0.9191404995336623,
+        "agreeing_channels": 4
+      },
+      "status": "valid",
+      "reasons": [],
+      "absolute_error_bpm": 0.0001732119076507388
+    },
+    {
+      "name": "heart_72",
+      "passed": true,
+      "expected_bpm": 72.0,
+      "actual_heart": {
+        "bpm": 72.00098913476737,
+        "confidence": 0.9905050293246668,
+        "agreeing_channels": 4
+      },
+      "status": "valid",
+      "reasons": [],
+      "absolute_error_bpm": 0.0009891347673658402
+    },
+    {
+      "name": "heart_90",
+      "passed": true,
+      "expected_bpm": 90.0,
+      "actual_heart": {
+        "bpm": 89.99970539535711,
+        "confidence": 0.9951978173065668,
+        "agreeing_channels": 4
+      },
+      "status": "valid",
+      "reasons": [
+        "no_supported_breath_consensus"
+      ],
+      "absolute_error_bpm": 0.0002946046428888849
+    },
+    {
+      "name": "heart_110",
+      "passed": true,
+      "expected_bpm": 110.0,
+      "actual_heart": {
+        "bpm": 110.00011854212588,
+        "confidence": 0.9869336429345504,
+        "agreeing_channels": 4
+      },
+      "status": "valid",
+      "reasons": [],
+      "absolute_error_bpm": 0.00011854212587536495
+    },
+    {
+      "name": "heart_120",
+      "passed": true,
+      "expected_bpm": 120.0,
+      "actual_heart": {
+        "bpm": 119.99907530536078,
+        "confidence": 0.988684889948943,
+        "agreeing_channels": 4
+      },
+      "status": "valid",
+      "reasons": [],
+      "absolute_error_bpm": 0.0009246946392238442
+    },
+    {
+      "name": "weak_heart",
+      "passed": true,
+      "expected_bpm": 72,
+      "actual_heart": {
+        "bpm": 72.00253993109837,
+        "confidence": 0.7974834248027909,
+        "agreeing_channels": 4
+      },
+      "status": "valid",
+      "reasons": [],
+      "absolute_error_bpm": 0.0025399310983686973
+    },
+    {
+      "name": "phase_wrap",
+      "passed": true,
+      "expected_bpm": 72,
+      "actual_heart": {
+        "bpm": 72.00098913476737,
+        "confidence": 0.9905050293246667,
+        "agreeing_channels": 4
+      },
+      "status": "valid",
+      "reasons": [],
+      "absolute_error_bpm": 0.0009891347673658402
+    },
+    {
+      "name": "breathing_only",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus"
+      ]
+    },
+    {
+      "name": "breathing_harmonic",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus"
+      ]
+    },
+    {
+      "name": "constant",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "out_of_band_low",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus"
+      ]
+    },
+    {
+      "name": "out_of_band_high",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "disagreeing_channels",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus"
+      ]
+    },
+    {
+      "name": "noise_0",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "noise_1",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "noise_2",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "noise_3",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "noise_4",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "noise_5",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "noise_6",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "noise_7",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "noise_8",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "noise_9",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "no_heart_estimate",
+      "reasons": [
+        "no_supported_heart_consensus",
+        "no_supported_breath_consensus"
+      ]
+    },
+    {
+      "name": "arrival_clock",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "unverified_sample_clock"
+      ]
+    },
+    {
+      "name": "short",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "incomplete_window"
+      ]
+    },
+    {
+      "name": "missing",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "missing_sequence"
+      ]
+    },
+    {
+      "name": "duplicate_sequence",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "non_monotonic_sequence",
+        "missing_sequence"
+      ]
+    },
+    {
+      "name": "duplicate_time",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "non_monotonic_time",
+        "non_uniform_sampling"
+      ]
+    },
+    {
+      "name": "reverse_time",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "non_monotonic_time",
+        "non_uniform_sampling"
+      ]
+    },
+    {
+      "name": "jitter",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "non_uniform_sampling"
+      ]
+    },
+    {
+      "name": "invalid_sample",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "invalid_samples"
+      ]
+    },
+    {
+      "name": "zero_pair",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "insufficient_amplitude"
+      ]
+    },
+    {
+      "name": "nan",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "non_finite_input"
+      ]
+    },
+    {
+      "name": "infinity",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "non_finite_input"
+      ]
+    },
+    {
+      "name": "motion",
+      "passed": true,
+      "expected_bpm": null,
+      "actual_heart": null,
+      "status": "invalid",
+      "reasons": [
+        "motion_or_phase_jump"
+      ]
+    }
+  ],
+  "independent_reference": [
+    {
+      "name": "heart_72",
+      "passed": true,
+      "maximum_absolute_errors": {
+        "heart_frequency_response": 3.6661574858110983e-14,
+        "breath_frequency_response": 7.010382322960084e-13,
+        "phase": 1.6653345369377348e-16,
+        "detrended": 1.6653345369377348e-16,
+        "heart": 1.85268467234323e-15,
+        "breath": 7.999156892424253e-14,
+        "heart_acf": 4.440892098500626e-15,
+        "breath_acf": 2.1517509996016315e-14
+      },
+      "tolerance": 2e-09,
+      "numpy": "2.5.2",
+      "scipy": "1.18.1"
+    },
+    {
+      "name": "phase_wrap",
+      "passed": true,
+      "maximum_absolute_errors": {
+        "heart_frequency_response": 3.6661574858110983e-14,
+        "breath_frequency_response": 7.010382322960084e-13,
+        "phase": 3.552713678800501e-15,
+        "detrended": 8.049116928532385e-15,
+        "heart": 2.563921297493721e-15,
+        "breath": 7.513434319150747e-14,
+        "heart_acf": 3.774758283725532e-15,
+        "breath_acf": 1.4991480279391567e-14
+      },
+      "tolerance": 2e-09,
+      "numpy": "2.5.2",
+      "scipy": "1.18.1"
+    }
+  ],
+  "parser_checks": [
+    {
+      "name": "bad_header",
+      "passed": true
+    },
+    {
+      "name": "bad_width",
+      "passed": true
+    },
+    {
+      "name": "bad_tail",
+      "passed": true
+    },
+    {
+      "name": "false_synthetic_origin",
+      "passed": true
+    },
+    {
+      "name": "unsubstantiated_clock",
+      "passed": true
+    },
+    {
+      "name": "duplicate_configuration",
+      "passed": true
+    },
+    {
+      "name": "preserve_existing_output",
+      "passed": true
+    },
+    {
+      "name": "utf8_bom_crlf",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "benchmark": {
+    "scope": "host_algorithm_without_csv_or_json_io",
+    "iterations": 100,
+    "unique_input_windows": 1,
+    "p50_ms": 3.1224,
+    "p95_ms": 3.2305,
+    "p99_ms": 3.428,
+    "max_ms": 3.4625,
+    "process_cpu_ms": 314,
+    "host_threads": 12,
+    "compiler": "16.2.0",
+    "stage_means_ms": {
+      "quality_ms": 0.033047,
+      "phase_ms": 0.237207,
+      "filter_ms": 0.12964900000000001,
+      "correlation_ms": 1.780017,
+      "spectrum_decision_ms": 0.9578610000000001,
+      "total_ms": 3.138289
+    },
+    "processor": "12th Gen Intel(R) Core(TM) i5-12400F",
+    "compile_flags": "-O3 -DNDEBUG -ffp-contract=off"
+  },
+  "cpp_contract_tests": 13,
+  "real_capture_checks": [
+    {
+      "source": {
+        "schema": 1,
+        "source_pcap": "D:\\FPGACompetitionProject\\tools\\nexmon\\evidence\\device-20261019-r1\\threecore-r1.pcap",
+        "pcap_sha256": "1fb23304546a06dbd0cd7622b3f6f1721e89631f7db2cf48bce0bbfeedf66918",
+        "decoder": "D:\\FPGACompetitionProject\\tools\\nexmon\\host\\csi_verify.py",
+        "decoder_sha256": "92b7ce1d47ad199885e444bdd89a476e365b49fb0029b993e8f2d1e12eee17b0",
+        "complete_frames": 97,
+        "source_identity": [
+          "a0:70:b7:ee:8d:50",
+          53397,
+          0,
+          106
+        ],
+        "fft_indices": [
+          5,
+          11,
+          17,
+          23
+        ],
+        "antenna_pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "observed_arrival_rate_hz": 9.66504189298515,
+        "timestamp_basis": "PCAP arrival time, reconstructed by existing float timestamp API",
+        "resampled": false,
+        "clock_verified": false,
+        "heart_ground_truth": false,
+        "output_csv": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\real-captures\\threecore-short.csv"
+      },
+      "status": "invalid",
+      "reasons": [
+        "unverified_sample_clock",
+        "incomplete_window",
+        "non_uniform_sampling"
+      ],
+      "quality": {
+        "samples": 97,
+        "required_samples": 2000,
+        "missing_sequences": 0,
+        "invalid_samples": 0,
+        "jitter_p95_ms": 82.723122,
+        "max_interval_ms": 204.858064
+      },
+      "heart": null
+    },
+    {
+      "source": {
+        "schema": 1,
+        "source_pcap": "D:\\FPGACompetitionProject\\tools\\nexmon\\evidence\\device-20261019-r1\\threecore-stability-r1.pcap",
+        "pcap_sha256": "9ec460ef9cd3f51f0f382378916577c6494aee7b14f675fb13717a2ff606c7e3",
+        "decoder": "D:\\FPGACompetitionProject\\tools\\nexmon\\host\\csi_verify.py",
+        "decoder_sha256": "92b7ce1d47ad199885e444bdd89a476e365b49fb0029b993e8f2d1e12eee17b0",
+        "complete_frames": 192,
+        "source_identity": [
+          "a0:70:b7:ee:8d:50",
+          53397,
+          0,
+          106
+        ],
+        "fft_indices": [
+          5,
+          11,
+          17,
+          23
+        ],
+        "antenna_pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "observed_arrival_rate_hz": 9.614743751861543,
+        "timestamp_basis": "PCAP arrival time, reconstructed by existing float timestamp API",
+        "resampled": false,
+        "clock_verified": false,
+        "heart_ground_truth": false,
+        "output_csv": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\real-captures\\threecore-stability.csv"
+      },
+      "status": "invalid",
+      "reasons": [
+        "unverified_sample_clock",
+        "incomplete_window",
+        "non_uniform_sampling"
+      ],
+      "quality": {
+        "samples": 192,
+        "required_samples": 2000,
+        "missing_sequences": 0,
+        "invalid_samples": 0,
+        "jitter_p95_ms": 82.611065,
+        "max_interval_ms": 205.012083
+      },
+      "heart": null
+    }
+  ],
+  "single_chain_rejection": {
+    "passed": true,
+    "argv": [
+      "C:\\Users\\cenyongdong\\miniconda3\\python.exe",
+      "tools/vitals/import_nexmon.py",
+      "--pcap",
+      "D:/FPGACompetitionProject/tools/nexmon/evidence/device-20261019-r1/singlecore-r1.pcap",
+      "--decoder",
+      "D:/FPGACompetitionProject/tools/nexmon/host/csi_verify.py",
+      "--carriers",
+      "5",
+      "11",
+      "17",
+      "23",
+      "--output",
+      ".local\\vitals-ps-20261019-r1\\real-captures\\single-core-must-not-exist.csv",
+      "--manifest",
+      ".local\\vitals-ps-20261019-r1\\real-captures\\single-core-must-not-exist.json"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\tools\\vitals\\import_nexmon.py\", line 113, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\tools\\vitals\\import_nexmon.py\", line 105, in main\n    manifest = convert(args.pcap, args.decoder, args.carriers, args.output)\n  File \"C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\tools\\vitals\\import_nexmon.py\", line 62, in convert\n    raise ValueError(\"Incomplete three-core frame; no chain replication or interpolation\")\nValueError: Incomplete three-core frame; no chain replication or interpolation\n"
+  },
+  "arm64": {
+    "algorithm_build_passed": true,
+    "final_source_rebuild_verified": false,
+    "reason": "Docker Desktop/backend exited after the first successful cross-build; final CSV metadata/BOM and invalid-enum hardening were checked on the host only. No daemon restart or hardware connection.",
+    "compiler": "aarch64-linux-gnu-g++ 9.4.0",
+    "flags": "-std=c++17 -O2 -DNDEBUG -ffp-contract=off -Wall -Wextra -Wpedantic",
+    "machine": "AArch64",
+    "elf64_little_endian": true,
+    "binary_bytes": 80888,
+    "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\arm64\\vitals_offline",
+    "FPAI_restored_to_stopped": true,
+    "board_execution": false
+  },
+  "raw_artifacts": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1",
+  "limits": [
+    "synthetic accuracy is not real heart-rate accuracy",
+    "host timing is not ARM/PS timing or power",
+    "no RF sampling clock or HR ground truth available",
+    "no FPGA or board work performed"
+  ]
+}

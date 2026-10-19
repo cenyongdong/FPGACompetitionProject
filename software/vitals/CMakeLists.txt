@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.16)
+project(pose_vitals LANGUAGES CXX)
+
+add_library(pose_vitals reference.cpp)
+target_compile_features(pose_vitals PUBLIC cxx_std_17)
+target_include_directories(pose_vitals PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+if(MSVC)
+    target_compile_options(pose_vitals PRIVATE /W4 /fp:strict)
+else()
+    target_compile_options(pose_vitals PRIVATE -Wall -Wextra -Wpedantic -ffp-contract=off)
+endif()
+
+add_executable(vitals_offline offline.cpp)
+target_link_libraries(vitals_offline PRIVATE pose_vitals)
+
+include(CTest)
+if(BUILD_TESTING)
+    add_executable(vitals_tests test/reference_tests.cpp)
+    target_link_libraries(vitals_tests PRIVATE pose_vitals)
+    add_test(NAME vitals_contract COMMAND vitals_tests)
+endif()
