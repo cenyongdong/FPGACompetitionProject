@@ -4,7 +4,7 @@
 
 **首要问题D45：同一候选BOOT在不同启动中可健康，也可在SDK加载前出现PS HP2读返回持续有效、HDMI入口持续背压。r24已使PL侧HP2互联发生实际复位，r25仍复现，根因未定。** 已完成的r13三窗新推理到HDMI属于一次健康启动下的有界功能通过，不能作为启动故障修复证据。
 
-当前执行状态：用户要求暂停故障实施并明确不执行模块删减；本次仅整理交接。最后一次实板核验已回原BOOT，未为本文重新连接板卡。旧DATA调查独立暂停，FAT不修，HDMI长期验证须单独批准；本文的方案和命令不解除这些边界。现行执行规则见[Agents.md](D:/FPGACompetitionProject/Agents.md)，恢复状态见[r26 state.json](D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/state.json)。
+执行状态更新（2026-10-21）：r26记录器已完成实际bit／BOOT及1次无SDK故障取证，取消第2候选并安全回原BOOT，包关闭、余额0，无后台工作。PS输出初态已高，PL释放后HDMI保留返回而PS随后空闲；仅等待PS高电平不是充分修正。当前缺匹配PS复位资料，用户将咨询官方。[r26实际结果及限制](D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/PLAN.md)及[实时状态](D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/state.json)优先于本文以下交接时技术快照和过期的“暂停／待实现”表述。[恢复入口](D:/FPGACompetitionProject/FPGA/hdmi_candidate/RESUME.md)。模块不删减，旧DATA独立暂停，FAT不修，HDMI长期验证须单独批准。现行执行规则见[Agents.md](D:/FPGACompetitionProject/Agents.md)。
 
 ## 接手时先阅读的结论
 
