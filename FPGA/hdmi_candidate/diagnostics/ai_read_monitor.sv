@@ -1,8 +1,9 @@
 // Passive six-boundary read-path observation. Outputs only serve the CSR bus.
 // ARM/FREEZE each have their own one-bit toggle request/acknowledgement CDC.
-module ai_read_monitor (
+module ai_read_monitor #(parameter integer BOOT_WITNESS=0) (
     input wire source_clk,input wire csr_clk,input wire resetn,
     input wire [767:0] channels,input wire [4:0] source_flags,
+    input wire witness_gp_reset,
     mna_gp_ww_itf.slave csr
 );
     localparam [31:0] ABI=32'h41495201;
@@ -97,6 +98,19 @@ module ai_read_monitor (
     reg [31:0] selected,read_value;
     wire [8:0] write_offset=csr.awwaddr[8:0];
     wire [8:0] read_offset=csr.araddr[8:0];
+    wire [607:0] boot_words;
+    generate if(BOOT_WITNESS) begin:boot_history
+        ai_boot_witness witness(
+            .source_clk(source_clk),.csr_clk(csr_clk),.csr_resetn(csr_resetn),
+            .gp_reset(witness_gp_reset),.source_flags(source_flags),
+            .ps_read(channels[640+:128]),.hdmi_read(channels[512+:128]),
+            .source_freeze(source_resetn && arm_request_sync[1]==arm_ack_toggle &&
+                freeze_request_sync[1]!=freeze_ack_toggle),
+            .csr_freeze(busy && pending_freeze &&
+                freeze_ack_sync[1]==freeze_request_toggle),.held_words(boot_words));
+    end else begin:no_boot_history
+        assign boot_words=0;
+    end endgenerate
     assign csr.awwready=csr_resetn;
     assign csr.arready=csr_resetn && (!read_valid || csr.rready);
     assign csr.rdata=read_value;
@@ -109,8 +123,14 @@ module ai_read_monitor (
             9'h008:selected=request_sequence;
             9'h00c:selected=response_sequence;
             9'h010:selected=WORDS;
-            default:if(read_offset>=9'h040 && read_offset<=9'h1dc && read_offset[1:0]==0)
-                selected=csr_snapshot[32*((read_offset-9'h040)>>2)+:32];
+            default:begin
+                if(read_offset>=9'h040 && read_offset<=9'h1dc && read_offset[1:0]==0)
+                    selected=csr_snapshot[32*((read_offset-9'h040)>>2)+:32];
+                else if(read_offset>=9'h014 && read_offset<=9'h03c && read_offset[1:0]==0)
+                    selected=boot_words[32*((read_offset-9'h014)>>2)+:32];
+                else if(read_offset>=9'h1e0 && read_offset<=9'h1fc && read_offset[1:0]==0)
+                    selected=boot_words[32*(11+((read_offset-9'h1e0)>>2))+:32];
+            end
         endcase
         if(read_offset[1:0]!=0)selected=32'hbad00001;
     end

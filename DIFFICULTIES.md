@@ -1,15 +1,19 @@
 # 项目难点索引
 
-更新：2026-10-19。用户已唤醒复位／启动排查，暂不做HDMI长期。已查明此前按键指引错误：r9的F8 sys_rst实际对应PL_KEY1／SW6，SW7是E7，不能用其按后0/2/2认定F8复位未生效。r21正确SW6实测已使0/2/2→0/0/0，观测器CSR复位生效；该启动本来健康，D45根因仍未定。[引脚纠正](FPGA/hdmi_candidate/PIN-CONTRACT.md)、[当前方案](tools/pose-v1/evidence/hdmi-reset-meter-20261019-r21/PLAN.md)。r13三窗新推理→HDMI结果保持已通过。
+更新：2026-10-21，仅整理文档，技术结果仍截至10月20日。D45启动故障优先，D46真实CSI输入适配是独立缺口；D44、严格实时和长尾继续保留。HDMI实施暂停、用户明确不删模块，长期未批准；当前范围见[项目总览](PROJECT-PROGRESS.md)，可行顺序见[下一步方案](ToDoLists.md)。
 
 | 编号 | 现象与影响 | 已采取处理及效果 | 尚未解决／证据边界 |
 |---|---|---|---|
 | D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
-| D45 | 同r9跨启动偶发HP2／HDMI持续RVALID背压，SDK参数上传或4KiB DMA可失败 | 已做分段观测、无SDK父进程／SDK子进程隔离、加载顺序与按键清零校准；r13健康启动时四档DMA和三窗新推理→HDMI通过 | Open前可复现但进程已加载SDK，不能唯一归因BOOT；r20实际按SW7而r9 sys_rst在SW6，故该结果不能验证F8复位。r21已证SW6清零观测器，随后加载／Open五段健康；未捕获故障启动的复位恢复对照，根因未修，见[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)及[r20原值与结果](tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/REPORT.md) |
+| D45 | 跨启动偶发HP2／HDMI持续RVALID背压，可使SDK参数上传或4KiB DMA失败 | r23补启动历史，r24修正PL互联复位就绪门，r25复用该BOOT做无按键对照 | r25已发生PL互联复位仍在SDK前复现；PS端复位／FIFO、两侧释放先后与观测开始前活动待区分；[事实及限制](tools/pose-v1/evidence/hdmi-startup-stability-20261020-r25/PLAN.md) |
+| D46 | 真实Nexmon CSI尚不能直接形成现有模型输入 | 已完成5.745GHz／20MHz、20秒300Hz受控发包与单节点真实三链CSI，保留严格身份失败、重复标记及原始事件，model_ready=false | 尚缺逐帧身份／时间关联、64点到物理30子载波映射、标定及三个独立节点同步；一台三链不等于三节点，不放宽原协议或复制节点补造输入。[数据、限制与恢复状态](tools/nexmon/README.md) |
 
 ## 当前优先问题
 
-- **D45启动稳定性：未解决，已唤醒诊断。** 需区分外部按键电平、内部复位边沿和CSR读回，再判断BOOT初始化／库加载／Open的影响；独立复位见证尚未实现。健康样本不构成可靠性验收。
+完整排查交接见[HDMI启动故障工程交接](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md)，含已确认事实、原始证据和待验证假设；不构成恢复实施许可。
+
+- **D45启动稳定性：未解决。** r25已排除“只补PL互联复位即可解决”的充分性；优先定位PS侧启动状态及复位／时钟先后，不再盲目重复同包启动。完整原值与后续方向集中在[r25结果](tools/pose-v1/evidence/hdmi-startup-stability-20261020-r25/PLAN.md)。
+- **D46真实输入适配：未完成。** 受控发送与完整三链记录不等于独立均匀RF采样或模型可用窗口。先复用原始数据厘清身份、子载波、标定和节点契约，再设计独立PC适配；当前不自动启动采集或模型负载。
 - **D44首次reader故障：未定位。** 后续显示成功与原失败分别保留；不能按“未再出现”关闭问题。
 - **D29严格实时、D41长尾与HDMI长期：未验收或未解决。** 原共享图独立串行30分钟不替代HDMI并发长期，后者须用户单独批准。
 - **D25旧DATA：未解决，独立暂停。** D43 FAT来源问题也未修。D04 VPU连续页属于保留的旧演示分支，ADR_49新HDMI链不启动VPU。
@@ -29,13 +33,17 @@
 
 ## D45的事实、推断与未知
 
+r26离线补证：原厂适配的对外RCOUNT／RACOUNT为常量，原语同名引脚复用NPU数据；它们不能测PS FIFO。真实PS HP2复位输出未纳入现行观测，下一轮记录PS／PL释放顺序。[源与实际DCP证据、定向方案](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/PLAN.md)。
+
 已验证：64B成功只覆盖HC0，不能证明共享HP2正常；r12已在首笔DMA前看到HDMI异常；r14和r18在显式Open前复现，因此不能把Open或多笔DMA拥塞当作已确定的首次触发点。它们的进程已加载SDK，也不能据此证明纯BOOT初始化一定出错。
 
 已采取：同r9的返回ID／位宽／S00与S01连线审查及有限64笔连续读、并行读、背压仿真未发现直接错线或误发；高位截断、仲裁／缓冲区异常仍未取得实板逐事务证据。网表中跨层级反相优化不应当作错线，“最后25个差异门”也不等于25处错误。
 
-复位尚待证明：静态RTL／DCP已有F8高有效sys_rst路径。2026-10-19直接复核原厂手册、原理图与r9约束后，发现F8实际为PL_KEY1／SW6，此前误称PL_KEY2／SW7；E7／SW7在r9连接rx_gtx_full_reset。因而r18／r20的按SW7后未归零不能证明F8复位失效。r21已验证正确SW6使观测器初始代次归零，随后纯CSR及加载／Open五段健康；这证明CSR域复位生效，不证明所有HP2／MIG复位与释放均正确，D45不能直接归因缺少复位。
+复位范围：静态RTL／实际DCP和原厂引脚资料已核对。F8=PL_KEY1／SW6，E7／SW7接rx_gtx_full_reset；r18／r20按SW7未清零不能检验F8。r21健康启动和r22故障启动均已证明正确SW6清零观测器；r22按后纯CSR仍异常。实际HP2互联四个复位端均有连接，上游RVALID来自PS HP2输出，不能简单认定HDMI少接复位，也不能把连接存在等同实际复位脉冲或PS队列已清空。
 
-当前执行点：r21已关闭并回原BOOT，正确SW6功能验证通过；尚需故障启动下的正确按键对照。用户已拔网线，串口只读命令通道可用，未重编产品位流或开展长期负载。此前原值保留在[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。
+r23事实：首次可观测source时钟起未见AR，已见复位期间原始RVALID及ready路径先返回后请求标志；原始返回握手不能当作合法事务，观测时钟存在之前的活动仍未知。正确SW6清零CSR但未见HP2互联复位，该观测不覆盖PS内部FIFO复位。原dcm_locked固定1、MIG存在停钟路径，原IP停钟对照重现漏采。后续r24已接入DDR就绪门并实际见证PL互联复位，r25仍故障；不能继续把修正写为“尚未实测”，也不能将该机制当唯一根因。[r23原值](tools/pose-v1/evidence/hdmi-boot-witness-20261019-r23/PLAN.md)、[r24实测](tools/pose-v1/evidence/hdmi-hp2-ready-20261020-r24/PLAN.md)。
+
+r25补充事实、对r24结论的限制及下一诊断方向见[同一BOOT无按键实测](tools/pose-v1/evidence/hdmi-startup-stability-20261020-r25/PLAN.md#实际执行及结论2026-10-20)。本次故障出现在SDK之前；BOOT／PS初始化仍不是已唯一确认的根因。
 
 ## 接入、编排和视频难点（原编号）
 

@@ -6,7 +6,8 @@ module tb_ai_read_monitor;
     reg [767:0] channels=0;
     reg [4:0] source_flags=5'b11001;
     mna_gp_ww_itf csr();
-    ai_read_monitor dut(source_clk,csr_clk,resetn,channels,source_flags,csr.slave);
+    ai_read_monitor dut(.source_clk(source_clk),.csr_clk(csr_clk),.resetn(resetn),
+        .channels(channels),.source_flags(source_flags),.witness_gp_reset(1'b0),.csr(csr.slave));
 
     // Independent expected state: only public CSR write handshakes and sampled
     // source pins are observed. No DUT private state is read or forced.

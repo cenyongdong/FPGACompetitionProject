@@ -6,6 +6,7 @@ No router configuration, login session or password is imported from a browser.
 import argparse
 import getpass
 import hashlib
+import ipaddress
 import json
 from multiprocessing.connection import Client, Listener
 import os
@@ -44,7 +45,7 @@ def askpass():
     return 0
 
 
-def ssh_run(directory, user, password, script, data, timeout):
+def ssh_run(directory, user, password, script, data, timeout, host=HOST, port=22):
     address = r'\\.\pipe\nexmon-password-' + uuid.uuid4().hex
     listener = Listener(address, family='AF_PIPE')
 
@@ -61,13 +62,13 @@ def ssh_run(directory, user, password, script, data, timeout):
     environment = os.environ.copy()
     environment.update(SSH_ASKPASS=helper.as_posix(), SSH_ASKPASS_REQUIRE='force',
                        DISPLAY='nexmon-local-auth', NEXMON_AUTH_PIPE=address)
-    arguments = [str(SSH), '-F', '/dev/null', '-T', '-p', '22',
+    arguments = [str(SSH), '-F', '/dev/null', '-T', '-p', str(port),
                  '-o', 'StrictHostKeyChecking=yes',
                  '-o', 'UserKnownHostsFile=' + (directory / 'known_hosts').as_posix(),
                  '-o', 'ConnectTimeout=5', '-o', 'ConnectionAttempts=1',
                  '-o', 'ServerAliveInterval=10', '-o', 'ServerAliveCountMax=2',
                  '-o', 'NumberOfPasswordPrompts=1', '-o', 'PubkeyAuthentication=no',
-                 '-o', 'PreferredAuthentications=password', user + '@' + HOST, script]
+                 '-o', 'PreferredAuthentications=password', user + '@' + host, script]
     try:
         completed = subprocess.run(arguments, input=data, stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE, env=environment, timeout=timeout)
@@ -81,6 +82,9 @@ def ssh_run(directory, user, password, script, data, timeout):
 
 
 def serve(arguments):
+    address_ip = ipaddress.IPv4Address(arguments.host)
+    if not address_ip.is_private or not 1 <= arguments.port <= 65535:
+        raise ValueError('Only explicit private IPv4 SSH endpoints are permitted')
     directory = local_path(arguments.directory)
     directory.mkdir(parents=True, exist_ok=True)
     known = directory / 'known_hosts'
@@ -93,15 +97,16 @@ def serve(arguments):
     (directory / 'askpass.sh').write_text(
         '#!/bin/sh\nexec "' + Path(sys.executable).as_posix() + '" "'
         + Path(__file__).as_posix() + '" askpass "$@"\n', encoding='utf-8', newline='\n')
-    print('RT-AC86U 192.168.50.1: enter the EXISTING router administrator password.')
+    print('SSH ' + arguments.user + '@' + arguments.host + ':' + str(arguments.port))
+    print('Enter the EXISTING account password for this target (Windows PIN is not an SSH password).')
     print('Password stays in this process; never saved to a file or command line.')
-    print('输入密码并回车后，请保留本窗口，可以最小化；验证结束由代理关闭。')
-    password = getpass.getpass('Router password (hidden): ').encode('utf-8')
+    print('请输入上方目标的现有账户密码并回车，请保留本窗口；验证结束由代理关闭。')
+    password = getpass.getpass('SSH account password (hidden): ').encode('utf-8')
     if not password:
         raise ValueError('Empty password refused')
     address = r'\\.\pipe\nexmon-control-' + uuid.uuid4().hex
     listener = Listener(address, family='AF_PIPE')
-    info = dict(pipe=address, host=HOST, user=arguments.user, pid=os.getpid(),
+    info = dict(pipe=address, host=arguments.host, port=arguments.port, user=arguments.user, pid=os.getpid(),
                 started=time.time(), idle_timeout_s=600)
     (directory / 'connection.json').write_text(json.dumps(info, indent=2))
     print('Credential entered. Ready for authorized router commands. Close with Ctrl+C.')
@@ -159,7 +164,8 @@ def serve(arguments):
                     script = "cat '" + source + "'"
                 else:
                     raise ValueError('Unknown operation')
-                status, output, errors = ssh_run(directory, arguments.user, password, script, data, timeout)
+                status, output, errors = ssh_run(directory, arguments.user, password, script, data, timeout,
+                                                host=arguments.host, port=arguments.port)
                 result = dict(exit_code=status, stderr=errors.decode('utf-8', errors='replace'))
                 if operation == 'get':
                     # Preserve partial raw output as evidence even when SSH fails.
@@ -203,6 +209,8 @@ def main():
     server = sub.add_parser('serve')
     server.add_argument('--directory', required=True)
     server.add_argument('--user', required=True)
+    server.add_argument('--host', default=HOST)
+    server.add_argument('--port', type=int, default=22)
     client = sub.add_parser('request')
     client.add_argument('--directory', required=True)
     client.add_argument('--operation', choices=['exec', 'put', 'get', 'stop'], required=True)
