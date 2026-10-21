@@ -6,7 +6,7 @@
 |---|---|---|---|
 | D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
 | D45 | 跨启动偶发HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | r23～r26完成启动历史、PL就绪门及PS／PL时间轴；无SDK仍复现，已回原BOOT | 当前缺匹配的PS／HP2／FIFO复位契约，配置前事务状态仍未知；[实际结果及限制](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/PLAN.md) |
-| D46 | 真实Nexmon CSI尚不能直接形成现有模型输入 | 已完成5.745GHz／20MHz、20秒300Hz受控发包与单节点真实三链CSI，保留严格身份失败、重复标记及原始事件，model_ready=false | 尚缺逐帧身份／时间关联、64点到物理30子载波映射、标定及三个独立节点同步；一台三链不等于三节点，不放宽原协议或复制节点补造输入。[数据、限制与恢复状态](tools/nexmon/README.md) |
+| D46 | 真实Nexmon CSI尚不能直接形成现有模型输入 | 独立诊断输出及300Hz／10秒同步实采完成，本轮重复已取得retry／TID／接收时间证据；严格身份失败和model_ready=false保留 | 尚缺测试UDP逐帧对应、重传处理／时间重采样、64点到物理30子载波映射、标定及三个独立节点同步；一台三链不等于三节点，不放宽原协议或复制节点补造输入。[数据、限制与恢复状态](tools/nexmon/README.md) |
 
 ## 当前优先问题
 

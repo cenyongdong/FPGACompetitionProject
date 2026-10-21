@@ -16,7 +16,7 @@
 | 新推理到HDMI | r13在一次健康启动中通过四档DMA，再完成3次新推理、3帧采纳、数值检查和现场切换确认 | 每帧约5秒观察，证明短时闭环；不保证每次健康启动之后均长期稳定。[成功方法与证据](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md#31-r13成功运行的实际方法与证据) |
 | 启动故障诊断 | r26被动PS／PL时间轴、实际bit／BOOT及1次无SDK故障样本完成；原BOOT已恢复 | PS输出初态已高、PL释放后HDMI保留返回，未见已观测AR；仅等待PS高电平不能解释该样本。缺当前HP2／FIFO复位契约。[实际结果与限制](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/PLAN.md)、[恢复状态](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/state.json) |
 | PC骨架传输与3D回放 | 本机C++→TCP→WebSocket→Three.js链路完成；60份历史真实结果按17／43帧分段回放 | 不是板端实时发布或新推理；未做HDMI与PC双路联合验收。[实现与验证](software/pc_viewer/README.md) |
-| 真实CSI采集 | 10月20日MT7922在5.745GHz／20MHz完成20秒300Hz受控发包，RT-AC86U收到真实三链CSI并导出原始事件 | 仅一个独立接收节点；独立均匀300Hz、逐帧关联及模型输入适配未验收，model_ready=false。[最新采集结果与恢复记录](tools/nexmon/README.md) |
+| 真实CSI采集 | 10月21日独立诊断输出与300Hz／10秒同步实采完成，本轮重复身份已取得重传证据 | 仅一个独立接收节点；独立均匀300Hz、测试UDP逐帧关联及模型输入适配未验收，model_ready=false。[最新采集结果与恢复记录](tools/nexmon/README.md) |
 | 旧VPU／RTSP演示 | 原预采CSI有界网络演示和相关代码、失败证据保留 | 属于历史分支，不再作为新展示主链的必做路径。[历史演示](software/demo/README.md) |
 
 各项成果按发生时配置分别认定；历史回放、一次新推理、启动可靠性和连续长期互不替代。完整阶段记录见[Done.md](Done.md)。

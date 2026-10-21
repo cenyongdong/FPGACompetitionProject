@@ -42,7 +42,12 @@ static int selected(const unsigned char *b, size_t n) {
     size_t ihl = (b[o] & 15) * 4;
     if (ihl < 20 || n < o + ihl + 8) return 0;
     if (be16(b + o + 6) & 0x3fff) return 0;
-    return be16(b + o + ihl + 2) == 5500;
+    unsigned port = be16(b + o + ihl + 2);
+#ifdef NEXMON_DIAGNOSTIC_SIDECAR
+    return port == 5500 || port == 5501;
+#else
+    return port == 5500;
+#endif
 }
 static unsigned number(const char *s, unsigned maximum) {
     char *end;
@@ -56,7 +61,12 @@ int main(int argc, char **argv) {
         fprintf(stderr, "usage: capture-udp5500 INTERFACE NEW.pcap SECONDS MAX_PACKETS\n");
         return 2;
     }
-    unsigned seconds = number(argv[3], 60), limit = number(argv[4], 20000);
+#ifdef NEXMON_DIAGNOSTIC_SIDECAR
+    const unsigned maximum_packets = 40000; /* CSI plus independent metadata */
+#else
+    const unsigned maximum_packets = 20000;
+#endif
+    unsigned seconds = number(argv[3], 60), limit = number(argv[4], maximum_packets);
     unsigned index = if_nametoindex(argv[1]);
     if (!seconds || !limit || !index) { fprintf(stderr, "invalid budget/interface\n"); return 2; }
     int fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
@@ -104,7 +114,8 @@ int main(int argc, char **argv) {
     if (getsockopt(fd, SOL_PACKET, PACKET_STATISTICS, &statistics, &statistics_size)) error = 1;
     if (statistics.tp_drops) error = 1;
     close(fd);
-    fprintf(stderr, "{\"packets\":%u,\"bytes\":%zu,\"elapsed_s\":%.6f,\"kernel_drops\":%u,\"interrupted\":%d,\"error\":%d}\n",
-            count, bytes, mono() - start, statistics.tp_drops, (int)interrupted, error);
-    return error ? 4 : (interrupted ? 6 : (count ? 0 : 5));
+    int budget_reached = count == limit;
+    fprintf(stderr, "{\"packets\":%u,\"bytes\":%zu,\"elapsed_s\":%.6f,\"kernel_drops\":%u,\"interrupted\":%d,\"error\":%d,\"packet_budget_reached\":%d}\n",
+            count, bytes, mono() - start, statistics.tp_drops, (int)interrupted, error, budget_reached);
+    return error ? 4 : (interrupted ? 6 : (budget_reached ? 7 : (count ? 0 : 5)));
 }
