@@ -1,8 +1,8 @@
 # 正式运行核心
 
-2026-10-17新增可复用HDMI模块：`display/hdmi_canvas.*`负责SDK无关的RGB24→RGB565格式适配，`display/hdmi_output.*`在SDK主线程持有双UDMA帧并管理采纳／STOP／释放。独立构建与实屏结果见[HDMI应用](../hdmi_demo/README.md)。旧演示链接与推理核心未切换；共享Engine的设备hook仅在隔离导出副本中，模型实时联动因SDK上传失败尚未通过。以下描述仍对应旧演示实际链接。
+状态整理：2026-10-21。`display/hdmi_canvas.*`负责SDK无关的RGB24→RGB565格式适配，`display/hdmi_output.*`在SDK主线程持有双UDMA帧并管理采纳／STOP／释放。r13已在隔离导出副本中完成一次健康启动下三窗新推理到HDMI；早期SDK上传失败仍保留，跨启动及联合长期未通过。结果见[HDMI应用](../hdmi_demo/README.md)和[工程交接](../../FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md)。旧演示链接未自动切换，以下模块表及构建契约描述原VPU／RTSP演示分支。
 
-这里是当前演示主链唯一使用的核心源码。`software/pose_v1`及历史工具保留原路径和原内容，供旧验证包追溯；维护当前演示时从本目录进入。原始来源、构建别名及前后哈希见[迁移清单](../../tools/pose-v1/evidence/core-refactor-20261013-r1/source-migration.json)。
+本目录维护旧演示核心，并供新HDMI入口通过明确的导出构建复用；不能将不同导出副本混编。`software/pose_v1`及历史工具保留原路径和原内容，供旧验证包追溯。迁移范围、保持行为的约束及实际回归记录见[ADR_47](../../ADR/ADR_47.md)；历史验证包按原归档追溯。
 
 后续接入请查[接口与开发指南](INTERFACES.md)：包括每个功能模块的接口、线程归属、资源所有权、异常传播，以及保留历史声明与当前实际链接实现的区别。
 
@@ -34,6 +34,8 @@ CPU异常先保存首次Host坏值与post-copy拥有快照，再执行有界两�
 头文件与实现文件按功能同放，函数、类型、命名空间及协议均沿用批准基线。构建仍由`software/demo/baseline-lock.json`逐项核对，并将源码导出到新构建目录的`baseline`；相同目标不能混编旧核心。导出别名也是头文件include名，文件名在核心内唯一。
 
 保持GNU++17、`-O2 -DNDEBUG`、`-ffp-contract=off`、SDK3.39.0、固定JSON/RAW、原CPU/Gather注册、Matmul NPU分配、`reset(1)`和最终745阈值。注释与目录调整不构成新算法或新同步语义。
+
+上段745只适用于此处旧演示基线，不能套给其它图；共享FP16等候选的组绑定和完成计数必须由该包公开metadata与实际结果追溯，r13的实际记录见工程交接，不以计数相同替代硬件完成证明。
 
 `Regression.cmake`仅将原检查器链接到新核心，测试正文不改。`verify_core.py`提供原文件哈希、C++逐token、既有SDK无关检查器及旧实现／原参考的字节对照；`validate_board.py`提供已批准的CPU107→三窗口顺序门检。编译、Host数学、模型输出、视频来源和长期可靠性分别记录，不互相替代。
 

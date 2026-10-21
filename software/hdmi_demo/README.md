@@ -1,6 +1,6 @@
 # HDMI独立接入应用
 
-更新：2026-10-18。**r13已完成三窗新推理→HDMI有界闭环，用户确认三帧切换正常。** 跨启动偶发故障D45与首次reader故障D44未解决，严格实时及长期未验收。当前开发与上板整体暂停，原BOOT已回退；本次只整理文档。[结构与阶段结果](../../FPGA/hdmi_candidate/INTEGRATION.md)、[最新暂停汇报](../../FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。
+更新：2026-10-21，仅整理状态。**r13已完成一次健康启动下三窗新推理→HDMI有界闭环，用户确认三帧切换正常。** r25已在SDK前再次复现D45，D44首次reader故障、严格实时及联合长期未通过。最后实板核验已回原BOOT；故障实施继续暂停、不删模块。[结构与阶段结果](../../FPGA/hdmi_candidate/INTEGRATION.md)、[工程师交接](../../FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md)、[当前恢复入口](../../FPGA/hdmi_candidate/RESUME.md)。
 
 ## 结构与设备生命周期
 
@@ -30,4 +30,4 @@ PS沿用[skeleton_render](../core/display/skeleton_render.cpp)完成候选选择
 
 2026-10-18复用r9，r13经Open前健康门和四档≤1MiB完整DMA门检，完成3次新推理、3帧PL采纳及STOP释放／Engine销毁；用户确认FRAME 1000000→1000001→1000002。每窗数值门和完整输出保存通过，受检最大偏差0.9765625mm。原始证据为[verification.tar](../../tools/pose-v1/evidence/hdmi-preopen-20261018-r13/verification.tar)内`run/shared/inference/frames.jsonl`、`summary.json`及完整输出；回退在[closure.tar](../../tools/pose-v1/evidence/hdmi-preopen-20261018-r13/closure.tar)。没有将回放计为新推理。
 
-随后r14–r20发现Open前亦可出现HP2／HDMI返回背压，r20无SDK按键后仍读0/2/2，尚未证明有效复位；诊断与假设见[D44／D45](../../DIFFICULTIES.md)。启动稳定性、严格实时、连续HDMI长期和PC双路并发尚未通过。旧DATA独立暂停、FAT未修；本页命令与历史包不授权恢复、重启、BOOT替换或重跑失败负载。
+随后已纠正按键映射：SW6／F8能清零观测器，旧SW7结果不能检验F8复位；r24实际见证PL互联复位，r25同BOOT仍在SDK前异常。不能把CSR清零或一次健康Open当作PS FIFO复位／启动修复。诊断与假设见[D44／D45](../../DIFFICULTIES.md)。启动稳定性、严格实时、连续HDMI长期和PC双路并发尚未通过。旧DATA独立暂停、FAT未修；本页命令与历史包不授权恢复、重启、BOOT替换或重跑失败负载。
