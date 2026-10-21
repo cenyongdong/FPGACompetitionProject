@@ -45,7 +45,7 @@ class LaptopTx
         using (var response = request.GetResponse())
         using (var reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8)) return reader.ReadToEnd();
     }
-    static Dictionary<string, object> Inventory(bool smoke) {
+    static Dictionary<string, object> Inventory(bool smoke, bool quick = false) {
         var result = new Dictionary<string, object> {
             {"schema", 1}, {"computer_name", Environment.MachineName}, {"user_name", Environment.UserName},
             {"loopback_only", smoke}, {"stopwatch_frequency", Stopwatch.Frequency}, {"utc", DateTime.UtcNow.ToString("o")}
@@ -60,6 +60,9 @@ class LaptopTx
                 state = nic.OperationalStatus.ToString(), ipv4 = addresses });
         }
         result["wireless_interfaces"] = nics;
+        // A controlled SSH run has already checked OS/driver identity. Avoid
+        // potentially slow WMI here, before the bounded transmitter is armed.
+        if (quick) { result["driver_inventory"] = "Read by separate SSH preflight"; return result; }
         var drivers = new List<object>();
         try {
             using (var search = new ManagementObjectSearcher("SELECT Caption,Version,BuildNumber FROM Win32_OperatingSystem"))
@@ -174,9 +177,9 @@ class LaptopTx
             limitation = "Socket send completion and IP delivery are not proof of independent RF frames or CSI sampling" };
     }
     static int Work(string server, bool smoke, bool once = false) {
-        var deadline = once ? DateTime.UtcNow.AddSeconds(45) : DateTime.UtcNow.AddMinutes(smoke ? 1 : 20);
         var seen = new HashSet<string>(); bool registered = false;
-        var inventory = Inventory(smoke);
+        var inventory = Inventory(smoke, once);
+        var deadline = once ? DateTime.UtcNow.AddSeconds(45) : DateTime.UtcNow.AddMinutes(smoke ? 1 : 20);
         while (!Cancel && DateTime.UtcNow < deadline) {
             try {
                 if (!registered) { Http(server, "/inventory", inventory); registered = true; Show("已连接控制端；等待有界测试。关闭本窗口即可停止。"); }
