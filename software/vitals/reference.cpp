@@ -156,11 +156,13 @@ namespace pose::vitals {
             if (energy / filtered.size() < 1e-14) return reject("no_band_energy");
             const auto first = static_cast<std::size_t>(std::floor(c.sample_rate / high));
             const auto last = static_cast<std::size_t>(std::ceil(c.sample_rate / low));
+            const auto local_peak = [&](std::size_t k) {
+                return correlations[k] > correlations[k - 1] && correlations[k] >= correlations[k + 1];
+            };
             std::size_t best = 0;
             // 两端也有邻点，避免单调ACF在搜索边界被误当作峰。
             for (std::size_t k = std::max<std::size_t>(1, first); k <= last; ++k)
-                if (correlations[k] > correlations[k - 1] && correlations[k] >= correlations[k + 1] &&
-                    (!best || correlations[k] > correlations[best])) best = k;
+                if (local_peak(k) && (!best || correlations[k] > correlations[best])) best = k;
             if (!best) return reject("no_local_acf_peak");
             out.correlation = correlations[best];
             if (out.correlation < c.min_correlation) return reject("weak_acf");
@@ -175,6 +177,26 @@ namespace pose::vitals {
             if (!bin) return reject("no_raw_spectral_peak");
             const auto logpower = [&](std::size_t i) { return std::log(std::max(s.power[i], 1e-300)); };
             out.spectral_hz = (bin + interpolate(logpower(bin - 1), logpower(bin), logpower(bin + 1))) * s.step;
+            {
+                // 离散lag可使两倍周期峰略高于基频峰。只在真实局部ACF峰中
+                // 选择同时满足原相关、频带和原谱一致性门的候选，不倍乘频率。
+                // 呼吸支路同样处理，以免呼吸漏检绕过后续心率谐波拒绝。
+                // 没有支持时保留原最高峰诊断，并由下面的原质量门拒绝。
+                std::size_t supported = 0;
+                for (std::size_t k = std::max<std::size_t>(1, first); k <= last; ++k) {
+                    if (!local_peak(k) || correlations[k] < c.min_correlation) continue;
+                    const auto shift = interpolate(correlations[k - 1], correlations[k], correlations[k + 1]);
+                    const auto hz = c.sample_rate / (k + shift);
+                    if (hz < low - tolerance || hz > high + tolerance ||
+                        std::abs(hz - out.spectral_hz) > c.agreement_hz) continue;
+                    if (!supported || correlations[k] > correlations[supported]) supported = k;
+                }
+                if (supported) {
+                    const auto shift = interpolate(correlations[supported - 1], correlations[supported], correlations[supported + 1]);
+                    out.acf_hz = c.sample_rate / (supported + shift);
+                    out.correlation = correlations[supported];
+                }
+            }
             if (out.spectral_hz < low - tolerance || out.spectral_hz > high + tolerance ||
                 out.acf_hz < low - tolerance || out.acf_hz > high + tolerance)
                 return reject("outside_supported_band");

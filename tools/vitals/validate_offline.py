@@ -58,8 +58,9 @@ def independent_reference(fixture, trace_path):
     pairs = fixture["pairs"]
     phases = np.unwrap(np.angle(pairs[:, :, 0] * np.conj(pairs[:, :, 1])), axis=0)
     detrended = signal.detrend(phases, axis=0, type="linear")
-    heart = signal.sosfilt(heart_sos, detrended, axis=0)[500:]
-    breath = signal.sosfilt(breath_sos, detrended, axis=0)[500:]
+    warmup = int(round(fixture.get("warmup_seconds", 10) * fs))
+    heart = signal.sosfilt(heart_sos, detrended, axis=0)[warmup:]
+    breath = signal.sosfilt(breath_sos, detrended, axis=0)[warmup:]
     for ch, returned in enumerate(actual["channels"]):
         expected = dict(phase=phases[:, ch], detrended=detrended[:, ch],
                         heart=heart[:, ch], breath=breath[:, ch])

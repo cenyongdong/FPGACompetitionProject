@@ -9,14 +9,14 @@ namespace {
     using namespace pose::vitals;
     constexpr double pi = 3.14159265358979323846;
     void need(bool ok, const char* why) { if (!ok) throw std::runtime_error(why); }
-    Window signal(double heart = 1.2, double breath = 0.25) {
+    Window signal(double heart = 1.2, double breath = 0.25, double rate = 50) {
         Window w;
         w.clock = ClockKind::SyntheticUniform;
-        for (std::size_t n = 0; n < 2000; ++n) {
+        for (std::size_t n = 0; n < static_cast<std::size_t>(40 * rate); ++n) {
             Sample s;
-            s.time_ns = n * 20000000ULL;
+            s.time_ns = static_cast<std::uint64_t>(std::llround(n * 1e9 / rate));
             s.sequence = n + 1;
-            const double t = n / 50.0;
+            const double t = n / rate;
             for (std::size_t ch = 0; ch < channels; ++ch) {
                 const auto p = 0.3 * std::sin(2 * pi * breath * t + ch * 0.1) +
                     0.03 * std::sin(2 * pi * heart * t + ch * 0.2);
@@ -102,6 +102,29 @@ int main() {
         run("unknown_enum_clock", [] {
             auto w = signal(); w.clock = static_cast<ClockKind>(99);
             need(has(analyze(w), "unverified_sample_clock"), "unknown clock accepted");
+        });
+        run("cardiac_fundamental_below_double_period_peak", [] {
+            for (const auto spec : {std::array<double, 2>{10, 110.0 / 60}, {25, 2.0}}) {
+                Config c; c.sample_rate = spec[0];
+                const auto r = analyze(signal(spec[1], 0.27, spec[0]), c);
+                need(r.heart && std::abs(r.heart->bpm - spec[1] * 60) < 1,
+                     "supported fundamental lost to double-period peak");
+                for (const auto& trace : r.trace) {
+                    const auto& h = trace.heart_candidate;
+                    need(h.usable && h.correlation >= c.min_correlation &&
+                         std::abs(h.acf_hz - h.spectral_hz) <= c.agreement_hz,
+                         "fundamental accepted without original quality evidence");
+                }
+            }
+        });
+        run("breath_fundamental_enables_harmonic_guard", [] {
+            for (const double rate : {10., 20., 25., 50.}) {
+                Config c; c.sample_rate = rate;
+                const auto r = analyze(signal(2.0, 0.25, rate), c);
+                need(r.breath && std::abs(r.breath->bpm - 15) < 0.1,
+                     "supported breath fundamental not recovered");
+                need(!r.heart, "breathing harmonic published as cardiac evidence");
+            }
         });
         std::cout << "PASSED " << passed << '\n';
         return 0;

@@ -1,6 +1,9 @@
 {
   "schema": 1,
-  "scope": "host_offline_algorithm_only",
+  "scope": "host_offline_validation_and_arm64_cross_compile",
+  "top_level_passed_scope": "Original 2026-10-19 host offline suite only; later timing experiments are reported separately below",
+  "latest_reliability_passed": false,
+  "latest_reliability_status": "ACF cardiac/auxiliary-breath correction passed host synthetic and cross-build checks; real CSI phase/clock/sequence validation remains blocked",
   "hardware_test": false,
   "environment": {
     "platform": "Windows-10-10.0.19045-SP0",
@@ -654,16 +657,110 @@
   },
   "arm64": {
     "algorithm_build_passed": true,
-    "final_source_rebuild_verified": false,
-    "reason": "Docker Desktop/backend exited after the first successful cross-build; final CSV metadata/BOM and invalid-enum hardening were checked on the host only. No daemon restart or hardware connection.",
-    "compiler": "aarch64-linux-gnu-g++ 9.4.0",
+    "final_source_rebuild_verified": true,
+    "build_started_utc": "2026-10-19T14:01:40Z",
+    "compiler": "aarch64-linux-gnu-g++ 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.2)",
+    "target": "aarch64-linux-gnu",
     "flags": "-std=c++17 -O2 -DNDEBUG -ffp-contract=off -Wall -Wextra -Wpedantic",
-    "machine": "AArch64",
-    "elf64_little_endian": true,
-    "binary_bytes": 80888,
-    "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\arm64\\vitals_offline",
+    "build_exit_code": 0,
+    "compiler_warning_count": 0,
+    "source_git_commit": "5b639623e99937597710c28118e05b23875c811d",
+    "source_files_unmodified_at_build": true,
+    "source_sha256": {
+      "reference.hpp": "f5255fe37c602ad03126d44e601237f17ef3095805508017b29251ce6d117ebd",
+      "reference.cpp": "bbcee1d699809ff5ce53006edec8f60a7201f898d9f0d69e208049fe1cc1691b",
+      "offline.cpp": "f79c62e49f17bf1c67400f56933f691b28e272f535fddc9f38948ded2891baf1",
+      "test/reference_tests.cpp": "5d2c3a62b505f6b36720635057ac44a8f3749579fe2c2476c30ee8021fb40ecd"
+    },
+    "host_to_container_source_sha256_match": true,
+    "container": "FPAI",
+    "container_image": "ubuntu20.04:custom",
+    "container_image_id": "sha256:397a49458ae85e065c484eaa3a83d4b5cc248f78bdf6a534e2414ce275e591db",
+    "container_source_dir": "/tmp/vitals-ps-reference-20261019-final",
+    "build_commands": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\arm64-final\\build.sh",
+    "build_log": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\arm64-final\\build.log",
+    "artifacts": [
+      {
+        "name": "vitals_offline",
+        "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\arm64-final\\vitals_offline",
+        "bytes": 81840,
+        "sha256": "72ffd3502829b7c25935a9a298d17ee4078ee1ad692b338110bcd82d3807dfe9",
+        "container_to_host_sha256_match": true,
+        "class": "ELF64",
+        "endianness": "little",
+        "machine": "AArch64",
+        "pie": true,
+        "interpreter": "/lib/ld-linux-aarch64.so.1",
+        "needed": [
+          "libstdc++.so.6",
+          "libm.so.6",
+          "libgcc_s.so.1",
+          "libc.so.6",
+          "ld-linux-aarch64.so.1"
+        ],
+        "highest_required_symbol_versions": {
+          "GLIBC": "GLIBC_2.29",
+          "GLIBCXX": "GLIBCXX_3.4.26",
+          "CXXABI": "CXXABI_1.3",
+          "GCC": "GCC_4.0.0"
+        }
+      },
+      {
+        "name": "vitals_tests",
+        "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\arm64-final\\vitals_tests",
+        "bytes": 67304,
+        "sha256": "eee1f5b74736d0fbe109a898761d13d947cefe127f8d4296b24f61c5d81037f4",
+        "container_to_host_sha256_match": true,
+        "class": "ELF64",
+        "endianness": "little",
+        "machine": "AArch64",
+        "pie": true,
+        "interpreter": "/lib/ld-linux-aarch64.so.1",
+        "needed": [
+          "libstdc++.so.6",
+          "libm.so.6",
+          "libgcc_s.so.1",
+          "libc.so.6",
+          "ld-linux-aarch64.so.1"
+        ],
+        "highest_required_symbol_versions": {
+          "GLIBC": "GLIBC_2.29",
+          "GLIBCXX": "GLIBCXX_3.4.21",
+          "CXXABI": "CXXABI_1.3",
+          "GCC": "GCC_4.0.0"
+        }
+      }
+    ],
+    "linux_native_contract_review": {
+      "compiler": "g++ 9.4.0",
+      "execution_arch": "x86_64",
+      "passed": 13,
+      "total": 13,
+      "arm_execution": false,
+      "scope": "same-source contract portability check, not independent signal samples"
+    },
+    "board_runtime_abi_verified": false,
+    "arm_program_execution": false,
+    "arm_emulated_execution": false,
+    "board_execution": false,
+    "FPAI_initial_state": "stopped",
     "FPAI_restored_to_stopped": true,
-    "board_execution": false
+    "FPAI_final_exit_code": 0,
+    "docker_desktop_started_under_current_authorization": true,
+    "docker_desktop_left_running": true,
+    "previous_algorithm_build": {
+      "algorithm_build_passed": true,
+      "final_source_rebuild_verified": false,
+      "reason": "Docker Desktop/backend exited after the first successful cross-build; final CSV metadata/BOM and invalid-enum hardening were checked on the host only. No daemon restart or hardware connection.",
+      "compiler": "aarch64-linux-gnu-g++ 9.4.0",
+      "flags": "-std=c++17 -O2 -DNDEBUG -ffp-contract=off -Wall -Wextra -Wpedantic",
+      "machine": "AArch64",
+      "elf64_little_endian": true,
+      "binary_bytes": 80888,
+      "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\arm64\\vitals_offline",
+      "FPAI_restored_to_stopped": true,
+      "board_execution": false
+    }
   },
   "raw_artifacts": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1",
   "limits": [
@@ -671,5 +768,198 @@
     "host timing is not ARM/PS timing or power",
     "no RF sampling clock or HR ground truth available",
     "no FPGA or board work performed"
-  ]
+  ],
+  "external_data_audits": [
+    {
+      "dataset": "OctoNet",
+      "date": "2026-10-20",
+      "stage": "A",
+      "outcome": "structure_and_overlap_passed_but_current_reference_contract_failed",
+      "stage_a_passed": false,
+      "stage_b_started": false,
+      "download_manifest": "D:\\FPGA-Datasets\\OctoNet\\vitals-pilot-20261020\\metadata\\stage-a-download.json",
+      "actual_audit": "D:\\FPGA-Datasets\\OctoNet\\vitals-pilot-20261020\\derived\\stage-a-audit.json",
+      "heart_estimation_executed": false,
+      "resampling_performed": false,
+      "algorithm_modified": false,
+      "note": "Independent source-data audit; the top-level passed field continues to describe the existing host offline suite."
+    }
+  ],
+  "external_timing_experiment": {
+    "date": "2026-10-20",
+    "authorization": "User approved recorded-time adaptation and required consideration of actual input rates",
+    "scope": "independent host-only interpolation/anti-alias experiment; C++ core and ARM64 artifacts unchanged",
+    "passed": false,
+    "real_adaptation": "D:\\FPGA-Datasets\\OctoNet\\vitals-pilot-20261020\\derived\\timing-adaptation-r1\\adaptation.json",
+    "all_index_phase_diagnostic": "D:\\FPGA-Datasets\\OctoNet\\vitals-pilot-20261020\\derived\\timing-adaptation-r1\\all-index-phase-diagnostic.json",
+    "synthetic_first_run": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\timing-adaptation-r1\\validation.json",
+    "synthetic_followup": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\timing-rate-followup-r1\\validation.json",
+    "math_review": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\timing-rate-followup-r1\\math-review.json",
+    "synthetic_signals_passed": 35,
+    "synthetic_signals_total": 38,
+    "positive_cases_total": 34,
+    "positive_cases_detected": 31,
+    "negative_cases_correctly_rejected": 4,
+    "maximum_absolute_bpm_error_detected_synthetic_only": 0.0016513288875472654,
+    "failed_cases": [
+      {
+        "name": "observed_fs10_110bpm",
+        "actual_result": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\timing-adaptation-r1\\observed_fs10_110bpm.json"
+      },
+      {
+        "name": "observed_octonet_fs25_120bpm",
+        "actual_result": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\timing-rate-followup-r1\\observed_octonet_fs25_120bpm.json"
+      },
+      {
+        "name": "uniform_9_615hz_fs10_110bpm",
+        "actual_result": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261019-r1\\timing-rate-followup-r1\\uniform_9_615hz_fs10_110bpm.json"
+      }
+    ],
+    "boundary_alias_checks_passed": 11,
+    "independent_sample_rate_math_reviews_passed": 4,
+    "target_rates_hz": [
+      10,
+      20,
+      25,
+      50
+    ],
+    "source_approx_9_615hz_tested_with_analytic_signals": true,
+    "resampling_performed": true,
+    "phase_jumps_corrected": false,
+    "RF_clock_marked_verified": false,
+    "RF_sequences_invented": false,
+    "real_heart_estimation_executed": false,
+    "real_heart_rate_accuracy_verified": false,
+    "stage_a_adaptation_passed": false,
+    "stage_b_started": false,
+    "dataset_pairs_downloaded": 1,
+    "downloaded_bytes": 12747192,
+    "core_cpp_modified": false,
+    "arm64_rebuilt_this_experiment": false,
+    "adapter_in_arm64_binary": false,
+    "board_access": false,
+    "HDMI_resumed": false,
+    "PL_development": false,
+    "followup_proposal_only": "Investigate source clock/RX calibration and separately review ACF fundamental/double-period candidate selection; no decision-rule changes executed"
+  },
+  "latest_synthetic_verification_passed": true,
+  "current_verification": {
+    "date": "2026-10-20",
+    "scope": "ACF local-peak correction, synthetic rate reliability and ARM64 cross-build only",
+    "passed": true,
+    "hardware_test": false,
+    "authorization": "User approved the local ACF fix and routine reversible decisions without repeated questions",
+    "core_cpp_modified": true,
+    "input_protocol_or_quality_thresholds_changed": false,
+    "correction": "Select supported local ACF peaks in cardiac and auxiliary breathing paths; retain original spectrum, correlation, consensus and harmonic gates",
+    "host_cpp_contract_tests": 15,
+    "linux_native_contract_tests": 15,
+    "baseline_cases_passed": 36,
+    "parser_checks_passed": 8,
+    "baseline_math_reviews_passed": 2,
+    "timing_cases_passed": 38,
+    "timing_boundary_and_alias_checks_passed": 11,
+    "sweep_positive_passed": 296,
+    "sweep_positive_total": 296,
+    "sweep_negative_passed": 96,
+    "sweep_negative_total": 96,
+    "sweep_target_rates_hz": [
+      10,
+      20,
+      25,
+      50
+    ],
+    "heart_scan_bpm": {
+      "minimum": 48,
+      "maximum": 120,
+      "step": 2
+    },
+    "sweep_maximum_absolute_bpm_error_synthetic_only": 0.00418053328581891,
+    "additional_math_reviews_passed": 4,
+    "host_benchmark": {
+      "scope": "host_algorithm_without_csv_or_json_io",
+      "iterations": 100,
+      "unique_input_windows": 1,
+      "p50_ms": 3.1439,
+      "p95_ms": 3.5534,
+      "p99_ms": 4.4749,
+      "max_ms": 4.6102,
+      "process_cpu_ms": 321,
+      "host_threads": 12,
+      "compiler": "16.2.0"
+    },
+    "baseline_report": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r2\\baseline\\validation.json",
+    "timing_reports": [
+      "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r2\\timing\\validation.json",
+      "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r2\\timing-followup\\validation.json"
+    ],
+    "sweep_report": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r2\\rate-sweep\\validation.json",
+    "arm64_review": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r2\\arm64\\review.json",
+    "arm64_source_sha256": {
+      "reference.hpp": "f5255fe37c602ad03126d44e601237f17ef3095805508017b29251ce6d117ebd",
+      "reference.cpp": "583a4064ee404308fc9886a87cb56586d45b86d243c7141f4f6429975075dde1",
+      "offline.cpp": "f79c62e49f17bf1c67400f56933f691b28e272f535fddc9f38948ded2891baf1",
+      "test/reference_tests.cpp": "2d71f48a5b15cfa71d2818f78a5c7f22bd7ee87c30676dcfa8b69332bdb30be1"
+    },
+    "arm64_binaries": [
+      {
+        "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r2\\arm64\\vitals_offline",
+        "bytes": 81840,
+        "sha256": "808681cbfd4e46723bb22a7fae04b4b2fa19590f31a96df75f240288ba515149",
+        "elf": "ELF64 little-endian AArch64 PIE",
+        "interpreter": "/lib/ld-linux-aarch64.so.1",
+        "highest_required_symbol_versions": {
+          "GLIBC": "GLIBC_2.29",
+          "GLIBCXX": "GLIBCXX_3.4.26",
+          "CXXABI": "CXXABI_1.3",
+          "GCC": "GCC_4.0.0"
+        },
+        "hash_matches_container_build": true
+      },
+      {
+        "path": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r2\\arm64\\vitals_tests",
+        "bytes": 72184,
+        "sha256": "9008d6fa7fbe0257df84dd8a47b69168a3ad4abe689a55fd07ac4ca9e4fae3d8",
+        "elf": "ELF64 little-endian AArch64 PIE",
+        "interpreter": "/lib/ld-linux-aarch64.so.1",
+        "highest_required_symbol_versions": {
+          "GLIBC": "GLIBC_2.29",
+          "GLIBCXX": "GLIBCXX_3.4.21",
+          "CXXABI": "CXXABI_1.3",
+          "GCC": "GCC_4.0.0"
+        },
+        "hash_matches_container_build": true
+      }
+    ],
+    "arm64_compiler": "aarch64-linux-gnu-g++ 9.4.0",
+    "arm64_flags": "-std=c++17 -O2 -DNDEBUG -ffp-contract=off -Wall -Wextra -Wpedantic",
+    "build_log": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r2\\arm64\\build.log",
+    "build_script": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r2\\arm64\\build.sh",
+    "arm_program_execution": false,
+    "arm_emulated_execution": false,
+    "board_runtime_abi_verified": false,
+    "docker_desktop_left_running": true,
+    "FPAI_restored_to_stopped": true,
+    "FPAI_final_exit_code": 0,
+    "intermediate_candidate_failure": {
+      "directory": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r1",
+      "positive_sweep_passed": 296,
+      "negative_sweep_passed": 92,
+      "negative_sweep_total": 96,
+      "reason": "Auxiliary breathing still selected double period; four harmonic false positives exposed and preserved",
+      "pre_fix_diagnostic_replay": "C:\\Users\\cenyongdong\\.codex\\worktrees\\0fc5\\FPGACompetitionProject\\.local\\vitals-ps-20261020-acf-r1\\pre-fix-negative-review\\review.json"
+    },
+    "real_OctoNet_accuracy_verified": false,
+    "real_sampling_clock_verified": false,
+    "stage_b_started": false,
+    "new_dataset_downloaded_bytes": 0,
+    "HDMI_resumed": false,
+    "PL_development": false,
+    "limits": [
+      "Generated signal coverage is not human HR accuracy or a general false-positive guarantee",
+      "RF timing, source sequence and RX phase provenance remain unresolved",
+      "The Python timing adapter is host-only and not included in ARM64 artifacts",
+      "Host benchmark is not ARM latency, power, or a controlled old/new comparison"
+    ]
+  }
 }

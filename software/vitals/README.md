@@ -2,6 +2,8 @@
 
 2026年10月19日：按用户确认的取舍完成C++17参考实现和主机离线验证。**姿态预处理保持原PS实现；本模块不链接SDK、模型、HDMI、Web或设备驱动，不连接板卡。** 当前结果和限制见[验证报告](VALIDATION-20261019.md)，机器结果只维护在[验证摘要](validation-summary-20261019.json)。
 
+2026年10月20日：完成时间轴适配后，按用户授权修正心率及辅助呼吸支路的ACF候选选择，保持原质量门。此前3个漏检和扩大检查发现的4个谐波误报均已解决；原36例、38个采样率用例、296个扫描正例及96个负例通过，15项契约在Windows／Linux通过，新ARM64产物完成交叉编译和静态复核。真实OctoNet相位及源时钟／包序号证据仍不合格，阶段B未启动。详细原值、历史失败及边界见[验证报告](VALIDATION-20261019.md)，Python适配器仍仅在主机运行。
+
 ## 模块和接口
 
 | 文件 | 职责 |
@@ -12,6 +14,9 @@
 | `../../tools/vitals/signal_fixtures.py` | 可复现的解析信号及负面样例；全部标为synthetic |
 | `../../tools/vitals/validate_offline.py` | 原生程序调用与独立NumPy／SciPy对照 |
 | `../../tools/vitals/import_nexmon.py` | 显式复用已有Nexmon解析器，读取历史PCAP，不采集／插值／复制链 |
+| `../../tools/vitals/adapt_octonet_timing.py` | 原时刻天线差分、原始质量门、插值及抗混叠；仅输出主机诊断相位，不伪造RF时钟／序号／I/Q |
+| `../../tools/vitals/validate_timing_adapter.py` | 已知信号叠加实际时间戳，验证10／20／25／50Hz；保留漏检与拒绝，独立于原基线 |
+| `../../tools/vitals/validate_rate_sweep.py` | 48–120次／分、步长2的跨采样率解析扫描及噪声／呼吸谐波等负例；不宣称真实人体精度 |
 
 业务通过`pose::vitals::analyze(Window, Config)`调用。`Window`拥有四个特征通道；每通道是同一接收节点、同一无线帧的两个天线复数值。每条`Sample`有纳秒时间、递增采样序号及有效标记。所有内存都是普通Host／PS内存，无物理地址和借用SDK对象。
 
@@ -24,8 +29,8 @@
 1. 校验采样时钟、时间单调性、连续序号、有效性、有限值和幅度。默认不接受缺样；任一间隔偏差超过2ms即拒绝，不补0、不重放、不默默重采样。
 2. 对天线对进行正实数缩放以避免有限大值相乘溢出，计算`arg(Ha*conj(Hb))`，沿**时间**unwrap。该算法与姿态沿子载波校正完全独立。
 3. 全40秒窗口去线性趋势；心率支路为四阶Butterworth高通0.8Hz＋二阶低通2.0Hz，呼吸辅助支路为二阶高通0.1Hz＋二阶低通0.5Hz。两者是独立高／低通级联，不等同于同名阶数的标准带通设计。以零状态启动，丢弃前10秒滤波输出。
-4. 归一化自相关寻找局部峰，验证周期证据；对**未带通**的去趋势信号做Hann加窗FFT，检查原始频谱峰集中度及能量，避免滤波将噪声制造成有效心率。
-5. ACF频率与原谱峰须一致到0.05Hz，至少3／4通道同意。发布频率使用原谱插值峰；ACF频率单独保存，避免呼吸残留使最终频率偏移。
+4. 归一化自相关寻找全部局部峰，验证周期证据；对**未带通**的去趋势信号做Hann加窗FFT，检查原始频谱峰集中度及能量，避免滤波将噪声制造成有效心率。
+5. 心率及辅助呼吸支路只在同时满足原相关系数、频带及与原谱峰相差≤0.05Hz的局部ACF峰中选择最强者，避免离散lag使两倍周期峰略高而漏检；没有合格峰仍拒绝，不把倍周期频率直接乘2。心率至少3／4通道同意，发布频率仍使用原谱插值峰；ACF频率单独保存。
 6. 根据辅助呼吸结果拒绝落在其2至20次谐波±0.035Hz内的心率候选。无足够支持时返回空值和原因，不输出平滑后的旧数值。
 
 当前研究频带为心率48–120次／分、呼吸6–30次／分。搜索边缘保留半个FFT格宽的估计不确定性，输出原估计，不夹到边界数值。10秒预热只是本轮参考配置，不保证真实传感信号一定达到稳态。
@@ -71,7 +76,7 @@ ctest --test-dir .local/vitals-host --output-on-failure
 python tools/vitals/validate_offline.py --executable .local/vitals-host/vitals_offline.exe --output-dir .local/vitals-validation
 ```
 
-验证脚本需要既有NumPy／SciPy；本轮使用现有Conda Python3.14.6、NumPy2.5.2、SciPy1.18.1，没有安装或升级工具。数学库采用`-ffp-contract=off`。Windows本轮Release为GCC16.2、`-O3 -DNDEBUG`；ARM64算法阶段用现有FPAI的GCC9.4、`-O2 -DNDEBUG`交叉编译，不链接SDK。
+验证脚本需要既有NumPy／SciPy；本轮使用现有Conda Python3.14.6、NumPy2.5.2、SciPy1.18.1，没有安装或升级工具。数学库采用`-ffp-contract=off`。Windows本轮Release为GCC16.2、`-O3 -DNDEBUG`；最终加固版已用现有FPAI的GCC9.4、`-O2 -DNDEBUG`完成ARM64交叉编译，不链接SDK。产物、运行库要求和复核边界见[验证报告](VALIDATION-20261019.md#arm64构建和边界)，尚未执行ARM程序或核对板端运行库。
 
 ```powershell
 .local/vitals-host/vitals_offline.exe --input input.csv --output new-result.json --trace new-trace.json --repeat 100
