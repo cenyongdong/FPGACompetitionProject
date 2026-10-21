@@ -6,11 +6,13 @@ set -euo pipefail
 cd /work/nexmon
 source setup_env.sh
 task_parent=patches/bcm4366c0/10_10_122_20
+variant=${NEXMON_DIAG_VARIANT:-nexmon_metadata}
+[[ "$variant" =~ ^nexmon_metadata(_[a-z0-9]+)?$ ]] || exit 2
 test "$(git -C "$task_parent/nexmon_csi" rev-parse HEAD)" = 1232edf2cf1e7ae0561676c49e4dd4eb22c8a27e
-if [[ ! -d "$task_parent/nexmon_metadata" ]]; then
-    cp -a "$task_parent/nexmon_csi" "$task_parent/nexmon_metadata"
+if [[ ! -d "$task_parent/$variant" ]]; then
+    cp -a "$task_parent/nexmon_csi" "$task_parent/$variant"
 fi
-cd "$task_parent/nexmon_metadata"
+cd "$task_parent/$variant"
 cp /out/csi_extractor.c src/
 cp /out/metadata.ucode.patch src/csi.ucode.bcm4366c0.10_10_122_20.patch
 # Upstream Makefile ignores patch failures. Apply it natively with strict exit

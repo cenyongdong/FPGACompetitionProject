@@ -23,6 +23,17 @@ def wire(port, payload):
 
 
 class MetadataProtocol(unittest.TestCase):
+    def test_nmd2_preserved_tones_are_independent_of_legacy_payload(self):
+        p=bytearray(diagnostic())
+        p[:4]=b'NMD2';struct.pack_into('<HH',p,4,2,44)
+        p.extend(struct.pack('<HH3I',28,3,123,456,789))
+        d=decode(p)
+        self.assertEqual(d['original_words'],(123,456,789))
+        self.assertEqual((d['original_offset'],d['event16']),(28,7))
+        p[28]=27
+        with self.assertRaises(ValueError):
+            decode(p)
+
     def test_fields_and_invalid_inputs(self):
         d = decode(diagnostic(retry=True))
         self.assertTrue(d['retry'])

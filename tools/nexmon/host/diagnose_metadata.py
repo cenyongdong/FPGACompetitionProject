@@ -1,4 +1,4 @@
-"""Read independent NMD1/5501 and unchanged CSI/5500 from one bounded PCAP.
+"""Read independent NMD1/NMD2 diagnostics and unchanged CSI/5500.
 
 Does not generate model input or relax the existing acquisition validator.
 TID is an 802.11 sequence-space identifier, not a hardware queue index.
@@ -13,45 +13,55 @@ import struct
 
 def packets(path):
     with path.open('rb') as f:
-        header = f.read(24)
-        if len(header) != 24 or struct.unpack('<I', header[:4])[0] != 0xa1b2c3d4:
-            raise ValueError('Expected little-endian microsecond PCAP')
-        if struct.unpack('<I', header[20:24])[0] != 1:
-            raise ValueError('Expected Ethernet')
-        while h := f.read(16):
-            if len(h) != 16:
-                raise ValueError('Truncated record header')
-            sec, usec, n, original = struct.unpack('<4I', h)
-            b = f.read(n)
-            if len(b) != n or n != original:
-                raise ValueError('Truncated packet')
-            o, kind = 14, int.from_bytes(b[12:14], 'big')
-            while kind in (0x8100, 0x88a8):
-                kind = int.from_bytes(b[o+2:o+4], 'big'); o += 4
-            if kind != 0x800 or b[o+9] != 17:
-                continue
-            ihl = (b[o] & 15) * 4
-            u = o + ihl
-            port = int.from_bytes(b[u+2:u+4], 'big')
-            size = int.from_bytes(b[u+4:u+6], 'big')
-            if size < 8 or u + size > len(b):
-                raise ValueError('Bad UDP length')
-            yield sec + usec / 1e6, port, b[u+8:u+size]
+        yield from packets_stream(f)
+
+
+def packets_stream(f):
+    header = f.read(24)
+    if len(header) != 24 or struct.unpack('<I', header[:4])[0] != 0xa1b2c3d4:
+        raise ValueError('Expected little-endian microsecond PCAP')
+    if struct.unpack('<I', header[20:24])[0] != 1:
+        raise ValueError('Expected Ethernet')
+    while h := f.read(16):
+        if len(h) != 16:
+            raise ValueError('Truncated record header')
+        sec, usec, n, original = struct.unpack('<4I', h)
+        b = f.read(n)
+        if len(b) != n or n != original:
+            raise ValueError('Truncated packet')
+        o, kind = 14, int.from_bytes(b[12:14], 'big')
+        while kind in (0x8100, 0x88a8):
+            kind = int.from_bytes(b[o+2:o+4], 'big'); o += 4
+        if kind != 0x800 or b[o+9] != 17:
+            continue
+        ihl = (b[o] & 15) * 4
+        u = o + ihl
+        port = int.from_bytes(b[u+2:u+4], 'big')
+        size = int.from_bytes(b[u+4:u+6], 'big')
+        if size < 8 or u + size > len(b):
+            raise ValueError('Bad UDP length')
+        yield sec + usec / 1e6, port, b[u+8:u+size]
 
 
 def decode(payload):
-    if len(payload) != 28 or payload[:4] != b'NMD1':
-        raise ValueError('Unexpected NMD1 payload')
+    if len(payload) < 8:
+        raise ValueError('Truncated diagnostic payload')
     version, length = struct.unpack_from('<HH', payload, 4)
-    if (version, length) != (1, 28):
+    if (payload[:4], version, length) not in ((b'NMD1',1,28),(b'NMD2',2,44)) or len(payload)!=length:
         raise ValueError('Diagnostic version/length mismatch')
     seq, config, channel, fc, qos, tsf, event = struct.unpack_from('<7H', payload, 14)
     if config not in (0, 256, 512):
         raise ValueError('Expected three cores, stream zero')
     tid = (qos & 15) if fc & 0x8c == 0x88 and qos != 0xffff else None
-    return dict(mac=payload[8:14].hex(':'), seq=seq, config=config,
+    result = dict(mac=payload[8:14].hex(':'), seq=seq, config=config,
                 channel=channel, fc=fc, retry=bool(fc & 0x800),
                 qos=qos, tid=tid, rx_tsf16=tsf, event16=event)
+    if version==2:
+        offset,count=struct.unpack_from('<HH',payload,28)
+        if count!=3 or offset!=(28 if channel & 0x3800 == 0x1000 else 0):
+            raise ValueError('Unexpected saved FFT word location')
+        result.update(original_offset=offset,original_words=struct.unpack_from('<3I',payload,32))
+    return result
 
 
 def diagnose(path):

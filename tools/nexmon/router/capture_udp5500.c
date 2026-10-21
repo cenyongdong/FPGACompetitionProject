@@ -73,8 +73,13 @@ int main(int argc, char **argv) {
     if (fd < 0) { perror("socket"); return 3; }
     struct sockaddr_ll address = {.sll_family = AF_PACKET, .sll_protocol = htons(ETH_P_ALL), .sll_ifindex = index};
     if (bind(fd, (struct sockaddr *)&address, sizeof(address))) { perror("bind"); close(fd); return 3; }
-    FILE *f = fopen(argv[2], "wbx");
+    int streaming = 0;
+#ifdef NEXMON_STREAM_CAPTURE
+    streaming = !strcmp(argv[2], "-");
+#endif
+    FILE *f = streaming ? stdout : fopen(argv[2], "wbx");
     if (!f) { perror("new output"); close(fd); return 3; }
+    if (streaming) setvbuf(f, NULL, _IONBF, 0);
     int error = 0;
     error |= le32(f, 0xa1b2c3d4); error |= le32(f, 0x00040002);
     error |= le32(f, 0); error |= le32(f, 0); error |= le32(f, 65535); error |= le32(f, 1);
@@ -107,7 +112,7 @@ int main(int argc, char **argv) {
         if (fwrite(buffer, 1, (size_t)n, f) != (size_t)n) error = 1;
         count++; bytes += 16 + (size_t)n;
     }
-    if (fflush(f) || fsync(fileno(f))) error = 1;
+    if (fflush(f) || (!streaming && fsync(fileno(f)))) error = 1;
     if (fclose(f)) error = 1;
     struct tpacket_stats statistics = {0};
     socklen_t statistics_size = sizeof(statistics);

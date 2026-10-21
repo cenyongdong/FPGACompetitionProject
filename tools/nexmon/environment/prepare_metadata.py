@@ -9,7 +9,7 @@ import argparse
 import difflib
 
 
-def prepare(cache: Path):
+def prepare(cache: Path, preserve_tones=False):
     base = (cache / 'base.asm').read_text()
     asm = (cache / 'csi.asm').read_text()
     anchor = '\tmov\tSPARE4, [SHM(0x164c)]\n'
@@ -88,12 +88,36 @@ static void emit_diag(struct wl_info *wl, struct d11csihdr *h)
     anchor = '            p_csi = 0;\n        }\n        pkt_buf_free_skb'
     assert src.count(anchor) == 1
     src = src.replace(anchor, '            p_csi = 0;\n            emit_diag(wl, ucodecsifrm);\n        }\n        pkt_buf_free_skb')
+    if preserve_tones:
+        # Versioned independent sidecar only. The legacy CSI/5500 memcpy and
+        # payload stay untouched; save the three original FFT words first.
+        src = src.replace('uint16 seq, config, chanspec, fc, qos, rx_tsf16, event16;\n',
+            'uint16 seq, config, chanspec, fc, qos, rx_tsf16, event16;\n'
+            '    uint16 original_offset, original_count;\n    uint32 original_words[3];\n', 1)
+        src = src.replace('static void emit_diag(struct wl_info *wl, struct d11csihdr *h)',
+            'static void emit_diag(struct wl_info *wl, struct d11csihdr *h, uint16 offset, uint32 *original)')
+        src = src.replace('memcpy(d->magic, "NMD1", 4);\n    d->version = 1;',
+                          'memcpy(d->magic, "NMD2", 4);\n    d->version = 2;')
+        anchor = '    d->rx_tsf16 = h->diag_rx_tsf16; d->event16 = h->diag_event16;\n'
+        assert src.count(anchor) == 1
+        src = src.replace(anchor, anchor + '    d->original_offset = offset; d->original_count = 3;\n'
+            '    memcpy(d->original_words, original, sizeof(d->original_words));\n')
+        anchor = '            memcpy(&udpfrm->csi_values[offset], phystatus, sizeof(phystatus));'
+        assert src.count(anchor) == 1
+        src = src.replace(anchor, '            uint32 diag_original[3];\n'
+            '            memcpy(diag_original, &udpfrm->csi_values[offset], sizeof(diag_original));\n' + anchor)
+        src = src.replace('emit_diag(wl, ucodecsifrm);','emit_diag(wl, ucodecsifrm, offset, diag_original);')
+        src = src.replace('// Diagnostic UDP/5501, little-endian payload, independent of CSI/5500.',
+            '// NMD2 UDP/5501: 44 bytes, with original words before PHY overwrite.\n'
+            '// CSI/5500 and internal microcode RX header remain unchanged.')
     (cache / 'csi_extractor.c').write_text(src)
 
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
     p.add_argument('cache', type=Path)
-    prepare(p.parse_args().cache)
+    p.add_argument('--preserve-tones', action='store_true', help='Emit versioned NMD2 with pre-overwrite FFT words')
+    args = p.parse_args()
+    prepare(args.cache, args.preserve_tones)
 
 
