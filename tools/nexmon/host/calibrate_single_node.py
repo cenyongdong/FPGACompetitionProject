@@ -102,6 +102,7 @@ def audit(repo,capture,output,raw_audit=None):
         target='Median per-node/per-packet RMS pooled over chains/carriers of balanced training-only samples',
         source_fit=dict(segment=int(lock['segment']),end_us=int(lock['calibration_end_us']),events=len(prefix)),
         reference_fit_windows=len(fit_paths),physical_power_calibrated=False,
+        reference_holdout_packet_rms_median=float(np.median(held_rms)),
         pose_accuracy_validated=False,training_order_binding_verified=bool(binding),model_ready=False,
         training_binding_scope=dict(node_windows=binding['node_windows'],mat_windows=binding['mat_windows'],
             audit=raw_audit.name) if binding else None,

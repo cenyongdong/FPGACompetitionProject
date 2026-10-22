@@ -64,6 +64,24 @@ class CausalGrid(unittest.TestCase):
         with self.assertRaises(ValueError):
             a.feed(40000,401)
 
+    def test_optional_startup_retry_discards_failed_prefix_and_keeps_thresholds(self):
+        unstable=np.arange(0,1_000_001,4000)
+        stable=1_003_333+np.round(np.arange(900)*1e6/300).astype('i8')
+        times=np.concatenate((unstable,stable))
+        original,old_windows=replay(times)
+        self.assertTrue(original.failed)
+        self.assertEqual(old_windows,[])
+        a,windows=replay(times,retry_startup=True)
+        records=list(a.startup_records)
+        self.assertEqual([r['locked'] for r in records],[False,True])
+        self.assertLess(records[0]['concentration'],.75)
+        self.assertGreaterEqual(records[1]['concentration'],.75)
+        self.assertGreaterEqual(records[1]['span_us'],1_000_000)
+        self.assertTrue(windows and all(w.valid for w in windows))
+        self.assertTrue(all(o.time_us>records[1]['calibration_end_us'] for w in windows for o in w.observations))
+        b,_=replay(times[:700],retry_startup=True)
+        self.assertEqual(a.calibration,b.calibration)
+
 
 if __name__=='__main__':
     unittest.main()

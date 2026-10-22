@@ -2,14 +2,17 @@
 
 Input base.asm and csi.asm are the pinned upstream disassembly and its existing
 CSI patch output. The 62-word internal RX header already reserves 124 bytes;
-the extended synthetic header ends at byte 122. No RX allocation changes.
+the extended synthetic header ends at byte 122 (NMD2) or 124 (NMD3). No RX
+allocation changes; the CSI UDP and model/board protocols remain untouched.
 """
 from pathlib import Path
 import argparse
 import difflib
 
 
-def prepare(cache: Path, preserve_tones=False):
+def prepare(cache: Path, preserve_tones=False, timing=False):
+    if timing and not preserve_tones:
+        raise ValueError('Timing diagnostics require preserved original FFT words')
     base = (cache / 'base.asm').read_text()
     asm = (cache / 'csi.asm').read_text()
     anchor = '\tmov\tSPARE4, [SHM(0x164c)]\n'
@@ -34,6 +37,13 @@ diag_qos_done:
 \tmov\tSPARE4, [SHM(0x1652)]
 \txadd\t[SHM(0x1654)], 1, [SHM(0x1654)]
 ''')
+    if timing:
+        # The last unused word in the already allocated 124-byte header.
+        # Raw hardware frame size is a diagnostic, not UDP payload length.
+        anchor = '\txadd\t[SHM(0x1654)], 1, [SHM(0x1654)]\n'
+        assert asm.count(anchor) == 1
+        asm = asm.replace(anchor, anchor + '\tmov\t[0x86e], SPARE4\n'
+                          '\tmov\tSPARE4, [SHM(0x1656)]\n')
     delta = difflib.unified_diff(base.splitlines(True), asm.splitlines(True),
                                 fromfile='a/ucode.asm', tofile='b/ucode.asm')
     patch = ''.join(line if line.endswith('\n') else line + '\n\\ No newline at end of file\n'
@@ -110,6 +120,28 @@ static void emit_diag(struct wl_info *wl, struct d11csihdr *h)
         src = src.replace('// Diagnostic UDP/5501, little-endian payload, independent of CSI/5500.',
             '// NMD2 UDP/5501: 44 bytes, with original words before PHY overwrite.\n'
             '// CSI/5500 and internal microcode RX header remain unchanged.')
+    if timing:
+        src = src.replace('    uint16 diag_event16;\n#else',
+                          '    uint16 diag_event16;\n    uint16 diag_frame_size;\n#else', 1)
+        src = src.replace('    uint32 original_words[3];\n',
+                          '    uint32 original_words[3];\n'
+                          '    uint16 raw_rx_frame_size;\n    uint32 hook_tsf_l;\n', 1)
+        src = src.replace('uint16 offset, uint32 *original)',
+                          'uint16 offset, uint32 *original, uint32 hook_tsf_l)', 1)
+        src = src.replace('memcpy(d->magic, "NMD2", 4);\n    d->version = 2;',
+                          'memcpy(d->magic, "NMD3", 4);\n    d->version = 3;', 1)
+        anchor = '    memcpy(d->original_words, original, sizeof(d->original_words));\n'
+        assert src.count(anchor) == 1
+        src = src.replace(anchor, anchor + '    d->raw_rx_frame_size = h->diag_frame_size;\n'
+                          '    d->hook_tsf_l = hook_tsf_l;\n')
+        src = src.replace('emit_diag(wl, ucodecsifrm, offset, diag_original);',
+                          'emit_diag(wl, ucodecsifrm, offset, diag_original, (uint32)tsf_l);')
+        src = src.replace('// NMD2 UDP/5501: 44 bytes, with original words before PHY overwrite.\n'
+                          '// CSI/5500 and internal microcode RX header remain unchanged.',
+                          '// NMD3 UDP/5501: 50 bytes; NMD2 fields plus raw frame size and\n'
+                          '// firmware hook TSF low32. Allocation remains 124 bytes; the final\n'
+                          '// reserved word carries size. CSI/5500 remains unchanged.\n'
+                          '// hook_tsf_l is processing-time context, NOT the RF arrival time.')
     (cache / 'csi_extractor.c').write_text(src)
 
 
@@ -117,7 +149,8 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser()
     p.add_argument('cache', type=Path)
     p.add_argument('--preserve-tones', action='store_true', help='Emit versioned NMD2 with pre-overwrite FFT words')
+    p.add_argument('--timing', action='store_true', help='NMD3: raw RX size and hook TSF32; no allocation or CSI payload change')
     args = p.parse_args()
-    prepare(args.cache, args.preserve_tones)
+    prepare(args.cache, args.preserve_tones, args.timing)
 
 

@@ -31,13 +31,13 @@ class RecordingReader:
         return data
 
 
-def capture(output,source_mac,channel,bind='192.168.50.102',port=39033,amplitude_profile=None):
+def capture(output,source_mac,channel,bind='192.168.50.102',port=39033,amplitude_profile=None,retry_startup=False):
     output.mkdir(parents=True,exist_ok=False)
-    adapter=NodeStream(source_mac,channel)
+    adapter=NodeStream(source_mac,channel,retry_startup=retry_startup)
     value_adapter=SingleNodeAdapter(amplitude_profile) if amplitude_profile else None
     adapted=[]
     windows,selected,processing,original28,legacy28=[],set(),[],[],[]
-    first_window=None
+    first_window=first_valid_window=None
     count=0
     with socket.socket() as server:
         server.bind((bind,port));server.listen(1);server.settimeout(30)
@@ -45,6 +45,7 @@ def capture(output,source_mac,channel,bind='192.168.50.102',port=39033,amplitude
         connection,peer=server.accept()
         if peer[0]!='192.168.50.1':
             connection.close();raise ValueError('Unexpected stream source')
+        print(json.dumps(dict(connected_peer=peer[0],port=port)),flush=True)
         started=time.monotonic()
         connection.settimeout(25)
         with connection,connection.makefile('rb') as stream,(output/'capture.pcap').open('xb') as raw:
@@ -72,6 +73,8 @@ def capture(output,source_mac,channel,bind='192.168.50.102',port=39033,amplitude
                         selected.update(ids)
                         if value_adapter is not None:
                             adapted.append(value_adapter.map_window(w,source_mac,channel))
+                        if first_valid_window is None:
+                            first_valid_window=time.monotonic()-started
                     windows.append(dict(segment=w.segment,start_slot=w.start_slot,valid=w.valid,
                         reason=w.reason,interval_gate=w.interval_gate,
                         original_event_indices=[o.index if o else -1 for o in w.observations],
@@ -81,10 +84,12 @@ def capture(output,source_mac,channel,bind='192.168.50.102',port=39033,amplitude
     if original28 and len(original28)!=len(legacy28):
         raise ValueError('NMD2 count differs from legacy CSI count')
     result=dict(live_transport=True,model_ready=False,model_or_board_protocol_changed=False,
+        retry_startup=bool(retry_startup),
         elapsed_s=elapsed,packets=count,pcap_bytes=total_bytes,**adapter.finish(),
         windows=len(windows),valid_windows=sum(w['valid'] for w in windows),
         also_previous_interval_gate=sum(w['interval_gate'] for w in windows),
         first_window_emitted_s=first_window,
+        first_valid_window_emitted_s=first_valid_window,
         windows_emitted_before_stream_closed=sum(w['emitted_s']<elapsed for w in windows),
         processing_us=stats(processing),native28=dict(samples=len(original28),
             original_nonzero=sum(x!=0 for x in original28),
@@ -110,4 +115,5 @@ if __name__=='__main__':
     p.add_argument('--output',type=Path,required=True);p.add_argument('--source-mac',required=True)
     p.add_argument('--channel',type=lambda s:int(s,0),required=True)
     p.add_argument('--amplitude-profile',type=Path,help='Explicit empirical single-node scale profile; no model packets')
-    a=p.parse_args();capture(a.output,a.source_mac,a.channel,amplitude_profile=a.amplitude_profile)
+    p.add_argument('--retry-startup',action='store_true',help='Discard failed startup prefixes and retry under unchanged thresholds')
+    a=p.parse_args();capture(a.output,a.source_mac,a.channel,amplitude_profile=a.amplitude_profile,retry_startup=a.retry_startup)

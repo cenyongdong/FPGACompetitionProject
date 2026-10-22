@@ -14,7 +14,7 @@ using System.Threading;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
-class LaptopTx
+public class LaptopTx
 {
     const string Server = "http://192.168.137.1:39032";
     const string LanServer = "http://192.168.50.102:39032";
@@ -76,7 +76,7 @@ class LaptopTx
         return result;
     }
     static double Q(List<double> values, double p) { return values.Count == 0 ? 0 : values[(int)Math.Round((values.Count - 1) * p)]; }
-    static object Transmit(Dictionary<string, object> job, bool smoke) {
+    public static object Transmit(Dictionary<string, object> job, bool smoke) {
         int hz = Convert.ToInt32(job["hz"]), seconds = Convert.ToInt32(job["seconds"]);
         string id = (string)job["id"], target = (string)job["destination"];
         Guid.ParseExact(id, "N");
@@ -84,17 +84,27 @@ class LaptopTx
         IPAddress parsedTarget;
         bool phone = IPAddress.TryParse(target, out parsedTarget) && target.StartsWith("172.20.10.") &&
             parsedTarget.GetAddressBytes()[3] >= 1 && parsedTarget.GetAddressBytes()[3] <= 14;
-        if (smoke ? target != "127.0.0.1" : (target != "192.168.137.1" && target != "192.168.50.102" && !phone))
+        bool hotspot = !smoke && job.ContainsKey("role") && (string)job["role"] == "hotspot";
+        bool ownedClient = IPAddress.TryParse(target, out parsedTarget) && target.StartsWith("192.168.137.") &&
+            parsedTarget.GetAddressBytes()[3] >= 2 && parsedTarget.GetAddressBytes()[3] <= 254;
+        if (smoke ? target != "127.0.0.1" : (hotspot ? !ownedClient :
+                (target != "192.168.137.1" && target != "192.168.50.102" && !phone)))
             throw new ArgumentException("Destination rejected");
         string subnet = phone ? "172.20.10." : target == "192.168.50.102" ? "192.168.50." : "192.168.137.";
         IPAddress source = smoke ? IPAddress.Loopback : null;
         NetworkInterface selected = null;
         if (!smoke) {
             foreach (var nic in NetworkInterface.GetAllNetworkInterfaces()) {
-                if (nic.NetworkInterfaceType != NetworkInterfaceType.Wireless80211 || nic.OperationalStatus != OperationalStatus.Up ||
+                if (nic.OperationalStatus != OperationalStatus.Up) continue;
+                if (hotspot) {
+                    if (!job.ContainsKey("interface_id") || !String.Equals(nic.Id.Trim('{','}'),
+                            ((string)job["interface_id"]).Trim('{','}'), StringComparison.OrdinalIgnoreCase) ||
+                        nic.Description.IndexOf("Wi-Fi Direct", StringComparison.OrdinalIgnoreCase) < 0) continue;
+                } else if (nic.NetworkInterfaceType != NetworkInterfaceType.Wireless80211 ||
                     nic.Description.IndexOf("MT7922", StringComparison.OrdinalIgnoreCase) < 0) continue;
                 foreach (var address in nic.GetIPProperties().UnicastAddresses)
-                    if (address.Address.AddressFamily == AddressFamily.InterNetwork && address.Address.ToString().StartsWith(subnet)) {
+                    if (address.Address.AddressFamily == AddressFamily.InterNetwork && address.Address.ToString().StartsWith(subnet) &&
+                            (!hotspot || address.Address.ToString() == "192.168.137.1")) {
                         if (source != null) throw new ArgumentException("Ambiguous MT7922 source");
                         source = address.Address; selected = nic;
                     }
@@ -165,6 +175,7 @@ class LaptopTx
         intervals.Sort(); latency.Sort();
         double rate = rows.Count > 1 ? (rows.Count - 1) * 1e9 / (rows[rows.Count - 1][2] - rows[0][2]) : 0;
         return new { schema = 1, id = id, computer_name = Environment.MachineName, hardware_test = !smoke,
+            role = hotspot ? "hotspot" : "client",
             source = source.ToString(), destination = target, port = 39031, nic = selected == null ? "loopback" : selected.Description,
             mac = selected == null ? null : selected.GetPhysicalAddress().ToString(), requested_hz = hz, requested_seconds = seconds,
             scheduled_slots = slots, send_calls_succeeded = rows.Count, skipped_late_slots = skipped,

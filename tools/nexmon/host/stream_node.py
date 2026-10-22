@@ -14,10 +14,10 @@ from validate_dedup import finalize, CLOCK_HALF_WRAP_US, RETRY_HORIZON_US
 
 
 class NodeStream:
-    def __init__(self, source_mac, channel, pair_timeout_s=.020):
+    def __init__(self, source_mac, channel, pair_timeout_s=.020, retry_startup=False):
         self.source_mac, self.channel = source_mac.lower(), int(channel)
         self.pair_timeout_s = pair_timeout_s
-        self.grid = TimeGridStream()
+        self.grid = TimeGridStream(retry_startup=retry_startup)
         self.counts = Counter()
         self.pending = None
         self.group = []

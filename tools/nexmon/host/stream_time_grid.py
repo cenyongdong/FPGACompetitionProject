@@ -58,7 +58,8 @@ class TimeGridStream:
     cells are discarded and are never reused for evaluation.
     """
     def __init__(self, warmup_us=1_000_000, tolerance_fraction=.25,
-                 min_observations=120, min_concentration=.75, max_warmup_events=1024):
+                 min_observations=120, min_concentration=.75, max_warmup_events=1024,
+                 retry_startup=False):
         if (warmup_us <= 0 or not 0 < tolerance_fraction <= .5 or
                 min_observations < 2 or max_warmup_events < min_observations or
                 not 0 <= min_concentration <= 1):
@@ -68,6 +69,7 @@ class TimeGridStream:
         self.min_observations = min_observations
         self.min_concentration = min_concentration
         self.max_warmup_events = max_warmup_events
+        self.retry_startup = bool(retry_startup)
         self.segment = -1
         self.total_windows = self.valid_windows = self.rejected_windows = 0
         self.startup_records = deque(maxlen=64)
@@ -136,7 +138,10 @@ class TimeGridStream:
             self.startup_records.append(fit)
             self.prefix = []
             if not fit['locked']:
-                self.failed = True
+                # Optional recovery: discard this entire failed prefix, then
+                # try a fresh nonoverlapping prefix under the SAME thresholds.
+                # A successful lock remains fixed until the next clock reset.
+                self.failed = not self.retry_startup
                 return []
             self.calibration = fit
             # First cell's left boundary is strictly AFTER calibration end.

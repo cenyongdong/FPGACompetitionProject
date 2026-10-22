@@ -1,4 +1,4 @@
-"""Read independent NMD1/NMD2 diagnostics and unchanged CSI/5500.
+"""Read independent NMD1/NMD2/NMD3 diagnostics and unchanged CSI/5500.
 
 Does not generate model input or relax the existing acquisition validator.
 TID is an 802.11 sequence-space identifier, not a hardware queue index.
@@ -47,7 +47,7 @@ def decode(payload):
     if len(payload) < 8:
         raise ValueError('Truncated diagnostic payload')
     version, length = struct.unpack_from('<HH', payload, 4)
-    if (payload[:4], version, length) not in ((b'NMD1',1,28),(b'NMD2',2,44)) or len(payload)!=length:
+    if (payload[:4], version, length) not in ((b'NMD1',1,28),(b'NMD2',2,44),(b'NMD3',3,50),(b'NMD4',4,54)) or len(payload)!=length:
         raise ValueError('Diagnostic version/length mismatch')
     seq, config, channel, fc, qos, tsf, event = struct.unpack_from('<7H', payload, 14)
     if config not in (0, 256, 512):
@@ -56,11 +56,18 @@ def decode(payload):
     result = dict(mac=payload[8:14].hex(':'), seq=seq, config=config,
                 channel=channel, fc=fc, retry=bool(fc & 0x800),
                 qos=qos, tid=tid, rx_tsf16=tsf, event16=event)
-    if version==2:
+    if version>=2:
         offset,count=struct.unpack_from('<HH',payload,28)
         if count!=3 or offset!=(28 if channel & 0x3800 == 0x1000 else 0):
             raise ValueError('Unexpected saved FFT word location')
         result.update(original_offset=offset,original_words=struct.unpack_from('<3I',payload,32))
+    if version>=3:
+        size, hook = struct.unpack_from('<HI', payload, 44)
+        result.update(raw_rx_frame_size=size, hook_tsf_l=hook,
+                      hook_minus_rx_low16=(hook-tsf)&65535)
+    if version>=4:
+        phy0, status2 = struct.unpack_from('<HH', payload, 50)
+        result.update(event_phy0=phy0, event_rxstatus2=status2)
     return result
 
 
