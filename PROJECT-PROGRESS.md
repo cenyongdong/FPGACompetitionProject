@@ -16,7 +16,7 @@
 | 新推理到HDMI | r13在一次健康启动中通过四档DMA，再完成3次新推理、3帧采纳、数值检查和现场切换确认 | 每帧约5秒观察，证明短时闭环；不保证每次健康启动之后均长期稳定。[成功方法与证据](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md#31-r13成功运行的实际方法与证据) |
 | 启动故障诊断 | r26被动PS／PL时间轴、实际bit／BOOT及1次无SDK故障样本完成；原BOOT已恢复 | PS输出初态已高、PL释放后HDMI保留返回，未见已观测AR；仅等待PS高电平不能解释该样本。缺当前HP2／FIFO复位契约。[实际结果与限制](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/PLAN.md)、[恢复状态](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/state.json) |
 | PC骨架传输与3D回放 | 本机C++→TCP→WebSocket→Three.js链路完成；60份历史真实结果按17／43帧分段回放 | 不是板端实时发布或新推理；未做HDMI与PC双路联合验收。[实现与验证](software/pc_viewer/README.md) |
-| 真实CSI采集 | 单节点流式实采、训练原始日志顺序核对及固定幅度尺度适配完成，适配回放与离线输出逐字节相同 | 经验尺度不代表绝对RF标定或姿态精度；可靠性、全局同步及三独立节点配置尚缺，model_ready=false。[最新采集结果与恢复记录](tools/nexmon/README.md) |
+| 真实CSI采集 | 训练顺序、经验尺度、时钟／槽位关联已核；MT7922的5GHz热点实开采集及手机路径对照完成 | AP可采CSI，但两条路径均未稳定300Hz；仍缺三节点及人体效果，model_ready=false。[最新采集结果与恢复记录](tools/nexmon/README.md) |
 | 旧VPU／RTSP演示 | 原预采CSI有界网络演示和相关代码、失败证据保留 | 属于历史分支，不再作为新展示主链的必做路径。[历史演示](software/demo/README.md) |
 
 各项成果按发生时配置分别认定；历史回放、一次新推理、启动可靠性和连续长期互不替代。完整阶段记录见[Done.md](Done.md)。

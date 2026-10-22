@@ -23,6 +23,26 @@ def wire(port, payload):
 
 
 class MetadataProtocol(unittest.TestCase):
+    def test_nmd4_preserves_nmd3_prefix_and_event_phy_status(self):
+        p=bytearray(diagnostic(tsf=65520))
+        p[:4]=b'NMD4';struct.pack_into('<HH',p,4,4,54)
+        p.extend(struct.pack('<HH3IHIHH',28,3,123,456,789,342,65586,0x1003,0x100))
+        d=decode(p)
+        self.assertEqual((d['event_phy0'],d['event_rxstatus2']),(0x1003,0x100))
+        self.assertEqual(d['hook_minus_rx_low16'],66)
+        with self.assertRaises(ValueError):decode(p[:-2])
+
+    def test_nmd3_keeps_rx_time_distinct_from_hook_time_and_handles_wrap(self):
+        p=bytearray(diagnostic(tsf=65520))
+        p[:4]=b'NMD3';struct.pack_into('<HH',p,4,3,50)
+        p.extend(struct.pack('<HH3IHI',28,3,123,456,789,342,65586))
+        d=decode(p)
+        self.assertEqual(d['original_words'],(123,456,789))
+        self.assertEqual((d['rx_tsf16'],d['raw_rx_frame_size'],d['hook_tsf_l']), (65520,342,65586))
+        self.assertEqual(d['hook_minus_rx_low16'],66)
+        # An inconsistent version length must not reinterpret a truncated tail.
+        with self.assertRaises(ValueError):decode(p[:-1])
+
     def test_nmd2_preserved_tones_are_independent_of_legacy_payload(self):
         p=bytearray(diagnostic())
         p[:4]=b'NMD2';struct.pack_into('<HH',p,4,2,44)

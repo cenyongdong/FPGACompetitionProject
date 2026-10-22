@@ -20,10 +20,15 @@ def main():
     parser.add_argument('--management-peer', help='Optional second explicit IPv4 peer for HTTP control only')
     parser.add_argument('--phone-gateway', action='store_true', help='Send to owned iPhone gateway 172.20.10.1; no UDP delivery ledger is available there')
     parser.add_argument('--directory', type=Path, required=True)
-    parser.add_argument('--executable', type=Path, required=True)
+    parser.add_argument('--executable', type=Path)
+    parser.add_argument('--control-only', action='store_true', help='Use an existing laptop sender; do not distribute executable files')
     parser.add_argument('--access-executable', type=Path)
     parser.add_argument('--seconds', type=int, default=1200)
     args = parser.parse_args()
+    if args.control_only and (args.executable or args.access_executable):
+        parser.error('Control-only mode does not distribute executables')
+    if not args.control_only and args.executable is None:
+        parser.error('--executable is required unless --control-only is selected')
     ipaddress.IPv4Address(args.peer)
     if args.management_peer:
         address = ipaddress.IPv4Address(args.management_peer)
@@ -35,7 +40,7 @@ def main():
     root = args.directory.resolve()
     root.mkdir(parents=True, exist_ok=False)
     (root / 'jobs').mkdir()
-    executable = args.executable.read_bytes()
+    executable = args.executable.read_bytes() if args.executable else None
     access_executable = args.access_executable.read_bytes() if args.access_executable else None
     lock = threading.Lock()
     stop = threading.Event()
@@ -62,8 +67,10 @@ def main():
             if not self.allowed():
                 return self.reply(403, {'error': 'Unexpected peer'})
             if self.path == '/':
+                if args.control_only:
+                    return self.reply(200, {'mode':'control_only','executable_distribution':False})
                 return self.reply(200, '<meta charset="utf-8"><h2>MT7922 临时发射验证</h2><p>无需安装，关闭窗口结束。只执行50/300Hz有界UDP测试。</p><p><a href="/LaptopTx.exe">下载 LaptopTx.exe</a></p>'.encode(), 'text/html; charset=utf-8')
-            if self.path == '/LaptopTx.exe':
+            if self.path == '/LaptopTx.exe' and executable is not None:
                 return self.reply(200, executable, 'application/octet-stream')
             if self.path == '/LaptopSshAccess.exe' and access_executable is not None:
                 return self.reply(200, access_executable, 'application/octet-stream')
@@ -159,7 +166,8 @@ def main():
     server = ThreadingHTTPServer((args.bind, 39032), Handler)
     server.timeout = .25
     record = dict(pid=__import__('os').getpid(), bind=args.bind, destination=destination, peer=peer, lifetime_s=args.seconds,
-                  executable_sha256=hashlib.sha256(executable).hexdigest(), started_unix=time.time())
+                  executable_sha256=hashlib.sha256(executable).hexdigest() if executable is not None else None,
+                  executable_distribution=not args.control_only,started_unix=time.time())
     (root / 'control.json').write_text(json.dumps(record, indent=2), encoding='utf-8')
     worker = threading.Thread(target=receive, daemon=True)
     worker.start()

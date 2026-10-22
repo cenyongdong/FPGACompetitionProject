@@ -58,6 +58,9 @@ def finalize(index, group, forced_reason=''):
         if not np.any(values != 0):
             reasons.append('all_zero_core_excluding_phy')
     event = Event(index, m, words, not reasons, ';'.join(sorted(set(reasons))))
+    if any('raw_rx_frame_size' in d for d, _ in group):
+        if not all(d.get('raw_rx_frame_size') == m.get('raw_rx_frame_size') for d, _ in group):
+            raise ValueError('RX frame size differs between cores of one event')
     if any('original_words' in d for d, _ in group):
         if not all(d.get('original_offset') == 28 and len(d.get('original_words', ())) == 3 for d, _ in group):
             raise ValueError('Inconsistent pre-overwrite word sidecar')
