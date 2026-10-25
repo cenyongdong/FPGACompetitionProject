@@ -1,0 +1,274 @@
+{
+  "package_id": "s01-soak-r29",
+  "as_of": "2026-10-22",
+  "outcome": "startup_fault_reproduced_before_30_minute_soak",
+  "valid_raw_capture": true,
+  "healthy_idle": false,
+  "long_term_test_completed": false,
+  "planned_passive_seconds": 1800,
+  "passive_soak": {
+    "event": "passive_soak_window",
+    "observed_seconds": 7.7e-07,
+    "requested_seconds": 1800,
+    "stop_flags": 96
+  },
+  "native_monitor_exit": 0,
+  "release_capture_exit": 0,
+  "source_commit": "67ab4904",
+  "AI_four_HC_unchanged": true,
+  "source_isolation_live_confirmed": true,
+  "S01_current_pins": 6,
+  "S01_source_input_mask": 0,
+  "SDK_Open": 0,
+  "DMA": 0,
+  "inference": 0,
+  "HDMI_START": 0,
+  "physical_keys": 0,
+  "actual_candidate_starts": 1,
+  "actual_original_fallbacks": 1,
+  "remaining": {
+    "candidate_starts": 0,
+    "original_fallbacks": 0,
+    "SDK_Open": 0
+  },
+  "pre_start_boot_id": "1831aecd-1495-4f9f-ad8d-d79d2c493dfe",
+  "candidate_boot_id": "3de986eb-2b20-471c-aa05-b58c71412d55",
+  "final_original_boot_id": "f148231e-ada5-41bf-9c6d-2459c76c2b6b",
+  "candidate_BOOT_sha256": "f4bed59ec07751bcd7eaac332d9524675e071a4eff1226a4f9b5bdd1642bde04",
+  "reused_bit_and_physical_qualification": "S01-ISOLATION-RESULT.json; unchanged exact r28 image, no rebuild",
+  "original_BOOT_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "SDK_identity": {
+    "libicraft_hostbackend.so": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+    "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+    "libicraft_xir.so": "377a2cac1a8834836503d9805451449d42d99a888b8f96b38d4c2ba8c585af3e",
+    "libicraft_utils.so": "99679371aa20e7955e14c39938225df24cdc763d75f26301970fba114f650109",
+    "libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178"
+  },
+  "final_device_owners": [],
+  "startup": {
+    "initial_GP_levels": {
+      "PS_HP2_resetn": true,
+      "PL_HP2_resetn": false,
+      "GP_reset": false,
+      "HP_reset": false,
+      "FCLK_RESET0_N": true,
+      "DDR_ui_reset": false,
+      "DDR_calibrated": false,
+      "HP_clock_active": false,
+      "PS_ARVALID": false,
+      "PS_RVALID": true,
+      "HDMI_ARVALID": false,
+      "HDMI_RVALID": false,
+      "legacy_AWVALID": false,
+      "legacy_WVALID": false,
+      "legacy_BVALID": false,
+      "PS_AWVALID": false,
+      "PS_WVALID": false,
+      "PS_BVALID": false,
+      "sys_rst_n": true,
+      "soft_reset": false
+    },
+    "final_GP_levels": {
+      "PS_HP2_resetn": true,
+      "PL_HP2_resetn": true,
+      "GP_reset": false,
+      "HP_reset": false,
+      "FCLK_RESET0_N": true,
+      "DDR_ui_reset": false,
+      "DDR_calibrated": true,
+      "HP_clock_active": true,
+      "PS_ARVALID": false,
+      "PS_RVALID": true,
+      "HDMI_ARVALID": false,
+      "HDMI_RVALID": true,
+      "legacy_AWVALID": false,
+      "legacy_WVALID": false,
+      "legacy_BVALID": false,
+      "PS_AWVALID": false,
+      "PS_WVALID": false,
+      "PS_BVALID": false,
+      "sys_rst_n": true,
+      "soft_reset": false
+    },
+    "first_GP_cycle": {
+      "PS_release_or_initial_high": 3,
+      "PL_release_or_initial_high": 5644702,
+      "PS_RVALID": 3,
+      "HDMI_RVALID": 5644705,
+      "PS_ARVALID": null,
+      "HDMI_ARVALID": null,
+      "HP_clock_activity": 39,
+      "write_VALID": null
+    },
+    "GP_freeze_cycle": 6827260963,
+    "HP_freeze_cycle": 13654896471,
+    "raw_HP_handshakes": {
+      "PS_AR": 0,
+      "PS_R": 6,
+      "legacy_AW": 0,
+      "legacy_W": 0,
+      "legacy_B": 0,
+      "PS_AW": 0,
+      "PS_W": 0,
+      "PS_B": 0
+    },
+    "HP_count_overflow_mask": 0,
+    "first_PS_AR_HP_cycle": null,
+    "first_raw_PS_RVALID_HP_cycle": 342536,
+    "first_PL_ready_PS_RVALID_HP_cycle": 11633005,
+    "first_raw_PS_RVALID_pins": 32,
+    "first_PL_ready_PS_RVALID_pins": 32,
+    "event_overflow": false
+  },
+  "GP_events": [
+    {
+      "GP_cycle": 3,
+      "PS_HP2_resetn": true,
+      "PL_HP2_resetn": false,
+      "DDR_calibrated": false,
+      "PS_RVALID": true,
+      "HDMI_RVALID": false
+    },
+    {
+      "GP_cycle": 39,
+      "PS_HP2_resetn": true,
+      "PL_HP2_resetn": false,
+      "DDR_calibrated": false,
+      "PS_RVALID": true,
+      "HDMI_RVALID": false
+    },
+    {
+      "GP_cycle": 5644678,
+      "PS_HP2_resetn": true,
+      "PL_HP2_resetn": false,
+      "DDR_calibrated": true,
+      "PS_RVALID": true,
+      "HDMI_RVALID": false
+    },
+    {
+      "GP_cycle": 5644702,
+      "PS_HP2_resetn": true,
+      "PL_HP2_resetn": true,
+      "DDR_calibrated": true,
+      "PS_RVALID": true,
+      "HDMI_RVALID": false
+    },
+    {
+      "GP_cycle": 5644705,
+      "PS_HP2_resetn": true,
+      "PL_HP2_resetn": true,
+      "DDR_calibrated": true,
+      "PS_RVALID": true,
+      "HDMI_RVALID": true
+    }
+  ],
+  "short_window": {
+    "HP_cycles_mod32": 3553,
+    "microseconds": 17.765,
+    "source_flags": 25,
+    "reset_cycles": 0,
+    "channels": [
+      {
+        "AR_handshakes": 0,
+        "R_handshakes": 0,
+        "RVALID_cycles": 0,
+        "R_backpressure_cycles": 0,
+        "current_pins": "0xc1adc0a",
+        "RRESP_errors": 0
+      },
+      {
+        "AR_handshakes": 0,
+        "R_handshakes": 0,
+        "RVALID_cycles": 0,
+        "R_backpressure_cycles": 0,
+        "current_pins": "0x40ac00a",
+        "RRESP_errors": 0
+      },
+      {
+        "AR_handshakes": 0,
+        "R_handshakes": 0,
+        "RVALID_cycles": 0,
+        "R_backpressure_cycles": 0,
+        "current_pins": "0x2dc0a",
+        "RRESP_errors": 0
+      },
+      {
+        "AR_handshakes": 0,
+        "R_handshakes": 0,
+        "RVALID_cycles": 0,
+        "R_backpressure_cycles": 0,
+        "current_pins": "0x64adc0a",
+        "RRESP_errors": 0
+      },
+      {
+        "AR_handshakes": 0,
+        "R_handshakes": 0,
+        "RVALID_cycles": 3553,
+        "R_backpressure_cycles": 3553,
+        "current_pins": "0x6",
+        "RRESP_errors": 0
+      },
+      {
+        "AR_handshakes": 0,
+        "R_handshakes": 0,
+        "RVALID_cycles": 3553,
+        "R_backpressure_cycles": 3553,
+        "current_pins": "0x102dc06",
+        "RRESP_errors": 0
+      }
+    ]
+  },
+  "conclusion": "Source-only video isolation is insufficient: the identical isolated image has both a healthy and a faulty start. Video masters are not a necessary participant in this sample.",
+  "limits": [
+    "GP records synchronized levels, may miss short pulses; HP counts are raw including reset.",
+    "GP and HP FREEZE cuts differ; first high at observation start does not prove a reset edge.",
+    "Event overflow leaves dedicated first records valid but can hide later transitions.",
+    "HP activity expires 255 GP cycles after last divided heartbeat; it is a coarse clock witness.",
+    "No pre-configuration/clockless request coverage or direct PS FIFO occupancy.",
+    "S01 internal route/buffer remains; PS initialization, pre-configuration transactions and reset coverage are unresolved.",
+    "The long wait ended on already-latched startup flags, not after 30 minutes; no load or retry followed.",
+    "Six raw R handshakes do not prove six valid transactions."
+  ],
+  "monitor_build": {
+    "compiler": "g++ (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0",
+    "machine": "aarch64",
+    "self_test": "7 cases passed",
+    "files": {
+      "ai_preopen_monitor": {
+        "bytes": 42928,
+        "sha256": "ca74586c23d65c377810870d4f742afe739a964e35cb5c858872fb69f8472897"
+      },
+      "ai_preopen_monitor.cpp": {
+        "bytes": 8244,
+        "sha256": "45d56867158bcd53348bf951e8b1e321542d2912f69936361d9c9daf79c0a62e"
+      },
+      "dma_probe_evidence.hpp": {
+        "bytes": 4462,
+        "sha256": "0ccb345f613078dd5d6fba51e41d624b893b1022ccbf573534950524566e64d6"
+      }
+    }
+  },
+  "UART": {
+    "candidate-1": {
+      "closed": true,
+      "received_bytes": 36451,
+      "transmitted_bytes": 0
+    },
+    "fallback": {
+      "closed": true,
+      "received_bytes": 36611,
+      "transmitted_bytes": 0
+    }
+  },
+  "background_tasks": [],
+  "evidence_root": "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\hdmi-s01-soak-20261022-r29",
+  "work_root": "D:\\FPGACompetitionProject\\.local\\hdmi-s01-soak-20261022-r29",
+  "code_root": "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject",
+  "archive": {
+    "path": "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\hdmi-s01-soak-20261022-r29\\board-evidence.tar.gz",
+    "bytes": 121117,
+    "sha256": "fd84400b0a8e969c62390e9133dc82897d6184707770c863130d97c1d93f6033",
+    "transfer_verified": true
+  }
+}

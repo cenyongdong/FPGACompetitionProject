@@ -1,0 +1,197 @@
+{
+  "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/best_mpjpe_epoch_99.pth",
+  "checkpoint_epoch": 99,
+  "checkpoint_sha256": "cf3e65eccf37c79ddce6380d578707a9633feec28412a16a839542dd218fd7c9",
+  "frames": 7824,
+  "score_threshold": 0.2,
+  "device": "cpu",
+  "candidate_count": 180,
+  "groups": {
+    "1": {
+      "frames": 2586,
+      "real_people_total": 2586,
+      "selected_count_histogram": {
+        "0": 6,
+        "1": 2544,
+        "2": 31,
+        "3": 5
+      },
+      "mean_selected": 1.0135344160866202,
+      "fewer_frames": 6,
+      "equal_frames": 2544,
+      "more_frames": 36,
+      "count_deficit": 6,
+      "count_excess": 41,
+      "zero_selected_frames": 6,
+      "confidence_matched_pairs": 2580,
+      "confidence_matched_mpjpe_mm": 109.59023767219958,
+      "spatial_detection": {
+        "100": {
+          "tp": 1551,
+          "fn": 1035,
+          "fp": 1070,
+          "duplicate_like": 12,
+          "precision": 0.5917588706600534,
+          "recall": 0.5997679814385151,
+          "frames_with_fn": 1035,
+          "frames_with_fp": 1043,
+          "frames_with_duplicate_like": 11
+        },
+        "200": {
+          "tp": 2352,
+          "fn": 234,
+          "fp": 269,
+          "duplicate_like": 28,
+          "precision": 0.897367417016406,
+          "recall": 0.9095127610208816,
+          "frames_with_fn": 234,
+          "frames_with_fp": 257,
+          "frames_with_duplicate_like": 26
+        },
+        "300": {
+          "tp": 2529,
+          "fn": 57,
+          "fp": 92,
+          "duplicate_like": 30,
+          "precision": 0.9648988935520794,
+          "recall": 0.9779582366589327,
+          "frames_with_fn": 57,
+          "frames_with_fp": 84,
+          "frames_with_duplicate_like": 28
+        }
+      },
+      "legacy_all180_mpjpe_mm": 100.88333182987647
+    },
+    "2": {
+      "frames": 3184,
+      "real_people_total": 6368,
+      "selected_count_histogram": {
+        "1": 94,
+        "2": 2942,
+        "3": 101,
+        "4": 25,
+        "5": 15,
+        "6": 7
+      },
+      "mean_selected": 2.0408291457286434,
+      "fewer_frames": 94,
+      "equal_frames": 2942,
+      "more_frames": 148,
+      "count_deficit": 94,
+      "count_excess": 224,
+      "zero_selected_frames": 0,
+      "confidence_matched_pairs": 6274,
+      "confidence_matched_mpjpe_mm": 144.3784629337188,
+      "spatial_detection": {
+        "100": {
+          "tp": 2839,
+          "fn": 3529,
+          "fp": 3659,
+          "duplicate_like": 27,
+          "precision": 0.4369036626654355,
+          "recall": 0.44582286432160806,
+          "frames_with_fn": 2477,
+          "frames_with_fp": 2441,
+          "frames_with_duplicate_like": 27
+        },
+        "200": {
+          "tp": 5335,
+          "fn": 1033,
+          "fp": 1163,
+          "duplicate_like": 65,
+          "precision": 0.8210218528778086,
+          "recall": 0.8377826633165829,
+          "frames_with_fn": 927,
+          "frames_with_fp": 903,
+          "frames_with_duplicate_like": 61
+        },
+        "300": {
+          "tp": 5899,
+          "fn": 469,
+          "fp": 599,
+          "duplicate_like": 85,
+          "precision": 0.9078177900892582,
+          "recall": 0.9263505025125628,
+          "frames_with_fn": 451,
+          "frames_with_fp": 452,
+          "frames_with_duplicate_like": 73
+        }
+      },
+      "legacy_all180_mpjpe_mm": 120.64834386859108
+    },
+    "3": {
+      "frames": 2054,
+      "real_people_total": 6162,
+      "selected_count_histogram": {
+        "2": 107,
+        "3": 1865,
+        "4": 68,
+        "5": 9,
+        "6": 2,
+        "7": 3
+      },
+      "mean_selected": 2.998539435248296,
+      "fewer_frames": 107,
+      "equal_frames": 1865,
+      "more_frames": 82,
+      "count_deficit": 107,
+      "count_excess": 104,
+      "zero_selected_frames": 0,
+      "confidence_matched_pairs": 6055,
+      "confidence_matched_mpjpe_mm": 171.0931151209736,
+      "spatial_detection": {
+        "100": {
+          "tp": 1645,
+          "fn": 4517,
+          "fp": 4514,
+          "duplicate_like": 16,
+          "precision": 0.26708881311901284,
+          "recall": 0.2669587796170075,
+          "frames_with_fn": 1988,
+          "frames_with_fp": 1978,
+          "frames_with_duplicate_like": 15
+        },
+        "200": {
+          "tp": 4487,
+          "fn": 1675,
+          "fp": 1672,
+          "duplicate_like": 56,
+          "precision": 0.7285273583373925,
+          "recall": 0.7281726712106459,
+          "frames_with_fn": 1246,
+          "frames_with_fp": 1216,
+          "frames_with_duplicate_like": 47
+        },
+        "300": {
+          "tp": 5458,
+          "fn": 704,
+          "fp": 701,
+          "duplicate_like": 65,
+          "precision": 0.88618282188667,
+          "recall": 0.8857513794222655,
+          "frames_with_fn": 621,
+          "frames_with_fp": 595,
+          "frames_with_duplicate_like": 54
+        }
+      },
+      "legacy_all180_mpjpe_mm": 146.85608310198018
+    }
+  },
+  "same_test_samples_and_ground_truth": null,
+  "shared_vs_repeated_checks": null,
+  "overall": {
+    "legacy_mpjpe_mm": 120.99578446844605,
+    "mean_selected": 1.9527096114519427,
+    "count_mae": 0.0736196319018405,
+    "confidence_matched_mpjpe_mm": 149.20800199194593
+  },
+  "definitions": {
+    "distance": "Mean of 14 joint Euclidean distances in absolute coordinates, mm; no alignment.",
+    "legacy_mpjpe": "Existing calc_mpjpe with greedy one-to-one GT-assisted matching over all 180 candidates; per-frame mean.",
+    "confidence_matched_mpjpe": "Select score > 0.2, minimize total distance with one-to-one Hungarian assignment, average matched pairs only; unmatched GT/predictions do not enter this mean.",
+    "spatial_detection": "At each stated distance threshold, maximize valid one-to-one matches then minimize distance; unmatched GT=FN, unmatched predictions=FP.",
+    "duplicate_like": "Unmatched selected prediction within the stated distance of a GT already covered by another prediction; diagnostic evidence of possible duplicates, not a manual label.",
+    "count_shortfall": "Selected count below true count guarantees a count deficit; excess alone does not distinguish duplicates from other false positives."
+  },
+  "elapsed_seconds": 438.4198372364044
+}

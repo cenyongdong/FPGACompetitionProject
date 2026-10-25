@@ -1,0 +1,51 @@
+{
+  "bytes": 7023552,
+  "sha256": "a5d34e3a226eb62fe275f0c3223ac41c362961f9f49ed9da222154e0d4e4fe47",
+  "original_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "all_bytes_outside_PL_identical": true,
+  "PL_offset": 186816,
+  "PL_bytes": 5980464,
+  "PL_payload_matches_candidate_after_word_swap": true,
+  "padding_identical": true,
+  "differing_PL_bytes": 2193386,
+  "raw_bit": {
+    "path": "D:\\FPGACompetitionProject\\.local\\hdmi-hp2-cycletrace-20261022-r30\\fpai_demo_vivado.runs\\impl_hp2_cycletrace_r30\\ai7030_edif_top.bit",
+    "bytes": 5980025,
+    "sha256": "59087af53a62bb0b9ef2bf40cee16f878d5f5cdbbbfe8955b52b41d44ce4a60f"
+  },
+  "ICAP_bit": {
+    "path": "D:\\FPGACompetitionProject\\.local\\hdmi-hp2-cycletrace-20261022-r30\\boot-package\\ai7030_top_disable_icap.bit",
+    "bytes": 5980609,
+    "sha256": "416d275d39db40a6f39a70d2405d787a99feddd85e2edd84a6284c9447368fc7",
+    "header": {
+      "a": "ai7030_edif_top;UserID=53180205;Version=2018.3;Patched=DISABLE_ICAP,VCCM;PatchID=32494",
+      "b": "7z030ffg676",
+      "c": "2026/10/22",
+      "d": "21:35:19"
+    }
+  },
+  "payload": {
+    "bytes": 5980460,
+    "sha256": "484492fdd40cadb8b7f7f822a24b3b2b77237e68535664af12a6d7207b033a58"
+  },
+  "firmware_inputs": {
+    "FSBL251210_ddr400_demo.out": {
+      "bytes": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+      "source": "D:\\FPGACompetitionProject\\.local\\hdmi-board-reference-20261016-r1\\boot-control-utf8-r2\\FSBL251210_ddr400_demo.out"
+    },
+    "bl31.elf": {
+      "bytes": 610824,
+      "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303",
+      "source": "D:\\FPGACompetitionProject\\.local\\hdmi-board-reference-20261016-r1\\boot-control-utf8-r2\\bl31.elf"
+    },
+    "u-boot": {
+      "bytes": 6579840,
+      "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97",
+      "source": "D:\\FPGACompetitionProject\\.local\\hdmi-board-reference-20261016-r1\\boot-control-utf8-r2\\u-boot"
+    }
+  },
+  "BOOT_path": "D:\\FPGACompetitionProject\\.local\\hdmi-hp2-cycletrace-20261022-r30\\boot-package\\BOOT-hp2-cycletrace-r30.bin",
+  "deployed": false,
+  "rebooted": false
+}

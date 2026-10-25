@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "started": 1792764468.0311127,
+  "command": [
+    "nice",
+    "-n",
+    "5",
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "tools/pose180/export.py",
+    "--checkpoint",
+    "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/best_mpjpe_epoch_99.pth",
+    "--output",
+    "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/final-delivery-20261023-r1/onnx"
+  ],
+  "process": {
+    "pid": 324190,
+    "start_ticks": "201202109"
+  },
+  "CUDA_VISIBLE_DEVICES": "",
+  "cpu_threads": 2,
+  "nice": 5,
+  "native_exit": 0,
+  "finished": 1792764478.6529276
+}

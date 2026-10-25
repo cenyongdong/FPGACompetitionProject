@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "path": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/final-delivery-20261023-r1/onnx/pose180_shared.onnx",
+  "bytes": 52661173,
+  "operators": {
+    "Identity": 12,
+    "MatMul": 126,
+    "Add": 202,
+    "Transpose": 72,
+    "Constant": 221,
+    "Shape": 8,
+    "Gather": 16,
+    "Div": 51,
+    "Mul": 53,
+    "Slice": 22,
+    "Reshape": 81,
+    "Softmax": 16,
+    "Gemm": 16,
+    "ReduceMean": 54,
+    "Sub": 27,
+    "Pow": 27,
+    "Sqrt": 27,
+    "Relu": 36,
+    "Split": 1,
+    "Unsqueeze": 18,
+    "ConstantOfShape": 4,
+    "Equal": 4,
+    "Where": 4,
+    "Expand": 4,
+    "Concat": 5,
+    "Sigmoid": 1,
+    "Squeeze": 1
+  },
+  "output_shapes": [
+    [
+      1,
+      180
+    ],
+    [
+      1,
+      180,
+      14,
+      3
+    ]
+  ],
+  "comparisons": [
+    {
+      "sample": "S11_01_308",
+      "outputs": [
+        {
+          "output": "scores",
+          "max_abs": 9.822542779147625e-08
+        },
+        {
+          "output": "poses",
+          "max_abs": 2.2649765014648438e-06
+        }
+      ]
+    },
+    {
+      "sample": "S12_03_316",
+      "outputs": [
+        {
+          "output": "scores",
+          "max_abs": 2.0265579223632812e-06
+        },
+        {
+          "output": "poses",
+          "max_abs": 2.7418136596679688e-06
+        }
+      ]
+    },
+    {
+      "sample": "S13_41_304",
+      "outputs": [
+        {
+          "output": "scores",
+          "max_abs": 5.543231964111328e-06
+        },
+        {
+          "output": "poses",
+          "max_abs": 2.7418136596679688e-06
+        }
+      ]
+    }
+  ],
+  "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/best_mpjpe_epoch_99.pth",
+  "seconds": 6.18946385383606
+}

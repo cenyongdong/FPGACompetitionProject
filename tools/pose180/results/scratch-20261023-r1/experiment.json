@@ -1,0 +1,25 @@
+{
+  "initialization": "all model modules initialized without any checkpoint",
+  "source_checkpoint": null,
+  "load_from": null,
+  "resume_from": null,
+  "auto_resume": false,
+  "epochs": 100,
+  "seed": 0,
+  "effective_batch": 32,
+  "physical_gpus": [
+    1,
+    6
+  ],
+  "optimizer_lr": 2e-05,
+  "lr_step": [
+    80
+  ],
+  "previous_transfer_run": "result/piw24_pose180_shared_20261022_r1",
+  "identical_training_settings_except_initialization_and_output_paths": true,
+  "scheduled_monitoring": false,
+  "automatic_failed_load_retries": false,
+  "delivery_sha256": "65d741e4411c34ed74906ee36df2efd08b90b40ba0b8e72cb50b9c43cad1bcfa",
+  "validation_adjustment": "Standard zero-initialized joint output projection has zero upstream gradient before its first update; revised real-data validation requires finite nonzero gradients in every active group after one AdamW step. Original validate-r1 exit1 and log retained; corrected validate-r2 exit0.",
+  "formal_started": 1792766153.6823416
+}

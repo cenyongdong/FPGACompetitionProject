@@ -1,0 +1,39 @@
+{
+  "reports": [
+    {
+      "source": "result/code_faithful/best_mpjpe_epoch_442.pth",
+      "loaded": 554,
+      "reinitialized": [
+        "bbox_head.query_embedding.weight"
+      ],
+      "query_shape": [
+        180,
+        512
+      ],
+      "query_sha256": "bd292e8bb7a82a56580c40e2dff94c97d4315357fcbe17d88922493fca590ba9",
+      "source_epoch": 442,
+      "old_optimizer_loaded": false,
+      "exact_loaded_parameters": true
+    },
+    {
+      "source": "result/code_faithful/best_mpjpe_epoch_442.pth",
+      "loaded": 554,
+      "reinitialized": [
+        "bbox_head.query_embedding.weight"
+      ],
+      "query_shape": [
+        180,
+        512
+      ],
+      "query_sha256": "bd292e8bb7a82a56580c40e2dff94c97d4315357fcbe17d88922493fca590ba9",
+      "source_epoch": 442,
+      "old_optimizer_loaded": false,
+      "exact_loaded_parameters": true
+    }
+  ],
+  "optimizer": "AdamW",
+  "optimizer_state_entries": 0,
+  "world_size": 2,
+  "pid": 262985,
+  "time": 1792675937.7393365
+}

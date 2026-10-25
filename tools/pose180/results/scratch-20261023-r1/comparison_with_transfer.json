@@ -1,0 +1,52 @@
+{
+  "scratch_best_epoch": 89,
+  "scratch_best_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_20261023_r1/best_mpjpe_epoch_89.pth",
+  "scratch_best_metrics": {
+    "mpjpe": 146.64447059611845,
+    "mpjpeh": 65.82998850643025,
+    "mpjpev": 75.22203943163827,
+    "mpjped": 75.63349066970295,
+    "candidate_count": 180,
+    "count_mae_at_0_2": 0.2769683026584867,
+    "mean_selected_at_0_2": 2.1793200408997957,
+    "matched_mpjpe_at_0_2": 199.7020169283549,
+    "mpjpe_1_people": 123.727110089024,
+    "mpjpe_2_people": 148.53202993186875,
+    "mpjpe_3_people": 172.5715910178893
+  },
+  "transfer_best_epoch": 99,
+  "transfer_best_metrics": {
+    "mpjpe": 120.99576821575867,
+    "mpjpeh": 55.101416034566846,
+    "mpjpev": 65.40246639600316,
+    "mpjped": 56.20231695902859,
+    "candidate_count": 180,
+    "count_mae_at_0_2": 0.0736196319018405,
+    "mean_selected_at_0_2": 1.9527096114519427,
+    "matched_mpjpe_at_0_2": 149.2079867897031,
+    "mpjpe_1_people": 100.88330908994386,
+    "mpjpe_2_people": 120.64832274638229,
+    "mpjpe_3_people": 146.8560825652482
+  },
+  "scratch_minus_transfer": {
+    "mpjpe_1_people": 22.84380099908013,
+    "mean_selected_at_0_2": 0.22661042944785303,
+    "mpjpe": 25.64870238035978,
+    "mpjpe_2_people": 27.883707185486458,
+    "mpjpeh": 10.728572471863409,
+    "candidate_count": 0,
+    "count_mae_at_0_2": 0.2033486707566462,
+    "mpjped": 19.431173710674358,
+    "mpjpe_3_people": 25.715508452641103,
+    "matched_mpjpe_at_0_2": 50.494030138651794,
+    "mpjpev": 9.819573035635102
+  },
+  "original100_epoch442": {
+    "legacy_mpjpe_mm": 123.0852578098301,
+    "mean_selected": 1.99629345603272,
+    "count_mae": 0.06428936605316973,
+    "confidence_matched_mpjpe_mm": 156.45138420683898
+  },
+  "completed": 1792853930.2785473,
+  "limitations": "One seed and the same 100-epoch budget; original-metric optimum is not detection optimum. No new grouped spatial-count inference performed."
+}

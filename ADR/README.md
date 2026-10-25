@@ -1,6 +1,6 @@
 # 架构决策与难点归档
 
-更新日期：2026-10-18。[ADR_49](ADR_49.md)为已批准的PS／NPU感知、PL HDMI、PC独立3D架构；HDMI三窗新推理及PC历史回放已分别实现，实时双路联合尚未验收。启动偶发故障未解决，开发当前整体暂停。[ADR_48](ADR_48.md)现行v2的score>0.2／3mm数值契约及旧DATA独立暂停保持。当前状态见[PROJECT-PROGRESS](../PROJECT-PROGRESS.md)，处理结果见[DIFFICULTIES](../DIFFICULTIES.md)，HDMI工程见[INTEGRATION](../FPGA/hdmi_candidate/INTEGRATION.md)。
+入口整理：2026-10-25。[ADR_49](ADR_49.md)保留已批准的PS／NPU感知、PL HDMI及PC独立3D架构；10月25日采集／推理主链进一步明确为路由器直连开发板，无PC候选尚未实板，见[软件候选](../tools/nexmon/board/README.md)。各ADR的阶段状态与授权按原日期理解；最新事实及本轮仅修正文档的执行边界统一见[PROJECT-PROGRESS](../PROJECT-PROGRESS.md)与[ToDoLists](../ToDoLists.md)。[ADR_48](ADR_48.md)现行v2仅适用于既定共享FP16范围，新180-query数值边界见[部署实测](../tools/pose180/deploy/RESULTS.md)；旧DATA仍独立暂停。
 
 编号表示决策建立顺序，不代表每项已通过。以对应ADR的证据、状态及限制判断结论；历史方案或阶段许可不构成现行执行授权。无关新决策使用下一个未使用编号，同一决策后续验证更新对应文件。
 

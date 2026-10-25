@@ -1,0 +1,19 @@
+{
+  "case": "r26",
+  "source_package": "hdmi-ps-release-20261020-r26",
+  "BOOT_sha256": "d3fcb796733117003f78fe8efa5e41f2278a79433d64603903f31869fa5345dd",
+  "source_isolated": false,
+  "candidate_boot_id": "15e2aefc-b8ea-493f-abfb-a54980089a75",
+  "GP_clock_nominal_Hz": 100000000,
+  "HP_clock_nominal_Hz": 200000000,
+  "SDK": 0,
+  "inference": 0,
+  "HDMI_START": 0,
+  "GP_event_overflow": false,
+  "HP_count_overflow_mask": 0,
+  "S01_current_pins": "0x802c006",
+  "S01_source_input_mask": "0x2c000",
+  "short_window_HP_cycles": 4017112,
+  "GP_freeze_cycle": 10902842303,
+  "HP_freeze_cycle": 21806078619
+}

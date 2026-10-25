@@ -1,0 +1,57 @@
+{
+  "name": "formal-r1",
+  "stage": "formal",
+<<<<<<< HEAD
+  "status": "running",
+=======
+  "status": "completed",
+>>>>>>> feat/model-refactor
+  "started": 1792766153.6823416,
+  "supervisor": {
+    "pid": 325965,
+    "start_ticks": "201370675"
+  },
+  "gpu_before": [
+    [
+      "1",
+      "GPU-cb01d43e-29fc-888d-b6ed-399005396572",
+      "24564",
+      "9302",
+      "0"
+    ],
+    [
+      "6",
+      "GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c",
+      "24564",
+      "1",
+      "0"
+    ]
+  ],
+  "command": [
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nnodes=1",
+    "--nproc_per_node=2",
+    "tools/pose180/train.py",
+    "configs/wifi/petr_wifi_pose180_scratch.py",
+    "--launcher",
+    "pytorch",
+    "--seed",
+    "0"
+  ],
+  "child": {
+    "pid": 325968,
+    "start_ticks": "201370696"
+  },
+<<<<<<< HEAD
+  "cuda_visible_devices": "1,6"
+=======
+  "cuda_visible_devices": "1,6",
+  "native_exit": 0,
+  "finished": 1792853930.2667189,
+  "elapsed_seconds": 87776.58438014984
+>>>>>>> feat/model-refactor
+}

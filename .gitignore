@@ -27,6 +27,9 @@ tools/**/evidence/
 
 #模型权重
 /model/
+*.pth
+*.npy
+*.onnx
 
 # ==========================================
 # 1. FPGA / Vivado / Procise 运行和生成文件

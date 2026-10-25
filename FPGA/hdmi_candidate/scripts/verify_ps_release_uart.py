@@ -5,11 +5,15 @@ import shlex
 import subprocess
 import sys
 import time
+import argparse
 
 R=Path(__file__).resolve().parents[3]
 E=R/'tools/pose-v1/evidence/hdmi-ps-release-20261020-r26'
+parser=argparse.ArgumentParser();parser.add_argument('--evidence',type=Path,default=E)
+parser.add_argument('--repository-root',type=Path,default=R)
+args=parser.parse_args();E=args.evidence.resolve();assets=args.repository_root.resolve()
 D=E/'uart-resume';D.mkdir(exist_ok=False)
-marker='HDMI_R26_UART_RX_20261021'
+marker='HDMI_UART_RX_'+E.name
 original=(R/'FPGA/hdmi_candidate/scripts/verify_hdmi_uart.py').read_text()
 reader=original.split("reader = r'''",1)[1].split("'''.replace",1)[0].replace('@@OUT@@',str(D))
 (D/'reader.ps1').write_text(reader,encoding='utf-8-sig')
@@ -24,7 +28,7 @@ with (D/'reader-stdout.txt').open('xb') as out,(D/'reader-stderr.txt').open('xb'
           "fd=os.open('/dev/ttyPS0',os.O_WRONLY|os.O_NOCTTY|os.O_NONBLOCK);"
           "n=os.write(fd,"+repr(('\r\n'+marker+'\r\n').encode())+");os.close(fd);print('PS_CONSOLE_MARKER_BYTES',n)")
     (D/'remote-code.py').write_text(code)
-    remote=subprocess.run([sys.executable,str(R/'.local/hdmi-live-20261017-r3/secure_transport.py'),'ssh',
+    remote=subprocess.run([sys.executable,str(assets/'.local/hdmi-live-20261017-r3/secure_transport.py'),'ssh',
         'python3 -c '+shlex.quote(code),'--timeout','10','--log',str(D/'ssh.log')],capture_output=True)
     (D/'ssh-stderr.log').write_bytes(remote.stderr)
     proc.wait(timeout=25)

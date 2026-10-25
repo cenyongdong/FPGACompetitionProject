@@ -1,0 +1,369 @@
+{
+  "structure_gradient": {
+    "migration": {
+      "source": "result/code_faithful/best_mpjpe_epoch_442.pth",
+      "loaded": 554,
+      "reinitialized": [
+        "bbox_head.query_embedding.weight"
+      ],
+      "query_shape": [
+        180,
+        512
+      ],
+      "query_sha256": "bd292e8bb7a82a56580c40e2dff94c97d4315357fcbe17d88922493fca590ba9",
+      "source_epoch": 442,
+      "old_optimizer_loaded": false,
+      "exact_loaded_parameters": true
+    },
+    "samples": [
+      "S11_01_308",
+      "S12_03_316",
+      "S13_41_304"
+    ],
+    "device": "cuda:0",
+    "checkpoint_sha256": "6493e2250b83aef59ce4825e15d2d0043a59490275f75933f9a59867867d3221",
+    "ports": [
+      [
+        2,
+        180
+      ],
+      [
+        2,
+        180,
+        14,
+        3
+      ]
+    ],
+    "joint_layer_inputs": [
+      [
+        14,
+        2,
+        256
+      ],
+      [
+        14,
+        2,
+        256
+      ]
+    ],
+    "maximum_shared_vs_unshared": 2.384185791015625e-07,
+    "TopK_sort_argsort_calls": 0,
+    "native_output_order_preserved": true,
+    "losses": {
+      "enc_loss_cls": 0.004641131963580847,
+      "enc_loss_kpt": 0.818335771560669,
+      "loss_cls": 4.839542388916016,
+      "loss_kpt": 1.7018247842788696,
+      "d0.loss_cls": 4.94638204574585,
+      "d0.loss_kpt": 1.9480305910110474,
+      "d1.loss_cls": 4.619462966918945,
+      "d1.loss_kpt": 1.7096015214920044,
+      "d0.loss_kpt_refine": 1.7175041437149048,
+      "d1.loss_kpt_refine": 1.6914392709732056
+    },
+    "gradient_l2": {
+      "query": 2.0325894355773926,
+      "joint": 2.5614471435546875,
+      "joint_regression": 11.76317310333252,
+      "encoder": 243.04397583007812
+    },
+    "positive_counts": [
+      1,
+      2
+    ],
+    "zero_positive_loss": 0.0,
+    "passed": true,
+    "seconds": 7.10295295715332,
+    "gpu_peak_bytes": 531652096
+  },
+  "onnx": {
+    "passed": true,
+    "path": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/gates/onnx/pose180_shared.onnx",
+    "bytes": 52661173,
+    "operators": {
+      "Identity": 12,
+      "MatMul": 126,
+      "Add": 202,
+      "Transpose": 72,
+      "Constant": 221,
+      "Shape": 8,
+      "Gather": 16,
+      "Div": 51,
+      "Mul": 53,
+      "Slice": 22,
+      "Reshape": 81,
+      "Softmax": 16,
+      "Gemm": 16,
+      "ReduceMean": 54,
+      "Sub": 27,
+      "Pow": 27,
+      "Sqrt": 27,
+      "Relu": 36,
+      "Split": 1,
+      "Unsqueeze": 18,
+      "ConstantOfShape": 4,
+      "Equal": 4,
+      "Where": 4,
+      "Expand": 4,
+      "Concat": 5,
+      "Sigmoid": 1,
+      "Squeeze": 1
+    },
+    "output_shapes": [
+      [
+        1,
+        180
+      ],
+      [
+        1,
+        180,
+        14,
+        3
+      ]
+    ],
+    "comparisons": [
+      {
+        "sample": "S11_01_308",
+        "outputs": [
+          {
+            "output": "scores",
+            "max_abs": 8.288770914077759e-08
+          },
+          {
+            "output": "poses",
+            "max_abs": 1.5139579772949219e-05
+          }
+        ]
+      },
+      {
+        "sample": "S12_03_316",
+        "outputs": [
+          {
+            "output": "scores",
+            "max_abs": 7.636845111846924e-08
+          },
+          {
+            "output": "poses",
+            "max_abs": 7.808208465576172e-06
+          }
+        ]
+      },
+      {
+        "sample": "S13_41_304",
+        "outputs": [
+          {
+            "output": "scores",
+            "max_abs": 2.682209014892578e-07
+          },
+          {
+            "output": "poses",
+            "max_abs": 1.8596649169921875e-05
+          }
+        ]
+      }
+    ],
+    "checkpoint": "epoch442_migrated_queries_reinitialized",
+    "seconds": 5.238778352737427
+  },
+  "native_evaluation": {
+    "passed": true,
+    "frames": 3,
+    "metrics": {
+      "mpjpe": 149.00887552897134,
+      "mpjpeh": 60.59665616353353,
+      "mpjpev": 78.61142603556316,
+      "mpjped": 80.95695114135742,
+      "candidate_count": 180,
+      "count_mae_at_0_2": 1.0,
+      "mean_selected_at_0_2": 1.0,
+      "matched_mpjpe_at_0_2": 1026.5083312988281,
+      "mpjpe_1_people": 154.3282012939453,
+      "mpjpe_2_people": 87.37611389160156,
+      "mpjpe_3_people": 205.3223114013672
+    },
+    "output_shapes": [
+      [
+        180,
+        14,
+        3
+      ],
+      [
+        180,
+        14,
+        3
+      ],
+      [
+        180,
+        14,
+        3
+      ]
+    ]
+  },
+  "smoke": {
+    "passed": true,
+    "job": "smoke-r3",
+    "directory": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/smoke-r3",
+    "native_exit": 0,
+    "finished": 1792675892.3494763
+  },
+  "smoke_ddp": {
+    "ranks": [
+      {
+        "rank": 0,
+        "optimizer_entries": 218,
+        "query_sha256": "e8d9131c8440182c58c3af716bff0a7df8dca0e2c2118989aa4ad3573bcd081e"
+      },
+      {
+        "rank": 1,
+        "optimizer_entries": 218,
+        "query_sha256": "e8d9131c8440182c58c3af716bff0a7df8dca0e2c2118989aa4ad3573bcd081e"
+      }
+    ],
+    "iter": 6,
+    "epoch": 0,
+    "time": 1792675889.4769127
+  },
+  "formal_job": {
+    "name": "formal-r1",
+    "stage": "formal",
+    "started": 1792675928.1591754,
+    "status": "running",
+    "supervisor": {
+      "pid": 262977,
+      "start_ticks": "192348122"
+    },
+    "gpu_before": [
+      [
+        "1",
+        "GPU-cb01d43e-29fc-888d-b6ed-399005396572",
+        "24564",
+        "9315",
+        "0"
+      ],
+      [
+        "6",
+        "GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c",
+        "24564",
+        "15",
+        "0"
+      ]
+    ],
+    "command": [
+      "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+      "-B",
+      "-m",
+      "torch.distributed.run",
+      "--standalone",
+      "--nnodes=1",
+      "--nproc_per_node=2",
+      "tools/pose180/train.py",
+      "configs/wifi/petr_wifi_pose180_shared.py",
+      "--launcher",
+      "pytorch",
+      "--seed",
+      "0"
+    ],
+    "child": {
+      "pid": 262980,
+      "start_ticks": "192348156"
+    },
+    "cuda_visible_devices": "1,6"
+  },
+  "initialization": {
+    "reports": [
+      {
+        "source": "result/code_faithful/best_mpjpe_epoch_442.pth",
+        "loaded": 554,
+        "reinitialized": [
+          "bbox_head.query_embedding.weight"
+        ],
+        "query_shape": [
+          180,
+          512
+        ],
+        "query_sha256": "bd292e8bb7a82a56580c40e2dff94c97d4315357fcbe17d88922493fca590ba9",
+        "source_epoch": 442,
+        "old_optimizer_loaded": false,
+        "exact_loaded_parameters": true
+      },
+      {
+        "source": "result/code_faithful/best_mpjpe_epoch_442.pth",
+        "loaded": 554,
+        "reinitialized": [
+          "bbox_head.query_embedding.weight"
+        ],
+        "query_shape": [
+          180,
+          512
+        ],
+        "query_sha256": "bd292e8bb7a82a56580c40e2dff94c97d4315357fcbe17d88922493fca590ba9",
+        "source_epoch": 442,
+        "old_optimizer_loaded": false,
+        "exact_loaded_parameters": true
+      }
+    ],
+    "optimizer": "AdamW",
+    "optimizer_state_entries": 0,
+    "world_size": 2,
+    "pid": 262985,
+    "time": 1792675937.7393365
+  },
+  "progress": {
+    "stage": "training",
+    "time": 1792676017.8316503,
+    "epoch": 1,
+    "iter": 500,
+    "inner_iter": 500,
+    "max_epochs": 100,
+    "pid": 262985,
+    "elapsed_seconds": 80.09345293045044,
+    "lr": [
+      2.0000000000000003e-06,
+      2e-05
+    ],
+    "metrics": {
+      "enc_loss_cls": 0.04916331171989441,
+      "enc_loss_kpt": 0.472403883934021,
+      "loss_cls": 1.7143888473510742,
+      "loss_kpt": 0.559024453163147,
+      "d0.loss_cls": 1.7105512619018555,
+      "d0.loss_kpt": 0.5704545974731445,
+      "d1.loss_cls": 1.6836943626403809,
+      "d1.loss_kpt": 0.5932979583740234,
+      "d0.loss_kpt_refine": 0.5581214427947998,
+      "d1.loss_kpt_refine": 0.5602060556411743,
+      "loss": 8.471305847167969
+    },
+    "gradient_sample": {
+      "iter": 500,
+      "query_grad": 0.1182977706193924,
+      "joint_grad": 0.06401645392179489
+    },
+    "cuda_allocated": 498721280,
+    "cuda_peak": 1083871232
+  },
+  "captured_at": 1792676021.6066072,
+  "gpu": "0, GPU-e882fdbe-1f68-fce3-ad38-6ad3bc6b845e, 19091, 76\n1, GPU-cb01d43e-29fc-888d-b6ed-399005396572, 11103, 55\n2, GPU-b38deef0-3a36-fe52-0b9b-16de6ed043f0, 20071, 100\n3, GPU-fee0d1d1-bbe1-a567-27d5-6f3645734acb, 19617, 99\n4, GPU-a88ed63b-3592-0f8c-ffa1-991efa109d2f, 7577, 73\n5, GPU-ded0ed80-16bd-eb8c-c54f-3d8b3363f706, 7121, 81\n6, GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c, 1805, 46\n7, GPU-def1d982-7b9f-cb9a-24e1-e2aa36229093, 15, 100\n",
+  "compute_apps": "GPU-e882fdbe-1f68-fce3-ad38-6ad3bc6b845e, 3887467, 9140\nGPU-e882fdbe-1f68-fce3-ad38-6ad3bc6b845e, 1796916, 9768\nGPU-cb01d43e-29fc-888d-b6ed-399005396572, 3887468, 9138\nGPU-cb01d43e-29fc-888d-b6ed-399005396572, 2702371, 1782\nGPU-b38deef0-3a36-fe52-0b9b-16de6ed043f0, 2400446, 20048\nGPU-fee0d1d1-bbe1-a567-27d5-6f3645734acb, 2400446, 19594\nGPU-a88ed63b-3592-0f8c-ffa1-991efa109d2f, 2430409, 7554\nGPU-ded0ed80-16bd-eb8c-c54f-3d8b3363f706, 2430409, 7098\nGPU-b6dced7c-9ed0-cc76-f075-a68df84c433c, 2702372, 1782\n",
+  "protected_source_sha256": {
+    "opera/models/utils/transformer.py": "74ffb67cda14faf475ae1b73f8b0496beac67a7bd6aeab61cc9eb37cfdd5ae20",
+    "opera/models/dense_heads/petr_head.py": "5758dc05c7c8e07370b8178f2782d5828b0a9e19b94de363c3a9c9669b57fdad",
+    "result/code_faithful/petr_wifi.py": "9851f018164c56736c246246a199c4d5eba0d26c1bc0a98dcb40c6bf9059229c"
+  },
+  "uploaded_sources": {
+    "configs/wifi/petr_wifi_pose180_shared.py": "c8213b8f9e320f1e85683ac3ac79bab440cacb1e4495ad68e775efe6a95956cf",
+    "configs/wifi/petr_wifi_pose180_smoke.py": "def42f89cb60a8de2afa14b3887c8b49d2377332066969128178fb810d95940c",
+    "opera/models/pose180/__init__.py": "97b3f88da98a8e9d9c1b2d991239caea7738795be8d19f86ce19a8b3608923b2",
+    "opera/models/pose180/detector.py": "22a767327f74779cee986183851dde50bc76a049714fc229bfaf856b335ff667",
+    "opera/models/pose180/evaluation.py": "23c1878b201b7ac8c082a1ca49231bd44d8188b11102062ecbb94e2f99d28bd7",
+    "opera/models/pose180/head.py": "a7bea83961d2e169cd5b6433581fb556c20099df435e34d15b45b3e4b6a731bb",
+    "opera/models/pose180/hooks.py": "0bbaa41cc69be7246b616e2298963d4b2e8a594ed4ae57afb62a23250f5c77ff",
+    "opera/models/pose180/transformer.py": "0d93de61767d28cd0211fbd3f8aa204958932db231b46f24c969f5107819191e",
+    "tools/pose180/common.py": "069284f9c1878eb05d529729e0cef2db9669306bceaf15324652719e50d4ceda",
+    "tools/pose180/export.py": "f73f64489f79c408ac8db5827c2a16f932b2df079ea24b4081b8557848ef9d3f",
+    "tools/pose180/manage.py": "647a4765e2ce2875d20fffe40eada02d162c30ad9cdd177846078af99d7e39ce",
+    "tools/pose180/train.py": "8ee04a45d2963a221c206c846f65e9ad275fc102162908aac1c0852e51cd12f4",
+    "tools/pose180/validate.py": "379e82f78b6d0b28fb2118ff0bcf5eaa7f0da97428332da15353142687840712",
+    "tools/pose180/validate_eval.py": "e5d35da287a76d3ef9aee819e984a10e88c762a484edea88f31a9db8bf773718"
+  }
+}

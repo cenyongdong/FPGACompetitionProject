@@ -25,14 +25,23 @@ def root(name):return read(ROOT_META/(name+'.json'))
 
 def authorize():
     a=read(BASE/'authorization.json')
-    b.need(BASE==Path('/root/hdmi-ps-release-20261020-r26') and cfg['package_id']=='ps-release-r26','Wrong actual package')
-    b.need(a['active'] and a['scope']=='PS reset/FIFO/release passive diagnosis' and a['caps']==cfg['caps'],'Diagnostic authorization differs')
+    scopes={'ps-release-r26':('/root/hdmi-ps-release-20261020-r26','PS reset/FIFO/release passive diagnosis',2),
+            's01-isolation-r28':('/root/hdmi-s01-isolation-20261022-r28','S01 source isolation passive diagnosis',1),
+            's01-soak-r29':('/root/hdmi-s01-soak-20261022-r29','S01 isolated 30 minute no-SDK soak',1),
+            'hp2-cycletrace-r30':('/root/hdmi-hp2-cycletrace-20261022-r30','Passive HP2 consecutive cycle capture',1),
+            'hp2-protocol-r31':('/root/hdmi-protocol-checker-20261023-r31','Passive HP2 native protocol check and waveform capture',1)}
+    b.need(cfg['package_id'] in scopes,'Unknown actual package')
+    directory,scope,starts=scopes[cfg['package_id']]
+    b.need(BASE==Path(directory),'Wrong actual package directory')
+    b.need(a['active'] and a['scope']==scope and a['caps']==cfg['caps'],'Diagnostic authorization differs')
     b.need(not (ROOT_META/'closed.json').exists(),'Package already closed')
-    b.need(cfg['caps']==dict(candidate_starts=2,original_fallbacks=1,SDK_Open=0,DMA=False,inference=False,HDMI_START=False,physical_key=0,HDMI_long_term=False),'Scope changed')
+    b.need(cfg['caps']==dict(candidate_starts=starts,original_fallbacks=1,SDK_Open=0,DMA=False,inference=False,HDMI_START=False,physical_key=0,HDMI_long_term=False),'Scope changed')
+    if cfg['package_id']=='s01-soak-r29':
+        b.need(cfg.get('passive_soak_seconds')==1800,'Unexpected passive soak duration')
 
 
 def bind(n):
-    b.need(n in (1,2),'Cycle outside budget')
+    b.need(1<=n<=cfg['caps']['candidate_starts'],'Cycle outside budget')
     run=BASE/('run-'+str(n));b.ROOT=run;b.META=run/'metadata';b.MOUNT=run/'boot-mount'
     return run
 
@@ -94,7 +103,9 @@ def main(stage,n):
         b.reserve('observe',dict(SDK=0,DMA=0,HDMI_START=0,physical_key=0))
         b.verify_file(PACKAGE/'ai_preopen_monitor',cfg['files']['ai_preopen_monitor'])
         probe_start=time.monotonic()
-        out,code=child(run,'legacy',lambda out:[str(PACKAGE/'ai_preopen_monitor'),str(out/'trace.jsonl')])
+        soak=cfg['package_id']=='s01-soak-r29'
+        extra=['--seconds',str(cfg['passive_soak_seconds'])] if soak else []
+        out,code=child(run,'legacy',lambda out:[str(PACKAGE/'ai_preopen_monitor'),str(out/'trace.jsonl'),*extra])
         result=dict(valid=False,healthy_idle=False,event_overflow=True,boot_id=identity,legacy_exit=code,SDK=0,DMA=0,HDMI_START=0,
             probe_Linux_monotonic_bounds_seconds=[probe_start,time.monotonic()])
         if code==0:
@@ -106,7 +117,8 @@ def main(stage,n):
                 rows=[json.loads(x) for x in (new/'raw.jsonl').read_text().splitlines()]
                 captured=next(x for x in rows if x.get('event')=='ps_release_snapshot')
                 decoded=decode(captured['words'])
-                legacy=next(json.loads(x) for x in (out/'trace.jsonl').read_text().splitlines() if x.strip())
+                legacy_rows=[json.loads(x) for x in (out/'trace.jsonl').read_text().splitlines() if x.strip()]
+                legacy=legacy_rows[0]
                 w=legacy['words'];hist=captured['boot_words']
                 quiet=(len(w)==104 and w[0]==0x41495201 and w[1]>0 and w[2]&31==0x19 and w[3]==0 and
                        all(w[8+16*c]==w[9+16*c]==w[15+16*c]==0 for c in range(6)))
@@ -114,11 +126,54 @@ def main(stage,n):
                 first_ar=decoded['first_PS_AR_HP_cycle']
                 prior_return=ready_return is not None and (first_ar is None or ready_return<first_ar)
                 startup_read_idle=ready_return is None and decoded['raw_HP_handshakes']['PS_AR']==0
-                result.update(valid=b.boot_id()==identity and not b.owners(),healthy_idle=quiet and startup_read_idle and not decoded['HP_count_overflow_mask'],
+                # Channel4 word11 exposes actual S01 input BURST/SIZE/LEN/ID,
+                # ARVALID and RREADY. All must be zero in the isolated image;
+                # the original reader always drives ARSIZE=3, ARBURST=1.
+                isolation_ok=cfg['package_id'] not in ('s01-isolation-r28','s01-soak-r29','hp2-cycletrace-r30','hp2-protocol-r31') or (len(w)==104 and (w[83]&0x7fff9)==0)
+                if cfg['package_id'] in ('s01-isolation-r28','s01-soak-r29','hp2-cycletrace-r30','hp2-protocol-r31'):
+                    result.update(source_isolation_live_confirmed=isolation_ok,S01_current_pins=w[83],S01_source_input_mask=w[83]&0x7fff9)
+                result.update(valid=b.boot_id()==identity and not b.owners() and isolation_ok,healthy_idle=quiet and startup_read_idle and not decoded['HP_count_overflow_mask'] and isolation_ok,
                     ready_return_before_first_observed_AR=prior_return,startup_read_idle=startup_read_idle,
                     event_overflow=decoded['event_overflow'],decoded=decoded,boot_words=hist)
+                if soak:
+                    elapsed=next(x for x in legacy_rows if x.get('event')=='passive_soak_window')
+                    complete=elapsed['requested_seconds']==1800 and elapsed['observed_seconds']>=1800 and elapsed['stop_flags']==0
+                    no_activity=(decoded['first_raw_PS_RVALID_HP_cycle'] is None and decoded['first_PS_AR_HP_cycle'] is None and
+                                 not any(decoded['raw_HP_handshakes'].values()) and
+                                 all(w[8+16*c+j]==0 for c in range(6) for j in (*range(8),15)))
+                    result.update(passive_soak=elapsed,completed_passive_soak=complete,
+                                  healthy_idle=result['healthy_idle'] and complete and no_activity)
         save(b.META/'observe.json',result)
         return result
+    if stage=='cycletrace':
+        restored=read(b.META/'restore.json');identity=b.boot_id()
+        b.need(cfg['package_id'] in ('hp2-cycletrace-r30','hp2-protocol-r31') and restored['passed'] and restored['boot_id']==identity and
+               restored['BOOT_sha256']==ORIGINAL and not b.owners(),'Cycle capture requires restored candidate runtime')
+        b.reserve('cycletrace',dict(SDK=0,DMA=0,HDMI_START=0,MMIO_writes=0))
+        for name in ('capture_hp2_cycletrace.py','decode_hp2_cycletrace.py'):
+            b.verify_file(PACKAGE/name,cfg['files'][name])
+        out,code=child(run,'cycletrace',lambda out:['python3',str(PACKAGE/'capture_hp2_cycletrace.py'),str(out/'raw.json'),identity])
+        return save(b.META/'cycletrace.json',dict(valid=code==0 and b.boot_id()==identity and not b.owners(),
+            exit_code=code,boot_id=identity,MMIO_writes=0,SDK=0,output=str(out/'raw.json')))
+    if stage=='protocol':
+        restored=read(b.META/'restore.json');identity=b.boot_id()
+        b.need(cfg['package_id']=='hp2-protocol-r31' and restored['passed'] and restored['boot_id']==identity and
+               restored['BOOT_sha256']==ORIGINAL and not b.owners(),'Protocol capture requires restored candidate runtime')
+        b.reserve('protocol',dict(SDK=0,DMA=0,HDMI_START=0,MMIO_writes=0))
+        for name in ('capture_hp2_protocol.py','decode_hp2_protocol.py','decode_hp2_cycletrace.py','hp2_protocol_checks.py'):
+            b.verify_file(PACKAGE/name,cfg['files'][name])
+        out,code=child(run,'protocol',lambda out:['python3',str(PACKAGE/'capture_hp2_protocol.py'),str(out/'raw.json'),identity])
+        return save(b.META/'protocol.json',dict(valid=code==0 and b.boot_id()==identity and not b.owners(),
+            exit_code=code,boot_id=identity,MMIO_writes=0,SDK=0,output=str(out/'raw.json')))
+    if stage=='launch-observe':
+        restored=read(b.META/'restore.json')
+        b.need(cfg['package_id']=='s01-soak-r29' and restored['passed'] and restored['boot_id']==b.boot_id(),
+               'Passive soak launch requires restored candidate runtime')
+        save(b.META/'observe-launch-attempt.json',dict(boot_id=b.boot_id(),automatic_retry=False))
+        with (run/'observe-controller.stdout.log').open('xb') as so,(run/'observe-controller.stderr.log').open('xb') as se:
+            p=subprocess.Popen([sys.executable,str(Path(__file__).resolve()),'observe','--cycle',str(n)],
+                               stdin=subprocess.DEVNULL,stdout=so,stderr=se,start_new_session=True)
+        return save(b.META/'observe-launch.json',dict(boot_id=b.boot_id(),helper_pid=p.pid,command_issued=True))
     if stage=='fallback-reboot':
         restored=read(b.META/'restore.json')
         b.need(restored['passed'] and restored['boot_id']==b.boot_id(),'Runtime not restored')

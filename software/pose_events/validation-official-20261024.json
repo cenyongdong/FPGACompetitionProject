@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-24",
+  "status": "official_sources_checked_real_semantics_remain_unknown",
+  "hardware_test": false,
+  "new_inferences": 0,
+  "model_sdk_protocol_changed": false,
+  "host": {
+    "system": "Windows-10-10.0.19045-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "measurement": "Release C++17 -O2 -DNDEBUG -ffp-contract=off; host only, not ARM/PS measured"
+  },
+  "contract_audit": {
+    "date": "2026-10-24",
+    "hardware_test": false,
+    "source": "D:\\FPGACompetitionProject\\demo_v1\\runs\\delivery-long-r1\\actual.full",
+    "receipts": "D:\\FPGACompetitionProject\\demo_v1\\runs\\delivery-long-r1\\received.jsonl",
+    "source_unchanged_size_and_mtime": true,
+    "consumed_prefix_bytes": 951148032,
+    "frames": 15648,
+    "test": 7824,
+    "train": 7824,
+    "segment_boundaries": 409,
+    "source_index_gaps": 1510,
+    "unique_sources": 15648,
+    "source_segments": 410,
+    "semantic_contract": {
+      "topology": "project-14-v1: matches Wi-Fi limb_loss and existing viewer",
+      "anatomical_index_mapping_verified": false,
+      "coordinate_unit_declared": "metres in existing visualization artifacts",
+      "documented_display_up": [
+        0,
+        0,
+        -1
+      ],
+      "physical_up_calibration_verified": false,
+      "source_capture_times_verified": false,
+      "single_subject_identity_verified": false,
+      "conclusion": "Real actions, hold durations and assistance intent remain unknown",
+      "evidence": [
+        "D:/Person-in-WIFI-3D/Person-in-WiFi-3D-repo/opera/datasets/wifi_pose.py: loads N*14*3 without anatomical index names",
+        "D:/Person-in-WIFI-3D/Person-in-WiFi-3D-repo/opera/models/losses/limb_loss.py: numbered topology only",
+        "D:/Person-in-WIFI-3D/Person-in-WiFi-3D-repo/visualization/README.md: metre units; Z-down display convention; --fps playback is not RF clock",
+        "software/core/display/skeleton_render.cpp: display projection uses -(C2-3.4), not a room calibration",
+        "demo_v1/host/run.mjs: source_ns taken from host clock at transmission",
+        "demo_v1/host/full_record.mjs: flags=live_board_output means fresh inference, not live RF capture"
+      ]
+    },
+    "simulated_feedback": {
+      "service_period_ns": 100000000,
+      "service_timeout_ns": 500000000,
+      "result_timeout_ns": 300000000,
+      "tail_faults": [
+        "result_stale_with_fresh_input",
+        "input_stale",
+        "service_lost"
+      ],
+      "statement": "Controls are generated virtual-time stimuli, not historical PL observations"
+    },
+    "validation_scope": "Existing full records decoded and selected pose checked; no new inference, accuracy labels or RF sampling claim"
+  },
+  "archive": {
+    "origin": "archived_board_inference",
+    "hardware_test": false,
+    "dataset_profile": "person_in_wifi_3d_2024_audit_v1",
+    "dataset_facts": {
+      "joint_count": 14,
+      "training_coordinate_unit": "m",
+      "training_preserves_npy_joint_order": true,
+      "nominal_camera_fps_in_paper": 15,
+      "capture_timeline_verified": false
+    },
+    "capture_clock_verified": false,
+    "mapping_verified": false,
+    "up_verified": false,
+    "frames": 15648,
+    "rows": 35689,
+    "unknown_stance": 15648,
+    "help_events": 0,
+    "frame_decode_and_core_us": {
+      "mean": 27.1236835378,
+      "p99": 38,
+      "max": 125.5
+    },
+    "core_and_feedback_us": {
+      "mean": 0.118858640082,
+      "p99": 0.3,
+      "max": 1.6
+    },
+    "wall_with_io_ms": 531.4292,
+    "processor_size_bytes": 640,
+    "feedback_size_bytes": 128,
+    "availability_rows": {
+      "initializing": 3,
+      "input_stale": 2,
+      "result_stale": 2,
+      "service_lost": 1,
+      "unverified": 35681
+    }
+  },
+  "synthetic": {
+    "passed_cases": 36,
+    "synthetic_logic_only": true,
+    "hardware_test": false,
+    "host_core_and_feedback_us": {
+      "verified_synthetic": {
+        "n": 50000,
+        "mean": 0.112412,
+        "p99": 0.2,
+        "max": 2.8
+      },
+      "unverified_archive_branch": {
+        "n": 50000,
+        "mean": 0.059014,
+        "p99": 0.1,
+        "max": 14.1
+      }
+    },
+    "processor_size_bytes": 640,
+    "feedback_size_bytes": 128
+  },
+  "independent_trace_checks": {
+    "unverified_frames": 15648,
+    "tail_states": [
+      "result_stale",
+      "input_stale",
+      "service_lost"
+    ],
+    "freeze_latch_and_ack": true
+  },
+  "executions": {
+    "tests": {
+      "command": [
+        "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\build\\pose_events_tests.exe",
+        "D:\\FPGACompetitionProject\\.local\\pose-events-official-20261024-r1\\validation\\synthetic-summary.json",
+        "D:\\FPGACompetitionProject\\.local\\pose-events-official-20261024-r1\\validation\\synthetic-feedback.csv"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.21657229999254923,
+      "peak_working_set_bytes": 4509696,
+      "process_cpu_seconds": 0.015625
+    },
+    "archive": {
+      "command": [
+        "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\build\\pose_events_offline.exe",
+        "D:\\FPGACompetitionProject\\.local\\pose-events-validation-20261024-r1\\archive-input.csv",
+        "D:\\FPGACompetitionProject\\.local\\pose-events-official-20261024-r1\\validation\\archive-trace.csv",
+        "D:\\FPGACompetitionProject\\.local\\pose-events-official-20261024-r1\\validation\\archive-summary.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.432319200001075,
+      "peak_working_set_bytes": 4677632,
+      "process_cpu_seconds": 0.53125
+    }
+  },
+  "limits": [
+    "No verified anatomical index map or physical up calibration for real outputs",
+    "Host send/receive times do not establish original human action duration",
+    "Synthetic logic tests/benchmark are not human recognition accuracy or PL timing",
+    "No action labels: F1, human request recall and false alarms/hour remain unavailable",
+    "sizeof excludes string storage; process peak includes runtime/CLI/timing buffers"
+  ],
+  "dataset_contract": {
+    "path": "D:\\FPGACompetitionProject\\software\\pose_events\\dataset-contract-20261024.json",
+    "schema": "person_in_wifi_3d_2024_audit_v1",
+    "processed_labels_inspected": 97770,
+    "facts_match_offline_executable": true,
+    "existing_result_sources_checked": 15648
+  },
+  "official_source_check": {
+    "path": "D:\\FPGACompetitionProject\\software\\pose_events\\official-source-check-20261024.json",
+    "schema": "person_in_wifi_3d_official_search_v1",
+    "resolved_semantic_prerequisites": [],
+    "core_source_or_semantic_configuration_changed": false
+  }
+}

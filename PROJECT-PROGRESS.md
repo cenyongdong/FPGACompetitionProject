@@ -1,39 +1,50 @@
 # 项目进度总览
 
-更新：2026-10-21。r26已取得符合既定时序／DRC范围的实际bit／BOOT；第1次无SDK被动启动复现异常，停止后续候选并安全回原BOOT，包关闭、余额0。D45未解决；当前缺匹配的PS／HP2复位资料，用户将向比赛官方咨询。
+更新：2026-10-25。**本轮用户仅批准修正现行文档，其余事务暂不执行。** 以下为已有结果及恢复入口，本轮未重新查询训练或设备实时状态，未启动开发、测试、采集或板端负载。
 
-**项目已具备固定CSI窗口的板端推理能力，并完成一次三窗新推理到HDMI的有界闭环。当前首要阻塞是候选跨启动偶发HP2异常；真实CSI接入现有模型、板端实时PC发布及双路长期联合演示尚未完成。** 不用历史83/100估计代替新架构验收。
+180-query迁移最佳模型已完成训练、转换及独立部署；30分钟124,518次新推理在获准忽略误差的范围内正常结束，数值精度及耗时长尾仍未验收。真实CSI已完成1发3收共同事件采集和软件对齐；无PC板端候选仅完成软件验证及ARM64编译，尚未实板。HDMI r53因首次索引读取内容混合停止，已回原BOOT、包关闭且余额0；持续实屏和联合长期未通过。各分支证据及恢复入口见下表，不将历史独立验证合并为整机验收。
 
-架构按[ADR_49](ADR/ADR_49.md)：PS＋NPU感知，PS绘制本地骨架帧，PL读帧并输出HDMI，PC独立3D展示；未来正式主链停用VPU／RTSP，旧演示保留。
+架构按[ADR_49](ADR/ADR_49.md)：PS＋NPU感知，PS绘制本地骨架帧，PL读帧并输出HDMI，PC独立3D展示；未来正式主链停用VPU／RTSP，旧演示保留。10月25日用户进一步明确采集／推理正式链不经过PC，路由器直接进入开发板；PC展示与开发诊断的角色分别保留，实施边界见[板端候选](tools/nexmon/board/README.md)。
 
 ## 已完成内容与验收范围
 
 | 模块 | 已完成 | 当前边界与资料 |
 |---|---|---|
 | 预处理与混合推理核心 | 固定输入预处理、CPU算子注册和NPU执行链已验证；共享FP16候选按现行数值门禁获阶段认可 | 模型／RAW、数学、SDK及NPU分配保持；范围见[ADR_48](ADR/ADR_48.md)、[核心说明](software/core/README.md) |
+| 180-query独立模型分支 | 迁移100轮、最佳导出与同测试集对照，Icraft转换及无TopK／Host桥候选部署完成；独立模型30分钟124,518次饱和推理正常结束 | 按用户授权忽略误差测试稳定性；D48数值／量化精度与耗时长尾仍未验收。[训练](tools/pose180/STATUS.md)、[部署实测](tools/pose180/deploy/RESULTS.md) |
 | 独立共享模型稳定性 | 10月15日完成30分钟、62,945次串行推理，数值与内存／句柄观察通过 | 有D41时延长尾；该历史配置没有叠加HDMI，不能替代当前联合长期验收。[阶段记录](ADR/ADR_48.md#2026-10-15后续独立实板与30分钟验证) |
-| HDMI构建与显示 | 原厂适配工具链、实际bit／BOOT、静态色条、DDR图案、历史骨架、换帧及STOP释放已有验证；r24实际布线与资源审计完成 | 原AI两个最小周期例外保留；首次reader故障D44与跨启动D45未关闭。[工程入口](FPGA/hdmi_candidate/INTEGRATION.md)、[资源审计](FPGA/hdmi_candidate/R24-RESOURCE-AUDIT.md) |
-| 新推理到HDMI | r13在一次健康启动中通过四档DMA，再完成3次新推理、3帧采纳、数值检查和现场切换确认 | 每帧约5秒观察，证明短时闭环；不保证每次健康启动之后均长期稳定。[成功方法与证据](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md#31-r13成功运行的实际方法与证据) |
-| 启动故障诊断 | r26被动PS／PL时间轴、实际bit／BOOT及1次无SDK故障样本完成；原BOOT已恢复 | PS输出初态已高、PL释放后HDMI保留返回，未见已观测AR；仅等待PS高电平不能解释该样本。缺当前HP2／FIFO复位契约。[实际结果与限制](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/PLAN.md)、[恢复状态](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/state.json) |
-| PC骨架传输与3D回放 | 本机C++→TCP→WebSocket→Three.js链路完成；60份历史真实结果按17／43帧分段回放 | 不是板端实时发布或新推理；未做HDMI与PC双路联合验收。[实现与验证](software/pc_viewer/README.md) |
-| 真实CSI采集 | 训练顺序、经验尺度、时钟／槽位关联已核；MT7922的5GHz热点实开采集及手机路径对照完成 | AP可采CSI，但两条路径均未稳定300Hz；仍缺三节点及人体效果，model_ready=false。[最新采集结果与恢复记录](tools/nexmon/README.md) |
+| HDMI构建与显示 | 原厂适配工具路线、真实波形与完整160位协议检查已接入；r45完成合格bit/BOOT，r46～r53复用 | 原AI两项Min Period例外保留，无新增例外；D44/D45未关闭。[物理结果](tools/pose-v1/evidence/hp2-deferred-consume-20261024-r45/RESULTS.md)、[当前结构](FPGA/hdmi_candidate/INTEGRATION.md) |
+| 新推理到HDMI | r40健康启动90帧有界联动和现场更新通过；r52真实异常消费16拍后同启动完成90次采纳及数值门检 | r52吞吐积压；r53数值错误停止，用户仍只见瞬间骨架，联合长期未通过。[r52](tools/pose-v1/evidence/hdmi-long-git-20261024-r52/RESULTS.md)、[r53](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md) |
+| 启动故障诊断 | 视频源端隔离后仍复现；r37抓到AR=0时早期RVALID及原生协议报警，r46/r52同启动有限消费16拍 | 缓解不等于根治；保留历史报警，检查器独立重置后fresh160准入，AI四路未改。[协议原值](tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md)、[消费规则](FPGA/hdmi_candidate/diagnostics/mmio32_r46/README.md) |
+| HDMI PS渲染与调度 | 直接1080p RGB565，扩大视口且骨架/标注大小保持；r47 CPU绘制/转换140.694→3.225ms；r51静态准备重叠、r53单SDK线程流水 | CPU收益和短样本29.521Hz分别认定，r53未成为稳定默认版本。[渲染](tools/pose-v1/evidence/hdmi-render-speed-20261024-r47/RESULTS.md)、[流水边界](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md) |
+| PC骨架传输与实时3D | `demo_v1`以论文复数CSI窗口作输入，完成实际新推理、完整回传与实时Three.js；短测和52,800窗有界验证完成 | 无真实无线直采、无HDMI；严格逐帧时限仍未通过，D47未根治。[新链路与实测](demo_v1/RESULTS.md)。原60帧历史分支保留在[回放观察台](software/pc_viewer/README.md) |
+| 纯PS离线动作与求助原型 | 独立C++17状态机、监测状态及虚拟时间PL反馈完成；原始包／97,770份标注／训练链核查、36项合成检查和15,648份结果回放通过 | 确认14×3、米制及训练保留索引；解剖索引、物理up、原动作时间及目标身份仍未核实，真实动作未知。无新推理或硬件操作。[实现及验证](software/pose_events/README.md) |
+| 真实CSI采集 | 1发3收共同事件采集、固定网格软件对齐完成；四机角色及地址已保存 | 严格共同窗口345/402（85.82%）；稳定300Hz、相位、节点幅度及人体效果未验收，model_ready=false。[采集与恢复](tools/nexmon/README.md) |
+| 无PC板端采集／推理候选 | C++三流接收、同帧组窗、原预处理及180-query SDK包装完成软件验证与ARM64编译 | 尚未部署或执行实机SDK，仅支持单次有界任务；三节点幅度配置未填，常驻及HDMI未接入。[软件候选](tools/nexmon/board/README.md) |
+| 心率独立参考 | C++参考、合成验证及历史Nexmon的50Hz诊断适配完成 | 缺40秒连续合格真实数据及同步生理参考，真实心率未验收；不占主链关键路径。[模块状态](software/vitals/README.md) |
 | 旧VPU／RTSP演示 | 原预采CSI有界网络演示和相关代码、失败证据保留 | 属于历史分支，不再作为新展示主链的必做路径。[历史演示](software/demo/README.md) |
 
 各项成果按发生时配置分别认定；历史回放、一次新推理、启动可靠性和连续长期互不替代。完整阶段记录见[Done.md](Done.md)。
 
 ## 主要难点与下一步顺序
 
-- **D45启动稳定性优先。** r26收窄到启动／更早事务状态；PS初态已高不证明释放边沿，FIFO占用仍不可观测。需匹配当前器件／固件的复位契约，不能把PL复位有连接、CSR清零或单次Open成功当成修复。
-- **D46真实输入适配是另一独立缺口。** 训练顺序已抽样精确绑定，单节点30点已作经验幅度适配；仍缺三独立接收节点同步配置及真实模型效果验证，不能直接送入现有模型。
+- **D47是HDMI旧链恢复联合验证前的正确性问题。** r53第189次首读的1568个索引字逐位等于同帧姿态同偏移，晚读正确；不能据此归责HDMI仲裁或用晚值修补。后续需先核实公开SDK完成/可见性契约，见[r53实测、原值及恢复](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
+- **D45根因仍开放，有限消费已有实测。** 隔离源端不能消除异常；r52同启动消费后90次合法采纳扩大了缓解证据，但未证明启动可靠性。官方说明HP FIFO位于PL，不能继续把“PS内部HP FIFO残留”当既定主要解释；当前不恢复已中止的根因板测。[官方资料判读](FPGA/hdmi_candidate/diagnostics/PROTOCOL-CHECKER-REVIEW-20261023.md)。
+- **D46真实输入适配仍未完成。** 三独立接收节点已有共同事件软件对齐；仍缺稳定300Hz、相位及各节点幅度／模型适配和人体效果证据，不能把单节点经验尺度套给三节点或将对齐通过写成模型输入验收。[四机实测](tools/nexmon/evidence/multirx-20261025-r1/REPORT.md)。
+- **D48新模型数值误差独立保留。** 180-query的无TopK独立压测不关闭D47，也不替代数值精度及严格实时验收。[部署实测](tools/pose180/deploy/RESULTS.md)。
 - **D44、D29／D41及联合长期仍保留。** 首次reader失败根因、严格实时和长尾需分别验证；健康启动后的短时显示不等于长期稳定。
 
-详细事实集中在[DIFFICULTIES.md](DIFFICULTIES.md)。后续顺序及验收条件见[ToDoLists.md](ToDoLists.md)；r26最新判读与当前资料缺口以本轮结果为准。启动稳定性解决后再回归推理与显示、接入PC，长期验证须用户单独批准。
+详细事实集中在[DIFFICULTIES.md](DIFFICULTIES.md)，待恢复的建议顺序与验收条件见[ToDoLists.md](ToDoLists.md)。本轮仅修正文档，不执行后续技术计划或恢复旧DATA调查。
 
 ## 当前状态与执行边界
 
-用户本轮明确恢复HDMI故障排查并交由代理执行；用户不在板旁，本轮无需现场操作。r26实际1次候选＋1次原BOOT回退后已关闭，无后台工作；不删模块、不开SDK／DMA／推理／HDMI START，不做HDMI长期。用户确认暂无匹配PS资料，将咨询官方；相关寄存器／固件修改等待有效契约。旧包额度不恢复；旧DATA独立暂停，FAT不修，不接入Vivado MCP。
+r53已用完1次候选启动、1次SDK和1次原BOOT回退并关闭；此前关闭包不复活。HDMI批次结束时的原BOOT运行、9份启动文件、6份SDK库及无占用核验见[r53实测、原值及恢复](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)及[状态](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/state.json)。后续独立180-query批次的恢复记录见其[部署实测](tools/pose180/deploy/RESULTS.md)；这些是各批次历史核验，不能作为未来会话实时身份。本次文档整理没有重新连接板卡或执行负载。
 
-最终启动文件及运行中原BOOT已分别核验，六个SDK库／九启动文件身份符合，设备无占用；实际运行ID及原值见[r26板端结果](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/board-summary.json)。CSI分支的恢复状态仍以[采集入口](tools/nexmon/README.md)为准。
+服务器上的180-query训练属独立模型分支；迁移已结束，从零训练与条件续训以[唯一恢复入口](tools/pose180/STATUS.md)中明确日期的快照为准，本轮未查询或操作训练进程。180-query候选未替换原100-query演示基线；demo_v1取证值属于此前有界验证。
+
+用户10月22日随后批准D47两阶段有界隔离；一次静态和一次真实负载均已结束，预算内完成取证，两次额度耗尽并关闭，未追加负载或用晚值修补。保持BOOT／模型／SDK、不接HDMI，恢复仅见[demo_v1 state](demo_v1/state.json)。旧DATA独立暂停，不删模块、不修FAT、不接入Vivado MCP；HDMI长期仍需单独批准。
+
+AI四路、模型/RAW、SDK、数学、NPU分配与帧协议保持。旧DATA独立暂停，不删模块、不修FAT、不接入Vivado MCP；新BOOT/重启或失败SDK负载再执行须按具体新包授权。无HDMI demo_v1的历史长测仍按原配置认定，CSI分支状态以[采集入口](tools/nexmon/README.md)为准。
 
 ## 资料与恢复入口
 
@@ -44,7 +55,7 @@
 | 稳定问题、已尝试方法及未知项 | [DIFFICULTIES.md](DIFFICULTIES.md) |
 | 历史成果与原始结果 | [Done.md](Done.md)，各实验原始归档不回写 |
 | HDMI接手、实际DCP／源码／BOOT及复核命令 | [工程师交接](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md)、[恢复入口](FPGA/hdmi_candidate/RESUME.md) |
-| 本轮故障恢复状态及下一技术方案 | [r26 state.json](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/state.json)、[r26 PLAN.md](tools/pose-v1/evidence/hdmi-ps-release-20261020-r26/PLAN.md) |
+| 本轮故障恢复状态及下一技术方案 | [r53实测、原值及恢复](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)、[当前状态](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/state.json)；旧实验原值与关闭记录保留 |
 | 真实CSI、PC展示与模型数值契约 | [Nexmon](tools/nexmon/README.md)、[PC观察台](software/pc_viewer/README.md)、[ADR_48](ADR/ADR_48.md) |
 | 设备／SDK身份与原厂工具路线 | [HDMI交接第7节](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md#7-实际工程与产物定位)、[REFERENCES.md](REFERENCES.md) |
 

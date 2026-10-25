@@ -1,0 +1,11 @@
+{
+  "user_approved_ignore_numeric_error": true,
+  "user_confirmation": "允许不考虑误差，直接进行高压稳定性测试",
+  "scope": "One 1800-second unthrottled stress session of epoch99 180-query FP16 model, no HDMI",
+  "numerical_differences": "Record complete outputs, score/pose errors, confidence and argmax changes; do not stop on finite numerical differences",
+  "stop": "Nonfinite outputs, native SDK exception, protocol/identity violation, or actual memory/disk/kernel danger",
+  "accuracy_acceptance": false,
+  "previous_failures": "Keep r1/r2 raw values and original native exits; do not rewrite them as passed",
+  "BOOT_changes": false,
+  "automatic_retry": false
+}

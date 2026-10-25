@@ -1,0 +1,51 @@
+{
+  "bytes": 7023552,
+  "sha256": "d3fcb796733117003f78fe8efa5e41f2278a79433d64603903f31869fa5345dd",
+  "original_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "all_bytes_outside_PL_identical": true,
+  "PL_offset": 186816,
+  "PL_bytes": 5980464,
+  "PL_payload_matches_candidate_after_word_swap": true,
+  "padding_identical": true,
+  "differing_PL_bytes": 2179489,
+  "raw_bit": {
+    "path": "D:\\FPGACompetitionProject\\.local\\hdmi-ps-release-20261020-r26\\fpai_demo_vivado.runs\\impl_ps_release_r26\\ai7030_edif_top.bit",
+    "bytes": 5980025,
+    "sha256": "a6777d1e3219f108a59d5b3a81e454dc0d8220ba850c901b96394c93a337780f"
+  },
+  "ICAP_bit": {
+    "path": "D:\\FPGACompetitionProject\\.local\\hdmi-ps-release-20261020-r26\\boot-package\\ai7030_top_disable_icap.bit",
+    "bytes": 5980609,
+    "sha256": "b6a90fc9d3859983012401c1d1daa5f670a936a93109a88c355a657ea139b91e",
+    "header": {
+      "a": "ai7030_edif_top;UserID=53180205;Version=2018.3;Patched=DISABLE_ICAP,VCCM;PatchID=32494",
+      "b": "7z030ffg676",
+      "c": "2026/10/21",
+      "d": "12:22:21"
+    }
+  },
+  "payload": {
+    "bytes": 5980460,
+    "sha256": "c4f8add45db870d97d60f9fe5c99d4e06f1c2817cbe5c971075e9012c2a9bd55"
+  },
+  "firmware_inputs": {
+    "FSBL251210_ddr400_demo.out": {
+      "bytes": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+      "source": "D:\\FPGACompetitionProject\\.local\\hdmi-board-reference-20261016-r1\\boot-control-utf8-r2\\FSBL251210_ddr400_demo.out"
+    },
+    "bl31.elf": {
+      "bytes": 610824,
+      "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303",
+      "source": "D:\\FPGACompetitionProject\\.local\\hdmi-board-reference-20261016-r1\\boot-control-utf8-r2\\bl31.elf"
+    },
+    "u-boot": {
+      "bytes": 6579840,
+      "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97",
+      "source": "D:\\FPGACompetitionProject\\.local\\hdmi-board-reference-20261016-r1\\boot-control-utf8-r2\\u-boot"
+    }
+  },
+  "BOOT_path": "D:\\FPGACompetitionProject\\.local\\hdmi-ps-release-20261020-r26\\boot-package\\BOOT-ps-release-r26.bin",
+  "deployed": false,
+  "rebooted": false
+}

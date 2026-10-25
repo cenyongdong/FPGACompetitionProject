@@ -1,0 +1,15 @@
+{
+  "time": 1792766261.7047205,
+  "progress_iter": 750,
+  "rank0_pid": 325973,
+  "supervisor": {
+    "pid": 325965,
+    "start_ticks": "201370675"
+  },
+  "child": {
+    "pid": 325968,
+    "start_ticks": "201370696"
+  },
+  "gpu_apps": "3887467, GPU-e882fdbe-1f68-fce3-ad38-6ad3bc6b845e, 9140 MiB\n2787495, GPU-e882fdbe-1f68-fce3-ad38-6ad3bc6b845e, 9770 MiB\n3887468, GPU-cb01d43e-29fc-888d-b6ed-399005396572, 9138 MiB\n3715222, GPU-cb01d43e-29fc-888d-b6ed-399005396572, 1782 MiB\n3537415, GPU-b38deef0-3a36-fe52-0b9b-16de6ed043f0, 23428 MiB\n3537415, GPU-fee0d1d1-bbe1-a567-27d5-6f3645734acb, 23046 MiB\n3687116, GPU-a88ed63b-3592-0f8c-ffa1-991efa109d2f, 23462 MiB\n3687116, GPU-ded0ed80-16bd-eb8c-c54f-3d8b3363f706, 23086 MiB\n3715223, GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c, 1782 MiB\n",
+  "no_scheduled_checks": true
+}

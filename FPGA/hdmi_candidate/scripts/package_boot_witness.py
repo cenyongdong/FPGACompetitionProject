@@ -53,7 +53,9 @@ def main():
     cli.add_argument('--raw-bit', type=Path)
     cli.add_argument('--bit-stage', default='bit2')
     cli.add_argument('--boot-name', default='BOOT-boot-witness-r23.bin')
+    cli.add_argument('--repository-root', type=Path, default=R)
     args = cli.parse_args()
+    assets = args.repository_root.resolve()
     E, W = args.evidence.resolve(), args.work.resolve()
     qualification = json.loads((E / 'qualification.json').read_text())
     if qualification.get('bit_generation_prerequisite_pass') is not True:
@@ -75,8 +77,8 @@ def main():
     payload, header = parser.bit_payload(bit)
     if len(payload) != 5980460:
         raise RuntimeError('PL payload does not fit the original BOOT partition')
-    control = R / '.local/hdmi-board-reference-20261016-r1/boot-control-utf8-r2'
-    original = (R / 'tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/BOOT-original.readback.bin').read_bytes()
+    control = assets / '.local/hdmi-board-reference-20261016-r1/boot-control-utf8-r2'
+    original = (assets / 'tools/pose-v1/evidence/hdmi-reset-calibration-20261018-r20/BOOT-original.readback.bin').read_bytes()
     if sha(original) != 'ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef':
         raise RuntimeError('Original BOOT identity differs')
     if (control / 'BOOT-control.bin').read_bytes() != original:

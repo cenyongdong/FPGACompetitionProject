@@ -1,0 +1,38 @@
+{
+  "status": "completed",
+  "started": 1792725070.1578593,
+  "checkpoint": "result/code_faithful/best_mpjpe_epoch_442.pth",
+  "output": "result/piw24_pose180_shared_20261022_r1/analysis-original100-epoch442-r1",
+  "process": {
+    "pid": 295846,
+    "start_ticks": "197261983"
+  },
+  "device": "cpu",
+  "threads": 2,
+  "batch_size": 8,
+  "checkpoint_epoch": 442,
+  "candidate_count": 100,
+  "total_frames": 7824,
+  "shared_vs_repeated_checks": [
+    {
+      "sample": "S11_01_308",
+      "score_max_abs": 0.0,
+      "pose_max_abs": 2.384185791015625e-07
+    },
+    {
+      "sample": "S12_03_316",
+      "score_max_abs": 0.0,
+      "pose_max_abs": 2.384185791015625e-07
+    },
+    {
+      "sample": "S13_41_304",
+      "score_max_abs": 0.0,
+      "pose_max_abs": 1.1920928955078125e-07
+    }
+  ],
+  "completed_frames": 7824,
+  "elapsed_seconds": 420.88980531692505,
+  "updated": 1792725490.5603957,
+  "native_exit": 0,
+  "finished": 1792725491.0476644
+}

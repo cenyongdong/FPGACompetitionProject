@@ -1,6 +1,6 @@
 # HDMI模块资料入口
 
-当前工程和验证结果见[INTEGRATION.md](INTEGRATION.md)，资深工程师排查入口见[HDMI-FAULT-HANDOFF.md](HDMI-FAULT-HANDOFF.md)。r13三窗新推理到HDMI有界通过，r25在SDK前复现启动故障，D44／D45未关闭；现按用户要求暂停实施、不删模块。
+当前结构与源码见[INTEGRATION](INTEGRATION.md)，恢复身份/次数见[RESUME](RESUME.md)。r45硬件合格，r52曾在真实异常消费后完成有限新推理/HDMI采纳；r53单SDK线程流水短样本29.521Hz、187采纳后发生首读内容混合。已回原BOOT，联合长期、持续实屏、D45/D47仍未解决；[当前实测](../../tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
 
 ## 早期隔离候选说明
 

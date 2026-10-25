@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "started": 1792724201.9088323,
+  "checkpoint": "result/piw24_pose180_shared_20261022_r1/epoch_50.pth",
+  "output": "result/piw24_pose180_shared_20261022_r1/analysis-epoch50-counts-r1",
+  "process": {
+    "pid": 294558,
+    "start_ticks": "197175175"
+  },
+  "device": "cpu",
+  "threads": 2,
+  "batch_size": 8,
+  "checkpoint_epoch": 50,
+  "total_frames": 7824,
+  "completed_frames": 7824,
+  "elapsed_seconds": 430.740065574646,
+  "updated": 1792724632.1676235,
+  "native_exit": 0,
+  "finished": 1792724632.6488976
+}

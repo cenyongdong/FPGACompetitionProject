@@ -1,0 +1,52 @@
+{
+  "training_native_exit": 0,
+  "completed_epochs": 100,
+  "evaluation_frames_per_epoch": 7824,
+  "best_epoch": 99,
+  "best_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/best_mpjpe_epoch_99.pth",
+  "final_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/epoch_100.pth",
+  "best_metrics": {
+    "mpjpe": 120.99576821575867,
+    "mpjpeh": 55.101416034566846,
+    "mpjpev": 65.40246639600316,
+    "mpjped": 56.20231695902859,
+    "candidate_count": 180,
+    "count_mae_at_0_2": 0.0736196319018405,
+    "mean_selected_at_0_2": 1.9527096114519427,
+    "matched_mpjpe_at_0_2": 149.2079867897031,
+    "mpjpe_1_people": 100.88330908994386,
+    "mpjpe_2_people": 120.64832274638229,
+    "mpjpe_3_people": 146.8560825652482
+  },
+  "final_metrics": {
+    "mpjpe": 124.23339001240174,
+    "mpjpeh": 56.09208347674284,
+    "mpjpev": 66.43313763599942,
+    "mpjped": 59.57654873871365,
+    "candidate_count": 180,
+    "count_mae_at_0_2": 0.06416155419222903,
+    "mean_selected_at_0_2": 1.9598670756646217,
+    "matched_mpjpe_at_0_2": 153.3134700048586,
+    "mpjpe_1_people": 104.14412216575958,
+    "mpjpe_2_people": 124.03014013994878,
+    "mpjpe_3_people": 149.84098214740996
+  },
+  "ddp_completion": {
+    "ranks": [
+      {
+        "rank": 0,
+        "optimizer_entries": 218,
+        "query_sha256": "66c04d9da6f766ead3b3e7ee5d5a4f086815be7f789b0a20717935170ecee555"
+      },
+      {
+        "rank": 1,
+        "optimizer_entries": 218,
+        "query_sha256": "66c04d9da6f766ead3b3e7ee5d5a4f086815be7f789b0a20717935170ecee555"
+      }
+    ],
+    "iter": 562200,
+    "epoch": 100,
+    "time": 1792764329.0690994
+  },
+  "created": 1792764468.02932
+}

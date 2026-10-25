@@ -1,5 +1,9 @@
 # 独立心率PS参考实现
 
+2026年10月22日：仅对历史RT-AC86U实采做主机离线核对，未恢复采集或连接设备。盘点53份归档PCAP（含回放副本），最长约26秒，无单份40秒记录；三段代表性连续段约10秒，真实三链I/Q可用，但直接送入原50Hz模块均被质量门拒绝，HR／RR为空。扩大检查的每段168条载波／天线对特征均有超过原相位步长阈值的跳变。用户确认有人静坐、没有同步心率参考；因此仅验证诊断接入与拒绝流程，未验证真实心率检出或精度。实际结果、原始回执与下一步条件见[本次离线核对](validation-real-nexmon-20261022.json)；入口为[历史数据诊断](../../tools/vitals/audit_nexmon_vitals.py)。原参考算法、质量门和姿态／板端协议保持不变，实机排查继续暂停。
+
+同日继续完成[50Hz时间适配与相位故障隔离](validation-alignment-nexmon-20261022.json)：使用原始NMD连续段的相对RX时刻、同包天线差分及时间unwrap，再做有界时间插值、抗混叠FIR和50Hz降采样。9项故障／信号契约及12项信号验证通过；真实数据仍没有完整40秒合格窗口，**相位跳变根因未解决**。适配器仅输出诊断相位数组和逐通道有效掩码，不生成严格I/Q输入，不声称均匀输出网格就是均匀RF采样；原C++、姿态预处理和板端协议均未改动。
+
 2026年10月19日：按用户确认的取舍完成C++17参考实现和主机离线验证。**姿态预处理保持原PS实现；本模块不链接SDK、模型、HDMI、Web或设备驱动，不连接板卡。** 当前结果和限制见[验证报告](VALIDATION-20261019.md)，机器结果只维护在[验证摘要](validation-summary-20261019.json)。
 
 2026年10月20日：完成时间轴适配后，按用户授权修正心率及辅助呼吸支路的ACF候选选择，保持原质量门。此前3个漏检和扩大检查发现的4个谐波误报均已解决；原36例、38个采样率用例、296个扫描正例及96个负例通过，15项契约在Windows／Linux通过，新ARM64产物完成交叉编译和静态复核。真实OctoNet相位及源时钟／包序号证据仍不合格，阶段B未启动。详细原值、历史失败及边界见[验证报告](VALIDATION-20261019.md)，Python适配器仍仅在主机运行。
@@ -15,6 +19,8 @@
 | `../../tools/vitals/validate_offline.py` | 原生程序调用与独立NumPy／SciPy对照 |
 | `../../tools/vitals/import_nexmon.py` | 显式复用已有Nexmon解析器，读取历史PCAP，不采集／插值／复制链 |
 | `../../tools/vitals/adapt_octonet_timing.py` | 原时刻天线差分、原始质量门、插值及抗混叠；仅输出主机诊断相位，不伪造RF时钟／序号／I/Q |
+| `../../tools/vitals/align_nexmon_phase.py` | NMD2／3连续RX时间段的50Hz相位适配、原始跳变／缺测污染范围标记；不接入严格C++输入或设备 |
+| `../../tools/vitals/test_align_nexmon_phase.py`／`validate_nexmon_alignment.py` | 低频保真、混叠、换行／真实跳变、短缺测及完整合成窗口验证；不宣称真实心率检出 |
 | `../../tools/vitals/validate_timing_adapter.py` | 已知信号叠加实际时间戳，验证10／20／25／50Hz；保留漏检与拒绝，独立于原基线 |
 | `../../tools/vitals/validate_rate_sweep.py` | 48–120次／分、步长2的跨采样率解析扫描及噪声／呼吸谐波等负例；不宣称真实人体精度 |
 
@@ -91,6 +97,17 @@ python tools/vitals/import_nexmon.py --pcap capture.pcap --decoder path/to/csi_v
 ```
 
 该适配器固定读取20MHz／64点、BCM4366、stream0、三条实际RX链；缺链、重复或有歧义的帧身份拒绝。只借用解析器公开函数，不写回其工作区；输出强制标记`real_capture`和`unknown_arrival`。相对时间来自现有解析器的浮点PCAP时间API，不提升为精确RF时钟。
+
+新增NMD相位适配器复用历史核对的同包配对及首次有效去重，选取单份录制最长的连续RX时钟段，不跨文件／时钟段拼窗。固定4条诊断特征保持原值，未按心率频谱选通道。相对RX时间先插值到600Hz工作网格，再用481点、截止15Hz、Kaiser β=8.6的对称FIR低通，取50Hz输出；每侧保留0.4秒实际数据支撑，截掉边缘，不外推。降采样前低通用于抑制混叠，相关原则见[SciPy官方说明](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.resample_poly.html)；这里的非均匀时间适配只是有条件的数值近似，不是任意缺测信号的精确重建。
+
+原始相邻差分相位超过0.25rad，或源间隔超过离线保守上限10ms时，任何滤波支撑涉及该区间的输出都置为NaN并标记无效。10ms是本次离线筛选配置，未经RF生产条件认证；不能靠调大它通过验收。检查直接覆盖原始间隔，极短异常即使落在工作网格点之间也不会被隐藏。普通2π表示换行可unwrap；宽频跳变不做偏移拟合／减除，防止一并抹去真实人体低频变化。原始相位与故障标记保存在输出NPZ，不回写PCAP。
+
+降采样只改变样本密度，不增加观测时长。40秒／2000点的就绪检查保持原样；不足时返回历史不足，有故障则拒绝窗口，不补0、不重复或拼接。此适配器目前只供主机诊断，尚未替换严格的同包复数I/Q接口；后续接入需明确派生相位的来源和质量契约。复现时使用新输出目录，三份案例的输入与结果入口见上面的适配报告：
+
+```powershell
+python tools/vitals/align_nexmon_phase.py --pcap tools/nexmon/evidence/hotspot-control-20261021-r1/phone300/capture.pcap --output .local/new-phase-alignment
+python -m unittest discover -s tools/vitals -p test_align_nexmon_phase.py -v
+```
 
 ## 对PL加速范围的当前判断
 

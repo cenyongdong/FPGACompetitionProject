@@ -1,0 +1,208 @@
+{
+  "checkpoint": "result/piw24_pose180_shared_20261022_r1/analysis-inputs/best_mpjpe_epoch_59.pth",
+  "checkpoint_epoch": 59,
+  "checkpoint_sha256": "b6d8354476ad2c83772f68269b6a88fe6a0cb03e14abca2a179f045dc3f5ce5e",
+  "frames": 7824,
+  "score_threshold": 0.2,
+  "device": "cpu",
+  "candidate_count": 180,
+  "groups": {
+    "1": {
+      "frames": 2586,
+      "real_people_total": 2586,
+      "selected_count_histogram": {
+        "0": 20,
+        "1": 2438,
+        "2": 108,
+        "3": 17,
+        "4": 2,
+        "5": 1
+      },
+      "mean_selected": 1.051044083526682,
+      "fewer_frames": 20,
+      "equal_frames": 2438,
+      "more_frames": 128,
+      "count_deficit": 20,
+      "count_excess": 152,
+      "zero_selected_frames": 20,
+      "confidence_matched_pairs": 2566,
+      "confidence_matched_mpjpe_mm": 126.24721064905775,
+      "spatial_detection": {
+        "100": {
+          "tp": 1366,
+          "fn": 1220,
+          "fp": 1352,
+          "duplicate_like": 54,
+          "precision": 0.5025754231052244,
+          "recall": 0.5282289249806651,
+          "frames_with_fn": 1220,
+          "frames_with_fp": 1257,
+          "frames_with_duplicate_like": 51
+        },
+        "200": {
+          "tp": 2289,
+          "fn": 297,
+          "fp": 429,
+          "duplicate_like": 105,
+          "precision": 0.8421633554083885,
+          "recall": 0.8851508120649652,
+          "frames_with_fn": 297,
+          "frames_with_fp": 378,
+          "frames_with_duplicate_like": 94
+        },
+        "300": {
+          "tp": 2465,
+          "fn": 121,
+          "fp": 253,
+          "duplicate_like": 123,
+          "precision": 0.9069168506254599,
+          "recall": 0.9532095901005414,
+          "frames_with_fn": 121,
+          "frames_with_fp": 220,
+          "frames_with_duplicate_like": 111
+        }
+      },
+      "legacy_all180_mpjpe_mm": 105.4898128295627
+    },
+    "2": {
+      "frames": 3184,
+      "real_people_total": 6368,
+      "selected_count_histogram": {
+        "1": 169,
+        "2": 2644,
+        "3": 273,
+        "4": 61,
+        "5": 21,
+        "6": 11,
+        "7": 2,
+        "8": 1,
+        "9": 1,
+        "10": 1
+      },
+      "mean_selected": 2.114321608040201,
+      "fewer_frames": 169,
+      "equal_frames": 2644,
+      "more_frames": 371,
+      "count_deficit": 169,
+      "count_excess": 533,
+      "zero_selected_frames": 0,
+      "confidence_matched_pairs": 6199,
+      "confidence_matched_mpjpe_mm": 175.29115157381992,
+      "spatial_detection": {
+        "100": {
+          "tp": 2386,
+          "fn": 3982,
+          "fp": 4346,
+          "duplicate_like": 117,
+          "precision": 0.3544266191325015,
+          "recall": 0.3746859296482412,
+          "frames_with_fn": 2630,
+          "frames_with_fp": 2623,
+          "frames_with_duplicate_like": 108
+        },
+        "200": {
+          "tp": 5011,
+          "fn": 1357,
+          "fp": 1721,
+          "duplicate_like": 263,
+          "precision": 0.7443553178847296,
+          "recall": 0.7869032663316583,
+          "frames_with_fn": 1164,
+          "frames_with_fp": 1233,
+          "frames_with_duplicate_like": 221
+        },
+        "300": {
+          "tp": 5706,
+          "fn": 662,
+          "fp": 1026,
+          "duplicate_like": 322,
+          "precision": 0.8475935828877005,
+          "recall": 0.8960427135678392,
+          "frames_with_fn": 613,
+          "frames_with_fp": 715,
+          "frames_with_duplicate_like": 270
+        }
+      },
+      "legacy_all180_mpjpe_mm": 124.75161962772734
+    },
+    "3": {
+      "frames": 2054,
+      "real_people_total": 6162,
+      "selected_count_histogram": {
+        "2": 265,
+        "3": 1562,
+        "4": 164,
+        "5": 39,
+        "6": 11,
+        "7": 5,
+        "8": 2,
+        "9": 3,
+        "10": 1,
+        "11": 1,
+        "13": 1
+      },
+      "mean_selected": 3.040408958130477,
+      "fewer_frames": 265,
+      "equal_frames": 1562,
+      "more_frames": 227,
+      "count_deficit": 265,
+      "count_excess": 348,
+      "zero_selected_frames": 0,
+      "confidence_matched_pairs": 5897,
+      "confidence_matched_mpjpe_mm": 192.56977610356003,
+      "spatial_detection": {
+        "100": {
+          "tp": 1306,
+          "fn": 4856,
+          "fp": 4939,
+          "duplicate_like": 60,
+          "precision": 0.20912730184147318,
+          "recall": 0.21194417396949042,
+          "frames_with_fn": 2021,
+          "frames_with_fp": 2003,
+          "frames_with_duplicate_like": 51
+        },
+        "200": {
+          "tp": 4211,
+          "fn": 1951,
+          "fp": 2034,
+          "duplicate_like": 230,
+          "precision": 0.6742994395516413,
+          "recall": 0.6833820188250568,
+          "frames_with_fn": 1383,
+          "frames_with_fp": 1339,
+          "frames_with_duplicate_like": 177
+        },
+        "300": {
+          "tp": 5212,
+          "fn": 950,
+          "fp": 1033,
+          "duplicate_like": 284,
+          "precision": 0.8345876701361089,
+          "recall": 0.845829276209023,
+          "frames_with_fn": 801,
+          "frames_with_fp": 758,
+          "frames_with_duplicate_like": 217
+        }
+      },
+      "legacy_all180_mpjpe_mm": 153.5153094405905
+    }
+  },
+  "same_test_samples_and_ground_truth": null,
+  "shared_vs_repeated_checks": null,
+  "overall": {
+    "legacy_mpjpe_mm": 125.93638272787652,
+    "mean_selected": 2.0060071574642127,
+    "count_mae": 0.1900562372188139,
+    "confidence_matched_mpjpe_mm": 173.657356487129
+  },
+  "definitions": {
+    "distance": "Mean of 14 joint Euclidean distances in absolute coordinates, mm; no alignment.",
+    "legacy_mpjpe": "Existing calc_mpjpe with greedy one-to-one GT-assisted matching over all 180 candidates; per-frame mean.",
+    "confidence_matched_mpjpe": "Select score > 0.2, minimize total distance with one-to-one Hungarian assignment, average matched pairs only; unmatched GT/predictions do not enter this mean.",
+    "spatial_detection": "At each stated distance threshold, maximize valid one-to-one matches then minimize distance; unmatched GT=FN, unmatched predictions=FP.",
+    "duplicate_like": "Unmatched selected prediction within the stated distance of a GT already covered by another prediction; diagnostic evidence of possible duplicates, not a manual label.",
+    "count_shortfall": "Selected count below true count guarantees a count deficit; excess alone does not distinguish duplicates from other false positives."
+  },
+  "elapsed_seconds": 428.40141916275024
+}

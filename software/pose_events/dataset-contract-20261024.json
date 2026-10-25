@@ -1,0 +1,490 @@
+{
+  "schema": "person_in_wifi_3d_2024_audit_v1",
+  "date": "2026-10-24",
+  "hardware_test": false,
+  "new_inferences": 0,
+  "model_sdk_protocol_changed": false,
+  "sources": {
+    "repo": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo",
+    "processed_archive": "D:\\BaiduNetdiskDownload\\wifipose_dataset.zip",
+    "processed_archive_size_bytes": 1740769407,
+    "processed_archive_unchanged_size_mtime": true,
+    "raw_inventory": "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\rawdata-list.txt",
+    "paper": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\paper\\Person-in-WiFi_3D_End-to-End_Multi-Person_3D_Pose_Estimation_with_Wi-Fi.pdf",
+    "paper_url": "https://aiotgroup.github.io/Person-in-WiFi-3D/paper/2024CVPR_Person_in_WiFi_3D.pdf"
+  },
+  "confirmed": {
+    "joint_count": 14,
+    "label_axes": 3,
+    "training_coordinate_unit": "m",
+    "training_preserves_npy_joint_order": true,
+    "nominal_camera_fps_in_paper": 15,
+    "label_source": "Kinect Body Tracking SDK, followed by frame-by-frame cleaning (paper section 5.1)",
+    "label_order_evidence": [
+      "opera/datasets/wifi_pose.py:get_item_single_frame np.load then FloatTensor",
+      "opera/datasets/pipelines/formatting.py extra_keys to_tensor without reindex",
+      "opera/models/dense_heads/petr_head.py:739-753 assigns GT then reshape without reindex"
+    ],
+    "unit_evidence": "wifi_pose.py calc_mpjpe multiplies raw coordinate differences by 1000 for millimetres; existing raw-coordinate visualization explicitly uses metres"
+  },
+  "unknown": {
+    "anatomical_index_mapping_verified": false,
+    "physical_up_calibration_verified": false,
+    "source_capture_times_verified": false,
+    "single_subject_identity_verified": false,
+    "hand_endpoint_is_wrist_verified": false,
+    "raw_to_processed_frame_index_mapping_verified": false,
+    "action_or_help_intent_labels_available": false
+  },
+  "candidate_mapping": {
+    "status": "paper_row_order_plus_topology_corroborated_not_export_verified",
+    "index_names": {
+      "0": "neck",
+      "1": "head",
+      "2": "left_shoulder",
+      "3": "right_shoulder",
+      "4": "left_elbow",
+      "5": "left_hip",
+      "6": "right_elbow",
+      "7": "right_hip",
+      "8": "left_hand",
+      "9": "left_knee",
+      "10": "right_hand",
+      "11": "right_knee",
+      "12": "left_ankle",
+      "13": "right_ankle"
+    },
+    "topology": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        11,
+        13
+      ]
+    ],
+    "evidence": "CVPR paper Table 2 row order agrees with limb_loss.py graph; Table 2 has no array indices and the Kinect subset/export script is absent",
+    "hand_caveat": "Table 2 says hand, not wrist; no K4ABT joint-ID selection list found"
+  },
+  "candidate_coordinates": {
+    "observed_up": [
+      0,
+      0,
+      -1
+    ],
+    "status": "corroborated_not_calibrated",
+    "axis_names": [
+      "unknown",
+      "unknown",
+      "unknown"
+    ],
+    "evidence": "Stored label geometry and existing display; no camera-to-label transform or gravity calibration found. Do not substitute Azure Kinect native axes."
+  },
+  "processed_labels": {
+    "train": {
+      "frames": 89946,
+      "people_counts": {
+        "1": 28121,
+        "2": 36242,
+        "3": 25583
+      },
+      "shapes": {
+        "(1, 14, 3)": 28121,
+        "(2, 14, 3)": 36242,
+        "(3, 14, 3)": 25583
+      },
+      "clip_count": 215,
+      "sample_list_exactly_matches_original_zip": true,
+      "sparse_label_byte_matches": 5,
+      "within_clip_missing_integer_indices": 28481,
+      "source_index_range": [
+        10,
+        599
+      ],
+      "within_clip_list_order_decreases": 6766
+    },
+    "test": {
+      "frames": 7824,
+      "people_counts": {
+        "1": 2586,
+        "2": 3184,
+        "3": 2054
+      },
+      "shapes": {
+        "(1, 14, 3)": 2586,
+        "(2, 14, 3)": 3184,
+        "(3, 14, 3)": 2054
+      },
+      "clip_count": 195,
+      "sample_list_exactly_matches_original_zip": true,
+      "sparse_label_byte_matches": 5,
+      "within_clip_missing_integer_indices": 597,
+      "source_index_range": [
+        301,
+        349
+      ],
+      "within_clip_list_order_decreases": 0
+    }
+  },
+  "processed_archive_inventory": {
+    "file_count": 195542,
+    "extensions": {
+      ".mat": 97770,
+      ".npy": 97770,
+      ".txt": 2
+    },
+    "annotation_arrays_contain_names_ids_action_labels_or_timestamps": false,
+    "all_csi_mat_fields_inspected": false,
+    "dedicated_metadata_files": [
+      "test_data/test_data_list.txt",
+      "train_data/train_data_list.txt"
+    ]
+  },
+  "raw_archive_inventory": {
+    "file_count": 3437,
+    "extensions": {
+      ".dat": 1284,
+      ".txt": 1718,
+      ".mkv": 434,
+      ".json": 1
+    },
+    "annotation_export_or_alignment_script_found": false,
+    "calibration_scope": "The one calibration.json is S11_06 camera intrinsics/extrinsics; it is not a processed-label transform or gravity/room calibration."
+  },
+  "mat_samples": [
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\train_data\\csi\\S11_01_10.mat",
+      "keys": [
+        "csi_out"
+      ],
+      "csi_out_shape": [
+        20,
+        30,
+        3,
+        3
+      ],
+      "csi_out_dtype": "[('real', '<f8'), ('imag', '<f8')]",
+      "timestamp_field_present": false
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\train_data\\csi\\S21_23_152.mat",
+      "keys": [
+        "csi_out"
+      ],
+      "csi_out_shape": [
+        20,
+        30,
+        3,
+        3
+      ],
+      "csi_out_dtype": "[('real', '<f8'), ('imag', '<f8')]",
+      "timestamp_field_present": false
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\train_data\\csi\\S23_45_388.mat",
+      "keys": [
+        "csi_out"
+      ],
+      "csi_out_shape": [
+        20,
+        30,
+        3,
+        3
+      ],
+      "csi_out_dtype": "[('real', '<f8'), ('imag', '<f8')]",
+      "timestamp_field_present": false
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\test_data\\csi\\S11_01_308.mat",
+      "keys": [
+        "csi_out"
+      ],
+      "csi_out_shape": [
+        20,
+        30,
+        3,
+        3
+      ],
+      "csi_out_dtype": "[('real', '<f8'), ('imag', '<f8')]",
+      "timestamp_field_present": false
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\test_data\\csi\\S21_15_348.mat",
+      "keys": [
+        "csi_out"
+      ],
+      "csi_out_shape": [
+        20,
+        30,
+        3,
+        3
+      ],
+      "csi_out_dtype": "[('real', '<f8'), ('imag', '<f8')]",
+      "timestamp_field_present": false
+    },
+    {
+      "path": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose\\test_data\\csi\\S23_40_343.mat",
+      "keys": [
+        "csi_out"
+      ],
+      "csi_out_shape": [
+        20,
+        30,
+        3,
+        3
+      ],
+      "csi_out_dtype": "[('real', '<f8'), ('imag', '<f8')]",
+      "timestamp_field_present": false
+    }
+  ],
+  "raw_time_audit": {
+    "rgbd_tables": [
+      {
+        "path": "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\raw-metadata\\rgbd\\S11_01\\time_list.txt",
+        "clip": "S11_01",
+        "rows": 901,
+        "first_index": 0,
+        "last_index": 900,
+        "index_gaps": 0,
+        "elapsed_seconds": 59.832931,
+        "delta_ms": {
+          "min": 1.987,
+          "p01": 14.552400000000002,
+          "median": 64.05850000000001,
+          "p99": 80.93065,
+          "max": 353.499
+        },
+        "nonpositive_deltas": 0,
+        "capture_clock_verified": false,
+        "processed_sample_alignment_verified": false
+      },
+      {
+        "path": "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\raw-metadata\\rgbd\\S11_07\\time_list.txt",
+        "clip": "S11_07",
+        "rows": 901,
+        "first_index": 0,
+        "last_index": 900,
+        "index_gaps": 0,
+        "elapsed_seconds": 59.828973,
+        "delta_ms": {
+          "min": 1.9989999999999999,
+          "p01": 25.767100000000006,
+          "median": 64.05,
+          "p99": 80.93217,
+          "max": 360.999
+        },
+        "nonpositive_deltas": 0,
+        "capture_clock_verified": false,
+        "processed_sample_alignment_verified": false
+      },
+      {
+        "path": "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\raw-metadata\\rgbd\\S12_14\\time_list.txt",
+        "clip": "S12_14",
+        "rows": 901,
+        "first_index": 0,
+        "last_index": 900,
+        "index_gaps": 0,
+        "elapsed_seconds": 59.838241,
+        "delta_ms": {
+          "min": 1.9989999999999999,
+          "p01": 2.999,
+          "median": 64.038,
+          "p99": 81.31400000000001,
+          "max": 349.016
+        },
+        "nonpositive_deltas": 0,
+        "capture_clock_verified": false,
+        "processed_sample_alignment_verified": false
+      },
+      {
+        "path": "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\raw-metadata\\rgbd\\S13_45\\time_list.txt",
+        "clip": "S13_45",
+        "rows": 901,
+        "first_index": 0,
+        "last_index": 900,
+        "index_gaps": 0,
+        "elapsed_seconds": 59.812575,
+        "delta_ms": {
+          "min": 2.0010000000000003,
+          "p01": 61.96211,
+          "median": 64.0505,
+          "p99": 80.96809,
+          "max": 352.993
+        },
+        "nonpositive_deltas": 0,
+        "capture_clock_verified": false,
+        "processed_sample_alignment_verified": false
+      },
+      {
+        "path": "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\raw-metadata\\rgbd\\S21_25\\time_list.txt",
+        "clip": "S21_25",
+        "rows": 601,
+        "first_index": 0,
+        "last_index": 600,
+        "index_gaps": 0,
+        "elapsed_seconds": 39.82656,
+        "delta_ms": {
+          "min": 2.996,
+          "p01": 3.0049699999999997,
+          "median": 64.05950000000001,
+          "p99": 80.72622,
+          "max": 340.002
+        },
+        "nonpositive_deltas": 0,
+        "capture_clock_verified": false,
+        "processed_sample_alignment_verified": false
+      }
+    ],
+    "csi_tables": [
+      {
+        "path": "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\raw-metadata\\CSI\\r1\\time\\S11_01.txt",
+        "rows": 21728,
+        "elapsed_seconds": 72.451468,
+        "delta_ms": {
+          "min": 1.928,
+          "p01": 3.195,
+          "median": 3.333,
+          "p99": 3.464,
+          "max": 6.853
+        },
+        "nonpositive_deltas": 0,
+        "matched_to_processed_csi_window": false
+      },
+      {
+        "path": "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\raw-metadata\\CSI\\r2\\time\\S11_01.txt",
+        "rows": 21728,
+        "elapsed_seconds": 72.452173,
+        "delta_ms": {
+          "min": 1.9480000000000002,
+          "p01": 3.191,
+          "median": 3.333,
+          "p99": 3.472,
+          "max": 6.806
+        },
+        "nonpositive_deltas": 0,
+        "matched_to_processed_csi_window": false
+      },
+      {
+        "path": "D:\\FPGACompetitionProject\\.local\\pose-events-semantics-20261024-r1\\raw-metadata\\CSI\\r3\\time\\S11_01.txt",
+        "rows": 21726,
+        "elapsed_seconds": 72.451582,
+        "delta_ms": {
+          "min": 1.417,
+          "p01": 3.209,
+          "median": 3.333,
+          "p99": 3.4567599999999983,
+          "max": 6.697
+        },
+        "nonpositive_deltas": 0,
+        "matched_to_processed_csi_window": false
+      }
+    ],
+    "interpretation": "Original tables exist; their clock generation and raw-index to processed suffix mapping remain unknown. No nominal-fps interpolation is authorized."
+  },
+  "geometry_diagnostics": {
+    "classification": "corroboration_only_not_verified_mapping_or_up",
+    "candidate_ankles_minus_head_C2_m": {
+      "min": 0.005745346069335966,
+      "p01": 0.7977382699203491,
+      "median": 1.3411093139648433,
+      "p99": 1.481320810241699,
+      "max": 1.729311279296876
+    },
+    "candidate_torso_alignment_with_minus_C2": {
+      "min": -0.28935196971721366,
+      "p01": 0.2795167609738879,
+      "median": 0.9935410171929916,
+      "p99": 0.9999110746346409,
+      "max": 0.9999999321240554
+    },
+    "candidate_elbow_to_hand_length_m": {
+      "min": 0.17263985770301535,
+      "p01": 0.23113215918439223,
+      "median": 0.29357307567173924,
+      "p99": 0.34852251361586084,
+      "max": 0.41074282361244757
+    },
+    "audit_wall_seconds": 924.2175935999985
+  },
+  "existing_results_source_check": {
+    "frames": 15648,
+    "splits": {
+      "test": 7824,
+      "train": 7824
+    },
+    "all_sources_present_in_original_lists": true,
+    "unknown_capture_times_and_subject_flags_preserved": true
+  },
+  "activation": {
+    "mapping_verified": false,
+    "up_verified": false,
+    "capture_clock_verified": false,
+    "subject_verified": false,
+    "expected_real_actions": "unknown",
+    "expected_help_events": 0
+  },
+  "limits": [
+    "Paper table order, sample geometry and nominal FPS are not an explicit export/alignment contract",
+    "Only six CSI MAT metadata samples and five RGB-D tables inspected; all processed labels inspected",
+    "Raw MKV tracks not extracted or inspected",
+    "No independent action/intent labels; no recognition accuracy, recall or false alarms/hour claim"
+  ],
+  "split_index_audit": {
+    "shared_train_test_sample_names": 0,
+    "released_test_suffix_range": [
+      301,
+      349
+    ],
+    "paper_first550_last50_rule_cannot_be_applied_to_released_suffixes": true,
+    "list_order_is_not_a_capture_timeline": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": "completed",
+  "started": 1792737773.3295043,
+  "checkpoint": "result/piw24_pose180_shared_20261022_r1/analysis-inputs/best_mpjpe_epoch_59.pth",
+  "output": "result/piw24_pose180_shared_20261022_r1/analysis-epoch59-counts-r1",
+  "process": {
+    "pid": 305853,
+    "start_ticks": "198532347"
+  },
+  "device": "cpu",
+  "threads": 2,
+  "batch_size": 8,
+  "checkpoint_epoch": 59,
+  "candidate_count": 180,
+  "total_frames": 7824,
+  "completed_frames": 7824,
+  "elapsed_seconds": 428.4020414352417,
+  "updated": 1792738201.231852,
+  "native_exit": 0,
+  "finished": 1792738201.7315454
+}

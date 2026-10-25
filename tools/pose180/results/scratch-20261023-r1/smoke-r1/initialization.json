@@ -1,0 +1,37 @@
+{
+  "reports": [
+    {
+      "source": null,
+      "loaded": 0,
+      "initialization_mode": "from_scratch",
+      "reinitialized": "all_model_parameters",
+      "source_epoch": null,
+      "query_shape": [
+        180,
+        512
+      ],
+      "query_sha256": "bd292e8bb7a82a56580c40e2dff94c97d4315357fcbe17d88922493fca590ba9",
+      "old_optimizer_loaded": false,
+      "checkpoint_loading_blocked": true
+    },
+    {
+      "source": null,
+      "loaded": 0,
+      "initialization_mode": "from_scratch",
+      "reinitialized": "all_model_parameters",
+      "source_epoch": null,
+      "query_shape": [
+        180,
+        512
+      ],
+      "query_sha256": "bd292e8bb7a82a56580c40e2dff94c97d4315357fcbe17d88922493fca590ba9",
+      "old_optimizer_loaded": false,
+      "checkpoint_loading_blocked": true
+    }
+  ],
+  "optimizer": "AdamW",
+  "optimizer_state_entries": 0,
+  "world_size": 2,
+  "pid": 325604,
+  "time": 1792766136.5197551
+}

@@ -1,0 +1,15 @@
+{
+  "status": "completed",
+  "started": 1792764955.1771584,
+  "command": [
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "result/piw24_pose180_shared_20261022_r1/final-delivery-20261023-r1/finish_pose180.py"
+  ],
+  "process": {
+    "pid": 324657,
+    "start_ticks": "201250824"
+  },
+  "native_exit": 0,
+  "finished": 1792764959.6367614
+}

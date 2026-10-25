@@ -1,0 +1,380 @@
+{
+  "package_id": "s01-isolation-r28",
+  "as_of": "2026-10-22",
+  "conclusion": "One source-isolated passive start did not reproduce the early unsolicited return; intermittent root cause and HP port reassignment remain unresolved.",
+  "scope": {
+    "AI_HC_ports_unchanged": true,
+    "S01_inputs_GND": 27,
+    "S01_internal_interconnect_retained": true,
+    "PS_firmware_or_register_changes": false,
+    "SDK_Open": 0,
+    "DMA": 0,
+    "inference": 0,
+    "HDMI_START": 0,
+    "physical_keys": 0,
+    "HDMI_long_term": false
+  },
+  "actual_candidate_starts": 1,
+  "actual_original_fallbacks": 1,
+  "remaining": {
+    "candidate_starts": 0,
+    "original_fallbacks": 0,
+    "SDK_Open": 0
+  },
+  "pre_start_boot_id": "c1900e3f-3603-4d4a-b0f8-c5f6f1301961",
+  "candidate_boot_id": "aceeee23-3f69-4663-bb4c-dcfe22e3d325",
+  "final_original_boot_id": "1831aecd-1495-4f9f-ad8d-d79d2c493dfe",
+  "original_BOOT_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "candidate_BOOT": {
+    "path": "D:\\FPGACompetitionProject\\.local\\hdmi-s01-isolation-20261022-r28\\boot-package\\BOOT-s01-isolation-r28.bin",
+    "bytes": 7023552,
+    "sha256": "f4bed59ec07751bcd7eaac332d9524675e071a4eff1226a4f9b5bdd1642bde04",
+    "all_bytes_outside_PL_identical": true
+  },
+  "actual_bit": {
+    "path": "D:\\FPGACompetitionProject\\.local\\hdmi-s01-isolation-20261022-r28\\fpai_demo_vivado.runs\\impl_s01_isolation_r28\\ai7030_edif_top.bit",
+    "bytes": 5980025,
+    "sha256": "36748bd4f348a5409e461afbf115591f5b76a4f48f37b7ab9a481eb6707e55ab"
+  },
+  "ICAP_bit": {
+    "path": "D:\\FPGACompetitionProject\\.local\\hdmi-s01-isolation-20261022-r28\\boot-package\\ai7030_top_disable_icap.bit",
+    "bytes": 5980609,
+    "sha256": "e79438498a701f68eacffe7f31bc0f2d48b04ced45c2829ef1b71acacfc5faa1",
+    "header": {
+      "a": "ai7030_edif_top;UserID=53180205;Version=2018.3;Patched=DISABLE_ICAP,VCCM;PatchID=32494",
+      "b": "7z030ffg676",
+      "c": "2026/10/22",
+      "d": "11:54:50"
+    }
+  },
+  "firmware_inputs": {
+    "FSBL251210_ddr400_demo.out": {
+      "bytes": 1385156,
+      "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f",
+      "source": "D:\\FPGACompetitionProject\\.local\\hdmi-board-reference-20261016-r1\\boot-control-utf8-r2\\FSBL251210_ddr400_demo.out"
+    },
+    "bl31.elf": {
+      "bytes": 610824,
+      "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303",
+      "source": "D:\\FPGACompetitionProject\\.local\\hdmi-board-reference-20261016-r1\\boot-control-utf8-r2\\bl31.elf"
+    },
+    "u-boot": {
+      "bytes": 6579840,
+      "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97",
+      "source": "D:\\FPGACompetitionProject\\.local\\hdmi-board-reference-20261016-r1\\boot-control-utf8-r2\\u-boot"
+    }
+  },
+  "SDK_identity": {
+    "libicraft_hostbackend.so": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+    "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+    "libicraft_xir.so": "377a2cac1a8834836503d9805451449d42d99a888b8f96b38d4c2ba8c585af3e",
+    "libicraft_utils.so": "99679371aa20e7955e14c39938225df24cdc763d75f26301970fba114f650109",
+    "libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178"
+  },
+  "physical": {
+    "WNS_ns": 0.03,
+    "WHS_ns": 0.01,
+    "TNS_ns": 0.0,
+    "THS_ns": 0.0,
+    "raw_timing_pass": false,
+    "bit_generation_prerequisite_pass": true,
+    "unconstrained_internal_endpoints": 0,
+    "routable_nets": 101957,
+    "fully_routed_nets": 101957,
+    "approved_AI_period_exceptions": [
+      "Min Period        n/a     BUFG/I             n/a            1.409         1.000       -0.409     BUFGCTRL_X0Y20  U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/clkout1_buf/I",
+      "Min Period        n/a     PLLE2_ADV/CLKOUT0  n/a            1.071         1.000       -0.071     PLLE2_ADV_X1Y3  U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/plle2_adv_inst/CLKOUT0"
+    ],
+    "new_timing_exceptions": false,
+    "new_DRC_waivers": false
+  },
+  "S01_current_pins_hex": "0x8000002",
+  "S01_source_input_mask": 0,
+  "startup": {
+    "ABI": "0x50534c01",
+    "GP_freeze_cycle": 5114887170,
+    "initial_GP_levels": {
+      "PS_HP2_resetn": true,
+      "PL_HP2_resetn": false,
+      "GP_reset": false,
+      "HP_reset": false,
+      "FCLK_RESET0_N": true,
+      "DDR_ui_reset": false,
+      "DDR_calibrated": false,
+      "HP_clock_active": false,
+      "PS_ARVALID": false,
+      "PS_RVALID": false,
+      "HDMI_ARVALID": false,
+      "HDMI_RVALID": false,
+      "legacy_AWVALID": false,
+      "legacy_WVALID": false,
+      "legacy_BVALID": false,
+      "PS_AWVALID": false,
+      "PS_WVALID": false,
+      "PS_BVALID": false,
+      "sys_rst_n": true,
+      "soft_reset": false
+    },
+    "final_GP_levels": {
+      "PS_HP2_resetn": true,
+      "PL_HP2_resetn": true,
+      "GP_reset": false,
+      "HP_reset": false,
+      "FCLK_RESET0_N": true,
+      "DDR_ui_reset": false,
+      "DDR_calibrated": true,
+      "HP_clock_active": true,
+      "PS_ARVALID": false,
+      "PS_RVALID": false,
+      "HDMI_ARVALID": false,
+      "HDMI_RVALID": false,
+      "legacy_AWVALID": false,
+      "legacy_WVALID": false,
+      "legacy_BVALID": false,
+      "PS_AWVALID": false,
+      "PS_WVALID": false,
+      "PS_BVALID": false,
+      "sys_rst_n": true,
+      "soft_reset": false
+    },
+    "first_GP_cycle": {
+      "PS_release_or_initial_high": 3,
+      "PL_release_or_initial_high": 5627966,
+      "PS_RVALID": null,
+      "HDMI_RVALID": null,
+      "PS_ARVALID": null,
+      "HDMI_ARVALID": null,
+      "HP_clock_activity": 56,
+      "write_VALID": null
+    },
+    "first_release_order": "unresolved: initial high is not an observed release edge",
+    "first_high_observation_order": "PS earlier",
+    "last_PS_release_GP_cycle": null,
+    "last_PL_release_GP_cycle": 5627966,
+    "last_PS_high_indication_GP_cycle": 3,
+    "last_PL_high_indication_GP_cycle": 5627966,
+    "last_HP_heartbeat_GP_cycle": 5114887141,
+    "HP_heartbeat_age_GP_cycles": 29,
+    "event_overflow": false,
+    "events": [
+      {
+        "GP_cycle": 3,
+        "levels": {
+          "PS_HP2_resetn": true,
+          "PL_HP2_resetn": false,
+          "GP_reset": false,
+          "HP_reset": false,
+          "FCLK_RESET0_N": true,
+          "DDR_ui_reset": false,
+          "DDR_calibrated": false,
+          "HP_clock_active": false,
+          "PS_ARVALID": false,
+          "PS_RVALID": false,
+          "HDMI_ARVALID": false,
+          "HDMI_RVALID": false,
+          "legacy_AWVALID": false,
+          "legacy_WVALID": false,
+          "legacy_BVALID": false,
+          "PS_AWVALID": false,
+          "PS_WVALID": false,
+          "PS_BVALID": false,
+          "sys_rst_n": true,
+          "soft_reset": false
+        }
+      },
+      {
+        "GP_cycle": 56,
+        "levels": {
+          "PS_HP2_resetn": true,
+          "PL_HP2_resetn": false,
+          "GP_reset": false,
+          "HP_reset": false,
+          "FCLK_RESET0_N": true,
+          "DDR_ui_reset": false,
+          "DDR_calibrated": false,
+          "HP_clock_active": true,
+          "PS_ARVALID": false,
+          "PS_RVALID": false,
+          "HDMI_ARVALID": false,
+          "HDMI_RVALID": false,
+          "legacy_AWVALID": false,
+          "legacy_WVALID": false,
+          "legacy_BVALID": false,
+          "PS_AWVALID": false,
+          "PS_WVALID": false,
+          "PS_BVALID": false,
+          "sys_rst_n": true,
+          "soft_reset": false
+        }
+      },
+      {
+        "GP_cycle": 5627943,
+        "levels": {
+          "PS_HP2_resetn": true,
+          "PL_HP2_resetn": false,
+          "GP_reset": false,
+          "HP_reset": false,
+          "FCLK_RESET0_N": true,
+          "DDR_ui_reset": false,
+          "DDR_calibrated": true,
+          "HP_clock_active": true,
+          "PS_ARVALID": false,
+          "PS_RVALID": false,
+          "HDMI_ARVALID": false,
+          "HDMI_RVALID": false,
+          "legacy_AWVALID": false,
+          "legacy_WVALID": false,
+          "legacy_BVALID": false,
+          "PS_AWVALID": false,
+          "PS_WVALID": false,
+          "PS_BVALID": false,
+          "sys_rst_n": true,
+          "soft_reset": false
+        }
+      },
+      {
+        "GP_cycle": 5627966,
+        "levels": {
+          "PS_HP2_resetn": true,
+          "PL_HP2_resetn": true,
+          "GP_reset": false,
+          "HP_reset": false,
+          "FCLK_RESET0_N": true,
+          "DDR_ui_reset": false,
+          "DDR_calibrated": true,
+          "HP_clock_active": true,
+          "PS_ARVALID": false,
+          "PS_RVALID": false,
+          "HDMI_ARVALID": false,
+          "HDMI_RVALID": false,
+          "legacy_AWVALID": false,
+          "legacy_WVALID": false,
+          "legacy_BVALID": false,
+          "PS_AWVALID": false,
+          "PS_WVALID": false,
+          "PS_BVALID": false,
+          "sys_rst_n": true,
+          "soft_reset": false
+        }
+      }
+    ],
+    "HP_freeze_cycle": 10230140602,
+    "raw_HP_handshakes": {
+      "PS_AR": 0,
+      "PS_R": 0,
+      "legacy_AW": 0,
+      "legacy_W": 0,
+      "legacy_B": 0,
+      "PS_AW": 0,
+      "PS_W": 0,
+      "PS_B": 0
+    },
+    "HP_count_overflow_mask": 0,
+    "first_PS_AR_HP_cycle": null,
+    "first_raw_PS_RVALID_HP_cycle": null,
+    "first_write_handshake_HP_cycle": null,
+    "first_raw_PS_RVALID_pins": null,
+    "first_raw_PS_RVALID_levels": null,
+    "first_PL_ready_PS_RVALID_HP_cycle": null,
+    "first_PL_ready_PS_RVALID_pins": null,
+    "limits": [
+      "GP records synchronized levels, may miss short pulses; HP counts are raw including reset.",
+      "GP and HP FREEZE cuts differ; first high at observation start does not prove a reset edge.",
+      "Event overflow leaves dedicated first records valid but can hide later transitions.",
+      "HP activity expires 255 GP cycles after last divided heartbeat; it is a coarse clock witness.",
+      "No pre-configuration/clockless request coverage or direct PS FIFO occupancy."
+    ]
+  },
+  "passive_window": {
+    "HP_cycles": 4016989,
+    "milliseconds": 20.084945,
+    "AR_handshakes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "R_handshakes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "errors": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "final_identity_verified": true,
+  "final_device_owners": [],
+  "UART": {
+    "candidate-1": {
+      "closed": true,
+      "received_bytes": 36506,
+      "transmitted_bytes": 0
+    },
+    "fallback": {
+      "closed": true,
+      "received_bytes": 36525,
+      "transmitted_bytes": 0
+    }
+  },
+  "background_tasks": [],
+  "evidence_root": "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\hdmi-s01-isolation-20261022-r28",
+  "work_root": "D:\\FPGACompetitionProject\\.local\\hdmi-s01-isolation-20261022-r28",
+  "code_root": "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject",
+  "source_binding": {
+    "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\baselines\\ps_release_r26\\sources\\ps_ai.v": "efd35536e7d55b9588d3870cd7ab32a4eada66960024e21a198b4ea3254b5e43",
+    "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\baselines\\ps_release_r26\\sources\\ps_ai_wrapper.sv": "16c79e05ddfc760f0dec8335cb252b9b33b88df6751689535592d710a1dff096",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-s01-isolation-20261022-r28\\sources\\ps_ai_peripheral.sv": "0910b5559b0b82df4104ccd912648836f759d46338d590a71c8756e3f4929615",
+    "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\baselines\\ps_release_r26\\sources\\ai_read_monitor.sv": "87d53314ad0df489b996d7bcfa486e098bdb6f4346fb9c3257ce35c1f2291f7d",
+    "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\diagnostics\\ps_release_witness.sv": "ebf3571021111cbf8fa0345c7e11e35e68e0753887e79a89c922e6e0c8a8792b",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-s01-isolation-20261022-r28\\sources\\ps_release_cdc.tcl": "f4a78ecfd40dbee0da15b365304b8959cb1a0ed56168eaf1bcf06143dd5c4f5f",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-s01-isolation-20261022-r28\\sources\\ps_release_raw_flags_cdc.tcl": "2ebf9dc8f73c41e509ab059cd8127f7ed4bdd71ad03ee5e257de62b49ed90fe9",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-s01-isolation-20261022-r28\\sources\\hdmi_cdc.tcl": "55fd4603509bd091e6fefb1e4998df6b6d9e42e320fca7661d3c3367ef7a76e4",
+    "D:\\FPGACompetitionProject\\.local\\hdmi-s01-isolation-20261022-r28\\sources\\ai_read_monitor_cdc.tcl": "3d6644f5f3cead8650f21e228663207e809718504d0da7465c59fccf14cac4a7",
+    "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\constraints\\ps_release_factory_clocks.tcl": "ddf2228db41fd54e9249f2a831598de99a18a04e62ff40caa93739591ca9d666",
+    "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\baselines\\ps_release_r26\\sources\\ps_release_stub.v": "316b64660413f93b3a95b751277bc884ffd5e9187fb8d71e5215f837c16ab202",
+    "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\baselines\\ps_release_r26\\sources\\ps-managed-io.xdc": "b25ee395c6e4bb165339de2d9dcc6bfd871a4a8469dcb9810c5f104d2f530e3b",
+    "C:\\Users\\cenyongdong\\.codex\\worktrees\\hdmi-s01-isolation\\FPGACompetitionProject\\FPGA\\hdmi_candidate\\baselines\\ps_release_r26\\sources\\ai_boot_witness_cdc.tcl": "69121d7880914708d5fb805f757bd1a599f7e5312bd97367c0b8dafec260fd4a"
+  },
+  "PS_selected_checkpoint_sha256": "93d89fc4f7ccb236e6f70933e4c136e2ca412ba4dd079de99758bef8eccabb9b",
+  "board_archive": {
+    "path": "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\hdmi-s01-isolation-20261022-r28\\board-evidence.tar.gz",
+    "bytes": 91525,
+    "sha256": "e8797e2001f56d2e607e866cca7cb07aa96895faaee9611ed75a3e7d9a3b266b",
+    "transfer_verified": true
+  },
+  "limits": [
+    "GP records synchronized levels, may miss short pulses; HP counts are raw including reset.",
+    "GP and HP FREEZE cuts differ; first high at observation start does not prove a reset edge.",
+    "Event overflow leaves dedicated first records valid but can hide later transitions.",
+    "HP activity expires 255 GP cycles after last divided heartbeat; it is a coarse clock witness.",
+    "No pre-configuration/clockless request coverage or direct PS FIFO occupancy.",
+    "Single healthy sample cannot demonstrate a fix or isolate the root cause; earlier connected configurations also had healthy starts.",
+    "S01 internal routes/buffers are retained; physical implementation changes are a confounder.",
+    "No functional AI transfer, SDK, inference or HDMI validation performed."
+  ],
+  "baseline_tag": "codex/hdmi-before-s01-isolation-20261022",
+  "source_commit": "afac491f",
+  "native_stage_results": {
+    "synthesis": 0,
+    "opt": 1,
+    "opt-r2": 1,
+    "diagnose-snapshot": 0,
+    "opt-r3": 0,
+    "route": 0,
+    "final": 0,
+    "bit-r2": 1,
+    "bit-r3": 0
+  }
+}

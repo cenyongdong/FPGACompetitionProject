@@ -1,0 +1,19 @@
+{
+  "status": "waiting_for_source_exit",
+  "requested": 1792842773.0477755,
+  "source_run": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_20261023_r1",
+  "source_supervisor": {
+    "pid": 325965,
+    "start_ticks": "201370675"
+  },
+  "original442_mpjpe_mm": 123.0852578098301,
+  "additional_epochs": 100,
+  "target_epoch": 200,
+  "scheduled_checks": false,
+  "automatic_retries": false,
+  "supervisor": {
+    "pid": 376062,
+    "start_ticks": "209032611"
+  },
+  "wait_method": "Linux pidfd exit event; no periodic checks"
+}

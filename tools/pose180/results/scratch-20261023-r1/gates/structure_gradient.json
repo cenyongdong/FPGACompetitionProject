@@ -1,0 +1,92 @@
+{
+  "migration": {
+    "source": null,
+    "loaded": 0,
+    "initialization_mode": "from_scratch",
+    "reinitialized": "all_model_parameters",
+    "source_epoch": null,
+    "query_shape": [
+      180,
+      512
+    ],
+    "query_sha256": "bd292e8bb7a82a56580c40e2dff94c97d4315357fcbe17d88922493fca590ba9",
+    "old_optimizer_loaded": false,
+    "checkpoint_loading_blocked": true
+  },
+  "samples": [
+    "S11_01_308",
+    "S12_03_316",
+    "S13_41_304"
+  ],
+  "device": "cpu",
+  "checkpoint_loading_blocked_during_initialization": true,
+  "ports": [
+    [
+      2,
+      180
+    ],
+    [
+      2,
+      180,
+      14,
+      3
+    ]
+  ],
+  "joint_layer_inputs": [
+    [
+      14,
+      2,
+      256
+    ],
+    [
+      14,
+      2,
+      256
+    ]
+  ],
+  "maximum_shared_vs_unshared": 0.0,
+  "TopK_sort_argsort_calls": 0,
+  "native_output_order_preserved": true,
+  "initial_gradient_l2": {
+    "query": 0.6723514795303345,
+    "joint": 0.0,
+    "joint_regression": 587.31494140625,
+    "encoder": 58.80337905883789,
+    "pose_decoder": 37.96422576904297,
+    "pose_regression": 177.63868713378906,
+    "pose_classification": 30.680465698242188,
+    "input_projection": 14.967637062072754
+  },
+  "zero_initialized_joint_outputs": true,
+  "scratch_validation_optimizer_updates": 1,
+  "losses": {
+    "enc_loss_cls": 2.5478408336639404,
+    "enc_loss_kpt": 378.3139343261719,
+    "loss_cls": 3.039731025695801,
+    "loss_kpt": 377.9532470703125,
+    "d0.loss_cls": 3.45862078666687,
+    "d0.loss_kpt": 378.19769287109375,
+    "d1.loss_cls": 2.991565465927124,
+    "d1.loss_kpt": 378.1025085449219,
+    "d0.loss_kpt_refine": 377.820556640625,
+    "d1.loss_kpt_refine": 377.6878967285156
+  },
+  "gradient_l2": {
+    "query": 0.6219494342803955,
+    "joint": 0.48897239565849304,
+    "joint_regression": 574.1680908203125,
+    "encoder": 52.926231384277344,
+    "pose_decoder": 38.463401794433594,
+    "pose_regression": 172.0138702392578,
+    "pose_classification": 30.877058029174805,
+    "input_projection": 10.714424133300781
+  },
+  "positive_counts": [
+    1,
+    2
+  ],
+  "zero_positive_loss": 0.0,
+  "passed": true,
+  "seconds": 2.4779605865478516,
+  "gpu_peak_bytes": null
+}

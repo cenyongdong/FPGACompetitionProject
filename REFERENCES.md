@@ -1,8 +1,10 @@
 # 比赛开发资料索引与理解记录
 
-独立采集入口：[Nexmon 当前状态与实机结果](tools/nexmon/README.md)、[部署／有界验证方案](tools/nexmon/DEPLOYMENT-PLAN.md)。10月17日[本地构建与离线证据](tools/nexmon/evidence/preparation-20261017-r1/REPORT.md)和[芯片调查](tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md)保留各自历史范围，最新实施结果从当前入口查看。该独立任务不改变现有模型、SDK、BOOT、帧协议或旧DATA暂停；下文早期采集字段留空是历史阶段。
+2026-10-24 HDMI现行入口：[结构/源码](FPGA/hdmi_candidate/INTEGRATION.md)、[最后恢复状态](FPGA/hdmi_candidate/RESUME.md)、[本轮实测及首读原值](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。官方PSOC GP/HP经验总结及其与当前器件的适用边界见[资料判读](FPGA/hdmi_candidate/diagnostics/PROTOCOL-CHECKER-REVIEW-20261023.md)；以下“当前/尚未”按原日期作为历史资料，不覆盖上述入口。
 
-## HDMI现行资料入口（2026-10-18）
+2026-10-25独立采集入口：[Nexmon状态与实机结果](tools/nexmon/README.md)、[四机1发3收报告](tools/nexmon/evidence/multirx-20261025-r1/REPORT.md)、[无PC板端软件候选](tools/nexmon/board/README.md)。10月17日[本地构建与离线证据](tools/nexmon/evidence/preparation-20261017-r1/REPORT.md)、[芯片调查](tools/csi-planning/RT-AC86U-NEXMON-AUDIT-20261017.md)及[到货部署方案](tools/nexmon/DEPLOYMENT-PLAN.md)保留历史范围，不覆盖四机现状。独立180-query模型的转换、数值及压测边界见[部署实测](tools/pose180/deploy/RESULTS.md)。现行执行边界见[项目总览](PROJECT-PROGRESS.md)；下文早期“尚未核验”等描述按原日期理解。
+
+## HDMI资料入口（2026-10-18历史，现行状态见文首）
 
 [INTEGRATION.md](FPGA/hdmi_candidate/INTEGRATION.md)维护模块分工、CSR／帧契约、时钟／TMDS、工具适配及阶段结果；[显示应用](software/hdmi_demo/README.md)维护PS渲染与同Device生命周期。[难点索引](DIFFICULTIES.md)记录D05及D42–D45，近期原值与安全回退见[暂停汇报](FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。r13三窗新推理→HDMI已通过，D45启动稳定性未解决，开发与上板整体暂停；本任务不接入Vivado MCP。
 

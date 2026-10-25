@@ -1,0 +1,425 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "scope": "Historical RT-AC86U recordings only; host offline eligibility and rejection-path verification",
+  "acquisition_resumed": false,
+  "device_access": false,
+  "board_or_model_executed": false,
+  "archive_inventory": {
+    "files": 53,
+    "nonempty": 48,
+    "longest_pcap_span_s": 25.99426794052124,
+    "at_least_40s_pcap_files": 0,
+    "includes_replay_copies_not_independent_experiments": true,
+    "path": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\inventory.json"
+  },
+  "user_context": {
+    "seated_person_reported": true,
+    "synchronized_heart_reference_available": false,
+    "per_capture_subject_position_and_motion_annotations_verified": false
+  },
+  "unchanged_reference_contract": {
+    "sample_rate_hz": 50,
+    "warmup_seconds": 10,
+    "estimation_seconds": 30,
+    "required_samples": 2000,
+    "max_samples": 2048,
+    "max_interval_error_ms": 2,
+    "max_phase_step_rad": 0.25,
+    "max_phase_rms_rad": 1
+  },
+  "cases": [
+    {
+      "name": "latest-phone",
+      "label": "2026-10-21晚手机热点路径",
+      "source": "D:\\FPGACompetitionProject\\tools\\nexmon\\evidence\\hotspot-control-20261021-r1\\phone300\\capture.pcap",
+      "source_sha256": "8981b97b779617879c1217db1979436d29b82e9f42283451d0047edcb546f2af",
+      "complete_events": 3029,
+      "retained_events_all_segments": 2948,
+      "selected_continuous_events": 2948,
+      "selected_rx_span_s": 9.991514,
+      "selected_rx_interval_ms": {
+        "count": 2947,
+        "min": 0.207,
+        "p50": 3.333,
+        "p95": 4.962999999999998,
+        "p99": 7.173239999999998,
+        "max": 22.292
+      },
+      "iq_finite": true,
+      "original_four_phase_features": [
+        {
+          "feature": 0,
+          "fft_index": 5,
+          "rx_pair": [
+            0,
+            1
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2947,
+            "min": 1.2548768604236926e-06,
+            "p50": 0.008316163785732841,
+            "p95": 0.25195911808131893,
+            "p99": 1.7952044413715702,
+            "max": 1.8799488242238676
+          },
+          "steps_over_reference_0_25_rad": 149,
+          "fraction_over_reference_0_25_rad": 0.0505598914149983,
+          "detrended_rms_rad": 0.6665052898816795
+        },
+        {
+          "feature": 1,
+          "fft_index": 11,
+          "rx_pair": [
+            0,
+            2
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2947,
+            "min": 2.1643213702793318e-05,
+            "p50": 0.026092497799100056,
+            "p95": 0.10082589076719872,
+            "p99": 1.8337493046959563,
+            "max": 1.8786794040810952
+          },
+          "steps_over_reference_0_25_rad": 88,
+          "fraction_over_reference_0_25_rad": 0.02986087546657618,
+          "detrended_rms_rad": 0.34963250563592374
+        },
+        {
+          "feature": 2,
+          "fft_index": 17,
+          "rx_pair": [
+            1,
+            2
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2947,
+            "min": 4.9356347620821424e-05,
+            "p50": 0.02682240699183891,
+            "p95": 1.7970638619538193,
+            "p99": 1.860270047075464,
+            "max": 2.6352101057741883
+          },
+          "steps_over_reference_0_25_rad": 214,
+          "fraction_over_reference_0_25_rad": 0.07261621988462844,
+          "detrended_rms_rad": 0.8373141565840223
+        },
+        {
+          "feature": 3,
+          "fft_index": 23,
+          "rx_pair": [
+            0,
+            1
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2947,
+            "min": 8.570185507483785e-06,
+            "p50": 0.007533876073726908,
+            "p95": 0.3214540466377829,
+            "p99": 1.961178129130885,
+            "max": 2.0672735697936866
+          },
+          "steps_over_reference_0_25_rad": 158,
+          "fraction_over_reference_0_25_rad": 0.05361384458771632,
+          "detrended_rms_rad": 0.7782631213910203
+        }
+      ],
+      "all_occupied_phase_scan": {
+        "features": 168,
+        "phase_only_qualified": 0,
+        "min_jumps_over_0_25rad": 80,
+        "median_jumps_over_0_25rad": 150.0
+      },
+      "native_status": "invalid",
+      "native_reasons": [
+        "unverified_sample_clock",
+        "missing_sequence",
+        "non_uniform_sampling"
+      ],
+      "native_samples": 2000,
+      "native_actual_span_s": 6.811577797,
+      "heart": null,
+      "breath": null,
+      "raw_audit": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\latest-phone\\audit.json",
+      "native_result": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\latest-phone\\native-result.json",
+      "phase_scan": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\latest-phone\\phase-carrier-scan.json"
+    },
+    {
+      "name": "earlier-ap",
+      "label": "2026-10-21笔记本热点路径",
+      "source": "D:\\FPGACompetitionProject\\tools\\nexmon\\evidence\\hotspot-20261021-r1\\ap300\\capture.pcap",
+      "source_sha256": "d2192a70ed8684f1d8d0e8a24224f4a9c955fb2b1f12053b005045ffcbd8fde3",
+      "complete_events": 3302,
+      "retained_events_all_segments": 2941,
+      "selected_continuous_events": 2940,
+      "selected_rx_span_s": 9.875185,
+      "selected_rx_interval_ms": {
+        "count": 2939,
+        "min": 0.219,
+        "p50": 3.332,
+        "p95": 4.981,
+        "p99": 6.750859999999994,
+        "max": 10.751
+      },
+      "iq_finite": true,
+      "original_four_phase_features": [
+        {
+          "feature": 0,
+          "fft_index": 5,
+          "rx_pair": [
+            0,
+            1
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2939,
+            "min": 7.968053019391519e-06,
+            "p50": 0.01936541006781667,
+            "p95": 0.07773379297937465,
+            "p99": 0.22024982330224988,
+            "max": 2.953336514359467
+          },
+          "steps_over_reference_0_25_rad": 24,
+          "fraction_over_reference_0_25_rad": 0.008166042871725076,
+          "detrended_rms_rad": 3.081529472042667
+        },
+        {
+          "feature": 1,
+          "fft_index": 11,
+          "rx_pair": [
+            0,
+            2
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2939,
+            "min": 1.6619922012406363e-05,
+            "p50": 0.020560016459718614,
+            "p95": 0.08428126498050717,
+            "p99": 0.5090397234006362,
+            "max": 2.608055962513602
+          },
+          "steps_over_reference_0_25_rad": 40,
+          "fraction_over_reference_0_25_rad": 0.013610071452875128,
+          "detrended_rms_rad": 2.164510181492497
+        },
+        {
+          "feature": 2,
+          "fft_index": 17,
+          "rx_pair": [
+            1,
+            2
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2939,
+            "min": 1.2019413352992723e-05,
+            "p50": 0.011885536731378321,
+            "p95": 0.08789870041314034,
+            "p99": 0.8328476055327014,
+            "max": 3.1268086388717844
+          },
+          "steps_over_reference_0_25_rad": 47,
+          "fraction_over_reference_0_25_rad": 0.015991833957128276,
+          "detrended_rms_rad": 1.3423827689894372
+        },
+        {
+          "feature": 3,
+          "fft_index": 23,
+          "rx_pair": [
+            0,
+            1
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2939,
+            "min": 3.940848703809507e-06,
+            "p50": 0.0145058418089139,
+            "p95": 0.09644575389848722,
+            "p99": 0.29521848378376736,
+            "max": 2.535362626830718
+          },
+          "steps_over_reference_0_25_rad": 40,
+          "fraction_over_reference_0_25_rad": 0.013610071452875128,
+          "detrended_rms_rad": 2.984199259619099
+        }
+      ],
+      "all_occupied_phase_scan": {
+        "features": 168,
+        "phase_only_qualified": 0,
+        "min_jumps_over_0_25rad": 22,
+        "median_jumps_over_0_25rad": 41.5
+      },
+      "native_status": "invalid",
+      "native_reasons": [
+        "unverified_sample_clock",
+        "missing_sequence",
+        "non_uniform_sampling"
+      ],
+      "native_samples": 2000,
+      "native_actual_span_s": 6.69678998,
+      "heart": null,
+      "breath": null,
+      "raw_audit": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\earlier-ap\\audit.json",
+      "native_result": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\earlier-ap\\native-result.json",
+      "phase_scan": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\earlier-ap\\phase-carrier-scan.json"
+    },
+    {
+      "name": "stable-round2",
+      "label": "2026-10-21早先稳定性录制round2",
+      "source": "D:\\FPGACompetitionProject\\tools\\nexmon\\evidence\\stability-20261021-r1\\round2\\capture.pcap",
+      "source_sha256": "e5ad544ed1302f4ac9d0a7ea5e99cdaadb34faaafb4d60421d0523a06dc4c483",
+      "complete_events": 3013,
+      "retained_events_all_segments": 2995,
+      "selected_continuous_events": 2993,
+      "selected_rx_span_s": 9.99601,
+      "selected_rx_interval_ms": {
+        "count": 2992,
+        "min": 0.218,
+        "p50": 3.33,
+        "p95": 3.5214499999999997,
+        "p99": 4.280630000000001,
+        "max": 31.735
+      },
+      "iq_finite": true,
+      "original_four_phase_features": [
+        {
+          "feature": 0,
+          "fft_index": 5,
+          "rx_pair": [
+            0,
+            1
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2992,
+            "min": 2.0534324374210655e-07,
+            "p50": 0.010144799247203684,
+            "p95": 0.10036104673304978,
+            "p99": 1.7996523592622102,
+            "max": 1.8738404634269659
+          },
+          "steps_over_reference_0_25_rad": 144,
+          "fraction_over_reference_0_25_rad": 0.0481283422459893,
+          "detrended_rms_rad": 0.7377479860317007
+        },
+        {
+          "feature": 1,
+          "fft_index": 11,
+          "rx_pair": [
+            0,
+            2
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2992,
+            "min": 8.479613742284897e-07,
+            "p50": 0.01954323796716717,
+            "p95": 0.08995428971220253,
+            "p99": 0.1539051681538674,
+            "max": 1.9333754207976988
+          },
+          "steps_over_reference_0_25_rad": 15,
+          "fraction_over_reference_0_25_rad": 0.005013368983957219,
+          "detrended_rms_rad": 1.141089829270957
+        },
+        {
+          "feature": 2,
+          "fft_index": 17,
+          "rx_pair": [
+            1,
+            2
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2992,
+            "min": 5.416219528431299e-07,
+            "p50": 0.014248626131311254,
+            "p95": 0.47613370712619946,
+            "p99": 1.8820043217151121,
+            "max": 2.0099230036008215
+          },
+          "steps_over_reference_0_25_rad": 156,
+          "fraction_over_reference_0_25_rad": 0.05213903743315508,
+          "detrended_rms_rad": 1.123616311920989
+        },
+        {
+          "feature": 3,
+          "fft_index": 23,
+          "rx_pair": [
+            0,
+            1
+          ],
+          "adjacent_phase_step_rad": {
+            "count": 2992,
+            "min": 3.4449931880509155e-06,
+            "p50": 0.013101411144910258,
+            "p95": 0.19424429483655742,
+            "p99": 1.944844841974367,
+            "max": 2.0714315027263615
+          },
+          "steps_over_reference_0_25_rad": 148,
+          "fraction_over_reference_0_25_rad": 0.04946524064171123,
+          "detrended_rms_rad": 0.8896508895505832
+        }
+      ],
+      "all_occupied_phase_scan": {
+        "features": 168,
+        "phase_only_qualified": 0,
+        "min_jumps_over_0_25rad": 12,
+        "median_jumps_over_0_25rad": 148.0
+      },
+      "native_status": "invalid",
+      "native_reasons": [
+        "unverified_sample_clock",
+        "non_uniform_sampling"
+      ],
+      "native_samples": 2000,
+      "native_actual_span_s": 6.655963898,
+      "heart": null,
+      "breath": null,
+      "raw_audit": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\stable-round2\\audit.json",
+      "native_result": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\stable-round2\\native-result.json",
+      "phase_scan": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\stable-round2\\phase-carrier-scan.json"
+    }
+  ],
+  "legacy_imports": [
+    {
+      "name": "longest-24g",
+      "exit_code": 1,
+      "reason": "ValueError: Duplicate or wrapped frame identity; choose a smaller source capture",
+      "raw_result": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\longest-24g-import-result.json"
+    },
+    {
+      "name": "longest-5g",
+      "exit_code": 1,
+      "reason": "ValueError: Duplicate or wrapped frame identity; choose a smaller source capture",
+      "raw_result": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\longest-5g-import-result.json"
+    }
+  ],
+  "actual_validation": {
+    "diagnostic_three_core_pairing_and_first_valid_dedup": true,
+    "finite_selected_iq": true,
+    "native_rejection_without_stale_hr": true,
+    "native_positive_heart_filter_acf_fft_path_validated_with_real_data": false,
+    "real_heartbeat_presence_established": false,
+    "heart_rate_accuracy_validated": false,
+    "checks": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\checks.json",
+    "build": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1\\build.json"
+  },
+  "conclusions": [
+    "Existing recordings support diagnostic CSI import, antenna-pair phase inspection and invalid-input handling; they do not qualify as positive physiological validation.",
+    "The longest archived PCAP covers about 26s; no individual 40s recording exists in the inspected archive. Do not join separate recordings, repeat them or pad time.",
+    "Directly passing 300Hz observations into the unchanged 50Hz module makes its first 2000 rows cover only 6.66-6.81s. The raw clock declaration remains unknown_arrival; no resampling or clock relabeling was done.",
+    "NMD recordings contain local RX timestamp metadata; a heart-specific time adapter remains separate work, not evidence of absent hardware timestamps.",
+    "All 168 occupied-carrier/antenna-pair features per inspected ~10s segment contain phase steps above the reference threshold. This is a raw-phase diagnostic, not a formal 40s/50Hz quality verdict or proof that the hardware cannot sense heartbeat.",
+    "No synchronized heart-rate reference exists. A spectral peak cannot establish a heartbeat or validate bpm accuracy."
+  ],
+  "next_minimum_conditions": [
+    "Keep the standalone vitals branch at its current 50Hz profile; it need not wait for the pose branch to meet stable 300Hz.",
+    "On explicit resumption of collection, record individual continuous 60-120s runs, including an empty-scene control and a still seated subject with synchronized contact reference and position annotations.",
+    "Validate a dedicated timestamp/rate adapter and phase continuity using same-frame true RX antenna pairs, keeping rejection gates intact.",
+    "Only after a complete qualified real window is available, evaluate the unchanged heart filter, ACF, spectral/respiration-harmonic checks and reference error."
+  ],
+  "raw_output_directory": "D:\\FPGACompetitionProject\\.local\\vitals-real-audit-20261022-r1",
+  "protected": [
+    "pose model structure",
+    "pose preprocessing mathematics",
+    "SDK and board protocols",
+    "vitals/reference.cpp, reference.hpp and offline.cpp"
+  ]
+}

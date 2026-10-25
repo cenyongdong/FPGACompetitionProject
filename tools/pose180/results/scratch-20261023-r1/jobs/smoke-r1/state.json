@@ -1,0 +1,50 @@
+{
+  "name": "smoke-r1",
+  "stage": "smoke",
+  "status": "completed",
+  "started": 1792766124.9433222,
+  "supervisor": {
+    "pid": 325596,
+    "start_ticks": "201367801"
+  },
+  "gpu_before": [
+    [
+      "1",
+      "GPU-cb01d43e-29fc-888d-b6ed-399005396572",
+      "24564",
+      "9302",
+      "0"
+    ],
+    [
+      "6",
+      "GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c",
+      "24564",
+      "1",
+      "0"
+    ]
+  ],
+  "command": [
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nnodes=1",
+    "--nproc_per_node=2",
+    "tools/pose180/train.py",
+    "configs/wifi/petr_wifi_pose180_scratch_smoke.py",
+    "--launcher",
+    "pytorch",
+    "--seed",
+    "0",
+    "--no-validate"
+  ],
+  "child": {
+    "pid": 325599,
+    "start_ticks": "201367823"
+  },
+  "cuda_visible_devices": "1,6",
+  "native_exit": 0,
+  "finished": 1792766141.8663082,
+  "elapsed_seconds": 16.92298722267151
+}

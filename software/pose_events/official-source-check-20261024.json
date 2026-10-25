@@ -1,0 +1,241 @@
+{
+  "schema": "person_in_wifi_3d_official_search_v1",
+  "date": "2026-10-24",
+  "hardware_test": false,
+  "new_inferences": 0,
+  "model_sdk_protocol_changed": false,
+  "resolved_semantic_prerequisites": [],
+  "code_history": {
+    "repository": "https://github.com/aiotgroup/Person-in-WiFi-3D-repo",
+    "history_url": "https://github.com/aiotgroup/Person-in-WiFi-3D-repo/commits/main/",
+    "scope": "All 11 commits visible on the official main history; matching local immutable Git objects, not the modified working tree",
+    "online_short_commit_sequence_matches_local": true,
+    "commits": [
+      {
+        "sha": "468aff35f0b042671b88bd22dc19428e5152f593",
+        "summary": "2024-05-22 .."
+      },
+      {
+        "sha": "cf26b21a60dcfc7a343676961023c4531a087892",
+        "summary": "2024-05-22 ."
+      },
+      {
+        "sha": "08b2a8158412fcb6aeb9cc35206f6b1172d6dcb1",
+        "summary": "2024-05-07 cite"
+      },
+      {
+        "sha": "153eff66d33422f7904dbc5ea6590f310904627a",
+        "summary": "2024-03-29 add cite"
+      },
+      {
+        "sha": "8cdfa93e8797a9790db3cbf2f269466b0d28ba59",
+        "summary": "2024-03-23 demo mini"
+      },
+      {
+        "sha": "b03b7870ecb1a3262c9b06c87872f427ce6c92c7",
+        "summary": "2024-03-23 demo mini"
+      },
+      {
+        "sha": "3faa42c43ddb464e73e29997cdace300d58816a9",
+        "summary": "2024-03-23 demo2"
+      },
+      {
+        "sha": "db362c5f17f170aae2d55dbbfcd4aea592f4028a",
+        "summary": "2024-03-23 add demo"
+      },
+      {
+        "sha": "6531fce44f81fc4019aae3879f826e34189415e9",
+        "summary": "2024-03-21 first commit"
+      },
+      {
+        "sha": "29881efe01adc54486c4f6e2c487da4da92c99d3",
+        "summary": "2024-03-04 Update README.md"
+      },
+      {
+        "sha": "2b2f409cb91eddcab30775fb158c3c70664fa0b9",
+        "summary": "2024-03-04 Initial commit"
+      }
+    ],
+    "unique_non_vendor_source_text_blobs_inspected": 108,
+    "wifi_loader_and_limb_loss_versions": 1,
+    "joint_export_code_found": false,
+    "coordinate_transform_code_found": false,
+    "capture_alignment_code_found": false,
+    "keyword_and_path_review": "Kinect/K4A/joint names or IDs/time_list/calibration and source-path review; timestamp hits are training/evaluation log filenames, named joint tables are COCO/CrowdPose",
+    "immutable_loader_url": "https://github.com/aiotgroup/Person-in-WiFi-3D-repo/blob/468aff35f0b042671b88bd22dc19428e5152f593/opera/datasets/wifi_pose.py",
+    "branch_tag_enumeration_complete": false,
+    "detail_path": "D:/FPGACompetitionProject/.local/pose-events-official-20261024-r1/history-audit.json"
+  },
+  "supplement_search": {
+    "cvf_directory_url": "https://openaccess.thecvf.com/CVPR2024?day=2024-06-19",
+    "cvf_indexed_entry": "The indexed entry for this specific paper lists [pdf], without a [supp] link",
+    "separate_cvpr_supplement_obtained": false,
+    "claim_scope": "No separate supplement located in the accessible indexed entry; not proof that no unpublished or inaccessible material exists",
+    "project_site": "https://aiotgroup.github.io/Person-in-WiFi-3D/",
+    "site_repository": "https://github.com/aiotgroup/Person-in-WiFi-3D",
+    "site_history_total_displayed": 25,
+    "site_history_fully_inspected": false
+  },
+  "slides": {
+    "linked_asset_url": "https://aiotgroup.github.io/Person-in-WiFi-3D/paper/CVPR_person%20in%20wif.pptx",
+    "inspected_local_copy": "D:/Dowload from Chrome/CVPR_person in wif (1).pptx",
+    "remote_byte_identity_verified": false,
+    "provenance": "Matching basename, paper title and creator metadata; online asset/API could not be retrieved for byte identity",
+    "slides": 10,
+    "notes_parts": 0,
+    "embedded_ole_objects": 0,
+    "custom_xml_parts": 0,
+    "inspected": "Slide text, package relationships, dataset/framework/result images; extracted original pixels without editing",
+    "audio_tracks_transcribed": false,
+    "joint_index_or_kinect_subset_definition_found": false,
+    "finding": "Result table uses joint names but no array/K4ABT indices; 32-joint Kinect illustration does not identify the exported 14-point subset",
+    "source_copy_modified": false
+  },
+  "extended_paper": {
+    "local_copy": "D:/Person-in-WIFI-3D/Person-in-WiFi-3D-repo/paper/Person-in-WiFi_3D_Unified_Model_for_3D_WiFi_Perception.pdf",
+    "pages": 15,
+    "inspection": "Text search throughout; output/input representation pages 4-5 visually inspected",
+    "finding": "Again states 14 keypoints and manual synchronization, without an explicit subset/export map or processed-sample alignment algorithm",
+    "used_to_replace_2024_model_or_dataset": false
+  },
+  "excluded_mapping": {
+    "url": "https://github.com/aiotgroup/Person-in-WiFi-3D-repo/issues/18",
+    "author_role": "Questioner, not an official maintainer definition",
+    "description": "CrowdPose-like trial mapping in issue body",
+    "edge_sets_match_wifi_training": false,
+    "wifi_edges_absent_from_issue": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        11,
+        13
+      ]
+    ],
+    "issue_edges_absent_from_wifi_training": [
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        13
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        12,
+        13
+      ]
+    ],
+    "accepted_as_dataset_contract": false
+  },
+  "other_issues": [
+    {
+      "url": "https://github.com/aiotgroup/Person-in-WiFi-3D-repo/issues/9",
+      "finding": "Accessible view contains a filename/subject/action description question, without a maintainer contract"
+    },
+    {
+      "url": "https://github.com/aiotgroup/Person-in-WiFi-3D-repo/issues/6",
+      "finding": "Accessible view contains a synchronization question, without an alignment implementation"
+    }
+  ],
+  "access_limits": [
+    "Direct Git HTTPS failed at configured unavailable proxy; existing Git objects used after online history comparison",
+    "CVF paper detail/day-page fetch returned HTTP 403; indexed official day entry was available",
+    "Project-site history/paper directory/raw index and GitHub API asset metadata were unavailable through web tools",
+    "Browser fallback created a hidden repository tab, but binding it timed out; no successful interactive content read",
+    "Website history, additional branches/tags and any unavailable supplement are not claimed exhausted"
+  ],
+  "activation": {
+    "mapping_verified": false,
+    "up_verified": false,
+    "capture_clock_verified": false,
+    "subject_verified": false
+  },
+  "prototype_change": "No semantic configuration, thresholds, model, SDK, protocol or core source changed; new evidence is recorded separately",
+  "revalidation": {
+    "report": "software/pose_events/validation-official-20261024.json",
+    "mode": "Existing standalone binaries and decoded archive reused; no build, label rescan or inference"
+  },
+  "remaining_evidence_needed": [
+    "Explicit array-index to K4ABT joint-ID/name subset used to export these 2024 NPY labels (including hand versus wrist)",
+    "Camera/raw coordinates to stored-label coordinates transform and physical up calibration",
+    "Raw capture/frame/CSI-window indices to processed sample suffixes with timestamp clock definition"
+  ]
+}

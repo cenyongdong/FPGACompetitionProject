@@ -1,0 +1,16 @@
+{
+  "configs/wifi/petr_wifi_pose180_shared.py": "c8213b8f9e320f1e85683ac3ac79bab440cacb1e4495ad68e775efe6a95956cf",
+  "configs/wifi/petr_wifi_pose180_smoke.py": "def42f89cb60a8de2afa14b3887c8b49d2377332066969128178fb810d95940c",
+  "opera/models/pose180/__init__.py": "97b3f88da98a8e9d9c1b2d991239caea7738795be8d19f86ce19a8b3608923b2",
+  "opera/models/pose180/detector.py": "22a767327f74779cee986183851dde50bc76a049714fc229bfaf856b335ff667",
+  "opera/models/pose180/evaluation.py": "23c1878b201b7ac8c082a1ca49231bd44d8188b11102062ecbb94e2f99d28bd7",
+  "opera/models/pose180/head.py": "a7bea83961d2e169cd5b6433581fb556c20099df435e34d15b45b3e4b6a731bb",
+  "opera/models/pose180/hooks.py": "0bbaa41cc69be7246b616e2298963d4b2e8a594ed4ae57afb62a23250f5c77ff",
+  "opera/models/pose180/transformer.py": "0d93de61767d28cd0211fbd3f8aa204958932db231b46f24c969f5107819191e",
+  "tools/pose180/common.py": "069284f9c1878eb05d529729e0cef2db9669306bceaf15324652719e50d4ceda",
+  "tools/pose180/export.py": "f73f64489f79c408ac8db5827c2a16f932b2df079ea24b4081b8557848ef9d3f",
+  "tools/pose180/manage.py": "647a4765e2ce2875d20fffe40eada02d162c30ad9cdd177846078af99d7e39ce",
+  "tools/pose180/train.py": "8ee04a45d2963a221c206c846f65e9ad275fc102162908aac1c0852e51cd12f4",
+  "tools/pose180/validate.py": "379e82f78b6d0b28fb2118ff0bcf5eaa7f0da97428332da15353142687840712",
+  "tools/pose180/validate_eval.py": "e5d35da287a76d3ef9aee819e984a10e88c762a484edea88f31a9db8bf773718"
+}

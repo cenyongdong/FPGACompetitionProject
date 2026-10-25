@@ -1,0 +1,135 @@
+{
+  "package_id": "hp2-cycletrace-r30",
+  "as_of": "2026-10-22",
+  "outcome": "startup_fault_captured_in_real_consecutive_HP_samples",
+  "source_commit": "f2361a27",
+  "hardware_constraints_commit": "d2005f9a",
+  "AI_four_HC_unchanged": true,
+  "S01_source_input_mask": 0,
+  "SDK_Open": 0,
+  "DMA": 0,
+  "inference": 0,
+  "HDMI_START": 0,
+  "physical_keys": 0,
+  "hardware": {
+    "WNS_ns": 0.03,
+    "WHS_ns": 0.015,
+    "TNS_ns": 0.0,
+    "THS_ns": 0.0,
+    "raw_timing_pass": false,
+    "approved_AI_period_exceptions": [
+      "Min Period        n/a     BUFG/I             n/a            1.409         1.000       -0.409     BUFGCTRL_X0Y20  U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/clkout1_buf/I",
+      "Min Period        n/a     PLLE2_ADV/CLKOUT0  n/a            1.071         1.000       -0.071     PLLE2_ADV_X1Y3  U0_ps_ai_peripheral/ZGolo/u_AI_Mate_top/clkrst_wrapper_u0/AI_CORE_CLK/inst/plle2_adv_inst/CLKOUT0"
+    ],
+    "new_timing_exceptions": false,
+    "new_DRC_waivers": false,
+    "fully_routed_nets": 104423,
+    "routable_nets": 104423,
+    "unconstrained_internal_endpoints": 0
+  },
+  "bit": {
+    "path": "D:\\FPGACompetitionProject\\.local\\hdmi-hp2-cycletrace-20261022-r30\\fpai_demo_vivado.runs\\impl_hp2_cycletrace_r30\\ai7030_edif_top.bit",
+    "bytes": 5980025,
+    "sha256": "59087af53a62bb0b9ef2bf40cee16f878d5f5cdbbbfe8955b52b41d44ce4a60f"
+  },
+  "ICAP_bit": {
+    "path": "D:\\FPGACompetitionProject\\.local\\hdmi-hp2-cycletrace-20261022-r30\\boot-package\\ai7030_top_disable_icap.bit",
+    "bytes": 5980609,
+    "sha256": "416d275d39db40a6f39a70d2405d787a99feddd85e2edd84a6284c9447368fc7",
+    "header": {
+      "a": "ai7030_edif_top;UserID=53180205;Version=2018.3;Patched=DISABLE_ICAP,VCCM;PatchID=32494",
+      "b": "7z030ffg676",
+      "c": "2026/10/22",
+      "d": "21:35:19"
+    }
+  },
+  "candidate_BOOT_sha256": "a5d34e3a226eb62fe275f0c3223ac41c362961f9f49ed9da222154e0d4e4fe47",
+  "original_BOOT_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "candidate_boot_id": "5289cf5d-6336-4f2a-9e8a-6f4d0b32df5b",
+  "final_original_boot_id": "d6dfd20f-b3c4-4d6e-a6b9-6112a55692ab",
+  "final_device_owners": [],
+  "final_SDK_identity": {
+    "libicraft_hostbackend.so": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+    "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+    "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+    "libicraft_xir.so": "377a2cac1a8834836503d9805451449d42d99a888b8f96b38d4c2ba8c585af3e",
+    "libicraft_utils.so": "99679371aa20e7955e14c39938225df24cdc763d75f26301970fba114f650109",
+    "libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178"
+  },
+  "actual_candidate_starts": 1,
+  "actual_original_fallbacks": 1,
+  "remaining": {
+    "candidate_starts": 0,
+    "original_fallbacks": 0,
+    "SDK_Open": 0
+  },
+  "background_tasks": [],
+  "observation": {
+    "sample_bits": 512,
+    "nominal_HP_Hz": 200000000,
+    "sample_period_ns": 5,
+    "bank_depth": 128,
+    "pretrigger": 32,
+    "posttrigger": 95,
+    "bank0_trigger_HP_cycle": 342486,
+    "bank1_trigger_HP_cycle": 11664731,
+    "trigger_delta_HP_cycles": 11322245,
+    "PS_resetn_rise_same_sample_as_first_PS_RVALID": true,
+    "first_PS_RID": 32,
+    "first_PS_RRESP": 0,
+    "first_PS_RLAST": 0,
+    "first_PS_RDATA": 0,
+    "bank1_PS_R_handshake_cycles": [
+      11664733,
+      11664734,
+      11664735,
+      11664736,
+      11664738,
+      11664739
+    ],
+    "bank1_first_S01_RVALID_HP_cycle": 11664737,
+    "lifetime_raw_HP_handshakes": {
+      "PS_AR": 0,
+      "PS_R": 6,
+      "legacy_AW": 0,
+      "legacy_W": 0,
+      "legacy_B": 0,
+      "PS_AW": 0,
+      "PS_W": 0,
+      "PS_B": 0
+    },
+    "event_overflow": false,
+    "HP_count_overflow_mask": 0
+  },
+  "UART": {
+    "candidate-1": {
+      "closed": true,
+      "received_bytes": 37198,
+      "transmitted_bytes": 0
+    },
+    "fallback": {
+      "closed": true,
+      "received_bytes": 37048,
+      "transmitted_bytes": 0
+    }
+  },
+  "archive": {
+    "path": "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\hdmi-hp2-cycletrace-20261022-r30\\board-evidence.tar.gz",
+    "bytes": 90363,
+    "sha256": "12d32eba0a61d7d1f3e2bb1d1cad2f8241969b0885a79783adc7a7a2c334aa9a",
+    "transfer_verified": true
+  },
+  "limits": [
+    "BRAM recorder, not a vendor ILA export.",
+    "Flags are pin levels sampled in HP domain; asynchronous flags have edge uncertainty.",
+    "No coverage before PL configuration or while HP clock is absent.",
+    "RDATA/RID/RRESP/RLAST have protocol meaning only when RVALID=1.",
+    "DDR_calibrated is PL MIG init_calib_complete, not a PS DDR initialization indicator.",
+    "Initial high does not establish an observed reset release edge.",
+    "No PS internal FIFO occupancy or reset completion proof.",
+    "Two separate 128-point windows; no consecutive waveform coverage between them.",
+    "S01 RREADY=0 is intentional isolation. Six PS R handshakes do not prove six valid complete transactions.",
+    "The matching FMQL30TAI/AArch64/FSBL4.51 HP2 FIFO/reset contract remains unknown."
+  ],
+  "waveforms": "waveforms-r30-20261022/README.md"
+}

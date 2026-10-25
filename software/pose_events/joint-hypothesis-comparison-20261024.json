@@ -1,0 +1,1739 @@
+{
+  "schema": "pose_joint_hypothesis_comparison_v1",
+  "date": "2026-10-24",
+  "hardware_test": false,
+  "new_inferences": 0,
+  "model_sdk_protocol_changed": false,
+  "source": {
+    "owned_outputs": "D:\\FPGACompetitionProject\\.local\\pose-events-validation-20261024-r1\\archive-input.csv",
+    "archive_origin": "demo_v1/runs/delivery-long-r1/actual.full, decoded/identity/selected-full agreement checked in the initial import",
+    "model_context": "Existing shared FP16 board outputs; numerical validation is not anatomical/action ground truth",
+    "dataset": "D:\\Person-in-WIFI-3D\\Person-in-WiFi-3D-repo\\data\\wifipose",
+    "contract": "D:\\FPGACompetitionProject\\software\\pose_events\\dataset-contract-20261024.json",
+    "csv_unchanged_size_mtime": true
+  },
+  "output_frames": 15648,
+  "splits": {
+    "test": 7824,
+    "train": 7824
+  },
+  "scores": {
+    "min": 0.400634765625,
+    "p05": 0.93408203125,
+    "median": 0.9794921875,
+    "p95": 0.9873046875,
+    "max": 0.9970703125,
+    "mean": 0.9694756349902943,
+    "stddev": 0.0269654319142684
+  },
+  "observed_output_geometry": {
+    "screenshot_crowdpose": {
+      "index_names": [
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "right_elbow",
+        "left_wrist",
+        "right_wrist",
+        "left_hip",
+        "right_hip",
+        "left_knee",
+        "right_knee",
+        "left_ankle",
+        "right_ankle",
+        "head_top",
+        "neck"
+      ],
+      "pose_count": 15648,
+      "distances": {
+        "head_neck": {
+          "indices": [
+            12,
+            13
+          ],
+          "distance_mm": {
+            "min": 4.475171577105312,
+            "p05": 106.16383780468803,
+            "median": 192.2836432834534,
+            "p95": 312.6711329130353,
+            "max": 721.2442986909256,
+            "mean": 198.27757975609072,
+            "stddev": 64.05487419214874
+          }
+        },
+        "shoulder_width": {
+          "indices": [
+            0,
+            1
+          ],
+          "distance_mm": {
+            "min": 37.429234173314065,
+            "p05": 63.596641231113026,
+            "median": 80.12574803424225,
+            "p95": 89.51701408656618,
+            "max": 118.28103069249813,
+            "mean": 78.58317517703455,
+            "stddev": 8.032987568800685
+          }
+        },
+        "hip_width": {
+          "indices": [
+            6,
+            7
+          ],
+          "distance_mm": {
+            "min": 91.54720035357785,
+            "p05": 187.28221239243763,
+            "median": 264.56914743037305,
+            "p95": 670.0158588714527,
+            "max": 930.9504289552021,
+            "mean": 321.0820137288935,
+            "stddev": 146.04391155514193
+          }
+        },
+        "upper_arm_l": {
+          "indices": [
+            0,
+            2
+          ],
+          "distance_mm": {
+            "min": 24.025223828403405,
+            "p05": 126.72092026017789,
+            "median": 177.5964893730208,
+            "p95": 209.56605897958676,
+            "max": 398.1932845311472,
+            "mean": 174.28240741605217,
+            "stddev": 26.644645968109796
+          }
+        },
+        "upper_arm_r": {
+          "indices": [
+            1,
+            3
+          ],
+          "distance_mm": {
+            "min": 82.02107684314312,
+            "p05": 161.2390524908818,
+            "median": 206.78366832066678,
+            "p95": 241.27263140440317,
+            "max": 399.0784519863779,
+            "mean": 204.86981530601474,
+            "stddev": 25.219127465878593
+          }
+        },
+        "forearm_or_elbow_to_hand_l": {
+          "indices": [
+            2,
+            4
+          ],
+          "distance_mm": {
+            "min": 29.992554058469167,
+            "p05": 189.1974542168054,
+            "median": 260.4954155347443,
+            "p95": 304.02093988887003,
+            "max": 458.8014928206458,
+            "mean": 255.73193132419777,
+            "stddev": 36.984223234158755
+          }
+        },
+        "forearm_or_elbow_to_hand_r": {
+          "indices": [
+            3,
+            5
+          ],
+          "distance_mm": {
+            "min": 294.9622928637248,
+            "p05": 435.6341759975495,
+            "median": 522.1690277502996,
+            "p95": 596.5343316054839,
+            "max": 723.5873435866799,
+            "mean": 519.5228825185227,
+            "stddev": 49.258478656991
+          }
+        },
+        "thigh_l": {
+          "indices": [
+            6,
+            8
+          ],
+          "distance_mm": {
+            "min": 51.711727714350495,
+            "p05": 296.25888904924426,
+            "median": 513.8561077927213,
+            "p95": 925.0578488470933,
+            "max": 1382.5942907203632,
+            "mean": 545.0556471767278,
+            "stddev": 186.17338633227766
+          }
+        },
+        "thigh_r": {
+          "indices": [
+            7,
+            9
+          ],
+          "distance_mm": {
+            "min": 278.4213769356901,
+            "p05": 372.4473537487368,
+            "median": 433.5289983999739,
+            "p95": 480.5052704280613,
+            "max": 588.4459651230765,
+            "mean": 430.93330413140035,
+            "stddev": 34.35039785378093
+          }
+        },
+        "shank_l": {
+          "indices": [
+            8,
+            10
+          ],
+          "distance_mm": {
+            "min": 7.109482313750506,
+            "p05": 130.52479881993452,
+            "median": 417.75307467507025,
+            "p95": 1103.4692487978941,
+            "max": 1743.7447742670981,
+            "mean": 486.4465479736428,
+            "stddev": 286.21792247802097
+          }
+        },
+        "shank_r": {
+          "indices": [
+            9,
+            11
+          ],
+          "distance_mm": {
+            "min": 9.056268062007524,
+            "p05": 124.96564181119209,
+            "median": 200.06903410623823,
+            "p95": 285.6471282000172,
+            "max": 569.8158505437382,
+            "mean": 202.05331395948278,
+            "stddev": 50.02683050703419
+          }
+        }
+      },
+      "raw_head_minus_neck_C2_mm": {
+        "min": -324.21875,
+        "p05": -58.59375,
+        "median": -3.90625,
+        "p95": 46.875,
+        "max": 343.75,
+        "mean": -3.2267502236707566,
+        "stddev": 35.79197460722205
+      }
+    },
+    "paper_topology_candidate": {
+      "index_names": [
+        "neck",
+        "head",
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "left_hip",
+        "right_elbow",
+        "right_hip",
+        "left_hand",
+        "left_knee",
+        "right_hand",
+        "right_knee",
+        "left_ankle",
+        "right_ankle"
+      ],
+      "pose_count": 15648,
+      "distances": {
+        "head_neck": {
+          "indices": [
+            1,
+            0
+          ],
+          "distance_mm": {
+            "min": 37.429234173314065,
+            "p05": 63.596641231113026,
+            "median": 80.12574803424225,
+            "p95": 89.51701408656618,
+            "max": 118.28103069249813,
+            "mean": 78.58317517703455,
+            "stddev": 8.032987568800685
+          }
+        },
+        "shoulder_width": {
+          "indices": [
+            2,
+            3
+          ],
+          "distance_mm": {
+            "min": 9.12184652942842,
+            "p05": 211.04789688757725,
+            "median": 319.4005125089183,
+            "p95": 382.6326956053403,
+            "max": 740.6336530348945,
+            "mean": 311.5048137199651,
+            "stddev": 56.46397593162725
+          }
+        },
+        "hip_width": {
+          "indices": [
+            5,
+            7
+          ],
+          "distance_mm": {
+            "min": 2.1836601342771385,
+            "p05": 113.94353112851105,
+            "median": 168.6628328473171,
+            "p95": 200.38767419333817,
+            "max": 374.7710482722043,
+            "mean": 164.62823315567897,
+            "stddev": 28.70246550281581
+          }
+        },
+        "upper_arm_l": {
+          "indices": [
+            2,
+            4
+          ],
+          "distance_mm": {
+            "min": 29.992554058469167,
+            "p05": 189.1974542168054,
+            "median": 260.4954155347443,
+            "p95": 304.02093988887003,
+            "max": 458.8014928206458,
+            "mean": 255.73193132419777,
+            "stddev": 36.984223234158755
+          }
+        },
+        "upper_arm_r": {
+          "indices": [
+            3,
+            6
+          ],
+          "distance_mm": {
+            "min": 25.489029562769897,
+            "p05": 189.72899711012917,
+            "median": 264.9511878419589,
+            "p95": 314.2189812710308,
+            "max": 418.99937278682404,
+            "mean": 260.4484043070865,
+            "stddev": 39.07870857424126
+          }
+        },
+        "forearm_or_elbow_to_hand_l": {
+          "indices": [
+            4,
+            8
+          ],
+          "distance_mm": {
+            "min": 25.763488199751794,
+            "p05": 158.40598333475063,
+            "median": 270.0654416721599,
+            "p95": 345.01182265318056,
+            "max": 498.6295993580375,
+            "mean": 263.23342810120846,
+            "stddev": 57.13343351237986
+          }
+        },
+        "forearm_or_elbow_to_hand_r": {
+          "indices": [
+            6,
+            10
+          ],
+          "distance_mm": {
+            "min": 9.417627696282182,
+            "p05": 164.91810308965984,
+            "median": 276.1661081089668,
+            "p95": 362.8362077878153,
+            "max": 559.1624106384005,
+            "mean": 271.22127488157764,
+            "stddev": 60.19956351462008
+          }
+        },
+        "thigh_l": {
+          "indices": [
+            5,
+            9
+          ],
+          "distance_mm": {
+            "min": 258.35200416610013,
+            "p05": 338.3320477340652,
+            "median": 395.56085678243875,
+            "p95": 432.1849162540872,
+            "max": 521.6014030671703,
+            "mean": 391.2791968244323,
+            "stddev": 29.896442765485475
+          }
+        },
+        "thigh_r": {
+          "indices": [
+            7,
+            11
+          ],
+          "distance_mm": {
+            "min": 261.24461483310404,
+            "p05": 336.17215376889385,
+            "median": 392.51389618446086,
+            "p95": 429.81981493584215,
+            "max": 520.8146155490755,
+            "mean": 388.7595839259364,
+            "stddev": 29.749748282362273
+          }
+        },
+        "shank_l": {
+          "indices": [
+            9,
+            12
+          ],
+          "distance_mm": {
+            "min": 247.6852063119258,
+            "p05": 313.95299659141824,
+            "median": 365.47582468636114,
+            "p95": 399.24402324255936,
+            "max": 454.27374087969474,
+            "mean": 361.9836649678357,
+            "stddev": 26.75789397000562
+          }
+        },
+        "shank_r": {
+          "indices": [
+            11,
+            13
+          ],
+          "distance_mm": {
+            "min": 241.43816789400887,
+            "p05": 320.1439390201422,
+            "median": 370.31010655122986,
+            "p95": 404.3738692444131,
+            "max": 444.1373611907343,
+            "mean": 367.43447180785654,
+            "stddev": 26.451465386743997
+          }
+        }
+      },
+      "raw_head_minus_neck_C2_mm": {
+        "min": -115.234375,
+        "p05": -87.890625,
+        "median": -78.125,
+        "p95": -48.828125,
+        "max": 42.96875,
+        "mean": -75.16548141136248,
+        "stddev": 14.463560845278538
+      }
+    }
+  },
+  "matched_subset_output_geometry": {
+    "screenshot_crowdpose": {
+      "index_names": [
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "right_elbow",
+        "left_wrist",
+        "right_wrist",
+        "left_hip",
+        "right_hip",
+        "left_knee",
+        "right_knee",
+        "left_ankle",
+        "right_ankle",
+        "head_top",
+        "neck"
+      ],
+      "pose_count": 64,
+      "distances": {
+        "head_neck": {
+          "indices": [
+            12,
+            13
+          ],
+          "distance_mm": {
+            "min": 39.269471216568554,
+            "p05": 99.34409024884535,
+            "median": 179.9241482016556,
+            "p95": 243.10819208265892,
+            "max": 450.12449092248266,
+            "mean": 179.80431725318866,
+            "stddev": 65.61875339688098
+          }
+        },
+        "shoulder_width": {
+          "indices": [
+            0,
+            1
+          ],
+          "distance_mm": {
+            "min": 54.418720777141644,
+            "p05": 63.634831862169484,
+            "median": 80.1435885545356,
+            "p95": 89.82964062923517,
+            "max": 92.21796082094654,
+            "mean": 78.4382398436656,
+            "stddev": 7.936196975742625
+          }
+        },
+        "hip_width": {
+          "indices": [
+            6,
+            7
+          ],
+          "distance_mm": {
+            "min": 157.23566064514634,
+            "p05": 172.5393577464243,
+            "median": 259.5497801570493,
+            "p95": 719.973834817091,
+            "max": 834.6176423289402,
+            "mean": 333.91452971055423,
+            "stddev": 177.03789887117816
+          }
+        },
+        "upper_arm_l": {
+          "indices": [
+            0,
+            2
+          ],
+          "distance_mm": {
+            "min": 87.50049045970243,
+            "p05": 118.90151051471793,
+            "median": 176.90604911090918,
+            "p95": 203.6414807371978,
+            "max": 220.5675096686072,
+            "mean": 171.8220375974589,
+            "stddev": 25.180799622172877
+          }
+        },
+        "upper_arm_r": {
+          "indices": [
+            1,
+            3
+          ],
+          "distance_mm": {
+            "min": 140.60889257794852,
+            "p05": 166.56444692165704,
+            "median": 203.5063304694968,
+            "p95": 235.2030094228396,
+            "max": 273.2181213992987,
+            "mean": 202.84569398169737,
+            "stddev": 24.72087520859343
+          }
+        },
+        "forearm_or_elbow_to_hand_l": {
+          "indices": [
+            2,
+            4
+          ],
+          "distance_mm": {
+            "min": 134.32971279922643,
+            "p05": 204.08917720341756,
+            "median": 261.68775660369914,
+            "p95": 313.25308578764003,
+            "max": 334.66898036121546,
+            "mean": 258.2485589492943,
+            "stddev": 36.78889435332616
+          }
+        },
+        "forearm_or_elbow_to_hand_r": {
+          "indices": [
+            3,
+            5
+          ],
+          "distance_mm": {
+            "min": 379.416839454344,
+            "p05": 433.87205376382406,
+            "median": 524.1155627963828,
+            "p95": 593.3000156805183,
+            "max": 666.7204676217768,
+            "mean": 523.613160550357,
+            "stddev": 52.06032958147006
+          }
+        },
+        "thigh_l": {
+          "indices": [
+            6,
+            8
+          ],
+          "distance_mm": {
+            "min": 191.76527334010217,
+            "p05": 305.3607582459135,
+            "median": 523.124592831643,
+            "p95": 875.2882971837316,
+            "max": 912.8639644962338,
+            "mean": 552.2350366633693,
+            "stddev": 174.5330059777004
+          }
+        },
+        "thigh_r": {
+          "indices": [
+            7,
+            9
+          ],
+          "distance_mm": {
+            "min": 346.9206496434709,
+            "p05": 389.21463077808863,
+            "median": 429.90897377063413,
+            "p95": 480.9121177087462,
+            "max": 494.37602471053725,
+            "mean": 432.7016629379233,
+            "stddev": 31.893314539995064
+          }
+        },
+        "shank_l": {
+          "indices": [
+            8,
+            10
+          ],
+          "distance_mm": {
+            "min": 55.251348280529825,
+            "p05": 107.92166106759123,
+            "median": 442.9231057681669,
+            "p95": 1006.2461210994354,
+            "max": 1112.9286893773385,
+            "mean": 500.01614157658173,
+            "stddev": 272.3215869401348
+          }
+        },
+        "shank_r": {
+          "indices": [
+            9,
+            11
+          ],
+          "distance_mm": {
+            "min": 54.381467938772865,
+            "p05": 115.67578501352021,
+            "median": 186.8574918883907,
+            "p95": 243.88674749240738,
+            "max": 338.30139241147674,
+            "mean": 190.20869939899916,
+            "stddev": 47.687077151356995
+          }
+        }
+      },
+      "raw_head_minus_neck_C2_mm": {
+        "min": -54.6875,
+        "p05": -34.5703125,
+        "median": -2.9296875,
+        "p95": 42.38281249999998,
+        "max": 48.828125,
+        "mean": -0.06103515625,
+        "stddev": 22.338450276804608
+      }
+    },
+    "paper_topology_candidate": {
+      "index_names": [
+        "neck",
+        "head",
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "left_hip",
+        "right_elbow",
+        "right_hip",
+        "left_hand",
+        "left_knee",
+        "right_hand",
+        "right_knee",
+        "left_ankle",
+        "right_ankle"
+      ],
+      "pose_count": 64,
+      "distances": {
+        "head_neck": {
+          "indices": [
+            1,
+            0
+          ],
+          "distance_mm": {
+            "min": 54.418720777141644,
+            "p05": 63.634831862169484,
+            "median": 80.1435885545356,
+            "p95": 89.82964062923517,
+            "max": 92.21796082094654,
+            "mean": 78.4382398436656,
+            "stddev": 7.936196975742625
+          }
+        },
+        "shoulder_width": {
+          "indices": [
+            2,
+            3
+          ],
+          "distance_mm": {
+            "min": 71.71088015525679,
+            "p05": 221.07306833327294,
+            "median": 310.6402150604802,
+            "p95": 375.4929175415195,
+            "max": 417.8923064586895,
+            "mean": 305.67961753125553,
+            "stddev": 57.768804351838654
+          }
+        },
+        "hip_width": {
+          "indices": [
+            5,
+            7
+          ],
+          "distance_mm": {
+            "min": 30.162978928672853,
+            "p05": 117.22125958049267,
+            "median": 164.6571698515913,
+            "p95": 199.17487602904805,
+            "max": 209.09842828190014,
+            "mean": 160.67329893192755,
+            "stddev": 31.251838089340534
+          }
+        },
+        "upper_arm_l": {
+          "indices": [
+            2,
+            4
+          ],
+          "distance_mm": {
+            "min": 134.32971279922643,
+            "p05": 204.08917720341756,
+            "median": 261.68775660369914,
+            "p95": 313.25308578764003,
+            "max": 334.66898036121546,
+            "mean": 258.2485589492943,
+            "stddev": 36.78889435332616
+          }
+        },
+        "upper_arm_r": {
+          "indices": [
+            3,
+            6
+          ],
+          "distance_mm": {
+            "min": 182.86507657414728,
+            "p05": 210.10581256623368,
+            "median": 268.2837305965192,
+            "p95": 323.74249467647456,
+            "max": 368.177823484951,
+            "mean": 266.4817887606597,
+            "stddev": 36.12606999822441
+          }
+        },
+        "forearm_or_elbow_to_hand_l": {
+          "indices": [
+            4,
+            8
+          ],
+          "distance_mm": {
+            "min": 65.13752400645427,
+            "p05": 117.83300035552317,
+            "median": 278.523100663879,
+            "p95": 353.31079542767606,
+            "max": 419.26416743253355,
+            "mean": 267.20129441148055,
+            "stddev": 71.86642644507502
+          }
+        },
+        "forearm_or_elbow_to_hand_r": {
+          "indices": [
+            6,
+            10
+          ],
+          "distance_mm": {
+            "min": 75.84565562088906,
+            "p05": 106.14370319349766,
+            "median": 290.46705940379286,
+            "p95": 359.10918002868095,
+            "max": 406.5996279465699,
+            "mean": 272.40758053998513,
+            "stddev": 71.49477465509007
+          }
+        },
+        "thigh_l": {
+          "indices": [
+            5,
+            9
+          ],
+          "distance_mm": {
+            "min": 317.9284672444791,
+            "p05": 348.9461154800221,
+            "median": 394.70475818672423,
+            "p95": 432.71090654355686,
+            "max": 440.3430658997995,
+            "mean": 393.672265305549,
+            "stddev": 26.939382511895683
+          }
+        },
+        "thigh_r": {
+          "indices": [
+            7,
+            11
+          ],
+          "distance_mm": {
+            "min": 318.89102284525654,
+            "p05": 346.39711521658137,
+            "median": 393.69669274519356,
+            "p95": 430.02317317123726,
+            "max": 441.10421168656615,
+            "mean": 390.2955676074859,
+            "stddev": 26.39151182778526
+          }
+        },
+        "shank_l": {
+          "indices": [
+            9,
+            12
+          ],
+          "distance_mm": {
+            "min": 300.2643850725443,
+            "p05": 329.71664439524136,
+            "median": 364.17606865402564,
+            "p95": 398.2714823412351,
+            "max": 406.1199860502534,
+            "mean": 364.6029148684272,
+            "stddev": 22.626125114386586
+          }
+        },
+        "shank_r": {
+          "indices": [
+            11,
+            13
+          ],
+          "distance_mm": {
+            "min": 311.8783489651416,
+            "p05": 330.589077588873,
+            "median": 374.2533241767378,
+            "p95": 401.71297920940765,
+            "max": 419.81852834376264,
+            "mean": 370.56611945808964,
+            "stddev": 24.18607550179285
+          }
+        }
+      },
+      "raw_head_minus_neck_C2_mm": {
+        "min": -91.796875,
+        "p05": -89.55078125,
+        "median": -77.1484375,
+        "p95": -57.519531250000036,
+        "max": -9.765625,
+        "mean": -76.263427734375,
+        "stddev": 11.962540290529489
+      }
+    }
+  },
+  "corresponding_gt_geometry": {
+    "screenshot_crowdpose": {
+      "index_names": [
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "right_elbow",
+        "left_wrist",
+        "right_wrist",
+        "left_hip",
+        "right_hip",
+        "left_knee",
+        "right_knee",
+        "left_ankle",
+        "right_ankle",
+        "head_top",
+        "neck"
+      ],
+      "pose_count": 128,
+      "distances": {
+        "head_neck": {
+          "indices": [
+            12,
+            13
+          ],
+          "distance_mm": {
+            "min": 42.81866155163283,
+            "p05": 113.37837508962919,
+            "median": 187.29044423909622,
+            "p95": 356.0267815156602,
+            "max": 460.3807655020904,
+            "mean": 199.34700443361245,
+            "stddev": 70.31328798125388
+          }
+        },
+        "shoulder_width": {
+          "indices": [
+            0,
+            1
+          ],
+          "distance_mm": {
+            "min": 65.05833397499596,
+            "p05": 70.58687344256644,
+            "median": 80.37240125247534,
+            "p95": 86.34382752347727,
+            "max": 91.62693774037896,
+            "mean": 79.38736389415789,
+            "stddev": 5.399930815688788
+          }
+        },
+        "hip_width": {
+          "indices": [
+            6,
+            7
+          ],
+          "distance_mm": {
+            "min": 164.61823349391562,
+            "p05": 182.22482392395952,
+            "median": 270.10598564199313,
+            "p95": 731.3761231198142,
+            "max": 793.458282775101,
+            "mean": 339.6366404150567,
+            "stddev": 169.6769138235124
+          }
+        },
+        "upper_arm_l": {
+          "indices": [
+            0,
+            2
+          ],
+          "distance_mm": {
+            "min": 139.56597489231012,
+            "p05": 158.44072399070166,
+            "median": 181.20870268077294,
+            "p95": 201.0948727106982,
+            "max": 212.84998743998494,
+            "mean": 181.21827446090924,
+            "stddev": 13.251949353295153
+          }
+        },
+        "upper_arm_r": {
+          "indices": [
+            1,
+            3
+          ],
+          "distance_mm": {
+            "min": 148.33441561891408,
+            "p05": 170.01381440976513,
+            "median": 208.90663401171838,
+            "p95": 238.14608355018214,
+            "max": 252.61074529215733,
+            "mean": 209.00369912724136,
+            "stddev": 20.543514879563745
+          }
+        },
+        "forearm_or_elbow_to_hand_l": {
+          "indices": [
+            2,
+            4
+          ],
+          "distance_mm": {
+            "min": 214.9892103320846,
+            "p05": 243.65043996398316,
+            "median": 272.8967043092704,
+            "p95": 294.60883341987983,
+            "max": 315.7865419569169,
+            "mean": 270.53697238948286,
+            "stddev": 17.57029745186681
+          }
+        },
+        "forearm_or_elbow_to_hand_r": {
+          "indices": [
+            3,
+            5
+          ],
+          "distance_mm": {
+            "min": 430.3961092404135,
+            "p05": 465.6925415017437,
+            "median": 534.7270828608719,
+            "p95": 597.5039238265042,
+            "max": 612.2512981361438,
+            "mean": 528.7530697984788,
+            "stddev": 40.4080096342916
+          }
+        },
+        "thigh_l": {
+          "indices": [
+            6,
+            8
+          ],
+          "distance_mm": {
+            "min": 271.8844130998532,
+            "p05": 294.8634349402597,
+            "median": 534.2240714828005,
+            "p95": 1004.2790028347279,
+            "max": 1062.14138038694,
+            "mean": 574.4503936439639,
+            "stddev": 201.62605409141912
+          }
+        },
+        "thigh_r": {
+          "indices": [
+            7,
+            9
+          ],
+          "distance_mm": {
+            "min": 361.5120808959464,
+            "p05": 387.4287762707669,
+            "median": 438.0149896663927,
+            "p95": 483.27417481504017,
+            "max": 500.12902721388963,
+            "mean": 435.57570675345136,
+            "stddev": 30.075543881317355
+          }
+        },
+        "shank_l": {
+          "indices": [
+            8,
+            10
+          ],
+          "distance_mm": {
+            "min": 33.6261845150523,
+            "p05": 107.72058007100206,
+            "median": 425.7124210215718,
+            "p95": 1146.39612870076,
+            "max": 1281.954972809672,
+            "mean": 516.069971211852,
+            "stddev": 330.71982265992807
+          }
+        },
+        "shank_r": {
+          "indices": [
+            9,
+            11
+          ],
+          "distance_mm": {
+            "min": 36.29333092831691,
+            "p05": 140.90037845364608,
+            "median": 198.43211600218916,
+            "p95": 312.9508581838281,
+            "max": 394.7344360895009,
+            "mean": 207.66081678457624,
+            "stddev": 56.7941963957722
+          }
+        }
+      },
+      "raw_head_minus_neck_C2_mm": {
+        "min": -201.06591796874972,
+        "p05": -81.39708862304707,
+        "median": -1.4465942382815289,
+        "p95": 47.277090454101675,
+        "max": 218.18890380859423,
+        "mean": -4.04371261596682,
+        "stddev": 45.37118476051008
+      }
+    },
+    "paper_topology_candidate": {
+      "index_names": [
+        "neck",
+        "head",
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "left_hip",
+        "right_elbow",
+        "right_hip",
+        "left_hand",
+        "left_knee",
+        "right_hand",
+        "right_knee",
+        "left_ankle",
+        "right_ankle"
+      ],
+      "pose_count": 128,
+      "distances": {
+        "head_neck": {
+          "indices": [
+            1,
+            0
+          ],
+          "distance_mm": {
+            "min": 65.05833397499596,
+            "p05": 70.58687344256644,
+            "median": 80.37240125247534,
+            "p95": 86.34382752347727,
+            "max": 91.62693774037896,
+            "mean": 79.38736389415789,
+            "stddev": 5.399930815688788
+          }
+        },
+        "shoulder_width": {
+          "indices": [
+            2,
+            3
+          ],
+          "distance_mm": {
+            "min": 269.654733335142,
+            "p05": 290.81456843987667,
+            "median": 324.94305901664063,
+            "p95": 352.18100993849094,
+            "max": 359.6198748620074,
+            "mean": 322.72958904633265,
+            "stddev": 21.59133533625844
+          }
+        },
+        "hip_width": {
+          "indices": [
+            5,
+            7
+          ],
+          "distance_mm": {
+            "min": 141.22865448808167,
+            "p05": 153.59553835313352,
+            "median": 171.6176148868484,
+            "p95": 183.33481167447948,
+            "max": 193.31817818096238,
+            "mean": 170.03705197660915,
+            "stddev": 10.707244753648148
+          }
+        },
+        "upper_arm_l": {
+          "indices": [
+            2,
+            4
+          ],
+          "distance_mm": {
+            "min": 214.9892103320846,
+            "p05": 243.65043996398316,
+            "median": 272.8967043092704,
+            "p95": 294.60883341987983,
+            "max": 315.7865419569169,
+            "mean": 270.53697238948286,
+            "stddev": 17.57029745186681
+          }
+        },
+        "upper_arm_r": {
+          "indices": [
+            3,
+            6
+          ],
+          "distance_mm": {
+            "min": 221.0627535345853,
+            "p05": 248.25065953238342,
+            "median": 279.16288794268576,
+            "p95": 302.2332706505644,
+            "max": 328.8501548232138,
+            "mean": 275.6116288951068,
+            "stddev": 18.021792676346436
+          }
+        },
+        "forearm_or_elbow_to_hand_l": {
+          "indices": [
+            4,
+            8
+          ],
+          "distance_mm": {
+            "min": 205.55805213372253,
+            "p05": 249.67655625989352,
+            "median": 289.0307878034097,
+            "p95": 335.078187896098,
+            "max": 349.6596709659273,
+            "mean": 291.3157728877952,
+            "stddev": 26.428185691282064
+          }
+        },
+        "forearm_or_elbow_to_hand_r": {
+          "indices": [
+            6,
+            10
+          ],
+          "distance_mm": {
+            "min": 243.1219376331825,
+            "p05": 252.825409040276,
+            "median": 302.38342852512505,
+            "p95": 337.2025245422313,
+            "max": 353.4669707784641,
+            "mean": 299.74733472842865,
+            "stddev": 25.791476574408676
+          }
+        },
+        "thigh_l": {
+          "indices": [
+            5,
+            9
+          ],
+          "distance_mm": {
+            "min": 330.31184208676666,
+            "p05": 355.0787545040064,
+            "median": 396.06826218678856,
+            "p95": 428.212939498753,
+            "max": 447.81325103495294,
+            "mean": 393.3297942148995,
+            "stddev": 23.84162486355517
+          }
+        },
+        "thigh_r": {
+          "indices": [
+            7,
+            11
+          ],
+          "distance_mm": {
+            "min": 331.4402309681722,
+            "p05": 354.82754189350925,
+            "median": 394.8998141478897,
+            "p95": 425.68001780748494,
+            "max": 445.01726451899145,
+            "mean": 393.2608258604697,
+            "stddev": 23.470435225009407
+          }
+        },
+        "shank_l": {
+          "indices": [
+            9,
+            12
+          ],
+          "distance_mm": {
+            "min": 308.837020797769,
+            "p05": 329.3875367118357,
+            "median": 370.0393821108301,
+            "p95": 400.4524168856148,
+            "max": 417.32974110055125,
+            "mean": 366.7375261389719,
+            "stddev": 22.966532749823582
+          }
+        },
+        "shank_r": {
+          "indices": [
+            11,
+            13
+          ],
+          "distance_mm": {
+            "min": 312.24828081338416,
+            "p05": 333.71662726156524,
+            "median": 373.0990272868448,
+            "p95": 407.05154274615523,
+            "max": 420.56179724388016,
+            "mean": 370.8262486599566,
+            "stddev": 23.820305977869587
+          }
+        }
+      },
+      "raw_head_minus_neck_C2_mm": {
+        "min": -91.04211425781239,
+        "p05": -85.61459045410157,
+        "median": -78.52334594726562,
+        "p95": -58.707566833496315,
+        "max": -8.963973999023711,
+        "mean": -76.61852689832448,
+        "stddev": 9.78514693752878
+      }
+    }
+  },
+  "gt_spot_check": {
+    "frames": 64,
+    "people": 128,
+    "selection": "32 evenly spaced existing sources per split, not consecutive frames",
+    "sources": [
+      {
+        "split": "train",
+        "sample": "S11_01_10",
+        "result_sequence": 18,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 92.70833095309459
+      },
+      {
+        "split": "train",
+        "sample": "S11_07_127",
+        "result_sequence": 564,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 77.42249301853157
+      },
+      {
+        "split": "train",
+        "sample": "S11_17_120",
+        "result_sequence": 1159,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 71.56109151396764
+      },
+      {
+        "split": "train",
+        "sample": "S11_29_115",
+        "result_sequence": 1748,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 63.50990961309931
+      },
+      {
+        "split": "train",
+        "sample": "S12_06_127",
+        "result_sequence": 2249,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 57.397961338071035
+      },
+      {
+        "split": "train",
+        "sample": "S12_22_121",
+        "result_sequence": 2727,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 68.78804778761138
+      },
+      {
+        "split": "train",
+        "sample": "S12_36_183",
+        "result_sequence": 3200,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 46.20338228774024
+      },
+      {
+        "split": "train",
+        "sample": "S12_46_129",
+        "result_sequence": 3660,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 74.54833888480962
+      },
+      {
+        "split": "train",
+        "sample": "S13_16_118",
+        "result_sequence": 4066,
+        "gt_people": 3,
+        "nearest_gt_row": 2,
+        "minimum_indexwise_mpjpe_mm": 114.65743891823674
+      },
+      {
+        "split": "train",
+        "sample": "S13_29_112",
+        "result_sequence": 4539,
+        "gt_people": 3,
+        "nearest_gt_row": 2,
+        "minimum_indexwise_mpjpe_mm": 113.95178972529459
+      },
+      {
+        "split": "train",
+        "sample": "S13_47_107",
+        "result_sequence": 5134,
+        "gt_people": 3,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 55.485848459041144
+      },
+      {
+        "split": "train",
+        "sample": "S21_13_10",
+        "result_sequence": 5670,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 84.08771045000482
+      },
+      {
+        "split": "train",
+        "sample": "S21_25_128",
+        "result_sequence": 6142,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 36.78296088115222
+      },
+      {
+        "split": "train",
+        "sample": "S22_01_125",
+        "result_sequence": 6689,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 56.14161980156389
+      },
+      {
+        "split": "train",
+        "sample": "S22_13_125",
+        "result_sequence": 7254,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 94.08891166649605
+      },
+      {
+        "split": "train",
+        "sample": "S22_29_126",
+        "result_sequence": 7823,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 57.94058770822875
+      },
+      {
+        "split": "train",
+        "sample": "S22_38_126",
+        "result_sequence": 8384,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 52.25770709416169
+      },
+      {
+        "split": "train",
+        "sample": "S22_48_127",
+        "result_sequence": 8964,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 92.91728380629182
+      },
+      {
+        "split": "train",
+        "sample": "S23_17_145",
+        "result_sequence": 9508,
+        "gt_people": 3,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 134.3049519906187
+      },
+      {
+        "split": "train",
+        "sample": "S23_29_127",
+        "result_sequence": 10067,
+        "gt_people": 3,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 140.4026917740811
+      },
+      {
+        "split": "train",
+        "sample": "S23_37_129",
+        "result_sequence": 10663,
+        "gt_people": 3,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 155.1992210275397
+      },
+      {
+        "split": "train",
+        "sample": "S23_44_128",
+        "result_sequence": 11213,
+        "gt_people": 3,
+        "nearest_gt_row": 2,
+        "minimum_indexwise_mpjpe_mm": 89.13020559414755
+      },
+      {
+        "split": "train",
+        "sample": "S51_09_128",
+        "result_sequence": 11762,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 94.7231844004354
+      },
+      {
+        "split": "train",
+        "sample": "S51_25_132",
+        "result_sequence": 12353,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 86.7631269964226
+      },
+      {
+        "split": "train",
+        "sample": "S52_02_129",
+        "result_sequence": 12876,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 70.96313525612041
+      },
+      {
+        "split": "train",
+        "sample": "S52_12_129",
+        "result_sequence": 13424,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 89.54202182917935
+      },
+      {
+        "split": "train",
+        "sample": "S52_20_13",
+        "result_sequence": 13955,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 116.86143456748573
+      },
+      {
+        "split": "train",
+        "sample": "S52_34_21",
+        "result_sequence": 14496,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 74.8617015308968
+      },
+      {
+        "split": "train",
+        "sample": "S52_44_24",
+        "result_sequence": 14881,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 94.06711774261446
+      },
+      {
+        "split": "train",
+        "sample": "S53_09_130",
+        "result_sequence": 15143,
+        "gt_people": 3,
+        "nearest_gt_row": 2,
+        "minimum_indexwise_mpjpe_mm": 110.58444979635513
+      },
+      {
+        "split": "train",
+        "sample": "S53_27_131",
+        "result_sequence": 15395,
+        "gt_people": 3,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 97.6038560217585
+      },
+      {
+        "split": "train",
+        "sample": "S53_48_142",
+        "result_sequence": 15648,
+        "gt_people": 3,
+        "nearest_gt_row": 2,
+        "minimum_indexwise_mpjpe_mm": 73.22774305665634
+      },
+      {
+        "split": "test",
+        "sample": "S11_01_308",
+        "result_sequence": 1,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 131.37904546483026
+      },
+      {
+        "split": "test",
+        "sample": "S11_06_340",
+        "result_sequence": 438,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 143.98403725871208
+      },
+      {
+        "split": "test",
+        "sample": "S11_12_347",
+        "result_sequence": 875,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 167.80108991252976
+      },
+      {
+        "split": "test",
+        "sample": "S11_20_310",
+        "result_sequence": 1350,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 68.49578874571421
+      },
+      {
+        "split": "test",
+        "sample": "S11_30_329",
+        "result_sequence": 1787,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 131.68795058065675
+      },
+      {
+        "split": "test",
+        "sample": "S12_12_302",
+        "result_sequence": 2335,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 81.55390671295834
+      },
+      {
+        "split": "test",
+        "sample": "S12_31_313",
+        "result_sequence": 2847,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 53.78122231703768
+      },
+      {
+        "split": "test",
+        "sample": "S12_46_343",
+        "result_sequence": 3358,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 99.97685909482239
+      },
+      {
+        "split": "test",
+        "sample": "S13_27_327",
+        "result_sequence": 3943,
+        "gt_people": 3,
+        "nearest_gt_row": 2,
+        "minimum_indexwise_mpjpe_mm": 93.8723414202807
+      },
+      {
+        "split": "test",
+        "sample": "S21_02_305",
+        "result_sequence": 4566,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 28.751013280068083
+      },
+      {
+        "split": "test",
+        "sample": "S21_13_312",
+        "result_sequence": 5003,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 45.251477242413635
+      },
+      {
+        "split": "test",
+        "sample": "S21_25_302",
+        "result_sequence": 5477,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 45.147321156584134
+      },
+      {
+        "split": "test",
+        "sample": "S21_31_338",
+        "result_sequence": 5952,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 88.33946690547491
+      },
+      {
+        "split": "test",
+        "sample": "S22_12_330",
+        "result_sequence": 6425,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 141.37664262615777
+      },
+      {
+        "split": "test",
+        "sample": "S22_26_327",
+        "result_sequence": 6893,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 117.85619883135759
+      },
+      {
+        "split": "test",
+        "sample": "S22_36_317",
+        "result_sequence": 7362,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 285.6483705820415
+      },
+      {
+        "split": "test",
+        "sample": "S22_44_301",
+        "result_sequence": 7830,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 94.5038722777432
+      },
+      {
+        "split": "test",
+        "sample": "S23_05_343",
+        "result_sequence": 8263,
+        "gt_people": 3,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 133.37428455964192
+      },
+      {
+        "split": "test",
+        "sample": "S23_18_317",
+        "result_sequence": 8731,
+        "gt_people": 3,
+        "nearest_gt_row": 2,
+        "minimum_indexwise_mpjpe_mm": 87.65458766922487
+      },
+      {
+        "split": "test",
+        "sample": "S23_28_324",
+        "result_sequence": 9163,
+        "gt_people": 3,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 60.561371941227684
+      },
+      {
+        "split": "test",
+        "sample": "S23_36_334",
+        "result_sequence": 9632,
+        "gt_people": 3,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 124.63506530398939
+      },
+      {
+        "split": "test",
+        "sample": "S23_42_328",
+        "result_sequence": 10100,
+        "gt_people": 3,
+        "nearest_gt_row": 2,
+        "minimum_indexwise_mpjpe_mm": 176.80530260371398
+      },
+      {
+        "split": "test",
+        "sample": "S23_48_335",
+        "result_sequence": 10532,
+        "gt_people": 3,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 388.4330250233595
+      },
+      {
+        "split": "test",
+        "sample": "S51_10_343",
+        "result_sequence": 10965,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 35.81650417200681
+      },
+      {
+        "split": "test",
+        "sample": "S51_27_343",
+        "result_sequence": 11469,
+        "gt_people": 1,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 108.09545661046505
+      },
+      {
+        "split": "test",
+        "sample": "S52_03_301",
+        "result_sequence": 11937,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 43.44225647787946
+      },
+      {
+        "split": "test",
+        "sample": "S52_12_326",
+        "result_sequence": 12406,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 95.75607646533868
+      },
+      {
+        "split": "test",
+        "sample": "S52_17_344",
+        "result_sequence": 12838,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 293.28828153961507
+      },
+      {
+        "split": "test",
+        "sample": "S52_30_333",
+        "result_sequence": 13306,
+        "gt_people": 2,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 329.3447595416541
+      },
+      {
+        "split": "test",
+        "sample": "S52_43_324",
+        "result_sequence": 13811,
+        "gt_people": 2,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 62.812660337269136
+      },
+      {
+        "split": "test",
+        "sample": "S53_08_332",
+        "result_sequence": 14279,
+        "gt_people": 3,
+        "nearest_gt_row": 1,
+        "minimum_indexwise_mpjpe_mm": 207.16888178626408
+      },
+      {
+        "split": "test",
+        "sample": "S53_48_336",
+        "result_sequence": 14892,
+        "gt_people": 3,
+        "nearest_gt_row": 0,
+        "minimum_indexwise_mpjpe_mm": 165.66826600953874
+      }
+    ]
+  },
+  "conclusion": {
+    "screenshot_map_directly_applicable_to_stored_outputs": false,
+    "paper_topology_candidate_numerically_supported": true,
+    "explicit_anatomical_export_verified": false,
+    "hand_equals_wrist_verified": false,
+    "physical_up_verified": false,
+    "capture_timeline_verified": false,
+    "semantic_activation_changed": false
+  },
+  "limits": [
+    "Distances are numerical diagnostics under two name hypotheses, not action accuracy",
+    "Matching GT by index does not independently establish joint names, body identity or left/right semantics",
+    "All selected outputs checked geometrically; only 64 corresponding label files inspected",
+    "No axis flip, coordinate reorder, model invocation or temporal stitching"
+  ]
+}

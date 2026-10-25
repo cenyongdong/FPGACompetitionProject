@@ -1,0 +1,69 @@
+--- a/sources/ps_ai_peripheral.sv
++++ b/sources/ps_ai_peripheral.sv
+@@ -969,7 +969,7 @@
+ 
+ wire [159:0] diagnostic_pc_status;
+ wire diagnostic_pc_asserted,diagnostic_pc_system_resetn,diagnostic_pc_ready,diagnostic_pc_seen_reset;
+-wire [31:0] hp2_diagnostic_flags={3'd0,diagnostic_pc_asserted,diagnostic_pc_seen_reset,
++wire [31:0] hp2_diagnostic_flags={startup_drain_status[2:0],diagnostic_pc_asserted,diagnostic_pc_seen_reset,
+  diagnostic_pc_ready,diagnostic_pc_system_resetn,pl_rst_n,diagnostic_hp2_resetn,hp_clk_rst,ddr_ui_rst,ddr3_init_done,
+      soft_rst,sys_rst_n,diagnostic_ps_write[4],diagnostic_ps_write[2],diagnostic_ps_write[0],
+      S_AXI_HP2_BVALID,S_AXI_HP2_WVALID,S_AXI_HP2_AWVALID,S_AXI_HP2_RVALID,S_AXI_HP2_ARVALID,
+@@ -1002,6 +1002,7 @@
+ ai_read_monitor #(.BOOT_WITNESS(1)) ai_read_path_monitor(
+  .source_clk(diagnostic_hp2_clk),.csr_clk(gp_clk),.resetn(sys_rst_n & FCLK_RESET0_N),
+  .channels(ai_read_channels),
++ .diagnostic_status(startup_drain_status),
+  .witness_gp_reset(gp_clk_rst),
+  .release_levels({soft_rst,sys_rst_n,diagnostic_ps_write[4],diagnostic_ps_write[2],diagnostic_ps_write[0],
+      S_AXI_HP2_BVALID,S_AXI_HP2_WVALID,S_AXI_HP2_AWVALID,
+@@ -1042,7 +1043,21 @@
+  .source_clk(hp_clk),.csr_clk(gp_clk),.resetn(sys_rst_n & FCLK_RESET0_N),
+  .events(ai_mon_events),.sample_update(ai_mon_sample_update),
+  .sample_data(ai_mon_sample_data),.csr(ai_diag_csr.slave));
+-// Diagnostic candidate: HDMI/video are detached from all S01 AXI handshakes.
++// r38: bounded S01 return discard; all four AI port connections unchanged.
++wire hdmi_reader_rready;
++wire startup_drain_ready;
++wire [31:0] startup_drain_status;
++wire drain_request_activity = S0_AXI_HP_HC_ARVALID | S1_AXI_HP_HC_ARVALID |
++ S2_AXI_HP_HC_ARVALID | S3_AXI_HP_HC_ARVALID | S_AXI_HP2_ARVALID |
++ S0_AXI_HP_HC_AWVALID | S1_AXI_HP_HC_AWVALID | S2_AXI_HP_HC_AWVALID |
++ S3_AXI_HP_HC_AWVALID | S_AXI_HP2_AWVALID | S_AXI_HP2_WVALID;
++hp2_startup_drain startup_drain(
++ .clk(hp_clk),.ps_resetn(diagnostic_ps_resetn),.pl_resetn(diagnostic_hp2_resetn),
++ .hp_reset(hp_clk_rst),.any_request(drain_request_activity),.reader_ready(hdmi_reader_rready),
++ .rvalid(S_AXI_HP2_RVALID),.rid(S_AXI_HP2_RID),.rresp(S_AXI_HP2_RRESP),.rlast(S_AXI_HP2_RLAST),
++ .drain_ready(startup_drain_ready),.status(startup_drain_status));
++assign S_AXI_HP2_RREADY=hdmi_reader_rready | startup_drain_ready;
++
+ hdmi_cam_router #(.HDMI_BASE(32'h400b0000)) hdmi_router(
+  .clk(gp_clk),.resetn(~gp_clk_rst),.upstream(diag_passthrough.slave),.camera(cam_legacy.master),.hdmi(hdmi_csr.master));
+ assign S_AXI_HP2_ARID=5'd0;
+@@ -1057,7 +1072,7 @@
+  .araddr(S_AXI_HP2_ARADDR),.arlen(S_AXI_HP2_ARLEN),.arsize(S_AXI_HP2_ARSIZE),.arburst(S_AXI_HP2_ARBURST),
+  .arvalid(S_AXI_HP2_ARVALID),.arready(S_AXI_HP2_ARREADY),
+  .rdata(S_AXI_HP2_RDATA),.rresp(S_AXI_HP2_RRESP),.rid(S_AXI_HP2_RID),.rlast(S_AXI_HP2_RLAST),
+- .rvalid(S_AXI_HP2_RVALID),.rready(S_AXI_HP2_RREADY),
++ .rvalid(S_AXI_HP2_RVALID),.rready(hdmi_reader_rready),
+  .tmds_clk_p(HDMI_CLK_P),.tmds_clk_n(HDMI_CLK_N),.tmds_p(HDMI_TX_P),.tmds_n(HDMI_TX_N));
+  assign S_AXI_HP2_RDISSUECAP1_EN = 1'b0;
+  assign S_AXI_HP2_WRISSUECAP1_EN = 1'b0;
+--- a/sources/ai_read_monitor.sv
++++ b/sources/ai_read_monitor.sv
+@@ -4,6 +4,7 @@
+     input wire source_clk,input wire csr_clk,input wire resetn,
+     input wire [767:0] channels,input wire [4:0] source_flags,
+     input wire witness_gp_reset,
++    input wire [31:0] diagnostic_status,
+     input wire [19:0] release_levels,
+     input wire [5:0] release_legacy_write,release_ps_write,
+     input wire [31:0] release_ps_awaddr,
+@@ -55,6 +56,7 @@
+             end else if(source_active) begin
+                 live_words[1]<=live_words[1]+1'b1;
+                 live_words[2]<={27'd0,source_flags};
++                live_words[4]<=diagnostic_status;
+                 if(source_flags[2] || !source_flags[3])live_words[3]<=live_words[3]+1'b1;
+                 for(ch=0;ch<6;ch=ch+1) begin
+                     base=8+16*ch;

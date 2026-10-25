@@ -1,0 +1,29 @@
+{
+  "baseline": "D:\\FPGACompetitionProject\\.local\\hp2-deferred-consume-20261024-r45\\source",
+  "changes": [
+    {
+      "phase": "before_Engine",
+      "before": 14,
+      "after": 4
+    },
+    {
+      "phase": "Engine_Open_apply_memory",
+      "before": 16,
+      "after": 6
+    },
+    {
+      "phase": "AI_HDMI",
+      "before": 18,
+      "after": 8
+    },
+    {
+      "phase": "Engine_Close",
+      "before": 20,
+      "after": 10
+    }
+  ],
+  "model_math_SDK_NPU_protocol_changed": false,
+  "RGB24_intermediate_removed": true,
+  "upscale_removed": true,
+  "skeleton_scale_preserved": true
+}

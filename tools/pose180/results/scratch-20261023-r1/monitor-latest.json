@@ -1,0 +1,388 @@
+{
+  "checked_at": "2026-10-24T16:50:21.206167+08:00",
+  "job": {
+    "name": "formal-r1",
+    "stage": "formal",
+    "status": "running",
+    "started": 1792766153.6823416,
+    "supervisor": {
+      "pid": 325965,
+      "start_ticks": "201370675"
+    },
+    "gpu_before": [
+      [
+        "1",
+        "GPU-cb01d43e-29fc-888d-b6ed-399005396572",
+        "24564",
+        "9302",
+        "0"
+      ],
+      [
+        "6",
+        "GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c",
+        "24564",
+        "1",
+        "0"
+      ]
+    ],
+    "command": [
+      "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+      "-B",
+      "-m",
+      "torch.distributed.run",
+      "--standalone",
+      "--nnodes=1",
+      "--nproc_per_node=2",
+      "tools/pose180/train.py",
+      "configs/wifi/petr_wifi_pose180_scratch.py",
+      "--launcher",
+      "pytorch",
+      "--seed",
+      "0"
+    ],
+    "child": {
+      "pid": 325968,
+      "start_ticks": "201370696"
+    },
+    "cuda_visible_devices": "1,6"
+  },
+  "progress": {
+    "stage": "training",
+    "time": 1792831820.3381934,
+    "epoch": 75,
+    "iter": 420350,
+    "inner_iter": 4322,
+    "max_epochs": 100,
+    "pid": 325973,
+    "elapsed_seconds": 65656.01279830933,
+    "lr": [
+      0.0000020000000000000003,
+      0.00002
+    ],
+    "metrics": {
+      "enc_loss_cls": 0.6198382377624512,
+      "enc_loss_kpt": 1.0080957412719727,
+      "loss_cls": 0.2352219820022583,
+      "loss_kpt": 1.214148759841919,
+      "d0.loss_cls": 0.5028126239776611,
+      "d0.loss_kpt": 0.9837044477462769,
+      "d1.loss_cls": 0.25950559973716736,
+      "d1.loss_kpt": 1.1682753562927246,
+      "d0.loss_kpt_refine": 1.210958480834961,
+      "d1.loss_kpt_refine": 1.2125880718231201,
+      "loss": 8.415148735046387
+    },
+    "gradient_sample": {
+      "iter": 420350,
+      "query_grad": 0.34436914324760437,
+      "joint_grad": 0.16568726301193237
+    },
+    "cuda_allocated": 498721280,
+    "cuda_peak": 1083871232
+  },
+  "scratch_evaluation_count": 74,
+  "transfer_evaluation_count": 100,
+  "recent_epochs": [
+    {
+      "epoch": 70,
+      "scratch": {
+        "time": 1792827747.2060392,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 146.86020894430897,
+          "mpjpeh": 65.31405091371029,
+          "mpjpev": 76.11905678052356,
+          "mpjped": 74.31945100481525,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.4649795501022495,
+          "mean_selected_at_0_2": 2.3663087934560325,
+          "matched_mpjpe_at_0_2": 209.75171953151943,
+          "mpjpe_1_people": 125.85955741215564,
+          "mpjpe_2_people": 150.30290752200025,
+          "mpjpe_3_people": 167.9634867392357
+        }
+      },
+      "transfer_same_epoch": {
+        "time": 1792737901.4596598,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 133.73854167963586,
+          "mpjpeh": 62.05101605719584,
+          "mpjpev": 71.61535240426386,
+          "mpjped": 63.074522782322816,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.17829754601226994,
+          "mean_selected_at_0_2": 2.05508691206544,
+          "matched_mpjpe_at_0_2": 170.3665389469326,
+          "mpjpe_1_people": 115.31727131152466,
+          "mpjpe_2_people": 132.47025153265525,
+          "mpjpe_3_people": 158.89708160170096
+        }
+      },
+      "scratch_minus_transfer_mpjpe_mm": 13.121667264673107
+    },
+    {
+      "epoch": 71,
+      "scratch": {
+        "time": 1792828627.2866774,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 176.06061633622963,
+          "mpjpeh": 75.53318454968174,
+          "mpjpev": 84.54574213010889,
+          "mpjped": 101.64199785367111,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.5038343558282209,
+          "mean_selected_at_0_2": 2.304959100204499,
+          "matched_mpjpe_at_0_2": 245.97671628657906,
+          "mpjpe_1_people": 157.96016432163978,
+          "mpjpe_2_people": 181.1188599703899,
+          "mpjpe_3_people": 191.00819237253103
+        }
+      },
+      "transfer_same_epoch": {
+        "time": 1792738789.203679,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 134.6414903782628,
+          "mpjpeh": 59.628774036232436,
+          "mpjpev": 70.04308001060184,
+          "mpjped": 68.026030433568,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.10787321063394684,
+          "mean_selected_at_0_2": 1.9631901840490797,
+          "matched_mpjpe_at_0_2": 168.556848209826,
+          "mpjpe_1_people": 113.70415990479862,
+          "mpjpe_2_people": 136.03503214414394,
+          "mpjpe_3_people": 158.84153887963225
+        }
+      },
+      "scratch_minus_transfer_mpjpe_mm": 41.41912595796683
+    },
+    {
+      "epoch": 72,
+      "scratch": {
+        "time": 1792829506.2162006,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 157.68717878947228,
+          "mpjpeh": 73.04878617673808,
+          "mpjpev": 81.25030992391895,
+          "mpjped": 78.01256365876013,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.5584100204498977,
+          "mean_selected_at_0_2": 2.3940439672801634,
+          "matched_mpjpe_at_0_2": 234.68657622779594,
+          "mpjpe_1_people": 138.48006403436978,
+          "mpjpe_2_people": 162.47402195115785,
+          "mpjpe_3_people": 174.44876113119005
+        }
+      },
+      "transfer_same_epoch": {
+        "time": 1792739674.9229763,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 141.4750165432265,
+          "mpjpeh": 59.73850546152558,
+          "mpjpev": 73.27932167211681,
+          "mpjped": 75.45072976004614,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.16219325153374234,
+          "mean_selected_at_0_2": 2.0446063394683027,
+          "matched_mpjpe_at_0_2": 183.0939067998563,
+          "mpjpe_1_people": 122.64092720191053,
+          "mpjpe_2_people": 141.19447674823166,
+          "mpjpe_3_people": 165.622141053405
+        }
+      },
+      "scratch_minus_transfer_mpjpe_mm": 16.212162246245782
+    },
+    {
+      "epoch": 73,
+      "scratch": {
+        "time": 1792830388.1140873,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 169.55943857038923,
+          "mpjpeh": 78.72273071125485,
+          "mpjpev": 89.1080250985052,
+          "mpjped": 81.48589747839422,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.5116308793456033,
+          "mean_selected_at_0_2": 2.3319274028629855,
+          "matched_mpjpe_at_0_2": 240.44164235491675,
+          "mpjpe_1_people": 138.23448079515592,
+          "mpjpe_2_people": 173.70065291802487,
+          "mpjpe_3_people": 202.57828682933834
+        }
+      },
+      "transfer_same_epoch": {
+        "time": 1792740566.4314632,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 158.3192778179738,
+          "mpjpeh": 79.82064376299122,
+          "mpjpev": 76.47664848030955,
+          "mpjped": 79.2322800632391,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.11081288343558282,
+          "mean_selected_at_0_2": 1.9599948875255624,
+          "matched_mpjpe_at_0_2": 205.81748618223398,
+          "mpjpe_1_people": 144.6538310821722,
+          "mpjpe_2_people": 157.49533402740056,
+          "mpjpe_3_people": 176.80140161932152
+        }
+      },
+      "scratch_minus_transfer_mpjpe_mm": 11.24016075241542
+    },
+    {
+      "epoch": 74,
+      "scratch": {
+        "time": 1792831272.9444487,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 162.165094043092,
+          "mpjpeh": 71.62577365280904,
+          "mpjpev": 76.66703939547568,
+          "mpjped": 92.88418202227122,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.4481083844580777,
+          "mean_selected_at_0_2": 2.3491820040899793,
+          "matched_mpjpe_at_0_2": 229.85049975968553,
+          "mpjpe_1_people": 140.79490410553237,
+          "mpjpe_2_people": 166.0019344229195,
+          "mpjpe_3_people": 183.12264584891403
+        }
+      },
+      "transfer_same_epoch": {
+        "time": 1792741446.3506048,
+        "frames": 7824,
+        "metrics": {
+          "mpjpe": 139.10057740952584,
+          "mpjpeh": 59.09528513188742,
+          "mpjpev": 70.54579743974536,
+          "mpjped": 75.50948938056979,
+          "candidate_count": 180,
+          "count_mae_at_0_2": 0.07246932515337423,
+          "mean_selected_at_0_2": 1.9625511247443763,
+          "matched_mpjpe_at_0_2": 172.2461625502797,
+          "mpjpe_1_people": 117.60866212070403,
+          "mpjpe_2_people": 138.15537933009352,
+          "mpjpe_3_people": 167.62424032179732
+        }
+      },
+      "scratch_minus_transfer_mpjpe_mm": 23.06451663356617
+    }
+  ],
+  "scratch_best": {
+    "epoch": 70,
+    "time": 1792827747.2060392,
+    "frames": 7824,
+    "metrics": {
+      "mpjpe": 146.86020894430897,
+      "mpjpeh": 65.31405091371029,
+      "mpjpev": 76.11905678052356,
+      "mpjped": 74.31945100481525,
+      "candidate_count": 180,
+      "count_mae_at_0_2": 0.4649795501022495,
+      "mean_selected_at_0_2": 2.3663087934560325,
+      "matched_mpjpe_at_0_2": 209.75171953151943,
+      "mpjpe_1_people": 125.85955741215564,
+      "mpjpe_2_people": 150.30290752200025,
+      "mpjpe_3_people": 167.9634867392357
+    },
+    "saved_checkpoints": [
+      "best_mpjpe_epoch_70.pth"
+    ]
+  },
+  "transfer_at_scratch_best_epoch": {
+    "epoch": 70,
+    "time": 1792737901.4596598,
+    "frames": 7824,
+    "metrics": {
+      "mpjpe": 133.73854167963586,
+      "mpjpeh": 62.05101605719584,
+      "mpjpev": 71.61535240426386,
+      "mpjped": 63.074522782322816,
+      "candidate_count": 180,
+      "count_mae_at_0_2": 0.17829754601226994,
+      "mean_selected_at_0_2": 2.05508691206544,
+      "matched_mpjpe_at_0_2": 170.3665389469326,
+      "mpjpe_1_people": 115.31727131152466,
+      "mpjpe_2_people": 132.47025153265525,
+      "mpjpe_3_people": 158.89708160170096
+    }
+  },
+  "transfer_best_within_same_completed_epochs": {
+    "epoch": 59,
+    "time": 1792728153.7600315,
+    "frames": 7824,
+    "metrics": {
+      "mpjpe": 125.9363842841794,
+      "mpjpeh": 56.756637676361876,
+      "mpjpev": 70.57032202040979,
+      "mpjped": 56.464225319143694,
+      "candidate_count": 180,
+      "count_mae_at_0_2": 0.1900562372188139,
+      "mean_selected_at_0_2": 2.0060071574642127,
+      "matched_mpjpe_at_0_2": 173.65736522474225,
+      "mpjpe_1_people": 105.48980263269695,
+      "mpjpe_2_people": 124.75162683120325,
+      "mpjpe_3_people": 153.51531704026976
+    }
+  },
+  "all_scratch_evaluations_finite": true,
+  "processes": {
+    "supervisor": {
+      "pid": 325965,
+      "start_ticks_now": "201370675",
+      "start_ticks_expected": "201370675",
+      "state": "S",
+      "command": "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python -B tools/pose180/manage_scratch.py supervise formal formal-r1 "
+    },
+    "child": {
+      "pid": 325968,
+      "start_ticks_now": "201370696",
+      "start_ticks_expected": "201370696",
+      "state": "S",
+      "command": "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python -B -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node=2 tools/pose180/train.py configs/wifi/petr_wifi_pose180_scratch.py --launcher pytorch --seed 0 "
+    }
+  },
+  "checkpoints": [
+    {
+      "name": "epoch_30.pth",
+      "bytes": 274727840,
+      "mtime": 1792792484.8647504
+    },
+    {
+      "name": "epoch_40.pth",
+      "bytes": 274727840,
+      "mtime": 1792801355.7672453
+    },
+    {
+      "name": "epoch_70.pth",
+      "bytes": 274727840,
+      "mtime": 1792827575.6932619
+    },
+    {
+      "name": "best_mpjpe_epoch_70.pth",
+      "bytes": 274727776,
+      "mtime": 1792827747.8314197
+    },
+    {
+      "name": "epoch_50.pth",
+      "bytes": 274727840,
+      "mtime": 1792810148.39864
+    },
+    {
+      "name": "epoch_60.pth",
+      "bytes": 274727840,
+      "mtime": 1792818819.3926063
+    },
+    {
+      "name": "latest.pth",
+      "bytes": 274727840,
+      "mtime": 1792827575.6932619
+    }
+  ]
+}

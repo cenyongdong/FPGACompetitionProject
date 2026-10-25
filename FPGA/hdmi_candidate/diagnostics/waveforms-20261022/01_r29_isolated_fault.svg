@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2500" height="1740" viewBox="0 0 2500 1740">
+<rect x="0" y="0" width="2500" height="1740" fill="#f6f8fc" stroke="none"/>
+<text x="65" y="38" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="45" font-weight="700">01  隔离版故障：启动阶段已出现 PS HP2 返回</text>
+<text x="65" y="103" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="27" font-weight="400">r29｜同一隔离 BOOT：f4bed59ec077…｜AI 四路保持｜SDK / DMA / HDMI START = 0</text>
+<text x="65" y="152" dominant-baseline="text-before-edge" fill="#945612" font-family="Microsoft YaHei, sans-serif" font-size="25" font-weight="400">硬件事件记录重绘；非 ILA 逐周期连续波形。仅反映 GP 域同步后电平，可能漏掉短脉冲。</text>
+<text x="80" y="218" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="30" font-weight="700">A. 最早可观测状态（GP 本域周期）</text>
+<rect x="80" y="267" width="2340" height="495" fill="white" stroke="#dbe3ed"/>
+<rect x="390" y="273" width="100.0" height="431" fill="#e9edf3" stroke="none"/>
+<polyline points="390.0,277 390.0,699" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="376.0" y="712" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">0</text>
+<polyline points="490.0,277 490.0,699" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="476.0" y="712" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">3</text>
+<polyline points="1056.6666666666665,277 1056.6666666666665,699" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="1042.6666666666665" y="712" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">20</text>
+<polyline points="1690.0,277 1690.0,699" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="1676.0" y="712" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">39</text>
+<polyline points="2390.0,277 2390.0,699" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="2376.0" y="712" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">60</text>
+<text x="100" y="295" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">PS HP2 resetn</text>
+<polyline points="390,318 2390,318" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="490.0" cy="292" r="5" fill="#475569"/>
+<polyline points="490.0,292 2390,292" fill="none" stroke="#475569" stroke-width="4" />
+<text x="2395" y="289" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="315" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="354" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">PL HP2 resetn</text>
+<polyline points="390,377 2390,377" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="490.0" cy="377" r="5" fill="#237ac1"/>
+<polyline points="490.0,377 2390,377" fill="none" stroke="#237ac1" stroke-width="4" />
+<text x="2395" y="348" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="374" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="413" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">DDR calibrated</text>
+<polyline points="390,436 2390,436" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="490.0" cy="436" r="5" fill="#188766"/>
+<polyline points="490.0,436 2390,436" fill="none" stroke="#188766" stroke-width="4" />
+<text x="2395" y="407" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="433" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="472" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">PS ARVALID</text>
+<polyline points="390,495 2390,495" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="490.0" cy="495" r="5" fill="#566478"/>
+<polyline points="490.0,495 2390,495" fill="none" stroke="#566478" stroke-width="4" />
+<text x="2395" y="466" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="492" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="531" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="700">PS RVALID</text>
+<polyline points="390,554 2390,554" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="490.0" cy="528" r="5" fill="#cf3545"/>
+<polyline points="490.0,528 2390,528" fill="none" stroke="#cf3545" stroke-width="4" />
+<text x="2395" y="525" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="551" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="590" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">S01 ARVALID</text>
+<polyline points="390,613 2390,613" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="490.0" cy="613" r="5" fill="#566478"/>
+<polyline points="490.0,613 2390,613" fill="none" stroke="#566478" stroke-width="4" />
+<text x="2395" y="584" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="610" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="649" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="700">S01 RVALID</text>
+<polyline points="390,672 2390,672" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="490.0" cy="672" r="5" fill="#df7b15"/>
+<polyline points="490.0,672 2390,672" fill="none" stroke="#df7b15" stroke-width="4" />
+<text x="2395" y="643" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="669" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="420" y="806" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="25" font-weight="400">灰区：首条记录之前未知；GP=3 时 PS RVALID 已为 1，不能据此推断更早的请求历史。</text>
+<text x="80" y="862" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="30" font-weight="700">B. PL 释放附近放大（横轴为 GP 周期 − 5,644,702；每周期名义 10 ns）</text>
+<rect x="80" y="914" width="2340" height="495" fill="white" stroke="#dbe3ed"/>
+<polyline points="390.0,924 390.0,1346" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="376.0" y="1359" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">-40</text>
+<polyline points="1005.3846153846155,924 1005.3846153846155,1346" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="991.3846153846155" y="1359" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">-24</text>
+<polyline points="1543.8461538461538,924 1543.8461538461538,1346" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="1529.8461538461538" y="1359" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">-10</text>
+<polyline points="1928.4615384615386,924 1928.4615384615386,1346" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="1914.4615384615386" y="1359" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">0</text>
+<polyline points="2043.8461538461538,924 2043.8461538461538,1346" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="2029.8461538461538" y="1359" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">3</text>
+<polyline points="2390.0,924 2390.0,1346" fill="none" stroke="#dbe3ed" stroke-width="1" />
+<text x="2376.0" y="1359" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="20" font-weight="400">12</text>
+<text x="100" y="942" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">PS HP2 resetn</text>
+<polyline points="390,965 2390,965" fill="none" stroke="#edf1f6" stroke-width="1" />
+<polyline points="390,939 2390,939" fill="none" stroke="#475569" stroke-width="4" />
+<text x="2395" y="936" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="962" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="1001" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">PL HP2 resetn</text>
+<polyline points="390,1024 2390,1024" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="1928.4615384615386" cy="998" r="5" fill="#237ac1"/>
+<polyline points="390,1024 1928.4615384615386,1024 1928.4615384615386,998 2390,998" fill="none" stroke="#237ac1" stroke-width="4" />
+<text x="2395" y="995" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="1021" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="1060" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">DDR calibrated</text>
+<polyline points="390,1083 2390,1083" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="1005.3846153846155" cy="1057" r="5" fill="#188766"/>
+<polyline points="390,1083 1005.3846153846155,1083 1005.3846153846155,1057 2390,1057" fill="none" stroke="#188766" stroke-width="4" />
+<text x="2395" y="1054" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="1080" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="1119" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">PS ARVALID</text>
+<polyline points="390,1142 2390,1142" fill="none" stroke="#edf1f6" stroke-width="1" />
+<polyline points="390,1142 2390,1142" fill="none" stroke="#566478" stroke-width="4" />
+<text x="2395" y="1113" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="1139" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="1178" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="700">PS RVALID</text>
+<polyline points="390,1201 2390,1201" fill="none" stroke="#edf1f6" stroke-width="1" />
+<polyline points="390,1175 2390,1175" fill="none" stroke="#cf3545" stroke-width="4" />
+<text x="2395" y="1172" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="1198" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="1237" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="400">S01 ARVALID</text>
+<polyline points="390,1260 2390,1260" fill="none" stroke="#edf1f6" stroke-width="1" />
+<polyline points="390,1260 2390,1260" fill="none" stroke="#566478" stroke-width="4" />
+<text x="2395" y="1231" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="1257" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<text x="100" y="1296" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="23" font-weight="700">S01 RVALID</text>
+<polyline points="390,1319 2390,1319" fill="none" stroke="#edf1f6" stroke-width="1" />
+<circle cx="2043.8461538461538" cy="1293" r="5" fill="#df7b15"/>
+<polyline points="390,1319 2043.8461538461538,1319 2043.8461538461538,1293 2390,1293" fill="none" stroke="#df7b15" stroke-width="4" />
+<text x="2395" y="1290" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">1</text>
+<text x="2395" y="1316" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="400">0</text>
+<rect x="80.0" y="1455" width="756.6666666666666" height="197" fill="white" stroke="#dbe3ed"/>
+<text x="102.0" y="1473" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="28" font-weight="700">HP 域首事件（独立计时）</text>
+<text x="102.0" y="1523" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="24" font-weight="400">首个 PS RVALID：342,536</text>
+<text x="102.0" y="1567" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="24" font-weight="400">PL 就绪时首 R：11,633,005</text>
+<text x="102.0" y="1611" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="24" font-weight="400">不能与 GP 周期直接对齐</text>
+<rect x="871.6666666666666" y="1455" width="756.6666666666666" height="197" fill="white" stroke="#dbe3ed"/>
+<text x="893.6666666666666" y="1473" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="28" font-weight="700">HP 原始累计 / 返回属性</text>
+<text x="893.6666666666666" y="1523" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="24" font-weight="400">PS AR 握手 = 0；PS R 原始握手 = 6</text>
+<text x="893.6666666666666" y="1567" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="24" font-weight="400">RID = 32；RRESP = OKAY；RLAST = 0</text>
+<text x="893.6666666666666" y="1611" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="24" font-weight="400">R=6 不代表 6 笔合法事务</text>
+<rect x="1663.3333333333333" y="1455" width="756.6666666666666" height="197" fill="white" stroke="#dbe3ed"/>
+<text x="1685.3333333333333" y="1473" dominant-baseline="text-before-edge" fill="#17263c" font-family="Microsoft YaHei, sans-serif" font-size="28" font-weight="700">冻结短窗（六边界）</text>
+<text x="1685.3333333333333" y="1523" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="24" font-weight="400">3,553 HP 周期 ≈ 17.765 μs</text>
+<text x="1685.3333333333333" y="1567" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="24" font-weight="400">PS / S01：RVALID=1、RREADY=0</text>
+<text x="1685.3333333333333" y="1611" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="24" font-weight="400">S01 源输入为 0；30 分钟未完成</text>
+<text x="80" y="1698" dominant-baseline="text-before-edge" fill="#52637a" font-family="Microsoft YaHei, sans-serif" font-size="22" font-weight="400">边界：配置前 / 无观测时钟阶段不可见；初始 resetn=1 不是已捕获的释放边沿。</text>
+</svg>

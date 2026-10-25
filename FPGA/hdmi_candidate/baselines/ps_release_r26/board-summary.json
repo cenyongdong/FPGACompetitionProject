@@ -1,0 +1,140 @@
+{
+  "candidate_boot_id": "15e2aefc-b8ea-493f-abfb-a54980089a75",
+  "valid": true,
+  "healthy_idle": false,
+  "event_overflow": false,
+  "PS_reset_initial_high": true,
+  "PS_release_edge_observed": false,
+  "first_release_order": "unresolved: initial high is not an observed release edge",
+  "GP_events": [
+    {
+      "cycle": 3,
+      "PS_resetn": true,
+      "PL_resetn": false,
+      "DDR_ready": false,
+      "PS_RVALID": true,
+      "HDMI_RVALID": false
+    },
+    {
+      "cycle": 33,
+      "PS_resetn": true,
+      "PL_resetn": false,
+      "DDR_ready": false,
+      "PS_RVALID": true,
+      "HDMI_RVALID": false
+    },
+    {
+      "cycle": 5644339,
+      "PS_resetn": true,
+      "PL_resetn": false,
+      "DDR_ready": true,
+      "PS_RVALID": true,
+      "HDMI_RVALID": false
+    },
+    {
+      "cycle": 5644362,
+      "PS_resetn": true,
+      "PL_resetn": true,
+      "DDR_ready": true,
+      "PS_RVALID": true,
+      "HDMI_RVALID": false
+    },
+    {
+      "cycle": 5644364,
+      "PS_resetn": true,
+      "PL_resetn": true,
+      "DDR_ready": true,
+      "PS_RVALID": false,
+      "HDMI_RVALID": false
+    },
+    {
+      "cycle": 5644365,
+      "PS_resetn": true,
+      "PL_resetn": true,
+      "DDR_ready": true,
+      "PS_RVALID": false,
+      "HDMI_RVALID": true
+    }
+  ],
+  "raw_HP_handshakes": {
+    "PS_AR": 0,
+    "PS_R": 1,
+    "legacy_AW": 0,
+    "legacy_W": 0,
+    "legacy_B": 0,
+    "PS_AW": 0,
+    "PS_W": 0,
+    "PS_B": 0
+  },
+  "raw_HP_count_overflow_mask": 0,
+  "first_raw_R_HP_cycle": 342547,
+  "first_PL_ready_R_HP_cycle": 11632336,
+  "first_R_pins": {
+    "raw": 288,
+    "RID": 32,
+    "RRESP": 0,
+    "RLAST": true
+  },
+  "ARM_window": {
+    "HP_cycles": 4017112,
+    "source_flags": 25,
+    "errors": 0,
+    "all_AR_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "all_R_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "RVALID_cycles": [
+      0,
+      0,
+      0,
+      0,
+      4017112,
+      0
+    ],
+    "channel_names": [
+      "HC0",
+      "HC1",
+      "HC2",
+      "HC3",
+      "HDMI_S01",
+      "PS_HP2"
+    ]
+  },
+  "original_runtime": "3c29ef26-31d1-4030-81a6-d64b849d2d24",
+  "original_BOOT_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "FPGA_operating": true,
+  "device_owners": [],
+  "candidate_starts": 1,
+  "original_fallbacks": 1,
+  "SDK_Open": 0,
+  "DMA": 0,
+  "inference": 0,
+  "HDMI_START": 0,
+  "remaining": {
+    "candidate_starts": 0,
+    "original_fallbacks": 0,
+    "SDK_Open": 0
+  },
+  "raw_archive": "board-evidence.tar.gz",
+  "archive_receipt": "board-archive.log",
+  "interpretation": "Waiting for the already-high PS output alone does not cover this sample. Startup/pre-observation state is the leading investigation direction; no FIFO-empty or exact PS reset-edge proof.",
+  "limits": [
+    "GP records synchronized levels, may miss short pulses; HP counts are raw including reset.",
+    "GP and HP FREEZE cuts differ; first high at observation start does not prove a reset edge.",
+    "Event overflow leaves dedicated first records valid but can hide later transitions.",
+    "HP activity expires 255 GP cycles after last divided heartbeat; it is a coarse clock witness.",
+    "No pre-configuration/clockless request coverage or direct PS FIFO occupancy."
+  ]
+}

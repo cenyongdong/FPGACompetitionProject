@@ -1,0 +1,61 @@
+{
+  "status": "failed",
+  "requested": 1792842773.0477755,
+  "source_run": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_20261023_r1",
+  "source_supervisor": {
+    "pid": 325965,
+    "start_ticks": "201370675"
+  },
+  "original442_mpjpe_mm": 123.0852578098301,
+  "additional_epochs": 100,
+  "target_epoch": 200,
+  "scheduled_checks": false,
+  "automatic_retries": false,
+  "supervisor": {
+    "pid": 376062,
+    "start_ticks": "209032611"
+  },
+  "wait_method": "Linux pidfd exit event; no periodic checks",
+  "source_best_epoch": 89,
+  "source_best_mpjpe_mm": 146.64447059611845,
+  "source_completed": 1792853930.2905505,
+  "gpu_before": [
+    [
+      "1",
+      "GPU-cb01d43e-29fc-888d-b6ed-399005396572",
+      "24564",
+      "9302",
+      "0"
+    ],
+    [
+      "6",
+      "GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c",
+      "24564",
+      "1",
+      "0"
+    ]
+  ],
+  "command": [
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nnodes=1",
+    "--nproc_per_node=2",
+    "tools/pose180/train.py",
+    "configs/wifi/petr_wifi_pose180_scratch_extra100.py",
+    "--launcher",
+    "pytorch",
+    "--seed",
+    "0"
+  ],
+  "child": {
+    "pid": 383867,
+    "start_ticks": "210148560"
+  },
+  "training_started": 1792853932.5421414,
+  "cuda_visible_devices": "1,6",
+  "native_exit": 1,
+  "finished": 1792853954.113373
+}

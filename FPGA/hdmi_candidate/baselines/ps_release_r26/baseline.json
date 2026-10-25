@@ -1,0 +1,42 @@
+{
+  "baseline_name": "qualified ps_release_r26 before S01 isolation",
+  "captured_on": "2026-10-22",
+  "starting_git_commit": "70792946",
+  "inputs": {
+    "ps_ai.v": {
+      "bytes": 421177,
+      "sha256": "efd35536e7d55b9588d3870cd7ab32a4eada66960024e21a198b4ea3254b5e43"
+    },
+    "ps_ai_wrapper.sv": {
+      "bytes": 57859,
+      "sha256": "16c79e05ddfc760f0dec8335cb252b9b33b88df6751689535592d710a1dff096"
+    },
+    "ps_ai_peripheral.sv": {
+      "bytes": 97909,
+      "sha256": "3ddc2546529137d086b32b14ec1f7f1cd402aa7729d7d42a8845156436eec515"
+    },
+    "ai_read_monitor.sv": {
+      "bytes": 10388,
+      "sha256": "87d53314ad0df489b996d7bcfa486e098bdb6f4346fb9c3257ce35c1f2291f7d"
+    },
+    "ps_release_stub.v": {
+      "bytes": 24835,
+      "sha256": "316b64660413f93b3a95b751277bc884ffd5e9187fb8d71e5215f837c16ab202"
+    },
+    "ps-managed-io.xdc": {
+      "bytes": 116,
+      "sha256": "b25ee395c6e4bb165339de2d9dcc6bfd871a4a8469dcb9810c5f104d2f530e3b"
+    },
+    "ai_boot_witness_cdc.tcl": {
+      "bytes": 3938,
+      "sha256": "69121d7880914708d5fb805f757bd1a599f7e5312bd97367c0b8dafec260fd4a"
+    }
+  },
+  "raw_reference": "D:\\FPGACompetitionProject\\.local\\hdmi-boot-witness-20261019-r23\\reference",
+  "physical_checkpoint": "D:\\FPGACompetitionProject\\.local\\hdmi-ps-release-20261020-r26\\qualified-routed.dcp",
+  "physical_checkpoint_is_unchanged_local_artifact": true,
+  "source_of_custom_observer": "FPGA/hdmi_candidate/diagnostics/ps_release_witness.sv",
+  "constraints": "FPGA/hdmi_candidate/constraints/ps_release*.tcl",
+  "board_state": "r26 closed after 1 candidate + 1 original fallback; no remaining starts; original BOOT restored",
+  "native_scripts": "Original commands retained for reconstruction; paths refer to retained local factory/IP products. Do not run board actions from a historical package."
+}

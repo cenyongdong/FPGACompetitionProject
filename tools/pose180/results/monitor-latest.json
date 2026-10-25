@@ -1,0 +1,317 @@
+{
+  "checked_at_unix": 1792737236.0280495,
+  "job": {
+    "name": "formal-r1",
+    "stage": "formal",
+    "started": 1792675928.1591754,
+    "status": "running",
+    "supervisor": {
+      "pid": 262977,
+      "start_ticks": "192348122"
+    },
+    "gpu_before": [
+      [
+        "1",
+        "GPU-cb01d43e-29fc-888d-b6ed-399005396572",
+        "24564",
+        "9315",
+        "0"
+      ],
+      [
+        "6",
+        "GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c",
+        "24564",
+        "15",
+        "0"
+      ]
+    ],
+    "command": [
+      "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+      "-B",
+      "-m",
+      "torch.distributed.run",
+      "--standalone",
+      "--nnodes=1",
+      "--nproc_per_node=2",
+      "tools/pose180/train.py",
+      "configs/wifi/petr_wifi_pose180_shared.py",
+      "--launcher",
+      "pytorch",
+      "--seed",
+      "0"
+    ],
+    "child": {
+      "pid": 262980,
+      "start_ticks": "192348156"
+    },
+    "cuda_visible_devices": "1,6"
+  },
+  "identities": [
+    {
+      "expected": {
+        "pid": 262977,
+        "start_ticks": "192348122"
+      },
+      "actual_start_ticks": "192348122",
+      "matches": true,
+      "state": "S",
+      "cpu_ticks": 3,
+      "command": "/usr/bin/python3 -B /public/cyd/Person-in-WiFi-3D-repo/tools/pose180/manage.py supervise formal formal-r1 "
+    },
+    {
+      "expected": {
+        "pid": 262980,
+        "start_ticks": "192348156"
+      },
+      "actual_start_ticks": "192348156",
+      "matches": true,
+      "state": "S",
+      "cpu_ticks": 5285,
+      "command": "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python -B -m torch.distributed.run --standalone --nnodes=1 --nproc_per_node=2 tools/pose180/train.py configs/wifi/petr_wifi_pose180_shared.py --launcher pytorch --seed 0 "
+    },
+    {
+      "expected": {
+        "pid": 262985,
+        "start_ticks": "192348274"
+      },
+      "actual_start_ticks": "192348274",
+      "matches": true,
+      "state": "R",
+      "cpu_ticks": 5989142,
+      "command": "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python -u tools/pose180/train.py configs/wifi/petr_wifi_pose180_shared.py --launcher pytorch --seed 0 "
+    },
+    {
+      "expected": {
+        "pid": 262986,
+        "start_ticks": "192348275"
+      },
+      "actual_start_ticks": "192348275",
+      "matches": true,
+      "state": "R",
+      "cpu_ticks": 5985284,
+      "command": "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python -u tools/pose180/train.py configs/wifi/petr_wifi_pose180_shared.py --launcher pytorch --seed 0 "
+    }
+  ],
+  "progress": {
+    "stage": "training",
+    "time": 1792737230.8917658,
+    "epoch": 70,
+    "iter": 389600,
+    "inner_iter": 1682,
+    "max_epochs": 100,
+    "pid": 262985,
+    "elapsed_seconds": 61293.15357017517,
+    "lr": [
+      2.0000000000000003e-06,
+      2e-05
+    ],
+    "metrics": {
+      "enc_loss_cls": 0.30601590871810913,
+      "enc_loss_kpt": 0.8441712260246277,
+      "loss_cls": 0.14906364679336548,
+      "loss_kpt": 0.8312376737594604,
+      "d0.loss_cls": 0.15836894512176514,
+      "d0.loss_kpt": 0.8468358516693115,
+      "d1.loss_cls": 0.1383090615272522,
+      "d1.loss_kpt": 0.850338339805603,
+      "d0.loss_kpt_refine": 0.8322877883911133,
+      "d1.loss_kpt_refine": 0.8288045525550842,
+      "loss": 5.785432815551758
+    },
+    "gradient_sample": {
+      "iter": 389600,
+      "query_grad": 0.1494089514017105,
+      "joint_grad": 0.09498373419046402
+    },
+    "cuda_allocated": 498721280,
+    "cuda_peak": 1083871232
+  },
+  "finite_current_metrics": true,
+  "finite_current_gradient": true,
+  "evaluation_count": 69,
+  "latest_evaluation": {
+    "time": 1792737017.4641378,
+    "frames": 7824,
+    "metrics": {
+      "mpjpe": 129.10502534921915,
+      "mpjpeh": 58.514149790344064,
+      "mpjpev": 69.82703257167753,
+      "mpjped": 60.56568042254399,
+      "candidate_count": 180,
+      "count_mae_at_0_2": 0.2744120654396728,
+      "mean_selected_at_0_2": 2.0072852760736195,
+      "matched_mpjpe_at_0_2": 171.45056302169797,
+      "mpjpe_1_people": 108.53973870819517,
+      "mpjpe_2_people": 129.4476247564632,
+      "mpjpe_3_people": 154.4657822825312
+    }
+  },
+  "recent_evaluations": [
+    {
+      "time": 1792733470.0818098,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 134.2386922831428,
+        "mpjpeh": 60.88458083164716,
+        "mpjpev": 73.82481562993766,
+        "mpjped": 61.12043931775542,
+        "candidate_count": 180,
+        "count_mae_at_0_2": 0.22609918200409,
+        "mean_selected_at_0_2": 2.048696319018405,
+        "matched_mpjpe_at_0_2": 172.65455868612966,
+        "mpjpe_1_people": 110.51651476559857,
+        "mpjpe_2_people": 132.87842406100364,
+        "mpjpe_3_people": 166.21368988765133
+      }
+    },
+    {
+      "time": 1792734358.331717,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 133.14702776897172,
+        "mpjpeh": 59.53701426707406,
+        "mpjpev": 71.79209363960294,
+        "mpjped": 64.11526675927615,
+        "candidate_count": 180,
+        "count_mae_at_0_2": 0.11733128834355828,
+        "mean_selected_at_0_2": 1.9964212678936606,
+        "matched_mpjpe_at_0_2": 170.76110785600284,
+        "mpjpe_1_people": 116.7138241858604,
+        "mpjpe_2_people": 128.86388784197706,
+        "mpjpe_3_people": 160.4760355554746
+      }
+    },
+    {
+      "time": 1792735236.3298545,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 133.11983847813127,
+        "mpjpeh": 59.65895389571999,
+        "mpjpev": 71.8641144007993,
+        "mpjped": 64.48827611760127,
+        "candidate_count": 180,
+        "count_mae_at_0_2": 0.12384969325153375,
+        "mean_selected_at_0_2": 2.028502044989775,
+        "matched_mpjpe_at_0_2": 169.81890137310435,
+        "mpjpe_1_people": 114.53780118052755,
+        "mpjpe_2_people": 131.5567447168743,
+        "mpjpe_3_people": 158.93777372031505
+      }
+    },
+    {
+      "time": 1792736126.9467313,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 125.99704317763783,
+        "mpjpeh": 57.2771914086337,
+        "mpjpev": 68.94042996004802,
+        "mpjped": 57.92702443748408,
+        "candidate_count": 180,
+        "count_mae_at_0_2": 0.11324130879345604,
+        "mean_selected_at_0_2": 2.0069018404907975,
+        "matched_mpjpe_at_0_2": 163.2243301472402,
+        "mpjpe_1_people": 105.12010047570367,
+        "mpjpe_2_people": 125.01637455806062,
+        "mpjpe_3_people": 153.8014359293105
+      }
+    },
+    {
+      "time": 1792737017.4641378,
+      "frames": 7824,
+      "metrics": {
+        "mpjpe": 129.10502534921915,
+        "mpjpeh": 58.514149790344064,
+        "mpjpev": 69.82703257167753,
+        "mpjped": 60.56568042254399,
+        "candidate_count": 180,
+        "count_mae_at_0_2": 0.2744120654396728,
+        "mean_selected_at_0_2": 2.0072852760736195,
+        "matched_mpjpe_at_0_2": 171.45056302169797,
+        "mpjpe_1_people": 108.53973870819517,
+        "mpjpe_2_people": 129.4476247564632,
+        "mpjpe_3_people": 154.4657822825312
+      }
+    }
+  ],
+  "best_evaluation": {
+    "epoch": 59,
+    "metrics": {
+      "mpjpe": 125.9363842841794,
+      "mpjpeh": 56.756637676361876,
+      "mpjpev": 70.57032202040979,
+      "mpjped": 56.464225319143694,
+      "candidate_count": 180,
+      "count_mae_at_0_2": 0.1900562372188139,
+      "mean_selected_at_0_2": 2.0060071574642127,
+      "matched_mpjpe_at_0_2": 173.65736522474225,
+      "mpjpe_1_people": 105.48980263269695,
+      "mpjpe_2_people": 124.75162683120325,
+      "mpjpe_3_people": 153.51531704026976
+    }
+  },
+  "checkpoints": [
+    {
+      "name": "best_mpjpe_epoch_59.pth",
+      "bytes": 274727776,
+      "mtime": 1792728154.295998,
+      "target": null
+    },
+    {
+      "name": "epoch_20.pth",
+      "bytes": 274727840,
+      "mtime": 1792693289.6010194,
+      "target": null
+    },
+    {
+      "name": "epoch_30.pth",
+      "bytes": 274727840,
+      "mtime": 1792702161.4146729,
+      "target": null
+    },
+    {
+      "name": "epoch_40.pth",
+      "bytes": 274727840,
+      "mtime": 1792711038.6656902,
+      "target": null
+    },
+    {
+      "name": "epoch_50.pth",
+      "bytes": 274727840,
+      "mtime": 1792719985.1657822,
+      "target": null
+    },
+    {
+      "name": "epoch_60.pth",
+      "bytes": 274727840,
+      "mtime": 1792728871.2638304,
+      "target": null
+    },
+    {
+      "name": "latest.pth",
+      "bytes": 274727840,
+      "mtime": 1792728871.2638304,
+      "target": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/epoch_60.pth"
+    }
+  ],
+  "logs": {
+    "stdout.log": {
+      "bytes": 43194000,
+      "mtime": 1792736891.215052,
+      "error_lines": [],
+      "last_line": [
+        ""
+      ]
+    },
+    "stderr.log": {
+      "bytes": 3397587,
+      "mtime": 1792737233.1791275,
+      "error_lines": [],
+      "last_line": [
+        "2026-10-23 14:33:53,180 - mmdet - INFO - Epoch [70][1700/5622]\tlr: 2.000e-05, eta: 6:02:56, time: 0.125, data_time: 0.006, memory: 1033, enc_loss_cls: 0.0650, enc_loss_kpt: 0.7269, loss_cls: 0.0270, loss_kpt: 0.6743, d0.loss_cls: 0.0515, d0.loss_kpt: 0.7231, d1.loss_cls: 0.0368, d1.loss_kpt: 0.6935, d0.loss_kpt_refine: 0.6722, d1.loss_kpt_refine: 0.6703, loss: 4.3406, grad_norm: 405.5782, query_grad: 0.0808, joint_grad: 0.0842"
+      ]
+    }
+  },
+  "gpu": "1, GPU-cb01d43e-29fc-888d-b6ed-399005396572, 11089 MiB, 24564 MiB, 44 %\n6, GPU-b6dced7c-9ed0-cc76-f075-a68df84c433c, 1792 MiB, 24564 MiB, 56 %\n",
+  "compute_apps": "GPU-e882fdbe-1f68-fce3-ad38-6ad3bc6b845e, 3887467, 9140 MiB\nGPU-e882fdbe-1f68-fce3-ad38-6ad3bc6b845e, 2787495, 9770 MiB\nGPU-cb01d43e-29fc-888d-b6ed-399005396572, 3887468, 9138 MiB\nGPU-cb01d43e-29fc-888d-b6ed-399005396572, 2702371, 1782 MiB\nGPU-b38deef0-3a36-fe52-0b9b-16de6ed043f0, 3024390, 20250 MiB\nGPU-fee0d1d1-bbe1-a567-27d5-6f3645734acb, 3024390, 19786 MiB\nGPU-a88ed63b-3592-0f8c-ffa1-991efa109d2f, 3052521, 20284 MiB\nGPU-ded0ed80-16bd-eb8c-c54f-3d8b3363f706, 3052521, 19826 MiB\nGPU-b6dced7c-9ed0-cc76-f075-a68df84c433c, 2702372, 1782 MiB\n",
+  "completed_ddp": null
+}

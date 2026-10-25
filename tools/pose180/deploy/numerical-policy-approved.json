@@ -1,0 +1,15 @@
+{
+  "user_confirmed": true,
+  "confirmation": "批准该门限，验证后继续30分钟压测",
+  "scope": "Epoch99 new 180-query FP16 model; not the prior 100-query gate",
+  "reference": "Native Icraft 3.39 generated ZG instruction simulation, same JSON/RAW and query order",
+  "score_max_abs_delta": 0.001,
+  "selection": "All score>FP32(0.2) identities and highest-score index unchanged",
+  "score_gt_0_2_max_joint_euclidean_mm": 3.0,
+  "finite": "All 180 scores and all 7560 pose coordinates finite",
+  "background": "Full original values and error metrics retained; no background position hard gate",
+  "FP32_quantization_accuracy": "Separate unaccepted item; instruction simulation high-score errors 13.1/21.0/25.7mm retained",
+  "verification": "First existing saved output reviewed offline; then only remaining two distinct inputs",
+  "stress": "Only after all three inputs pass, one 1800-second unthrottled model-only session",
+  "automatic_retry": false
+}

@@ -1,0 +1,19 @@
+{
+  "child": {
+    "pid": 324275,
+    "start_ticks": "201203488"
+  },
+  "command": [
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "/public/cyd/Person-in-WiFi-3D-repo/tools/pose180/analyze_counts.py",
+    "--checkpoint",
+    "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/best_mpjpe_epoch_99.pth",
+    "--output",
+    "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/analysis-final-best-epoch99-r1",
+    "--batch-size",
+    "8"
+  ],
+  "output": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/analysis-final-best-epoch99-r1",
+  "started": 1792764481.8292258
+}

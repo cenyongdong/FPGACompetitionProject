@@ -1,0 +1,21 @@
+{
+  "status": "completed",
+  "started": 1792764484.6654258,
+  "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/best_mpjpe_epoch_99.pth",
+  "output": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/analysis-final-best-epoch99-r1",
+  "process": {
+    "pid": 324275,
+    "start_ticks": "201203488"
+  },
+  "device": "cpu",
+  "threads": 2,
+  "batch_size": 8,
+  "checkpoint_epoch": 99,
+  "candidate_count": 180,
+  "total_frames": 7824,
+  "completed_frames": 7824,
+  "elapsed_seconds": 438.42036867141724,
+  "updated": 1792764922.596427,
+  "native_exit": 0,
+  "finished": 1792764923.0857942
+}

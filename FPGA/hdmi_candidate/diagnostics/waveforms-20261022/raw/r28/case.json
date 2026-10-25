@@ -1,0 +1,19 @@
+{
+  "case": "r28",
+  "source_package": "hdmi-s01-isolation-20261022-r28",
+  "BOOT_sha256": "f4bed59ec07751bcd7eaac332d9524675e071a4eff1226a4f9b5bdd1642bde04",
+  "source_isolated": true,
+  "candidate_boot_id": "aceeee23-3f69-4663-bb4c-dcfe22e3d325",
+  "GP_clock_nominal_Hz": 100000000,
+  "HP_clock_nominal_Hz": 200000000,
+  "SDK": 0,
+  "inference": 0,
+  "HDMI_START": 0,
+  "GP_event_overflow": false,
+  "HP_count_overflow_mask": 0,
+  "S01_current_pins": "0x8000002",
+  "S01_source_input_mask": "0x0",
+  "short_window_HP_cycles": 4016989,
+  "GP_freeze_cycle": 5114887170,
+  "HP_freeze_cycle": 10230140602
+}

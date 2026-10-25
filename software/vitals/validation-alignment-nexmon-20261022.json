@@ -1,0 +1,452 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "scope": "Historical Nexmon heart-branch offline timing and phase fault containment",
+  "implementation_status": "Time adaptation and phase fault isolation verified offline; source phase discontinuity root cause remains unresolved.",
+  "acquisition_resumed": false,
+  "hardware_accessed": false,
+  "model_or_board_protocol_changed": false,
+  "strict_vitals_cpp_algorithm_or_quality_gates_changed": false,
+  "adapter": {
+    "path": "tools/vitals/align_nexmon_phase.py",
+    "target_rate_hz": 50,
+    "work_rate_hz": 600,
+    "filter_taps": 481,
+    "filter_cutoff_hz": 15,
+    "measured_context_seconds_per_side": 0.4,
+    "method": "Continuous relative RX-time segment -> same-frame antenna differential phase -> temporal unwrap -> bounded linear-time interpolation -> anti-alias FIR -> 50Hz derived phase grid",
+    "source_phase_step_limit_rad": 0.25,
+    "source_gap_limit_ms": 10,
+    "source_gap_limit_scope": "Conservative offline support eligibility only; not RF certification",
+    "fault_handling": "Preserve raw observations; invalidate every derived sample whose filter support intersects a source phase jump or over-limit gap. Keep NaN + per-channel validity mask; do not join rejected intervals.",
+    "partial_recordings_not_padded": true,
+    "rf_sequence_or_strict_complex_IQ_not_fabricated": true,
+    "derived_grid_not_claimed_as_verified_RF_clock": true,
+    "original_source_phase_corrected": false,
+    "production_eligible": false
+  },
+  "unit_tests": {
+    "passed": 9,
+    "failed": 0,
+    "command": "python -m unittest discover -s tools/vitals -p test_align_nexmon_phase.py -v",
+    "scope": "Known low-band signal, jitter, alias suppression, representation wraps, true jumps, sub-work-grid faults, gaps, short histories, invalid input"
+  },
+  "signal_validation": {
+    "passed": 12,
+    "total": 12,
+    "raw_result": "D:\\FPGACompetitionProject\\.local\\vitals-alignment-20261022-r1\\validation\\checks.json",
+    "maximum_known_low_band_phase_rmse_rad": 4.3323889615426105e-06,
+    "alias_test_attenuation_db": 113.89035159007834,
+    "native_synthetic_only": [
+      {
+        "case": "analytic72",
+        "origin": "wholly_synthetic_44s",
+        "status": "valid",
+        "reasons": [],
+        "heart": {
+          "bpm": 71.99986336613689,
+          "confidence": 0.9908444795696092,
+          "agreeing_channels": 4
+        },
+        "passed": true
+      },
+      {
+        "case": "breath_only",
+        "origin": "wholly_synthetic_44s",
+        "status": "no_heart_estimate",
+        "reasons": [
+          "no_supported_heart_consensus"
+        ],
+        "heart": null,
+        "passed": true
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "latest-phone",
+      "source": "D:\\FPGACompetitionProject\\tools\\nexmon\\evidence\\hotspot-control-20261021-r1\\phone300\\capture.pcap",
+      "source_events": 2948,
+      "source_span_seconds": 9.991514,
+      "every_sixth": {
+        "samples": 492,
+        "interval_ms": {
+          "count": 491,
+          "min": 15.68,
+          "p50": 20.004,
+          "p95": 23.201,
+          "p99": 28.861800000000024,
+          "max": 38.093
+        },
+        "interval_errors_over_2ms": 58,
+        "final_elapsed_error_ms": 168.159
+      },
+      "alignment": {
+        "target_rate_hz": 50,
+        "target_interval_ms": 20.0,
+        "target_samples": 460,
+        "work_rate_hz": 600,
+        "fir_taps": 481,
+        "fir_cutoff_hz": 15,
+        "measured_context_seconds_per_side": 0.4,
+        "filter": "linear-time interpolation then symmetric Kaiser beta=8.6 FIR then decimation",
+        "source_gap_limit_ms": 10.0,
+        "source_max_gap_ms": 22.292,
+        "source_gap_faults": 7,
+        "source_phase_step_limit_rad": 0.25,
+        "source_phase_jumps": [
+          149,
+          88,
+          214,
+          158
+        ],
+        "phase_invalid_output_samples": [
+          439,
+          343,
+          419,
+          441
+        ],
+        "gap_invalid_output_samples": 140,
+        "locally_valid_samples_per_channel": [
+          21,
+          94,
+          41,
+          19
+        ],
+        "longest_valid_samples_per_channel": [
+          19,
+          60,
+          24,
+          19
+        ],
+        "all_channel_valid_samples": 8,
+        "quality_scope": "conservative offline signal support; not an accepted production RF profile",
+        "derived_grid_is_acquisition_clock": false,
+        "windows": {
+          "required_samples": 2000,
+          "required_history_seconds": 40,
+          "candidate_windows": 0,
+          "locally_qualified_windows": 0,
+          "longest_all_channel_valid_samples": 8,
+          "rf_clock_certified": false,
+          "strict_cpp_input_emitted": false,
+          "reason": "insufficient_40s_history"
+        }
+      },
+      "phase_pairs": [
+        {
+          "rx_pair": [
+            0,
+            1
+          ],
+          "broadband_phase_fault_events": 143,
+          "adjacent_returning_fault_pairs": 73,
+          "typical_broadband_step_abs_rad": {
+            "count": 143,
+            "min": 0.28508593386383485,
+            "p50": 1.7488959082060447,
+            "p95": 1.7572740538339853,
+            "p99": 1.7980319905092843,
+            "max": 1.816977659129125
+          }
+        },
+        {
+          "rx_pair": [
+            0,
+            2
+          ],
+          "broadband_phase_fault_events": 80,
+          "adjacent_returning_fault_pairs": 38,
+          "typical_broadband_step_abs_rad": {
+            "count": 80,
+            "min": 1.6835600810548899,
+            "p50": 1.7742089423960072,
+            "p95": 1.7901893928000714,
+            "p99": 1.7921287205384104,
+            "max": 1.7927555869462628
+          }
+        },
+        {
+          "rx_pair": [
+            1,
+            2
+          ],
+          "broadband_phase_fault_events": 211,
+          "adjacent_returning_fault_pairs": 102,
+          "typical_broadband_step_abs_rad": {
+            "count": 211,
+            "min": 0.25412952310553366,
+            "p50": 1.7128646460780232,
+            "p95": 1.7680844599993775,
+            "p99": 1.7754810413194237,
+            "max": 2.021238044844528
+          }
+        }
+      ],
+      "full_result": "D:\\FPGACompetitionProject\\.local\\vitals-alignment-20261022-r1\\latest-phone\\alignment.json"
+    },
+    {
+      "name": "earlier-ap",
+      "source": "D:\\FPGACompetitionProject\\tools\\nexmon\\evidence\\hotspot-20261021-r1\\ap300\\capture.pcap",
+      "source_events": 2940,
+      "source_span_seconds": 9.875185,
+      "every_sixth": {
+        "samples": 490,
+        "interval_ms": {
+          "count": 489,
+          "min": 15.976,
+          "p50": 20.002,
+          "p95": 22.782399999999996,
+          "p99": 24.57876,
+          "max": 26.678
+        },
+        "interval_errors_over_2ms": 44,
+        "final_elapsed_error_ms": 77.541
+      },
+      "alignment": {
+        "target_rate_hz": 50,
+        "target_interval_ms": 20.0,
+        "target_samples": 454,
+        "work_rate_hz": 600,
+        "fir_taps": 481,
+        "fir_cutoff_hz": 15,
+        "measured_context_seconds_per_side": 0.4,
+        "filter": "linear-time interpolation then symmetric Kaiser beta=8.6 FIR then decimation",
+        "source_gap_limit_ms": 10.0,
+        "source_max_gap_ms": 10.751,
+        "source_gap_faults": 1,
+        "source_phase_step_limit_rad": 0.25,
+        "source_phase_jumps": [
+          24,
+          40,
+          47,
+          40
+        ],
+        "phase_invalid_output_samples": [
+          167,
+          331,
+          365,
+          272
+        ],
+        "gap_invalid_output_samples": 40,
+        "locally_valid_samples_per_channel": [
+          247,
+          123,
+          89,
+          142
+        ],
+        "longest_valid_samples_per_channel": [
+          99,
+          76,
+          59,
+          67
+        ],
+        "all_channel_valid_samples": 76,
+        "quality_scope": "conservative offline signal support; not an accepted production RF profile",
+        "derived_grid_is_acquisition_clock": false,
+        "windows": {
+          "required_samples": 2000,
+          "required_history_seconds": 40,
+          "candidate_windows": 0,
+          "locally_qualified_windows": 0,
+          "longest_all_channel_valid_samples": 46,
+          "rf_clock_certified": false,
+          "strict_cpp_input_emitted": false,
+          "reason": "insufficient_40s_history"
+        }
+      },
+      "phase_pairs": [
+        {
+          "rx_pair": [
+            0,
+            1
+          ],
+          "broadband_phase_fault_events": 9,
+          "adjacent_returning_fault_pairs": 0,
+          "typical_broadband_step_abs_rad": {
+            "count": 9,
+            "min": 0.24509172824773737,
+            "p50": 0.2752084971154045,
+            "p95": 0.6736980304770507,
+            "p99": 0.7920812058121488,
+            "max": 0.8216769996459233
+          }
+        },
+        {
+          "rx_pair": [
+            0,
+            2
+          ],
+          "broadband_phase_fault_events": 25,
+          "adjacent_returning_fault_pairs": 10,
+          "typical_broadband_step_abs_rad": {
+            "count": 25,
+            "min": 0.2287242748133404,
+            "p50": 1.7393995311401147,
+            "p95": 1.833759860778409,
+            "p99": 1.8415893048647167,
+            "max": 1.8437958872257247
+          }
+        },
+        {
+          "rx_pair": [
+            1,
+            2
+          ],
+          "broadband_phase_fault_events": 26,
+          "adjacent_returning_fault_pairs": 9,
+          "typical_broadband_step_abs_rad": {
+            "count": 26,
+            "min": 0.26515231450016336,
+            "p50": 1.7878740871107368,
+            "p95": 1.8992442166066612,
+            "p99": 1.9677805177501726,
+            "max": 1.9881368356498341
+          }
+        }
+      ],
+      "full_result": "D:\\FPGACompetitionProject\\.local\\vitals-alignment-20261022-r1\\earlier-ap\\alignment.json"
+    },
+    {
+      "name": "stable-round2",
+      "source": "D:\\FPGACompetitionProject\\tools\\nexmon\\evidence\\stability-20261021-r1\\round2\\capture.pcap",
+      "source_events": 2993,
+      "source_span_seconds": 9.99601,
+      "every_sixth": {
+        "samples": 499,
+        "interval_ms": {
+          "count": 498,
+          "min": 16.579,
+          "p50": 19.999,
+          "p95": 20.2474,
+          "p99": 21.021069999999987,
+          "max": 46.673
+        },
+        "interval_errors_over_2ms": 6,
+        "final_elapsed_error_ms": 22.683
+      },
+      "alignment": {
+        "target_rate_hz": 50,
+        "target_interval_ms": 20.0,
+        "target_samples": 460,
+        "work_rate_hz": 600,
+        "fir_taps": 481,
+        "fir_cutoff_hz": 15,
+        "measured_context_seconds_per_side": 0.4,
+        "filter": "linear-time interpolation then symmetric Kaiser beta=8.6 FIR then decimation",
+        "source_gap_limit_ms": 10.0,
+        "source_max_gap_ms": 31.735,
+        "source_gap_faults": 2,
+        "source_phase_step_limit_rad": 0.25,
+        "source_phase_jumps": [
+          144,
+          15,
+          156,
+          148
+        ],
+        "phase_invalid_output_samples": [
+          173,
+          219,
+          296,
+          319
+        ],
+        "gap_invalid_output_samples": 42,
+        "locally_valid_samples_per_channel": [
+          287,
+          204,
+          164,
+          141
+        ],
+        "longest_valid_samples_per_channel": [
+          236,
+          110,
+          103,
+          60
+        ],
+        "all_channel_valid_samples": 124,
+        "quality_scope": "conservative offline signal support; not an accepted production RF profile",
+        "derived_grid_is_acquisition_clock": false,
+        "windows": {
+          "required_samples": 2000,
+          "required_history_seconds": 40,
+          "candidate_windows": 0,
+          "locally_qualified_windows": 0,
+          "longest_all_channel_valid_samples": 53,
+          "rf_clock_certified": false,
+          "strict_cpp_input_emitted": false,
+          "reason": "insufficient_40s_history"
+        }
+      },
+      "phase_pairs": [
+        {
+          "rx_pair": [
+            0,
+            1
+          ],
+          "broadband_phase_fault_events": 142,
+          "adjacent_returning_fault_pairs": 62,
+          "typical_broadband_step_abs_rad": {
+            "count": 142,
+            "min": 1.5407741015390446,
+            "p50": 1.734526385958378,
+            "p95": 1.7949389773861057,
+            "p99": 1.819075361568382,
+            "max": 1.8329720365665458
+          }
+        },
+        {
+          "rx_pair": [
+            0,
+            2
+          ],
+          "broadband_phase_fault_events": 10,
+          "adjacent_returning_fault_pairs": 0,
+          "typical_broadband_step_abs_rad": {
+            "count": 10,
+            "min": 0.06008611076650519,
+            "p50": 0.22709408585295338,
+            "p95": 1.8219185414180523,
+            "p99": 1.8351077612290312,
+            "max": 1.838405066181776
+          }
+        },
+        {
+          "rx_pair": [
+            1,
+            2
+          ],
+          "broadband_phase_fault_events": 150,
+          "adjacent_returning_fault_pairs": 62,
+          "typical_broadband_step_abs_rad": {
+            "count": 150,
+            "min": 0.07660452532600498,
+            "p50": 1.7184920330094087,
+            "p95": 1.7628127729922782,
+            "p99": 1.7982716087109518,
+            "max": 1.8666748806131472
+          }
+        }
+      ],
+      "full_result": "D:\\FPGACompetitionProject\\.local\\vitals-alignment-20261022-r1\\stable-round2\\alignment.json"
+    }
+  ],
+  "real_heart_detection_or_accuracy_validated": false,
+  "full_real_40s_windows": 0,
+  "findings": [
+    "Naive every-sixth selection does not remove timing error from deduplicated, jittered or missing receptions. Measured endpoint displacement is not a clock-scale error estimate.",
+    "50Hz derived-grid alignment is numerically verified; uniform output labels do not prove uniform RF acquisition.",
+    "Broadband 1.7-1.8rad phase changes and returning events survive same-packet antenna differencing. They are not ordinary 2pi representation wraps. A changing radio/link state is an inference, not an established cause.",
+    "Phase masks isolate corruption rather than repair its physical source; filtering cannot be used to waive the original source phase gate.",
+    "Existing approximately10s continuous records cannot satisfy unchanged10s warmup plus30s estimator history. Downsampling cannot lengthen physical observation time."
+  ],
+  "next_steps": [
+    "In a separate bounded hardware session, fix a/g/n/ac mode, channel, actual bandwidth, spatial stream configuration and radio power/state; disable automatic scanning/rate/beamforming changes only where supported and verify actual readback.",
+    "Compare uninterrupted seated/empty >=60s recordings with fixed geometry and packet configuration, retaining same-event PHY/rate/NSS/beamforming and retry metadata only after its binding is validated.",
+    "Accept a phase correction only if the instrument state explains the offset and an independent known motion/physiology control shows real low-frequency signal is preserved. Do not subtract arbitrary per-packet common phase.",
+    "Obtain >=40s qualified history plus FIR context, then review a phase-input integration with the unchanged native estimator; the current adapter exports diagnostic phase arrays and is not a strict IQ-interface replacement."
+  ],
+  "references": {
+    "scipy_FIR_resampling": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.resample_poly.html",
+    "prior_real_audit": "software/vitals/validation-real-nexmon-20261022.json"
+  }
+}

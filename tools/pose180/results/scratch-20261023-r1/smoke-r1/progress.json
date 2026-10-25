@@ -1,0 +1,34 @@
+{
+  "stage": "completed",
+  "time": 1792766140.27678,
+  "epoch": 0,
+  "iter": 6,
+  "inner_iter": 2,
+  "max_epochs": null,
+  "pid": 325604,
+  "elapsed_seconds": 3.758068799972534,
+  "lr": [
+    2.0000000000000003e-06,
+    2e-05
+  ],
+  "metrics": {
+    "enc_loss_cls": 2.546914577484131,
+    "enc_loss_kpt": 397.687744140625,
+    "loss_cls": 2.284224033355713,
+    "loss_kpt": 396.913818359375,
+    "d0.loss_cls": 3.3066420555114746,
+    "d0.loss_kpt": 397.4271545410156,
+    "d1.loss_cls": 2.635530948638916,
+    "d1.loss_kpt": 397.1688537597656,
+    "d0.loss_kpt_refine": 396.6227111816406,
+    "d1.loss_kpt_refine": 396.338134765625,
+    "loss": 2392.931640625
+  },
+  "gradient_sample": {
+    "iter": 4,
+    "query_grad": 0.44494298100471497,
+    "joint_grad": 0.16227853298187256
+  },
+  "cuda_allocated": 498721280,
+  "cuda_peak": 1083871232
+}

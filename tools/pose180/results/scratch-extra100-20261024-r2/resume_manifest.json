@@ -1,0 +1,22 @@
+{
+  "source_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_20261023_r1/epoch_100.pth",
+  "source_epoch": 100,
+  "source_iter": 562200,
+  "source_checkpoint_sha256": "e08dd92f0ebfce4729ab3537b18cdd43041a47c0df1fe209fd3f38c2e7549db2",
+  "source_query_sha256": "13c895c686372dcf97f35e0375e1aa5531b780bc0355aa29b1e920300f05dc19",
+  "optimizer_entries": 218,
+  "optimizer_step_range": [
+    281100.0,
+    281100.0
+  ],
+  "learning_rates": [
+    2.0000000000000004e-07,
+    2.0000000000000003e-06
+  ],
+  "prior_best_epoch": 89,
+  "prior_best_mpjpe_mm": 146.64447059611845,
+  "retained_best_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_20261024_extra100_r2/best_mpjpe_epoch_89.pth",
+  "target_epoch": 200,
+  "additional_epochs": 100,
+  "configuration": "configs/wifi/petr_wifi_pose180_scratch_extra100_r2.py"
+}

@@ -1,0 +1,14 @@
+{
+  "status": "proposed_requires_user_confirmation",
+  "scope": "New epoch99 180-query FP16 generated graph; does not modify any prior model gate",
+  "reference": "Icraft 3.39 generated ZG instruction simulation, same JSON/RAW and candidate order",
+  "finite": "All 180 scores and all 180x14x3 positions must be finite",
+  "score_max_abs_delta": 0.001,
+  "score_selection": "All score>FP32(0.2) identities and highest-score candidate index must agree",
+  "position_threshold": "For reference score>FP32(0.2), maximum corresponding joint Euclidean delta <=3mm",
+  "background": "Preserve all actual outputs and report all errors; no hard position limit below confidence threshold",
+  "raw_preservation": "Save complete first actual outputs before comparison; no candidate rematching or late repair",
+  "FP32_quantization_accuracy": "Report separately; this instruction-consistency gate does not approve FP16-to-FP32 accuracy",
+  "next_if_confirmed": "Verify the remaining two distinct real inputs, preserving the first native failure, then one 1800-second unthrottled model-only stress session",
+  "automatic_retry": false
+}

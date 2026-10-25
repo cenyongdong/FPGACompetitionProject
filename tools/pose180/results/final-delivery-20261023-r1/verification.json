@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "frames": 7824,
+  "exact_filenames": true,
+  "exact_ground_truth": true,
+  "exact_ground_truth_counts": true,
+  "exact_csv_index_name_counts": true,
+  "control_inference_reused": true,
+  "new_inference_only_epoch": 99,
+  "inference_device": "cpu",
+  "inference_threads": 2,
+  "best_over_100_epoch": 99,
+  "evaluation_metric_differences": {
+    "legacy_mpjpe_mm": 1.6252687373707886e-05,
+    "confidence_matched_mpjpe_mm": 1.5202242821032996e-05,
+    "count_mae": 0.0,
+    "mean_selected": 0.0
+  },
+  "finite_progress_records": 11347,
+  "finite_gradient_records": 11345,
+  "native_training_exit": 0,
+  "final_checkpoint_epoch": 100,
+  "ddp_completion": {
+    "ranks": [
+      {
+        "rank": 0,
+        "optimizer_entries": 218,
+        "query_sha256": "66c04d9da6f766ead3b3e7ee5d5a4f086815be7f789b0a20717935170ecee555"
+      },
+      {
+        "rank": 1,
+        "optimizer_entries": 218,
+        "query_sha256": "66c04d9da6f766ead3b3e7ee5d5a4f086815be7f789b0a20717935170ecee555"
+      }
+    ],
+    "iter": 562200,
+    "epoch": 100,
+    "time": 1792764329.0690994
+  },
+  "controls": [
+    "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/analysis-original100-epoch442-r1",
+    "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_shared_20261022_r1/analysis-epoch59-counts-r1"
+  ],
+  "completed": 1792764956.9522274
+}

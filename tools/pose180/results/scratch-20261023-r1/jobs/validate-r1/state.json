@@ -1,0 +1,29 @@
+{
+  "name": "validate-r1",
+  "stage": "validate",
+  "status": "failed",
+  "started": 1792766008.1177535,
+  "supervisor": {
+    "pid": 325256,
+    "start_ticks": "201356118"
+  },
+  "command": [
+    "/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python",
+    "-B",
+    "tools/pose180/validate.py",
+    "--device",
+    "cpu",
+    "--config",
+    "configs/wifi/petr_wifi_pose180_scratch.py",
+    "--output",
+    "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_20261023_r1/gates"
+  ],
+  "child": {
+    "pid": 325257,
+    "start_ticks": "201356123"
+  },
+  "cuda_visible_devices": "",
+  "native_exit": 1,
+  "finished": 1792766013.6391113,
+  "elapsed_seconds": 5.521359443664551
+}

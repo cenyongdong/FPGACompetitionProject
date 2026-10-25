@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wi-Fi Pose · 实时推理</title><link rel="stylesheet" href="/style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three.module.js","three/addons/controls/OrbitControls.js":"/vendor/OrbitControls.js"}}</script></head>
+<body><header class="topbar"><span class="brand">WIFI / POSE LAB · DEMO V1</span><span id="connection" class="connection">等待板端</span></header>
+<main><aside class="sidebar"><div class="eyebrow">LIVE INFERENCE / 30 Hz</div><h1>实时三维<br><span>姿态观察台</span></h1><p class="intro">论文CSI窗口模拟采集<br>Lite PS＋NPU共享FP16推理</p>
+<div class="section-title">实际推理结果</div><div class="source-name" id="sample">等待输入</div>
+<dl class="metadata"><div><dt>帧号</dt><dd id="frame">—</dd></div><div><dt>推理调用</dt><dd id="invocation">—</dd></div><div><dt>候选／分数</dt><dd id="score">—</dd></div><div><dt>端到端延迟</dt><dd id="latency">—</dd></div><div><dt>板端处理</dt><dd id="process">—</dd></div></dl>
+<div class="source-card"><span class="source-dot"></span><div><strong>原始模型坐标 · 14关节</strong><p>最高分候选，无平滑／插帧<br>完整100候选另行归档</p></div></div>
+<div class="sidebar-note"><p>数据集循环会重新执行推理。<br>渲染刷新与新结果率分别计量。<br>HDMI未接入。</p></div><pre id="error" style="white-space:pre-wrap;color:#ffad92"></pre></aside>
+<section class="workspace"><div class="stage-header"><div><span class="eyebrow">LIVE MODEL OUTPUT</span><h2>板端实时姿态</h2></div><span id="state" class="stage-badge">准备中</span></div>
+<div class="view-tools"><button data-view="perspective" class="selected">透视</button><button data-view="front">正面</button><button data-view="side">侧面</button><button data-view="top">俯视</button><button id="labels">关节编号</button></div>
+<div id="viewport" role="img" aria-label="板端实际推理的14关节三维姿态"></div>
+<div class="viewport-caption">C0 / −C2 / −C1 · MODEL SPACE</div>
+<div class="stats-strip"><div><span class="stat-label">主机已发</span><strong id="sent">0</strong></div><div><span class="stat-label">新推理已收</span><strong id="received">0</strong></div><div><span class="stat-label">新结果</span><strong id="hz">—</strong><span class="stat-unit">Hz</span></div><div><span class="stat-label">渲染</span><strong id="fps">—</strong><span class="stat-unit">FPS</span></div></div>
+</section></main><footer><span>本地主机 → Lite → 本地3D</span><span id="footer">等待本轮真实结果</span></footer><script type="module" src="/app.js"></script></body></html>

@@ -1,0 +1,66 @@
+{
+<<<<<<< HEAD
+  "stage": "training",
+  "time": 1792766261.443025,
+  "epoch": 1,
+  "iter": 750,
+  "inner_iter": 750,
+  "max_epochs": 100,
+  "pid": 325973,
+  "elapsed_seconds": 97.11762833595276,
+  "lr": [
+    2.0000000000000003e-06,
+    2e-05
+  ],
+  "metrics": {
+    "enc_loss_cls": 1.4601671695709229,
+    "enc_loss_kpt": 6.231332302093506,
+    "loss_cls": 1.5499718189239502,
+    "loss_kpt": 4.353359699249268,
+    "d0.loss_cls": 1.5240628719329834,
+    "d0.loss_kpt": 4.906630516052246,
+    "d1.loss_cls": 1.560312032699585,
+    "d1.loss_kpt": 4.072436332702637,
+    "d0.loss_kpt_refine": 4.384981632232666,
+    "d1.loss_kpt_refine": 4.414693832397461,
+    "loss": 34.457950592041016
+  },
+  "gradient_sample": {
+    "iter": 750,
+    "query_grad": 0.32280370593070984,
+    "joint_grad": 0.0714196041226387
+=======
+  "stage": "completed",
+  "time": 1792853925.4880402,
+  "epoch": 100,
+  "iter": 562200,
+  "inner_iter": 5622,
+  "max_epochs": 100,
+  "pid": 325973,
+  "elapsed_seconds": 87761.16264629364,
+  "lr": [
+    2.0000000000000004e-07,
+    2.0000000000000003e-06
+  ],
+  "metrics": {
+    "enc_loss_cls": 0.6199807524681091,
+    "enc_loss_kpt": 0.5881757736206055,
+    "loss_cls": 0.1345807909965515,
+    "loss_kpt": 0.5742900371551514,
+    "d0.loss_cls": 0.35332903265953064,
+    "d0.loss_kpt": 0.6269445419311523,
+    "d1.loss_cls": 0.14405269920825958,
+    "d1.loss_kpt": 0.5662049055099487,
+    "d0.loss_kpt_refine": 0.5689619779586792,
+    "d1.loss_kpt_refine": 0.5749161243438721,
+    "loss": 4.751436233520508
+  },
+  "gradient_sample": {
+    "iter": 562200,
+    "query_grad": 0.18654394149780273,
+    "joint_grad": 0.16734172403812408
+>>>>>>> feat/model-refactor
+  },
+  "cuda_allocated": 498721280,
+  "cuda_peak": 1083871232
+}
