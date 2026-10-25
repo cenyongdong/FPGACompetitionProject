@@ -18,7 +18,9 @@ node software/pose180_pipeline/host/test/sustained_loopback.mjs --output .local/
 
 完整结果为 `PIWFUL3/3`，固定 74544 字节：128 字节头、256 字节选中姿态、43200 字节预处理输入、720 字节分数、30240 字节全部姿态。头 offset116 为 candidate_count=180，offset120 为 best_index，offset124 为 0。选中姿态仍为 `PIWPOSE1/1`，候选索引允许 0～179。
 
-`actual.full` 在计时前按目标帧数预分配；每条完整原值先等文件写入回调与必要 drain，再解码和 ACK。该确认表示操作系统文件写入完成，不表示逐帧 fsync。非法／非有限原值保留，不能用晚值替换。收到板端最终确认后，写 `received.jsonl` 并归还信用；`sent.jsonl` 同样逐条等待有界写入。三个写入通道各自最多一个应用层在途写，不向 Node stream 连续堆积。
+`actual.full` 在`HOST_READY`及输入准入前按目标帧数完整预写并`fsync`，使用一个至多1MiB暂存块；不只扩展逻辑EOF。本机D盘是机械盘，后续运行用`--output`指定C盘NVMe上的新目录，例如`C:/Users/cenyongdong/FPGACompetitionRuns/pose180-pipeline-20261025-r2/host-hdmi`，父目录须已存在。这样将文件分配移出逐帧路径，并分开来源读取与归档写入；不保证存储永远没有长尾。[本轮实测与存储修正](../RESULTS.md)
+
+每条完整原值先等文件写入回调与必要 drain，再解码和 ACK。该确认表示操作系统文件写入完成，不表示逐帧 fsync。非法／非有限原值保留，不能用晚值替换。收到板端最终确认后，写 `received.jsonl` 并归还信用；`sent.jsonl` 同样逐条等待有界写入。三个写入通道各自最多一个应用层在途写，不向 Node stream 连续堆积。`--hdmi 0|1`明确本次实际模式，默认1；初始化连接等待60秒，发包后的1秒帧龄门保持。
 
 固定内存包括 128 窗预读环（短批次相应缩小）、2 个输入封包槽、1 个完整结果槽、1 个 ACK 与 1 个最终确认槽。封包槽必须等 socket 写入回调及必要 drain 后才能复用；结果槽必须等完整归档／ACK处理结束后才能进入下条记录。网页只保留最新姿态，慢 WebSocket 的发送缓存超过 64KiB 时断开。
 

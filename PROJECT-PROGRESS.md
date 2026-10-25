@@ -1,8 +1,8 @@
 # 项目进度总览
 
-更新：2026-10-25。**用户已批准将180-query迁移最佳epoch99作为主推理图，落实入口在途控制、固定缓冲复用、归档背压与完整回传；随后明确板卡暂不可用，先完成软件。** 新[主推理入口](software/pose180_pipeline/README.md)已完成软件验证和ARM64编译，未部署或启动SDK；继续使用主机模拟输入，暂不接CSI实采。原100-query基线及r53历史证据保留。
+更新：2026-10-25。**180-query主图及有界完整回传已部署实测，稳定性尚未通过。** 原BOOT测试取得完整有效输出后触发Host归档1秒保护，NVMe及预写修正已完成软件验证；获准的新HDMI包在SDK前因启动准入失败停止，已回原BOOT并关闭。继续主机模拟输入，暂不接CSI实采；[本轮结果与恢复](software/pose180_pipeline/RESULTS.md)为唯一详细入口。
 
-180-query迁移最佳模型已完成训练、转换及独立部署；30分钟124,518次新推理在获准忽略误差的范围内正常结束，数值精度及耗时长尾仍未验收。真实CSI已完成1发3收共同事件采集和软件对齐；无PC板端候选仅完成软件验证及ARM64编译，尚未实板。HDMI r53因首次索引读取内容混合停止，已回原BOOT、包关闭且余额0；持续实屏和联合长期未通过。各分支证据及恢复入口见下表，不将历史独立验证合并为整机验收。
+180-query迁移最佳模型已完成训练、转换及独立部署；30分钟124,518次新推理在获准忽略误差的范围内正常结束，数值精度及耗时长尾仍未验收。真实CSI已完成1发3收共同事件采集和软件对齐；无PC板端候选仅完成软件验证及ARM64编译，尚未实板。HDMI历史r53及本次180-query新包均已关闭，当前原BOOT运行；持续实屏和联合长期未通过。各分支证据及恢复入口见下表，不将历史独立验证合并为整机验收。
 
 架构按[ADR_49](ADR/ADR_49.md)：PS＋NPU感知，PS绘制本地骨架帧，PL读帧并输出HDMI，PC独立3D展示；未来正式主链停用VPU／RTSP，旧演示保留。10月25日用户进一步明确采集／推理正式链不经过PC，路由器直接进入开发板；PC展示与开发诊断的角色分别保留，实施边界见[板端候选](tools/nexmon/board/README.md)。
 
@@ -11,7 +11,7 @@
 | 模块 | 已完成 | 当前边界与资料 |
 |---|---|---|
 | 预处理与混合推理核心 | 固定输入预处理、CPU算子注册和NPU执行链已验证；共享FP16候选按现行数值门禁获阶段认可 | 模型／RAW、数学、SDK及NPU分配保持；范围见[ADR_48](ADR/ADR_48.md)、[核心说明](software/core/README.md) |
-| 180-query主推理图 | 迁移最佳epoch99转换及历史独立压测完成；新主链已接入该图、固定池、入口信用和PIWFUL3完整回传，软件验证及ARM64编译完成 | 新主链未部署或实板验证；旧独立压测按原授权范围认定，D48数值与长尾未验收。[主入口](software/pose180_pipeline/README.md)、[原独立部署](tools/pose180/deploy/RESULTS.md)、[训练快照](tools/pose180/STATUS.md) |
+| 180-query主推理图 | 迁移最佳epoch99转换及历史独立压测完成；新主链已接入该图、固定池、入口信用和PIWFUL3完整回传，软件验证及ARM64编译完成 | 新主链已有部分实板完整输出，Host归档修正未重新实板验证；HDMI启动准入未过，D48数值与长尾未验收。[本轮实测](software/pose180_pipeline/RESULTS.md)。[主入口](software/pose180_pipeline/README.md)、[原独立部署](tools/pose180/deploy/RESULTS.md)、[训练快照](tools/pose180/STATUS.md) |
 | 独立共享模型稳定性 | 10月15日完成30分钟、62,945次串行推理，数值与内存／句柄观察通过 | 有D41时延长尾；该历史配置没有叠加HDMI，不能替代当前联合长期验收。[阶段记录](ADR/ADR_48.md#2026-10-15后续独立实板与30分钟验证) |
 | HDMI构建与显示 | 原厂适配工具路线、真实波形与完整160位协议检查已接入；r45完成合格bit/BOOT，r46～r53复用 | 原AI两项Min Period例外保留，无新增例外；D44/D45未关闭。[物理结果](tools/pose-v1/evidence/hp2-deferred-consume-20261024-r45/RESULTS.md)、[当前结构](FPGA/hdmi_candidate/INTEGRATION.md) |
 | 新推理到HDMI | r40健康启动90帧有界联动和现场更新通过；r52真实异常消费16拍后同启动完成90次采纳及数值门检 | r52吞吐积压；r53数值错误停止，用户仍只见瞬间骨架，联合长期未通过。[r52](tools/pose-v1/evidence/hdmi-long-git-20261024-r52/RESULTS.md)、[r53](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md) |
@@ -34,11 +34,11 @@
 - **D48新模型数值误差独立保留。** 180-query的无TopK独立压测不关闭D47，也不替代数值精度及严格实时验收。[部署实测](tools/pose180/deploy/RESULTS.md)。
 - **D44、D29／D41及联合长期仍保留。** 首次reader失败根因、严格实时和长尾需分别验证；健康启动后的短时显示不等于长期稳定。
 
-详细事实集中在[DIFFICULTIES.md](DIFFICULTIES.md)，后续验证顺序见[ToDoLists.md](ToDoLists.md)。本轮按新授权完成软件，板卡不可用期间不执行设备负载，不恢复旧DATA调查。
+详细事实集中在[DIFFICULTIES.md](DIFFICULTIES.md)，后续验证顺序见[ToDoLists.md](ToDoLists.md)。本轮实测结果见[新主链实测](software/pose180_pipeline/RESULTS.md)；当前无后台负载，不恢复旧DATA及已中止的D45根因调查。
 
 ## 当前状态与执行边界
 
-r53已用完1次候选启动、1次SDK和1次原BOOT回退并关闭；此前关闭包不复活。HDMI批次结束时的原BOOT运行、9份启动文件、6份SDK库及无占用核验见[r53实测、原值及恢复](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)及[状态](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/state.json)。后续独立180-query批次的恢复记录见其[部署实测](tools/pose180/deploy/RESULTS.md)；这些是各批次历史核验，不能作为未来会话实时身份。本次文档整理没有重新连接板卡或执行负载。
+最新HDMI包`pose180-hdmi-20261025-r2`实际1候选/0 SDK/1原BOOT回退，已关闭、余额0；当前原BOOT、SDK及无占用核验见[本轮实测](software/pose180_pipeline/RESULTS.md)。r53等旧包继续关闭，不复活次数；未来板测重新核验实时身份并按具体新范围执行。
 
 服务器上的180-query训练属独立模型分支；迁移已结束，从零训练与条件续训以[唯一恢复入口](tools/pose180/STATUS.md)中明确日期的快照为准，本轮未查询或操作训练进程。180-query候选未替换原100-query演示基线；demo_v1取证值属于此前有界验证。
 
