@@ -2,6 +2,14 @@
 
 本页按成果发生时配置保留历史结果；文中的旧“当前／下一步／暂停”只属于当时阶段。当前已完成范围见[项目总览](PROJECT-PROGRESS.md)，后续顺序统一见[ToDoLists.md](ToDoLists.md)，不从旧记录恢复负载或授权。
 
+## 2026-10-25：常驻容错架构与真实CSI→推理→HDMI有界闭环
+
+工程内容总结：用户批准[ADR_50](ADR/ADR_50.md)，将完整端到端演示设为最高优先级，明确无需严格30Hz；记录最新窗口、有界资源、PC／归档解耦、分级恢复和演示／验证模式边界，同步执行规范及待办。随后完成常驻核心、有界滚动整理、PC与归档解耦和分级恢复；故障注入、ARM编译、606次回放新推理及214次真实CSI新推理通过。获批新HDMI包后完成真实CSI→新推理→实际采纳，用户现场确认多轮骨架更新。精确结果与恢复统一见[实施记录](software/pose180_pipeline/resident/README.md)，长时及精度未验收。
+
+随后补齐持续源端守护、板端独立监督／启停及SDK日志上限，完成软件故障注入和[r4长时实测](software/pose180_pipeline/resident/LONG-VALIDATION.md)。30分钟运行期、RX物理断线恢复、PC物理离线期间HDMI继续更新和实际STOP／回退已完成；期间修正TX续发配置生命周期错误，同一SDK继续，早期停顿保留。当前原BOOT运行、包关闭，人体精度及秒级卡顿仍待改进。
+
+对后续开发的参考：普通缺帧、有限误差与记录停顿不再阻断主链，按影响丢弃／降级／恢复；硬件安全、在途资源与真实结果边界保持。下一步减少重同步停顿、增加等待提示并用固定摆位动作对照分析姿态偏置；历史失败不回写通过，旧包与独立暂停不复活。
+
 ## 2026-10-22～24：HDMI隔离、波形、协议检查与同启动有限消费
 
 工程内容总结：提交隔离前回退点及官方答疑说明；保持AI四路，隔离HDMI/旧视频源端，r29同镜像仍故障，未删除模块。r30取得两窗各128点实测波形，r31～r37接入原生160位协议检查并捕获无AR早期返回。r45完成同启动单次有限消费控制及完整物理门检：setup +0.030ns、hold +0.012ns、TNS/THS=0，原AI两项Min Period例外保留。r46修正MMIO写入方式，r46/r52同启动消费16拍；r52随后90份完整原值和90次HDMI采纳，吞吐积压后回原BOOT。阶段原值分别见[隔离](FPGA/hdmi_candidate/diagnostics/S01-ISOLATION.md)、[波形](FPGA/hdmi_candidate/diagnostics/waveforms-r30-20261022/README.md)、[协议](tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md)、[物理基线](tools/pose-v1/evidence/hp2-deferred-consume-20261024-r45/RESULTS.md)、[同启动业务](tools/pose-v1/evidence/hdmi-long-git-20261024-r52/RESULTS.md)。

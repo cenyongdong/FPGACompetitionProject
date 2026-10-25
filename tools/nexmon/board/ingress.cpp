@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstring>
+#include <deque>
 #include <limits>
 #include <map>
 #include <set>
@@ -41,6 +42,13 @@ struct Cell { std::int64_t target=0; std::int64_t index=-1; };
 using Key=std::pair<std::uint16_t,std::uint16_t>; // full Sequence Control + FC sans retry
 Key identity(const Event&e) { return {e.meta.seq,std::uint16_t(e.meta.fc&~0x800)}; }
 
+struct History : std::deque<Event> {
+    std::size_t base=0;
+    Event& operator[](std::size_t i){return at(i-base);}
+    const Event& operator[](std::size_t i)const{return at(i-base);}
+    std::size_t next()const{return base+size();}
+};
+
 struct Node {
     const Config* config=nullptr;
     NodeSummary summary;
@@ -50,13 +58,28 @@ struct Node {
     Meta previous_meta;
     std::int64_t last_arrival=0,first_arrival=0,local_us=0;
     std::size_t sequence_span=0;
-    std::vector<Event> events;
+    History events;
     std::map<Key,std::size_t> kept;
     std::map<std::uint16_t,std::pair<std::int64_t,std::size_t>> recent;
     std::vector<std::int64_t> prefix;
     std::int64_t grid_previous=-1,slot=0,first_slot=0,best=-1;
     std::vector<Cell> block;
     std::map<std::int64_t,Cell> cells;
+
+    void prune() {
+        if(!config->streaming)return;
+        const auto cutoff=local_us-4000000;
+        while(events.size()>1 && events.front().time<cutoff) {
+            auto it=kept.find(identity(events.front()));
+            if(it!=kept.end()&&it->second==events.base)kept.erase(it);
+            events.pop_front();++events.base;
+        }
+        for(auto it=cells.begin();it!=cells.end();) {
+            if(it->second.target<cutoff*hz || (it->second.index>=0&&std::size_t(it->second.index)<events.base))it=cells.erase(it);
+            else ++it;
+        }
+        require(events.size()<=2048&&cells.size()<=1600,"Rolling CSI history budget exceeded; resync required");
+    }
 
     void reset_clock() {
         ++summary.clock_resets; failed=true;
@@ -114,7 +137,7 @@ struct Node {
             std::make_tuple(std::abs(events[std::size_t(best)].time*hz-centre),events[std::size_t(best)].time,std::size_t(best))))best=std::int64_t(index);
     }
     void complete() {
-        require(events.size()<config->expected_events*2,"Complete-event budget exceeded");
+        require(events.size()<(config->streaming?2048:config->expected_events*2),"Complete-event budget exceeded");
         Event event;event.meta=group.front().meta;bool valid=true;
         for(const auto& p:group) {
             auto core=p.meta.config>>8;event.words[core]=p.words;event.original[core]=p.meta.original;
@@ -138,7 +161,7 @@ struct Node {
         for(auto it=recent.begin();it!=recent.end();) {
             if(event.meta.arrival-it->second.first>20000)it=recent.erase(it);else ++it;
         }
-        const auto index=events.size();
+        const auto index=events.next();
         if(!valid)++summary.invalid_events;
         else {
             auto old=recent.find(event.meta.seq);
@@ -151,7 +174,7 @@ struct Node {
         }
         if(event.keep) {
             require((event.meta.fc&~0x800)==0x8 && !(event.meta.seq&15),"Unexpected bounded broadcast sequence profile");
-            require(kept.size()<config->expected_events,"Retained event budget exceeded");
+            require(kept.size()<(config->streaming?2048:config->expected_events),"Retained event budget exceeded");
             require(!kept.count(identity(event)),"Sequence identity reused across bounded job");
             if(!kept.empty()) {
                 // Last retained event by arrival, not numeric map order (wrap).
@@ -160,7 +183,7 @@ struct Node {
                 auto a=prev->meta.seq>>4,b=event.meta.seq>>4,d=(b-a)&4095;
                 require(d>0&&d<2048,"Ambiguous sequence step or mixed job");
                 sequence_span+=std::size_t(d);
-                require(sequence_span<config->expected_events,"Sequence span exceeds declared bounded TX job");
+                require(config->streaming||sequence_span<config->expected_events,"Sequence span exceeds declared bounded TX job");
                 if(b<a)++summary.wraps;
                 require(prev->meta.frame_size==event.meta.frame_size,"Fixed TX profile changed frame length");
             }
@@ -168,14 +191,15 @@ struct Node {
         }
         events.push_back(std::move(event));
         if(events.back().keep)feed_grid(index);
+        prune();
     }
     void feed(std::int64_t arrival,std::uint16_t port,const std::uint8_t*p,std::size_t n) {
         if(port!=5500&&port!=5501)return;
         require(!have_arrival||arrival>=last_arrival,"Arrival clock moved backwards");
         expire(arrival);if(!have_arrival)first_arrival=arrival;
-        require(arrival-first_arrival<=12000000,"Bounded acquisition exceeded twelve seconds");
+        require(config->streaming||arrival-first_arrival<=12000000,"Bounded acquisition exceeded twelve seconds");
         last_arrival=arrival;have_arrival=true;
-        require(++summary.packets<=config->expected_events*12,"Packet budget exceeded");
+        ++summary.packets;require(config->streaming||summary.packets<=config->expected_events*12,"Packet budget exceeded");
         require(p!=nullptr,"Null datagram");
         if(port==5500) {
             require(n==274&&u16(p)==0x1111&&u16(p+16)==106,"CSI format/bandwidth/chip mismatch");
@@ -278,11 +302,12 @@ struct Ingress::Impl {
                 if(present)require(selected[0][t]->meta.frame_size==selected[1][t]->meta.frame_size&&selected[1][t]->meta.frame_size==selected[2][t]->meta.frame_size,"Common identity has conflicting raw frame length");
             }
             d.valid=!(d.missing_cell||d.point_error||d.different_event);
-            result.decisions.push_back(d);
+            if(!config.streaming)result.decisions.push_back(d);
             if(d.valid) {
                 JointWindow w;w.start_reference_slot=next_slot;
+                w.source_time_ns=std::uint64_t(selected[0][19]->meta.arrival)*1000;
                 for(std::size_t r=0;r<3;++r)for(std::size_t t=0;t<20;++t) {
-                    const auto&e=*selected[r][t];w.event_indices[r][t]=std::uint32_t(&e-nodes[r].events.data());
+                    const auto&e=*selected[r][t];w.event_indices[r][t]=std::uint32_t(nodes[r].cells.at(next_slot+std::int64_t(t)-result.slot_shifts[r]).index);
                     for(std::size_t a=0;a<3;++a)for(std::size_t n=0;n<30;++n) {
                         auto bin=std::size_t((ht20_ng2[n]+64)%64);
                         auto word=(bin>=28&&bin<=30)?e.original[a][bin-28]:e.words[a][bin];
@@ -291,9 +316,14 @@ struct Ingress::Impl {
                         w.csi[((r*3+a)*20+t)*30+n]=value;
                     }
                 }
+                require(!config.streaming||result.windows.size()<32,"Ready window budget exceeded; consume or resync");
                 result.windows.push_back(std::move(w));
             }
             next_slot+=20;
+            if(config.streaming)for(std::size_t r=0;r<3;++r) {
+                auto& cells=nodes[r].cells;
+                cells.erase(cells.begin(),cells.lower_bound(next_slot-result.slot_shifts[r]));
+            }
         }
     }
 };
@@ -319,6 +349,7 @@ void Ingress::expire(std::size_t receiver,std::int64_t arrival) {
 std::vector<JointWindow> Ingress::take_ready() {
     require(bool(impl_)&&!impl_->finished&&!impl_->poisoned,"Ingress session already finalized or rejected");
     std::vector<JointWindow> out;
+    if(impl_->config.streaming){out.swap(impl_->result.windows);return out;}
     const auto&all=impl_->result.windows;
     for(;impl_->ready_index<all.size();++impl_->ready_index)out.push_back(all[impl_->ready_index]);
     return out;
@@ -331,6 +362,12 @@ BatchResult Ingress::finish() {
     }
     for(const auto&kv:impl_->nodes[0].kept)if(impl_->nodes[1].kept.count(kv.first)&&impl_->nodes[2].kept.count(kv.first))++impl_->result.common_events;
     impl_->finished=true;return std::move(impl_->result);
+}
+std::array<std::size_t,3> Ingress::retained_events()const {
+    return {impl_->nodes[0].events.size(),impl_->nodes[1].events.size(),impl_->nodes[2].events.size()};
+}
+std::array<std::size_t,3> Ingress::retained_cells()const {
+    return {impl_->nodes[0].cells.size(),impl_->nodes[1].cells.size(),impl_->nodes[2].cells.size()};
 }
 std::vector<std::uint8_t> encode_piwcsi2(const JointWindow&w,std::uint64_t frame,std::uint64_t source) {
     static_assert(sizeof(double)==8&&std::numeric_limits<double>::is_iec559,"IEEE754 float64 required");

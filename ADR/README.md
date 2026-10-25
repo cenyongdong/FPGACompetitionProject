@@ -1,6 +1,6 @@
 # 架构决策与难点归档
 
-入口整理：2026-10-25。[ADR_49](ADR_49.md)保留已批准的PS／NPU感知、PL HDMI及PC独立3D架构；10月25日采集／推理主链进一步明确为路由器直连开发板，无PC候选尚未实板，见[软件候选](../tools/nexmon/board/README.md)。各ADR的阶段状态与授权按原日期理解；最新事实及本轮仅修正文档的执行边界统一见[PROJECT-PROGRESS](../PROJECT-PROGRESS.md)与[ToDoLists](../ToDoLists.md)。[ADR_48](ADR_48.md)现行v2仅适用于既定共享FP16范围，新180-query数值边界见[部署实测](../tools/pose180/deploy/RESULTS.md)；旧DATA仍独立暂停。
+入口整理：2026-10-25。最新批准[ADR_50](ADR_50.md)：完整端到端演示最高优先级，无需严格30Hz，采用有界缓存、PC／归档解耦及分级恢复；常驻核心与真实CSI→推理→HDMI有界验证已实施，长期仍未验收。[ADR_49](ADR_49.md)的PS／NPU、PL HDMI与PC独立3D分工保留。历史ADR按各自范围理解，原数值／性能失败不因演示放行回写通过；实际状态与下一步见[PROJECT-PROGRESS](../PROJECT-PROGRESS.md)和[ToDoLists](../ToDoLists.md)，旧DATA仍独立暂停。
 
 编号表示决策建立顺序，不代表每项已通过。以对应ADR的证据、状态及限制判断结论；历史方案或阶段许可不构成现行执行授权。无关新决策使用下一个未使用编号，同一决策后续验证更新对应文件。
 
@@ -58,6 +58,7 @@
 | [ADR_47](ADR_47.md) | 正式核心目录、可读性重构与CPU107/三窗口回归 | 源码迁移与等价性 |
 | [ADR_48](ADR_48.md) | 共享细化FP16候选的score>0.2／3mm门检与阶段认可 | 数值验收与适用范围 |
 | [ADR_49](ADR_49.md) | PS／NPU感知、PL HDMI与PC独立3D展示，主链停用VPU／RTSP | 已批准；HDMI三窗通过，启动稳定性排查暂停 |
+| [ADR_50](ADR_50.md) | 端到端演示优先、有界缓存与分级自动恢复 | 已批准；无需严格30Hz，运行改造尚未实现 |
 
 ## 技术、待议与历史
 

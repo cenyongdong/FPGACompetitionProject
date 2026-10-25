@@ -16,7 +16,7 @@ struct Datagram {
 // The caller preserves raw input before append; this parser does no file I/O.
 class PcapStream {
 public:
-    PcapStream();
+    explicit PcapStream(bool streaming=false);
     std::vector<Datagram> append(const std::uint8_t* bytes,std::size_t size);
     // True only after a valid global header and at a whole-record boundary.
     bool complete() const noexcept;
@@ -36,6 +36,7 @@ private:
     std::uint32_t snaplen_ = 0;
     std::int64_t record_time_us_ = 0,last_time_us_ = -1;
     bool header_read_ = false,finished_ = false,failed_ = false;
+    bool streaming_ = false;
     void parse_global_header();
     void parse_record_header();
     void parse_frame(std::vector<Datagram>& output);

@@ -25,10 +25,12 @@ struct Config {
     std::uint16_t chanspec = 0;
     std::size_t expected_events = 3000; // one <=10 s, 300 Hz job; no sequence reuse
     std::array<double,3> gains{}; // mandatory finite positive candidate scales
+    bool streaming = false; // rolling four-second history; original finite mode unchanged
 };
 
 struct JointWindow {
     std::int64_t start_reference_slot = 0;
+    std::uint64_t source_time_ns = 0; // RX1 capture clock of the final selected event
     // External R/A/T/N = [3,3,20,30]. No interpolation or node duplication.
     std::array<std::complex<double>,csi_values> csi{};
     std::array<std::array<std::uint32_t,20>,3> event_indices{};
@@ -81,6 +83,9 @@ public:
     // Result includes ALL accepted windows for deterministic replay auditing;
     // do not send them again if already consumed through take_ready().
     BatchResult finish();
+    // Current retained objects, not cumulative traffic counts.
+    std::array<std::size_t,3> retained_events() const;
+    std::array<std::size_t,3> retained_cells() const;
 private:
     struct Impl;
     std::unique_ptr<Impl> impl_;

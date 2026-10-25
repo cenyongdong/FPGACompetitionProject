@@ -1,6 +1,8 @@
 # ADR_49：PS／NPU感知、PL HDMI与PC独立3D展示
 
-决定日期：2026-10-17；以下实施快照截至2026-10-18。入口说明更新：2026-10-25。**架构已批准；下文三窗闭环、PC历史回放及r20暂停均为当时状态，最新结果与本轮仅修正文档的边界见[项目总览](../PROJECT-PROGRESS.md)和[HDMI恢复入口](../FPGA/hdmi_candidate/RESUME.md)。**
+2026-10-25后续决策：[ADR_50](ADR_50.md)保留本页硬件分工，更新为端到端演示最高优先级、无需严格30Hz、PC／归档解耦及分级恢复。本页历史快照与数值验收范围保留，新实现与真实闭环结果见[实施记录](../software/pose180_pipeline/resident/README.md)，联合长期仍未验收。
+
+决定日期：2026-10-17；以下实施快照截至2026-10-18。入口说明更新：2026-10-25。**架构已批准；下文三窗闭环、PC历史回放及r20暂停均为当时状态，最新结果与现行执行边界见[项目总览](../PROJECT-PROGRESS.md)和[HDMI恢复入口](../FPGA/hdmi_candidate/RESUME.md)。**
 
 截至10月18日已完成PS原骨架绘图→RGB565→PL读帧／扫描、动态图案、历史骨架回放和r13三窗新推理，用户确认切换正常。新HDMI应用未启动VPU／RTSP，旧演示保留。当时PC独立分支已完成历史真实结果的本机TCP／3D回放；后续无HDMI实时链结果见[demo_v1实测](../demo_v1/RESULTS.md)，HDMI双路联合长期仍未验收。[HDMI实现](../FPGA/hdmi_candidate/INTEGRATION.md)、[PC实现](../software/pc_viewer/README.md)、[10月18日历史暂停汇报](../FPGA/hdmi_candidate/STARTUP-PAUSE-REPORT-20261018.md)。
 

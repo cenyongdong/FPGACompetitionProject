@@ -26,8 +26,9 @@ public:
     Runtime& operator=(Runtime&&) = delete;
 
     // Writes into an already acquired output pool slot. Normal frames do not
-    // create per-frame files. The caller must archive full input/scores/poses
-    // before numerical validation, display or recycling this slot.
+    // create per-frame files. The caller must retain full input/scores/poses
+    // before validation/display: strict validation archives them; the resident
+    // demo retains owned values in its bounded diagnostic ring and recorder.
     // Nonfinite first outputs are preserved and returned with finite_outputs
     // false, while permanently stopping this Runtime, so the archive can finish.
     void infer(const Window&, Result&);

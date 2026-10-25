@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <filesystem>
 #include <memory>
+#include <streambuf>
 #include <vector>
 
 namespace pose::hdmi {
@@ -15,7 +16,8 @@ namespace pose::hdmi {
 
     class Output {
     public:
-        Output(const icraft::xrt::Device& device, const std::filesystem::path& evidence);
+        Output(const icraft::xrt::Device& device, const std::filesystem::path& evidence,
+               std::streambuf* asynchronous_log = nullptr);
         ~Output();
         Output(const Output&) = delete;
         Output& operator=(const Output&) = delete;

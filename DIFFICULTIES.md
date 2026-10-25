@@ -1,28 +1,27 @@
 # 项目难点索引
 
-更新：2026-10-25。按已有证据同步：D46已推进到四机共同事件对齐及无PC软件候选，尚未实板；D48新模型数值误差与长尾仍保留。HDMI D45/D47、严格实时及连续实屏均未关闭；本次180-query实测又遇Host归档1秒保护及HDMI启动RCAM_UNDERFLOW准入失败，已回原BOOT关闭。[新主链实测](software/pose180_pipeline/RESULTS.md)。事实与执行边界见[项目总览](PROJECT-PROGRESS.md)，待恢复计划见[下一步](ToDoLists.md)。
+更新：2026-10-25。D46已完成[r4真实CSI→推理→HDMI联合实测](software/pose180_pipeline/resident/LONG-VALIDATION.md)，RX物理断线恢复及PC物理离线期间新画面更新已确认；秒级重同步停顿、姿态偏置和人体精度仍待处理。D45/D47根因、D48数值误差与长尾保留。早期Host归档保护及HDMI准入失败原值保留于[严格主链实测](software/pose180_pipeline/RESULTS.md)，不由本轮结果回写。事实与执行边界见[项目总览](PROJECT-PROGRESS.md)，后续见[下一步](ToDoLists.md)。
 
 | 编号 | 现象与影响 | 已采取处理及效果 | 尚未解决／证据边界 |
 |---|---|---|---|
 | D48 | 新180-query FP16实板与自身生成指令仿真存在数值差异 | Icraft转换、TopK／Host计算及旧内部桥消除完成；首次原值保全并独立比较，高分位置仍超新批准门 | 数值／量化精度未验收；用户随后允许忽略误差直接测稳定性，不能据此回写数值通过。[原值、现行授权与结果](tools/pose180/deploy/RESULTS.md) |
 | D47 | 共享FP16首次Host索引内容错误，后两轮SDK源读取合法 | 早期原值匹配前一输入；静态源与真实图独立对照未复现，后续r53再次捕获1568字混入同帧姿态内容 | DMA完成、缓存同步效果与NPU源可见性仍不能严格三分；晚读不修补首次值，旧DATA仍暂停。[隔离结果](demo_v1/RESULTS.md)、[r53原值](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md) |
 | D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
-| D45 | 跨启动偶发HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离后仍复现；r37见无AR早期返回，r46/r52同启动有限消费16拍，r52随后90次合法采纳 | 有限消费是缓解；本轮180-query新包在消费前已出现bit79 RCAM_UNDERFLOW而未过准入，根因仍未知，已中止的根因板测不恢复。[新原值](software/pose180_pipeline/RESULTS.md)。[协议原值](tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md)、[有限业务](tools/pose-v1/evidence/hdmi-long-git-20261024-r52/RESULTS.md) |
-| D46 | 真实Nexmon CSI尚不能直接形成现有模型输入 | 1发3收共同事件采集与固定网格软件对齐已实测；相位原因已有离线分析 | 稳定300Hz与相位仍未通过；同帧分链增益／射频状态缺见证，完整模型适配和人体效果未验证。[数据、限制与恢复状态](tools/nexmon/README.md) |
+| D45 | 跨启动偶发HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离后仍复现；同启动有限消费可缓解，后续r3取得真实CSI／HDMI有界闭环 | 较早180-query包r2在消费前出现bit79 RCAM_UNDERFLOW而未过准入；r3通过不关闭根因，已中止的根因板测不恢复。[r2原值](software/pose180_pipeline/RESULTS.md)、[r3实际范围](software/pose180_pipeline/resident/README.md)、[协议原值](tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md) |
+| D46 | 真实CSI接入后的停顿、射频适配与人体效果 | 持续源端守护和30分钟运行期已实测；RX物理断线恢复、PC物理离线期间HDMI更新有设备与现场证据 | 早期TX续发错误已修正；仍有秒级重同步、抬手姿态偏好，相位／人体精度未验收；严格300Hz不作演示门。[实际范围与原值](software/pose180_pipeline/resident/LONG-VALIDATION.md) |
 
-## 当前优先问题
+## 现存问题与处理优先级
+
+2026-10-25优先级调整：用户已批准[ADR_50](ADR/ADR_50.md)，先完成端到端演示及其必需的常驻／恢复能力；无需严格30Hz。下列问题继续保留原值与未验收状态，但有限数值偏差、严格实时、零缺窗和完整根因研究不再单独阻断开发。仅按对真实闭环、硬件安全和资源可恢复性的实际影响排序，后续常驻核心与实际有界闭环结果见[实施记录](software/pose180_pipeline/resident/README.md)，不据此关闭旧根因或精度问题。
 
 - **D48新模型数值误差独立保留。** 本轮180-query无TopK候选已部署，按用户授权忽略误差的30分钟124,518次饱和测试正常结束；数值／量化精度及耗时长尾仍单独保留，不复活旧测试额度或旧DATA调查。[部署实测](tools/pose180/deploy/RESULTS.md)。
 
 完整排查交接见[HDMI启动故障工程交接](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md)，含已确认事实、原始证据和待验证假设；不构成恢复实施许可。
 
-- **D47未关闭。** r53的1568错字全部匹配同帧input0同偏移，首次owned Host与即时副本一致，晚读正确。协议clean与SDK ready不证明首次数据正确；先核实完成/可见性契约，再设计最小对照。[r53原值与归因边界](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
+- **D47未关闭。** r53的1568错字全部匹配同帧input0同偏移，首次owned Host与即时副本一致，晚读正确。协议clean与SDK ready不证明首次数据正确；完成／可见性契约仍待核实，但旧图全面调查不作为新180-query演示前置。[r53原值与归因边界](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
 
 - **D45启动稳定性：未解决。** PL就绪门、等待已高的PS输出及视频源端隔离均不足以消除异常；r52有限消费后的90次合法采纳不能证明根因已修。复位契约及更早事务状态仍缺证据，根因板测保持中止。r23～r26原值与后续r37/r52结果见下节，不重复同包启动。
-- **D46真实输入适配：未完成。** 1发3收同事件软件对齐已通过，严格共同窗345/402；稳定300Hz仍有缺格／点位超差，后续需核对发射端定时量化和排队。无PC板端候选仅完成软件验证及交叉编译，节点幅度未填，相位、模型适配及人体效果另行验收。真实输入尚未运行模型，不将共同事件对齐扩大为共享硬件时钟或识别通过。[实测与恢复](tools/nexmon/evidence/multirx-20261025-r1/REPORT.md)、[软件候选](tools/nexmon/board/README.md)。
-- **D44首次reader故障：未定位。** 后续显示成功与原失败分别保留；不能按“未再出现”关闭问题。
-- **D29严格实时、D41长尾与HDMI长期：未验收或未解决。** r47大幅降低CPU绘制成本，r50降低合成ACK延时，r53短样本29.521Hz；r48主机启动失败、r49/r52积压、r53数值失败分别保留。用户r46/r52/r53看到短暂图案/骨架；采纳计数与CSR无错不能代替持续实屏验收。各轮均已回原BOOT，无新板测额度。[最新结果](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
-- **D25旧DATA：未解决，独立暂停。** D43 FAT来源问题也未修。D04 VPU连续页属于保留的旧演示分支，ADR_49新HDMI链不启动VPU。
+- **D46持续接入和物理断线恢复已验证，停顿与效果仍待改进。** 三RX直达板端，常驻SDK及HDMI在PC物理离线期间继续更新；本轮早期TX配置释放后未重建的问题已修正。候选逐RX幅度配置不等于物理标定，当前集中地面摆放与论文空间配置不同，Nexmon／Intel硬件幅相差异及最高分候选无跟踪显示也需区分；不能认定摆位是固定抬手的唯一原因。下一步缩短重同步、补充等待提示，再固定布局做动作对照，详见[r4记录](software/pose180_pipeline/resident/LONG-VALIDATION.md)。
 
 ## HDMI接入中已处理的问题（D05）
 

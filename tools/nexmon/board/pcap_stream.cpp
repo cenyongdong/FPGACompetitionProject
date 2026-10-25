@@ -22,7 +22,7 @@ std::uint16_t be16(const std::uint8_t* p) {
 bool vlan(std::uint16_t type) { return type == 0x8100 || type == 0x88a8; }
 } // namespace
 
-PcapStream::PcapStream() { buffer_.reserve(max_buffer_); }
+PcapStream::PcapStream(bool streaming):streaming_(streaming) { buffer_.reserve(max_buffer_); }
 
 bool PcapStream::complete() const noexcept {
     return !failed_ && header_read_ && buffer_.empty();
@@ -53,7 +53,7 @@ void PcapStream::parse_global_header() {
 }
 
 void PcapStream::parse_record_header() {
-    require(packets_ < max_packets_,"PCAP packet budget exceeds 40000");
+    require(streaming_||packets_ < max_packets_,"PCAP packet budget exceeds 40000");
     const auto* p = buffer_.data();
     const auto sec = le32(p),usec = le32(p+4);
     const auto captured = le32(p+8),original = le32(p+12);
@@ -105,7 +105,7 @@ std::vector<Datagram> PcapStream::append(const std::uint8_t* data,std::size_t si
     try {
         require(!finished_,"Cannot append after PCAP finish");
         require(data || size == 0,"Null PCAP chunk");
-        require(size <= max_bytes_-bytes_,"PCAP byte budget exceeds 32 MiB");
+        require(streaming_?size<=65536:size<=max_bytes_-bytes_,"PCAP chunk/job byte budget exceeded");
         bytes_ += size;
         std::vector<Datagram> output;
         std::size_t offset = 0;

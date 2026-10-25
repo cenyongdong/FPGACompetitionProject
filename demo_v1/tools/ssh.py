@@ -3,7 +3,7 @@
 No password in argv, environment, files, or logs. Existing known-host ED25519
 key is mandatory. Uses the already bundled Git SSH/SCP; no package install.
 """
-import argparse,getpass,os,subprocess,sys,threading,uuid
+import argparse,getpass,ipaddress,os,subprocess,sys,threading,uuid
 from pathlib import Path
 from multiprocessing.connection import Listener,Client
 ROOT=Path(__file__).resolve().parents[2]
@@ -18,7 +18,7 @@ def main():
         with Client(os.environ['POSE_AUTH_CHANNEL'],family='AF_PIPE') as channel:
             sys.stdout.buffer.write(channel.recv_bytes()+b'\n');sys.stdout.buffer.flush()
         return
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['ssh','put','get']);p.add_argument('source');p.add_argument('destination',nargs='?');p.add_argument('--timeout',type=int,default=240);p.add_argument('--log',type=Path);p.add_argument('--reverse',action='store_true');p.add_argument('--stream',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['ssh','put','get']);p.add_argument('source');p.add_argument('destination',nargs='?');p.add_argument('--timeout',type=int,default=240);p.add_argument('--log',type=Path);p.add_argument('--reverse',action='store_true');p.add_argument('--stream',action='store_true');p.add_argument('--bind-address',type=ipaddress.ip_address);a=p.parse_args()
     assert 0<=a.timeout<=3600 and all((GIT/n).is_file() for n in ('ssh.exe','scp.exe')) and KNOWN.is_file()
     assert any(line.split()[:3]==['192.168.126.49','ssh-ed25519',KEY] for line in KNOWN.read_text().splitlines())
     cache=ROOT/'.local/pose-v1-ssh-transport';cache.mkdir(exist_ok=True);helper=cache/'askpass.sh'
@@ -34,6 +34,7 @@ def main():
     thread=threading.Thread(target=serve,daemon=True);thread.start()
     env=os.environ.copy();env.update(SSH_ASKPASS=helper.as_posix(),SSH_ASKPASS_REQUIRE='force',DISPLAY='pose-memory-auth',POSE_AUTH_CHANNEL=address)
     opts=['-F','/dev/null','-o','StrictHostKeyChecking=yes','-o','HostKeyAlgorithms=ssh-ed25519','-o','UserKnownHostsFile='+KNOWN.as_posix(),'-o','ConnectTimeout=5','-o','NumberOfPasswordPrompts=1','-o','PubkeyAuthentication=no','-o','PreferredAuthentications=password']
+    if a.bind_address:opts.extend(['-o','BindAddress='+str(a.bind_address)])
     if a.reverse:opts.extend(['-o','ExitOnForwardFailure=yes','-R','127.0.0.1:39381:127.0.0.1:39381'])
     if a.mode=='ssh':args=[str(GIT/'ssh.exe'),*opts,'-T',HOST,a.source]
     else:

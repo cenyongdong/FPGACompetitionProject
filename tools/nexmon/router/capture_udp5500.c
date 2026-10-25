@@ -66,7 +66,12 @@ int main(int argc, char **argv) {
 #else
     const unsigned maximum_packets = 20000;
 #endif
-    unsigned seconds = number(argv[3], 60), limit = number(argv[4], maximum_packets);
+    unsigned maximum_seconds = 60, packet_limit = maximum_packets;
+#ifdef NEXMON_STREAM_CAPTURE
+    /* Only the pipe mode can run longer. File captures retain their old caps. */
+    if (!strcmp(argv[2], "-")) { maximum_seconds = 3600; packet_limit = 4000000; }
+#endif
+    unsigned seconds = number(argv[3], maximum_seconds), limit = number(argv[4], packet_limit);
     unsigned index = if_nametoindex(argv[1]);
     if (!seconds || !limit || !index) { fprintf(stderr, "invalid budget/interface\n"); return 2; }
     int fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
@@ -77,6 +82,9 @@ int main(int argc, char **argv) {
 #ifdef NEXMON_STREAM_CAPTURE
     streaming = !strcmp(argv[2], "-");
 #endif
+    /* A generation reset closes TCP. Preserve native drop/error counters on
+     * EPIPE instead of losing the entire receipt to the default SIGPIPE. */
+    if (streaming) signal(SIGPIPE, SIG_IGN);
     FILE *f = streaming ? stdout : fopen(argv[2], "wbx");
     if (!f) { perror("new output"); close(fd); return 3; }
     if (streaming) setvbuf(f, NULL, _IONBF, 0);
@@ -101,7 +109,7 @@ int main(int argc, char **argv) {
         if (n < 0) { if (errno == EINTR) continue; perror("recvfrom"); error = 1; break; }
         if ((size_t)n > sizeof(buffer)) { fprintf(stderr, "oversized frame\n"); error = 1; break; }
         if (from.sll_pkttype == PACKET_OUTGOING || !selected(buffer, (size_t)n)) continue;
-        if (bytes + 16 + (size_t)n > 32u * 1024u * 1024u) {
+        if (!streaming && bytes + 16 + (size_t)n > 32u * 1024u * 1024u) {
             fprintf(stderr, "byte budget reached\n"); error = 1; break;
         }
         struct timespec timestamp;

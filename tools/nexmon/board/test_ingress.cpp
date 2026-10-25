@@ -63,6 +63,26 @@ int main() {
         {Ingress in(config());Source s;s.event(in,0,0);throws([&]{in.expire(0,100032770);});}++passed;
         {auto w=baseline.windows.front();auto b=encode_piwcsi2(w,42,123);check(b.size()==86432&&std::memcmp(b.data(),"PIWCSI2\0",8)==0,"Protocol header changed");check(b[8]==2&&b[16]==42&&b[24]==123,"Protocol fields changed");w.csi[0]={std::numeric_limits<double>::infinity(),0};throws([&]{encode_piwcsi2(w,0,0);});}++passed;
         {auto z=decode_acphy((17u<<18)|(9u<<6)|(1u<<29)|(1u<<17)|63u);check(z==std::complex<double>(-8.5,-4.5),"Signed mantissa/exponent decode changed");}++passed;
+        {
+            auto c=config();c.streaming=true;Ingress in(c);Source source;
+            std::size_t count=0,early=0;
+            // More than 16 sequence wraps, a 16-bit NMD3 counter wrap and
+            // 233 seconds of capture time; retained memory must stay bounded.
+            for(int ordinal=0;ordinal<70000;++ordinal)for(std::size_t r=0;r<3;++r) {
+                source.event(in,r,ordinal,0,int(r)*12345);
+                auto ready=in.take_ready();count+=ready.size();
+                if(ordinal<800) {
+                    for(const auto& w:ready) {
+                        check(w.csi==baseline.windows.at(early).csi,"Rolling mode changed model input");
+                        check(w.event_indices==baseline.windows.at(early).event_indices,"Rolling mode changed source association");
+                        ++early;
+                    }
+                }
+                for(auto n:in.retained_events())check(n<=1202,"Rolling event history leaked");
+                for(auto n:in.retained_cells())check(n<=40,"Consumed grid history leaked");
+            }
+            check(early==baseline.windows.size()&&count>3400,"Continuous wrap stream stopped producing");
+        }++passed;
         std::cout<<"ingress directed checks passed="<<passed<<'\n';return 0;
     }catch(const std::exception&e){std::cerr<<"directed ingress failure after "<<passed<<" checks: "<<e.what()<<'\n';return 1;}
 }

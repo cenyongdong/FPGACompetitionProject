@@ -21,7 +21,8 @@ namespace pose::hdmi {
         icraft::xrt::Device device;
         icraft::xrt::MemRegion region;
         icraft::xrt::MemChunk frames[2];
-        std::ofstream log;
+        std::ofstream log_file;
+        std::ostream log{nullptr};
         std::filesystem::path evidence_dir;
         std::thread::id owner = std::this_thread::get_id();
         uint32_t sequence = 0;
@@ -101,13 +102,16 @@ namespace pose::hdmi {
         }
     };
 
-    Output::Output(const icraft::xrt::Device& device, const std::filesystem::path& evidence)
+    Output::Output(const icraft::xrt::Device& device, const std::filesystem::path& evidence,
+                   std::streambuf* asynchronous_log)
         : impl_(std::make_unique<Impl>()) {
         auto& p = *impl_;
         p.device = device;
         need(!std::filesystem::exists(evidence), "Fresh HDMI evidence file required");
         p.evidence_dir=evidence.parent_path();
-        p.log.open(evidence);
+        if(asynchronous_log) p.log.rdbuf(asynchronous_log);
+        else {p.log_file.open(evidence);p.log.rdbuf(p.log_file.rdbuf());
+            need(bool(p.log_file), "Cannot open HDMI evidence");}
         need(bool(p.log), "Cannot open HDMI evidence");
         const auto versions = device.version();
         need(versions.at("device") == "25122301" &&
