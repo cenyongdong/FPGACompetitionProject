@@ -3,7 +3,7 @@
 set -euo pipefail
 cd /work/nexmon
 source setup_env.sh
-project=patches/bcm4366c0/10_10_122_20/nexmon_tx_absolute_20261022
+project=${2:-patches/bcm4366c0/10_10_122_20/nexmon_tx_absolute_20261022}
 source_dir=${1:-/out/derivative-source}
 if [ ! -e "$project" ]; then
     cp -a "$source_dir" "$project"
@@ -17,7 +17,7 @@ if [ -f /out/build.log ]; then
     cp log/linker.err /out/linker-previous.err
 fi
 set +e
-make -j1 GIT_VERSION=piwtx-1613d5f-absolute > /out/build.log 2>&1
+make -j1 GIT_VERSION="${3:-piwtx-1613d5f-absolute}" > /out/build.log 2>&1
 build_status=$?
 set -e
 cp log/linker.err /out/linker.err

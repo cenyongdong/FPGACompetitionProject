@@ -6,6 +6,7 @@
 #include "runtime.hpp"
 #include "hdmi_output.hpp"
 #include "hdmi_renderer.hpp"
+#include "display_state.hpp"
 #include "FPGA/hdmi_candidate/diagnostics/deferred_consume_r45/software/source/display/r9_startup_observer.hpp"
 #include "r9_observer_mapping.hpp"
 #endif
@@ -84,15 +85,64 @@ int main(int argc,char**argv) {
             } else runtime=std::make_unique<pp::Runtime>(config);
         }catch(const std::exception& error){shared.stats.isolated=true;journal.status(std::string("SDK initialization isolated: ")+error.what()+"\n");}
         pose::hdmi::PreparedBackground canvas;
+        // Metadata only: the reusable pixel vector stays in canvas, so holding
+        // the last actual pose adds no full-frame cache or model output copy.
+        pose::hdmi::Rendered last_picture;
+        std::uint64_t last_picture_id=0;
+        pd::DisplayState presentation;
         if(hdmi)canvas.rgb565.resize(pose::hdmi::frameBytes);
+        auto show=[&](pose::hdmi::Rendered& rendered) {
+            const auto tag=presentation.next_tag();
+            display->begin_show(rendered.rgb565,tag);
+            canvas.rgb565=std::move(rendered.rgb565);
+            // Same owner thread and adoption proof for hints and actual poses.
+            while(!display->poll_show())std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            return tag;
+        };
+        auto show_wait=[&] {
+            if(!hdmi || !display || shared.stats.isolated) return;
+            const auto notice=presentation.hint(pd::now_ns(),shared.stats.resynchronizing,shared.stats.isolated);
+            if(!notice) return;
+            pose::hdmi::prepare_background(canvas);
+            auto rendered=pose::hdmi::render_notice(std::move(canvas),
+                notice->has_result?&last_picture:nullptr,last_picture_id,*notice);
+            const auto tag=show(rendered);
+            presentation.adopted_hint(*notice,pd::now_ns());
+            shared.stats.display_updates=presentation.updates();
+            shared.stats.display_hints=presentation.hints();
+            const char* state=notice->kind==pose::hdmi::NoticeKind::Stale?"stale":
+                notice->kind==pose::hdmi::NoticeKind::Resynchronizing?"resynchronizing":"waiting_input";
+            journal.status("{\"event\":\"hdmi_hint\",\"tag\":"+std::to_string(tag)+
+                ",\"state\":\""+state+"\""+
+                ",\"has_result\":"+(notice->has_result?"true":"false")+
+                ",\"result_age_seconds\":"+std::to_string(notice->age_seconds)+
+                ",\"resynchronizing\":"+(notice->resynchronizing?"true":"false")+"}\n");
+        };
 #endif
         shared.stats.initialized=true;
         const auto started=pd::now_ns();auto last_status=started;
         pd::Input input;pp::Result result;pd::Record record{};std::uint64_t sequence=0;
+        auto isolate=[&](const std::exception& error) {
+            shared.stats.forward_start=0;shared.stats.isolated=true;shared.input.clear();shared.output.clear();
+            journal.freeze();journal.status(std::string("isolated: ")+error.what()+"\n");
+            // Keep listeners/status alive, never reopen or retry failed SDK.
+        };
         while(!stopping && (!seconds || pd::now_ns()-started<seconds*1000000000ull)) {
-            if(pd::now_ns()-last_status>1000000000ull){journal.status(shared.stats.json(mock,hdmi));last_status=pd::now_ns();}
-            if(shared.stats.isolated || !shared.input.take(input)) {std::this_thread::sleep_for(std::chrono::milliseconds(5));continue;}
-            if(pd::now_ns()-input.arrived>max_age || input.epoch!=shared.stats.input_epoch){++shared.stats.stale;continue;}
+            if(pd::now_ns()-last_status>1000000000ull){
+                for(const auto& event:shared.stats.take_input_events())journal.diagnostic(event);
+                journal.status(shared.stats.json(mock,hdmi));last_status=pd::now_ns();
+            }
+            if(shared.stats.isolated){std::this_thread::sleep_for(std::chrono::milliseconds(5));continue;}
+            bool ready=shared.input.take(input);
+            if(ready && (pd::now_ns()-input.arrived>max_age || input.epoch!=shared.stats.input_epoch)){
+                ++shared.stats.stale;ready=false;
+            }
+            if(!ready) {
+#ifdef POSE180_DEMO_SDK
+                try{show_wait();}catch(const std::exception& error){isolate(error);}
+#endif
+                std::this_thread::sleep_for(std::chrono::milliseconds(5));continue;
+            }
             const auto began=pd::now_ns();shared.stats.forward_start=began;
             try {
 #ifdef POSE180_DEMO_SDK
@@ -114,24 +164,27 @@ int main(int argc,char**argv) {
                 auto previous=shared.stats.last_result.exchange(returned);
                 if(previous)shared.stats.longest_gap=std::max(shared.stats.longest_gap.load(),returned-previous);
                 // Calls returning late are counted as real inference, not fresh display.
-                if(returned-input.arrived>max_age || input.epoch!=shared.stats.input_epoch){++shared.stats.stale;continue;}
+                if(returned-input.arrived>max_age || input.epoch!=shared.stats.input_epoch){
+                    ++shared.stats.stale;
+#ifdef POSE180_DEMO_SDK
+                    show_wait();
+#endif
+                    continue;
+                }
                 if(shared.output.put(record))++shared.stats.pc_dropped;
 #ifdef POSE180_DEMO_SDK
                 if(hdmi) {
                     pose::hdmi::prepare_background(canvas);
                     auto rendered=pose::hdmi::render(std::move(canvas),result.scores.data(),result.poses.data(),180,result.frame_id);
-                    // Unique inference tag, independent of skipped/reconnected source IDs.
-                    display->begin_show(rendered.rgb565,static_cast<std::uint32_t>(sequence));
-                    canvas.rgb565=std::move(rendered.rgb565);
-                    // Prove adoption before the next potentially long forward call.
-                    while(!display->poll_show())std::this_thread::sleep_for(std::chrono::milliseconds(1));
-                    ++shared.stats.adopted;shared.stats.last_adopt=pd::now_ns();
+                    show(rendered); // Prove adoption before another forward call.
+                    last_picture=std::move(rendered);last_picture_id=result.frame_id;
+                    const auto adopted=pd::now_ns();presentation.adopted_result(adopted);
+                    ++shared.stats.adopted;shared.stats.last_adopt=adopted;
+                    shared.stats.display_updates=presentation.updates();
                 }
 #endif
             }catch(const std::exception& error) {
-                shared.stats.forward_start=0;shared.stats.isolated=true;shared.input.clear();shared.output.clear();
-                journal.freeze();journal.status(std::string("isolated: ")+error.what()+"\n");
-                // Keep listeners/status alive, never reopen or retry failed SDK.
+                isolate(error);
             }
         }
         shared.stop=true;csi.reset();
@@ -139,6 +192,7 @@ int main(int argc,char**argv) {
         // Output retains its unchanged tagged STOP/drain proof before any free.
         if(display){display->close();display.reset();}runtime.reset();
 #endif
+        for(const auto& event:shared.stats.take_input_events())journal.diagnostic(event);
         journal.status(shared.stats.json(mock,hdmi));
         // Single bounded completion receipt, written only after actual HDMI
         // STOP/drain and Runtime destruction. Polling liveness is not proof.

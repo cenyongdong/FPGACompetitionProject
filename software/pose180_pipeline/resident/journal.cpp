@@ -16,9 +16,31 @@ void writer(int fd,const std::filesystem::path& output) {
     unsigned segment=0,records=64;std::size_t log_bytes=256*1024;
     std::ofstream data,log,fault;bool healthy=true;
     std::uint64_t retry_at=0;
+    std::ofstream diagnostic;unsigned diagnostic_segment=0;
+    std::size_t diagnostic_bytes=256*1024;
+    std::uint64_t diagnostic_retry=0;
     for(;;) {
         const auto n=::recv(fd,bytes.data(),bytes.size(),0);if(n<=0)break;
         if(bytes[0]=='Q')break;
+        if(bytes[0]=='D') {
+            // A CSI event must outlive the rapid full-record/HDMI log rotation.
+            // Whole lines, two <=256 KiB files; disk faults have their own
+            // backoff and cannot suppress normal result recording.
+            bool written=false;
+            if(now_ns()>=diagnostic_retry)try {
+                const auto size=std::size_t(n-1);
+                if(!diagnostic.is_open()||diagnostic_bytes+size>256*1024) {
+                    diagnostic.close();diagnostic.clear();
+                    diagnostic.open(output/("diagnostic-"+std::to_string(diagnostic_segment)+".jsonl"),std::ios::trunc);
+                    diagnostic_segment=(diagnostic_segment+1)%2;diagnostic_bytes=0;
+                }
+                diagnostic.write(reinterpret_cast<char*>(bytes.data()+1),size);diagnostic.flush();
+                if(!diagnostic)throw std::runtime_error("CSI diagnostic archive unavailable");
+                diagnostic_bytes+=size;written=true;
+            }catch(...){diagnostic.close();diagnostic.clear();diagnostic_retry=now_ns()+5000000000ull;}
+            const char state=written?'1':'0';::send(fd,&state,1,MSG_DONTWAIT|MSG_NOSIGNAL);
+            continue;
+        }
         try {
             if(bytes[0]=='F') {
                 if(!fault.is_open())fault.open(output/"fault-ring.full",std::ios::binary|std::ios::out);
@@ -67,6 +89,10 @@ void Journal::freeze() {
     for(std::size_t i=0;i<count_;++i){const auto& r=ring_[(next_+ring_.size()-count_+i)%ring_.size()];send('F',r.data(),r.size());}
 }
 void Journal::status(const std::string& text){send('L',text.data(),std::min(text.size(),line_.size()));}
+void Journal::diagnostic(const std::string& text) {
+    if(text.size()>1024){++shared_.stats.diagnostic_dropped;return;}
+    send('D',text.data(),text.size());
+}
 int Journal::sync(){if(pptr()!=pbase())send('L',pbase(),pptr()-pbase());setp(line_.data(),line_.data()+line_.size());return 0;}
 Journal::int_type Journal::overflow(int_type c){sync();if(!traits_type::eq_int_type(c,traits_type::eof())){*pptr()=traits_type::to_char_type(c);pbump(1);}return traits_type::not_eof(c);}
 Journal::~Journal() {

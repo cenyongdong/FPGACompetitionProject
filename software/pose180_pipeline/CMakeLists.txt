@@ -13,11 +13,16 @@ target_link_libraries(buffer_tests PRIVATE Threads::Threads)
 add_executable(renderer_tests board/renderer_tests.cpp "${CORE}/hdmi_renderer.cpp"
     "${PROJECT_ROOT}/FPGA/hdmi_candidate/diagnostics/native_rgb565_r47/joint/projection.cpp")
 target_include_directories(renderer_tests PRIVATE "${CORE}")
+add_executable(display_state_tests resident/display_state_tests.cpp "${CORE}/hdmi_renderer.cpp"
+    "${PROJECT_ROOT}/FPGA/hdmi_candidate/diagnostics/native_rgb565_r47/joint/projection.cpp")
+target_include_directories(display_state_tests PRIVATE "${CORE}" resident)
 option(POSE180_BUILD_SDK "Build the ARM64 SDK owner" OFF)
 set(DEMO_SOURCES resident/main.cpp resident/io.cpp resident/journal.cpp resident/csi.cpp
     "${PROJECT_ROOT}/tools/nexmon/board/ingress.cpp" "${PROJECT_ROOT}/tools/nexmon/board/pcap_stream.cpp"
     "${PREPROCESS}/preprocess.cpp")
 if(UNIX)
+    add_executable(journal_tests resident/journal_tests.cpp resident/journal.cpp)
+    target_link_libraries(journal_tests PRIVATE Threads::Threads)
     add_executable(pose180_demo_mock ${DEMO_SOURCES})
     target_include_directories(pose180_demo_mock PRIVATE "${PROJECT_ROOT}/tools/nexmon/board")
     target_compile_options(pose180_demo_mock PRIVATE -Wall -Wextra -Wpedantic -ffp-contract=off)

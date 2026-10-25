@@ -2,6 +2,7 @@
 #include "hdmi_renderer.hpp"
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <cstring>
 #include <iostream>
 #include <stdexcept>
@@ -73,11 +74,10 @@ void new_180_selects_last_candidate_and_reuses_canvas() {
         expect(!std::memcmp(rendered.selected_raw.data(), poses.data() + 179 * 42, 168),
                "180-slot renderer selected another candidate's pose bytes");
         for (std::size_t joint = 0; joint < 14; ++joint) {
-            const auto offset = 179 * 42 + joint * 3;
-            const auto original = pose_v1::render::project(poses[offset], poses[offset + 1], poses[offset + 2]);
-            const std::array<double, 2> expected{{780 + (original[0] - 460) * 1.5,
-                                                  535 + (original[1] - 355) * 1.5}};
-            expect(rendered.projected[joint] == expected, "180-slot rendering changed the established projection");
+            const auto p=rendered.projected[joint];
+            expect(std::isfinite(p[0]) && std::isfinite(p[1]) &&
+                   p[0]>=0 && p[0]<1920 && p[1]>=250 && p[1]<1040,
+                   "Perspective fixture escaped the scene or entered the status header");
         }
         // A fresh canvas for the same frame detects stale skeletons/labels when
         // the recycled buffer is refilled from the immutable prepared base.

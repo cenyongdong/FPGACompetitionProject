@@ -2,9 +2,11 @@
 #include "wire.hpp"
 #include <atomic>
 #include <chrono>
+#include <deque>
 #include <mutex>
 #include <optional>
 #include <string>
+#include <vector>
 
 namespace pose180_demo {
 namespace pp = pose180_pipeline;
@@ -39,10 +41,27 @@ struct Stats {
     std::atomic<std::uint64_t> inferred{0}, adopted{0}, pc_sent{0}, pc_dropped{0};
     std::atomic<std::uint64_t> record_dropped{0}, input_epoch{0}, last_input{0}, last_result{0}, last_adopt{0};
     std::atomic<std::uint64_t> forward_start{0}, longest_gap{0}, resyncs{0};
+    std::atomic<std::uint64_t> display_updates{0}, display_hints{0};
+    std::atomic<std::uint64_t> alignment_resets{0}, transport_resets{0}, diagnostic_dropped{0};
+    std::atomic<std::uint64_t> last_recovery_ms{0}, longest_recovery_ms{0};
     std::atomic<bool> isolated{false}, recording{true}, input_connected{false}, pc_connected{false};
     std::atomic<bool> initialized{false}, resynchronizing{false};
     mutable std::mutex input_error_mutex;
     std::string last_input_error;
+    std::mutex input_events_mutex;
+    std::deque<std::string> input_events;
+    void input_event(std::string event) {
+        std::lock_guard<std::mutex> lock(input_events_mutex);
+        if(event.size()>1024){++diagnostic_dropped;return;}
+        if(input_events.size()==16){input_events.pop_front();++diagnostic_dropped;}
+        input_events.push_back(std::move(event));
+    }
+    std::vector<std::string> take_input_events() {
+        std::lock_guard<std::mutex> lock(input_events_mutex);
+        std::vector<std::string> result;
+        while(!input_events.empty()){result.push_back(std::move(input_events.front()));input_events.pop_front();}
+        return result;
+    }
     void input_error(const char* message) {
         std::lock_guard<std::mutex> lock(input_error_mutex);
         last_input_error=std::string(message).substr(0,160);
@@ -63,6 +82,10 @@ inline std::string Stats::json(bool mock, bool hdmi) const {
     add("reconnects",reconnects);add("input_epoch",input_epoch);add("inferred",inferred);add("adopted",adopted);
     add("pc_sent",pc_sent);add("pc_dropped",pc_dropped);add("record_dropped",record_dropped);add("resyncs",resyncs);
     add("longest_result_gap_ms",longest_gap.load()/1000000);
+    add("display_updates",display_updates);add("display_hints",display_hints);
+    add("alignment_resets",alignment_resets);add("transport_resets",transport_resets);
+    add("diagnostic_dropped",diagnostic_dropped);add("last_recovery_ms",last_recovery_ms);
+    add("longest_recovery_ms",longest_recovery_ms);
     std::string reason;
     {std::lock_guard<std::mutex> lock(input_error_mutex);
         for(unsigned char c:last_input_error){if(c=='"'||c=='\\')reason+='\\';if(c>=32)reason+=c;}}

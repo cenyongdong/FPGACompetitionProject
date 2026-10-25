@@ -11,8 +11,8 @@
 #include <vector>
 
 namespace pose::hdmi::detail {
-    constexpr int left = 36, right = 1538, top = 116, bottom = 1018;
-    constexpr int panel = 1568;
+    // Full-width scene below the compact status header, matching the PC view.
+    constexpr int left = 0, right = 1919, top = 250, bottom = 1039;
     constexpr size_t frame_bytes = size_t(pose::hdmi::frameBytes);
 
     constexpr uint16_t color(unsigned r, unsigned g, unsigned b) {

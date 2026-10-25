@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <memory>
+#include <stdexcept>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -28,6 +29,35 @@ struct Config {
     bool streaming = false; // rolling four-second history; original finite mode unchanged
 };
 
+// Recoverable capture continuity failures are distinct from malformed input or
+// source identity changes. The payload has fixed size for bounded event rings;
+// callers must discard this entire Ingress generation before resuming.
+enum class ContinuityReason : std::uint8_t {
+    arrival_backwards, arrival_gap, pairing_timeout, missing_metadata,
+    pairing_mismatch, incomplete_event, duplicate_core, event_clock,
+    counter_step, duplicate_sequence, reused_sequence, sequence_step,
+    retained_clock, phase_lock, calibration_budget
+};
+const char* continuity_reason_name(ContinuityReason reason) noexcept;
+struct ContinuityDiagnostic {
+    std::uint32_t receiver=0;
+    ContinuityReason reason=ContinuityReason::arrival_gap;
+    bool have_previous=false, event_clock_known=false;
+    std::int64_t arrival_us=0, previous_arrival_us=0, host_delta_us=0;
+    std::uint16_t tsf_before=0, tsf_after=0, tsf_delta_us=0;
+    std::uint16_t counter_before=0, counter_after=0, counter_step=0;
+    std::uint16_t sequence_before=0, sequence_after=0;
+    std::uint32_t phase_samples=0;
+    double phase_concentration=0;
+};
+class ContinuityError : public std::runtime_error {
+public:
+    explicit ContinuityError(ContinuityDiagnostic diagnostic);
+    const ContinuityDiagnostic& diagnostic() const noexcept { return diagnostic_; }
+private:
+    ContinuityDiagnostic diagnostic_;
+};
+
 struct JointWindow {
     std::int64_t start_reference_slot = 0;
     std::uint64_t source_time_ns = 0; // RX1 capture clock of the final selected event
@@ -48,6 +78,21 @@ struct NodeSummary {
     std::size_t trailing_cores=0;
     std::int64_t phase_scaled=0, calibration_end_us=0;
     double concentration=0;
+};
+// Fixed-size, cumulative for this alignment generation. Rejection categories
+// may overlap. Diagnostics never select, replace, or relax any input sample.
+struct WindowDiagnostics {
+    std::uint64_t decided=0, accepted=0, missing=0, point_error=0, different_event=0;
+    std::uint64_t rejected_streak=0, different_points=0;
+    std::array<std::uint64_t,3> missing_points{}, point_errors{};
+    // Signed largest absolute residual in the latest finalized window, in
+    // microseconds * 300. Divide by 300 for us; the original limit is 250000.
+    std::array<std::int64_t,3> last_error_scaled{};
+    std::array<std::uint16_t,3> last_mismatch_sequences{};
+    std::int64_t last_window_slot=0, last_mismatch_slot=0;
+    std::array<std::int64_t,3> slot_shifts{};
+    std::array<NodeSummary,3> nodes{};
+    bool anchored=false;
 };
 struct BatchResult {
     std::string session_id;
@@ -71,6 +116,10 @@ public:
     // Per receiver, preserve original cross-port CSI/NMD3 order. Arrival time
     // is monotonic router capture time, microseconds, only a continuity guard.
     // Separate unordered UDP sockets are NOT a supported transport contract.
+    // A fresh streaming instance may join mid-event: validated metadata and
+    // non-core0 CSI are skipped only until its first core0 CSI. Once started,
+    // all original pairing/continuity checks apply, including poisoned-session
+    // rejection after an error. Finite jobs never skip this prefix.
     void feed(std::size_t receiver, std::string_view session,
               std::int64_t arrival_us, std::uint16_t port,
               const std::uint8_t* payload, std::size_t size);
@@ -86,6 +135,8 @@ public:
     // Current retained objects, not cumulative traffic counts.
     std::array<std::size_t,3> retained_events() const;
     std::array<std::size_t,3> retained_cells() const;
+    // Also readable after a poisoned generation, before its owner discards it.
+    WindowDiagnostics diagnostics() const;
 private:
     struct Impl;
     std::unique_ptr<Impl> impl_;

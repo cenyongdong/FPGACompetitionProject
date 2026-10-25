@@ -1,6 +1,6 @@
 /* Own-router RAM-only supervisor. No persistent radio config, no board SDK.
  * RX: one bounded TCP buffer, fresh capture per connection, finite backoff.
- * TX: repeat existing finite 60-second jobs, verify native 48-byte status.
+ * TX: finite jobs for legacy runs; tx.lease selects one locally renewed task.
  */
 #define _GNU_SOURCE
 #include <arpa/inet.h>
@@ -17,10 +17,13 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
+#include "tx_lease_protocol.h"
 
 static volatile sig_atomic_t stop_requested;
 static double began, deadline, paused_until, next_state;
 static unsigned generation, failures, completed;
+static unsigned tx_renewals, tx_renewal_failures;
+static const char *tx_stop_reason = "none";
 static unsigned long long forwarded;
 static const char *state = "starting";
 static int last_exit, fault;
@@ -41,8 +44,9 @@ static void status(void) {
     if (f) { fprintf(f, "%u\n", (unsigned)t); fclose(f); }
     f = fopen("guard-status.tmp", "w");
     if (f) {
-        fprintf(f, "{\"pid\":%d,\"state\":\"%s\",\"elapsed\":%.3f,\"generation\":%u,\"failures\":%u,\"completed_TX_jobs\":%u,\"forwarded_bytes\":%llu,\"last_exit\":%d,\"fault\":%d}\n",
-                getpid(), state, t-began, generation, failures, completed, forwarded, last_exit, fault);
+        fprintf(f, "{\"pid\":%d,\"state\":\"%s\",\"elapsed\":%.3f,\"generation\":%u,\"failures\":%u,\"completed_TX_jobs\":%u,\"forwarded_bytes\":%llu,\"last_exit\":%d,\"fault\":%d,\"TX_renewals\":%u,\"TX_renewal_failures\":%u,\"TX_stop_reason\":\"%s\"}\n",
+                getpid(), state, t-began, generation, failures, completed, forwarded, last_exit, fault,
+                tx_renewals,tx_renewal_failures,tx_stop_reason);
         fclose(f); rename("guard-status.tmp", "guard-status.json");
     }
 }
@@ -189,37 +193,224 @@ static int tx_command(const char *operation, char *result, size_t capacity) {
     if(operation[1]=='s') argv[3]=NULL;
     return command(argv,result,capacity,3);
 }
+/* Only the wait gets shorter. A fresh, valid 433 completion is still required
+ * before 432/free and the next finite 429/430 job. In absolute mode words[2]
+ * is Hz and words[3] is remaining slots (submitted OR skipped by firmware).
+ * The 32-bit enqueue TSF counters are diagnostics, never a host start trigger.
+ */
+static double tx_poll_interval(const uint32_t words[12]) {
+    return (words[2]==50 || words[2]==300) && words[3]<=words[2]/2 ? .02 : .25;
+}
+static void tx_wait(double seconds) {
+    double until=now()+seconds;
+    while(running()) {
+        double left=until-now();
+        if(left<=0) break;
+        if(left>.01) left=.01;
+        struct timespec delay={0,(long)(left*1e9)};
+        nanosleep(&delay,NULL);
+    }
+}
+/* The native lease status is 32 bytes, including one base64 padding byte.
+ * Decode words explicitly: router and test-host byte order need not match.
+ */
+static int decode_lease(const char *text,uint32_t words[8]) {
+    unsigned char data[32];unsigned bits=0,value=0;size_t count=0,padding=0;
+    const char *alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    for(const char *p=text;*p;++p) {
+        if(*p=='\n'||*p=='\r'||*p==' ') continue;
+        if(*p=='=') {++padding;continue;}
+        const char *at=strchr(alphabet,*p);
+        if(!at||padding) return -1;
+        value=(value<<6)|(unsigned)(at-alphabet);bits+=6;
+        if(bits>=8) {bits-=8;if(count==sizeof(data))return -1;data[count++]=(unsigned char)(value>>bits);}
+    }
+    if(count!=32||padding!=1||bits!=2||(value&3))return -1;
+    for(unsigned i=0;i<8;++i) words[i]=(uint32_t)data[4*i]|((uint32_t)data[4*i+1]<<8)|((uint32_t)data[4*i+2]<<16)|((uint32_t)data[4*i+3]<<24);
+    return words[0]==PIW_TX_LEASE_MAGIC&&words[1]==PIW_TX_LEASE_VERSION&&words[2] ? 0:-1;
+}
+static int tx_lease_status(uint32_t words[8],char output[4096]) {
+    char *argv[]={"./nexutil","-Ieth6","-g435","-l32","-R",NULL};
+    last_exit=command(argv,output,4096,3);
+    FILE *f=fopen("tx-lease.status","w");if(f){fputs(output,f);fclose(f);}
+    if(last_exit)return -1;
+    if(decode_lease(output,words))return -2;
+    return 0;
+}
+static int tx_lease_renew(uint32_t token,uint32_t sequence,char output[4096]) {
+    const char *alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    uint32_t words[3]={PIW_TX_LEASE_MAGIC,token,sequence};unsigned char bytes[12];char encoded[17];
+    for(unsigned i=0;i<12;++i)bytes[i]=(unsigned char)(words[i/4]>>(8*(i%4)));
+    for(unsigned i=0,o=0;i<12;i+=3) {
+        unsigned v=((unsigned)bytes[i]<<16)|((unsigned)bytes[i+1]<<8)|bytes[i+2];
+        encoded[o++]=alphabet[(v>>18)&63];encoded[o++]=alphabet[(v>>12)&63];
+        encoded[o++]=alphabet[(v>>6)&63];encoded[o++]=alphabet[v&63];
+    }
+    encoded[16]=0;
+    char *argv[]={"./nexutil","-Ieth6","-s434","-b","-l12","-v",encoded,NULL};
+    last_exit=command(argv,output,4096,3);return last_exit;
+}
+static const char *tx_guard_stop_reason(void) {
+    if(stop_requested)return "guard_signal";
+    if(now()>=deadline)return "guard_deadline";
+    if(exists("stop.request"))return "stop_request";
+    if(exists("restored"))return "already_restored";
+    return "guard_disarmed";
+}
+static void tx_leased(char *const configure[]) {
+    char output[4096];uint32_t lease[8]={0},native[12]={0};
+    uint32_t token=0,sequence=0;unsigned queries=0,diagnostics=0;
+    int stopped=0,freed=0,configure_attempted=0;
+    const char *reason="guard_stop";
+    if(!running())return;
+    state="transmitting";++generation;configure_attempted=1;
+    last_exit=command(configure,output,sizeof(output),3);
+    if(last_exit){fault=1;reason="configure_failed";goto cleanup;}
+    if(tx_lease_status(lease,output)){fault=1;reason="lease_config_status_invalid";goto cleanup;}
+    token=lease[2];
+    if(lease[3]||lease[5]||lease[6]||lease[7]){fault=1;reason="lease_config_state_invalid";goto cleanup;}
+    if(!running()){reason=tx_guard_stop_reason();goto cleanup;}
+    last_exit=tx_command("-s430",output,sizeof(output));
+    if(last_exit){fault=1;reason="start_failed";goto cleanup;}
+    event("TX lease started: one context; local renewal every 10s; 60s lease");
+    double next_renew=now()+PIW_TX_LEASE_RENEW_SECONDS,next_probe=now(),next_diagnostic=now();
+    while(running()) {
+        if(paused()){reason="pause_requested";break;}
+        double t=now();
+        if(t>=next_renew) {
+            /* No retry: a timed-out ioctl may have reached firmware. Stop and
+             * inspect rather than resubmitting or creating a second context.
+             */
+            if(sequence==UINT32_MAX){fault=1;reason="renew_sequence_exhausted";break;}
+            ++sequence;
+            if(tx_lease_renew(token,sequence,output)){++tx_renewal_failures;fault=1;reason="renew_command_failed";break;}
+            if(tx_lease_status(lease,output)){++tx_renewal_failures;fault=1;reason="renew_status_invalid";break;}
+            ++queries;
+            if(lease[2]!=token||lease[3]!=sequence||lease[7]!=sequence){++tx_renewal_failures;fault=1;reason="renew_identity_mismatch";break;}
+            if(!lease[4]||!lease[5]||lease[6]){++tx_renewal_failures;fault=1;reason="renew_not_running";break;}
+            ++tx_renewals;next_renew=now()+PIW_TX_LEASE_RENEW_SECONDS;next_probe=now()+1;
+        }
+        if(t>=next_probe) {
+            if(tx_lease_status(lease,output)){fault=1;reason="lease_status_invalid";break;}
+            ++queries;
+            if(lease[2]!=token||lease[3]!=sequence||lease[7]!=sequence){fault=1;reason="lease_identity_mismatch";break;}
+            if(lease[6]){fault=1;reason="firmware_error";break;}
+            if(!lease[5]||!lease[4]){fault=1;reason="lease_expired_or_stopped";break;}
+            next_probe=now()+1;
+        }
+        if(t>=next_diagnostic) {
+            last_exit=tx_command("-g433",output,sizeof(output));++diagnostics;
+            FILE *f=fopen("tx-0.status","w");if(f){fputs(output,f);fclose(f);}
+            if(last_exit||decode(output,native)){fault=1;reason="status_invalid";break;}
+            if(native[6]||!native[1]){fault=1;reason="firmware_error_or_stopped";break;}
+            next_diagnostic=now()+10;
+        }
+        tx_wait(.05);
+    }
+    if(!fault&&!running())reason=tx_guard_stop_reason();
+cleanup:
+    tx_stop_reason=reason;
+    /* Stop is independent of the userspace command timeout. A fresh matching
+     * 435 must prove running=0 before freeing this context. On missing proof,
+     * leave ownership to restore.sh's radio restoration, never double-free.
+     */
+    if(configure_attempted) {
+        int original_exit=last_exit;
+        int stop_exit=tx_command("-s431",output,sizeof(output));
+        int query_exit=tx_lease_status(lease,output);
+        stopped=!query_exit&&token&&lease[2]==token&&!lease[5];
+        int free_exit=-1;
+        if(stopped){
+            free_exit=tx_command("-s432",output,sizeof(output));freed=!free_exit;
+            if(freed){FILE *f=fopen("tx.released","w");if(f){fputs("1\n",f);fclose(f);}}
+        }
+        if(!stopped||!freed)fault=1;
+        char detail[768];
+        snprintf(detail,sizeof(detail),
+                 "TX lease end reason=%s renewals=%u renewal_failures=%u lease_queries=%u diagnostics=%u submitted=%u skipped=%u task_exit=%d stop_exit=%d stop_proven=%d free_exit=%d",
+                 reason,tx_renewals,tx_renewal_failures,queries,diagnostics,native[4],native[5],original_exit,stop_exit,stopped,free_exit);
+        event(detail);
+    }
+}
 static void tx(void) {
     char params[2048], output[4096];
     FILE *f=fopen("run.params","r");
     if(!f||!fgets(params,sizeof(params),f)) {if(f)fclose(f);fault=1;return;}
     fclose(f);params[strcspn(params,"\r\n")]=0;
     char *argv[]={"./nexutil","-Ieth6","-s429","-b","-l64","-v",params,NULL};
+    if(exists("tx.lease")){tx_leased(argv);return;}
+    double previous_done=0, previous_stop_ms=0;
     while(running()) {
         state="transmitting"; ++generation;
+        double configured=now(), config_ms, start_ms=0, started=0;
+        double observed_done=0, previous_poll=0, poll_gap_ms=0, max_query_ms=0;
+        double interval=.25;
+        unsigned polls=0, tail_polls=0;
+        uint32_t words[12]={0};
+        int finished=0, have_status=0;
+        const char *reason="guard_stop";
         /* 432 frees the firmware context; each finite job needs fresh 429. */
         last_exit=command(argv,output,sizeof(output),3);
-        if(last_exit) {fault=1;break;}
-        last_exit=tx_command("-s430",output,sizeof(output));
-        if(last_exit) {fault=1;break;}
-        double started=now(); int finished=0;
-        while(running()&&now()-started<65) {
-            rest(.25);
+        config_ms=(now()-configured)*1000;
+        if(last_exit) {fault=1;reason="configure_failed";}
+        else if(running()) {
+            double at=now();
+            last_exit=tx_command("-s430",output,sizeof(output));
+            started=now();start_ms=(started-at)*1000;
+            if(last_exit) {fault=1;reason="start_failed";}
+            else {
+                char detail[512];
+                snprintf(detail,sizeof(detail),
+                         "TX start config_ms=%.3f start_ms=%.3f previous_stop_ms=%.3f completion_to_start_ms=%.3f",
+                         config_ms,start_ms,previous_stop_ms,previous_done ? (started-previous_done)*1000 : -1.0);
+                event(detail);
+            }
+        }
+        while(!fault&&started&&running()&&now()-started<65) {
+            tx_wait(interval);
+            if(!running()) break;
+            double query=now();
             last_exit=tx_command("-g433",output,sizeof(output));
-            uint32_t words[12];
+            double observed=now(), query_ms=(observed-query)*1000;
+            ++polls;if(interval<.25) ++tail_polls;
+            if(query_ms>max_query_ms) max_query_ms=query_ms;
+            poll_gap_ms=previous_poll ? (observed-previous_poll)*1000 : (observed-started)*1000;
+            previous_poll=observed;
             char name[64];snprintf(name,sizeof(name),"tx-%u.status",generation%4);
             FILE *status_file=fopen(name,"w");if(status_file){fputs(output,status_file);fclose(status_file);}
-            if(last_exit||decode(output,words)||words[6]) {event("TX status failed; raw status retained");fault=1;break;}
-            if(!words[1]) {if(words[4]>0&&!words[3]){++completed;finished=1;}else fault=1;break;}
+            have_status=0;memset(words,0,sizeof(words));
+            if(last_exit) {reason="status_command_failed";fault=1;break;}
+            if(decode(output,words)) {reason="status_invalid";fault=1;break;}
+            have_status=1;
+            if(words[6]) {reason="firmware_error";fault=1;break;}
+            if(!words[1]) {
+                if(words[4]>0&&!words[3]) {++completed;finished=1;observed_done=observed;reason="completed";}
+                else {reason="incomplete_status";fault=1;}
+                break;
+            }
+            interval=tx_poll_interval(words);
         }
+        if(!fault&&!finished&&running()) {reason="job_timeout";fault=1;}
+        if(fault) event("TX job failed; latest raw status retained");
+        /* One cleanup attempt per configured/partially configured context.
+         * Real 432 reports an error when no context exists: never issue it a
+         * second time merely because the outer guard is now finishing.
+         */
+        int job_exit=last_exit;
+        double stopping=now();
         last_exit=tx_command("-s432",output,sizeof(output));
+        double stop_ms=(now()-stopping)*1000;
         if(last_exit) fault=1;
-        event("finite TX job ended");
-        if(fault||(!finished&&running())) {fault=1;break;}
+        char detail[1024];
+        snprintf(detail,sizeof(detail),
+                 "TX end reason=%s job_exit=%d stop_exit=%d config_ms=%.3f start_ms=%.3f stop_ms=%.3f active_ms=%.3f polls=%u tail_polls=%u last_poll_gap_ms=%.3f max_query_ms=%.3f status_valid=%d remaining=%u submitted=%u skipped=%u firmware_error=%u enqueue_age_us=%u",
+                 reason,job_exit,last_exit,config_ms,start_ms,stop_ms,started ? (stopping-started)*1000 : 0.0,
+                 polls,tail_polls,poll_gap_ms,max_query_ms,have_status,words[3],words[4],words[5],words[6],
+                 have_status&&words[4] ? (uint32_t)(words[10]-words[9]) : 0);
+        event(detail);
+        if(fault||!finished) break;
+        previous_done=observed_done;previous_stop_ms=stop_ms;
     }
-    /* Also stop a finite radio job when the guard's own budget expires. */
-    last_exit=tx_command("-s432",output,sizeof(output));
-    if(last_exit) fault=1;
 }
 int main(int argc,char **argv) {
     if(argc!=7||(strcmp(argv[1],"rx")&&strcmp(argv[1],"tx"))) {
@@ -241,6 +432,6 @@ int main(int argc,char **argv) {
     f=fopen("guard-restore.log","w");if(f){fputs(output,f);fclose(f);}
     last_exit=restored;state=restored?"restore_failed":"stopped";next_state=0;status();
     f=fopen("guard-final.json","w");
-    if(f){fprintf(f,"{\"guard_fault\":%d,\"restore_exit\":%d,\"generations\":%u,\"completed_TX_jobs\":%u,\"bytes\":%llu}\n",fault,restored,generation,completed,forwarded);fclose(f);}
+    if(f){fprintf(f,"{\"guard_fault\":%d,\"restore_exit\":%d,\"generations\":%u,\"completed_TX_jobs\":%u,\"bytes\":%llu,\"TX_renewals\":%u,\"TX_renewal_failures\":%u,\"TX_stop_reason\":\"%s\"}\n",fault,restored,generation,completed,forwarded,tx_renewals,tx_renewal_failures,tx_stop_reason);fclose(f);}
     return fault||restored ? 1:0;
 }

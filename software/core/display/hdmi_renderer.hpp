@@ -19,6 +19,16 @@ namespace pose::hdmi {
 
     // Ordinary owning memory only; no model-value processing or SDK access.
     struct PreparedBackground { std::vector<uint8_t> rgb565; };
+    enum class NoticeKind { Result, WaitingInput, Resynchronizing, Stale };
+    struct Notice {
+        NoticeKind kind = NoticeKind::WaitingInput;
+        bool has_result = false, resynchronizing = false;
+        std::uint64_t age_seconds = 0;
+    };
+    // last_result contains only owning render metadata; its pixel vector may be
+    // empty. A null pointer draws no pose and never manufactures model values.
+    Rendered render_notice(PreparedBackground&& prepared, const Rendered* last_result,
+                           uint64_t last_frame_id, const Notice& notice);
     PreparedBackground prepare_background();
     void prepare_background(PreparedBackground& reusable);
     Rendered render(PreparedBackground&& prepared, const float* scores,

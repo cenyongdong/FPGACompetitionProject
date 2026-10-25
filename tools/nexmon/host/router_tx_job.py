@@ -11,7 +11,7 @@ import re
 import struct
 
 
-def make_job(source_mac, rate, seconds, label):
+def make_job(source_mac, rate, seconds, label, *, lease=False):
     if not re.fullmatch(r'(?:[0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}', source_mac):
         raise ValueError('Require explicit radio MAC')
     mac = bytes.fromhex(source_mac.replace(':', ''))
@@ -19,6 +19,8 @@ def make_job(source_mac, rate, seconds, label):
         raise ValueError('Require a unicast source radio MAC')
     if (rate, seconds) not in ((50, 2), (300, 10), (300, 60)):
         raise ValueError('Only 50Hz/2s, 300Hz/10s or 300Hz/60s bounded profiles')
+    if lease and (rate, seconds) != (300, 60):
+        raise ValueError('Lease mode uses 300Hz and a bounded 60-second initial lease')
     if not re.fullmatch(r'[a-zA-Z0-9_-]{1,24}', label):
         raise ValueError('Require a short diagnostic label')
     # Three-address Data, no DS/protection/retry flags; broadcast RA suppresses ACK.
@@ -26,12 +28,14 @@ def make_job(source_mac, rate, seconds, label):
     payload = b'\xaa\xaa\x03\x00\x00\x00\x88\xb5PIWTX1:' + label.encode('ascii')
     frame = header + payload
     ratespec = 0xc2010010  # Upstream VHT MCS0, NSS1, 20MHz with explicit override.
-    params = struct.pack('<BBIII', 0, 2, rate, rate * seconds, ratespec) + frame
+    mode = 3 if lease else 2
+    params = struct.pack('<BBIII', 0, mode, rate, rate * seconds, ratespec) + frame
     return dict(schema=1, source_mac=source_mac.lower(), rate_hz=rate,
         intended_seconds=seconds, intended_slots=rate * seconds,
         frame_bytes=len(frame), parameter_bytes=len(params), ratespec=hex(ratespec),
         spatial_mode=0, spatial_streams=1, bandwidth_mhz=20,
-        absolute_slot_mode=2, broadcast_data_only=True,
+        absolute_slot_mode=mode, broadcast_data_only=True,
+        renewable_lease=lease, lease_seconds=60 if lease else None,
         parameters_base64=base64.b64encode(params).decode('ascii'),
         source_label=label,
         limits=['Enqueue deadlines do not certify air transmission or successful CSI reception.',
@@ -59,8 +63,9 @@ if __name__ == '__main__':
     p.add_argument('--seconds', type=int, required=True)
     p.add_argument('--label', required=True)
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--lease', action='store_true', help='Mode3: renew the same running task; no automatic restart')
     a = p.parse_args()
-    job = make_job(a.source_mac, a.rate, a.seconds, a.label)
+    job = make_job(a.source_mac, a.rate, a.seconds, a.label, lease=a.lease)
     with a.output.open('x', encoding='utf-8') as f:
         json.dump(job, f, indent=2)
     print(json.dumps({k: v for k, v in job.items() if k != 'parameters_base64'}))

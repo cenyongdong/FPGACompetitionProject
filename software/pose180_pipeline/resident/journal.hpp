@@ -22,6 +22,7 @@ public:
     void record(const Record&);
     void freeze();
     void status(const std::string&);
+    void diagnostic(const std::string&); // separate bounded CSI history
     pid_t child_pid() const { return child_; }
 };
 }
