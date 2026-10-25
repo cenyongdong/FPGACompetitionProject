@@ -67,6 +67,11 @@ struct Node {
     std::int64_t grid_previous=-1,slot=0,first_slot=0,best=-1;
     std::vector<Cell> block;
     std::map<std::int64_t,Cell> cells;
+    // One median per 20-cell block, at most one second of history. Absolute
+    // phase estimates remain comparable after earlier causal corrections.
+    struct PhaseSample { std::int64_t value=0; bool valid=false; };
+    std::array<PhaseSample,15> phase_history{};
+    std::size_t phase_cursor=0;
 
     [[noreturn]] void continuity(ContinuityReason reason,const Meta& current,
                                const Meta* prior=nullptr,std::uint32_t samples=0) {
@@ -135,6 +140,41 @@ struct Node {
         if(!summary.locked)continuity(ContinuityReason::phase_lock,previous_meta,nullptr,samples);
         slot=floor_div(now*hz+half-summary.phase_scaled,scale)+1;first_slot=slot;
     }
+    void track_phase() {
+        if(!config->track_clock)return;
+        std::vector<std::int64_t> residuals;
+        for(const auto& cell:block)if(cell.index>=0) {
+            const auto error=events[std::size_t(cell.index)].time*hz-cell.target;
+            if(std::abs(error)<=tolerance)residuals.push_back(error);
+        }
+        auto median=[](std::vector<std::int64_t>& values) {
+            std::sort(values.begin(),values.end());const auto n=values.size();
+            return n%2?values[n/2]:(values[n/2-1]+values[n/2])/2;
+        };
+        auto& sample=phase_history[phase_cursor++%phase_history.size()];sample={};
+        summary.phase_step_scaled=0;
+        if(residuals.size()>=16) {
+            const auto error=median(residuals);summary.phase_residual_scaled=error;
+            for(auto& value:residuals)value=std::abs(value-error);
+            // Trust slow drift only (median <= 417 us, MAD <= 200 us).
+            // A phase step or scattered/missing input must still recover via
+            // the existing generation reset, never by chasing invalid data.
+            if(std::abs(error)<=125000&&median(residuals)<=60000)
+                sample={summary.phase_scaled+error,true};
+        }
+        std::vector<std::int64_t> estimates;
+        for(const auto& value:phase_history)if(value.valid)estimates.push_back(value.value);
+        summary.phase_samples=estimates.size();
+        if(!sample.valid){++summary.phase_rejected_blocks;return;}
+        if(estimates.size()<10)return;
+        const auto error=median(estimates)-summary.phase_scaled;
+        if(std::abs(error)>125000){++summary.phase_rejected_blocks;return;}
+        // At most 20 us per 66.7 ms block (300 ppm). Only the next cell's
+        // centre moves; slot numbers, completed targets and CSI are untouched.
+        const auto step=std::clamp(error/4,std::int64_t(-6000),std::int64_t(6000));
+        summary.phase_scaled+=step;summary.phase_correction_scaled+=step;
+        summary.phase_step_scaled=step;if(step)++summary.phase_updates;
+    }
     void feed_grid(std::size_t index) {
         auto now=events[index].time;
         if(grid_previous>=0 && !(now>grid_previous && now-grid_previous<32768)) {
@@ -155,6 +195,7 @@ struct Node {
             block.push_back({centre,best});best=-1;++slot;
             if(block.size()==20) {
                 for(std::size_t i=0;i<20;++i)cells.emplace(slot-20+std::int64_t(i),block[i]);
+                track_phase();
                 block.clear();
             }
             centre=summary.phase_scaled+slot*scale;
@@ -328,6 +369,7 @@ struct Ingress::Impl {
         require(std::set<std::string>(config.receiver_ids.begin(),config.receiver_ids.end()).size()==3,"Require distinct receiver identities");
         for(const auto&s:config.receiver_ids)require(!s.empty()&&s.size()<=128,"Receiver identity missing/too long");
         require(config.expected_events>0&&config.expected_events<=3000,"Require one bounded <=3000-event TX job");
+        require(!config.track_clock||config.streaming,"Clock tracking is resident streaming only");
         require((config.chanspec&0x3800)==0x1000,"Require explicit HT/VHT20 chanspec");
         for(double g:config.gains)require(std::isfinite(g)&&g>0,"Require explicit finite positive candidate gains");
         require(std::any_of(config.transmitter_mac.begin(),config.transmitter_mac.end(),[](auto v){return v!=0;}),"Missing transmitter MAC");

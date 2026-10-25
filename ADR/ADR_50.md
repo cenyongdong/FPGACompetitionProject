@@ -1,6 +1,6 @@
 # ADR_50：端到端演示优先、有界缓存与分级自动恢复
 
-日期：2026-10-25。状态：**已批准并实施；常驻核心、源端守护、有界日志及PC独立展示已投入实测。r5完成RX恢复与PC离线验证；r6完成持续TX续期和新版HDMI验证；r7完成更早窗口恢复实测并回退关闭，卡顿缩短但缺窗和现场显示异常仍保留。** 当前实现见[TechDetails](TechDetails.md)，最新实测及恢复唯一见[r7结果](../software/pose180_pipeline/resident/WINDOW-RECOVERY.md)，r5／r4原值保留；问题1继续搁置。
+日期：2026-10-25。状态：**已批准并实施；常驻核心、源端守护、有界日志及PC独立展示已投入实测。r5完成RX恢复与PC离线验证；r6完成持续TX续期和新版HDMI验证；r7完成更早窗口恢复实测并回退关闭，卡顿缩短但缺窗仍保留；现场黑屏／闪屏已按用户确认的显示规格限制移出故障清单。** 当前实现见[TechDetails](TechDetails.md)，最新软件、见证核查及恢复唯一见[r8／r9记录](../software/pose180_pipeline/resident/PHASE-TRACKING.md)（离线通过，r9仍在SDK前因见证差异及原生bit79拒绝，未验证实机改善）；r7实际结果见[r7记录](../software/pose180_pipeline/resident/WINDOW-RECOVERY.md)，r5／r4原值保留；问题1继续搁置。
 
 本决策延续[ADR_49](ADR_49.md)的PS／NPU感知、PL HDMI和PC独立3D分工，调整运行调度、缓存、记录、容错及验收优先级。它取代旧计划中以零丢帧、PC逐帧归档确认、严格30Hz或全部问题关闭作为新演示推进前提的要求。历史验证结果与旧严格验证入口保留；实际状态见[项目总览](../PROJECT-PROGRESS.md)，执行顺序见[待办](../ToDoLists.md)。
 

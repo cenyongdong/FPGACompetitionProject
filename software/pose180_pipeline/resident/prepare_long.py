@@ -33,8 +33,12 @@ def main():
     selection.add_argument('--stutter-r5',action='store_true',help='Prepare the r5 stutter-optimization package')
     selection.add_argument('--continuous-r6',action='store_true',help='Prepare the offline r6 renewable TX lease package; no device authorization')
     selection.add_argument('--window-r7',action='store_true',help='Prepare r7 bounded window diagnostics/recovery with qualified r6 TX; no device authorization')
+    selection.add_argument('--phase-r8',action='store_true',help='Prepare r8 bounded causal clock tracking and atomic router heartbeat')
+    selection.add_argument('--witness-r9',action='store_true',help='Prepare r9 phase tracking with strict passive three-witness corroboration')
     args=parser.parse_args()
-    continuous=args.continuous_r6 or args.window_r7
+    phase_features=args.phase_r8 or args.witness_r9
+    continuous=args.continuous_r6 or args.window_r7 or phase_features
+    short_run=args.window_r7 or phase_features
     incremental=args.stutter_r5 or continuous
     if args.stutter_r5:
         ID='pose180-resident-stutter-20261025-r5'
@@ -49,8 +53,18 @@ def main():
         OUT=ROOT/'.local'/ID
         REMOTE='/root/demo-v1-20261022-r1/'+ID
         CAPS=dict(candidate_starts=1,SDK_Open=1,original_fallbacks=1,runtime_seconds=600,stop_request_seconds=720)
-    source_seconds=780 if args.window_r7 else 1980
-    watchdog_seconds=900 if args.window_r7 else 2400
+    if args.phase_r8:
+        ID='pose180-resident-phase-20261025-r8'
+        OUT=ROOT/'.local'/ID
+        REMOTE='/root/demo-v1-20261022-r1/'+ID
+        CAPS=dict(candidate_starts=1,SDK_Open=1,original_fallbacks=1,runtime_seconds=600,stop_request_seconds=720)
+    if args.witness_r9:
+        ID='pose180-resident-witness-20261025-r9'
+        OUT=ROOT/'.local'/ID
+        REMOTE='/root/demo-v1-20261022-r1/'+ID
+        CAPS=dict(candidate_starts=1,SDK_Open=1,original_fallbacks=1,runtime_seconds=600,stop_request_seconds=720)
+    source_seconds=780 if short_run else 1980
+    watchdog_seconds=900 if short_run else 2400
     helpers=('board_call.py','board_network.py','start_candidate.py','start_fallback.py','capture_uart.py','capture_hdmi_startup.ps1')
     # r5 may already contain its builds/test outputs. A prior package or helper
     # is never overwritten: preparing again needs a new package decision.
@@ -61,7 +75,7 @@ def main():
     old_long=ROOT/'.local/pose180-resident-long-20261025-r4'
     native=OUT/'build/arm64/pose180_demo' if incremental else ROOT/'.local/pose180-resident-20261025/arm64/pose180_demo'
     guard=OUT/'build/router_guard' if incremental else ROOT/'.local/pose180-resident-long-20261025/build/router_guard'
-    tx_module=(ROOT/'.local/pose180-resident-continuous-20261025-r6/firmware/dhd.ko') if args.window_r7 else OUT/'firmware/dhd.ko'
+    tx_module=(ROOT/'.local/pose180-resident-continuous-20261025-r6/firmware/dhd.ko') if short_run else OUT/'firmware/dhd.ko'
     if continuous and not tx_module.is_file():raise FileNotFoundError(tx_module)
     capture=ROOT/'.local/pose180-resident-long-20261025/build/capture-metadata-stream'
     for path in (native,guard,capture,old/'board/manifest.json'):
@@ -81,11 +95,24 @@ def main():
         else:
             protected[name]=digest(target)
             if protected[name]!=row:raise ValueError('Existing qualified asset changed: '+name)
+    if args.witness_r9:
+        # Pure evidence corroboration only. Preserve the original seed and
+        # consumption gates; no offset correction or extra hardware command.
+        bootstrap=(board/'bootstrap.py').read_text()
+        anchor="        c.fresh_json(run/'before-seed.json', seed)\n"
+        if bootstrap.count(anchor)!=1:raise ValueError('Bootstrap integration point differs')
+        bootstrap=bootstrap.replace(anchor,anchor+"        witness = _load(base/'witness.py', '_r9_witness')\n"
+            "        coherence = witness.compare(before, trace_before, protocol_before)\n"
+            "        c.fresh_json(run/'witness-coherence.json', coherence)\n"
+            "        _need(coherence['consistent'], 'Native witnesses disagree: '+str(coherence['issues']))\n")
+        (board/'bootstrap.py').write_text(bootstrap,newline='\n')
+        protected.pop('bootstrap.py',None)
+        shutil.copyfile(SOURCE/'witness.py',board/'witness.py')
     shutil.copyfile(native,software/'pose180_demo')
     for name in ('preflight.py','csi.conf'):shutil.copyfile(old/'software'/name,software/name)
     for name in ('run_hdmi_trial.py','service.py','bounded_log.py'):shutil.copyfile(SOURCE/name,software/name)
     identity=json.loads((old/'software/identity.json').read_text())
-    identity.update(session=20261025050701 if args.window_r7 else 20261025050601 if args.continuous_r6 else 20261025050501 if args.stutter_r5 else 20261025050401,
+    identity.update(session=20261025050901 if args.witness_r9 else 20261025050801 if args.phase_r8 else 20261025050701 if args.window_r7 else 20261025050601 if args.continuous_r6 else 20261025050501 if args.stutter_r5 else 20261025050401,
                     seconds=CAPS['runtime_seconds'],detached_supervisor=True)
     identity['files']={p.name:digest(p)['sha256'] for p in software.iterdir()}
     (software/'identity.json').write_text(json.dumps(identity,indent=2)+'\n')
@@ -123,11 +150,11 @@ def service_result():
     controller=controller.replace("print(json.dumps({key: result[key] for key in keys if key in result}), flush=True)",
         "print(json.dumps(result if args.stage in ('run','status','stop') else {key: result[key] for key in keys if key in result}), flush=True)")
     (board/'controller.py').write_text(controller,newline='\n')
-    marker='POSE180_RESIDENT_WINDOW_R7_' if args.window_r7 else 'POSE180_RESIDENT_CONTINUOUS_R6_' if args.continuous_r6 else 'POSE180_RESIDENT_STUTTER_R5_' if args.stutter_r5 else 'POSE180_RESIDENT_LONG_R4_'
+    marker='POSE180_RESIDENT_WITNESS_R9_' if args.witness_r9 else 'POSE180_RESIDENT_PHASE_R8_' if args.phase_r8 else 'POSE180_RESIDENT_WINDOW_R7_' if args.window_r7 else 'POSE180_RESIDENT_CONTINUOUS_R6_' if args.continuous_r6 else 'POSE180_RESIDENT_STUTTER_R5_' if args.stutter_r5 else 'POSE180_RESIDENT_LONG_R4_'
     for name in helpers:
         text=(old/name).read_text(encoding='utf-8-sig').replace('pose180-resident-hdmi-20261025-r3',ID).replace('POSE180_RESIDENT_HDMI_R3_',marker)
         (OUT/name).write_text(text,encoding='utf-8',newline='\n')
-    if args.window_r7:
+    if short_run:
         # Reuse the actually exercised, identity-checked read-only UART entry,
         # replacing the obsolete generic script's unrelated output directory.
         previous_run=ROOT/'.local/pose180-resident-continuous-20261025-r6'
@@ -138,7 +165,7 @@ def service_result():
     shutil.copyfile(OUT/'board_network.py',board/'board_network.py')
     manifest={k:v for k,v in previous.items() if k not in ('files','source_reference')}
     manifest.update(package_id=ID,base=REMOTE,caps=CAPS,status='prepared_pending_explicit_BOOT_authorization',
-                    source_reference='software/pose180_pipeline/resident; '+('bounded common-window rejection diagnostics and earlier alignment recovery; qualified r6 TX and HDMI' if args.window_r7 else 'renewable TX firmware lease, autonomous guard, PC-style HDMI view' if args.continuous_r6 else 'bounded recovery diagnostics, local RX recovery, TX handoff and HDMI waiting states' if args.stutter_r5 else 'lifecycle and capped logs')+', unchanged SDK/math/RTL')
+                    source_reference='software/pose180_pipeline/resident; '+('strict passive three-witness corroboration; r8 causal phase tracking and atomic heartbeat' if args.witness_r9 else 'causal bounded grid phase tracking; atomic router heartbeat; qualified r6 TX and HDMI' if args.phase_r8 else 'bounded common-window rejection diagnostics and earlier alignment recovery; qualified r6 TX and HDMI' if args.window_r7 else 'renewable TX firmware lease, autonomous guard, PC-style HDMI view' if args.continuous_r6 else 'bounded recovery diagnostics, local RX recovery, TX handoff and HDMI waiting states' if args.stutter_r5 else 'lifecycle and capped logs')+', unchanged SDK/model preprocessing/RTL')
     if incremental:
         manifest['protected_identity_reference']='.local/pose180-resident-hdmi-20261025-r3/board/manifest.json'
     manifest['board']['remote_root']=REMOTE
@@ -159,7 +186,7 @@ def service_result():
         folder=radios/role;folder.mkdir()
         previous_root=ROOT/'.local/pose180-resident-20261025/direct'/role
         prior='/tmp/nexmon-direct-20261025-r2-'+role
-        remote=('/tmp/nexmon-resident-window-20261025-r7-' if args.window_r7 else '/tmp/nexmon-resident-continuous-20261025-r6-' if args.continuous_r6 else '/tmp/nexmon-resident-stutter-20261025-r5-' if args.stutter_r5 else '/tmp/nexmon-resident-long-20261025-r4-')+role
+        remote=('/tmp/nexmon-resident-witness-20261025-r9-' if args.witness_r9 else '/tmp/nexmon-resident-phase-20261025-r8-' if args.phase_r8 else '/tmp/nexmon-resident-window-20261025-r7-' if args.window_r7 else '/tmp/nexmon-resident-continuous-20261025-r6-' if args.continuous_r6 else '/tmp/nexmon-resident-stutter-20261025-r5-' if args.stutter_r5 else '/tmp/nexmon-resident-long-20261025-r4-')+role
         names=['dhd-csi.ko','nexutil'] if role=='tx' else ['dhd-csi.ko','nexutil','makecsiparams','capture-metadata']
         radio_source=old_long/'radios'/role if incremental else previous_root
         unchanged={}
@@ -177,6 +204,8 @@ def service_result():
         if role!='tx':shutil.copyfile(capture,folder/'capture-metadata-stream')
         for name in ('stage.sh','load.sh','restore.sh'):
             text=(previous_root/name).read_text().replace(prior,remote)
+            if phase_features and name=='load.sh':
+                text=text.replace('cut -d. -f1 /proc/uptime > lease','cut -d. -f1 /proc/uptime > lease.load.tmp && mv lease.load.tmp lease')
             if continuous and role=='tx' and name=='load.sh':
                 text=text.replace(previous_tx_hash,unchanged['dhd-csi.ko'])
             if name=='stage.sh':
@@ -198,7 +227,7 @@ fi
                     text=text.replace('/usr/sbin/wl -i eth6 monitor',cleanup+'/usr/sbin/wl -i eth6 monitor',1)
             (folder/name).write_text(text,newline='\n')
         shutil.copyfile(SOURCE/'router_watchdog.sh',folder/'watchdog.sh')
-        if args.window_r7:
+        if short_run:
             (folder/'watchdog.sh').write_text((folder/'watchdog.sh').read_text().replace('-gt 2400','-gt '+str(watchdog_seconds)),newline='\n')
         shutil.copyfile(SOURCE/'router_ctl.sh',folder/'router_ctl.sh')
         (folder/'guard.conf').write_text('GUARD_ROLE='+('tx' if role=='tx' else 'rx')+'\nGUARD_SECONDS='+str(source_seconds)+'\n',newline='\n')
@@ -215,7 +244,7 @@ fi
                 (folder/'run.params').write_text(job['parameters_base64']+'\n')
                 (radios/'tx-profile.json').write_text(json.dumps(job,indent=2)+'\n')
         checks={**unchanged,**shared_checks}
-        if args.window_r7:checks['watchdog.sh']=digest(folder/'watchdog.sh')['sha256']
+        if short_run:checks['watchdog.sh']=digest(folder/'watchdog.sh')['sha256']
         checks.update({p.name:digest(p)['sha256'] for p in folder.iterdir() if p.is_file() and p.name not in checks})
         (folder/'transfer.sha256').write_text(''.join(v+'  '+k+'\n' for k,v in checks.items()),newline='\n')
         pack(folder,radios/(role+'.tar.gz'))

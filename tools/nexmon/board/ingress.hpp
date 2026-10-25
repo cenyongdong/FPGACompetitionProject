@@ -27,6 +27,7 @@ struct Config {
     std::size_t expected_events = 3000; // one <=10 s, 300 Hz job; no sequence reuse
     std::array<double,3> gains{}; // mandatory finite positive candidate scales
     bool streaming = false; // rolling four-second history; original finite mode unchanged
+    bool track_clock = false; // resident-only causal phase slew; never changes finalized cells
 };
 
 // Recoverable capture continuity failures are distinct from malformed input or
@@ -77,6 +78,9 @@ struct NodeSummary {
     bool locked=false, trailing_unpaired=false;
     std::size_t trailing_cores=0;
     std::int64_t phase_scaled=0, calibration_end_us=0;
+    std::int64_t phase_correction_scaled=0, phase_step_scaled=0, phase_residual_scaled=0;
+    std::uint64_t phase_updates=0, phase_rejected_blocks=0;
+    std::size_t phase_samples=0;
     double concentration=0;
 };
 // Fixed-size, cumulative for this alignment generation. Rejection categories

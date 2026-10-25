@@ -2,7 +2,9 @@
 
 前一批次：[r6持续TX租约](../../software/pose180_pipeline/resident/TX-LEASE.md)已按1候选／1 SDK／10分钟／1原BOOT回退完成并关闭，全部余额0、无本批负载。该批原BOOT身份、恢复证据及剩余卡顿以r6记录为准；下述r5及更早状态保留历史，不复用旧额度。
 
-当前最新批次：[r7共同窗口优化](../../software/pose180_pipeline/resident/WINDOW-RECOVERY.md)已执行并关闭，1候选／1 SDK／600秒运行期／1原BOOT回退，全部余额0、无本批负载；**当前原BOOT身份及实际结果以r7记录为准**。无窗恢复等待已缩短，显示器整屏黑屏经重新上电恢复、原因未定。必要新验证可按[最新自主板测规范](../../Agents.md#自主权限与重大问题)另记新批次直接执行，不复活旧包。
+上一批次：[r7共同窗口优化](../../software/pose180_pipeline/resident/WINDOW-RECOVERY.md)已执行并关闭，1候选／1 SDK／600秒运行期／1原BOOT回退，全部余额0、无本批负载；该批原BOOT身份及实际结果以r7记录为准。无窗恢复等待已缩短，显示器黑屏／闪屏已按用户确认的[显示规格限制](../../software/pose180_pipeline/resident/WINDOW-RECOVERY.md#显示规格限制)移出待定位故障。必要新验证可按[最新自主板测规范](../../Agents.md#自主权限与重大问题)另记新批次直接执行，不复活旧包。
+
+当前最新批次：[r9启动见证复验](../../software/pose180_pipeline/resident/PHASE-TRACKING.md)实际1候选／0 SDK／1原BOOT回退。首RVALID差异再现，且原生bit79阻断准入，未进入RX1闭环测试。已关闭、余额0、无本批负载；**当前原BOOT身份以r9记录为准**。原r8离线结果和失败保留。
 
 2026-10-25较早批次：[r5卡顿优化与PC联合长测](../../software/pose180_pipeline/resident/STUTTER-VALIDATION.md)已完成30分钟、RX物理恢复及PC离线实屏验证，正常停止、回原BOOT并关闭。实际1候选／1SDK／1回退，全部余额0；无本批活动负载，该批恢复身份与原值统一见r5记录及本机`.local/pose180-resident-stutter-20261025-r5/run-state.json`。r4及更早包均保持关闭。
 

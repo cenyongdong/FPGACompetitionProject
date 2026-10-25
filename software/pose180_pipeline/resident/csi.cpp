@@ -38,7 +38,8 @@ Options parse(const std::string& path) {
     auto source=take("source");need(source.size()==17,"TX MAC invalid");
     for(unsigned i=0;i<6;++i){std::size_t used=0;auto n=std::stoul(source.substr(i*3,2),&used,16);need(used==2&&n<=255&&(i==5||source[i*3+2]==':'),"TX MAC invalid");o.config.transmitter_mac[i]=std::uint8_t(n);}
     o.config.chanspec=std::stoul(take("channel"),nullptr,0);need(fields.empty(),"Unknown CSI field");
-    o.config.streaming=true;o.config.session_id="configuration-check";nexmon_board::Ingress check(o.config);
+    o.config.streaming=true;o.config.track_clock=true;
+    o.config.session_id="configuration-check";nexmon_board::Ingress check(o.config);
     return o;
 }
 }
@@ -99,7 +100,11 @@ Csi::Csi(Shared& s,const std::string& configuration,std::uint64_t session):share
                     <<",\"elapsed_ms\":"<<(now-started)/1000000<<",\"complete\":"<<n.complete_events
                     <<",\"retained\":"<<n.retained<<",\"invalid\":"<<n.invalid_events<<",\"retries\":"<<n.retransmissions
                     <<",\"wraps\":"<<n.wraps<<",\"locked\":"<<n.locked<<",\"phase_scaled\":"<<n.phase_scaled
-                    <<",\"concentration\":"<<n.concentration<<"}\n";s.stats.input_event(node.str());
+                    <<",\"concentration\":"<<n.concentration
+                    <<",\"phase_correction\":"<<n.phase_correction_scaled<<",\"phase_step\":"<<n.phase_step_scaled
+                    <<",\"phase_residual\":"<<n.phase_residual_scaled<<",\"phase_updates\":"<<n.phase_updates
+                    <<",\"phase_rejected\":"<<n.phase_rejected_blocks<<",\"phase_samples\":"<<n.phase_samples
+                    <<"}\n";s.stats.input_event(node.str());
             }
             next_window_report=now+5000000000ull;
         };

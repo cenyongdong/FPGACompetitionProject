@@ -7,8 +7,8 @@
 | D48 | 新180-query FP16实板与自身生成指令仿真存在数值差异 | Icraft转换、TopK／Host计算及旧内部桥消除完成；首次原值保全并独立比较，高分位置仍超新批准门 | 数值／量化精度未验收；用户随后允许忽略误差直接测稳定性，不能据此回写数值通过。[原值、现行授权与结果](tools/pose180/deploy/RESULTS.md) |
 | D47 | 共享FP16首次Host索引内容错误，后两轮SDK源读取合法 | 早期原值匹配前一输入；静态源与真实图独立对照未复现，后续r53再次捕获1568字混入同帧姿态内容 | DMA完成、缓存同步效果与NPU源可见性仍不能严格三分；晚读不修补首次值，旧DATA仍暂停。[隔离结果](demo_v1/RESULTS.md)、[r53原值](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md) |
 | D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
-| D45 | 跨启动偶发HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离后仍复现；同启动有限消费可缓解，后续r3取得真实CSI／HDMI有界闭环 | 较早180-query包r2在消费前出现bit79 RCAM_UNDERFLOW而未过准入；r3通过不关闭根因，已中止的根因板测不恢复。[r2原值](software/pose180_pipeline/RESULTS.md)、[r3实际范围](software/pose180_pipeline/resident/README.md)、[协议原值](tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md) |
-| D46 | 真实CSI接入后的停顿、射频适配与人体效果 | r5验证独立显示及恢复；r6验证同一TX任务续期和新版HDMI，均已正常回退关闭 | TX切换已消除，但共同窗口缺失后仍有长停顿；r7实测无窗恢复间隔缩短，RX1网格越限仍需分析；整屏黑屏经显示器重新上电恢复，原因未定。姿态问题暂缓、精度未验收，严格30Hz不作门。[r6结果](software/pose180_pipeline/resident/TX-LEASE.md)、[r7实测](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) |
+| D45 | 跨启动HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离仍复现；同启动有限消费可缓解，r3取得真实CSI／HDMI有界闭环 | r8／r9首RVALID快照与两份波形差1周期；解析偏移已排除，硬件计数起点与首边沿采样尚未区分。r9另见原生bit79，仍不满足有限消费准入，已回退关闭。[最新限定调查](software/pose180_pipeline/resident/PHASE-TRACKING.md)，D45全面调查与旧DATA不自动恢复。 |
+| D46 | 真实CSI接入后的停顿、射频适配与人体效果 | r5验证独立显示及恢复；r6验证同一TX任务续期和新版HDMI，均已正常回退关闭 | TX切换已消除，但共同窗口缺失后仍有长停顿；r7实测无窗恢复间隔缩短，r8相位跟踪离线通过，r9见证复验仍在SDK前拒绝、真实改善待验证。姿态问题暂缓、精度未验收，严格30Hz不作门。[r6结果](software/pose180_pipeline/resident/TX-LEASE.md)、[r7实测](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) |
 
 ## 现存问题与处理优先级
 
@@ -21,7 +21,7 @@
 - **D47未关闭。** r53的1568错字全部匹配同帧input0同偏移，首次owned Host与即时副本一致，晚读正确。协议clean与SDK ready不证明首次数据正确；完成／可见性契约仍待核实，但旧图全面调查不作为新180-query演示前置。[r53原值与归因边界](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
 
 - **D45启动稳定性：未解决。** PL就绪门、等待已高的PS输出及视频源端隔离均不足以消除异常；r52有限消费后的90次合法采纳不能证明根因已修。复位契约及更早事务状态仍缺证据，根因板测保持中止。r23～r26原值与后续r37/r52结果见下节，不重复同包启动。
-- **D46持续TX续期已实测，整体卡顿尚未解决。** r6保持同一发送上下文与三RX连接，仍出现共同有效窗口缺失后的10秒等待及软恢复；新HDMI外观和恢复获现场确认。精确计数、时间线、已知与未证实原因见[r6记录](software/pose180_pipeline/resident/TX-LEASE.md)。后续[r7](software/pose180_pipeline/resident/WINDOW-RECOVERY.md)已完成板测和回退关闭，无窗恢复长间隔缩短至约3.1～3.2秒；实测RX1点位越限和连续拒绝支持继续分析网格偏差，物理时钟来源尚未定。另保留RX3首次看门狗回退与整屏黑屏，后者经显示器重新上电恢复；不能据此归因于软件或短周期计数回绕。r5的RX／PC物理离线结果保留；问题1继续搁置，不安排摆位／动作实验。
+- **D46持续TX续期已实测，整体卡顿尚未解决。** r6保持同一发送上下文与三RX连接，仍出现共同有效窗口缺失后的10秒等待及软恢复；新HDMI外观和恢复获现场确认。精确计数、时间线、已知与未证实原因见[r6记录](software/pose180_pipeline/resident/TX-LEASE.md)。后续[r7](software/pose180_pipeline/resident/WINDOW-RECOVERY.md)已完成板测和回退关闭，无窗恢复长间隔缩短至约3.1～3.2秒；实测RX1点位越限和连续拒绝支持继续分析网格偏差，物理时钟来源尚未定。[r8](software/pose180_pipeline/resident/PHASE-TRACKING.md)已实现有界相位跟踪及原子心跳，离线验证通过；实际候选在SDK前出现首RVALID见证差1周期，未获安全准入，已回原BOOT关闭。随后r9完成针对见证差异的离线核查和新包复验，仍有1周期差异及范围外bit79，未启动SDK，已回退关闭。尚未验证卡顿改善，不扩大D45全面根因调查。另保留RX3首次看门狗回退；整屏黑屏／闪屏已按用户确认的[显示规格限制](software/pose180_pipeline/resident/WINDOW-RECOVERY.md#显示规格限制)移出故障清单。r5的RX／PC物理离线结果保留；问题1继续搁置，不安排摆位／动作实验。
 
 ## HDMI接入中已处理的问题（D05）
 

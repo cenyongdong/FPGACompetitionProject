@@ -40,8 +40,8 @@ static void status(void) {
     double t = now();
     if (t < next_state) return;
     next_state = t + 1;
-    FILE *f = fopen("lease", "w");
-    if (f) { fprintf(f, "%u\n", (unsigned)t); fclose(f); }
+    FILE *f = fopen("lease.tmp", "w");
+    if (f) { fprintf(f, "%u\n", (unsigned)t); if (!fclose(f)) rename("lease.tmp", "lease"); }
     f = fopen("guard-status.tmp", "w");
     if (f) {
         fprintf(f, "{\"pid\":%d,\"state\":\"%s\",\"elapsed\":%.3f,\"generation\":%u,\"failures\":%u,\"completed_TX_jobs\":%u,\"forwarded_bytes\":%llu,\"last_exit\":%d,\"fault\":%d,\"TX_renewals\":%u,\"TX_renewal_failures\":%u,\"TX_stop_reason\":\"%s\"}\n",

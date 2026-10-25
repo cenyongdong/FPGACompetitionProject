@@ -11,7 +11,7 @@
 1. [r4](software/pose180_pipeline/resident/LONG-VALIDATION.md)已完成30分钟运行期、RX物理断线恢复、PC物理离线显示、资源上限及实际STOP／回退；包已关闭。持续守护、独立启停和日志上限已实测，TX释放后未重配的问题已修正；包含早期修复停顿，不称全程连续无卡顿。
 2. 用户已批准卡顿优化；有界诊断、仅故障RX断开、健康TCP保留、RX统一网络退避、TX有限任务末段衔接和HDMI等待／过期提示均已实现并通过定向软件验证，ARM编译完成。细节见[TechDetails](ADR/TechDetails.md)，原值与范围见[r5记录](software/pose180_pipeline/resident/STUTTER-VALIDATION.md)。
 3. r5已接入PC交互渲染并完成30分钟联合实测：RX1单路拔插恢复、PC物理离线超过5分钟期间HDMI更新及接回自动恢复均确认；正常停止、回原BOOT、包关闭。结果与剩余秒级卡顿统一见[r5记录](software/pose180_pipeline/resident/STUTTER-VALIDATION.md)，不复用本包额度。
-4. [r7共同窗口诊断与更早软恢复](software/pose180_pipeline/resident/WINDOW-RECOVERY.md)已完成板测、原BOOT回退和关闭，无窗恢复长间隔缩短但窗口拒绝仍在。下一步聚焦RX1残差随时间变化及采集时钟来源，再判断连续相位跟踪；保留显示器整屏黑屏及RX3首次看门狗回退两个未定原因。保持同事件／完整窗口真实性、硬件安全及问题1暂停；必要新板测按[最新规范](Agents.md#自主权限与重大问题)自主安排，无需再询问上板。
+4. [r7窗口恢复](software/pose180_pipeline/resident/WINDOW-RECOVERY.md)已缩短无窗停顿；[r8相位跟踪／r9复验](software/pose180_pipeline/resident/PHASE-TRACKING.md)离线通过但实板仍被安全准入阻断。下一步需以共同采样边沿的被动计数对照区分计数起点与首边沿采样差异，并解释范围外live原生状态，不能加一修正或同配置连续启动碰运气。安全准入成立后再验证真实RX1残差、缺窗和最长结果间隔。问题1、旧DATA及D45全面调查保持暂停；必要新板测按[最新规范](Agents.md#自主权限与重大问题)自主安排。
 
 ## 明确暂缓
 

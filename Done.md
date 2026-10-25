@@ -10,7 +10,9 @@
 
 随后按用户批准完成卡顿优化：有界原始诊断、健康TCP保留、单RX重连、统一网络退避、TX有限任务衔接及等待提示；定向软件验证与ARM编译通过。接入PC交互渲染后完成[r5的30分钟联合实测](software/pose180_pipeline/resident/STUTTER-VALIDATION.md)，RX恢复、PC物理离线期间HDMI更新及自动重连均确认，正常停止、回原BOOT并关闭。秒级缺窗仍保留，不称零卡顿或全天验收。
 
-后续完成[持续TX租约r6](software/pose180_pipeline/resident/TX-LEASE.md)的固件／守护与离线验证，并按具体授权完成10分钟实测及原BOOT回退关闭。同一任务续期成功、新版HDMI外观获现场确认；剩余长停顿集中在无共同窗口后的软恢复。[r7](software/pose180_pipeline/resident/WINDOW-RECOVERY.md)据此补齐窗口诊断、独立日志环并缩短无窗等待，离线验证、ARM64编译及板测完成并回退关闭；实测无窗恢复长间隔缩短，RX1越限点成为后续分析重点。对后续开发的参考：区分启动无输入、主动停采、自然缺窗和显示器黑屏；不把显示器重新上电恢复写成软件修复或全天稳定性通过。
+后续完成[持续TX租约r6](software/pose180_pipeline/resident/TX-LEASE.md)的固件／守护与离线验证，并按具体授权完成10分钟实测及原BOOT回退关闭。同一任务续期成功、新版HDMI外观获现场确认；剩余长停顿集中在无共同窗口后的软恢复。[r7](software/pose180_pipeline/resident/WINDOW-RECOVERY.md)据此补齐窗口诊断、独立日志环并缩短无窗等待，离线验证、ARM64编译及板测完成并回退关闭；实测无窗恢复长间隔缩短，RX1越限点成为后续分析重点。对后续开发的参考：区分启动无输入、主动停采与自然缺窗；显示器黑屏／闪屏已按用户确认的[显示规格限制](software/pose180_pipeline/resident/WINDOW-RECOVERY.md#显示规格限制)移出故障清单，历史现场观察保留。
+
+同一阶段后续实现[r8相位跟踪及r9启动见证交叉核验](software/pose180_pipeline/resident/PHASE-TRACKING.md)：29组Ingress、TCP恢复、看门狗及ARM64构建通过；首RVALID原始回放17例、实际RTL仿真4例通过。r9复验仍被见证差异与原生bit79阻断，已回退关闭。对后续开发的参考：不能以正常流水延迟解释该1周期差异，不能放宽准入或把离线相位改善写成整机通过。
 
 对后续开发的参考：普通缺帧、有限误差与记录停顿不再阻断主链，按影响丢弃／降级／恢复；硬件安全、在途资源与真实结果边界保持。现行实现细节已更新到[TechDetails](ADR/TechDetails.md)；后续据实际恢复事件处理剩余缺窗，姿态问题按用户要求暂缓；历史失败不回写通过，旧包与独立暂停不复活。
 

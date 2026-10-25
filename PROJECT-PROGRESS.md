@@ -8,7 +8,9 @@
 
 最新[r6持续TX租约实测](software/pose180_pipeline/resident/TX-LEASE.md)已完成获准10分钟运行、正常停止及原BOOT回退，包关闭、余额0。同一TX任务续期成功，新版HDMI外观获现场确认；仍有共同窗口缺失后的长停顿与自动恢复，整体卡顿尚未解决。该批恢复身份与精确结果以r6记录为准。
 
-[r7共同窗口优化实测](software/pose180_pipeline/resident/WINDOW-RECOVERY.md)已完成600秒运行期、正常退出与原BOOT回退并关闭；真实结果覆盖约428秒，无窗恢复长间隔缩短至约3.1～3.2秒，缺窗仍存在。现场整屏黑屏经显示器重新上电恢复，原因未定。当前恢复身份及精确结果以r7记录为准。用户已授权必要验证可自主上板、无需再次询问，现行边界见[规范](Agents.md#自主权限与重大问题)。
+[r7共同窗口优化实测](software/pose180_pipeline/resident/WINDOW-RECOVERY.md)已完成600秒运行期、正常退出与原BOOT回退并关闭；真实结果覆盖约428秒，无窗恢复长间隔缩短至约3.1～3.2秒，缺窗仍存在。现场黑屏／闪屏已归入[显示规格限制](software/pose180_pipeline/resident/WINDOW-RECOVERY.md#显示规格限制)，不再列为待定位故障。r7历史身份及精确结果见其记录。用户已授权必要验证可自主上板、无需再次询问，现行边界见[规范](Agents.md#自主权限与重大问题)。
+
+[r8相位跟踪与r9见证复验](software/pose180_pipeline/resident/PHASE-TRACKING.md)已完成软件验证、首RVALID原始回放及实际RTL／布线核查。新r9复现1周期差异，并出现原准入范围外bit79；未启动SDK或验证RX1实机改善，已回原BOOT关闭、无本批负载。当前恢复身份与未知原因统一见该记录；问题1继续搁置。
 
 | 用途 | 唯一入口 |
 |---|---|

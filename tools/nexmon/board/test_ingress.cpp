@@ -221,6 +221,66 @@ int main() {
                      <<" max_gap_ms="<<max_gap[0]*1000/300<<'/'<<max_gap[1]*1000/300<<'/'<<max_gap[2]*1000/300
                      <<" resets="<<resets[0]<<'/'<<resets[1]<<'/'<<resets[2]<<'\n';
         }++passed;
+        {
+            auto c=config();c.track_clock=true;throws([&]{Ingress finite(c);});
+            c.streaming=true;Ingress in(c);Source source;std::size_t emitted=0;
+            for(int ordinal=0;ordinal<800;++ordinal)for(std::size_t r=0;r<3;++r) {
+                source.event(in,r,ordinal);
+                for(const auto& w:in.take_ready()) {
+                    check(w.csi==baseline.windows.at(emitted).csi&&w.event_indices==baseline.windows.at(emitted).event_indices,"Tracking changed uniform source association/model input");++emitted;
+                }
+            }
+            check(emitted==baseline.windows.size(),"Tracking lost uniform windows");
+        }++passed;
+        for(unsigned dirty=0;dirty<2;++dirty) {
+            auto c=config();c.streaming=true;c.track_clock=true;Ingress in(c);Source source;
+            std::size_t count=0,max_gap=0;int last_good=0;
+            std::array<std::int64_t,3> last_index{-1,-1,-1};
+            const int length=dirty?36000:180000;
+            for(int ordinal=0;ordinal<length;++ordinal) {
+                for(std::size_t r=0;r<3;++r) {
+                    if(dirty&&r==2&&ordinal>400&&ordinal%997==0)continue;
+                    const int ppm=r==0?-20:r==1?12:-7;
+                    const int jitter=dirty?(ordinal*31+int(r)*17)%81-40:0;
+                    const int spike=dirty&&r==1&&ordinal>400&&ordinal%1237==0?1200:0;
+                    source.event(in,r,ordinal,0,int(r)*12345,false,3,false,-1,int(std::llround(double(ordinal)*ppm/300))+jitter+spike);
+                    for(const auto& w:in.take_ready()) {
+                        for(std::size_t rx=0;rx<3;++rx)for(auto index:w.event_indices[rx]) {
+                            check(std::int64_t(index)>last_index[rx],"Tracking reused or reordered an event");last_index[rx]=index;
+                        }
+                        if(!dirty)for(std::size_t t=0;t<20;++t)
+                            check(w.event_indices[0][t]==w.event_indices[1][t]&&w.event_indices[1][t]==w.event_indices[2][t],"Tracking admitted different events");
+                        if(count)max_gap=std::max(max_gap,std::size_t(ordinal-last_good));
+                        ++count;last_good=ordinal;
+                    }
+                }
+                if(count)max_gap=std::max(max_gap,std::size_t(ordinal-last_good));
+                if(ordinal%300==0) {
+                    for(auto n:in.retained_events())check(n<=1210,"Tracked event history grew");
+                    for(auto n:in.retained_cells())check(n<=80,"Tracked cell history grew");
+                    for(const auto& n:in.diagnostics().nodes)
+                        check(n.phase_samples<=15&&std::abs(n.phase_step_scaled)<=6000,"Phase tracking exceeded bounds");
+                }
+            }
+            const auto d=in.diagnostics();
+            check(count>std::size_t(length/20-100)&&max_gap<65,"Tracked gradual drift still starved");
+            check(d.different_event==0,"Tracked drift shifted event identities");
+            if(!dirty)check(d.point_error==0&&d.missing==0&&d.nodes[0].phase_correction_scaled < -3000000,"Unwrapped phase tracking failed");
+            else check(d.point_errors[1]>0&&d.missing_points[2]>0,"Tracking concealed spike/missing data");
+            std::cout<<"tracked_drift seconds="<<length/300<<" dirty="<<dirty<<" windows="<<count<<" max_gap_ms="<<max_gap*1000/300
+                     <<" correction_scaled="<<d.nodes[0].phase_correction_scaled<<'/'<<d.nodes[1].phase_correction_scaled<<'/'<<d.nodes[2].phase_correction_scaled<<'\n';
+            ++passed;
+        }
+        {
+            auto c=config();c.streaming=true;c.track_clock=true;Ingress in(c);Source source;
+            std::size_t before=0,after=0;
+            for(int ordinal=0;ordinal<2700;++ordinal)for(std::size_t r=0;r<3;++r) {
+                source.event(in,r,ordinal,0,0,false,3,false,-1,r==1&&ordinal>=900?1200:0);
+                for(const auto& w:in.take_ready()) {if(w.event_indices[0][19]<900)++before;else ++after;}
+            }
+            const auto d=in.diagnostics();check(before>0&&after==0&&d.point_errors[1]>1000,"Tracking concealed abrupt phase step");
+            check(std::abs(d.nodes[1].phase_correction_scaled)<300&&d.nodes[1].phase_rejected_blocks>70,"Tracker chased untrusted phase step");
+        }++passed;
         std::cout<<"ingress directed checks passed="<<passed<<'\n';return 0;
     }catch(const std::exception&e){std::cerr<<"directed ingress failure after "<<passed<<" checks: "<<e.what()<<'\n';return 1;}
 }
