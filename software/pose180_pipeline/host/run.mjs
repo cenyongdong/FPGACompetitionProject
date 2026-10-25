@@ -21,6 +21,23 @@ const stats = values => {
     return {mean:values.reduce((a,b)=>a+b,0)/values.length,p95:sorted[Math.ceil(values.length*.95)-1],p99:sorted[Math.ceil(values.length*.99)-1],max:sorted.at(-1),over_33_333_ms:values.filter(value=>value>1000/30).length};
 };
 
+export function prepareArchive(file, bytes) {
+    const started = clock(), fd = fs.openSync(file,'wx');
+    // ftruncate alone only extends logical EOF. Materialize the entire archive
+    // before input admission so allocation/valid-data extension stays outside
+    // the per-frame archive ACK path. One scratch block bounds preparation RAM.
+    try {
+        const zeros = Buffer.alloc(Math.min(1024*1024,bytes));
+        for (let offset=0;offset<bytes;) {
+            const written=fs.writeSync(fd,zeros,0,Math.min(zeros.length,bytes-offset),offset);
+            if (!written) throw new Error('Archive preparation made no progress');
+            offset+=written;
+        }
+        fs.fsyncSync(fd);
+        return {fd,preparation:{mode:'full_zero_write_and_fsync_before_ready',bytes,elapsed_ms:Number(clock()-started)/1e6}};
+    } catch (error) { fs.closeSync(fd); throw error; }
+}
+
 class PayloadPrefetch {
     constructor(count, catalog, files) {
         this.count = count; this.catalog = catalog; this.files = files;
@@ -57,6 +74,8 @@ export async function main(argv = process.argv.slice(2)) {
     const stage = options.stage || 'basic', counts = {basic:3,short:900,medium:9000,stress:54000};
     const count = Number(options.count ?? options.frames ?? counts[stage]), hz = Number(options.hz ?? (stage === 'basic' ? 5 : 30));
     const limit = Number(options['max-inflight'] ?? 8), maxAgeMs = Number(options['max-frame-age-ms'] ?? 1000);
+    const hdmi = options.hdmi ?? '1';
+    if (!['0','1'].includes(hdmi)) throw new Error('Expected --hdmi 0|1');
     const toleranceMs = Number(options['send-tolerance-ms'] ?? 20), linger = Number(options.linger ?? 0);
     const inputPort = Number(options['input-port'] ?? 39382), resultPort = Number(options['result-port'] ?? 39381), httpPort = Number(options['http-port'] ?? 39380);
     if(!Number.isInteger(count)||count<1||count>54000||!Number.isFinite(hz)||hz<=0||hz>60||!Number.isFinite(toleranceMs)||toleranceMs<0||toleranceMs>100||!Number.isFinite(linger)||linger<0||linger>3600) throw new Error('Invalid finite run bound');
@@ -69,13 +88,13 @@ export async function main(argv = process.argv.slice(2)) {
     const session = BigInt(Date.now()), stamps = new BigUint64Array(count), delivery = new HostDeliveryTiming(count,clock);
     const latencies=[],processes=[],arrivals=[],queues=[],splitCounts={};
     let sent=0,received=0,rawCount=0,complete=false,error=null,last=null,input=null,resultSocket=null,pacer=null,parser=null,pending=null;
-    let rawFd=null,prefetch=null,rawWriter=null,metadataWriter=null,sentWriter=null,tcp=null,server=null,wss=null;
+    let rawFd=null,archivePreparation=null,prefetch=null,rawWriter=null,metadataWriter=null,sentWriter=null,tcp=null,server=null,wss=null;
     let ageTimer=null,heartbeat=null,receiveTask=null,sendTask=null,pacerClosed=null,rawRecords=0,rawStarted=false;
     const files={}, errors=[], archiveStreams=[];
     const abort = new AbortController();
     const status = () => ({stage,session:session.toString(),target:count,hz,sent,received,complete,errors,last_frame:last?.frame,connected:!!resultSocket,
         inflight:credit.pending.size,max_inflight:limit,inflight_high:credit.high,max_frame_age_ms:maxAgeMs,strict30Hz:hz===30&&schedule.strict,
-        model:'180-query epoch99 / ZG330 / PS',full_schema:'PIWFUL3/3',full_bytes:FULL_BYTES,bones:BONES,HDMI:true,csi_source:'host_simulated'});
+        model:'180-query epoch99 / ZG330 / PS',full_schema:'PIWFUL3/3',full_bytes:FULL_BYTES,bones:BONES,HDMI:hdmi==='1',csi_source:'host_simulated'});
     let broadcast = () => {};
     const fail = reason => {
         if (error) return;
@@ -170,7 +189,8 @@ export async function main(argv = process.argv.slice(2)) {
             if(!Number.isInteger(spec.count)||spec.count<1||(await file.stat()).size!==spec.count*86400) throw new Error('Incomplete aligned source: '+split);
         }
         await fs.promises.mkdir(output,{recursive:false});rawStarted=true;
-        rawFd=fs.openSync(path.join(output,'actual.full'),'wx');fs.ftruncateSync(rawFd,count*FULL_BYTES);
+        const prepared=prepareArchive(path.join(output,'actual.full'),count*FULL_BYTES);
+        rawFd=prepared.fd;archivePreparation=prepared.preparation;
         const raw=fs.createWriteStream(path.join(output,'actual.full'),{fd:rawFd,autoClose:false,start:0,highWaterMark:FULL_BYTES});
         const metadata=fs.createWriteStream(path.join(output,'received.jsonl'),{flags:'wx',highWaterMark:65536});
         const sends=fs.createWriteStream(path.join(output,'sent.jsonl'),{flags:'wx',highWaterMark:65536});
@@ -196,10 +216,10 @@ export async function main(argv = process.argv.slice(2)) {
         tcp=net.createServer(socket=>{if(resultSocket||abort.signal.aborted){socket.destroy();return;}resultSocket=socket;admit(socket);});tcp.on('error',fail);
         await new Promise((resolve,reject)=>{tcp.once('error',reject);tcp.listen(resultPort,'127.0.0.1',resolve);});
         await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(httpPort,'127.0.0.1',resolve);});
-        const runtime={pid:process.pid,session:session.toString(),stage,count,hz,output,data,dataset_sha256:catalog.sha256,input_host:options['input-host']||'192.168.126.49',input_port:inputPort,result_port:resultPort,http_port:httpPort,max_inflight:limit,max_frame_age_ms:maxAgeMs,full_schema:'PIWFUL3/3',full_bytes:FULL_BYTES};
+        const runtime={pid:process.pid,session:session.toString(),stage,count,hz,output,data,dataset_sha256:catalog.sha256,input_host:options['input-host']||'192.168.126.49',input_port:inputPort,result_port:resultPort,http_port:httpPort,max_inflight:limit,max_frame_age_ms:maxAgeMs,HDMI:hdmi==='1',archive_preparation:archivePreparation,full_schema:'PIWFUL3/3',full_bytes:FULL_BYTES};
         fs.writeFileSync(path.join(output,'runtime.json'),JSON.stringify(runtime,null,2)+'\n');console.log('HOST_READY',JSON.stringify({...runtime,url:`http://127.0.0.1:${httpPort}`}));
         heartbeat=setInterval(()=>broadcast({type:'status',status:status()}),1000);
-        const startup=setTimeout(()=>fail(new Error('Board result connection startup timeout')),30000);
+        const startup=setTimeout(()=>fail(new Error('Board result connection startup timeout')),60000);
         let socket;try {socket=await connected;}finally{clearTimeout(startup);}
         ageTimer=setInterval(()=>{try{credit.checkAge();}catch(reason){fail(reason);}},10);
         receiveTask=receiveResults(socket).catch(reason=>{fail(reason);throw reason;});
@@ -223,7 +243,7 @@ export async function main(argv = process.argv.slice(2)) {
                 input_rate_hz:sent>1?(sent-1)*1e9/Number(stamps[sent-1]-stamps[0]):0,output_rate_hz:received>1?(received-1)*1e9/Number(arrivals.at(-1)-arrivals[0]):0,
                 process_ms:stats(processes),end_to_end_ms:stats(latencies),queue_ms:stats(queues),output_interval_ms:stats(intervals),sender_late_ms:stats(schedule.lateness),
                 strict30Hz:complete&&!error&&hz===30&&schedule.strict,sender_absolute_epoch_ns:schedule.epoch?.toString()??null,sender_missed_slots:schedule.missed,sender_pause_intervals:schedule.pauses,credit_waits:credit.waits,
-                archive_write_high_bytes:{raw:rawWriter?.high??0,metadata:metadataWriter?.high??0,sent:sentWriter?.high??0},raw_bytes:fs.statSync(path.join(output,'actual.full')).size,
+                archive_preparation:archivePreparation,archive_write_high_bytes:{raw:rawWriter?.high??0,metadata:metadataWriter?.high??0,sent:sentWriter?.high??0},raw_bytes:fs.statSync(path.join(output,'actual.full')).size,
                 strict_33_333ms_processing_pass:complete&&!error&&processes.every(value=>value<=1000/30),strict_33_333ms_end_to_end_pass:complete&&!error&&latencies.every(value=>value<=1000/30)};
             fs.writeFileSync(path.join(output,'summary.json'),JSON.stringify(report,null,2)+'\n');console.log('HOST_COMPLETE',JSON.stringify(report));broadcast({type:'status',status:status()});
         }catch(reason){cleanupFailure(reason);}
