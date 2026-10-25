@@ -1,0 +1,45 @@
+{
+  "stage": "2026-10-25 pose180 bounded pipeline",
+  "source_revision": "870aae27",
+  "archive_fix_revision": "d7ac1277",
+  "stage_result_revision": "f3796282",
+  "CSI_live": false,
+  "full_system_stability_passed": false,
+  "large_original_output": {
+    "path": "D:\\FPGACompetitionProject\\.local\\pose180-pipeline-20261025-r1\\hardware-host-originalboot\\actual.full",
+    "bytes": 584424960,
+    "sha256": "70c14f33700813ec212b78a8dbdd0a4f14e9540eabc202bbca4c8bf8b0e1266f",
+    "records": 7840,
+    "record_bytes": 74544,
+    "version_control": false
+  },
+  "local_recovery_directories": [
+    "D:\\FPGACompetitionProject\\.local\\pose180-pipeline-20261025-r1",
+    "D:\\FPGACompetitionProject\\.local\\pose180-hdmi-20261025-r2",
+    "C:\\Users\\cenyongdong\\FPGACompetitionRuns\\pose180-pipeline-20261025-r2\\localhost-mock-900"
+  ],
+  "package_archives": [
+    {
+      "path": "D:\\FPGACompetitionProject\\.local\\pose180-pipeline-20261025-r1\\software-package.tar.gz",
+      "bytes": 27751282,
+      "sha256": "74222dde5bec673fe1953b0de273769c3ff10ccb781b4d6ee3b461afca345f97"
+    },
+    {
+      "path": "D:\\FPGACompetitionProject\\.local\\pose180-hdmi-20261025-r2\\board-package.tar.gz",
+      "bytes": 31915511,
+      "sha256": "fb23f76ad1028a0858b4b86fd0376f4689e28344eadc5eeff6ca1c65af14912e"
+    }
+  ],
+  "evidence_archives": [
+    {
+      "path": "original-boot/board-evidence.tar.gz",
+      "sha256": "3275a196a5f1e92137831b184aec95f91fa84862600c2a3c93084e73bc49f754"
+    },
+    {
+      "path": "hdmi/board-evidence.tar.gz",
+      "sha256": "f442bf1d173919b0b1b4809db2aa201b160ef2694e50128ce98169817394d18c"
+    }
+  ],
+  "archived_execution_status": "closed historical source; no new SDK, BOOT or reboot authorization",
+  "numerical_accuracy_accepted": false
+}

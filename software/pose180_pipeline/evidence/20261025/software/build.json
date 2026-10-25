@@ -1,0 +1,216 @@
+[
+  {
+    "stage": "container-start",
+    "argv": [
+      "start",
+      "FPAI"
+    ],
+    "native_exit": 0,
+    "seconds": 5.612682900013169
+  },
+  {
+    "stage": "native-configure",
+    "argv": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "-S",
+      "/workspace/software/pose180_pipeline",
+      "-B",
+      "/workspace/.local/pose180-pipeline-20261025-r1/native",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "native_exit": 0,
+    "seconds": 2.021714200003771
+  },
+  {
+    "stage": "native-compile",
+    "argv": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "--build",
+      "/workspace/.local/pose180-pipeline-20261025-r1/native",
+      "--parallel",
+      "2"
+    ],
+    "native_exit": 0,
+    "seconds": 3.26594389998354
+  },
+  {
+    "stage": "buffer-tests",
+    "argv": [
+      "exec",
+      "FPAI",
+      "/workspace/.local/pose180-pipeline-20261025-r1/native/buffer_tests"
+    ],
+    "native_exit": 0,
+    "seconds": 0.18151890000444837
+  },
+  {
+    "stage": "renderer-tests",
+    "argv": [
+      "exec",
+      "FPAI",
+      "/workspace/.local/pose180-pipeline-20261025-r1/native/renderer_tests"
+    ],
+    "native_exit": 0,
+    "seconds": 0.09698209998896345
+  },
+  {
+    "stage": "arm-configure",
+    "argv": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "-S",
+      "/workspace/software/pose180_pipeline",
+      "-B",
+      "/workspace/.local/pose180-pipeline-20261025-r1/arm64",
+      "-DCMAKE_SYSTEM_NAME=Linux",
+      "-DCMAKE_SYSTEM_PROCESSOR=aarch64",
+      "-DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++",
+      "-DCMAKE_PREFIX_PATH=/usr/cmake",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DPOSE180_BUILD_SDK=ON"
+    ],
+    "native_exit": 0,
+    "seconds": 2.2050514000002295
+  },
+  {
+    "stage": "arm-compile",
+    "argv": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "--build",
+      "/workspace/.local/pose180-pipeline-20261025-r1/arm64",
+      "--target",
+      "pose180_pipeline",
+      "--parallel",
+      "2"
+    ],
+    "native_exit": 2,
+    "seconds": 6.979715399997076
+  },
+  {
+    "stage": "container-stop",
+    "argv": [
+      "stop",
+      "FPAI"
+    ],
+    "native_exit": 0,
+    "seconds": 0.2843598000181373
+  },
+  {
+    "stage": "container-start",
+    "argv": [
+      "start",
+      "FPAI"
+    ],
+    "native_exit": 0,
+    "seconds": 0.28094919997965917,
+    "log_stem": "08-container-start"
+  },
+  {
+    "stage": "native-configure",
+    "argv": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "-S",
+      "/workspace/software/pose180_pipeline",
+      "-B",
+      "/workspace/.local/pose180-pipeline-20261025-r1/native",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "native_exit": 0,
+    "seconds": 0.34605819999706,
+    "log_stem": "09-native-configure"
+  },
+  {
+    "stage": "native-compile",
+    "argv": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "--build",
+      "/workspace/.local/pose180-pipeline-20261025-r1/native",
+      "--parallel",
+      "2"
+    ],
+    "native_exit": 0,
+    "seconds": 3.5145512000017334,
+    "log_stem": "10-native-compile"
+  },
+  {
+    "stage": "buffer-tests",
+    "argv": [
+      "exec",
+      "FPAI",
+      "/workspace/.local/pose180-pipeline-20261025-r1/native/buffer_tests"
+    ],
+    "native_exit": 0,
+    "seconds": 0.18080480000935495,
+    "log_stem": "11-buffer-tests"
+  },
+  {
+    "stage": "renderer-tests",
+    "argv": [
+      "exec",
+      "FPAI",
+      "/workspace/.local/pose180-pipeline-20261025-r1/native/renderer_tests"
+    ],
+    "native_exit": 0,
+    "seconds": 0.10234250000212342,
+    "log_stem": "12-renderer-tests"
+  },
+  {
+    "stage": "arm-configure",
+    "argv": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "-S",
+      "/workspace/software/pose180_pipeline",
+      "-B",
+      "/workspace/.local/pose180-pipeline-20261025-r1/arm64",
+      "-DCMAKE_SYSTEM_NAME=Linux",
+      "-DCMAKE_SYSTEM_PROCESSOR=aarch64",
+      "-DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++",
+      "-DCMAKE_PREFIX_PATH=/usr/cmake",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DPOSE180_BUILD_SDK=ON"
+    ],
+    "native_exit": 0,
+    "seconds": 0.4163317999918945,
+    "log_stem": "13-arm-configure"
+  },
+  {
+    "stage": "arm-compile",
+    "argv": [
+      "exec",
+      "FPAI",
+      "cmake",
+      "--build",
+      "/workspace/.local/pose180-pipeline-20261025-r1/arm64",
+      "--target",
+      "pose180_pipeline",
+      "--parallel",
+      "2"
+    ],
+    "native_exit": 0,
+    "seconds": 10.838090800010832,
+    "log_stem": "14-arm-compile"
+  },
+  {
+    "stage": "container-stop",
+    "argv": [
+      "stop",
+      "FPAI"
+    ],
+    "native_exit": 0,
+    "seconds": 0.2462156999972649,
+    "log_stem": "15-container-stop"
+  }
+]

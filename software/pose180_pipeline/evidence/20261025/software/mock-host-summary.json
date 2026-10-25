@@ -1,0 +1,144 @@
+{
+  "stage": "short",
+  "session": "1792903134461",
+  "target": 900,
+  "hz": 30,
+  "sent": 900,
+  "received": 900,
+  "complete": true,
+  "errors": [],
+  "last_frame": "1000899",
+  "connected": true,
+  "inflight": 0,
+  "max_inflight": 8,
+  "inflight_high": 8,
+  "max_frame_age_ms": 1000,
+  "strict30Hz": false,
+  "model": "180-query epoch99 / ZG330 / PS",
+  "full_schema": "PIWFUL3/3",
+  "full_bytes": 74544,
+  "bones": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      5,
+      9
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      7,
+      11
+    ],
+    [
+      9,
+      12
+    ],
+    [
+      11,
+      13
+    ]
+  ],
+  "HDMI": true,
+  "csi_source": "host_simulated",
+  "all_records_received": true,
+  "raw_records": 900,
+  "unconfirmed_records": 0,
+  "unconfirmed_frame": null,
+  "inflight_frames": [],
+  "unique_source_count": 1,
+  "split_counts": {
+    "test": 900
+  },
+  "dataset_sha256": "synthetic-localhost-mock",
+  "input_rate_hz": 29.26417469057351,
+  "output_rate_hz": 29.707782945433955,
+  "process_ms": {
+    "mean": 1,
+    "p95": 1,
+    "p99": 1,
+    "max": 1,
+    "over_33_333_ms": 0
+  },
+  "end_to_end_ms": {
+    "mean": 6.809757333333344,
+    "p95": 7.9521,
+    "p99": 11.7809,
+    "max": 463.5349,
+    "over_33_333_ms": 8
+  },
+  "queue_ms": {
+    "mean": 0.0000010000000000000171,
+    "p95": 0.000001,
+    "p99": 0.000001,
+    "max": 0.000001,
+    "over_33_333_ms": 0
+  },
+  "output_interval_ms": {
+    "mean": 33.66121268075637,
+    "p95": 37.7561,
+    "p99": 40.1371,
+    "max": 42.144,
+    "over_33_333_ms": 603
+  },
+  "sender_late_ms": {
+    "mean": 503.4064413888882,
+    "p95": 736.776418,
+    "p99": 749.81663,
+    "max": 755.035333,
+    "over_33_333_ms": 892
+  },
+  "sender_absolute_epoch_ns": "182382218026400",
+  "sender_missed_slots": 892,
+  "sender_pause_intervals": 1,
+  "credit_waits": 4,
+  "archive_preparation": {
+    "mode": "full_zero_write_and_fsync_before_ready",
+    "bytes": 67089600,
+    "elapsed_ms": 88.6056
+  },
+  "archive_write_high_bytes": {
+    "raw": 74544,
+    "metadata": 291,
+    "sent": 215
+  },
+  "raw_bytes": 67089600,
+  "strict_33_333ms_processing_pass": true,
+  "strict_33_333ms_end_to_end_pass": false
+}

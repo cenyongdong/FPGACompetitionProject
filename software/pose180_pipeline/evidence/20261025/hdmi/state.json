@@ -1,0 +1,37 @@
+{
+  "status": "closed_startup_admission_failed",
+  "package_id": "pose180-hdmi-20261025-r2",
+  "candidate_starts": 1,
+  "SDK_Open": 0,
+  "original_fallbacks": 1,
+  "BOOT_file_writes": 2,
+  "CSI_live": false,
+  "automatic_retry": false,
+  "HDMI_START": 0,
+  "HDMI_adopted": 0,
+  "consumption_attempted": false,
+  "full_system_stability_passed": false,
+  "native_PC_bits": [
+    58,
+    59,
+    61,
+    79,
+    92,
+    93,
+    95
+  ],
+  "blocked_bit": {
+    "bit": 79,
+    "name": "AXI_AUXM_RCAM_UNDERFLOW"
+  },
+  "remaining": {
+    "candidate_starts": 0,
+    "SDK_Open": 0,
+    "original_fallbacks": 0
+  },
+  "final_boot_id": "2d5f618a-7891-493e-a519-714c0edcaa3c",
+  "final_device_owners": [],
+  "fpga_state": "operating",
+  "original_BOOT_SHA256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "UART_capture_closed": true
+}

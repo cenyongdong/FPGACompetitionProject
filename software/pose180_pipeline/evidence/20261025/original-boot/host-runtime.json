@@ -1,0 +1,19 @@
+{
+  "pid": 30060,
+  "session": "1792902600450",
+  "stage": "stress",
+  "count": 52800,
+  "hz": 30,
+  "output": "D:\\FPGACompetitionProject\\.local\\pose180-pipeline-20261025-r1\\hardware-host-originalboot",
+  "data": "D:\\FPGACompetitionProject\\demo_v1\\data\\mixed",
+  "dataset_sha256": "e8b62f840efdde6cb153f9e3a29f12f9f4e405582dad7c6616e67cc5982e45cf",
+  "input_host": "192.168.126.49",
+  "input_port": 39382,
+  "result_port": 39381,
+  "http_port": 39380,
+  "max_inflight": 8,
+  "max_frame_age_ms": 1000,
+  "HDMI": false,
+  "full_schema": "PIWFUL3/3",
+  "full_bytes": 74544
+}

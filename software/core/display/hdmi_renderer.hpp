@@ -20,6 +20,10 @@ namespace pose::hdmi {
     // Ordinary owning memory only; no model-value processing or SDK access.
     struct PreparedBackground { std::vector<uint8_t> rgb565; };
     PreparedBackground prepare_background();
+    void prepare_background(PreparedBackground& reusable);
+    Rendered render(PreparedBackground&& prepared, const float* scores,
+                    const float* poses, std::size_t candidates, uint64_t id,
+                    pose_v1::render::Status status = pose_v1::render::Status::Result);
     Rendered render(PreparedBackground&& prepared,
                     const std::array<float, 100>& scores,
                     const std::array<float, 4200>& poses,

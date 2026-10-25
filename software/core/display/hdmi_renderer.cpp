@@ -72,14 +72,15 @@ namespace pose::hdmi {
     }
 
     static Rendered render_impl(PreparedBackground* prepared,
-                    const std::array<float, 100>& scores,
-                    const std::array<float, 4200>& poses,
+                    const float* scores, const float* poses, std::size_t candidates,
                     uint64_t id, pose_v1::render::Status status) {
         const auto begin = std::chrono::steady_clock::now();
-        for (const auto value : scores)
-            if (!std::isfinite(value)) throw std::runtime_error("Non-finite candidate score");
-        for (const auto value : poses)
-            if (!std::isfinite(value)) throw std::runtime_error("Non-finite candidate pose");
+        if (!scores || !poses || (candidates != 100 && candidates != 180))
+            throw std::runtime_error("Unsupported candidate raster input");
+        for (std::size_t i=0;i<candidates;++i)
+            if (!std::isfinite(scores[i])) throw std::runtime_error("Non-finite candidate score");
+        for (std::size_t i=0;i<candidates*42;++i)
+            if (!std::isfinite(poses[i])) throw std::runtime_error("Non-finite candidate pose");
         using pose_v1::render::Status;
         if (status != Status::Result && status != Status::NoInput && status != Status::Stopped)
             throw std::runtime_error("Unknown result status");
@@ -87,9 +88,9 @@ namespace pose::hdmi {
         if (prepared && prepared->rgb565.size() != frameBytes)
             throw std::runtime_error("Prepared HDMI background byte count differs");
         Rendered result;
-        result.top_index = unsigned(std::max_element(scores.begin(), scores.end()) - scores.begin());
+        result.top_index = unsigned(std::max_element(scores, scores+candidates) - scores);
         result.score = scores[result.top_index];
-        std::copy_n(poses.begin() + result.top_index * 42, 42, result.selected_raw.begin());
+        std::copy_n(poses + result.top_index * 42, 42, result.selected_raw.begin());
         if (prepared) result.rgb565 = std::move(prepared->rgb565);
         else result.rgb565 = background(); // Existing one-call API keeps its timing scope.
         const auto white = color(236, 241, 247);
@@ -136,18 +137,26 @@ namespace pose::hdmi {
     PreparedBackground prepare_background() {
         return PreparedBackground{background()};
     }
+    void prepare_background(PreparedBackground& reusable) {
+        reusable.rgb565.assign(background().begin(),background().end());
+    }
+    Rendered render(PreparedBackground&& prepared, const float* scores,
+                    const float* poses, std::size_t candidates, uint64_t id,
+                    pose_v1::render::Status status) {
+        return render_impl(&prepared,scores,poses,candidates,id,status);
+    }
 
     Rendered render(PreparedBackground&& prepared,
                     const std::array<float, 100>& scores,
                     const std::array<float, 4200>& poses,
                     uint64_t id, pose_v1::render::Status status) {
-        return render_impl(&prepared, scores, poses, id, status);
+        return render_impl(&prepared, scores.data(), poses.data(), scores.size(), id, status);
     }
 
     Rendered render(const std::array<float, 100>& scores,
                     const std::array<float, 4200>& poses,
                     uint64_t id, pose_v1::render::Status status) {
-        return render_impl(nullptr, scores, poses, id, status);
+        return render_impl(nullptr, scores.data(), poses.data(), scores.size(), id, status);
     }
 
 }

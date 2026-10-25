@@ -1,0 +1,178 @@
+{
+  "package_id": "pose180-hdmi-20261025-r2",
+  "base": "/root/demo-v1-20261022-r1/pose180-hdmi-20261025-r2",
+  "caps": {
+    "candidate_starts": 1,
+    "SDK_Open": 1,
+    "original_fallbacks": 1,
+    "frames": 52800,
+    "input_hz": 30,
+    "hard_seconds": 2100
+  },
+  "files": {
+    "board_support.py": {
+      "bytes": 40665,
+      "sha256": "761c76334e7c59587c457bd656259d948cb49e05ff36b0fac4077e35a0720955"
+    },
+    "bootstrap.py": {
+      "bytes": 15123,
+      "sha256": "a7bf5b02712c9a2ca9cf4da2728d45b3ac239277116dbe22d9832eeab94b620a"
+    },
+    "controller.py": {
+      "bytes": 11486,
+      "sha256": "4c3f9ee43cfdc5638fc1ea0bdc77608fefe5798169351ab0cd0e258d077542eb"
+    },
+    "package/before_seed_gate.py": {
+      "bytes": 4925,
+      "sha256": "d11bcdb953271f623dbb474cf78ab695c45c051907b5cbad433b5ba819cfa39e"
+    },
+    "package/BOOT-candidate.bin": {
+      "bytes": 7023552,
+      "sha256": "685f6151a1b225f1fe07e0b83e9ff77f71ea18ebdb62a8a19ffe8373a6e06cde"
+    },
+    "package/BOOT-original.bin": {
+      "bytes": 7023552,
+      "sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef"
+    },
+    "package/capture_deferred.py": {
+      "bytes": 24776,
+      "sha256": "c4c93cbf8f8dd1c79484fde63b79d3b14cbe37ac13638224e4d21db0110d4668"
+    },
+    "package/capture_hp2_cycletrace.py": {
+      "bytes": 3655,
+      "sha256": "7ad9d186f0cfbf6d7318014b406ce582caa113b92ea6aee40c453b398d5c000e"
+    },
+    "package/capture_hp2_protocol.py": {
+      "bytes": 3213,
+      "sha256": "26d56171c3e365901d7d16c99a1e87ec1dbcf982d8181c154fe87d6aa1f661e5"
+    },
+    "package/consume_gate.py": {
+      "bytes": 16420,
+      "sha256": "e67952fc40e31ce2a74a3e321eae242e13159e72919ab9d6acb8a921295146a3"
+    },
+    "package/decode_hp2_cycletrace.py": {
+      "bytes": 4414,
+      "sha256": "d24ccf6ded32104be54649f79f5556a1200f2e214ac7b70f035e060a54ab4c4c"
+    },
+    "package/decode_hp2_protocol.py": {
+      "bytes": 6230,
+      "sha256": "67a1358ef6992bf98d502a216417be76f1332eff1a636f810bf03f79b1978720"
+    },
+    "package/hp2_protocol_checks.py": {
+      "bytes": 3718,
+      "sha256": "2d976f232a13d55e1b63d7b22efcd879c12ba9680d844b41b08e99c5742b88d9"
+    },
+    "package/libmmio32.so": {
+      "bytes": 7824,
+      "sha256": "09e1f52636cc913bd5a20db27e25f771388295ebc16072dda0317fac871866c5"
+    },
+    "software-package.tar.gz": {
+      "bytes": 27751282,
+      "sha256": "74222dde5bec673fe1953b0de273769c3ff10ccb781b4d6ee3b461afca345f97"
+    }
+  },
+  "original_boot_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "board": {
+    "host": "192.168.126.49",
+    "user": "root",
+    "remote_root": "/root/demo-v1-20261022-r1/pose180-hdmi-20261025-r2",
+    "boot_device": "/dev/mmcblk0p1",
+    "uart_port": "COM7",
+    "uart_usb_identity": "USB\\VID_10C4&PID_EA60\\0001",
+    "SDK": {
+      "libicraft_hostbackend.so": "d0fbf6c81e5b57b4a908f11aad27571b8f2e68a3ede7ba33c9a4f783ba266130",
+      "libicraft_zg330backend.so": "592ad913737a6d661ab9d913ff16617c8fb6bf65cc0dc8929c6886303c498a57",
+      "libicraft_xrt.so": "a29e4eee6106afae0b6aada4a07e85416ac6dfc3e74083033ae5d1411749dc96",
+      "libicraft_xir.so": "377a2cac1a8834836503d9805451449d42d99a888b8f96b38d4c2ba8c585af3e",
+      "libicraft_utils.so": "99679371aa20e7955e14c39938225df24cdc763d75f26301970fba114f650109",
+      "libaxizg330aiu.so": "d55e48873da61314da712c584e62f8257f63794ecca481e64868361ee5fc7178"
+    },
+    "startup_files": {
+      "AI7030~1.BIT": {
+        "size": 5980604,
+        "sha256": "85fb81d09a0dcb51cb9d5d347c01de43eccec14c6eb9a87e1876105b3efc4b81"
+      },
+      "BL31.ELF": {
+        "size": 610824,
+        "sha256": "fdcf0af48a7f9716f73a477c3cc1b4cd90c914fe0e5ad7acc5ab282660802303"
+      },
+      "BOOT.BIN": {
+        "size": 7023552,
+        "sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef"
+      },
+      "FMQLMP~1.DTB": {
+        "size": 15996,
+        "sha256": "4e690cf065424e28ad7e39e0dc87a72f4c593f5bd4d99c11f7c4e892feee3038"
+      },
+      "IMAGE": {
+        "size": 13158408,
+        "sha256": "ee88eae627df17fdf615b44cb9fc5a7a7a37d2baaa3f21e90d613f48bedf0929"
+      },
+      "U-BOOT": {
+        "size": 6579840,
+        "sha256": "c4570e3e51128211905bdf20c7b7e0ea9cb7ca1492652a070ebdd985bc213e97"
+      },
+      "UENV.TXT": {
+        "size": 1499,
+        "sha256": "a13c985eb5031d75ec7069333897cae38944ba5fbadd509828b63e6a48408560"
+      },
+      "AI7030~2.BIT": {
+        "size": 5980020,
+        "sha256": "1405d7f1cb992d8f9c78e7b4bbe756faa96eeecb2ff4bdd0d253e92b191e2575"
+      },
+      "FSBL25~1.OUT": {
+        "size": 1385156,
+        "sha256": "5501c470e07537a8fb369ae40641c20c16ab403fad558e65e0a4bbf380f2396f"
+      }
+    }
+  },
+  "known_FAT": {
+    "tables": 2,
+    "lost_cluster_count": 2168,
+    "BPB_state_byte_37": 1,
+    "reference_sha256": "fa031e0794aaa79f8c7b45997956e31ebe5e80b4d24253ee403751347c30a8a8"
+  },
+  "status": "offline_prepared_pending_explicit_boot_authorization",
+  "hardware_rebuilt": false,
+  "source_commit": "870aae27",
+  "numerical_accuracy_accepted": false,
+  "CSI_live": false,
+  "old_DATA": "paused",
+  "D45_root_cause_investigation": "paused",
+  "automatic_retry": false,
+  "qualification_reference": "D:\\FPGACompetitionProject\\tools\\pose-v1\\evidence\\hp2-deferred-consume-20261024-r45\\qualification.json",
+  "boot_metadata": "boot-control/metadata",
+  "software_metadata": "pipeline/metadata",
+  "startup_admission_original": "startup-admission.json",
+  "startup_mode_original": "software/startup-mode.txt",
+  "startup_receipt_copies": [
+    "pipeline/startup-admission.json",
+    "pipeline/startup-mode.txt"
+  ],
+  "precondition": "Fix and verify observed Host raw archive callback stall before joint SDK load; preserve complete first outputs and the existing one-second age limit",
+  "prior_run_fact": "Original-BOOT run stopped at frame7840 after Host raw archive callback 1019.789ms; NPU frame output finite/identity/selection passed; do not classify as NPU tail",
+  "local_validation": {
+    "python_syntax_passed": true,
+    "python_files": [
+      "board/board_support.py",
+      "board/bootstrap.py",
+      "board/controller.py",
+      "board/package/before_seed_gate.py",
+      "board/package/capture_deferred.py",
+      "board/package/capture_hp2_cycletrace.py",
+      "board/package/capture_hp2_protocol.py",
+      "board/package/consume_gate.py",
+      "board/package/decode_hp2_cycletrace.py",
+      "board/package/decode_hp2_protocol.py",
+      "board/package/hp2_protocol_checks.py",
+      "board_call.py",
+      "capture_uart.py",
+      "prepare_offline.py",
+      "start_candidate.py",
+      "start_fallback.py"
+    ],
+    "SDK": 0,
+    "BOOT_writes": 0,
+    "reboots": 0
+  }
+}

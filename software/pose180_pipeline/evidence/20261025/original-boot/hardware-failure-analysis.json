@@ -1,0 +1,54 @@
+{
+  "unconfirmed_payload_equal": true,
+  "unconfirmed_payload_bytes": 74160,
+  "slowest_archive_writes": [
+    {
+      "invocation": 7839,
+      "save_ms": 1019.7889,
+      "ack_flushed": false,
+      "confirmation": false
+    },
+    {
+      "invocation": 3303,
+      "save_ms": 2.0161,
+      "ack_flushed": true,
+      "confirmation": true
+    },
+    {
+      "invocation": 0,
+      "save_ms": 1.5519,
+      "ack_flushed": true,
+      "confirmation": true
+    },
+    {
+      "invocation": 2879,
+      "save_ms": 1.1685,
+      "ack_flushed": true,
+      "confirmation": true
+    },
+    {
+      "invocation": 916,
+      "save_ms": 1.1443,
+      "ack_flushed": true,
+      "confirmation": true
+    },
+    {
+      "invocation": 3813,
+      "save_ms": 0.9623,
+      "ack_flushed": true,
+      "confirmation": true
+    },
+    {
+      "invocation": 3302,
+      "save_ms": 0.8992,
+      "ack_flushed": true,
+      "confirmation": true
+    },
+    {
+      "invocation": 6313,
+      "save_ms": 0.8749,
+      "ack_flushed": true,
+      "confirmation": true
+    }
+  ]
+}

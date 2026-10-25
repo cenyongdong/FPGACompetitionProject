@@ -14,6 +14,8 @@
 
 对后续开发的参考：人体候选维与关节特征batch维分别保持，180份分数／姿态不排序；生成指令仿真、量化算子参考和FP32参考应分别认定。forward返回不能当完整推理耗时，数值误差、秒级长尾及硬件根因不因无TopK或持续运行自动关闭。
 
+10月25日软件与实测补充：按用户批准将该180-query图接为[新主推理入口](software/pose180_pipeline/README.md)，实现固定输入／结果槽、全链在途信用、归档背压、完整180候选回传及复用RGB565工作图；保留同Device双缓冲、采纳与STOP证明。Linux定向检查、C++→Node协议交叉验证及ARM64编译通过；900帧localhost模拟完整归档／确认闭合，延迟注入后的严格30Hz失败如实保留。用户随后恢复板卡并授权实测；新主链取得完整实际输出后止于Host归档1秒保护，修正后软件验证完成；新HDMI包又在SDK前准入失败并回原BOOT关闭。不接CSI实采，未通过整机稳定性；详情统一见[本轮实测](software/pose180_pipeline/RESULTS.md)。
+
 ## 2026-10-24：直接RGB565渲染、传输与单SDK线程流水调度
 
 工程内容总结：r47改为原生1080p RGB565并缓存静态底图，扩大视口、保持骨架/关节标注大小；ARM CPU绘制和转换均值140.694→3.225ms。r50完成Git/Windows SSH合成ACK对照，r51重叠静态准备且与三份独立r47图逐字节一致。r53完成begin/poll显示接口、单SDK线程推理/采纳流水、末帧排空与错误释放，64项SDK无关检查及ARM编译通过；复用r45位流，短样本29.521Hz、187次采纳后第189次首读出现1568字内容混合而停止。[渲染实测](tools/pose-v1/evidence/hdmi-render-speed-20261024-r47/RESULTS.md)、[传输](tools/pose-v1/evidence/hdmi-ack-transport-20261024-r50/RESULTS.md)、[静态准备](tools/pose-v1/evidence/hdmi-render-overlap-20261024-r51/RESULTS.md)、[r53完整结果与恢复](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
