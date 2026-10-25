@@ -36,7 +36,7 @@ PIWFUL3/v3固定74,544字节：128字节头＋256字节选中姿态＋43,200字�
 
 本机构建日志、二进制与一次软件包集中在[产物目录](../../.local/pose180-pipeline-20261025-r1)。`tools/package.py`在该目录生成`software-package.tar.gz`和身份清单，校验JSON/RAW与已部署epoch99身份一致。原模型数值误差D48及原失败保持，软件通过不构成精度或整机稳定性通过。
 
-最新软件回环为[900帧localhost结果](../../.local/pose180-pipeline-20261025-r1/localhost-mock-900-highres/mock-summary.json)：900份完整原值逐字节一致、900归档ACK／最终确认、在途峰值8，正常退出并回收端口。注入200ms等待后仍明确`strict30Hz=false`，恢复段约29.44Hz；旧22.43Hz结果与修正前日志保留。假板只用于软件协议与背压验证，不产生NPU或HDMI硬件结论。
+最新归档修正后的900帧软件回环、3.94GB生产writer测试及本轮实板失败范围，统一见[本轮实测](RESULTS.md)和[版本归档](evidence/20261025/README.md)。此前900帧结果及修正前日志保留为历史；软件通过不构成NPU、HDMI或严格30Hz实板结论。
 
 离线完整归档解析入口为`node software/pose180_pipeline/host/analyze.mjs <actual.full> <catalog.json> <新的analysis.json>`。使用两个固定记录缓冲与来源偏移索引，检查全部180候选、完整身份／选择及同源重复的首次输入／分数／姿态字节一致性，不将重复一致性扩大为模型精度通过。
 

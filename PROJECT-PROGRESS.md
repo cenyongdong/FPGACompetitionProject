@@ -55,7 +55,7 @@ AI四路、模型/RAW、SDK、数学、NPU分配与帧协议保持。旧DATA独�
 | 稳定问题、已尝试方法及未知项 | [DIFFICULTIES.md](DIFFICULTIES.md) |
 | 历史成果与原始结果 | [Done.md](Done.md)，各实验原始归档不回写 |
 | HDMI接手、实际DCP／源码／BOOT及复核命令 | [工程师交接](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md)、[恢复入口](FPGA/hdmi_candidate/RESUME.md) |
-| 本轮故障恢复状态及下一技术方案 | [r53实测、原值及恢复](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)、[当前状态](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/state.json)；旧实验原值与关闭记录保留 |
+| 本轮故障恢复状态及下一技术方案 | [180-query实测及恢复](software/pose180_pipeline/RESULTS.md)、[版本归档](software/pose180_pipeline/evidence/20261025/README.md)；r53等旧实验原值与关闭记录保留 |
 | 真实CSI、PC展示与模型数值契约 | [Nexmon](tools/nexmon/README.md)、[PC观察台](software/pc_viewer/README.md)、[ADR_48](ADR/ADR_48.md) |
 | 设备／SDK身份与原厂工具路线 | [HDMI交接第7节](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md#7-实际工程与产物定位)、[REFERENCES.md](REFERENCES.md) |
 

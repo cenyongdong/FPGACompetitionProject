@@ -1,0 +1,31 @@
+{
+  "kind": "software_only_localhost_mock",
+  "hardware_test": false,
+  "passed": true,
+  "frames": 900,
+  "requested_hz": 30,
+  "elapsed_s": 31.5755736,
+  "delay_injection_ms": 200,
+  "prefill_credits": 8,
+  "input_bytes_each": 86432,
+  "result_bytes_each": 74544,
+  "complete_original_records_matched": 900,
+  "archive_acks": 900,
+  "final_confirmations": 900,
+  "max_sent_minus_final": 8,
+  "mock_queue_high": 8,
+  "host_strict30Hz": false,
+  "host_input_rate_hz": 29.26417469057351,
+  "host_credit_waits": 4,
+  "recovery_input_rate_hz": 29.455683531723817,
+  "recovery_rate_first_invocation": 32,
+  "no_catchup_checks": 891,
+  "min_interval_after_expired_slot_ms": 33.4902,
+  "host_exit_code": 0,
+  "resources_released": true,
+  "ports": {
+    "input": 64455,
+    "result": 64453,
+    "http": 64454
+  }
+}

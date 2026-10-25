@@ -7,7 +7,7 @@
 | D48 | 新180-query FP16实板与自身生成指令仿真存在数值差异 | Icraft转换、TopK／Host计算及旧内部桥消除完成；首次原值保全并独立比较，高分位置仍超新批准门 | 数值／量化精度未验收；用户随后允许忽略误差直接测稳定性，不能据此回写数值通过。[原值、现行授权与结果](tools/pose180/deploy/RESULTS.md) |
 | D47 | 共享FP16首次Host索引内容错误，后两轮SDK源读取合法 | 早期原值匹配前一输入；静态源与真实图独立对照未复现，后续r53再次捕获1568字混入同帧姿态内容 | DMA完成、缓存同步效果与NPU源可见性仍不能严格三分；晚读不修补首次值，旧DATA仍暂停。[隔离结果](demo_v1/RESULTS.md)、[r53原值](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md) |
 | D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
-| D45 | 跨启动偶发HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离后仍复现；r37见无AR早期返回，r46/r52同启动有限消费16拍，r52随后90次合法采纳 | 有限消费是缓解，根因与配置前事务状态仍未知；缺匹配复位契约，已中止的根因板测不恢复。[协议原值](tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md)、[有限业务](tools/pose-v1/evidence/hdmi-long-git-20261024-r52/RESULTS.md) |
+| D45 | 跨启动偶发HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离后仍复现；r37见无AR早期返回，r46/r52同启动有限消费16拍，r52随后90次合法采纳 | 有限消费是缓解；本轮180-query新包在消费前已出现bit79 RCAM_UNDERFLOW而未过准入，根因仍未知，已中止的根因板测不恢复。[新原值](software/pose180_pipeline/RESULTS.md)。[协议原值](tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md)、[有限业务](tools/pose-v1/evidence/hdmi-long-git-20261024-r52/RESULTS.md) |
 | D46 | 真实Nexmon CSI尚不能直接形成现有模型输入 | 1发3收共同事件采集与固定网格软件对齐已实测；相位原因已有离线分析 | 稳定300Hz与相位仍未通过；同帧分链增益／射频状态缺见证，完整模型适配和人体效果未验证。[数据、限制与恢复状态](tools/nexmon/README.md) |
 
 ## 当前优先问题

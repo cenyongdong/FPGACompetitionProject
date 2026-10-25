@@ -1,0 +1,23 @@
+{
+  "kind": "software_only_storage_probe",
+  "hardware_test": false,
+  "passed": true,
+  "production_archive_preparation": {
+    "mode": "full_zero_write_and_fsync_before_ready",
+    "bytes": 3935923200,
+    "elapsed_ms": 3208.4997
+  },
+  "production_bounded_writer": true,
+  "records": 52800,
+  "bytes": 3935923200,
+  "archive_write_high_bytes": 74544,
+  "elapsed_seconds": 3.3440185,
+  "write_ms": {
+    "mean": 0.054091030303029766,
+    "p99": 0.9132,
+    "max": 9.461,
+    "over_1000ms": 0
+  },
+  "first_and_last_original_bytes_equal": true,
+  "scratch_file_removed": true
+}

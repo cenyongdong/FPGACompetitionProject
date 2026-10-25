@@ -1,0 +1,28 @@
+{
+  "VmRSS": {
+    "min": 70196,
+    "max": 70440
+  },
+  "VmData": {
+    "min": 62156,
+    "max": 62288
+  },
+  "VmSize": {
+    "min": 478308,
+    "max": 543844
+  },
+  "Threads": {
+    "min": 4,
+    "max": 6
+  },
+  "samples": 288,
+  "steady_samples": 228,
+  "minimum_MemAvailable_KiB": 732532,
+  "dmesg_unchanged": true,
+  "last_unconfirmed_result_times": {
+    "process_ms": 17.41478,
+    "preprocess_ms": 5.75548,
+    "forward_ms": 1.26182,
+    "output_ms": 1.04245
+  }
+}

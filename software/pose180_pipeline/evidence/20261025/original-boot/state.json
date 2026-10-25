@@ -1,0 +1,21 @@
+{
+  "status": "hardware_stopped_host_archive_deadline",
+  "SDK_Open": 1,
+  "BOOT_writes": 0,
+  "reboots": 0,
+  "CSI_live": false,
+  "actual_board_stability_verified": false,
+  "archive": "D:\\FPGACompetitionProject\\.local\\pose180-pipeline-20261025-r1\\software-package.tar.gz",
+  "bytes": 27751282,
+  "sha256": "74222dde5bec673fe1953b0de273769c3ff10ccb781b4d6ee3b461afca345f97",
+  "original_failed_build_preserved": true,
+  "complete_raw_records": 7840,
+  "final_confirmations": 7839,
+  "raw_bytes": 584424960,
+  "host_archive_last_ms": 1019.7889,
+  "software_fix_commit": "d7ac1277",
+  "software_fix_hardware_retested": false,
+  "automatic_retry": false,
+  "device_owners_after": [],
+  "next_package": "pose180-hdmi-20261025-r2"
+}
