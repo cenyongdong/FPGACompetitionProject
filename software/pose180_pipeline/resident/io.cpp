@@ -30,20 +30,31 @@ int listen(const std::string& bind,unsigned port) {
 bool dead(ssize_t n){return n==0 || (n<0 && errno!=EAGAIN && errno!=EWOULDBLOCK && errno!=EINTR);}
 }
 Io::Io(Shared& s,const std::string& bind,unsigned input,unsigned result,unsigned status,
-       std::uint64_t session,bool mock,bool hdmi):shared_(s) {
+       std::uint64_t session,bool mock,bool hdmi,unsigned view):shared_(s) {
     std::promise<void> ready;auto started=ready.get_future();
-    thread_=std::thread([&,bind,input,result,status,session,mock,hdmi,ready=std::move(ready)]() mutable {
+    thread_=std::thread([&,bind,input,result,status,session,mock,hdmi,view,ready=std::move(ready)]() mutable {
         bool announced=false;
         try {
             Fd li{listen(bind,input)},lo{listen(bind,result)},ls{listen(bind,status)},in,out;
+            Fd lv{listen(bind,view)},viewer;std::string view_bytes;std::size_t view_sent=0;std::uint64_t view_begin=0;
             std::array<unsigned char,pp::input_bytes> bytes{};Record sending{};
             std::size_t used=0,sent=0;bool active=false;std::uint64_t last_frame=0,epoch=session;
             std::uint64_t input_progress=0,send_begin=0;
             ready.set_value();announced=true;
             while(!s.stop) {
                 pollfd fds[]={{li.fd,POLLIN,0},{lo.fd,POLLIN,0},{ls.fd,POLLIN,0},
-                    {in.fd,POLLIN,0},{out.fd,short(active?POLLOUT:0),0}};
-                ::poll(fds,5,10);
+                    {in.fd,POLLIN,0},{out.fd,short(active?POLLOUT:0),0},{lv.fd,POLLIN,0},
+                    {viewer.fd,short(view_bytes.empty()?0:POLLOUT),0}};
+                ::poll(fds,7,10);
+                if(fds[5].revents&POLLIN){int fd=::accept4(lv.fd,nullptr,nullptr,SOCK_NONBLOCK|SOCK_CLOEXEC);
+                    if(fd>=0){if(viewer.fd>=0)::close(fd);else{int capacity=16384;::setsockopt(fd,SOL_SOCKET,SO_SNDBUF,&capacity,sizeof(capacity));viewer.fd=fd;view_bytes.clear();view_sent=0;s.presentation.clear();}}}
+                if(viewer.fd>=0&&view_bytes.empty()&&s.presentation.take(view_bytes)){view_sent=0;view_begin=now_ns();}
+                if(viewer.fd>=0&&!view_bytes.empty()){
+                    auto n=::send(viewer.fd,view_bytes.data()+view_sent,view_bytes.size()-view_sent,MSG_NOSIGNAL|MSG_DONTWAIT);
+                    if(n>0){view_sent+=std::size_t(n);if(view_sent==view_bytes.size()){view_bytes.clear();++s.stats.view_sent;}}
+                    if(dead(n)||(!view_bytes.empty()&&now_ns()-view_begin>500000000ull)){viewer.close();view_bytes.clear();++s.stats.view_dropped;}}
+                if(viewer.fd>=0&&(fds[6].revents&(POLLHUP|POLLERR))){viewer.close();view_bytes.clear();}
+                if(viewer.fd<0){std::string unused;if(s.presentation.take(unused))++s.stats.view_dropped;}
                 if(fds[0].revents&POLLIN) {
                     int fd=::accept4(li.fd,nullptr,nullptr,SOCK_NONBLOCK|SOCK_CLOEXEC);
                     if(fd>=0) {

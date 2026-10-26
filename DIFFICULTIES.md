@@ -7,10 +7,14 @@
 | D48 | 新180-query FP16实板与自身生成指令仿真存在数值差异 | Icraft转换、TopK／Host计算及旧内部桥消除完成；首次原值保全并独立比较，高分位置仍超新批准门 | 数值／量化精度未验收；用户随后允许忽略误差直接测稳定性，不能据此回写数值通过。[原值、现行授权与结果](tools/pose180/deploy/RESULTS.md) |
 | D47 | 共享FP16首次Host索引内容错误，后两轮SDK源读取合法 | 早期原值匹配前一输入；静态源与真实图独立对照未复现，后续r53再次捕获1568字混入同帧姿态内容 | DMA完成、缓存同步效果与NPU源可见性仍不能严格三分；晚读不修补首次值，旧DATA仍暂停。[隔离结果](demo_v1/RESULTS.md)、[r53原值](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md) |
 | D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
-| D45 | 跨启动HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离仍复现；同启动有限消费可缓解，r3取得真实CSI／HDMI有界闭环 | r8／r9首RVALID快照与两份波形差1周期；解析偏移已排除，硬件计数起点与首边沿采样尚未区分。r9另见原生bit79，仍不满足有限消费准入，已回退关闭。[最新限定调查](software/pose180_pipeline/resident/PHASE-TRACKING.md)，D45全面调查与旧DATA不自动恢复。 |
+| D45 | 跨启动HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离仍复现；同启动有限消费可缓解；[无诊断但保留消费候选](FPGA/hdmi_candidate/probe_free_drain/README.md)已取得启动消费后全链路通过样本 | 旧[无探针r1](FPGA/hdmi_candidate/probe_free/README.md)误删消费器及SDK上传DMA超时保留；新候选最初三次健康启动后，追加 r3 第 2 轮实际消费 16 拍返回并完成 5 分钟，但不能关闭间歇性根因。运行中 PL_KEY1 失联样本单列；[r8／r9原值](software/pose180_pipeline/resident/PHASE-TRACKING.md)保留，D45全面调查与旧DATA不自动恢复。 |
 | D46 | 真实CSI接入后的停顿、射频适配与人体效果 | r5验证独立显示及恢复；r6验证同一TX任务续期和新版HDMI，均已正常回退关闭 | TX切换已消除，但共同窗口缺失后仍有长停顿；r7实测无窗恢复间隔缩短，r8相位跟踪离线通过，r9见证复验仍在SDK前拒绝、真实改善待验证。姿态问题暂缓、精度未验收，严格30Hz不作门。[r6结果](software/pose180_pipeline/resident/TX-LEASE.md)、[r7实测](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) |
 
 ## 现存问题与处理优先级
+
+2026-10-26 [心率开发与实采](software/vitals/HYBRID-20261026.md)：已取得约 60 秒完整真实记录，流式 PS／可选 PL 核及故障隔离通过离线验证；真实信号周期性不足、部分摆位出现多载波共同相位跳变，尚未检出心率。该信号问题和整机 PL 布线／板测分别保持开放，不用合成正确或 OOC 通过代替实测。
+
+新增离线结果：[防闪现后处理与精简硬件](FPGA/hdmi_candidate/pose_stabilizer/README.md)已完成回放、仿真及资源比较。人数变化有所下降但仍有轨迹重建；实际身份／精度和现场效果未知。1／4路滤波均LUT超预算，守卫保留原生checker且覆盖资格关闭，不能据此绕过D45／r8／r9拒绝。本阶段板端仍暂停。
 
 2026-10-25优先级调整：用户已批准[ADR_50](ADR/ADR_50.md)，先完成端到端演示及其必需的常驻／恢复能力；无需严格30Hz。下列问题继续保留原值与未验收状态，但有限数值偏差、严格实时、零缺窗和完整根因研究不再单独阻断开发。仅按对真实闭环、硬件安全和资源可恢复性的实际影响排序，后续常驻核心与实际有界闭环结果见[实施记录](software/pose180_pipeline/resident/README.md)，不据此关闭旧根因或精度问题。
 
@@ -38,6 +42,8 @@
 
 ## D45的事实、推断与未知
 
+2026-10-26 用户指定的正常 HDMI r26 完整工程已完成综合，并复用同源合格位流进行四次软件重启，均未复现启动异常；原 BOOT 回退核验完成。该有限复验不关闭间歇性根因，也不包含断电冷启动或 SDK／HDMI 负载，见[本次实板记录](Deliverables/HDMI_Complete_20261026/board-validation/README.md)。
+
 当前补充（r27～r53）：真实连续波形与原生160位协议检查已接入。r37在PL互联仍复位、累计AR=0时捕获PS边界RVALID及58/59/61；92/93/95为READY建议项。RVALID在背压时保持并非单独的违规证据，应结合请求历史、复位窗口和检查器流水判读。[原始协议结果](tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md)。
 
 r45提供同启动单次软件启用的有限消费。r46/r52实际接收16拍（已缓冲6拍＋新PS返回10拍），无AR/写活动；原58/59及消费引起的空CAM下溢79保留，只重置检查器后fresh160准入，不复位业务接口。r52同启动合法业务已有限验证，根因仍未知。[r52](tools/pose-v1/evidence/hdmi-long-git-20261024-r52/RESULTS.md)。以下r23～r26描述保留当时观测范围；涉及PS内部FIFO的旧推断已被[官方资料判读](FPGA/hdmi_candidate/diagnostics/PROTOCOL-CHECKER-REVIEW-20261023.md)修正。
@@ -50,6 +56,8 @@ r26已完成PS／PL被动时间轴、符合既定时序范围的实际bit／BOOT
 已采取：同r9的返回ID／位宽／S00与S01连线审查及有限64笔连续读、并行读、背压仿真未发现直接错线或误发；高位截断、仲裁／缓冲区异常仍未取得实板逐事务证据。网表中跨层级反相优化不应当作错线，“最后25个差异门”也不等于25处错误。
 
 复位范围：静态RTL／实际DCP和原厂引脚资料已核对。F8=PL_KEY1／SW6，E7／SW7接rx_gtx_full_reset；r18／r20按SW7未清零不能检验F8。r21健康启动和r22故障启动均已证明正确SW6清零观测器；r22按后纯CSR仍异常。实际HP2互联四个复位端均有连接，上游RVALID来自PS HP2输出，不能简单认定HDMI少接复位，也不能把连接存在等同实际复位脉冲或PS队列已清空。
+
+2026-10-26 新增运行中复位故障：[去诊断、保留消费候选 r3](FPGA/hdmi_candidate/probe_free_drain/README.md)在用户按 PL_KEY1 后黑屏、管理网络失联，最终通过完整断电重启恢复。运行中 PL 复位自动恢复尚未通过；该样本与上述 SDK 前启动异常分别记录，不据此认定 D45 已复现或定位。
 
 r23事实：首次可观测source时钟起未见AR，已见复位期间原始RVALID及ready路径先返回后请求标志；原始返回握手不能当作合法事务，观测时钟存在之前的活动仍未知。正确SW6清零CSR但未见HP2互联复位，该观测不覆盖PS内部FIFO复位。原dcm_locked固定1、MIG存在停钟路径，原IP停钟对照重现漏采。后续r24已接入DDR就绪门并实际见证PL互联复位，r25仍故障；不能继续把修正写为“尚未实测”，也不能将该机制当唯一根因。[r23原值](tools/pose-v1/evidence/hdmi-boot-witness-20261019-r23/PLAN.md)、[r24实测](tools/pose-v1/evidence/hdmi-hp2-ready-20261020-r24/PLAN.md)。
 

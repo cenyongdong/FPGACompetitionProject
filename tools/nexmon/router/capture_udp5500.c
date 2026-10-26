@@ -72,8 +72,14 @@ int main(int argc, char **argv) {
     if (!strcmp(argv[2], "-")) { maximum_seconds = 3600; packet_limit = 4000000; }
 #endif
     unsigned seconds = number(argv[3], maximum_seconds), limit = number(argv[4], packet_limit);
+    int continuous = 0;
+#ifdef NEXMON_STREAM_CAPTURE
+    /* No file growth: only a consumer-owned pipe may explicitly be unbounded
+     * in time/count. Disconnect or SIGTERM still ends this capture instance. */
+    continuous = !strcmp(argv[2], "-") && !strcmp(argv[3], "0") && !strcmp(argv[4], "0");
+#endif
     unsigned index = if_nametoindex(argv[1]);
-    if (!seconds || !limit || !index) { fprintf(stderr, "invalid budget/interface\n"); return 2; }
+    if ((!continuous && (!seconds || !limit)) || !index) { fprintf(stderr, "invalid budget/interface\n"); return 2; }
     int fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
     if (fd < 0) { perror("socket"); return 3; }
     struct sockaddr_ll address = {.sll_family = AF_PACKET, .sll_protocol = htons(ETH_P_ALL), .sll_ifindex = index};
@@ -94,10 +100,10 @@ int main(int argc, char **argv) {
     signal(SIGINT, stop); signal(SIGTERM, stop);
     double start = mono(), deadline = start + seconds;
     if (start < 0) error = 1;
-    uint32_t count = 0;
+    unsigned long long count = 0;
     size_t bytes = 24;
     unsigned char buffer[65535];
-    while (!error && !interrupted && count < limit && mono() < deadline) {
+    while (!error && !interrupted && (continuous || (count < limit && mono() < deadline))) {
         struct pollfd poller = {.fd = fd, .events = POLLIN};
         int ready = poll(&poller, 1, 50);
         if (ready < 0) { if (errno == EINTR) continue; perror("poll"); error = 1; break; }
@@ -127,8 +133,8 @@ int main(int argc, char **argv) {
     if (getsockopt(fd, SOL_PACKET, PACKET_STATISTICS, &statistics, &statistics_size)) error = 1;
     if (statistics.tp_drops) error = 1;
     close(fd);
-    int budget_reached = count == limit;
-    fprintf(stderr, "{\"packets\":%u,\"bytes\":%zu,\"elapsed_s\":%.6f,\"kernel_drops\":%u,\"interrupted\":%d,\"error\":%d,\"packet_budget_reached\":%d}\n",
+    int budget_reached = !continuous && count == limit;
+    fprintf(stderr, "{\"packets\":%llu,\"bytes\":%zu,\"elapsed_s\":%.6f,\"kernel_drops\":%u,\"interrupted\":%d,\"error\":%d,\"packet_budget_reached\":%d}\n",
             count, bytes, mono() - start, statistics.tp_drops, (int)interrupted, error, budget_reached);
     return error ? 4 : (interrupted ? 6 : (budget_reached ? 7 : (count ? 0 : 5)));
 }

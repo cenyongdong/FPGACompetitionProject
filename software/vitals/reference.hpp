@@ -6,6 +6,7 @@
 #include <optional>
 #include <string>
 #include <vector>
+#include "correlation.hpp"
 
 // 独立PS参考算法，无SDK、MMIO、模型、HDMI或网络依赖。
 // 输入必须是同一接收节点、同包天线对的连续记录；不做补帧或重采样。
@@ -25,6 +26,20 @@ namespace pose::vitals {
     struct Window {
         std::vector<Sample> samples;
         ClockKind clock = ClockKind::UnknownArrival;
+    };
+    // Explicit derived-phase interface. Never reconstruct synthetic I/Q from a
+    // resampled phase or relabel an RX-relative grid as a verified RF clock.
+    enum class PhaseClock { Unknown, Synthetic, RelativeRx, VerifiedSampling };
+    struct PhaseSample {
+        std::uint64_t time_ns=0, sequence=0; // derived grid index, not RF frame ID
+        std::array<double,channels> phase{}; // unwrapped radians
+        bool source_support_valid=false; // covers the entire anti-alias footprint
+        std::array<bool,channels> channel_valid{true,true,true,true};
+    };
+    struct PhaseWindow {
+        std::vector<PhaseSample> samples;
+        PhaseClock clock=PhaseClock::Unknown;
+        std::string clock_evidence;
     };
     struct Config {
         double sample_rate = 50.0;
@@ -68,6 +83,7 @@ namespace pose::vitals {
     };
     struct Result {
         std::string status = "invalid";
+        std::string correlation_backend = "float64_cpu";
         std::vector<std::string> reasons;
         Quality quality;
         Timing timing;
@@ -77,6 +93,7 @@ namespace pose::vitals {
     };
 
     // 配置错误抛invalid_argument；数据不合格返回原因，不自动修补或复用旧结果。
-    Result analyze(const Window& window, const Config& config = {});
+    Result analyze(const Window& window, const Config& config = {}, CorrelationBackend* backend=nullptr);
+    Result analyze_phase(const PhaseWindow&, const Config& config = {}, CorrelationBackend* backend=nullptr);
     std::string clock_name(ClockKind clock);
 }

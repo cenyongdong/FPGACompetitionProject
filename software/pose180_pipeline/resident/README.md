@@ -6,7 +6,9 @@
 
 ## 实现与资源边界
 
-最新[r8相位跟踪与r9见证复验](PHASE-TRACKING.md)完成软件验证、原始回放和RTL／实际布线核查；新r9复现见证差异，并出现原生bit79，SDK前拒绝后已回原BOOT关闭。相位跟踪实机改善仍未验证，当前恢复身份与原因边界见该记录。
+最新离线增量：[防闪现后处理、统一HDMI／PC派生帧与精简硬件](../../../FPGA/hdmi_candidate/pose_stabilizer/README.md)。默认r45＋CPU滤波，新增39385独立展示通道；原39383原始协议保留。此增量未部署，不能套用下文历史板测为新后处理验收。
+
+最新[r10／r11／r12验证](TOP3-VALIDATION.md)复用r45，板端与PC均先取Top3再筛选置信度>0.2，r12完成2973次推理及PC接收。用户随后关闭板端并要求暂停工作，无本批活动负载；原BOOT文件已恢复，回退启动尚未核验，不自动续跑。[无探针位流r1](../../../FPGA/hdmi_candidate/probe_free/README.md)与[r8／r9](PHASE-TRACKING.md)保留为历史记录。
 
 ```text
 TX无线广播 → 三个RX → 各自有序PCAP/TCP → 板端CSI整理

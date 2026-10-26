@@ -6,6 +6,25 @@ import {once} from 'node:events';
 import {fileURLToPath} from 'node:url';
 import vm from 'node:vm';
 import {record} from './fixtures.mjs';
+import {selectTopPoses,SCORE_OFFSET,POSE_OFFSET} from '../full_record.mjs';
+
+test('PC top3 selection uses strict float32 threshold and preserves raw records',()=>{
+    const raw=record();
+    for(let i=0;i<180;++i)raw.writeFloatLE(0.1,SCORE_OFFSET+4*i);
+    raw.writeFloatLE(0.8,SCORE_OFFSET+4*179);raw.writeFloatLE(0.7,SCORE_OFFSET+4*2);
+    raw.writeFloatLE(0.6,SCORE_OFFSET+4*3);raw.writeFloatLE(0.5,SCORE_OFFSET+4*4);
+    const original=Buffer.from(raw),three=selectTopPoses(raw);
+    assert.deepEqual(three.map(p=>p.candidate),[179,2,3]);
+    assert.deepEqual(raw,original);
+    three.forEach(p=>p.joints.forEach((v,i)=>assert.equal(v,raw.readFloatLE(POSE_OFFSET+(p.candidate*42+i)*4))));
+    for(let i=0;i<180;++i)raw.writeFloatLE(0.2,SCORE_OFFSET+4*i);
+    assert.deepEqual(selectTopPoses(raw),[]);
+    raw.writeUInt32LE(0x3e4cccce,SCORE_OFFSET+4*7); // next float above 0.2f
+    assert.deepEqual(selectTopPoses(raw).map(p=>p.candidate),[7]);
+    raw.writeFloatLE(0.5,SCORE_OFFSET+4*1);raw.writeFloatLE(0.5,SCORE_OFFSET+4*2);
+    raw.writeFloatLE(0.5,SCORE_OFFSET+4*3);raw.writeFloatLE(0.5,SCORE_OFFSET+4*4);
+    assert.deepEqual(selectTopPoses(raw).map(p=>p.candidate),[1,2,3]);
+});
 
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function until(check,label,ms=4000){const end=Date.now()+ms;while(Date.now()<end){const result=await check();if(result)return result;await wait(20);}throw new Error(label);}
@@ -18,7 +37,7 @@ test('optional PC consumes split results without ACK, marks stale, reconnects an
     const httpPort=await freePort(),base='http://127.0.0.1:'+httpPort;
     try{
         child=spawn(process.execPath,[fileURLToPath(new URL('../resident.mjs',import.meta.url)),
-            '--board','127.0.0.1','--port',String(source.address().port),'--http-port',String(httpPort),'--seconds','10','--mock','1'],
+            '--mode','raw','--board','127.0.0.1','--port',String(source.address().port),'--http-port',String(httpPort),'--seconds','10','--mock','1'],
             {windowsHide:true,stdio:['ignore','pipe','pipe']});
         const finished=once(child,'exit');child.stdout.on('data',b=>{output+=b;});child.stderr.on('data',b=>{errors+=b;});
         await until(()=>output.includes('RESIDENT_PC_READY'),'PC server did not become ready');

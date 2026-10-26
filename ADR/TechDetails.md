@@ -31,7 +31,7 @@ flowchart LR
   S -.-> ST[TCP 39384 状态与资源观察]
 ```
 
-TX的四个LAN口分别连接开发板、RX1、RX2、RX3；PC仅接RX空闲LAN作开发诊断。无线CSI由各RX直接发往板端，PC不转发CSI、不驱动采集心跳、不回传显示许可。RX1／TX／RX2／RX3管理地址分别为`.50.1/.50.2/.50.3/.50.4`；r4为板端临时增加`.50.49/24`接收地址，管理仍保留`.126.49`，任务结束恢复。这不是新增的永久网络或开机配置，凭据不进入技术报告。
+TX的四个LAN口分别连接开发板、RX1、RX2、RX3；PC仅接RX空闲LAN作开发诊断。无线CSI由各RX直接发往板端，PC不转发CSI、不驱动采集心跳、不回传显示许可。RX1／TX／RX2／RX3管理地址分别为`.50.1/.50.2/.50.3/.50.4`；板端按运行包临时增加`.50.49/24`接收地址，管理仍保留`.126.49`，任务结束恢复。用户随后授权[四台路由器开机自启动](../software/pose180_pipeline/resident/autostart/README.md)：该持久服务不改变LAN地址／DHCP，也不替代板端地址与服务配置；凭据不进入技术报告。
 
 物理平台为悟净Lite／JFMQL30TAI676H、ARM64 Linux、Icraft 3.39.0与ZG330。FPGA复用r45合格bit／BOOT，AI四路连接、已有时序例外及工具适配范围保持；本轮软件改造没有重跑EDA、改频率或新增豁免。VPU、RTSP和旧100-query主链保留为历史实现，现行演示不启动它们。
 
@@ -40,7 +40,7 @@ TX的四个LAN口分别连接开发板、RX1、RX2、RX3；PC仅接RX空闲LAN�
 | 模块 | 实现入口与职责 |
 |---|---|
 | 路由器本地守护 | [router_guard.c](../software/pose180_pipeline/resident/router_guard.c)、[router_ctl.sh](../software/pose180_pipeline/resident/router_ctl.sh)：脱离SSH会话运行，RX捕获／有界发送／重连，TX持续任务与本机续期（保留有限模式），设备本地start/status/stop |
-| 源端看门狗 | [router_watchdog.sh](../software/pose180_pipeline/resident/router_watchdog.sh)：监督本机守护租约，正常结束或异常超期恢复原厂无线运行时；不依赖PC续租 |
+| 源端看门狗与开机入口 | 有限包保留[router_watchdog.sh](../software/pose180_pipeline/resident/router_watchdog.sh)；常驻开机模式使用[autostart/service.sh](../software/pose180_pipeline/resident/autostart/service.sh)与[watchdog.sh](../software/pose180_pipeline/resident/autostart/watchdog.sh)，无整机运行时限，先请求拥有者安全退出，禁止并发卸载和无停止证明释放；不依赖PC续租 |
 | CSI适配与整理 | [resident/csi.cpp](../software/pose180_pipeline/resident/csi.cpp)负责连接、PCAP解析、代次和重同步；复用[ingress.cpp](../tools/nexmon/board/ingress.cpp)的NMD3配对、时钟网格与共同窗口 |
 | 常驻编排 | [main.cpp](../software/pose180_pipeline/resident/main.cpp)、[core.hpp](../software/pose180_pipeline/resident/core.hpp)：SDK单拥有线程、最新窗口、有效性和过期检查、实际推理／采纳计数与隔离 |
 | 数学与推理 | [preprocess.cpp](../software/core/input/preprocess.cpp)、[runtime.cpp](../software/pose180_pipeline/board/runtime.cpp)：保持既有预处理、180-query图、输入张量与公开输出读回 |
@@ -89,6 +89,8 @@ HDMI用1920×1080 RGB565工作图，复用静态底图和CPU像素存储，按�
 内存与记录上限不是零丢帧承诺。`record_dropped`包含诊断文本及完整结果IPC提交失败，`pc_dropped`包含被替换或断开的结果；二者不能直接解释为NPU推理失败。严格逐帧归档与ACK主链继续留在历史入口，现行演示不继承其1秒全链停止条件。
 
 ## 现行实现：持续采集、分级恢复与退出
+
+路由器开机模式将资产保存于JFFS，运行目录与日志只写`/tmp`；原KoolShare开机脚本保留。每次开机自动尝试一次，等无线接口及本机身份就绪后启动；TX保留60秒固件租约／10秒本机续期，RX等待板端TCP39033并自动重连。专用`continuous`标记和时长0允许常驻守护；持续管道捕获同时移除时间与包数结束条件，文件采集及旧有限包保持原预算。持久服务与旧包无线`load/start`互斥。启停、实际重启结果及异常处理边界统一见[开机服务记录](../software/pose180_pipeline/resident/autostart/README.md)。
 
 RX守护每次连接创建新的捕获代次，连接结束后按2／4／8／16／30秒退避；流式捕获不再每16秒主动结束。r5将网络重连退避集中到RX，板端即时接收合法连接。配对／时钟失锁或2秒静默只清空共同组窗代次，保留三个TCP及各自PCAP解析器；实际断开、500ms采集年龄漂移、格式错误或10秒无字节时，仅关闭受影响RX。r7将运行中已产出过窗口的代次无有效窗阈值从10秒缩短为2秒；首次／重新学习代次保留5秒预算，原1秒校准不变。连续失败超过2次／5次，仅对组窗增加250ms／1秒冷却，其间继续排空数据，不拒收TCP。
 

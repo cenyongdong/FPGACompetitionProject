@@ -4,6 +4,7 @@
 #include <chrono>
 #include <cmath>
 #include <iomanip>
+#include <numeric>
 #include <sstream>
 #include <stdexcept>
 #include <utility>
@@ -85,7 +86,7 @@ namespace pose::hdmi {
                 text(image,850,84,"SLOT",2.5,label);
                 text(image,1100,84,"SCORE",2.5,label);
                 text(image,32,146,"HIGHEST SCORE / ORIGINAL MODEL UNITS",2,color(159,200,231));
-                text(image,32,196,"FIXED PERSPECTIVE / 14 JOINTS / NO TRACKING / NO CALIBRATION",2,
+                text(image,32,196,"FIXED PERSPECTIVE / 14 JOINTS / NO CALIBRATION",2,
                      color(149,168,185));
                 return image;
             }();
@@ -93,22 +94,39 @@ namespace pose::hdmi {
         }
     }
 
-    static void draw_pose(Rendered& result) {
+    static void draw_pose(std::vector<uint8_t>& image,
+                          const std::array<std::array<double, 2>, 14>& projected,
+                          std::uint64_t track=0,bool held=false) {
+        const std::array<std::array<unsigned,3>,3> palette{{{{100,175,200}},{{210,155,95}},{{155,195,115}}}};
+        const auto rgb=palette[track?((track-1)%3):0];
+        const auto ink=held?color(95,100,110):track?color(rgb[0],rgb[1],rgb[2]):color(96,128,128);
         for (const auto bone : pose_v1::render::bones) {
-            const auto a = result.projected[bone[0]], b = result.projected[bone[1]];
+            const auto a = projected[bone[0]], b = projected[bone[1]];
             if (a[0]==hidden || b[0]==hidden) continue;
             // Match the reference screenshot's lit/fogged appearance, rather
             // than the much brighter unlit WebGL material RGB values.
-            line(result.rgb565,a[0],a[1],b[0],b[1],color(96,128,128),3);
+            line(image,a[0],a[1],b[0],b[1],ink,3);
         }
-        for (size_t i = 0; i < result.projected.size(); ++i) {
-            const auto p = result.projected[i];
+        for (size_t i = 0; i < projected.size(); ++i) {
+            const auto p = projected[i];
             if (code(p[0], p[1])) continue;
             const int x = int(std::lround(p[0])), y = int(std::lround(p[1]));
             for (int dy=-4;dy<=4;++dy) for (int dx=-4;dx<=4;++dx)
                 if (dx*dx+dy*dy<=16 && !code(x+dx,y+dy))
-                    pixel(result.rgb565,x+dx,y+dy,color(128,128,112));
+                    pixel(image,x+dx,y+dy,track?ink:color(128,128,112));
         }
+    }
+    static void draw_detections(Rendered& result) {
+        for (unsigned i=0;i<result.detection_count;++i)
+            draw_pose(result.rgb565,result.detections[i].projected,result.detections[i].track,result.detections[i].held);
+    }
+    static void draw_selection(Rendered& result) {
+        if (result.selection.top_k==1 && !std::isfinite(result.selection.threshold)) return;
+        rect(result.rgb565,32,140,1450,174,color(11,17,27));
+        std::ostringstream label;
+        label<<"TOP "<<result.selection.top_k<<" / SCORE ABOVE "<<std::fixed<<std::setprecision(2)
+             <<result.selection.threshold<<" / SHOWN "<<result.detection_count;
+        text(result.rgb565,32,146,label.str(),2,color(159,200,231));
     }
     static void draw_result_fields(Rendered& result, uint64_t id) {
         const auto white = color(236, 241, 247);
@@ -128,10 +146,12 @@ namespace pose::hdmi {
 
     static Rendered render_impl(PreparedBackground* prepared,
                     const float* scores, const float* poses, std::size_t candidates,
-                    uint64_t id, pose_v1::render::Status status) {
+                    uint64_t id, pose_v1::render::Status status, SelectionPolicy selection = {}) {
         const auto begin = std::chrono::steady_clock::now();
         if (!scores || !poses || (candidates != 100 && candidates != 180))
             throw std::runtime_error("Unsupported candidate raster input");
+        if (!selection.top_k || selection.top_k>3 || std::isnan(selection.threshold))
+            throw std::runtime_error("Unsupported candidate selection policy");
         for (std::size_t i=0;i<candidates;++i)
             if (!std::isfinite(scores[i])) throw std::runtime_error("Non-finite candidate score");
         for (std::size_t i=0;i<candidates*42;++i)
@@ -143,29 +163,55 @@ namespace pose::hdmi {
         if (prepared && prepared->rgb565.size() != frameBytes)
             throw std::runtime_error("Prepared HDMI background byte count differs");
         Rendered result;
-        result.top_index = unsigned(std::max_element(scores, scores+candidates) - scores);
+        result.selection=selection;
+        std::array<unsigned,180> ranked{};
+        std::iota(ranked.begin(),ranked.begin()+candidates,0u);
+        std::partial_sort(ranked.begin(),ranked.begin()+selection.top_k,ranked.begin()+candidates,
+            [&](unsigned a,unsigned b){return scores[a]==scores[b]?a<b:scores[a]>scores[b];});
+        result.top_index = ranked[0];
         result.score = scores[result.top_index];
         std::copy_n(poses + result.top_index * 42, 42, result.selected_raw.begin());
         if (prepared) result.rgb565 = std::move(prepared->rgb565);
         else result.rgb565 = background(); // Existing one-call API keeps its timing scope.
         // Keep the full 20-digit frame id and recovery state in the top header.
         draw_result_fields(result,id);
-        draw_status(result,status==Status::Result?"RESULT":status==Status::NoInput?"NO INPUT":"STOPPED",
-                    status==Status::Result);
-
         for (size_t i = 0; i < result.projected.size(); ++i) {
             result.projected[i] = project(result.selected_raw[i * 3],
                                           result.selected_raw[i * 3 + 1],
                                           result.selected_raw[i * 3 + 2]);
             if (code(result.projected[i][0], result.projected[i][1])) ++result.clipped_joints;
         }
-        if (status == Status::Result) draw_pose(result);
+        for (unsigned rank=0;rank<selection.top_k;++rank) {
+            const auto index=ranked[rank];
+            if (!(scores[index]>selection.threshold)) continue;
+            auto& pose=result.detections[result.detection_count++];
+            pose.index=index;pose.score=scores[index];
+            std::copy_n(poses+index*42,42,pose.raw.begin());
+            for (size_t joint=0;joint<pose.projected.size();++joint)
+                pose.projected[joint]=project(pose.raw[joint*3],pose.raw[joint*3+1],pose.raw[joint*3+2]);
+        }
+        draw_selection(result);
+        draw_status(result,status==Status::Result?(result.detection_count?"RESULT":"NO DETECTION"):
+                    status==Status::NoInput?"NO INPUT":"STOPPED",status==Status::Result);
+        if (status == Status::Result) draw_detections(result);
         result.render_ms = std::chrono::duration<double, std::milli>(
             std::chrono::steady_clock::now() - begin).count();
         return result;
     }
     PreparedBackground prepare_background() {
         return PreparedBackground{background()};
+    }
+    Rendered render_presentation(PreparedBackground&& prepared,const pose::post::PresentationFrame& frame) {
+        if(prepared.rgb565.size()!=frameBytes||frame.poses.size()>3)throw std::runtime_error("Invalid presentation raster");
+        Rendered r;r.rgb565=std::move(prepared.rgb565);r.selection={3,.2f};
+        for(const auto&p:frame.poses){auto&d=r.detections[r.detection_count++];d.index=p.candidate;d.score=p.score;d.raw=p.joints;d.track=p.track;d.held=p.held;
+            if(p.observed_ns>frame.id.source_ns||frame.id.source_ns-p.observed_ns>frame.hold_ns)throw std::runtime_error("Expired presentation");
+            d.remaining_ns=frame.hold_ns-(frame.id.source_ns-p.observed_ns);
+            for(unsigned j=0;j<14;++j){for(unsigned a=0;a<3;++a)if(!std::isfinite(p.joints[3*j+a]))throw std::runtime_error("Nonfinite presentation");d.projected[j]=project(p.joints[3*j],p.joints[3*j+1],p.joints[3*j+2]);}}
+        if(r.detection_count){const auto&d=r.detections[0];r.top_index=d.index;r.score=d.score;r.selected_raw=d.raw;r.projected=d.projected;}
+        draw_result_fields(r,frame.id.frame);draw_selection(r);draw_status(r,r.detection_count?"FILTERED":"NO DETECTION",true);draw_detections(r);
+        for(unsigned i=0;i<r.detection_count;++i){const auto&d=r.detections[i];text(r.rgb565,32+i*450,172,"ID "+std::to_string(d.track)+(d.held?" / HELD":" / CURRENT"),2,color(159,200,231));}
+        return r;
     }
     void prepare_background(PreparedBackground& reusable) {
         reusable.rgb565.assign(background().begin(),background().end());
@@ -182,7 +228,9 @@ namespace pose::hdmi {
             result.top_index=last_result->top_index;result.score=last_result->score;
             result.clipped_joints=last_result->clipped_joints;
             result.selected_raw=last_result->selected_raw;result.projected=last_result->projected;
-            draw_result_fields(result,last_frame_id);draw_pose(result);
+            result.selection=last_result->selection;result.detections=last_result->detections;
+            result.detection_count=last_result->detection_count;
+            draw_result_fields(result,last_frame_id);draw_selection(result);draw_detections(result);
         } else {
             const auto muted=color(167,184,204);
             text(result.rgb565,500,84,"--",2.5,muted);
@@ -202,8 +250,8 @@ namespace pose::hdmi {
     }
     Rendered render(PreparedBackground&& prepared, const float* scores,
                     const float* poses, std::size_t candidates, uint64_t id,
-                    pose_v1::render::Status status) {
-        return render_impl(&prepared,scores,poses,candidates,id,status);
+                    pose_v1::render::Status status, SelectionPolicy selection) {
+        return render_impl(&prepared,scores,poses,candidates,id,status,selection);
     }
 
     Rendered render(PreparedBackground&& prepared,

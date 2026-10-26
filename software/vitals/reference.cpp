@@ -89,21 +89,6 @@ namespace pose::vitals {
                 output[i] = x[i] - mean - slope * (static_cast<double>(i) - center);
             return output;
         }
-        std::vector<double> acf(const std::vector<double>& x, std::size_t last) {
-            std::vector<double> output(last + 1);
-            for (std::size_t k = 0; k <= last; ++k) {
-                double product = 0, first = 0, second = 0;
-                for (std::size_t i = k; i < x.size(); ++i) {
-                    product += x[i] * x[i - k];
-                    first += x[i] * x[i];
-                    second += x[i - k] * x[i - k];
-                }
-                const auto norm = std::sqrt(first) * std::sqrt(second);
-                output[k] = norm > 1e-24 ? product / norm : 0;
-            }
-            return output;
-        }
-
         // 用未带通的去趋势原信号验证周期证据，防止带通滤波将噪声变成“心搏”。
         struct Spectrum { std::vector<double> power; double step; };
         Spectrum spectrum(const std::vector<double>& x, double rate) {
@@ -248,7 +233,73 @@ namespace pose::vitals {
         }
     }
 
-    Result analyze(const Window& window, const Config& c) {
+    namespace {
+    Result finish_analysis(Result result, const Config& c, CorrelationBackend* backend, Clock::time_point begin) {
+        const auto warmup=count(c.warmup_seconds,c.sample_rate);
+        result.correlation_backend=backend?backend->name():"float64_cpu";
+        const auto correlate=[&](const std::vector<double>& values,std::size_t last){
+            auto out=backend?backend->correlate(values,last):floating_correlation(values,last);
+            if(out.size()!=last+1)throw std::runtime_error("Incomplete correlation result");
+            for(auto v:out)if(!finite(v)||std::abs(v)>1.000001)throw std::runtime_error("Invalid correlation result");
+            return out;
+        };
+        // 四阶高通的两个Butterworth极点对，抑制强呼吸泄漏后再二阶低通。
+        // 原二阶高通在已保存的正样例中使ACF偏向呼吸谐波，不能靠降低质量门放行。
+        result.heart_sections = {
+            section(c.heart_low_hz, c.sample_rate, true, 1 / (2 * std::cos(pi / 8))),
+            section(c.heart_low_hz, c.sample_rate, true, 1 / (2 * std::cos(3 * pi / 8))),
+            section(c.heart_high_hz, c.sample_rate, false)};
+        result.breath_sections = {section(c.breath_low_hz, c.sample_rate, true), section(c.breath_high_hz, c.sample_rate, false)};
+        auto stage = Clock::now();
+        for (auto& trace : result.trace) {
+            if(trace.detrended.empty())continue;
+            const auto heart = filter(trace.detrended, result.heart_sections);
+            const auto breath = filter(trace.detrended, result.breath_sections);
+            trace.heart.assign(heart.begin() + warmup, heart.end());
+            trace.breath.assign(breath.begin() + warmup, breath.end());
+        }
+        result.timing.filter_ms = elapsed(stage);
+        stage = Clock::now();
+        for (auto& trace : result.trace) {
+            if(trace.detrended.empty())continue;
+            trace.heart_acf = correlate(trace.heart, static_cast<std::size_t>(std::ceil(c.sample_rate / c.heart_low_hz)) + 1);
+            trace.breath_acf = correlate(trace.breath, static_cast<std::size_t>(std::ceil(c.sample_rate / c.breath_low_hz)) + 1);
+        }
+        result.timing.correlation_ms = elapsed(stage);
+        result.correlation_backend=backend?backend->name():"float64_cpu";
+        stage = Clock::now();
+        for (auto& trace : result.trace) {
+            if(trace.detrended.empty())continue;
+            std::vector<double> raw(trace.detrended.begin() + warmup, trace.detrended.end());
+            const auto s = spectrum(raw, c.sample_rate);
+            trace.breath_candidate = detect(trace.breath, trace.breath_acf, s, c.breath_low_hz, c.breath_high_hz, c, false);
+            trace.heart_candidate = detect(trace.heart, trace.heart_acf, s, c.heart_low_hz, c.heart_high_hz, c, true);
+        }
+        result.breath = consensus(result.trace, false, c);
+        if (result.breath) {
+            const auto breath_hz = result.breath->bpm / 60;
+            for (auto& trace : result.trace) {
+                auto& heart = trace.heart_candidate;
+                if (!heart.usable) continue;
+                const auto harmonic = static_cast<int>(std::lround(heart.spectral_hz / breath_hz));
+                if (harmonic >= 2 && harmonic <= 20 &&
+                    std::abs(heart.spectral_hz - harmonic * breath_hz) <= c.harmonic_guard_hz) {
+                    heart.usable = false;
+                    heart.reason = "ambiguous_breathing_harmonic";
+                }
+            }
+        }
+        result.heart = consensus(result.trace, true, c);
+        if (!result.heart) reason(result, "no_supported_heart_consensus");
+        if (!result.breath) reason(result, "no_supported_breath_consensus");
+        result.status = result.heart ? "valid" : "no_heart_estimate";
+        result.timing.spectrum_decision_ms = elapsed(stage);
+        result.timing.total_ms = elapsed(begin);
+        return result;
+    }
+    }
+
+    Result analyze(const Window& window, const Config& c, CorrelationBackend* backend) {
         validate(c);
         const auto begin = Clock::now();
         Result result;
@@ -299,13 +350,6 @@ namespace pose::vitals {
             result.timing.total_ms = elapsed(begin);
             return result;
         }
-        // 四阶高通的两个Butterworth极点对，抑制强呼吸泄漏后再二阶低通。
-        // 原二阶高通在已保存的正样例中使ACF偏向呼吸谐波，不能靠降低质量门放行。
-        result.heart_sections = {
-            section(c.heart_low_hz, c.sample_rate, true, 1 / (2 * std::cos(pi / 8))),
-            section(c.heart_low_hz, c.sample_rate, true, 1 / (2 * std::cos(3 * pi / 8))),
-            section(c.heart_high_hz, c.sample_rate, false)};
-        result.breath_sections = {section(c.breath_low_hz, c.sample_rate, true), section(c.breath_high_hz, c.sample_rate, false)};
         auto stage = Clock::now();
         for (std::size_t ch = 0; ch < channels; ++ch) {
             auto& trace = result.trace[ch];
@@ -337,47 +381,57 @@ namespace pose::vitals {
             result.timing.total_ms = elapsed(begin);
             return result;
         }
-        stage = Clock::now();
-        for (auto& trace : result.trace) {
-            const auto heart = filter(trace.detrended, result.heart_sections);
-            const auto breath = filter(trace.detrended, result.breath_sections);
-            trace.heart.assign(heart.begin() + warmup, heart.end());
-            trace.breath.assign(breath.begin() + warmup, breath.end());
-        }
-        result.timing.filter_ms = elapsed(stage);
-        stage = Clock::now();
-        for (auto& trace : result.trace) {
-            trace.heart_acf = acf(trace.heart, static_cast<std::size_t>(std::ceil(c.sample_rate / c.heart_low_hz)) + 1);
-            trace.breath_acf = acf(trace.breath, static_cast<std::size_t>(std::ceil(c.sample_rate / c.breath_low_hz)) + 1);
-        }
-        result.timing.correlation_ms = elapsed(stage);
-        stage = Clock::now();
-        for (auto& trace : result.trace) {
-            std::vector<double> raw(trace.detrended.begin() + warmup, trace.detrended.end());
-            const auto s = spectrum(raw, c.sample_rate);
-            trace.breath_candidate = detect(trace.breath, trace.breath_acf, s, c.breath_low_hz, c.breath_high_hz, c, false);
-            trace.heart_candidate = detect(trace.heart, trace.heart_acf, s, c.heart_low_hz, c.heart_high_hz, c, true);
-        }
-        result.breath = consensus(result.trace, false, c);
-        if (result.breath) {
-            const auto breath_hz = result.breath->bpm / 60;
-            for (auto& trace : result.trace) {
-                auto& heart = trace.heart_candidate;
-                if (!heart.usable) continue;
-                const auto harmonic = static_cast<int>(std::lround(heart.spectral_hz / breath_hz));
-                if (harmonic >= 2 && harmonic <= 20 &&
-                    std::abs(heart.spectral_hz - harmonic * breath_hz) <= c.harmonic_guard_hz) {
-                    heart.usable = false;
-                    heart.reason = "ambiguous_breathing_harmonic";
-                }
+        return finish_analysis(std::move(result), c, backend, begin);
+    }
+    Result analyze_phase(const PhaseWindow& window,const Config& c,CorrelationBackend* backend) {
+        validate(c);const auto begin=Clock::now();Result result;
+        auto& q=result.quality;q.samples=window.samples.size();
+        q.required_samples=count(c.warmup_seconds,c.sample_rate)+count(c.window_seconds,c.sample_rate);
+        if(window.clock!=PhaseClock::Synthetic&&window.clock!=PhaseClock::RelativeRx&&window.clock!=PhaseClock::VerifiedSampling)
+            reason(result,"unknown_phase_clock");
+        if(window.clock_evidence.empty())reason(result,"missing_phase_provenance");
+        if(q.samples!=q.required_samples)reason(result,"incomplete_window");
+        if(q.samples>max_samples)reason(result,"sample_budget_exceeded");
+        std::vector<double> jitter;std::array<bool,channels> eligible{true,true,true,true};
+        for(std::size_t i=0;i<window.samples.size()&&i<max_samples;++i){
+            const auto& x=window.samples[i];
+            if(!x.source_support_valid)++q.invalid_samples;
+            for(std::size_t ch=0;ch<channels;++ch)eligible[ch]=eligible[ch]&&x.channel_valid[ch]&&finite(x.phase[ch]);
+            if(i){const auto& prev=window.samples[i-1];
+                if(x.time_ns<=prev.time_ns)reason(result,"non_monotonic_time");
+                else {const auto interval=(x.time_ns-prev.time_ns)/1e6;q.max_interval_ms=std::max(q.max_interval_ms,interval);jitter.push_back(std::abs(interval-1000/c.sample_rate));}
+                if(x.sequence<=prev.sequence)reason(result,"non_monotonic_sequence");
+                else if(x.sequence-prev.sequence!=1){q.missing_sequences+=x.sequence-prev.sequence-1;reason(result,"missing_derived_sample");}
+                for(std::size_t ch=0;ch<channels;++ch)
+                    if(std::abs(x.phase[ch]-prev.phase[ch])>c.max_phase_step)eligible[ch]=false;
             }
         }
-        result.heart = consensus(result.trace, true, c);
-        if (!result.heart) reason(result, "no_supported_heart_consensus");
-        if (!result.breath) reason(result, "no_supported_breath_consensus");
-        result.status = result.heart ? "valid" : "no_heart_estimate";
-        result.timing.spectrum_decision_ms = elapsed(stage);
-        result.timing.total_ms = elapsed(begin);
+        if(q.invalid_samples)reason(result,"invalid_source_support");
+        if(!jitter.empty()){std::sort(jitter.begin(),jitter.end());q.jitter_p95_ms=jitter[std::size_t(std::ceil(jitter.size()*.95))-1];if(jitter.back()>c.max_jitter_ms)reason(result,"non_uniform_sampling");}
+        result.timing.quality_ms=elapsed(begin);
+        if(!result.reasons.empty()){result.timing.total_ms=elapsed(begin);return result;}
+        auto stage=Clock::now();
+        for(std::size_t ch=0;ch<channels;++ch){auto& t=result.trace[ch];
+            if(!eligible[ch])continue;
+            for(const auto& x:window.samples)t.phase.push_back(x.phase[ch]);
+            t.detrended=detrend(t.phase);double sum=0;for(auto v:t.detrended)sum+=v*v;
+            if(std::sqrt(sum/q.required_samples)>c.max_phase_rms){eligible[ch]=false;t.detrended.clear();}
+        }
+        result.timing.phase_ms=elapsed(stage);
+        std::size_t healthy=0;
+        for(std::size_t ch=0;ch<channels;++ch){if(eligible[ch]){++healthy;continue;}
+            auto& t=result.trace[ch];t.heart_candidate.reason=t.breath_candidate.reason="invalid_channel_support";
+            reason(result,"isolated_channel_"+std::to_string(ch));
+        }
+        if(healthy<c.min_agreeing_channels){reason(result,"insufficient_healthy_channels");result.timing.total_ms=elapsed(begin);return result;}
+        result=finish_analysis(std::move(result),c,backend,begin);
+        // A local RX clock plus interpolation is useful for an experimental rate
+        // candidate, but never becomes a verified physiological measurement.
+        if(window.clock==PhaseClock::RelativeRx){
+            if(result.heart)result.status="candidate_unverified";
+            reason(result,"rx_clock_and_physiological_accuracy_unverified");
+        }
         return result;
     }
+
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "wire.hpp"
 #include <atomic>
+#include <array>
 #include <chrono>
 #include <deque>
 #include <mutex>
@@ -39,9 +40,12 @@ using Record = std::array<unsigned char, pp::full_bytes>;
 struct Stats {
     std::atomic<std::uint64_t> received{0}, replaced{0}, stale{0}, malformed{0}, reconnects{0};
     std::atomic<std::uint64_t> inferred{0}, adopted{0}, pc_sent{0}, pc_dropped{0};
+    std::atomic<std::uint64_t> view_sent{0},view_dropped{0};
     std::atomic<std::uint64_t> record_dropped{0}, input_epoch{0}, last_input{0}, last_result{0}, last_adopt{0};
     std::atomic<std::uint64_t> forward_start{0}, longest_gap{0}, resyncs{0};
     std::atomic<std::uint64_t> display_updates{0}, display_hints{0};
+    std::atomic<std::uint64_t> selected_count{0};
+    std::array<std::atomic<std::uint64_t>,4> selection_counts{};
     std::atomic<std::uint64_t> alignment_resets{0}, transport_resets{0}, diagnostic_dropped{0};
     std::atomic<std::uint64_t> last_recovery_ms{0}, longest_recovery_ms{0};
     std::atomic<bool> isolated{false}, recording{true}, input_connected{false}, pc_connected{false};
@@ -81,8 +85,12 @@ inline std::string Stats::json(bool mock, bool hdmi) const {
     add("received",received);add("replaced",replaced);add("stale",stale);add("malformed",malformed);
     add("reconnects",reconnects);add("input_epoch",input_epoch);add("inferred",inferred);add("adopted",adopted);
     add("pc_sent",pc_sent);add("pc_dropped",pc_dropped);add("record_dropped",record_dropped);add("resyncs",resyncs);
+    add("view_sent",view_sent);add("view_dropped",view_dropped);
     add("longest_result_gap_ms",longest_gap.load()/1000000);
     add("display_updates",display_updates);add("display_hints",display_hints);
+    add("selected_count",selected_count);
+    for(unsigned i=0;i<selection_counts.size();++i)
+        add(("selected_"+std::to_string(i)+"_frames").c_str(),selection_counts[i]);
     add("alignment_resets",alignment_resets);add("transport_resets",transport_resets);
     add("diagnostic_dropped",diagnostic_dropped);add("last_recovery_ms",last_recovery_ms);
     add("longest_recovery_ms",longest_recovery_ms);
@@ -98,6 +106,7 @@ inline std::string Stats::json(bool mock, bool hdmi) const {
 struct Shared {
     Latest<Input> input;
     Latest<Record> output;
+    Latest<std::string> presentation;
     Stats stats;
     std::atomic<bool> stop{false};
 };

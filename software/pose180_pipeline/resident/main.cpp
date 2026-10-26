@@ -2,13 +2,20 @@
 #include "io.hpp"
 #include "journal.hpp"
 #include "csi.hpp"
+#include "postprocess.hpp"
+#include "lean_admission.hpp"
 #ifdef POSE180_DEMO_SDK
 #include "runtime.hpp"
 #include "hdmi_output.hpp"
 #include "hdmi_renderer.hpp"
 #include "display_state.hpp"
+#ifdef POSE180_DEMO_PROBE_FREE_DRAIN
+#include "startup_consumer.hpp"
+#endif
+#ifndef POSE180_DEMO_PROBE_FREE
 #include "FPGA/hdmi_candidate/diagnostics/deferred_consume_r45/software/source/display/r9_startup_observer.hpp"
 #include "r9_observer_mapping.hpp"
+#endif
 #endif
 #include <csignal>
 #include <fstream>
@@ -45,7 +52,23 @@ int main(int argc,char**argv) {
         const auto fail_at=std::stoull(take("--mock-fail-at","0"));
         need(!hdmi,"Mock cannot access HDMI");
 #endif
+        const auto view_port=std::stoul(take("--view-port",mock?"0":"39385"));
+#ifdef POSE180_DEMO_PROBE_FREE
+#ifdef POSE180_DEMO_PROBE_FREE_DRAIN
+        const auto hardware_profile=take("--hardware-profile","probe-free-drain-v1");
+        need(hardware_profile=="probe-free-drain-v1","Build/profile mismatch");
+#else
+        const auto hardware_profile=take("--hardware-profile","legacy-probe-free");
+        need(hardware_profile=="legacy-probe-free","Build/profile mismatch");
+#endif
+#else
+        const auto hardware_profile=take("--hardware-profile","r45");
+        if(hardware_profile=="pose-stabilizer-offline-v1")pose::post::require_lean_deployment_qualification(false);
+        need(hardware_profile=="r45","Unknown hardware profile");
+#endif
+        need(take("--filter-backend","cpu")=="cpu","PL backend requires a qualified new hardware profile; offline adapter only");
         need(options.empty(),"Unknown option");need(session && session<0xffffffffffff0000ull,"Explicit session required");
+        need(view_port<=65535&&(!view_port||(view_port!=input_port&&view_port!=result_port&&view_port!=status_port)),"Invalid presentation port");
         need(input_port<=65535 && result_port>0 && result_port<=65535 && status_port>0 && status_port<=65535,"Port out of range");
         need(max_age>0 && max_age<=60000000000ull && (hdmi_arg=="0"||hdmi_arg=="1"),"Invalid age or HDMI option");
         need(csi_config.empty()||!input_port,"Use exactly one input adapter");
@@ -53,18 +76,22 @@ int main(int argc,char**argv) {
         pd::Shared shared;
         // Must precede SDK, IO and CSI construction (fork cannot inherit them).
         pd::Journal journal(shared,output);
-        pd::Io io(shared,bind,input_port,result_port,status_port,session,mock,hdmi);
+        pd::Io io(shared,bind,input_port,result_port,status_port,session,mock,hdmi,unsigned(view_port));
+        pose::post::Postprocessor postprocessor;
         std::unique_ptr<pd::Csi> csi;
         if(!csi_config.empty())csi=std::make_unique<pd::Csi>(shared,csi_config,session);
         std::cout<<"RESIDENT_READY mock="<<mock<<" recorder_pid="<<journal.child_pid()<<std::endl;
 #ifdef POSE180_DEMO_SDK
         std::unique_ptr<pp::Runtime> runtime;
         std::unique_ptr<pose::hdmi::Output> display;
+#ifndef POSE180_DEMO_PROBE_FREE
         std::unique_ptr<Mapping> mapping;
+#endif
         try {
             pp::Config config;config.graph=package/"models/piw24_pose180_ZG.json";
             config.raw=package/"models/piw24_pose180_ZG.raw";config.evidence=output/"engine";
             if(hdmi) {
+#ifndef POSE180_DEMO_PROBE_FREE
                 std::ifstream mode_file(package/"startup-mode.txt");std::string mode;mode_file>>mode;
                 need(mode=="healthy"||mode=="consumed","Fresh same-boot startup admission required");
                 // The deployment guard checks boot_id and candidate/SDK identities.
@@ -76,19 +103,37 @@ int main(int argc,char**argv) {
                 auto before=observer.epoch("resident_before_Engine",4,[]{std::this_thread::sleep_for(std::chrono::milliseconds(20));});
                 need(mode=="consumed"?pose::r9_startup::idle_after_drain(before,false):
                     pose::r9_startup::idle_healthy(before)&&before.words[4]==0,"Unhealthy pre-SDK return path");
+#endif
                 config.on_device_ready=[&](const icraft::xrt::Device& device){
                     display=std::make_unique<pose::hdmi::Output>(device,output/"hdmi.jsonl",&journal);
                     display->verifyMemory();
                 };
+#ifdef POSE180_DEMO_PROBE_FREE
+#ifdef POSE180_DEMO_PROBE_FREE_DRAIN
+                journal.status("hardware_profile=probe-free-drain-v1; passive_diagnostic_MMIO=0; functional_startup_control=0x400b0800\n");
+                std::ofstream startup_record(output/"startup-consumer.jsonl");
+                pd::startup_consumer::prepare([&](const std::string& line){
+                    if(startup_record){startup_record<<line;startup_record.flush();}
+                    journal.status(line);
+                });
+#else
+                // This build has no diagnostic CSR mapping. The deployment
+                // guard binds the new BOOT and current boot_id; Output keeps
+                // the functional ABI, idle, ownership and STOP/drain checks.
+                journal.status("hardware_profile=probe_free; diagnostic_MMIO=0\n");
+#endif
+                runtime=std::make_unique<pp::Runtime>(config);
+#else
                 auto initialized=observer.epoch("resident_Engine_apply",6,[&]{runtime=std::make_unique<pp::Runtime>(config);});
                 need(pose::r9_startup::return_path_healthy(initialized),"Initialization return path changed");
+#endif
             } else runtime=std::make_unique<pp::Runtime>(config);
         }catch(const std::exception& error){shared.stats.isolated=true;journal.status(std::string("SDK initialization isolated: ")+error.what()+"\n");}
         pose::hdmi::PreparedBackground canvas;
         // Metadata only: the reusable pixel vector stays in canvas, so holding
         // the last actual pose adds no full-frame cache or model output copy.
         pose::hdmi::Rendered last_picture;
-        std::uint64_t last_picture_id=0;
+        std::uint64_t last_picture_id=0,last_picture_at=0;
         pd::DisplayState presentation;
         if(hdmi)canvas.rgb565.resize(pose::hdmi::frameBytes);
         auto show=[&](pose::hdmi::Rendered& rendered) {
@@ -101,7 +146,12 @@ int main(int argc,char**argv) {
         };
         auto show_wait=[&] {
             if(!hdmi || !display || shared.stats.isolated) return;
-            const auto notice=presentation.hint(pd::now_ns(),shared.stats.resynchronizing,shared.stats.isolated);
+            const auto now=pd::now_ns();bool expired=false;unsigned kept=0;
+            for(unsigned i=0;i<last_picture.detection_count;++i){const auto& d=last_picture.detections[i];
+                if(now-last_picture_at>d.remaining_ns)expired=true;else last_picture.detections[kept++]=d;}
+            last_picture.detection_count=kept;
+            auto notice=presentation.hint(now,shared.stats.resynchronizing,shared.stats.isolated);
+            if(expired)notice=pose::hdmi::Notice{pose::hdmi::NoticeKind::WaitingInput,true,shared.stats.resynchronizing,0};
             if(!notice) return;
             pose::hdmi::prepare_background(canvas);
             auto rendered=pose::hdmi::render_notice(std::move(canvas),
@@ -172,13 +222,17 @@ int main(int argc,char**argv) {
                     continue;
                 }
                 if(shared.output.put(record))++shared.stats.pc_dropped;
+                auto view=postprocessor.update({input.epoch,result.frame_id,sequence,result.source_time_ns},result.scores.data(),result.poses.data());
+                if(shared.presentation.put(view.json()))++shared.stats.view_dropped;
 #ifdef POSE180_DEMO_SDK
                 if(hdmi) {
                     pose::hdmi::prepare_background(canvas);
-                    auto rendered=pose::hdmi::render(std::move(canvas),result.scores.data(),result.poses.data(),180,result.frame_id);
+                    auto rendered=pose::hdmi::render_presentation(std::move(canvas),view);
                     show(rendered); // Prove adoption before another forward call.
+                    shared.stats.selected_count=rendered.detection_count;
+                    ++shared.stats.selection_counts[rendered.detection_count];
                     last_picture=std::move(rendered);last_picture_id=result.frame_id;
-                    const auto adopted=pd::now_ns();presentation.adopted_result(adopted);
+                    const auto adopted=pd::now_ns();last_picture_at=adopted;presentation.adopted_result(adopted);
                     ++shared.stats.adopted;shared.stats.last_adopt=adopted;
                     shared.stats.display_updates=presentation.updates();
                 }

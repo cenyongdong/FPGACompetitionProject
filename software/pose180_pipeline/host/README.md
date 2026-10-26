@@ -2,18 +2,19 @@
 
 ## 常驻演示观察端
 
-真实 CSI 演示使用独立订阅入口；不发送输入、不回 ACK、不控制板端。沿用已安装的 Three.js 与 `demo_v1/web/scene.js`，不修改候选选择、模型坐标或拓扑。
+观察端不发送输入、不回应用ACK、不控制板端。最新离线版本默认订阅39385派生结果，与HDMI共用人物ID、滤波坐标及暂失状态，同时并排显示原始Top3对照；当前尚未部署。现有r45旧软件必须显式选择`--mode raw --port 39383`。实现、验证、回放和限制统一见[防闪现离线结果](../../../FPGA/hdmi_candidate/pose_stabilizer/README.md)，原实板历史见[Top3实测](../resident/TOP3-VALIDATION.md)。
 
 ```powershell
-node software/pose180_pipeline/host/resident.mjs --board 192.168.126.49 --port 39383 --http-port 39380 --seconds 1800
-node --test software/pose180_pipeline/host/test/resident.test.mjs
+# 当前只做本地历史回放，不连接板端：
+node software/pose180_pipeline/host/resident.mjs --replay .local/pose-postprocess-offline/replay/r12-replay.ndjson --http-port 39380 --seconds 120
+node --test software/pose180_pipeline/host/test/resident.test.mjs software/pose180_pipeline/host/test/presentation.test.mjs
 ```
 
-打开 `http://127.0.0.1:39380/`：拖动旋转、滚轮缩放、右键平移；可切换透视／正面／侧面／俯视及关节编号。页面只接收最新完整且有效的真实结果，初始无骨架，同一 session／sequence 不重复作为新帧；无插帧或动作修正。问题1的姿态偏置、标定和跟踪继续搁置。
+打开 `http://127.0.0.1:39380/`：拖动旋转、滚轮缩放、右键平移；可切换透视／正面／侧面／俯视及关节编号。派生模式按轨迹ID着色，灰色表示暂失；最多250ms后隐藏，原始对照同样有时限。历史回放明确标识，可重新播放，不连接任何板端端口。新人物跟踪已在本阶段实现，姿态偏置、标定和人体精度仍未验收。
 
-接收间隔超过 750ms 提示等待、2秒提示结果过期并保留末次姿态；“PC接收后”年龄来自本机单调时钟，不表示板端端到端延迟。新结果速率与浏览器绘制 FPS 分开显示，均无严格30Hz门槛。TCP断开后自动重连；普通几秒缺窗保留连接，30秒无数据才重新连接，连接等待上限5秒。PC退出或物理断线不阻断板端CSI／推理／HDMI。
+原始模式接收间隔超过750ms提示等待、2秒提示结果过期并保留末次姿态；派生模式按上述250ms有效期隐藏。“PC接收后”年龄来自本机单调时钟，不表示板端端到端延迟。新结果速率与浏览器绘制FPS分开显示，均无严格30Hz门槛。TCP断开后自动重连；普通几秒缺窗保留连接，30秒无数据才重新连接，连接等待上限5秒。PC退出或物理断线不阻断板端CSI／推理／HDMI。
 
-默认不归档；需要诊断环时加 `--output <不存在的新目录>`，仍由独立worker维护4×64条完整记录，主线程最多一个在写和一个待写槽，慢归档替换待写并计数。固定接收槽74544字节、一个最新姿态及最多64个时间点，不随运行时长增长。HTTP只监听本机，最多8连接；观察进程到时关闭socket／HTTP／worker。
+默认不归档；仅`--mode raw`允许`--output <不存在的新目录>`，由独立worker维护4×64条完整PIWFUL3记录。派生通道上限16KiB／记录及一个最新值，禁止混入历史回放记录；原始模式保留74544字节槽。HTTP只监听本机，最多8连接；观察进程到时关闭socket／HTTP／worker。
 
 定向测试仅使用随机localhost端口和明确模拟记录，验证任意拆包、重复过滤、过期提示、重连、无ACK、模块资源及页面操作／计数语义，不替代真实浏览器GPU和板端联合长测。
 

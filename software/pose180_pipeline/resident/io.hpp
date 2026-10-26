@@ -9,7 +9,7 @@ class Io {
     std::thread thread_;
 public:
     Io(Shared&, const std::string& bind, unsigned input_port, unsigned result_port,
-       unsigned status_port, std::uint64_t session, bool mock, bool hdmi);
+       unsigned status_port, std::uint64_t session, bool mock, bool hdmi,unsigned view_port=0);
     ~Io();
     Io(const Io&)=delete;
 };

@@ -6,6 +6,7 @@
 #include <arpa/inet.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <float.h>
 #include <poll.h>
 #include <signal.h>
 #include <stdint.h>
@@ -27,6 +28,7 @@ static const char *tx_stop_reason = "none";
 static unsigned long long forwarded;
 static const char *state = "starting";
 static int last_exit, fault;
+static int continuous;
 static void stop_handler(int sig) { (void)sig; stop_requested = 1; }
 static double now(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + t.tv_nsec / 1e9; }
 static int exists(const char *p) { return !access(p, F_OK); }
@@ -133,13 +135,13 @@ static void rx(const char *host, unsigned port, const char *interface) {
         ++generation;
         char logname[64], seconds[32];
         snprintf(logname, sizeof(logname), "capture-%u.json", generation%4);
-        snprintf(seconds, sizeof(seconds), "%u", (unsigned)(deadline-now())+1);
+        snprintf(seconds, sizeof(seconds), "%u", continuous ? 0 : (unsigned)(deadline-now())+1);
         pid_t pid = fork();
         if (pid == 0) {
             int error = open(logname, O_WRONLY|O_CREAT|O_TRUNC, 0600);
             dup2(p[1], 1); if(error>=0) { dup2(error, 2); close(error); }
             close(p[0]); close(p[1]); close(net);
-            execl("./capture-metadata-stream", "./capture-metadata-stream", interface, "-", seconds, "4000000", (char *)0);
+            execl("./capture-metadata-stream", "./capture-metadata-stream", interface, "-", seconds, continuous ? "0" : "4000000", (char *)0);
             _exit(127);
         }
         close(p[1]);
@@ -417,13 +419,17 @@ int main(int argc,char **argv) {
         fprintf(stderr,"usage: router_guard rx|tx RAM_DIRECTORY SECONDS HOST PORT INTERFACE\n");return 2;
     }
     unsigned seconds=(unsigned)strtoul(argv[3],NULL,10),port=(unsigned)strtoul(argv[5],NULL,10);
-    if(!seconds||seconds>3300||!port||port>65535||chdir(argv[2])||!exists("armed")||exists("restored")) return 2;
+    if(seconds>3300||!port||port>65535||chdir(argv[2])||!exists("armed")||exists("restored")) return 2;
+    /* Zero is an explicit persistent-service mode, never an accidental empty
+     * or invalid finite budget. TX still has its independent 60-second lease. */
+    continuous=!strcmp(argv[3],"0")&&exists("continuous");
+    if(!seconds&&(!continuous||(!strcmp(argv[1],"tx")&&!exists("tx.lease")))) return 2;
     int marker=open("source.attempt",O_WRONLY|O_CREAT|O_EXCL,0600);if(marker<0)return 2;close(marker);
     pid_t pid=fork();if(pid<0)return 3;if(pid){printf("{\"guard_pid\":%d,\"detached\":true}\n",pid);return 0;}
     if(setsid()<0)return 3;
     int nil=open("/dev/null",O_RDWR);dup2(nil,0);dup2(nil,1);dup2(nil,2);if(nil>2)close(nil);
     signal(SIGTERM,stop_handler);signal(SIGINT,stop_handler);signal(SIGHUP,SIG_IGN);signal(SIGPIPE,SIG_IGN);
-    began=now();deadline=began+seconds;
+    began=now();deadline=continuous?DBL_MAX:began+seconds;
     FILE *f=fopen("guard.pid","w");if(f){fprintf(f,"%d\n",getpid());fclose(f);}
     if(!strcmp(argv[1],"rx"))rx(argv[4],port,argv[6]);else tx();
     state="restoring";next_state=0;status();event("source finished; restoring stock runtime");

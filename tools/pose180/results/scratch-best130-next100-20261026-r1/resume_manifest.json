@@ -1,0 +1,24 @@
+{
+  "source_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_20261024_extra100_r2/best_mpjpe_epoch_130.pth",
+  "source_epoch": 130,
+  "source_iter": 730860,
+  "source_checkpoint_sha256": "40ed3337ea7f130fa6703b70ef57ebddccdceb7dbae9f153cceefd2e41ac3204",
+  "source_query_sha256": "7b93c1dcd1831f2e98fd3c080d3eaae0c6f1618ddfb2e9373c6e5fa2ed72a6e1",
+  "optimizer_entries": 218,
+  "optimizer_step_range": [
+    365430.0,
+    365430.0
+  ],
+  "learning_rates": [
+    2.0000000000000004e-07,
+    2.0000000000000003e-06
+  ],
+  "prior_best_epoch": 130,
+  "prior_best_mpjpe_mm": 141.97614487353522,
+  "retained_best_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_next100_20261026_r1/best_mpjpe_epoch_130.pth",
+  "target_epoch": 230,
+  "additional_epochs": 100,
+  "previous_completed_training_epochs": 200,
+  "configuration": "configs/wifi/petr_wifi_pose180_scratch_best130_next100.py",
+  "branch_note": "Resume best epoch130, not final epoch200; checkpoint epochs131--230"
+}

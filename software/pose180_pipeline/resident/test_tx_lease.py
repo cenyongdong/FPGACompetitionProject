@@ -132,17 +132,23 @@ def run_scenario(root, guard, scenario):
     folder.mkdir()
     (folder / 'armed').touch()
     (folder / 'tx.lease').touch()
+    if scenario == 'autostart':
+        (folder / 'continuous').touch()
     (folder / 'scenario').write_text(scenario)
     fake = folder / 'nexutil'
     fake.write_text('#!' + sys.executable + '\n' + Path(__file__).read_text())
     fake.chmod(0o755)
     (folder / 'run.params').write_text('mock-lease-parameters\n')
     (folder / 'restore.sh').write_text('touch restored\nrm -f armed\n')
-    duration = 68 if scenario == 'continuous' else 3 if scenario == 'guard_deadline' else 25
-    launched = subprocess.run([guard, 'tx', str(folder), str(duration), '127.0.0.1',
+    duration = 68 if scenario in ('continuous', 'autostart') else 3 if scenario == 'guard_deadline' else 25
+    launched = subprocess.run([guard, 'tx', str(folder), '0' if scenario == 'autostart' else str(duration), '127.0.0.1',
                                '39033', 'lo'], check=True, capture_output=True, text=True)
     json.loads(launched.stdout)['guard_pid']
     try:
+        if scenario == 'autostart':
+            time.sleep(duration)
+            assert not (folder / 'guard-final.json').exists()
+            (folder / 'stop.request').touch()
         final = await_final(folder, duration + 15)
     finally:
         (folder / 'stop.request').touch()
@@ -167,13 +173,13 @@ def run_scenario(root, guard, scenario):
         assert operations[stop_index + 1]['running'] == 0
         assert operations[stop_index + 2]['operation'] == '-s432'
         assert not state['configured']
-    normal = scenario in ('continuous', 'guard_deadline', 'stop_request',
+    normal = scenario in ('continuous', 'autostart', 'guard_deadline', 'stop_request',
                           'stop_during_configure', 'pause_request', 'guard_signal', 'stop_timeout_but_stopped')
     assert final['guard_fault'] == int(not normal), (scenario, final, events)
     result = dict(final=final, starts=state['starts'], renew_commands=state['renewals'],
                   stop_proven=not unproven, frees=state['frees'])
-    if scenario == 'continuous':
-        assert final['TX_renewals'] >= 6 and final['TX_stop_reason'] == 'guard_deadline', final
+    if scenario in ('continuous', 'autostart'):
+        assert final['TX_renewals'] >= 6 and final['TX_stop_reason'] == ('stop_request' if scenario == 'autostart' else 'guard_deadline'), final
         assert operations[stop_index]['at'] > state['initial_expires_at'] + 5
         renews = [item for item in operations if item['operation'] == '-s434']
         assert [item['sequence'] for item in renews] == list(range(1, len(renews) + 1))
@@ -198,7 +204,7 @@ def main():
     root = Path(args.output).resolve()
     root.mkdir()
     guard = str(Path(args.guard).resolve())
-    scenarios = ('continuous', 'guard_deadline', 'stop_request', 'stop_during_configure',
+    scenarios = ('continuous', 'autostart', 'guard_deadline', 'stop_request', 'stop_during_configure',
                  'pause_request', 'guard_signal', 'renew_command_error',
                  'renew_timeout_after_accept', 'renew_ack_mismatch', 'identity_mismatch',
                  'lease_expired', 'firmware_error', 'unexpected_stop', 'invalid_status',

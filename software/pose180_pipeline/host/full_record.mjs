@@ -44,6 +44,17 @@ export function decodeFull(b) {
     return { ...frame, metrics };
 }
 
+// Presentation only: retain the validated original envelope and raw archive.
+// Float32 threshold matches the board's strict comparison with 0.2f.
+export function selectTopPoses(b, topK=3, threshold=0.2) {
+    need(Number.isInteger(topK)&&topK>0&&topK<=3&&Number.isFinite(threshold),'Invalid display selection');
+    const ranked=Array.from({length:CANDIDATES},(_,candidate)=>({candidate,score:b.readFloatLE(SCORE_OFFSET+candidate*4)}));
+    need(ranked.every(p=>Number.isFinite(p.score)),'Non-finite display score');
+    ranked.sort((a,b)=>b.score-a.score||a.candidate-b.candidate);
+    return ranked.slice(0,topK).filter(p=>p.score>Math.fround(threshold)).map(p=>({...p,
+        joints:Array.from({length:42},(_,i)=>b.readFloatLE(POSE_OFFSET+(p.candidate*42+i)*4))}));
+}
+
 // One reusable full record and one confirmation word. Awaited consumers retain
 // ownership until archive/ACK processing finishes, including arbitrary TCP splits.
 export class ConfirmedReader {

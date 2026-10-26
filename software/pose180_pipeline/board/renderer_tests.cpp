@@ -5,8 +5,10 @@
 #include <cmath>
 #include <cstring>
 #include <iostream>
+#include <limits>
 #include <stdexcept>
 #include <utility>
+#include <fstream>
 
 namespace {
 namespace hdmi = pose::hdmi;
@@ -91,12 +93,68 @@ void new_180_selects_last_candidate_and_reuses_canvas() {
     }
     expect(scores == original_scores && poses == original_poses, "180-slot rendering modified model outputs");
 }
+bool same_scene(const std::vector<uint8_t>& a,const std::vector<uint8_t>& b) {
+    return std::equal(a.begin()+250*1920*2,a.begin()+1040*1920*2,b.begin()+250*1920*2);
+}
+void top_three_then_strict_threshold() {
+    std::array<float,180> scores;
+    std::array<float,7560> poses;
+    fill_model(scores,poses,179);
+    scores[4]=0.8f;scores[6]=0.7f;scores[8]=0.6f;
+    const auto source_scores=scores;const auto source_poses=poses;
+    auto render=[&]{return hdmi::render(hdmi::prepare_background(),scores.data(),poses.data(),180,9,
+                                      Status::Result,{3,0.2f});};
+    auto three=render();
+    expect(three.detection_count==3,"Top-k did not cap qualified candidates at three");
+    const unsigned indices[]={179,4,6};
+    for(unsigned i=0;i<3;++i) {
+        expect(three.detections[i].index==indices[i],"Candidates not ranked by score");
+        expect(!std::memcmp(three.detections[i].raw.data(),poses.data()+indices[i]*42,168),
+               "Top-k pose no longer matches its original score index");
+    }
+    expect(scores==source_scores && poses==source_poses,"Top-k mutated raw output");
+    auto held=hdmi::render_notice(hdmi::prepare_background(),&three,9,
+                                 {hdmi::NoticeKind::Stale,true,false,2});
+    expect(held.detection_count==3 && same_scene(held.rgb565,three.rgb565),
+           "Stale notice lost or changed a qualified skeleton");
+    scores.fill(0.1f);scores[3]=0.2f;scores[5]=std::nextafter(0.2f,1.f);
+    scores[7]=0.9f;
+    auto two=render();
+    expect(two.detection_count==2 && two.detections[0].index==7 && two.detections[1].index==5,
+           "Threshold must strictly exclude exactly 0.2 and include its next float");
+    scores.fill(0.1f);scores[1]=scores[2]=scores[3]=scores[4]=0.5f;
+    auto ties=render();
+    expect(ties.detection_count==3 && ties.detections[0].index==1 &&
+           ties.detections[1].index==2 && ties.detections[2].index==3,"Tie selection is not deterministic");
+    scores.fill(0.2f);
+    hdmi::PreparedBackground reused{std::move(three.rgb565)};
+    hdmi::prepare_background(reused);
+    auto none=hdmi::render(std::move(reused),scores.data(),poses.data(),180,10,Status::Result,{3,0.2f});
+    expect(none.detection_count==0 && same_scene(none.rgb565,hdmi::prepare_background().rgb565),
+           "No qualified detection retained an old skeleton or forced a top-1 pose");
+    auto empty_stale=hdmi::render_notice(hdmi::prepare_background(),&none,10,
+                                       {hdmi::NoticeKind::Stale,true,false,2});
+    expect(empty_stale.detection_count==0 && same_scene(empty_stale.rgb565,none.rgb565),
+           "Stale empty result manufactured a skeleton");
+    scores[179]=std::numeric_limits<float>::quiet_NaN();
+    bool rejected=false;
+    try {render();}catch(const std::runtime_error&){rejected=true;}
+    expect(rejected,"Nonfinite output accepted by top-k");
+}
 } // namespace
 
-int main() {
+int main(int argc,char**argv) {
     try {
         old_100_wrapper_matches_pointer_100();
         new_180_selects_last_candidate_and_reuses_canvas();
+        top_three_then_strict_threshold();
+        pose::post::PresentationFrame frame;frame.id={1,2,2,1067000000};
+        pose::post::Person person;person.track=7;person.candidate=19;person.score=.8f;person.observed_ns=frame.id.source_ns;person.held=true;
+        for(unsigned j=0;j<14;++j){person.joints[3*j]=(int(j%3)-1)*.3f;person.joints[3*j+1]=1;person.joints[3*j+2]=j*.1f;}frame.poses.push_back(person);
+        auto derived=hdmi::render_presentation(hdmi::prepare_background(),frame);
+        expect(derived.detection_count==1&&derived.detections[0].track==7&&derived.detections[0].held&&derived.detections[0].remaining_ns==250000000,"Presentation metadata lost");
+        if(argc>1){std::ofstream out(argv[1],std::ios::binary);out<<"P6\n1920 1080\n255\n";
+            for(std::size_t i=0;i<derived.rgb565.size();i+=2){unsigned v=derived.rgb565[i]|(unsigned(derived.rgb565[i+1])<<8);char rgb[3]{char(((v>>11)&31)*255/31),char(((v>>5)&63)*255/63),char((v&31)*255/31)};out.write(rgb,3);}expect(bool(out),"Cannot save offline raster");}
         std::cout << "pose180 renderer compatibility/reuse contracts passed\n";
         return 0;
     } catch (const std::exception& e) {

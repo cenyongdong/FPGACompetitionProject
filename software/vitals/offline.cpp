@@ -167,6 +167,7 @@ namespace {
             << "\"hardware_test\":false,\"input_origin\":" << quoted(input.origin)
             << ",\"clock\":" << quoted(clock_name(input.window.clock))
             << ",\"clock_evidence\":" << quoted(input.clock_evidence)
+            << ",\"correlation_backend\":" << quoted(r.correlation_backend)
             << ",\"source_csv\":" << quoted(fs::absolute(source).string())
             << ",\"sample_rate_hz\":" << input.config.sample_rate
             << ",\"warmup_seconds\":" << input.config.warmup_seconds
@@ -239,6 +240,7 @@ namespace {
 int main(int argc, char** argv) {
     try {
         fs::path input, output, trace_path;
+        std::string correlation_backend="cpu";
         std::size_t repeat = 0, offset = 0;
         for (int i = 1; i < argc; ++i) {
             const std::string key = argv[i];
@@ -249,6 +251,7 @@ int main(int argc, char** argv) {
             else if (key == "--trace") trace_path = value;
             else if (key == "--repeat") repeat = static_cast<std::size_t>(integer(value));
             else if (key == "--offset") offset = static_cast<std::size_t>(integer(value));
+            else if (key == "--correlation-backend") correlation_backend=value;
             else throw std::runtime_error("Unknown option: " + key);
         }
         if (input.empty() || output.empty() || repeat > 2000 || offset >= 8192)
@@ -258,13 +261,16 @@ int main(int argc, char** argv) {
         if (!trace_path.empty() && fs::absolute(output).lexically_normal() == fs::absolute(trace_path).lexically_normal())
             throw std::runtime_error("Summary and trace must use different paths");
         const auto data = read(input, offset);
-        const auto result = analyze(data.window, data.config);
+        if(correlation_backend!="cpu"&&correlation_backend!="fixed-reference")throw std::runtime_error("Unknown correlation backend");
+        ScalarDots dots;FixedCorrelation fixed(dots);
+        CorrelationBackend* backend=correlation_backend=="cpu"?nullptr:&fixed;
+        const auto result = analyze(data.window, data.config,backend);
         std::vector<Timing> repeats;
         const auto cpu_begin = std::clock();
         // 只有完整数据任务可以做耗时对照；不把快速拒绝路径作为算法吞吐。
         if (repeat && result.status == "invalid") throw std::runtime_error("Benchmark requires a complete qualified window");
         for (std::size_t i = 0; i < repeat; ++i) {
-            const auto actual = analyze(data.window, data.config);
+            const auto actual = analyze(data.window, data.config,backend);
             if (actual.status != result.status || actual.heart.has_value() != result.heart.has_value() ||
                 (actual.heart && actual.heart->bpm != result.heart->bpm))
                 throw std::runtime_error("Repeated analysis changed its result");

@@ -1,0 +1,24 @@
+{
+  "total_completed_epochs": 200,
+  "additional_completed_epochs": 100,
+  "best_epoch": 130,
+  "best_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_20261024_extra100_r2/best_mpjpe_epoch_130.pth",
+  "best_metrics": {
+    "mpjpe": 141.97614487353522,
+    "mpjpeh": 63.01425907021895,
+    "mpjpev": 73.26916493399256,
+    "mpjped": 73.37135920044346,
+    "candidate_count": 180,
+    "count_mae_at_0_2": 0.25,
+    "mean_selected_at_0_2": 2.148006134969325,
+    "matched_mpjpe_at_0_2": 190.36132101588404,
+    "mpjpe_1_people": 120.41122098127632,
+    "mpjpe_2_people": 144.30906247134186,
+    "mpjpe_3_people": 165.51016802541702
+  },
+  "original442_mpjpe_mm": 123.0852578098301,
+  "delta_mpjpe_mm": 18.890887063705122,
+  "reached_original442": false,
+  "native_training_exit": 0,
+  "completed": 1792942750.8348358
+}

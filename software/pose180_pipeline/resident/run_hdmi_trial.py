@@ -29,8 +29,21 @@ def preflight(root):
     if (root/'models').resolve()!=(model/'models').resolve():raise ValueError('Model directory differs')
     boot=Path('/proc/sys/kernel/random/boot_id').read_text().strip()
     admission=json.loads((root/'startup-admission.json').read_text())
-    if not admission['passed'] or admission['boot_id']!=boot or admission['observer_generation']!=4:
+    if not admission['passed'] or admission['boot_id']!=boot:
         raise ValueError('Fresh same-boot admission absent')
+    if identity.get('hardware_profile')=='probe-free-drain-v1':
+        if (admission.get('hardware_profile')!='probe-free-drain-v1' or admission.get('mode')!='functional_startup_pending'
+            or admission.get('candidate_boot_sha256')!=identity.get('candidate_boot_sha256')
+            or not identity.get('candidate_boot_sha256') or admission.get('passive_diagnostic_MMIO')!=0
+            or admission.get('functional_startup_ABI')!=0x48444302):
+            raise ValueError('Functional-consumer BOOT/profile binding differs')
+    elif identity.get('hardware_profile')=='probe_free':
+        if (admission.get('hardware_profile')!='probe_free' or admission.get('mode')!='probe_free'
+            or admission.get('candidate_boot_sha256')!=identity.get('candidate_boot_sha256')
+            or not identity.get('candidate_boot_sha256') or admission.get('diagnostic_MMIO')!=0):
+            raise ValueError('Uninstrumented BOOT/profile binding differs')
+    elif admission.get('observer_generation')!=4:
+        raise ValueError('Instrumented startup observation absent')
     if (root/'startup-mode.txt').read_text().strip()!=admission['mode']:raise ValueError('Admission mode differs')
     if not os.access(root/'pose180_demo',os.X_OK):raise ValueError('Native executable permission missing; SDK not started')
     metadata=root/'metadata';metadata.mkdir()

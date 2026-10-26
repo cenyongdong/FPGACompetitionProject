@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "device": "cpu",
+  "threads": 2,
+  "source_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_20261024_extra100_r2/best_mpjpe_epoch_130.pth",
+  "source_epoch": 130,
+  "source_iter": 730860,
+  "target_epoch": 230,
+  "max_iters": 1293060,
+  "accumulation_divisor": 2,
+  "real_microbatches": 2,
+  "optimizer_updates": 1,
+  "optimizer_steps_before": [
+    365430.0,
+    365430.0
+  ],
+  "optimizer_steps_after": [
+    365431.0,
+    365431.0
+  ],
+  "finite_losses": [
+    6.879016876220703,
+    3.939894676208496
+  ],
+  "query_changed": true,
+  "joint_changed": true,
+  "finite_gradients_weights_optimizer": true,
+  "formal_training": false,
+  "checkpoint_sha256": "40ed3337ea7f130fa6703b70ef57ebddccdceb7dbae9f153cceefd2e41ac3204",
+  "checkpoint_modified": false
+}

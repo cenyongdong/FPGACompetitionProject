@@ -3,7 +3,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // 唯一展示坐标变换，与既有固定投影的-C2竖直方向一致。无auto-fit/逐帧居中。
 const toScene = (raw, i) => new THREE.Vector3(raw[i*3] - 1.75, 4.2 - raw[i*3+2], -(raw[i*3+1] - 1.75));
-export function createScene(container, bones, onFps) {
+export function createScene(container, bones, onFps, {maxPoses=1}={}) {
+    if(!Number.isInteger(maxPoses)||maxPoses<1||maxPoses>3)throw new Error('Invalid pose limit');
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x0b111b, 0);
@@ -49,11 +50,12 @@ export function createScene(container, bones, onFps) {
         axis.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0.006,0),new THREE.Vector3(...to)]),new THREE.LineBasicMaterial({color,transparent:true,opacity:0.7})));
     }
     axis.position.set(-1.6,0,1.6);scene.add(axis);
-    const figure = new THREE.Group(); scene.add(figure); figure.visible=false;
     const jointGeo = new THREE.SphereGeometry(0.038,24,16);
     const jointMat = new THREE.MeshStandardMaterial({ color:0xf3cd8c, roughness:0.25, metalness:0.3,emissive:0xa07731,emissiveIntensity:0.16 });
     const boneGeo = new THREE.CylinderGeometry(0.019,0.019,1,14);
     const boneMat = new THREE.MeshStandardMaterial({color:0x8ee5d7,roughness:0.28,metalness:0.35,emissive:0x327b74,emissiveIntensity:0.15});
+    const figures=Array.from({length:maxPoses},()=>{
+    const figure = new THREE.Group(); scene.add(figure); figure.visible=false;
     const joints = Array.from({length:14},() => { const m=new THREE.Mesh(jointGeo,jointMat);m.castShadow=true;figure.add(m);return m; });
     const links = bones.map(() => { const m=new THREE.Mesh(boneGeo,boneMat);m.castShadow=true;figure.add(m);return m; });
     const labelGroup = new THREE.Group(); figure.add(labelGroup);labelGroup.visible=false;
@@ -63,19 +65,29 @@ export function createScene(container, bones, onFps) {
         const material=new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false,transparent:true});
         const sprite=new THREE.Sprite(material);sprite.scale.set(0.13,0.13,1);labelGroup.add(sprite);return sprite;
     });
+    return {figure,joints,links,labels,labelGroup};
+    });
     const yAxis=new THREE.Vector3(0,1,0);
     function setPose(frame) {
-        if (frame.joints.length!==42 || !frame.joints.every(Number.isFinite)) throw new Error('Invalid 3D input');
-        const points=joints.map((m,i)=> { const p=toScene(frame.joints,i);m.position.copy(p);labels[i].position.copy(p).add(new THREE.Vector3(0.08,0.05,0));return p; });
+        const poses=frame.poses??[frame];
+        if(!Array.isArray(poses)||poses.length>maxPoses||poses.some(p=>p.joints.length!==42||!p.joints.every(Number.isFinite)))throw new Error('Invalid 3D input');
+        figures.forEach(({figure,joints,links,labels},index)=>{
+        const pose=poses[index];figure.visible=!!pose;if(!pose)return;
+        if(pose.track&&pose.track!=='0'){
+            const colors=[0x64afc8,0xd29b5f,0x9bc373],ink=pose.held?0x5f646e:colors[Number((BigInt(pose.track)-1n)%3n)];
+            for(const mesh of [...joints,...links]){if(!mesh.userData.ownedMaterial){mesh.material=mesh.material.clone();mesh.userData.ownedMaterial=true;}mesh.material.color.setHex(ink);}
+        }
+        const points=joints.map((m,i)=> { const p=toScene(pose.joints,i);m.position.copy(p);labels[i].position.copy(p).add(new THREE.Vector3(0.08,0.05,0));return p; });
         bones.forEach(([a,b],i)=> { const delta=new THREE.Vector3().subVectors(points[b],points[a]);const length=delta.length();links[i].visible=length>0;links[i].position.copy(points[a]).add(points[b]).multiplyScalar(0.5);links[i].scale.set(1,length,1);if(length)links[i].quaternion.setFromUnitVectors(yAxis,delta.divideScalar(length)); });
-        figure.visible=true;
+        });
         renderer.domElement.dataset.frame=frame.frame;
         renderer.domElement.dataset.joints='14';
+        renderer.domElement.dataset.poses=String(poses.length);
     }
     const resize=new ResizeObserver(()=> {const w=container.clientWidth,h=container.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();});resize.observe(container);
     let last=performance.now(),count=0,raf;
     function render(now) {controls.update();renderer.render(scene,camera);++count;if(now-last>=1000){onFps(Math.round(count*1000/(now-last)));count=0;last=now;}raf=requestAnimationFrame(render);}
     raf=requestAnimationFrame(render);
     function dispose(){cancelAnimationFrame(raf);resize.disconnect();controls.dispose();scene.traverse(o=>{o.geometry?.dispose();if(o.material){const materials=Array.isArray(o.material)?o.material:[o.material];for(const m of materials){m.map?.dispose();m.dispose();}}});renderer.dispose();}
-    return {setPose,view,labels:enabled=>{labelGroup.visible=enabled;},dispose};
+    return {setPose,view,labels:enabled=>{for(const f of figures)f.labelGroup.visible=enabled;},dispose};
 }
