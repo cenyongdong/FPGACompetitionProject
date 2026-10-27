@@ -8,6 +8,8 @@ namespace pose::post {
 using Joints=std::array<float,42>;
 struct Config {
     double min_cutoff=1, beta=0.5, d_cutoff=1;
+    // Tracking must not inherit the lag (or tuning) of presentation smoothing.
+    double tracking_cutoff=3, velocity_cutoff=1;
     std::uint64_t hold_ns=250000000;
     // CPU replay experiment only when >hold_ns (PL supports dt<=250 ms).
     // Default stays 250 ms: longer retention sustained false hypotheses.
@@ -23,6 +25,12 @@ struct Person {
     std::uint64_t track=0, observed_ns=0;
     unsigned candidate=0; float score=0; Joints joints{}; bool held=false;
 };
+struct GeometrySummary {
+    std::array<std::array<double,3>,3> centres{};
+    std::array<double,3> radii{};
+    unsigned duplicates=0;
+};
+struct FilterUpdate {std::uint64_t track;Joints observation;double dt;bool initialize;};
 struct PresentationFrame {
     Identity id; std::vector<Person> poses, raw_poses;
     std::uint64_t hold_ns=250000000;
@@ -31,6 +39,7 @@ struct PresentationFrame {
 struct Metrics {
     std::uint64_t births=0,expired=0,duplicates=0,rejected_pairs=0,resets=0,confirmation_total_ns=0,confirmation_max_ns=0,display_duplicates=0;
     std::uint64_t history_selections=0,reacquired=0,held_handoffs=0,hidden_frames=0,shadow_deferred=0;
+    std::uint64_t joint_gate_rejections=0,bone_gate_rejections=0;
     // Wall-clock CPU time around confirmed-track coordinate filtering only.
     std::uint64_t cpu_filter_frames=0,cpu_filter_coordinates=0,cpu_filter_ns=0,cpu_filter_max_ns=0;
 };
@@ -42,6 +51,10 @@ public:
     virtual void reset()=0;
     virtual void begin_frame(const std::vector<Person>&)=0;
     virtual Joints update(std::uint64_t track,const Joints&,double dt,bool initialize)=0;
+    virtual std::vector<Joints> update_batch(const std::vector<FilterUpdate>& updates){
+        std::vector<Joints> result;for(const auto& u:updates)result.push_back(update(u.track,u.observation,u.dt,u.initialize));return result;
+    }
+    virtual bool geometry(const std::vector<Person>&,GeometrySummary&,bool){return false;}
 };
 class OneEuro {
     bool initialized_=false;
@@ -52,7 +65,7 @@ public:
 };
 class Postprocessor {
     struct Track {
-        Person value; std::array<double,3> centre{},velocity{};
+        Person value; std::array<double,3> centre{},association_centre{},velocity{};
         Joints observation{}; double radius=0.25,dt=0; unsigned hits=0;
         Joints previous_observation{},filtered{};
         double support=0;

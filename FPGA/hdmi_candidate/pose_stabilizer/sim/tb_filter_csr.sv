@@ -7,16 +7,26 @@ module tb_filter_csr;
  task write(input [11:0] a,input [31:0] v);begin wa=a;wd=v;wv=1;tick;wv=0;end endtask
  task read(input [11:0] a);begin ra=a;rv=1;while(!rr)tick;tick;rv=0;while(!valid)tick;got=data;tick;end endtask
  initial begin
-  repeat(2)tick;resetn=1;tick;read(0);if(got!=32'h504f5301)$fatal(1,"ABI");
+  repeat(2)tick;resetn=1;tick;read(0);if(got!=32'h504f5302)$fatal(1,"ABI");
   begin_io=cycles;
   write('h20,978149);write('h24,19399);write('h28,27589);write('h2c,65536);write('h30,32768);write('h1c,7);write('h34,7);
   for(i=0;i<126;i=i+1)write('h400+i*4,i*65536);
   write('hc,1);write(8,1);end_io=cycles;
   got=0;while(got!=1)read('h10);
   for(i=0;i<126;i=i+1)begin read('h800+i*4);if(got!=i*65536)$fatal(1,"CSR index/initialization %0d",i);end
+  // A v2 single-person update transfers only its 42 input/output words.
+  write('h1c,1);write('h34,1);for(i=0;i<42;i=i+1)write('h400+i*4,65536);write('hc,2);write(8,1);
+  got=0;while(got!=2)read('h10);
+  for(i=0;i<126;i=i+1)begin read('h800+i*4);if(got!=(i<42?65536:i*65536))$fatal(1,"partial-bank preservation %0d",i);end
+  // Geometry shares the staging aperture, but has separate completion and
+  // immutable results. It must not alter filter state or published coordinates.
+  for(i=0;i<84;i=i+1)write('h400+i*4,(i%42)*1024);
+  write('h11c,3);write('h10c,1);write('h108,1);got=0;while(got!=1)read('h110);
+  read('h118);if(got!=1)$fatal(1,"geometry duplicates");
+  read('h800);if(got!=65536)$fatal(1,"geometry changed filter output");
   // Held response cannot change while the consumer is stalled.
   ready=0;ra='h18;rv=1;tick;rv=0;while(!valid)tick;repeat(12)begin tick;if(!valid||data!=4)$fatal(1,"response not held");end ready=1;tick;
-  write('h1c,0);for(i=0;i<126;i=i+1)write('h400+i*4,65536);write('hc,2);write(8,1);tick;write(8,1);tick;
+  write('h1c,0);for(i=0;i<126;i=i+1)write('h400+i*4,65536);write('hc,3);write(8,1);tick;write(8,1);tick;
   read(4);if(!(got&16))$fatal(1,"busy duplicate not rejected");
   // A busy core reset is local and terminates publication; next frame reinitializes.
   write(8,2);repeat(4)tick;read('h10);if(got!=0)$fatal(1,"reset completed sequence");read(4);if(got!=0)$fatal(1,"reset did not clear busy/error");

@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "device": "cpu",
+  "threads": 2,
+  "formal_training": false,
+  "parent_epoch": 130,
+  "phase_epochs": 50,
+  "phase_counter_reset": true,
+  "optimizer_restored": true,
+  "optimizer_steps_before": [
+    365430.0,
+    365430.0
+  ],
+  "optimizer_steps_after": [
+    365431.0,
+    365431.0
+  ],
+  "real_microbatches": 2,
+  "optimizer_updates": 1,
+  "finite_losses": [
+    6.879016876220703,
+    3.939894676208496
+  ],
+  "finite_gradients_parameters_optimizer": true,
+  "query_changed": true,
+  "joint_changed": true,
+  "lr_samples": [
+    {
+      "iteration": 0,
+      "learning_rates": [
+        2e-07,
+        2e-06
+      ]
+    },
+    {
+      "iteration": 1,
+      "learning_rates": [
+        2.008999999999999e-07,
+        2.008999999999999e-06
+      ]
+    },
+    {
+      "iteration": 999,
+      "learning_rates": [
+        1.0991000000000002e-06,
+        1.0991e-05
+      ]
+    },
+    {
+      "iteration": 1000,
+      "learning_rates": [
+        1.1000000000000003e-06,
+        1.1000000000000001e-05
+      ]
+    },
+    {
+      "iteration": 1999,
+      "learning_rates": [
+        1.9991000000000005e-06,
+        1.9991000000000002e-05
+      ]
+    },
+    {
+      "iteration": 2000,
+      "learning_rates": [
+        2.0000000000000003e-06,
+        2e-05
+      ]
+    },
+    {
+      "iteration": 2001,
+      "learning_rates": [
+        2.0000000000000003e-06,
+        2e-05
+      ]
+    },
+    {
+      "iteration": 281099,
+      "learning_rates": [
+        2.0000000000000003e-06,
+        2e-05
+      ]
+    }
+  ],
+  "sampler_checks": [
+    {
+      "phase_epoch": 0,
+      "sampler_epoch": 130
+    },
+    {
+      "phase_epoch": 49,
+      "sampler_epoch": 179
+    }
+  ],
+  "best_saving": {
+    "passed": true,
+    "round_saved_above_parent": true,
+    "history_updated_below_parent": true,
+    "parent_preserved": true,
+    "sequence": [
+      {
+        "round_best": {
+          "phase_epoch": 1,
+          "mpjpe_mm": 150.0,
+          "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_lr_reheat50_20261027_r1/startup-validation/best-saving-probe/best_mpjpe_epoch_1.pth"
+        },
+        "historical_best": {
+          "origin": "parent130",
+          "mpjpe_mm": 141.97614487353522,
+          "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_lr_reheat50_20261027_r1/startup-validation/best-saving-probe/historical_best.pth"
+        },
+        "last_completed_phase_epoch": 1
+      },
+      {
+        "round_best": {
+          "phase_epoch": 2,
+          "mpjpe_mm": 140.0,
+          "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_lr_reheat50_20261027_r1/startup-validation/best-saving-probe/best_mpjpe_epoch_2.pth"
+        },
+        "historical_best": {
+          "origin": "lr_reheat50",
+          "phase_epoch": 2,
+          "mpjpe_mm": 140.0,
+          "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_lr_reheat50_20261027_r1/startup-validation/best-saving-probe/historical_best.pth"
+        },
+        "last_completed_phase_epoch": 2
+      },
+      {
+        "round_best": {
+          "phase_epoch": 2,
+          "mpjpe_mm": 140.0,
+          "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_lr_reheat50_20261027_r1/startup-validation/best-saving-probe/best_mpjpe_epoch_2.pth"
+        },
+        "historical_best": {
+          "origin": "lr_reheat50",
+          "phase_epoch": 2,
+          "mpjpe_mm": 140.0,
+          "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_lr_reheat50_20261027_r1/startup-validation/best-saving-probe/historical_best.pth"
+        },
+        "last_completed_phase_epoch": 3
+      },
+      {
+        "round_best": {
+          "phase_epoch": 4,
+          "mpjpe_mm": 139.0,
+          "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_lr_reheat50_20261027_r1/startup-validation/best-saving-probe/best_mpjpe_epoch_4.pth"
+        },
+        "historical_best": {
+          "origin": "lr_reheat50",
+          "phase_epoch": 4,
+          "mpjpe_mm": 139.0,
+          "checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_lr_reheat50_20261027_r1/startup-validation/best-saving-probe/historical_best.pth"
+        },
+        "last_completed_phase_epoch": 4
+      }
+    ]
+  },
+  "original_checkpoint_modified": false
+}

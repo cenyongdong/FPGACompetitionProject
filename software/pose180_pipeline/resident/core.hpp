@@ -38,6 +38,10 @@ struct Input {
 };
 using Record = std::array<unsigned char, pp::full_bytes>;
 struct Stats {
+    // Set before worker construction; provenance only, never a display label.
+    std::string input_source="tcp_window";
+    std::atomic<bool> dataset_done{false};
+    std::atomic<std::uint64_t> dataset_passes{0};
     std::atomic<std::uint64_t> received{0}, replaced{0}, stale{0}, malformed{0}, reconnects{0};
     std::atomic<std::uint64_t> inferred{0}, adopted{0}, pc_sent{0}, pc_dropped{0};
     std::atomic<std::uint64_t> view_sent{0},view_dropped{0};
@@ -46,6 +50,9 @@ struct Stats {
     std::atomic<std::uint64_t> filter_lanes{0},filter_fallbacks{0};
     std::atomic<std::uint64_t> cpu_filter_frames{0},cpu_filter_coordinates{0},cpu_filter_ns{0},cpu_filter_max_ns{0};
     std::atomic<std::uint64_t> pl_filter_calls{0},pl_filter_coordinates{0},pl_input_ns{0},pl_wait_ns{0},pl_output_ns{0},pl_total_ns{0},pl_max_ns{0},pl_compute_cycles{0},pl_max_cycles{0};
+    std::atomic<std::uint64_t> pl_geometry_calls{0},pl_geometry_input_ns{0},pl_geometry_wait_ns{0},pl_geometry_output_ns{0},pl_geometry_total_ns{0},pl_geometry_max_ns{0},pl_geometry_cycles{0};
+    std::atomic<std::uint64_t> ps_reference_frames{0},ps_reference_ns{0},ps_reference_max_ns{0},ps_reference_filter_frames{0},ps_reference_filter_ns{0},ps_reference_filter_max_ns{0},ps_reference_filter_coordinates{0},reference_mismatch_frames{0},reference_max_error_nano{0};
+    std::atomic<std::uint64_t> joint_gate_rejections{0},bone_gate_rejections{0};
     std::atomic<std::uint64_t> record_dropped{0}, input_epoch{0}, last_input{0}, last_result{0}, last_adopt{0};
     std::atomic<std::uint64_t> forward_start{0}, longest_gap{0}, resyncs{0};
     std::atomic<std::uint64_t> display_updates{0}, display_hints{0};
@@ -85,9 +92,10 @@ inline std::string Stats::json(bool mock, bool hdmi) const {
         resynchronizing ? "resynchronizing" : busy && now-busy>1000000000 ? "degraded" :
         !last || now-last>2000000000 ? "waiting_input" : "running";
     std::string s="{\"state\":\""+std::string(state)+"\",\"mock\":"+(mock?"true":"false")+
-        ",\"hdmi\":"+(hdmi?"true":"false");
+        ",\"hdmi\":"+(hdmi?"true":"false")+",\"input_source\":\""+input_source+"\",\"dataset_done\":"+(dataset_done?"true":"false");
     auto add=[&](const char* k,std::uint64_t v){s+=",\""+std::string(k)+"\":"+std::to_string(v);};
     add("received",received);add("replaced",replaced);add("stale",stale);add("malformed",malformed);
+    add("dataset_passes",dataset_passes);
     add("reconnects",reconnects);add("input_epoch",input_epoch);add("inferred",inferred);add("adopted",adopted);
     add("pc_sent",pc_sent);add("pc_dropped",pc_dropped);add("record_dropped",record_dropped);add("resyncs",resyncs);
     add("view_sent",view_sent);add("view_dropped",view_dropped);
@@ -99,6 +107,9 @@ inline std::string Stats::json(bool mock, bool hdmi) const {
     add("cpu_filter_frames",cpu_filter_frames);add("cpu_filter_coordinates",cpu_filter_coordinates);
     add("cpu_filter_total_ns",cpu_filter_ns);add("cpu_filter_max_ns",cpu_filter_max_ns);
     add("pl_filter_calls",pl_filter_calls);add("pl_filter_coordinates",pl_filter_coordinates);
+    add("pl_geometry_calls",pl_geometry_calls);add("pl_geometry_input_ns",pl_geometry_input_ns);add("pl_geometry_wait_ns",pl_geometry_wait_ns);add("pl_geometry_output_ns",pl_geometry_output_ns);add("pl_geometry_total_ns",pl_geometry_total_ns);add("pl_geometry_max_ns",pl_geometry_max_ns);add("pl_geometry_cycles",pl_geometry_cycles);
+    add("ps_reference_frames",ps_reference_frames);add("ps_reference_ns",ps_reference_ns);add("ps_reference_max_ns",ps_reference_max_ns);add("ps_reference_filter_frames",ps_reference_filter_frames);add("ps_reference_filter_ns",ps_reference_filter_ns);add("ps_reference_filter_max_ns",ps_reference_filter_max_ns);add("ps_reference_filter_coordinates",ps_reference_filter_coordinates);add("reference_mismatch_frames",reference_mismatch_frames);add("reference_max_error_nano",reference_max_error_nano);
+    add("joint_gate_rejections",joint_gate_rejections);add("bone_gate_rejections",bone_gate_rejections);
     add("pl_input_ns",pl_input_ns);add("pl_wait_ns",pl_wait_ns);add("pl_output_ns",pl_output_ns);
     add("pl_total_ns",pl_total_ns);add("pl_max_ns",pl_max_ns);add("pl_compute_cycles",pl_compute_cycles);add("pl_max_cycles",pl_max_cycles);
     add("longest_result_gap_ms",longest_gap.load()/1000000);

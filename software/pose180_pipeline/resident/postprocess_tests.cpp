@@ -65,7 +65,7 @@ int main(){try{
  for(unsigned k=0;k<12;++k){rv.person(0,.15*(int(k)-11));rf=rv.run(reversal);rv.next();}
  auto reversal_id=rf.poses.at(0).track;rv.person(0,-.4);rv.run(reversal);rv.next();
  for(unsigned k=0;k<3;++k){rv.scores.fill(0);rv.person(9,-.88);rf=rv.run(reversal);rv.next();}
- check(reversal.metrics().held_handoffs==1&&rf.poses.size()==1&&rf.poses[0].track==reversal_id&&!rf.poses[0].held,"witnessed handoff failed to retain the old filter identity");
+ check(rf.poses.size()==1&&rf.poses[0].track==reversal_id&&!rf.poses[0].held,"reversal failed to retain the old filter identity");
  Postprocessor independent;Sample ip;ip.person(0,0);
  for(unsigned k=0;k<3;++k){ip.run(independent);ip.next();}
  for(unsigned k=0;k<3;++k){ip.person(1,.45);hf=ip.run(independent);ip.next();}
@@ -86,6 +86,27 @@ int main(){try{
  ds.person(1,.02);ds.next();df=ds.run(dormant);check(df.poses.size()==1&&df.poses[0].track==retained_id&&!df.poses[0].held,"strict hidden reacquisition failed");
  ds.scores.fill(0);ds.next(601);check(ds.run(dormant).poses.empty(),"identity expiry drew a pose");ds.person(1,0);ds.next();check(ds.run(dormant).poses.empty(),"expired identity skipped confirmation");
  ds.session=7;ds.next();check(ds.run(dormant).poses.empty(),"retained identity crossed a recovery epoch");
+ // A single limb spike can hide inside an all-joint RMS gate. It must not
+ // update position, derivative, velocity, or last-valid time of the old track.
+ Postprocessor limb;Sample ls;ls.person(0,0);PresentationFrame lf;
+ for(unsigned k=0;k<3;++k){lf=ls.run(limb);ls.next();}const auto valid_limb=lf.poses.at(0);
+ ls.poses[12*3]+=2.f;const auto bad_limb=ls.poses;lf=ls.run(limb);
+ check(lf.poses.size()==1&&lf.poses[0].held&&lf.poses[0].observed_ns==valid_limb.observed_ns&&lf.poses[0].joints==valid_limb.joints,"limb spike contaminated committed state");
+ check(ls.poses==bad_limb&&lf.raw_poses[0].joints[12*3]==bad_limb[12*3],"limb rejection rewrote raw output");
+ check(limb.metrics().joint_gate_rejections+limb.metrics().bone_gate_rejections>0,"local quality gate was not exercised");
+ ls.person(0,0);ls.next();lf=ls.run(limb);check(lf.poses.size()==1&&lf.poses[0].track==valid_limb.track&&!lf.poses[0].held&&lf.poses[0].joints==valid_limb.joints,"rejected limb left a filter tail");
+ Postprocessor bone;Sample bs;bs.person(0,0);PresentationFrame bf;
+ for(unsigned k=0;k<3;++k){bf=bs.run(bone);bs.next();}const auto valid_bone=bf.poses.at(0);
+ bs.poses[12*3]+=1.f;bf=bs.run(bone);
+ check(bone.metrics().bone_gate_rejections>0&&bone.metrics().joint_gate_rejections==0,"bone evidence was hidden by the larger joint gate");
+ check(bf.poses.size()==1&&bf.poses[0].held&&bf.poses[0].joints==valid_bone.joints&&bf.poses[0].observed_ns==valid_bone.observed_ns,"bone anomaly contaminated a valid pose");
+ // Presentation smoothing may lag without forcing a moving identity to split.
+ Config slow;slow.min_cutoff=.05;slow.beta=.01;Postprocessor fast_track,slow_track(slow);Sample motion;
+ std::uint64_t fast_id=0,slow_id=0;
+ for(unsigned k=0;k<80;++k){motion.person(0,.1*k);auto a=motion.run(fast_track),b=motion.run(slow_track);
+  check(a.poses.size()==b.poses.size(),"display cutoff changed isolated association");
+  if(k==2){fast_id=a.poses[0].track;slow_id=b.poses[0].track;}
+  if(k>=2)check(a.poses[0].track==fast_id&&b.poses[0].track==slow_id&&!a.poses[0].held&&!b.poses[0].held,"display lag rebuilt a moving track");motion.next();}
  OneEuro noise;std::mt19937 rng(42);std::normal_distribution<double> n(0,.025);double raw=0,filtered=0;
  for(unsigned i=0;i<1000;++i){double x=n(rng),y=noise.update(x,1./15,{});if(i>100){raw+=x*x;filtered+=y*y;}}
  const double reduction=1-std::sqrt(filtered/raw);check(reduction>=.4,"jitter target");

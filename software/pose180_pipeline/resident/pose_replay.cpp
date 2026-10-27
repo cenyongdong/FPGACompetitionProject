@@ -10,11 +10,15 @@
 using namespace pose::post;
 
 int main(int argc,char**argv){try{
- if(argc<2)throw std::runtime_error("Usage: pose_replay [--identity-ms=250] recent-*.full > replay.ndjson");
+ if(argc<2)throw std::runtime_error("Usage: pose_replay [--identity-ms=250] [--min-cutoff=1 --beta=0.5 --d-cutoff=1] recent-*.full > replay.ndjson");
  using Raw=std::array<unsigned char,pose180_pipeline::full_bytes>;
  std::map<std::uint64_t,Raw> records;Config config;
  for(int i=1;i<argc;++i){
   const std::string arg=argv[i];
+  // Offline comparisons only. The resident defaults remain unchanged.
+  if(arg.rfind("--min-cutoff=",0)==0){config.min_cutoff=std::stod(arg.substr(13));continue;}
+  if(arg.rfind("--beta=",0)==0){config.beta=std::stod(arg.substr(7));continue;}
+  if(arg.rfind("--d-cutoff=",0)==0){config.d_cutoff=std::stod(arg.substr(11));continue;}
   if(arg.rfind("--identity-ms=",0)==0){
    const auto ms=std::stoull(arg.substr(14));if(ms<250||ms>1000)throw std::runtime_error("Identity interval out of range");
    config.identity_ns=ms*1000000;continue;
@@ -56,10 +60,12 @@ int main(int argc,char**argv){try{
  const auto&m=p.metrics();std::cerr<<'{';bool comma=false;
  auto emit=[&](const char*key,auto value){if(comma)std::cerr<<',';comma=true;std::cerr<<'"'<<key<<"\":"<<value;};
  emit("records",records.size());emit("identity_ms",config.identity_ns/1000000);
+ emit("min_cutoff",config.min_cutoff);emit("beta",config.beta);emit("d_cutoff",config.d_cutoff);
  emit("raw_count_changes",raw_changes);emit("shown_count_changes",shown_changes);emit("births",m.births);emit("expired",m.expired);
  emit("deduplicated",m.duplicates);emit("rejected_pairs",m.rejected_pairs);emit("display_duplicates",m.display_duplicates);
  emit("history_selections",m.history_selections);emit("reacquired",m.reacquired);emit("held_handoffs",m.held_handoffs);emit("hidden_frames",m.hidden_frames);
  emit("shadow_deferred",m.shadow_deferred);
+ emit("joint_gate_rejections",m.joint_gate_rejections);emit("bone_gate_rejections",m.bone_gate_rejections);
  emit("raw_rank_jumps_gt_0_5",raw_jumps);emit("stable_track_jumps_gt_0_5",track_jumps);
  emit("adjacent_singleton_id_switches",id_switches);emit("adjacent_singleton_id_jumps_gt_0_5",id_switch_jumps);emit("max_adjacent_singleton_id_jump",max_id_switch);
  emit("near_pairs_centre_lt_radius",near_pairs);emit("near_held_pairs",near_held_pairs);emit("blank_with_candidates",blank_with_candidates);

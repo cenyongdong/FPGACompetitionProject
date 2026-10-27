@@ -44,7 +44,7 @@ namespace pose::hdmi {
         std::uint64_t age_seconds = 0;
     };
     // last_result contains only owning render metadata; its pixel vector may be
-    // empty. A null pointer draws no pose and never manufactures model values.
+    // empty. A null pointer draws seven standby bars, never model values.
     Rendered render_notice(PreparedBackground&& prepared, const Rendered* last_result,
                            uint64_t last_frame_id, const Notice& notice);
     PreparedBackground prepare_background();

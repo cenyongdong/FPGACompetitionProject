@@ -25,6 +25,18 @@ bool duplicate(const Person&a,const Person&b,const Config&config){
         (cd<config.duplicate_translation*scale&&shape(a.joints,ac,b.joints,bc)<config.duplicate_shape*scale);
 }
 double alpha(double cutoff,double dt){const auto t=6.283185307179586*cutoff*dt;return t/(1+t);}
+// Temporal evidence only; no anthropometric correction or invented joint.
+// The same 14-joint topology as the dataset's limb loss is used for rejection.
+constexpr unsigned bones[][2]={{0,1},{0,2},{0,3},{2,4},{2,5},{3,6},{3,7},{4,8},{5,7},{5,9},{6,10},{7,11},{9,12},{11,13}};
+unsigned geometry_rejection(const Joints&a,const Centre&ac,const Joints&b,const Centre&bc,double scale,double dt){
+ const double maximum=(1+12*dt)*scale;
+ for(unsigned j=0;j<14;++j){double sq=0;for(unsigned k=0;k<3;++k){const double d=(a[3*j+k]-ac[k])-(b[3*j+k]-bc[k]);sq+=d*d;}if(sq>maximum*maximum)return 1;}
+ for(const auto&bone:bones){double aa=0,bb=0;for(unsigned k=0;k<3;++k){aa+=std::pow(a[3*bone[0]+k]-a[3*bone[1]+k],2);bb+=std::pow(b[3*bone[0]+k]-b[3*bone[1]+k],2);}
+  const double lo=std::sqrt(std::min(aa,bb)),hi=std::sqrt(std::max(aa,bb));
+  if(hi>2*lo&&hi-lo>(.5+2*dt)*scale)return 2;
+ }
+ return 0;
+}
 void people(std::ostream&o,const std::vector<Person>&ps,const PresentationFrame&f){
  o<<'[';bool comma=false;for(const auto&p:ps){if(comma)o<<',';comma=true;
  o<<"{\"track\":\""<<p.track<<"\",\"candidate\":"<<p.candidate<<",\"score\":"<<p.score
@@ -46,6 +58,7 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
  for(unsigned i=0;i<180;++i)if(!std::isfinite(scores[i]))throw std::runtime_error("Nonfinite presentation score");
  for(unsigned i=0;i<7560;++i)if(!std::isfinite(poses[i]))throw std::runtime_error("Nonfinite presentation coordinates");
  if(!std::isfinite(config_.min_cutoff)||!std::isfinite(config_.d_cutoff)||!std::isfinite(config_.beta)||config_.min_cutoff<=0||config_.d_cutoff<=0||config_.beta<0||!config_.hold_ns||!std::isfinite(config_.duplicate_centre)||!std::isfinite(config_.duplicate_pose)||config_.duplicate_centre<=0||config_.duplicate_pose<=0)throw std::runtime_error("Invalid postprocess configuration");
+ if(!std::isfinite(config_.tracking_cutoff)||!std::isfinite(config_.velocity_cutoff)||config_.tracking_cutoff<=0||config_.velocity_cutoff<=0)throw std::runtime_error("Invalid tracking configuration");
  if(config_.identity_ns<config_.hold_ns||config_.identity_ns>1000000000ull||config_.confirmation_hits<2||config_.confirmation_hits>4||!std::isfinite(config_.duplicate_translation)||!std::isfinite(config_.duplicate_shape)||config_.duplicate_translation<0||config_.duplicate_shape<0)throw std::runtime_error("Invalid confirmation/duplicate configuration");
  if(previous_.session && (id.session!=previous_.session||id.source_ns<=previous_.source_ns||id.sequence<=previous_.sequence))reset();
  previous_=id;
@@ -55,8 +68,7 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
  std::vector<Person> detections;std::vector<Centre> centres;std::vector<double> radii;
  for(unsigned n=0;n<3;++n){const auto i=rank[n];if(!(scores[i]>0.2f))continue;
   Person p;p.candidate=i;p.score=scores[i];p.observed_ns=id.source_ns;std::copy_n(poses+42*i,42,p.joints.begin());out.raw_poses.push_back(p);
-  const auto c=centre(p.joints);const double r=radius(p.joints,c);
-  detections.push_back(p);centres.push_back(c);radii.push_back(r);
+  detections.push_back(p);centres.push_back({});radii.push_back(0);
  }
  tracks_.erase(std::remove_if(tracks_.begin(),tracks_.end(),[&](const Track&t){
   const auto lifetime=t.hits>=config_.confirmation_hits?config_.identity_ns:config_.hold_ns;
@@ -69,19 +81,33 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
  for(unsigned d=0;d<order.size();++d){detections[d]=old_detections[order[d]];centres[d]=old_centres[order[d]];radii[d]=old_radii[order[d]];}
  const unsigned nt=unsigned(tracks_.size()),nd=unsigned(detections.size());
  std::array<std::array<bool,3>,3> conflicts{};
- for(unsigned a=0;a<nd;++a)for(unsigned b=0;b<a;++b)
-  conflicts[a][b]=conflicts[b][a]=duplicate(detections[a],detections[b],config_);
+ const bool standard_geometry=config_.duplicate_centre==.3&&config_.duplicate_pose==.3&&config_.duplicate_translation==.7&&config_.duplicate_shape==.2;
+ GeometrySummary geometry;
+ const bool hardware_geometry=backend_&&standard_geometry&&nd&&backend_->geometry(detections,geometry,true);
+ if(hardware_geometry)for(unsigned d=0;d<nd;++d){centres[d]=geometry.centres[d];radii[d]=geometry.radii[d];}
+ else for(unsigned d=0;d<nd;++d){centres[d]=centre(detections[d].joints);radii[d]=radius(detections[d].joints,centres[d]);}
+ unsigned pair_bit=0;
+ for(unsigned a=0;a<3;++a)for(unsigned b=a+1;b<3;++b,++pair_bit)if(a<nd&&b<nd)
+  conflicts[a][b]=conflicts[b][a]=hardware_geometry?bool(geometry.duplicates&(1u<<pair_bit)):duplicate(detections[a],detections[b],config_);
  std::array<std::array<double,3>,6> costs{};
  for(unsigned t=0;t<nt;++t)for(unsigned d=0;d<nd;++d){const auto&tr=tracks_[t];const double dt=double(id.source_ns-tr.value.observed_ns)/1e9,scale=std::max(tr.radius,radii[d]);
   const bool dormant=id.source_ns-tr.value.observed_ns>config_.hold_ns;
-  // Predict from the committed filtered centre. A single noisy observation
-  // must not move both the pose and the next association gate in one step.
-  auto prediction=tr.hits>=config_.confirmation_hits?centre(tr.value.joints):tr.centre;
+  // Dedicated tracking state: changing the display cutoff must not move the
+  // association gate. Only accepted observations can update this state.
+  auto prediction=tr.association_centre;
   if(!dormant)for(unsigned a=0;a<3;++a)prediction[a]+=tr.velocity[a]*dt;
-  const double cd=distance(prediction,centres[d])/scale,sd=shape(tr.observation,tr.centre,detections[d].joints,centres[d])/scale;
+  const double predicted_distance=distance(prediction,centres[d])/scale;
+  const double sd=shape(tr.observation,tr.centre,detections[d].joints,centres[d])/scale;
+  // A reversal can invalidate velocity without invalidating the person. Permit
+  // the last accepted position as an alternative only for a consistent shape.
+  const double cd=!dormant&&sd<.25?std::min(predicted_distance,distance(tr.centre,centres[d])/scale):predicted_distance;
   // Hidden identity is only reacquired near its last observation, without
   // extrapolating a stale velocity or relaxing the gate with the longer gap.
   costs[t][d]=(cd<=(dormant?.5:0.5+4*dt)&&sd<=(dormant?.3:0.5+6*dt))?cd+sd:std::numeric_limits<double>::infinity();
+  if(std::isfinite(costs[t][d])){
+   const auto reason=geometry_rejection(tr.observation,tr.centre,detections[d].joints,centres[d],scale,dt);
+   if(reason){costs[t][d]=std::numeric_limits<double>::infinity();if(reason==1)++metrics_.joint_gate_rejections;else ++metrics_.bone_gate_rejections;}
+  }
   if(!std::isfinite(costs[t][d]))++metrics_.rejected_pairs;
  }
  // Select a representative jointly with association. Conflicting detections
@@ -113,7 +139,9 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
   const bool dormant=id.source_ns-t.value.observed_ns>config_.hold_ns;
   if(dormant)++metrics_.reacquired;
   for(unsigned a=0;a<3;++a){const double measured=(centres[d][a]-t.centre[a])/dt;const double cap=4*std::max(t.radius,radii[d]);
-   t.velocity[a]=dormant?0:t.velocity[a]+alpha(config_.d_cutoff,dt)*(std::clamp(measured,-cap,cap)-t.velocity[a]);}
+   const double predicted=t.association_centre[a]+(dormant?0:t.velocity[a]*dt);
+   t.association_centre[a]=dormant?centres[d][a]:predicted+alpha(config_.tracking_cutoff,dt)*(centres[d][a]-predicted);
+   t.velocity[a]=dormant?0:t.velocity[a]+alpha(config_.velocity_cutoff,dt)*(std::clamp(measured,-cap,cap)-t.velocity[a]);}
   const auto track=t.value.track;t.value=detections[d];t.value.track=track;
   t.support+=alpha(1,dt)*(detections[d].score-t.support);
   t.dt=dt;
@@ -146,7 +174,7 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
   if(choices!=1)continue; // Ambiguous re-identification remains separate.
   const auto old_id=owner->value.track;const auto last_ns=owner->value.observed_ns;
   owner->previous_observation=owner->observation;owner->observation=fresh.observation;
-  owner->centre=fresh.centre;owner->radius=fresh.radius;owner->velocity={};
+  owner->centre=fresh.centre;owner->association_centre=fresh.association_centre;owner->radius=fresh.radius;owner->velocity={};
   owner->support=fresh.support;
   owner->value=fresh.value;owner->value.track=old_id;owner->dt=double(id.source_ns-last_ns)/1e9;
   ++owner->hits;owner->initialize=false;fresh.retired=true;++metrics_.held_handoffs;
@@ -158,7 +186,7 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
  for(unsigned d=0;d<nd;++d)if(selected[d]&&best[d]<0){
   auto pending=std::count_if(tracks_.begin(),tracks_.end(),[&](const Track&t){return t.hits<config_.confirmation_hits;});
   if(pending>=3)continue;
-  Track t;t.value=detections[d];t.value.track=next_id_++;t.hits=1;t.first_ns=id.source_ns;t.centre=centres[d];t.radius=radii[d];t.observation=t.value.joints;t.support=t.value.score;
+  Track t;t.value=detections[d];t.value.track=next_id_++;t.hits=1;t.first_ns=id.source_ns;t.centre=t.association_centre=centres[d];t.radius=radii[d];t.observation=t.value.joints;t.support=t.value.score;
   tracks_.push_back(t);
  }
  // Keep a bounded set of confirmed tracks; current observations win over held ones.
@@ -168,8 +196,10 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
  });
  unsigned confirmed=0;tracks_.erase(std::remove_if(tracks_.begin(),tracks_.end(),[&](const Track&t){return t.hits>=config_.confirmation_hits&&++confirmed>3;}),tracks_.end());
  if(backend_){std::vector<Person> active;for(const auto&t:tracks_)if(t.hits>=config_.confirmation_hits)active.push_back(t.value);backend_->begin_frame(active);}
+ std::vector<Joints> batch;unsigned batch_index=0;
+ if(backend_){std::vector<FilterUpdate> updates;for(const auto&t:tracks_)if(t.hits>=config_.confirmation_hits&&!t.value.held)updates.push_back({t.value.track,t.observation,t.dt,t.initialize});batch=backend_->update_batch(updates);if(batch.size()!=updates.size())throw std::runtime_error("Incomplete filter frame");}
  for(auto&t:tracks_)if(t.hits>=config_.confirmation_hits&&!t.value.held){
-  if(backend_)t.value.joints=backend_->update(t.value.track,t.observation,t.dt,t.initialize);
+  if(backend_)t.value.joints=batch[batch_index++];
   else{const auto begin=std::chrono::steady_clock::now();
    for(unsigned j=0;j<42;++j){if(t.initialize)t.filter[j].reset();t.value.joints[j]=float(t.filter[j].update(t.observation[j],t.dt,config_));}
    cpu_filter_ns+=std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now()-begin).count();cpu_filter_coordinates+=42;
@@ -179,10 +209,17 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
  // Filtering/holding can bring otherwise separate observations together. Apply
  // the same spatial rule to the actual displayed poses, in display priority
  // order, without merging identities or extending a held observation's life.
+ std::vector<Person> visible;
  for(const auto&t:tracks_)if(t.hits>=config_.confirmation_hits){
   if(id.source_ns-t.value.observed_ns>config_.hold_ns){++metrics_.hidden_frames;continue;}
-  if(std::any_of(out.poses.begin(),out.poses.end(),[&](const Person&kept){return duplicate(t.value,kept,config_);}))++metrics_.display_duplicates;
-  else out.poses.push_back(t.value);
+  visible.push_back(t.value);
+ }
+ GeometrySummary display_geometry;
+ const bool hardware_display=backend_&&standard_geometry&&visible.size()>1&&backend_->geometry(visible,display_geometry,false);
+ unsigned kept_mask=0;
+ for(unsigned i=0;i<visible.size();++i){bool suppressed=false;unsigned bit=0;
+  for(unsigned a=0;a<3;++a)for(unsigned b=a+1;b<3;++b,++bit)if(b==i&&(kept_mask&(1u<<a)))suppressed|=hardware_display?bool(display_geometry.duplicates&(1u<<bit)):duplicate(visible[i],visible[a],config_);
+  if(suppressed)++metrics_.display_duplicates;else{out.poses.push_back(visible[i]);kept_mask|=1u<<i;}
  }
  std::sort(tracks_.begin(),tracks_.end(),[](const Track&a,const Track&b){return a.value.track<b.value.track;});
  if(cpu_filter_coordinates){++metrics_.cpu_filter_frames;metrics_.cpu_filter_coordinates+=cpu_filter_coordinates;

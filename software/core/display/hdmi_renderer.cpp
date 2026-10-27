@@ -205,8 +205,20 @@ namespace pose::hdmi {
             result.detection_count=last_result->detection_count;
             draw_result_fields(result,last_frame_id);draw_detections(result);
         } else {
-            const auto muted=color(167,184,204);
-            text(result.rgb565,500,84,"--",2.5,muted);
+            // Full-height RGB565 bars before the first actual result. This is
+            // a display hint, with no manufactured pose or inference identity.
+            constexpr std::array<std::uint16_t,7> bars{
+                0xffff,0xffe0,0x07ff,0x07e0,0xf81f,0xf800,0x001f};
+            for (unsigned x=0;x<width;++x) {
+                const auto pixel=bars[x*bars.size()/width];
+                result.rgb565[x*2]=std::uint8_t(pixel);
+                result.rgb565[x*2+1]=std::uint8_t(pixel>>8);
+            }
+            for (unsigned y=1;y<height;++y)
+                std::copy_n(result.rgb565.begin(),width*2,result.rgb565.begin()+y*width*2);
+            result.render_ms=std::chrono::duration<double,std::milli>(
+                std::chrono::steady_clock::now()-begin).count();
+            return result;
         }
         const char* label=notice.kind==NoticeKind::Stale ? "RESULT STALE" :
             notice.kind==NoticeKind::Resynchronizing ? "RESYNCHRONIZING" : "WAITING INPUT";

@@ -1,10 +1,10 @@
 module tb_pose_filter;
  reg clk=0;always #5 clk=~clk;
  reg resetn=0,write=0,commit=0;reg [6:0] wi=0,ri=0;reg [31:0] value=0,seq=0;
- reg [2:0] init_mask,update_mask;reg signed [31:0] inv,ad,k,fc,beta;
+ reg [2:0] init_mask=7,update_mask=7;reg signed [31:0] inv,ad,k,fc,beta;
  wire [31:0] out1,out4,seq1,seq4,cycles1,cycles4;wire busy1,busy4;wire [3:0] error1,error4;
- pose_filter #(.LANES(1)) one(.clk(clk),.resetn(resetn),.input_write(write),.input_index(wi),.input_value(value),.commit(commit),.frame_sequence(seq),.init_mask(init_mask),.update_mask(update_mask),.inverse_dt(inv),.derivative_alpha(ad),.k(k),.min_cutoff(fc),.beta(beta),.output_index(ri),.output_value(out1),.busy(busy1),.completed_sequence(seq1),.cycles(cycles1),.error(error1));
- pose_filter #(.LANES(4)) four(.clk(clk),.resetn(resetn),.input_write(write),.input_index(wi),.input_value(value),.commit(commit),.frame_sequence(seq),.init_mask(init_mask),.update_mask(update_mask),.inverse_dt(inv),.derivative_alpha(ad),.k(k),.min_cutoff(fc),.beta(beta),.output_index(ri),.output_value(out4),.busy(busy4),.completed_sequence(seq4),.cycles(cycles4),.error(error4));
+ pose_filter #(.LANES(1)) one(.clk(clk),.resetn(resetn),.clear_written(1'b0),.input_write(write),.input_index(wi),.input_value(value),.commit(commit),.frame_sequence(seq),.init_mask(init_mask),.update_mask(update_mask),.inverse_dt(inv),.derivative_alpha(ad),.k(k),.min_cutoff(fc),.beta(beta),.output_index(ri),.output_value(out1),.busy(busy1),.completed_sequence(seq1),.cycles(cycles1),.error(error1));
+ pose_filter #(.LANES(4)) four(.clk(clk),.resetn(resetn),.clear_written(1'b0),.input_write(write),.input_index(wi),.input_value(value),.commit(commit),.frame_sequence(seq),.init_mask(init_mask),.update_mask(update_mask),.inverse_dt(inv),.derivative_alpha(ad),.k(k),.min_cutoff(fc),.beta(beta),.output_index(ri),.output_value(out4),.busy(busy4),.completed_sequence(seq4),.cycles(cycles4),.error(error4));
  reg [31:0] inputs[0:5039],expected[0:5039],params[0:279];integer f,i,waited,max1=0,max4=0;
  task tick;begin @(posedge clk);#1;end endtask
  initial begin

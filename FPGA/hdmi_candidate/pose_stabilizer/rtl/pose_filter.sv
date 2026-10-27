@@ -1,6 +1,6 @@
 // Complete-frame interface. Published output bank is immutable until all lanes finish.
 module pose_filter #(parameter LANES=1)(
- input wire clk,resetn,input_write,input wire [6:0] input_index,input wire signed [31:0] input_value,
+ input wire clk,resetn,input_write,clear_written,input wire [6:0] input_index,input wire signed [31:0] input_value,
  input wire commit,input wire [31:0] frame_sequence,input wire [2:0] init_mask,update_mask,
  input wire signed [31:0] inverse_dt,derivative_alpha,k,min_cutoff,beta,
  input wire [6:0] output_index,output reg signed [31:0] output_value,
@@ -17,6 +17,7 @@ module pose_filter #(parameter LANES=1)(
  wire signed [31:0] lane_value[0:LANES-1];
  wire [31:0] lane_cycles[0:LANES-1];
  reg [LANES-1:0] finished;
+ wire [125:0] required={{42{update_mask[2]}},{42{update_mask[1]}},{42{update_mask[0]}}};
  integer j;
  generate for(genvar g=0;g<LANES;g=g+1)begin:lane
   pose_filter_lane #(.LANES(LANES),.LANE(g)) unit(
@@ -31,14 +32,15 @@ module pose_filter #(parameter LANES=1)(
   if(!resetn)begin written<=0;initialized<=0;start<=0;published_bank<=0;busy<=0;completed_sequence<=0;cycles<=0;error<=0;finished<=0;end
   else begin
    start<=0;
+   if(clear_written)written<=0;
    if(input_write)begin if(busy)error[0]<=1;else if(input_index<126)written[input_index]<=1;else error[1]<=1;end
    if(commit)begin
     if(busy)error[0]<=1;
-    else if(!(&written)||frame_sequence==0||frame_sequence<=completed_sequence)error[1]<=1;
+    else if(update_mask==0||(written&required)!=required||frame_sequence==0||frame_sequence<=completed_sequence)error[1]<=1;
     else if(inverse_dt<=0||derivative_alpha<=0||derivative_alpha>65536||k<=0||min_cutoff<=0||beta<0)error[2]<=1;
     else begin
      busy<=1;start<=1;cycles<=0;finished<=0;written<=0;active_sequence<=frame_sequence;
-     active_init<=init_mask|~initialized;active_update<=update_mask|~initialized;initialized<=3'b111;
+     active_init<=init_mask|~initialized;active_update<=update_mask;initialized<=initialized|update_mask;
      inv<=inverse_dt;ad<=derivative_alpha;kk<=k;fc<=min_cutoff;bb<=beta;
     end
    end

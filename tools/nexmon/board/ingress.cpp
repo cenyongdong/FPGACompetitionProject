@@ -1,4 +1,5 @@
 #include "ingress.hpp"
+#include "event_decoder.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstring>
@@ -19,6 +20,16 @@ std::int64_t floor_div(std::int64_t a,std::int64_t b) { auto q=a/b,r=a%b; return
 std::int64_t modulo(std::int64_t a,std::int64_t b) { return a-floor_div(a,b)*b; }
 double modulo(double a,double b) { auto v=std::fmod(a,b); return v<0?v+b:v; }
 void require(bool ok,const char* why) { if(!ok) throw std::runtime_error(why); }
+void validate_config(const Config& c) {
+    require(!c.session_id.empty()&&c.session_id.size()<=128,"Explicit bounded session required");
+    require(std::set<std::string>(c.receiver_ids.begin(),c.receiver_ids.end()).size()==3,"Require distinct receiver identities");
+    for(const auto&s:c.receiver_ids)require(!s.empty()&&s.size()<=128,"Receiver identity missing/too long");
+    require(c.expected_events>0&&c.expected_events<=3000,"Require one bounded <=3000-event TX job");
+    require(!c.track_clock||c.streaming,"Clock tracking is resident streaming only");
+    require((c.chanspec&0x3800)==0x1000,"Require explicit HT/VHT20 chanspec");
+    for(double g:c.gains)require(std::isfinite(g)&&g>0,"Require explicit finite positive candidate gains");
+    require(std::any_of(c.transmitter_mac.begin(),c.transmitter_mac.end(),[](auto v){return v!=0;}),"Missing transmitter MAC");
+}
 
 struct Meta {
     std::uint16_t seq=0,config=0,channel=0,fc=0,qos=0,tsf=0,counter=0,frame_size=0;
@@ -39,6 +50,13 @@ struct Event {
     std::int64_t time=0;
     bool keep=false;
 };
+std::complex<double> carrier_value(const Event& e,double gain,std::size_t a,std::size_t n) {
+    const auto bin=std::size_t((ht20_ng2[n]+64)%64);
+    const auto word=(bin>=28&&bin<=30)?e.original[a][bin-28]:e.words[a][bin];
+    const auto value=decode_acphy(word)*gain;
+    require(std::isfinite(value.real())&&std::isfinite(value.imag()),"Gain produced non-finite CSI");
+    return value;
+}
 struct Cell { std::int64_t target=0; std::int64_t index=-1; };
 using Key=std::pair<std::uint16_t,std::uint16_t>; // full Sequence Control + FC sans retry
 Key identity(const Event&e) { return {e.meta.seq,std::uint16_t(e.meta.fc&~0x800)}; }
@@ -72,6 +90,7 @@ struct Node {
     struct PhaseSample { std::int64_t value=0; bool valid=false; };
     std::array<PhaseSample,15> phase_history{};
     std::size_t phase_cursor=0;
+    std::vector<CompleteEvent>* decoded=nullptr; // opt-in decoder-only consumer
 
     [[noreturn]] void continuity(ContinuityReason reason,const Meta& current,
                                const Meta* prior=nullptr,std::uint32_t samples=0) {
@@ -262,7 +281,17 @@ struct Node {
             kept.emplace(identity(event),index);++summary.retained;
         }
         events.push_back(std::move(event));
-        if(events.back().keep)feed_grid(index);
+        if(events.back().keep) {
+            if(decoded) {
+                require(decoded->size()<32,"Decoded event queue must be consumed");
+                const auto& e=events.back();CompleteEvent value;
+                value.sequence=e.meta.seq;value.frame_control=e.meta.fc&~0x800;
+                value.frame_size=e.meta.frame_size;value.local_us=e.time;value.capture_us=e.meta.arrival;
+                for(std::size_t a=0;a<3;++a)for(std::size_t n=0;n<30;++n)
+                    value.csi[a*30+n]=carrier_value(e,config->gains[receiver],a,n);
+                decoded->push_back(std::move(value));
+            } else feed_grid(index);
+        }
         prune();
     }
     void feed(std::int64_t arrival,std::uint16_t port,const std::uint8_t*p,std::size_t n) {
@@ -365,14 +394,7 @@ struct Ingress::Impl {
     std::int64_t next_slot=0;std::size_t ready_index=0;
     WindowDiagnostics diagnostic;
     explicit Impl(Config c):config(std::move(c)) {
-        require(!config.session_id.empty()&&config.session_id.size()<=128,"Explicit bounded session required");
-        require(std::set<std::string>(config.receiver_ids.begin(),config.receiver_ids.end()).size()==3,"Require distinct receiver identities");
-        for(const auto&s:config.receiver_ids)require(!s.empty()&&s.size()<=128,"Receiver identity missing/too long");
-        require(config.expected_events>0&&config.expected_events<=3000,"Require one bounded <=3000-event TX job");
-        require(!config.track_clock||config.streaming,"Clock tracking is resident streaming only");
-        require((config.chanspec&0x3800)==0x1000,"Require explicit HT/VHT20 chanspec");
-        for(double g:config.gains)require(std::isfinite(g)&&g>0,"Require explicit finite positive candidate gains");
-        require(std::any_of(config.transmitter_mac.begin(),config.transmitter_mac.end(),[](auto v){return v!=0;}),"Missing transmitter MAC");
+        validate_config(config);
         for(std::size_t r=0;r<nodes.size();++r) {nodes[r].config=&config;nodes[r].receiver=std::uint32_t(r);}
         result.session_id=config.session_id;
     }
@@ -447,11 +469,7 @@ struct Ingress::Impl {
                 for(std::size_t r=0;r<3;++r)for(std::size_t t=0;t<20;++t) {
                     const auto&e=*selected[r][t];w.event_indices[r][t]=std::uint32_t(nodes[r].cells.at(next_slot+std::int64_t(t)-result.slot_shifts[r]).index);
                     for(std::size_t a=0;a<3;++a)for(std::size_t n=0;n<30;++n) {
-                        auto bin=std::size_t((ht20_ng2[n]+64)%64);
-                        auto word=(bin>=28&&bin<=30)?e.original[a][bin-28]:e.words[a][bin];
-                        auto value=decode_acphy(word)*config.gains[r];
-                        require(std::isfinite(value.real())&&std::isfinite(value.imag()),"Gain produced non-finite CSI");
-                        w.csi[((r*3+a)*20+t)*30+n]=value;
+                        w.csi[((r*3+a)*20+t)*30+n]=carrier_value(e,config.gains[r],a,n);
                     }
                 }
                 require(!config.streaming||result.windows.size()<32,"Ready window budget exceeded; consume or resync");
@@ -513,6 +531,21 @@ WindowDiagnostics Ingress::diagnostics()const {
     for(std::size_t r=0;r<3;++r)d.nodes[r]=impl_->nodes[r].summary;
     return d;
 }
+struct EventDecoder::Impl {
+    Config config;Node node;std::vector<CompleteEvent> ready;
+    Impl(Config c,std::size_t r):config(std::move(c)) {
+        validate_config(config);require(config.streaming&&r<3,"Event decoder requires a streaming receiver");
+        node.config=&config;node.receiver=std::uint32_t(r);node.decoded=&ready;
+    }
+};
+EventDecoder::EventDecoder(Config c,std::size_t r):impl_(std::make_unique<Impl>(std::move(c),r)){}
+EventDecoder::~EventDecoder()=default;
+void EventDecoder::feed(std::int64_t arrival,std::uint16_t port,const std::uint8_t* p,std::size_t size) {
+    require(!impl_->node.failed,"Replace failed event decoder before reuse");
+    impl_->node.feed(arrival,port,p,size);
+}
+std::vector<CompleteEvent> EventDecoder::take_ready(){std::vector<CompleteEvent> out;out.swap(impl_->ready);return out;}
+NodeSummary EventDecoder::summary()const{return impl_->node.summary;}
 std::vector<std::uint8_t> encode_piwcsi2(const JointWindow&w,std::uint64_t frame,std::uint64_t source) {
     static_assert(sizeof(double)==8&&std::numeric_limits<double>::is_iec559,"IEEE754 float64 required");
     std::vector<std::uint8_t> out(piwcsi2_bytes);

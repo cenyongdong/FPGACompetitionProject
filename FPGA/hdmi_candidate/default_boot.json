@@ -1,0 +1,16 @@
+{
+  "hardware_profile": "probe-free-drain-filter-v1",
+  "hardware_work": ".local/pose-filter-integration-20261026-r2",
+  "BOOT_path": ".local/pose-filter-integration-20261026-r2/boot-package/BOOT-pose-filter-r2.bin",
+  "BOOT_sha256": "a22faaa71cfde653e03898d2d77bd3adee633f3d0b47b710b87c76bf2a22e291",
+  "reference_recovery_path": ".local/hdmi-startup-20261027-r1/board-bundle/common/BOOT-original.bin",
+  "reference_recovery_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "release_evidence": ".local/hdmi-startup-20261027-r1/results/closed.json",
+  "runtime_boot_id": "ba3327af-25df-4425-9b1b-0d4d34aaf4f0",
+  "standby": "software seven bars after display initialization, before first result",
+  "software_path": ".local/hdmi-startup-20261027-r1/arm64/pose180_demo",
+  "software_sha256": "129beb8feb92882e17640dcd7a49a2328f8a46c1da6a2186ec78a66d5a6026ee",
+  "SDK_autostart": false,
+  "live_CSI": false,
+  "hardware_rebuilt": false
+}

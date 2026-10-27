@@ -2,6 +2,7 @@
 #include "io.hpp"
 #include "journal.hpp"
 #include "csi.hpp"
+#include "dataset.hpp"
 #include "postprocess.hpp"
 #include "lean_admission.hpp"
 #ifdef POSE180_DEMO_PL_FILTER
@@ -21,6 +22,7 @@
 #endif
 #endif
 #include <csignal>
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -39,9 +41,11 @@ int main(int argc,char**argv) {
         auto take=[&](const char* key,const std::string& fallback){auto it=options.find(key);if(it==options.end())return fallback;auto v=it->second;options.erase(it);return v;};
         const fs::path package=take("--package","."),output=take("--output","");
         const auto bind=take("--bind","127.0.0.1"),csi_config=take("--csi","");
+        const auto dataset_file=take("--dataset","");
+        const auto dataset_repetitions=std::stoul(take("--dataset-repetitions","1"));
         const auto session=std::stoull(take("--session","0"));
         const auto seconds=std::stoul(take("--seconds","60"));
-        const auto input_port=std::stoul(take("--input-port",csi_config.empty()?"39382":"0"));
+        const auto input_port=std::stoul(take("--input-port",csi_config.empty()&&dataset_file.empty()?"39382":"0"));
         const auto result_port=std::stoul(take("--result-port","39383"));
         const auto status_port=std::stoul(take("--status-port","39384"));
         const auto max_age=std::stoull(take("--max-input-age-ms","500"))*1000000ull;
@@ -59,8 +63,13 @@ int main(int argc,char**argv) {
 #ifdef POSE180_DEMO_PROBE_FREE
 #ifdef POSE180_DEMO_PROBE_FREE_DRAIN
 #ifdef POSE180_DEMO_PL_FILTER
+#ifdef POSE180_DEMO_PL_POST
+        const auto hardware_profile=take("--hardware-profile","probe-free-drain-post-v2");
+        need(hardware_profile=="probe-free-drain-post-v2","Build/profile mismatch");
+#else
         const auto hardware_profile=take("--hardware-profile","probe-free-drain-filter-v1");
         need(hardware_profile=="probe-free-drain-filter-v1","Build/profile mismatch");
+#endif
 #else
         const auto hardware_profile=take("--hardware-profile","probe-free-drain-v1");
         need(hardware_profile=="probe-free-drain-v1","Build/profile mismatch");
@@ -75,6 +84,19 @@ int main(int argc,char**argv) {
         need(hardware_profile=="r45","Unknown hardware profile");
 #endif
         const auto filter_backend=take("--filter-backend","cpu");
+        pose::post::Config presentation_config;
+        presentation_config.min_cutoff=std::stod(take("--min-cutoff","0.5"));
+        presentation_config.beta=std::stod(take("--beta","0.3"));
+        presentation_config.d_cutoff=std::stod(take("--d-cutoff","1"));
+        need(std::isfinite(presentation_config.min_cutoff)&&presentation_config.min_cutoff>0&&
+             std::isfinite(presentation_config.beta)&&presentation_config.beta>=0&&
+             std::isfinite(presentation_config.d_cutoff)&&presentation_config.d_cutoff>0,"Invalid One Euro parameters");
+        // Existing PL images retain their original fixed coefficients. Do not
+        // silently run a different filter when the PS demonstration is tuned.
+        need(filter_backend!="pl"||(presentation_config.min_cutoff==1&&presentation_config.beta==.5&&presentation_config.d_cutoff==1),
+             "Existing PL backend requires the original 1/0.5/1 coefficients; use CPU for tuned filtering");
+        const auto compare_arg=take("--compare-ps","0");const bool compare_ps=compare_arg=="1";
+        need((compare_arg=="0"||compare_arg=="1")&&(!compare_ps||filter_backend=="pl"),"PS comparison requires PL backend");
 #ifdef POSE180_DEMO_PL_FILTER
         need(filter_backend=="cpu"||filter_backend=="pl","Unknown filter backend");
         need(hdmi||filter_backend=="cpu","PL filter uses the single HDMI/SDK device owner");
@@ -86,19 +108,25 @@ int main(int argc,char**argv) {
         need(input_port<=65535 && result_port>0 && result_port<=65535 && status_port>0 && status_port<=65535,"Port out of range");
         need(max_age>0 && max_age<=60000000000ull && (hdmi_arg=="0"||hdmi_arg=="1"),"Invalid age or HDMI option");
         need(csi_config.empty()||!input_port,"Use exactly one input adapter");
+        need(dataset_file.empty()||(csi_config.empty()&&!input_port),"Dataset excludes live CSI and TCP input");
+        need(dataset_repetitions>=1&&dataset_repetitions<=30&&(!dataset_file.empty()||dataset_repetitions==1),"Dataset repetitions require an explicit bounded dataset");
         need(!output.empty()&&!fs::exists(output)&&fs::create_directory(output),"Fresh output directory required");
         pd::Shared shared;
+        shared.stats.input_source=!dataset_file.empty()?"official_dataset":!csi_config.empty()?"live_csi":"tcp_window";
         // Must precede SDK, IO and CSI construction (fork cannot inherit them).
         pd::Journal journal(shared,output);
         pd::Io io(shared,bind,input_port,result_port,status_port,session,mock,hdmi,unsigned(view_port));
-        pose::post::Postprocessor postprocessor;
-        journal.status("presentation=tracked-one-euro-v4; requested_backend="+filter_backend+"; duplicate_centre=0.3; duplicate_pose=0.3; duplicate_translation=0.7; duplicate_shape=0.2; confirmation_hits=3; hold_ms=250; identity_ms=250; temporal_representative=1; shadow_support_margin=0.25; view_port="+std::to_string(view_port)+"\n");
+        pose::post::Postprocessor postprocessor(presentation_config);
+        pose::post::Postprocessor ps_reference(presentation_config);
+        journal.status("presentation=tracked-one-euro-v5; requested_backend="+filter_backend+"; min_cutoff="+std::to_string(presentation_config.min_cutoff)+"; beta="+std::to_string(presentation_config.beta)+"; d_cutoff="+std::to_string(presentation_config.d_cutoff)+"; tracking_cutoff=3; velocity_cutoff=1; local_quality_gate=1; duplicate_centre=0.3; duplicate_pose=0.3; duplicate_translation=0.7; duplicate_shape=0.2; confirmation_hits=3; hold_ms=250; identity_ms=250; temporal_representative=1; shadow_support_margin=0.25; view_port="+std::to_string(view_port)+"\n");
 #ifdef POSE180_DEMO_PL_FILTER
         std::unique_ptr<pose::post::PlFilter> pl_filter;
         std::unique_ptr<pose::post::PlFilterBackend> pl_backend;
 #endif
         std::unique_ptr<pd::Csi> csi;
         if(!csi_config.empty())csi=std::make_unique<pd::Csi>(shared,csi_config,session);
+        std::unique_ptr<pd::Dataset> dataset;
+        if(!dataset_file.empty())dataset=std::make_unique<pd::Dataset>(shared,dataset_file,session,unsigned(dataset_repetitions));
         std::cout<<"RESIDENT_READY mock="<<mock<<" recorder_pid="<<journal.child_pid()<<std::endl;
 #ifdef POSE180_DEMO_SDK
         std::unique_ptr<pp::Runtime> runtime;
@@ -135,10 +163,11 @@ int main(int argc,char**argv) {
                               [device](unsigned offset,std::uint32_t value){need(offset<=0x5f4&&!(offset&3),"Filter write out of range");device.defaultRegRegion().write(0x400b1000ull+offset,value);});
                             const auto lanes=pl_filter->lanes();need(lanes==1||lanes==4,"Invalid filter lane identity");
                             const auto tested=pose::post::verify_pl_filter(*pl_filter);
+                            const auto geometry_tested=pose::post::verify_pl_geometry(*pl_filter);
                             pl_filter->reset_metrics();
                             pl_backend=std::make_unique<pose::post::PlFilterBackend>(*pl_filter);
                             postprocessor.set_backend(pl_backend.get());shared.stats.filter_lanes=lanes;
-                            journal.status("PL_FILTER_SELFTEST_PASS coordinates="+std::to_string(tested)+" lanes="+std::to_string(lanes)+"\n");
+                            journal.status("PL_FILTER_SELFTEST_PASS coordinates="+std::to_string(tested)+" lanes="+std::to_string(lanes)+" geometry_frames="+std::to_string(geometry_tested)+"\n");
                         } catch(const pose::post::PlFilterError& error){
                             ++shared.stats.filter_fallbacks;postprocessor.set_backend(nullptr);
                             if(pl_filter)pl_filter->reset_metrics();
@@ -208,7 +237,6 @@ int main(int argc,char**argv) {
                 ",\"resynchronizing\":"+(notice->resynchronizing?"true":"false")+"}\n");
         };
 #endif
-        shared.stats.initialized=true;
         const auto started=pd::now_ns();auto last_status=started;
         pd::Input input;pp::Result result;pd::Record record{};std::uint64_t sequence=0;
         auto isolate=[&](const std::exception& error) {
@@ -216,6 +244,12 @@ int main(int argc,char**argv) {
             journal.freeze();journal.status(std::string("isolated: ")+error.what()+"\n");
             // Keep listeners/status alive, never reopen or retry failed SDK.
         };
+#ifdef POSE180_DEMO_SDK
+        // Submit standby even when a dataset's first window is already ready.
+        // It uses the same owner, fresh tag and adoption proof as later frames.
+        try { show_wait(); } catch(const std::exception& error) { isolate(error); }
+#endif
+        shared.stats.initialized=true;
         while(!stopping && (!seconds || pd::now_ns()-started<seconds*1000000000ull)) {
             if(pd::now_ns()-last_status>1000000000ull){
                 for(const auto& event:shared.stats.take_input_events())journal.diagnostic(event);
@@ -223,6 +257,10 @@ int main(int argc,char**argv) {
             }
             if(shared.stats.isolated){std::this_thread::sleep_for(std::chrono::milliseconds(5));continue;}
             bool ready=shared.input.take(input);
+            if(!ready&&dataset&&shared.stats.dataset_done){
+                ready=shared.input.take(input); // Pair EOF with a final pending-slot check.
+                if(!ready)break;
+            }
             if(ready && (pd::now_ns()-input.arrived>max_age || input.epoch!=shared.stats.input_epoch)){
                 ++shared.stats.stale;ready=false;
             }
@@ -283,6 +321,7 @@ int main(int argc,char**argv) {
                 shared.stats.post_history_selections=post_metrics.history_selections;shared.stats.post_reacquired=post_metrics.reacquired;
                 shared.stats.post_held_handoffs=post_metrics.held_handoffs;shared.stats.post_hidden_frames=post_metrics.hidden_frames;
                 shared.stats.post_shadow_deferred=post_metrics.shadow_deferred;
+                shared.stats.joint_gate_rejections=post_metrics.joint_gate_rejections;shared.stats.bone_gate_rejections=post_metrics.bone_gate_rejections;
                 shared.stats.cpu_filter_frames=post_metrics.cpu_filter_frames;shared.stats.cpu_filter_coordinates=post_metrics.cpu_filter_coordinates;
                 shared.stats.cpu_filter_ns=post_metrics.cpu_filter_ns;shared.stats.cpu_filter_max_ns=post_metrics.cpu_filter_max_ns;
 #ifdef POSE180_DEMO_PL_FILTER
@@ -290,7 +329,17 @@ int main(int argc,char**argv) {
                     shared.stats.pl_filter_calls=m.calls;shared.stats.pl_filter_coordinates=m.coordinates;
                     shared.stats.pl_input_ns=m.input_ns;shared.stats.pl_wait_ns=m.wait_ns;shared.stats.pl_output_ns=m.output_ns;
                     shared.stats.pl_total_ns=m.total_ns;shared.stats.pl_max_ns=m.max_ns;
-                    shared.stats.pl_compute_cycles=m.compute_cycles;shared.stats.pl_max_cycles=m.max_cycles;}
+                    shared.stats.pl_compute_cycles=m.compute_cycles;shared.stats.pl_max_cycles=m.max_cycles;
+                    const auto&g=pl_filter->geometry_metrics();shared.stats.pl_geometry_calls=g.calls;shared.stats.pl_geometry_input_ns=g.input_ns;shared.stats.pl_geometry_wait_ns=g.wait_ns;shared.stats.pl_geometry_output_ns=g.output_ns;shared.stats.pl_geometry_total_ns=g.total_ns;shared.stats.pl_geometry_max_ns=g.max_ns;shared.stats.pl_geometry_cycles=g.compute_cycles;}
+                if(compare_ps&&shared.stats.filter_lanes){
+                    const auto begin=pd::now_ns();const auto reference=ps_reference.update(view_id,result.scores.data(),result.poses.data());const auto elapsed=pd::now_ns()-begin;
+                    ++shared.stats.ps_reference_frames;shared.stats.ps_reference_ns+=elapsed;shared.stats.ps_reference_max_ns=std::max(shared.stats.ps_reference_max_ns.load(),elapsed);
+                    const auto& m=ps_reference.metrics();shared.stats.ps_reference_filter_frames=m.cpu_filter_frames;shared.stats.ps_reference_filter_ns=m.cpu_filter_ns;shared.stats.ps_reference_filter_max_ns=m.cpu_filter_max_ns;shared.stats.ps_reference_filter_coordinates=m.cpu_filter_coordinates;
+                    bool mismatch=reference.poses.size()!=view.poses.size();double error=0;
+                    for(unsigned i=0;i<std::min(reference.poses.size(),view.poses.size());++i){const auto&a=reference.poses[i];const auto&b=view.poses[i];mismatch|=a.track!=b.track||a.candidate!=b.candidate||a.held!=b.held;for(unsigned j=0;j<42;++j)error=std::max(error,std::abs(double(a.joints[j])-b.joints[j]));}
+                    shared.stats.reference_max_error_nano=std::max(shared.stats.reference_max_error_nano.load(),std::uint64_t(std::llround(error*1e9)));
+                    if(mismatch||error>.001)++shared.stats.reference_mismatch_frames;
+                }
 #endif
                 if(shared.presentation.put(view.json()))++shared.stats.view_dropped;
 #ifdef POSE180_DEMO_SDK
@@ -310,7 +359,7 @@ int main(int argc,char**argv) {
                 isolate(error);
             }
         }
-        shared.stop=true;csi.reset();
+        shared.stop=true;csi.reset();dataset.reset();
 #ifdef POSE180_DEMO_SDK
         // Output retains its unchanged tagged STOP/drain proof before any free.
         if(display){display->close();display.reset();}

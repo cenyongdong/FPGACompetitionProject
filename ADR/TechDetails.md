@@ -11,13 +11,16 @@
 | HDMI 所有权、启动消费与硬件保护边界 | [INTEGRATION.md](../FPGA/hdmi_candidate/INTEGRATION.md)、[保留消费候选](../FPGA/hdmi_candidate/probe_free_drain/README.md)、[独立守卫离线结果](../FPGA/hdmi_candidate/pose_stabilizer/README.md) |
 | 执行规则、问题与后续顺序 | [Agents.md](../Agents.md)、[DIFFICULTIES.md](../DIFFICULTIES.md)、[ToDoLists.md](../ToDoLists.md) |
 
+2026-10-27 当前阶段：官方训练／测试 CSI 从板端本地文件进入同一推理链，实时 CSI 输入关闭，HDMI／PC 画面不改。见[数据集阶段记录](../software/pose180_pipeline/resident/DATASET-DEMO.md)；下图同时保留长期实时分支。
+
 ## 现行实现：设备分工与端到端数据流
 
 ```mermaid
 flowchart LR
   TX[TX 开机服务与本机续期] --> RX[三 RX 本地采集与自动重连]
   RX -->|PCAP / TCP 39033| CSI[PS 同事件配对与有界组窗]
-  CSI --> L[最新完整窗口 / 原预处理]
+  CSI -. 本阶段关闭 .-> L[最新完整窗口 / 原预处理]
+  D[官方 train 或 test 连续片段 / 本地 Dataset] --> L
   L --> N[唯一 SDK 所有者 / 180-query NPU]
   N --> R[完整拥有值原始结果]
   R --> P[PS 筛选 / 关联 / 生命周期]
@@ -42,6 +45,7 @@ TX 四个 LAN 口分别接开发板、RX1、RX2、RX3；PC 接 RX 空闲 LAN 作
 |---|---|
 | 源端采集与开机服务 | [router_guard.c](../software/pose180_pipeline/resident/router_guard.c)、[router_ctl.sh](../software/pose180_pipeline/resident/router_ctl.sh)、[autostart](../software/pose180_pipeline/resident/autostart/README.md)：TX 本机续期、RX 捕获／有界发送／重连，不依赖 PC |
 | CSI 与常驻编排 | [csi.cpp](../software/pose180_pipeline/resident/csi.cpp)、[ingress.cpp](../tools/nexmon/board/ingress.cpp)、[main.cpp](../software/pose180_pipeline/resident/main.cpp)、[core.hpp](../software/pose180_pipeline/resident/core.hpp)：解析、共同窗口、代次隔离、唯一 SDK 所有者和最新值调度 |
+| 数据集输入 | [dataset_input.py](../software/pose180_pipeline/resident/dataset_input.py)、[dataset.cpp](../software/pose180_pipeline/resident/dataset.cpp)：复用原 MAT 整理／PIWCSI2 解码，有限播放、EOF 安全退出，与实时及 TCP 输入互斥 |
 | 数学与推理 | [preprocess.cpp](../software/core/input/preprocess.cpp)、[runtime.cpp](../software/pose180_pipeline/board/runtime.cpp)：原预处理、180-query 图、公开 SDK 输出读回 |
 | 人物后处理 | [postprocess.cpp](../software/core/pose/postprocess.cpp)、[postprocess.hpp](../software/core/pose/postprocess.hpp)：SDK 无关核心，实时与回放共用；筛选、去重／关联、异常门限、生命周期与滤波 |
 | 可选 PL 滤波 | [pl_filter.hpp](../software/core/pose/pl_filter.hpp)、[RTL／集成入口](../FPGA/hdmi_candidate/pose_stabilizer/README.md)：匹配 profile 后显式启用，只处理已关联坐标，不承担人物选择 |
@@ -53,7 +57,7 @@ TX 四个 LAN 口分别接开发板、RX1、RX2、RX3；PC 接 RX 空闲 LAN 作
 | 端口／窗口 | 契约 |
 |---|---|
 | TCP 39033 | 三 RX 的真实 PCAP 输入 |
-| TCP 39382 | 旧 PIWCSI2 完整窗口适配；真实 CSI 模式关闭，两种输入不能同时驱动主链 |
+| TCP 39382 | 保留 PIWCSI2 窗口适配；真实 CSI 或本地数据集模式关闭，不同时驱动主链 |
 | TCP 39383 | 原始 PIWFUL3/v3，74,544 字节／条，原字段与全部 180 候选保留 |
 | TCP 39385 | 派生 PIWVIEW1/version=1 NDJSON，单条上限 16 KiB、最新值缓存、无 ACK |
 | TCP 39384 | 一次 JSON 状态；读取不访问 NPU／HDMI 设备 |
@@ -70,7 +74,7 @@ PIWFUL3 包含 128 字节头、256 字节选中结果、43,200 字节 tokens、7
 
 后处理保持 **Top3 → 严格 score > 0.2 → 人物级去重／关联与异常拒绝 → One Euro → 展示状态**；不从第四名补位，不改原始结果。v4 保留完整合格 Top3 供历史连续性选择，优先已确认人物；从滤波中心预测并低通中心速度，增加弱相似目标延期与有见证的新旧身份交接。至多 3 条确认及 3 条待确认，默认连续三次确认、250 ms 显示／身份上限；暂失不外推、不续写有效观测时间，跨会话／恢复代次或时间倒退清空。参数及启发式取舍见[最新候选记录](../software/pose180_pipeline/resident/PRESENTATION-20261026.md#2026-10-27v4-人物级时序去重及-ps-回放验证)，不能把启发式身份当作真实人物真值。
 
-坐标 One Euro 默认 `min_cutoff=1 Hz, beta=0.5, d_cutoff=1 Hz`，首次确认初始化；不修骨长、不显示插帧。PS 默认浮点；可选 PL 为 Q16.16、同序运算与饱和，1／4 路共用 RTL，按坐标模 4 分银行，整帧完成才发布。人物关联、门控和生命周期始终在 PS。当前 CSR 总开销超过 CPU 滤波，不能据硬件纯计算周期宣称端到端加速。
+坐标 One Euro 的常驻 PS 配置已按用户最新要求改为 `min_cutoff=0.5 Hz, beta=0.3, d_cutoff=1 Hz`，启动参数及实际身份随[数据集实测](../software/pose180_pipeline/resident/DATASET-DEMO.md)记录；首次确认初始化，不修骨长、不显示插帧。独立核心／历史固定点对照仍保留 `1／0.5／1` 参考默认，常驻调用方显式传入新配置。PS 默认浮点；既有可选 PL 为 Q16.16、按坐标模 4 分银行，系数仍为旧值，此次调参仅使用 CPU 后端。新增 PL 已取消。人物关联、门控和生命周期在 PS，v5 关联中心与显示滤波解耦。既有 CSR 总开销超过 CPU 滤波，不能据硬件纯计算周期宣称端到端加速。
 
 ## 现行实现：展示与所有权
 

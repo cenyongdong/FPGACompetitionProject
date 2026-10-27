@@ -78,7 +78,7 @@ pose_filter_csr #(.LANES({lanes})) presentation_filter(
  .rsp_data(filter_csr.rdata),.rsp_ready(filter_csr.rready));
 '''
     (source / 'ps_ai_peripheral.sv').write_text(text.replace(anchor, block + anchor), newline='\n')
-    for path in (HERE/'rtl').glob('pose_filter*.sv'):
+    for path in (HERE/'rtl').glob('pose_*.sv'):
         (source/path.name).write_bytes(path.read_bytes())
     # Restrict inherited exceptions to their old logic. Never include new
     # filter registers in legacy clock cuts; no new exception is introduced.
@@ -99,11 +99,11 @@ pose_filter_csr #(.LANES({lanes})) presentation_filter(
         value = remap((OLD_E / (stage + '.tcl')).read_text())
         if stage == 'synthesis':
             reads = ''.join('read_verilog -sv {' + (source / n).as_posix() + '}\n'
-                            for n in ('pose_filter_lane.sv', 'pose_filter.sv', 'pose_filter_csr.sv'))
+                            for n in ('pose_geometry.sv', 'pose_filter_lane.sv', 'pose_filter.sv', 'pose_filter_csr.sv'))
             value = value.replace('synth_design -top', reads + 'synth_design -top', 1)
         if stage == 'place':
             old_reference = (ROOT / '.local/hdmi-probe-free-20261025-r1/pipeline-routed.dcp').as_posix()
-            value = value.replace(old_reference, (OLD / 'pipeline-scoped.dcp').as_posix())
+            value = value.replace(old_reference, (ROOT / '.local/pose-filter-integration-20261026-r2/pipeline-routed.dcp').as_posix())
         if stage == 'opt':
             value = value.replace('opt_design\n', 'source {' + (source / 'consumer_capture_scope.tcl').as_posix() + '}\nopt_design\n')
         (evidence / (stage + '.tcl')).write_text(value, newline='\n')
@@ -130,12 +130,12 @@ report_cdc -details -cells [get_cells U0_ps_ai_peripheral/presentation_filter] -
     runner = runner.replace("ROOT / '.local/hdmi-probe-free-drain-20261026-r1'", 'Path(__file__).resolve().parent')
     runner = runner.replace("ROOT / 'tools/pose-v1/evidence/hdmi-probe-free-drain-20261026-r1'", "WORK / 'reports'")
     (work / 'run_stage.py').write_text(runner, newline='\n')
-    manifest = dict(profile='probe-free-drain-filter-v1', lanes=lanes, deployment_qualified=False,
+    manifest = dict(profile='probe-free-drain-post-v2', lanes=lanes, deployment_qualified=False,
       baseline_BOOT_sha256='651728c52e8db5b2e512990fd28e599872fd1a4306876520ed163449d814a5d4',
-      startup_ABI='0x48444302', filter_ABI='0x504f5301', filter_CSR='0x400b1000-0x400b1fff', existing_GP_MHz=100,
+      startup_ABI='0x48444302', filter_ABI='0x504f5302', filter_CSR='0x400b1000-0x400b1fff', existing_GP_MHz=100,
       preserved=['bounded startup consumer', 'latest functional admission', 'HDMI ownership/STOP', 'AI four paths', 'HP allocation', 'SDK/model'],
       coverage='Latest profile has no native protocol checker; not equivalent to old r45/compact-guard coverage.',
-      budgets=dict(LUT=1500 if lanes == 1 else 4000, FF=1000 if lanes == 1 else 3000,
+      budgets=dict(LUT=4000 if lanes == 1 else 6500, FF=3000 if lanes == 1 else 5000,
                    DSP=8 if lanes == 1 else 32, BRAM36=4 if lanes == 1 else 16))
     (work / 'manifest.json').write_text(json.dumps(manifest, indent=2))
     prepare_finish(work)

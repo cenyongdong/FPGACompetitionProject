@@ -8,9 +8,11 @@
 | D47 | 共享FP16首次Host索引内容错误，后两轮SDK源读取合法 | 早期原值匹配前一输入；静态源与真实图独立对照未复现，后续r53再次捕获1568字混入同帧姿态内容 | DMA完成、缓存同步效果与NPU源可见性仍不能严格三分；晚读不修补首次值，旧DATA仍暂停。[隔离结果](demo_v1/RESULTS.md)、[r53原值](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md) |
 | D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
 | D45 | 跨启动HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离仍复现；同启动有限消费可缓解；[无诊断但保留消费候选](FPGA/hdmi_candidate/probe_free_drain/README.md)已取得启动消费后全链路通过样本 | 旧[无探针r1](FPGA/hdmi_candidate/probe_free/README.md)误删消费器及SDK上传DMA超时保留；新候选最初三次健康启动后，追加 r3 第 2 轮实际消费 16 拍返回并完成 5 分钟，但不能关闭间歇性根因。运行中 PL_KEY1 失联样本单列；[r8／r9原值](software/pose180_pipeline/resident/PHASE-TRACKING.md)保留，D45全面调查与旧DATA不自动恢复。 |
-| D46 | 真实 CSI 共同窗口缺失及画面间断 | RX 局部恢复、PC 独立显示、持续 TX 续期和更早重同步已实测；后续真实闭环持续取得新结果 | 最近展示 r4／r5 仍有约 3 秒结果间隔；输入缺口与人物级突跳分开处理。相位跟踪收益不能仅由代码存在推定，严格 30 Hz 不作门；[最新实测](software/pose180_pipeline/resident/PRESENTATION-20261026.md)、[窗口恢复](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) |
+| D46 | 真实 CSI 共同窗口缺失及画面间断 | RX 局部恢复、PC 独立显示、持续 TX 续期和更早重同步已实测；新增[容错组窗／后台匹配](software/pose180_pipeline/resident/ADAPTIVE-CSI.md)完成离线及 mock 验证，原严格路径保留 | 最近展示 r4／r5 仍有约 3 秒结果间隔；新算法尚未恢复现场采集或实板验证，不据回放关闭问题。输入缺口与人物级突跳分开处理，严格 30 Hz 不作门；[最新实测](software/pose180_pipeline/resident/PRESENTATION-20261026.md)、[窗口恢复](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) |
 
 ## 现存问题与处理优先级
+
+2026-10-27 用户调整：当前先以[官方训练／测试集](software/pose180_pipeline/resident/DATASET-DEMO.md)验证后处理并准备效果视频；实时 CSI 缺窗与新的现场采集延后。数据集输入关闭实时监听，两端画面不改。D46 与真实心率信号问题仍开放，不能用数据集运行结果关闭。
 
 2026-10-26 [心率开发与实采](software/vitals/HYBRID-20261026.md)：已取得约 60 秒完整真实记录，流式 PS／可选 PL 核及故障隔离通过离线验证；真实信号周期性不足、部分摆位出现多载波共同相位跳变，尚未检出心率。该信号问题和整机 PL 布线／板测分别保持开放，不用合成正确或 OOC 通过代替实测。
 

@@ -64,8 +64,16 @@ void real_pose_and_empty_notice_pixels() {
     auto background=hdmi::prepare_background();
     auto empty=hdmi::render_notice(hdmi::prepare_background(),nullptr,0,
         {Kind::WaitingInput,false,false,0});
-    expect(same_viewport(background.rgb565,empty.rgb565),"No-input screen drew a manufactured skeleton");
-    expect(background.rgb565!=empty.rgb565,"No-input screen has no visible state text");
+    constexpr std::array<std::uint16_t,7> bars{0xffff,0xffe0,0x07ff,0x07e0,0xf81f,0xf800,0x001f};
+    expect(empty.detection_count==0 && empty.score==0,"Standby manufactured a detection");
+    for(unsigned y=0;y<hdmi::height;++y)for(unsigned x=0;x<hdmi::width;++x){
+        const auto at=(y*hdmi::width+x)*2;
+        const auto pixel=std::uint16_t(empty.rgb565[at])|(std::uint16_t(empty.rgb565[at+1])<<8);
+        expect(pixel==bars[x*bars.size()/hdmi::width],"Standby bar order, extent or RGB565 packing differs");
+    }
+    auto initial_resync=hdmi::render_notice(hdmi::prepare_background(),nullptr,0,
+        {Kind::Resynchronizing,false,true,0});
+    expect(initial_resync.rgb565==empty.rgb565,"No-result resync abandoned standby bars");
     std::array<float,180> scores;scores.fill(0.1f);scores[179]=0.8f;
     std::array<float,7560> poses;
     for(std::size_t slot=0;slot<180;++slot)

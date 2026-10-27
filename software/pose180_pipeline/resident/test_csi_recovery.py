@@ -167,6 +167,10 @@ def main():
         events = []
         for path in sorted([*(output / 'run').glob('recent-*.jsonl'),*(output / 'run').glob('diagnostic-*.jsonl')]):
             for line in path.read_text().splitlines():
+                # The shared journal also carries a presentation identity line.
+                # Keep JSON parsing strict for actual structured records.
+                if not line.lstrip().startswith('{'):
+                    continue
                 item = json.loads(line)
                 if item.get('event') == 'csi_recovery':
                     events.append(item)
