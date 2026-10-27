@@ -1,5 +1,5 @@
 module tb_pose_filter;
- reg clk=0;always #10 clk=~clk;
+ reg clk=0;always #5 clk=~clk;
  reg resetn=0,write=0,commit=0;reg [6:0] wi=0,ri=0;reg [31:0] value=0,seq=0;
  reg [2:0] init_mask,update_mask;reg signed [31:0] inv,ad,k,fc,beta;
  wire [31:0] out1,out4,seq1,seq4,cycles1,cycles4;wire busy1,busy4;wire [3:0] error1,error4;

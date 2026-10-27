@@ -6,7 +6,18 @@
 
 namespace pose::post {
 using Joints=std::array<float,42>;
-struct Config { double min_cutoff=1, beta=0.5, d_cutoff=1; std::uint64_t hold_ns=250000000; };
+struct Config {
+    double min_cutoff=1, beta=0.5, d_cutoff=1;
+    std::uint64_t hold_ns=250000000;
+    // CPU replay experiment only when >hold_ns (PL supports dt<=250 ms).
+    // Default stays 250 ms: longer retention sustained false hypotheses.
+    std::uint64_t identity_ns=250000000;
+    // Both tests must pass: nearby distinct skeletons are not duplicates.
+    double duplicate_centre=0.3, duplicate_pose=0.3;
+    // Reject nearly translated copies as well as almost identical coordinates.
+    double duplicate_translation=0.7, duplicate_shape=0.2;
+    unsigned confirmation_hits=3;
+};
 struct Identity { std::uint64_t session=0, frame=0, sequence=0, source_ns=0; };
 struct Person {
     std::uint64_t track=0, observed_ns=0;
@@ -17,7 +28,12 @@ struct PresentationFrame {
     std::uint64_t hold_ns=250000000;
     std::string json(bool replay=false) const;
 };
-struct Metrics { std::uint64_t births=0, expired=0, duplicates=0, rejected_pairs=0, resets=0,confirmation_total_ns=0,confirmation_max_ns=0; };
+struct Metrics {
+    std::uint64_t births=0,expired=0,duplicates=0,rejected_pairs=0,resets=0,confirmation_total_ns=0,confirmation_max_ns=0,display_duplicates=0;
+    std::uint64_t history_selections=0,reacquired=0,held_handoffs=0,hidden_frames=0,shadow_deferred=0;
+    // Wall-clock CPU time around confirmed-track coordinate filtering only.
+    std::uint64_t cpu_filter_frames=0,cpu_filter_coordinates=0,cpu_filter_ns=0,cpu_filter_max_ns=0;
+};
 // Optional explicitly selected backend; CPU remains the production default.
 // Called only for current confirmed tracks after display-slot selection.
 class FilterBackend {
@@ -38,6 +54,10 @@ class Postprocessor {
     struct Track {
         Person value; std::array<double,3> centre{},velocity{};
         Joints observation{}; double radius=0.25,dt=0; unsigned hits=0;
+        Joints previous_observation{},filtered{};
+        double support=0;
+        bool initialize=false,retired=false;
+        std::uint64_t first_ns=0;
         std::array<OneEuro,42> filter;
     };
     Config config_; FilterBackend* backend_; std::vector<Track> tracks_; Identity previous_{};
@@ -45,6 +65,7 @@ class Postprocessor {
 public:
     explicit Postprocessor(Config c={},FilterBackend* backend=nullptr):config_(c),backend_(backend){}
     void reset();
+    void set_backend(FilterBackend* backend){backend_=backend;reset();}
     PresentationFrame update(const Identity&,const float* scores,const float* poses);
     const Metrics& metrics()const{return metrics_;}
 };

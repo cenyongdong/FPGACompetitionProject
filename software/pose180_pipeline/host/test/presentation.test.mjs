@@ -23,7 +23,7 @@ test('derived TCP has no ACK, expires, rejects malformed records and reconnects'
   const bytes=Buffer.from(JSON.stringify(frame())+'\n');sockets[0].write(bytes.subarray(0,25));await wait(25);assert.equal((await get()).received,0);sockets[0].write(bytes.subarray(25));await until(async()=> (await get()).received===1);
   await wait(280);assert.equal((await get()).frame.poses.length,0);sockets[0].write('{}\n');await until(()=>sockets.length===2);
   sockets[1].write(JSON.stringify(frame(2))+'\n');const state=await until(async()=>{const x=await get();return x.received===2&&x;});assert.equal(state.invalid,1);assert.equal(ack,0);
-  const page=await(await fetch('http://127.0.0.1:'+hp)).text();assert.match(page,/raw-viewport/);assert.match(page,/灰色为暂失/);
+  const page=await(await fetch('http://127.0.0.1:'+hp)).text();assert.match(page,/id="viewport"/);
   const [code]=await done;assert.equal(code,0);
  }finally{child?.kill();sockets.forEach(s=>s.destroy());await new Promise(r=>source.close(r));}
 });

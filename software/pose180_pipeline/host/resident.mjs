@@ -80,28 +80,25 @@ const assets=new Map([['/scene.js',path.join(root,'demo_v1/web/scene.js')],
     ['/vendor/three.core.js',path.join(root,'software/pc_viewer/node_modules/three/build/three.core.js')],
     ['/vendor/OrbitControls.js',path.join(root,'software/pc_viewer/node_modules/three/examples/jsm/controls/OrbitControls.js')]]);
 const page=`<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>常驻姿态演示</title>
-<style>body{margin:0;background:#0b111b;color:#e5eef9;font:16px system-ui}header{padding:18px 24px 10px}h1{font-size:20px;margin:0 0 12px}#views{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#26384a}#views>section{background:#0b111b}#views h2{font-size:14px;margin:8px 18px;color:#9fc8e7}#viewport,#raw-viewport{height:calc(100vh - 265px);min-height:340px}#views.single{grid-template-columns:1fr}#views.single #raw-panel{display:none}#status{color:#9fc8e7;font-size:14px}#phase{display:inline-block;padding:5px 12px;border-radius:6px;background:#173d36;color:#b3f4db}#phase[data-state]:not([data-state=live]){background:#493d23;color:#ffe0a0}#metrics{color:#c2d6df;font-variant-numeric:tabular-nums;margin:10px 0}small{color:#95a8b9}button{background:#172838;color:#d8e9f6;border:1px solid #385364;border-radius:5px;padding:6px 12px;cursor:pointer}nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}label{font-size:14px;margin-left:8px}#render-rate{margin-left:auto;color:#95a8b9;font-size:13px}</style>
+<style>body{margin:0;background:#0b111b;color:#e5eef9;font:16px system-ui;overflow:hidden}header{padding:18px 24px 10px}h1{font-size:20px;margin:0 0 12px}#viewport{height:calc(100dvh - 157px);min-height:180px}#phase{display:inline-block;padding:5px 12px;border-radius:6px;background:#173d36;color:#b3f4db}#phase[data-state]:not([data-state=live]){background:#493d23;color:#ffe0a0}#frame{margin-left:16px;color:#c2d6df;font-variant-numeric:tabular-nums}button{background:#172838;color:#d8e9f6;border:1px solid #385364;border-radius:5px;padding:6px 12px;cursor:pointer}button[aria-pressed=true]{background:#294558;border-color:#82b9bf}nav{display:flex;gap:8px;margin-top:12px}</style>
 <script type="importmap">{"imports":{"three":"/vendor/three.module.js","three/addons/controls/OrbitControls.js":"/vendor/OrbitControls.js"}}</script>
-<header><h1>Wi-Fi 姿态 · PC 观察端</h1><span id="phase" data-state="waiting_input">等待首个真实结果</span><span id="metrics"></span><p id="status">正在连接板端</p><small>拖动旋转 · 滚轮缩放 · 右键平移。人物跟踪与滤波展示，无插帧；暂失姿态有时限，PC 断开不会停止板端。</small>
-<nav><button id="replay-again" style="display:${replay?'inline-block':'none'}">重新回放</button><button data-view="perspective">透视</button><button data-view="front">正面</button><button data-view="side">侧面</button><button data-view="top">俯视</button><label><input id="raw-view" type="checkbox" checked>并排原始候选</label><label><input id="labels" type="checkbox">关节编号</label><span id="render-rate">画面绘制 — FPS</span></nav></header><div id="views"><section><h2>后处理 · 稳定人物 ID · 灰色为暂失</h2><div id="viewport"></div></section><section id="raw-panel"><h2>原始 Top3 &gt; 0.2 · 未滤波候选</h2><div id="raw-viewport"></div></section></div>
+<header><h1>Wi-Fi 姿态 · PC 观察端</h1><span id="phase" data-state="waiting_input">等待首个真实结果</span><span id="frame">FRAME —</span>
+<nav aria-label="视角"><button data-view="perspective" aria-pressed="true">透视</button><button data-view="front" aria-pressed="false">正面</button><button data-view="side" aria-pressed="false">侧面</button><button data-view="top" aria-pressed="false">俯视</button></nav></header><div id="viewport"></div>
 <script type="module">import {createScene} from './scene.js';
 const bones=[[0,1],[0,2],[0,3],[2,4],[2,5],[3,6],[3,7],[4,8],[5,7],[5,9],[6,10],[7,11],[9,12],[11,13]];
-const el=id=>document.getElementById(id);let identity='',rawIdentity='',scene,rawScene;const compare=${mode==='view'};
-try{scene=createScene(el('viewport'),bones,fps=>{el('render-rate').textContent='画面绘制 '+fps+' FPS（非推理帧率）';},{maxPoses:3});if(compare)rawScene=createScene(el('raw-viewport'),bones,()=>{},{maxPoses:3});else el('views').className='single';}
-catch(error){el('phase').textContent='三维渲染不可用';el('phase').dataset.state='error';el('status').textContent='请启用浏览器硬件加速；错误：'+error.message;}
+const el=id=>document.getElementById(id);let identity='',scene;const filtered=${mode==='view'};
+try{scene=createScene(el('viewport'),bones,()=>{},{maxPoses:3});}
+catch(error){el('phase').textContent='三维渲染不可用';el('phase').dataset.state='error';console.error(error);}
 if(scene){
-document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>{scene.view(button.dataset.view);rawScene?.view(button.dataset.view);}));
-el('labels').addEventListener('change',event=>{scene.labels(event.target.checked);rawScene?.labels(event.target.checked);});
-el('raw-view').addEventListener('change',event=>{el('views').className=compare&&event.target.checked?'':'single';});
-el('replay-again').addEventListener('click',()=>fetch('/api/replay/restart',{method:'POST'}));
+const buttons=document.querySelectorAll('[data-view]');
+buttons.forEach(button=>button.addEventListener('click',()=>{scene.view(button.dataset.view);buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));}));
 const phases={live:'真实结果更新中',waiting_input:'等待首个真实结果',waiting_result:'等待新结果',result_stale:'结果已过期',reconnecting:'连接中断 · 自动重连'};
 async function update(){try{const response=await fetch('/api/state',{cache:'no-store',signal:AbortSignal.timeout(2000)});if(!response.ok)throw new Error('HTTP '+response.status);const s=await response.json(),f=s.frame;
-el('phase').dataset.state=s.phase;el('phase').textContent=(s.replay?'历史回放 · ':s.mock?'模拟测试 · ':'')+(s.replayEnded?'播放结束':phases[s.phase]??'等待新结果');
-el('status').textContent=(s.replay?'本地历史记录 · 按原时间戳播放':s.connected?'结果通道已连接':'结果通道重连中')+' · 新结果 '+s.received+' · PC接收后 '+(s.age_ms??'—')+' ms · 新结果 '+s.new_results_hz+' /s · 归档丢弃 '+s.recordDrops+(s.archiveError?' · 归档暂停':'');
-el('metrics').textContent=f?'　FRAME '+f.frame+' · TOP 3 · 置信度 > 0.2 · 显示 '+f.poses.length+' 个'+(f.poses.length?' · '+f.poses.map(p=>(p.track?'ID '+p.track+' / ':'')+'SLOT '+p.candidate+' / '+p.score.toFixed(4)+(p.held?' 暂失':'')).join('，'):s.mode==='view'?' · 无可展示轨迹':' · 无合格候选'):'';
-if(!f&&compare&&identity){scene.setPose({poses:[]});rawScene?.setPose({poses:[]});identity=rawIdentity='';}if(f){const key=f.session+':'+f.sequence+':'+f.poses.map(p=>p.track??p.candidate).join(',');if(key!==identity){scene.setPose(f);identity=key;}if(rawScene&&f.raw_poses){const rk=f.session+':'+f.sequence+':'+f.raw_poses.length;if(rk!==rawIdentity){rawScene.setPose({...f,poses:f.raw_poses});rawIdentity=rk;}}}}
-catch{if(compare){scene.setPose({poses:[]});rawScene?.setPose({poses:[]});identity=rawIdentity='';}el('phase').dataset.state='reconnecting';el('phase').textContent='观察端连接中断';el('status').textContent='等待本机观察服务恢复';}setTimeout(update,100);}update();
-window.addEventListener('pagehide',()=>{scene.dispose();rawScene?.dispose();},{once:true});
+el('phase').dataset.state=s.phase;el('phase').textContent=(s.replay?'历史回放 · ':s.mock?'模拟测试 · ':s.mode==='raw'?'原始候选 · ':'')+(s.replayEnded?'播放结束':phases[s.phase]??'等待新结果');
+el('frame').textContent='FRAME '+(f?.frame??'—');
+if(!f&&filtered&&identity){scene.setPose({poses:[]});identity='';}if(f){const key=f.session+':'+f.sequence+':'+f.poses.map(p=>p.track??p.candidate).join(',');if(key!==identity){scene.setPose(f);identity=key;}}}
+catch{if(filtered){scene.setPose({poses:[]});identity='';}el('phase').dataset.state='reconnecting';el('phase').textContent='观察端连接中断';}setTimeout(update,100);}update();
+window.addEventListener('pagehide',()=>scene.dispose(),{once:true});
 }</script></html>`;
 const server=http.createServer((req,res)=>{
     res.setHeader('Cache-Control','no-store');

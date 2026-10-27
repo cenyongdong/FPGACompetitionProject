@@ -1,6 +1,28 @@
 # HDMI交接与恢复入口
 
-2026-10-26 最新：追加 r3 已结束，首轮 PL_KEY1 运行中复位后黑屏失联，完整断电恢复；后两轮各 300 秒及现场画面确认通过，其中第 2 轮 SDK 前有界消费 16 拍返回后正常运行。最终已回原 BOOT，启动编号 `7170b447-f844-421f-b5d6-36140b450e1a`；全部新包关闭、余额 0，无本批活动负载。按键恢复仍未解决，r1／r2 不复活；[唯一结果与产物入口](probe_free_drain/README.md)，精确状态见 `tools/pose-v1/evidence/hdmi-probe-free-drain-20261026-r3/state.json`。
+## 当前入口（整理于 2026-10-27）
+
+**最后核验：原 BOOT 已实际回退，全部本批负载已结束。** 最新 v4 只做了有限 PS 历史回放／测试，未改 BOOT、未启动 SDK、未替换实时版本；启动身份仍为 `edd06b62-d08a-4f9f-ab89-cc62304a0502`。唯一关闭状态见[最新记录](../../software/pose180_pipeline/resident/PRESENTATION-20261026.md)及[PS 结束记录](../../.local/pose-temporal-v4-20261026/ps-state.json)。这不是本次重新连接设备的实时核验；旧启动编号不能直接当作下次会话身份。
+
+| 版本／用途 | 当前资格与选择边界 | 产物／证据入口 |
+|---|---|---|
+| 原 BOOT | 最近实际回退状态；与 r45 及以下候选 BOOT 分开认定 | 上述最新记录 |
+| r45 完整诊断基线 | 原物理资格及历史板测保留；匹配旧准入 | [r45 物理结果](../../tools/pose-v1/evidence/hp2-deferred-consume-20261024-r45/RESULTS.md) |
+| `probe-free-drain-v1` | 去旁路诊断／协议 IP，保留主动消费；物理资格与有限真实闭环已验证 | [独立工程及结果](probe_free_drain/README.md) |
+| `probe-free-drain-filter-v1` | 最新合格集成位流，加 4 路滤波；实际 100 MHz，有限 PL 板测完成后已回退 | [物理与板测](../../software/pose180_pipeline/resident/PRESENTATION-20261026.md#pl-计算与资源)；构建 `.local/pose-filter-integration-20261026-r2`，其 `boot-package/` 与 `reports/qualification.json` |
+| `tracked-one-euro-v4` 软件 | CPU／PL profile 均已编译、默认 CPU；仅离线与原 BOOT PS 回放通过，未做新实时推理 | [候选记录](../../software/pose180_pipeline/resident/PRESENTATION-20261026.md#2026-10-27v4-人物级时序去重及-ps-回放验证)、[二进制身份](../../.local/pose-temporal-v4-20261026/software/identity.json) |
+| `pose-stabilizer-offline-v1` 精简守卫 | 覆盖缺口仍在，**不可部署**；不是上述已测保留消费候选 | [离线阶段结果](pose_stabilizer/README.md) |
+| 心率 PL 覆盖层 | 核与 OOC 完成，无整机实现／板测，不属于当前合格位流 | [专项状态](../../software/vitals/HYBRID-20261026.md)、[PL 核](../vitals_acf/README.md) |
+
+恢复时先核对实际设备、BOOT／软件 profile 与安全停止状态，再选择独立新包；必要板测、重启及回退按[自主授权](../../Agents.md#自主权限与重大问题)执行，不复活旧次数。复用路由器开机服务，不并行启动旧无线负载。原 BOOT 文件恢复与实际回退启动分别核验；PL_KEY1 运行中复位恢复未通过，不能作为常规恢复捷径。无 RTL／约束变化不重复整机构建。
+
+## 历史状态摘录
+
+以下“当前／最新／暂停”等词均指记录当时；其启动身份、额度和阶段结论不覆盖上面的当前入口。原始失败与包关闭状态保留。
+
+2026-10-26 本轮恢复：[展示精简、后处理复验和 PS／PL 滤波比较](../../software/pose180_pipeline/resident/PRESENTATION-20261026.md)。CPU 显示包已关闭，原 BOOT 实际回退通过；新增 PL 流水线候选已完成物理资格及有限板测，原 BOOT 实际回退通过、全部关闭、无后台负载，下一步依据该记录，勿复用下述旧包。
+
+2026-10-26 较早状态：追加 r3 已结束，首轮 PL_KEY1 运行中复位后黑屏失联，完整断电恢复；后两轮各 300 秒及现场画面确认通过，其中第 2 轮 SDK 前有界消费 16 拍返回后正常运行。最终已回原 BOOT，启动编号 `7170b447-f844-421f-b5d6-36140b450e1a`；全部新包关闭、余额 0，无本批活动负载。按键恢复仍未解决，r1／r2 不复活；[唯一结果与产物入口](probe_free_drain/README.md)，精确状态见 `tools/pose-v1/evidence/hdmi-probe-free-drain-20261026-r3/state.json`。
 
 2026-10-26 当前专项已完成：[去除诊断、保留异常消费的 r45 派生候选](probe_free_drain/README.md)。完整物理资格及三轮各 5 分钟真实全链路测试通过，原 BOOT 文件和实际回退启动均已核验，三包关闭、无本批后台工作。产物、精确结果、恢复身份和限制统一见该记录；日志位于 `tools/pose-v1/evidence/hdmi-probe-free-drain-20261026-r1`，运行资产位于 `.local/hdmi-probe-free-drain-20261026-r1`。不复活下述历史额度或独立暂停任务。
 
@@ -35,7 +57,7 @@
 | 实际异常消费后有限业务 | [r52 RESULTS](../../tools/pose-v1/evidence/hdmi-long-git-20261024-r52/RESULTS.md)；不以r53健康消费0的样本替代 |
 | 完成、难点、下一计划 | [Done](../../Done.md)、[DIFFICULTIES](../../DIFFICULTIES.md)、[ToDoLists](../../ToDoLists.md) |
 
-## 当前结论与执行边界
+## r53 当时结论与执行边界
 
 r53健康启动（AR=0/R=0、消费0），完成187次HDMI采纳后第189次推理首读索引1568字混入同帧姿态内容。晚读正确不能修补首读，产生环节未定；用户只见瞬间骨架，持续实屏和联合长期均未通过。
 

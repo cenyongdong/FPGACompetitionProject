@@ -1,8 +1,8 @@
 # 180-query共享模型：训练状态与恢复入口
 
-最新核验：2026-10-26 11:49，Asia/Shanghai。按用户本轮“检查完成结果，未达到论文则从当前最佳继续训练”的授权，仅连接算法服务器完成结果核验和新一轮100epoch启动；未连接Lite、路由器或恢复已暂停的板端工作。以下PID和进度为保存快照，查询时须重新核对；没有新增定时检查或自动重试。
+最新核验：2026-10-27 12:57，Asia/Shanghai。本轮只读核验算法服务器的训练完成、评估和退出状态，取回必要原生结果并更新本入口；未连接Lite、路由器或恢复已暂停的板端工作。没有新增训练、定时检查或自动重试。
 
-**迁移训练100轮及交付已完成；从零训练合计200轮也已正常完成，最佳仍为第130轮141.9761mm。新一轮从该最佳检查点及对应AdamW状态继续100轮，独立目录`piw24_pose180_scratch_best130_next100_20261026_r1`已进入第131轮。** 这是从最佳处建立的新分支，检查点编号131～230，不是从最终第200轮恢复。迁移方案见[PLAN.md](PLAN.md)，完成结果及新进程恢复入口见下。
+**全部已批准训练均已完成。** 从零实验先完成200轮，再从其最佳第130轮分支训练100轮，检查点编号131～230，累计实际执行300轮。新一轮没有刷新纪录：从零分支全程最佳仍为epoch130的141.9761mm；全部180-query实验中原口径最好仍是迁移epoch99的120.9958mm。迁移方案见[PLAN.md](PLAN.md)，完成结果及历史恢复入口见下。
 
 ## 已完成结果与独立实验的保存快照
 
@@ -28,7 +28,9 @@
 
 用户本轮批准后，新建`/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_next100_20261026_r1`，从上述epoch130／iter730860恢复完整权重、218项AdamW状态及step365430，原始checkpoint不修改。先以CPU两线程、真实样本验证两微批／一次优化更新，step365430→365431，query及joint参数发生更新，loss／梯度／参数／优化器状态有限；探测模型丢弃。正式进程11:48启动，GPU1、6启动前均空闲，其它GPU任务保持。两rank恢复身份一致；有效batch32、主lr2e-6、参数组及损失不变，继续使用修复后的累积钩子。保存快照为epoch131、190/5622微批，loss5.360727、query梯度0.113662、joint梯度0.098511，均有限。监督PID1496/start_ticks604521，torchrun PID1499/start_ticks604561，rank0 PID1506。每轮全量评估，保留历史最佳、最终及周期权重，不自动追加下一轮。[CPU实际更新验证](results/scratch-best130-next100-20261026-r1/validation.json)、[新运行状态](results/scratch-best130-next100-20261026-r1/state.json)、[源权重与预算](results/scratch-best130-next100-20261026-r1/resume_manifest.json)、[两rank恢复证明](results/scratch-best130-next100-20261026-r1/resumption.json)、[启动后真实梯度](results/scratch-best130-next100-20261026-r1/progress.json)。
 
-当前只读查询入口：算法根目录执行`/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python -B tools/pose180/continue_best.py status`，先核对PID创建tick与命令。不得重复`start`／`finish-preparation`或新增定时监督。`extra100_r1`是已关闭失败目录，`extra100_r2`及迁移正式训练已正常完成；不重跑旧负载或对照评估。后续部署实测仍统一见[部署实测](deploy/RESULTS.md)，本轮训练未部署模型或改变外部帧协议。
+上述新一轮于2026-10-27 11:47正常结束，native exit0、epoch230／iter1293060，100轮新增评估均为7,824帧且指标有限；两rank最终query一致，原监督与torchrun均已退出。11,346条进度记录未见非有限值，完整日志未发现非有限梯度／OOM／异常退出。新增评估最优为epoch156（本轮第26轮）144.9636mm，比起始最佳高2.9875mm，未刷新最佳门槛；历史最佳权重`best_mpjpe_epoch_130.pth`和最终`epoch_230.pth`均实际存在。最后五轮226～230为152.0900、147.9370、153.6303、152.9915、150.1592mm。[原生结束状态](results/scratch-best130-next100-20261026-r1/completed/state.json)、[结束进度](results/scratch-best130-next100-20261026-r1/completed/progress.json)、[DDP完成](results/scratch-best130-next100-20261026-r1/completed/ddp_completion.json)、[最终最佳选择](results/scratch-best130-next100-20261026-r1/completed/completion.json)、[100轮完整新增评估](results/scratch-best130-next100-20261026-r1/completed/evaluations.jsonl)。本轮仅核验已有评估，不重新推理或导出。
+
+历史只读查询入口：算法根目录执行`/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python -B tools/pose180/continue_best.py status`，PID仅作已退出历史身份，不能直接用于控制进程。不得重复`start`／`finish-preparation`或新增定时监督；后续继续训练需用户新的明确指令。`extra100_r1`是已关闭失败目录，其余上述训练均正常完成，不重跑旧负载或对照评估。后续部署实测仍统一见[部署实测](deploy/RESULTS.md)，本轮训练未部署模型或改变外部帧协议。
 
 ## 迁移阶段的历史记录
 

@@ -51,9 +51,9 @@ export function createScene(container, bones, onFps, {maxPoses=1}={}) {
     }
     axis.position.set(-1.6,0,1.6);scene.add(axis);
     const jointGeo = new THREE.SphereGeometry(0.038,24,16);
-    const jointMat = new THREE.MeshStandardMaterial({ color:0xf3cd8c, roughness:0.25, metalness:0.3,emissive:0xa07731,emissiveIntensity:0.16 });
+    const jointMat = new THREE.MeshStandardMaterial({ color:0x3b9dff, roughness:0.25, metalness:0.3,emissive:0x15467e,emissiveIntensity:0.16 });
     const boneGeo = new THREE.CylinderGeometry(0.019,0.019,1,14);
-    const boneMat = new THREE.MeshStandardMaterial({color:0x8ee5d7,roughness:0.28,metalness:0.35,emissive:0x327b74,emissiveIntensity:0.15});
+    const boneMat = new THREE.MeshStandardMaterial({color:0x3b9dff,roughness:0.28,metalness:0.35,emissive:0x15467e,emissiveIntensity:0.15});
     const figures=Array.from({length:maxPoses},()=>{
     const figure = new THREE.Group(); scene.add(figure); figure.visible=false;
     const joints = Array.from({length:14},() => { const m=new THREE.Mesh(jointGeo,jointMat);m.castShadow=true;figure.add(m);return m; });
@@ -73,10 +73,6 @@ export function createScene(container, bones, onFps, {maxPoses=1}={}) {
         if(!Array.isArray(poses)||poses.length>maxPoses||poses.some(p=>p.joints.length!==42||!p.joints.every(Number.isFinite)))throw new Error('Invalid 3D input');
         figures.forEach(({figure,joints,links,labels},index)=>{
         const pose=poses[index];figure.visible=!!pose;if(!pose)return;
-        if(pose.track&&pose.track!=='0'){
-            const colors=[0x64afc8,0xd29b5f,0x9bc373],ink=pose.held?0x5f646e:colors[Number((BigInt(pose.track)-1n)%3n)];
-            for(const mesh of [...joints,...links]){if(!mesh.userData.ownedMaterial){mesh.material=mesh.material.clone();mesh.userData.ownedMaterial=true;}mesh.material.color.setHex(ink);}
-        }
         const points=joints.map((m,i)=> { const p=toScene(pose.joints,i);m.position.copy(p);labels[i].position.copy(p).add(new THREE.Vector3(0.08,0.05,0));return p; });
         bones.forEach(([a,b],i)=> { const delta=new THREE.Vector3().subVectors(points[b],points[a]);const length=delta.length();links[i].visible=length>0;links[i].position.copy(points[a]).add(points[b]).multiplyScalar(0.5);links[i].scale.set(1,length,1);if(length)links[i].quaternion.setFromUnitVectors(yAxis,delta.divideScalar(length)); });
         });

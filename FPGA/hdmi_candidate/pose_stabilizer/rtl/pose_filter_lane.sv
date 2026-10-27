@@ -15,7 +15,9 @@ module pose_filter_lane #(parameter LANES=1,LANE=0,DEPTH=(126+LANES-1)/LANES)(
  reg [6:0] index;
  reg [4:0] phase;
  reg signed [31:0] x,px,py,pd,v,d,z,y,ma,mb;
- wire signed [63:0] product=$signed(ma)*$signed(mb);
+ // Separate the 32x32 product from rounding/saturation at the actual 100 MHz
+ // GP clock. Wait phases preserve the fixed-reference arithmetic ordering.
+ reg signed [63:0] product;
  reg [16:0] quotient;
  reg [31:0] denominator,remainder;
  reg [5:0] div_bit;
@@ -39,6 +41,7 @@ module pose_filter_lane #(parameter LANES=1,LANE=0,DEPTH=(126+LANES-1)/LANES)(
  endfunction
  wire signed [31:0] result=rounded(product);
  always @(posedge clk)begin
+  product<=$signed(ma)*$signed(mb);
   if(input_write && input_index<126 && input_index%LANES==LANE)inputs[input_index/LANES]<=input_value;
   if(read_index<DEPTH)read_value<=outputs[published_bank*DEPTH+read_index];else read_value<=0;
  end
@@ -53,13 +56,17 @@ module pose_filter_lane #(parameter LANES=1,LANE=0,DEPTH=(126+LANES-1)/LANES)(
      0:begin x<=inputs[index];{px,py,pd}<=state_mem[index];phase<=1;end
      1:if(!update_mask[slot])begin x<=px;y<=py;d<=pd;phase<=16;end
        else if(init_mask[slot])begin y<=x;d<=0;phase<=16;end
-       else begin ma<=subq(x,px);mb<=inverse_dt;phase<=2;end
+       else begin ma<=subq(x,px);mb<=inverse_dt;phase<=17;end
+     17:phase<=2;
      2:begin v<=result;phase<=3;end
-     3:begin ma<=subq(v,pd);mb<=derivative_alpha;phase<=4;end
+     3:begin ma<=subq(v,pd);mb<=derivative_alpha;phase<=18;end
+     18:phase<=4;
      4:begin d<=addq(pd,result);phase<=5;end
-     5:begin ma<=d==32'sh80000000 ? 32'sh7fffffff : d<0 ? -d : d;mb<=beta;phase<=6;end
+     5:begin ma<=d==32'sh80000000 ? 32'sh7fffffff : d<0 ? -d : d;mb<=beta;phase<=19;end
+     19:phase<=6;
      6:begin v<=addq(min_cutoff,result);phase<=7;end
-     7:begin ma<=v;mb<=k;phase<=8;end
+     7:begin ma<=v;mb<=k;phase<=20;end
+     20:phase<=8;
      8:begin z<=result;phase<=9;end
      // 0 <= z/(1+z) < 1: generate only its 16 fractional bits.
      9:begin denominator<=z+32'd65536;remainder<=z;quotient<=0;div_bit<=15;phase<=10;end
@@ -68,7 +75,8 @@ module pose_filter_lane #(parameter LANES=1,LANE=0,DEPTH=(126+LANES-1)/LANES)(
        else begin remainder<=shifted;quotient<={quotient[15:0],1'b0};end
        if(div_bit==0)phase<=11;else div_bit<=div_bit-1'b1;
      end
-     11:begin ma<={15'd0,quotient}+(shifted>={1'b0,denominator});mb<=subq(x,py);phase<=12;end
+     11:begin ma<={15'd0,quotient}+(shifted>={1'b0,denominator});mb<=subq(x,py);phase<=21;end
+     21:phase<=12;
      12:begin y<=addq(py,result);phase<=16;end
      16:begin state_mem[index]<={x,y,d};outputs[work_bank*DEPTH+index]<=y;
        if((index+1)*LANES+LANE>=126)begin busy<=0;done<=1;output_bank<=work_bank;end

@@ -1,0 +1,13 @@
+{
+  "native_exit": 0,
+  "additional_completed_epochs": 100,
+  "total_training_epochs_executed": 300,
+  "branch_source_epoch": 130,
+  "final_checkpoint_epoch": 230,
+  "best_checkpoint": "/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_next100_20261026_r1/best_mpjpe_epoch_130.pth",
+  "best_checkpoint_epoch": 130,
+  "best_mpjpe_mm": 141.97614487353522,
+  "original442_mpjpe_mm": 123.0852578098301,
+  "transfer_best_mpjpe_mm": 120.99576821575867,
+  "completed": 1793072836.65838
+}

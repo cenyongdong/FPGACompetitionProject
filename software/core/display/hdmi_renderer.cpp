@@ -3,9 +3,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
-#include <iomanip>
 #include <numeric>
-#include <sstream>
 #include <stdexcept>
 #include <utility>
 
@@ -80,14 +78,8 @@ namespace pose::hdmi {
                 ground_line(image,origin,{{-1.6,.45,1.6}},{{129,225,213}},.7);
                 ground_line(image,origin,{{-1.6,.006,1.15}},{{102,138,179}},.7);
                 text(image,32,28,"WIFI 3D POSE",4,color(229,237,247));
-                text(image,1760,34,"PS/NPU",2.5,color(159,200,231));
                 const auto label=color(194,214,223);
                 text(image,400,84,"FRAME",2.5,label);
-                text(image,850,84,"SLOT",2.5,label);
-                text(image,1100,84,"SCORE",2.5,label);
-                text(image,32,146,"HIGHEST SCORE / ORIGINAL MODEL UNITS",2,color(159,200,231));
-                text(image,32,196,"FIXED PERSPECTIVE / 14 JOINTS / NO CALIBRATION",2,
-                     color(149,168,185));
                 return image;
             }();
             return pixels;
@@ -95,11 +87,8 @@ namespace pose::hdmi {
     }
 
     static void draw_pose(std::vector<uint8_t>& image,
-                          const std::array<std::array<double, 2>, 14>& projected,
-                          std::uint64_t track=0,bool held=false) {
-        const std::array<std::array<unsigned,3>,3> palette{{{{100,175,200}},{{210,155,95}},{{155,195,115}}}};
-        const auto rgb=palette[track?((track-1)%3):0];
-        const auto ink=held?color(95,100,110):track?color(rgb[0],rgb[1],rgb[2]):color(96,128,128);
+                          const std::array<std::array<double, 2>, 14>& projected) {
+        const auto ink=color(59,157,255);
         for (const auto bone : pose_v1::render::bones) {
             const auto a = projected[bone[0]], b = projected[bone[1]];
             if (a[0]==hidden || b[0]==hidden) continue;
@@ -113,30 +102,16 @@ namespace pose::hdmi {
             const int x = int(std::lround(p[0])), y = int(std::lround(p[1]));
             for (int dy=-4;dy<=4;++dy) for (int dx=-4;dx<=4;++dx)
                 if (dx*dx+dy*dy<=16 && !code(x+dx,y+dy))
-                    pixel(image,x+dx,y+dy,track?ink:color(128,128,112));
+                    pixel(image,x+dx,y+dy,ink);
         }
     }
     static void draw_detections(Rendered& result) {
         for (unsigned i=0;i<result.detection_count;++i)
-            draw_pose(result.rgb565,result.detections[i].projected,result.detections[i].track,result.detections[i].held);
-    }
-    static void draw_selection(Rendered& result) {
-        if (result.selection.top_k==1 && !std::isfinite(result.selection.threshold)) return;
-        rect(result.rgb565,32,140,1450,174,color(11,17,27));
-        std::ostringstream label;
-        label<<"TOP "<<result.selection.top_k<<" / SCORE ABOVE "<<std::fixed<<std::setprecision(2)
-             <<result.selection.threshold<<" / SHOWN "<<result.detection_count;
-        text(result.rgb565,32,146,label.str(),2,color(159,200,231));
+            draw_pose(result.rgb565,result.detections[i].projected);
     }
     static void draw_result_fields(Rendered& result, uint64_t id) {
         const auto white = color(236, 241, 247);
         text(result.rgb565,500,84,std::to_string(id),2.5,white);
-        text(result.rgb565,950,84,std::to_string(result.top_index),2.5,white);
-        std::ostringstream score;
-        score << std::fixed << std::setprecision(4) << result.score;
-        std::string shown = score.str();
-        if (shown.size() > 15) shown = "OUT OF RANGE";
-        text(result.rgb565,1220,84,shown,2.5,color(194,214,223));
     }
 
     static void draw_status(Rendered& result,const char* label,bool live) {
@@ -190,7 +165,6 @@ namespace pose::hdmi {
             for (size_t joint=0;joint<pose.projected.size();++joint)
                 pose.projected[joint]=project(pose.raw[joint*3],pose.raw[joint*3+1],pose.raw[joint*3+2]);
         }
-        draw_selection(result);
         draw_status(result,status==Status::Result?(result.detection_count?"RESULT":"NO DETECTION"):
                     status==Status::NoInput?"NO INPUT":"STOPPED",status==Status::Result);
         if (status == Status::Result) draw_detections(result);
@@ -209,8 +183,7 @@ namespace pose::hdmi {
             d.remaining_ns=frame.hold_ns-(frame.id.source_ns-p.observed_ns);
             for(unsigned j=0;j<14;++j){for(unsigned a=0;a<3;++a)if(!std::isfinite(p.joints[3*j+a]))throw std::runtime_error("Nonfinite presentation");d.projected[j]=project(p.joints[3*j],p.joints[3*j+1],p.joints[3*j+2]);}}
         if(r.detection_count){const auto&d=r.detections[0];r.top_index=d.index;r.score=d.score;r.selected_raw=d.raw;r.projected=d.projected;}
-        draw_result_fields(r,frame.id.frame);draw_selection(r);draw_status(r,r.detection_count?"FILTERED":"NO DETECTION",true);draw_detections(r);
-        for(unsigned i=0;i<r.detection_count;++i){const auto&d=r.detections[i];text(r.rgb565,32+i*450,172,"ID "+std::to_string(d.track)+(d.held?" / HELD":" / CURRENT"),2,color(159,200,231));}
+        draw_result_fields(r,frame.id.frame);draw_status(r,r.detection_count?"FILTERED":"NO DETECTION",true);draw_detections(r);
         return r;
     }
     void prepare_background(PreparedBackground& reusable) {
@@ -230,20 +203,14 @@ namespace pose::hdmi {
             result.selected_raw=last_result->selected_raw;result.projected=last_result->projected;
             result.selection=last_result->selection;result.detections=last_result->detections;
             result.detection_count=last_result->detection_count;
-            draw_result_fields(result,last_frame_id);draw_selection(result);draw_detections(result);
+            draw_result_fields(result,last_frame_id);draw_detections(result);
         } else {
             const auto muted=color(167,184,204);
             text(result.rgb565,500,84,"--",2.5,muted);
-            text(result.rgb565,950,84,"--",2.5,muted);
-            text(result.rgb565,1220,84,"--",2.5,muted);
         }
         const char* label=notice.kind==NoticeKind::Stale ? "RESULT STALE" :
             notice.kind==NoticeKind::Resynchronizing ? "RESYNCHRONIZING" : "WAITING INPUT";
         draw_status(result,label,false);
-        const std::string age=notice.has_result ? "AGE " + std::to_string(notice.age_seconds) + " S" : "NO RESULT YET";
-        text(result.rgb565,1500,146,age,2,color(236,241,247));
-        if (notice.kind==NoticeKind::Stale)
-            text(result.rgb565,1500,196,notice.resynchronizing?"RESYNC":"WAITING INPUT",2,color(167,184,204));
         result.render_ms=std::chrono::duration<double,std::milli>(
             std::chrono::steady_clock::now()-begin).count();
         return result;

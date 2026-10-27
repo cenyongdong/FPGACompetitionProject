@@ -41,6 +41,11 @@ struct Stats {
     std::atomic<std::uint64_t> received{0}, replaced{0}, stale{0}, malformed{0}, reconnects{0};
     std::atomic<std::uint64_t> inferred{0}, adopted{0}, pc_sent{0}, pc_dropped{0};
     std::atomic<std::uint64_t> view_sent{0},view_dropped{0};
+    std::atomic<std::uint64_t> post_frames{0},post_ns{0},post_max_ns{0},post_births{0},post_duplicates{0},post_display_duplicates{0},post_resets{0};
+    std::atomic<std::uint64_t> post_history_selections{0},post_reacquired{0},post_held_handoffs{0},post_hidden_frames{0},post_shadow_deferred{0};
+    std::atomic<std::uint64_t> filter_lanes{0},filter_fallbacks{0};
+    std::atomic<std::uint64_t> cpu_filter_frames{0},cpu_filter_coordinates{0},cpu_filter_ns{0},cpu_filter_max_ns{0};
+    std::atomic<std::uint64_t> pl_filter_calls{0},pl_filter_coordinates{0},pl_input_ns{0},pl_wait_ns{0},pl_output_ns{0},pl_total_ns{0},pl_max_ns{0},pl_compute_cycles{0},pl_max_cycles{0};
     std::atomic<std::uint64_t> record_dropped{0}, input_epoch{0}, last_input{0}, last_result{0}, last_adopt{0};
     std::atomic<std::uint64_t> forward_start{0}, longest_gap{0}, resyncs{0};
     std::atomic<std::uint64_t> display_updates{0}, display_hints{0};
@@ -86,6 +91,16 @@ inline std::string Stats::json(bool mock, bool hdmi) const {
     add("reconnects",reconnects);add("input_epoch",input_epoch);add("inferred",inferred);add("adopted",adopted);
     add("pc_sent",pc_sent);add("pc_dropped",pc_dropped);add("record_dropped",record_dropped);add("resyncs",resyncs);
     add("view_sent",view_sent);add("view_dropped",view_dropped);
+    add("post_frames",post_frames);add("post_total_us",post_ns.load()/1000);add("post_max_us",post_max_ns.load()/1000);
+    add("post_births",post_births);add("post_duplicates",post_duplicates);add("post_display_duplicates",post_display_duplicates);add("post_resets",post_resets);
+    add("post_history_selections",post_history_selections);add("post_reacquired",post_reacquired);add("post_held_handoffs",post_held_handoffs);add("post_hidden_frames",post_hidden_frames);
+    add("post_shadow_deferred",post_shadow_deferred);
+    add("filter_lanes",filter_lanes);add("filter_fallbacks",filter_fallbacks);
+    add("cpu_filter_frames",cpu_filter_frames);add("cpu_filter_coordinates",cpu_filter_coordinates);
+    add("cpu_filter_total_ns",cpu_filter_ns);add("cpu_filter_max_ns",cpu_filter_max_ns);
+    add("pl_filter_calls",pl_filter_calls);add("pl_filter_coordinates",pl_filter_coordinates);
+    add("pl_input_ns",pl_input_ns);add("pl_wait_ns",pl_wait_ns);add("pl_output_ns",pl_output_ns);
+    add("pl_total_ns",pl_total_ns);add("pl_max_ns",pl_max_ns);add("pl_compute_cycles",pl_compute_cycles);add("pl_max_cycles",pl_max_cycles);
     add("longest_result_gap_ms",longest_gap.load()/1000000);
     add("display_updates",display_updates);add("display_hints",display_hints);
     add("selected_count",selected_count);

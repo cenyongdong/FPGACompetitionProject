@@ -45,7 +45,7 @@ elif mode=='synthesis':
   script=f"""set_param general.maxThreads 2
 read_verilog -sv [list {src}]
 synth_design -top pose_filter_csr -part xc7z030ffg676-2 -mode out_of_context -generic LANES={lanes}
-create_clock -period 20 [get_ports clk]
+create_clock -period 10 [get_ports clk]
 report_utilization -file utilization.rpt
 report_timing_summary -file timing.rpt -report_unconstrained
 write_checkpoint -force filter.dcp

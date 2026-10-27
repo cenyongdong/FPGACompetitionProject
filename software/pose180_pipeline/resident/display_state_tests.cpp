@@ -91,8 +91,10 @@ void real_pose_and_empty_notice_pixels() {
         "Stale label erased the pose or failed to change its visible status");
     auto older=hdmi::render_notice(hdmi::prepare_background(),&original,42,
         {Kind::Stale,true,true,3});
-    expect(same_viewport(stale.rgb565,older.rgb565) && stale.rgb565!=older.rgb565,
-        "Visible result age did not advance independently of pose data");
+    // The approved minimal header omits numeric age. State still ages above,
+    // but an unchanged STALE label must not add diagnostics back to the UI.
+    expect(stale.rgb565==older.rgb565,
+        "Minimal stale view changed despite identical state and pose");
     auto restored=hdmi::render(hdmi::prepare_background(),scores.data(),poses.data(),180,42);
     expect(restored.rgb565==pixels,"Resuming a real result left notice pixels behind");
     bool rejected=false;

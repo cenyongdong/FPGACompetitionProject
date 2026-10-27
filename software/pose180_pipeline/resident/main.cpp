@@ -4,6 +4,9 @@
 #include "csi.hpp"
 #include "postprocess.hpp"
 #include "lean_admission.hpp"
+#ifdef POSE180_DEMO_PL_FILTER
+#include "pl_filter.hpp"
+#endif
 #ifdef POSE180_DEMO_SDK
 #include "runtime.hpp"
 #include "hdmi_output.hpp"
@@ -55,8 +58,13 @@ int main(int argc,char**argv) {
         const auto view_port=std::stoul(take("--view-port",mock?"0":"39385"));
 #ifdef POSE180_DEMO_PROBE_FREE
 #ifdef POSE180_DEMO_PROBE_FREE_DRAIN
+#ifdef POSE180_DEMO_PL_FILTER
+        const auto hardware_profile=take("--hardware-profile","probe-free-drain-filter-v1");
+        need(hardware_profile=="probe-free-drain-filter-v1","Build/profile mismatch");
+#else
         const auto hardware_profile=take("--hardware-profile","probe-free-drain-v1");
         need(hardware_profile=="probe-free-drain-v1","Build/profile mismatch");
+#endif
 #else
         const auto hardware_profile=take("--hardware-profile","legacy-probe-free");
         need(hardware_profile=="legacy-probe-free","Build/profile mismatch");
@@ -66,7 +74,13 @@ int main(int argc,char**argv) {
         if(hardware_profile=="pose-stabilizer-offline-v1")pose::post::require_lean_deployment_qualification(false);
         need(hardware_profile=="r45","Unknown hardware profile");
 #endif
-        need(take("--filter-backend","cpu")=="cpu","PL backend requires a qualified new hardware profile; offline adapter only");
+        const auto filter_backend=take("--filter-backend","cpu");
+#ifdef POSE180_DEMO_PL_FILTER
+        need(filter_backend=="cpu"||filter_backend=="pl","Unknown filter backend");
+        need(hdmi||filter_backend=="cpu","PL filter uses the single HDMI/SDK device owner");
+#else
+        need(filter_backend=="cpu","PL backend requires the matching new hardware build");
+#endif
         need(options.empty(),"Unknown option");need(session && session<0xffffffffffff0000ull,"Explicit session required");
         need(view_port<=65535&&(!view_port||(view_port!=input_port&&view_port!=result_port&&view_port!=status_port)),"Invalid presentation port");
         need(input_port<=65535 && result_port>0 && result_port<=65535 && status_port>0 && status_port<=65535,"Port out of range");
@@ -78,6 +92,11 @@ int main(int argc,char**argv) {
         pd::Journal journal(shared,output);
         pd::Io io(shared,bind,input_port,result_port,status_port,session,mock,hdmi,unsigned(view_port));
         pose::post::Postprocessor postprocessor;
+        journal.status("presentation=tracked-one-euro-v4; requested_backend="+filter_backend+"; duplicate_centre=0.3; duplicate_pose=0.3; duplicate_translation=0.7; duplicate_shape=0.2; confirmation_hits=3; hold_ms=250; identity_ms=250; temporal_representative=1; shadow_support_margin=0.25; view_port="+std::to_string(view_port)+"\n");
+#ifdef POSE180_DEMO_PL_FILTER
+        std::unique_ptr<pose::post::PlFilter> pl_filter;
+        std::unique_ptr<pose::post::PlFilterBackend> pl_backend;
+#endif
         std::unique_ptr<pd::Csi> csi;
         if(!csi_config.empty())csi=std::make_unique<pd::Csi>(shared,csi_config,session);
         std::cout<<"RESIDENT_READY mock="<<mock<<" recorder_pid="<<journal.child_pid()<<std::endl;
@@ -107,10 +126,30 @@ int main(int argc,char**argv) {
                 config.on_device_ready=[&](const icraft::xrt::Device& device){
                     display=std::make_unique<pose::hdmi::Output>(device,output/"hdmi.jsonl",&journal);
                     display->verifyMemory();
+#ifdef POSE180_DEMO_PL_FILTER
+                    if(filter_backend=="pl"){
+                        try {
+                            // Use the already established owner/Device register API.
+                            pl_filter=std::make_unique<pose::post::PlFilter>(hardware_profile,
+                              [device](unsigned offset){need(offset<=0x9f4&&!(offset&3),"Filter read out of range");return std::uint32_t(device.defaultRegRegion().read(0x400b1000ull+offset));},
+                              [device](unsigned offset,std::uint32_t value){need(offset<=0x5f4&&!(offset&3),"Filter write out of range");device.defaultRegRegion().write(0x400b1000ull+offset,value);});
+                            const auto lanes=pl_filter->lanes();need(lanes==1||lanes==4,"Invalid filter lane identity");
+                            const auto tested=pose::post::verify_pl_filter(*pl_filter);
+                            pl_filter->reset_metrics();
+                            pl_backend=std::make_unique<pose::post::PlFilterBackend>(*pl_filter);
+                            postprocessor.set_backend(pl_backend.get());shared.stats.filter_lanes=lanes;
+                            journal.status("PL_FILTER_SELFTEST_PASS coordinates="+std::to_string(tested)+" lanes="+std::to_string(lanes)+"\n");
+                        } catch(const pose::post::PlFilterError& error){
+                            ++shared.stats.filter_fallbacks;postprocessor.set_backend(nullptr);
+                            if(pl_filter)pl_filter->reset_metrics();
+                            journal.status(std::string("PL_FILTER_ISOLATED CPU selected; ")+error.what()+"\n");
+                        }
+                    }
+#endif
                 };
 #ifdef POSE180_DEMO_PROBE_FREE
 #ifdef POSE180_DEMO_PROBE_FREE_DRAIN
-                journal.status("hardware_profile=probe-free-drain-v1; passive_diagnostic_MMIO=0; functional_startup_control=0x400b0800\n");
+                journal.status("hardware_profile="+hardware_profile+"; passive_diagnostic_MMIO=0; functional_startup_control=0x400b0800\n");
                 std::ofstream startup_record(output/"startup-consumer.jsonl");
                 pd::startup_consumer::prepare([&](const std::string& line){
                     if(startup_record){startup_record<<line;startup_record.flush();}
@@ -222,7 +261,37 @@ int main(int argc,char**argv) {
                     continue;
                 }
                 if(shared.output.put(record))++shared.stats.pc_dropped;
-                auto view=postprocessor.update({input.epoch,result.frame_id,sequence,result.source_time_ns},result.scores.data(),result.poses.data());
+                const auto post_start=pd::now_ns();
+                const pose::post::Identity view_id{input.epoch,result.frame_id,sequence,result.source_time_ns};
+                pose::post::PresentationFrame view;
+#ifdef POSE180_DEMO_PL_FILTER
+                try{view=postprocessor.update(view_id,result.scores.data(),result.poses.data());}
+                catch(const pose::post::PlFilterError& error){
+                    shared.stats.filter_lanes=0;++shared.stats.filter_fallbacks;
+                    postprocessor.set_backend(nullptr); // Discard partial frame; reconfirm on CPU.
+                    journal.status(std::string("PL_FILTER_ISOLATED CPU selected; ")+error.what()+"\n");
+                    view=postprocessor.update(view_id,result.scores.data(),result.poses.data());
+                }
+#else
+                view=postprocessor.update(view_id,result.scores.data(),result.poses.data());
+#endif
+                const auto post_ns=pd::now_ns()-post_start;const auto& post_metrics=postprocessor.metrics();
+                ++shared.stats.post_frames;shared.stats.post_ns+=post_ns;
+                shared.stats.post_max_ns=std::max(shared.stats.post_max_ns.load(),post_ns);
+                shared.stats.post_births=post_metrics.births;shared.stats.post_duplicates=post_metrics.duplicates;
+                shared.stats.post_display_duplicates=post_metrics.display_duplicates;shared.stats.post_resets=post_metrics.resets;
+                shared.stats.post_history_selections=post_metrics.history_selections;shared.stats.post_reacquired=post_metrics.reacquired;
+                shared.stats.post_held_handoffs=post_metrics.held_handoffs;shared.stats.post_hidden_frames=post_metrics.hidden_frames;
+                shared.stats.post_shadow_deferred=post_metrics.shadow_deferred;
+                shared.stats.cpu_filter_frames=post_metrics.cpu_filter_frames;shared.stats.cpu_filter_coordinates=post_metrics.cpu_filter_coordinates;
+                shared.stats.cpu_filter_ns=post_metrics.cpu_filter_ns;shared.stats.cpu_filter_max_ns=post_metrics.cpu_filter_max_ns;
+#ifdef POSE180_DEMO_PL_FILTER
+                if(pl_filter){const auto&m=pl_filter->metrics();
+                    shared.stats.pl_filter_calls=m.calls;shared.stats.pl_filter_coordinates=m.coordinates;
+                    shared.stats.pl_input_ns=m.input_ns;shared.stats.pl_wait_ns=m.wait_ns;shared.stats.pl_output_ns=m.output_ns;
+                    shared.stats.pl_total_ns=m.total_ns;shared.stats.pl_max_ns=m.max_ns;
+                    shared.stats.pl_compute_cycles=m.compute_cycles;shared.stats.pl_max_cycles=m.max_cycles;}
+#endif
                 if(shared.presentation.put(view.json()))++shared.stats.view_dropped;
 #ifdef POSE180_DEMO_SDK
                 if(hdmi) {
@@ -244,7 +313,11 @@ int main(int argc,char**argv) {
         shared.stop=true;csi.reset();
 #ifdef POSE180_DEMO_SDK
         // Output retains its unchanged tagged STOP/drain proof before any free.
-        if(display){display->close();display.reset();}runtime.reset();
+        if(display){display->close();display.reset();}
+#ifdef POSE180_DEMO_PL_FILTER
+        postprocessor.set_backend(nullptr);pl_backend.reset();pl_filter.reset();
+#endif
+        runtime.reset();
 #endif
         for(const auto& event:shared.stats.take_input_events())journal.diagnostic(event);
         journal.status(shared.stats.json(mock,hdmi));

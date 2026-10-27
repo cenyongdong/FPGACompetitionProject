@@ -45,6 +45,7 @@ test('optional PC consumes split results without ACK, marks stale, reconnects an
         let state=await until(async()=>{const s=await get();return s.connected&&s;},'No result connection');
         assert.equal(state.phase,'waiting_input');assert.equal(state.frame,null);assert.equal(state.mock,true);
         const html=await(await fetch(base)).text();
+        assert.match(html,/原始候选 · /);
         for(const asset of ['/scene.js','/vendor/three.module.js','/vendor/three.core.js','/vendor/OrbitControls.js']){
             const response=await fetch(base+asset);assert.equal(response.status,200,asset);assert((await response.text()).length>1000,asset);
         }
@@ -80,7 +81,7 @@ async function verifyPage(html,live) {
     const script=html.match(/<script type="module">([\s\S]*?)<\/script>/)[1].replace("import {createScene} from './scene.js';",'');
     const elements=new Map();
     const element=id=>{if(!elements.has(id))elements.set(id,{textContent:'',dataset:{},events:{},addEventListener(kind,callback){this.events[kind]=callback;}});return elements.get(id);};
-    const buttons=['perspective','front','side','top'].map(view=>({...element(view),dataset:{view}}));
+    const buttons=['perspective','front','side','top'].map(view=>({...element(view),dataset:{view},setAttribute(){}}));
     const poses=[],views=[],labels=[],timers=[];let response=live,fpsCallback;
     const context={
         createScene:(container,bones,fps)=>{assert.equal(bones.length,14);fpsCallback=fps;return {setPose:f=>poses.push(f),view:v=>views.push(v),labels:v=>labels.push(v),dispose(){}};},
@@ -91,13 +92,12 @@ async function verifyPage(html,live) {
     assert.equal(poses.length,1);assert.equal(element('phase').dataset.state,'live');
     response={...live,phase:'result_stale',age_ms:2500,new_results_hz:0};timers.shift()();await wait(0);
     assert.equal(poses.length,1,'Polling an old result manufactured another pose update');
-    assert.match(element('phase').textContent,/过期/);assert.match(element('status').textContent,/2500 ms/);
+    assert.match(element('phase').textContent,/过期/);
     response={...response,phase:'reconnecting',connected:false};timers.shift()();await wait(0);
     assert.equal(poses.length,1);assert.match(element('phase').textContent,/重连/);
     response={...live,frame:{...live.frame,sequence:'3'}};timers.shift()();await wait(0);
     assert.equal(poses.length,2);assert.match(element('phase').textContent,/更新中/);
     for(const button of buttons)button.events.click();
     assert.deepEqual(views,['perspective','front','side','top']);
-    element('labels').events.change({target:{checked:true}});assert.deepEqual(labels,[true]);
-    fpsCallback(60);assert.match(element('render-rate').textContent,/非推理帧率/);
+    fpsCallback(60);
 }
