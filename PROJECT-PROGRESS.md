@@ -15,6 +15,7 @@
 | 数据集开发／演示 | 六片段、867 个不同官方样本，显式重复仍执行新推理；HDMI／PC 同时运行，EOF 安全退出与实际回退完成 | 每包初始替换 3 帧；双人训练片段存在 PC 接收缺帧及秒级间隔，未做真值精度、实屏观感验收或视频录制；[唯一记录](software/pose180_pipeline/resident/DATASET-DEMO.md) |
 | 常驻主链与恢复 | 最新完整窗口、单 SDK 所有者、有界异步记录；真实 RX 断线恢复和 PC 离线期间 HDMI 更新已验证 | 秒级缺窗仍存在，全天与跨启动可靠性未验收；[常驻核心](software/pose180_pipeline/resident/README.md)、[窗口恢复](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) |
 | 实采容错组窗算法 | 保留原严格路径；新增同帧优先、学习容限、后台映射及窗口边界切换，已有录制回放／TCP mock 和 ARM64 编译完成 | 未恢复现场采集、未部署，真实新推理连续性及近似配对精度仍待；[唯一记录](software/pose180_pipeline/resident/ADAPTIVE-CSI.md) |
+| 时间相位分支修正 | 可选模块、原方法对照、已有三 RX 实采及官方训练／测试子集 CPU 实际模型比较完成，Windows／Linux 测试及 ARM64 编译通过 | 推理效果混合，原预处理保持正式默认；未恢复现场采集或部署；[唯一记录](software/pose180_pipeline/resident/PHASE-CONTINUITY.md) |
 | HDMI／PC 展示 | 共用 PresentationFrame；精简控件、骨架统一蓝色；HDMI 首次结果前增加七色条，PC 原样；39385 与原始 39383 分开 | 最近现场实时版本为 v3，重影／突跳仍开放；[最新待机发布](FPGA/hdmi_candidate/RESUME.md)、[历史展示](software/pose180_pipeline/resident/PRESENTATION-20261026.md) |
 | v5 PS 后处理 | 关联与显示平滑解耦、局部异常门控；0.5／0.3／1 本机／ARM64及上述实板完成，纯滤波平均约 7／13／19 μs（1／2／3 人） | 三人训练片段仍有轨迹重建，更强平滑有运动滞后；未验证新现场 CSI 或防闪现观感；[设计](software/pose180_pipeline/resident/PRESENTATION-20261026.md#2026-10-27v5-后处理与已取消的-pl-扩展)与[实板结果](software/pose180_pipeline/resident/DATASET-DEMO.md) |
 | 去诊断、保留启动消费 | 独立 r45 派生版本已完成物理资格与有限真实闭环；有实际消费异常返回后成功运行的样本 | 不等价于完整 AXI 检查器，不关闭 D45；运行中 PL_KEY1 黑屏失联样本保留；[结果](FPGA/hdmi_candidate/probe_free_drain/README.md) |

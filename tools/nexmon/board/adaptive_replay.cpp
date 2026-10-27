@@ -31,6 +31,7 @@ int main(int argc,char** argv) {
                 const auto mac=next();require(mac.size()==17,"Bad MAC length");
                 for(std::size_t r=0;r<6;++r)c.source.transmitter_mac[r]=std::uint8_t(std::stoul(mac.substr(3*r,2),nullptr,16));
             }else if(flag=="--channel")c.source.chanspec=std::uint16_t(std::stoul(next(),nullptr,0));
+            else if(flag=="--gains")for(auto& gain:c.source.gains)gain=std::stod(next());
             else if(flag=="--pcaps")for(auto& p:pcaps)p=next();
             else if(flag=="--report")report=next();
             else if(flag=="--ledger")ledger=next();
