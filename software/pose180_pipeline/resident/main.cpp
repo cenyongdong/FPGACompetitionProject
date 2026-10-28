@@ -36,17 +36,16 @@ namespace {
 volatile std::sig_atomic_t stopping=0;
 void stop(int){stopping=1;}
 void need(bool ok,const char* why){if(!ok)throw std::runtime_error(why);}
-#ifndef POSE180_DEMO_SDK
-// Exercises the same retain-before-destruction boundary without any SDK handle.
-struct MockReleaseOwner {
+// Retains the live control plane before a submitted operation's stack unwinds.
+// Used for functional startup MMIO and for explicit no-SDK fault injection.
+struct ActivityOwner {
     pd::Shared& shared;
     pp::ReleaseGuard activity;
     void retain() const noexcept { activity.retain_if_unproved([&](const char*) {
         shared.stats.release_blocked=true;shared.stats.isolated=true;
     }); }
-    ~MockReleaseOwner(){retain();}
+    ~ActivityOwner(){retain();}
 };
-#endif
 }
 int main(int argc,char**argv) {
     std::signal(SIGINT,stop);std::signal(SIGTERM,stop);std::signal(SIGHUP,stop);
@@ -163,7 +162,7 @@ int main(int argc,char**argv) {
         pd::Journal journal(shared,output);
         pd::Io io(shared,bind,input_port,result_port,status_port,session,mock,hdmi,unsigned(view_port));
 #ifndef POSE180_DEMO_SDK
-        MockReleaseOwner mock_owner{shared,{}};
+        ActivityOwner mock_owner{shared,{}};
 #endif
         pose::post::Postprocessor postprocessor(presentation_config);
         pose::post::Postprocessor ps_reference(presentation_config);
@@ -186,6 +185,7 @@ int main(int argc,char**argv) {
         std::unique_ptr<Mapping> mapping;
 #endif
         pp::RuntimeShutdownGuard runtime_shutdown{runtime};
+        ActivityOwner startup_owner{shared,{}};
         try {
             need(!stopping,"Stop requested before SDK initialization");
             hardware_attempted=true; // Includes functional startup MMIO before Runtime.
@@ -237,16 +237,19 @@ int main(int argc,char**argv) {
 #ifdef POSE180_DEMO_PROBE_FREE_DRAIN
                 journal.status("hardware_profile="+hardware_profile+"; passive_diagnostic_MMIO=0; functional_startup_control=0x400b0800\n");
                 std::ofstream startup_record(output/"startup-consumer.jsonl");
+                startup_owner.activity.begin("functional_startup_control");
                 pd::startup_consumer::prepare([&](const std::string& line){
                     if(startup_record){startup_record<<line;startup_record.flush();}
                     journal.status(line);
                 });
+                startup_owner.activity.complete();
 #else
                 // This build has no diagnostic CSR mapping. The deployment
                 // guard binds the new BOOT and current boot_id; Output keeps
                 // the functional ABI, idle, ownership and STOP/drain checks.
                 journal.status("hardware_profile=probe_free; diagnostic_MMIO=0\n");
 #endif
+                need(!stopping,"Stop requested before SDK initialization");
                 runtime=std::make_unique<pp::Runtime>(config);
 #else
                 auto initialized=observer.epoch("resident_Engine_apply",6,[&]{runtime=std::make_unique<pp::Runtime>(config);});
@@ -255,6 +258,7 @@ int main(int argc,char**argv) {
             } else runtime=std::make_unique<pp::Runtime>(config);
         }catch(...){
             shared.stats.isolated=true;
+            if(!startup_owner.activity.permitted())shared.stats.release_blocked=true;
             try{journal.status(std::string("SDK initialization isolated: ")+pp::current_exception_message()+"\n");}catch(...){}
         }
         pose::hdmi::PreparedBackground canvas;
@@ -431,6 +435,7 @@ int main(int argc,char**argv) {
         // Preserve status listeners/lease as well as SDK handles if hardware
         // release remains unproved. No completion receipt may follow this case.
 #ifdef POSE180_DEMO_SDK
+        startup_owner.retain();
         if(runtime)runtime->retain_if_unproved();
 #else
         mock_owner.retain();

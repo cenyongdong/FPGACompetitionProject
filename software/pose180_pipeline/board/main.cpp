@@ -42,7 +42,8 @@ int main(int argc,char** argv){
     const auto port=std::stoul(argv[5]);const bool with_hdmi=std::string(argv[6])=="1";
     if(!target||target>54000||!session||!port||port>65535||
         (std::string(argv[6])!="0"&&std::string(argv[6])!="1"))return 2;
-    std::signal(SIGTERM,request_stop);std::signal(SIGINT,request_stop);
+    std::signal(SIGTERM,request_stop);std::signal(SIGINT,request_stop);std::signal(SIGHUP,request_stop);
+    std::signal(SIGPIPE,SIG_IGN);
     pp::FixedPool<Input,8> inputs;pp::FixedPool<Output,64> results;
     pp::Handoff<pp::Result> handoff;
     std::unique_ptr<pp::Runtime> runtime;std::unique_ptr<pose::hdmi::Output> display;

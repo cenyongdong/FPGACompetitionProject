@@ -6,9 +6,9 @@
 
 新增初始化／清理 TERM、INT、HUP，监控异常、慢状态连接和地址所有权故障注入通过；完整 CLI 连续启停 3 轮，3 次并行包启动均被拒绝，3 次停止标记模拟写满仍正常退出，FD 数恢复 4→4。既有 r3 父死亡／日志回收／硬件未证明阻断测试，以及慢调用、慢 PC、记录故障等常驻回归通过；ARM64 构建及包检查完成。[新增故障结果](../../.local/pose180-top1-no-threshold-20261028-r4/robustness-verified/result.json)、[退出回归](../../.local/pose180-top1-no-threshold-20261028-r4/exit-cleanup-final/result.json)、[验证目录](../../.local/pose180-top1-no-threshold-20261028-r4/verification.json)、[解包重建](../../.local/pose180-top1-no-threshold-20261028-r4/source-check.json)。网络操作均用替身，未连接设备或更改网络。硬件 STOP／drain 无法证明时原 `_Exit(70)` 保护保持，实际 SDK 挂死／SIGKILL／SIGSEGV／掉电的物理恢复没有上板验证。
 
-后续板端 C++ 专项复核发现 r4 尚有底层异常释放缺口，现有包未修复；具体路径与本地复现见[启动包说明](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端-c-专项复核r4-仍有的缺口)，不能把上述上层测试解释为所有 SDK／HDMI 异常均可安全释放。
+后续板端 C++ 专项已在工作区源码修订 HDMI 部分分配回滚、一次性释放／STOP、NPU 在途异常释放守卫和非标准异常收尾。正常完成后释放；未证明时保留所有者／独占，状态为 `release_blocked`，不写成功关闭回执，不自动复位或重试。两个 ARM64 目标、实际 HDMI 接口替身及原生 mock 回归通过，具体见[源码结果](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端异常资源保护源码修订未打包)。**用户要求暂不更新启动包，因此当前仍选择上方 r4 归档，该归档不包含新修订。** `.local/pose180-top1-no-threshold-20261028-r5` 仅保存本地编译／测试，没有新包、部署或上板。
 
-r2 的单人滤波回放对照仍见[原始比较](../../.local/pose180-top1-no-threshold-20261028-r2/comparison.json)，r4 未改变滤波、模型或硬件，不重复运行该比较。下方设备结束状态和遗留远端收尾保持；本轮没有提交 Git commit。
+r2 的单人滤波回放对照仍见[原始比较](../../.local/pose180-top1-no-threshold-20261028-r2/comparison.json)，本次源码修订未改变滤波、模型或硬件，不重复运行该比较。下方设备结束状态和遗留远端收尾保持。
 
 **最新状态：用户要求结束测试，当前原 epoch99／TopK=1／严格 score >0.2 测试已安全退出；随后设备以太网断开，不自主重连或续跑。** 最后新包 `.local/csi-open-space-top1-020-20261027-r4` 完成 8344 次新推理／HDMI 采纳／PC 接收，最后 SSH 状态证明 native_exit=0、完整 SDK／HDMI 关闭、设备占用为空，PC／串口观察已退出。进程总时长 605.508 s 包含初始化／退出，按用户停止而非完整处理期验收；原时长／停止原因门 `passed=false` 保留。最后核验 boot_id `3c398048-a8b7-4225-b6c1-c57a9735940e`、合格默认 BOOT 不变，断开后的实时状态未知。
 

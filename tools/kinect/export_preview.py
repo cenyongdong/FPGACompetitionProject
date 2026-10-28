@@ -5,7 +5,6 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import shutil
 import sys
 import time
 
@@ -28,6 +27,11 @@ def main():
     rows = [json.loads(line) for line in (run/'validation.jsonl').read_text().splitlines()]
     best = min(range(len(rows)), key=lambda i: rows[i]['metrics']['top1_mpjpe'])
     source = run/('best_top1_mpjpe_epoch_'+str(best+1)+'.pth')
+    status_path = run.parent/(run.name+'-status.json')
+    status = json.loads(status_path.read_text()) if status_path.exists() else {}
+    final_checkpoint = (status.get('stage') == 'completed'
+                        and status.get('best_checkpoint') == str(source)
+                        and status.get('best_epoch') == best+1)
     out.mkdir(parents=True, exist_ok=False)
     snapshot = out/'checkpoint.pth'
     digest = hashlib.sha256()
@@ -43,7 +47,8 @@ def main():
     identity = dict(source_checkpoint=str(source), best_epoch=best+1,
                     selection=rows[best], snapshot_sha256=digest.hexdigest(),
                     bytes=snapshot.stat().st_size, frozen_at=time.time(),
-                    final_training_checkpoint=False, device='cpu', threads=2)
+                    final_training_checkpoint=final_checkpoint,
+                    initialization=status.get('initialization'), device='cpu', threads=2)
     save(out/'checkpoint-identity.json', identity)
     sys.path.insert(0, str(run.parent/'tools'))
     sys.path.insert(0, str(Path(plan['algorithm_root'])/'tools/pose180'))

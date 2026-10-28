@@ -227,7 +227,11 @@ struct Runtime::Impl {
             });
             input_tensor = Tensor(in[0]).mallocOn(HostDevice::MemRegion());
             forward_inputs.push_back(input_tensor);
-            if (config.on_device_ready) config.on_device_ready(device);
+            if (config.on_device_ready) {
+                activity.begin("device_ready_callback"); // May perform synchronous SDK memory IO.
+                config.on_device_ready(device);
+                activity.complete();
+            }
             initialized_ms = elapsed(start);
             text_file(config.evidence / "initialized.json", "{" + identity
                 + ",\"initialization_ms\":" + std::to_string(initialized_ms)

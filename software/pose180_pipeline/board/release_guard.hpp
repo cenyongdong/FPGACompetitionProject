@@ -17,7 +17,8 @@ public:
         if (permitted()) return;
         try { notify(stage()); } catch (...) {}
         static constexpr char message[] = "SDK_RELEASE_BLOCKED: retain owner; no automatic reset/retry\n";
-        ::write(STDERR_FILENO, message, sizeof(message)-1);
+        const auto diagnostic_bytes=::write(STDERR_FILENO, message, sizeof(message)-1);
+        (void)diagnostic_bytes; // A full/broken diagnostic pipe cannot permit release.
         // Keep the process, inherited exclusive lease, tensors and device alive.
         // TERM/INT/HUP request stop but cannot prove an in-flight DMA has ended.
         // No further SDK access is made. External controlled recovery is needed.

@@ -51,7 +51,7 @@ def main():
             '-DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++', '-DCMAKE_PREFIX_PATH=/usr/cmake',
             '-DCMAKE_BUILD_TYPE=Release', '-DPOSE180_BUILD_SDK=ON',
             '-DPOSE180_DEMO_PROBE_FREE_DRAIN=ON', '-DPOSE180_DEMO_PL_FILTER=ON')
-        run('arm64-build', 'exec', 'FPAI', 'cmake', '--build', base+'/arm64', '--target', 'pose180_demo', '--parallel', '2')
+        run('arm64-build', 'exec', 'FPAI', 'cmake', '--build', base+'/arm64', '--target', 'pose180_demo', 'pose180_pipeline', '--parallel', '2')
     finally:
         if started_here:
             run('container-stop', 'stop', 'FPAI')

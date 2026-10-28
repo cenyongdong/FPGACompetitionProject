@@ -6,6 +6,7 @@
 |---|---|---|
 | CSI 输入 | `tools/nexmon/board/{pcap_stream,adaptive_ingress,ingress}.*`、`resident/csi.cpp` | 三 RX、有限容限、后台匹配、完整窗口切换 |
 | 预处理／SDK | `demo_v1/shared_fp16/preprocess.*`、`pose180_pipeline/board/runtime.*` | 原数学、原 epoch99 图、唯一 SDK 设备所有者 |
+| 资源释放保护 | `pose180_pipeline/board/release_guard.hpp`、`board/exception_message.hpp`、`native_rgb565_r53/display/hdmi_output.cpp` | 已证明完成才释放；未完成 SDK 操作保留句柄与独占，HDMI 部分构造回滚、未知 free 不重复 |
 | 通用后处理 | `pose/postprocess.*`、`pose/geometry.hpp` | 保留 v5 多人／Top1 对照；共享几何计算 |
 | 单人连续性 | `pose/single_person.*` | 仅显式 CPU Top1：异常隔离、持续观测确认、中心／相对姿态平滑、显示位移限制 |
 | 显示与观察 | `display/hdmi_renderer.*`、`pose180_pipeline/host/{resident,presentation}.mjs` | 同一 PresentationFrame 驱动 HDMI／PC，保持原始分数和完整结果通道 |

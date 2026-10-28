@@ -2,7 +2,7 @@
 
 更新：2026-10-28。长期目标仍是稳定的真实 CSI → PS／NPU → HDMI，PC 独立。当前本地交付为原 epoch99、TopK=1／无置信度阈值 **r4 生命周期加固启动包**，保留单人滤波。补齐初始化停止、清理全程独占、跨包未完成负载保护及临时地址写前记录；故障注入、三轮完整启停和 ARM64 构建通过。真正原生崩溃或缺少硬件停止证明仍保持阻断，未部署或恢复现场测试。[核心源码](software/core/README.md)、[检查结果及边界](software/pose180_pipeline/resident/STARTUP-PACKAGE.md)、[交付／恢复入口](FPGA/hdmi_candidate/RESUME.md)。
 
-板端 C++ 专项复核补充：r4 仍有 HDMI 部分构造回滚、NPU 异常后释放证明及非标准异常收尾缺口；已做本地源码／替身验证，尚未修复或上板，详见[底层复核](software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端-c-专项复核r4-仍有的缺口)。
+板端 C++ 专项后续：工作区源码已补齐 HDMI 部分构造回滚、重复释放保护、NPU 在途异常释放守卫和非标准异常收尾；硬件完成未证明时保留所有者与独占，状态为 `release_blocked`，不写成功关闭回执。实际 HDMI 替身故障注入、原生 mock 回归及两个 ARM64 目标构建通过。**按用户最新要求暂不更新启动包**，现有 r4 归档仍保留原缺口，未部署或上板；[源码结果与边界](software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端异常资源保护源码修订未打包)。
 
 ## 当前可确认的状态
 

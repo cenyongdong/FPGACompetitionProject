@@ -167,7 +167,8 @@ namespace pose::hdmi {
             try { p.release_owned(); }
             catch (...) {
                 static constexpr char message[]="HDMI_CONSTRUCTION_RELEASE_WITHHELD\n";
-                ::write(STDERR_FILENO,message,sizeof(message)-1);
+                const auto diagnostic_bytes=::write(STDERR_FILENO,message,sizeof(message)-1);
+                (void)diagnostic_bytes;
                 std::_Exit(70); // Preserve the existing uncertain-release policy.
             }
             std::rethrow_exception(original);
@@ -296,7 +297,8 @@ namespace pose::hdmi {
             try { close(); }
             catch (...) {
                 static constexpr char message[]="HDMI_RELEASE_WITHHELD\n";
-                ::write(STDERR_FILENO,message,sizeof(message)-1);
+                const auto diagnostic_bytes=::write(STDERR_FILENO,message,sizeof(message)-1);
+                (void)diagnostic_bytes;
                 // 无STOP证明时不运行SDK析构／释放；保留日志及物理块身份，禁止继续新负载。
                 std::_Exit(70);
             }
