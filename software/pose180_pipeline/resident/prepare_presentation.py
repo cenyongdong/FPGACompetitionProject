@@ -53,6 +53,7 @@ def main():
     parser.add_argument('--filter-backend', choices=('cpu','pl'), default='cpu')
     parser.add_argument('--score-threshold',type=score_threshold,default=.35,help='Strict cutoff in [0,1], or none to disable score filtering')
     parser.add_argument('--top-k',type=int,choices=(1,2,3),default=3)
+    parser.add_argument('--single-person-stability',action='store_true',help='CPU Top1 continuity and bounded display steps')
     parser.add_argument('--min-cutoff',type=float,default=.5)
     parser.add_argument('--beta',type=float,default=.3)
     parser.add_argument('--d-cutoff',type=float,default=1)
@@ -60,6 +61,8 @@ def main():
     parser.add_argument('--hardware-work', type=Path, help='Qualified integrated PL-filter build and packaged BOOT')
     parser.add_argument('--reference-boot',type=Path,help='BOOT to preserve as this new package\'s startup/fallback baseline; defaults to the recorded deployed release')
     args = parser.parse_args()
+    if args.single_person_stability and (args.top_k!=1 or args.filter_backend!='cpu'):
+        raise ValueError('Single-person stability requires CPU Top1')
     model_files = None
     if args.model_dir:
         args.model_dir=args.model_dir.resolve()
@@ -147,6 +150,7 @@ def main():
     identity['session'] = int(datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y%m%d%H%M%S'))
     identity['seconds'] = args.seconds
     identity['selection']=dict(top_k=args.top_k,strict_score_threshold=args.score_threshold)
+    identity['selection']['single_person_stability']=args.single_person_stability
     if model_files:
         identity['model_package']='/root/demo-v1-20261022-r1/'+work.name+'/round-1/pipeline'
         identity['model_files']=model_files
@@ -187,6 +191,8 @@ def main():
         filter_args=repr(['--top-k',str(args.top_k),'--score-threshold','none' if args.score_threshold is None else str(args.score_threshold),'--min-cutoff',str(args.min_cutoff),'--beta',str(args.beta),'--d-cutoff',str(args.d_cutoff)])[1:-1]
         value=value.replace("'--hdmi', '1'",filter_args+", '--hdmi', '1'")
         value=value.replace("'--hdmi','1'",filter_args+", '--hdmi','1'")
+        if args.single_person_stability:
+            value=value.replace("'--top-k'", "'--single-person-stability', '1', '--top-k'")
         if "'--min-cutoff'" not in value:
             raise ValueError('Prepared invocation has no explicit filter parameters: '+name)
         if '*input_arguments(root, identity)' not in value:

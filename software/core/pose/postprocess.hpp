@@ -2,6 +2,7 @@
 #include <array>
 #include <cstdint>
 #include <optional>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -22,6 +23,7 @@ struct Config {
     unsigned confirmation_hits=3;
     std::optional<float> score_threshold=0.2f; // nullopt disables score filtering.
     unsigned top_k=3;
+    bool single_person_stability=false; // Explicit CPU-only Top1 policy; v5 remains available.
 };
 struct Identity { std::uint64_t session=0, frame=0, sequence=0, source_ns=0; };
 struct Person {
@@ -45,6 +47,7 @@ struct Metrics {
     std::uint64_t births=0,expired=0,duplicates=0,rejected_pairs=0,resets=0,confirmation_total_ns=0,confirmation_max_ns=0,display_duplicates=0;
     std::uint64_t history_selections=0,reacquired=0,held_handoffs=0,hidden_frames=0,shadow_deferred=0;
     std::uint64_t joint_gate_rejections=0,bone_gate_rejections=0;
+    std::uint64_t single_rejected=0,single_relocations=0,single_limited=0;
     // Wall-clock CPU time around confirmed-track coordinate filtering only.
     std::uint64_t cpu_filter_frames=0,cpu_filter_coordinates=0,cpu_filter_ns=0,cpu_filter_max_ns=0;
 };
@@ -66,8 +69,10 @@ class OneEuro {
     double x_=0,y_=0,d_=0;
 public:
     void reset(){initialized_=false;}
+    void constrain(double value){y_=value;}
     double update(double x,double dt,const Config& c);
 };
+class SinglePerson;
 class Postprocessor {
     struct Track {
         Person value; std::array<double,3> centre{},association_centre{},velocity{};
@@ -80,8 +85,10 @@ class Postprocessor {
     };
     Config config_; FilterBackend* backend_; std::vector<Track> tracks_; Identity previous_{};
     std::uint64_t next_id_=1; Metrics metrics_;
+    std::unique_ptr<SinglePerson> single_;
 public:
-    explicit Postprocessor(Config c={},FilterBackend* backend=nullptr):config_(c),backend_(backend){}
+    explicit Postprocessor(Config c={},FilterBackend* backend=nullptr);
+    ~Postprocessor();
     void reset();
     void set_backend(FilterBackend* backend){backend_=backend;reset();}
     PresentationFrame update(const Identity&,const float* scores,const float* poses);

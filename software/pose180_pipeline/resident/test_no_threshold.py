@@ -21,6 +21,7 @@ def main():
     ip, raw, status_port, view = [port() for _ in range(4)]
     command = [args.binary, '--output', str(root/'run'), '--session', '123456', '--seconds', '0',
                '--top-k', '1', '--score-threshold', 'none', '--input-port', str(ip),
+               '--single-person-stability', '1',
                '--result-port', str(raw), '--status-port', str(status_port), '--view-port', str(view),
                '--mock-delay-ms', '1']
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -54,6 +55,7 @@ def main():
                 data += chunk
         status = json.loads(data)
         assert status['top_k'] == 1 and status['score_threshold'] is None and status['inferred'] >= 10, status
+        assert status['single_person_stability'] is True, status
         process.send_signal(signal.SIGTERM)
         out, err = process.communicate(timeout=8)
         completion = json.loads((root/'run/completion.json').read_text())

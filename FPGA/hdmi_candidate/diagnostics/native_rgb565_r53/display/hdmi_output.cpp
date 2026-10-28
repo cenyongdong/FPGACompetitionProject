@@ -7,6 +7,8 @@
 #include <stdexcept>
 #include <string>
 #include <thread>
+#include <exception>
+#include <unistd.h>
 
 namespace pose::hdmi {
     namespace {
@@ -29,6 +31,8 @@ namespace pose::hdmi {
         detail::AdoptionState adoption;
         int64_t last_command_begin_ns=0,last_snapshot_read_ns=0,last_log_done_ns=0;
         bool mayRead = false, closed = false;
+        bool allocated[2]{}, release_attempted[2]{}, released[2]{};
+        bool stop_attempted = false, stop_proved = false;
         static constexpr uint64_t base = 0x400b0000;
 
         uint32_t rd(unsigned offset) const {
@@ -83,6 +87,9 @@ namespace pose::hdmi {
             return s;
         }
         void stop() {
+            if (stop_proved) return;
+            need(!stop_attempted, "Prior HDMI STOP was not proved; retain frames");
+            stop_attempted = true;
             // 即使发生欠载，也发一次STOP取得独立停止标签；不清故障或重试负载。
             const uint32_t tag = 0x70000000u | (sequence + 1);
             command(3, 0, tag);
@@ -97,8 +104,24 @@ namespace pose::hdmi {
                 std::this_thread::sleep_for(std::chrono::milliseconds(1));
             }
             mayRead = false;
+            stop_proved = true;
             log << "{\"event\":\"stop_proved\",\"tag\":" << tag << "}\n";
             log.flush();
+        }
+        void release_owned() {
+            // SDK free may throw before or after mutation. Never repeat a free
+            // whose result is unknown; still attempt the other independent slot.
+            std::exception_ptr first_error;
+            for (int i=0;i<2;++i) {
+                if (!allocated[i] || released[i]) continue;
+                try {
+                    need(!release_attempted[i], "HDMI frame free outcome unknown; no duplicate free");
+                    release_attempted[i] = true;
+                    frames[i].free();
+                    released[i] = true;
+                } catch (...) { if (!first_error) first_error=std::current_exception(); }
+            }
+            if (first_error) std::rethrow_exception(first_error);
         }
     };
 
@@ -122,9 +145,10 @@ namespace pose::hdmi {
         need(s.idle(), "HDMI not initially idle; existing owner must stop it");
         p.region = device.getMemRegion("udma");
         need(std::string(p.region->typeKey()) == "AXIZG330AIUdmaMemRegionNode", "HDMI UDMA region differs");
-        for (int i = 0; i < 2; ++i) {
+        try { for (int i = 0; i < 2; ++i) {
             // 禁止自动释放；显式STOP快照是唯一的帧块释放入口。
             p.frames[i] = p.region.malloc(frameBytes, false, 64);
+            p.allocated[i] = true;
             const auto address = p.frames[i]->begin.addr();
             need(p.frames[i].isOn(p.region) && p.frames[i]->byte_size == frameBytes &&
                  address >= 0x30100000 && address + frameBytes <= 0x38100000 &&
@@ -136,6 +160,18 @@ namespace pose::hdmi {
         const uint64_t a = p.frames[0]->begin.addr(), b = p.frames[1]->begin.addr();
         need(a + frameBytes <= b || b + frameBytes <= a, "HDMI frames overlap");
         p.log.flush();
+        } catch (...) {
+            const auto original=std::current_exception();
+            // Constructor has issued no START/FLIP and has never published these
+            // addresses. The outer Output destructor does not run on failure.
+            try { p.release_owned(); }
+            catch (...) {
+                static constexpr char message[]="HDMI_CONSTRUCTION_RELEASE_WITHHELD\n";
+                ::write(STDERR_FILENO,message,sizeof(message)-1);
+                std::_Exit(70); // Preserve the existing uncertain-release policy.
+            }
+            std::rethrow_exception(original);
+        }
     }
 
     void Output::verifyMemory() {
@@ -249,7 +285,7 @@ namespace pose::hdmi {
         p.checkThread();
         if (p.closed) return;
         p.stop();
-        for (auto& frame : p.frames) frame.free();
+        p.release_owned();
         p.closed = true;
         p.log << "{\"event\":\"frames_released_after_stop\"}\n";
         p.log.flush();
@@ -258,8 +294,9 @@ namespace pose::hdmi {
     Output::~Output() {
         if (impl_ && !impl_->closed) {
             try { close(); }
-            catch (const std::exception& e) {
-                std::cerr << "HDMI_RELEASE_WITHHELD " << e.what() << std::endl;
+            catch (...) {
+                static constexpr char message[]="HDMI_RELEASE_WITHHELD\n";
+                ::write(STDERR_FILENO,message,sizeof(message)-1);
                 // 无STOP证明时不运行SDK析构／释放；保留日志及物理块身份，禁止继续新负载。
                 std::_Exit(70);
             }

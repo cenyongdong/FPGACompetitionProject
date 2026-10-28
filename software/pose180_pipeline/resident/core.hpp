@@ -42,6 +42,8 @@ struct Stats {
     std::string input_source="tcp_window";
     std::optional<float> score_threshold=0.2f;
     unsigned top_k=3;
+    bool single_person_stability=false;
+    std::atomic<std::uint64_t> single_rejected{0},single_relocations{0},single_limited{0};
     std::atomic<bool> dataset_done{false};
     std::atomic<std::uint64_t> dataset_passes{0};
     std::atomic<std::uint64_t> received{0}, replaced{0}, stale{0}, malformed{0}, reconnects{0};
@@ -68,6 +70,7 @@ struct Stats {
     std::atomic<std::uint64_t> csi_max_skew_us{0},csi_max_span_us{0},longest_input_gap{0};
     std::atomic<std::uint64_t> csi_rejected_records{0};
     std::atomic<bool> isolated{false}, recording{true}, input_connected{false}, pc_connected{false};
+    std::atomic<bool> release_blocked{false};
     std::atomic<bool> initialized{false}, resynchronizing{false};
     mutable std::mutex input_error_mutex;
     std::string last_input_error;
@@ -95,14 +98,17 @@ inline std::string Stats::json(bool mock, bool hdmi) const {
     const auto now=now_ns();
     auto age=[&](std::uint64_t t){return t ? std::to_string((now-t)/1000000) : "null";};
     const auto last=last_result.load(), busy=forward_start.load();
-    const char* state=isolated ? "isolated" : !initialized ? "initializing" :
+    const char* state=release_blocked ? "release_blocked" : isolated ? "isolated" : !initialized ? "initializing" :
         resynchronizing ? "resynchronizing" : busy && now-busy>1000000000 ? "degraded" :
         !last || now-last>2000000000 ? "waiting_input" : "running";
     std::string s="{\"state\":\""+std::string(state)+"\",\"mock\":"+(mock?"true":"false")+
         ",\"hdmi\":"+(hdmi?"true":"false")+",\"input_source\":\""+input_source+"\",\"dataset_done\":"+(dataset_done?"true":"false");
     s+=",\"score_threshold\":"+(score_threshold?std::to_string(*score_threshold):std::string("null"));
     s+=",\"top_k\":"+std::to_string(top_k);
+    s+=",\"single_person_stability\":"+std::string(single_person_stability?"true":"false");
+    s+=",\"release_blocked\":"+std::string(release_blocked?"true":"false");
     auto add=[&](const char* k,std::uint64_t v){s+=",\""+std::string(k)+"\":"+std::to_string(v);};
+    add("single_rejected",single_rejected);add("single_relocations",single_relocations);add("single_limited",single_limited);
     add("received",received);add("replaced",replaced);add("stale",stale);add("malformed",malformed);
     add("dataset_passes",dataset_passes);
     add("reconnects",reconnects);add("input_epoch",input_epoch);add("inferred",inferred);add("adopted",adopted);

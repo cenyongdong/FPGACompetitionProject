@@ -69,6 +69,7 @@ def main():
     command = startup.command(root, run, 123456, 0)
     options = dict(zip(command[1::2], command[2::2]))
     assert options['--top-k']=='1' and options['--score-threshold']=='none' and options['--seconds']=='0'
+    assert options['--single-person-stability']=='1'
     # Use that same selection/runtime invocation with only the device adapter
     # replaced by an explicit native mock and loopback input for this test.
     options['--hdmi']='0'

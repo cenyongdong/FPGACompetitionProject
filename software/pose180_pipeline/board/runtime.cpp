@@ -1,4 +1,5 @@
 #include "runtime.hpp"
+#include "release_guard.hpp"
 #include <icraft-backends/zg330backend/zg330backend.h>
 #include <icraft-backends/hostbackend/backend.h>
 #include <icraft-xir/ops/ops.h>
@@ -163,6 +164,10 @@ struct Runtime::Impl {
     Device device;
     Session session;
     Tensor input_tensor;
+    // Preserve returned handles even if forward validation/final waiting throws.
+    // A local vector would unwind before the failure handler can retain them.
+    std::vector<Tensor> forward_inputs, outputs;
+    ReleaseGuard activity;
     FixedDumpBuffer<candidate_count * sizeof(float)> score_dump;
     FixedDumpBuffer<pose_values * sizeof(float)> pose_dump;
     uint32_t final_count = 0;
@@ -171,7 +176,11 @@ struct Runtime::Impl {
     double initialized_ms = 0;
     std::string identity;
 
-    explicit Impl(const Config& value) : config(value) {
+    explicit Impl(const Config& value) : config(value) {}
+
+    // Impl is already fully constructed: initialization exceptions therefore
+    // pass through its guarded destructor before any device members unwind.
+    void initialize() {
         const auto start = Clock::now();
         try {
             require(!config.graph.empty() && !config.raw.empty() && !config.evidence.empty(),
@@ -194,6 +203,7 @@ struct Runtime::Impl {
             for (const auto& op : graph->ops)
                 require(op.is<xir::HardOp>() || op.is<xir::Input>() || op.is<xir::Output>(), "Host compute/TopK remains");
             graph.lazyLoadParamsFromFile(config.raw.string());
+            activity.begin("SDK_initialization");
             device = Device::Open("axi://zg330aiu?npu=0x40000000&dma=0x80000000");
             device.setWaitTime(10000);
             const auto version = device.version();
@@ -207,6 +217,7 @@ struct Runtime::Impl {
                 graph.view(), {device, HostDevice::Default()});
             session.enableTimeProfile(false);
             session.apply();
+            activity.complete(); // apply returned normally; no forward was issued.
             final_count = validate_fusion(session, graph, config.evidence);
             session.setPostCallBack([this](const Session&, const xir::Operation& op,
                                           const Backend& backend, std::vector<Tensor>&) {
@@ -215,6 +226,7 @@ struct Runtime::Impl {
                 else if (!op.is<xir::Input>() && !op.is<xir::Output>()) ++host_compute_calls;
             });
             input_tensor = Tensor(in[0]).mallocOn(HostDevice::MemRegion());
+            forward_inputs.push_back(input_tensor);
             if (config.on_device_ready) config.on_device_ready(device);
             initialized_ms = elapsed(start);
             text_file(config.evidence / "initialized.json", "{" + identity
@@ -232,10 +244,17 @@ struct Runtime::Impl {
 
     ~Impl() {
         // A wrong-thread destructor must not silently release SDK handles there.
-        if (owner != std::this_thread::get_id()) std::terminate();
+        if (owner != std::this_thread::get_id()) activity.begin("wrong_owner_thread");
+        retain_if_unproved();
         if (session.defined()) {
             try { session.setPostCallBack(Session::CallBackFunc{}); } catch (...) {}
         }
+    }
+
+    void retain_if_unproved() const noexcept {
+        activity.retain_if_unproved([&](const char* stage) {
+            if (config.on_release_blocked) config.on_release_blocked(stage);
+        });
     }
 
     void assert_owner() const {
@@ -265,6 +284,8 @@ struct Runtime::Impl {
                 + ",\"source_time_ns\":" + std::to_string(window ? window->source_time_ns : 0)
                 + ",\"error\":" + quote(error) + ",\"score_dump_bytes\":" + std::to_string(score_dump.written())
                 + ",\"pose_dump_bytes\":" + std::to_string(pose_dump.written())
+                + ",\"release_permitted\":" + (activity.permitted() ? "true" : "false")
+                + ",\"pending_stage\":" + quote(activity.stage())
                 + ",\"automatic_retry\":false,\"late_output_reread\":false}\n");
         });
     }
@@ -290,21 +311,27 @@ struct Runtime::Impl {
             auto begin = Clock::now();
             // This pool slot owns mutable input bytes; no temporary tensor or
             // const_cast is needed for the public write(char*) API.
+            activity.begin("input_write");
             input_tensor.write(0, reinterpret_cast<char*>(result.input.data()), sizeof(result.input));
+            activity.complete(); // Public synchronous host input write returned.
             result.prepare_ms = elapsed(begin);
             stage = "status_clear";
             begin = Clock::now();
+            activity.begin("status_clear");
             result.before_clear = device.cast<ZG330Device>().layerCount();
             device.reset(1);
             result.before_forward = device.cast<ZG330Device>().layerCount();
             require(result.before_forward == 0, "Status-only frame clear did not reach zero: actual="
                     + std::to_string(result.before_forward));
+            activity.complete();
             result.state_clear_ms = elapsed(begin);
             npu_calls = 0;
             host_compute_calls = 0;
             stage = "forward";
             begin = Clock::now();
-            auto outputs = session.forward({input_tensor});
+            outputs.clear(); // Previous invocation was proved complete.
+            activity.begin("forward_or_final_wait");
+            outputs = session.forward(forward_inputs);
             result.forward_ms = elapsed(begin);
             require(outputs.size() == 2, "Runtime output count differs");
             stage = "native_final_wait";
@@ -320,12 +347,15 @@ struct Runtime::Impl {
             require(result.completed_layers == final_count, "Runtime final completion count differs: actual="
                     + std::to_string(result.completed_layers) + "; expected=" + std::to_string(final_count));
             require(npu_calls > 0 && host_compute_calls == 0, "Unexpected actual Host computation");
+            activity.complete(); // Both native waits AND actual graph count passed.
             stage = "first_output_dump";
             begin = Clock::now();
+            activity.begin("first_output_dump");
             dump_first(outputs[0], score_dump);
             std::memcpy(result.scores.data(), score_dump.data(), sizeof(result.scores));
             dump_first(outputs[1], pose_dump);
             std::memcpy(result.poses.data(), pose_dump.data(), sizeof(result.poses));
+            activity.complete();
             result.output_ms = elapsed(begin);
             // Both first outputs now belong to this immutable pool slot. No
             // failure below can trigger a second SDK read or patch these bytes.
@@ -356,8 +386,10 @@ struct Runtime::Impl {
     }
 };
 
-Runtime::Runtime(const Config& config) : impl_(std::make_unique<Impl>(config)) {}
+Runtime::Runtime(const Config& config) : impl_(std::make_unique<Impl>(config)) { impl_->initialize(); }
 Runtime::~Runtime() = default;
 void Runtime::infer(const Window& window, Result& result) { impl_->infer(window, result); }
 double Runtime::init_ms() const { impl_->assert_owner(); return impl_->initialized_ms; }
+bool Runtime::release_permitted() const noexcept { return impl_->activity.permitted(); }
+void Runtime::retain_if_unproved() const noexcept { impl_->retain_if_unproved(); }
 } // namespace pose180_pipeline

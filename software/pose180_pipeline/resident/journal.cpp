@@ -6,6 +6,9 @@
 #include <unistd.h>
 #include <fstream>
 #include <cstring>
+#include <cstdlib>
+#include <dirent.h>
+#include <sys/prctl.h>
 
 namespace pose180_demo {
 namespace {
@@ -68,8 +71,22 @@ void writer(int fd,const std::filesystem::path& output) {
 Journal::Journal(Shared& s,const std::filesystem::path& path):shared_(s) {
     setp(line_.data(),line_.data()+line_.size());
     int pair[2];if(::socketpair(AF_UNIX,SOCK_SEQPACKET|SOCK_CLOEXEC,0,pair))throw std::runtime_error("Recorder IPC failed");
+    const auto parent=::getpid();
     child_=::fork();
-    if(child_==0){::close(pair[0]);writer(pair[1],path);::close(pair[1]);::_exit(0);}
+    if(child_==0){
+        // Logger has no SDK handles. Do not retain an inherited resource lease
+        // or pipe writer after its owning inference process dies.
+        ::signal(SIGTERM,SIG_DFL);::signal(SIGINT,SIG_DFL);
+        if(::prctl(PR_SET_PDEATHSIG,SIGKILL)||::getppid()!=parent)::_exit(1);
+        auto* directory=::opendir("/proc/self/fd");
+        if(!directory)::_exit(1);
+        const int scan_fd=::dirfd(directory);
+        while(auto* entry=::readdir(directory)){
+            char* end=nullptr;const long fd=std::strtol(entry->d_name,&end,10);
+            if(end!=entry->d_name&&!*end&&fd>2&&fd!=scan_fd&&fd!=pair[1])::close(int(fd));
+        }
+        ::closedir(directory);writer(pair[1],path);::close(pair[1]);::_exit(0);
+    }
     ::close(pair[1]);fd_=pair[0];
     if(child_<0){::close(fd_);fd_=-1;throw std::runtime_error("Recorder fork failed");}
 }
@@ -102,6 +119,10 @@ Journal::~Journal() {
     for(int i=0;i<20;++i){if(::waitpid(child_,nullptr,WNOHANG)==child_)return;::usleep(10000);}
     ::kill(child_,SIGTERM);
     for(int i=0;i<20;++i){if(::waitpid(child_,nullptr,WNOHANG)==child_)return;::usleep(10000);}
-    ::kill(child_,SIGKILL);::waitpid(child_,nullptr,0);
+    ::kill(child_,SIGKILL);
+    for(int i=0;i<20;++i){if(::waitpid(child_,nullptr,WNOHANG)==child_)return;::usleep(10000);}
+    // Uninterruptible filesystem IO cannot be force-reaped. This child owns no
+    // SDK handle or resource lease, so it must not hold the SDK owner's exit.
+    ::write(STDERR_FILENO,"RECORDER_REAP_PENDING\n",22);
 }
 }

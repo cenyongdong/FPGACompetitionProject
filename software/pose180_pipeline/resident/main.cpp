@@ -5,6 +5,8 @@
 #include "dataset.hpp"
 #include "postprocess.hpp"
 #include "lean_admission.hpp"
+#include "exception_message.hpp"
+#include "release_guard.hpp"
 #ifdef POSE180_DEMO_PL_FILTER
 #include "pl_filter.hpp"
 #endif
@@ -26,19 +28,43 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <sys/prctl.h>
+#include <unistd.h>
 
 namespace pd=pose180_demo;namespace pp=pose180_pipeline;namespace fs=std::filesystem;
 namespace {
 volatile std::sig_atomic_t stopping=0;
 void stop(int){stopping=1;}
 void need(bool ok,const char* why){if(!ok)throw std::runtime_error(why);}
+#ifndef POSE180_DEMO_SDK
+// Exercises the same retain-before-destruction boundary without any SDK handle.
+struct MockReleaseOwner {
+    pd::Shared& shared;
+    pp::ReleaseGuard activity;
+    void retain() const noexcept { activity.retain_if_unproved([&](const char*) {
+        shared.stats.release_blocked=true;shared.stats.isolated=true;
+    }); }
+    ~MockReleaseOwner(){retain();}
+};
+#endif
 }
 int main(int argc,char**argv) {
-    std::signal(SIGINT,stop);std::signal(SIGTERM,stop);
+    std::signal(SIGINT,stop);std::signal(SIGTERM,stop);std::signal(SIGHUP,stop);
+    // A dead stdout/stderr collector must not kill an in-flight SDK call.
+    std::signal(SIGPIPE,SIG_IGN);
+    fs::path cleanup_output;
+    bool hardware_attempted=false;
     try {
         std::map<std::string,std::string> options;
         for(int i=1;i<argc;i+=2){need(i+1<argc,"Expected --option value");need(options.emplace(argv[i],argv[i+1]).second,"Repeated option");}
         auto take=[&](const char* key,const std::string& fallback){auto it=options.find(key);if(it==options.end())return fallback;auto v=it->second;options.erase(it);return v;};
+        const auto supervisor=std::stoul(take("--supervisor-pid","0"));
+        if(supervisor){
+            // A lost supervisor requests the same graceful stop as a user.
+            // Never send a fatal signal to an SDK owner with work in flight.
+            need(::prctl(PR_SET_PDEATHSIG,SIGTERM)==0,"Cannot bind supervisor lifetime");
+            need(!stopping&&unsigned(::getppid())==supervisor,"Supervisor ended before initialization");
+        }
         const fs::path package=take("--package","."),output=take("--output","");
         const auto bind=take("--bind","127.0.0.1"),csi_config=take("--csi","");
         const auto dataset_file=take("--dataset","");
@@ -57,6 +83,8 @@ int main(int argc,char**argv) {
         const auto delay=std::stoul(take("--mock-delay-ms","10"));
         const auto slow_at=std::stoull(take("--mock-slow-at","0"));
         const auto fail_at=std::stoull(take("--mock-fail-at","0"));
+        const auto nonstandard_at=std::stoull(take("--mock-nonstandard-at","0"));
+        const auto unproved_at=std::stoull(take("--mock-unproved-at","0"));
         need(!hdmi,"Mock cannot access HDMI");
 #endif
         const auto view_port=std::stoul(take("--view-port",mock?"0":"39385"));
@@ -87,6 +115,10 @@ int main(int argc,char**argv) {
         pose::post::Config presentation_config;
         const auto top_k=std::stoul(take("--top-k","3"));
         need(top_k>=1&&top_k<=3,"Invalid TopK");presentation_config.top_k=unsigned(top_k);
+        const auto single_stability=take("--single-person-stability","0");
+        need(single_stability=="0"||single_stability=="1","Invalid single-person stability option");
+        presentation_config.single_person_stability=single_stability=="1";
+        need(!presentation_config.single_person_stability||(top_k==1&&filter_backend=="cpu"),"Single-person stability requires CPU Top1");
         const auto score_threshold=take("--score-threshold","0.35");
         if(score_threshold=="none")presentation_config.score_threshold.reset();
         else {
@@ -121,16 +153,22 @@ int main(int argc,char**argv) {
         need(dataset_file.empty()||(csi_config.empty()&&!input_port),"Dataset excludes live CSI and TCP input");
         need(dataset_repetitions>=1&&dataset_repetitions<=30&&(!dataset_file.empty()||dataset_repetitions==1),"Dataset repetitions require an explicit bounded dataset");
         need(!output.empty()&&!fs::exists(output)&&fs::create_directory(output),"Fresh output directory required");
+        cleanup_output=output;
         pd::Shared shared;
         shared.stats.score_threshold=presentation_config.score_threshold;
         shared.stats.top_k=presentation_config.top_k;
+        shared.stats.single_person_stability=presentation_config.single_person_stability;
         shared.stats.input_source=!dataset_file.empty()?"official_dataset":!csi_config.empty()?"live_csi":"tcp_window";
         // Must precede SDK, IO and CSI construction (fork cannot inherit them).
         pd::Journal journal(shared,output);
         pd::Io io(shared,bind,input_port,result_port,status_port,session,mock,hdmi,unsigned(view_port));
+#ifndef POSE180_DEMO_SDK
+        MockReleaseOwner mock_owner{shared,{}};
+#endif
         pose::post::Postprocessor postprocessor(presentation_config);
         pose::post::Postprocessor ps_reference(presentation_config);
         journal.status("selection=top"+std::to_string(presentation_config.top_k)+"; strict_score_threshold="+(presentation_config.score_threshold?std::to_string(*presentation_config.score_threshold):std::string("none"))+"\n");
+        journal.status("single_person_stability="+single_stability+"\n");
         journal.status("presentation=tracked-one-euro-v5; requested_backend="+filter_backend+"; min_cutoff="+std::to_string(presentation_config.min_cutoff)+"; beta="+std::to_string(presentation_config.beta)+"; d_cutoff="+std::to_string(presentation_config.d_cutoff)+"; tracking_cutoff=3; velocity_cutoff=1; local_quality_gate=1; duplicate_centre=0.3; duplicate_pose=0.3; duplicate_translation=0.7; duplicate_shape=0.2; confirmation_hits=3; hold_ms=250; identity_ms=250; temporal_representative=1; shadow_support_margin=0.25; view_port="+std::to_string(view_port)+"\n");
 #ifdef POSE180_DEMO_PL_FILTER
         std::unique_ptr<pose::post::PlFilter> pl_filter;
@@ -147,9 +185,15 @@ int main(int argc,char**argv) {
 #ifndef POSE180_DEMO_PROBE_FREE
         std::unique_ptr<Mapping> mapping;
 #endif
+        pp::RuntimeShutdownGuard runtime_shutdown{runtime};
         try {
+            need(!stopping,"Stop requested before SDK initialization");
+            hardware_attempted=true; // Includes functional startup MMIO before Runtime.
             pp::Config config;config.graph=package/"models/piw24_pose180_ZG.json";
             config.raw=package/"models/piw24_pose180_ZG.raw";config.evidence=output/"engine";
+            config.on_release_blocked=[&](const char*) {
+                shared.stats.release_blocked=true;shared.stats.isolated=true;
+            };
             if(hdmi) {
 #ifndef POSE180_DEMO_PROBE_FREE
                 std::ifstream mode_file(package/"startup-mode.txt");std::string mode;mode_file>>mode;
@@ -209,7 +253,10 @@ int main(int argc,char**argv) {
                 need(pose::r9_startup::return_path_healthy(initialized),"Initialization return path changed");
 #endif
             } else runtime=std::make_unique<pp::Runtime>(config);
-        }catch(const std::exception& error){shared.stats.isolated=true;journal.status(std::string("SDK initialization isolated: ")+error.what()+"\n");}
+        }catch(...){
+            shared.stats.isolated=true;
+            try{journal.status(std::string("SDK initialization isolated: ")+pp::current_exception_message()+"\n");}catch(...){}
+        }
         pose::hdmi::PreparedBackground canvas;
         // Metadata only: the reusable pixel vector stays in canvas, so holding
         // the last actual pose adds no full-frame cache or model output copy.
@@ -252,15 +299,21 @@ int main(int argc,char**argv) {
 #endif
         const auto started=pd::now_ns();auto last_status=started;
         pd::Input input;pp::Result result;pd::Record record{};std::uint64_t sequence=0;
-        auto isolate=[&](const std::exception& error) {
-            shared.stats.forward_start=0;shared.stats.isolated=true;shared.input.clear();shared.output.clear();
-            journal.freeze();journal.status(std::string("isolated: ")+error.what()+"\n");
+        auto isolate=[&](const char* error) noexcept {
+            shared.stats.forward_start=0;shared.stats.isolated=true;
+#ifdef POSE180_DEMO_SDK
+            if(runtime&&!runtime->release_permitted())shared.stats.release_blocked=true;
+#else
+            if(!mock_owner.activity.permitted())shared.stats.release_blocked=true;
+#endif
+            try {shared.input.clear();shared.output.clear();journal.freeze();journal.status(std::string("isolated: ")+error+"\n");}
+            catch(...){} // Diagnostics must not turn the original fault into terminate.
             // Keep listeners/status alive, never reopen or retry failed SDK.
         };
 #ifdef POSE180_DEMO_SDK
         // Submit standby even when a dataset's first window is already ready.
         // It uses the same owner, fresh tag and adoption proof as later frames.
-        try { show_wait(); } catch(const std::exception& error) { isolate(error); }
+        try { show_wait(); } catch(...) { isolate(pp::current_exception_message()); }
 #endif
         shared.stats.initialized=true;
         while(!stopping && (!seconds || pd::now_ns()-started<seconds*1000000000ull)) {
@@ -279,7 +332,7 @@ int main(int argc,char**argv) {
             }
             if(!ready) {
 #ifdef POSE180_DEMO_SDK
-                try{show_wait();}catch(const std::exception& error){isolate(error);}
+                try{show_wait();}catch(...){isolate(pp::current_exception_message());}
 #endif
                 std::this_thread::sleep_for(std::chrono::milliseconds(5));continue;
             }
@@ -290,6 +343,8 @@ int main(int argc,char**argv) {
 #else
                 const auto invocation=shared.stats.inferred.load();
                 std::this_thread::sleep_for(std::chrono::milliseconds(slow_at && invocation+1==slow_at?1500:delay));
+                if(unproved_at && invocation+1==unproved_at){mock_owner.activity.begin("mock_unproved_forward");throw 71;}
+                if(nonstandard_at && invocation+1==nonstandard_at)throw 72;
                 if(fail_at && invocation+1==fail_at)throw std::runtime_error("Injected mock SDK failure");
                 result={};result.frame_id=input.window.frame_id;result.source_time_ns=input.window.source_time_ns;
                 result.invocation=invocation;result.input=pose_v1::preprocess(input.window.csi);
@@ -334,6 +389,7 @@ int main(int argc,char**argv) {
                 shared.stats.post_history_selections=post_metrics.history_selections;shared.stats.post_reacquired=post_metrics.reacquired;
                 shared.stats.post_held_handoffs=post_metrics.held_handoffs;shared.stats.post_hidden_frames=post_metrics.hidden_frames;
                 shared.stats.post_shadow_deferred=post_metrics.shadow_deferred;
+                shared.stats.single_rejected=post_metrics.single_rejected;shared.stats.single_relocations=post_metrics.single_relocations;shared.stats.single_limited=post_metrics.single_limited;
                 shared.stats.joint_gate_rejections=post_metrics.joint_gate_rejections;shared.stats.bone_gate_rejections=post_metrics.bone_gate_rejections;
                 shared.stats.cpu_filter_frames=post_metrics.cpu_filter_frames;shared.stats.cpu_filter_coordinates=post_metrics.cpu_filter_coordinates;
                 shared.stats.cpu_filter_ns=post_metrics.cpu_filter_ns;shared.stats.cpu_filter_max_ns=post_metrics.cpu_filter_max_ns;
@@ -368,10 +424,17 @@ int main(int argc,char**argv) {
                     shared.stats.display_updates=presentation.updates();
                 }
 #endif
-            }catch(const std::exception& error) {
-                isolate(error);
+            }catch(...) {
+                isolate(pp::current_exception_message());
             }
         }
+        // Preserve status listeners/lease as well as SDK handles if hardware
+        // release remains unproved. No completion receipt may follow this case.
+#ifdef POSE180_DEMO_SDK
+        if(runtime)runtime->retain_if_unproved();
+#else
+        mock_owner.retain();
+#endif
         shared.stop=true;csi.reset();dataset.reset();
 #ifdef POSE180_DEMO_SDK
         // Output retains its unchanged tagged STOP/drain proof before any free.
@@ -389,5 +452,15 @@ int main(int argc,char**argv) {
           done<<"{\"native_shutdown_complete\":true,\"status\":"<<shared.stats.json(mock,hdmi)<<"}\n"; }
         std::cout<<shared.stats.json(mock,hdmi);
         return shared.stats.isolated?3:0;
-    }catch(const std::exception& error){std::cerr<<"RESIDENT_STOP "<<error.what()<<std::endl;return 1;}
+    }catch(...){
+        const char* error=pp::current_exception_message();
+        // This catch runs after IO/CSI/Journal RAII teardown. A bind/config
+        // failure before any hardware access can safely release its own alias.
+        if(!hardware_attempted&&!cleanup_output.empty())try{
+            std::ofstream done(cleanup_output/"completion.json");
+            done<<"{\"native_shutdown_complete\":true,\"failure_before_hardware\":true,\"status\":{\"state\":\"failed_before_hardware\"}}\n";
+        }catch(...){}
+        try{std::cerr<<"RESIDENT_STOP "<<error<<std::endl;}catch(...){}
+        return 1;
+    }
 }

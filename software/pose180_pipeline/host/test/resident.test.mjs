@@ -82,22 +82,39 @@ async function verifyPage(html,live) {
     const elements=new Map();
     const element=id=>{if(!elements.has(id))elements.set(id,{textContent:'',dataset:{},events:{},addEventListener(kind,callback){this.events[kind]=callback;}});return elements.get(id);};
     const buttons=['perspective','front','side','top'].map(view=>({...element(view),dataset:{view},setAttribute(){}}));
-    const poses=[],views=[],labels=[],timers=[];let response=live,fpsCallback;
+    const poses=[],views=[],animations=[];let stream,now=0,fpsCallback,dispose,closed=false,sceneDisposed=false;
     const context={
-        createScene:(container,bones,fps)=>{assert.equal(bones.length,14);fpsCallback=fps;return {setPose:f=>poses.push(f),view:v=>views.push(v),labels:v=>labels.push(v),dispose(){}};},
-        document:{getElementById:element,querySelectorAll:()=>buttons},window:{addEventListener(){}},AbortSignal,
-        fetch:async()=>({ok:true,json:async()=>response}),setTimeout:callback=>timers.push(callback)
+        createScene:(container,bones,fps)=>{assert.equal(bones.length,14);fpsCallback=fps;return {setPose:f=>poses.push(f),view:v=>views.push(v),dispose(){sceneDisposed=true;}};},
+        document:{getElementById:element,querySelectorAll:()=>buttons},window:{addEventListener(kind,fn){if(kind==='pagehide')dispose=fn;}},
+        performance:{now:()=>now},EventSource:class{constructor(url){assert.equal(url,'/api/events');stream=this;}close(){closed=true;}},
+        requestAnimationFrame:fn=>animations.push(fn),cancelAnimationFrame:()=>{},console
     };
-    vm.runInNewContext(script,context);await wait(0);
+    vm.runInNewContext(script,context);
+    const tick=(time)=>{now=time;animations.shift()(now);};
+    const deliver=value=>stream.onmessage({data:JSON.stringify(value)});
+    deliver({...live,age_ms:0});tick(0);
     assert.equal(poses.length,1);assert.equal(element('phase').dataset.state,'live');
-    response={...live,phase:'result_stale',age_ms:2500,new_results_hz:0};timers.shift()();await wait(0);
-    assert.equal(poses.length,1,'Polling an old result manufactured another pose update');
+    assert.equal(element('process').textContent,'1.00');
+    deliver({...live,age_ms:2500,new_results_hz:0});tick(1000);
+    assert.equal(poses.length,1,'An old result manufactured another pose update');
     assert.match(element('phase').textContent,/过期/);
-    response={...response,phase:'reconnecting',connected:false};timers.shift()();await wait(0);
-    assert.equal(poses.length,1);assert.match(element('phase').textContent,/重连/);
-    response={...live,frame:{...live.frame,sequence:'3'}};timers.shift()();await wait(0);
-    assert.equal(poses.length,2);assert.match(element('phase').textContent,/更新中/);
-    for(const button of buttons)button.events.click();
-    assert.deepEqual(views,['perspective','front','side','top']);
-    fpsCallback(60);
+    stream.onerror();tick(1100);
+    assert.equal(poses.length,1);assert.match(element('phase').textContent,/中断/);
+    // More than ten distinct poses per second reach the page; repeated draw calls
+    // and coalesced network messages must not inflate the displayed update rate.
+    for(let i=0;i<31;i++){
+        now=1200+i*33;deliver({...live,age_ms:0,frame:{...live.frame,session:'43',sequence:String(i+3)}});tick(now);
+    }
+    tick(2300);
+    assert.equal(poses.length,32);assert(Number(element('pose-rate').textContent)>20);
+    const before=poses.length;fpsCallback(60);tick(2316);tick(2332);
+    assert.equal(poses.length,before,'Browser refresh was counted as inference');
+    now=2340;deliver({...live,age_ms:0,frame:{...live.frame,session:'43',sequence:'100'}});
+    deliver({...live,age_ms:0,frame:{...live.frame,session:'43',sequence:'101'}});tick(2341);
+    assert.equal(poses.length,before+1,'Queued stream updates were replayed instead of adopting the latest');
+    assert.equal(poses.at(-1).sequence,'101');
+    deliver({...live,age_ms:0,processing:{connected:false,samples:0,median_ms:null,p95_ms:null}});tick(3500);
+    assert.equal(element('process').textContent,'—');
+    for(const button of buttons)button.events.click();assert.deepEqual(views,['perspective','front','side','top']);
+    dispose();assert(closed&&sceneDisposed,'Page exit leaked the event connection or scene');
 }

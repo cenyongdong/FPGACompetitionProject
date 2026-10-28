@@ -2,8 +2,35 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import net from 'node:net';import {spawn} from 'node:child_process';import {once} from 'node:events';
 import {fileURLToPath} from 'node:url';import fs from 'node:fs';import os from 'node:os';import path from 'node:path';
 import {PresentationReader,decodePresentation,visiblePresentation,VIEW_LIMIT} from '../presentation.mjs';
+import {record} from './fixtures.mjs';
 const frame=(n=1)=>({schema:'PIWVIEW1',version:1,replay:false,session:'18446744073709500000',frame:String(n),sequence:String(n),source_ns:String(1000000000+n*67000000),hold_ms:250,
  poses:[{track:'7',candidate:19,score:.8,held:false,observed_ns:String(1000000000+n*67000000),age_ms:0,joints:Array(42).fill(.3)}],raw_poses:[]});
+
+test('filtered SSE pairs timing by identity and remains independent when telemetry disconnects',async()=>{
+ const views=[],raws=[];let ack=0,child,output='',reader;
+ const viewServer=net.createServer(s=>{views.push(s);s.on('data',b=>ack+=b.length);});
+ const rawServer=net.createServer(s=>{raws.push(s);s.on('data',b=>ack+=b.length);});
+ await Promise.all([new Promise(r=>viewServer.listen(0,'127.0.0.1',r)),new Promise(r=>rawServer.listen(0,'127.0.0.1',r))]);
+ const hp=await free(),base='http://127.0.0.1:'+hp;
+ try{
+  child=spawn(process.execPath,[fileURLToPath(new URL('../resident.mjs',import.meta.url)),'--board','127.0.0.1','--port',String(viewServer.address().port),'--metrics-port',String(rawServer.address().port),'--http-port',String(hp),'--seconds','4','--mock','1'],{windowsHide:true});
+  const done=once(child,'exit');child.stdout.on('data',b=>output+=b);
+  await until(()=>output.includes('RESIDENT_PC_READY')&&views.length&&raws.length);
+  const response=await fetch(base+'/api/events');assert.match(response.headers.get('content-type'),/text\/event-stream/);reader=response.body.getReader();
+  const events=[];let pending='';const reading=(async()=>{while(true){const {done,value}=await reader.read();if(done)break;pending+=Buffer.from(value).toString();let end;while((end=pending.indexOf('\n\n'))>=0){const message=pending.slice(0,end);pending=pending.slice(end+2);if(message.startsWith('data: '))events.push(JSON.parse(message.slice(6)));}}})().catch(()=>{});
+  const f=frame();f.frame='1000000';f.session='42';f.source_ns='123';f.poses[0].observed_ns='123';
+  const wrong=record({session:43n});raws[0].write(wrong);views[0].write(JSON.stringify(f)+'\n');
+  await until(()=>events.some(e=>e.frame?.sequence==='1'));assert.equal(events.at(-1).processing.samples,0,'Unrelated session timing matched');
+  const matching=record();matching.writeDoubleLE(18.5,80);raws[0].write(matching.subarray(0,33));raws[0].write(matching.subarray(33));
+  await until(()=>events.some(e=>e.processing.samples===1));assert.equal(events.at(-1).processing.median_ms,18.5);
+  raws[0].destroy();await wait(50);
+  f.sequence='2';f.frame='1000001';views[0].write(JSON.stringify(f)+'\n');
+  const get=async()=>await(await fetch(base+'/api/state')).json();
+  const state=await until(async()=>{const s=await get();return s.frame?.sequence==='2'&&s;});
+  assert.equal(state.connected,true);assert.equal(state.processing.connected,false);assert.equal(state.processing.samples,0);assert.equal(ack,0);
+  await reader.cancel();await reading;assert.equal((await done)[0],0);
+ }finally{await reader?.cancel().catch(()=>{});child?.kill();[...views,...raws].forEach(s=>s.destroy());await Promise.all([new Promise(r=>viewServer.close(r)),new Promise(r=>rawServer.close(r))]);}
+});
 test('explicit Top1 without confidence cutoff retains low, zero and negative finite scores',()=>{
  for(const score of [.001,0,-.5]){
   const f={...frame(),top_k:1,score_threshold:null};f.poses[0].score=score;

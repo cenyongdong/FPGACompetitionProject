@@ -15,6 +15,9 @@ int main(int argc,char**argv){try{
  std::map<std::uint64_t,Raw> records;Config config;
  for(int i=1;i<argc;++i){
   const std::string arg=argv[i];
+  if(arg=="--single-person-stability"){config.single_person_stability=true;continue;}
+  if(arg.rfind("--top-k=",0)==0){config.top_k=std::stoul(arg.substr(8));continue;}
+  if(arg.rfind("--score-threshold=",0)==0){auto value=arg.substr(18);if(value=="none")config.score_threshold.reset();else config.score_threshold=std::stof(value);continue;}
   // Offline comparisons only. The resident defaults remain unchanged.
   if(arg.rfind("--min-cutoff=",0)==0){config.min_cutoff=std::stod(arg.substr(13));continue;}
   if(arg.rfind("--beta=",0)==0){config.beta=std::stod(arg.substr(7));continue;}
@@ -33,6 +36,7 @@ int main(int argc,char**argv){try{
  }
  Postprocessor p(config);unsigned raw_changes=0,shown_changes=0,last_raw=0,last_shown=0,raw_jumps=0,track_jumps=0;
  unsigned id_switches=0,id_switch_jumps=0,near_pairs=0,near_held_pairs=0,blank_with_candidates=0;
+ unsigned adjacent_steps=0,adjacent_big_steps=0,held_frames=0;double max_step=0,step_sq=0,max_joint_step=0;
  std::array<unsigned,4> shown_counts{};bool first=true;PresentationFrame previous;double total_ms=0,max_ms=0,max_id_switch=0;
  auto centre=[](const Person&a){std::array<double,3> c{};for(unsigned j=0;j<14;++j)for(unsigned k=0;k<3;++k)c[k]+=a.joints[j*3+k]/14.;return c;};
  auto radius=[&](const Person&a){auto c=centre(a);double sum=0;for(unsigned j=0;j<42;++j)sum+=std::pow(a.joints[j]-c[j%3],2);return std::max(.25,std::sqrt(sum/14));};
@@ -48,6 +52,12 @@ int main(int argc,char**argv){try{
   // Visible replacement is not true identity accuracy. Exclude archive holes,
   // recovery epochs and long input gaps from the adjacent replacement metric.
   if(id.session==previous.id.session&&id.sequence==previous.id.sequence+1&&id.source_ns>previous.id.source_ns&&
+     id.source_ns-previous.id.source_ns<=250000000&&previous.poses.size()==1&&f.poses.size()==1){
+   const double step=distance(previous.poses[0],f.poses[0]);++adjacent_steps;adjacent_big_steps+=step>.5;max_step=std::max(max_step,step);step_sq+=step*step;
+   for(unsigned j=0;j<14;++j){double sum=0;for(unsigned k=0;k<3;++k)sum+=std::pow(f.poses[0].joints[3*j+k]-previous.poses[0].joints[3*j+k],2);max_joint_step=std::max(max_joint_step,std::sqrt(sum));}
+  }
+  held_frames+=f.poses.size()==1&&f.poses[0].held;
+  if(id.session==previous.id.session&&id.sequence==previous.id.sequence+1&&id.source_ns>previous.id.source_ns&&
      id.source_ns-previous.id.source_ns<=250000000&&previous.poses.size()==1&&f.poses.size()==1&&previous.poses[0].track!=f.poses[0].track){
    const double d=distance(previous.poses[0],f.poses[0]);++id_switches;id_switch_jumps+=d>.5;max_id_switch=std::max(max_id_switch,d);
   }
@@ -60,6 +70,8 @@ int main(int argc,char**argv){try{
  const auto&m=p.metrics();std::cerr<<'{';bool comma=false;
  auto emit=[&](const char*key,auto value){if(comma)std::cerr<<',';comma=true;std::cerr<<'"'<<key<<"\":"<<value;};
  emit("records",records.size());emit("identity_ms",config.identity_ns/1000000);
+ emit("single_person_stability",config.single_person_stability);emit("single_rejected",m.single_rejected);emit("single_relocations",m.single_relocations);emit("single_limited",m.single_limited);
+ emit("adjacent_visible_pairs",adjacent_steps);emit("adjacent_centre_steps_gt_0_5",adjacent_big_steps);emit("max_adjacent_centre_step",max_step);emit("rms_adjacent_centre_step",std::sqrt(step_sq/std::max(1u,adjacent_steps)));emit("max_adjacent_joint_step",max_joint_step);emit("held_frames",held_frames);
  emit("min_cutoff",config.min_cutoff);emit("beta",config.beta);emit("d_cutoff",config.d_cutoff);
  emit("raw_count_changes",raw_changes);emit("shown_count_changes",shown_changes);emit("births",m.births);emit("expired",m.expired);
  emit("deduplicated",m.duplicates);emit("rejected_pairs",m.rejected_pairs);emit("display_duplicates",m.display_duplicates);

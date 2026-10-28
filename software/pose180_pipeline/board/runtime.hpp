@@ -11,6 +11,8 @@ struct Config {
     std::filesystem::path graph, raw, evidence;
     // Runs on the same SDK thread after apply. HDMI must allocate on this Device.
     std::function<void(const icraft::xrt::Device&)> on_device_ready;
+    // Best-effort control-plane notification only; must not call SDK or free IO.
+    std::function<void(const char*)> on_release_blocked;
 };
 
 // Construct, infer and destroy on one thread. Exactly one Runtime owns the SDK
@@ -33,8 +35,17 @@ public:
     // false, while permanently stopping this Runtime, so the archive can finish.
     void infer(const Window&, Result&);
     double init_ms() const;
+    bool release_permitted() const noexcept;
+    void retain_if_unproved() const noexcept;
 private:
     struct Impl;
     std::unique_ptr<Impl> impl_;
+};
+
+// Declare AFTER the Runtime and its dependent HDMI owner, so exceptional stack
+// unwinding checks NPU ownership before either owner can begin destruction.
+struct RuntimeShutdownGuard {
+    const std::unique_ptr<Runtime>& runtime;
+    ~RuntimeShutdownGuard() { if (runtime) runtime->retain_if_unproved(); }
 };
 } // namespace pose180_pipeline

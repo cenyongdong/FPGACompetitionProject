@@ -1,4 +1,5 @@
 #include "postprocess.hpp"
+#include "single_person.hpp"
 #include <algorithm>
 #include <chrono>
 #include <cmath>
@@ -11,11 +12,7 @@
 
 namespace pose::post {
 namespace {
-using Centre=std::array<double,3>;
-Centre centre(const Joints& p){Centre c{};for(unsigned j=0;j<14;++j)for(unsigned a=0;a<3;++a)c[a]+=p[3*j+a]/14.0;return c;}
-double radius(const Joints& p,const Centre& c){double v=0;for(unsigned j=0;j<14;++j)for(unsigned a=0;a<3;++a)v+=std::pow(p[3*j+a]-c[a],2);return std::max(0.25,std::sqrt(v/14));}
-double distance(const Centre& a,const Centre& b){double v=0;for(unsigned i=0;i<3;++i)v+=std::pow(a[i]-b[i],2);return std::sqrt(v);}
-double shape(const Joints&a,const Centre&ac,const Joints&b,const Centre&bc){double v=0;for(unsigned i=0;i<42;++i)v+=std::pow((a[i]-ac[i%3])-(b[i]-bc[i%3]),2);return std::sqrt(v/14);}
+using namespace geometry;
 bool duplicate(const Person&a,const Person&b,const Config&config){
  const auto ac=centre(a.joints),bc=centre(b.joints);
  const double scale=std::max(radius(a.joints,ac),radius(b.joints,bc));
@@ -52,9 +49,14 @@ double OneEuro::update(double x,double dt,const Config&c){
  const double ad=alpha(c.d_cutoff,dt);d_+=ad*((x-x_)/dt-d_);x_=x;
  const double a=alpha(c.min_cutoff+c.beta*std::abs(d_),dt);y_+=a*(x-y_);return y_;
 }
-void Postprocessor::reset(){tracks_.clear();previous_={};if(backend_)backend_->reset();++metrics_.resets;}
+Postprocessor::Postprocessor(Config c,FilterBackend* backend):config_(c),backend_(backend){
+ if(c.single_person_stability)single_=std::make_unique<SinglePerson>(c);
+}
+Postprocessor::~Postprocessor()=default;
+void Postprocessor::reset(){tracks_.clear();previous_={};if(single_)single_->reset();if(backend_)backend_->reset();++metrics_.resets;}
 PresentationFrame Postprocessor::update(const Identity&id,const float*scores,const float*poses){
  if(config_.top_k<1||config_.top_k>3)throw std::runtime_error("Invalid TopK");
+ if(config_.single_person_stability&&(config_.top_k!=1||backend_))throw std::runtime_error("Single-person stability requires CPU Top1");
  if(config_.score_threshold&&(!std::isfinite(*config_.score_threshold)||*config_.score_threshold<0||*config_.score_threshold>1))throw std::runtime_error("Invalid score threshold");
  if(!scores||!poses||!id.session||!id.sequence||!id.source_ns)throw std::runtime_error("Invalid presentation identity");
  for(unsigned i=0;i<180;++i)if(!std::isfinite(scores[i]))throw std::runtime_error("Nonfinite presentation score");
@@ -72,6 +74,7 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
   Person p;p.candidate=i;p.score=scores[i];p.observed_ns=id.source_ns;std::copy_n(poses+42*i,42,p.joints.begin());out.raw_poses.push_back(p);
   detections.push_back(p);centres.push_back({});radii.push_back(0);
  }
+ if(single_)return single_->update(std::move(out),next_id_,metrics_);
  tracks_.erase(std::remove_if(tracks_.begin(),tracks_.end(),[&](const Track&t){
   const auto lifetime=t.hits>=config_.confirmation_hits?config_.identity_ns:config_.hold_ns;
   if(id.source_ns-t.value.observed_ns>lifetime){++metrics_.expired;return true;}return false;

@@ -1,6 +1,8 @@
 # 项目进度总览
 
-更新：2026-10-28。长期目标仍是稳定的真实 CSI → PS／NPU → HDMI，PC 独立。按用户最新收尾要求，已整合核心代码，构建原 epoch99 图的 **TopK=1／无置信度阈值手动启动包**；ARM64、离线检查及包内源码独立重建通过，未部署或恢复现场测试。[启动包说明](software/pose180_pipeline/resident/STARTUP-PACKAGE.md)与[交付／恢复入口](FPGA/hdmi_candidate/RESUME.md)。此前多档阈值、TopK 和新图有限实测见[实时集成记录](software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)，数据集入口保留。
+更新：2026-10-28。长期目标仍是稳定的真实 CSI → PS／NPU → HDMI，PC 独立。当前本地交付为原 epoch99、TopK=1／无置信度阈值 **r4 生命周期加固启动包**，保留单人滤波。补齐初始化停止、清理全程独占、跨包未完成负载保护及临时地址写前记录；故障注入、三轮完整启停和 ARM64 构建通过。真正原生崩溃或缺少硬件停止证明仍保持阻断，未部署或恢复现场测试。[核心源码](software/core/README.md)、[检查结果及边界](software/pose180_pipeline/resident/STARTUP-PACKAGE.md)、[交付／恢复入口](FPGA/hdmi_candidate/RESUME.md)。
+
+板端 C++ 专项复核补充：r4 仍有 HDMI 部分构造回滚、NPU 异常后释放证明及非标准异常收尾缺口；已做本地源码／替身验证，尚未修复或上板，详见[底层复核](software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端-c-专项复核r4-仍有的缺口)。
 
 ## 当前可确认的状态
 

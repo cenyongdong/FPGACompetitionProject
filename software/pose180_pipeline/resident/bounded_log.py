@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import time
+from process_guard import bind_parent
 
 
 class RingLog:
@@ -23,8 +24,7 @@ class RingLog:
         try:
             while offset < len(data):
                 if self.file is None or self.size == self.limit:
-                    if self.file is not None:
-                        self.file.close()
+                    self.close()
                     self.index = (self.index + 1) % self.segments
                     self.file = (self.root / ('%s-%d.log' % (self.name, self.index))).open('wb', buffering=0)
                     self.size = 0
@@ -37,14 +37,16 @@ class RingLog:
                 self.written += count
         except OSError:
             self.dropped += len(data) - offset
-            if self.file is not None:
-                self.file.close()
-                self.file = None
+            self.close()
             self.retry = time.monotonic() + 5
 
     def close(self):
-        if self.file is not None:
-            self.file.close()
+        stream, self.file = self.file, None
+        if stream is not None:
+            try:
+                stream.close()
+            except OSError:
+                pass  # Diagnostic close errors cannot skip process cleanup.
 
 
 def pump(fd, folder):
@@ -72,5 +74,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('fd', type=int)
     parser.add_argument('folder')
+    parser.add_argument('--parent-pid', type=int)
     args = parser.parse_args()
+    if args.parent_pid is not None and not bind_parent(args.parent_pid):
+        raise SystemExit(0)
     pump(args.fd, args.folder)

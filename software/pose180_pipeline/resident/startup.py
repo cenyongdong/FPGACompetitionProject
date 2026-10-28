@@ -14,9 +14,13 @@ import sys
 import time
 
 from service import atomic, live, process_identity, supervise
+from process_guard import request_stop, StopRequest
 from run_hdmi_trial import owners
 from boot_audit import fat_files
 import startup_network
+
+LOCK = Path('/run/pose180-resident.lock')
+ACTIVE = Path('/run/pose180-resident.active.json')
 
 
 def read(path):
@@ -78,21 +82,114 @@ def previous_run(root):
     return root/'runs'/name
 
 
+def optional_json(path):
+    try:
+        value=read(path)
+        return value if isinstance(value,dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def native_identity(run):
+    return optional_json(run/'metadata/process.json').get('identity')
+
+
+def cleanup_network(run, receipt):
+    if receipt is None:
+        return
+    complete = optional_json(run/'run/completion.json')
+    outcome = optional_json(run/'outcome.json')
+    safe = (not (run/'sdk-attempt.json').exists() or outcome.get('native_started') is False
+            or complete.get('native_shutdown_complete') is True)
+    if not safe or live(native_identity(run)) or owners():
+        atomic(run/'network-cleanup-pending.json', dict(pending=True, reason='Native release not proved'))
+        return
+    startup_network.remove(receipt)
+    atomic(run/'network-closed.json', dict(removed_owned_alias=receipt['added']))
+
+
 def check_previous(root, current_boot):
     previous = previous_run(root)
     if previous is None:
         return
+    check_run(previous, current_boot)
+
+
+def check_global(current_boot):
+    if not ACTIVE.exists():
+        return
+    active = read(ACTIVE)
+    if not isinstance(active, dict) or not active.get('boot_id') or not active.get('run'):
+        raise ValueError('Global ownership receipt is invalid; inspect before starting')
+    if active['boot_id'] == current_boot:
+        previous = Path(active['run'])
+        if not previous.is_absolute() or not (previous/'request.json').exists():
+            raise ValueError('Prior global run evidence is unavailable: '+str(previous))
+        check_run(previous, current_boot)
+
+
+def check_run(previous, current_boot):
     process = previous/'supervisor.json'
     if process.exists() and live(read(process)):
         raise ValueError('Release supervisor already running')
+    if live(native_identity(previous)):
+        raise ValueError('Previous native process is still running without its supervisor')
+    # A finished native may still need its own network cleanup. Do not lose
+    # ownership by overwriting latest.json or starting another release directory.
+    same_boot = optional_json(previous/'request.json').get('boot_id', current_boot) == current_boot
+    if same_boot and (previous/'network.json').exists() and not (previous/'network-closed.json').exists():
+        raise ValueError('Previous network cleanup pending; run recover in '+str(previous.parent.parent))
     attempted = previous/'sdk-attempt.json'
     if not attempted.exists():
         return
-    outcome = read(previous/'outcome.json') if (previous/'outcome.json').exists() else {}
+    outcome = optional_json(previous/'outcome.json')
     safe = (outcome.get('native_exit') == 0 and outcome.get('native_shutdown_complete') is True
             and outcome.get('device_owners') == [])
-    if not safe and read(attempted).get('boot_id') == current_boot:
+    complete=optional_json(previous/'run/completion.json')
+    safe = safe or (complete.get('failure_before_hardware') is True
+                    and complete.get('native_shutdown_complete') is True)
+    recovered = optional_json(previous/'recovery.json')
+    safe = safe or (recovered.get('boot_id')==current_boot and recovered.get('release_proven') is True)
+    attempt = read(attempted)
+    if not isinstance(attempt,dict) or not attempt.get('boot_id'):
+        raise ValueError('Prior SDK attempt receipt is invalid; release unproved')
+    if not safe and attempt.get('boot_id') == current_boot:
         raise ValueError('Previous SDK attempt lacks a safe completion; no same-boot retry')
+
+
+def recover_previous(root):
+    """Manual metadata/network cleanup only. Never initializes/retries an SDK."""
+    previous=previous_run(root)
+    if previous is None:
+        return dict(recovered=False, SDK_started=False)
+    if live(optional_json(previous/'supervisor.json')) or live(native_identity(previous)) or owners():
+        raise ValueError('Prior load is still alive or owns a device')
+    attempted=optional_json(previous/'sdk-attempt.json')
+    if ((previous/'sdk-attempt.json').exists() and attempted.get('boot_id')!=boot_id()
+            or optional_json(previous/'request.json').get('boot_id',boot_id())!=boot_id()):
+        raise ValueError('Recovery applies only to this boot and this run')
+    outcome=optional_json(previous/'outcome.json')
+    complete=optional_json(previous/'run/completion.json')
+    never_started=(not (previous/'sdk-attempt.json').exists() or outcome.get('native_started') is False
+                   or (complete.get('failure_before_hardware') is True and complete.get('native_shutdown_complete') is True))
+    status = complete.get('status')
+    proved=(complete.get('native_shutdown_complete') is True and isinstance(status,dict)
+            and status.get('state') not in (None,'isolated','release_blocked')
+            and status.get('release_blocked') is not True
+            and outcome.get('native_exit') in (None,0))
+    if not (never_started or proved):
+        raise ValueError('Hardware release unproved or failed SDK; keep the run blocked')
+    network=optional_json(previous/'network.json')
+    if (previous/'network.json').exists() and not network:
+        raise ValueError('Network ownership receipt is invalid; preserve the current address')
+    if network:
+        cleanup_network(previous,network)
+        if not (previous/'network-closed.json').exists():
+            raise ValueError('Network cleanup remains pending')
+    result=dict(boot_id=boot_id(),release_proven=True,SDK_started=False,
+                original_outcome_preserved=True,automatic_retry=False)
+    atomic(previous/'recovery.json',result)
+    return result
 
 
 def preflight(root, identity):
@@ -110,6 +207,7 @@ def preflight(root, identity):
     if owners():
         raise ValueError('Device already owned')
     check_previous(root, current)
+    check_global(current)
     return current
 
 
@@ -117,39 +215,111 @@ def command(root, run, session, seconds):
     return [str(root/'pose180_demo'), '--package', str(root), '--output', str(run/'run'),
             '--bind', '0.0.0.0', '--session', str(session), '--seconds', str(seconds),
             '--top-k', '1', '--score-threshold', 'none',
+            '--single-person-stability', '1',
             '--hardware-profile', 'probe-free-drain-filter-v1', '--filter-backend', 'cpu',
             '--min-cutoff', '0.5', '--beta', '0.3', '--d-cutoff', '1',
             '--hdmi', '1', '--csi', str(root/'csi.conf'), '--input-port', '0',
             '--result-port', '39383', '--status-port', '39384', '--view-port', '39385']
 
 
-def main():
+def serve_run(root, run, stopping):
+    # Hold one ownership interval through pre-SDK work, native shutdown and
+    # network rollback. Another package cannot overtake the cleanup phase.
+    with LOCK.open('a') as lock:
+        deadline = time.monotonic()+5
+        while True:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                break
+            except BlockingIOError:
+                if stopping.requested:
+                    return
+                if time.monotonic() >= deadline:
+                    raise
+                time.sleep(.02)  # Parent still publishing; never starts a second SDK.
+        network = None
+        try:
+            active = read(ACTIVE)
+            if active != dict(boot_id=boot_id(), run=str(run.resolve())):
+                raise ValueError('Superseded or invalid global launch reservation')
+            request = read(run/'request.json')
+            if request['boot_id'] != boot_id() or owners():
+                raise ValueError('Boot or device ownership changed before launch')
+            if stopping.requested or (run/'stop.request').exists():
+                return
+            network = startup_network.add(lambda receipt: atomic(run/'network.json',receipt), stopping)
+            if stopping.requested or (run/'stop.request').exists():
+                return
+            with (run/'sdk-attempt.json').open('x') as stream:
+                json.dump(dict(boot_id=boot_id(), automatic_retry=False), stream)
+            session = time.time_ns() // 1000
+            seconds = request['seconds']
+            return supervise(run, command(root, run, session, seconds), seconds+120 if seconds else float('inf'),
+                             bind_native_parent=True, lease_fd=lock.fileno(), stop_request=stopping)
+        except Exception as error:
+            try:
+                atomic(run/'error.json', dict(error=str(error), automatic_retry=False))
+            except OSError:
+                pass
+            raise
+        finally:
+            try:
+                # add() can fail after mutating the interface but before return.
+                receipt = network if network is not None else optional_json(run/'network.json')
+                if (run/'network.json').exists() and not receipt:
+                    raise ValueError('Network ownership receipt is invalid')
+                cleanup_network(run, receipt or None)
+            except Exception as error:
+                try:
+                    atomic(run/'network-cleanup-pending.json', dict(pending=True, error=str(error)))
+                except OSError:
+                    pass
+
+
+def main(stopping):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=('start', 'serve', 'status', 'stop', 'check', 'prepare-boot'))
+    parser.add_argument('action', choices=('start', 'serve', 'status', 'stop', 'check', 'recover', 'prepare-boot'))
     parser.add_argument('--seconds', type=int, default=0, help='0: run until a manual stop; no automatic restart')
     parser.add_argument('--run', help=argparse.SUPPRESS)
     args = parser.parse_args()
     if args.seconds < 0:
         parser.error('Runtime must be nonnegative')
     root = Path(__file__).resolve().parent
-    identity = read(root/'identity.json')
     previous = previous_run(root)
     if args.action in ('status', 'stop'):
         if previous is None:
             print(json.dumps(dict(running=False, started=False)))
             return
-        supervisor = read(previous/'supervisor.json') if (previous/'supervisor.json').exists() else None
+        supervisor = optional_json(previous/'supervisor.json')
         running = live(supervisor)
+        native = native_identity(previous)
+        native_alive = live(native)
         if args.action == 'stop':
-            (previous/'stop.request').touch(exist_ok=True)
-            print(json.dumps(dict(stop_requested=running, forced_SDK_kill=False, run=str(previous))))
+            try:
+                (previous/'stop.request').touch(exist_ok=True)
+            except OSError:
+                pass  # Disk-full cannot disable the identity-checked signal path.
+            supervisor_requested = request_stop(supervisor) if running else False
+            orphan_requested = request_stop(native) if not running else False
+            print(json.dumps(dict(stop_requested=supervisor_requested or orphan_requested, orphan_SIGTERM=orphan_requested,
+                                  forced_SDK_kill=False, run=str(previous))))
         else:
-            state = read(previous/'service-status.json') if (previous/'service-status.json').exists() else {}
-            state.update(supervisor_alive=running, run=str(previous))
+            state = optional_json(previous/'service-status.json')
+            state.update(running=running or native_alive, supervisor_alive=running, native_alive=native_alive,
+                         supervisor_lost=native_alive and not running, run=str(previous))
+            if not running and not (previous/'outcome.json').exists():
+                state['release_proven']=False
+            state['network_cleanup_pending']=(previous/'network.json').exists() and not (previous/'network-closed.json').exists()
             if (previous/'error.json').exists():
-                state['error'] = read(previous/'error.json')
+                state['error'] = optional_json(previous/'error.json')
             print(json.dumps(state))
         return
+    if args.action == 'recover':
+        with LOCK.open('a') as lock:
+            fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            print(json.dumps(recover_previous(root)))
+        return
+    identity = read(root/'identity.json')
     if args.action == 'prepare-boot':
         verify_files(root, identity)
         if owners():
@@ -163,48 +333,43 @@ def main():
         print(json.dumps(dict(ready=True, boot_id=current, SDK_started=False, top_k=1, score_threshold=None)))
         return
     if args.action == 'start':
-        with (root/'start.lock').open('a') as lock:
+        with LOCK.open('a') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             current = preflight(root, identity)
+            if stopping.requested:
+                return
             name = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S')+'-'+str(time.time_ns())
             run = root/'runs'/name
             (run/'metadata').mkdir(parents=True)
             atomic(run/'request.json', dict(boot_id=current, seconds=args.seconds))
+            atomic(root/'latest.json', dict(run=name))
+            atomic(ACTIVE, dict(boot_id=current,run=str(run.resolve())))
+            if stopping.requested:
+                return
             child = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), 'serve', '--run', name],
                                      stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
                                      stderr=subprocess.DEVNULL, start_new_session=True)
             supervisor = process_identity(child.pid)
             atomic(run/'supervisor.json', supervisor)
-            atomic(root/'latest.json', dict(run=name))
+            if stopping.requested:
+                request_stop(supervisor)
             print(json.dumps(dict(started=True, supervisor=supervisor, run=str(run), automatic_retry=False)))
         return
     if not args.run or Path(args.run).name != args.run:
         raise ValueError('Internal supervisor needs a valid run directory')
     run = root/'runs'/args.run
-    network = None
-    try:
-        # Same global ownership lock as the finite validated service.
-        with Path('/run/pose180-resident.lock').open('a') as lock:
-            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            request = read(run/'request.json')
-            if request['boot_id'] != boot_id() or owners():
-                raise ValueError('Boot or device ownership changed before launch')
-            if (run/'stop.request').exists():
-                return
-            network = startup_network.add()
-            atomic(run/'network.json', network)
-            with (run/'sdk-attempt.json').open('x') as stream:
-                json.dump(dict(boot_id=boot_id(), automatic_retry=False), stream)
-            session = time.time_ns() // 1000
-            seconds = request['seconds']
-            outcome = supervise(run, command(root, run, session, seconds), seconds+120 if seconds else float('inf'))
-            if outcome.get('native_shutdown_complete') and not outcome.get('device_owners'):
-                startup_network.remove(network)
-                atomic(run/'network-closed.json', dict(removed_owned_alias=network['added']))
-    except Exception as error:
-        atomic(run/'error.json', dict(error=str(error), automatic_retry=False))
-        raise
+    # Parent publishes identity while holding the lock; acquiring it below also
+    # orders its reservation against this child. Lost publication cannot launch.
+    deadline=time.monotonic()+5
+    while not (run/'supervisor.json').exists() and time.monotonic()<deadline and not stopping.requested:
+        time.sleep(.02)
+    if stopping.requested:
+        return
+    if read(run/'supervisor.json') != process_identity(os.getpid()):
+        raise ValueError('Supervisor launch identity was not published')
+    serve_run(root, run, stopping)
 
 
 if __name__ == '__main__':
-    main()
+    with StopRequest() as stopping:
+        main(stopping)

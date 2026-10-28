@@ -2,21 +2,27 @@
 
 ## 常驻演示观察端
 
-观察端不发送输入、不回应用ACK、不控制板端。最新离线版本默认订阅39385派生结果，与HDMI共用人物ID、滤波坐标及暂失状态，同时并排显示原始Top3对照；当前尚未部署。现有r45旧软件必须显式选择`--mode raw --port 39383`。实现、验证、回放和限制统一见[防闪现离线结果](../../../FPGA/hdmi_candidate/pose_stabilizer/README.md)，原实板历史见[Top3实测](../resident/TOP3-VALIDATION.md)。
+2026-10-28：PC 页面新增简洁性能栏，只显示板端处理耗时（ms）、骨架更新率（次/秒）和运行状态；不显示 MPJPE。骨架坐标、视角和 HDMI 保持原有实现。本轮只修改 `host/`，未改另一会话的板端滤波、异常退出清理或启动包构建文件，也未部署到板端。
+
+观察端默认订阅39385派生骨架，复用板端人物ID、滤波坐标与250ms暂失有效期；支持TopK=1和`score_threshold: null`。拖动旋转、滚轮缩放、右键平移，并可切换透视／正面／侧面／俯视。PC不发送输入、ACK或板端控制命令。
+
+页面使用 `/api/events` SSE 接收新结果，由 `requestAnimationFrame` 每次只采用最新结果，取代原100ms轮询；慢页面不积压历史姿态。骨架更新率统计本页实际采用的不同session／sequence且含新观测的骨架，不计重复绘制、纯暂失保持或过期隐藏。统计窗口5秒，数字每秒刷新；浏览器绘制FPS不冒充推理FPS。源头低帧率或浏览器负载仍会限制实际更新率，不承诺固定30Hz。
+
+板端处理耗时取近5秒匹配样本的中位数，后台保留P95但不在页面展示。派生模式通过独立只读TCP连接订阅39383原始结果，校验现有PIWFUL3格式并按session／sequence／frame／source_ns四元身份匹配；最多缓存256条，重复和旧会话不续期。`process_ms`包含预处理、输入写入、模型调用与最终等待、输出读取和候选选择，不含后续姿态滤波、HDMI绘制或跨设备传输。它不是纯NPU耗时，也不是RF到显示端到端延迟。
+
+原始结果端口只有一个消费者：被其它记录器占用或断开时，耗时显示“—”，派生骨架继续独立显示。可用 `--metrics-port 0` 禁用附加耗时连接，或指定其它原始端口。旧软件可显式使用 `--mode raw --port 39383`，直接复用原始流耗时，不额外连接。原始模式接收间隔超过750ms提示等待、2秒提示过期并保留末次姿态；派生模式在本页逐帧检查250ms有效期并隐藏过期骨架。断线自动重连，不控制板端停止或重试。
 
 ```powershell
-# 当前只做本地历史回放，不连接板端：
+# 手动运行PC观察端；此命令会连接指定的板端地址：
+node software/pose180_pipeline/host/resident.mjs --board 192.168.50.49 --mode view --http-port 39380
+# 本地历史回放不连接任何板端端口，耗时显示“—”：
 node software/pose180_pipeline/host/resident.mjs --replay .local/pose-postprocess-offline/replay/r12-replay.ndjson --http-port 39380 --seconds 120
-node --test software/pose180_pipeline/host/test/resident.test.mjs software/pose180_pipeline/host/test/presentation.test.mjs
+node --test software/pose180_pipeline/host/test/resident.test.mjs software/pose180_pipeline/host/test/presentation.test.mjs software/pose180_pipeline/host/test/performance.test.mjs software/pose180_pipeline/host/test/host.test.mjs
 ```
 
-打开 `http://127.0.0.1:39380/`：拖动旋转、滚轮缩放、右键平移；可切换透视／正面／侧面／俯视及关节编号。派生模式按轨迹ID着色，灰色表示暂失；最多250ms后隐藏，原始对照同样有时限。历史回放明确标识，可重新播放，不连接任何板端端口。新人物跟踪已在本阶段实现，姿态偏置、标定和人体精度仍未验收。
+打开 `http://127.0.0.1:39380/`。HTTP只监听本机，最多8连接，其中SSE最多4个；单客户端发送缓存上限64KiB，慢客户端断开后由浏览器重连。关闭页面释放SSE和绘制资源；观察进程到时或Ctrl+C后关闭全部本批socket／HTTP／worker。默认不归档，仅`--mode raw --output <新目录>`可启用原有独立归档worker。PC退出或物理断线不阻断板端CSI／推理／HDMI。
 
-原始模式接收间隔超过750ms提示等待、2秒提示结果过期并保留末次姿态；派生模式按上述250ms有效期隐藏。“PC接收后”年龄来自本机单调时钟，不表示板端端到端延迟。新结果速率与浏览器绘制FPS分开显示，均无严格30Hz门槛。TCP断开后自动重连；普通几秒缺窗保留连接，30秒无数据才重新连接，连接等待上限5秒。PC退出或物理断线不阻断板端CSI／推理／HDMI。
-
-默认不归档；仅`--mode raw`允许`--output <不存在的新目录>`，由独立worker维护4×64条完整PIWFUL3记录。派生通道上限16KiB／记录及一个最新值，禁止混入历史回放记录；原始模式保留74544字节槽。HTTP只监听本机，最多8连接；观察进程到时关闭socket／HTTP／worker。
-
-定向测试仅使用随机localhost端口和明确模拟记录，验证任意拆包、重复过滤、过期提示、重连、无ACK、模块资源及页面操作／计数语义，不替代真实浏览器GPU和板端联合长测。
+本地21项定向测试通过，覆盖完整记录兼容、拆包、错配、重复／跨会话、过期、无ACK、SSE及耗时断开隔离、页面合并最新结果和退出释放。真实浏览器在约30Hz本地模拟输入下观察到约22～23次/秒骨架更新；页面明确标记模拟测试，仅证明PC更新不再受100ms轮询限制，不作为板端性能实测。[本地页面预览](D:/FPGACompetitionProject/.local/pc-performance-20261028-r1/pc-performance-preview.jpg)。本次没有改写既有启动包产物；新增实现仅在原有打包已包含的`resident.mjs`和`full_record.mjs`中，无新增运行依赖，后续打包会随这两个文件纳入。
 
 ## 严格主机模拟输入与完整归档
 

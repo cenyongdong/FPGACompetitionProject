@@ -41,7 +41,7 @@ def main():
         run('container-start', 'start', 'FPAI')
     try:
         run('native-configure', 'exec', 'FPAI', 'cmake', '-S', source, '-B', base+'/native', '-DCMAKE_BUILD_TYPE=Release')
-        targets = ['postprocess_tests', 'renderer_tests', 'display_state_tests', 'buffer_tests', 'journal_tests', 'pose180_demo_mock']
+        targets = ['postprocess_tests', 'single_person_tests', 'renderer_tests', 'display_state_tests', 'buffer_tests', 'journal_tests', 'release_guard_tests', 'hdmi_resource_tests', 'pose180_demo_mock']
         run('native-build', 'exec', 'FPAI', 'cmake', '--build', base+'/native', '--parallel', '2', '--target', *targets)
         for name in targets[:-1]:
             extra = [base+'/journal-test'] if name == 'journal_tests' else []

@@ -2,9 +2,13 @@
 
 ## 当前入口（整理于 2026-10-28）
 
-**最新本地交付：TopK=1、无置信度阈值启动包已完成，尚未部署或实板测试。** [启动包](../../Deliverables/pose180-top1-no-threshold-20261028-r1.tar.gz)（30,687,380 字节）、[SHA256](../../Deliverables/pose180-top1-no-threshold-20261028-r1.tar.gz.sha256)及[使用说明](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md)。包内独立携带原 epoch99 JSON／RAW、ARM64 程序、PC 观察端、核心源码及同一合格 BOOT 备份，不依赖旧测试包目录；手动启停，不安装 SDK 自启动或自动重试。程序 SHA256 `0a7b0b93632f9ec0524da38a30b73acd46f03c9fede4c883af57584a806b5721`；完整交付身份见[package.json](../../.local/pose180-top1-no-threshold-20261028-r1/package.json)。
+**最新本地交付：TopK=1、无置信度阈值 r4 生命周期加固启动包已完成，尚未部署或实板测试。** [启动包](../../Deliverables/pose180-top1-no-threshold-20261028-r4.tar.gz)（30,673,739 字节）、[SHA256](../../Deliverables/pose180-top1-no-threshold-20261028-r4.tar.gz.sha256)及[使用说明](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md)。原 epoch99 JSON／RAW、单人滤波、双路显示与合格 BOOT 保持，r1／r2／r3 包保留。补齐初始化与重复停止处理、清理全程独占、跨包未完成负载保护及临时地址写前记录；不设置 SDK 自启动或自动重试。程序 SHA256 `60f8bc3c0683af5adca6f491e89ef4fb35306c6e6631d53d92dc79a9848406a0`；完整身份见[package.json](../../.local/pose180-top1-no-threshold-20261028-r4/package.json)。
 
-本地后处理／HDMI／显示状态／缓冲／日志检查通过；无阈值 mock 完成 30 次推理，PC 六项检查及实际解包观察端的低分／零分／负分接收通过；正常停止与异常后重试保护通过。压缩包内源码另行解出后，以现有工具链重新编译 `pose180_demo` 成功。精确原值见[验证目录](../../.local/pose180-top1-no-threshold-20261028-r1/verification.json)和[解包重建](../../.local/pose180-top1-no-threshold-20261028-r1/source-check.json)。这些结果不替代无阈值实板验证；下方设备结束状态和遗留远端收尾保持。
+新增初始化／清理 TERM、INT、HUP，监控异常、慢状态连接和地址所有权故障注入通过；完整 CLI 连续启停 3 轮，3 次并行包启动均被拒绝，3 次停止标记模拟写满仍正常退出，FD 数恢复 4→4。既有 r3 父死亡／日志回收／硬件未证明阻断测试，以及慢调用、慢 PC、记录故障等常驻回归通过；ARM64 构建及包检查完成。[新增故障结果](../../.local/pose180-top1-no-threshold-20261028-r4/robustness-verified/result.json)、[退出回归](../../.local/pose180-top1-no-threshold-20261028-r4/exit-cleanup-final/result.json)、[验证目录](../../.local/pose180-top1-no-threshold-20261028-r4/verification.json)、[解包重建](../../.local/pose180-top1-no-threshold-20261028-r4/source-check.json)。网络操作均用替身，未连接设备或更改网络。硬件 STOP／drain 无法证明时原 `_Exit(70)` 保护保持，实际 SDK 挂死／SIGKILL／SIGSEGV／掉电的物理恢复没有上板验证。
+
+后续板端 C++ 专项复核发现 r4 尚有底层异常释放缺口，现有包未修复；具体路径与本地复现见[启动包说明](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端-c-专项复核r4-仍有的缺口)，不能把上述上层测试解释为所有 SDK／HDMI 异常均可安全释放。
+
+r2 的单人滤波回放对照仍见[原始比较](../../.local/pose180-top1-no-threshold-20261028-r2/comparison.json)，r4 未改变滤波、模型或硬件，不重复运行该比较。下方设备结束状态和遗留远端收尾保持；本轮没有提交 Git commit。
 
 **最新状态：用户要求结束测试，当前原 epoch99／TopK=1／严格 score >0.2 测试已安全退出；随后设备以太网断开，不自主重连或续跑。** 最后新包 `.local/csi-open-space-top1-020-20261027-r4` 完成 8344 次新推理／HDMI 采纳／PC 接收，最后 SSH 状态证明 native_exit=0、完整 SDK／HDMI 关闭、设备占用为空，PC／串口观察已退出。进程总时长 605.508 s 包含初始化／退出，按用户停止而非完整处理期验收；原时长／停止原因门 `passed=false` 保留。最后核验 boot_id `3c398048-a8b7-4225-b6c1-c57a9735940e`、合格默认 BOOT 不变，断开后的实时状态未知。
 

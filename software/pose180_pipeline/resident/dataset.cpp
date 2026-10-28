@@ -1,4 +1,5 @@
 #include "dataset.hpp"
+#include "exception_message.hpp"
 #include <fstream>
 #include <stdexcept>
 
@@ -51,9 +52,10 @@ Dataset::Dataset(Shared& shared,const std::filesystem::path& file,std::uint64_t 
             if(pass+1<repetitions&&!wait(deadline+100000000ull)){shared.stats.input_connected=false;return;}
             }
             shared.stats.input_connected=false;shared.stats.dataset_done=true;
-        }catch(const std::exception& e){
-            shared.stats.input_error(e.what());++shared.stats.malformed;
+        }catch(...){
+            ++shared.stats.malformed;
             shared.stats.input_connected=false;shared.stats.isolated=true;
+            try{shared.stats.input_error(pose180_pipeline::current_exception_message());}catch(...){}
         }
     });
 }

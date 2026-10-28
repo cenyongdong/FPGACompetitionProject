@@ -12,7 +12,7 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[3]
 RESIDENT = ROOT/'software/pose180_pipeline/resident'
-RUNTIME = ('startup.py', 'startup_network.py', 'boot_audit.py', 'service.py',
+RUNTIME = ('startup.py', 'startup_network.py', 'boot_audit.py', 'service.py', 'process_guard.py',
            'run_hdmi_trial.py', 'bounded_log.py')
 
 
@@ -44,10 +44,11 @@ def archive(folder, output, prefix=''):
 def source_snapshot(work, destination):
     files = set()
     # CMake source targets plus the actual project header dependency closure.
-    for folder in ('software/core', 'software/pose180_pipeline/board', 'software/pose180_pipeline/resident',
+    for folder in ('software/core/pose', 'software/core/input', 'software/pose180_pipeline/board', 'software/pose180_pipeline/resident',
                    'tools/nexmon/board', 'tools/pose180', 'demo_v1/shared_fp16'):
         files.update(p for p in (ROOT/folder).rglob('*') if p.suffix in ('.h', '.hpp', '.cpp'))
     files.add(ROOT/'software/pose180_pipeline/CMakeLists.txt')
+    files.add(ROOT/'software/core/README.md')
     for dependency in work.glob('*/CMakeFiles/**/*.o.d'):
         for path in re.findall(r'/workspace/[^\s\\]+', dependency.read_text()):
             source = (ROOT/path[len('/workspace/'):]).resolve()
@@ -57,7 +58,7 @@ def source_snapshot(work, destination):
     for folder in ('FPGA/hdmi_candidate/diagnostics/native_rgb565_r53/display',
                    'FPGA/hdmi_candidate/diagnostics/native_rgb565_r47/joint'):
         files.update(p for p in (ROOT/folder).iterdir() if p.suffix in ('.h', '.hpp', '.cpp'))
-    for name in RUNTIME + ('test_no_threshold.py', 'test_startup.py', 'test_resident.py',
+    for name in RUNTIME + ('test_no_threshold.py', 'test_startup.py', 'test_exit_cleanup.py', 'test_startup_robustness.py', 'test_resident.py',
                           'test_adaptive_csi.py', 'test_csi_recovery.py'):
         files.add(RESIDENT/name)
     files.add(RESIDENT/'startup-csi.conf')
@@ -107,15 +108,16 @@ def main():
     copy(boot, release/'boot/BOOT.BIN')
     for name in ('qualification.json', 'package-review.json'):
         copy(ROOT/deployed['hardware_work']/'reports'/name, release/'boot'/name)
-    identity = dict(package=work.name, selection=dict(top_k=1, strict_score_threshold=None),
+    identity = dict(package=work.name, selection=dict(top_k=1, strict_score_threshold=None, single_person_stability=True),
                     model=original['model'], input_source='live_csi', csi_alignment='adaptive',
                     phase_preprocessing='original', hardware_profile=deployed['hardware_profile'],
                     BOOT_sha256=deployed['BOOT_sha256'], boot_files=boot_files,
                     verified_boot_ids=[deployed['runtime_boot_id']], libraries=original['SDK_libraries'],
                     SDK_autostart=False, automatic_retry=False,
+                    presentation_filter='single-person-continuity-v1: centre/relative smoothing, 4-hit relocation, bounded steps',
                     files={p.relative_to(board).as_posix():sha(p) for p in board.rglob('*') if p.is_file()})
     write(board/'identity.json', identity)
-    for script, action in [('start', 'start'), ('stop', 'stop'), ('status', 'status'), ('check', 'check')]:
+    for script, action in [('start', 'start'), ('stop', 'stop'), ('status', 'status'), ('check', 'check'), ('recover', 'recover')]:
         (release/(script+'.sh')).write_text('#!/bin/sh\nset -eu\nroot=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)\nexec python3 "$root/board/startup.py" '+action+' "$@"\n', newline='\n')
     for name in ('resident.mjs', 'presentation.mjs', 'full_record.mjs', 'resident_archive.mjs'):
         copy(ROOT/'software/pose180_pipeline/host'/name, release/'pc/software/pose180_pipeline/host'/name)
@@ -128,6 +130,12 @@ def main():
     copy(RESIDENT/'STARTUP-PACKAGE.md', release/'README.md')
     for name in ('build.json', 'verification.json', 'no-threshold-test/result.json', 'startup-test/result.json'):
         copy(work/name, release/'validation'/name)
+    if (work/'comparison.json').is_file():
+        copy(work/'comparison.json', release/'validation/comparison.json')
+    if (work/'exit-cleanup-final/result.json').is_file():
+        copy(work/'exit-cleanup-final/result.json', release/'validation/exit-cleanup.json')
+    if (work/'robustness-verified/result.json').is_file():
+        copy(work/'robustness-verified/result.json', release/'validation/robustness.json')
     manifest = dict(package=work.name, selection=identity['selection'], model=identity['model'],
                     input='live_csi/adaptive; original preprocessing', outputs=['HDMI', 'PC:39385'],
                     runtime_seconds_default=0, SDK_autostart=False, automatic_retry=False,
@@ -141,7 +149,8 @@ def main():
     archive(release, output, work.name+'/')
     result = dict(archive=str(output), bytes=output.stat().st_size, sha256=sha(output),
                   native_sha256=identity['files']['pose180_demo'], model=identity['model'],
-                  top_k=1, score_threshold=None, BOOT_sha256=identity['BOOT_sha256'], board_tested=False)
+                  top_k=1, score_threshold=None, single_person_stability=True,
+                  BOOT_sha256=identity['BOOT_sha256'], board_tested=False)
     write(work/'package.json', result)
     (output.with_suffix(output.suffix+'.sha256')).write_text(result['sha256']+'  '+output.name+'\n')
     print(json.dumps(result))

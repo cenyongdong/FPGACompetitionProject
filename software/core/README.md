@@ -1,5 +1,18 @@
 # 正式运行核心
 
+2026-10-28 提交准备：现行运行目标为 `software/pose180_pipeline` 的 **`pose180_demo`**，由同一 CMake 工程构建；[启动包与核心源码说明](../pose180_pipeline/resident/STARTUP-PACKAGE.md)。旧 100-query、VPU／RTSP、诊断 Host 桥及未完成 PL 扩展均保留作历史，不链接到本次正式目标。
+
+| 现行模块 | 核心源码 | 职责 |
+|---|---|---|
+| CSI 输入 | `tools/nexmon/board/{pcap_stream,adaptive_ingress,ingress}.*`、`resident/csi.cpp` | 三 RX、有限容限、后台匹配、完整窗口切换 |
+| 预处理／SDK | `demo_v1/shared_fp16/preprocess.*`、`pose180_pipeline/board/runtime.*` | 原数学、原 epoch99 图、唯一 SDK 设备所有者 |
+| 通用后处理 | `pose/postprocess.*`、`pose/geometry.hpp` | 保留 v5 多人／Top1 对照；共享几何计算 |
+| 单人连续性 | `pose/single_person.*` | 仅显式 CPU Top1：异常隔离、持续观测确认、中心／相对姿态平滑、显示位移限制 |
+| 显示与观察 | `display/hdmi_renderer.*`、`pose180_pipeline/host/{resident,presentation}.mjs` | 同一 PresentationFrame 驱动 HDMI／PC，保持原始分数和完整结果通道 |
+| 启停／打包 | `resident/startup*.py`、`tools/{build_startup,package_startup}.py` | 手动启停、安全退出、运行身份与可迁移交付包 |
+
+路径中 `resident/` 均指 `software/pose180_pipeline/resident/`。提交前的本地构建、单人合成检查、实际留存输出回放、mock 和包内源码重建是不同验证层次；均不替代更新后的实板验证。无需改动模型、SDK、原预处理或 FPGA。以下为原有历史架构说明。
+
 2026-10-25主入口更新：用户已批准后续以[180-query主推理链](../pose180_pipeline/README.md)替代旧100-query主图，采用主机模拟输入、有界缓冲及完整回传。本目录预处理／绘制能力继续复用；以下共享Engine、Host桥及VPU／RTSP说明按原100-query历史基线理解。新链仅完成软件验证和编译，未实板。
 
 状态整理：2026-10-21。`display/hdmi_canvas.*`负责SDK无关的RGB24→RGB565格式适配，`display/hdmi_output.*`在SDK主线程持有双UDMA帧并管理采纳／STOP／释放。r13已在隔离导出副本中完成一次健康启动下三窗新推理到HDMI；早期SDK上传失败仍保留，跨启动及联合长期未通过。结果见[HDMI应用](../hdmi_demo/README.md)和[工程交接](../../FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md)。旧演示链接未自动切换，以下模块表及构建契约描述原VPU／RTSP演示分支。

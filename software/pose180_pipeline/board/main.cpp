@@ -1,4 +1,5 @@
 #include "runtime.hpp"
+#include "exception_message.hpp"
 #include "fixed_pool.hpp"
 #include "handoff.hpp"
 #include "wire.hpp"
@@ -51,6 +52,7 @@ int main(int argc,char** argv){
     std::optional<pp::FixedPool<Output,64>::Lease> current,failed_publish;
     std::uint64_t pending_invocation=0;bool display_pending=false;
     bool owns_output=false;
+    pp::RuntimeShutdownGuard runtime_shutdown{runtime};
     try{
         need(!fs::exists(output)&&fs::create_directory(output),"Fresh output directory required");owns_output=true;
         pp::Config config;config.graph=package/"models/piw24_pose180_ZG.json";
@@ -182,17 +184,20 @@ int main(int argc,char** argv){
             <<",\"input_queue_high\":"<<inputs.high_water()<<",\"output_queue_high\":"<<results.high_water()
             <<",\"fixed_input_slots\":8,\"fixed_result_slots\":64,\"CSI_live\":false,\"engine_destroyed\":true}\n";
         need(bool(summary),"Final summary write failed");return 0;
-    }catch(const std::exception& error){
-        std::cerr<<"DEMO_STOP "<<error.what()<<std::endl;auto e=std::current_exception();
+    }catch(...){
+        const char* error=pp::current_exception_message();
+        try{std::cerr<<"DEMO_STOP "<<error<<std::endl;}catch(...){}
+        auto e=std::current_exception();
         handoff.fail(e);inputs.fail(e);results.fail(e);listener.stop();result_socket.stop();
         int fd=input_fd.load();if(fd>=0)::shutdown(fd,SHUT_RDWR);
         if(receiver.joinable())receiver.join();
         if(publisher.joinable())publisher.join();
         if(owns_output){
             try{if(current)save_unconfirmed(output,current->value());if(failed_publish)save_unconfirmed(output,failed_publish->value());
-                results.save_queued([&](const Output& row){save_unconfirmed(output,row);});}catch(const std::exception& capture){std::cerr<<"EVIDENCE_ERROR "<<capture.what()<<std::endl;}
-            std::ofstream failure(output/"failure.txt");failure<<error.what()<<"\ninferred="<<inferred<<" archived="<<archived<<" confirmed="<<confirmed<<" adopted="<<adopted<<"\n";
+                results.save_queued([&](const Output& row){save_unconfirmed(output,row);});}catch(...){}
+            try{std::ofstream failure(output/"failure.txt");failure<<error<<"\ninferred="<<inferred<<" archived="<<archived<<" confirmed="<<confirmed<<" adopted="<<adopted<<"\n";}catch(...){}
         }
+        if(runtime)runtime->retain_if_unproved();
         // Output destructor withholds release/_Exit if STOP cannot be proved.
         display.reset();runtime.reset();return 1;
     }

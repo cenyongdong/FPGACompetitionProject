@@ -77,3 +77,106 @@ export class ConfirmedReader {
     partial() { return this.used ? Buffer.from((this.pending ? this.confirmation : this.raw).subarray(0,this.used)) : Buffer.alloc(0); }
     finish() { need(!this.used && !this.pending, 'Truncated or unconfirmed complete result at EOF'); }
 }
+
+// Optional telemetry subscriber: one fixed record buffer, no ACK or raw archive.
+// onRecord receives an owned decoded object; it never retains the reusable bytes.
+export class FullRecordReader {
+    raw = Buffer.alloc(FULL_BYTES);
+    used = 0;
+    push(chunk, onRecord) {
+        need(Buffer.isBuffer(chunk) && typeof onRecord === 'function', 'Expected buffer and record callback');
+        for (let offset = 0; offset < chunk.length;) {
+            const length = Math.min(FULL_BYTES - this.used, chunk.length - offset);
+            chunk.copy(this.raw, this.used, offset, offset + length);
+            this.used += length; offset += length;
+            if (this.used !== FULL_BYTES) continue;
+            this.used = 0;
+            onRecord(decodeFull(this.raw));
+        }
+    }
+    reset() { this.used = 0; }
+}
+
+// Only actual process_ms observations whose complete identities also arrived on
+// the selected presentation stream enter these statistics. Clocks below are PC
+// monotonic receipt times, not cross-device capture-to-display latency.
+export class ProcessingWindow {
+    constructor({windowMs = 5000, maxRecords = 256} = {}) {
+        need(Number.isFinite(windowMs) && windowMs > 0 && windowMs <= 5000,
+            'Processing window must be bounded to 5000 ms');
+        need(Number.isInteger(maxRecords) && maxRecords > 0 && maxRecords <= 256,
+            'Processing cache must be bounded to 256 records');
+        this.windowMs = windowMs; this.maxRecords = maxRecords;
+        this.reset();
+    }
+    reset() {
+        this.session = null; this.viewSequence = 0n;
+        this.records = new Map(); this.resultSequences = new Map();
+        this.retiredSessions = new Set();
+    }
+    identity(frame) {
+        const values = ['session','sequence','frame','source_ns'].map(name => frame?.[name]);
+        if (!values.every(value => typeof value === 'string' && /^\d{1,20}$/.test(value))) return null;
+        const numbers = values.map(BigInt);
+        if (numbers.some(value => value > 18446744073709551615n) || numbers[0] === 0n || numbers[1] === 0n) return null;
+        const [session, sequence, sourceFrame, sourceNs] = numbers.map(String);
+        return {session, sequence: numbers[1], key: [session,sequence,sourceFrame,sourceNs].join(':')};
+    }
+    prune(nowMs) {
+        need(Number.isFinite(nowMs) && nowMs >= 0, 'Expected a finite monotonic receipt time');
+        for (const [key, entry] of this.records) {
+            const at = entry.viewAt ?? entry.resultAt;
+            if (nowMs - at >= this.windowMs) this.records.delete(key);
+        }
+    }
+    trim() {
+        while (this.records.size > this.maxRecords) this.records.delete(this.records.keys().next().value);
+        while (this.resultSequences.size > this.maxRecords) this.resultSequences.delete(this.resultSequences.keys().next().value);
+        while (this.retiredSessions.size > this.maxRecords) this.retiredSessions.delete(this.retiredSessions.values().next().value);
+    }
+    observeResult(frame, nowMs) {
+        this.prune(nowMs);
+        const id = this.identity(frame), processMs = frame?.metrics?.process_ms;
+        if (!id || !Number.isFinite(processMs) || processMs < 0 || this.retiredSessions.has(id.session)) return false;
+        // A TCP result stream is ordered. Watermarks prevent retransmitted or
+        // expired identities from becoming fresh samples after cache eviction.
+        if (id.sequence <= (this.resultSequences.get(id.session) ?? 0n)) return false;
+        this.resultSequences.delete(id.session); this.resultSequences.set(id.session, id.sequence);
+        let entry = this.records.get(id.key);
+        if (!entry && id.session === this.session && id.sequence <= this.viewSequence) { this.trim(); return false; }
+        if (!entry) { entry = {session: id.session}; this.records.set(id.key, entry); }
+        entry.resultAt = nowMs; entry.processMs = processMs;
+        this.trim(); return true;
+    }
+    observeView(frame, nowMs) {
+        this.prune(nowMs);
+        const id = this.identity(frame);
+        if (!id || this.retiredSessions.has(id.session)) return false;
+        if (id.session !== this.session) {
+            if (this.session !== null) this.retiredSessions.add(this.session);
+            this.session = id.session; this.viewSequence = 0n;
+            // Retain telemetry which arrived ahead of this new view session.
+            for (const [key, entry] of this.records) if (entry.session !== this.session) this.records.delete(key);
+        }
+        if (id.sequence <= this.viewSequence) { this.trim(); return false; }
+        this.viewSequence = id.sequence;
+        let entry = this.records.get(id.key);
+        if (!entry) { entry = {session: id.session}; this.records.set(id.key, entry); }
+        entry.viewAt = nowMs;
+        this.trim(); return true;
+    }
+    snapshot(nowMs) {
+        this.prune(nowMs);
+        const values = [];
+        for (const entry of this.records.values()) {
+            if (entry.session === this.session && entry.viewAt !== undefined &&
+                nowMs >= entry.viewAt && Number.isFinite(entry.processMs)) values.push(entry.processMs);
+        }
+        values.sort((a,b) => a-b);
+        const count = values.length, middle = Math.floor(count / 2);
+        // Median averages the middle pair; P95 uses the nearest-rank definition.
+        return {session: this.session, samples: count,
+            median_ms: count ? (count % 2 ? values[middle] : (values[middle-1] + values[middle]) / 2) : null,
+            p95_ms: count ? values[Math.ceil(.95 * count) - 1] : null};
+    }
+}
