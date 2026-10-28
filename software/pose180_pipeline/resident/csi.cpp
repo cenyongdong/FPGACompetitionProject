@@ -64,13 +64,15 @@ Csi::Csi(Shared& s,const std::string& configuration,std::uint64_t session):share
     auto options=parse(configuration);std::promise<void> promise;auto ready=promise.get_future();
     thread_=std::thread([&,o=std::move(options),session,promise=std::move(promise)]() mutable {
         int listener=-1;std::array<int,3> clients{-1,-1,-1};bool announced=false;
-        std::array<nexmon_board::PcapStream,3> parsers{nexmon_board::PcapStream(true),nexmon_board::PcapStream(true),nexmon_board::PcapStream(true)};
+        std::array<nexmon_board::PcapStream,3> parsers{nexmon_board::PcapStream(true,o.adaptive),nexmon_board::PcapStream(true,o.adaptive),nexmon_board::PcapStream(true,o.adaptive)};
+        std::array<std::size_t,3> reported_bad_records{};
         std::array<std::uint64_t,3> last{},origin{};
         std::array<std::int64_t,3> capture_origin{},capture_watermark{},cutoff{};
         std::array<bool,3> silent{};
         std::unique_ptr<nexmon_board::Ingress> ingress;
         std::unique_ptr<nexmon_board::AdaptiveIngress> adaptive;
         std::array<std::uint64_t,3> reported_decoder_resets{};
+        std::uint64_t accounted_switches=0,accounted_skipped=0,accounted_decoder=0;
         std::uint64_t epoch=session,frame=0,alignment_started=0,recovery_started=0,begin_after=0,last_good=0;
         std::uint64_t next_window_report=0;
         bool generation_ready=false;
@@ -102,6 +104,10 @@ Csi::Csi(Shared& s,const std::string& configuration,std::uint64_t session):share
         auto report_windows=[&](const char* trigger) {
             if(adaptive) {
                 const auto d=adaptive->diagnostics();std::ostringstream out;
+                const auto resets=d.decoder_resets[0]+d.decoder_resets[1]+d.decoder_resets[2];
+                s.stats.csi_mapping_switches+=d.switches-accounted_switches;accounted_switches=d.switches;
+                s.stats.csi_skipped_points+=d.skipped_points-accounted_skipped;accounted_skipped=d.skipped_points;
+                s.stats.csi_decoder_resets+=resets-accounted_decoder;accounted_decoder=resets;
                 out<<"{\"event\":\"csi_adaptive\",\"trigger\":"<<quote(trigger)<<",\"epoch\":"<<epoch
                    <<",\"elapsed_ms\":"<<(now_ns()-started)/1000000<<",\"version\":"<<d.alignment_version
                    <<",\"exact_event_windows\":"<<d.exact_windows<<",\"approximate_windows\":"<<d.approximate_windows
@@ -161,7 +167,7 @@ Csi::Csi(Shared& s,const std::string& configuration,std::uint64_t session):share
         auto close_receiver=[&](unsigned r,const std::string& reason) {
             if(clients[r]>=0)::close(clients[r]);
             clients[r]=-1;
-            parsers[r]=nexmon_board::PcapStream(true);
+            parsers[r]=nexmon_board::PcapStream(true,o.adaptive);reported_bad_records[r]=0;
             last[r]=origin[r]=0;capture_origin[r]=capture_watermark[r]=cutoff[r]=0;silent[r]=false;
             s.stats.input_connected=false;invalidate("transport",int(r),reason);
         };
@@ -172,7 +178,8 @@ Csi::Csi(Shared& s,const std::string& configuration,std::uint64_t session):share
             for(unsigned r=0;r<3;++r)cutoff[r]=origin[r]?
                 std::max(capture_watermark[r],capture_origin[r]+std::int64_t((now-origin[r])/1000)):capture_watermark[r];
             o.config.session_id=std::to_string(++epoch);s.stats.input_epoch=epoch;s.input.clear();
-            if(o.adaptive){o.adaptive_limits.source=o.config;adaptive=std::make_unique<nexmon_board::AdaptiveIngress>(o.adaptive_limits);reported_decoder_resets={};}
+            if(o.adaptive){o.adaptive_limits.source=o.config;adaptive=std::make_unique<nexmon_board::AdaptiveIngress>(o.adaptive_limits);reported_decoder_resets={};
+                accounted_switches=accounted_skipped=accounted_decoder=0;}
             else ingress=std::make_unique<nexmon_board::Ingress>(o.config);
             alignment_started=last_good=now;s.stats.resynchronizing=true;
             generation_ready=false;next_window_report=now+5000000000ull;
@@ -184,6 +191,10 @@ Csi::Csi(Shared& s,const std::string& configuration,std::uint64_t session):share
             for(unsigned rx=0;rx<3;++rx)for(unsigned a=0;a<3;++a)for(unsigned t=0;t<20;++t)for(unsigned n=0;n<30;++n)
                 value.window.csi[pose_v1::raw_index(rx,a,n,t)]=window.csi[((rx*3+a)*20+t)*30+n];
             if(quality) {
+                if(quality->approximate_points)++s.stats.csi_approximate_windows;else ++s.stats.csi_exact_windows;
+                s.stats.csi_approximate_points+=quality->approximate_points;
+                s.stats.csi_max_skew_us=std::max(s.stats.csi_max_skew_us.load(),std::uint64_t(quality->max_skew_us));
+                s.stats.csi_max_span_us=std::max(s.stats.csi_max_span_us.load(),std::uint64_t(quality->span_us));
                 std::ostringstream out;
                 out<<"{\"event\":\"csi_adaptive_window\",\"epoch\":"<<epoch<<",\"frame\":"<<frame
                    <<",\"alignment_version\":"<<quality->alignment_version
@@ -199,6 +210,7 @@ Csi::Csi(Shared& s,const std::string& configuration,std::uint64_t session):share
             }
             accept_input(s,value);last_good=now_ns();generation_ready=true;s.stats.resynchronizing=false;
         };
+        s.stats.adaptive_csi=o.adaptive;
         try {
             listener=::socket(AF_INET,SOCK_STREAM|SOCK_NONBLOCK|SOCK_CLOEXEC,0);need(listener>=0,"CSI socket failed");
             int one=1;::setsockopt(listener,SOL_SOCKET,SO_REUSEADDR,&one,sizeof(one));sockaddr_in address{};
@@ -234,7 +246,18 @@ Csi::Csi(Shared& s,const std::string& configuration,std::uint64_t session):share
                     if(count<=0){close_receiver(r,"RX disconnected");continue;}
                     last[r]=now_ns();silent[r]=false;
                     try {
-                        for(const auto& packet:parsers[r].append(bytes.data(),count)) {
+                        const auto packets=parsers[r].append(bytes.data(),count);
+                        if(parsers[r].rejected_frames()>reported_bad_records[r]) {
+                            const auto delta=parsers[r].rejected_frames()-reported_bad_records[r];
+                            s.stats.csi_rejected_records+=delta;reported_bad_records[r]=parsers[r].rejected_frames();
+                            const auto& issue=parsers[r].last_issue();std::ostringstream out;
+                            out<<"{\"event\":\"csi_bad_record\",\"rx\":"<<r+1<<",\"dropped\":"<<delta
+                               <<",\"packet\":"<<issue.packet<<",\"timestamp_us\":"<<issue.timestamp_us
+                               <<",\"reason\":"<<quote(issue.reason)<<",\"frame_prefix_hex\":\"";
+                            for(auto byte:issue.frame_prefix)out<<std::hex<<std::setw(2)<<std::setfill('0')<<unsigned(byte);
+                            out<<"\"}\n";s.stats.input_event(out.str());
+                        }
+                        for(const auto& packet:packets) {
                             if(!origin[r]){origin[r]=now_ns();capture_origin[r]=packet.timestamp_us;}
                             need(!capture_watermark[r]||packet.timestamp_us>=capture_watermark[r],"RX capture clock moved backwards");
                             capture_watermark[r]=packet.timestamp_us;
@@ -276,6 +299,7 @@ Csi::Csi(Shared& s,const std::string& configuration,std::uint64_t session):share
                     else if(now_ns()>=next_window_report)report_windows("periodic");
                 }
             }
+            report_windows("shutdown");
         }catch(...){if(!announced)promise.set_exception(std::current_exception());else s.stats.isolated=true;}
         for(auto& fd:clients){if(fd>=0)::close(fd);fd=-1;}s.input.clear();s.stats.input_connected=false;
         if(listener>=0)::close(listener);

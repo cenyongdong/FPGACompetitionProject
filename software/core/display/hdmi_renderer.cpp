@@ -125,7 +125,7 @@ namespace pose::hdmi {
         const auto begin = std::chrono::steady_clock::now();
         if (!scores || !poses || (candidates != 100 && candidates != 180))
             throw std::runtime_error("Unsupported candidate raster input");
-        if (!selection.top_k || selection.top_k>3 || std::isnan(selection.threshold))
+        if (!selection.top_k || selection.top_k>3 || (selection.threshold&&std::isnan(*selection.threshold)))
             throw std::runtime_error("Unsupported candidate selection policy");
         for (std::size_t i=0;i<candidates;++i)
             if (!std::isfinite(scores[i])) throw std::runtime_error("Non-finite candidate score");
@@ -158,7 +158,7 @@ namespace pose::hdmi {
         }
         for (unsigned rank=0;rank<selection.top_k;++rank) {
             const auto index=ranked[rank];
-            if (!(scores[index]>selection.threshold)) continue;
+            if (selection.threshold&&!(scores[index]>*selection.threshold)) continue;
             auto& pose=result.detections[result.detection_count++];
             pose.index=index;pose.score=scores[index];
             std::copy_n(poses+index*42,42,pose.raw.begin());
@@ -177,7 +177,7 @@ namespace pose::hdmi {
     }
     Rendered render_presentation(PreparedBackground&& prepared,const pose::post::PresentationFrame& frame) {
         if(prepared.rgb565.size()!=frameBytes||frame.poses.size()>3)throw std::runtime_error("Invalid presentation raster");
-        Rendered r;r.rgb565=std::move(prepared.rgb565);r.selection={3,.2f};
+        Rendered r;r.rgb565=std::move(prepared.rgb565);r.selection={frame.top_k,frame.score_threshold};
         for(const auto&p:frame.poses){auto&d=r.detections[r.detection_count++];d.index=p.candidate;d.score=p.score;d.raw=p.joints;d.track=p.track;d.held=p.held;
             if(p.observed_ns>frame.id.source_ns||frame.id.source_ns-p.observed_ns>frame.hold_ns)throw std::runtime_error("Expired presentation");
             d.remaining_ns=frame.hold_ns-(frame.id.source_ns-p.observed_ns);

@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -19,6 +20,8 @@ struct Config {
     // Reject nearly translated copies as well as almost identical coordinates.
     double duplicate_translation=0.7, duplicate_shape=0.2;
     unsigned confirmation_hits=3;
+    std::optional<float> score_threshold=0.2f; // nullopt disables score filtering.
+    unsigned top_k=3;
 };
 struct Identity { std::uint64_t session=0, frame=0, sequence=0, source_ns=0; };
 struct Person {
@@ -34,6 +37,8 @@ struct FilterUpdate {std::uint64_t track;Joints observation;double dt;bool initi
 struct PresentationFrame {
     Identity id; std::vector<Person> poses, raw_poses;
     std::uint64_t hold_ns=250000000;
+    std::optional<float> score_threshold=0.2f;
+    unsigned top_k=3;
     std::string json(bool replay=false) const;
 };
 struct Metrics {

@@ -54,6 +54,8 @@ double OneEuro::update(double x,double dt,const Config&c){
 }
 void Postprocessor::reset(){tracks_.clear();previous_={};if(backend_)backend_->reset();++metrics_.resets;}
 PresentationFrame Postprocessor::update(const Identity&id,const float*scores,const float*poses){
+ if(config_.top_k<1||config_.top_k>3)throw std::runtime_error("Invalid TopK");
+ if(config_.score_threshold&&(!std::isfinite(*config_.score_threshold)||*config_.score_threshold<0||*config_.score_threshold>1))throw std::runtime_error("Invalid score threshold");
  if(!scores||!poses||!id.session||!id.sequence||!id.source_ns)throw std::runtime_error("Invalid presentation identity");
  for(unsigned i=0;i<180;++i)if(!std::isfinite(scores[i]))throw std::runtime_error("Nonfinite presentation score");
  for(unsigned i=0;i<7560;++i)if(!std::isfinite(poses[i]))throw std::runtime_error("Nonfinite presentation coordinates");
@@ -62,11 +64,11 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
  if(config_.identity_ns<config_.hold_ns||config_.identity_ns>1000000000ull||config_.confirmation_hits<2||config_.confirmation_hits>4||!std::isfinite(config_.duplicate_translation)||!std::isfinite(config_.duplicate_shape)||config_.duplicate_translation<0||config_.duplicate_shape<0)throw std::runtime_error("Invalid confirmation/duplicate configuration");
  if(previous_.session && (id.session!=previous_.session||id.source_ns<=previous_.source_ns||id.sequence<=previous_.sequence))reset();
  previous_=id;
- PresentationFrame out;out.id=id;out.hold_ns=config_.hold_ns;
+ PresentationFrame out;out.id=id;out.hold_ns=config_.hold_ns;out.score_threshold=config_.score_threshold;out.top_k=config_.top_k;
  std::array<unsigned,180> rank{};std::iota(rank.begin(),rank.end(),0);
- std::partial_sort(rank.begin(),rank.begin()+3,rank.end(),[&](auto a,auto b){return scores[a]==scores[b]?a<b:scores[a]>scores[b];});
+ std::partial_sort(rank.begin(),rank.begin()+config_.top_k,rank.end(),[&](auto a,auto b){return scores[a]==scores[b]?a<b:scores[a]>scores[b];});
  std::vector<Person> detections;std::vector<Centre> centres;std::vector<double> radii;
- for(unsigned n=0;n<3;++n){const auto i=rank[n];if(!(scores[i]>0.2f))continue;
+ for(unsigned n=0;n<config_.top_k;++n){const auto i=rank[n];if(config_.score_threshold&&!(scores[i]>*config_.score_threshold))continue;
   Person p;p.candidate=i;p.score=scores[i];p.observed_ns=id.source_ns;std::copy_n(poses+42*i,42,p.joints.begin());out.raw_poses.push_back(p);
   detections.push_back(p);centres.push_back({});radii.push_back(0);
  }
@@ -185,7 +187,7 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
  tracks_.erase(std::remove_if(tracks_.begin(),tracks_.end(),[&](const Track&t){return t.hits<config_.confirmation_hits&&t.value.held;}),tracks_.end());
  for(unsigned d=0;d<nd;++d)if(selected[d]&&best[d]<0){
   auto pending=std::count_if(tracks_.begin(),tracks_.end(),[&](const Track&t){return t.hits<config_.confirmation_hits;});
-  if(pending>=3)continue;
+  if(pending>=config_.top_k)continue;
   Track t;t.value=detections[d];t.value.track=next_id_++;t.hits=1;t.first_ns=id.source_ns;t.centre=t.association_centre=centres[d];t.radius=radii[d];t.observation=t.value.joints;t.support=t.value.score;
   tracks_.push_back(t);
  }
@@ -194,7 +196,7 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
   auto priority=[&](const Track&t){return t.hits<config_.confirmation_hits?3:t.value.held?2:t.hits==config_.confirmation_hits?1:0;};
   return priority(a)!=priority(b)?priority(a)<priority(b):a.value.track<b.value.track;
  });
- unsigned confirmed=0;tracks_.erase(std::remove_if(tracks_.begin(),tracks_.end(),[&](const Track&t){return t.hits>=config_.confirmation_hits&&++confirmed>3;}),tracks_.end());
+ unsigned confirmed=0;tracks_.erase(std::remove_if(tracks_.begin(),tracks_.end(),[&](const Track&t){return t.hits>=config_.confirmation_hits&&++confirmed>config_.top_k;}),tracks_.end());
  if(backend_){std::vector<Person> active;for(const auto&t:tracks_)if(t.hits>=config_.confirmation_hits)active.push_back(t.value);backend_->begin_frame(active);}
  std::vector<Joints> batch;unsigned batch_index=0;
  if(backend_){std::vector<FilterUpdate> updates;for(const auto&t:tracks_)if(t.hits>=config_.confirmation_hits&&!t.value.held)updates.push_back({t.value.track,t.observation,t.dt,t.initialize});batch=backend_->update_batch(updates);if(batch.size()!=updates.size())throw std::runtime_error("Incomplete filter frame");}
@@ -229,7 +231,9 @@ PresentationFrame Postprocessor::update(const Identity&id,const float*scores,con
 std::string PresentationFrame::json(bool replay)const{
  std::ostringstream o;o<<std::setprecision(9)<<"{\"schema\":\"PIWVIEW1\",\"version\":1,\"replay\":"<<(replay?"true":"false")
  <<",\"session\":\""<<id.session<<"\",\"frame\":\""<<id.frame<<"\",\"sequence\":\""<<id.sequence<<"\",\"source_ns\":\""<<id.source_ns
- <<"\",\"hold_ms\":"<<double(hold_ns)/1e6<<",\"poses\":";people(o,poses,*this);o<<",\"raw_poses\":";people(o,raw_poses,*this);o<<"}\n";
+ <<"\",\"hold_ms\":"<<double(hold_ns)/1e6<<",\"top_k\":"<<top_k<<",\"score_threshold\":";
+ if(score_threshold)o<<*score_threshold;else o<<"null";
+ o<<",\"poses\":";people(o,poses,*this);o<<",\"raw_poses\":";people(o,raw_poses,*this);o<<"}\n";
  auto s=o.str();if(s.size()>16384)throw std::runtime_error("Presentation record oversized");return s;
 }
 }

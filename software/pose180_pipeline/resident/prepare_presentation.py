@@ -31,17 +31,28 @@ def pack(folder, destination):
                 with path.open('rb') as stream:
                     archive.addfile(info, stream)
 
+def score_threshold(value):
+    if value == 'none':
+        return None
+    number = float(value)
+    if not math.isfinite(number) or not 0 <= number <= 1:
+        raise argparse.ArgumentTypeError('Expected none or a finite score threshold in [0,1]')
+    return number
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--work', type=Path, required=True)
     parser.add_argument('--binary', type=Path, required=True)
+    parser.add_argument('--model-dir', type=Path, help='Independent converted 180-query JSON/RAW pair; original model remains intact')
     parser.add_argument('--seconds', type=int, default=600)
     parser.add_argument('--input-source', choices=('dataset','live-csi'), default='dataset')
-    parser.add_argument('--csi-alignment', choices=('strict','adaptive'), default='strict',
-                        help='Future explicit live-CSI package only; does not start capture')
+    parser.add_argument('--csi-alignment', choices=('strict','adaptive'),
+                        help='Explicit live-CSI packages default to adaptive; strict remains available. Does not start capture')
     parser.add_argument('--dataset', type=Path, help='Directory prepared by dataset_input.py')
     parser.add_argument('--dataset-repetitions',type=int,default=1,help='Finite repeated inference, a fresh tracking epoch per pass')
     parser.add_argument('--filter-backend', choices=('cpu','pl'), default='cpu')
+    parser.add_argument('--score-threshold',type=score_threshold,default=.35,help='Strict cutoff in [0,1], or none to disable score filtering')
+    parser.add_argument('--top-k',type=int,choices=(1,2,3),default=3)
     parser.add_argument('--min-cutoff',type=float,default=.5)
     parser.add_argument('--beta',type=float,default=.3)
     parser.add_argument('--d-cutoff',type=float,default=1)
@@ -49,6 +60,30 @@ def main():
     parser.add_argument('--hardware-work', type=Path, help='Qualified integrated PL-filter build and packaged BOOT')
     parser.add_argument('--reference-boot',type=Path,help='BOOT to preserve as this new package\'s startup/fallback baseline; defaults to the recorded deployed release')
     args = parser.parse_args()
+    model_files = None
+    if args.model_dir:
+        args.model_dir=args.model_dir.resolve()
+        graph_name='piw24_pose180_ZG.json'; raw_name='piw24_pose180_ZG.raw'
+        graph_bytes=(args.model_dir/graph_name).read_bytes();raw_bytes=(args.model_dir/raw_name).read_bytes()
+        graph=json.loads(graph_bytes)
+        if (graph.get('icraft_version')!='v3.39.0' or graph.get('ai_target')!='@zhuget(330)' or graph.get('swap_mode')
+            or graph.get('params_bytes')!=len(raw_bytes) or graph.get('params_md5')!=hashlib.md5(raw_bytes).hexdigest()):
+            raise ValueError('Converted model target, version or JSON/RAW pairing differs')
+        allowed={'icraft::xir::Input','icraft::xir::Output','icraft::xir::HardOp'}
+        if any(op['_type_key'] not in allowed for op in graph['ops']):raise ValueError('Converted model still has Host compute')
+        inputs=[op for op in graph['ops'] if op['_type_key']=='icraft::xir::Input']
+        outputs=[op for op in graph['ops'] if op['_type_key']=='icraft::xir::Output']
+        if len(inputs)!=1 or len(outputs)!=1:raise ValueError('Converted model port count differs')
+        ports=inputs[0]['outputs']+outputs[0]['inputs']
+        if ([p['dtype']['shape'] for p in ports]!=[[1,180,60],[1,180],[1,180,14,3]]
+            or any(p['dtype']['element_dtype']!='@fp(32)' for p in ports)):
+            raise ValueError('Converted model external ports differ')
+        model_files={'models/'+graph_name:hashlib.sha256(graph_bytes).hexdigest(),
+                     'models/'+raw_name:hashlib.sha256(raw_bytes).hexdigest()}
+    if args.score_threshold is not None and (not math.isfinite(args.score_threshold) or not 0<=args.score_threshold<=1):
+        raise ValueError('Invalid score threshold')
+    if args.csi_alignment is None:
+        args.csi_alignment='adaptive' if args.input_source=='live-csi' else 'strict'
     deployed=json.loads(DEFAULT_BOOT.read_text()) if DEFAULT_BOOT.is_file() else None
     if deployed:
         if not args.hardware_work:args.hardware_work=ROOT/deployed['hardware_work']
@@ -111,6 +146,11 @@ def main():
     identity = json.loads((software / 'identity.json').read_text())
     identity['session'] = int(datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y%m%d%H%M%S'))
     identity['seconds'] = args.seconds
+    identity['selection']=dict(top_k=args.top_k,strict_score_threshold=args.score_threshold)
+    if model_files:
+        identity['model_package']='/root/demo-v1-20261022-r1/'+work.name+'/round-1/pipeline'
+        identity['model_files']=model_files
+        identity['model_source']=str(args.model_dir)
     identity['hardware_profile']=profile
     identity['candidate_boot_sha256']=digest(common/'BOOT-candidate.bin')['sha256']
     identity['reference_boot_sha256']=reference_sha
@@ -119,6 +159,7 @@ def main():
     identity['CSI_live']=not bool(dataset)
     if not dataset:
         identity['csi_alignment']=args.csi_alignment
+        identity['phase_preprocessing']='original'
         if args.csi_alignment=='adaptive':
             csi_path=software/'csi.conf'
             lines=[line for line in csi_path.read_text().splitlines()
@@ -143,7 +184,7 @@ def main():
         value=value.replace('time.monotonic()-started>240', "time.monotonic()-started>identity['seconds']+120")
         value=value.replace('Stop requested after 240 seconds; observing original SDK call',
                             'Finite stop-request budget reached; observing original SDK call')
-        filter_args=repr(['--min-cutoff',str(args.min_cutoff),'--beta',str(args.beta),'--d-cutoff',str(args.d_cutoff)])[1:-1]
+        filter_args=repr(['--top-k',str(args.top_k),'--score-threshold','none' if args.score_threshold is None else str(args.score_threshold),'--min-cutoff',str(args.min_cutoff),'--beta',str(args.beta),'--d-cutoff',str(args.d_cutoff)])[1:-1]
         value=value.replace("'--hdmi', '1'",filter_args+", '--hdmi', '1'")
         value=value.replace("'--hdmi','1'",filter_args+", '--hdmi','1'")
         if "'--min-cutoff'" not in value:
@@ -153,6 +194,8 @@ def main():
         compile(value,name,'exec');path.write_text(value,newline='\n')
         identity['files'][name]=digest(path)['sha256']
     identity['presentation'] = dict(version='tracked-one-euro-v5', backend='cpu', port=39385,
+                                   score_threshold=args.score_threshold,
+                                   top_k=args.top_k,
                                    standby='seven-bars-before-first-result',
                                    min_cutoff=args.min_cutoff,beta=args.beta,d_cutoff=args.d_cutoff,tracking_cutoff=3,velocity_cutoff=1,local_quality_gate=True,
                                    duplicate_centre=.3, duplicate_pose=.3,
@@ -175,6 +218,11 @@ def main():
             identity['files'][name]=digest(path)['sha256']
     write(software / 'identity.json', identity)
     folder = bundle / 'round-1'; folder.mkdir()
+    if model_files:
+        with tarfile.open(folder/'model-package.tar.gz','x:gz') as archive:
+            for name in model_files:
+                path=args.model_dir/Path(name).name
+                archive.add(path,arcname=path.name)
     pack(software, folder / 'software-package.tar.gz')
     manifest = json.loads((BASE / 'board-bundle/round-1/manifest.json').read_text())
     old_caps = dict(manifest['caps'])
@@ -184,6 +232,19 @@ def main():
     identifier = work.name + '-round-1'
     controller = (BASE / 'board-bundle/round-1/controller.py').read_text().replace(BASE.name, work.name)
     controller=controller.replace('probe-free-drain-v1',profile)
+    if model_files:
+        controller=controller.replace('import argparse\n','import argparse\nimport hashlib\n',1)
+        old_model="os.symlink('/root/demo-v1-20261022-r1/pose180-pipeline-20261025-r1/models', PIPELINE/'models')"
+        new_model="""model_root=PIPELINE/'models'
+    model_root.mkdir()
+    with tarfile.open(BASE/'model-package.tar.gz') as archive:
+        for member in archive.getmembers():
+            need(member.isfile() and member.name in ('piw24_pose180_ZG.json','piw24_pose180_ZG.raw'), 'Unexpected candidate model member')
+        archive.extractall(model_root)
+    for name,expected in read(PIPELINE/'identity.json')['model_files'].items():
+        need(hashlib.sha256((PIPELINE/name).read_bytes()).hexdigest()==expected, 'Transferred candidate model changed')"""
+        if old_model not in controller:raise ValueError('Current model preparation interface changed')
+        controller=controller.replace(old_model,new_model,1)
     controller = controller.replace('CAPS = ' + repr(old_caps), 'CAPS = ' + repr(caps))
     if dataset:
         controller=controller.replace("result.get('seconds',0)>=CAPS['runtime_seconds']",
@@ -202,8 +263,11 @@ def main():
     manifest['files'] = {p.name: digest(p) for p in folder.iterdir() if p.is_file()}
     manifest['files'].update({'../common/' + p.name: digest(p) for p in common.iterdir() if p.is_file()})
     write(folder / 'manifest.json', manifest)
+    confirmation=('2026-10-27 user selected official dataset input for development/validation and demonstration, with live CSI input closed'
+                  if dataset else
+                  '2026-10-27 user explicitly resumed three-RX live CSI for finite integration stability and continuity validation')
     write(folder / 'authorization.json', dict(package_id=identifier, active=True, caps=caps,
-          user_confirmation='2026-10-27 user selected official dataset input for subsequent development/validation and demonstration, with live CSI input closed and both display layouts unchanged; existing autonomous finite board authorization applies. Fresh bounded package; no failed-load retry.'))
+          user_confirmation=confirmation+'; both display layouts unchanged; existing autonomous finite board authorization applies. Fresh bounded package; no failed-load retry.'))
     pack(bundle, work / 'board-package.tar.gz')
     for name in ('board_call.py', 'capture_uart.py', 'capture_hdmi_startup.ps1', 'round-1-network.py'):
         target = work / name
@@ -218,7 +282,7 @@ def main():
     write(work / 'prepared.json', dict(package_id=identifier, caps=caps, hardware_profile=profile,
           BOOT_sha256=manifest['candidate_boot_sha256'], native_sha256=identity['files']['pose180_demo'],
           input_source=identity['input_source'], CSI_live=identity['CSI_live'],
-          model_changed=False, hardware_rebuilt=False, presentation=identity['presentation']))
+          model_changed=bool(model_files), model_files=model_files, hardware_rebuilt=False, presentation=identity['presentation']))
     print(json.dumps(dict(prepared=True, package_id=identifier, caps=caps)))
 
 if __name__ == '__main__':

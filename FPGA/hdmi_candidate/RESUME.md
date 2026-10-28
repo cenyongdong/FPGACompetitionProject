@@ -1,6 +1,18 @@
 # HDMI交接与恢复入口
 
-## 当前入口（整理于 2026-10-27）
+## 当前入口（整理于 2026-10-28）
+
+**最新本地交付：TopK=1、无置信度阈值启动包已完成，尚未部署或实板测试。** [启动包](../../Deliverables/pose180-top1-no-threshold-20261028-r1.tar.gz)（30,687,380 字节）、[SHA256](../../Deliverables/pose180-top1-no-threshold-20261028-r1.tar.gz.sha256)及[使用说明](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md)。包内独立携带原 epoch99 JSON／RAW、ARM64 程序、PC 观察端、核心源码及同一合格 BOOT 备份，不依赖旧测试包目录；手动启停，不安装 SDK 自启动或自动重试。程序 SHA256 `0a7b0b93632f9ec0524da38a30b73acd46f03c9fede4c883af57584a806b5721`；完整交付身份见[package.json](../../.local/pose180-top1-no-threshold-20261028-r1/package.json)。
+
+本地后处理／HDMI／显示状态／缓冲／日志检查通过；无阈值 mock 完成 30 次推理，PC 六项检查及实际解包观察端的低分／零分／负分接收通过；正常停止与异常后重试保护通过。压缩包内源码另行解出后，以现有工具链重新编译 `pose180_demo` 成功。精确原值见[验证目录](../../.local/pose180-top1-no-threshold-20261028-r1/verification.json)和[解包重建](../../.local/pose180-top1-no-threshold-20261028-r1/source-check.json)。这些结果不替代无阈值实板验证；下方设备结束状态和遗留远端收尾保持。
+
+**最新状态：用户要求结束测试，当前原 epoch99／TopK=1／严格 score >0.2 测试已安全退出；随后设备以太网断开，不自主重连或续跑。** 最后新包 `.local/csi-open-space-top1-020-20261027-r4` 完成 8344 次新推理／HDMI 采纳／PC 接收，最后 SSH 状态证明 native_exit=0、完整 SDK／HDMI 关闭、设备占用为空，PC／串口观察已退出。进程总时长 605.508 s 包含初始化／退出，按用户停止而非完整处理期验收；原时长／停止原因门 `passed=false` 保留。最后核验 boot_id `3c398048-a8b7-4225-b6c1-c57a9735940e`、合格默认 BOOT 不变，断开后的实时状态未知。
+
+**待收尾（不需要新 SDK 或重启）：** 当前包远端取消关闭回执未写成，临时板端 `.50.49/24` 地址未能撤销／核验；TX／RX3 临时 LAN SSH 未能恢复原禁用设置；六个已关闭旧包及本包的完整原生证据归档尚未取回，文件仍保存在各板端目录。不得把这些动作写成已完成；待用户重新连接后再处理，不为取证自主重连。当前启动文件在本轮启动后已经恢复为同一合格默认镜像，不需要降级到历史参考位流。
+
+[最后已观察安全停止](../../.local/csi-open-space-top1-020-20261027-r4/results/summary.json)、[原始 SSH 状态回执](../../.local/csi-open-space-top1-020-20261027-r4/results/last-observed-native-outcome.json)、[具体待办](../../.local/csi-open-space-top1-020-20261027-r4/results/pending-cleanup.json)及[全部实时测试](../../software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)。原图恢复后的 r3 完成完整有限测试和模型 SHA／加载路径核对；新 epoch130 图已转换及有限实测，现场效果相近或更差，未认定精度改善，候选独立保留。
+
+**此前完整有限验证：自适应实时 CSI 已接入七色条／v5 系统并完成修订后实板连续性复测。** 当时 boot_id 为 `ad98882f-5b4d-4860-9516-31f148b3e826`，合格默认 BOOT 内容不变；当前已验证软件选择见 [default_boot.json](default_boot.json)。此前两包均已关闭，SDK／HDMI／PC 负载及临时采集地址已释放；原预处理保持，精确结果、首轮坏记录及恢复见[实时集成记录](../../software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)。此前启动身份均作历史保留，当前身份以上方暂停状态为准。
 
 **最新发布：用户已要求将已合格 `probe-free-drain-filter-v1` 设为默认启动位流，并选择软件七色条待机。现已安装、启动验证及最终写回核验；当前运行和下次启动均为这份位流，原参考 BOOT 仅作为恢复备份保留。** 七色条在显示服务完成初始化后、第一份推理结果前显示，随后切回原骨架场景；不是 FPGA 上电即显示，也没有设置 SDK／推理开机自启。具体发布记录见下节，机器可读选择为 [default_boot.json](default_boot.json)。
 
@@ -15,8 +27,8 @@
 | 原参考 BOOT | 保留的恢复备份，已由下方合格版本替换为默认启动；不删除历史身份 | 下节恢复资产 |
 | r45 完整诊断基线 | 原物理资格及历史板测保留；匹配旧准入 | [r45 物理结果](../../tools/pose-v1/evidence/hp2-deferred-consume-20261024-r45/RESULTS.md) |
 | `probe-free-drain-v1` | 去旁路诊断／协议 IP，保留主动消费；物理资格与有限真实闭环已验证 | [独立工程及结果](probe_free_drain/README.md) |
-| `probe-free-drain-filter-v1` | **当前默认启动位流及当前运行位流**；实际 100 MHz，4 路滤波保留；软件默认 PS 0.5／0.3／1 | [物理与板测](../../software/pose180_pipeline/resident/PRESENTATION-20261026.md#pl-计算与资源)；构建 `.local/pose-filter-integration-20261026-r2`，其 `boot-package/` 与 `reports/qualification.json` |
-| `tracked-one-euro-v5` 软件 | PS 0.5／0.3／1，新增输入前七色条；49 帧有限发布验证完成，PL 调用为 0；防闪现仍开放 | 本节发布记录；最新构建 `.local/hdmi-startup-20261027-r1/arm64/pose180_demo`；此前[六片段实测](../../software/pose180_pipeline/resident/DATASET-DEMO.md)保留 |
+| `probe-free-drain-filter-v1` | **当前默认启动选择、本轮最近核验运行位流**；实际 100 MHz，4 路滤波保留；软件默认 PS 0.5／0.3／1 | [物理与板测](../../software/pose180_pipeline/resident/PRESENTATION-20261026.md#pl-计算与资源)；构建 `.local/pose-filter-integration-20261026-r2`，其 `boot-package/` 与 `reports/qualification.json` |
+| `tracked-one-euro-v5` 软件 | PS 0.5／0.3／1、输入前七色条；自适应真实 CSI 集成和有限连续性复测完成，PL 调用为 0；防闪现观感仍开放 | 最新构建 `.local/csi-integration-20261027-r2/arm64/pose180_demo`；[实时结果](../../software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)；下文发布及此前[六片段实测](../../software/pose180_pipeline/resident/DATASET-DEMO.md)保留 |
 | `pose-stabilizer-offline-v1` 精简守卫 | 覆盖缺口仍在，**不可部署**；不是上述已测保留消费候选 | [离线阶段结果](pose_stabilizer/README.md) |
 | 心率 PL 覆盖层 | 核与 OOC 完成，无整机实现／板测，不属于当前合格位流 | [专项状态](../../software/vitals/HYBRID-20261026.md)、[PL 核](../vitals_acf/README.md) |
 

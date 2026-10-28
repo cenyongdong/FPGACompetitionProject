@@ -1,0 +1,17 @@
+{
+  "max_total_time_error_ms": 20,
+  "allow_inferred_joints": false,
+  "label_contract": {
+    "mapping_verified": false,
+    "coordinates_verified": false,
+    "evidence": "",
+    "target_joint_source_names": ["Neck", "Head", "ShoulderLeft", "ShoulderRight", "ElbowLeft", "HipLeft", "ElbowRight", "HipRight", "HandLeft", "KneeLeft", "HandRight", "KneeRight", "AnkleLeft", "AnkleRight"],
+    "camera_metres_to_model_metres": null,
+    "note": "Candidate map only. Hand is not silently replaced by Wrist. Fill a measured coordinate transform and record the mapping check before generating labels."
+  },
+  "sessions": [
+    {"id": "local_train_01", "split": "train", "directory": "sessions/train-01", "clock_calibration": "calibration/train-01.json"},
+    {"id": "local_val_01", "split": "val", "directory": "sessions/val-01", "clock_calibration": "calibration/val-01.json"},
+    {"id": "local_test_01", "split": "test", "directory": "sessions/test-01", "clock_calibration": "calibration/test-01.json"}
+  ]
+}

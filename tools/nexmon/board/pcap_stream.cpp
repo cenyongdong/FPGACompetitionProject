@@ -20,9 +20,14 @@ std::uint16_t be16(const std::uint8_t* p) {
     return std::uint16_t((std::uint16_t(p[0])<<8)|std::uint16_t(p[1]));
 }
 bool vlan(std::uint16_t type) { return type == 0x8100 || type == 0x88a8; }
+struct FrameError:std::runtime_error {using std::runtime_error::runtime_error;};
+void frame_require(bool condition,const char* message) {if(!condition)throw FrameError(message);}
 } // namespace
 
-PcapStream::PcapStream(bool streaming):streaming_(streaming) { buffer_.reserve(max_buffer_); }
+PcapStream::PcapStream(bool streaming,bool isolate):streaming_(streaming),isolate_bad_frames_(isolate) {
+    require(!isolate||streaming,"Bad-frame isolation requires explicit streaming mode");
+    buffer_.reserve(max_buffer_);
+}
 
 bool PcapStream::complete() const noexcept {
     return !failed_ && header_read_ && buffer_.empty();
@@ -72,25 +77,25 @@ void PcapStream::parse_frame(std::vector<Datagram>& output) {
     std::size_t offset = 14;
     auto type = be16(frame+12);
     for (unsigned layer=0;layer<2 && vlan(type);++layer) {
-        require(size-offset >= 4,"Truncated Ethernet VLAN header");
+        frame_require(size-offset >= 4,"Truncated Ethernet VLAN header");
         type = be16(frame+offset+2);
         offset += 4;
     }
-    require(!vlan(type),"More than two Ethernet VLAN headers");
+    frame_require(!vlan(type),"More than two Ethernet VLAN headers");
     if (type != 0x0800) return;
-    require(size-offset >= 20,"Truncated IPv4 header");
+    frame_require(size-offset >= 20,"Truncated IPv4 header");
     const auto* ip = frame+offset;
-    require((ip[0]>>4) == 4,"Invalid IPv4 version");
+    frame_require((ip[0]>>4) == 4,"Invalid IPv4 version");
     const auto ihl = std::size_t(ip[0]&15)*4;
     const auto total = std::size_t(be16(ip+2));
-    require(ihl >= 20 && ihl <= size-offset && total >= ihl
+    frame_require(ihl >= 20 && ihl <= size-offset && total >= ihl
             && total <= size-offset,"Invalid IPv4 IHL/total length");
-    require((be16(ip+6)&0x3fff) == 0,"Fragmented IPv4 is not supported");
+    frame_require((be16(ip+6)&0x3fff) == 0,"Fragmented IPv4 is not supported");
     if (ip[9] != 17) return;
-    require(total-ihl >= 8,"Truncated UDP header");
+    frame_require(total-ihl >= 8,"Truncated UDP header");
     const auto* udp = ip+ihl;
     const auto length = std::size_t(be16(udp+4));
-    require(length >= 8 && length == total-ihl,"Invalid UDP length");
+    frame_require(length >= 8 && length == total-ihl,"Invalid UDP length");
     const auto port = be16(udp+2);
     if (port != 5500 && port != 5501) return;
     Datagram datagram;
@@ -121,7 +126,18 @@ std::vector<Datagram> PcapStream::append(const std::uint8_t* data,std::size_t si
             } else if (expected_ == 16) {
                 parse_record_header();
             } else {
-                parse_frame(output);
+                try {parse_frame(output);}
+                catch(const FrameError& error) {
+                    if(!isolate_bad_frames_)throw;
+                    // The global/record headers and complete captured length
+                    // were already validated. Drop exactly this frame; never
+                    // scan for a guessed next boundary or publish its payload.
+                    ++rejected_frames_;
+                    last_issue_.packet=packets_+1;last_issue_.timestamp_us=record_time_us_;
+                    last_issue_.reason=error.what();
+                    last_issue_.frame_prefix.assign(buffer_.begin()+16,
+                        buffer_.begin()+16+std::min(std::size_t(64),buffer_.size()-16));
+                }
                 ++packets_;
                 last_time_us_ = record_time_us_;
                 buffer_.clear();

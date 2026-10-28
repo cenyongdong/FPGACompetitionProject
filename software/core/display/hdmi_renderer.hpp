@@ -12,7 +12,7 @@
 namespace pose::hdmi {
     struct SelectionPolicy {
         unsigned top_k = 1;
-        float threshold = -std::numeric_limits<float>::infinity();
+        std::optional<float> threshold; // No cutoff unless explicitly selected.
     };
     struct CandidatePose {
         std::uint64_t track = 0;

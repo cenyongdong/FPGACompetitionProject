@@ -1,0 +1,14 @@
+{
+  "verified": false,
+  "evidence": "",
+  "input_source": "live-csi",
+  "csi_session": null,
+  "label_time_reference": "window_end",
+  "reference_source_ns": null,
+  "reference_kinect_ticks_100ns": null,
+  "ticks_per_source_ns": 0.01,
+  "valid_source_min_ns": null,
+  "valid_source_max_ns": null,
+  "max_error_ms": null,
+  "note": "0.01 is only the nominal unit conversion. Measure offset, drift and timing uncertainty; host arrival timestamps and matching frame numbers alone do not establish synchronization."
+}

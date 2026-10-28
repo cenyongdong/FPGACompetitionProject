@@ -8,7 +8,7 @@
 | D47 | 共享FP16首次Host索引内容错误，后两轮SDK源读取合法 | 早期原值匹配前一输入；静态源与真实图独立对照未复现，后续r53再次捕获1568字混入同帧姿态内容 | DMA完成、缓存同步效果与NPU源可见性仍不能严格三分；晚读不修补首次值，旧DATA仍暂停。[隔离结果](demo_v1/RESULTS.md)、[r53原值](tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md) |
 | D44 | 首次HDMI START出现reader fault2，未采纳首帧 | 保存失败并STOP；用户明确要求重测后，在已归档安全idle条件下清错、新进程两图案和后续骨架显示通过 | fault将局部burst条件、RRESP、RID或RLAST／拍数异常汇总，不能区分具体原因；重测通过不是首启修复。早期独立failure-review已不在当前树，原已记录结论保留，不能补造原始报告；见[工程说明](FPGA/hdmi_candidate/INTEGRATION.md) |
 | D45 | 跨启动HP2返回异常、HDMI支路保留RVALID，可使SDK参数上传或4KiB DMA失败 | 源端隔离仍复现；同启动有限消费可缓解；[无诊断但保留消费候选](FPGA/hdmi_candidate/probe_free_drain/README.md)已取得启动消费后全链路通过样本 | 旧[无探针r1](FPGA/hdmi_candidate/probe_free/README.md)误删消费器及SDK上传DMA超时保留；新候选最初三次健康启动后，追加 r3 第 2 轮实际消费 16 拍返回并完成 5 分钟，但不能关闭间歇性根因。运行中 PL_KEY1 失联样本单列；[r8／r9原值](software/pose180_pipeline/resident/PHASE-TRACKING.md)保留，D45全面调查与旧DATA不自动恢复。 |
-| D46 | 真实 CSI 共同窗口缺失及画面间断 | RX 局部恢复、PC 独立显示、持续 TX 续期和更早重同步已实测；新增[容错组窗／后台匹配](software/pose180_pipeline/resident/ADAPTIVE-CSI.md)完成离线及 mock 验证，原严格路径保留 | 最近展示 r4／r5 仍有约 3 秒结果间隔；新算法尚未恢复现场采集或实板验证，不据回放关闭问题。输入缺口与人物级突跳分开处理，严格 30 Hz 不作门；[最新实测](software/pose180_pipeline/resident/PRESENTATION-20261026.md)、[窗口恢复](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) |
+| D46 | 真实 CSI 共同窗口缺失及画面间断 | 自适应输入已接入最新 v5 系统，真实 PC／RX 恢复及修订后有限连续性实板验证完成；坏记录按可信 PCAP 边界隔离，原严格路径保留 | 首轮自然坏帧导致秒级恢复的原值保留，修订后有限复测无全局重同步；自然坏帧产生根因、全天可靠性和近似输入精度未关闭。输入间断与人物级突跳分开；[唯一最新结果](software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md) |
 
 ## 现存问题与处理优先级
 
@@ -23,6 +23,8 @@
 2026-10-25优先级调整：用户已批准[ADR_50](ADR/ADR_50.md)，先完成端到端演示及其必需的常驻／恢复能力；无需严格30Hz。下列问题继续保留原值与未验收状态，但有限数值偏差、严格实时、零缺窗和完整根因研究不再单独阻断开发。仅按对真实闭环、硬件安全和资源可恢复性的实际影响排序，后续常驻核心与实际有界闭环结果见[实施记录](software/pose180_pipeline/resident/README.md)，不据此关闭旧根因或精度问题。
 
 - **D48新模型数值误差独立保留。** 本轮180-query无TopK候选已部署，按用户授权忽略误差的30分钟124,518次饱和测试正常结束；数值／量化精度及耗时长尾仍单独保留，不复活旧测试额度或旧DATA调查。[部署实测](tools/pose180/deploy/RESULTS.md)。
+
+2026-10-27补充：从零初始化分支最佳 epoch130 已独立转换并有限上板；生成图相对 FP32 的 Top1 关节偏差及现场“效果相近或更差”反馈均保留，未认定精度改善，用户已要求恢复原 epoch99 图。量化误差与现场姿态精度分别认定，不套用旧图例外；[新图原值](model/piw24_pose180_scratch130-20261027-r1/README.md)及[当前测试](software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)。
 
 完整排查交接见[HDMI启动故障工程交接](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md)，含已确认事实、原始证据和待验证假设；不构成恢复实施许可。
 

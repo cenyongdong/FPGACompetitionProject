@@ -14,6 +14,46 @@ struct Sample {
 };
 int main(){try{
  Config two_hits;two_hits.confirmation_hits=2;two_hits.identity_ns=two_hits.hold_ns;
+ Config one_policy=two_hits;one_policy.top_k=1;Postprocessor top_one(one_policy);Sample single;
+ single.person(7,0,.8f);single.person(19,3,.8f);auto single_frame=single.run(top_one);
+ check(single_frame.raw_poses.size()==1&&single_frame.raw_poses[0].candidate==7&&single_frame.top_k==1,"Top1 tie/ranking policy");
+ single.next();check(single.run(top_one).poses.size()==1,"Top1 confirmation");
+ single.person(19,3,.95f);single.next();single.run(top_one);single.next();single_frame=single.run(top_one);
+ check(single_frame.poses.size()==1&&single_frame.poses[0].candidate==19,"Top1 held/current hypotheses exceeded one displayed body");
+ single.scores.fill(.2f);single.next();check(single.run(top_one).raw_poses.empty(),"Top1 strict 0.2 threshold");
+ single.next(251);check(single.run(top_one).poses.empty(),"Top1 held pose expiry");
+ // Disabled means no score predicate, including exact zero and negative finite
+ // values. Ranking, confirmation, geometry and nonfinite rejection still apply.
+ Config no_cutoff=one_policy;no_cutoff.score_threshold.reset();Postprocessor unfiltered(no_cutoff);Sample low;
+ low.scores.fill(-1);low.person(179,0,.001f);const auto original_low=low.scores;
+ auto low_frame=low.run(unfiltered);
+ check(low_frame.raw_poses.size()==1&&low_frame.raw_poses[0].candidate==179&&!low_frame.score_threshold,"disabled cutoff lost low-scoring Top1");
+ check(low.scores==original_low,"disabled cutoff changed model scores");
+ low.person(179,0,0);low.next();low_frame=low.run(unfiltered);
+ check(low_frame.poses.size()==1&&low_frame.raw_poses[0].score==0,"zero score incorrectly filtered");
+ low.person(179,0,-.5f);low.next();low_frame=low.run(unfiltered);
+ check(low_frame.poses.size()==1&&low_frame.poses[0].score==-.5f,"negative finite Top1 incorrectly filtered");
+ low.scores.fill(0);low.next();low_frame=low.run(unfiltered);
+ check(low_frame.raw_poses.size()==1&&low_frame.raw_poses[0].candidate==0,"disabled cutoff tie order");
+ low.scores[17]=std::numeric_limits<float>::quiet_NaN();low.next();bool low_rejected=false;
+ try{low.run(unfiltered);}catch(...){low_rejected=true;}check(low_rejected,"disabled cutoff accepted nonfinite scores");
+ Config invalid_top;invalid_top.top_k=0;Postprocessor bad_top(invalid_top);bool invalid_top_rejected=false;
+ try{single.run(bad_top);}catch(...){invalid_top_rejected=true;}check(invalid_top_rejected,"invalid TopK rejected");
+ Config high=two_hits;high.score_threshold=.35f;Postprocessor threshold(high);Sample boundary;
+ boundary.person(0,0,.35f);boundary.person(1,2,std::nextafter(.35f,0.f));boundary.person(2,4,std::nextafter(.35f,1.f));
+ const auto boundary_scores=boundary.scores;auto threshold_frame=boundary.run(threshold);
+ check(boundary.scores==boundary_scores,"threshold selection rewrote raw scores");
+ check(threshold_frame.raw_poses.size()==1&&threshold_frame.raw_poses[0].candidate==2&&threshold_frame.score_threshold==.35f,"strict configurable float32 score threshold");
+ boundary.next();check(boundary.run(threshold).poses.size()==1,"above-threshold candidate confirms");
+ boundary.scores.fill(.35f);boundary.next();threshold_frame=boundary.run(threshold);
+ check(threshold_frame.raw_poses.empty()&&threshold_frame.poses.size()==1&&threshold_frame.poses[0].held,"threshold miss retains bounded valid history");
+ boundary.next(251);check(boundary.run(threshold).poses.empty(),"threshold miss expires");
+ Config half=two_hits;half.score_threshold=.5f;Postprocessor threshold_half(half);Sample half_boundary;
+ half_boundary.person(0,0,.5f);half_boundary.person(1,2,std::nextafter(.5f,0.f));half_boundary.person(2,4,std::nextafter(.5f,1.f));
+ const auto half_frame=half_boundary.run(threshold_half);
+ check(half_frame.raw_poses.size()==1&&half_frame.raw_poses[0].candidate==2&&half_frame.score_threshold==.5f,"prepared 0.5 threshold boundary");
+ Config invalid_threshold;invalid_threshold.score_threshold=std::numeric_limits<float>::quiet_NaN();Postprocessor invalid_score(invalid_threshold);bool invalid_score_rejected=false;
+ try{boundary.run(invalid_score);}catch(...){invalid_score_rejected=true;}check(invalid_score_rejected,"nonfinite score threshold rejected");
  Postprocessor p(two_hits);Sample s;s.person(7,1);check(s.run(p).poses.empty(),"birth confirmation");s.next();auto f=s.run(p);check(f.poses.size()==1,"second confirmation");auto id=f.poses[0].track;
  s.scores[7]=0;s.person(19,1.01);s.next();f=s.run(p);check(f.poses[0].track==id&&f.poses[0].candidate==19,"query is not identity");
  s.person(20,1.01,.79f);s.next();f=s.run(p);check(f.poses.size()==1&&p.metrics().duplicates>0,"dedup");

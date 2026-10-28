@@ -40,6 +40,8 @@ using Record = std::array<unsigned char, pp::full_bytes>;
 struct Stats {
     // Set before worker construction; provenance only, never a display label.
     std::string input_source="tcp_window";
+    std::optional<float> score_threshold=0.2f;
+    unsigned top_k=3;
     std::atomic<bool> dataset_done{false};
     std::atomic<std::uint64_t> dataset_passes{0};
     std::atomic<std::uint64_t> received{0}, replaced{0}, stale{0}, malformed{0}, reconnects{0};
@@ -60,6 +62,11 @@ struct Stats {
     std::array<std::atomic<std::uint64_t>,4> selection_counts{};
     std::atomic<std::uint64_t> alignment_resets{0}, transport_resets{0}, diagnostic_dropped{0};
     std::atomic<std::uint64_t> last_recovery_ms{0}, longest_recovery_ms{0};
+    std::atomic<bool> adaptive_csi{false};
+    std::atomic<std::uint64_t> csi_exact_windows{0},csi_approximate_windows{0},csi_approximate_points{0};
+    std::atomic<std::uint64_t> csi_mapping_switches{0},csi_skipped_points{0},csi_decoder_resets{0};
+    std::atomic<std::uint64_t> csi_max_skew_us{0},csi_max_span_us{0},longest_input_gap{0};
+    std::atomic<std::uint64_t> csi_rejected_records{0};
     std::atomic<bool> isolated{false}, recording{true}, input_connected{false}, pc_connected{false};
     std::atomic<bool> initialized{false}, resynchronizing{false};
     mutable std::mutex input_error_mutex;
@@ -93,6 +100,8 @@ inline std::string Stats::json(bool mock, bool hdmi) const {
         !last || now-last>2000000000 ? "waiting_input" : "running";
     std::string s="{\"state\":\""+std::string(state)+"\",\"mock\":"+(mock?"true":"false")+
         ",\"hdmi\":"+(hdmi?"true":"false")+",\"input_source\":\""+input_source+"\",\"dataset_done\":"+(dataset_done?"true":"false");
+    s+=",\"score_threshold\":"+(score_threshold?std::to_string(*score_threshold):std::string("null"));
+    s+=",\"top_k\":"+std::to_string(top_k);
     auto add=[&](const char* k,std::uint64_t v){s+=",\""+std::string(k)+"\":"+std::to_string(v);};
     add("received",received);add("replaced",replaced);add("stale",stale);add("malformed",malformed);
     add("dataset_passes",dataset_passes);
@@ -120,6 +129,13 @@ inline std::string Stats::json(bool mock, bool hdmi) const {
     add("alignment_resets",alignment_resets);add("transport_resets",transport_resets);
     add("diagnostic_dropped",diagnostic_dropped);add("last_recovery_ms",last_recovery_ms);
     add("longest_recovery_ms",longest_recovery_ms);
+    s+=",\"csi_alignment\":\""+std::string(input_source=="live_csi"?(adaptive_csi?"adaptive":"strict"):"none")+"\"";
+    add("csi_exact_windows",csi_exact_windows);add("csi_approximate_windows",csi_approximate_windows);
+    add("csi_approximate_points",csi_approximate_points);add("csi_mapping_switches",csi_mapping_switches);
+    add("csi_skipped_points",csi_skipped_points);add("csi_decoder_resets",csi_decoder_resets);
+    add("csi_max_skew_us",csi_max_skew_us);add("csi_max_span_us",csi_max_span_us);
+    add("csi_rejected_records",csi_rejected_records);
+    add("longest_input_gap_ms",longest_input_gap.load()/1000000);
     std::string reason;
     {std::lock_guard<std::mutex> lock(input_error_mutex);
         for(unsigned char c:last_input_error){if(c=='"'||c=='\\')reason+='\\';if(c>=32)reason+=c;}}
@@ -139,6 +155,9 @@ struct Shared {
 inline void accept_input(Shared& shared, const Input& input) {
     if(shared.stats.isolated) return;
     if(shared.input.put(input)) ++shared.stats.replaced;
-    ++shared.stats.received; shared.stats.last_input=input.arrived;
+    ++shared.stats.received;
+    const auto previous=shared.stats.last_input.exchange(input.arrived);
+    if(previous&&input.arrived>=previous)
+        shared.stats.longest_input_gap=std::max(shared.stats.longest_input_gap.load(),input.arrived-previous);
 }
 } // namespace pose180_demo

@@ -1,0 +1,154 @@
+# Kinect v2 采集与微调准备
+
+2026-10-28。用户已回到现场并恢复 Kinect／CSI 配对采集。**开发板未连接，改由电脑直接接收三路 RX 原始 PCAP；未启动开发板 SDK、模型推理或训练。** 早期桌面位置的空人体记录保留，不能继续作为当前状态。
+
+## 当前入口：时间配对与含坐姿的新一轮
+
+已完成既有有效录制和新增含坐姿录制的接收时刻配对，实际数量、文件格式、筛选与时钟边界统一见[配对说明](D:/FPGACompetitionProject/.local/kinect-pairing-20261028-r1/PAIRING.md)。新增动作、正式区间质量、场景变化与关闭状态见[本轮采集说明](D:/FPGACompetitionProject/.local/kinect-csi-direct-20261028-r6/COLLECTION.md)。本次仍未启动训练或开发板SDK。
+
+`pair_receipts.py` 使用同一电脑QPC上的CSI接收时刻和真实Kinect读取区间中点，输出窗口行索引、原25关节相机坐标、跟踪状态、逐组账本及拒绝原因。匹配间隔只表示接收时钟上的距离，不是RF采样与相机曝光误差；物理同步、模型坐标和官方14关节语义未核定，不把这些配对直接标为可训练。已有原始记录及旧汇总保留。
+
+可在新批目录提供 `protocol-plan.json`、`protocol-titles.json` 自定义三段各十组的有界提示，仍由窗口实际计时，不依赖聊天送达。`protocol-action-kinds.json` 仅供几何诊断识别新增动作，不作为姿态真值。`index_collection.py --roles` 可显式预留整段角色；本轮保留含坐姿的训练候选，并保持旧测试段独立。
+
+## 此前：三段长时批量采集已完成
+
+用户随后要求继续采集多个长时动作段。已用无语音大字提示窗口完成三段独立录制，正常结束并恢复网络；实际数据、正式区间统计、质量问题及后续微调边界统一见[批量采集说明](D:/FPGACompetitionProject/.local/kinect-csi-direct-20261028-r5/COLLECTION.md)。本次未启动模型训练。
+
+`CollectionPanel.cs` 提供开始／停止按钮、8秒准备倒计时、每30秒自动动作切换和段间60秒休息；界面切换使用本机QPC记录到 `visual-protocol.jsonl`，不再依赖聊天消息的送达节奏。窗口先等待一人出现，再计正式动作时间；准备阶段的原始帧仍保留。`run_batch.ps1` 只在明确运行时提升权限、临时设置接收网络、显示窗口，结束后自动清理本批网络设置，不安装自启动。`collect_direct.py --panel` 有界打开相机和接收程序，通过停止文件正常退出。`index_collection.py` 仅索引正式区间与预留整段划分，始终标记 `trainable=false`；它没有替代对时、坐标及关节语义核定。
+
+## 此前：单段五分钟采集与微调决定
+
+用户随后说明前两段未按指定动作执行，因此 `train-01`／`train-02` 保留为实际、非规范动作原始记录，不认定动作协议已完成。用户要求先明确动作、重新长时采集、检查动作质量后再决定是否微调；已先列出自然站立、双臂／单臂侧平举、屈肘、横移与返回的五分钟动作表。用户最终明确取消语音、直接开始。
+
+本次成功记录在 `D:/FPGACompetitionProject/.local/kinect-csi-direct-20261028-r4/long-01/`，300秒，采集、相机及网络临时配置均已结束：
+
+| 检查 | 实际结果 |
+|---|---|
+| Kinect | 9001帧，8982个人体帧，同一跟踪身份；全部人体帧均未标记画面裁切 |
+| 关节质量 | 目标14关节全部 Tracked 为7357帧，占人体帧81.9%；全部25关节 Tracked 为7295帧 |
+| 连续性 | 无非有限坐标、重复／倒退时间戳；实际传感器时间跨度300.0000694秒 |
+| 跳变诊断 | 相邻跟踪帧间隔小于50ms时，关节位移超过25cm，或颈／脊柱超过15cm作为可疑标记；仅3个相邻帧对的右膝触发，涉及6帧，见 `motion-quality.json`；这是诊断阈值，不是精度验收 |
+| CSI | 三路原始 PCAP 完整保留，原生同 RF 序号组窗与原预处理得到4461个输入窗口；全部输入浮点数有限，窗口接收记录缺失0 |
+| CSI 常规偏差 | RX2 decoder reset 1次，最大源间隔133225us、跳过523点；不宣称零丢失或严格30Hz全链通过 |
+| 稳定片段诊断 | 在PC接收时钟下，2秒邻域、各目标关节至少80% Tracked，最差关节95%距离不超3／5／8cm的窗口分别192／369／547个；这些不是已经完成精确配对的训练样本 |
+
+`skeleton-quality.png` 为每30秒名义中点的实际 SDK 骨架图，蓝色 Tracked、橙色 Inferred，无模型预测。`protocol-events.jsonl` 记录本地文字提示的实际 QPC，前端送达延迟未知；**文字提示间隔未严格遵守原30秒计划，最后一组约3秒，不能将本轮写成十组各30秒的规范动作完成。** `action-quality.json` 按实际提示区间做几何启发式检查，不能把低匹配率直接解释为用户未执行或传感器失效，也不能将提示文字当作真实姿态标签。
+
+**决定：本轮质量明显优于前两段，保留作微调候选；暂不启动微调。** 尚需核定 RF／Kinect 对时和不确定度、官方14关节语义、固定场景坐标变换，并准备独立录制的验证数据。不能把同时接收或稳定姿势直接标成精确同步，也不以模型输出补全真实标签。当前仍无可直接训练的配对数据集。
+
+准备阶段的 `r2` 因临时IP尚处于地址检测阶段而接收绑定失败，未打开相机；已在网络入口加入 Preferred 状态有界等待。`r3` 三路到达后，语音设备错误导致相机仅录到25帧／6个人体帧，随后正常关闭，不算五分钟采集。两次原始错误与恢复回执均保留，未复活旧板测包。成功的 `r4` 使用静默入口，不调用语音；运行结束自动删除本批拥有的IP别名和防火墙规则，见 `pc-network-restored.json`，不存在后台采集、SDK或训练。
+
+## 当前直接采集状态
+
+设备移到空旷位置后，Kinect 单独验证已实际导出人体。第一段60秒配对原始数据位于 `D:/FPGACompetitionProject/.local/kinect-csi-direct-20261028-r1/train-01/`：
+
+- Kinect 共1802帧，其中1733帧检测到一人，只有一个跟踪身份；无非有限关节值、重复或倒退设备时间戳，reader 和传感器正常关闭。
+- 目标14关节全部为 `Tracked` 的人体帧664帧。手部、脚踝仍有部分推断，不能把全部人体帧当成合格标签。
+- 三路原始 PCAP 均保存；沿用当前原生同 RF 序号组窗和原预处理，得到897个 `[180,60]` 实数输入窗口，无近似 RF 序号拼接。预处理不是模型推理。
+- 原始 CSI 在 `csi-raw/`，原始骨架在 `kinect/bodies.jsonl`，关节长表在 `kinect/joints.csv`，派生窗口在 `csi/`，质量摘要在 `quality-summary.json`。
+- **尚未生成可训练数据集**：路由器抓包时间、PC 接收 QPC 和 Kinect 帧时间的准确关系，以及固定的关节／场景坐标契约仍需核定。PC 同时接收不代表 RF 与相机曝光已精确同步。第一段仅作为原始配对候选，不能据此宣称已完成训练或动态标签验收。
+
+第二段90秒原始数据也已完成，位于同级 `train-02/`：2695帧，其中2676帧为同一人，目标14关节全部 `Tracked` 的帧1188帧；原预处理得到1341个同 RF 序号窗口，输入浮点数全部有限。两段合计150秒、4497帧、4409个人体帧、2238个 CSI 窗口，均正常关闭。目录名称暂不代表已确定的数据集划分。手部仍有推断，两段均未得到满足当前“2秒、各目标关节至少80%跟踪、95%位置偏差不超8cm”诊断条件的静止窗口，因此也未以静态姿势假设绕过动态对时。该诊断只作质量记录，不代表所有动态帧无效。
+
+`quality_direct.py` 仅检查实际关节质量、特征有限性和接收时钟下的稳定程度，输出明确为不可直接训练的质量摘要。`train-02/skeleton-quality.png` 是原始 SDK 骨架检查图，蓝色为 Tracked、橙色为 Inferred，无模型预测或 RGB 图像。下一步先核定时钟／坐标／14关节语义，再按整段独立划分数据，筛选可信动态标签；不能直接把全部2238个窗口写成合格样本。
+
+`collect_direct.py` 启动有限三路接收，等待三路均到达后再打开 Kinect，结束时关闭接收端和相机。`capture_pcaps.py` 同时保存原始 PCAP 与逐包 PC QPC 接收区间；接收时刻始终标为接收时刻。`prepare_pcaps.py` 保留原始数据，只在派生副本中截取共同区间、去掉不完整尾包，然后调用当前 `adaptive_replay` 和 `preprocess_records`；不修改原射频预处理算法。
+
+本次电脑临时接收地址为 `192.168.50.49`，复用路由器已有转发目标；只加了 ActiveStore 地址别名与限定三台 RX 的 TCP39033 防火墙规则，未改路由器服务或固件。**别名存在期间不得连接占用该地址的开发板。** 所有采集结束后，由代理提升权限执行 `pc_capture_network.ps1 -Action disable -Work .local/kinect-csi-direct-20261028-r1`，检查 `pc-network-restored.json`，移除本批拥有的别名和规则，保留原电脑地址及 WLAN。
+
+本批结束后已实际执行上述撤销：`pc-network-restored.json` 确认地址和规则均不存在，原 `192.168.126.100`、`192.168.50.102` 保留；无本批相机／原始接收进程或 TCP39033 监听。没有遗留后台采集或训练。
+
+当前本机原生工具为 `.local/kinect-csi-direct-20261028-r1/adaptive_replay.exe` 和 `preprocess_records.exe`。探测阶段曾调用不支持 `--gains` 的旧 replay，失败输出保留在 `probe-windows-01`；随后从现有源码编译当前版本，第一段转换成功，未重跑或覆盖原始采集。
+
+## 已确认的设备和实际结果
+
+- 底部标签为 Kinect for Xbox One；Windows 实际枚举到 `USB VID_045E / PID_02C4`、`WDF KinectSensor Interface 0`，状态正常，即 Kinect v2。
+- 已从[微软官方页面](https://www.microsoft.com/en-us/download/details.aspx?id=44561)下载 SDK 2.0，微软签名有效；SDK、运行库、驱动均原生安装成功，无需重启。SDK 为 `2.0.1410.19000`，传感器 INF 驱动版本为 `2.0.1410.18000`。
+- 早期桌面位置依次进行了四次有限尝试：首次未枚举时等候30秒无帧；第二次收到215帧、后半段停帧；第三次连续收到900帧；第四次收到452帧并保存一张512×424深度诊断帧。当时人体检测均为0；移至空旷位置后的成功结果见上节。
+- 深度图显示当前近处人像只有上半身，下方被近处物体遮挡；用户确认暂时不便让全身入镜。这是目前骨架验证的实际限制，不能将空 `bodies` 写成成功采集。
+- 首次停帧附近存在 Windows USBXHCI LiveKernelEvent 144 记录；相关性不等于已确定根因。后续30秒连续帧通过，不代表长时 USB 稳定性已经验收。
+- 用户离开前请求照片，但随即要求先做其它准备；彩色单张拍摄工具已编译，**未拍摄 RGB 照片**。
+
+早期原始记录位于 `D:/FPGACompetitionProject/.local/kinect-check-20261028-r1/`，其中 `capture-01` 至 `capture-04-depth` 为实际尝试，`sdk-install*.log` 为安装原生记录，`capture-04-depth/depth-preview.png` 是深度数据可视化。正常安装的驱动服务保留。
+
+## 回来后的执行顺序
+
+1. 将 Kinect 放在能看到全身的位置，避免桌面等近处物体挡住下半幅画面。距离以全身入镜为准，不强求3～4米。
+2. 先做20～30秒 Kinect 单独验证，确认 `frames_with_bodies > 0`、所需关节的跟踪状态，以及时间戳连续性。
+3. 开发板缺席时使用上节电脑直接采集入口；有板时才考虑原被动订阅入口。保留训练、验证和测试各自独立的录制段。
+4. 用实际对时数据核定时钟偏移／漂移／不确定度，检查25到14关节的语义及坐标变换，再生成标签。
+5. 数据检查通过后，在服务器独立新目录从原迁移 epoch99 微调，保持模型结构和原预处理。对比留出的现场数据后，再决定转换、部署和录像。
+
+第2步已完成，第3步已采到两段原始数据，第4～5步尚未完成。本次采集不恢复已关闭板测包、旧故障调查或新增 PL 开发，也不新增自启动采集或训练。
+
+## 采集入口
+
+已有 x64 .NET Framework 编译器，无需安装 Visual Studio。运行入口只在明确调用时打开相机；不保存 RGB，除非单独执行 `Snapshot.exe`。
+
+```powershell
+# 构建；本次已编译完成
+./tools/kinect/build.ps1
+
+# 单独录制 Kinect：60秒，无 CSI
+./tools/kinect/capture.ps1 -OutputDirectory .local/kinect-check-20261028-r1/sessions/train-01 -Seconds 60
+
+# 此入口只订阅已经运行的板端原始端口；不会启动路由器／SDK
+./tools/kinect/capture.ps1 -OutputDirectory .local/kinect-check-20261028-r1/sessions/train-01 -Seconds 60 -BoardHost 192.168.126.49
+```
+
+实际执行由代理在用户回来并准备好后完成，以上为恢复入口，不要求用户自行运行命令。目录必须是新目录。每次1～600秒，正常结束关闭所有采集句柄；PC订阅端独立关闭，不终止板端服务。
+
+`capture.ps1` 的每个录制目录包含：
+
+| 路径 | 内容 |
+|---|---|
+| `kinect/bodies.jsonl` | 原始25关节、每关节跟踪状态、人体跟踪ID、地面平面和设备帧时间戳 |
+| `kinect/metadata.json`、`result.json` | 关节名称、米制、时钟说明和实际采集数量／关闭状态 |
+| `csi/actual.full` | 原始 PIWFUL3 全记录，含板端实际预处理输入 `[180,60]`、全部模型输出 |
+| `csi/arrival.jsonl` | 源帧／会话、源时间和 PC 接收时间，保留无效记录标记 |
+| `csi/result.json`、`session.json` | 有界订阅、尾部截断及两端实际结束状态 |
+
+**模型预测骨架只作原始证据，不作为训练标签。** CSI 路径保存的是现有板端预处理后的实际输入特征，不是可重新进行相位处理的原始 RF PCAP。原有原始 PCAP 采集入口保留，需要时独立安排。
+
+`analyze.py <kinect目录>` 可生成 `joints.csv` 和 `analysis.json`，核查真实记录、原始25关节及时间戳；没有人体的记录只能得到空关节表。`Snapshot.exe NEW.png` 只拍一张真实彩色帧后退出。`ExportBodies.exe NEW_DIR SECONDS --depth-diagnostic` 可额外保存一张深度诊断帧，普通采集不保存图像。
+
+## 配对、标定和标签
+
+复制并填写 `session-plan.example.json`、`clock-calibration.template.json`。它们当前明确标为**未验证**；14关节名称只是待核定候选，不能把 Hand 静默改成 Wrist，也不能猜原数据集的空间原点和轴向。
+
+Kinect `RelativeTime.Ticks` 是100ns单位的相对时间；主机 UTC／QPC 是读取时刻。板端 `source_ns` 属于 CSI 源时钟。**文件名、帧号、PC到达时间或同时点击开始不能证明二者已同步。**
+
+`calibrate_time.py` 接收测得共同事件的 CSV（`csi_session,source_ns,kinect_ticks_100ns,uncertainty_ms`），拟合偏移与漂移，保留最大残差和测量不确定度；仅在测量覆盖范围内有效，不外推。不应把未经核定的到达时刻直接填为共同事件。
+
+`prepare_dataset.py` 以已核定的时钟和坐标契约配对：
+
+- 保留实际 CSI 特征，不重新生成输入，不以预测结果替代参考骨架。
+- 最近 Kinect 帧匹配误差加标定不确定度默认不超过20ms；这是初始配对预算，可按实测调整。
+- 默认目标14关节均需为 `Tracked` 且数值有限；缺失整窗丢弃，不补零／插值或伪造下肢。若允许 `Inferred`，必须显式配置并保留质量说明。
+- 按整个录制段划分 train／val／test，拒绝同一 Kinect 录制或重复 CSI 输入跨分割使用；不随机拆相邻帧。
+- 同时保存配对关系与拒绝原因，只有真实训练／验证配对均存在时才写 `trainable=true`。合成测试夹具始终 `trainable=false`。
+
+```powershell
+python tools/kinect/calibrate_time.py --anchors measured-anchors.csv --output measured-clock.json
+python tools/kinect/prepare_dataset.py --plan session-plan.json --output NEW_PREPARED_DATASET
+```
+
+## 微调准备与已有验证
+
+服务器独立目录：`/public/cyd/kinect-preparation-20261028-r1`。`planned-run/config.py` 是**数据尚未就绪**的待运行配置，不可直接当作已完成训练或数据检查。
+
+- 保持180-query／14关节结构；严格加载原迁移 epoch99 的全部555项 state_dict 张量，未重置 query，未加载旧优化器。
+- 初始候选预算为10轮、AdamW 主学习率 `2e-6`、每卡4样本、累积2步，混入至多2000个官方训练样本；实际真实数据到位后重新生成配置。该预算尚未运行或证明有效。
+- 服务器原环境已通过真实 Config 加载、模型 CPU 构建及全部555项初始权重逐项相等检查。
+- 同环境已用明确标记的合成新数据夹具和1个真实官方训练样本检查本地数据适配、混合数据加载、训练／验证 pipeline 与 token 顺序；没有做模型前向或梯度更新。
+- 本机已通过网络分包／无效记录原值／截断尾部测试，以及6项配对与时钟检查。软件夹具不作为实采或训练效果证据。
+
+```text
+prepare_finetune.py --algorithm-root ALGORITHM_ROOT --dataset PREPARED_DATASET --checkpoint ORIGINAL_EPOCH99 --output NEW_RUN
+run_finetune.py --bundle NEW_RUN
+# 后者默认只检查。明确执行时才使用 --execute --gpus 指定空闲物理GPU；不抢占已有任务。
+```
+
+`prepare_finetune.py` 只写配置，`run_finetune.py` 默认只显示状态；尚无真实配对数据时不会启动训练。服务器 CPU 检查中曾修正仓库 builder／ConcatDataset API 名称，首次原始错误仍保留在本机日志，没有以配置检查代替实采验证。
+
+后续使用服务器现有 PersonInWIFI 环境；本机无需另装 MMCV。候选训练、ONNX／Icraft转换和部署继续用独立新目录，原 epoch99 和当前合格 BOOT 保留。

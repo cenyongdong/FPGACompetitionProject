@@ -151,8 +151,18 @@ int main(int argc,char**argv) {
         pose::post::PresentationFrame frame;frame.id={1,2,2,1067000000};
         pose::post::Person person;person.track=7;person.candidate=19;person.score=.8f;person.observed_ns=frame.id.source_ns;person.held=true;
         for(unsigned j=0;j<14;++j){person.joints[3*j]=(int(j%3)-1)*.3f;person.joints[3*j+1]=1;person.joints[3*j+2]=j*.1f;}frame.poses.push_back(person);
+        frame.score_threshold=.35f;
+        frame.top_k=1;
         auto derived=hdmi::render_presentation(hdmi::prepare_background(),frame);
+        expect(derived.selection.threshold==.35f,"Presentation threshold metadata lost");
+        expect(derived.selection.top_k==1,"Presentation TopK metadata lost");
         expect(derived.detection_count==1&&derived.detections[0].track==7&&derived.detections[0].held&&derived.detections[0].remaining_ns==250000000,"Presentation metadata lost");
+        frame.score_threshold.reset();frame.poses[0].score=0;
+        auto unfiltered=hdmi::render_presentation(hdmi::prepare_background(),frame);
+        expect(!unfiltered.selection.threshold&&unfiltered.detection_count==1&&unfiltered.detections[0].score==0,"Unfiltered presentation changed by HDMI");
+        std::array<float,180> low_scores{};std::array<float,7560> low_poses{};
+        auto zero=hdmi::render(hdmi::prepare_background(),low_scores.data(),low_poses.data(),180,3,pose_v1::render::Status::Result,{1,std::nullopt});
+        expect(zero.detection_count==1&&zero.detections[0].index==0,"Zero-score Top1 removed by raster selection");
         if(argc>1){std::ofstream out(argv[1],std::ios::binary);out<<"P6\n1920 1080\n255\n";
             for(std::size_t i=0;i<derived.rgb565.size();i+=2){unsigned v=derived.rgb565[i]|(unsigned(derived.rgb565[i+1])<<8);char rgb[3]{char(((v>>11)&31)*255/31),char(((v>>5)&63)*255/63),char((v&31)*255/31)};out.write(rgb,3);}expect(bool(out),"Cannot save offline raster");}
         std::cout << "pose180 renderer compatibility/reuse contracts passed\n";

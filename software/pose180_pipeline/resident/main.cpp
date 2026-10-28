@@ -85,6 +85,16 @@ int main(int argc,char**argv) {
 #endif
         const auto filter_backend=take("--filter-backend","cpu");
         pose::post::Config presentation_config;
+        const auto top_k=std::stoul(take("--top-k","3"));
+        need(top_k>=1&&top_k<=3,"Invalid TopK");presentation_config.top_k=unsigned(top_k);
+        const auto score_threshold=take("--score-threshold","0.35");
+        if(score_threshold=="none")presentation_config.score_threshold.reset();
+        else {
+            std::size_t consumed=0;
+            const float cutoff=std::stof(score_threshold,&consumed);
+            need(consumed==score_threshold.size()&&std::isfinite(cutoff)&&cutoff>=0&&cutoff<=1,"Invalid score threshold");
+            presentation_config.score_threshold=cutoff;
+        }
         presentation_config.min_cutoff=std::stod(take("--min-cutoff","0.5"));
         presentation_config.beta=std::stod(take("--beta","0.3"));
         presentation_config.d_cutoff=std::stod(take("--d-cutoff","1"));
@@ -112,12 +122,15 @@ int main(int argc,char**argv) {
         need(dataset_repetitions>=1&&dataset_repetitions<=30&&(!dataset_file.empty()||dataset_repetitions==1),"Dataset repetitions require an explicit bounded dataset");
         need(!output.empty()&&!fs::exists(output)&&fs::create_directory(output),"Fresh output directory required");
         pd::Shared shared;
+        shared.stats.score_threshold=presentation_config.score_threshold;
+        shared.stats.top_k=presentation_config.top_k;
         shared.stats.input_source=!dataset_file.empty()?"official_dataset":!csi_config.empty()?"live_csi":"tcp_window";
         // Must precede SDK, IO and CSI construction (fork cannot inherit them).
         pd::Journal journal(shared,output);
         pd::Io io(shared,bind,input_port,result_port,status_port,session,mock,hdmi,unsigned(view_port));
         pose::post::Postprocessor postprocessor(presentation_config);
         pose::post::Postprocessor ps_reference(presentation_config);
+        journal.status("selection=top"+std::to_string(presentation_config.top_k)+"; strict_score_threshold="+(presentation_config.score_threshold?std::to_string(*presentation_config.score_threshold):std::string("none"))+"\n");
         journal.status("presentation=tracked-one-euro-v5; requested_backend="+filter_backend+"; min_cutoff="+std::to_string(presentation_config.min_cutoff)+"; beta="+std::to_string(presentation_config.beta)+"; d_cutoff="+std::to_string(presentation_config.d_cutoff)+"; tracking_cutoff=3; velocity_cutoff=1; local_quality_gate=1; duplicate_centre=0.3; duplicate_pose=0.3; duplicate_translation=0.7; duplicate_shape=0.2; confirmation_hits=3; hold_ms=250; identity_ms=250; temporal_representative=1; shadow_support_margin=0.25; view_port="+std::to_string(view_port)+"\n");
 #ifdef POSE180_DEMO_PL_FILTER
         std::unique_ptr<pose::post::PlFilter> pl_filter;

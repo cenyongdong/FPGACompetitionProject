@@ -56,10 +56,13 @@ def run(binary, output):
         for ordinal in range(2100):
             time.sleep(max(0, start + ordinal / 300 - time.monotonic()))
             for receiver, channel in enumerate(clients):
-                channel.sendall(event(receiver, ordinal,
+                packet=event(receiver, ordinal,
                                       clock_shift_us=1200 if receiver == 1 and ordinal >= 400 else 0,
                                       invalid_payload=receiver == 2 and ordinal >= 700 and ordinal % 97 == 0,
-                                      counter_fault=True))
+                                      counter_fault=True)
+                if receiver==1 and ordinal==500:
+                    packet=bytearray(packet);packet[16+14]=0x44 # trusted PCAP record, malformed IPv4 IHL
+                channel.sendall(packet)
             if ordinal % 30 == 0:
                 status()
         time.sleep(.1)
@@ -68,6 +71,12 @@ def run(binary, output):
         assert final['resyncs'] == final['transport_resets'] == final['alignment_resets'] == 0, final
         assert final['reconnects'] == 3 and final['state'] == 'running', final
         assert final['longest_result_gap_ms'] < 700, final
+        assert final['csi_alignment'] == 'adaptive', final
+        # Status reads independent atomics while a window may be handed over.
+        assert abs(final['csi_exact_windows'] + final['csi_approximate_windows'] - final['received']) <= 1, final
+        assert final['csi_approximate_points'] > 0 and final['csi_mapping_switches'] > 0, final
+        assert final['csi_decoder_resets'] >= 1 and final['csi_max_skew_us'] <= 5000, final
+        assert final['csi_rejected_records'] == 1, final
         epochs = {s['input_epoch'] for s in samples if s['inferred']}
         assert len(epochs) == 1, epochs
         process.send_signal(signal.SIGTERM)
@@ -88,7 +97,10 @@ def run(binary, output):
         assert max(r['alignment_version'] for r in windows) > 0
         assert all(r['strict_grid_verified'] is False for r in windows)
         assert all(r['max_skew_us'] <= 5000 and r['span_us'] <= 100000 for r in windows)
-        assert json.loads((output / 'run/completion.json').read_text())['native_shutdown_complete']
+        complete = json.loads((output / 'run/completion.json').read_text())
+        assert complete['native_shutdown_complete']
+        stopped = complete['status']
+        assert stopped['csi_exact_windows'] + stopped['csi_approximate_windows'] == stopped['received'], stopped
         result = dict(passed=True, CSI_live=False, SDK=False, generated_seconds=7,
                       final=final, input_epochs=sorted(epochs), recorded_windows=len(windows),
                       recorded_approximate_windows=sum(bool(r['approximate_points']) for r in windows),

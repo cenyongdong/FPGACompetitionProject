@@ -3,11 +3,16 @@ export function decodePresentation(line){
  if(Buffer.byteLength(line)>VIEW_LIMIT)throw new Error('Oversize presentation');
  const f=JSON.parse(line),id=x=>typeof x==='string'&&/^\d{1,20}$/.test(x)&&BigInt(x)<=18446744073709551615n;
  if(f.schema!=='PIWVIEW1'||f.version!==1||typeof f.replay!=='boolean'||!['session','frame','sequence','source_ns'].every(k=>id(f[k]))||f.session==='0'||f.sequence==='0'||f.hold_ms!==250)throw new Error('Invalid presentation identity');
+ // Older recordings used Top3/>0.2. New records explicitly carry their policy;
+ // null disables the cutoff while preserving finite-value validation.
+ const topK=Object.hasOwn(f,'top_k')?f.top_k:3;
+ const threshold=Object.hasOwn(f,'score_threshold')?f.score_threshold:.2;
+ if(!Number.isInteger(topK)||topK<1||topK>3||(threshold!==null&&(!Number.isFinite(threshold)||threshold<0||threshold>1)))throw new Error('Invalid presentation selection');
  for(const field of ['poses','raw_poses']){
-  if(!Array.isArray(f[field])||f[field].length>3)throw new Error('Invalid presentation count');
+  if(!Array.isArray(f[field])||f[field].length>topK)throw new Error('Invalid presentation count');
   const ids=new Set();
   for(const p of f[field]){
-   if(!id(p.track)||!id(p.observed_ns)||BigInt(p.observed_ns)>BigInt(f.source_ns)||!Number.isInteger(p.candidate)||p.candidate<0||p.candidate>=180||!Number.isFinite(p.score)||!(p.score>Math.fround(.2))||typeof p.held!=='boolean'||!Number.isFinite(p.age_ms)||p.age_ms<0||p.age_ms>250||!Array.isArray(p.joints)||p.joints.length!==42||!p.joints.every(Number.isFinite))throw new Error('Invalid presentation person');
+   if(!id(p.track)||!id(p.observed_ns)||BigInt(p.observed_ns)>BigInt(f.source_ns)||!Number.isInteger(p.candidate)||p.candidate<0||p.candidate>=180||!Number.isFinite(p.score)||(threshold!==null&&!(p.score>Math.fround(threshold)))||typeof p.held!=='boolean'||!Number.isFinite(p.age_ms)||p.age_ms<0||p.age_ms>250||!Array.isArray(p.joints)||p.joints.length!==42||!p.joints.every(Number.isFinite))throw new Error('Invalid presentation person');
    if(field==='poses'){if(p.track==='0'||ids.has(p.track))throw new Error('Invalid track identity');ids.add(p.track);}
    if(Math.abs(p.age_ms-Number(BigInt(f.source_ns)-BigInt(p.observed_ns))/1e6)>0.001)throw new Error('Inconsistent observation age');
    if(!p.held&&p.observed_ns!==f.source_ns)throw new Error('Current pose has old observation');
