@@ -6,13 +6,13 @@
   "reference_recovery_path": ".local/hdmi-startup-20261027-r1/board-bundle/common/BOOT-original.bin",
   "reference_recovery_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
   "release_evidence": ".local/hdmi-startup-20261027-r1/results/closed.json",
-  "runtime_boot_id": "3c398048-a8b7-4225-b6c1-c57a9735940e",
+  "runtime_boot_id": "1973a46a-3adc-48ac-9194-28162763fbdc",
   "standby": "software seven bars after display initialization, before first result",
   "software_path": ".local/csi-open-space-top1-020-20261027-r1/arm64/pose180_demo",
   "software_sha256": "56a5b4a77970e8d213a53d2fa804a65ce50ab0b9d4de26dc5d60bd961a521dd8",
   "software_validation_evidence": ".local/csi-open-space-top1-020-20261027-r3/results/summary.json",
   "last_validated_input": "live_csi/adaptive",
-  "device_connection_state": "Ethernet_disconnected_after_user_requested_end",
+  "device_connection_state": "connected_preflight_ready_no_SDK_started",
   "SDK_autostart": false,
   "live_CSI": false,
   "hardware_rebuilt": false,
@@ -25,8 +25,14 @@
   },
   "current_trial": ".local/csi-open-space-top1-020-20261027-r4/results/summary.json",
   "board_CSI_receiver_running": false,
-  "runtime_identity_scope": "last verified before Ethernet loss",
+  "runtime_identity_scope": "2026-10-28 controlled reboot, startup files and read-only package preflight verified; no new inference",
   "remote_cleanup_pending": ".local/csi-open-space-top1-020-20261027-r4/results/pending-cleanup.json",
-  "prepared_startup_package": ".local/pose180-top1-no-threshold-20261028-r4/package.json",
-  "prepared_startup_board_tested": false
+  "prepared_startup_package": ".local/pose180-kinect-finetune-e13-safe-20261028-r1/package.json",
+  "prepared_startup_board_tested": false,
+  "prepared_startup_packages": [
+    ".local/pose180-kinect-finetune-e13-safe-20261028-r1/package.json",
+    ".local/pose180-kinect-scratch-e4-safe-20261028-r1/package.json"
+  ],
+  "startup_preparation_evidence": ".local/pose180-kinect-board-test-20261028-r1/ready.json",
+  "prepared_runtime_sha256": "68cdd986ab72cf8af7d16f4809ca3c9d851d11b414ece2645b36e0acdb4260c1"
 }

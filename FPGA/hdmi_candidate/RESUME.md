@@ -2,6 +2,10 @@
 
 ## 当前入口（整理于 2026-10-28）
 
+**最新：用户已要求将TopK=1启动包适配安全核心并准备上板。** 微调epoch13与随机初始化训练epoch4两个独立包已生成、通过离线检查并上传；复用r5验证工作区的安全程序，未覆盖下方历史r4。实际正常重启一次后，两包只读 `check.sh` 均通过，尚未启动SDK／CSI或效果测试。准确路径、当前boot_id及准备回执统一见[两模型准备结果](../../.local/pose180-kinect-board-test-20261028-r1/README.md)，用法见[测试入口](../../software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)。旧批关闭回执、路由器临时设置与归档待办仍保留。
+
+以下为此前r4交付、源码验证和最后一次实际运行的历史记录；其中“暂不更新／断网”已由上方最新准备授权与实际状态更新。
+
 **最新本地交付：TopK=1、无置信度阈值 r4 生命周期加固启动包已完成，尚未部署或实板测试。** [启动包](../../Deliverables/pose180-top1-no-threshold-20261028-r4.tar.gz)（30,673,739 字节）、[SHA256](../../Deliverables/pose180-top1-no-threshold-20261028-r4.tar.gz.sha256)及[使用说明](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md)。原 epoch99 JSON／RAW、单人滤波、双路显示与合格 BOOT 保持，r1／r2／r3 包保留。补齐初始化与重复停止处理、清理全程独占、跨包未完成负载保护及临时地址写前记录；不设置 SDK 自启动或自动重试。程序 SHA256 `60f8bc3c0683af5adca6f491e89ef4fb35306c6e6631d53d92dc79a9848406a0`；完整身份见[package.json](../../.local/pose180-top1-no-threshold-20261028-r4/package.json)。
 
 新增初始化／清理 TERM、INT、HUP，监控异常、慢状态连接和地址所有权故障注入通过；完整 CLI 连续启停 3 轮，3 次并行包启动均被拒绝，3 次停止标记模拟写满仍正常退出，FD 数恢复 4→4。既有 r3 父死亡／日志回收／硬件未证明阻断测试，以及慢调用、慢 PC、记录故障等常驻回归通过；ARM64 构建及包检查完成。[新增故障结果](../../.local/pose180-top1-no-threshold-20261028-r4/robustness-verified/result.json)、[退出回归](../../.local/pose180-top1-no-threshold-20261028-r4/exit-cleanup-final/result.json)、[验证目录](../../.local/pose180-top1-no-threshold-20261028-r4/verification.json)、[解包重建](../../.local/pose180-top1-no-threshold-20261028-r4/source-check.json)。网络操作均用替身，未连接设备或更改网络。硬件 STOP／drain 无法证明时原 `_Exit(70)` 保护保持，实际 SDK 挂死／SIGKILL／SIGSEGV／掉电的物理恢复没有上板验证。

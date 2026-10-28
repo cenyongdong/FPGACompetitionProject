@@ -1,12 +1,12 @@
 # 项目进度总览
 
-更新：2026-10-28。长期目标仍是稳定的真实 CSI → PS／NPU → HDMI，PC 独立。当前本地交付为原 epoch99、TopK=1／无置信度阈值 **r4 生命周期加固启动包**，保留单人滤波。补齐初始化停止、清理全程独占、跨包未完成负载保护及临时地址写前记录；故障注入、三轮完整启停和 ARM64 构建通过。真正原生崩溃或缺少硬件停止证明仍保持阻断，未部署或恢复现场测试。[核心源码](software/core/README.md)、[检查结果及边界](software/pose180_pipeline/resident/STARTUP-PACKAGE.md)、[交付／恢复入口](FPGA/hdmi_candidate/RESUME.md)。
+更新：2026-10-28。长期目标仍是稳定的真实CSI→PS／NPU→HDMI，PC独立。用户最新要求已恢复启动包适配与上板准备：微调epoch13和随机初始化训练epoch4两包已纳入最新安全核心，TopK=1／无阈值／CPU单人滤波及双路显示保持，PC包含性能指标栏。包级离线检查通过，已上传板端；按原启动器流程正常重启一次后，两包实际只读预检均通过。**尚未启动本轮SDK推理或CSI接收，未验收新模型实屏效果。** 唯一准备结果见[两模型准备](.local/pose180-kinect-board-test-20261028-r1/README.md)，包入口见[测试说明](software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)。
 
-板端 C++ 专项后续：工作区源码已补齐 HDMI 部分构造回滚、重复释放保护、NPU 在途异常释放守卫和非标准异常收尾；硬件完成未证明时保留所有者与独占，状态为 `release_blocked`，不写成功关闭回执。实际 HDMI 替身故障注入、原生 mock 回归及两个 ARM64 目标构建通过。**按用户最新要求暂不更新启动包**，现有 r4 归档仍保留原缺口，未部署或上板；[源码结果与边界](software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端异常资源保护源码修订未打包)。
+安全核心补齐HDMI部分构造回滚、重复释放保护、NPU在途异常释放守卫和非标准异常收尾；完成未证明时进入 `release_blocked`，保留资源及独占，不误报关闭。复用另一聊天已验证的ARM64程序，没有重新构建FPGA或更换SDK；原epoch99的r4归档保留历史，当前两个测试包包含新修订。[源码结果与边界](software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端异常资源保护源码修订未打包)。
 
 ## 当前可确认的状态
 
-用户最新要求结束测试，原 epoch99／Top1／score >0.2 本轮已正常退出：8344 次新推理、HDMI 采纳及 PC 接收均为 8344，SDK 完整关闭且设备占用为空。随后以太网断开，只做本地收尾，不自主重连或续跑。远端取消关闭回执、临时地址／TX-RX3 SSH 恢复及部分旧包原生日志归档尚待再连接处理；[当前恢复入口](FPGA/hdmi_candidate/RESUME.md)。
+最近一次实际效果运行仍为原epoch99／Top1／score >0.2：8344次新推理、HDMI采纳及PC接收，SDK完整关闭且设备占用为空。其后断网，现已按用户确认重连并完成新包准备；旧远端关闭回执、TX／RX3临时SSH恢复及部分旧包原生日志归档仍未全部收尾，不把准备状态当作旧包关闭。[当前恢复入口](FPGA/hdmi_candidate/RESUME.md)。
 
 **最新发布已完成：合格 `probe-free-drain-filter-v1` 已成为当前运行及默认启动位流，旧参考 BOOT 保留恢复备份。** HDMI 新增显示服务就绪后、首次结果前的七色条，随后切回原骨架画面；49 帧官方数据实板验证完成，HDMI／PC 同时接收，安全停止且无后台负载。没有新增 FPGA 构建或 SDK 自启动，精确身份及结果见[恢复入口](FPGA/hdmi_candidate/RESUME.md#2026-10-27-默认启动发布与七色条)。
 
