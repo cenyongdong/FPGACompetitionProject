@@ -1,12 +1,14 @@
 # 项目进度总览
 
-更新：2026-10-28。长期目标仍是稳定的真实CSI→PS／NPU→HDMI，PC独立。用户最新要求已恢复启动包适配与上板准备：微调epoch13和随机初始化训练epoch4两包已纳入最新安全核心，TopK=1／无阈值／CPU单人滤波及双路显示保持，PC包含性能指标栏。包级离线检查通过，已上传板端；按原启动器流程正常重启一次后，两包实际只读预检均通过。**尚未启动本轮SDK推理或CSI接收，未验收新模型实屏效果。** 唯一准备结果见[两模型准备](.local/pose180-kinect-board-test-20261028-r1/README.md)，包入口见[测试说明](software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)。
+**最新状态：用户已恢复，原始epoch99长时运行已真实启动。** 实时CSI→PS／NPU→HDMI与独立PC正在运行；板端和PC均为 `--seconds 0`，无定时退出，持续至用户要求停止。新推理与双路输出已确认，长期稳定性尚未验收；上一轮有限验证已独立结束。[当前运行与停止入口](.local/pose180-original-longrun-20261028-r1/README.md)。
+
+更新：2026-10-28。长期目标仍是稳定的真实CSI→PS／NPU→HDMI，PC独立。微调epoch13和随机初始化训练epoch4均已使用最新安全核心完成有限实板对比并正常退出；用户反馈动作跟随及位置仍较差，未确认自采训练带来明显改善。**已按最新要求换回未使用自采数据的原始epoch99模型**，保持TopK=1／无阈值／CPU单人滤波、HDMI／PC及性能指标栏。实际运行、恢复和结束状态统一见[本轮结果](.local/pose180-kinect-board-test-20261028-r1/README.md)，包入口见[测试说明](software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)。
 
 安全核心补齐HDMI部分构造回滚、重复释放保护、NPU在途异常释放守卫和非标准异常收尾；完成未证明时进入 `release_blocked`，保留资源及独占，不误报关闭。复用另一聊天已验证的ARM64程序，没有重新构建FPGA或更换SDK；原epoch99的r4归档保留历史，当前两个测试包包含新修订。[源码结果与边界](software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端异常资源保护源码修订未打包)。
 
 ## 当前可确认的状态
 
-最近一次实际效果运行仍为原epoch99／Top1／score >0.2：8344次新推理、HDMI采纳及PC接收，SDK完整关闭且设备占用为空。其后断网，现已按用户确认重连并完成新包准备；旧远端关闭回执、TX／RX3临时SSH恢复及部分旧包原生日志归档仍未全部收尾，不把准备状态当作旧包关闭。[当前恢复入口](FPGA/hdmi_candidate/RESUME.md)。
+此前原epoch99／Top1／score >0.2的8344次运行保留历史；当前新包已恢复为原epoch99／Top1／无阈值，使用最新安全核心。旧远端关闭回执、TX／RX3临时SSH恢复及部分旧包原生日志归档仍未全部收尾，不把本轮结束当作旧包关闭。[当前恢复入口](FPGA/hdmi_candidate/RESUME.md)。
 
 **最新发布已完成：合格 `probe-free-drain-filter-v1` 已成为当前运行及默认启动位流，旧参考 BOOT 保留恢复备份。** HDMI 新增显示服务就绪后、首次结果前的七色条，随后切回原骨架画面；49 帧官方数据实板验证完成，HDMI／PC 同时接收，安全停止且无后台负载。没有新增 FPGA 构建或 SDK 自启动，精确身份及结果见[恢复入口](FPGA/hdmi_candidate/RESUME.md#2026-10-27-默认启动发布与七色条)。
 
