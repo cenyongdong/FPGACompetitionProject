@@ -6,6 +6,45 @@ import {record} from './fixtures.mjs';
 const frame=(n=1)=>({schema:'PIWVIEW1',version:1,replay:false,session:'18446744073709500000',frame:String(n),sequence:String(n),source_ns:String(1000000000+n*67000000),hold_ms:250,
  poses:[{track:'7',candidate:19,score:.8,held:false,observed_ns:String(1000000000+n*67000000),age_ms:0,joints:Array(42).fill(.3)}],raw_poses:[]});
 
+test('PC binds the selected interface and promptly joins a board service started later',async()=>{
+	const target=await free(),hp=await free(),base='http://127.0.0.1:'+hp;
+	const sockets=[];let child,output='',errors='',sentBack=0;
+	const source=net.createServer(socket=>{
+		sockets.push(socket);
+		socket.on('data',b=>sentBack+=b.length);
+		socket.write(JSON.stringify(frame())+'\n');
+	});
+	try {
+		child=spawn(process.execPath,[fileURLToPath(new URL('../resident.mjs',import.meta.url)),
+			'--board','127.0.0.1','--local-address','127.0.0.2','--port',String(target),
+			'--metrics-port','0','--http-port',String(hp),'--seconds','5','--mock','1'],{windowsHide:true});
+		const done=once(child,'exit');
+		child.stdout.on('data',b=>output+=b);child.stderr.on('data',b=>errors+=b);
+		await until(()=>output.includes('PC_BOARD_WAIT'));
+		const get=async()=>await(await fetch(base+'/api/state')).json();
+		const waiting=await get();
+		assert.equal(waiting.connected,false);
+		assert.equal(waiting.connection.requested_local_address,'127.0.0.2');
+		assert(waiting.connection.last_error);
+		await new Promise(resolve=>source.listen(target,'127.0.0.1',resolve));
+		const started=performance.now();
+		const live=await until(async()=>{const s=await get();return s.received===1&&s;});
+		const delay=performance.now()-started;
+		assert(delay<850,`Ready board waited ${delay.toFixed(1)} ms for retry`);
+		assert.equal(sockets[0].remoteAddress,'127.0.0.2');
+		assert.equal(live.connection.local_address,'127.0.0.2');
+		assert.equal(live.connection.last_error,null);
+		assert(live.connection.connect_ms>=0&&live.connection.first_result_ms>=live.connection.connect_ms);
+		assert(output.includes('PC_FIRST_RESULT'));
+		assert.equal(sentBack,0);
+		assert.equal((await done)[0],0,errors);
+		assert.equal(errors,'');
+	} finally {
+		child?.kill();sockets.forEach(socket=>socket.destroy());
+		if(source.listening)await new Promise(resolve=>source.close(resolve));
+	}
+});
+
 test('filtered SSE pairs timing by identity and remains independent when telemetry disconnects',async()=>{
  const views=[],raws=[];let ack=0,child,output='',reader;
  const viewServer=net.createServer(s=>{views.push(s);s.on('data',b=>ack+=b.length);});

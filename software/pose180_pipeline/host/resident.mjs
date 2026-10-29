@@ -26,10 +26,11 @@ if (!['raw', 'view'].includes(mode) || replay && mode !== 'view')
 	throw new Error('Invalid presentation mode');
 const httpPort = Number(take('--http-port', '39380')), output = take('--output', '');
 const metricsPort = Number(take('--metrics-port', '39383'));
+const localAddress = take('--local-address', '');
 const seconds = Number(take('--seconds', '0')), mock = take('--mock', '0') === '1';
 if (options.size || ![port, httpPort].every(n => Number.isInteger(n) && n > 0 && n <= 65535) ||
 	!Number.isInteger(metricsPort) || metricsPort < 0 || metricsPort > 65535 || !Number.isFinite(seconds) ||
-	seconds < 0)
+	seconds < 0 || localAddress && !net.isIP(localAddress))
 	throw new Error('Invalid options');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 let worker, busy = false, pending, recordDrops = 0, recorded = 0, archiveError = '', socket, timer,
@@ -44,6 +45,25 @@ const raw = Buffer.alloc(FULL_BYTES);
 const viewReader = new PresentationReader();
 let replayTimer, restartReplay;
 let replayEnded = false;
+const connection = {board, port, requested_local_address : localAddress || null,
+	attempts : 0, local_address : null, connect_ms : null, first_result_ms : null, last_error : null};
+let connectionStarted = 0, reportedError = '', lastErrorLog = -Infinity;
+
+function boardSocket(targetPort) {
+	const client = net.createConnection({host : board, port : targetPort,
+		...(localAddress ? {localAddress} : {})});
+	// Bound the TCP handshake separately from a healthy connection's idle time.
+	// An absent temporary address must not leave an OS-level SYN pending for ages.
+	const deadline = setTimeout(() => client.destroy(Object.assign(
+		new Error('Board TCP connection timed out'), {code : 'ETIMEDOUT'})), 1500);
+	client.once('connect', () => {
+		clearTimeout(deadline);
+		client.setTimeout(30000);
+	});
+	client.once('close', () => clearTimeout(deadline));
+	client.setKeepAlive(true, 1000);
+	return client;
+}
 
 function accept(next) {
 	if (last && next.session === last.session && BigInt(next.sequence) <= BigInt(last.sequence)) {
@@ -54,6 +74,10 @@ function accept(next) {
 		recent.length = 0;
 	last = next;
 	lastAt = performance.now();
+	if (!replay && connection.first_result_ms === null) {
+		connection.first_result_ms = Math.round(lastAt - connectionStarted);
+		console.log('PC_FIRST_RESULT', JSON.stringify(connection));
+	}
 	++received;
 	recent.push(lastAt);
 	if (recent.length > 64)
@@ -70,11 +94,9 @@ function connectTelemetry() {
 	if (closed || replay || mode !== 'view' || !metricsPort)
 		return;
 	telemetryReader.reset();
-	telemetrySocket = net.createConnection({host : board, port : metricsPort});
-	telemetrySocket.setTimeout(5000);
+	telemetrySocket = boardSocket(metricsPort);
 	telemetrySocket.on('connect', () => {
 		telemetryConnected = true;
-		telemetrySocket.setTimeout(30000);
 	});
 	telemetrySocket.on('data', chunk => {
 		try {
@@ -94,7 +116,7 @@ function connectTelemetry() {
 		telemetryReader.reset();
 		processing.reset();
 		if (!closed)
-			telemetryTimer = setTimeout(connectTelemetry, 2000);
+			telemetryTimer = setTimeout(connectTelemetry, 500);
 	});
 }
 
@@ -143,20 +165,31 @@ function connect() {
 		return;
 	used = 0;
 	viewReader.reset();
-	socket = net.createConnection({host : board, port});
-	socket.setTimeout(5000);
-	socket.setKeepAlive(true, 1000);
+	connectionStarted = performance.now();
+	++connection.attempts;
+	connection.local_address = null;
+	connection.connect_ms = null;
+	connection.first_result_ms = null;
+	socket = boardSocket(port);
 	// Missing CSI windows do not imply a broken TCP session. The page marks
 	// stale results independently; a 30 s idle watchdog still detects dead peers.
 	socket.on('connect', () => {
 		connected = true;
 		++reconnects;
-		socket.setTimeout(30000);
+		connection.local_address = socket.localAddress;
+		connection.connect_ms = Math.round(performance.now() - connectionStarted);
+		connection.last_error = null;
 	});
 	socket.on('timeout', () => socket.destroy());
-	socket.on('error',
-		() => {
-		});
+	socket.on('error', error => {
+		connection.last_error = error.code || error.message;
+		const now = performance.now();
+		if (connection.last_error !== reportedError || now - lastErrorLog >= 10000) {
+			reportedError = connection.last_error;
+			lastErrorLog = now;
+			console.log('PC_BOARD_WAIT', JSON.stringify(connection));
+		}
+	});
 	socket.on('data', chunk => {
 		if (mode === 'view') {
 			try {
@@ -197,7 +230,7 @@ function connect() {
 		processing.reset();
 		scheduleBroadcast();
 		if (!closed)
-			timer = setTimeout(connect, 1000);
+			timer = setTimeout(connect, 250);
 	});
 }
 
@@ -221,6 +254,7 @@ const state = () => {
 		recordDrops,
 		archiveError,
 		phase,
+		connection : {...connection},
 		new_results_hz : Number(hz.toFixed(2)),
 		age_ms : age,
 		mode,

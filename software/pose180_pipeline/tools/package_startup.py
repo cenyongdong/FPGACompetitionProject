@@ -1,9 +1,10 @@
-"""Assemble a relocatable Top1/no-cutoff release with a verified model pair.
+"""Assemble a relocatable demonstration release with a verified model pair.
 
 All operations are local. Does not deploy, install autostart or consume a board test.
 """
 import argparse
 import hashlib
+import math
 import json
 from pathlib import Path
 import re
@@ -95,6 +96,8 @@ def source_snapshot(work, destination):
                    'software/pose180_pipeline/tools/native', 'software/core/input', 'tools/pose180'):
         files.update(p for p in (ROOT/folder).rglob('*') if p.suffix in ('.h', '.hpp', '.cpp'))
     files.add(ROOT/'software/pose180_pipeline/CMakeLists.txt')
+    files.add(ROOT/'software/pose180_pipeline/.clang-format')
+    files.add(ROOT/'software/pose180_pipeline/.editorconfig')
     files.add(ROOT/'software/core/README.md')
     for dependency in work.glob('*/CMakeFiles/**/*.o.d'):
         for path in re.findall(r'/workspace/[^\s\\]+', dependency.read_text()):
@@ -109,13 +112,14 @@ def source_snapshot(work, destination):
         files.add(CONTROL/name)
     files.update((ROOT/'software/pose180_pipeline/host').rglob('*.mjs'))
     files.add(ROOT/'software/pose180_pipeline/host/web/scene.js')
+    files.add(ROOT/'software/pose180_pipeline/host/start-pc.ps1')
     for name in ('build/three.module.js', 'build/three.core.js', 'examples/jsm/controls/OrbitControls.js', 'LICENSE'):
         files.add(ROOT/'software/pc_viewer/node_modules/three'/name)
     files.add(CONTROL/'startup-csi.conf')
     files.add(DOCS/'STARTUP-PACKAGE.md')
     for name in ('README.md', 'src/README.md', 'control/README.md', 'host/README.md', 'tests/README.md'):
         files.add(ROOT/'software/pose180_pipeline'/name)
-    for name in ('FINAL-REVIEW.md', 'DEMO-INPUTS.md'):
+    for name in ('FINAL-REVIEW.md', 'DEMO-INPUTS.md', 'DATASET-PLAYLIST.md'):
         if (DOCS/name).is_file():
             files.add(DOCS/name)
     files.add(ROOT/'FPGA/hdmi_candidate/default_boot.json')
@@ -147,8 +151,17 @@ def main():
     parser.add_argument('--dataset', type=Path, help='Prepared official clip; enables both live CSI and dataset launchers')
     parser.add_argument('--input-source', choices=('live_csi', 'official_dataset'), default='live_csi')
     parser.add_argument('--dataset-repetitions', type=int, default=1)
+    parser.add_argument('--top-k', type=int, choices=(1, 2, 3), default=3)
+    parser.add_argument('--score-threshold', default='0.2', help='Strict cutoff, or none')
+    parser.add_argument('--single-person-stability', action='store_true', help='CPU Top1 only')
     parser.add_argument('--output', type=Path, default=ROOT/'Deliverables')
     args = parser.parse_args()
+    threshold = None if args.score_threshold == 'none' else float(args.score_threshold)
+    if (threshold is not None and (not math.isfinite(threshold) or not 0 <= threshold <= 1)) or (args.single_person_stability and args.top_k != 1):
+        parser.error('Invalid confidence cutoff or single-person/TopK combination')
+    selection = dict(top_k=args.top_k, strict_score_threshold=threshold, single_person_stability=args.single_person_stability)
+    selection_text = ('TopK='+str(args.top_k)+'、'+('无置信度阈值' if threshold is None else '严格 score > '+str(threshold))+
+                      ('、CPU 单人增强滤波' if args.single_person_stability else '、CPU 多人跟踪／滤波'))
     work = args.work.resolve()
     build = args.build_work.resolve() if args.build_work else work
     build_record = json.loads((build/'build.json').read_text())
@@ -157,12 +170,25 @@ def main():
         raise ValueError('A deployment package requires successful native build and local verification records')
     checks = build/'final-checks' if (build/'final-checks').is_dir() else build
     safety_file = checks/'native-safety-final/result.json'
+    if not safety_file.is_file():
+        safety_file = build/'runtime-checks/test_native_safety/result.json'
     safety_record = json.loads(safety_file.read_text()) if safety_file.is_file() else {}
     safety_verified = (safety_record.get('unproved', {}).get('lease_retained') is True
                        and safety_record.get('nonstandard', {}).get('resources_released') is True)
     if not 0 <= args.default_seconds <= (2**64-1)//1000000000:
         parser.error('--default-seconds exceeds native duration range')
     dataset = validate_dataset(args.dataset) if args.dataset else None
+    playlist = bool(dataset and dataset['schema'] == 'PIWPLAYLIST1')
+    dataset_text = ''
+    if dataset:
+        if playlist:
+            dataset_text = '一次启动，按以下顺序在同一 SDK 进程内播放，片段之间不重启开发板；每段切换重置跟踪状态。\n\n'
+            dataset_text += '| 顺序 | 人数 | 官方来源 | 样本范围 | 展示时长 |\n|---|---|---|---|---|\n'
+            for i, clip in enumerate(dataset['clips'], 1):
+                dataset_text += '| '+str(i)+' | '+str(clip['people'])+' | '+clip['split']+' / '+clip['sequence']+' | '+str(clip['first_sample'])+'–'+str(clip['first_sample']+clip['count']-1)+' | '+str(clip['count']/clip['playback_hz'])+' 秒 |\n'
+            dataset_text += '\n每段 15 Hz 播放时长为演示时间线，不作为原始采集时长。片段边界有约 0.1 秒收尾间隔。'
+        else:
+            dataset_text = dataset['split']+' / '+dataset['sequence']+'，'+str(dataset['count'])+' 帧、'+str(dataset['playback_hz'])+' Hz。'
     if args.input_source == 'official_dataset' and not dataset:
         parser.error('--input-source official_dataset requires --dataset')
     if (not 1 <= args.dataset_repetitions <= 30 or
@@ -204,7 +230,7 @@ def main():
     copy(boot, release/'boot/BOOT.BIN')
     for name in ('qualification.json', 'package-review.json'):
         copy(ROOT/deployed['hardware_work']/'reports'/name, release/'boot'/name)
-    identity = dict(package=work.name, selection=dict(top_k=1, strict_score_threshold=None, single_person_stability=True),
+    identity = dict(package=work.name, selection=selection,
                     model=model_name, input_source=args.input_source, csi_alignment='adaptive',
                     input_sources=['live_csi', 'official_dataset'] if dataset else ['live_csi'],
                     dataset_repetitions=args.dataset_repetitions,
@@ -213,7 +239,7 @@ def main():
                     verified_boot_ids=[deployed['runtime_boot_id']], libraries=original['SDK_libraries'],
                     SDK_autostart=False, automatic_retry=False,
                     runtime_safety='release-blocked-v1' if safety_verified else 'see-build-record',
-                    presentation_filter='single-person-continuity-v1: centre/relative smoothing, 4-hit relocation, bounded steps',
+                    presentation_filter='single-person-continuity-v1' if args.single_person_stability else 'tracked-one-euro-v5: CPU 0.5/0.3/1',
                     files={p.relative_to(board).as_posix():sha(p) for p in board.rglob('*') if p.is_file()})
     write(board/'identity.json', identity)
     for script, action in [('start', 'start'), ('stop', 'stop'), ('status', 'status'), ('check', 'check'),
@@ -231,10 +257,10 @@ def main():
     three = ROOT/'software/pc_viewer/node_modules/three'
     for name in ('build/three.module.js', 'build/three.core.js', 'examples/jsm/controls/OrbitControls.js', 'LICENSE'):
         copy(three/name, release/'pc/software/pc_viewer/node_modules/three'/name)
-    (release/'start-pc.ps1').write_text('param([string]$Board="192.168.50.49")\n$ErrorActionPreference="Stop"\n& node (Join-Path $PSScriptRoot "pc/software/pose180_pipeline/host/resident.mjs") --board $Board --mode view --http-port 39380\nexit $LASTEXITCODE\n', newline='\n')
+    copy(ROOT/'software/pose180_pipeline/host/start-pc.ps1', release/'start-pc.ps1')
     count = source_snapshot(build, release/'core-sources.tar.gz')
     copy(DOCS/'STARTUP-PACKAGE.md', release/'STARTUP-GUIDE.md')
-    for name in ('DEMO-INPUTS.md', 'FINAL-REVIEW.md'):
+    for name in ('DEMO-INPUTS.md', 'FINAL-REVIEW.md', 'DATASET-PLAYLIST.md'):
         if (DOCS/name).is_file():
             copy(DOCS/name, release/name)
     if candidate:
@@ -242,9 +268,9 @@ def main():
     (release/'README.md').write_text(
         '# '+work.name+'\n\n'
         '首次部署请先读 [部署与演示步骤](DEPLOY.md)。本包由整理后的 `src/`、`control/`、`host/` 源码构建，源码快照见 `core-sources.tar.gz`。\n\n'
-        '模型：`'+model_name+'`。TopK=1、无置信度阈值、CPU单人连续性滤波。默认输入：`'+args.input_source+'`。\n\n'+
+        '模型：`'+model_name+'`。'+selection_text+'。默认输入：`'+args.input_source+'`。\n\n'+
         ('双输入：`sh start-live.sh` 接实时CSI；`sh start-dataset.sh` 对包内官方CSI执行新推理，EOF正常退出。'
-         '数据来源：'+dataset['split']+' / '+dataset['sequence']+'，'+str(dataset['count'])+'帧；训练集演示不计独立测试精度。\n\n' if dataset else '')+
+         '数据来源：'+dataset_text+'\n\n训练集演示不计独立测试精度。\n\n' if dataset else '')+
         '所用构建与本地检查见validation记录；本包尚未部署或实板验证。保留原HDMI和PC性能指标栏。\n\n'
         '以root执行 `sh check.sh` 核对，`sh start.sh` 手动开始，`sh status.sh` 查看，`sh stop.sh` 请求正常停止。'
         '默认处理期为'+str(args.default_seconds)+'秒（0表示手动停止）；可用 `sh start.sh --seconds 300` 显式指定。\n\n'
@@ -257,7 +283,7 @@ def main():
     (release/'DEPLOY.md').write_text(
         '# 部署与演示步骤\n\n'
         '适用：ARM64 Lite、板端既有 Icraft/customop 3.39.0、当前合格 `probe-free-drain-filter-v1` BOOT。'
-        '板端需要 Python 3；PC 可选，需要 Node.js 20 或以上。原 epoch99／TopK=1／无置信度阈值／CPU 单人滤波保持。\n\n'
+        '板端需要 Python 3；PC 可选，需要 Node.js 20 或以上。原 epoch99 模型，'+selection_text+'。\n\n'
         '## 解压到独立目录\n\n'
         '先将 `'+work.name+'.tar.gz` 复制到开发板 `/tmp/`。以 root 执行以下解压命令；若目标目录已经存在，先选择另一个独立目录，避免覆盖已有运行记录。\n\n'
         '```sh\ntar -xzf /tmp/'+work.name+'.tar.gz -C /root\ncd /root/'+work.name+'\n```\n\n'
@@ -275,7 +301,7 @@ def main():
         '不写 BOOT、不自行重启。核对失败或仍有占用时先处理原因；包内 `boot/BOOT.BIN` 仅作备份。\n\n'
         '## 选择一次演示\n\n'+
         ('官方预采数据：\n\n```sh\nsh check.sh --input-source official_dataset\nsh start-dataset.sh\nsh status.sh\n```\n\n'
-         '包内片段为 '+dataset['split']+' / '+dataset['sequence']+'，'+str(dataset['count'])+' 帧、'+str(dataset['playback_hz'])+' Hz。'
+         +dataset_text+'\n\n'
          '默认一轮，EOF 正常退出；需要更长展示时，在首次启动前选择 `sh start-dataset.sh --dataset-repetitions 3`。'
          '训练片段演示不计独立测试精度。\n\n' if dataset else '')+
         '实时采集：\n\n```sh\nsh check.sh --input-source live_csi\nsh start-live.sh\nsh status.sh\n```\n\n'
@@ -284,7 +310,7 @@ def main():
         '## 结束、切换与 PC\n\n'
         '`sh stop.sh` 请求正常停止；随后用 `sh status.sh` 核对 `running=false`、`native_shutdown_complete=true`、'
         '`device_owners=[]` 和 `network_cleanup_pending=false`。数据集 EOF 后同样核对。'
-        '切换输入或再次演示前须重新准备 BOOT 凭据、正常重启并 check；不能在同一配置下直接再启动。'
+        '本包清单内的片段自动顺序切换，无需中途停止或重启。整轮结束后再次启动程序，或切换到实时输入，仍须重新准备 BOOT 凭据、正常重启并 check。'
         '若为 `release_blocked` 或缺少完成证明，保留原资源与独占，按 STARTUP-GUIDE.md 处理，不强杀或重试。\n\n'
         'PC 解压同一个包，在 Windows 包根目录执行 `./start-pc.ps1`，浏览器打开 `http://127.0.0.1:39380/`。'
         '默认板端地址 `192.168.50.49`；可用 `./start-pc.ps1 -Board <实际可达地址>` 指定。'
@@ -310,6 +336,8 @@ def main():
     for name in ('pc-verified.log', 'official-data-verified.log'):
         if (build/name).is_file():
             copy(build/name, release/'validation'/name)
+    if (work/'clip-selection.json').is_file():
+        copy(work/'clip-selection.json', release/'validation/clip-selection.json')
     revision = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip()
     write(release/'validation/build-reuse.json', dict(build_work=str(build), native_sha256=identity['files']['pose180_demo'],
           git_base=revision, source_of_truth='core-sources.tar.gz includes final working-tree changes'))
@@ -333,7 +361,7 @@ def main():
     result = dict(archive=str(output), bytes=output.stat().st_size, sha256=sha(output),
                   deployment_guide=str(deployment_guide),
                   native_sha256=identity['files']['pose180_demo'], model=identity['model'],
-                  top_k=1, score_threshold=None, single_person_stability=True,
+                  top_k=args.top_k, score_threshold=threshold, single_person_stability=args.single_person_stability,
                   BOOT_sha256=identity['BOOT_sha256'], board_tested=False)
     write(work/'package.json', result)
     (output.with_suffix(output.suffix+'.sha256')).write_text(result['sha256']+'  '+output.name+'\n')

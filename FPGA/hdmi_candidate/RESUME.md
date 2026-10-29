@@ -2,7 +2,7 @@
 
 ## 当前入口（整理于 2026-10-29）
 
-**最新本地入口：[双输入展示与源码归档](../../software/pose180_pipeline/resident/FINAL-REVIEW.md)。** 本轮未部署、未改 BOOT／SDK 或启动新板测。最近实测记录仍是 2026-10-28 原 epoch99 长时启动；2026-10-29 只读连接未建立、旧 PC PID 未找到，当前板端运行状态未知。原无限期任务的身份和安全停止路径保留在[长时运行入口](../../.local/pose180-original-longrun-20261028-r1/README.md)，不能据此宣称已经停止或通过长期验收。
+**最新本地入口：[Top3／0.2 三片段顺序演示包](../../software/pose180_pipeline/resident/DATASET-PLAYLIST.md)；此前[双输入审查与源码整理](../../software/pose180_pipeline/resident/FINAL-REVIEW.md)保留。** 本轮未部署、未改 BOOT／SDK 或启动新板测。最近实测记录仍是 2026-10-28 原 epoch99 长时启动；2026-10-29 只读连接未建立、旧 PC PID 未找到，当前板端运行状态未知。原无限期任务的身份和安全停止路径保留在[长时运行入口](../../.local/pose180-original-longrun-20261028-r1/README.md)，不能据此宣称已经停止或通过长期验收。
 
 **最新：两份自采训练模型已完成有限实板对比；用户要求换回原始epoch99，现已恢复。** 三个独立包复用r5验证工作区的安全程序、TopK=1／无阈值及现有显示，不覆盖历史r4。功能启动消费入口不可同boot重复使用，切换需安全退出后正常重启、重新预检；已保存一次scratch前置阻断及受控恢复原值。准确路径、当前boot_id、结果与结束状态统一见[本轮结果](../../.local/pose180-kinect-board-test-20261028-r1/README.md)，用法见[测试入口](../../software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)。旧批关闭回执、路由器临时设置与归档待办仍保留。
 

@@ -25,21 +25,70 @@ def validate_dataset(directory):
 	# 先检查来源和片段边界，再核对实际数据文件，避免混用训练／测试或不同片段。
 	if (
 		not isinstance(manifest, dict)
-		or manifest.get('schema') != 'PIWDATASET1'
+		or manifest.get('schema') not in ('PIWDATASET1', 'PIWPLAYLIST1')
 		or manifest.get('input_source') != 'official_dataset'
 		or manifest.get('file') != 'dataset.piwcsi2'
 		or manifest.get('split') not in ('train', 'test')
 		or not isinstance(manifest.get('sequence'), str) or not manifest['sequence']
 		or type(manifest.get('count')) is not int
 		or not 1 <= manifest.get('count', 0) <= 9000
-		or len(manifest.get('samples', [])) != manifest['count']
+		or (manifest['schema'] == 'PIWDATASET1' and len(manifest.get('samples', [])) != manifest['count'])
 	):
 		raise ValueError('Invalid dataset manifest')
+	if manifest['schema'] == 'PIWPLAYLIST1':
+		clips = manifest.get('clips')
+		if not isinstance(clips, list) or not 1 <= len(clips) <= 30:
+			raise ValueError('Invalid playlist clips')
+		total = 0
+		for clip in clips:
+			if (not isinstance(clip, dict) or type(clip.get('count')) is not int
+				or not 1 <= clip['count'] <= 9000 or clip.get('split') != manifest['split']
+				or not isinstance(clip.get('sequence'), str) or not clip['sequence']
+				or len(clip.get('samples', [])) != clip['count']
+				or type(clip.get('people')) is not int or not 1 <= clip['people'] <= 3
+				or clip.get('offset_frames') != total):
+				raise ValueError('Invalid playlist segment or provenance')
+			total += clip['count']
+		if total != manifest['count']:
+			raise ValueError('Playlist counts differ')
 
 	data = directory / manifest['file']
 	if data.stat().st_size != manifest['count'] * RECORD_BYTES or sha(data) != manifest['sha256']:
 		raise ValueError('Dataset bytes differ from prepared source')
 	return manifest
+
+
+def prepare_playlist(directories, people, output):
+	# 各片段保留自身帧号／时间线；边界由清单显式交给板端，不拼接跟踪历史。
+	if not 1 <= len(directories) <= 30 or len(directories) != len(people):
+		raise ValueError('Playlist requires matching clips and person counts')
+	manifests = [validate_dataset(path) for path in directories]
+	if (any(m['schema'] != 'PIWDATASET1' for m in manifests)
+		or len({m['split'] for m in manifests}) != 1
+		or len({m['playback_hz'] for m in manifests}) != 1
+		or sum(m['count'] for m in manifests) > 9000
+		or any(type(n) is not int or not 1 <= n <= 3 for n in people)):
+		raise ValueError('Playlist requires bounded clips from one split and playback rate')
+	output = Path(output)
+	output.mkdir(parents=True, exist_ok=False)
+	data = output / 'dataset.piwcsi2'
+	clips = []
+	total = 0
+	with data.open('xb') as target:
+		for directory, manifest, count in zip(directories, manifests, people):
+			with (Path(directory) / manifest['file']).open('rb') as source:
+				for block in iter(lambda: source.read(1048576), b''):
+					target.write(block)
+			clips.append(dict(manifest, people=count, offset_frames=total))
+			total += manifest['count']
+	manifest = dict(schema='PIWPLAYLIST1', input_source='official_dataset', CSI_live=False,
+		dataset='Person-in-WiFi 3D', split=manifests[0]['split'],
+		sequence=' -> '.join(m['sequence'] for m in manifests), count=total,
+		playback_hz=manifests[0]['playback_hz'], file=data.name, bytes=data.stat().st_size,
+		sha256=sha(data), clips=clips, ground_truth_used_as_input=False,
+		source_time='Independent synthetic clip timelines; tracking resets at every boundary')
+	(output / 'dataset.json').write_text(json.dumps(manifest, indent=2, ensure_ascii=False)+'\n', encoding='utf-8')
+	return validate_dataset(output)
 
 
 def prepare_dataset(dataset_root, split, sequence, start, count, hz, output):

@@ -18,7 +18,7 @@ from process_guard import request_stop, StopRequest
 from run_hdmi_trial import owners
 from boot_audit import fat_files
 import startup_network
-from input_config import select_input, input_arguments
+from input_config import select_input, input_arguments, selection_arguments
 
 LOCK = Path('/run/pose180-resident.lock')
 ACTIVE = Path('/run/pose180-resident.active.json')
@@ -225,12 +225,10 @@ def command(root, run, session, seconds, selected=None):
 	selected = selected or dict(input_source='live_csi')
 	return [str(root/'pose180_demo'), '--package', str(root), '--output', str(run/'run'),
 			'--bind', '0.0.0.0', '--session', str(session), '--seconds', str(seconds),
-			'--top-k', '1', '--score-threshold', 'none',
-			'--single-person-stability', '1',
 			'--hardware-profile', 'probe-free-drain-filter-v1', '--filter-backend', 'cpu',
 			'--min-cutoff', '0.5', '--beta', '0.3', '--d-cutoff', '1',
 			'--hdmi', '1',
-			'--result-port', '39383', '--status-port', '39384', '--view-port', '39385'] + input_arguments(root, selected)
+			'--result-port', '39383', '--status-port', '39384', '--view-port', '39385'] + selection_arguments(selected) + input_arguments(root, selected)
 
 
 def serve_run(root, run, stopping):
@@ -362,7 +360,12 @@ def main(stopping):
 	if args.action == 'check':
 		selected = select_input(root, identity, args.input_source, args.dataset_repetitions)
 		current = preflight(root, identity)
-		print(json.dumps(dict(ready=True, boot_id=current, SDK_started=False, top_k=1, score_threshold=None, input=selected)))
+		arguments = selection_arguments(selected)
+		policy = dict(zip(arguments[::2], arguments[1::2]))
+		print(json.dumps(dict(ready=True, boot_id=current, SDK_started=False,
+			top_k=int(policy['--top-k']),
+			score_threshold=None if policy['--score-threshold'] == 'none' else float(policy['--score-threshold']),
+			single_person_stability=policy['--single-person-stability'] == '1', input=selected)))
 		return
 	if args.action == 'start':
 		with LOCK.open('a') as lock:

@@ -1,6 +1,6 @@
 # 180-query 演示工程与核心源码
 
-当前源码统一在本工程内按模块维护。先看 [核心源码索引](src/README.md)，再看 [双输入演示说明](resident/DEMO-INPUTS.md)。正式目标 `pose180_demo` 保留实时采集与官方预采 CSI 两个入口，共用原 epoch99、TopK=1、CPU 单人滤波和 HDMI／PC 输出。
+当前源码统一在本工程内按模块维护。先看 [核心源码索引](src/README.md)，再看 [双输入演示说明](resident/DEMO-INPUTS.md)。正式目标 `pose180_demo` 保留实时采集与官方预采 CSI 两个入口，共用原 epoch99 和 HDMI／PC 输出。最新[三片段演示包](resident/DATASET-PLAYLIST.md)采用 TopK=3、严格 score >0.2、CPU 多人跟踪／滤波，在同一次运行中顺序播放 1／2／3 人；旧 Top1 模式仍可显式配置。
 
 ```text
 pose180_pipeline/

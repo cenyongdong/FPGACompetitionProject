@@ -10,7 +10,8 @@ class Dataset {
 	std::thread thread_;
 
 public:
-	Dataset(Shared&, const std::filesystem::path&, std::uint64_t session, unsigned repetitions = 1);
+	Dataset(Shared&, const std::filesystem::path&, std::uint64_t session, unsigned repetitions = 1,
+		std::vector<std::uint64_t> segments = {});
 	~Dataset();
 	Dataset(const Dataset&) = delete;
 };

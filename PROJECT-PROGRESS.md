@@ -1,6 +1,6 @@
 # 项目进度总览
 
-**最新状态（2026-10-29）：核心源码审查、双输入入口与模块目录整理完成；偶发 FD 计数误报已定位修复，异常退出本地复验通过。** 实时 CSI 和官方预采 CSI 共用原 epoch99／Top1 安全启停，修正数值解析、同配置重复启动、状态年龄及 JSON 截断；源码已实际归到 [模块目录](software/pose180_pipeline/src/README.md)，启停与输入准备在 `control/`；结果与边界统一见[最终审查记录](software/pose180_pipeline/resident/FINAL-REVIEW.md)。已重新生成[双输入演示部署包](Deliverables/pose180-demo-deploy-20261029-r2-DEPLOY.md)，包含整理后源码、原模型与官方 CSI 片段；尚未部署。本轮只读连接未建立，旧 PC PID 未找到，当前板端运行状态未重新确认；不将此前的长时启动记录写成当前稳定性验收。[原长时运行与停止入口](.local/pose180-original-longrun-20261028-r1/README.md)。
+**最新本地交付（2026-10-29）：已生成 TopK=3、严格 score >0.2 的[三片段顺序演示包](Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)。** 原 epoch99 模型保持，官方 1／2／3 人顺序播放；单人恢复原 S51_10 并裁剪约 10 秒，双人和三人各约 9 秒，在同一 SDK 运行中顺序播放，保留实时入口；选择依据和验证范围统一见[三片段演示](software/pose180_pipeline/resident/DATASET-PLAYLIST.md)。核心源码已按模块整理并统一 Tab 排版，先前 FD 误报修复与异常退出结果见[最终审查记录](software/pose180_pipeline/resident/FINAL-REVIEW.md)。本次未连接、部署或更换 BOOT；当前板端状态未重新确认，不把本地通过写成长时实板验收。[原长时运行与停止入口](.local/pose180-original-longrun-20261028-r1/README.md)。
 
 更新：2026-10-28。长期目标仍是稳定的真实CSI→PS／NPU→HDMI，PC独立。微调epoch13和随机初始化训练epoch4均已使用最新安全核心完成有限实板对比并正常退出；用户反馈动作跟随及位置仍较差，未确认自采训练带来明显改善。**已按最新要求换回未使用自采数据的原始epoch99模型**，保持TopK=1／无阈值／CPU单人滤波、HDMI／PC及性能指标栏。实际运行、恢复和结束状态统一见[本轮结果](.local/pose180-kinect-board-test-20261028-r1/README.md)，包入口见[测试说明](software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)。
 

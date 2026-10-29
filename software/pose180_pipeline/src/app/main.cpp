@@ -28,6 +28,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <map>
 #include <sys/prctl.h>
 #include <unistd.h>
@@ -106,6 +107,19 @@ int main(int argc, char** argv) {
 		const auto bind = take("--bind", "127.0.0.1"), csi_config = take("--csi", "");
 		const auto dataset_file = take("--dataset", "");
 		const auto dataset_repetitions = integer("--dataset-repetitions", "1", 30);
+		const auto segment_sizes = take("--dataset-segment-frames", "");
+		std::vector<std::uint64_t> dataset_segments;
+		if (!segment_sizes.empty()) {
+			need(!dataset_file.empty() && segment_sizes.back() != ',',
+				"Dataset segments require complete sizes and a file");
+			std::istringstream entries(segment_sizes);
+			std::string count;
+			while (std::getline(entries, count, ',')) {
+				const auto value = pd::unsigned_option(count, "--dataset-segment-frames", 9000);
+				need(value > 0 && dataset_segments.size() < 9000, "Invalid dataset segments");
+				dataset_segments.push_back(value);
+			}
+		}
 		const auto session = integer("--session", "0");
 		const auto seconds = integer("--seconds", "60", UINT64_MAX / 1000000000ull);
 		const auto input_port =
@@ -161,7 +175,7 @@ int main(int argc, char** argv) {
 		presentation_config.single_person_stability = single_stability == "1";
 		need(!presentation_config.single_person_stability || (top_k == 1 && filter_backend == "cpu"),
 			"Single-person stability requires CPU Top1");
-		const auto score_threshold = take("--score-threshold", "0.35");
+		const auto score_threshold = take("--score-threshold", "0.2");
 		if (score_threshold == "none")
 			presentation_config.score_threshold.reset();
 		else {
@@ -259,8 +273,8 @@ int main(int argc, char** argv) {
 			csi = std::make_unique<pd::Csi>(shared, csi_config, session);
 		std::unique_ptr<pd::Dataset> dataset;
 		if (!dataset_file.empty())
-			dataset =
-				std::make_unique<pd::Dataset>(shared, dataset_file, session, unsigned(dataset_repetitions));
+			dataset = std::make_unique<pd::Dataset>(
+				shared, dataset_file, session, unsigned(dataset_repetitions), dataset_segments);
 		std::cout << "RESIDENT_READY mock=" << mock << " recorder_pid=" << journal.child_pid() << std::endl;
 #ifdef POSE180_DEMO_SDK
 		std::unique_ptr<pp::Runtime> runtime;
