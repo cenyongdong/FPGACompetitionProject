@@ -2,11 +2,6 @@
 tmp
 Deliverables/*
 
-保留部署包和整理源码
-!Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md
-!Deliverables/pose180-three-clips-20261029-r3-final.tar.gz
-!Deliverables/pose180-core-sources-final-20261029.tar.gz
-
 #开发困难记录
 DifficultyRecord.txt
 
@@ -353,3 +348,9 @@ node_modules/
 /tools/pose-v1/evidence/core-refactor-20261013-r*/board/*.tar
 /tools/pose-v1/evidence/core-refactor-20261013-r*/board/short-render-input/
 /tools/pose-v1/evidence/core-refactor-20261013-r*/board/short-native-render/
+
+
+保留部署包和整理源码
+!Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md
+!Deliverables/pose180-three-clips-20261029-r3-final.tar.gz
+!Deliverables/pose180-core-sources-final-20261029.tar.gz
