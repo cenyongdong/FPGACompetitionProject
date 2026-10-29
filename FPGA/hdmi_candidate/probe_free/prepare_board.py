@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 WORK = ROOT / '.local/hdmi-probe-free-20261025-r1'
 OLD = ROOT / '.local/pose180-resident-witness-20261025-r9'
-SOURCE = ROOT / 'software/pose180_pipeline/resident'
+SOURCE = ROOT / 'software/pose180_pipeline/control'
 REMOTE = '/root/demo-v1-20261022-r1/hdmi-probe-free-20261025-r1'
 
 

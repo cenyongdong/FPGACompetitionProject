@@ -2,6 +2,7 @@
 #include "ingress.hpp"
 #include "adaptive_ingress.hpp"
 #include "pcap_stream.hpp"
+#include "option_value.hpp"
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <poll.h>
@@ -34,21 +35,24 @@ Options parse(const std::string& path) {
         need(fields.emplace(line.substr(0,at),line.substr(at+1)).second,"Repeated CSI key");
     }
     auto take=[&](const std::string& key){auto it=fields.find(key);need(it!=fields.end(),"Missing CSI field");auto v=it->second;fields.erase(it);return v;};
-    Options o;o.bind=take("bind");o.port=std::stoul(take("port"));
+    Options o;o.bind=take("bind");o.port=unsigned(unsigned_option(take("port"),"CSI port",65535));
     need(o.port>1023&&o.port<=65535,"CSI port invalid");
-    for(unsigned r=0;r<3;++r){o.peers[r]=take("rx"+std::to_string(r+1));o.config.receiver_ids[r]=o.peers[r];o.config.gains[r]=std::stod(take("gain"+std::to_string(r+1)));}
+    for(unsigned r=0;r<3;++r){o.peers[r]=take("rx"+std::to_string(r+1));o.config.receiver_ids[r]=o.peers[r];o.config.gains[r]=real_option(take("gain"+std::to_string(r+1)),"CSI gain");}
     need(std::set<std::string>(o.peers.begin(),o.peers.end()).size()==3,"Distinct RX addresses required");
     auto source=take("source");need(source.size()==17,"TX MAC invalid");
     for(unsigned i=0;i<6;++i){std::size_t used=0;auto n=std::stoul(source.substr(i*3,2),&used,16);need(used==2&&n<=255&&(i==5||source[i*3+2]==':'),"TX MAC invalid");o.config.transmitter_mac[i]=std::uint8_t(n);}
-    o.config.chanspec=std::stoul(take("channel"),nullptr,0);
+    const auto channel=take("channel");std::size_t channel_used=0;
+    const auto channel_number=std::stoul(channel,&channel_used,0);
+    need(channel_used==channel.size()&&channel_number<=65535,"CSI channel invalid");
+    o.config.chanspec=std::uint16_t(channel_number);
     if(fields.count("alignment")) {
         const auto mode=take("alignment");need(mode=="strict"||mode=="adaptive","CSI alignment must be strict or adaptive");
         o.adaptive=mode=="adaptive";
     }
     if(o.adaptive) {
-        if(fields.count("max_skew_us"))o.adaptive_limits.max_skew_us=std::stoll(take("max_skew_us"));
+        if(fields.count("max_skew_us"))o.adaptive_limits.max_skew_us=std::int64_t(unsigned_option(take("max_skew_us"),"CSI max_skew_us",INT64_MAX));
         if(fields.count("max_sequence_skew")) {
-            const auto value=std::stoul(take("max_sequence_skew"));need(value<=3,"CSI sequence skew must be 0..3");
+            const auto value=unsigned_option(take("max_sequence_skew"),"CSI max_sequence_skew",3);
             o.adaptive_limits.max_sequence_skew=unsigned(value);
         }
     }

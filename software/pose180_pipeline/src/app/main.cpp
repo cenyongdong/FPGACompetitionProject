@@ -3,6 +3,7 @@
 #include "journal.hpp"
 #include "csi.hpp"
 #include "dataset.hpp"
+#include "option_value.hpp"
 #include "postprocess.hpp"
 #include "lean_admission.hpp"
 #include "exception_message.hpp"
@@ -19,7 +20,7 @@
 #include "startup_consumer.hpp"
 #endif
 #ifndef POSE180_DEMO_PROBE_FREE
-#include "FPGA/hdmi_candidate/diagnostics/deferred_consume_r45/software/source/display/r9_startup_observer.hpp"
+#include "r9_startup_observer.hpp"
 #include "r9_observer_mapping.hpp"
 #endif
 #endif
@@ -57,7 +58,13 @@ int main(int argc,char**argv) {
         std::map<std::string,std::string> options;
         for(int i=1;i<argc;i+=2){need(i+1<argc,"Expected --option value");need(options.emplace(argv[i],argv[i+1]).second,"Repeated option");}
         auto take=[&](const char* key,const std::string& fallback){auto it=options.find(key);if(it==options.end())return fallback;auto v=it->second;options.erase(it);return v;};
-        const auto supervisor=std::stoul(take("--supervisor-pid","0"));
+        auto integer = [&](const char* key, const char* fallback, std::uint64_t maximum=UINT64_MAX) {
+            return pd::unsigned_option(take(key, fallback), key, maximum);
+        };
+        auto real = [&](const char* key, const char* fallback) {
+            return pd::real_option(take(key, fallback), key);
+        };
+        const auto supervisor=integer("--supervisor-pid","0",std::numeric_limits<int>::max());
         if(supervisor){
             // A lost supervisor requests the same graceful stop as a user.
             // Never send a fatal signal to an SDK owner with work in flight.
@@ -67,26 +74,26 @@ int main(int argc,char**argv) {
         const fs::path package=take("--package","."),output=take("--output","");
         const auto bind=take("--bind","127.0.0.1"),csi_config=take("--csi","");
         const auto dataset_file=take("--dataset","");
-        const auto dataset_repetitions=std::stoul(take("--dataset-repetitions","1"));
-        const auto session=std::stoull(take("--session","0"));
-        const auto seconds=std::stoul(take("--seconds","60"));
-        const auto input_port=std::stoul(take("--input-port",csi_config.empty()&&dataset_file.empty()?"39382":"0"));
-        const auto result_port=std::stoul(take("--result-port","39383"));
-        const auto status_port=std::stoul(take("--status-port","39384"));
-        const auto max_age=std::stoull(take("--max-input-age-ms","500"))*1000000ull;
+        const auto dataset_repetitions=integer("--dataset-repetitions","1",30);
+        const auto session=integer("--session","0");
+        const auto seconds=integer("--seconds","60",UINT64_MAX/1000000000ull);
+        const auto input_port=integer("--input-port",csi_config.empty()&&dataset_file.empty()?"39382":"0",65535);
+        const auto result_port=integer("--result-port","39383",65535);
+        const auto status_port=integer("--status-port","39384",65535);
+        const auto max_age=integer("--max-input-age-ms","500",60000)*1000000ull;
         const auto hdmi_arg=take("--hdmi","0");const bool hdmi=hdmi_arg=="1";
 #ifdef POSE180_DEMO_SDK
         constexpr bool mock=false;
 #else
         constexpr bool mock=true;
-        const auto delay=std::stoul(take("--mock-delay-ms","10"));
-        const auto slow_at=std::stoull(take("--mock-slow-at","0"));
-        const auto fail_at=std::stoull(take("--mock-fail-at","0"));
-        const auto nonstandard_at=std::stoull(take("--mock-nonstandard-at","0"));
-        const auto unproved_at=std::stoull(take("--mock-unproved-at","0"));
+        const auto delay=integer("--mock-delay-ms","10",60000);
+        const auto slow_at=integer("--mock-slow-at","0");
+        const auto fail_at=integer("--mock-fail-at","0");
+        const auto nonstandard_at=integer("--mock-nonstandard-at","0");
+        const auto unproved_at=integer("--mock-unproved-at","0");
         need(!hdmi,"Mock cannot access HDMI");
 #endif
-        const auto view_port=std::stoul(take("--view-port",mock?"0":"39385"));
+        const auto view_port=integer("--view-port",mock?"0":"39385",65535);
 #ifdef POSE180_DEMO_PROBE_FREE
 #ifdef POSE180_DEMO_PROBE_FREE_DRAIN
 #ifdef POSE180_DEMO_PL_FILTER
@@ -112,7 +119,7 @@ int main(int argc,char**argv) {
 #endif
         const auto filter_backend=take("--filter-backend","cpu");
         pose::post::Config presentation_config;
-        const auto top_k=std::stoul(take("--top-k","3"));
+        const auto top_k=integer("--top-k","3",3);
         need(top_k>=1&&top_k<=3,"Invalid TopK");presentation_config.top_k=unsigned(top_k);
         const auto single_stability=take("--single-person-stability","0");
         need(single_stability=="0"||single_stability=="1","Invalid single-person stability option");
@@ -126,9 +133,9 @@ int main(int argc,char**argv) {
             need(consumed==score_threshold.size()&&std::isfinite(cutoff)&&cutoff>=0&&cutoff<=1,"Invalid score threshold");
             presentation_config.score_threshold=cutoff;
         }
-        presentation_config.min_cutoff=std::stod(take("--min-cutoff","0.5"));
-        presentation_config.beta=std::stod(take("--beta","0.3"));
-        presentation_config.d_cutoff=std::stod(take("--d-cutoff","1"));
+        presentation_config.min_cutoff=real("--min-cutoff","0.5");
+        presentation_config.beta=real("--beta","0.3");
+        presentation_config.d_cutoff=real("--d-cutoff","1");
         need(std::isfinite(presentation_config.min_cutoff)&&presentation_config.min_cutoff>0&&
              std::isfinite(presentation_config.beta)&&presentation_config.beta>=0&&
              std::isfinite(presentation_config.d_cutoff)&&presentation_config.d_cutoff>0,"Invalid One Euro parameters");
@@ -147,6 +154,7 @@ int main(int argc,char**argv) {
         need(options.empty(),"Unknown option");need(session && session<0xffffffffffff0000ull,"Explicit session required");
         need(view_port<=65535&&(!view_port||(view_port!=input_port&&view_port!=result_port&&view_port!=status_port)),"Invalid presentation port");
         need(input_port<=65535 && result_port>0 && result_port<=65535 && status_port>0 && status_port<=65535,"Port out of range");
+        need(result_port!=status_port && (!input_port || (input_port!=result_port && input_port!=status_port)),"Listeners require distinct ports");
         need(max_age>0 && max_age<=60000000000ull && (hdmi_arg=="0"||hdmi_arg=="1"),"Invalid age or HDMI option");
         need(csi_config.empty()||!input_port,"Use exactly one input adapter");
         need(dataset_file.empty()||(csi_config.empty()&&!input_port),"Dataset excludes live CSI and TCP input");

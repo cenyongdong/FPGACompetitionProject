@@ -28,7 +28,7 @@ namespace pose::hdmi {
         }
         std::array<double, 2> project(double a, double b, double c) {
             // Same display-only coordinates, target (0,1.05,0), camera and 36deg
-            // vertical FOV as demo_v1/web/scene.js perspective. No per-pose fit.
+            // vertical FOV as host/web/scene.js perspective. No per-pose fit.
             return project_scene({{a-1.75,4.2-c,1.75-b}});
         }
         uint16_t ground_ink(const Vec& p, const Vec& rgb, double opacity) {

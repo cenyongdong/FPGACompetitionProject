@@ -2,7 +2,7 @@
 from pathlib import Path
 import json,sys
 ROOT=Path(__file__).resolve().parents[3]
-sys.path.insert(0,str(ROOT/'software/pose180_pipeline/resident'))
+sys.path.insert(0,str(ROOT/'software/pose180_pipeline/control'))
 from test_witness import read_run,load
 old=ROOT/'FPGA/hdmi_candidate/diagnostics/deferred_consume_r45'
 sys.modules['consume_gate']=load(old/'gates/consume_gate.py','consume_gate')

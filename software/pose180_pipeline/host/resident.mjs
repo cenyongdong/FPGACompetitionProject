@@ -94,7 +94,7 @@ const state=()=>{
 function sendState(res,payload){if(res.destroyed)return;if(res.writableLength+Buffer.byteLength(payload)>65536){res.destroy();return;}res.write(payload);}
 function broadcast(){broadcastTimer=undefined;if(!subscribers.size||closed)return;const payload='data: '+JSON.stringify(state())+'\n\n';for(const res of subscribers)sendState(res,payload);}
 function scheduleBroadcast(){if(!closed&&!broadcastTimer)broadcastTimer=setTimeout(broadcast,0);}
-const assets=new Map([['/scene.js',path.join(root,'demo_v1/web/scene.js')],
+const assets=new Map([['/scene.js',path.join(root,'software/pose180_pipeline/host/web/scene.js')],
     ['/vendor/three.module.js',path.join(root,'software/pc_viewer/node_modules/three/build/three.module.js')],
     ['/vendor/three.core.js',path.join(root,'software/pc_viewer/node_modules/three/build/three.core.js')],
     ['/vendor/OrbitControls.js',path.join(root,'software/pc_viewer/node_modules/three/examples/jsm/controls/OrbitControls.js')]]);

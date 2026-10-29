@@ -5,9 +5,6 @@ import json
 import math
 from pathlib import Path
 import struct
-import sys
-
-ROOT = Path(__file__).resolve().parents[3]
 RECORD_BYTES = 86432
 
 
@@ -22,8 +19,11 @@ def sha(path):
 def validate_dataset(directory):
     directory = Path(directory)
     manifest = json.loads((directory/'dataset.json').read_text(encoding='utf-8'))
-    if (manifest.get('schema') != 'PIWDATASET1' or manifest.get('input_source') != 'official_dataset'
+    if (not isinstance(manifest, dict) or manifest.get('schema') != 'PIWDATASET1' or manifest.get('input_source') != 'official_dataset'
             or manifest.get('file') != 'dataset.piwcsi2'
+            or manifest.get('split') not in ('train', 'test')
+            or not isinstance(manifest.get('sequence'), str) or not manifest['sequence']
+            or type(manifest.get('count')) is not int
             or not 1 <= manifest.get('count', 0) <= 9000
             or len(manifest.get('samples', [])) != manifest['count']):
         raise ValueError('Invalid dataset manifest')
@@ -61,8 +61,7 @@ def prepare_dataset(dataset_root, split, sequence, start, count, hz, output):
         raise ValueError('Clip crosses a missing sample or recording boundary; choose a shorter contiguous clip')
     sources = [folder/'csi'/(selected[i]+'.mat') for i in indices]
     if any(not p.is_file() for p in sources): raise ValueError('CSI MAT file missing')
-    sys.path.insert(0, str(ROOT))
-    from demo_v1.host.prepare import aligned_payload
+    from csi_mat import aligned_payload
     output = Path(output); output.mkdir(parents=True, exist_ok=False)
     data = output/'dataset.piwcsi2'
     with data.open('xb') as stream:

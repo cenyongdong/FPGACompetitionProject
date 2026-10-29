@@ -18,6 +18,7 @@ from process_guard import request_stop, StopRequest
 from run_hdmi_trial import owners
 from boot_audit import fat_files
 import startup_network
+from input_config import select_input, input_arguments
 
 LOCK = Path('/run/pose180-resident.lock')
 ACTIVE = Path('/run/pose180-resident.active.json')
@@ -155,6 +156,14 @@ def check_run(previous, current_boot):
         raise ValueError('Prior SDK attempt receipt is invalid; release unproved')
     if not safe and attempt.get('boot_id') == current_boot:
         raise ValueError('Previous SDK attempt lacks a safe completion; no same-boot retry')
+    # A clean SDK shutdown does not reset the functional startup consumer.
+    # New launchers reserve it explicitly; older runs expose its native log.
+    request = optional_json(previous/'request.json')
+    once = request.get('functional_startup_once') or (previous/'run/startup-consumer.jsonl').exists()
+    never_entered = outcome.get('native_started') is False or (
+        complete.get('failure_before_hardware') is True and complete.get('native_shutdown_complete') is True)
+    if once and not never_entered and attempt['boot_id'] == current_boot:
+        raise ValueError('Functional startup already used/reserved in this boot; safely stop, prepare-boot and reboot before another run')
 
 
 def recover_previous(root):
@@ -211,15 +220,17 @@ def preflight(root, identity):
     return current
 
 
-def command(root, run, session, seconds):
+def command(root, run, session, seconds, selected=None):
+    # Legacy callers select live CSI; the CLI always supplies a validated choice.
+    selected = selected or dict(input_source='live_csi')
     return [str(root/'pose180_demo'), '--package', str(root), '--output', str(run/'run'),
             '--bind', '0.0.0.0', '--session', str(session), '--seconds', str(seconds),
             '--top-k', '1', '--score-threshold', 'none',
             '--single-person-stability', '1',
             '--hardware-profile', 'probe-free-drain-filter-v1', '--filter-backend', 'cpu',
             '--min-cutoff', '0.5', '--beta', '0.3', '--d-cutoff', '1',
-            '--hdmi', '1', '--csi', str(root/'csi.conf'), '--input-port', '0',
-            '--result-port', '39383', '--status-port', '39384', '--view-port', '39385']
+            '--hdmi', '1',
+            '--result-port', '39383', '--status-port', '39384', '--view-port', '39385'] + input_arguments(root, selected)
 
 
 def serve_run(root, run, stopping):
@@ -247,6 +258,16 @@ def serve_run(root, run, stopping):
                 raise ValueError('Boot or device ownership changed before launch')
             if stopping.requested or (run/'stop.request').exists():
                 return
+            selected = request.get('input')
+            if selected is not None:
+                # Recheck the prepared input before any network mutation. Keep
+                # provenance fixed across the detached launch handoff.
+                actual = select_input(root, read(root/'identity.json'), selected['input_source'],
+                                      selected.get('dataset_repetitions'))
+                if actual != selected:
+                    raise ValueError('Input identity changed after launch reservation')
+            # Both modes need the PC-facing alias. Only the native live adapter
+            # opens the CSI listener; this does not start or alter any router.
             network = startup_network.add(lambda receipt: atomic(run/'network.json',receipt), stopping)
             if stopping.requested or (run/'stop.request').exists():
                 return
@@ -254,7 +275,7 @@ def serve_run(root, run, stopping):
                 json.dump(dict(boot_id=boot_id(), automatic_retry=False), stream)
             session = time.time_ns() // 1000
             seconds = request['seconds']
-            return supervise(run, command(root, run, session, seconds), seconds+120 if seconds else float('inf'),
+            return supervise(run, command(root, run, session, seconds, selected), seconds+120 if seconds else float('inf'),
                              bind_native_parent=True, lease_fd=lock.fileno(), stop_request=stopping)
         except Exception as error:
             try:
@@ -280,10 +301,17 @@ def main(stopping):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('start', 'serve', 'status', 'stop', 'check', 'recover', 'prepare-boot'))
     parser.add_argument('--seconds', type=int, default=0, help='0: run until a manual stop; no automatic restart')
+    parser.add_argument('--input-source', choices=('live_csi', 'official_dataset'),
+                        help='Default comes from package identity; applies to start/check')
+    parser.add_argument('--dataset-repetitions', type=int, help='1..30 finite passes, official_dataset only')
     parser.add_argument('--run', help=argparse.SUPPRESS)
     args = parser.parse_args()
     if args.seconds < 0:
         parser.error('Runtime must be nonnegative')
+    if args.seconds > (2**64-1)//1000000000:
+        parser.error('Runtime exceeds the native monotonic duration range')
+    if args.action not in ('start', 'check') and (args.input_source or args.dataset_repetitions is not None):
+        parser.error('Input options apply only to start/check')
     root = Path(__file__).resolve().parent
     previous = previous_run(root)
     if args.action in ('status', 'stop'):
@@ -329,19 +357,22 @@ def main(stopping):
         print(json.dumps(dict(prepared=True, reboot_performed=False, next_step='Explicit operator reboot, then start')))
         return
     if args.action == 'check':
+        selected = select_input(root, identity, args.input_source, args.dataset_repetitions)
         current = preflight(root, identity)
-        print(json.dumps(dict(ready=True, boot_id=current, SDK_started=False, top_k=1, score_threshold=None)))
+        print(json.dumps(dict(ready=True, boot_id=current, SDK_started=False, top_k=1, score_threshold=None, input=selected)))
         return
     if args.action == 'start':
         with LOCK.open('a') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            selected = select_input(root, identity, args.input_source, args.dataset_repetitions)
             current = preflight(root, identity)
             if stopping.requested:
                 return
             name = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S')+'-'+str(time.time_ns())
             run = root/'runs'/name
             (run/'metadata').mkdir(parents=True)
-            atomic(run/'request.json', dict(boot_id=current, seconds=args.seconds))
+            atomic(run/'request.json', dict(boot_id=current, seconds=args.seconds, input=selected,
+                                           functional_startup_once=identity.get('hardware_profile') == 'probe-free-drain-filter-v1'))
             atomic(root/'latest.json', dict(run=name))
             atomic(ACTIVE, dict(boot_id=current,run=str(run.resolve())))
             if stopping.requested:

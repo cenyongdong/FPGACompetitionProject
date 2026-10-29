@@ -1,4 +1,21 @@
-# 180-query主推理链：主机模拟输入、有界缓冲与完整回传
+# 180-query 演示工程与核心源码
+
+当前源码统一在本工程内按模块维护。先看 [核心源码索引](src/README.md)，再看 [双输入演示说明](resident/DEMO-INPUTS.md)。正式目标 `pose180_demo` 保留实时采集与官方预采 CSI 两个入口，共用原 epoch99、TopK=1、CPU 单人滤波和 HDMI／PC 输出。
+
+```text
+pose180_pipeline/
+├── src/           # C++ 核心：app、common、input、preprocess、inference、pose、display、io、diagnostics
+├── control/       # 手动启停、双输入准备、进程／网络清理、路由器服务及 Python 测试
+├── host/          # PC 服务、web/ 页面资源与 test/ 检查
+├── tests/         # 原生测试、Nexmon 测试与 SDK 替身
+├── tools/         # 构建／打包脚本、native/ 离线回放与向量工具
+├── resident/      # 运行说明、验证记录与历史恢复资料
+└── CMakeLists.txt # 当前统一构建入口
+```
+
+2026-10-29 按模块实际搬迁源码并更新 CMake、脚本导入和 PC 资源路径。旧目录只留必要指引，历史证据与交付包按原身份保留。当前验证范围见 [最终审查记录](resident/FINAL-REVIEW.md)，设备状态见 [恢复入口](../../FPGA/hdmi_candidate/RESUME.md)。
+
+## 早期严格归档链（历史）
 
 **现行演示入口已按ADR_50改为[常驻核心与真实CSI→推理→HDMI](resident/README.md)，后续r5已接入PC渲染，完成30分钟运行期及RX／PC物理断线验证并关闭；现行细节见[TechDetails](../../ADR/TechDetails.md)。下文保留早期严格逐帧归档链的设计与实测范围，不代表最新演示架构。**
 

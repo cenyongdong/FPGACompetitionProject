@@ -105,7 +105,12 @@ void Journal::record(const Record& record) {
 void Journal::freeze() {
     for(std::size_t i=0;i<count_;++i){const auto& r=ring_[(next_+ring_.size()-count_+i)%ring_.size()];send('F',r.data(),r.size());}
 }
-void Journal::status(const std::string& text){send('L',text.data(),std::min(text.size(),line_.size()));}
+void Journal::status(const std::string& text) {
+    // Status JSON grew beyond the streambuf's 2 KiB fragment capacity. Keep a
+    // whole bounded message: truncation used to splice the next JSON onto it.
+    if (text.size()>8192) { ++shared_.stats.record_dropped; return; }
+    send('L',text.data(),text.size());
+}
 void Journal::diagnostic(const std::string& text) {
     if(text.size()>1024){++shared_.stats.diagnostic_dropped;return;}
     send('D',text.data(),text.size());
@@ -123,6 +128,7 @@ Journal::~Journal() {
     for(int i=0;i<20;++i){if(::waitpid(child_,nullptr,WNOHANG)==child_)return;::usleep(10000);}
     // Uninterruptible filesystem IO cannot be force-reaped. This child owns no
     // SDK handle or resource lease, so it must not hold the SDK owner's exit.
-    ::write(STDERR_FILENO,"RECORDER_REAP_PENDING\n",22);
+    const auto diagnostic_bytes=::write(STDERR_FILENO,"RECORDER_REAP_PENDING\n",22);
+    (void)diagnostic_bytes;
 }
 }

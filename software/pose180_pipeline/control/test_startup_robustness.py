@@ -241,7 +241,7 @@ def fixture_main(entry):
         current=startup.boot_id()
         startup.check_previous(folder,current);startup.check_global(current)
         return current
-    def command(folder,run,session,seconds):
+    def command(folder,run,session,seconds,selected=None):
         argv,unused=mock_command(Path(setup['binary']),run)
         for option,number in zip(('--input-port','--result-port','--status-port','--view-port'),setup['ports']):
             argv[argv.index(option)+1]=str(number)
@@ -271,7 +271,8 @@ def cli_cases(binary,root):
     for name in ('first','second'):
         folder=root/name;folder.mkdir()
         unused,ports=mock_command(binary,folder)
-        service.atomic(folder/'identity.json',{})
+        service.atomic(folder/'identity.json',dict(input_source='live_csi'))
+        (folder/'csi.conf').write_text('# mock only: no router or network changes\n')
         service.atomic(folder/'fixture.json',dict(binary=str(binary),ports=ports,lock=str(root/'lease.lock'),active=str(root/'active.json')))
         entry=folder/'startup-fixture.py';entry.write_text(fixture);entries.append(entry)
     def invoke(entry,action):

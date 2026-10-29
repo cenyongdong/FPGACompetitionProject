@@ -1,18 +1,10 @@
-# 正式运行核心
+# 核心源码入口
 
-2026-10-28 提交准备：现行运行目标为 `software/pose180_pipeline` 的 **`pose180_demo`**，由同一 CMake 工程构建；[启动包与核心源码说明](../pose180_pipeline/resident/STARTUP-PACKAGE.md)。旧 100-query、VPU／RTSP、诊断 Host 桥及未完成 PL 扩展均保留作历史，不链接到本次正式目标。
+当前 180-query 演示核心已按模块集中到 [software/pose180_pipeline/src/](../pose180_pipeline/src/README.md)。实时 CSI／官方预采输入、预处理、SDK、姿态后处理、HDMI、网络与诊断均在该目录；启停脚本在 [control/](../pose180_pipeline/control/README.md)，PC 在 [host/](../pose180_pipeline/host/README.md)。统一由 `software/pose180_pipeline/CMakeLists.txt` 构建。
 
-| 现行模块 | 核心源码 | 职责 |
-|---|---|---|
-| CSI 输入 | `tools/nexmon/board/{pcap_stream,adaptive_ingress,ingress}.*`、`resident/csi.cpp` | 三 RX、有限容限、后台匹配、完整窗口切换 |
-| 预处理／SDK | `demo_v1/shared_fp16/preprocess.*`、`pose180_pipeline/board/runtime.*` | 原数学、原 epoch99 图、唯一 SDK 设备所有者 |
-| 资源释放保护 | `pose180_pipeline/board/release_guard.hpp`、`board/exception_message.hpp`、`native_rgb565_r53/display/hdmi_output.cpp` | 已证明完成才释放；未完成 SDK 操作保留句柄与独占，HDMI 部分构造回滚、未知 free 不重复 |
-| 通用后处理 | `pose/postprocess.*`、`pose/geometry.hpp` | 保留 v5 多人／Top1 对照；共享几何计算 |
-| 单人连续性 | `pose/single_person.*` | 仅显式 CPU Top1：异常隔离、持续观测确认、中心／相对姿态平滑、显示位移限制 |
-| 显示与观察 | `display/hdmi_renderer.*`、`pose180_pipeline/host/{resident,presentation}.mjs` | 同一 PresentationFrame 驱动 HDMI／PC，保持原始分数和完整结果通道 |
-| 启停／打包 | `resident/startup*.py`、`tools/{build_startup,package_startup}.py` | 手动启停、安全退出、运行身份与可迁移交付包 |
+双输入使用见 [演示说明](../pose180_pipeline/resident/DEMO-INPUTS.md)，实际检查与边界见 [最终审查](../pose180_pipeline/resident/FINAL-REVIEW.md)。本目录的其余模块继续服务旧 100-query、VPU／RTSP 及可选实验分支；以下记录保留当时语义。
 
-路径中 `resident/` 均指 `software/pose180_pipeline/resident/`。提交前的本地构建、单人合成检查、实际留存输出回放、mock 和包内源码重建是不同验证层次；均不替代更新后的实板验证。无需改动模型、SDK、原预处理或 FPGA。以下为原有历史架构说明。
+## 旧共享核心（历史）
 
 2026-10-25主入口更新：用户已批准后续以[180-query主推理链](../pose180_pipeline/README.md)替代旧100-query主图，采用主机模拟输入、有界缓冲及完整回传。本目录预处理／绘制能力继续复用；以下共享Engine、Host桥及VPU／RTSP说明按原100-query历史基线理解。新链仅完成软件验证和编译，未实板。
 

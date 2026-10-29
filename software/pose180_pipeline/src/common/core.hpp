@@ -96,11 +96,14 @@ struct Stats {
 };
 inline std::string Stats::json(bool mock, bool hdmi) const {
     const auto now=now_ns();
-    auto age=[&](std::uint64_t t){return t ? std::to_string((now-t)/1000000) : "null";};
+    // A worker may publish a newer timestamp after this status snapshot starts.
+    // Clamp that concurrent update instead of wrapping an unsigned subtraction.
+    auto elapsed=[&](std::uint64_t t){return now>t?now-t:0;};
+    auto age=[&](std::uint64_t t){return t ? std::to_string(elapsed(t)/1000000) : "null";};
     const auto last=last_result.load(), busy=forward_start.load();
     const char* state=release_blocked ? "release_blocked" : isolated ? "isolated" : !initialized ? "initializing" :
-        resynchronizing ? "resynchronizing" : busy && now-busy>1000000000 ? "degraded" :
-        !last || now-last>2000000000 ? "waiting_input" : "running";
+        resynchronizing ? "resynchronizing" : busy && elapsed(busy)>1000000000 ? "degraded" :
+        !last || elapsed(last)>2000000000 ? "waiting_input" : "running";
     std::string s="{\"state\":\""+std::string(state)+"\",\"mock\":"+(mock?"true":"false")+
         ",\"hdmi\":"+(hdmi?"true":"false")+",\"input_source\":\""+input_source+"\",\"dataset_done\":"+(dataset_done?"true":"false");
     s+=",\"score_threshold\":"+(score_threshold?std::to_string(*score_threshold):std::string("null"));

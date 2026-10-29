@@ -14,7 +14,7 @@ def run(stage,args,cwd=W):
  if code:print((cwd/(stage+'.log')).read_text(errors='replace')[-5000:]);raise SystemExit(code)
 mode=sys.argv[1] if len(sys.argv)>1 else 'filter'
 if mode=='geometry':
- run('vectors-build',['g++','-O2','-std=c++17','-I'+str(ROOT/'software/core/pose'),str(ROOT/'software/pose180_pipeline/resident/geometry_vectors.cpp'),'-o',str(W/'geometry_vectors.exe')])
+ run('vectors-build',['g++','-O2','-std=c++17','-I'+str(ROOT/'software/pose180_pipeline/src/pose'),str(ROOT/'software/pose180_pipeline/tools/native/geometry_vectors.cpp'),'-o',str(W/'geometry_vectors.exe')])
  run('vectors',[str(W/'geometry_vectors.exe'),str(W)])
  (W/'run.tcl').write_text('run all\nquit\n')
  run('compile',[str(V/'xvlog.bat'),'-sv',str(SRC/'rtl/pose_geometry.sv'),str(SRC/'sim/tb_pose_geometry.sv')])

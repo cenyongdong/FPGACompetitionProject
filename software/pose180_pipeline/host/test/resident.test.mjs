@@ -37,7 +37,9 @@ test('optional PC consumes split results without ACK, marks stale, reconnects an
     const httpPort=await freePort(),base='http://127.0.0.1:'+httpPort;
     try{
         child=spawn(process.execPath,[fileURLToPath(new URL('../resident.mjs',import.meta.url)),
-            '--mode','raw','--board','127.0.0.1','--port',String(source.address().port),'--http-port',String(httpPort),'--seconds','10','--mock','1'],
+            // Includes a deliberate 5.2 s stale interval, reconnect, and asset
+            // reads on Windows; leave room for filesystem/scheduler latency.
+            '--mode','raw','--board','127.0.0.1','--port',String(source.address().port),'--http-port',String(httpPort),'--seconds','20','--mock','1'],
             {windowsHide:true,stdio:['ignore','pipe','pipe']});
         const finished=once(child,'exit');child.stdout.on('data',b=>{output+=b;});child.stderr.on('data',b=>{errors+=b;});
         await until(()=>output.includes('RESIDENT_PC_READY'),'PC server did not become ready');

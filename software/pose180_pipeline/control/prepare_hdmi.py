@@ -76,7 +76,7 @@ def main():
     manifest={k:v for k,v in previous.items() if k not in ('files','local_validation','prior_run_fact','precondition','source_commit')}
     manifest.update(package_id=ID,base=REMOTE,caps=CAPS,status='prepared_pending_explicit_BOOT_authorization',
         CSI_live=True,precondition='Fresh existing admission passes; unexpected shared-bus state ends this package. No D45 root-cause expansion.',
-        source_reference='software/pose180_pipeline/resident; exact tested binary from direct/sdk2/identity.json')
+        source_reference='software/pose180_pipeline/control; exact tested binary from direct/sdk2/identity.json')
     manifest['board']['remote_root']=REMOTE
     manifest['files']={p.relative_to(board).as_posix():digest(p) for p in board.rglob('*') if p.is_file()}
     (board/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

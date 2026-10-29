@@ -27,6 +27,30 @@ int main(int argc,char**argv) {
             while(std::getline(input,line)){check(!line.empty()&&line.front()=='{'&&line.back()=='}'&&line.size()<1024,"Partial diagnostic line");++lines;}
         }
         check(files==2&&total>256*1024&&total<=512*1024&&lines>260,"Rotation did not retain bounded whole lines");
+        fs::create_directory(root/"status");Shared status;
+        const auto whole="{\"pad\":\""+std::string(4096,'x')+"\"}\n";
+        const std::string sentinel="{\"after\":true}\n";
+        {
+            Journal journal(status,root/"status");
+            journal.status(whole);
+            journal.status(std::string(8193,'y')); // Reject the whole oversized record.
+            journal.status(sentinel);
+            const auto deadline=std::chrono::steady_clock::now()+std::chrono::seconds(2);
+            while(std::chrono::steady_clock::now()<deadline) {
+                std::error_code error;
+                if(fs::file_size(root/"status/recent-0.jsonl",error)==whole.size()+sentinel.size()&&!error)break;
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            }
+        }
+        std::ifstream saved(root/"status/recent-0.jsonl");
+        const std::string actual((std::istreambuf_iterator<char>(saved)),{});
+        check(actual==whole+sentinel&&status.stats.record_dropped==1,"Status JSON was truncated or oversized record corrupted following log");
+        status.stats.initialized=true;
+        status.stats.last_input=status.stats.last_result=status.stats.forward_start=now_ns()+1000000000ull;
+        const auto snapshot=status.stats.json(true,false);
+        check(snapshot.find("\"state\":\"running\"")!=std::string::npos&&
+              snapshot.find("\"input_age_ms\":0")!=std::string::npos,
+              "Concurrent timestamp update wrapped status age");
         fs::create_directory(root/"disk-full");
         fs::create_symlink("/dev/full",root/"disk-full/diagnostic-0.jsonl");
         Shared failed;

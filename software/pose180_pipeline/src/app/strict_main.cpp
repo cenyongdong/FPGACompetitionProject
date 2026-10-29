@@ -6,7 +6,7 @@
 #include "network.hpp"
 #include "hdmi_output.hpp"
 #include "hdmi_renderer.hpp"
-#include "FPGA/hdmi_candidate/diagnostics/deferred_consume_r45/software/source/display/r9_startup_observer.hpp"
+#include "r9_startup_observer.hpp"
 #include "r9_observer_mapping.hpp"
 #include <atomic>
 #include <csignal>

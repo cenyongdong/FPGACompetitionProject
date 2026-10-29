@@ -20,7 +20,7 @@ namespace pose::hdmi::detail {
     }
 
     inline void pixel(std::vector<uint8_t>& image, int x, int y, uint16_t value) {
-        if (x < 0 || x >= width || y < 0 || y >= height) return;
+        if (x < 0 || unsigned(x) >= width || y < 0 || unsigned(y) >= height) return;
         const auto offset = (size_t(y) * width + unsigned(x)) * 2;
         image[offset] = uint8_t(value);
         image[offset + 1] = uint8_t(value >> 8);
