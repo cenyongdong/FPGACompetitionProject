@@ -4,12 +4,6 @@
 
 先读[最终项目进度](PROJECT-PROGRESS.md)、[困难最终处置](DIFFICULTIES.md)和[部署／恢复入口](FPGA/hdmi_candidate/RESUME.md)。当前核心见 [src/README](software/pose180_pipeline/src/README.md)。根目录与模块 README 维护当前入口；带日期、包名、PLAN／NEXT 的资料按当时阶段理解，目录名本身不构成执行授权。
 
-## 本次内容同步复核
-
-2026-10-29 再次对全部 554 份 Markdown 做全文状态／路径扫描，并核对现行入口及命中的阶段说明。已补齐自采模型后续实板结果、取消／冻结范围、旧工程版本定位和提交稿的最新演示配置，修复 39 处已知迁移链接或归档路径。历史报告、交付快照和厂商原文保持各自范围，不改写成当前测试结果。
-
-50 轮学习率对照仅有 10 月 27 日启动快照，最终状态未核验，见[训练说明](tools/pose180/STATUS.md)。这项未知已明确记录，不继续沿用“当前正在运行”。本次没有连接设备、训练服务器或重跑测试；核验范围及逐份分类见[本机核验结果](.local/documentation-final-20261029/validation.json)。
-
 ## 文档职责
 
 | 文档 | 唯一维护职责 |
@@ -59,15 +53,15 @@
 <details>
 <summary>总览、规则与根目录历史（10 份）</summary>
 
-- [Agents.md](Agents.md) — 项目执行规范（现行入口）
+- [Agents.md](Agents.md) — 项目执行规范（现行入口；遗留引用 1）
 - [ARCHITECTURE-DISCUSSION-20261015.md](ARCHITECTURE-DISCUSSION-20261015.md) — 架构讨论记录与 HDMI 后续实施范围（历史／专题说明；遗留引用 17）
-- [DIFFICULTIES.md](DIFFICULTIES.md) — 项目困难与最终处置（现行入口；遗留引用 17）
+- [DIFFICULTIES.md](DIFFICULTIES.md) — 项目困难与最终处置（现行入口；遗留引用 18）
 - [DOCUMENTATION.md](DOCUMENTATION.md) — 全部 Markdown 文档目录（现行入口）
-- [Done.md](Done.md) — 已完成工作记录（分阶段记录；遗留引用 144）
+- [Done.md](Done.md) — 已完成工作记录（分阶段记录；遗留引用 145）
 - [PROJECT-PROGRESS-before-hdmi-20261017.md](PROJECT-PROGRESS-before-hdmi-20261017.md) — 项目进度总览（历史／专题说明；遗留引用 13）
-- [PROJECT-PROGRESS.md](PROJECT-PROGRESS.md) — 项目最终进度（现行入口）
-- [README.md](README.md) — Wi-Fi 人体三维姿态演示工程（现行入口）
-- [REFERENCES.md](REFERENCES.md) — 比赛开发资料索引与理解记录（分阶段记录；遗留引用 179）
+- [PROJECT-PROGRESS.md](PROJECT-PROGRESS.md) — 项目最终进度（现行入口；遗留引用 1）
+- [README.md](README.md) — Wi-Fi 人体三维姿态演示工程（现行入口；遗留引用 1）
+- [REFERENCES.md](REFERENCES.md) — 比赛开发资料索引与理解记录（分阶段记录；遗留引用 180）
 - [ToDoLists.md](ToDoLists.md) — 交付后的后续事项与保留限制（现行入口）
 
 </details>
@@ -81,10 +75,10 @@
 - [software/pose180_pipeline/evidence/20261025/README.md](software/pose180_pipeline/evidence/20261025/README.md) — 2026-10-25阶段归档（历史实测／证据）
 - [software/pose180_pipeline/host/README.md](software/pose180_pipeline/host/README.md) — 180-query PC 观察与主机验证（现行入口）
 - [software/pose180_pipeline/README.md](software/pose180_pipeline/README.md) — 180-query 演示工程与核心源码（现行入口）
-- [software/pose180_pipeline/resident/ADAPTIVE-CSI.md](software/pose180_pipeline/resident/ADAPTIVE-CSI.md) — 实时 CSI 的容错组窗与后台对齐（分阶段记录）
+- [software/pose180_pipeline/resident/ADAPTIVE-CSI.md](software/pose180_pipeline/resident/ADAPTIVE-CSI.md) — 实时 CSI 的容错组窗与后台对齐（分阶段记录；遗留引用 3）
 - [software/pose180_pipeline/resident/autostart/README.md](software/pose180_pipeline/resident/autostart/README.md) — 路由器服务源码位置（分阶段记录）
-- [software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md](software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md) — 自适应 CSI 输入接入与连续性实板验证（分阶段记录）
-- [software/pose180_pipeline/resident/DATASET-DEMO.md](software/pose180_pipeline/resident/DATASET-DEMO.md) — 官方数据集开发验证与视频演示（分阶段记录）
+- [software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md](software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md) — 自适应 CSI 输入接入与连续性实板验证（分阶段记录；遗留引用 1）
+- [software/pose180_pipeline/resident/DATASET-DEMO.md](software/pose180_pipeline/resident/DATASET-DEMO.md) — 官方数据集开发验证与视频演示（分阶段记录；遗留引用 4）
 - [software/pose180_pipeline/resident/DATASET-PLAYLIST.md](software/pose180_pipeline/resident/DATASET-PLAYLIST.md) — 三片段顺序演示（2026-10-29）（现行入口）
 - [software/pose180_pipeline/resident/DEMO-INPUTS.md](software/pose180_pipeline/resident/DEMO-INPUTS.md) — 双输入演示与源码阅读入口（现行入口）
 - [software/pose180_pipeline/resident/FINAL-REVIEW.md](software/pose180_pipeline/resident/FINAL-REVIEW.md) — 核心源码最终审查与双输入整理（分阶段记录）
@@ -93,13 +87,13 @@
 - [software/pose180_pipeline/resident/PHASE-CONTINUITY.md](software/pose180_pipeline/resident/PHASE-CONTINUITY.md) — 时间分支连续性修正与离线推理对照（分阶段记录）
 - [software/pose180_pipeline/resident/PHASE-PREPROCESS-AUDIT.md](software/pose180_pipeline/resident/PHASE-PREPROCESS-AUDIT.md) — 姿态预处理的相位跳变诊断（分阶段记录）
 - [software/pose180_pipeline/resident/PHASE-TRACKING.md](software/pose180_pipeline/resident/PHASE-TRACKING.md) — r8／r9：时间网格跟踪、启动见证与实板复验（分阶段记录）
-- [software/pose180_pipeline/resident/PRESENTATION-20261026.md](software/pose180_pipeline/resident/PRESENTATION-20261026.md) — 展示精简、防闪现复验与 PS／PL 滤波测时（分阶段记录）
-- [software/pose180_pipeline/resident/README.md](software/pose180_pipeline/resident/README.md) — 常驻演示核心与真实CSI→推理→HDMI（分阶段记录）
+- [software/pose180_pipeline/resident/PRESENTATION-20261026.md](software/pose180_pipeline/resident/PRESENTATION-20261026.md) — 展示精简、防闪现复验与 PS／PL 滤波测时（分阶段记录；遗留引用 7）
+- [software/pose180_pipeline/resident/README.md](software/pose180_pipeline/resident/README.md) — 常驻演示核心与真实CSI→推理→HDMI（分阶段记录；遗留引用 5）
 - [software/pose180_pipeline/resident/STARTUP-PACKAGE.md](software/pose180_pipeline/resident/STARTUP-PACKAGE.md) — 演示启动包与历史验证（分阶段记录）
 - [software/pose180_pipeline/resident/STUTTER-VALIDATION.md](software/pose180_pipeline/resident/STUTTER-VALIDATION.md) — r5：卡顿优化、PC观察与联合长测（分阶段记录）
-- [software/pose180_pipeline/resident/TOP3-VALIDATION.md](software/pose180_pipeline/resident/TOP3-VALIDATION.md) — r45复验与Top-3置信度筛选（分阶段记录）
-- [software/pose180_pipeline/resident/TX-LEASE.md](software/pose180_pipeline/resident/TX-LEASE.md) — r6：TX持续任务与定期续期（分阶段记录）
-- [software/pose180_pipeline/resident/WINDOW-RECOVERY.md](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) — r7：共同窗口诊断与更早软恢复（分阶段记录）
+- [software/pose180_pipeline/resident/TOP3-VALIDATION.md](software/pose180_pipeline/resident/TOP3-VALIDATION.md) — r45复验与Top-3置信度筛选（分阶段记录；遗留引用 1）
+- [software/pose180_pipeline/resident/TX-LEASE.md](software/pose180_pipeline/resident/TX-LEASE.md) — r6：TX持续任务与定期续期（分阶段记录；遗留引用 1）
+- [software/pose180_pipeline/resident/WINDOW-RECOVERY.md](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) — r7：共同窗口诊断与更早软恢复（分阶段记录；遗留引用 3）
 - [software/pose180_pipeline/RESULTS.md](software/pose180_pipeline/RESULTS.md) — 2026-10-25：180-query实测、归档修正与HDMI启动停止（模块／兼容说明）
 - [software/pose180_pipeline/src/README.md](software/pose180_pipeline/src/README.md) — 当前核心源码（现行入口）
 - [software/pose180_pipeline/tests/README.md](software/pose180_pipeline/tests/README.md) — 离线测试位置（现行入口）
@@ -183,9 +177,9 @@
 - [ADR/ADR_47.md](ADR/ADR_47.md) — ADR_47：正式核心目录与保持行为的可读性重构（决策记录（按适用范围）；遗留引用 8）
 - [ADR/ADR_48.md](ADR/ADR_48.md) — ADR_48：共享细化 FP16 候选的有界数值门检（决策记录（按适用范围）；遗留引用 6）
 - [ADR/ADR_49.md](ADR/ADR_49.md) — ADR_49：PS／NPU感知、PL HDMI与PC独立3D展示（决策记录（按适用范围））
-- [ADR/ADR_50.md](ADR/ADR_50.md) — ADR_50：端到端演示优先、有界缓存与分级自动恢复（决策记录（按适用范围））
+- [ADR/ADR_50.md](ADR/ADR_50.md) — ADR_50：端到端演示优先、有界缓存与分级自动恢复（决策记录（按适用范围）；遗留引用 1）
 - [ADR/ADR_ToBeDiscussed.md](ADR/ADR_ToBeDiscussed.md) — ADR_ToBeDiscussed（历史／专题说明）
-- [ADR/README.md](ADR/README.md) — 架构决策与难点归档（现行入口）
+- [ADR/README.md](ADR/README.md) — 架构决策与难点归档（现行入口；遗留引用 1）
 - [ADR/TechDetails.md](ADR/TechDetails.md) — Wi-Fi 人体三维姿态项目技术实现汇报（现行入口）
 
 </details>
@@ -221,14 +215,14 @@
 - [FPGA/hdmi_candidate/diagnostics/waveforms-r30-20261022/README.md](FPGA/hdmi_candidate/diagnostics/waveforms-r30-20261022/README.md) — HDMI／HP2 实板连续波形（2026-10-22，r30）（历史／专题说明）
 - [FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md](FPGA/hdmi_candidate/HDMI-FAULT-HANDOFF.md) — HDMI启动故障工程排查交接（历史／专题说明）
 - [FPGA/hdmi_candidate/HDMI-PS-HP2-OFFICIAL-QUESTIONS-20261022.md](FPGA/hdmi_candidate/HDMI-PS-HP2-OFFICIAL-QUESTIONS-20261022.md) — FMQL30TAI HDMI启动异常技术问题报告（历史／专题说明）
-- [FPGA/hdmi_candidate/INTEGRATION.md](FPGA/hdmi_candidate/INTEGRATION.md) — HDMI结构、接入过程与验证边界（历史／专题说明）
+- [FPGA/hdmi_candidate/INTEGRATION.md](FPGA/hdmi_candidate/INTEGRATION.md) — HDMI结构、接入过程与验证边界（历史／专题说明；遗留引用 2）
 - [FPGA/hdmi_candidate/IP-CONTRACT-REVIEW.md](FPGA/hdmi_candidate/IP-CONTRACT-REVIEW.md) — 升级后衍生字段差异审查与有限继续条件（历史／专题说明；遗留引用 5）
 - [FPGA/hdmi_candidate/IP-REVISION-PLAN.md](FPGA/hdmi_candidate/IP-REVISION-PLAN.md) — 隔离工程IP修订升级的已批准范围与结果（历史／专题说明；遗留引用 3）
 - [FPGA/hdmi_candidate/JFM-COMPATIBILITY-REVIEW.md](FPGA/hdmi_candidate/JFM-COMPATIBILITY-REVIEW.md) — replace_7z030ai_file的真实作用与当前版本边界（历史／专题说明；遗留引用 2）
 - [FPGA/hdmi_candidate/JFM-FLOW-REVIEW.md](FPGA/hdmi_candidate/JFM-FLOW-REVIEW.md) — 原厂流程审查与当前实现入口（历史／专题说明；遗留引用 2）
 - [FPGA/hdmi_candidate/PAUSE-REPORT-20261018.md](FPGA/hdmi_candidate/PAUSE-REPORT-20261018.md) — 实时推理 → HDMI 阶段进度与暂停报告（历史／专题说明；遗留引用 10）
 - [FPGA/hdmi_candidate/PIN-CONTRACT.md](FPGA/hdmi_candidate/PIN-CONTRACT.md) — Lite板HDMI、参考时钟及按键引脚核对（历史／专题说明；遗留引用 1）
-- [FPGA/hdmi_candidate/pose_stabilizer/README.md](FPGA/hdmi_candidate/pose_stabilizer/README.md) — 防闪现后处理与精简硬件：离线结果（历史／专题说明）
+- [FPGA/hdmi_candidate/pose_stabilizer/README.md](FPGA/hdmi_candidate/pose_stabilizer/README.md) — 防闪现后处理与精简硬件：离线结果（历史／专题说明；遗留引用 4）
 - [FPGA/hdmi_candidate/probe_free/README.md](FPGA/hdmi_candidate/probe_free/README.md) — 无探针启动位流与可靠性验证（历史／专题说明）
 - [FPGA/hdmi_candidate/probe_free_drain/README.md](FPGA/hdmi_candidate/probe_free_drain/README.md) — 去除诊断、保留异常消费的 HDMI 候选（历史／专题说明）
 - [FPGA/hdmi_candidate/PS-ADAPTATION-STATUS.md](FPGA/hdmi_candidate/PS-ADAPTATION-STATUS.md) — 30TAI自定义PS原生适配阻塞与恢复入口（历史／专题说明；遗留引用 7）
@@ -254,7 +248,7 @@
 - [FPGA/hdmi_validation/README.md](FPGA/hdmi_validation/README.md) — HDMI 独立诊断与行为验证（历史／专题说明）
 - [FPGA/lite_led_chaser/README.md](FPGA/lite_led_chaser/README.md) — 悟净 Lite 流水灯全流程验证（历史／专题说明；遗留引用 1）
 - [FPGA/lite_led_ip_bridge/README.md](FPGA/lite_led_ip_bridge/README.md) — 悟净 Lite：真实 xlconcat IP 流水灯源码交接（历史／专题说明；遗留引用 1）
-- [FPGA/README.md](FPGA/README.md) — FPGA 工程资料入口（现行入口）
+- [FPGA/README.md](FPGA/README.md) — FPGA 工程资料入口（现行入口；遗留引用 1）
 - [FPGA/vitals_acf/README.md](FPGA/vitals_acf/README.md) — 心率自相关 PL 核心（历史／专题说明）
 
 </details>
@@ -263,7 +257,7 @@
 <summary>模型说明与候选历史（7 份）</summary>
 
 - [model/piw24_kinect_finetune-e13-20261028-r1/README.md](model/piw24_kinect_finetune-e13-20261028-r1/README.md) — 现场微调 epoch13：Icraft 上板预览候选（历史／专题说明；本机）
-- [model/piw24_kinect_scratch-e4-20261028-r1/README.md](model/piw24_kinect_scratch-e4-20261028-r1/README.md) — 随机初始化训练 epoch4：Icraft 上板对照候选（历史／专题说明；本机）
+- [model/piw24_kinect_scratch-e4-20261028-r1/README.md](model/piw24_kinect_scratch-e4-20261028-r1/README.md) — 随机初始化训练 epoch4：Icraft 上板对照候选（历史／专题说明；本机；遗留引用 2）
 - [model/piw24_noscatter-20261014-r3/README.md](model/piw24_noscatter-20261014-r3/README.md) — 完整去ScatterND ONNX：Icraft3.39.0主机转换（历史／专题说明；本机；遗留引用 1）
 - [model/piw24_pose180_scratch130-20261027-r1/README.md](model/piw24_pose180_scratch130-20261027-r1/README.md) — 从零初始化训练 epoch130：180-query 转换候选（历史／专题说明；本机）
 - [model/piw24_pose180_shared-20261024-r1/README.md](model/piw24_pose180_shared-20261024-r1/README.md) — 180-query共享FP16候选（历史／专题说明；本机）
@@ -298,7 +292,7 @@
 - [tools/mcp-validation/led1324/RESULTS.md](tools/mcp-validation/led1324/RESULTS.md) — LED1→3→2→4：当前聊天 Vivado / Procise MCP 验证（历史／专题说明；遗留引用 1）
 - [tools/mcp-validation/PLAN.md](tools/mcp-validation/PLAN.md) — Procise / Vivado MCP 验证方案（首版已批准并完成独立验证）（历史／专题说明）
 - [tools/mcp-validation/RESULTS.md](tools/mcp-validation/RESULTS.md) — Procise / Vivado MCP 验证记录（历史／专题说明）
-- [tools/nexmon/board/README.md](tools/nexmon/board/README.md) — 路由器直接进入开发板：软件候选（历史／专题说明）
+- [tools/nexmon/board/README.md](tools/nexmon/board/README.md) — 路由器直接进入开发板：软件候选（历史／专题说明；遗留引用 4）
 - [tools/nexmon/DEPLOYMENT-PLAN.md](tools/nexmon/DEPLOYMENT-PLAN.md) — RT-AC86U 到货后的部署与 CSI 验证方案（历史／专题说明）
 - [tools/nexmon/README.md](tools/nexmon/README.md) — RT-AC86U Nexmon 采集状态与恢复入口（历史／专题说明；遗留引用 3）
 - [tools/pose180/deploy/RESULTS.md](tools/pose180/deploy/RESULTS.md) — 180-query转换、板端验证与高压测试（历史／专题说明）
@@ -321,7 +315,7 @@
 - [tools/pose26-transfer/20261003/RESULTS.md](tools/pose26-transfer/20261003/RESULTS.md) — 2026姿态迁移：首轮10轮结果（历史／专题说明）
 - [tools/pose26-transfer/20261004/PLAN.md](tools/pose26-transfer/20261004/PLAN.md) — 26版姿态模型后续正式训练方案（待用户确认）（历史／专题说明）
 - [tools/procise_mcp/README.md](tools/procise_mcp/README.md) — Procise Lite MCP 首版（历史／专题说明）
-- [tools/README.md](tools/README.md) — Windows Icraft 独立依赖（历史／专题说明）
+- [tools/README.md](tools/README.md) — Windows Icraft 独立依赖（历史／专题说明；遗留引用 1）
 - [tools/sd-image-validation/20261003-expand-root-COMMANDS.md](tools/sd-image-validation/20261003-expand-root-COMMANDS.md) — Lite 新 SD 卡根分区扩容命令（2026-10-03）（历史／专题说明）
 
 </details>
@@ -469,7 +463,7 @@
 - [tools/pose-v1/PROJECT-STATUS-AND-NEXT-20261008.md](tools/pose-v1/PROJECT-STATUS-AND-NEXT-20261008.md) — 当前项目进度与后续方案（2026-10-08）（历史／专题说明；遗留引用 2）
 - [tools/pose-v1/READ-PHASE-NEXT-20261011.md](tools/pose-v1/READ-PHASE-NEXT-20261011.md) — 下一阶段：匹配AXI读取实现与共享暂存责任（历史／专题说明）
 - [tools/pose-v1/READ-PHASE-RESULTS-20261011.md](tools/pose-v1/READ-PHASE-RESULTS-20261011.md) — 首次复制返回与CPU使用前Host快照：本轮结果（历史／专题说明；遗留引用 3）
-- [tools/pose-v1/README.md](tools/pose-v1/README.md) — 首版实施工具与证据（历史／专题说明；遗留引用 24）
+- [tools/pose-v1/README.md](tools/pose-v1/README.md) — 首版实施工具与证据（历史／专题说明；遗留引用 25）
 - [tools/pose-v1/REFERENCE-NEXT-PLAN.md](tools/pose-v1/REFERENCE-NEXT-PLAN.md) — 数值参考执行路线与依赖预览方案（2026-10-05，B已批准，ORT预览待批准）（历史／专题说明）
 - [tools/pose-v1/RENDER-COMMANDS-20261007.md](tools/pose-v1/RENDER-COMMANDS-20261007.md) — 渲染与只读视频核对命令（历史／专题说明）
 - [tools/pose-v1/RENDER-RESULTS-20261007.md](tools/pose-v1/RENDER-RESULTS-20261007.md) — E1-C骨架渲染与V0配套核对结果（2026-10-07）（历史／专题说明；遗留引用 6）
