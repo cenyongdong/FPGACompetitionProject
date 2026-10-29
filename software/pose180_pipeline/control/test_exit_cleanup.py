@@ -60,6 +60,19 @@ def ports_released(ports):
             channel.bind(('127.0.0.1',number))
 
 
+def fd_snapshot():
+    """Capture live descriptor identities after the directory reader has closed."""
+    result = {}
+    for name in os.listdir('/proc/self/fd'):
+        try:
+            result[int(name)] = os.readlink('/proc/self/fd/'+name)
+        except FileNotFoundError:
+            # listdir briefly opens this directory itself. Its descriptor is
+            # already closed here; do not count that observer as a resource.
+            pass
+    return result
+
+
 def helper(binary, root, legacy):
     module=service
     if legacy:
@@ -168,10 +181,21 @@ def killed_native(binary, root):
 def local_failures(binary, root):
     root.mkdir()
     original=service.atomic
-    before=len(list(Path('/proc/self/fd').iterdir()))
+    before=fd_snapshot()
     # Complete metadata failure must neither stop inference nor leak pipe FDs.
     def failed_write(*args,**kwargs):
         raise OSError(28,'Injected disk full')
+    # Both failures happen after pipe allocation, before a native process owns
+    # any resources. The supervisor must close both ends on either path.
+    for name, target in (('pipe-setup-failed', 'set_blocking'), ('logger-exec-failed', 'Popen')):
+        case=root/name;(case/'metadata').mkdir(parents=True)
+        owner=service.os if target=='set_blocking' else service.subprocess
+        with patch.object(owner,target,side_effect=OSError('Injected '+name)):
+            try:service.supervise(case,['/unused-before-native'],1,9)
+            except OSError:pass
+            else:raise AssertionError('Pre-native setup failure was not exercised')
+        assert read(case/'outcome.json')['native_started'] is False
+        assert fd_snapshot()==before,dict(case=name,FDs_before=before,FDs_after=fd_snapshot())
     for index in range(4):
         case=root/str(index);case.mkdir();(case/'metadata').mkdir()
         command,ports=mock_command(binary,case)
@@ -199,8 +223,8 @@ def local_failures(binary, root):
         assert completion.get('failure_before_hardware') is True and completion.get('native_shutdown_complete') is True
     ports_released(ports)
     reap()
-    after=len(list(Path('/proc/self/fd').iterdir()))
-    assert after==before,(before,after)
+    after=fd_snapshot()
+    assert after==before,dict(FDs_before=before,FDs_after=after)
     # Network removal is mocked: these tests never alter an actual IP address.
     for index,state in enumerate(('before-SDK','proved-close','unproved-crash')):
         case=root/('network-'+state);case.mkdir();(case/'run').mkdir()
@@ -234,7 +258,7 @@ def local_failures(binary, root):
         startup.startup_network.remove(dict(added=True,address='192.168.50.49/24',interface='eth0'))
         startup.startup_network.remove(dict(added=False))
         assert not mutate.called
-    return dict(disk_full_cycles=4,exec_failure_cleaned=True,port_collision_cleaned=True,FDs_before=before,FDs_after=after,
+    return dict(pre_native_setup_failures=2,disk_full_cycles=4,exec_failure_cleaned=True,port_collision_cleaned=True,FDs_before=len(before),FDs_after=len(after),
                 network_cases=3,manual_recovery_proof_checked=True,idempotent_network_cleanup=True)
 
 

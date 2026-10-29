@@ -151,6 +151,10 @@ def main():
     args = parser.parse_args()
     work = args.work.resolve()
     build = args.build_work.resolve() if args.build_work else work
+    build_record = json.loads((build/'build.json').read_text())
+    verification = json.loads((build/'verification.json').read_text())
+    if not build_record or any(step.get('native_exit') != 0 for step in build_record) or verification.get('passed') is not True:
+        raise ValueError('A deployment package requires successful native build and local verification records')
     checks = build/'final-checks' if (build/'final-checks').is_dir() else build
     safety_file = checks/'native-safety-final/result.json'
     safety_record = json.loads(safety_file.read_text()) if safety_file.is_file() else {}
@@ -212,7 +216,8 @@ def main():
                     presentation_filter='single-person-continuity-v1: centre/relative smoothing, 4-hit relocation, bounded steps',
                     files={p.relative_to(board).as_posix():sha(p) for p in board.rglob('*') if p.is_file()})
     write(board/'identity.json', identity)
-    for script, action in [('start', 'start'), ('stop', 'stop'), ('status', 'status'), ('check', 'check'), ('recover', 'recover')]:
+    for script, action in [('start', 'start'), ('stop', 'stop'), ('status', 'status'), ('check', 'check'),
+                           ('recover', 'recover'), ('prepare-boot', 'prepare-boot')]:
         defaults = ' --seconds '+str(args.default_seconds) if action == 'start' else ''
         (release/(script+'.sh')).write_text('#!/bin/sh\nset -eu\nroot=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)\nexec python3 "$root/board/startup.py" '+action+defaults+' "$@"\n', newline='\n')
     for script, source in [('start-live', 'live_csi')] + ([('start-dataset', 'official_dataset')] if dataset else []):
@@ -236,10 +241,11 @@ def main():
         copy(DOCS/'KINECT-BOARD-TEST-20261028.md', release/'KINECT-BOARD-TEST-20261028.md')
     (release/'README.md').write_text(
         '# '+work.name+'\n\n'
+        '首次部署请先读 [部署与演示步骤](DEPLOY.md)。本包由整理后的 `src/`、`control/`、`host/` 源码构建，源码快照见 `core-sources.tar.gz`。\n\n'
         '模型：`'+model_name+'`。TopK=1、无置信度阈值、CPU单人连续性滤波。默认输入：`'+args.input_source+'`。\n\n'+
         ('双输入：`sh start-live.sh` 接实时CSI；`sh start-dataset.sh` 对包内官方CSI执行新推理，EOF正常退出。'
          '数据来源：'+dataset['split']+' / '+dataset['sequence']+'，'+str(dataset['count'])+'帧；训练集演示不计独立测试精度。\n\n' if dataset else '')+
-        '复用指定构建，安全验证范围见validation记录，未实板验证；保留原HDMI和PC性能指标栏。\n\n'
+        '所用构建与本地检查见validation记录；本包尚未部署或实板验证。保留原HDMI和PC性能指标栏。\n\n'
         '以root执行 `sh check.sh` 核对，`sh start.sh` 手动开始，`sh status.sh` 查看，`sh stop.sh` 请求正常停止。'
         '默认处理期为'+str(args.default_seconds)+'秒（0表示手动停止）；可用 `sh start.sh --seconds 300` 显式指定。\n\n'
         '一次只运行一个输入；切换前须安全停止、确认SDK／HDMI关闭，再prepare-boot、正常重启并重新check。每次FPGA配置只使用一次功能启动入口。'
@@ -248,27 +254,62 @@ def main():
         'PC运行 `start-pc.ps1`；停止PC不影响板端。\n\n'
         '完整操作与边界见 [启动说明](STARTUP-GUIDE.md)；实际构建、故障注入与模型身份在 `validation/`。\n',
         encoding='utf-8', newline='\n')
+    (release/'DEPLOY.md').write_text(
+        '# 部署与演示步骤\n\n'
+        '适用：ARM64 Lite、板端既有 Icraft/customop 3.39.0、当前合格 `probe-free-drain-filter-v1` BOOT。'
+        '板端需要 Python 3；PC 可选，需要 Node.js 20 或以上。原 epoch99／TopK=1／无置信度阈值／CPU 单人滤波保持。\n\n'
+        '## 解压到独立目录\n\n'
+        '先将 `'+work.name+'.tar.gz` 复制到开发板 `/tmp/`。以 root 执行以下解压命令；若目标目录已经存在，先选择另一个独立目录，避免覆盖已有运行记录。\n\n'
+        '```sh\ntar -xzf /tmp/'+work.name+'.tar.gz -C /root\ncd /root/'+work.name+'\n```\n\n'
+        '推荐部署位置为 `/root/'+work.name+'`；也可整体解压到其它可写位置，脚本按自身目录定位。'
+        '模型在 `board/models/`，运行记录在 `board/runs/`。'+
+        ('官方输入在 `/root/'+work.name+'/board/dataset.piwcsi2`，来源及校验信息在同目录 `dataset.json`。'
+         '主机已完成原始 CSI 格式转换，板端仍执行预处理与新推理，不需要安装 NumPy／h5py。\n\n' if dataset else '\n\n')+
+        '## 启动前\n\n'
+        '若旧包仍在运行，先使用旧包的停止入口，并确认原生进程、监督进程及设备占用结束且关闭证明成立。'
+        '本包 `stop.sh` 只管理本包，不能用来结束其它目录的旧任务。\n\n'
+        '本硬件每次 FPGA 配置只能消费一次功能启动入口。已使用过、或首次 `check.sh` 报未知 boot_id 时，'
+        '在旧任务安全结束后执行下列只读 BOOT 核对，再安排正常重启：\n\n'
+        '```sh\nsh prepare-boot.sh\n# 仅当 prepared=true，且已有任务安全结束后：\nreboot\n```\n\n'
+        '重连后回到本包目录再执行所选输入的 check。`prepare-boot.sh` 只核对启动文件并保存下一次启动凭据，'
+        '不写 BOOT、不自行重启。核对失败或仍有占用时先处理原因；包内 `boot/BOOT.BIN` 仅作备份。\n\n'
+        '## 选择一次演示\n\n'+
+        ('官方预采数据：\n\n```sh\nsh check.sh --input-source official_dataset\nsh start-dataset.sh\nsh status.sh\n```\n\n'
+         '包内片段为 '+dataset['split']+' / '+dataset['sequence']+'，'+str(dataset['count'])+' 帧、'+str(dataset['playback_hz'])+' Hz。'
+         '默认一轮，EOF 正常退出；需要更长展示时，在首次启动前选择 `sh start-dataset.sh --dataset-repetitions 3`。'
+         '训练片段演示不计独立测试精度。\n\n' if dataset else '')+
+        '实时采集：\n\n```sh\nsh check.sh --input-source live_csi\nsh start-live.sh\nsh status.sh\n```\n\n'
+        '实时入口复用已安装的路由器采集服务；默认处理期为 '+str(args.default_seconds)+' 秒（0 表示持续到手动停止），也可在首次启动时指定 `--seconds 300`。'
+        '`start.sh` 的默认输入为 `'+args.input_source+'`。\n\n'
+        '## 结束、切换与 PC\n\n'
+        '`sh stop.sh` 请求正常停止；随后用 `sh status.sh` 核对 `running=false`、`native_shutdown_complete=true`、'
+        '`device_owners=[]` 和 `network_cleanup_pending=false`。数据集 EOF 后同样核对。'
+        '切换输入或再次演示前须重新准备 BOOT 凭据、正常重启并 check；不能在同一配置下直接再启动。'
+        '若为 `release_blocked` 或缺少完成证明，保留原资源与独占，按 STARTUP-GUIDE.md 处理，不强杀或重试。\n\n'
+        'PC 解压同一个包，在 Windows 包根目录执行 `./start-pc.ps1`，浏览器打开 `http://127.0.0.1:39380/`。'
+        '默认板端地址 `192.168.50.49`；可用 `./start-pc.ps1 -Board <实际可达地址>` 指定。'
+        '关闭 PC 服务不停止板端推理和 HDMI。\n\n'
+        '本包只完成本地构建、mock／接口替身与 PC 验证；本次打包没有连接设备或安装任何服务。\n',
+        encoding='utf-8', newline='\n')
     for name in ('build.json', 'verification.json'):
         copy(build/name, release/'validation'/name)
-    for step in json.loads((build/'build.json').read_text()):
+    for step in build_record:
         copy(build/step['log'], release/'validation/build-logs'/step['log'])
-    for path in checks.glob('*.log'):
-        copy(path, release/'validation/check-logs'/path.name)
+    for check in verification.get('checks', []):
+        for field in ('log', 'result'):
+            relative = check.get(field)
+            if not isinstance(relative, str):
+                continue
+            origin = (build/relative).resolve()
+            if origin.is_relative_to(build) and origin.is_file():
+                copy(origin, release/'validation'/origin.relative_to(build))
+    for relative in verification.get('retained_attempts', []):
+        origin = (build/relative).resolve()
+        if origin.is_relative_to(build) and origin.is_file():
+            copy(origin, release/'validation'/origin.relative_to(build))
     for name in ('pc-verified.log', 'official-data-verified.log'):
         if (build/name).is_file():
-            copy(build/name, release/'validation/check-logs'/name)
-    for name in ('no-threshold-test/result.json', 'startup-test/result.json'):
-        copy(checks/name, release/'validation'/name)
-    for source, destination in [('comparison.json','comparison.json'),
-            ('exit-cleanup-final/result.json','exit-cleanup.json'),
-            ('robustness-confirmed/result.json' if (checks/'robustness-confirmed/result.json').is_file()
-             else 'robustness-verified/result.json','robustness.json'),
-            ('native-safety-final/result.json','native-safety.json'),
-            ('release-guard-final.log','release-guard.log'),('hdmi-resources-final.log','hdmi-resources.log'),
-            ('source-final-arm64.log','source-final-arm64.log')]:
-        origin = checks/source if (checks/source).is_file() else build/source
-        if origin.is_file():
-            copy(origin, release/'validation'/destination)
+            copy(build/name, release/'validation'/name)
     revision = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip()
     write(release/'validation/build-reuse.json', dict(build_work=str(build), native_sha256=identity['files']['pose180_demo'],
           git_base=revision, source_of_truth='core-sources.tar.gz includes final working-tree changes'))
@@ -287,7 +328,10 @@ def main():
     args.output.mkdir(exist_ok=True, parents=True)
     output = args.output/(work.name+'.tar.gz')
     archive(release, output, work.name+'/')
+    deployment_guide = args.output/(work.name+'-DEPLOY.md')
+    copy(release/'DEPLOY.md', deployment_guide)
     result = dict(archive=str(output), bytes=output.stat().st_size, sha256=sha(output),
+                  deployment_guide=str(deployment_guide),
                   native_sha256=identity['files']['pose180_demo'], model=identity['model'],
                   top_k=1, score_threshold=None, single_person_stability=True,
                   BOOT_sha256=identity['BOOT_sha256'], board_tested=False)

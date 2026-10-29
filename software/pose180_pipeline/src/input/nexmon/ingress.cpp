@@ -13,549 +13,904 @@
 
 namespace nexmon_board {
 namespace {
-constexpr std::int64_t hz=300, scale=1000000, half=500000, tolerance=250000;
-std::uint16_t u16(const std::uint8_t* p) { return p[0]|std::uint16_t(p[1])<<8; }
-std::uint32_t u32(const std::uint8_t* p) { return u16(p)|std::uint32_t(u16(p+2))<<16; }
-std::int64_t floor_div(std::int64_t a,std::int64_t b) { auto q=a/b,r=a%b; return q-(r<0); }
-std::int64_t modulo(std::int64_t a,std::int64_t b) { return a-floor_div(a,b)*b; }
-double modulo(double a,double b) { auto v=std::fmod(a,b); return v<0?v+b:v; }
-void require(bool ok,const char* why) { if(!ok) throw std::runtime_error(why); }
+constexpr std::int64_t hz = 300, scale = 1000000, half = 500000, tolerance = 250000;
+
+std::uint16_t u16(const std::uint8_t* p) {
+	return p[0] | std::uint16_t(p[1]) << 8;
+}
+
+std::uint32_t u32(const std::uint8_t* p) {
+	return u16(p) | std::uint32_t(u16(p + 2)) << 16;
+}
+
+std::int64_t floor_div(std::int64_t a, std::int64_t b) {
+	auto q = a / b, r = a % b;
+	return q - (r < 0);
+}
+
+std::int64_t modulo(std::int64_t a, std::int64_t b) {
+	return a - floor_div(a, b) * b;
+}
+
+double modulo(double a, double b) {
+	auto v = std::fmod(a, b);
+	return v < 0 ? v + b : v;
+}
+
+void require(bool ok, const char* why) {
+	if (!ok)
+		throw std::runtime_error(why);
+}
+
 void validate_config(const Config& c) {
-    require(!c.session_id.empty()&&c.session_id.size()<=128,"Explicit bounded session required");
-    require(std::set<std::string>(c.receiver_ids.begin(),c.receiver_ids.end()).size()==3,"Require distinct receiver identities");
-    for(const auto&s:c.receiver_ids)require(!s.empty()&&s.size()<=128,"Receiver identity missing/too long");
-    require(c.expected_events>0&&c.expected_events<=3000,"Require one bounded <=3000-event TX job");
-    require(!c.track_clock||c.streaming,"Clock tracking is resident streaming only");
-    require((c.chanspec&0x3800)==0x1000,"Require explicit HT/VHT20 chanspec");
-    for(double g:c.gains)require(std::isfinite(g)&&g>0,"Require explicit finite positive candidate gains");
-    require(std::any_of(c.transmitter_mac.begin(),c.transmitter_mac.end(),[](auto v){return v!=0;}),"Missing transmitter MAC");
+	require(!c.session_id.empty() && c.session_id.size() <= 128, "Explicit bounded session required");
+	require(std::set<std::string>(c.receiver_ids.begin(), c.receiver_ids.end()).size() == 3,
+		"Require distinct receiver identities");
+	for (const auto& s : c.receiver_ids)
+		require(!s.empty() && s.size() <= 128, "Receiver identity missing/too long");
+	require(c.expected_events > 0 && c.expected_events <= 3000, "Require one bounded <=3000-event TX job");
+	require(!c.track_clock || c.streaming, "Clock tracking is resident streaming only");
+	require((c.chanspec & 0x3800) == 0x1000, "Require explicit HT/VHT20 chanspec");
+	for (double g : c.gains)
+		require(std::isfinite(g) && g > 0, "Require explicit finite positive candidate gains");
+	require(std::any_of(c.transmitter_mac.begin(), c.transmitter_mac.end(),
+				[](auto v) {
+					return v != 0;
+				}),
+		"Missing transmitter MAC");
 }
 
 struct Meta {
-    std::uint16_t seq=0,config=0,channel=0,fc=0,qos=0,tsf=0,counter=0,frame_size=0;
-    std::uint32_t hook=0;
-    std::array<std::uint32_t,3> original{};
-    std::int64_t arrival=0;
-    bool has_diagnostic=false;
+	std::uint16_t seq = 0, config = 0, channel = 0, fc = 0, qos = 0, tsf = 0, counter = 0, frame_size = 0;
+	std::uint32_t hook = 0;
+	std::array<std::uint32_t, 3> original{};
+	std::int64_t arrival = 0;
+	bool has_diagnostic = false;
 };
-bool same_event(const Meta&a,const Meta&b) {
-    return std::tie(a.seq,a.channel,a.fc,a.qos,a.tsf,a.counter)==
-           std::tie(b.seq,b.channel,b.fc,b.qos,b.tsf,b.counter);
+
+bool same_event(const Meta& a, const Meta& b) {
+	return std::tie(a.seq, a.channel, a.fc, a.qos, a.tsf, a.counter) ==
+		std::tie(b.seq, b.channel, b.fc, b.qos, b.tsf, b.counter);
 }
-struct Part { Meta meta; std::array<std::uint32_t,64> words{}; };
+
+struct Part {
+	Meta meta;
+	std::array<std::uint32_t, 64> words{};
+};
+
 struct Event {
-    Meta meta;
-    std::array<std::array<std::uint32_t,64>,3> words{};
-    std::array<std::array<std::uint32_t,3>,3> original{};
-    std::int64_t time=0;
-    bool keep=false;
+	Meta meta;
+	std::array<std::array<std::uint32_t, 64>, 3> words{};
+	std::array<std::array<std::uint32_t, 3>, 3> original{};
+	std::int64_t time = 0;
+	bool keep = false;
 };
-std::complex<double> carrier_value(const Event& e,double gain,std::size_t a,std::size_t n) {
-    const auto bin=std::size_t((ht20_ng2[n]+64)%64);
-    const auto word=(bin>=28&&bin<=30)?e.original[a][bin-28]:e.words[a][bin];
-    const auto value=decode_acphy(word)*gain;
-    require(std::isfinite(value.real())&&std::isfinite(value.imag()),"Gain produced non-finite CSI");
-    return value;
+
+std::complex<double> carrier_value(const Event& e, double gain, std::size_t a, std::size_t n) {
+	const auto bin = std::size_t((ht20_ng2[n] + 64) % 64);
+	const auto word = (bin >= 28 && bin <= 30) ? e.original[a][bin - 28] : e.words[a][bin];
+	const auto value = decode_acphy(word) * gain;
+	require(std::isfinite(value.real()) && std::isfinite(value.imag()), "Gain produced non-finite CSI");
+	return value;
 }
-struct Cell { std::int64_t target=0; std::int64_t index=-1; };
-using Key=std::pair<std::uint16_t,std::uint16_t>; // full Sequence Control + FC sans retry
-Key identity(const Event&e) { return {e.meta.seq,std::uint16_t(e.meta.fc&~0x800)}; }
+
+struct Cell {
+	std::int64_t target = 0;
+	std::int64_t index = -1;
+};
+
+using Key = std::pair<std::uint16_t, std::uint16_t>; // full Sequence Control + FC sans retry
+
+Key identity(const Event& e) {
+	return {e.meta.seq, std::uint16_t(e.meta.fc & ~0x800)};
+}
 
 struct History : std::deque<Event> {
-    std::size_t base=0;
-    Event& operator[](std::size_t i){return at(i-base);}
-    const Event& operator[](std::size_t i)const{return at(i-base);}
-    std::size_t next()const{return base+size();}
+	std::size_t base = 0;
+
+	Event& operator[](std::size_t i) {
+		return at(i - base);
+	}
+
+	const Event& operator[](std::size_t i) const {
+		return at(i - base);
+	}
+
+	std::size_t next() const {
+		return base + size();
+	}
 };
 
 struct Node {
-    const Config* config=nullptr;
-    std::uint32_t receiver=0;
-    NodeSummary summary;
-    bool pending=false,previous=false,have_arrival=false,failed=false,started=false;
-    Part csi;
-    std::vector<Part> group;
-    Meta previous_meta,last_packet_meta;
-    std::int64_t last_arrival=0,first_arrival=0,local_us=0;
-    std::size_t sequence_span=0;
-    History events;
-    std::map<Key,std::size_t> kept;
-    std::map<std::uint16_t,std::pair<std::int64_t,std::size_t>> recent;
-    std::vector<std::int64_t> prefix;
-    std::int64_t grid_previous=-1,slot=0,first_slot=0,best=-1;
-    std::vector<Cell> block;
-    std::map<std::int64_t,Cell> cells;
-    // One median per 20-cell block, at most one second of history. Absolute
-    // phase estimates remain comparable after earlier causal corrections.
-    struct PhaseSample { std::int64_t value=0; bool valid=false; };
-    std::array<PhaseSample,15> phase_history{};
-    std::size_t phase_cursor=0;
-    std::vector<CompleteEvent>* decoded=nullptr; // opt-in decoder-only consumer
+	const Config* config = nullptr;
+	std::uint32_t receiver = 0;
+	NodeSummary summary;
+	bool pending = false, previous = false, have_arrival = false, failed = false, started = false;
+	Part csi;
+	std::vector<Part> group;
+	Meta previous_meta, last_packet_meta;
+	std::int64_t last_arrival = 0, first_arrival = 0, local_us = 0;
+	std::size_t sequence_span = 0;
+	History events;
+	std::map<Key, std::size_t> kept;
+	std::map<std::uint16_t, std::pair<std::int64_t, std::size_t>> recent;
+	std::vector<std::int64_t> prefix;
+	std::int64_t grid_previous = -1, slot = 0, first_slot = 0, best = -1;
+	std::vector<Cell> block;
+	std::map<std::int64_t, Cell> cells;
 
-    [[noreturn]] void continuity(ContinuityReason reason,const Meta& current,
-                               const Meta* prior=nullptr,std::uint32_t samples=0) {
-        ContinuityDiagnostic d;d.receiver=receiver;d.reason=reason;
-        d.arrival_us=current.arrival;d.sequence_after=current.seq;
-        d.tsf_after=current.tsf;d.counter_after=current.counter;
-        d.have_previous=prior!=nullptr;
-        if(prior) {
-            d.previous_arrival_us=prior->arrival;d.host_delta_us=current.arrival-prior->arrival;
-            d.sequence_before=prior->seq;d.tsf_before=prior->tsf;d.counter_before=prior->counter;
-            d.event_clock_known=current.has_diagnostic&&prior->has_diagnostic;
-            if(d.event_clock_known) {
-                d.tsf_delta_us=std::uint16_t(current.tsf-prior->tsf);
-                d.counter_step=std::uint16_t(current.counter-prior->counter);
-            }
-        }
-        d.phase_samples=samples;d.phase_concentration=summary.concentration;
-        failed=true;
-        throw ContinuityError(d);
-    }
+	// One median per 20-cell block, at most one second of history. Absolute
+	// phase estimates remain comparable after earlier causal corrections.
+	struct PhaseSample {
+		std::int64_t value = 0;
+		bool valid = false;
+	};
 
-    void prune() {
-        if(!config->streaming)return;
-        const auto cutoff=local_us-4000000;
-        while(events.size()>1 && events.front().time<cutoff) {
-            auto it=kept.find(identity(events.front()));
-            if(it!=kept.end()&&it->second==events.base)kept.erase(it);
-            events.pop_front();++events.base;
-        }
-        for(auto it=cells.begin();it!=cells.end();) {
-            if(it->second.target<cutoff*hz || (it->second.index>=0&&std::size_t(it->second.index)<events.base))it=cells.erase(it);
-            else ++it;
-        }
-        require(events.size()<=2048&&cells.size()<=1600,"Rolling CSI history budget exceeded; resync required");
-    }
+	std::array<PhaseSample, 15> phase_history{};
+	std::size_t phase_cursor = 0;
+	std::vector<CompleteEvent>* decoded = nullptr; // opt-in decoder-only consumer
 
-    void expire(std::int64_t now,const Meta* incoming=nullptr) {
-        if(have_arrival && now-last_arrival>=32768) {
-            Meta current;if(incoming)current=*incoming;current.arrival=now;
-            ++summary.clock_resets;
-            continuity(ContinuityReason::arrival_gap,current,&last_packet_meta);
-        } else if(pending && now-csi.meta.arrival>20000) {
-            Meta current;if(incoming)current=*incoming;current.arrival=now;
-            ++summary.pairing_errors;++summary.clock_resets;
-            continuity(ContinuityReason::pairing_timeout,current,&csi.meta);
-        }
-    }
-    void phase_lock(std::int64_t now) {
-        double re=0,im=0;
-        const double tau=2*std::acos(-1.0);
-        for(auto t:prefix) { auto residue=modulo((t-prefix.front())*hz,scale);
-            auto angle=tau*double(residue)/double(scale);re+=std::cos(angle);im+=std::sin(angle); }
-        re/=double(prefix.size());im/=double(prefix.size());
-        const auto seed=std::atan2(im,re)*double(scale)/tau;
-        std::vector<double> offsets;
-        for(auto t:prefix) offsets.push_back(modulo(double(modulo((t-prefix.front())*hz,scale))-seed+half,double(scale))-half);
-        std::sort(offsets.begin(),offsets.end());
-        auto median=offsets[offsets.size()/2];
-        if(offsets.size()%2==0) median=(median+offsets[offsets.size()/2-1])/2;
-        const auto relative=modulo(std::int64_t(std::nearbyint(seed+median)),scale);
-        summary.phase_scaled=modulo(prefix.front()*hz+relative,scale);
-        summary.concentration=std::hypot(re,im);
-        summary.locked=prefix.size()>=120 && summary.concentration>=.75;
-        summary.calibration_end_us=now;
-        const auto samples=std::uint32_t(prefix.size());prefix.clear();
-        if(!summary.locked)continuity(ContinuityReason::phase_lock,previous_meta,nullptr,samples);
-        slot=floor_div(now*hz+half-summary.phase_scaled,scale)+1;first_slot=slot;
-    }
-    void track_phase() {
-        if(!config->track_clock)return;
-        std::vector<std::int64_t> residuals;
-        for(const auto& cell:block)if(cell.index>=0) {
-            const auto error=events[std::size_t(cell.index)].time*hz-cell.target;
-            if(std::abs(error)<=tolerance)residuals.push_back(error);
-        }
-        auto median=[](std::vector<std::int64_t>& values) {
-            std::sort(values.begin(),values.end());const auto n=values.size();
-            return n%2?values[n/2]:(values[n/2-1]+values[n/2])/2;
-        };
-        auto& sample=phase_history[phase_cursor++%phase_history.size()];sample={};
-        summary.phase_step_scaled=0;
-        if(residuals.size()>=16) {
-            const auto error=median(residuals);summary.phase_residual_scaled=error;
-            for(auto& value:residuals)value=std::abs(value-error);
-            // Trust slow drift only (median <= 417 us, MAD <= 200 us).
-            // A phase step or scattered/missing input must still recover via
-            // the existing generation reset, never by chasing invalid data.
-            if(std::abs(error)<=125000&&median(residuals)<=60000)
-                sample={summary.phase_scaled+error,true};
-        }
-        std::vector<std::int64_t> estimates;
-        for(const auto& value:phase_history)if(value.valid)estimates.push_back(value.value);
-        summary.phase_samples=estimates.size();
-        if(!sample.valid){++summary.phase_rejected_blocks;return;}
-        if(estimates.size()<10)return;
-        const auto error=median(estimates)-summary.phase_scaled;
-        if(std::abs(error)>125000){++summary.phase_rejected_blocks;return;}
-        // At most 20 us per 66.7 ms block (300 ppm). Only the next cell's
-        // centre moves; slot numbers, completed targets and CSI are untouched.
-        const auto step=std::clamp(error/4,std::int64_t(-6000),std::int64_t(6000));
-        summary.phase_scaled+=step;summary.phase_correction_scaled+=step;
-        summary.phase_step_scaled=step;if(step)++summary.phase_updates;
-    }
-    void feed_grid(std::size_t index) {
-        auto now=events[index].time;
-        if(grid_previous>=0 && !(now>grid_previous && now-grid_previous<32768)) {
-            auto prior=std::find_if(events.rbegin()+1,events.rend(),[](const Event&e){return e.keep;});
-            continuity(ContinuityReason::retained_clock,events[index].meta,
-                       prior==events.rend()?nullptr:&prior->meta);
-        }
-        grid_previous=now;
-        if(failed)return;
-        if(!summary.locked) {
-            if(prefix.size()>=1024)continuity(ContinuityReason::calibration_budget,events[index].meta,nullptr,std::uint32_t(prefix.size()));
-            prefix.push_back(now);
-            if(now-prefix.front()>=1000000)phase_lock(now);
-            return;
-        }
-        auto centre=summary.phase_scaled+slot*scale;
-        while(now*hz>=centre+half) {
-            block.push_back({centre,best});best=-1;++slot;
-            if(block.size()==20) {
-                for(std::size_t i=0;i<20;++i)cells.emplace(slot-20+std::int64_t(i),block[i]);
-                track_phase();
-                block.clear();
-            }
-            centre=summary.phase_scaled+slot*scale;
-        }
-        if(now*hz>=centre-half && (best<0 ||
-            std::make_tuple(std::abs(now*hz-centre),now,index)<
-            std::make_tuple(std::abs(events[std::size_t(best)].time*hz-centre),events[std::size_t(best)].time,std::size_t(best))))best=std::int64_t(index);
-    }
-    void complete() {
-        require(events.size()<(config->streaming?2048:config->expected_events*2),"Complete-event budget exceeded");
-        Event event;event.meta=group.front().meta;bool valid=true;
-        for(const auto& p:group) {
-            auto core=p.meta.config>>8;event.words[core]=p.words;event.original[core]=p.meta.original;
-            require(p.meta.frame_size==event.meta.frame_size,"Raw frame size differs across cores");
-            bool nonzero=false;
-            for(std::size_t i=0;i<64;++i)if(i<28 || i>30) {
-                auto z=decode_acphy(p.words[i]);require(std::isfinite(z.real())&&std::isfinite(z.imag()),"Non-finite native CSI");
-                nonzero|=z!=std::complex<double>{};
-            }
-            valid &= nonzero;
-        }
-        group.clear();++summary.complete_events;
-        if(previous) {
-            auto host=event.meta.arrival-previous_meta.arrival;
-            auto delta=std::uint16_t(event.meta.tsf-previous_meta.tsf);
-            auto step=std::uint16_t(event.meta.counter-previous_meta.counter);
-            if(!(host>0&&host<32768&&delta>0&&delta<32768&&step==1)) {
-                ++summary.clock_resets;
-                continuity(step!=1?ContinuityReason::counter_step:ContinuityReason::event_clock,event.meta,&previous_meta);
-            }
-            local_us+=delta;
-        }
-        event.time=local_us;previous_meta=event.meta;previous=true;
-        for(auto it=recent.begin();it!=recent.end();) {
-            if(event.meta.arrival-it->second.first>20000)it=recent.erase(it);else ++it;
-        }
-        const auto index=events.next();
-        if(!valid)++summary.invalid_events;
-        else {
-            auto old=recent.find(event.meta.seq);
-            if(old!=recent.end()) {
-                if(event.meta.fc&0x800)++summary.retransmissions;
-                else continuity(ContinuityReason::duplicate_sequence,event.meta,&events[old->second.second].meta);
-            } else event.keep=true;
-            recent[event.meta.seq]={event.meta.arrival,index};
-            require(recent.size()<=1024,"Dedup memory budget exceeded");
-        }
-        if(event.keep) {
-            require((event.meta.fc&~0x800)==0x8 && !(event.meta.seq&15),"Unexpected bounded broadcast sequence profile");
-            require(kept.size()<(config->streaming?2048:config->expected_events),"Retained event budget exceeded");
-            auto reused=kept.find(identity(event));
-            if(reused!=kept.end())continuity(ContinuityReason::reused_sequence,event.meta,&events[reused->second].meta);
-            if(!kept.empty()) {
-                // Last retained event by arrival, not numeric map order (wrap).
-                auto prev=std::find_if(events.rbegin(),events.rend(),[](const Event&e){return e.keep;});
-                require(prev!=events.rend(),"Missing prior retained event");
-                auto a=prev->meta.seq>>4,b=event.meta.seq>>4,d=(b-a)&4095;
-                if(!(d>0&&d<2048))continuity(ContinuityReason::sequence_step,event.meta,&prev->meta);
-                sequence_span+=std::size_t(d);
-                require(config->streaming||sequence_span<config->expected_events,"Sequence span exceeds declared bounded TX job");
-                if(b<a)++summary.wraps;
-                require(prev->meta.frame_size==event.meta.frame_size,"Fixed TX profile changed frame length");
-            }
-            kept.emplace(identity(event),index);++summary.retained;
-        }
-        events.push_back(std::move(event));
-        if(events.back().keep) {
-            if(decoded) {
-                require(decoded->size()<32,"Decoded event queue must be consumed");
-                const auto& e=events.back();CompleteEvent value;
-                value.sequence=e.meta.seq;value.frame_control=e.meta.fc&~0x800;
-                value.frame_size=e.meta.frame_size;value.local_us=e.time;value.capture_us=e.meta.arrival;
-                for(std::size_t a=0;a<3;++a)for(std::size_t n=0;n<30;++n)
-                    value.csi[a*30+n]=carrier_value(e,config->gains[receiver],a,n);
-                decoded->push_back(std::move(value));
-            } else feed_grid(index);
-        }
-        prune();
-    }
-    void feed(std::int64_t arrival,std::uint16_t port,const std::uint8_t*p,std::size_t n) {
-        if(port!=5500&&port!=5501)return;
-        ++summary.packets;require(config->streaming||summary.packets<=config->expected_events*12,"Packet budget exceeded");
-        require(p!=nullptr,"Null datagram");
-        Meta m;m.arrival=arrival;
-        if(port==5500) {
-            require(n==274&&u16(p)==0x1111&&u16(p+16)==106,"CSI format/bandwidth/chip mismatch");
-            require(std::equal(config->transmitter_mac.begin(),config->transmitter_mac.end(),p+4)&&u16(p+14)==config->chanspec,"CSI transmitter/channel changed");
-            auto core=u16(p+12);require(core==0||core==256||core==512,"CSI core/stream mismatch");
-            m.seq=u16(p+10);m.config=core;m.channel=u16(p+14);
-        } else {
-            require(n==50&&std::memcmp(p,"NMD3",4)==0&&u16(p+4)==3&&u16(p+6)==50,"Require unchanged NMD3/50 diagnostics");
-            require(std::equal(config->transmitter_mac.begin(),config->transmitter_mac.end(),p+8)&&u16(p+18)==config->chanspec,"Metadata transmitter/channel changed");
-            m.seq=u16(p+14);m.config=u16(p+16);m.channel=u16(p+18);m.fc=u16(p+20);m.qos=u16(p+22);m.tsf=u16(p+24);m.counter=u16(p+26);
-            require(m.config==0||m.config==256||m.config==512,"Metadata core/stream mismatch");
-            require(u16(p+28)==28&&u16(p+30)==3,"Pre-overwrite word sidecar mismatch");
-            for(std::size_t i=0;i<3;++i)m.original[i]=u32(p+32+4*i);
-            m.frame_size=u16(p+44);m.hook=u32(p+46);m.has_diagnostic=true;
-        }
-        // A new streaming generation can start at any PCAP record boundary.
-        // Validate every skipped record first; never carry a partial event
-        // into the new generation or skip errors once core0 has been seen.
-        if(config->streaming&&!started) {
-            if(port==5501||m.config!=0)return;
-            started=true;
-        }
-        if(have_arrival&&arrival<last_arrival) {
-            continuity(ContinuityReason::arrival_backwards,m,&last_packet_meta);
-        }
-        expire(arrival,&m);if(!have_arrival)first_arrival=arrival;
-        require(config->streaming||arrival-first_arrival<=12000000,"Bounded acquisition exceeded twelve seconds");
-        last_arrival=arrival;last_packet_meta=m;have_arrival=true;
-        if(port==5500) {
-            if(pending) {
-                ++summary.pairing_errors;++summary.clock_resets;
-                continuity(ContinuityReason::missing_metadata,m,&csi.meta);
-            }
-            csi={};csi.meta=m;
-            for(std::size_t i=0;i<64;++i)csi.words[i]=u32(p+18+4*i);
-            pending=true;return;
-        }
-        if(!pending||m.seq!=csi.meta.seq||m.config!=csi.meta.config||m.channel!=csi.meta.channel) {
-            ++summary.pairing_errors;++summary.clock_resets;
-            continuity(ContinuityReason::pairing_mismatch,m,pending?&csi.meta:nullptr);
-        }
-        pending=false;m.arrival=csi.meta.arrival;csi.meta=m;
-        if(!group.empty()&&!same_event(group.front().meta,m)) {
-            ++summary.incomplete_groups;++summary.clock_resets;
-            continuity(ContinuityReason::incomplete_event,m,&group.front().meta);
-        }
-        for(const auto& part:group)if(part.meta.config==m.config) {
-            ++summary.incomplete_groups;++summary.clock_resets;
-            continuity(ContinuityReason::duplicate_core,m,&part.meta);
-        }
-        group.push_back(csi);if(group.size()==3)complete();
-    }
+	[[noreturn]] void continuity(ContinuityReason reason, const Meta& current, const Meta* prior = nullptr,
+		std::uint32_t samples = 0) {
+		ContinuityDiagnostic d;
+		d.receiver = receiver;
+		d.reason = reason;
+		d.arrival_us = current.arrival;
+		d.sequence_after = current.seq;
+		d.tsf_after = current.tsf;
+		d.counter_after = current.counter;
+		d.have_previous = prior != nullptr;
+		if (prior) {
+			d.previous_arrival_us = prior->arrival;
+			d.host_delta_us = current.arrival - prior->arrival;
+			d.sequence_before = prior->seq;
+			d.tsf_before = prior->tsf;
+			d.counter_before = prior->counter;
+			d.event_clock_known = current.has_diagnostic && prior->has_diagnostic;
+			if (d.event_clock_known) {
+				d.tsf_delta_us = std::uint16_t(current.tsf - prior->tsf);
+				d.counter_step = std::uint16_t(current.counter - prior->counter);
+			}
+		}
+		d.phase_samples = samples;
+		d.phase_concentration = summary.concentration;
+		failed = true;
+		throw ContinuityError(d);
+	}
+
+	void prune() {
+		if (!config->streaming)
+			return;
+		const auto cutoff = local_us - 4000000;
+		while (events.size() > 1 && events.front().time < cutoff) {
+			auto it = kept.find(identity(events.front()));
+			if (it != kept.end() && it->second == events.base)
+				kept.erase(it);
+			events.pop_front();
+			++events.base;
+		}
+		for (auto it = cells.begin(); it != cells.end();) {
+			if (it->second.target < cutoff * hz ||
+				(it->second.index >= 0 && std::size_t(it->second.index) < events.base))
+				it = cells.erase(it);
+			else
+				++it;
+		}
+		require(events.size() <= 2048 && cells.size() <= 1600,
+			"Rolling CSI history budget exceeded; resync required");
+	}
+
+	void expire(std::int64_t now, const Meta* incoming = nullptr) {
+		if (have_arrival && now - last_arrival >= 32768) {
+			Meta current;
+			if (incoming)
+				current = *incoming;
+			current.arrival = now;
+			++summary.clock_resets;
+			continuity(ContinuityReason::arrival_gap, current, &last_packet_meta);
+		} else if (pending && now - csi.meta.arrival > 20000) {
+			Meta current;
+			if (incoming)
+				current = *incoming;
+			current.arrival = now;
+			++summary.pairing_errors;
+			++summary.clock_resets;
+			continuity(ContinuityReason::pairing_timeout, current, &csi.meta);
+		}
+	}
+
+	void phase_lock(std::int64_t now) {
+		double re = 0, im = 0;
+		const double tau = 2 * std::acos(-1.0);
+		for (auto t : prefix) {
+			auto residue = modulo((t - prefix.front()) * hz, scale);
+			auto angle = tau * double(residue) / double(scale);
+			re += std::cos(angle);
+			im += std::sin(angle);
+		}
+		re /= double(prefix.size());
+		im /= double(prefix.size());
+		const auto seed = std::atan2(im, re) * double(scale) / tau;
+		std::vector<double> offsets;
+		for (auto t : prefix)
+			offsets.push_back(
+				modulo(double(modulo((t - prefix.front()) * hz, scale)) - seed + half, double(scale)) - half);
+		std::sort(offsets.begin(), offsets.end());
+		auto median = offsets[offsets.size() / 2];
+		if (offsets.size() % 2 == 0)
+			median = (median + offsets[offsets.size() / 2 - 1]) / 2;
+		const auto relative = modulo(std::int64_t(std::nearbyint(seed + median)), scale);
+		summary.phase_scaled = modulo(prefix.front() * hz + relative, scale);
+		summary.concentration = std::hypot(re, im);
+		summary.locked = prefix.size() >= 120 && summary.concentration >= .75;
+		summary.calibration_end_us = now;
+		const auto samples = std::uint32_t(prefix.size());
+		prefix.clear();
+		if (!summary.locked)
+			continuity(ContinuityReason::phase_lock, previous_meta, nullptr, samples);
+		slot = floor_div(now * hz + half - summary.phase_scaled, scale) + 1;
+		first_slot = slot;
+	}
+
+	void track_phase() {
+		if (!config->track_clock)
+			return;
+		std::vector<std::int64_t> residuals;
+		for (const auto& cell : block)
+			if (cell.index >= 0) {
+				const auto error = events[std::size_t(cell.index)].time * hz - cell.target;
+				if (std::abs(error) <= tolerance)
+					residuals.push_back(error);
+			}
+		auto median = [](std::vector<std::int64_t>& values) {
+			std::sort(values.begin(), values.end());
+			const auto n = values.size();
+			return n % 2 ? values[n / 2] : (values[n / 2 - 1] + values[n / 2]) / 2;
+		};
+		auto& sample = phase_history[phase_cursor++ % phase_history.size()];
+		sample = {};
+		summary.phase_step_scaled = 0;
+		if (residuals.size() >= 16) {
+			const auto error = median(residuals);
+			summary.phase_residual_scaled = error;
+			for (auto& value : residuals)
+				value = std::abs(value - error);
+			// Trust slow drift only (median <= 417 us, MAD <= 200 us).
+			// A phase step or scattered/missing input must still recover via
+			// the existing generation reset, never by chasing invalid data.
+			if (std::abs(error) <= 125000 && median(residuals) <= 60000)
+				sample = {summary.phase_scaled + error, true};
+		}
+		std::vector<std::int64_t> estimates;
+		for (const auto& value : phase_history)
+			if (value.valid)
+				estimates.push_back(value.value);
+		summary.phase_samples = estimates.size();
+		if (!sample.valid) {
+			++summary.phase_rejected_blocks;
+			return;
+		}
+		if (estimates.size() < 10)
+			return;
+		const auto error = median(estimates) - summary.phase_scaled;
+		if (std::abs(error) > 125000) {
+			++summary.phase_rejected_blocks;
+			return;
+		}
+		// At most 20 us per 66.7 ms block (300 ppm). Only the next cell's
+		// centre moves; slot numbers, completed targets and CSI are untouched.
+		const auto step = std::clamp(error / 4, std::int64_t(-6000), std::int64_t(6000));
+		summary.phase_scaled += step;
+		summary.phase_correction_scaled += step;
+		summary.phase_step_scaled = step;
+		if (step)
+			++summary.phase_updates;
+	}
+
+	void feed_grid(std::size_t index) {
+		auto now = events[index].time;
+		if (grid_previous >= 0 && !(now > grid_previous && now - grid_previous < 32768)) {
+			auto prior = std::find_if(events.rbegin() + 1, events.rend(), [](const Event& e) {
+				return e.keep;
+			});
+			continuity(ContinuityReason::retained_clock, events[index].meta,
+				prior == events.rend() ? nullptr : &prior->meta);
+		}
+		grid_previous = now;
+		if (failed)
+			return;
+		if (!summary.locked) {
+			if (prefix.size() >= 1024)
+				continuity(ContinuityReason::calibration_budget, events[index].meta, nullptr,
+					std::uint32_t(prefix.size()));
+			prefix.push_back(now);
+			if (now - prefix.front() >= 1000000)
+				phase_lock(now);
+			return;
+		}
+		auto centre = summary.phase_scaled + slot * scale;
+		while (now * hz >= centre + half) {
+			block.push_back({centre, best});
+			best = -1;
+			++slot;
+			if (block.size() == 20) {
+				for (std::size_t i = 0; i < 20; ++i)
+					cells.emplace(slot - 20 + std::int64_t(i), block[i]);
+				track_phase();
+				block.clear();
+			}
+			centre = summary.phase_scaled + slot * scale;
+		}
+		if (now * hz >= centre - half &&
+			(best < 0 ||
+				std::make_tuple(std::abs(now * hz - centre), now, index) <
+					std::make_tuple(std::abs(events[std::size_t(best)].time * hz - centre),
+						events[std::size_t(best)].time, std::size_t(best))))
+			best = std::int64_t(index);
+	}
+
+	void complete() {
+		require(events.size() < (config->streaming ? 2048 : config->expected_events * 2),
+			"Complete-event budget exceeded");
+		Event event;
+		event.meta = group.front().meta;
+		bool valid = true;
+		for (const auto& p : group) {
+			auto core = p.meta.config >> 8;
+			event.words[core] = p.words;
+			event.original[core] = p.meta.original;
+			require(p.meta.frame_size == event.meta.frame_size, "Raw frame size differs across cores");
+			bool nonzero = false;
+			for (std::size_t i = 0; i < 64; ++i)
+				if (i < 28 || i > 30) {
+					auto z = decode_acphy(p.words[i]);
+					require(std::isfinite(z.real()) && std::isfinite(z.imag()), "Non-finite native CSI");
+					nonzero |= z != std::complex<double>{};
+				}
+			valid &= nonzero;
+		}
+		group.clear();
+		++summary.complete_events;
+		if (previous) {
+			auto host = event.meta.arrival - previous_meta.arrival;
+			auto delta = std::uint16_t(event.meta.tsf - previous_meta.tsf);
+			auto step = std::uint16_t(event.meta.counter - previous_meta.counter);
+			if (!(host > 0 && host < 32768 && delta > 0 && delta < 32768 && step == 1)) {
+				++summary.clock_resets;
+				continuity(step != 1 ? ContinuityReason::counter_step : ContinuityReason::event_clock,
+					event.meta, &previous_meta);
+			}
+			local_us += delta;
+		}
+		event.time = local_us;
+		previous_meta = event.meta;
+		previous = true;
+		for (auto it = recent.begin(); it != recent.end();) {
+			if (event.meta.arrival - it->second.first > 20000)
+				it = recent.erase(it);
+			else
+				++it;
+		}
+		const auto index = events.next();
+		if (!valid)
+			++summary.invalid_events;
+		else {
+			auto old = recent.find(event.meta.seq);
+			if (old != recent.end()) {
+				if (event.meta.fc & 0x800)
+					++summary.retransmissions;
+				else
+					continuity(
+						ContinuityReason::duplicate_sequence, event.meta, &events[old->second.second].meta);
+			} else
+				event.keep = true;
+			recent[event.meta.seq] = {event.meta.arrival, index};
+			require(recent.size() <= 1024, "Dedup memory budget exceeded");
+		}
+		if (event.keep) {
+			require((event.meta.fc & ~0x800) == 0x8 && !(event.meta.seq & 15),
+				"Unexpected bounded broadcast sequence profile");
+			require(kept.size() < (config->streaming ? 2048 : config->expected_events),
+				"Retained event budget exceeded");
+			auto reused = kept.find(identity(event));
+			if (reused != kept.end())
+				continuity(ContinuityReason::reused_sequence, event.meta, &events[reused->second].meta);
+			if (!kept.empty()) {
+				// Last retained event by arrival, not numeric map order (wrap).
+				auto prev = std::find_if(events.rbegin(), events.rend(), [](const Event& e) {
+					return e.keep;
+				});
+				require(prev != events.rend(), "Missing prior retained event");
+				auto a = prev->meta.seq >> 4, b = event.meta.seq >> 4, d = (b - a) & 4095;
+				if (!(d > 0 && d < 2048))
+					continuity(ContinuityReason::sequence_step, event.meta, &prev->meta);
+				sequence_span += std::size_t(d);
+				require(config->streaming || sequence_span < config->expected_events,
+					"Sequence span exceeds declared bounded TX job");
+				if (b < a)
+					++summary.wraps;
+				require(
+					prev->meta.frame_size == event.meta.frame_size, "Fixed TX profile changed frame length");
+			}
+			kept.emplace(identity(event), index);
+			++summary.retained;
+		}
+		events.push_back(std::move(event));
+		if (events.back().keep) {
+			if (decoded) {
+				require(decoded->size() < 32, "Decoded event queue must be consumed");
+				const auto& e = events.back();
+				CompleteEvent value;
+				value.sequence = e.meta.seq;
+				value.frame_control = e.meta.fc & ~0x800;
+				value.frame_size = e.meta.frame_size;
+				value.local_us = e.time;
+				value.capture_us = e.meta.arrival;
+				for (std::size_t a = 0; a < 3; ++a)
+					for (std::size_t n = 0; n < 30; ++n)
+						value.csi[a * 30 + n] = carrier_value(e, config->gains[receiver], a, n);
+				decoded->push_back(std::move(value));
+			} else
+				feed_grid(index);
+		}
+		prune();
+	}
+
+	void feed(std::int64_t arrival, std::uint16_t port, const std::uint8_t* p, std::size_t n) {
+		if (port != 5500 && port != 5501)
+			return;
+		++summary.packets;
+		require(
+			config->streaming || summary.packets <= config->expected_events * 12, "Packet budget exceeded");
+		require(p != nullptr, "Null datagram");
+		Meta m;
+		m.arrival = arrival;
+		if (port == 5500) {
+			require(n == 274 && u16(p) == 0x1111 && u16(p + 16) == 106, "CSI format/bandwidth/chip mismatch");
+			require(std::equal(config->transmitter_mac.begin(), config->transmitter_mac.end(), p + 4) &&
+					u16(p + 14) == config->chanspec,
+				"CSI transmitter/channel changed");
+			auto core = u16(p + 12);
+			require(core == 0 || core == 256 || core == 512, "CSI core/stream mismatch");
+			m.seq = u16(p + 10);
+			m.config = core;
+			m.channel = u16(p + 14);
+		} else {
+			require(n == 50 && std::memcmp(p, "NMD3", 4) == 0 && u16(p + 4) == 3 && u16(p + 6) == 50,
+				"Require unchanged NMD3/50 diagnostics");
+			require(std::equal(config->transmitter_mac.begin(), config->transmitter_mac.end(), p + 8) &&
+					u16(p + 18) == config->chanspec,
+				"Metadata transmitter/channel changed");
+			m.seq = u16(p + 14);
+			m.config = u16(p + 16);
+			m.channel = u16(p + 18);
+			m.fc = u16(p + 20);
+			m.qos = u16(p + 22);
+			m.tsf = u16(p + 24);
+			m.counter = u16(p + 26);
+			require(m.config == 0 || m.config == 256 || m.config == 512, "Metadata core/stream mismatch");
+			require(u16(p + 28) == 28 && u16(p + 30) == 3, "Pre-overwrite word sidecar mismatch");
+			for (std::size_t i = 0; i < 3; ++i)
+				m.original[i] = u32(p + 32 + 4 * i);
+			m.frame_size = u16(p + 44);
+			m.hook = u32(p + 46);
+			m.has_diagnostic = true;
+		}
+		// A new streaming generation can start at any PCAP record boundary.
+		// Validate every skipped record first; never carry a partial event
+		// into the new generation or skip errors once core0 has been seen.
+		if (config->streaming && !started) {
+			if (port == 5501 || m.config != 0)
+				return;
+			started = true;
+		}
+		if (have_arrival && arrival < last_arrival) {
+			continuity(ContinuityReason::arrival_backwards, m, &last_packet_meta);
+		}
+		expire(arrival, &m);
+		if (!have_arrival)
+			first_arrival = arrival;
+		require(config->streaming || arrival - first_arrival <= 12000000,
+			"Bounded acquisition exceeded twelve seconds");
+		last_arrival = arrival;
+		last_packet_meta = m;
+		have_arrival = true;
+		if (port == 5500) {
+			if (pending) {
+				++summary.pairing_errors;
+				++summary.clock_resets;
+				continuity(ContinuityReason::missing_metadata, m, &csi.meta);
+			}
+			csi = {};
+			csi.meta = m;
+			for (std::size_t i = 0; i < 64; ++i)
+				csi.words[i] = u32(p + 18 + 4 * i);
+			pending = true;
+			return;
+		}
+		if (!pending || m.seq != csi.meta.seq || m.config != csi.meta.config ||
+			m.channel != csi.meta.channel) {
+			++summary.pairing_errors;
+			++summary.clock_resets;
+			continuity(ContinuityReason::pairing_mismatch, m, pending ? &csi.meta : nullptr);
+		}
+		pending = false;
+		m.arrival = csi.meta.arrival;
+		csi.meta = m;
+		if (!group.empty() && !same_event(group.front().meta, m)) {
+			++summary.incomplete_groups;
+			++summary.clock_resets;
+			continuity(ContinuityReason::incomplete_event, m, &group.front().meta);
+		}
+		for (const auto& part : group)
+			if (part.meta.config == m.config) {
+				++summary.incomplete_groups;
+				++summary.clock_resets;
+				continuity(ContinuityReason::duplicate_core, m, &part.meta);
+			}
+		group.push_back(csi);
+		if (group.size() == 3)
+			complete();
+	}
 };
 }
 
 const char* continuity_reason_name(ContinuityReason reason) noexcept {
-    switch(reason) {
-    case ContinuityReason::arrival_backwards:return "arrival_backwards";
-    case ContinuityReason::arrival_gap:return "arrival_gap";
-    case ContinuityReason::pairing_timeout:return "pairing_timeout";
-    case ContinuityReason::missing_metadata:return "missing_metadata";
-    case ContinuityReason::pairing_mismatch:return "pairing_mismatch";
-    case ContinuityReason::incomplete_event:return "incomplete_event";
-    case ContinuityReason::duplicate_core:return "duplicate_core";
-    case ContinuityReason::event_clock:return "event_clock";
-    case ContinuityReason::counter_step:return "counter_step";
-    case ContinuityReason::duplicate_sequence:return "duplicate_sequence";
-    case ContinuityReason::reused_sequence:return "reused_sequence";
-    case ContinuityReason::sequence_step:return "sequence_step";
-    case ContinuityReason::retained_clock:return "retained_clock";
-    case ContinuityReason::phase_lock:return "phase_lock";
-    case ContinuityReason::calibration_budget:return "calibration_budget";
-    }
-    return "unknown_continuity";
+	switch (reason) {
+		case ContinuityReason::arrival_backwards:
+			return "arrival_backwards";
+		case ContinuityReason::arrival_gap:
+			return "arrival_gap";
+		case ContinuityReason::pairing_timeout:
+			return "pairing_timeout";
+		case ContinuityReason::missing_metadata:
+			return "missing_metadata";
+		case ContinuityReason::pairing_mismatch:
+			return "pairing_mismatch";
+		case ContinuityReason::incomplete_event:
+			return "incomplete_event";
+		case ContinuityReason::duplicate_core:
+			return "duplicate_core";
+		case ContinuityReason::event_clock:
+			return "event_clock";
+		case ContinuityReason::counter_step:
+			return "counter_step";
+		case ContinuityReason::duplicate_sequence:
+			return "duplicate_sequence";
+		case ContinuityReason::reused_sequence:
+			return "reused_sequence";
+		case ContinuityReason::sequence_step:
+			return "sequence_step";
+		case ContinuityReason::retained_clock:
+			return "retained_clock";
+		case ContinuityReason::phase_lock:
+			return "phase_lock";
+		case ContinuityReason::calibration_budget:
+			return "calibration_budget";
+	}
+	return "unknown_continuity";
 }
+
 ContinuityError::ContinuityError(ContinuityDiagnostic diagnostic)
-    :std::runtime_error(std::string("RX")+std::to_string(diagnostic.receiver+1)+" "+
-        continuity_reason_name(diagnostic.reason)+" arrival_us="+std::to_string(diagnostic.arrival_us)+
-        " host_delta_us="+std::to_string(diagnostic.host_delta_us)+
-        " tsf_delta_us="+std::to_string(diagnostic.tsf_delta_us)+
-        " counter_step="+std::to_string(diagnostic.counter_step)),diagnostic_(diagnostic) {}
+	: std::runtime_error(std::string("RX") + std::to_string(diagnostic.receiver + 1) + " " +
+		  continuity_reason_name(diagnostic.reason) + " arrival_us=" + std::to_string(diagnostic.arrival_us) +
+		  " host_delta_us=" + std::to_string(diagnostic.host_delta_us) +
+		  " tsf_delta_us=" + std::to_string(diagnostic.tsf_delta_us) +
+		  " counter_step=" + std::to_string(diagnostic.counter_step)),
+	  diagnostic_(diagnostic) {
+}
 
 std::complex<double> decode_acphy(std::uint32_t w) {
-    int exponent=int(w&63);if(exponent&32)exponent-=64;
-    int re=int((w>>18)&2047),im=int((w>>6)&2047);
-    if(w&(1u<<29))re=-re;
-    if(w&(1u<<17))im=-im;
-    return {std::ldexp(double(re),exponent),std::ldexp(double(im),exponent)};
+	int exponent = int(w & 63);
+	if (exponent & 32)
+		exponent -= 64;
+	int re = int((w >> 18) & 2047), im = int((w >> 6) & 2047);
+	if (w & (1u << 29))
+		re = -re;
+	if (w & (1u << 17))
+		im = -im;
+	return {std::ldexp(double(re), exponent), std::ldexp(double(im), exponent)};
 }
 
 struct Ingress::Impl {
-    Config config;std::array<Node,3> nodes;
-    BatchResult result;bool finished=false,anchored=false,started=false,poisoned=false;
-    std::int64_t next_slot=0;std::size_t ready_index=0;
-    WindowDiagnostics diagnostic;
-    explicit Impl(Config c):config(std::move(c)) {
-        validate_config(config);
-        for(std::size_t r=0;r<nodes.size();++r) {nodes[r].config=&config;nodes[r].receiver=std::uint32_t(r);}
-        result.session_id=config.session_id;
-    }
-    std::int64_t local_slot(const Event&e,const Node&n)const {return floor_div(e.time*hz-n.summary.phase_scaled+half,scale);}
-    void update() {
-        require(!poisoned,"Ingress session rejected; create a new acquisition session");
-        for(const auto&n:nodes)require(!n.failed&&!n.summary.clock_resets,"Unproven clock/pairing/sequence segment; end this session");
-        std::uint16_t frame_size=0;bool have_size=false;
-        for(const auto&n:nodes)if(!n.kept.empty()) {
-            const auto size=n.events[n.kept.begin()->second].meta.frame_size;
-            require(!have_size||size==frame_size,"Receivers disagree on bounded TX frame profile");
-            frame_size=size;have_size=true;
-        }
-        if(!anchored) {
-            if(!std::all_of(nodes.begin(),nodes.end(),[](const Node&n){return n.summary.locked;}))return;
-            for(const auto&e:nodes[0].events)if(e.keep) {
-                auto key=identity(e);bool common=true;std::array<const Event*,3> trip{};
-                for(std::size_t r=0;r<3;++r) {
-                    auto it=nodes[r].kept.find(key);
-                    if(it==nodes[r].kept.end()) {common=false;break;}
-                    trip[r]=&nodes[r].events[it->second];
-                    if(trip[r]->time<=nodes[r].summary.calibration_end_us) {common=false;break;}
-                }
-                if(!common)continue;
-                const auto origin=local_slot(*trip[0],nodes[0]);
-                for(std::size_t r=0;r<3;++r)result.slot_shifts[r]=origin-local_slot(*trip[r],nodes[r]);
-                anchored=true;break;
-            }
-            if(!anchored)return;
-        }
-        if(!std::all_of(nodes.begin(),nodes.end(),[](const Node&n){return !n.cells.empty();}))return;
-        if(!started) {
-            auto first=nodes[0].cells.begin()->first;
-            for(std::size_t r=1;r<3;++r)first=std::max(first,nodes[r].cells.begin()->first+result.slot_shifts[r]);
-            first+=modulo(nodes[0].cells.begin()->first-first,std::int64_t(20));
-            next_slot=first;started=true;
-        }
-        auto last=nodes[0].cells.rbegin()->first;
-        for(std::size_t r=1;r<3;++r)last=std::min(last,nodes[r].cells.rbegin()->first+result.slot_shifts[r]);
-        while(next_slot+19<=last) {
-            WindowDecision d;d.start_reference_slot=next_slot;
-            diagnostic.last_window_slot=next_slot;diagnostic.last_error_scaled={};
-            std::array<std::array<const Event*,20>,3> selected{};
-            for(std::size_t t=0;t<20;++t) {
-                bool present=true;
-                for(std::size_t r=0;r<3;++r) {
-                    auto it=nodes[r].cells.find(next_slot+std::int64_t(t)-result.slot_shifts[r]);
-                    if(it==nodes[r].cells.end()||it->second.index<0) {
-                        d.missing_cell=true;present=false;++diagnostic.missing_points[r];continue;
-                    }
-                    const auto&e=nodes[r].events[std::size_t(it->second.index)];selected[r][t]=&e;
-                    const auto error=e.time*hz-it->second.target;
-                    if(std::abs(error)>std::abs(diagnostic.last_error_scaled[r]))diagnostic.last_error_scaled[r]=error;
-                    if(std::abs(error)>tolerance){d.point_error=true;++diagnostic.point_errors[r];}
-                }
-                if(present && !(identity(*selected[0][t])==identity(*selected[1][t])&&identity(*selected[1][t])==identity(*selected[2][t]))) {
-                    d.different_event=true;++diagnostic.different_points;
-                    diagnostic.last_mismatch_slot=next_slot+std::int64_t(t);
-                    for(std::size_t r=0;r<3;++r)diagnostic.last_mismatch_sequences[r]=selected[r][t]->meta.seq;
-                }
-                if(present)require(selected[0][t]->meta.frame_size==selected[1][t]->meta.frame_size&&selected[1][t]->meta.frame_size==selected[2][t]->meta.frame_size,"Common identity has conflicting raw frame length");
-            }
-            d.valid=!(d.missing_cell||d.point_error||d.different_event);
-            ++diagnostic.decided;diagnostic.accepted+=d.valid;
-            diagnostic.missing+=d.missing_cell;diagnostic.point_error+=d.point_error;
-            diagnostic.different_event+=d.different_event;
-            diagnostic.rejected_streak=d.valid?0:diagnostic.rejected_streak+1;
-            if(!config.streaming)result.decisions.push_back(d);
-            if(d.valid) {
-                JointWindow w;w.start_reference_slot=next_slot;
-                w.source_time_ns=std::uint64_t(selected[0][19]->meta.arrival)*1000;
-                for(std::size_t r=0;r<3;++r)for(std::size_t t=0;t<20;++t) {
-                    const auto&e=*selected[r][t];w.event_indices[r][t]=std::uint32_t(nodes[r].cells.at(next_slot+std::int64_t(t)-result.slot_shifts[r]).index);
-                    for(std::size_t a=0;a<3;++a)for(std::size_t n=0;n<30;++n) {
-                        w.csi[((r*3+a)*20+t)*30+n]=carrier_value(e,config.gains[r],a,n);
-                    }
-                }
-                require(!config.streaming||result.windows.size()<32,"Ready window budget exceeded; consume or resync");
-                result.windows.push_back(std::move(w));
-            }
-            next_slot+=20;
-            if(config.streaming)for(std::size_t r=0;r<3;++r) {
-                auto& cells=nodes[r].cells;
-                cells.erase(cells.begin(),cells.lower_bound(next_slot-result.slot_shifts[r]));
-            }
-        }
-    }
+	Config config;
+	std::array<Node, 3> nodes;
+	BatchResult result;
+	bool finished = false, anchored = false, started = false, poisoned = false;
+	std::int64_t next_slot = 0;
+	std::size_t ready_index = 0;
+	WindowDiagnostics diagnostic;
+
+	explicit Impl(Config c) : config(std::move(c)) {
+		validate_config(config);
+		for (std::size_t r = 0; r < nodes.size(); ++r) {
+			nodes[r].config = &config;
+			nodes[r].receiver = std::uint32_t(r);
+		}
+		result.session_id = config.session_id;
+	}
+
+	std::int64_t local_slot(const Event& e, const Node& n) const {
+		return floor_div(e.time * hz - n.summary.phase_scaled + half, scale);
+	}
+
+	void update() {
+		require(!poisoned, "Ingress session rejected; create a new acquisition session");
+		for (const auto& n : nodes)
+			require(!n.failed && !n.summary.clock_resets,
+				"Unproven clock/pairing/sequence segment; end this session");
+		std::uint16_t frame_size = 0;
+		bool have_size = false;
+		for (const auto& n : nodes)
+			if (!n.kept.empty()) {
+				const auto size = n.events[n.kept.begin()->second].meta.frame_size;
+				require(!have_size || size == frame_size, "Receivers disagree on bounded TX frame profile");
+				frame_size = size;
+				have_size = true;
+			}
+		if (!anchored) {
+			if (!std::all_of(nodes.begin(), nodes.end(), [](const Node& n) {
+					return n.summary.locked;
+				}))
+				return;
+			for (const auto& e : nodes[0].events)
+				if (e.keep) {
+					auto key = identity(e);
+					bool common = true;
+					std::array<const Event*, 3> trip{};
+					for (std::size_t r = 0; r < 3; ++r) {
+						auto it = nodes[r].kept.find(key);
+						if (it == nodes[r].kept.end()) {
+							common = false;
+							break;
+						}
+						trip[r] = &nodes[r].events[it->second];
+						if (trip[r]->time <= nodes[r].summary.calibration_end_us) {
+							common = false;
+							break;
+						}
+					}
+					if (!common)
+						continue;
+					const auto origin = local_slot(*trip[0], nodes[0]);
+					for (std::size_t r = 0; r < 3; ++r)
+						result.slot_shifts[r] = origin - local_slot(*trip[r], nodes[r]);
+					anchored = true;
+					break;
+				}
+			if (!anchored)
+				return;
+		}
+		if (!std::all_of(nodes.begin(), nodes.end(), [](const Node& n) {
+				return !n.cells.empty();
+			}))
+			return;
+		if (!started) {
+			auto first = nodes[0].cells.begin()->first;
+			for (std::size_t r = 1; r < 3; ++r)
+				first = std::max(first, nodes[r].cells.begin()->first + result.slot_shifts[r]);
+			first += modulo(nodes[0].cells.begin()->first - first, std::int64_t(20));
+			next_slot = first;
+			started = true;
+		}
+		auto last = nodes[0].cells.rbegin()->first;
+		for (std::size_t r = 1; r < 3; ++r)
+			last = std::min(last, nodes[r].cells.rbegin()->first + result.slot_shifts[r]);
+		while (next_slot + 19 <= last) {
+			WindowDecision d;
+			d.start_reference_slot = next_slot;
+			diagnostic.last_window_slot = next_slot;
+			diagnostic.last_error_scaled = {};
+			std::array<std::array<const Event*, 20>, 3> selected{};
+			for (std::size_t t = 0; t < 20; ++t) {
+				bool present = true;
+				for (std::size_t r = 0; r < 3; ++r) {
+					auto it = nodes[r].cells.find(next_slot + std::int64_t(t) - result.slot_shifts[r]);
+					if (it == nodes[r].cells.end() || it->second.index < 0) {
+						d.missing_cell = true;
+						present = false;
+						++diagnostic.missing_points[r];
+						continue;
+					}
+					const auto& e = nodes[r].events[std::size_t(it->second.index)];
+					selected[r][t] = &e;
+					const auto error = e.time * hz - it->second.target;
+					if (std::abs(error) > std::abs(diagnostic.last_error_scaled[r]))
+						diagnostic.last_error_scaled[r] = error;
+					if (std::abs(error) > tolerance) {
+						d.point_error = true;
+						++diagnostic.point_errors[r];
+					}
+				}
+				if (present &&
+					!(identity(*selected[0][t]) == identity(*selected[1][t]) &&
+						identity(*selected[1][t]) == identity(*selected[2][t]))) {
+					d.different_event = true;
+					++diagnostic.different_points;
+					diagnostic.last_mismatch_slot = next_slot + std::int64_t(t);
+					for (std::size_t r = 0; r < 3; ++r)
+						diagnostic.last_mismatch_sequences[r] = selected[r][t]->meta.seq;
+				}
+				if (present)
+					require(selected[0][t]->meta.frame_size == selected[1][t]->meta.frame_size &&
+							selected[1][t]->meta.frame_size == selected[2][t]->meta.frame_size,
+						"Common identity has conflicting raw frame length");
+			}
+			d.valid = !(d.missing_cell || d.point_error || d.different_event);
+			++diagnostic.decided;
+			diagnostic.accepted += d.valid;
+			diagnostic.missing += d.missing_cell;
+			diagnostic.point_error += d.point_error;
+			diagnostic.different_event += d.different_event;
+			diagnostic.rejected_streak = d.valid ? 0 : diagnostic.rejected_streak + 1;
+			if (!config.streaming)
+				result.decisions.push_back(d);
+			if (d.valid) {
+				JointWindow w;
+				w.start_reference_slot = next_slot;
+				w.source_time_ns = std::uint64_t(selected[0][19]->meta.arrival) * 1000;
+				for (std::size_t r = 0; r < 3; ++r)
+					for (std::size_t t = 0; t < 20; ++t) {
+						const auto& e = *selected[r][t];
+						w.event_indices[r][t] = std::uint32_t(
+							nodes[r].cells.at(next_slot + std::int64_t(t) - result.slot_shifts[r]).index);
+						for (std::size_t a = 0; a < 3; ++a)
+							for (std::size_t n = 0; n < 30; ++n) {
+								w.csi[((r * 3 + a) * 20 + t) * 30 + n] =
+									carrier_value(e, config.gains[r], a, n);
+							}
+					}
+				require(!config.streaming || result.windows.size() < 32,
+					"Ready window budget exceeded; consume or resync");
+				result.windows.push_back(std::move(w));
+			}
+			next_slot += 20;
+			if (config.streaming)
+				for (std::size_t r = 0; r < 3; ++r) {
+					auto& cells = nodes[r].cells;
+					cells.erase(cells.begin(), cells.lower_bound(next_slot - result.slot_shifts[r]));
+				}
+		}
+	}
 };
 
-Ingress::Ingress(Config config):impl_(std::make_unique<Impl>(std::move(config))){}
-Ingress::~Ingress()=default;
-Ingress::Ingress(Ingress&&)noexcept=default;
-Ingress&Ingress::operator=(Ingress&&)noexcept=default;
-void Ingress::feed(std::size_t receiver,std::string_view session,std::int64_t arrival,std::uint16_t port,const std::uint8_t*p,std::size_t n) {
-    require(bool(impl_)&&!impl_->finished,"Ingress session already finalized");
-    try {
-        require(!impl_->poisoned,"Ingress session rejected; create a new acquisition session");
-        require(receiver<3,"Receiver index out of range");
-        require(session==impl_->config.session_id,"Different or missing acquisition session");
-        impl_->nodes[receiver].feed(arrival,port,p,n);impl_->update();
-    }catch(...){impl_->poisoned=true;throw;}
+Ingress::Ingress(Config config) : impl_(std::make_unique<Impl>(std::move(config))) {
 }
-void Ingress::expire(std::size_t receiver,std::int64_t arrival) {
-    require(bool(impl_)&&!impl_->finished&&receiver<3,"Invalid expire target/session");
-    try {impl_->nodes[receiver].expire(arrival);impl_->update();}
-    catch(...){impl_->poisoned=true;throw;}
+
+Ingress::~Ingress() = default;
+Ingress::Ingress(Ingress&&) noexcept = default;
+Ingress& Ingress::operator=(Ingress&&) noexcept = default;
+
+void Ingress::feed(std::size_t receiver, std::string_view session, std::int64_t arrival, std::uint16_t port,
+	const std::uint8_t* p, std::size_t n) {
+	require(bool(impl_) && !impl_->finished, "Ingress session already finalized");
+	try {
+		require(!impl_->poisoned, "Ingress session rejected; create a new acquisition session");
+		require(receiver < 3, "Receiver index out of range");
+		require(session == impl_->config.session_id, "Different or missing acquisition session");
+		impl_->nodes[receiver].feed(arrival, port, p, n);
+		impl_->update();
+	} catch (...) {
+		impl_->poisoned = true;
+		throw;
+	}
 }
+
+void Ingress::expire(std::size_t receiver, std::int64_t arrival) {
+	require(bool(impl_) && !impl_->finished && receiver < 3, "Invalid expire target/session");
+	try {
+		impl_->nodes[receiver].expire(arrival);
+		impl_->update();
+	} catch (...) {
+		impl_->poisoned = true;
+		throw;
+	}
+}
+
 std::vector<JointWindow> Ingress::take_ready() {
-    require(bool(impl_)&&!impl_->finished&&!impl_->poisoned,"Ingress session already finalized or rejected");
-    std::vector<JointWindow> out;
-    if(impl_->config.streaming){out.swap(impl_->result.windows);return out;}
-    const auto&all=impl_->result.windows;
-    for(;impl_->ready_index<all.size();++impl_->ready_index)out.push_back(all[impl_->ready_index]);
-    return out;
+	require(
+		bool(impl_) && !impl_->finished && !impl_->poisoned, "Ingress session already finalized or rejected");
+	std::vector<JointWindow> out;
+	if (impl_->config.streaming) {
+		out.swap(impl_->result.windows);
+		return out;
+	}
+	const auto& all = impl_->result.windows;
+	for (; impl_->ready_index < all.size(); ++impl_->ready_index)
+		out.push_back(all[impl_->ready_index]);
+	return out;
 }
+
 BatchResult Ingress::finish() {
-    require(bool(impl_)&&!impl_->finished,"Ingress session already finalized");
-    impl_->update();require(impl_->anchored&&impl_->started,"No common post-startup finalized grid");
-    for(std::size_t r=0;r<3;++r) {
-        auto&n=impl_->nodes[r];n.summary.trailing_unpaired=n.pending;n.summary.trailing_cores=n.group.size();impl_->result.nodes[r]=n.summary;
-    }
-    for(const auto&kv:impl_->nodes[0].kept)if(impl_->nodes[1].kept.count(kv.first)&&impl_->nodes[2].kept.count(kv.first))++impl_->result.common_events;
-    impl_->finished=true;return std::move(impl_->result);
+	require(bool(impl_) && !impl_->finished, "Ingress session already finalized");
+	impl_->update();
+	require(impl_->anchored && impl_->started, "No common post-startup finalized grid");
+	for (std::size_t r = 0; r < 3; ++r) {
+		auto& n = impl_->nodes[r];
+		n.summary.trailing_unpaired = n.pending;
+		n.summary.trailing_cores = n.group.size();
+		impl_->result.nodes[r] = n.summary;
+	}
+	for (const auto& kv : impl_->nodes[0].kept)
+		if (impl_->nodes[1].kept.count(kv.first) && impl_->nodes[2].kept.count(kv.first))
+			++impl_->result.common_events;
+	impl_->finished = true;
+	return std::move(impl_->result);
 }
-std::array<std::size_t,3> Ingress::retained_events()const {
-    return {impl_->nodes[0].events.size(),impl_->nodes[1].events.size(),impl_->nodes[2].events.size()};
+
+std::array<std::size_t, 3> Ingress::retained_events() const {
+	return {impl_->nodes[0].events.size(), impl_->nodes[1].events.size(), impl_->nodes[2].events.size()};
 }
-std::array<std::size_t,3> Ingress::retained_cells()const {
-    return {impl_->nodes[0].cells.size(),impl_->nodes[1].cells.size(),impl_->nodes[2].cells.size()};
+
+std::array<std::size_t, 3> Ingress::retained_cells() const {
+	return {impl_->nodes[0].cells.size(), impl_->nodes[1].cells.size(), impl_->nodes[2].cells.size()};
 }
-WindowDiagnostics Ingress::diagnostics()const {
-    require(bool(impl_),"Moved ingress has no diagnostic state");
-    auto d=impl_->diagnostic;d.anchored=impl_->anchored;d.slot_shifts=impl_->result.slot_shifts;
-    for(std::size_t r=0;r<3;++r)d.nodes[r]=impl_->nodes[r].summary;
-    return d;
+
+WindowDiagnostics Ingress::diagnostics() const {
+	require(bool(impl_), "Moved ingress has no diagnostic state");
+	auto d = impl_->diagnostic;
+	d.anchored = impl_->anchored;
+	d.slot_shifts = impl_->result.slot_shifts;
+	for (std::size_t r = 0; r < 3; ++r)
+		d.nodes[r] = impl_->nodes[r].summary;
+	return d;
 }
+
 struct EventDecoder::Impl {
-    Config config;Node node;std::vector<CompleteEvent> ready;
-    Impl(Config c,std::size_t r):config(std::move(c)) {
-        validate_config(config);require(config.streaming&&r<3,"Event decoder requires a streaming receiver");
-        node.config=&config;node.receiver=std::uint32_t(r);node.decoded=&ready;
-    }
+	Config config;
+	Node node;
+	std::vector<CompleteEvent> ready;
+
+	Impl(Config c, std::size_t r) : config(std::move(c)) {
+		validate_config(config);
+		require(config.streaming && r < 3, "Event decoder requires a streaming receiver");
+		node.config = &config;
+		node.receiver = std::uint32_t(r);
+		node.decoded = &ready;
+	}
 };
-EventDecoder::EventDecoder(Config c,std::size_t r):impl_(std::make_unique<Impl>(std::move(c),r)){}
-EventDecoder::~EventDecoder()=default;
-void EventDecoder::feed(std::int64_t arrival,std::uint16_t port,const std::uint8_t* p,std::size_t size) {
-    require(!impl_->node.failed,"Replace failed event decoder before reuse");
-    impl_->node.feed(arrival,port,p,size);
+
+EventDecoder::EventDecoder(Config c, std::size_t r) : impl_(std::make_unique<Impl>(std::move(c), r)) {
 }
-std::vector<CompleteEvent> EventDecoder::take_ready(){std::vector<CompleteEvent> out;out.swap(impl_->ready);return out;}
-NodeSummary EventDecoder::summary()const{return impl_->node.summary;}
-std::vector<std::uint8_t> encode_piwcsi2(const JointWindow&w,std::uint64_t frame,std::uint64_t source) {
-    static_assert(sizeof(double)==8&&std::numeric_limits<double>::is_iec559,"IEEE754 float64 required");
-    std::vector<std::uint8_t> out(piwcsi2_bytes);
-    std::memcpy(out.data(),"PIWCSI2\0",8);
-    auto put=[&](std::size_t at,std::uint64_t value,std::size_t n) {for(std::size_t i=0;i<n;++i)out[at+i]=std::uint8_t(value>>(8*i));};
-    put(8,2,4);put(12,86400,4);put(16,frame,8);put(24,source,8);
-    for(std::size_t i=0;i<csi_values;++i) {
-        auto re=w.csi[i].real(),im=w.csi[i].imag();require(std::isfinite(re)&&std::isfinite(im),"Cannot serialize non-finite CSI");
-        std::uint64_t a,b;std::memcpy(&a,&re,8);std::memcpy(&b,&im,8);put(32+i*16,a,8);put(40+i*16,b,8);
-    }
-    return out;
+
+EventDecoder::~EventDecoder() = default;
+
+void EventDecoder::feed(std::int64_t arrival, std::uint16_t port, const std::uint8_t* p, std::size_t size) {
+	require(!impl_->node.failed, "Replace failed event decoder before reuse");
+	impl_->node.feed(arrival, port, p, size);
+}
+
+std::vector<CompleteEvent> EventDecoder::take_ready() {
+	std::vector<CompleteEvent> out;
+	out.swap(impl_->ready);
+	return out;
+}
+
+NodeSummary EventDecoder::summary() const {
+	return impl_->node.summary;
+}
+
+std::vector<std::uint8_t> encode_piwcsi2(const JointWindow& w, std::uint64_t frame, std::uint64_t source) {
+	static_assert(sizeof(double) == 8 && std::numeric_limits<double>::is_iec559, "IEEE754 float64 required");
+	std::vector<std::uint8_t> out(piwcsi2_bytes);
+	std::memcpy(out.data(), "PIWCSI2\0", 8);
+	auto put = [&](std::size_t at, std::uint64_t value, std::size_t n) {
+		for (std::size_t i = 0; i < n; ++i)
+			out[at + i] = std::uint8_t(value >> (8 * i));
+	};
+	put(8, 2, 4);
+	put(12, 86400, 4);
+	put(16, frame, 8);
+	put(24, source, 8);
+	for (std::size_t i = 0; i < csi_values; ++i) {
+		auto re = w.csi[i].real(), im = w.csi[i].imag();
+		require(std::isfinite(re) && std::isfinite(im), "Cannot serialize non-finite CSI");
+		std::uint64_t a, b;
+		std::memcpy(&a, &re, 8);
+		std::memcpy(&b, &im, 8);
+		put(32 + i * 16, a, 8);
+		put(40 + i * 16, b, 8);
+	}
+	return out;
 }
 } // namespace nexmon_board

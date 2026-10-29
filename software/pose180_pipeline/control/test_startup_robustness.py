@@ -18,7 +18,7 @@ import process_guard
 import service
 import startup
 import startup_network
-from test_exit_cleanup import mock_command, ports_released, read, wait_for, reap
+from test_exit_cleanup import mock_command, ports_released, read, wait_for, reap, fd_snapshot
 
 
 def reject(call):
@@ -150,7 +150,7 @@ def network_cases(root):
 
 def monitor_cases(binary,root):
     root.mkdir()
-    before=len(list(Path('/proc/self/fd').iterdir()))
+    before=fd_snapshot()
     # Pending stop must prevent even exec, including a signal between logger
     # creation and native launch.
     for phase in ('before','logger'):
@@ -224,12 +224,17 @@ def monitor_cases(binary,root):
         finally:
             done.set();worker.join(timeout=2)
         assert not worker.is_alive()
+        # join() observes Python's sentinel, before libc finishes pthread_exit.
+        # Its first unwind can briefly open libgcc_s.so.1. Wait for this exact
+        # native thread to leave /proc before checking process-wide resources.
+        wait_for(lambda:not Path('/proc/self/task/%d'%worker.native_id).exists(),timeout=2)
     for malformed in (None,{},[],True,{'pid':0},{'pid':-1},{'pid':'bad'}):
         assert not process_guard.live(malformed) and not process_guard.request_stop(malformed)
-    after=len(list(Path('/proc/self/fd').iterdir()))
-    assert after==before,(before,after)
+    after=fd_snapshot()
+    assert after==before,dict(FDs_before=before,FDs_after=after)
     return dict(prelaunch_stop_phases=2,monitor_exception_reaped=True,missing_memory_sample_tolerated=True,
-                native_hup_graceful=True,log_close_error_tolerated=True,status_read_bounded=True,FDs_before=before,FDs_after=after)
+                native_hup_graceful=True,log_close_error_tolerated=True,status_read_bounded=True,
+                native_thread_exit_proved=True,FDs_before=len(before),FDs_after=len(after))
 
 
 def fixture_main(entry):

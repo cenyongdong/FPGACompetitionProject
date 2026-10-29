@@ -20,4 +20,6 @@
 
 输入路径：`control/input_config.py` 显式选择 → `input/csi.cpp` 或 `input/dataset.cpp` → `common/core.hpp` 最新完整窗口 → `preprocess/` → `inference/` → `pose/` → `display/` 与独立 PC。官方入口读取原始 CSI 并执行推理，有限播放在 EOF 正常收尾。
 
+排版约定：C++、Python 和 PC 核心 JavaScript 使用真实 Tab 缩进，编辑器按 4 列显示；逻辑阶段之间留空行，注释重点说明数据所有权、输入轮次和资源释放条件。C++／JavaScript 使用上级目录的 `.clang-format`（本轮使用 clang-format 23.1），编辑器设置见 `.editorconfig`。Python 缩进调整须保持语法树和控制流不变。
+
 本目录是当前 180-query 主链的维护位置。预处理、HDMI 底层和兼容声明从已验证历史实现原样收拢；原 `demo_v1/`、旧 `software/core/display/` 及 r47／r53 副本继续供历史工程使用。不要用新文件覆盖历史包。`pose/` 中的实验性 PL 扩展仅保留，不因此恢复开发；可选相位分支仍在 `software/core/input/`，未接入正式运行目标。

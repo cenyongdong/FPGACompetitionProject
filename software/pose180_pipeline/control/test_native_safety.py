@@ -67,6 +67,14 @@ def blocked_case(binary,root):
         if service.live(native):os.kill(native['pid'],signal.SIGKILL);wait_for(lambda:not service.live(native))
         if supervisor.poll() is None:supervisor.wait(timeout=5)
         if logger:wait_for(lambda:not service.live(logger))
+        if native:
+            # A zombie group leader is not live(), but its other threads can
+            # still be dropping shared socket FDs. Reap our adopted mock only
+            # after the kernel has finished the whole thread group.
+            def native_reaped():
+                try:return os.waitpid(native['pid'],os.WNOHANG)[0]==native['pid']
+                except ChildProcessError:return not Path('/proc/%d'%native['pid']).exists()
+            wait_for(native_reaped)
         reap();ports_released(ports)
 
 
