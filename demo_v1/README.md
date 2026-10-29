@@ -1,5 +1,7 @@
 # demo_v1：论文CSI → Lite融合推理 → 主机实时3D
 
+**版本定位（2026-10-29）：** 本页保留早期工程、兼容接口或对应批次结果，文中的“当前”只指该版本。现行 180-query 主链在[主工程](../software/pose180_pipeline/README.md)，运行及验收范围见[最终进度](../PROJECT-PROGRESS.md)；旧命令不作为最新部署入口。
+
 本目录保存独立demo，BOOT、共享FP16模型、SDK、CPU数学、Gather注册和NPU分配保持。HDMI、VPU和RTSP不在本程序链接或启动范围内。
 
 ## 数据和模块

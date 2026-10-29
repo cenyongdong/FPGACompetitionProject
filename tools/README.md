@@ -1,5 +1,7 @@
 # Windows Icraft 独立依赖
 
+**工具目录导航（2026-10-29）：** [全部工具与历史记录](../DOCUMENTATION.md)；当前主链构建／打包在 [pose180_pipeline/tools](../software/pose180_pipeline/tools)，实采服务见 [autostart](../software/pose180_pipeline/resident/autostart/README.md)，模型部署见 [pose180](pose180/STATUS.md)。下文是 Icraft 环境工具说明，旧 MCP 试验不代表当前主链工具选择。
+
 2026-10-01 经用户批准实施第一阶段：下载两个 NVIDIA 官方 ZIP，建立独立依赖目录和启动器，验证 DLL 加载及 CLI 帮助。当前验证已通过；模型编译、量化、CPU/GPU 推理及 ZG330 实板运行尚未验证。
 
 ## 使用

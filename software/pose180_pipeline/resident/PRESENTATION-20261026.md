@@ -1,5 +1,7 @@
 # 展示精简、防闪现复验与 PS／PL 滤波测时
 
+**阶段范围（2026-10-29 核对）：** 本页说明相应算法或历史测试，不表示当前设备仍在运行该包。最终配置、三片段素材与最后状态见[项目进度](../../../PROJECT-PROGRESS.md)和[恢复入口](../../../FPGA/hdmi_candidate/RESUME.md)。源码链接指向现存维护位置；旧运行结果、参数与 BOOT 身份保留原范围，旧远端目录和采集输入可能已按收尾要求清理。
+
 2026-10-26。最新合格的 `probe-free-drain-v1` 位流保留主动启动消费；原有 HDMI 实际已经使用 PS 上的 One Euro 后处理。位流本身此前没有 PL 滤波核，旧 PC 启动入口选择原始 39383 通道时会绕过后处理。新入口选择 39385 派生结果。
 
 ## 画面与算法
@@ -47,7 +49,7 @@ r1／r2／r4／r5 原生退出 0、HDMI STOP 完成、无设备所有者，全�
 | 历史 r11 的 205 帧 | 7.293 | 6.419 | 50.190 | 107.153 |
 | 历史 r12 的 221 帧 | 9.768 | 6.388 | 37.280 | 114.680 |
 
-原始每次测量、输入／程序哈希和硬件身份：[PS 原始结果](../../../.local/pose-filter-ps-benchmark-20261026-r1/results.json)。复现源码为 [filter_benchmark.cpp](filter_benchmark.cpp)、[benchmark_ps.py](benchmark_ps.py) 和 [pose_replay.cpp](pose_replay.cpp)。ARM 目标 `filter_benchmark`／`pose_replay` 与实时服务链接相同 `pose_postprocess` 库。`benchmark_ps.py` 的目录布局和有限重复次数写在脚本中；记录是历史结果回放，不作为新推理计数。
+原始每次测量、输入／程序哈希和硬件身份：[PS 原始结果](../../../.local/pose-filter-ps-benchmark-20261026-r1/results.json)。复现源码为 [filter_benchmark.cpp](../tools/native/filter_benchmark.cpp)、[benchmark_ps.py](../control/benchmark_ps.py) 和 [pose_replay.cpp](../tools/native/pose_replay.cpp)。ARM 目标 `filter_benchmark`／`pose_replay` 与实时服务链接相同 `pose_postprocess` 库。`benchmark_ps.py` 的目录布局和有限重复次数写在脚本中；记录是历史结果回放，不作为新推理计数。
 
 在新候选 r5 的真实 CSI／NPU／HDMI／PL 滤波并行运行期间，用同一 CPU 二进制再次测量：42 坐标浮点平均 **6.406 μs**、P95 6.270 μs、最大 527.720 μs；126 坐标浮点平均 **18.501 μs**、P95 18.510 μs、最大 39.930 μs；相应定点平均 3.779／10.798 μs。长尾保留，不删异常值；本轮未绑核，不能据此宣称硬实时上界。原始并发测时位于 `.local/pose-stabilizer-live-20261026-r5/ps-loaded-kernel.json`，没有额外 SDK 调用。
 
@@ -95,7 +97,7 @@ r5 的启动消费器在 SDK 前实际消费 **16 拍**，安全终态后进入�
 
 - RTL 及隔离工程入口：[prepare_integrated.py](../../../FPGA/hdmi_candidate/pose_stabilizer/prepare_integrated.py)。完整构建及 DCP 在 `.local/pose-filter-integration-20261026-r2`；位流／BOOT 在其 `boot-package/`，源与约束身份由 `reports/qualification.json` 记录。
 - 最终 ICAP 适配 bit SHA256：`920f89a91a7e3117fc314fa0f4539c5350c8aca6421969dbeedc21c81078e4f4`；候选 BOOT：`a22faaa71cfde653e03898d2d77bd3adee633f3d0b47b710b87c76bf2a22e291`。`reports/package-review.json` 验证 PL 之外的 BOOT 字节与原版一致。
-- CPU／PL 两种 ARM64 构建在该候选 `software/`，`identity.json` 明确匹配 profile；CPU 计时版已完成原生及 ARM64 编译，PS 基准已实际执行，未把新 CPU 服务二进制再开一个 SDK 上板包。后续软件包由 [prepare_presentation.py](prepare_presentation.py) 准备新预算，不复用关闭包。
+- CPU／PL 两种 ARM64 构建在该候选 `software/`，`identity.json` 明确匹配 profile；CPU 计时版已完成原生及 ARM64 编译，PS 基准已实际执行，未把新 CPU 服务二进制再开一个 SDK 上板包。后续软件包由 [prepare_presentation.py](../control/prepare_presentation.py) 准备新预算，不复用关闭包。
 - 原生后处理、PL 适配及 HDMI 渲染测试通过；PC 五项测试通过。定点适配与浮点最大差 `1.3113e-5`，噪声测试 RMS 降低 56.86%，15 Hz 连续运动测试额外滞后 66.67 ms；这些离线指标不证明真实人物精度。
 
 ## 近期显示问题复盘（离线分析，未修改算法或启动板测）
@@ -201,7 +203,7 @@ HDMI 渲染／显示状态测试与 PC 五项通道测试通过。发现显示�
 
 不直接启用固定 0.5 米骨长裁剪、2／3 m/s 全关节统一速度门、1 秒可见保持、运动外推或强制 IK。官方训练标注按原坐标输入，官方评估把误差乘 1000 输出毫米；但数据集演示使用合成播放时间，现场尺度／时间及不同关节速度须分别核对，不能把播放速度或模型异常当作生理极限证据。骨长合理也不能证明人物关联正确。有关差异化参数、局部关节失效和隐藏身份延长仍为候选设计，不在本次评估中实现；原 250 ms 可见上限、无外推规则及正式参数保持。
 
-交付源码：[后处理核](../../core/pose/postprocess.cpp)、[测试](postprocess_tests.cpp)、[回放及统计](pose_replay.cpp)。已编译的 CPU／PL profile 候选在 `.local/pose-temporal-v4-20261026/software/`，`identity.json` 绑定实际二进制与 profile，均以 CPU 为默认。最新整机合格位流沿用前述产物，本阶段没有 RTL／位流变化。当前推荐将 v4 用作下一次有现场真值的有限对照候选，继续检查弱目标漏显和跨 ID 替换，暂不认定现场显示效果通过。
+交付源码：[后处理核](../src/pose/postprocess.cpp)、[测试](../tests/native/postprocess_tests.cpp)、[回放及统计](../tools/native/pose_replay.cpp)。已编译的 CPU／PL profile 候选在 `.local/pose-temporal-v4-20261026/software/`，`identity.json` 绑定实际二进制与 profile，均以 CPU 为默认。最新整机合格位流沿用前述产物，本阶段没有 RTL／位流变化。当前推荐将 v4 用作下一次有现场真值的有限对照候选，继续检查弱目标漏显和跨 ID 替换，暂不认定现场显示效果通过。
 
 ## 2026-10-27：v5 后处理与已取消的 PL 扩展
 

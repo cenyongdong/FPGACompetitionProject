@@ -1,5 +1,7 @@
 # Lite Host三样本数值参考：用户执行说明（2026-10-05）
 
+**旧链入口（2026-10-29）：** 本页属于早期 pose-v1 诊断／验证，当前部署从[最终进度](../../PROJECT-PROGRESS.md)进入；旧主机路径、板端目录、算子计数与阶段授权不能套用最新演示。
+
 状态：用户Host参考退出码1，日志已定位Session::Create<HostBackend>绑定op_id=1 MatmulNode失败，尚未执行样本前向；根因仍待库/注册审查。见HOST-BINDING-REVIEW-20261005.md。暂停重跑及数值比较/mixed，下面执行命令保留为历史记录，不再次运行。
 
 后续独立注册探针已确认Matmul及ZG图六个Host节点中的五个无注册，Gather有注册；

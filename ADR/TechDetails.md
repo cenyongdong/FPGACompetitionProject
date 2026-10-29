@@ -1,25 +1,25 @@
 # Wi-Fi 人体三维姿态项目技术实现汇报
 
-状态整理：2026-10-27。现行架构按[ADR_49](ADR_49.md)与[ADR_50](ADR_50.md)：**真实三 RX CSI 直达 Lite，PS 预处理、NPU 运行 180-query 模型，PS 后处理／绘图、PL 本地 HDMI；PC 独立消费派生结果。** 本文描述当前源码与接口，功能实现、候选验证和实际运行版本分别认定。最近实板使用 v3 后处理；当前 v4 源码已完成离线和 PS 回放，尚未用于新实时推理。版本与最后恢复状态见[RESUME](../FPGA/hdmi_candidate/RESUME.md)。
+状态整理：2026-10-29。现行架构按[ADR_49](ADR_49.md)与[ADR_50](ADR_50.md)：**真实三 RX CSI 直达 Lite，PS 预处理、NPU 运行 180-query 模型，PS 后处理／绘图、PL 本地 HDMI；PC 独立消费派生结果。** 本文描述当前源码与接口，功能实现、候选验证和实际运行版本分别认定。最终包采用原 epoch99、Top3／严格 score >0.2 与 v5 CPU 多人后处理；官方文件和实时 CSI 两入口保留。版本与最后恢复状态见[RESUME](../FPGA/hdmi_candidate/RESUME.md)。
 
 | 文档职责 | 维护位置 |
 |---|---|
 | 当前模块、接口、缓存与生命周期 | 本文现行实现部分；[常驻核心](../software/pose180_pipeline/resident/README.md) |
-| 展示、v4 回放、PS／PL 测时与最新集成位流 | [PRESENTATION-20261026.md](../software/pose180_pipeline/resident/PRESENTATION-20261026.md) |
+| 后处理演进、PS／PL 测时与既有合格位流 | [PRESENTATION-20261026.md](../software/pose180_pipeline/resident/PRESENTATION-20261026.md) |
 | CSI 恢复与历史实测 | [窗口恢复](../software/pose180_pipeline/resident/WINDOW-RECOVERY.md)、[相位跟踪](../software/pose180_pipeline/resident/PHASE-TRACKING.md)、[PC 独立显示](../software/pose180_pipeline/resident/STUTTER-VALIDATION.md) |
 | 模型与数值误差 | [模型状态](../tools/pose180/STATUS.md)、[部署结果](../tools/pose180/deploy/RESULTS.md) |
 | HDMI 所有权、启动消费与硬件保护边界 | [INTEGRATION.md](../FPGA/hdmi_candidate/INTEGRATION.md)、[保留消费候选](../FPGA/hdmi_candidate/probe_free_drain/README.md)、[独立守卫离线结果](../FPGA/hdmi_candidate/pose_stabilizer/README.md) |
 | 执行规则、问题与后续顺序 | [Agents.md](../Agents.md)、[DIFFICULTIES.md](../DIFFICULTIES.md)、[ToDoLists.md](../ToDoLists.md) |
 
-2026-10-27 当前阶段：官方训练／测试 CSI 从板端本地文件进入同一推理链，实时 CSI 输入关闭，HDMI／PC 画面不改。见[数据集阶段记录](../software/pose180_pipeline/resident/DATASET-DEMO.md)；下图同时保留长期实时分支。
+最终演示默认从板端本地文件读取官方原始 CSI，顺序播放 1／2／3 人；也可显式选择实时 CSI，两个源互斥。当前片段见[最终演示清单](../software/pose180_pipeline/resident/DATASET-PLAYLIST.md)，早期六片段见[历史数据集验证](../software/pose180_pipeline/resident/DATASET-DEMO.md)。
 
 ## 现行实现：设备分工与端到端数据流
 
 ```mermaid
 flowchart LR
   TX[TX 开机服务与本机续期] --> RX[三 RX 本地采集与自动重连]
-  RX -->|PCAP / TCP 39033| CSI[PS 同事件配对与有界组窗]
-  CSI -. 本阶段关闭 .-> L[最新完整窗口 / 原预处理]
+  RX -->|PCAP / TCP 39033| CSI[PS 自适应配对与有界组窗]
+  CSI -->|选择 live_csi 时| L[最新完整窗口 / 原预处理]
   D[官方 train 或 test 连续片段 / 本地 Dataset] --> L
   L --> N[唯一 SDK 所有者 / 180-query NPU]
   N --> R[完整拥有值原始结果]
@@ -35,7 +35,7 @@ flowchart LR
   S -.-> ST[TCP 39384 状态]
 ```
 
-TX 四个 LAN 口分别接开发板、RX1、RX2、RX3；PC 接 RX 空闲 LAN 作开发观察，不转发 CSI、不驱动采集心跳、不回传显示许可。RX1／TX／RX2／RX3 管理地址为 `.50.1/.50.2/.50.3/.50.4`；板端运行包配置 `.50.49/24`，管理保留 `.126.49`。已安装的[路由器开机服务](../software/pose180_pipeline/resident/autostart/README.md)与旧有限包无线 load／guard 互斥，不改变 LAN／DHCP，也不自动启动板端 SDK。
+TX 四个 LAN 口分别接开发板、RX1、RX2、RX3；PC 接 RX 空闲 LAN 作开发观察，不转发 CSI、不驱动采集心跳、不回传显示许可。RX1／TX／RX2／RX3 管理地址为 `.50.1/.50.2/.50.3/.50.4`；板端运行包配置 `.50.49/24`，管理保留 `.126.49`。已安装的[路由器开机服务](../software/pose180_pipeline/control/autostart/README.md)与旧有限包无线 load／guard 互斥，不改变 LAN／DHCP，也不自动启动板端 SDK。
 
 平台为悟净 Lite／JFMQL30TAI676H、ARM64 Linux、Icraft 3.39.0／ZG330。r45 完整诊断基线保留；其独立派生版本分别提供“去旁路诊断、保留主动消费”和“再加 4 路滤波”。后者已完成物理资格和有限板测，实际 GP 时钟为 **100 MHz**，没有新增时钟、DMA 主机或 HP 通路。独立精简守卫仍未取得部署资格，不能与已测消费候选混称。AI 四路、HP 分配及既有两项 AI 时序例外范围保持；VPU／RTSP／旧 100-query 为历史路径。
 
@@ -43,16 +43,16 @@ TX 四个 LAN 口分别接开发板、RX1、RX2、RX3；PC 接 RX 空闲 LAN 作
 
 | 模块 | 实现入口与职责 |
 |---|---|
-| 源端采集与开机服务 | [router_guard.c](../software/pose180_pipeline/resident/router_guard.c)、[router_ctl.sh](../software/pose180_pipeline/resident/router_ctl.sh)、[autostart](../software/pose180_pipeline/resident/autostart/README.md)：TX 本机续期、RX 捕获／有界发送／重连，不依赖 PC |
-| CSI 与常驻编排 | [csi.cpp](../software/pose180_pipeline/resident/csi.cpp)、[ingress.cpp](../tools/nexmon/board/ingress.cpp)、[main.cpp](../software/pose180_pipeline/resident/main.cpp)、[core.hpp](../software/pose180_pipeline/resident/core.hpp)：解析、共同窗口、代次隔离、唯一 SDK 所有者和最新值调度 |
-| 数据集输入 | [dataset_input.py](../software/pose180_pipeline/resident/dataset_input.py)、[dataset.cpp](../software/pose180_pipeline/resident/dataset.cpp)：复用原 MAT 整理／PIWCSI2 解码，有限播放、EOF 安全退出，与实时及 TCP 输入互斥 |
-| 数学与推理 | [preprocess.cpp](../software/core/input/preprocess.cpp)、[runtime.cpp](../software/pose180_pipeline/board/runtime.cpp)：原预处理、180-query 图、公开 SDK 输出读回 |
-| 人物后处理 | [postprocess.cpp](../software/core/pose/postprocess.cpp)、[postprocess.hpp](../software/core/pose/postprocess.hpp)：SDK 无关核心，实时与回放共用；筛选、去重／关联、异常门限、生命周期与滤波 |
-| 可选 PL 滤波 | [pl_filter.hpp](../software/core/pose/pl_filter.hpp)、[RTL／集成入口](../FPGA/hdmi_candidate/pose_stabilizer/README.md)：匹配 profile 后显式启用，只处理已关联坐标，不承担人物选择 |
-| 本地显示 | [hdmi_renderer.cpp](../software/core/display/hdmi_renderer.cpp)、[hdmi_output.cpp](../FPGA/hdmi_candidate/diagnostics/native_rgb565_r53/display/hdmi_output.cpp)：CPU RGB565、同 Device 帧分配、采纳和 STOP 证明 |
-| PC 与网络 | [io.cpp](../software/pose180_pipeline/resident/io.cpp)、[resident.mjs](../software/pose180_pipeline/host/resident.mjs)、[presentation.mjs](../software/pose180_pipeline/host/presentation.mjs)：原始／派生订阅、最新值缓存与断线恢复，无 ACK |
-| 记录与监督 | [journal.cpp](../software/pose180_pipeline/resident/journal.cpp)、[bounded_log.py](../software/pose180_pipeline/resident/bounded_log.py)、[service.py](../software/pose180_pipeline/resident/service.py)：异步有界记录、单实例、资源观察、安全退出 |
-| 离线复现与计时 | [pose_replay.cpp](../software/pose180_pipeline/resident/pose_replay.cpp)、[filter_benchmark.cpp](../software/pose180_pipeline/resident/filter_benchmark.cpp)：同源历史回放与纯滤波／整体后处理分项 |
+| 源端采集与开机服务 | [router_guard.c](../software/pose180_pipeline/control/router_guard.c)、[router_ctl.sh](../software/pose180_pipeline/control/router_ctl.sh)、[autostart](../software/pose180_pipeline/control/autostart/README.md)：TX 本机续期、RX 捕获／有界发送／重连，不依赖 PC |
+| CSI 与常驻编排 | [csi.cpp](../software/pose180_pipeline/src/input/csi.cpp)、[adaptive_ingress.cpp](../software/pose180_pipeline/src/input/nexmon/adaptive_ingress.cpp)、[main.cpp](../software/pose180_pipeline/src/app/main.cpp)、[core.hpp](../software/pose180_pipeline/src/common/core.hpp)：解析、共同窗口、代次隔离、唯一 SDK 所有者和最新值调度 |
+| 数据集输入 | [dataset_input.py](../software/pose180_pipeline/control/dataset_input.py)、[dataset.cpp](../software/pose180_pipeline/src/input/dataset.cpp)：复用原 MAT 整理／PIWCSI2 解码，有限播放、EOF 安全退出，与实时及 TCP 输入互斥 |
+| 数学与推理 | [preprocess.cpp](../software/pose180_pipeline/src/preprocess/preprocess.cpp)、[runtime.cpp](../software/pose180_pipeline/src/inference/runtime.cpp)：原预处理、180-query 图、公开 SDK 输出读回 |
+| 人物后处理 | [postprocess.cpp](../software/pose180_pipeline/src/pose/postprocess.cpp)、[postprocess.hpp](../software/pose180_pipeline/src/pose/postprocess.hpp)：SDK 无关核心，实时与回放共用；筛选、去重／关联、异常门限、生命周期与滤波 |
+| 可选 PL 滤波 | [pl_filter.hpp](../software/pose180_pipeline/src/pose/pl_filter.hpp)、[RTL／集成入口](../FPGA/hdmi_candidate/pose_stabilizer/README.md)：匹配 profile 后显式启用，只处理已关联坐标，不承担人物选择 |
+| 本地显示 | [hdmi_renderer.cpp](../software/pose180_pipeline/src/display/hdmi_renderer.cpp)、[hdmi_output.cpp](../software/pose180_pipeline/src/display/hdmi_output.cpp)：CPU RGB565、同 Device 帧分配、采纳和 STOP 证明 |
+| PC 与网络 | [io.cpp](../software/pose180_pipeline/src/io/io.cpp)、[resident.mjs](../software/pose180_pipeline/host/resident.mjs)、[presentation.mjs](../software/pose180_pipeline/host/presentation.mjs)：原始／派生订阅、最新值缓存与断线恢复，无 ACK |
+| 记录与监督 | [journal.cpp](../software/pose180_pipeline/src/diagnostics/journal.cpp)、[bounded_log.py](../software/pose180_pipeline/control/bounded_log.py)、[service.py](../software/pose180_pipeline/control/service.py)：异步有界记录、单实例、资源观察、安全退出 |
+| 离线复现与计时 | [pose_replay.cpp](../software/pose180_pipeline/tools/native/pose_replay.cpp)、[filter_benchmark.cpp](../software/pose180_pipeline/tools/native/filter_benchmark.cpp)：同源历史回放与纯滤波／整体后处理分项 |
 
 | 端口／窗口 | 契约 |
 |---|---|
@@ -68,11 +68,11 @@ PIWFUL3 包含 128 字节头、256 字节选中结果、43,200 字节 tokens、7
 
 ## 现行实现：CSI、模型与后处理契约
 
-三 RX 对齐同一无线事件，再按 3 RX×3 天线×30 载波×20 时间点组窗。300 Hz／20 点非重叠步进的理想输入为 15 窗／秒，不是实测吞吐承诺；缺失窗不补造。原复数 CSI 预处理输出 float32 `[1,180,60]`，幅度、相位、token 排列保持。采集时钟与板端单调时钟分开，未同步墙钟不用来计算端到端延迟。
+实时入口默认使用[自适应组窗](../software/pose180_pipeline/resident/ADAPTIVE-CSI.md)：优先同事件，允许受控的附近帧匹配；严格同事件路径保留。每窗按 3 RX×3 天线×30 载波×20 时间点组窗。300 Hz／20 点非重叠步进的理想输入为 15 窗／秒，不是实测吞吐承诺；缺失窗不补造。原复数 CSI 预处理输出 float32 `[1,180,60]`，幅度、相位、token 排列保持。采集时钟与板端单调时钟分开，未同步墙钟不用来计算端到端延迟。
 
 模型为 180-query 迁移最佳 epoch99，输出 `[1,180]` 分数及 `[1,180,14,3]` 姿态，不含旧 100-query 图的 TopK／GatherElements／ScatterND Host 节点与内部读桥。Runtime 保留单 Session、固定输入、公开 SDK 等待与首次读回；正常帧按既有边界调用 `reset(1)`，这不是失败 SDK 的自动重建。设备、写帧及 CSR 仅由同一线程拥有，不能把 ADDR／BOTH 当普通 Linux 指针。
 
-后处理保持 **Top3 → 严格 score > 0.2 → 人物级去重／关联与异常拒绝 → One Euro → 展示状态**；不从第四名补位，不改原始结果。v4 保留完整合格 Top3 供历史连续性选择，优先已确认人物；从滤波中心预测并低通中心速度，增加弱相似目标延期与有见证的新旧身份交接。至多 3 条确认及 3 条待确认，默认连续三次确认、250 ms 显示／身份上限；暂失不外推、不续写有效观测时间，跨会话／恢复代次或时间倒退清空。参数及启发式取舍见[最新候选记录](../software/pose180_pipeline/resident/PRESENTATION-20261026.md#2026-10-27v4-人物级时序去重及-ps-回放验证)，不能把启发式身份当作真实人物真值。
+后处理保持 **Top3 → 严格 score > 0.2 → 人物级去重／关联与异常拒绝 → One Euro → 展示状态**；不从第四名补位，不改原始结果。v5 保留完整合格 Top3 供连续性选择，关联预测与显示滤波解耦，并对局部异常进行门控；早期 v4 的预测与身份交接取舍保留在历史记录。至多 3 条确认及 3 条待确认，默认连续三次确认、250 ms 显示／身份上限；暂失不外推、不续写有效观测时间，跨会话／恢复代次或时间倒退清空。参数及启发式取舍见[最新候选记录](../software/pose180_pipeline/resident/PRESENTATION-20261026.md#2026-10-27v5-后处理与已取消的-pl-扩展)，不能把启发式身份当作真实人物真值。
 
 坐标 One Euro 的常驻 PS 配置已按用户最新要求改为 `min_cutoff=0.5 Hz, beta=0.3, d_cutoff=1 Hz`，启动参数及实际身份随[数据集实测](../software/pose180_pipeline/resident/DATASET-DEMO.md)记录；首次确认初始化，不修骨长、不显示插帧。独立核心／历史固定点对照仍保留 `1／0.5／1` 参考默认，常驻调用方显式传入新配置。PS 默认浮点；既有可选 PL 为 Q16.16、按坐标模 4 分银行，系数仍为旧值，此次调参仅使用 CPU 后端。新增 PL 已取消。人物关联、门控和生命周期在 PS，v5 关联中心与显示滤波解耦。既有 CSR 总开销超过 CPU 滤波，不能据硬件纯计算周期宣称端到端加速。
 
@@ -104,7 +104,9 @@ HDMI 保留标题、状态、帧号与骨架／地面；PC 另有透视／正面
 
 ## 现行实现：持续采集、分级恢复与退出
 
-路由器开机模式将资产保存于JFFS，运行目录与日志只写`/tmp`；原KoolShare开机脚本保留。每次开机自动尝试一次，等无线接口及本机身份就绪后启动；TX保留60秒固件租约／10秒本机续期，RX等待板端TCP39033并自动重连。专用`continuous`标记和时长0允许常驻守护；持续管道捕获同时移除时间与包数结束条件，文件采集及旧有限包保持原预算。持久服务与旧包无线`load/start`互斥。启停、实际重启结果及异常处理边界统一见[开机服务记录](../software/pose180_pipeline/resident/autostart/README.md)。
+当前实时默认采用自适应容限、后台重匹配和完整窗口边界切换，坏记录在可信 PCAP 边界内隔离，见[最终实时集成](../software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)。下述 r4～r8 阈值和时钟跟踪是严格组窗路径的历史演进，不应直接当作自适应入口的全部参数。
+
+路由器开机模式将资产保存于JFFS，运行目录与日志只写`/tmp`；原KoolShare开机脚本保留。每次开机自动尝试一次，等无线接口及本机身份就绪后启动；TX保留60秒固件租约／10秒本机续期，RX等待板端TCP39033并自动重连。专用`continuous`标记和时长0允许常驻守护；持续管道捕获同时移除时间与包数结束条件，文件采集及旧有限包保持原预算。持久服务与旧包无线`load/start`互斥。启停、实际重启结果及异常处理边界统一见[开机服务记录](../software/pose180_pipeline/control/autostart/README.md)。
 
 RX守护每次连接创建新的捕获代次，连接结束后按2／4／8／16／30秒退避；流式捕获不再每16秒主动结束。r5将网络重连退避集中到RX，板端即时接收合法连接。配对／时钟失锁或2秒静默只清空共同组窗代次，保留三个TCP及各自PCAP解析器；实际断开、500ms采集年龄漂移、格式错误或10秒无字节时，仅关闭受影响RX。r7将运行中已产出过窗口的代次无有效窗阈值从10秒缩短为2秒；首次／重新学习代次保留5秒预算，原1秒校准不变。连续失败超过2次／5次，仅对组窗增加250ms／1秒冷却，其间继续排空数据，不拒收TCP。
 
@@ -133,11 +135,13 @@ r8常驻入口开启`track_clock`，严格有限模式关闭且禁止开启。�
 | SDK异常、非法索引或非有限输出 | 保存首次原值并隔离，不发布该结果、不自动重开SDK，状态通道保留 |
 | HDMI提交或设备通路异常 | 停止新的业务提交，遵守原STOP／排空和帧归属；不由进程退出推断硬件安全 |
 
+当前生命周期还包含部分构造回滚、重复释放防护和 NPU 在途守卫：未证明完成时保留资源／独占并报告 `release_blocked`，不把进程消失当作硬件释放。实现及故障验证见[最终审查](../software/pose180_pipeline/resident/FINAL-REVIEW.md)。
+
 正常退出依次停止输入线程、完成HDMI STOP／排空、释放显示帧和Runtime，然后写`completion.json`；监督同时检查原生退出码及设备占用，形成`outcome.json`。必要上板、BOOT及回退按用户最新自主板测授权执行，无需重复询问，仍记录每批范围和实际次数；r7已回退关闭，旧包不复活。D45及旧DATA的独立暂停保持。
 
 ## 当前验证结论与后续范围
 
-常驻主链已有软件故障注入、真实 CSI／新推理／HDMI 有限联合验证、RX 局部恢复及 PC 物理离线仍更新的证据。去诊断保留消费与 4 路滤波派生硬件的物理资格、有限板测分别成立；独立精简守卫的部署资格仍未成立。最新 v4 仅完成本机／ARM64、同源回放和 PS 测时，未替换现场版本。
+常驻主链已有软件故障注入、真实 CSI／新推理／HDMI 有限联合验证、RX 局部恢复及 PC 物理离线仍更新的证据。去诊断保留消费与 4 路滤波派生硬件的物理资格、有限板测分别成立；独立精简守卫的部署资格仍未成立。v5 已完成有限真实 CSI 与数据集双输出验证；最终 r3 最近既有记录为 420 帧，验证边界见[最终进度](../PROJECT-PROGRESS.md)。
 
 重影／跨 ID 突跳、秒级缺窗、长期无人值守与人体精度仍开放；运行中按 PL_KEY1 后黑屏失联样本没有被后续成功启动消除。CPU 为默认滤波后端，PL 作为已测实验后端。结果、限制与优先级分别见[最新实测](../software/pose180_pipeline/resident/PRESENTATION-20261026.md)、[问题索引](../DIFFICULTIES.md)和[下一步](../ToDoLists.md)。
 

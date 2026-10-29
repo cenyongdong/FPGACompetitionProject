@@ -1,5 +1,7 @@
 # HDMI启动故障工程排查交接
 
+**收尾说明（2026-10-29）：** 本文保留 D45 的事实、假设与旧 r53 问题；后续演示采用保留消费的合格硬件及 180-query 主链，结果见[项目进度](../../PROJECT-PROGRESS.md)。D45／D47 根因仍未关闭，difficulty 已解决仅表示工程处置完成；旧诊断命令与远端路径不再作为恢复入口。
+
 2026-10-24交接更新：本文以下是r26及此前的历史技术快照。后续已完成隔离反例、真实连续波形、原生协议检查及同启动有限消费；当前阻塞包含r53首次索引读取内容混合、持续实屏与联合长期。最新源码/数据流见[INTEGRATION](INTEGRATION.md)，最后恢复身份及额度见[RESUME](RESUME.md)，原值见[r53](../../tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。文中“PS内部HP FIFO”旧假设以[官方资料判读](diagnostics/PROTOCOL-CHECKER-REVIEW-20261023.md)的修正为准；旧操作方案不恢复授权。
 
 更新日期：2026年10月20日。适用对象：悟净Lite／FMQL30TAI／ZG330，现行Vivado2018.3原厂030ai与JFM适配工程。面向接手PS、PL、AXI互联及启动固件排查的工程师。

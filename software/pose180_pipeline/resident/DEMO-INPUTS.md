@@ -19,8 +19,8 @@
 
 ## 安全切换和查看
 
-1. 在板端包目录执行 `sh check.sh --input-source live_csi` 或 `sh check.sh --input-source official_dataset`。检查本身不初始化 SDK。
-2. 启动选定的一个入口。PC 在 Windows 执行包内 `start-pc.ps1`，默认连接 `192.168.50.49`，页面端口 `39380`。PC 断开不停止板端。
+1. 先按[最终部署说明](../../../Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)核对本次启动资格。首次未知 boot_id 或启动消费已用过时，安全停止后执行 `sh prepare-boot.sh`，安排正常重启；它本身不重写 BOOT 或重启。返回后在板端包目录执行 `sh check.sh --input-source live_csi` 或 `sh check.sh --input-source official_dataset`。检查本身不初始化 SDK。
+2. 需要 PC 展示时先在 Windows 启动包内 `start-pc.ps1` 并打开网页，再启动板端选定入口。默认板端 `192.168.50.49` 是临时别名；本机推荐固定有线 `-Board 192.168.126.49 -LocalAddress 192.168.126.100`，其它电脑使用自己的地址，见[PC 连接说明](../host/README.md)。页面端口 `39380`，PC 断开不停止板端。
 3. 执行 `sh stop.sh` 请求正常退出，随后 `sh status.sh` 检查 native／supervisor 已退出、`native_shutdown_complete=true`、设备占用为空和临时地址已清理。数据集 EOF 也需要检查关闭结果。
 4. **同一清单内的片段自动切换，不需要重启。** 程序完整退出后重新启动，或切换为另一种输入，仍需正常重启并重新预检。功能启动消费入口每次 FPGA 配置只能使用一次；安全退出不会重置它。安全停止确认后执行 `python3 board/startup.py prepare-boot`，再执行已授权的正常 `reboot`，回来后重新 `check` 和选择入口。
 

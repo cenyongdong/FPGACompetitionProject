@@ -1,5 +1,7 @@
 # 首版实施工具与证据
 
+**历史目录：** 这里是早期 100-query、混合 Host／NPU 与 VPU／RTSP 开发及取证。当前源码见 [180-query 主工程](../../software/pose180_pipeline/README.md)，现行进度见[项目总览](../../PROJECT-PROGRESS.md)。旧 NEXT／PLAN 不作为待执行任务，缺失附件按[文档引用说明](../../DOCUMENTATION.md#引用与归档)理解。
+
 最新入口：[software/demo运行说明](../../software/demo/README.md)、[DEMO-RESULTS](DEMO-RESULTS-20261011.md)、[TechDetails](../../ADR/TechDetails.md)、[demo检查点](evidence/demo-20261011-r4/next-checkpoint.json)。三窗口＋60窗口GUI全链通过，正常退出无后台；原高负载坏读排查按用户要求暂停，不自动继续旧NEXT。以下当前为历史。
 
 当前：目录预建与同租约物理晚源本批结束，DATA96首坏晚对，根因未修。[结果](PRODUCER-PREPARED-RESULTS-20261011.md)／[下一](PRODUCER-PREPARED-NEXT-20261011.md)／[恢复](evidence/producer-prepared-20261011-r1/next-checkpoint.json)。原文件与异常读取保留，测试连接全闭，管理83/100保持。以下当前为历史。

@@ -1,8 +1,10 @@
 # HDMI结构、接入过程与验证边界
 
-更新：2026-10-24。r45合格硬件已复用于有限启动消费、r47直接RGB565及r53单SDK线程流水调度。r53健康启动短样本29.521Hz、187次采纳后因首次索引内容混合停止；原BOOT已恢复，联合长期和持续实屏未通过。[当前实测/恢复](../../tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
+**现行范围（2026-10-29）：** 默认硬件已发布为 `probe-free-drain-filter-v1`，当前 180-query 主链及双输入已有限实板运行；接口与源码以[现行技术说明](../../ADR/TechDetails.md)、[核心目录](../../software/pose180_pipeline/src/README.md)为准。本页保留 r53 及更早诊断链，图中的完整归档／数值门不是现行演示阻塞条件。设备、备份与未验收边界见 [RESUME](RESUME.md)。
 
-本页区分当前诊断候选与历史三窗应用。历史原值不回写，当前授权/次数只见[RESUME](RESUME.md)，源码合并不表示候选已替换正式默认链路。
+历史更新：2026-10-24。r45合格硬件已复用于有限启动消费、r47直接RGB565及r53单SDK线程流水调度。r53健康启动短样本29.521Hz、187次采纳后因首次索引内容混合停止；原BOOT已恢复，联合长期和持续实屏未通过。[r53 当时实测/恢复](../../tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
+
+本页区分当时诊断候选与早期三窗应用。历史原值不回写，当前授权/次数只见[RESUME](RESUME.md)，源码合并不表示候选已替换正式默认链路。
 
 ## 分工与数据流
 
@@ -25,7 +27,7 @@ flowchart LR
 | 层 | 源码入口 | 职责及所有权 |
 |---|---|---|
 | 当前流水诊断应用 | [r53 main.cpp](diagnostics/native_rgb565_r53/joint/main.cpp) | 同一SDK线程推理与begin/poll采纳；最多一帧在途、末帧单独排空，未通过长期 |
-| PS原生绘图 | [hdmi_renderer.cpp](../../software/core/display/hdmi_renderer.cpp)、[hdmi_renderer.hpp](../../software/core/display/hdmi_renderer.hpp) | 直接1920×1080 RGB565LE；静态准备/动态绘制分离，扩大视口但骨架/标注物理大小保持 |
+| PS原生绘图 | [hdmi_renderer.cpp](../../software/pose180_pipeline/src/display/hdmi_renderer.cpp)、[hdmi_renderer.hpp](../../software/pose180_pipeline/src/display/hdmi_renderer.hpp) | 直接1920×1080 RGB565LE；静态准备/动态绘制分离，扩大视口但骨架/标注物理大小保持 |
 | 当前SDK显示适配 | [r53 hdmi_output.cpp](diagnostics/native_rgb565_r53/display/hdmi_output.cpp)、[采纳状态](diagnostics/native_rgb565_r53/display/adoption_state.hpp) | 同一Device分配/写帧/CSR；严格ID/地址/pending及200ms门，独立STOP证明后释放 |
 | 历史三窗应用与转换 | [software/hdmi_demo/main.cpp](../../software/hdmi_demo/main.cpp)、[skeleton_render.cpp](../../software/core/display/skeleton_render.cpp)、[hdmi_canvas.cpp](../../software/core/display/hdmi_canvas.cpp) | 保留旧720p RGB24→1080p RGB565路径及既有三窗边界，不作为r53最新软件入口 |
 | CSR与板级集成 | [hdmi_cam_router.sv](rtl/integration/hdmi_cam_router.sv)、[hdmi_board.sv](rtl/integration/hdmi_board.sv) | 保留原SDK低地址，显式译码HDMI窗口；静态图案、PLL与像素计数辅助观测 |

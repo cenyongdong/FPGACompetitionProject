@@ -1,5 +1,7 @@
 # 首版当前状态（2026-10-07，数值验收与P2更新）
 
+**历史状态记录：** 本页的“当前”和“下一步”属于早期开发阶段。最终交付与设备状态分别见[项目进度](../../PROJECT-PROGRESS.md)和[恢复入口](../../FPGA/hdmi_candidate/RESUME.md)；不从本页启动旧负载。
+
 > 2026-10-08当前：两缓冲启动三次回归及有限主线程Engine＋后台VPU三/27窗口通过，987原始编码帧全解码核验。[启动](VPU-STARTUP-RESULTS-20261008.md)、[常驻/预览](RESIDENT-RESULTS-20261008.md)、[恢复点](evidence/resident-20261008-r6/next-checkpoint.json)。下一在线owned AU/live555，保留原模型/数学/SDK/BOOT、主线程模式/两缓冲候选；旧后台Engine/六缓冲失败勿重跑。任务未被用户暂停，测试与SSH/SFTP已关闭，无后台。不是daemon/RTSP/整机5Hz/长期验收，预览名义10fps不当真实PTS；旧入口为历史。
 
 > 2026-10-08当前：真实推理→渲染→VPU的有限内容链路已核验，两成功码流一致；无规整的新进程重复仍在固件连续页分配失败，**启动稳定性未过**。[结果/视频](PIPELINE-RESULTS-20261008.md)、[下一门检](PIPELINE-NEXT-20261008.md)、[检查点](evidence/pipeline-20261008-r6/next-checkpoint.json)。下一先取证REQBUFS/STREAMON页状态再依据证据修正，随后常驻上下文/有界实时/在线RTSP。不是用户暂停，不自动规整/重试；旧阶段“当前/暂停”均为历史，整机/HDMI仍待。

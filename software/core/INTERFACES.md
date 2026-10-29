@@ -1,5 +1,7 @@
 # 正式核心接口与开发指南
 
+**版本定位（2026-10-29）：** 本页保留早期工程、兼容接口或对应批次结果，文中的“当前”只指该版本。现行 180-query 主链在[主工程](../pose180_pipeline/README.md)，运行及验收范围见[最终进度](../../PROJECT-PROGRESS.md)；旧命令不作为最新部署入口。
+
 2026-10-17 HDMI新增接口（旧演示尚未链接）：`pose::hdmi::canvas(rgb720)`返回拥有的1920×1080 RGB565LE字节；`pose::hdmi::Output(device,evidence)`由SDK所属主线程创建并持有设备引用与两块UDMA帧。`show(pixels,id)`完整写入空闲帧并等候地址/ID采纳后返回，`observe()`核对硬件故障，`close()`取得新响应和对应停止tag、idle／在途清零后显式释放。析构不能安全停止时保留缓冲并退出进程，不能假装完成释放。设备必须比Output活得更久；禁止独立进程分配重叠的SDK池或直接解引用BOTH地址。完整接口见[hdmi_output.hpp](display/hdmi_output.hpp)，范围及失败结果见[HDMI应用](../hdmi_demo/README.md)。
 
 本页以当前 `software/demo/CMakeLists.txt` 实际链接的实现为准。先读[核心导读](README.md)，再从[应用入口](../demo/board/main.cpp)沿数据流阅读；接口签名以对应头文件为准。命名空间中的 `pose_v1`、`cpu_candidate`、`mixed_candidate` 是保留的接口名，不表示应继续修改历史目录。

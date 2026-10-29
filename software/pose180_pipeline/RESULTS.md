@@ -1,5 +1,7 @@
 # 2026-10-25：180-query实测、归档修正与HDMI启动停止
 
+**版本定位（2026-10-29）：** 本页保留早期工程、兼容接口或对应批次结果，文中的“当前”只指该版本。现行 180-query 主链在[主工程](README.md)，运行及验收范围见[最终进度](../../PROJECT-PROGRESS.md)；旧命令不作为最新部署入口。
+
 本轮用主机模拟CSI输入，在原BOOT上运行180-query主图，计划52,800帧/30Hz，**未启用HDMI，未接入CSI实采**。实际完成7,840次推理，保留7,840份完整有效首次输出，其中7,839帧收到最终确认，最后1帧保留但未确认；完整原值共584,424,960字节。全部已保存记录通过180候选有限性、身份及selection检查；本批来源不重复，不能据此宣称重复输入一致性或模型精度通过。[完整归档解析](evidence/20261025/original-boot/hardware-analysis.json)、[Host实际汇总](evidence/20261025/original-boot/host-summary.json)
 
 停止原因是最后一次Host raw归档写回调耗时**1,019.7889ms**，触发既定1秒最老未确认帧保护；该帧板端拥有值与PC已归档净数据74,160字节逐字节相同。最后一帧板端处理17.41478ms，其中forward为1.26182ms，因此本次停止不能归因为NPU长尾。Host关闭连接后，板端报告`Truncated/idle CSI connection`并停止；没有SDK异常或数据校验失败证据。严格30Hz、全部逐帧33.333ms及原计划长期稳定性均未通过。[归档与板端原值核对](evidence/20261025/original-boot/hardware-failure-analysis.json)、[资源及末帧耗时](evidence/20261025/original-boot/hardware-resource-analysis.json)

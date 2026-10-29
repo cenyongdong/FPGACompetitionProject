@@ -1,12 +1,14 @@
 # r6：TX持续任务与定期续期
 
+**阶段范围（2026-10-29 核对）：** 本页说明相应算法或历史测试，不表示当前设备仍在运行该包。最终配置、三片段素材与最后状态见[项目进度](../../../PROJECT-PROGRESS.md)和[恢复入口](../../../FPGA/hdmi_candidate/RESUME.md)。源码链接指向现存维护位置；旧运行结果、参数与 BOOT 身份保留原范围，旧远端目录和采集输入可能已按收尾要求清理。
+
 2026-10-25。**r6已完成获准的10分钟真实CSI→新推理→HDMI验证、正常停止及原BOOT回退，包已关闭、全部余额0。** 同一TX任务完成61次续期且无续期失败；新版HDMI视角、大小、颜色及更新获现场确认。仍有约11秒的组窗等待后恢复，不能认定整体卡顿已经改善。r5及更早包保持关闭。
 
 ## 行为与接口
 
 原mode2每60秒耗尽18,000槽，结束后经用户态释放、配置和启动形成任务间隙。新增mode3保留300Hz的3333／3333／3334µs绝对节拍，同一上下文和定时器持续运行，以60秒固件租约约束后续发送。TX本机守护每10秒续期，不依赖PC、SSH会话或板端结果回执；退出、故障或失联不会自动创建新的发送任务。原mode2有限测试继续保留。
 
-共享定义见[tx_lease_protocol.h](../../../tools/nexmon/router/tx_lease_protocol.h)，固件生成器见[prepare_tx_task.py](../../../tools/nexmon/environment/prepare_tx_task.py)，守护见[router_guard.c](router_guard.c)。全部新增控制字按little-endian传递，不改变无线帧、RX的CSI／NMD3或PIWFUL3。
+共享定义见[tx_lease_protocol.h](../../../tools/nexmon/router/tx_lease_protocol.h)，固件生成器见[prepare_tx_task.py](../../../tools/nexmon/environment/prepare_tx_task.py)，守护见[router_guard.c](../control/router_guard.c)。全部新增控制字按little-endian传递，不改变无线帧、RX的CSI／NMD3或PIWFUL3。
 
 | 操作 | 契约 |
 |---|---|

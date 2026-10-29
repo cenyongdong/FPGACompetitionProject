@@ -16,6 +16,8 @@
 
 ## 一次启动顺序播放
 
+先按[最终部署说明](../../../Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)满足启动资格；未知 boot_id 或消费已使用时，须安全停止、prepare-boot 和正常重启后再执行下列命令。PC 先打开，避免错过短片开头。
+
 ```sh
 sh check.sh --input-source official_dataset
 sh start-dataset.sh

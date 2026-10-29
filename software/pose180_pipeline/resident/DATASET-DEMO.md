@@ -1,5 +1,7 @@
 # 官方数据集开发验证与视频演示
 
+**阶段范围（2026-10-29 核对）：** 本页说明相应算法或历史测试，不表示当前设备仍在运行该包。最终配置、三片段素材与最后状态见[项目进度](../../../PROJECT-PROGRESS.md)和[恢复入口](../../../FPGA/hdmi_candidate/RESUME.md)。源码链接指向现存维护位置；旧运行结果、参数与 BOOT 身份保留原范围，旧远端目录和采集输入可能已按收尾要求清理。
+
 2026-10-27，用户要求本阶段先关闭实时采集输入，使用 Person-in-WiFi 3D 官方数据集开发验证与效果视频演示，并允许加入训练集。**HDMI／PC 两个画面保持原样，不增加来源标签。** 长期真实 CSI 目标保留；模型、SDK、预处理及输出协议不改。后续用户明确将 PS One Euro 改为 `0.5／0.3／1` 并要求多个片段同时输出 HDMI／PC，最新实测见文末；此前两轮结果仍保留原参数身份。
 
 ## 数据集许可与比赛展示（2026-10-27 核对）
@@ -30,10 +32,10 @@
  → 板端 Dataset → 原预处理 → 原 SDK／NPU → 现有后处理 → 原样 HDMI／PC
 ```
 
-- [dataset_input.py](dataset_input.py)复用原 `aligned_payload`，按官方 split 列表选择一个连续录制片段，只读 CSI，不将 keypoint 真值注入输入或结果。文件记录原样本名、split、帧号映射及传输校验。
-- [dataset.cpp](dataset.cpp)复用原解码器／最新窗口槽，等待 SDK 初始化后按记录间隔输入。默认单次播放、不自动循环；EOF 后完成最后待执行帧，按原 HDMI STOP／资源释放流程退出。可靠性测试可显式设置 `--dataset-repetitions 1..30`，累计输入仍最多 9000；每轮使用新输入代次、保留原样本帧号与合成时间戳，重置跟踪，每帧仍执行新推理。状态记录 `dataset_passes`，重复片段不计作新场景样本。
+- [dataset_input.py](../control/dataset_input.py)复用原 `aligned_payload`，按官方 split 列表选择一个连续录制片段，只读 CSI，不将 keypoint 真值注入输入或结果。文件记录原样本名、split、帧号映射及传输校验。
+- [dataset.cpp](../src/input/dataset.cpp)复用原解码器／最新窗口槽，等待 SDK 初始化后按记录间隔输入。默认单次播放、不自动循环；EOF 后完成最后待执行帧，按原 HDMI STOP／资源释放流程退出。可靠性测试可显式设置 `--dataset-repetitions 1..30`，累计输入仍最多 9000；每轮使用新输入代次、保留原样本帧号与合成时间戳，重置跟踪，每帧仍执行新推理。状态记录 `dataset_passes`，重复片段不计作新场景样本。
 - `--dataset` 与 `--csi`／非零 `--input-port` 互斥，冲突在 IO／SDK 创建前拒绝。数据集模式不创建 TCP 39033、39382 监听，输出端口保持。
-- [prepare_presentation.py](prepare_presentation.py)新包默认数据集模式，必须提供 `--dataset`；[input_config.py](input_config.py)显式生成参数，缺少来源不能自动启用实时采集。默认 CPU 滤波，显式 PL 须匹配合格硬件。
+- [prepare_presentation.py](../control/prepare_presentation.py)新包默认数据集模式，必须提供 `--dataset`；[input_config.py](../control/input_config.py)显式生成参数，缺少来源不能自动启用实时采集。默认 CPU 滤波，显式 PL 须匹配合格硬件。
 - PIWCSI2／PIWFUL3／派生结果协议和两端显示代码均未改；来源仅进入身份、运行状态和文档。路由器既有自启动配置未修改，本阶段关闭的是板端实时输入通道。
 - 文件时间为指定播放节奏的合成时间轴，不是原射频实测时刻；输入过期仍用板端实际到达单调时钟。正常 EOF 可以早于预算结束，不计为长时间常驻通过。
 

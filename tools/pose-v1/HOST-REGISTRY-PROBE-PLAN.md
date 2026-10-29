@@ -1,5 +1,7 @@
 # Host注册探针方案（2026-10-05，已批准并执行）
 
+**旧链入口（2026-10-29）：** 本页属于早期 pose-v1 诊断／验证，当前部署从[最终进度](../../PROJECT-PROGRESS.md)进入；旧主机路径、板端目录、算子计数与阶段授权不能套用最新演示。
+
 用户明确“同意你进行”，代理按本范围完成编译、传板及一次30秒受限注册查询。
 探针退出码0、stderr空、回传哈希通过；Matmul及ZG六个Host节点中的五个缺注册，Gather有注册。
 完整结果HOST-REGISTRY-RESULTS-20261005.md及evidence/host-registry-20261005/review.json。

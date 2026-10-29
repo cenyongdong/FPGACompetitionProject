@@ -1,12 +1,14 @@
 # 180-query共享模型：训练状态与恢复入口
 
-最新启动核验：2026-10-27 13:25，Asia/Shanghai。用户已明确批准50轮学习率对照，按第130轮最佳权重及对应AdamW恢复；启动验证通过后已在GPU1、6开训，实际warmup已完成。当前活动任务见下，本次未连接Lite、路由器或恢复已暂停的板端工作；没有新增定时检查或自动重试。
+**最终交付与状态边界（2026-10-29）：** 当前演示选择迁移原始 epoch99，见[最终进度](../../PROJECT-PROGRESS.md)。本页 50 轮学习率对照的本机记录最后停在 10 月 27 日 13:25 左右的启动快照，未找到结束回执；不能写成现在仍在训练，也不能写成已经完成。本次未连接训练服务器或恢复训练，以下 PID／GPU／进度仅为历史观察。
 
-**前300轮实际训练均已完成；当前正在运行新批准的50轮学习率对照。** 前300轮包括先训练至200，再从130分支训练100轮，检查点编号131～230，未刷新从零分支最佳epoch130的141.9761mm。全部180-query实验中原口径最好仍是迁移epoch99的120.9958mm。迁移方案见[PLAN.md](PLAN.md)，当前活动训练及历史完成结果见下。
+历史启动核验：2026-10-27 13:25，Asia/Shanghai。用户已明确批准50轮学习率对照，按第130轮最佳权重及对应AdamW恢复；启动验证通过后已在GPU1、6开训，实际warmup已完成。当时活动任务见下，本次未连接Lite、路由器或恢复已暂停的板端工作；没有新增定时检查或自动重试。
+
+**前300轮实际训练均已完成；10 月 27 日启动快照记录了新批准的 50 轮学习率对照。** 前300轮包括先训练至200，再从130分支训练100轮，检查点编号131～230，未刷新从零分支最佳epoch130的141.9761mm。全部180-query实验中原口径最好仍是迁移epoch99的120.9958mm。迁移方案见[PLAN.md](PLAN.md)，当时训练快照及已完成结果见下。
 
 2026-10-27已完成[平台期分析与下一轮改进方案](TRAINING-ANALYSIS-20261027.md)，包含原epoch442实际batch128的日志核对、学习率／优化器／数据／损失检查。用户随后将A学习率对照批准为50轮；B／C及其它配方改动未启动。
 
-## 当前50轮学习率对照
+## 50轮学习率对照的历史启动快照
 
 运行目录：`/public/cyd/Person-in-WiFi-3D-repo/result/piw24_pose180_scratch_best130_lr_reheat50_20261027_r1`。配置`configs/wifi/petr_wifi_pose180_scratch_lr_reheat50.py`，查询入口`/home/ubuntu/miniconda3/envs/PersonInWIFI/bin/python -B tools/pose180/manage_reheat.py status`；不得重复prepare／validate／start。正式进程2026-10-27 13:20启动，监督PID57376/start_ticks9795627、torchrun PID57379/start_ticks9795856、rank0 PID57384；查询或控制前重新核对身份。
 
@@ -14,7 +16,7 @@
 
 CPU两线程、低优先级启动验证native exit0：真实两微批完成一次AdamW更新，step365430→365431，query／joint参数变化，loss／梯度／参数／优化器均有限。使用真实MMCV钩子检查iter0／1999／2000／2001／281099的LR边界；微型checkpoint保存探针使用模拟分数验证“本轮最佳差于父模型仍保存”“刷新历史最佳时独立更新”“原父权重不变”，不把探针分数当真实精度。[启动验证](results/lr-reheat50-20261027-r1/validation.json)。
 
-正式双卡启动后已采样确认：第1微批主lr2e-6，第1000微批约1.0991e-5；完成2000微批warmup后，2050／2100／2150微批均为2e-5。13:25快照为本轮第1/50轮、2150/5622微批，loss6.255784、query梯度0.381404、joint梯度0.100393，均有限；未见非有限值、OOM或异常退出。当前每卡上下文约1.8GiB，CUDA峰值分配约1.01GiB，其它GPU原任务仍在。[两rank恢复](results/lr-reheat50-20261027-r1/resumption.json)、[启动后进度](results/lr-reheat50-20261027-r1/progress.json)、[含真实warmup边界的启动进度记录](results/lr-reheat50-20261027-r1/startup-progress.jsonl)。此时尚未完成首轮7824帧评估，不能报告本轮MPJPE。
+正式双卡启动后已采样确认：第1微批主lr2e-6，第1000微批约1.0991e-5；完成2000微批warmup后，2050／2100／2150微批均为2e-5。13:25快照为本轮第1/50轮、2150/5622微批，loss6.255784、query梯度0.381404、joint梯度0.100393，均有限；未见非有限值、OOM或异常退出。该快照每卡上下文约1.8GiB，CUDA峰值分配约1.01GiB，其它GPU原任务仍在。[两rank恢复](results/lr-reheat50-20261027-r1/resumption.json)、[启动后进度](results/lr-reheat50-20261027-r1/progress.json)、[含真实warmup边界的启动进度记录](results/lr-reheat50-20261027-r1/startup-progress.jsonl)。此时尚未完成首轮7824帧评估，不能报告本轮MPJPE。
 
 每轮评估完整7824帧，本轮最佳由原生EvalHook独立保存为`best_mpjpe_epoch_N.pth`，不会因为没超过父模型而漏存；`historical_best.pth`独立保留从零分支父模型与本轮中的最好权重，`best_records.json`记录来源和分数。历史最佳起点为141.9761mm；迁移实验的独立最佳权重保持在原目录。周期checkpoint每10轮保留最近5份及最终epoch50，原始第130轮权重始终保持。正式训练仅启动一次，监督器等待原生退出，不轮询、不调度后续训练、不自动重试；进程状态、日志与恢复入口均持久保存。
 

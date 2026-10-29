@@ -1,52 +1,51 @@
-# HDMI交接与恢复入口
+# 当前设备、部署与恢复入口
+
+整理于 2026-10-29。本页开头是最终交付入口，下方有日期的记录仅说明当时执行结果；本文档整理没有连接设备或启动新测试。
 
 ## 当前入口（整理于 2026-10-29）
 
-**当前入口：[r3 最终演示包](../../Deliverables/pose180-three-clips-20261029-r3-final.tar.gz)及[部署说明](../../Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)。** 板端最新包保留在 `/root/pose180-three-clips-20261029-r3`；已读取到完整 420 帧双路输出、安全退出及空设备占用记录。历史上传目录已按用户要求清理，旧路径不再用于启动；关键原生记录已迁回本机，旧采集数据及重复本地副本已删除，详细范围见[收尾记录](../../.local/project-cleanup-20261029-r1/summary.json)。本轮未新启 SDK、重启或修改 BOOT。下方旧长时运行、旧包路径和未完成工作属于历史；路由器临时设置恢复等独立待办不因此宣称完成。
+- 使用 [r3 最终演示包](../../Deliverables/pose180-three-clips-20261029-r3-final.tar.gz)和[部署说明](../../Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)，源码入口为 [pose180_pipeline/src](../../software/pose180_pipeline/src/README.md)。原 epoch99、TopK=3、严格 score >0.2；官方 1／2／3 人在同一 SDK 生命周期顺播，实时接口保留。
+- 板端保留 `/root/pose180-three-clips-20261029-r3`。最后一次清理核验时 boot_id 为 `c289a43e-d6aa-4f3f-835d-d4aeb0848caf`，原生推理进程及设备占用为空。这是观察快照，后续启动仍须读取实际状态，不能复用旧 boot_id。
+- 最近既有 r3 运行记录：420 帧新推理、420 次 HDMI 采纳、420 帧 PC 发送、0 发送丢弃，`native_exit=0`、完整关闭、临时地址撤销。发送计数不等同浏览器逐帧绘制；不据此认定长期或精度通过。
+- 本次最终打包只补入 PC 启动／连接修正，板端内容未变；收尾期间未新启 SDK、重启或写 BOOT。完整清理与最后观察以[唯一原始记录](../../.local/project-cleanup-20261029-r1/summary.json)为准。
 
-**最新：两份自采训练模型已完成有限实板对比；用户要求换回原始epoch99，现已恢复。** 三个独立包复用r5验证工作区的安全程序、TopK=1／无阈值及现有显示，不覆盖历史r4。功能启动消费入口不可同boot重复使用，切换需安全退出后正常重启、重新预检；已保存一次scratch前置阻断及受控恢复原值。准确路径、当前boot_id、结果与结束状态统一见[本轮结果](../../.local/pose180-kinect-board-test-20261028-r1/README.md)，用法见[测试入口](../../software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)。旧批关闭回执、路由器临时设置与归档待办仍保留。
+## 启动与停止
 
-以下为此前r4交付、源码验证和最后一次实际运行的历史记录；其中“暂不更新／断网”已由上方最新准备授权与实际状态更新。
+完整命令以最终包部署说明为准。三个片段之间不重启；整套程序安全退出后再启动，或切换输入源，需要满足每次 FPGA 配置一次启动消费的保护规则。`prepare-boot.sh` 只准备下一次正常启动所需记录，本身不重写 BOOT、不重启、不运行 SDK；正常重启后重新预检。
 
-**最新本地交付：TopK=1、无置信度阈值 r4 生命周期加固启动包已完成，尚未部署或实板测试。** [启动包](../../Deliverables/history/software/pose180-top1-no-threshold-20261028-r4.tar.gz)（30,673,739 字节）、[SHA256](../../Deliverables/history/software/pose180-top1-no-threshold-20261028-r4.tar.gz.sha256)及[使用说明](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md)。原 epoch99 JSON／RAW、单人滤波、双路显示与合格 BOOT 保持，r1／r2／r3 包保留。补齐初始化与重复停止处理、清理全程独占、跨包未完成负载保护及临时地址写前记录；不设置 SDK 自启动或自动重试。程序 SHA256 `60f8bc3c0683af5adca6f491e89ef4fb35306c6e6631d53d92dc79a9848406a0`；完整身份见[package.json](../../.local/pose180-top1-no-threshold-20261028-r4/package.json)。
+PC 仅观察结果，不负责发包或初始化 SDK。当前电脑可使用 `-Board 192.168.126.49 -LocalAddress 192.168.126.100`，其它电脑使用自己的有线地址；具体依赖与诊断见 [PC 说明](../../software/pose180_pipeline/host/README.md)。板端 `.50.49` 是运行期间临时地址，正常结束后可能移除。
 
-新增初始化／清理 TERM、INT、HUP，监控异常、慢状态连接和地址所有权故障注入通过；完整 CLI 连续启停 3 轮，3 次并行包启动均被拒绝，3 次停止标记模拟写满仍正常退出，FD 数恢复 4→4。既有 r3 父死亡／日志回收／硬件未证明阻断测试，以及慢调用、慢 PC、记录故障等常驻回归通过；ARM64 构建及包检查完成。[新增故障结果](../../.local/pose180-top1-no-threshold-20261028-r4/robustness-verified/result.json)、[退出回归](../../.local/pose180-top1-no-threshold-20261028-r4/exit-cleanup-final/result.json)、[验证目录](../../.local/pose180-top1-no-threshold-20261028-r4/verification.json)、[解包重建](../../.local/pose180-top1-no-threshold-20261028-r4/source-check.json)。网络操作均用替身，未连接设备或更改网络。硬件 STOP／drain 无法证明时原 `_Exit(70)` 保护保持，实际 SDK 挂死／SIGKILL／SIGSEGV／掉电的物理恢复没有上板验证。
+正常退出须有原生关闭及设备占用证据；完成未证明时保持 `release_blocked` 与独占，不强行释放或盲目重试。运行中 PL_KEY1 复位恢复未通过，不能用它代替正常重启流程。
 
-后续板端 C++ 专项已在工作区源码修订 HDMI 部分分配回滚、一次性释放／STOP、NPU 在途异常释放守卫和非标准异常收尾。正常完成后释放；未证明时保留所有者／独占，状态为 `release_blocked`，不写成功关闭回执，不自动复位或重试。两个 ARM64 目标、实际 HDMI 接口替身及原生 mock 回归通过，具体见[源码结果](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端异常资源保护源码修订未打包)。**用户要求暂不更新启动包，因此当前仍选择上方 r4 归档，该归档不包含新修订。** `.local/pose180-top1-no-threshold-20261028-r5` 仅保存本地编译／测试，没有新包、部署或上板。
+## 当前硬件与本机恢复资产
 
-r2 的单人滤波回放对照仍见[原始比较](../../.local/pose180-top1-no-threshold-20261028-r2/comparison.json)，本次源码修订未改变滤波、模型或硬件，不重复运行该比较。下方设备结束状态和遗留远端收尾保持。
+| 项目 | 状态与位置 |
+|---|---|
+| 默认 BOOT | 已发布 `probe-free-drain-filter-v1`，身份以 [default_boot.json](default_boot.json) 为准；保留启动消费和 4 路 PL 滤波，当前软件使用 CPU 滤波 |
+| 合格镜像备份 | [BOOT-pose-filter-r2.bin](../../.local/pose-filter-integration-20261026-r2/boot-package/BOOT-pose-filter-r2.bin) |
+| 原参考恢复备份 | [BOOT-original.bin](../../.local/hdmi-startup-20261027-r1/board-bundle/common/BOOT-original.bin)，仅为恢复备份，不是当前默认 |
+| r45 与派生硬件历史 | [原物理结果](../../tools/pose-v1/evidence/hp2-deferred-consume-20261024-r45/RESULTS.md)、[保留消费候选](probe_free_drain/README.md)、[滤波物理与板测](../../software/pose180_pipeline/resident/PRESENTATION-20261026.md#pl-计算与资源) |
+| 独立精简守卫／新增 PL | [精简守卫](pose_stabilizer/README.md)覆盖不足，不可部署；新增几何／批量滤波整机实现已取消 |
+| 心率 | [开发记录](../../software/vitals/HYBRID-20261026.md)保留，冻结且未接主链 |
 
-**最新状态：用户要求结束测试，当前原 epoch99／TopK=1／严格 score >0.2 测试已安全退出；随后设备以太网断开，不自主重连或续跑。** 最后新包 `.local/csi-open-space-top1-020-20261027-r4` 完成 8344 次新推理／HDMI 采纳／PC 接收，最后 SSH 状态证明 native_exit=0、完整 SDK／HDMI 关闭、设备占用为空，PC／串口观察已退出。进程总时长 605.508 s 包含初始化／退出，按用户停止而非完整处理期验收；原时长／停止原因门 `passed=false` 保留。最后核验 boot_id `3c398048-a8b7-4225-b6c1-c57a9735940e`、合格默认 BOOT 不变，断开后的实时状态未知。
+## 清理后的历史路径与保留限制
 
-**待收尾（不需要新 SDK 或重启）：** 当前包远端取消关闭回执未写成，临时板端 `.50.49/24` 地址未能撤销／核验；TX／RX3 临时 LAN SSH 未能恢复原禁用设置；六个已关闭旧包及本包的完整原生证据归档尚未取回，文件仍保存在各板端目录。不得把这些动作写成已完成；待用户重新连接后再处理，不为取证自主重连。当前启动文件在本轮启动后已经恢复为同一合格默认镜像，不需要降级到历史参考位流。
+51 个历史项目上传目录和 `/root/work` 的 3 个 SDK 安装包已删除；安装中的 SDK 和驱动未删除。旧 `/root/demo-v1-20261022-r1/...`、旧长测和旧模型测试目录均不可再作为远端恢复入口。必要原生记录集中在[本机证据归档](../../.local/project-cleanup-20261029-r1/board-evidence.tar.gz)；其完整范围由清理记录说明，不承诺历史每份附件均已补回。
 
-[最后已观察安全停止](../../.local/csi-open-space-top1-020-20261027-r4/results/summary.json)、[原始 SSH 状态回执](../../.local/csi-open-space-top1-020-20261027-r4/results/last-observed-native-outcome.json)、[具体待办](../../.local/csi-open-space-top1-020-20261027-r4/results/pending-cleanup.json)及[全部实时测试](../../software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)。原图恢复后的 r3 完成完整有限测试和模型 SHA／加载路径核对；新 epoch130 图已转换及有限实测，现场效果相近或更差，未认定精度改善，候选独立保留。
+10 月 27 日旧批关闭回执及 TX／RX3 临时 LAN SSH 恢复缺少最终核验；最新清理和临时板端地址撤销不能替代这些旧事实，也不补造旧回执。已有用户 PC 观察进程未由清理任务停止，不能把“板端无占用”写成所有 PC 进程退出。
 
-**此前完整有限验证：自适应实时 CSI 已接入七色条／v5 系统并完成修订后实板连续性复测。** 当时 boot_id 为 `ad98882f-5b4d-4860-9516-31f148b3e826`，合格默认 BOOT 内容不变；当前已验证软件选择见 [default_boot.json](default_boot.json)。此前两包均已关闭，SDK／HDMI／PC 负载及临时采集地址已释放；原预处理保持，精确结果、首轮坏记录及恢复见[实时集成记录](../../software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)。此前启动身份均作历史保留，当前身份以上方暂停状态为准。
+| 历史阶段 | 只读追溯入口 |
+|---|---|
+| 10 月 28 日单人启动包、异常资源保护、模型对比 | [启动包历史](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md)、[模型测试](../../software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md) |
+| 10 月 27 日自适应实时集成与最后停止 | [CSI 集成](../../software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md) |
+| 六片段、3024 次推理与原 BOOT 回退 | [数据集阶段](../../software/pose180_pipeline/resident/DATASET-DEMO.md) |
+| 早期 r4～r7 断线恢复与 TX 续期 | [常驻记录](../../software/pose180_pipeline/resident/README.md) |
 
-**最新发布：用户已要求将已合格 `probe-free-drain-filter-v1` 设为默认启动位流，并选择软件七色条待机。现已安装、启动验证及最终写回核验；当前运行和下次启动均为这份位流，原参考 BOOT 仅作为恢复备份保留。** 七色条在显示服务完成初始化后、第一份推理结果前显示，随后切回原骨架场景；不是 FPGA 上电即显示，也没有设置 SDK／推理开机自启。具体发布记录见下节，机器可读选择为 [default_boot.json](default_boot.json)。
-
-**用户已暂停布线并取消本轮新增 PL 开发，全部本批实现进程已停止，无后台续跑。** `.local/pose-post-integration-20261027-r1` 仅保留未完成实现及检查点，没有物理资格、新 bit／BOOT 或该候选的 SDK／启动，不得作为部署候选。v5 设计与离线结果见[实施记录](../../software/pose180_pipeline/resident/PRESENTATION-20261026.md#2026-10-27v5-后处理与已取消的-pl-扩展)；随后已编译匹配下表既有合格硬件 profile 的 CPU 候选，并完成新参数板测。新增 PL 不自主恢复。
-
-当前阶段为[官方训练／测试集演示](../../software/pose180_pipeline/resident/DATASET-DEMO.md)：本地输入、实时入口关闭、两端 UI 不变。最新 v5 PS 参数为 **0.5／0.3／1**；六片段 HDMI／PC 同时实测完成 3024 次新推理，复用下表合格位流。`.local/pose-demo053-*` 共七个有限包（含首次 PC 观察器失败及独立补测），每包实际 1 候选／1 SDK／1 原 BOOT 回退，全部关闭、余额 0。此前 `.local/pose-dataset-*-20261027-r2` 两包的 46／287 次结果仍保留，不与新参数结果混算。
-
-此前六片段阶段最后实际回退原 BOOT，身份 `73197d05-0e84-422d-9733-c5b0a8205443`；该历史结果与关闭证明见[数据集实板记录](../../software/pose180_pipeline/resident/DATASET-DEMO.md)，不再代表下节发布后的当前启动文件。下次仍须核对实时设备身份，不直接复用旧身份或已关闭包。
-
-| 版本／用途 | 当前资格与选择边界 | 产物／证据入口 |
-|---|---|---|
-| 原参考 BOOT | 保留的恢复备份，已由下方合格版本替换为默认启动；不删除历史身份 | 下节恢复资产 |
-| r45 完整诊断基线 | 原物理资格及历史板测保留；匹配旧准入 | [r45 物理结果](../../tools/pose-v1/evidence/hp2-deferred-consume-20261024-r45/RESULTS.md) |
-| `probe-free-drain-v1` | 去旁路诊断／协议 IP，保留主动消费；物理资格与有限真实闭环已验证 | [独立工程及结果](probe_free_drain/README.md) |
-| `probe-free-drain-filter-v1` | **当前默认启动选择、本轮最近核验运行位流**；实际 100 MHz，4 路滤波保留；软件默认 PS 0.5／0.3／1 | [物理与板测](../../software/pose180_pipeline/resident/PRESENTATION-20261026.md#pl-计算与资源)；构建 `.local/pose-filter-integration-20261026-r2`，其 `boot-package/` 与 `reports/qualification.json` |
-| `tracked-one-euro-v5` 软件 | PS 0.5／0.3／1、输入前七色条；自适应真实 CSI 集成和有限连续性复测完成，PL 调用为 0；防闪现观感仍开放 | 最新构建 `.local/csi-integration-20261027-r2/arm64/pose180_demo`；[实时结果](../../software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)；下文发布及此前[六片段实测](../../software/pose180_pipeline/resident/DATASET-DEMO.md)保留 |
-| `pose-stabilizer-offline-v1` 精简守卫 | 覆盖缺口仍在，**不可部署**；不是上述已测保留消费候选 | [离线阶段结果](pose_stabilizer/README.md) |
-| 心率 PL 覆盖层 | 核与 OOC 完成，无整机实现／板测，不属于当前合格位流 | [专项状态](../../software/vitals/HYBRID-20261026.md)、[PL 核](../vitals_acf/README.md) |
-
-恢复时先核对实际设备、BOOT／软件 profile 与安全停止状态，再选择独立新包；必要板测、重启及回退按[自主授权](../../Agents.md#自主权限与重大问题)执行，不复活旧次数。复用路由器开机服务，不并行启动旧无线负载。原 BOOT 文件恢复与实际回退启动分别核验；PL_KEY1 运行中复位恢复未通过，不能作为常规恢复捷径。无 RTL／约束变化不重复整机构建。
+后续验证使用新记录和实际设备身份，旧包次数不恢复。用户授权与独立暂停见 [Agents.md](../../Agents.md)，未完成的技术验收见[后续事项](../../ToDoLists.md)。
 
 ## 2026-10-27 默认启动发布与七色条
 
-本批 `.local/hdmi-startup-20261027-r1` 复用既有物理资格，没有 RTL、频率、约束、模型或 SDK 变更，也没有新增 EDA。默认 BOOT 为 `.local/pose-filter-integration-20261026-r2/boot-package/BOOT-pose-filter-r2.bin`，SHA256 **`a22faaa71cfde653e03898d2d77bd3adee633f3d0b47b710b87c76bf2a22e291`**。当前运行 boot_id 为 **`ba3327af-25df-4425-9b1b-0d4d34aaf4f0`**；新软件 SHA256 `129beb8feb92882e17640dcd7a49a2328f8a46c1da6a2186ec78a66d5a6026ee`。
+本批 `.local/hdmi-startup-20261027-r1` 复用既有物理资格，没有 RTL、频率、约束、模型或 SDK 变更，也没有新增 EDA。默认 BOOT 为 `.local/pose-filter-integration-20261026-r2/boot-package/BOOT-pose-filter-r2.bin`，SHA256 **`a22faaa71cfde653e03898d2d77bd3adee633f3d0b47b710b87c76bf2a22e291`**。发布当时运行 boot_id 为 **`ba3327af-25df-4425-9b1b-0d4d34aaf4f0`**；新软件 SHA256 `129beb8feb92882e17640dcd7a49a2328f8a46c1da6a2186ec78a66d5a6026ee`。
 
 `hdmi_renderer.cpp` 在首次结果前绘制 1920×1080 全高七色条，顺序为白、黄、青、绿、品红、红、蓝，采用原 RGB565 帧通道；没有骨架或伪造结果。主线程先以独立 tag 提交待机并取得原采纳证明，再开放本地数据集输入。收到结果后恢复原画面；结果后的漏检／重同步提示、PC 页面及蓝色骨架保持。原生像素、等待／恢复、提交标签与计数测试通过；ARM64 Release 编译通过，仅有既有 raster565 符号比较警告。
 
@@ -54,7 +53,7 @@ r2 的单人滤波回放对照仍见[原始比较](../../.local/pose180-top1-no-
 
 实际 **1 次候选启动、1 次 SDK、0 次参考回退启动**；BOOT 文件写入 3 次：安装候选、测试期间恢复参考文件以备故障恢复、验证安全结束后再次安装同一候选为默认。最终卸载分区后独立读回全部 BOOT，确认其它启动文件未变。当前运行位流来自本次同一候选启动，最终写文件不宣称又进行了一次启动。包已关闭，所有剩余次数为 0，串口／PC 观察及构建容器均退出，没有后台推理。
 
-原参考恢复文件保存在本机 `.local/hdmi-startup-20261027-r1/board-bundle/common/BOOT-original.bin` 和板端 `/root/demo-v1-20261022-r1/hdmi-startup-20261027-r1/common/BOOT-original.bin`，SHA256 `ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef`。历史参考包未改。启动消费仍是同次配置一次性行为，下一次 SDK 验证使用新包和新启动，不在本包重复初始化。
+原参考恢复文件保存在本机 `.local/hdmi-startup-20261027-r1/board-bundle/common/BOOT-original.bin` ；当时板端副本路径为 `/root/demo-v1-20261022-r1/hdmi-startup-20261027-r1/common/BOOT-original.bin`（该远端目录已在 10 月 29 日清理，不再可用），SHA256 `ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef`。历史参考包未改。启动消费仍是同次配置一次性行为，下一次 SDK 验证使用新包和新启动，不在本包重复初始化。
 
 [汇总](../../.local/hdmi-startup-20261027-r1/results/summary.json)、`results/promote.json`／`closed.json`／`final-audit.json` 及 `round-1-result-evidence.tar.gz` 保留实际默认文件、启动、消费、待机和安全结束证据；`pc-observation/` 保留本轮原始／派生输出。`run_release.py` 仅为已关闭本批执行记录，不直接重跑。
 

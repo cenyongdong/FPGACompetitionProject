@@ -1,46 +1,42 @@
-# 项目进度总览
+# 项目最终进度
 
-**最新收尾（2026-10-29）：最终交付为 [r3 最终演示包](Deliverables/pose180-three-clips-20261029-r3-final.tar.gz)，操作见[部署步骤](Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)，目录见[交付索引](Deliverables/README.txt)。** 核心源码保留模块目录，原 epoch99、TopK=3、严格 score >0.2 与官方 1／2／3 人片段保持；最终包补入 Node.js 查找和 PC 有线连接修正。板端保留 `/root/pose180-three-clips-20261029-r3`，历史项目上传已清理；最近既有 r3 记录显示 420 帧推理／HDMI／PC 全部完成并安全退出，当前无设备占用。本轮只读取结果、整理文件，未启动新 SDK、写 BOOT 或重启。旧采集数据及冗余副本按用户要求删除，必要故障证据、模型与 FPGA 恢复资产保留；精确范围见[收尾记录](.local/project-cleanup-20261029-r1/summary.json)。
+更新：2026-10-29，依据已有实测与收尾记录整理；本次文档整理未启动设备验证。
 
-更新：2026-10-28。长期目标仍是稳定的真实CSI→PS／NPU→HDMI，PC独立。微调epoch13和随机初始化训练epoch4均已使用最新安全核心完成有限实板对比并正常退出；用户反馈动作跟随及位置仍较差，未确认自采训练带来明显改善。**已按最新要求换回未使用自采数据的原始epoch99模型**，保持TopK=1／无阈值／CPU单人滤波、HDMI／PC及性能指标栏。实际运行、恢复和结束状态统一见[本轮结果](.local/pose180-kinect-board-test-20261028-r1/README.md)，包入口见[测试说明](software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)。
+**最终演示包已生成并完成文件核验，最近一次相同 r3 板端内容的运行完成 420 帧新推理、420 次 HDMI 采纳和 420 帧 PC 发送，正常退出且设备占用为空。** 最新打包补入 PC 启动与有线连接修正，板端内容未变；这不等于对最终压缩包重新执行了一轮上板测试，也不代表长期或精度验收通过。
 
-安全核心补齐HDMI部分构造回滚、重复释放保护、NPU在途异常释放守卫和非标准异常收尾；完成未证明时进入 `release_blocked`，保留资源及独占，不误报关闭。复用另一聊天已验证的ARM64程序，没有重新构建FPGA或更换SDK；原epoch99的r4归档保留历史，当前两个测试包包含新修订。[源码结果与边界](software/pose180_pipeline/resident/STARTUP-PACKAGE.md#板端异常资源保护源码修订未打包)。
+## 最终交付
 
-## 当前可确认的状态
-
-此前原epoch99／Top1／score >0.2的8344次运行保留历史；当前新包已恢复为原epoch99／Top1／无阈值，使用最新安全核心。旧远端关闭回执、TX／RX3临时SSH恢复及部分旧包原生日志归档仍未全部收尾，不把本轮结束当作旧包关闭。[当前恢复入口](FPGA/hdmi_candidate/RESUME.md)。
-
-**最新发布已完成：合格 `probe-free-drain-filter-v1` 已成为当前运行及默认启动位流，旧参考 BOOT 保留恢复备份。** HDMI 新增显示服务就绪后、首次结果前的七色条，随后切回原骨架画面；49 帧官方数据实板验证完成，HDMI／PC 同时接收，安全停止且无后台负载。没有新增 FPGA 构建或 SDK 自启动，精确身份及结果见[恢复入口](FPGA/hdmi_candidate/RESUME.md#2026-10-27-默认启动发布与七色条)。
-
-真实闭环、独立 PC、路由器开机采集和有限故障恢复已跑通；**重合／突跳、秒级输入间断和长期无人值守仍未验收**。最新软件候选、最新合格位流与最近一次实际运行身份分别记录，不能互相替代。
-
-2026-10-27 已按用户要求将常驻 PS One Euro 改为 **0.5／0.3／1**，完成官方训练／测试各单人、双人、三人共六片段的 HDMI／PC 同时实测，合计 3024 次新推理。含首次 PC 观察器故障后的独立补测，本批七包均安全退出并实际回退原 BOOT，SDK、串口及 PC 观察负载已结束。原有两轮结果保留，最新精确身份及关闭记录见[恢复入口](FPGA/hdmi_candidate/RESUME.md)。
-
-| 工作内容 | 已达到的阶段 | 未完成的边界／唯一结果入口 |
-|---|---|---|
-| 数据集开发／演示 | 六片段、867 个不同官方样本，显式重复仍执行新推理；HDMI／PC 同时运行，EOF 安全退出与实际回退完成 | 每包初始替换 3 帧；双人训练片段存在 PC 接收缺帧及秒级间隔，未做真值精度、实屏观感验收或视频录制；[唯一记录](software/pose180_pipeline/resident/DATASET-DEMO.md) |
-| 常驻主链与恢复 | 最新完整窗口、单 SDK 所有者、有界异步记录；真实 RX 断线恢复和 PC 离线期间 HDMI 更新已验证 | 秒级缺窗仍存在，全天与跨启动可靠性未验收；[常驻核心](software/pose180_pipeline/resident/README.md)、[窗口恢复](software/pose180_pipeline/resident/WINDOW-RECOVERY.md) |
-| 实采容错组窗算法 | 已接入最新七色条／v5 实时系统，完成故障恢复及修订后有限实板连续性验证；原严格路径保留 | 修订后有限复测无全局重同步；全天、实屏观感及近似配对姿态精度仍未验收；[唯一结果](software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md) |
-| 时间相位分支修正 | 可选模块、原方法对照、已有三 RX 实采及官方训练／测试子集 CPU 实际模型比较完成，Windows／Linux 测试及 ARM64 编译通过 | 推理效果混合，此修正未接入正式服务，原预处理保持默认；[唯一记录](software/pose180_pipeline/resident/PHASE-CONTINUITY.md) |
-| HDMI／PC 展示 | 共用 PresentationFrame；精简控件、骨架统一蓝色；HDMI 首次结果前增加七色条，PC 原样；39385 与原始 39383 分开 | v5 空旷场地补测已获两路持续更新的用户确认；重影／突跳及姿态精度仍开放；[最新结果](software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)、[历史展示](software/pose180_pipeline/resident/PRESENTATION-20261026.md) |
-| v5 PS 后处理 | 关联与显示平滑解耦、局部异常门控；0.5／0.3／1 数据集实板及本轮真实 CSI 接入完成，纯滤波平均约 7／13／19 μs（1／2／3 人） | 三人训练片段仍有轨迹重建，更强平滑有运动滞后；防闪现人工观感与姿态精度仍未验收；[设计](software/pose180_pipeline/resident/PRESENTATION-20261026.md#2026-10-27v5-后处理与已取消的-pl-扩展)与[最新实板结果](software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md) |
-| 去诊断、保留启动消费 | 独立 r45 派生版本已完成物理资格与有限真实闭环；有实际消费异常返回后成功运行的样本 | 不等价于完整 AXI 检查器，不关闭 D45；运行中 PL_KEY1 黑屏失联样本保留；[结果](FPGA/hdmi_candidate/probe_free_drain/README.md) |
-| 1／4 路 PL 滤波 | 参数化 RTL、位精确仿真、资源比较；4 路整机物理资格和有限板测完成 | CSR 搬运使总耗时高于 PS，CPU 继续默认；[资源与实测分项](software/pose180_pipeline/resident/PRESENTATION-20261026.md#pl-计算与资源) |
-| 独立精简启动守卫 | ABI、覆盖映射、RTL 与离线测试已有实现 | 保护覆盖仍有缺口，**未取得部署资格**；与上面的保留消费候选分开；[首次离线结果](FPGA/hdmi_candidate/pose_stabilizer/README.md) |
-| 心率支线 | PS 流式算法、隔离、可选 PL 核和有限真实 CSI 采集完成 | 尚无可信真实心率，未接板端常驻服务，未做新整机位流；[心率记录](software/vitals/HYBRID-20261026.md) |
-
-## 下一步规划依据
-
-用户要求的**暂停布线、取消新增 PL 开发**继续有效，本批实现进程已全部停止；新几何／批量滤波核仅保留源码、仿真和未完成实现，不生成或部署新位流。复用已有合格位流，集中 PS 后处理及可靠性，心率仍冻结。v5 新参数及自适应实时输入已完成上述有限集成验证；后续可评估轨迹重建与运动拖尾、录制既有画面的多片段演示。历史跨 ID 突跳与全天稳定性仍开放，两界面不变，有限新验证使用独立新包。
-
-下一步的依赖、验证口径和优先级见[ToDoLists.md](ToDoLists.md)。旧 DATA、D45 全面调查与姿态偏置／标定的独立暂停保持；[心率冻结状态](software/vitals/HYBRID-20261026.md)按最新决定执行。所有旧包保持关闭，必要新验证沿用[现行自主授权](Agents.md#自主权限与重大问题)，仍须有界执行、安全停止及记录实际范围。
-
-| 用途 | 入口 |
+| 项目 | 最终选择与入口 |
 |---|---|
-| 当前架构、接口、缓存与源码地图 | [ADR/TechDetails.md](ADR/TechDetails.md) |
-| 硬件／软件版本选择、实际运行与恢复 | [FPGA/hdmi_candidate/RESUME.md](FPGA/hdmi_candidate/RESUME.md) |
-| 后处理回放、PS／PL 性能、位流与原始证据 | [PRESENTATION-20261026.md](software/pose180_pipeline/resident/PRESENTATION-20261026.md) |
-| 采集源的独立启停与自启动 | [路由器开机服务](software/pose180_pipeline/resident/autostart/README.md) |
-| 未解决问题、历史成果与执行规则 | [DIFFICULTIES.md](DIFFICULTIES.md)、[Done.md](Done.md)、[Agents.md](Agents.md)、[ADR_50](ADR/ADR_50.md) |
+| 演示部署包 | [pose180-three-clips-20261029-r3-final.tar.gz](Deliverables/pose180-three-clips-20261029-r3-final.tar.gz)，[部署步骤](Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)，[交付目录](Deliverables/README.txt) |
+| 核心源码 | [模块目录](software/pose180_pipeline/src/README.md)，[源码快照](Deliverables/pose180-core-sources-final-20261029.tar.gz) |
+| 模型与显示配置 | 原始 epoch99；TopK=3 后严格 `score > 0.2`；CPU 多人跟踪／One Euro `0.5／0.3／1`；HDMI 和 PC 共用展示结果 |
+| 输入接口 | `official_dataset` 板端本地读原始 CSI；`live_csi` 三 RX 实时采集。二者互斥，共用预处理和真实 NPU 推理 |
+| 默认展示内容 | 官方训练集 1 人约 10 秒 → 2 人约 9 秒 → 3 人约 9 秒，共 420 帧；来源及限制见[片段清单](software/pose180_pipeline/resident/DATASET-PLAYLIST.md) |
+| 硬件基线 | 已发布 `probe-free-drain-filter-v1`，保留启动消费和已有 PL 功能；CPU 为当前滤波后端。身份见 [default_boot.json](FPGA/hdmi_candidate/default_boot.json) |
+| 板端与恢复 | 保留 `/root/pose180-three-clips-20261029-r3`；最后核验无原生推理进程、无设备占用。操作与备份见[恢复入口](FPGA/hdmi_candidate/RESUME.md) |
 
-模型／RAW、SDK、原预处理、NPU 分配、AI 四路、HP 分配和原始帧协议保持。历史失败与数值误差不由有限演示、回放或单模块测试回写为通过。
+## 完成程度与证据边界
+
+| 范围 | 已完成 | 尚不能宣称 |
+|---|---|---|
+| 端到端主链 | 实时 CSI／官方输入、PS／NPU、HDMI 与独立 PC 已分别完成有限实板运行；PC 不再是采集或推理必经节点 | 全天无人值守、任意环境下稳定运行 |
+| 采集与恢复 | 四路由器开机服务、TX 续期、RX 局部重连、自适应组窗；已有 RX／PC 物理离线恢复记录 | 零缺窗、零卡顿或近似配对输入的姿态精度 |
+| HDMI 与硬件 | 合格位流发布、七色条待机、帧采纳／STOP 排空；源码、约束和实际物理结果有对应记录 | D45 根治、运行中 PL_KEY1 安全恢复；新增 PL 扩展已取消 |
+| 软件可读性与健壮性 | 核心按模块归位、Tab 排版、参数／状态处理加固；FD 测试竞态定位修正，8 轮完整生命周期及异常注入通过 | SIGKILL、掉电或真实 SDK 挂死时硬件资源必然安全释放 |
+| 演示与 PC | 三片段同一 SDK 生命周期顺播；Node 查找、有线绑定与重连修正，22 项 PC 本地检查通过 | PC 发送计数等同每帧浏览器实际绘制，或择优训练片段等同独立测试精度 |
+| 模型质量 | 180-query 原模型部署；自采微调及从零训练候选完成有限比较后恢复原 epoch99 | 自采训练明显改善、D48 数值验收通过、重影／跨 ID 突跳消除 |
+| 文件收尾 | 历史上传、旧 SDK 安装包、冗余日志／自采数据清理完成；模型、官方演示输入与关键故障／FPGA 证据保留 | 已删除原始采集可直接重新训练，或所有旧远端清理回执已补齐 |
+
+## 项目演进
+
+| 阶段 | 主要进展与转折 | 追溯入口 |
+|---|---|---|
+| 9 月底～10 月初 | 核对 Lite、Procise／JFM、Icraft 与资料；解决启动介质和开发环境问题 | [资料记录](REFERENCES.md)、[困难记录](DIFFICULTIES.md) |
+| 10 月 4～13 日 | 对齐 CSI 数学、补齐 ARM Host 算子／融合契约；跑通早期混合推理与 VPU／RTSP；旧 DATA 异常取证后暂停全面根因调查 | [历史成果](Done.md)、[ADR 索引](ADR/README.md) |
+| 10 月 14～24 日 | HDMI 接入与时序收敛；多轮启动异常隔离、波形与协议取证；采用保留单次主动消费的缓解路径；180-query 原 epoch99 成为主图 | [HDMI 工程](FPGA/hdmi_candidate/INTEGRATION.md)、[模型部署](tools/pose180/deploy/RESULTS.md) |
+| 10 月 25～27 日 | 按 ADR_50 改为有界常驻、PC／记录解耦；打通真实 CSI、局部恢复和独立显示；完成六片段双输出，发布默认 BOOT 与七色条 | [常驻记录](software/pose180_pipeline/resident/README.md)、[数据集阶段](software/pose180_pipeline/resident/DATASET-DEMO.md) |
+| 10 月 28 日 | 加固单人显示及资源生命周期；比较自采模型后恢复原 epoch99；长测启动有证据，但没有长期验收结论 | [模型对比](software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)、[启动与安全历史](software/pose180_pipeline/resident/STARTUP-PACKAGE.md) |
+| 10 月 29 日 | 核心目录整理、最终审查、FD 竞态修正、双输入与三片段部署、PC 连接修正；完成板端及本地清理 | [最终审查](software/pose180_pipeline/resident/FINAL-REVIEW.md)、[收尾原始记录](.local/project-cleanup-20261029-r1/summary.json) |
+
+按用户收尾要求，所有 difficulty 的项目跟踪状态统一为“已解决（工程收口）”，逐项处置和仍存在的技术限制见 [DIFFICULTIES.md](DIFFICULTIES.md)。该状态不改变历史失败或未验收结论。后续可选验证和冻结项见 [ToDoLists.md](ToDoLists.md)，所有 Markdown 的现行／历史属性见[文档目录](DOCUMENTATION.md)。

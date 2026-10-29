@@ -1,5 +1,7 @@
 # 路由器直接进入开发板：软件候选
 
+**当前定位（2026-10-29）：** 解码、严格／自适应组窗实现已迁入 [pose180_pipeline/src/input/nexmon](../../../software/pose180_pipeline/src/README.md)，本目录保留工具构建入口。板端直采已完成后续有限实板验证，见[实时集成](../../../software/pose180_pipeline/resident/CSI-INTEGRATION-20261027.md)；下文候选准备及当时未部署的描述仅属于早期阶段。
+
 2026-10-29：共享解码／组窗库已移到 [软件主链 input/nexmon](../../../software/pose180_pipeline/src/README.md)，对应测试在 `software/pose180_pipeline/tests/native/nexmon/`。本目录保留独立接收／回放工具，CMake 已改为链接统一位置。
 
 2026-10-25后续：本目录有限候选已在真实三RX→板端完成CPU直采；滚动常驻集成、214次真实新推理和后续HDMI联调统一见[常驻演示记录](../../../software/pose180_pipeline/resident/README.md)。下文保留首次软件候选阶段快照，“尚未实板”等表述不代表最新状态。
@@ -25,8 +27,8 @@
 
 | 文件 | 职责 |
 | --- | --- |
-| [pcap_stream.hpp](pcap_stream.hpp)／[实现](pcap_stream.cpp) | 有界增量PCAP／Ethernet／IPv4／UDP解析，任意TCP分包，保持跨5500/5501原序 |
-| [ingress.hpp](ingress.hpp)／[实现](ingress.cpp) | 每节点NMD3配对、原FFT恢复、三core组装、首次有效去重、原时间网格及共同帧关联；增量输出完整共同窗 |
+| [pcap_stream.hpp](../../../software/pose180_pipeline/src/input/nexmon/pcap_stream.hpp)／[实现](../../../software/pose180_pipeline/src/input/nexmon/pcap_stream.cpp) | 有界增量PCAP／Ethernet／IPv4／UDP解析，任意TCP分包，保持跨5500/5501原序 |
+| [ingress.hpp](../../../software/pose180_pipeline/src/input/nexmon/ingress.hpp)／[实现](../../../software/pose180_pipeline/src/input/nexmon/ingress.cpp) | 每节点NMD3配对、原FFT恢复、三core组装、首次有效去重、原时间网格及共同帧关联；增量输出完整共同窗 |
 | [direct_receiver.cpp](direct_receiver.cpp) | 三连接身份绑定、原始流留存、原PIWCSI2整理、原预处理调用；可选单SDK线程和8窗有界输入队列 |
 | [pose180_runtime.hpp](pose180_runtime.hpp)／[实现](pose180_runtime.cpp) | 封装已有180-query的公开SDK调用与实际融合完成检查，完整首次输入／输出先保存、再检查有限性与候选；错误后不重试 |
 | [router_send.sh](router_send.sh) | 已加载NMD3的RX使用现有采集器与BusyBox nc直接发送到板子，保留原生采集及网络退出回执；不配置无线 |

@@ -1,5 +1,7 @@
 # HDMI模块资料入口
 
+**最终入口（2026-10-29）：** 当前默认镜像、现存恢复资产和最后设备状态见 [RESUME](RESUME.md)，硬件文档导航见 [FPGA 索引](../README.md)。本页后续早期接入状态和命令保留历史范围，不代替最终部署流程。
+
 当前结构与源码见[INTEGRATION](INTEGRATION.md)，恢复身份/次数见[RESUME](RESUME.md)。r45硬件合格，r52曾在真实异常消费后完成有限新推理/HDMI采纳；r53单SDK线程流水短样本29.521Hz、187采纳后发生首读内容混合。已回原BOOT，联合长期、持续实屏、D45/D47仍未解决；[当前实测](../../tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)。
 
 ## 早期隔离候选说明
