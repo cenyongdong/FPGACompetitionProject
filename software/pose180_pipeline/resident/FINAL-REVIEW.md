@@ -64,7 +64,7 @@
 
 ## 重新生成的演示部署包
 
-2026-10-29 按整理后的核心源码重新构建并生成 [pose180-demo-deploy-20261029-r2.tar.gz](../../../Deliverables/pose180-demo-deploy-20261029-r2.tar.gz)，独立操作入口见 [部署步骤](../../../Deliverables/pose180-demo-deploy-20261029-r2-DEPLOY.md)。包内包含 ARM64 程序、原 epoch99、两种输入启动器、290 帧官方原始 CSI、PC 页面资源、既有合格 BOOT 备份、按新目录组织的源码快照及本地验证记录。BOOT 不自动安装；本包没有部署上板。
+2026-10-29 按整理后的核心源码重新构建并生成 [pose180-demo-deploy-20261029-r2.tar.gz](../../../Deliverables/history/software/pose180-demo-deploy-20261029-r2.tar.gz)，独立操作入口见 [部署步骤](../../../Deliverables/history/software/pose180-demo-deploy-20261029-r2-DEPLOY.md)。包内包含 ARM64 程序、原 epoch99、两种输入启动器、290 帧官方原始 CSI、PC 页面资源、既有合格 BOOT 备份、按新目录组织的源码快照及本地验证记录。BOOT 不自动安装；本包没有部署上板。
 
 新构建的 native 8 类检查、ARM64 常驻／严格目标、10 类 mock 脚本、PC 13 项与官方 290 样本核对通过。强杀隔离 mock 后曾出现端口检查过早失败，原始记录保留；测试现等待被收养的原生子进程实际 `waitpid` 回收，再验证端口，连续 3 次通过。该调整仅作用于本地故障测试，不放宽板端资源释放规则。
 
@@ -72,7 +72,7 @@
 
 ## 较早交付与证据
 
-运行方式与源码阅读见 [DEMO-INPUTS.md](DEMO-INPUTS.md)。交付文件为 `Deliverables/pose180-dual-input-20261029-r1.tar.gz` 和 `Deliverables/pose180-core-sources-20261029-r1.tar.gz`，附 SHA256；新包不覆盖旧包。完整包包含原始 epoch99 模型、既有合格 BOOT 备份、ARM64 程序、PC 资源、两种入口和官方单人训练片段。纯源码包不包含凭据、模型或 SDK 安装文件，保持原路径，可独立配置 CMake。
+运行方式与源码阅读见 [DEMO-INPUTS.md](DEMO-INPUTS.md)。交付文件为 `Deliverables/history/software/pose180-dual-input-20261029-r1.tar.gz` 和 `Deliverables/history/software/pose180-core-sources-20261029-r1.tar.gz`，附 SHA256；新包不覆盖旧包。完整包包含原始 epoch99 模型、既有合格 BOOT 备份、ARM64 程序、PC 资源、两种入口和官方单人训练片段。纯源码包不包含凭据、模型或 SDK 安装文件，保持原路径，可独立配置 CMake。
 
 本轮唯一构建／检查工作区：`.local/pose180-final-core-20261029-r1/`。`build.json` 保留原生命令及退出码，`final-review-tests.json` 汇总最终检查并引用原失败和针对性复验；`pc-verified.log`、`official-data-verified.log` 分别保存 PC 与官方样本检查。源码归档的独立编译及包成员核对另见同目录 `archive-check.json`。完整包 `validation/` 保存必要原始构建日志、检查日志和身份；正式硬件对应关系沿用 `default_boot.json` 及包内 qualification。
 

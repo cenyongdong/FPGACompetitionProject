@@ -4,9 +4,9 @@
 
 | 测试模型 | 独立启动包 | 本地准备目录 |
 | --- | --- | --- |
-| 微调 epoch13 | `Deliverables/pose180-kinect-finetune-e13-safe-20261028-r1.tar.gz` | `.local/pose180-kinect-finetune-e13-safe-20261028-r1` |
-| 随机初始化训练 epoch4 | `Deliverables/pose180-kinect-scratch-e4-safe-20261028-r1.tar.gz` | `.local/pose180-kinect-scratch-e4-safe-20261028-r1` |
-| 已恢复：原始 epoch99 | `Deliverables/pose180-original-e99-safe-20261028-r1.tar.gz` | `.local/pose180-original-e99-safe-20261028-r1` |
+| 微调 epoch13 | `Deliverables/history/software/pose180-kinect-finetune-e13-safe-20261028-r1.tar.gz` | `.local/pose180-kinect-finetune-e13-safe-20261028-r1` |
+| 随机初始化训练 epoch4 | `Deliverables/history/software/pose180-kinect-scratch-e4-safe-20261028-r1.tar.gz` | `.local/pose180-kinect-scratch-e4-safe-20261028-r1` |
+| 已恢复：原始 epoch99 | `Deliverables/history/software/pose180-original-e99-safe-20261028-r1.tar.gz` | `.local/pose180-original-e99-safe-20261028-r1` |
 
 以上路径相对项目根目录。实际包校验、板端检查与测试结果统一见 `.local/pose180-kinect-board-test-20261028-r1/`。用户后续已明确要求启动开发板测试、提前切换随机初始化版，并在两者现场效果均较差后恢复原始epoch99。原始包保持相同安全核心、TopK=1／无阈值与显示设置，仅恢复受保护原模型文件；默认有限处理期300秒。
 

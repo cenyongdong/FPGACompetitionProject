@@ -48,7 +48,7 @@
 
 ## D45的事实、推断与未知
 
-2026-10-26 用户指定的正常 HDMI r26 完整工程已完成综合，并复用同源合格位流进行四次软件重启，均未复现启动异常；原 BOOT 回退核验完成。该有限复验不关闭间歇性根因，也不包含断电冷启动或 SDK／HDMI 负载，见[本次实板记录](Deliverables/HDMI_Complete_20261026/board-validation/README.md)。
+2026-10-26 用户指定的正常 HDMI r26 完整工程已完成综合，并复用同源合格位流进行四次软件重启，均未复现启动异常；原 BOOT 回退核验完成。该有限复验不关闭间歇性根因，也不包含断电冷启动或 SDK／HDMI 负载，见[本次实板记录](Deliverables/hardware/HDMI_Complete_20261026/board-validation/README.md)。
 
 当前补充（r27～r53）：真实连续波形与原生160位协议检查已接入。r37在PL互联仍复位、累计AR=0时捕获PS边界RVALID及58/59/61；92/93/95为READY建议项。RVALID在背压时保持并非单独的违规证据，应结合请求历史、复位窗口和检查器流水判读。[原始协议结果](tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md)。
 

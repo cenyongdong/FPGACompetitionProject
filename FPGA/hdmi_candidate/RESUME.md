@@ -2,13 +2,13 @@
 
 ## 当前入口（整理于 2026-10-29）
 
-**最新本地入口：[Top3／0.2 三片段顺序演示包](../../software/pose180_pipeline/resident/DATASET-PLAYLIST.md)；此前[双输入审查与源码整理](../../software/pose180_pipeline/resident/FINAL-REVIEW.md)保留。** 本轮未部署、未改 BOOT／SDK 或启动新板测。最近实测记录仍是 2026-10-28 原 epoch99 长时启动；2026-10-29 只读连接未建立、旧 PC PID 未找到，当前板端运行状态未知。原无限期任务的身份和安全停止路径保留在[长时运行入口](../../.local/pose180-original-longrun-20261028-r1/README.md)，不能据此宣称已经停止或通过长期验收。
+**当前入口：[r3 最终演示包](../../Deliverables/pose180-three-clips-20261029-r3-final.tar.gz)及[部署说明](../../Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)。** 板端最新包保留在 `/root/pose180-three-clips-20261029-r3`；已读取到完整 420 帧双路输出、安全退出及空设备占用记录。历史上传目录已按用户要求清理，旧路径不再用于启动；关键原生记录已迁回本机，旧采集数据及重复本地副本已删除，详细范围见[收尾记录](../../.local/project-cleanup-20261029-r1/summary.json)。本轮未新启 SDK、重启或修改 BOOT。下方旧长时运行、旧包路径和未完成工作属于历史；路由器临时设置恢复等独立待办不因此宣称完成。
 
 **最新：两份自采训练模型已完成有限实板对比；用户要求换回原始epoch99，现已恢复。** 三个独立包复用r5验证工作区的安全程序、TopK=1／无阈值及现有显示，不覆盖历史r4。功能启动消费入口不可同boot重复使用，切换需安全退出后正常重启、重新预检；已保存一次scratch前置阻断及受控恢复原值。准确路径、当前boot_id、结果与结束状态统一见[本轮结果](../../.local/pose180-kinect-board-test-20261028-r1/README.md)，用法见[测试入口](../../software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)。旧批关闭回执、路由器临时设置与归档待办仍保留。
 
 以下为此前r4交付、源码验证和最后一次实际运行的历史记录；其中“暂不更新／断网”已由上方最新准备授权与实际状态更新。
 
-**最新本地交付：TopK=1、无置信度阈值 r4 生命周期加固启动包已完成，尚未部署或实板测试。** [启动包](../../Deliverables/pose180-top1-no-threshold-20261028-r4.tar.gz)（30,673,739 字节）、[SHA256](../../Deliverables/pose180-top1-no-threshold-20261028-r4.tar.gz.sha256)及[使用说明](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md)。原 epoch99 JSON／RAW、单人滤波、双路显示与合格 BOOT 保持，r1／r2／r3 包保留。补齐初始化与重复停止处理、清理全程独占、跨包未完成负载保护及临时地址写前记录；不设置 SDK 自启动或自动重试。程序 SHA256 `60f8bc3c0683af5adca6f491e89ef4fb35306c6e6631d53d92dc79a9848406a0`；完整身份见[package.json](../../.local/pose180-top1-no-threshold-20261028-r4/package.json)。
+**最新本地交付：TopK=1、无置信度阈值 r4 生命周期加固启动包已完成，尚未部署或实板测试。** [启动包](../../Deliverables/history/software/pose180-top1-no-threshold-20261028-r4.tar.gz)（30,673,739 字节）、[SHA256](../../Deliverables/history/software/pose180-top1-no-threshold-20261028-r4.tar.gz.sha256)及[使用说明](../../software/pose180_pipeline/resident/STARTUP-PACKAGE.md)。原 epoch99 JSON／RAW、单人滤波、双路显示与合格 BOOT 保持，r1／r2／r3 包保留。补齐初始化与重复停止处理、清理全程独占、跨包未完成负载保护及临时地址写前记录；不设置 SDK 自启动或自动重试。程序 SHA256 `60f8bc3c0683af5adca6f491e89ef4fb35306c6e6631d53d92dc79a9848406a0`；完整身份见[package.json](../../.local/pose180-top1-no-threshold-20261028-r4/package.json)。
 
 新增初始化／清理 TERM、INT、HUP，监控异常、慢状态连接和地址所有权故障注入通过；完整 CLI 连续启停 3 轮，3 次并行包启动均被拒绝，3 次停止标记模拟写满仍正常退出，FD 数恢复 4→4。既有 r3 父死亡／日志回收／硬件未证明阻断测试，以及慢调用、慢 PC、记录故障等常驻回归通过；ARM64 构建及包检查完成。[新增故障结果](../../.local/pose180-top1-no-threshold-20261028-r4/robustness-verified/result.json)、[退出回归](../../.local/pose180-top1-no-threshold-20261028-r4/exit-cleanup-final/result.json)、[验证目录](../../.local/pose180-top1-no-threshold-20261028-r4/verification.json)、[解包重建](../../.local/pose180-top1-no-threshold-20261028-r4/source-check.json)。网络操作均用替身，未连接设备或更改网络。硬件 STOP／drain 无法证明时原 `_Exit(70)` 保护保持，实际 SDK 挂死／SIGKILL／SIGSEGV／掉电的物理恢复没有上板验证。
 
