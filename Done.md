@@ -10,7 +10,7 @@
 
 2026-10-27 数据集输入：保留原 TCP 窗口接口，补齐官方训练／测试片段整理、板端本地有限播放和启动源互斥；原值检查、mock、ARM64 构建及有限新实板推理完成。随后按用户要求使用 PS 0.5／0.3／1，六个单／双／三人片段共完成 3024 次 HDMI／PC 同时输出的新推理，全部安全退出并实际回退原 BOOT。后续可复用留存输出做轨迹交接对照与视频；双人训练有 PC 接收缺帧，三人训练仍有 ID 重建，未完成实屏观感或真值精度验收；唯一记录见[数据集阶段](software/pose180_pipeline/resident/DATASET-DEMO.md)。
 
-本页按成果发生时配置保留历史结果；文中的旧“当前／下一步／暂停”只属于当时阶段。当前已完成范围见[项目总览](PROJECT-PROGRESS.md)，后续顺序统一见[ToDoLists.md](ToDoLists.md)，不从旧记录恢复负载或授权。
+本页按成果发生时配置保留历史结果；文中的旧“当前／下一步／暂停”只属于当时阶段。当前已完成范围见[项目总览](PROJECT-PROGRESS.md)，保留事项统一见[后续验证与冻结范围](DIFFICULTIES.md#后续验证与冻结范围)，不从旧记录恢复负载或授权。
 
 ## 2026-10-26：流式心率、可选 PL 自相关与有限真实采集
 
@@ -355,7 +355,7 @@ HDMI新核验：本地Lite BOOT/bit与选用版相同；实板显示控制0x2023
 
 ### 工程内容总结
 
-按用户要求先创建根目录 [架构讨论记录](ARCHITECTURE-DISCUSSION-20261015.md)，汇总共享模型、模块所有权、PS/NPU/PL候选、CSI心率及HDMI讨论，区分决策、建议、验证与范围。随后在Windows工作目录D:/FPGACompetitionProject，以既有Python/OpenSSH和固定主机密钥执行一次Lite只读盘点，r2退出0、3.124318秒：BOOT与原记录相同、三份SDK核心库相同、icraft/customop3.39.0、FPGA operating。未见DRM/fb/I²C适配器，Linux时钟树不提供已识别HDMI像素/PLL节点。[完整返回、边界与报告](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md)。r1本机signal pipe权限失败尚未连接板端，完整保留；限制外ssh -V通过后才以新r2执行，无硬件负载失败重试。
+按用户要求先创建根目录 [架构讨论记录（冻结快照）](tools/pose-v1/evidence/architecture-output-20261017-r1/before-document-edit/ARCHITECTURE-DISCUSSION-20261015.md)，汇总共享模型、模块所有权、PS/NPU/PL候选、CSI心率及HDMI讨论，区分决策、建议、验证与范围。随后在Windows工作目录D:/FPGACompetitionProject，以既有Python/OpenSSH和固定主机密钥执行一次Lite只读盘点，r2退出0、3.124318秒：BOOT与原记录相同、三份SDK核心库相同、icraft/customop3.39.0、FPGA operating。未见DRM/fb/I²C适配器，Linux时钟树不提供已识别HDMI像素/PLL节点。[完整返回、边界与报告](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md)。r1本机signal pipe权限失败尚未连接板端，完整保留；限制外ssh -V通过后才以新r2执行，无硬件负载失败重试。
 
 ### 对后续开发的参考
 
@@ -1243,7 +1243,7 @@ H0原始源码/配套资料归档完成，720p时钟/当前位流映射、关节
 
 ### 工程内容总结
 
-本次已完成**全项目进度整理与恢复标记**：[PROJECT-PROGRESS.md](PROJECT-PROGRESS.md)集中展示已验收、已实现待验证及未实施内容，按首版工作包作约50%–60%的工程估算（规划权重58/100，不是统计通过率或工期）。当前阶段为“小样本板端混合推理已跑通→数值/性能验证与正式应用集成”。[恢复入口](tools/pose-v1/RESUME-20261006.md)、[待办](ToDoLists.md)及机器可读状态已补齐；旧失败、构建、模型和参考未移动或覆盖。
+本次已完成**全项目进度整理与恢复标记**：[PROJECT-PROGRESS.md](PROJECT-PROGRESS.md)集中展示已验收、已实现待验证及未实施内容，按首版工作包作约50%–60%的工程估算（规划权重58/100，不是统计通过率或工期）。当前阶段为“小样本板端混合推理已跑通→数值/性能验证与正式应用集成”。[恢复入口](tools/pose-v1/RESUME-20261006.md)、当时的待办清单及机器可读状态已补齐；旧失败、构建、模型和参考未移动或覆盖。待办页现已撤下，追溯方式见[文档目录](DOCUMENTATION.md#撤下页面的去向)。
 
 P1初版缺少“预热三帧对照r6后才能进入计量”的前置门禁，恢复时先在新修订中补齐，再按E0→N1→P1执行；27份ORT独立核验也仍待完成。HDMI配套、骨架定义冲突、数值容限和整机闭环单独保持未验收。暂停没有解除，本轮未连接Lite、构建或执行模型。
 

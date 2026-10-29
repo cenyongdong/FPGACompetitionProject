@@ -1,6 +1,6 @@
 # 全部 Markdown 文档目录
 
-整理日期：2026-10-29。当前工作区共 **554 份 Markdown**，本目录逐份列出位置、用途和历史属性，包含被 Git 忽略的本机记录、模型说明与交付快照。仅排除 `.git`、虚拟环境和依赖缓存；压缩包内部文件不重复展开。清单对应当前工作区，不代表 Git 克隆自带全部本机资产。
+整理日期：2026-10-29。按当前文档结构收录 **546 份 Markdown**，逐份列出位置、用途和历史属性，包含被 Git 忽略的本机记录、模型说明与交付快照。排除 `.git`、虚拟环境、依赖缓存及下文明确撤下的根目录页面；压缩包内部文件不重复展开。清单对应本机收录范围，不代表 Git 克隆自带全部资产，也不将仍残留的旧页副本列为现行入口。
 
 先读[最终项目进度](PROJECT-PROGRESS.md)、[困难最终处置](DIFFICULTIES.md)和[部署／恢复入口](FPGA/hdmi_candidate/RESUME.md)。当前核心见 [src/README](software/pose180_pipeline/src/README.md)。根目录与模块 README 维护当前入口；带日期、包名、PLAN／NEXT 的资料按当时阶段理解，目录名本身不构成执行授权。
 
@@ -9,8 +9,7 @@
 | 文档 | 唯一维护职责 |
 |---|---|
 | [PROJECT-PROGRESS](PROJECT-PROGRESS.md) | 最终选择、完成程度、项目演进及未验收边界 |
-| [DIFFICULTIES](DIFFICULTIES.md) | 全部 53 项 difficulty 的最终处置；已解决表示工程收口，逐项区分修复、替代、缓解和范围收口 |
-| [ToDoLists](ToDoLists.md) | 后续可选验证、保留限制与冻结范围 |
+| [DIFFICULTIES](DIFFICULTIES.md) | 全部 53 项 difficulty 的最终处置，以及[后续验证与冻结范围](DIFFICULTIES.md#后续验证与冻结范围)；已解决表示工程收口，逐项区分修复、替代、缓解和范围收口 |
 | [RESUME](FPGA/hdmi_candidate/RESUME.md) | 最后设备观察、现存部署目录、启动／停止／恢复与备份 |
 | [TechDetails](ADR/TechDetails.md) | 当前模块、数据流、接口与所有权；早期 VPU／RTSP 详录另标历史 |
 | [ADR 索引](ADR/README.md) | 决策顺序与适用范围，不替代当前版本选择 |
@@ -19,18 +18,28 @@
 
 ## 引用与归档
 
-当前入口的链接按现存文件核验；历史文档中仍有指向旧附件、旧工作区或冻结快照原位置的引用。未找到的附件不凭空重建、不以新结果替换，也不统一归因于本次清理。下面每份文档的“遗留引用”只表示当前本机找不到的链接目标数量，包含 JSON、日志、源码和 Markdown，不是新增技术故障数量。
+当前入口的链接按现存文件核验；历史文档中仍有指向旧附件、旧工作区或冻结快照原位置的引用。未找到的附件不凭空重建、不以新结果替换，也不统一归因于本次清理。下面保留的“遗留引用”数量来自前次扫描快照，包含 JSON、日志、源码和 Markdown；它不是实时计数，也不是新增技术故障数量。
 
 - 历史原值和交付包内文档保留；源码迁移后的当前技术说明使用新路径。交付快照与项目侧更新后的说明可能不同，本次没有重打包演示归档。
 - 10 月 29 日按用户要求删除的旧采集与部署范围见[清理记录](.local/project-cleanup-20261029-r1/summary.json)。必要远端记录保存在[证据包](.local/project-cleanup-20261029-r1/board-evidence.tar.gz)，不保证每个历史链接都能在其中找到。
-- 本次扫描清单与逐条缺失引用见[本机核验结果](.local/documentation-final-20261029/validation.json)。被冻结的旧 Markdown 中相对于原目录的链接不批量重写；正文保留的失败与未验收结论不变。
+- 前次扫描清单与逐条缺失引用见[本机核验结果](.local/documentation-final-20261029/validation.json)；本次目录、撤下页面引用及新增链接核验追加在其中的 `navigation_refresh`，不覆盖旧扫描结果。被冻结的旧 Markdown 中相对于原目录的链接不批量重写；正文保留的失败与未验收结论不变。
 - “本机”表示当前文件未纳入 Git，交接时需连同对应资产保存；“现行入口”也可能包含明确标记的历史章节。
+
+## 撤下页面的去向
+
+| 原页面 | 当前阅读位置与追溯方式 |
+|---|---|
+| `ToDoLists.md` | 部署操作归入[恢复入口](FPGA/hdmi_candidate/RESUME.md)，未验收事项与暂停边界归入[后续验证与冻结范围](DIFFICULTIES.md#后续验证与冻结范围)，不再单独维护待办页；历史版本可用 `git show 88fc4092:ToDoLists.md` 查看 |
+| `ARCHITECTURE-DISCUSSION-20261015.md` | 现行架构见[技术说明](ADR/TechDetails.md)和[ADR_49](ADR/ADR_49.md)；早期讨论查看已有[冻结快照](tools/pose-v1/evidence/architecture-output-20261017-r1/before-document-edit/ARCHITECTURE-DISCUSSION-20261015.md)，根目录旧副本不再纳入目录 |
+| `PROJECT-PROGRESS-before-hdmi-20261017.md` | 现行进度见[PROJECT-PROGRESS](PROJECT-PROGRESS.md)；撤下前版本可用 `git show 46df73e6:PROJECT-PROGRESS-before-hdmi-20261017.md` 查看，旧阶段估算不作为当前完成度 |
+
+冻结快照仍可能保留上述旧页的原链接，需结合这里的迁移说明或 Git 历史阅读；这类快照不作为现行导航维护。虚拟环境中的六份第三方许可证已从工程文档目录剔除，文件原文保留。
 
 ## 分类导航
 
 | 分类 | 文档数 |
 |---|---:|
-| 总览、规则与根目录历史 | 10 |
+| 总览、规则与根目录历史 | 7 |
 | 当前主工程：说明、接口与分阶段验证 | 28 |
 | 部署入口与交付快照 | 18 |
 | 架构决策与技术说明 | 54 |
@@ -41,7 +50,7 @@
 | 共享核心、旧链与独立支线 | 15 |
 | 早期 pose-v1 开发与排查 | 164 |
 | 历次原始证据报告 | 59 |
-| 本机验证与运行记录 | 66 |
+| 本机验证与运行记录 | 61 |
 | 冻结的文档历史快照 | 18 |
 | 厂商资料（保持原文） | 6 |
 | 其它历史工程与日志说明 | 4 |
@@ -51,18 +60,15 @@
 各分类可展开；可用编辑器搜索文件名、问题编号、日期或包名。
 
 <details>
-<summary>总览、规则与根目录历史（10 份）</summary>
+<summary>总览、规则与根目录历史（7 份）</summary>
 
 - [Agents.md](Agents.md) — 项目执行规范（现行入口；遗留引用 1）
-- [ARCHITECTURE-DISCUSSION-20261015.md](ARCHITECTURE-DISCUSSION-20261015.md) — 架构讨论记录与 HDMI 后续实施范围（历史／专题说明；遗留引用 17）
 - [DIFFICULTIES.md](DIFFICULTIES.md) — 项目困难与最终处置（现行入口；遗留引用 18）
 - [DOCUMENTATION.md](DOCUMENTATION.md) — 全部 Markdown 文档目录（现行入口）
 - [Done.md](Done.md) — 已完成工作记录（分阶段记录；遗留引用 145）
-- [PROJECT-PROGRESS-before-hdmi-20261017.md](PROJECT-PROGRESS-before-hdmi-20261017.md) — 项目进度总览（历史／专题说明；遗留引用 13）
 - [PROJECT-PROGRESS.md](PROJECT-PROGRESS.md) — 项目最终进度（现行入口；遗留引用 1）
 - [README.md](README.md) — Wi-Fi 人体三维姿态演示工程（现行入口；遗留引用 1）
 - [REFERENCES.md](REFERENCES.md) — 比赛开发资料索引与理解记录（分阶段记录；遗留引用 180）
-- [ToDoLists.md](ToDoLists.md) — 交付后的后续事项与保留限制（现行入口）
 
 </details>
 
@@ -268,6 +274,8 @@
 
 <details>
 <summary>提交稿与历史选材（2 份）</summary>
+
+当前提交用 Word 完成稿为[技术文档_完成版_20261029.docx](Docs/提交资料/技术文档_完成版_20261029.docx)，原模板未覆盖；下面两份 Markdown 分别保留历史选材与首版文字，不是最新完整提交稿。Word 不计入 Markdown 数量。
 
 - [Docs/提交资料/官方数据集演示片段清单.md](Docs/%E6%8F%90%E4%BA%A4%E8%B5%84%E6%96%99/%E5%AE%98%E6%96%B9%E6%95%B0%E6%8D%AE%E9%9B%86%E6%BC%94%E7%A4%BA%E7%89%87%E6%AE%B5%E6%B8%85%E5%8D%95.md) — 官方数据集视频演示片段清单（稿件／历史选材；本机）
 - [Docs/提交资料/技术文档_第一部分_首版.md](Docs/%E6%8F%90%E4%BA%A4%E8%B5%84%E6%96%99/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3_%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86_%E9%A6%96%E7%89%88.md) — 第一部分 作品概述（稿件／历史选材；本机）
@@ -577,7 +585,7 @@
 </details>
 
 <details>
-<summary>本机验证与运行记录（66 份）</summary>
+<summary>本机验证与运行记录（61 份）</summary>
 
 - [.local/ai-hdmi-drain-joint-20261024-r39/source/diagnostics/README.md](.local/ai-hdmi-drain-joint-20261024-r39/source/diagnostics/README.md) — README（历史实测／证据；本机；遗留引用 1）
 - [.local/ai-hdmi-joint-20261023-r35/source/diagnostics/README.md](.local/ai-hdmi-joint-20261023-r35/source/diagnostics/README.md) — README（历史实测／证据；本机；遗留引用 1）
@@ -636,12 +644,7 @@
 - [.local/pose180-top1-no-threshold-20261028-r4/source-unpacked/software/core/README.md](.local/pose180-top1-no-threshold-20261028-r4/source-unpacked/software/core/README.md) — 正式运行核心（历史实测／证据；本机；遗留引用 5）
 - [.local/pose180-top1-no-threshold-20261028-r4/source-unpacked/software/pose180_pipeline/resident/STARTUP-PACKAGE.md](.local/pose180-top1-no-threshold-20261028-r4/source-unpacked/software/pose180_pipeline/resident/STARTUP-PACKAGE.md) — TopK=1、无置信度阈值启动包（历史实测／证据；本机）
 - [.local/pose180-top1-no-threshold-20261028-r4/unpacked/pose180-top1-no-threshold-20261028-r4/README.md](.local/pose180-top1-no-threshold-20261028-r4/unpacked/pose180-top1-no-threshold-20261028-r4/README.md) — TopK=1、无置信度阈值启动包（历史实测／证据；本机）
-- [.local/procise-mcp-venv/Lib/site-packages/httpcore2-2.13.1.dist-info/licenses/LICENSE.md](.local/procise-mcp-venv/Lib/site-packages/httpcore2-2.13.1.dist-info/licenses/LICENSE.md) — LICENSE（历史实测／证据；本机）
-- [.local/procise-mcp-venv/Lib/site-packages/httpx2-2.13.1.dist-info/licenses/LICENSE.md](.local/procise-mcp-venv/Lib/site-packages/httpx2-2.13.1.dist-info/licenses/LICENSE.md) — LICENSE（历史实测／证据；本机）
-- [.local/procise-mcp-venv/Lib/site-packages/idna-3.20.dist-info/licenses/LICENSE.md](.local/procise-mcp-venv/Lib/site-packages/idna-3.20.dist-info/licenses/LICENSE.md) — LICENSE（历史实测／证据；本机）
-- [.local/procise-mcp-venv/Lib/site-packages/starlette-1.7.0.dist-info/licenses/LICENSE.md](.local/procise-mcp-venv/Lib/site-packages/starlette-1.7.0.dist-info/licenses/LICENSE.md) — LICENSE（历史实测／证据；本机）
-- [.local/procise-mcp-venv/Lib/site-packages/uvicorn-0.54.0.dist-info/licenses/LICENSE.md](.local/procise-mcp-venv/Lib/site-packages/uvicorn-0.54.0.dist-info/licenses/LICENSE.md) — LICENSE（历史实测／证据；本机）
-- [.local/procise-mcp-venv/Lib/site-packages/win32comext/mapi/NOTICE.md](.local/procise-mcp-venv/Lib/site-packages/win32comext/mapi/NOTICE.md) — Licensing（历史实测／证据；本机；遗留引用 1）
+- [.local/technical-document-20261029-r1/artifact.md](.local/technical-document-20261029-r1/artifact.md) — 技术文档模板、内容与排版约定（交付制作记录；本机）
 - [.local/r30-relocated/README.md](.local/r30-relocated/README.md) — r30 实际源码工程（供官方检查，2026-10-26）（历史实测／证据；本机）
 - [.local/r30-relocated/waveforms/HDMI_HP2_REAL_r30/README.md](.local/r30-relocated/waveforms/HDMI_HP2_REAL_r30/README.md) — HDMI／HP2 实板连续波形（2026-10-22，r30）（历史实测／证据；本机）
 - [.local/router-autostart-20261025-r1/HANDOFF.md](.local/router-autostart-20261025-r1/HANDOFF.md) — READY — router autostart verified（历史实测／证据；本机）

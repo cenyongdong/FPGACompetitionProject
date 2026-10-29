@@ -34,7 +34,7 @@
 
 2026-10-15 HDMI新核验：本地Lite BOOT/bit与选用版相同；实板显示控制0x20230218及12寄存器读取过，BOOT/六份SDK库/内核前后一致。参考RTL行为仿真确认200MHz扫描80.81Hz、停消费可卡读帧及AXI在RREADY=0时提前完成缺陷；后者不代表当前BOOT故障已证。显示器已接仍报时序不支持，误点稳定画面作废。用户已批准隔离候选修正独立时钟/AXI/停止换帧，先仿真和Procise构建，暂不上板。 [执行、原值和限制](tools/pose-v1/evidence/hdmi-contract-validation-20261015-r1/REPORT.md)。
 
-2026-10-15 HDMI已按用户要求先归档[完整讨论](ARCHITECTURE-DISCUSSION-20261015.md)，再一次板端只读核验：BOOT/三份SDK核心库同、FPGA operating；无DRM/fb/I²C适配器，clk_summary不能观测HDMI像素/PLL。参考RTL显示门控可能令读FIFO不再消费，不能等一帧即释放；当前发布位流时钟与停止契约待补，色条未启动。[执行/原值/停止门槛](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md)。未改BOOT/SDK/模型，无MMIO、设备初始化或后台，旧DATA暂停。
+2026-10-15 HDMI已按用户要求先归档[完整讨论（冻结快照）](tools/pose-v1/evidence/architecture-output-20261017-r1/before-document-edit/ARCHITECTURE-DISCUSSION-20261015.md)，再一次板端只读核验：BOOT/三份SDK核心库同、FPGA operating；无DRM/fb/I²C适配器，clk_summary不能观测HDMI像素/PLL。参考RTL显示门控可能令读FIFO不再消费，不能等一帧即释放；当前发布位流时钟与停止契约待补，色条未启动。[执行/原值/停止门槛](tools/pose-v1/evidence/hdmi-stage1-20261015-r2/REPORT.md)。未改BOOT/SDK/模型，无MMIO、设备初始化或后台，旧DATA暂停。
 
 2026-10-15共享新包稳定性已完成：原编译包三窗、30秒/1131次及30分钟/62,945次实板串行推理的数值/内存观察通过，完整实际输入/输出回传后SHA及现行门禁独立复核通过。暖机后RSS75204→73628KiB、PSS73887→71779KiB，Private_Dirty/VmData不增，FD13/线程3/映射86保持；Engine均值23.278220ms，含保存/比较速率34.969次/秒。无崩溃/SDK异常/新增内核日志，但11次process超过1秒、最大4.158秒（forward4.151秒/进程CPU20.177ms），时延长尾原因未知，列D41，不称实时性通过。Engine正常销毁、本批进程和连接结束。r1可选/proc接口失败原样保留，r2兼容修复4项本机检查后经用户明确允许新Session继续；归档SSH超时只监测/取回原归档，未重跑推理。模型/RAW/数学/CPU注册/NPU分配/SDK/BOOT不改，常规诊断限前三帧，异常证据路径保留。仅三个冻结输入，无视频/网络叠加，不能扩展为整机或任意输入绝对无泄漏保证。[完整报告](tools/pose-v1/evidence/shared-stability-20261015-r2/REPORT.md)。正式演示不换，旧DATA继续暂停。
 
@@ -134,7 +134,7 @@
 
 2026-10-07最新：[运行核心/27样本/性能结果](tools/pose-v1/RUNTIME-RESULTS-20261007.md)、[H0配套资料](tools/pose-v1/H0-INTEGRATION-AUDIT-20261007.md)、[N2/P2候选](tools/pose-v1/NEXT-GATE-20261007.md)。原批准E0/N1/P1已执行完成；数值容限及5Hz未通过，视频未操作。以下20261006暂停文字为历史，最新以此结果及STATUS.md为准。
 
-2026-10-06进度/恢复入口：[全项目阶段与估算](PROJECT-PROGRESS.md)、[下一次唤醒](tools/pose-v1/RESUME-20261006.md)、[待办](ToDoLists.md)。用户暂停保持；r6已验收，新核心只编译通过、ORT27已生成而独立复核待完成，N1/P1板测和双路显示未完成。
+2026-10-06进度/恢复入口：[全项目阶段与估算](PROJECT-PROGRESS.md)、[下一次唤醒](tools/pose-v1/RESUME-20261006.md)及当时的待办清单（现已撤下，追溯方式见[文档目录](DOCUMENTATION.md#撤下页面的去向)）。用户暂停保持；r6已验收，新核心只编译通过、ORT27已生成而独立复核待完成，N1/P1板测和双路显示未完成。
 
 当前首版入口（2026-10-06）：[跨帧修正与三样本混合工程结果](tools/pose-v1/MIXED-FRAME-STATE-R6-RESULTS.md)、
 [三样本ONNX已完成参考](tools/pose-v1/ONNX-REFERENCE-RESULTS-20261006.md)，范围及证据见18.7。

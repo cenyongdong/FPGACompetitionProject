@@ -14,7 +14,9 @@
 | 所有 Markdown 文档的位置、用途与历史属性 | [完整文档目录](DOCUMENTATION.md) |
 | 当前源码如何组织 | [主工程](software/pose180_pipeline/README.md)、[核心模块](software/pose180_pipeline/src/README.md) |
 | 系统架构、接口和资源生命周期 | [技术说明](ADR/TechDetails.md)、[架构决策](ADR/README.md) |
-| 历史成果、资料与后续可选验证 | [Done](Done.md)、[REFERENCES](REFERENCES.md)、[ToDoLists](ToDoLists.md) |
+| 后续验证与冻结范围 | [保留边界](DIFFICULTIES.md#后续验证与冻结范围) |
+| 历史成果与资料 | [Done](Done.md)、[REFERENCES](REFERENCES.md) |
+| 提交用技术文档 | [技术文档完成版](Docs/提交资料/技术文档_完成版_20261029.docx)（本机文件，原模板保留） |
 
 ## 目录职责
 
@@ -26,7 +28,7 @@
 | `model/` | 原模型、转换产物及独立候选；当前选择由最终包身份和模型说明确定 |
 | `tools/` | 开发工具、训练／部署与历次问题取证；旧 `NEXT`、`PLAN` 不代表当前待执行任务 |
 | `Deliverables/` | 最新演示包、源码快照；旧软件与模型包在 `history/`，硬件交付在 `hardware/` |
-| `Docs/` | 厂商资料与提交稿；草稿和早期选材清单不替代当前部署说明 |
+| `Docs/` | 厂商资料与提交稿；`提交资料/技术文档_完成版_20261029.docx` 为本次完成稿，原模板和首版稿保留；早期选材清单不替代当前部署说明 |
 | `ADR/` | 决策与技术说明；`history/` 保留文档原始快照 |
 | `.local/` | 本机验证、清理清单及保留证据；不保证随 Git 克隆提供 |
 

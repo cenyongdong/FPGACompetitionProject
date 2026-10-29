@@ -444,7 +444,7 @@ G1的硬件通路由G4／G5先形成可执行候选，表中顺序表示需求�
 以下区分物理资料、实际实现、原代码和研究依据。实际路径属于当前机器，跨机时需重新定位，不能以目录名字替代身份核验。
 
 1. [项目执行规范](../AGENTS.md)、[架构ADR_49](../ADR/ADR_49.md)、[数值ADR_48](../ADR/ADR_48.md)。
-2. [心率与PL分工讨论](../ARCHITECTURE-DISCUSSION-20261015.md)、[旧加速构想](../ADR/ADR_ToBeDiscussed.md)。旧文中的0.1ms／50倍／消除157ms没有实测支持，不作为本方案指标。
+2. [心率与PL分工讨论（冻结快照）](../tools/pose-v1/evidence/architecture-output-20261017-r1/before-document-edit/ARCHITECTURE-DISCUSSION-20261015.md)、[旧加速构想](../ADR/ADR_ToBeDiscussed.md)。旧文中的0.1ms／50倍／消除157ms没有实测支持，不作为本方案指标。
 3. [Lite硬件手册](<D:/Dowload from Chrome/嵌赛资料/开发板手册/悟净开发板Lite（轻量版）硬件使用手册V1.0.pdf>)，PDF第4、5、7、8、12至14、16页；第8页资源表已目视核对。手册标称值不代表本程序实测速率。
 4. [r9实际资源报告](D:/FPGACompetitionProject/.local/hdmi-live-20261018-r9/reference/fpai_demo_vivado.runs/impl_read_v3r9/ai7030_edif_top_utilization_placed.rpt)、[实际时钟报告](D:/FPGACompetitionProject/.local/hdmi-live-20261018-r9/reference/fpai_demo_vivado.runs/impl_read_v3r9/ai7030_edif_top_clock_utilization_routed.rpt)、[r9候选说明](hdmi_candidate/CANDIDATE-BOARD-READ-R9.md)。
 5. [r14最新报告](D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-startup-20261018-r14/REPORT.md)、[最终审计及内存快照](D:/FPGACompetitionProject/tools/pose-v1/evidence/hdmi-startup-20261018-r14/final-audit.json)。

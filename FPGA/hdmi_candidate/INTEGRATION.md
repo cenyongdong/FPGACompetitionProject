@@ -85,4 +85,4 @@ r24实际布线检查点的全局／层级资源、物理共享Slice和冗余候
 
 部分早期独立REPORT.md已不在当前证据目录，不能继续当作可读报告或补造为原文；保留的源码、原始归档及本次整理前文档各自注明范围。[文档修订记录](../../tools/pose-v1/evidence/hdmi-documents-20261018-r1/revision.json)及同目录before.tar保留本次整理前原文。
 
-当前阻塞为D47首读内容混合、D44/持续实屏、D45启动根因及联合长期。r53已安全回原BOOT并关闭，当前没有新的板测额度；本次只整理文档和合并成果，旧DATA独立暂停。最新原值与判读边界见[r53](../../tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)，下一计划见[ToDoLists](../../ToDoLists.md)。
+当前阻塞为D47首读内容混合、D44/持续实屏、D45启动根因及联合长期。r53已安全回原BOOT并关闭，当前没有新的板测额度；本次只整理文档和合并成果，旧DATA独立暂停。以上为 r53 当时结论，原值与判读边界见[r53](../../tools/pose-v1/evidence/hdmi-pipeline-20261024-r53/RESULTS.md)；现行保留事项统一见[后续验证与冻结范围](../../DIFFICULTIES.md#后续验证与冻结范围)。

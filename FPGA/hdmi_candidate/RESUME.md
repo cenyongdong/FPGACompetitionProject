@@ -41,7 +41,7 @@ PC 仅观察结果，不负责发包或初始化 SDK。当前电脑可使用 `-B
 | 六片段、3024 次推理与原 BOOT 回退 | [数据集阶段](../../software/pose180_pipeline/resident/DATASET-DEMO.md) |
 | 早期 r4～r7 断线恢复与 TX 续期 | [常驻记录](../../software/pose180_pipeline/resident/README.md) |
 
-后续验证使用新记录和实际设备身份，旧包次数不恢复。用户授权与独立暂停见 [Agents.md](../../Agents.md)，未完成的技术验收见[后续事项](../../ToDoLists.md)。
+后续验证使用新记录和实际设备身份，旧包次数不恢复。用户授权与独立暂停见 [Agents.md](../../Agents.md)，未完成的技术验收统一见[后续验证与冻结范围](../../DIFFICULTIES.md#后续验证与冻结范围)。
 
 ## 2026-10-27 默认启动发布与七色条
 
@@ -81,7 +81,7 @@ PC 仅观察结果，不负责发包或初始化 SDK。当前电脑可使用 `-B
 
 2026-10-25较早批次：[r5卡顿优化与PC联合长测](../../software/pose180_pipeline/resident/STUTTER-VALIDATION.md)已完成30分钟、RX物理恢复及PC离线实屏验证，正常停止、回原BOOT并关闭。实际1候选／1SDK／1回退，全部余额0；无本批活动负载，该批恢复身份与原值统一见r5记录及本机`.local/pose180-resident-stutter-20261025-r5/run-state.json`。r4及更早包均保持关闭。
 
-2026-10-25新决策：[ADR_50](../../ADR/ADR_50.md)已批准端到端演示优先、有界缓存、PC／归档解耦及分级恢复，无需严格30Hz。实现与本轮真实CSI→推理→HDMI有界结果见[常驻演示记录](../../software/pose180_pipeline/resident/README.md)，用户已现场确认多轮骨架更新；最新包状态与恢复身份以该记录为准。下一步见[待办](../../ToDoLists.md)；下述旧包失败与关闭额度不回写。
+2026-10-25新决策：[ADR_50](../../ADR/ADR_50.md)已批准端到端演示优先、有界缓存、PC／归档解耦及分级恢复，无需严格30Hz。实现与本轮真实CSI→推理→HDMI有界结果见[常驻演示记录](../../software/pose180_pipeline/resident/README.md)，用户已现场确认多轮骨架更新；最新包状态与恢复身份以该记录为准。当时的待办页已撤下，现行保留范围见[后续验证与冻结范围](../../DIFFICULTIES.md#后续验证与冻结范围)；下述旧包失败与关闭额度不回写。
 
 2026-10-25较早严格主链实测：180-query新主链已部署；原BOOT有界测试止于Host归档1秒保护，修正后完成软件验证。新HDMI包`pose180-hdmi-20261025-r2`在SDK前因新增RCAM_UNDERFLOW状态未过准入，实际1候选/0 SDK/1原BOOT回退，已关闭、余额0；当前原BOOT、无占用及详细证据统一见[新主链实测](../../software/pose180_pipeline/RESULTS.md)。下述r53保留历史，不作为当前启动身份或新额度。
 
@@ -98,7 +98,7 @@ PC 仅观察结果，不负责发包或初始化 SDK。当前电脑可使用 `-B
 | 当前硬件物理资格与BOOT对应关系 | [r45 RESULTS](../../tools/pose-v1/evidence/hp2-deferred-consume-20261024-r45/RESULTS.md)；r46～r53复用，无重新EDA或新增时序例外 |
 | 隔离/逐拍波形/原生协议历史 | [S01隔离](diagnostics/S01-ISOLATION.md)、[r30波形](diagnostics/waveforms-r30-20261022/README.md)、[r37协议结果](../../tools/pose-v1/evidence/hp2-startup-protocol-20261023-r37/RESULTS.md) |
 | 实际异常消费后有限业务 | [r52 RESULTS](../../tools/pose-v1/evidence/hdmi-long-git-20261024-r52/RESULTS.md)；不以r53健康消费0的样本替代 |
-| 完成、难点、下一计划 | [Done](../../Done.md)、[DIFFICULTIES](../../DIFFICULTIES.md)、[ToDoLists](../../ToDoLists.md) |
+| 历史成果、难点与现行保留范围 | [Done](../../Done.md)、[DIFFICULTIES](../../DIFFICULTIES.md)、[后续验证与冻结范围](../../DIFFICULTIES.md#后续验证与冻结范围) |
 
 ## r53 当时结论与执行边界
 

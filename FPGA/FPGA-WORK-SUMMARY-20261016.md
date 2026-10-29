@@ -146,6 +146,6 @@ D:\Dowload from Chrome\嵌赛资料\Icraft\参考实现\位流\悟净LITE版_BOO
 - [隔离实现完整证据](../tools/pose-v1/evidence/hdmi-integration-20261016-r1/REPORT.md)，该批587文件封存。
 - [实际板测完整证据](../tools/pose-v1/evidence/hdmi-board-candidate-20261016-r1/REPORT.md)，该批178文件封存。
 - [实际新bit与BOOT及回退清单](../tools/pose-v1/evidence/hdmi-integration-20261016-r1/controlled-startup-r5/manifest.json)。
-- [难点D05／D42／D43](../DIFFICULTIES.md)、[此前讨论记录](../ARCHITECTURE-DISCUSSION-20261015.md)。
+- [难点D05／D42／D43](../DIFFICULTIES.md)、[此前讨论记录（冻结快照）](../tools/pose-v1/evidence/architecture-output-20261017-r1/before-document-edit/ARCHITECTURE-DISCUSSION-20261015.md)。
 
 本次文档修订及暂停记录保存在[交接文档证据目录](../tools/pose-v1/evidence/hdmi-handoff-docs-20261016-r1)。现行文档的新SHA另行记录，既有封存报告、原值、产物和哈希清单不回写。

@@ -10,6 +10,7 @@
 |---|---|
 | 演示部署包 | [pose180-three-clips-20261029-r3-final.tar.gz](Deliverables/pose180-three-clips-20261029-r3-final.tar.gz)，[部署步骤](Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)，[交付目录](Deliverables/README.txt) |
 | 核心源码 | [模块目录](software/pose180_pipeline/src/README.md)，[源码快照](Deliverables/pose180-core-sources-final-20261029.tar.gz) |
+| 提交技术文档 | [技术文档_完成版_20261029.docx](Docs/提交资料/技术文档_完成版_20261029.docx)，20 页，已完成排版核验；原 `技术文档.docx` 未覆盖。完成稿仍注明整机正面／45° 实物照片缺口，最终演示视频录制没有完成记录 |
 | 模型与显示配置 | 原始 epoch99；TopK=3 后严格 `score > 0.2`；CPU 多人跟踪／One Euro `0.5／0.3／1`；HDMI 和 PC 共用展示结果 |
 | 输入接口 | `official_dataset` 板端本地读原始 CSI；`live_csi` 三 RX 实时采集。二者互斥，共用预处理和真实 NPU 推理 |
 | 默认展示内容 | 官方训练集 1 人约 10 秒 → 2 人约 9 秒 → 3 人约 9 秒，共 420 帧；来源及限制见[片段清单](software/pose180_pipeline/resident/DATASET-PLAYLIST.md) |
@@ -39,4 +40,4 @@
 | 10 月 28 日 | 加固单人显示及资源生命周期；比较自采模型后恢复原 epoch99；长测启动有证据，但没有长期验收结论 | [模型对比](software/pose180_pipeline/resident/KINECT-BOARD-TEST-20261028.md)、[启动与安全历史](software/pose180_pipeline/resident/STARTUP-PACKAGE.md) |
 | 10 月 29 日 | 核心目录整理、最终审查、FD 竞态修正、双输入与三片段部署、PC 连接修正；完成板端及本地清理 | [最终审查](software/pose180_pipeline/resident/FINAL-REVIEW.md)、[收尾原始记录](.local/project-cleanup-20261029-r1/summary.json) |
 
-按用户收尾要求，所有 difficulty 的项目跟踪状态统一为“已解决（工程收口）”，逐项处置和仍存在的技术限制见 [DIFFICULTIES.md](DIFFICULTIES.md)。该状态不改变历史失败或未验收结论。后续可选验证和冻结项见 [ToDoLists.md](ToDoLists.md)，所有 Markdown 的现行／历史属性见[文档目录](DOCUMENTATION.md)。
+按用户收尾要求，所有 difficulty 的项目跟踪状态统一为“已解决（工程收口）”，逐项处置和仍存在的技术限制见 [DIFFICULTIES.md](DIFFICULTIES.md)。该状态不改变历史失败或未验收结论。后续可选验证和冻结项统一见[后续验证与冻结范围](DIFFICULTIES.md#后续验证与冻结范围)，文档的现行／历史属性及撤下页面的去向见[文档目录](DOCUMENTATION.md)。

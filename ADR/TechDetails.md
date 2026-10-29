@@ -9,7 +9,7 @@
 | CSI 恢复与历史实测 | [窗口恢复](../software/pose180_pipeline/resident/WINDOW-RECOVERY.md)、[相位跟踪](../software/pose180_pipeline/resident/PHASE-TRACKING.md)、[PC 独立显示](../software/pose180_pipeline/resident/STUTTER-VALIDATION.md) |
 | 模型与数值误差 | [模型状态](../tools/pose180/STATUS.md)、[部署结果](../tools/pose180/deploy/RESULTS.md) |
 | HDMI 所有权、启动消费与硬件保护边界 | [INTEGRATION.md](../FPGA/hdmi_candidate/INTEGRATION.md)、[保留消费候选](../FPGA/hdmi_candidate/probe_free_drain/README.md)、[独立守卫离线结果](../FPGA/hdmi_candidate/pose_stabilizer/README.md) |
-| 执行规则、问题与后续顺序 | [Agents.md](../Agents.md)、[DIFFICULTIES.md](../DIFFICULTIES.md)、[ToDoLists.md](../ToDoLists.md) |
+| 执行规则、问题与保留范围 | [Agents.md](../Agents.md)、[DIFFICULTIES.md](../DIFFICULTIES.md)、[后续验证与冻结范围](../DIFFICULTIES.md#后续验证与冻结范围) |
 
 最终演示默认从板端本地文件读取官方原始 CSI，顺序播放 1／2／3 人；也可显式选择实时 CSI，两个源互斥。当前片段见[最终演示清单](../software/pose180_pipeline/resident/DATASET-PLAYLIST.md)，早期六片段见[历史数据集验证](../software/pose180_pipeline/resident/DATASET-DEMO.md)。
 
@@ -143,7 +143,7 @@ r8常驻入口开启`track_clock`，严格有限模式关闭且禁止开启。�
 
 常驻主链已有软件故障注入、真实 CSI／新推理／HDMI 有限联合验证、RX 局部恢复及 PC 物理离线仍更新的证据。去诊断保留消费与 4 路滤波派生硬件的物理资格、有限板测分别成立；独立精简守卫的部署资格仍未成立。v5 已完成有限真实 CSI 与数据集双输出验证；最终 r3 最近既有记录为 420 帧，验证边界见[最终进度](../PROJECT-PROGRESS.md)。
 
-重影／跨 ID 突跳、秒级缺窗、长期无人值守与人体精度仍开放；运行中按 PL_KEY1 后黑屏失联样本没有被后续成功启动消除。CPU 为默认滤波后端，PL 作为已测实验后端。结果、限制与优先级分别见[最新实测](../software/pose180_pipeline/resident/PRESENTATION-20261026.md)、[问题索引](../DIFFICULTIES.md)和[下一步](../ToDoLists.md)。
+重影／跨 ID 突跳、秒级缺窗、长期无人值守与人体精度仍开放；运行中按 PL_KEY1 后黑屏失联样本没有被后续成功启动消除。CPU 为默认滤波后端，PL 作为已测实验后端。结果、限制与保留范围分别见[最新实测](../software/pose180_pipeline/resident/PRESENTATION-20261026.md)、[问题索引](../DIFFICULTIES.md)和[后续验证与冻结范围](../DIFFICULTIES.md#后续验证与冻结范围)。
 
 完整诊断版本 r8／r9 的首 RVALID 见证差异与原生 RCAM_UNDERFLOW 保留在[原记录](../software/pose180_pipeline/resident/PHASE-TRACKING.md)。新硬件使用明确匹配的功能消费准入，不伪装旧寄存器或宣称完整 AXI 等价；未取得证据的保护仍不能记作通过。旧 DATA 与 D45 全面调查保持独立暂停。
 
