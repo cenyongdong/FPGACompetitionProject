@@ -6,6 +6,8 @@ import sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT/'tools'))
+from device_credentials import credentials
 
 
 def main():
@@ -24,14 +26,11 @@ def main():
     module_path=ROOT/'demo_v1/tools/ssh.py'
     spec=importlib.util.spec_from_file_location('_pose180_pinned_ssh',module_path)
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-    # Authorization was supplied in the project instructions. Consume it only
-    # inside this process; SSH's original helper sends it over one-use IPC.
+    # Read private local configuration or hidden input; SSH uses one-use IPC.
     def authorized_password(_prompt):
-        instructions=(ROOT/'Agents.md').read_text(encoding='utf-8-sig')
-        line=next(row for row in instructions.splitlines() if '192.168.126.49' in row and '密码：' in row)
-        match=re.search(r'密码：([^。；\s]+)',line)
-        if not match:raise ValueError('Missing authorized board credential')
-        return match.group(1)
+        user, password = credentials('192.168.126.49', 'root')
+        if user != 'root':raise ValueError('This board transport requires the root account')
+        return password
     module.getpass.getpass=authorized_password
     sys.argv=[str(module_path),args.mode,args.source]
     if args.destination:sys.argv.append(args.destination)

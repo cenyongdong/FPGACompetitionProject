@@ -14,6 +14,8 @@
 
 ## 文档职责
 
+2026-10-30 开源补充：[MIT 许可证](LICENSE)、[第三方许可边界](THIRD_PARTY_NOTICES.md)、[凭据与安全维护](SECURITY.md)。下方数量保留原整理日期的统计口径。
+
 | 文档 | 唯一维护职责 |
 |---|---|
 | [PROJECT-PROGRESS](PROJECT-PROGRESS.md) | 最终选择、完成程度、项目演进及未验收边界 |

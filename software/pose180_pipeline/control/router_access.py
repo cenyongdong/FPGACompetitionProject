@@ -11,14 +11,15 @@ import time
 import requests
 
 ROOT=Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT/'tools'))
+from device_credentials import credentials as device_credentials
+
 HOSTS={'rx1':'192.168.50.1','tx':'192.168.50.2','rx2':'192.168.50.3','rx3':'192.168.50.4'}
 OUT=ROOT/'.local/pose180-resident-20261025/routers'
 
 def credentials(host):
-    for line in (ROOT/'Agents.md').read_text(encoding='utf-8-sig').splitlines():
-        columns=[x.strip() for x in line.split('|')]
-        if len(columns)>6 and columns[3]==host:return columns[4],columns[5].encode()
-    raise ValueError('Authorized router credential missing')
+    user, password = device_credentials(host, 'admin')
+    return user, password.encode('utf-8')
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('kind',choices=HOSTS);p.add_argument('label');p.add_argument('mode',choices=('http-read','http-enable','http-restore','exec','put','get'));p.add_argument('source',nargs='?');p.add_argument('destination',nargs='?');p.add_argument('--timeout',type=int,default=30);a=p.parse_args()

@@ -20,7 +20,7 @@ for rel in docs:
     for href in re.findall(r'\[[^\]]*\]\(([^)]+)\)',p.read_text(encoding='utf-8')):
         if '://' in href or href.startswith('#'):continue
         target=(p.parent/href.split('#')[0]).resolve();assert target.exists(),str(target);links+=1
-agents=(root/'AGENTS.md').read_text(encoding='utf-8');assert '192.168.126.49' in agents and '账号 `root`，密码 `fmsh`' in agents
+agents=(root/'AGENTS.md').read_text(encoding='utf-8');assert '192.168.126.49' in agents  # Credentials are local-only.
 tools=['ssh_memory_transport.py','review_model_vpu.py','review_model_vpu_startup_failure.py','record_model_vpu_completion.py','update_model_vpu_documents.py','verify_model_vpu_archive.py','run-model-vpu.sh','review_model_only_objects.py','review_model_only_counts.py','review_scratch_video.py']
 review=dict(status='final_local_archive_source_bindings_and_links_passed',local_links_checked=links,build_sources_checked=len(m['build_files']),source_payloads_checked=n,completion_review_SHA256=g.sha(e/'completion-review.json'),next_checkpoint_SHA256=g.sha(e/'next-checkpoint.json'),review_tools_SHA256={name:g.sha(root/'tools/pose-v1'/name) for name in tools},documents_SHA256={rel:g.sha(root/rel) for rel in docs+['AGENTS.md','Done.md','PROJECT-PROGRESS.md','DIFFICULTIES.md','ADR/ADR_02.md','ADR/README.md','tools/pose-v1/README.md']},new_board_operations=False)
 p=e/'final-local-review.json';assert not p.exists();p.write_text(json.dumps(review,indent=2)+'\n',encoding='utf-8',newline='\n')

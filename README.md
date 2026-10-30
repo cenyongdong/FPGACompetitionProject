@@ -1,5 +1,9 @@
 # 基于 Wi-Fi CSI 的嵌入式多人三维姿态感知系统
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+原创部分采用 MIT；模型派生代码、官方数据、厂商资产等适用各自条款，详见 [第三方声明](THIRD_PARTY_NOTICES.md)。
+
 ## 一、作品介绍
 
 本作品面向高隐私性智能家居，通过 Wi-Fi 信道状态信息（CSI）感知人体动作，在悟净 Lite 平台完成多人三维姿态推理与显示。系统无需摄像头或人体穿戴设备，以三维骨架呈现活动，为居家活动观察、健身交互等应用提供感知基础。
@@ -93,6 +97,8 @@
 | [REFERENCES.md](REFERENCES.md) | 资料索引与阅读记录 |
 | [Agents.md](Agents.md) | 本地工程执行规则与授权边界 |
 | [.gitignore](.gitignore) | Git 提交范围，采用指定交付文件放行规则 |
+| [LICENSE](LICENSE)、[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) | 原创部分的 MIT 许可及第三方内容的适用边界 |
+| [SECURITY.md](SECURITY.md) | 本机凭据配置、提交脱敏与安全维护 |
 
 ## 三、部署与演示入口
 
@@ -116,3 +122,14 @@
 Git 提供当前完整演示包、源码快照及其校验文件、部署说明、选定技术文档与海报，以及当前模型的 ZG JSON／RAW、源 ONNX、转换配置、选题指南和指定验证报告。大尺寸训练 checkpoint、解压副本、旧包、原始采集、模型中间产物、SDK 安装资料、日志和构建缓存继续保留在本机；因此部分历史附件需要完整开发工作区才能打开。文件范围与文档检查说明见 [完整导航](DOCUMENTATION.md#git-克隆后的文件可用范围)，训练权重的获取方式见 [模型说明](model/README.md#本机保留的开发产物)。
 
 已有同一 r3 板端内容完成 420 帧新推理、HDMI 采纳与 PC 发送，并正常退出；最终 PC 修订另有本地检查。有限演示、长期运行和数值精度分别记录，完整验证边界统一见 [项目进度](PROJECT-PROGRESS.md)，不在本页重复维护。
+
+## 五、获取源码与参与开发
+
+```sh
+git clone https://github.com/cenyongdong/FPGACompetitionProject.git
+cd FPGACompetitionProject
+```
+
+部署现有演示请使用第三节的完整包。源码开发从当前主工程和对应测试说明开始；硬件构建需要匹配的厂商工具链、器件支持及 SDK，普通克隆不附带这些开发环境。设备账号由使用者自行配置，见 [凭据说明](SECURITY.md)。
+
+欢迎通过 Issue 报告问题或提交 Pull Request。修改应说明具体行为、验证方法和适用硬件；本地检查与实板结果分开记录，不提交密码、原始个人采集或无关构建产物。复用原创代码时保留 MIT 版权及许可声明；第三方部分按 [第三方声明](THIRD_PARTY_NOTICES.md) 处理。

@@ -27,6 +27,11 @@ PROJECT-PROGRESS-before-hdmi-20261017.md
 
 #本地配置文件
 .local
+*.private.json
+*.private.md
+.env
+.env.*
+!.env.example
 *.edf
 *.dcp
 tools/**/evidence/
