@@ -1,0 +1,46 @@
+{
+  "status": "closed_op192_first_read_mismatch_original_restored",
+  "active": false,
+  "BOOT_written": true,
+  "actual": {
+    "candidate_starts": 1,
+    "original_fallbacks": 1,
+    "SDK_Open": 1
+  },
+  "caps": {
+    "candidate_starts": 1,
+    "original_fallbacks": 1,
+    "SDK_Open": 1,
+    "DMA": true,
+    "inference": true,
+    "HDMI_START": true,
+    "physical_key": 0,
+    "HDMI_long_term": true
+  },
+  "remaining": {
+    "candidate_starts": 0,
+    "original_fallbacks": 0,
+    "SDK_Open": 0
+  },
+  "joint": {
+    "frames": 52800,
+    "input_hz": 30,
+    "SDK_Open": 1,
+    "hard_seconds": 2100,
+    "automatic_retry": false,
+    "AI_four_HC_unchanged": true
+  },
+  "AI_four_HC_unchanged": true,
+  "BOOT_sha256": "685f6151a1b225f1fe07e0b83e9ff77f71ea18ebdb62a8a19ffe8373a6e06cde",
+  "software_sha256": "f059f27aa0ddc167a5d341c395367057109e860b4349092b30678d0f6fa66cbc",
+  "original_runtime_boot_id": "6df51712-1055-491e-84b7-1d4c2ad73216",
+  "failed_r46_not_reclassified": true,
+  "hardware_rebuilt": false,
+  "uploaded": true,
+  "original_BOOT_file_restored": true,
+  "original_runtime_restored": true,
+  "BOOT_current_sha256": "ff350477e624c50d2f8180fb4b9130ec7688fbc7ca553412ed7c3dd2a68b31ef",
+  "HDMI_adopted": 187,
+  "long_stability_proved": false,
+  "result": "result-summary.json"
+}

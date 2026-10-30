@@ -1,0 +1,193 @@
+{
+  "scope": "Offline analysis of preserved r53 invocation188 only; no board/SDK/build/new inference; old DATA packages not investigated",
+  "raw_root": "D:\\FPGACompetitionProject\\.local\\hdmi-pipeline-20261024-r53\\unpacked\\software\\run-long-native\\results",
+  "frame_id": 1000188,
+  "invocation": 188,
+  "op_id": 192,
+  "TopK_comparison": {
+    "file": "index-oracle/188.topk.f32",
+    "stored_scalar_words": 100,
+    "comparison_expansion": "Repeat each scalar bit pattern 42 times, yielding shape [1,100,42] and 4200 FP32 words",
+    "first_mismatched_words": 1568,
+    "first_correct_words": 2632,
+    "wrong_words_all_finite": true,
+    "wrong_words_integer_count": 0,
+    "wrong_word_min": 0.436767578125,
+    "wrong_word_max": 3.767578125
+  },
+  "shape": {
+    "mismatched_words_all_equal_current_input0_at_identical_word_offset": true,
+    "matching_wrong_word_count": 1568,
+    "byte_range_touched_half_open": [
+      3968,
+      16640
+    ],
+    "contiguous_runs": 50,
+    "first_two_inclusive_word_runs": [
+      [
+        992,
+        1007
+      ],
+      [
+        1056,
+        1071
+      ]
+    ],
+    "remaining_runs": {
+      "count": 48,
+      "formula_inclusive": "[1120+64*k,1151+64*k], k=0..47",
+      "length_bytes": 128,
+      "period_bytes": 256
+    },
+    "attribution": "A repeated offset pattern is observed; no cache/DMA/bus granularity is inferred from it."
+  },
+  "versions": {
+    "post_copy": {
+      "input0": {
+        "file": "failed-host-inputs/post-copy/input0.f32",
+        "bytes": 30240,
+        "changed_words_vs_first": 0
+      },
+      "input1": {
+        "file": "failed-host-inputs/post-copy/input1.f32",
+        "bytes": 16800,
+        "changed_words_vs_first": 0,
+        "mismatches_vs_current_expanded_TopK": 1568
+      }
+    },
+    "recent188": {
+      "input0": {
+        "file": "copy-observations/188.input0.f32",
+        "bytes": 30240,
+        "changed_words_vs_first": 0
+      },
+      "input1": {
+        "file": "copy-observations/188.input1.f32",
+        "bytes": 16800,
+        "changed_words_vs_first": 0,
+        "mismatches_vs_current_expanded_TopK": 1568
+      }
+    },
+    "late_round0": {
+      "input0": {
+        "file": "failed-host-inputs/source-readback/round0.input0.f32",
+        "bytes": 30240,
+        "changed_words_vs_first": 0
+      },
+      "input1": {
+        "file": "failed-host-inputs/source-readback/round0.input1.f32",
+        "bytes": 16800,
+        "changed_words_vs_first": 1568,
+        "mismatches_vs_current_expanded_TopK": 0
+      }
+    },
+    "late_round1": {
+      "input0": {
+        "file": "failed-host-inputs/source-readback/round1.input0.f32",
+        "bytes": 30240,
+        "changed_words_vs_first": 0
+      },
+      "input1": {
+        "file": "failed-host-inputs/source-readback/round1.input1.f32",
+        "bytes": 16800,
+        "changed_words_vs_first": 1568,
+        "mismatches_vs_current_expanded_TopK": 0
+      }
+    }
+  },
+  "recent_comparison": [
+    {
+      "invocation": 181,
+      "own_copy_mismatches_vs_own_expanded_TopK": 0,
+      "failed_words_matching_this_expanded_TopK_at_same_offset": 0,
+      "failed_words_matching_this_input0_at_same_offset": 8
+    },
+    {
+      "invocation": 182,
+      "own_copy_mismatches_vs_own_expanded_TopK": 0,
+      "failed_words_matching_this_expanded_TopK_at_same_offset": 0,
+      "failed_words_matching_this_input0_at_same_offset": 2
+    },
+    {
+      "invocation": 183,
+      "own_copy_mismatches_vs_own_expanded_TopK": 0,
+      "failed_words_matching_this_expanded_TopK_at_same_offset": 0,
+      "failed_words_matching_this_input0_at_same_offset": 4
+    },
+    {
+      "invocation": 184,
+      "own_copy_mismatches_vs_own_expanded_TopK": 0,
+      "failed_words_matching_this_expanded_TopK_at_same_offset": 0,
+      "failed_words_matching_this_input0_at_same_offset": 6
+    },
+    {
+      "invocation": 185,
+      "own_copy_mismatches_vs_own_expanded_TopK": 0,
+      "failed_words_matching_this_expanded_TopK_at_same_offset": 0,
+      "failed_words_matching_this_input0_at_same_offset": 5
+    },
+    {
+      "invocation": 186,
+      "own_copy_mismatches_vs_own_expanded_TopK": 0,
+      "failed_words_matching_this_expanded_TopK_at_same_offset": 0,
+      "failed_words_matching_this_input0_at_same_offset": 4
+    },
+    {
+      "invocation": 187,
+      "own_copy_mismatches_vs_own_expanded_TopK": 0,
+      "failed_words_matching_this_expanded_TopK_at_same_offset": 0,
+      "failed_words_matching_this_input0_at_same_offset": 3
+    },
+    {
+      "invocation": 188,
+      "own_copy_mismatches_vs_own_expanded_TopK": 1568,
+      "failed_words_matching_this_expanded_TopK_at_same_offset": 0,
+      "failed_words_matching_this_input0_at_same_offset": 1568
+    }
+  ],
+  "timing": {
+    "clock": "Preserved board monotonic ns; same invocation",
+    "input1_first_copy_begin_ns": 157234815750,
+    "input1_first_copy_end_ns": 157234953420,
+    "input1_shadow_begin_ns": 157234962830,
+    "input1_shadow_end_ns": 157234977670,
+    "exception_ns": 157235496630,
+    "input1_public_SDK_late_reads": [
+      {
+        "round": 0,
+        "file": "round0.input1.f32",
+        "begin_ns": 157238051430,
+        "end_ns": 157238099050
+      },
+      {
+        "round": 1,
+        "file": "round1.input1.f32",
+        "begin_ns": 157238160110,
+        "end_ns": 157238204800
+      }
+    ],
+    "late_round0_input1_begin_after_initial_copy_end_ms": 3.09801,
+    "late_read_method": "Tensor::read",
+    "explicit_wait_or_reset": false
+  },
+  "source_metadata": {
+    "input0_PL_address": 36827136,
+    "input1_PL_address": 36806656,
+    "input0_Host_CPTR": 367859742192,
+    "input1_Host_CPTR": 367872443296,
+    "source_region": "AXIZG330AIPLDDRMemRegionNode",
+    "DMA_cache_fence_proven": false
+  },
+  "findings": [
+    "The first owned Host input1, immediate post-copy shadow and retained invocation188 copy are byte-identical and contain the same 1568 wrong words.",
+    "All 1568 wrong input1 words exactly equal this invocation input0 pose words at the same offsets; none matches any of the retained 181..188 TopK oracles at those offsets.",
+    "The other 2632 input1 words match the current expanded TopK. Retained input1 snapshots181..187 each match their own expanded TopK entirely.",
+    "Both subsequent public SDK input1 reads are byte-identical to each other and to the correct current expanded TopK, with all1568 wrong words changed. Input0 does not change across first/shadow/recent/two late reads."
+  ],
+  "limits": [
+    "The evidence establishes mixed observed first-read bytes and a later correct source observation; it does not identify whether the original source transiently contained wrong bytes or where copying/transport/visibility produced the mix.",
+    "Matching current input0 bytes is strong content evidence but does not prove CPU aliasing, cache synchronization failure, DMA routing or NPU/HDMI contention as the cause.",
+    "Late SDK reads must not replace the first actual failed input or turn this invocation into a passing result. No retry or gate relaxation is implied."
+  ],
+  "classification": "Confirmed first-read index-data mismatch; root cause unresolved"
+}

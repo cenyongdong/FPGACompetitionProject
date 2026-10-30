@@ -4,6 +4,14 @@
 
 先读[最终项目进度](PROJECT-PROGRESS.md)、[困难最终处置](DIFFICULTIES.md)和[部署／恢复入口](FPGA/hdmi_candidate/RESUME.md)。当前核心见 [src/README](software/pose180_pipeline/src/README.md)。根目录与模块 README 维护当前入口；带日期、包名、PLAN／NEXT 的资料按当时阶段理解，目录名本身不构成执行授权。
 
+## Git 克隆后的文件可用范围
+
+2026-10-30 检查了 397 份已跟踪 Markdown，以及其链接可达的 141 份本机 Markdown。当前模型目录原先整体被忽略，现按白名单提供最终 ZG JSON／RAW、源 ONNX、转换 TOML、来源校验和模型说明；关键历史报告仅提供被引用的正文及指定收尾 JSON。提交稿已迁至 `Docs/commit_docs/`，现行入口同步使用新位置。
+
+- 当前运行资产见 [模型说明](model/README.md) 和 [完整部署包](Deliverables/pose180-three-clips-20261029-r3-final.tar.gz)。训练 checkpoint、转换中间 RAW、原始采集、日志与波形仍是本机资产；原始 checkpoint 约 275 MB，不包含在普通 Git 提交中。
+- 此目录下方的“本机”及数量统计保留 10 月 29 日整理口径；上面的现行入口优先。历史包内 Markdown 须解压获得，不要求重复提交解压副本。
+- 全局检查也发现历史相对路径、已清理的采集附件及外部 SDK 安装路径。它们不能仅靠修改 `.gitignore` 恢复；冻结报告保留原值，不补造附件，也不将本机归档标为已上传。
+
 ## 文档职责
 
 | 文档 | 唯一维护职责 |
@@ -121,12 +129,12 @@
 - [Deliverables/history/software/pose180-three-clips-20261029-r1-DEPLOY.md](Deliverables/history/software/pose180-three-clips-20261029-r1-DEPLOY.md) — 部署与演示步骤（交付时快照；本机）
 - [Deliverables/history/software/pose180-three-clips-20261029-r2-DEPLOY.md](Deliverables/history/software/pose180-three-clips-20261029-r2-DEPLOY.md) — 部署与演示步骤（交付时快照；本机）
 - [Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md](Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md) — 部署与演示步骤（现行入口；本机）
-- [Deliverables/pose180-three-clips-20261029-r3/DATASET-PLAYLIST.md](Deliverables/pose180-three-clips-20261029-r3/DATASET-PLAYLIST.md) — 三片段顺序演示（2026-10-29）（交付时快照；本机；遗留引用 2）
-- [Deliverables/pose180-three-clips-20261029-r3/DEMO-INPUTS.md](Deliverables/pose180-three-clips-20261029-r3/DEMO-INPUTS.md) — 双输入演示与源码阅读入口（交付时快照；本机；遗留引用 1）
-- [Deliverables/pose180-three-clips-20261029-r3/DEPLOY.md](Deliverables/pose180-three-clips-20261029-r3/DEPLOY.md) — 部署与演示步骤（交付时快照；本机）
-- [Deliverables/pose180-three-clips-20261029-r3/FINAL-REVIEW.md](Deliverables/pose180-three-clips-20261029-r3/FINAL-REVIEW.md) — 核心源码最终审查与双输入整理（交付时快照；本机；遗留引用 6）
-- [Deliverables/pose180-three-clips-20261029-r3/README.md](Deliverables/pose180-three-clips-20261029-r3/README.md) — pose180-three-clips-20261029-r3（交付时快照；本机）
-- [Deliverables/pose180-three-clips-20261029-r3/STARTUP-GUIDE.md](Deliverables/pose180-three-clips-20261029-r3/STARTUP-GUIDE.md) — 演示启动包与历史验证（交付时快照；本机；遗留引用 7）
+- `Deliverables/pose180-three-clips-20261029-r3/DATASET-PLAYLIST.md` — 三片段顺序演示（2026-10-29）（交付时快照；本机；遗留引用 2）；包内快照，需从最新部署包解压查看
+- `Deliverables/pose180-three-clips-20261029-r3/DEMO-INPUTS.md` — 双输入演示与源码阅读入口（交付时快照；本机；遗留引用 1）；包内快照，需从最新部署包解压查看
+- `Deliverables/pose180-three-clips-20261029-r3/DEPLOY.md` — 部署与演示步骤（交付时快照；本机）；包内快照，需从最新部署包解压查看
+- `Deliverables/pose180-three-clips-20261029-r3/FINAL-REVIEW.md` — 核心源码最终审查与双输入整理（交付时快照；本机；遗留引用 6）；包内快照，需从最新部署包解压查看
+- `Deliverables/pose180-three-clips-20261029-r3/README.md` — pose180-three-clips-20261029-r3（交付时快照；本机）；包内快照，需从最新部署包解压查看
+- `Deliverables/pose180-three-clips-20261029-r3/STARTUP-GUIDE.md` — 演示启动包与历史验证（交付时快照；本机；遗留引用 7）；包内快照，需从最新部署包解压查看
 
 </details>
 
@@ -275,10 +283,10 @@
 <details>
 <summary>提交稿与历史选材（2 份）</summary>
 
-当前提交用 Word 完成稿为[技术文档_完成版_20261029.docx](Docs/提交资料/技术文档_完成版_20261029.docx)，原模板未覆盖；下面两份 Markdown 分别保留历史选材与首版文字，不是最新完整提交稿。Word 不计入 Markdown 数量。
+当前提交用 Word 完成稿为[技术文档_完成版_20261029.docx](Docs/commit_docs/技术文档_v1_排版修订.docx)，原模板未覆盖；下面两份 Markdown 分别保留历史选材与首版文字，不是最新完整提交稿。Word 不计入 Markdown 数量。
 
-- [Docs/提交资料/官方数据集演示片段清单.md](Docs/%E6%8F%90%E4%BA%A4%E8%B5%84%E6%96%99/%E5%AE%98%E6%96%B9%E6%95%B0%E6%8D%AE%E9%9B%86%E6%BC%94%E7%A4%BA%E7%89%87%E6%AE%B5%E6%B8%85%E5%8D%95.md) — 官方数据集视频演示片段清单（稿件／历史选材；本机）
-- [Docs/提交资料/技术文档_第一部分_首版.md](Docs/%E6%8F%90%E4%BA%A4%E8%B5%84%E6%96%99/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3_%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86_%E9%A6%96%E7%89%88.md) — 第一部分 作品概述（稿件／历史选材；本机）
+- [Docs/commit_docs/官方数据集演示片段清单.md](Docs/%E6%8F%90%E4%BA%A4%E8%B5%84%E6%96%99/%E5%AE%98%E6%96%B9%E6%95%B0%E6%8D%AE%E9%9B%86%E6%BC%94%E7%A4%BA%E7%89%87%E6%AE%B5%E6%B8%85%E5%8D%95.md) — 官方数据集视频演示片段清单（稿件／历史选材；本机）
+- [Docs/commit_docs/技术文档_第一部分_首版.md](Docs/%E6%8F%90%E4%BA%A4%E8%B5%84%E6%96%99/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3_%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86_%E9%A6%96%E7%89%88.md) — 第一部分 作品概述（稿件／历史选材；本机）
 
 </details>
 

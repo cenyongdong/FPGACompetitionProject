@@ -25,7 +25,7 @@
 | [software/pose180_pipeline/](software/pose180_pipeline/) | **当前主工程**：板端核心、输入控制、PC 页面、测试及构建打包入口 |
 | [FPGA/hdmi_candidate/](FPGA/hdmi_candidate/) | HDMI 硬件工程；`rtl/`、`constraints/`、`scripts/`、`sim/` 分别保存逻辑、约束、构建脚本与仿真，发布配置按恢复说明及对应记录核对 |
 | [Deliverables/](Deliverables/) | **演示部署包和核心源码快照**；`hardware/` 为硬件交付，`history/` 为历史软件与模型归档 |
-| [model/](model/) | 模型权重、转换结果与候选版本；部署使用的模型已包含在最终演示包中，本目录为本机资产 |
+| [model/](model/README.md) | 当前部署 JSON／RAW、源 ONNX、转换配置与模型说明已放行；训练 checkpoint 和中间产物留在本机，获取与使用方式见模型索引 |
 | [tools/](tools/) | 模型训练、转换、采集、验证与故障分析工具；带日期的取证目录按所属历史阶段阅读 |
 | [Docs/commit_docs/](Docs/commit_docs/) | 技术文档、海报等提交材料；`Docs/` 其余部分主要为厂商资料与开发参考 |
 | [CompetitionDescription/](CompetitionDescription/) | 比赛选题指南等本机参考资料 |
@@ -113,6 +113,6 @@
 - 查看硬件发布、设备状态和恢复步骤：阅读 [RESUME.md](FPGA/hdmi_candidate/RESUME.md)。历史运行状态不等于设备当前在线状态。
 - 查看展示片段的来源和范围：阅读 [三片段清单](software/pose180_pipeline/resident/DATASET-PLAYLIST.md)。
 
-Git 放行当前完整演示包、源码快照及其校验文件、部署说明、选定技术文档与海报。解压副本、旧包、原始采集、模型工作目录、厂商资料、日志和构建缓存继续保留在本机；因此部分历史文档链接需要完整开发工作区才能打开。放行仅表示文件可被 Git 添加，不代表已提交或上传。
+Git 提供当前完整演示包、源码快照及其校验文件、部署说明、选定技术文档与海报，以及当前模型的 ZG JSON／RAW、源 ONNX、转换配置、选题指南和指定验证报告。大尺寸训练 checkpoint、解压副本、旧包、原始采集、模型中间产物、SDK 安装资料、日志和构建缓存继续保留在本机；因此部分历史附件需要完整开发工作区才能打开。文件范围与文档检查说明见 [完整导航](DOCUMENTATION.md#git-克隆后的文件可用范围)，训练权重的获取方式见 [模型说明](model/README.md#本机保留的开发产物)。
 
 已有同一 r3 板端内容完成 420 帧新推理、HDMI 采纳与 PC 发送，并正常退出；最终 PC 修订另有本地检查。有限演示、长期运行和数值精度分别记录，完整验证边界统一见 [项目进度](PROJECT-PROGRESS.md)，不在本页重复维护。

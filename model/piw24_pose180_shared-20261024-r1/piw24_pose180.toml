@@ -1,0 +1,50 @@
+# Actual Icraft3.39.0 config; run all stages from this directory.
+# Input is already-preprocessed CSI tokens, not an image.
+# FP16 selected from the established graph's 130 FP16 Matmul operations.
+# Original TOML was not retained: this is explicit new config, not its copy.
+
+[parse]
+net_name = "piw24_pose180"
+framework = "onnx"
+target = "zhuge"
+network = "./source/pose180_shared.onnx"
+inputs = [1, 180, 60]
+inputs_dtype = "FP32"
+inputs_layout = "FD"
+pre_method = "nop"
+pre_scale = "nop"
+pre_mean = "nop"
+channel_swap = "nop"
+jr_path = "./"
+log_path = "./logs/parse"
+
+[optimize]
+target = "zhuge"
+json = "./piw24_pose180_parsed.json"
+raw = "./piw24_pose180_parsed.raw"
+jr_path = "./"
+log_path = "./logs/optimize"
+
+[quantize]
+target = "zhuge"
+qdtype = "fp16"
+json = "./piw24_pose180_optimized.json"
+raw = "./piw24_pose180_optimized.raw"
+jr_path = "./"
+log_path = "./logs/quantize"
+
+[adapt]
+target = "zhuge"
+json = "./piw24_pose180_quantized.json"
+raw = "./piw24_pose180_quantized.raw"
+jr_path = "./"
+log_path = "./logs/adapt"
+
+[generate]
+json = "./piw24_pose180_adapted.json"
+raw = "./piw24_pose180_adapted.raw"
+jr_path = "./"
+log_path = "./logs/generate"
+rows = 4
+cols = 4
+cores = 1

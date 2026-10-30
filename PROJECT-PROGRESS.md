@@ -10,7 +10,7 @@
 |---|---|
 | 演示部署包 | [pose180-three-clips-20261029-r3-final.tar.gz](Deliverables/pose180-three-clips-20261029-r3-final.tar.gz)，[部署步骤](Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md)，[交付目录](Deliverables/README.txt) |
 | 核心源码 | [模块目录](software/pose180_pipeline/src/README.md)，[源码快照](Deliverables/pose180-core-sources-final-20261029.tar.gz) |
-| 提交技术文档 | [技术文档_完成版_20261029.docx](Docs/提交资料/技术文档_完成版_20261029.docx)，21 页，已按模板统一字体、字号与加粗并完成排版核验；原 `技术文档.docx` 未覆盖。10月30日补充高隐私性智能家居场景、隐私设计、参数量／板端计时对照及共享关节细化计算原理；图示来源保持明确。整机正面／45° 实物照片及最终演示视频仍无完成记录 |
+| 提交技术文档 | [技术文档排版修订版](Docs/commit_docs/技术文档_v1_排版修订.docx)，22 页，按最新用户稿调整 1.5 编号并核验排版；原 `技术文档.docx` 未覆盖。10月30日补充高隐私性智能家居场景、隐私设计、参数量／板端计时对照及共享关节细化计算原理；图示来源保持明确。整机正面／45° 实物照片及最终演示视频仍无完成记录 |
 | 模型与显示配置 | 原始 epoch99；TopK=3 后严格 `score > 0.2`；CPU 多人跟踪／One Euro `0.5／0.3／1`；HDMI 和 PC 共用展示结果 |
 | 输入接口 | `official_dataset` 板端本地读原始 CSI；`live_csi` 三 RX 实时采集。二者互斥，共用预处理和真实 NPU 推理 |
 | 默认展示内容 | 官方训练集 1 人约 10 秒 → 2 人约 9 秒 → 3 人约 9 秒，共 420 帧；来源及限制见[片段清单](software/pose180_pipeline/resident/DATASET-PLAYLIST.md) |
