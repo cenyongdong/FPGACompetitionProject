@@ -9,7 +9,7 @@ DifficultyRecord.txt
 Logs
 
 #相关资料
-Docs
+/Docs/*
 CompetitionDescription
 Record
 ARCHITECTURE-DISCUSSION-20261015.md
@@ -350,7 +350,21 @@ node_modules/
 /tools/pose-v1/evidence/core-refactor-20261013-r*/board/short-native-render/
 
 
-保留部署包和整理源码
-!Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md
-!Deliverables/pose180-three-clips-20261029-r3-final.tar.gz
-!Deliverables/pose180-core-sources-final-20261029.tar.gz
+# 当前交付白名单：完整演示包约 36.5 MB；旧包和解压副本继续忽略。
+!/Deliverables/README.txt
+!/Deliverables/pose180-three-clips-20261029-r3-DEPLOY.md
+!/Deliverables/pose180-three-clips-20261029-r3-final.tar.gz
+!/Deliverables/pose180-three-clips-20261029-r3-final.tar.gz.sha256
+!/Deliverables/pose180-three-clips-20261029-r3-final.validation.json
+!/Deliverables/pose180-core-sources-final-20261029.tar.gz
+!/Deliverables/pose180-core-sources-final-20261029.tar.gz.sha256
+
+# 只开放指定提交稿；厂商资料、承诺书、原模板和其它草稿保持本地。
+!/Docs/commit_docs/
+/Docs/commit_docs/*
+!/Docs/commit_docs/技术文档_v1.docx
+!/Docs/commit_docs/技术文档_v1_排版修订.docx
+!/Docs/commit_docs/项目海报.pdf
+
+# Word / WPS / Office 锁文件不随提交稿上传。
+~$*
